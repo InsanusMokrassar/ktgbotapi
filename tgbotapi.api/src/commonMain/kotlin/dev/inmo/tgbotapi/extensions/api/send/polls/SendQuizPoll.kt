@@ -6,12 +6,14 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.ParseMode
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
 
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
@@ -30,7 +32,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         question,
@@ -53,7 +55,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
@@ -71,7 +73,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         questionEntities,
@@ -93,7 +95,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
@@ -111,7 +113,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         question,
@@ -134,7 +136,7 @@ suspend fun TelegramBot.sendQuizPoll(
 )
 
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
@@ -151,7 +153,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         questionEntities,
@@ -172,7 +174,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
@@ -190,7 +192,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         question,
@@ -212,7 +214,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
@@ -229,7 +231,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         questionEntities,
@@ -250,7 +252,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
@@ -267,7 +269,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         question,
@@ -288,7 +290,7 @@ suspend fun TelegramBot.sendQuizPoll(
     )
 )
 
-suspend fun TelegramBot.sendQuizPoll(
+public suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
@@ -304,7 +306,7 @@ suspend fun TelegramBot.sendQuizPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId,
         questionEntities,

@@ -8,12 +8,14 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideoNote(
+public suspend fun TelegramBot.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
     thumb: InputFile? = null,
@@ -26,7 +28,7 @@ suspend fun TelegramBot.sendVideoNote(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<VideoNoteContent> = execute(
     SendVideoNote(
         chatId,
         videoNote,
@@ -47,7 +49,7 @@ suspend fun TelegramBot.sendVideoNote(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideoNote(
+public suspend fun TelegramBot.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
@@ -57,7 +59,7 @@ suspend fun TelegramBot.sendVideoNote(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(
+): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId, videoNote.fileId, videoNote.thumbnail ?.fileId, videoNote.duration, videoNote.width, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -65,7 +67,7 @@ suspend fun TelegramBot.sendVideoNote(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideoNote(
+public suspend fun TelegramBot.sendVideoNote(
     chat: Chat,
     videoNote: InputFile,
     thumb: InputFile? = null,
@@ -78,13 +80,13 @@ suspend fun TelegramBot.sendVideoNote(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chat.id, videoNote, thumb, duration, size, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(chat.id, videoNote, thumb, duration, size, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideoNote(
+public suspend fun TelegramBot.sendVideoNote(
     chat: Chat,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -94,4 +96,4 @@ suspend fun TelegramBot.sendVideoNote(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chat.id, videoNote, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(chat.id, videoNote, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

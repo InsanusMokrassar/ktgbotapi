@@ -2,15 +2,11 @@ package dev.inmo.tgbotapi.extensions.api.send.payments
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
-import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 
-suspend fun TelegramBot.createInvoiceLink(
+public suspend fun TelegramBot.createInvoiceLink(
     title: String,
     description: String,
     payload: String,
@@ -27,14 +23,14 @@ suspend fun TelegramBot.createInvoiceLink(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false
-) = execute(
+): String = execute(
     CreateInvoiceLink(title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress)
 )
 
 /**
  * For links witn XTR currency and using of Telegram Stars
  */
-suspend fun TelegramBot.createInvoiceLink(
+public suspend fun TelegramBot.createInvoiceLink(
     title: String,
     description: String,
     payload: String,
@@ -49,6 +45,6 @@ suspend fun TelegramBot.createInvoiceLink(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false
-) = execute(
+): String = execute(
     CreateInvoiceLink(title, description, payload, null, Currency.XTR, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress)
 )

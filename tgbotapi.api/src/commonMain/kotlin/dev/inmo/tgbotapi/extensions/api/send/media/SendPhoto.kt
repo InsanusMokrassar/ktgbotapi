@@ -10,12 +10,14 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.PhotoContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
     text: String? = null,
@@ -29,7 +31,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
         photo = fileId,
@@ -51,7 +53,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
     text: String? = null,
@@ -65,7 +67,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
     text = text,
@@ -85,7 +87,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: PhotoFile,
     text: String? = null,
@@ -99,7 +101,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
     text = text,
@@ -119,7 +121,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: PhotoFile,
     text: String? = null,
@@ -133,7 +135,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
     text = text,
@@ -153,7 +155,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
     text: String? = null,
@@ -167,7 +169,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
     text = text,
@@ -187,7 +189,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendPhoto(
+public suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     photoSize: PhotoSize,
     text: String? = null,
@@ -201,7 +203,7 @@ suspend fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
     text = text,
@@ -222,7 +224,7 @@ suspend fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
     entities: TextSourcesList,
@@ -235,7 +237,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
         photo = fileId,
@@ -256,7 +258,7 @@ suspend inline fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
     entities: TextSourcesList,
@@ -269,7 +271,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
     entities = entities,
@@ -288,7 +290,7 @@ suspend inline fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: PhotoFile,
     entities: TextSourcesList,
@@ -301,7 +303,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
     entities = entities,
@@ -320,7 +322,7 @@ suspend inline fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: PhotoFile,
     entities: TextSourcesList,
@@ -333,7 +335,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
     entities = entities,
@@ -352,7 +354,7 @@ suspend inline fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
     entities: TextSourcesList,
@@ -365,7 +367,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
     entities = entities,
@@ -384,7 +386,7 @@ suspend inline fun TelegramBot.sendPhoto(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendPhoto(
+public suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photoSize: PhotoSize,
     entities: TextSourcesList,
@@ -397,7 +399,7 @@ suspend inline fun TelegramBot.sendPhoto(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
+): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
     entities = entities,

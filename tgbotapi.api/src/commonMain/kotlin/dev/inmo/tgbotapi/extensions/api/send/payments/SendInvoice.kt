@@ -5,6 +5,8 @@ import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
@@ -13,7 +15,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.XTR
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.sendInvoice(
+public suspend fun TelegramBot.sendInvoice(
     chatId: IdChatIdentifier,
     title: String,
     description: String,
@@ -38,7 +40,7 @@ suspend fun TelegramBot.sendInvoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<InvoiceContent> = execute(
     SendInvoice(chatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
@@ -46,7 +48,7 @@ suspend fun TelegramBot.sendInvoice(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.sendInvoice(
+public suspend fun TelegramBot.sendInvoice(
     user: CommonUser,
     title: String,
     description: String,
@@ -70,14 +72,14 @@ suspend fun TelegramBot.sendInvoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, null, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<InvoiceContent> = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, null, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.sendInvoice(
+public suspend fun TelegramBot.sendInvoice(
     chatId: IdChatIdentifier,
     title: String,
     description: String,
@@ -91,7 +93,7 @@ suspend fun TelegramBot.sendInvoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<InvoiceContent> = execute(
     SendInvoice(chatId, title, description, payload, price, startParameter, providerData, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
@@ -99,7 +101,7 @@ suspend fun TelegramBot.sendInvoice(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.sendInvoice(
+public suspend fun TelegramBot.sendInvoice(
     user: CommonUser,
     title: String,
     description: String,
@@ -112,7 +114,7 @@ suspend fun TelegramBot.sendInvoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(
+): ContentMessage<InvoiceContent> = sendInvoice(
     chatId = user.id,
     title = title,
     description = description,
