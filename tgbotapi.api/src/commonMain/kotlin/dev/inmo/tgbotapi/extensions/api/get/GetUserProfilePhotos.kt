@@ -4,19 +4,20 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.get.GetUserProfilePhotos
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
+import dev.inmo.tgbotapi.types.UserProfilePhotos
 
-suspend fun TelegramBot.getUserProfilePhotos(
+public suspend fun TelegramBot.getUserProfilePhotos(
     userId: UserId,
     offset: Int? = null,
     limit: Int? = null
-) = execute(
+): UserProfilePhotos = execute(
     GetUserProfilePhotos(
         userId, offset, limit
     )
 )
 
-suspend fun TelegramBot.getUserProfilePhotos(
+public suspend fun TelegramBot.getUserProfilePhotos(
     user: CommonUser,
     offset: Int? = null,
     limit: Int? = null
-) = getUserProfilePhotos(user.id, offset, limit)
+): UserProfilePhotos = getUserProfilePhotos(user.id, offset, limit)

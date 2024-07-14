@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.requests.stickers.SetStickerPositionInSet
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 
-suspend fun TelegramBot.setStickerMaskPosition(
+public suspend fun TelegramBot.setStickerMaskPosition(
     sticker: FileId,
     maskPosition: MaskPosition
-) = execute(
+): Boolean = execute(
     SetStickerMaskPosition(
         sticker,
         maskPosition

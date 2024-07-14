@@ -4,34 +4,35 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.get.GetCustomEmojiStickers
 import dev.inmo.tgbotapi.requests.get.GetStickerSet
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.files.CustomEmojiSticker
 import dev.inmo.tgbotapi.types.files.Sticker
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 
-suspend fun TelegramBot.getCustomEmojiStickers(
+public suspend fun TelegramBot.getCustomEmojiStickers(
     customEmojiIds: List<CustomEmojiId>
-) = execute(
+): List<CustomEmojiSticker> = execute(
     GetCustomEmojiStickers(customEmojiIds)
 )
 
 @JvmName("getCustomEmojiStickersWithStringsList")
 @JsName("getCustomEmojiStickersWithStringsList")
-suspend fun TelegramBot.getCustomEmojiStickers(
+public suspend fun TelegramBot.getCustomEmojiStickers(
     customEmojiIds: List<String>
-) = getCustomEmojiStickers(customEmojiIds.map(::CustomEmojiId))
+): List<CustomEmojiSticker> = getCustomEmojiStickers(customEmojiIds.map(::CustomEmojiId))
 
-suspend fun TelegramBot.getCustomEmojiStickerOrNull(
+public suspend fun TelegramBot.getCustomEmojiStickerOrNull(
     customEmojiId: CustomEmojiId
-) = getCustomEmojiStickers(listOf(customEmojiId)).firstOrNull()
+): CustomEmojiSticker? = getCustomEmojiStickers(listOf(customEmojiId)).firstOrNull()
 
-suspend fun TelegramBot.getCustomEmojiStickerOrThrow(
+public suspend fun TelegramBot.getCustomEmojiStickerOrThrow(
     customEmojiId: CustomEmojiId
-) = getCustomEmojiStickers(listOf(customEmojiId)).first()
+): CustomEmojiSticker = getCustomEmojiStickers(listOf(customEmojiId)).first()
 
-suspend fun TelegramBot.getCustomEmojiStickerOrNull(
+public suspend fun TelegramBot.getCustomEmojiStickerOrNull(
     customEmojiId: String
-) = getCustomEmojiStickerOrNull(CustomEmojiId(customEmojiId))
+): CustomEmojiSticker? = getCustomEmojiStickerOrNull(CustomEmojiId(customEmojiId))
 
-suspend fun TelegramBot.getCustomEmojiStickerOrThrow(
+public suspend fun TelegramBot.getCustomEmojiStickerOrThrow(
     customEmojiId: String
-) = getCustomEmojiStickerOrThrow(CustomEmojiId(customEmojiId))
+): CustomEmojiSticker = getCustomEmojiStickerOrThrow(CustomEmojiId(customEmojiId))

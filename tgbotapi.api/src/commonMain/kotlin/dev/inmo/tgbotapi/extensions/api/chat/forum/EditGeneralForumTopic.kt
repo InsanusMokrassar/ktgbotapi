@@ -9,22 +9,22 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.editGeneralForumTopic(
+public suspend fun TelegramBot.editGeneralForumTopic(
     chatId: ChatIdentifier,
     name: String
-) = execute(
+): Boolean = execute(
     EditGeneralForumTopic(
         chatId,
         name
     )
 )
 
-suspend fun TelegramBot.editGeneralForumTopic(
+public suspend fun TelegramBot.editGeneralForumTopic(
     chat: Chat,
     name: String
-) = editGeneralForumTopic(chat.id, name)
+): Boolean = editGeneralForumTopic(chat.id, name)
 
-suspend fun TelegramBot.editGeneralForumTopic(
+public suspend fun TelegramBot.editGeneralForumTopic(
     chatIdentifier: ChatIdentifier,
     forumTopic: ForumTopic,
-) = editGeneralForumTopic(chatIdentifier, forumTopic.name)
+): Boolean = editGeneralForumTopic(chatIdentifier, forumTopic.name)

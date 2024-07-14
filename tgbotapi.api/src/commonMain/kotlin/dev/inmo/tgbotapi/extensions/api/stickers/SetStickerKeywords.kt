@@ -7,20 +7,20 @@ import dev.inmo.tgbotapi.requests.stickers.SetStickerKeywords
 import dev.inmo.tgbotapi.requests.stickers.SetStickerPositionInSet
 import dev.inmo.tgbotapi.types.files.Sticker
 
-suspend fun TelegramBot.setStickerKeywords(
+public suspend fun TelegramBot.setStickerKeywords(
     sticker: FileId,
     keywords: List<String>
-) = execute(
+): Boolean = execute(
     SetStickerKeywords(
         sticker,
         keywords
     )
 )
 
-suspend fun TelegramBot.setStickerKeywords(
+public suspend fun TelegramBot.setStickerKeywords(
     sticker: Sticker,
     vararg keywords: String
-) = setStickerKeywords(
+): Boolean = setStickerKeywords(
     sticker.fileId,
     keywords.toList()
 )

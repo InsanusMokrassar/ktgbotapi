@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.requests.chat.modify.SetChatTitle
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.setChatTitle(
+public suspend fun TelegramBot.setChatTitle(
     chatId: ChatIdentifier,
     title: String
-) = execute(SetChatTitle(chatId, title))
+): Boolean = execute(SetChatTitle(chatId, title))
 
-suspend fun TelegramBot.setChatTitle(
+public suspend fun TelegramBot.setChatTitle(
     chat: PublicChat,
     title: String
-) = setChatTitle(chat.id, title)
+): Boolean = setChatTitle(chat.id, title)

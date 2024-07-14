@@ -8,12 +8,12 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.editForumTopic(
+public suspend fun TelegramBot.editForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId,
     name: String? = null,
     iconEmojiId: CustomEmojiId? = null
-) = execute(
+): Boolean = execute(
     EditForumTopic(
         chatId,
         messageThreadId,
@@ -22,15 +22,15 @@ suspend fun TelegramBot.editForumTopic(
     )
 )
 
-suspend fun TelegramBot.editForumTopic(
+public suspend fun TelegramBot.editForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId,
     name: String? = null,
     iconEmojiId: CustomEmojiId? = null
-) = editForumTopic(chat.id, messageThreadId, name, iconEmojiId)
+): Boolean = editForumTopic(chat.id, messageThreadId, name, iconEmojiId)
 
-suspend fun TelegramBot.editForumTopic(
+public suspend fun TelegramBot.editForumTopic(
     chatIdentifier: ChatIdentifier,
     forumTopic: ForumTopic,
     iconEmojiId: CustomEmojiId? = forumTopic.iconEmojiId
-) = editForumTopic(chatIdentifier, forumTopic.messageThreadId, forumTopic.name, iconEmojiId)
+): Boolean = editForumTopic(chatIdentifier, forumTopic.messageThreadId, forumTopic.name, iconEmojiId)

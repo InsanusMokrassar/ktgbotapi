@@ -9,10 +9,10 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.stopLiveLocation(
+public suspend fun TelegramBot.stopLiveLocation(
     inlineMessageId: InlineMessageId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): Boolean = execute(
     StopInlineMessageLiveLocation(
         inlineMessageId, replyMarkup
     )

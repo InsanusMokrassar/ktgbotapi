@@ -7,23 +7,23 @@ import dev.inmo.tgbotapi.types.StickerFormat
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
 
-suspend fun TelegramBot.createNewStickerSet(
+public suspend fun TelegramBot.createNewStickerSet(
     userId: UserId,
     name: String,
     title: String,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false
-) = execute(
+): Boolean = execute(
     CreateNewStickerSet(userId, name, title, stickers, needsRepainting)
 )
 
 
-suspend fun TelegramBot.createNewStickerSet(
+public suspend fun TelegramBot.createNewStickerSet(
     user: CommonUser,
     name: String,
     title: String,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false,
-) = createNewStickerSet(
+): Boolean = createNewStickerSet(
     user.id, name, title, stickers, needsRepainting
 )

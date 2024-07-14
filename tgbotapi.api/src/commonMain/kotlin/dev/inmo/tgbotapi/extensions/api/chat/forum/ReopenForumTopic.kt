@@ -7,22 +7,22 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.reopenForumTopic(
+public suspend fun TelegramBot.reopenForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId
-) = execute(
+): Boolean = execute(
     ReopenForumTopic(
         chatId,
         messageThreadId
     )
 )
 
-suspend fun TelegramBot.reopenForumTopic(
+public suspend fun TelegramBot.reopenForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId
-) = reopenForumTopic(chat.id, messageThreadId)
+): Boolean = reopenForumTopic(chat.id, messageThreadId)
 
-suspend fun TelegramBot.reopenForumTopic(
+public suspend fun TelegramBot.reopenForumTopic(
     chat: Chat,
     forumTopic: ForumTopic
-) = reopenForumTopic(chat.id, forumTopic.messageThreadId)
+): Boolean = reopenForumTopic(chat.id, forumTopic.messageThreadId)

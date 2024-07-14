@@ -4,15 +4,16 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.utils.RGBColor
 
-suspend fun TelegramBot.createForumTopic(
+public suspend fun TelegramBot.createForumTopic(
     chatId: ChatIdentifier,
     name: String,
     color: RGBColor,
     iconEmojiId: CustomEmojiId? = null
-) = execute(
+): ForumTopic = execute(
     CreateForumTopic(
         chatId,
         name,
@@ -21,9 +22,9 @@ suspend fun TelegramBot.createForumTopic(
     )
 )
 
-suspend fun TelegramBot.createForumTopic(
+public suspend fun TelegramBot.createForumTopic(
     chat: Chat,
     name: String,
     color: RGBColor,
     iconEmojiId: CustomEmojiId? = null
-) = createForumTopic(chat.id, name, color, iconEmojiId)
+): ForumTopic = createForumTopic(chat.id, name, color, iconEmojiId)

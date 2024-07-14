@@ -15,49 +15,49 @@ import dev.inmo.tgbotapi.utils.buildEntities
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageText(
+public suspend fun TelegramBot.editMessageText(
     inlineMessageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageText(inlineMessageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
+): Boolean = execute(EditInlineMessageText(inlineMessageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageText(
+public suspend fun TelegramBot.editMessageText(
     inlineMessageId: InlineMessageId,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageText(inlineMessageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
+): Boolean = execute(EditInlineMessageText(inlineMessageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageText(
+public suspend fun TelegramBot.editMessageText(
     inlineMessageId: InlineMessageId,
     separator: TextSource? = null,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Boolean = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageText(
+public suspend fun TelegramBot.editMessageText(
     inlineMessageId: InlineMessageId,
     separator: String,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Boolean = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)

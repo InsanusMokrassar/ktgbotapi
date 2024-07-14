@@ -6,10 +6,8 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
-import dev.inmo.tgbotapi.types.message.content.AudioContent
-import dev.inmo.tgbotapi.types.message.content.DocumentContent
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlin.jvm.JvmName
 
@@ -17,7 +15,7 @@ import kotlin.jvm.JvmName
  * @see SendMediaGroup
  */
 @RiskFeature(rawSendingMediaGroupsWarning)
-suspend fun TelegramBot.sendMediaGroup(
+public suspend fun TelegramBot.sendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -26,7 +24,7 @@ suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = execute(
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = execute(
     SendMediaGroup<MediaGroupPartContent>(
         chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
@@ -36,7 +34,7 @@ suspend fun TelegramBot.sendMediaGroup(
  * @see SendMediaGroup
  */
 @RiskFeature(rawSendingMediaGroupsWarning)
-suspend fun TelegramBot.sendMediaGroup(
+public suspend fun TelegramBot.sendMediaGroup(
     chat: Chat,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -45,7 +43,7 @@ suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendMediaGroup(
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -54,7 +52,7 @@ suspend fun TelegramBot.sendMediaGroup(
  */
 @RiskFeature(rawSendingMediaGroupsWarning)
 @JvmName("sendMedaGroupByContent")
-suspend fun TelegramBot.sendMediaGroup(
+public suspend fun TelegramBot.sendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupPartContent>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -63,7 +61,7 @@ suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendMediaGroup(
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -72,7 +70,7 @@ suspend fun TelegramBot.sendMediaGroup(
  */
 @RiskFeature(rawSendingMediaGroupsWarning)
 @JvmName("sendMedaGroupByContent")
-suspend fun TelegramBot.sendMediaGroup(
+public suspend fun TelegramBot.sendMediaGroup(
     chat: Chat,
     media: List<MediaGroupPartContent>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -81,14 +79,14 @@ suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendMediaGroup(
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
  * @see SendPlaylist
  */
-suspend fun TelegramBot.sendPlaylist(
+public suspend fun TelegramBot.sendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -97,7 +95,7 @@ suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = execute(
+): ContentMessage<MediaGroupContent<AudioContent>> = execute(
     SendPlaylist(
         chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
@@ -106,7 +104,7 @@ suspend fun TelegramBot.sendPlaylist(
 /**
  * @see SendPlaylist
  */
-suspend fun TelegramBot.sendPlaylist(
+public suspend fun TelegramBot.sendPlaylist(
     chat: Chat,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -115,7 +113,7 @@ suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendPlaylist(
+): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -123,7 +121,7 @@ suspend fun TelegramBot.sendPlaylist(
  * @see SendPlaylist
  */
 @JvmName("sendPlaylistByContent")
-suspend fun TelegramBot.sendPlaylist(
+public suspend fun TelegramBot.sendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioContent>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -132,7 +130,7 @@ suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendPlaylist(
+): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -140,7 +138,7 @@ suspend fun TelegramBot.sendPlaylist(
  * @see SendPlaylist
  */
 @JvmName("sendPlaylistByContent")
-suspend fun TelegramBot.sendPlaylist(
+public suspend fun TelegramBot.sendPlaylist(
     chat: Chat,
     media: List<AudioContent>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -149,14 +147,14 @@ suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendPlaylist(
+): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
  * @see SendDocumentsGroup
  */
-suspend fun TelegramBot.sendDocumentsGroup(
+public suspend fun TelegramBot.sendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -165,7 +163,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = execute(
+): ContentMessage<MediaGroupContent<DocumentContent>> = execute(
     SendDocumentsGroup(
         chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
@@ -174,7 +172,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
 /**
  * @see SendDocumentsGroup
  */
-suspend fun TelegramBot.sendDocumentsGroup(
+public suspend fun TelegramBot.sendDocumentsGroup(
     chat: Chat,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -183,7 +181,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendDocumentsGroup(
+): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -191,7 +189,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
  * @see SendDocumentsGroup
  */
 @JvmName("sendDocumentsByContent")
-suspend fun TelegramBot.sendDocumentsGroup(
+public suspend fun TelegramBot.sendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentContent>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -200,7 +198,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendDocumentsGroup(
+): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -208,7 +206,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
  * @see SendDocumentsGroup
  */
 @JvmName("sendDocumentsByContent")
-suspend fun TelegramBot.sendDocumentsGroup(
+public suspend fun TelegramBot.sendDocumentsGroup(
     chat: Chat,
     media: List<DocumentContent>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -217,14 +215,14 @@ suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendDocumentsGroup(
+): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
  * @see SendVisualMediaGroup
  */
-suspend fun TelegramBot.sendVisualMediaGroup(
+public suspend fun TelegramBot.sendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -233,7 +231,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = execute(
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = execute(
     SendVisualMediaGroup(
         chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
@@ -242,7 +240,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
 /**
  * @see SendVisualMediaGroup
  */
-suspend fun TelegramBot.sendVisualMediaGroup(
+public suspend fun TelegramBot.sendVisualMediaGroup(
     chat: Chat,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -251,7 +249,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendVisualMediaGroup(
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -259,7 +257,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
  * @see SendVisualMediaGroup
  */
 @JvmName("sendVisualMediaGroupByContent")
-suspend fun TelegramBot.sendVisualMediaGroup(
+public suspend fun TelegramBot.sendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupPartContent>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -268,7 +266,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendVisualMediaGroup(
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
@@ -276,7 +274,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
  * @see SendVisualMediaGroup
  */
 @JvmName("sendVisualMediaGroupByContent")
-suspend fun TelegramBot.sendVisualMediaGroup(
+public suspend fun TelegramBot.sendVisualMediaGroup(
     chat: Chat,
     media: List<VisualMediaGroupPartContent>,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -285,6 +283,6 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
-) = sendVisualMediaGroup(
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )

@@ -10,12 +10,14 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VideoFile
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.VideoContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideo(
+public suspend fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
     thumb: InputFile? = null,
@@ -33,7 +35,7 @@ suspend fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<VideoContent> = execute(
     SendVideo(
         chatId = chatId,
         video = video,
@@ -60,7 +62,7 @@ suspend fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideo(
+public suspend fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
     text: String? = null,
@@ -74,7 +76,7 @@ suspend fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video.fileId,
     thumb = video.thumbnail ?.fileId,
@@ -98,7 +100,7 @@ suspend fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideo(
+public suspend fun TelegramBot.sendVideo(
     chat: Chat,
     video: InputFile,
     thumb: InputFile? = null,
@@ -116,7 +118,7 @@ suspend fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     thumb = thumb,
@@ -141,7 +143,7 @@ suspend fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVideo(
+public suspend fun TelegramBot.sendVideo(
     chat: Chat,
     video: VideoFile,
     text: String? = null,
@@ -155,7 +157,7 @@ suspend fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     text = text,
@@ -175,7 +177,7 @@ suspend fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVideo(
+public suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
     thumb: InputFile? = null,
@@ -192,7 +194,7 @@ suspend inline fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<VideoContent> = execute(
     SendVideo(
         chatId = chatId,
         video = video,
@@ -218,7 +220,7 @@ suspend inline fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVideo(
+public suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
     entities: TextSourcesList,
@@ -231,7 +233,7 @@ suspend inline fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video.fileId,
     thumb = video.thumbnail ?.fileId,
@@ -254,7 +256,7 @@ suspend inline fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVideo(
+public suspend inline fun TelegramBot.sendVideo(
     chat: Chat,
     video: InputFile,
     thumb: InputFile? = null,
@@ -271,7 +273,7 @@ suspend inline fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     thumb = thumb,
@@ -295,7 +297,7 @@ suspend inline fun TelegramBot.sendVideo(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVideo(
+public suspend inline fun TelegramBot.sendVideo(
     chat: Chat,
     video: VideoFile,
     entities: TextSourcesList,
@@ -308,7 +310,7 @@ suspend inline fun TelegramBot.sendVideo(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
+): ContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     entities = entities,

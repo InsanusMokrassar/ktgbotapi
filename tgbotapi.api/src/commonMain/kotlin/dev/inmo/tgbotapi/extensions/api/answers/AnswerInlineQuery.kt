@@ -7,36 +7,36 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQ
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueryId
 
-suspend fun TelegramBot.answerInlineQuery(
+public suspend fun TelegramBot.answerInlineQuery(
     inlineQueryID: InlineQueryId,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
     button: InlineQueryResultsButton? = null
-) = execute(
+): Boolean = execute(
     AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, button)
 )
 
-suspend fun TelegramBot.answerInlineQuery(
+public suspend fun TelegramBot.answerInlineQuery(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
     button: InlineQueryResultsButton? = null
-) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, button)
+): Boolean = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, button)
 
-suspend fun TelegramBot.answer(
+public suspend fun TelegramBot.answer(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
     button: InlineQueryResultsButton? = null
-) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, button)
+): Boolean = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, button)
 
-suspend fun TelegramBot.answerInlineQuery(
+public suspend fun TelegramBot.answerInlineQuery(
     inlineQueryID: InlineQueryId,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -44,11 +44,11 @@ suspend fun TelegramBot.answerInlineQuery(
     nextOffset: String? = null,
     switchPmText: String?,
     switchPmParameter: String?
-) = execute(
+): Boolean = execute(
     AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 )
 
-suspend fun TelegramBot.answerInlineQuery(
+public suspend fun TelegramBot.answerInlineQuery(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -56,9 +56,9 @@ suspend fun TelegramBot.answerInlineQuery(
     nextOffset: String? = null,
     switchPmText: String?,
     switchPmParameter: String?
-) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
+): Boolean = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 
-suspend fun TelegramBot.answer(
+public suspend fun TelegramBot.answer(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -66,4 +66,4 @@ suspend fun TelegramBot.answer(
     nextOffset: String? = null,
     switchPmText: String?,
     switchPmParameter: String?
-) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
+): Boolean = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)

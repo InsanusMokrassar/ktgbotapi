@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
 @Warning("This method is too common. Use it with caution")
-suspend fun TelegramBot.promoteChatMember(
+public suspend fun TelegramBot.promoteChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -27,7 +27,7 @@ suspend fun TelegramBot.promoteChatMember(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = execute(
+): Boolean = execute(
     PromoteChatMember(
         chatId = chatId,
         userId = userId,
@@ -51,7 +51,7 @@ suspend fun TelegramBot.promoteChatMember(
 )
 
 @Warning("This method is too common. Use it with caution")
-suspend fun TelegramBot.promoteChatMember(
+public suspend fun TelegramBot.promoteChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -70,7 +70,7 @@ suspend fun TelegramBot.promoteChatMember(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChatMember(
+): Boolean = promoteChatMember(
     chat.id,
     userId,
     untilDate = untilDate,
@@ -92,7 +92,7 @@ suspend fun TelegramBot.promoteChatMember(
 )
 
 @Warning("This method is too common. Use it with caution")
-suspend fun TelegramBot.promoteChatMember(
+public suspend fun TelegramBot.promoteChatMember(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
@@ -111,7 +111,7 @@ suspend fun TelegramBot.promoteChatMember(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChatMember(
+): Boolean = promoteChatMember(
     chatId,
     user.id,
     untilDate = untilDate,
@@ -133,7 +133,7 @@ suspend fun TelegramBot.promoteChatMember(
 )
 
 @Warning("This method is too common. Use it with caution")
-suspend fun TelegramBot.promoteChatMember(
+public suspend fun TelegramBot.promoteChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
@@ -152,7 +152,7 @@ suspend fun TelegramBot.promoteChatMember(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChatMember(
+): Boolean = promoteChatMember(
     chat.id,
     user.id,
     untilDate = untilDate,

@@ -7,23 +7,24 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.chat.member.ChatMember
 
-suspend fun TelegramBot.getChatMember(
+public suspend fun TelegramBot.getChatMember(
     chatId: ChatIdentifier,
     userId: UserId
-) = execute(GetChatMember(chatId, userId))
+): ChatMember = execute(GetChatMember(chatId, userId))
 
-suspend fun TelegramBot.getChatMember(
+public suspend fun TelegramBot.getChatMember(
     chat: PublicChat,
     userId: UserId
-) = getChatMember(chat.id, userId)
+): ChatMember = getChatMember(chat.id, userId)
 
-suspend fun TelegramBot.getChatMember(
+public suspend fun TelegramBot.getChatMember(
     chatId: IdChatIdentifier,
     user: User
-) = getChatMember(chatId, user.id)
+): ChatMember = getChatMember(chatId, user.id)
 
-suspend fun TelegramBot.getChatMember(
+public suspend fun TelegramBot.getChatMember(
     chat: PublicChat,
     user: User
-) = getChatMember(chat.id, user.id)
+): ChatMember = getChatMember(chat.id, user.id)

@@ -12,38 +12,38 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.types.stickers.StickerSet
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSetName: StickerSetName,
     inputSticker: InputSticker
-) = execute(
+): Boolean = execute(
     AddStickerToSet(userId, stickerSetName, inputSticker)
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSetName: String,
     inputSticker: InputSticker
-) = addStickerToSet(userId, StickerSetName(stickerSetName), inputSticker)
+): Boolean = addStickerToSet(userId, StickerSetName(stickerSetName), inputSticker)
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: InputSticker
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     userId,
     stickerSet.name,
     sticker
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: InputFile,
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     userId,
     stickerSet,
     when (stickerSet.stickerType) {
@@ -68,14 +68,14 @@ suspend fun TelegramBot.addStickerToSet(
     }
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: InputFile,
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     userId,
     stickerSet.name,
     when (stickerSet.stickerType) {
@@ -101,34 +101,34 @@ suspend fun TelegramBot.addStickerToSet(
     }
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: InputSticker
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     user.id,
     stickerSet.name,
     sticker
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: InputFile,
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     user.id, stickerSet, sticker, format, emojis, keywords
 )
 
-suspend fun TelegramBot.addStickerToSet(
+public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: InputFile,
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-) = addStickerToSet(
+): Boolean = addStickerToSet(
     user.id, stickerSet, sticker, format, emojis, maskPosition
 )

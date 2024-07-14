@@ -5,10 +5,10 @@ import dev.inmo.tgbotapi.requests.chat.ExportChatInviteLink
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.exportChatInviteLink(
+public suspend fun TelegramBot.exportChatInviteLink(
     chatId: ChatIdentifier
-) = execute(ExportChatInviteLink(chatId))
+): String = execute(ExportChatInviteLink(chatId))
 
-suspend fun TelegramBot.exportChatInviteLink(
+public suspend fun TelegramBot.exportChatInviteLink(
     chat: PublicChat
-) = exportChatInviteLink(chat.id)
+): String = exportChatInviteLink(chat.id)

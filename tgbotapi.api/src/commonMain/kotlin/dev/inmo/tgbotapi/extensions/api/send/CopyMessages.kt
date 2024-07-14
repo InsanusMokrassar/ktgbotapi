@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import kotlin.jvm.JvmName
 
-suspend fun TelegramBot.copyMessages(
+public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
@@ -15,7 +15,7 @@ suspend fun TelegramBot.copyMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = messageIds.chunked(copyMessagesLimit.last).flatMap {
+): List<MessageId> = messageIds.chunked(copyMessagesLimit.last).flatMap {
     execute(
         CopyMessages(
             toChatId = toChatId,
@@ -29,7 +29,7 @@ suspend fun TelegramBot.copyMessages(
     )
 }
 
-suspend fun TelegramBot.copyMessages(
+public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
@@ -37,7 +37,7 @@ suspend fun TelegramBot.copyMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
     messageIds = messageIds.toList(),
@@ -47,14 +47,14 @@ suspend fun TelegramBot.copyMessages(
     removeCaption = removeCaption
 )
 
-suspend fun TelegramBot.copyMessages(
+public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
+): List<MessageId> = messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
     copyMessages(
         toChatId = toChatId,
         fromChatId = chatId,
@@ -67,14 +67,14 @@ suspend fun TelegramBot.copyMessages(
 }
 
 @JvmName("copyMessagesWithMessages")
-suspend fun TelegramBot.copyMessages(
+public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messagesMetas = messages.map { it.metaInfo },
     threadId = threadId,
@@ -83,7 +83,7 @@ suspend fun TelegramBot.copyMessages(
     removeCaption = removeCaption
 )
 
-suspend fun TelegramBot.copy(
+public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
@@ -91,7 +91,7 @@ suspend fun TelegramBot.copy(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
     messageIds = messageIds,
@@ -101,7 +101,7 @@ suspend fun TelegramBot.copy(
     removeCaption = removeCaption
 )
 
-suspend fun TelegramBot.copy(
+public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
@@ -109,7 +109,7 @@ suspend fun TelegramBot.copy(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
     messageIds = messageIds,
@@ -119,14 +119,14 @@ suspend fun TelegramBot.copy(
     removeCaption = removeCaption
 )
 
-suspend fun TelegramBot.copy(
+public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messagesMetas = messagesMetas,
     threadId = threadId,
@@ -136,14 +136,14 @@ suspend fun TelegramBot.copy(
 )
 
 @JvmName("copyWithMessages")
-suspend fun TelegramBot.copy(
+public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = copyMessages(
+): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messages = messages,
     threadId = threadId,

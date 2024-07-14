@@ -7,26 +7,26 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
-suspend fun TelegramBot.setChatAdministratorCustomTitle(
+public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     userId: UserId,
     customTitle: String
-) = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
+): Boolean = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
 
-suspend fun TelegramBot.setChatAdministratorCustomTitle(
+public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     userId: UserId,
     customTitle: String
-) = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
+): Boolean = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
 
-suspend fun TelegramBot.setChatAdministratorCustomTitle(
+public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     user: User,
     customTitle: String
-) = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
+): Boolean = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
 
-suspend fun TelegramBot.setChatAdministratorCustomTitle(
+public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     user: User,
     customTitle: String
-) = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)
+): Boolean = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)

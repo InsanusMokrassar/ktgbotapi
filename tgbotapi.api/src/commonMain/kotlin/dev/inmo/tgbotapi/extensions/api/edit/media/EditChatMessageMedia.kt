@@ -16,13 +16,13 @@ import dev.inmo.tgbotapi.types.message.content.MediaContent
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageMedia(
+public suspend fun TelegramBot.editMessageMedia(
     chatId: ChatIdentifier,
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<MediaContent> = execute(
     EditChatMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup)
 )
 
@@ -30,21 +30,21 @@ suspend fun TelegramBot.editMessageMedia(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageMedia(
+public suspend fun TelegramBot.editMessageMedia(
     chat: Chat,
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(chat.id, messageId, media, businessConnectionId, replyMarkup)
+): ContentMessage<MediaContent> = editMessageMedia(chat.id, messageId, media, businessConnectionId, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageMedia(
+public suspend fun TelegramBot.editMessageMedia(
     message: ContentMessage<out MediaContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(message.chat.id, message.messageId, media, businessConnectionId, replyMarkup)
+): ContentMessage<MediaContent> = editMessageMedia(message.chat.id, message.messageId, media, businessConnectionId, replyMarkup)

@@ -6,23 +6,24 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import io.ktor.utils.io.*
 
-suspend fun TelegramBot.downloadFileStream(
+public suspend fun TelegramBot.downloadFileStream(
     filePath: String
-) = downloadFileStreamAllocator(filePath).invoke()
+): ByteReadChannel = downloadFileStreamAllocator(filePath).invoke()
 
-suspend fun TelegramBot.downloadFileStream(
+public suspend fun TelegramBot.downloadFileStream(
     pathedFile: PathedFile
-) = downloadFileStream(pathedFile.filePath)
+): ByteReadChannel = downloadFileStream(pathedFile.filePath)
 
-suspend fun TelegramBot.downloadFileStream(
+public suspend fun TelegramBot.downloadFileStream(
     fileId: FileId
-) = downloadFileStream(getFileAdditionalInfo(fileId))
+): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(fileId))
 
-suspend fun TelegramBot.downloadFileStream(
+public suspend fun TelegramBot.downloadFileStream(
     file: TelegramMediaFile
-) = downloadFileStream(getFileAdditionalInfo(file))
+): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(file))
 
-suspend fun TelegramBot.downloadFileStream(
+public suspend fun TelegramBot.downloadFileStream(
     file: MediaContent
-) = downloadFileStream(getFileAdditionalInfo(file.media))
+): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(file.media))

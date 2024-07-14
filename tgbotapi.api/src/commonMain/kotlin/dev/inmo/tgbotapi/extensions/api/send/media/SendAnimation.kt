@@ -10,12 +10,14 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.AnimationFile
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.AnimationContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -33,7 +35,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<AnimationContent> = execute(
     SendAnimation(
         chatId = chatId,
         animation = animation,
@@ -59,7 +61,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
     text: String? = null,
@@ -76,7 +78,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation.fileId,
     thumb = animation.thumbnail ?.fileId,
@@ -100,7 +102,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -118,7 +120,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     thumb = thumb,
@@ -142,7 +144,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: AnimationFile,
     text: String? = null,
@@ -159,7 +161,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     text = text,
@@ -183,7 +185,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -200,7 +202,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<AnimationContent> = execute(
     SendAnimation(
         chatId = chatId,
         animation = animation,
@@ -225,7 +227,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
     entities: TextSourcesList,
@@ -241,7 +243,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation.fileId,
     thumb = animation.thumbnail ?.fileId,
@@ -264,7 +266,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -281,7 +283,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     thumb = thumb,
@@ -304,7 +306,7 @@ suspend fun TelegramBot.sendAnimation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendAnimation(
+public suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: AnimationFile,
     entities: TextSourcesList,
@@ -320,7 +322,7 @@ suspend fun TelegramBot.sendAnimation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(
+): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     entities = entities,

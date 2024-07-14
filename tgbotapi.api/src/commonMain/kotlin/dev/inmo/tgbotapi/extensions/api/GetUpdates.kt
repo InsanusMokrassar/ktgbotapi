@@ -5,22 +5,22 @@ import dev.inmo.tgbotapi.requests.GetUpdates
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-suspend fun TelegramBot.getUpdates(
+public suspend fun TelegramBot.getUpdates(
     offset: UpdateId? = null,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
     allowed_updates: List<String>? = ALL_UPDATES_LIST
-) = execute(
+): List<Update> = execute(
     GetUpdates(
         offset, limit, timeout, allowed_updates
     )
 )
 
-suspend fun TelegramBot.getUpdates(
+public suspend fun TelegramBot.getUpdates(
     lastUpdate: Update,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
     allowed_updates: List<String>? = ALL_UPDATES_LIST
-) = getUpdates(
+): List<Update> = getUpdates(
     lastUpdate.updateId + 1, limit, timeout, allowed_updates
 )

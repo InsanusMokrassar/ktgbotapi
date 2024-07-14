@@ -4,24 +4,25 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.RevokeChatInviteLink
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.ChatInviteLink
+import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.revokeChatInviteLink(
+public suspend fun TelegramBot.revokeChatInviteLink(
     chatId: ChatIdentifier,
     previousLink: String
-) = execute(RevokeChatInviteLink(chatId, previousLink))
+): SecondaryChatInviteLink = execute(RevokeChatInviteLink(chatId, previousLink))
 
-suspend fun TelegramBot.revokeChatInviteLink(
+public suspend fun TelegramBot.revokeChatInviteLink(
     chat: PublicChat,
     previousLink: String
-) = revokeChatInviteLink(chat.id, previousLink)
+): SecondaryChatInviteLink = revokeChatInviteLink(chat.id, previousLink)
 
-suspend fun TelegramBot.revokeChatInviteLink(
+public suspend fun TelegramBot.revokeChatInviteLink(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink
-) = revokeChatInviteLink(chatId, previousLink.inviteLink)
+): SecondaryChatInviteLink = revokeChatInviteLink(chatId, previousLink.inviteLink)
 
-suspend fun TelegramBot.revokeChatInviteLink(
+public suspend fun TelegramBot.revokeChatInviteLink(
     chat: PublicChat,
     previousLink: ChatInviteLink
-) = revokeChatInviteLink(chat, previousLink.inviteLink)
+): SecondaryChatInviteLink = revokeChatInviteLink(chat, previousLink.inviteLink)

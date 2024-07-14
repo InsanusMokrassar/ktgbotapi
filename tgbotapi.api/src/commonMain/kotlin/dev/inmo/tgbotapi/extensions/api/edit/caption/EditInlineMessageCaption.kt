@@ -11,19 +11,19 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     inlineMessageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageCaption(inlineMessageId, text, parseMode, replyMarkup))
+): Boolean = execute(EditInlineMessageCaption(inlineMessageId, text, parseMode, replyMarkup))
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     inlineMessageId: InlineMessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageCaption(inlineMessageId, entities, replyMarkup))
+): Boolean = execute(EditInlineMessageCaption(inlineMessageId, entities, replyMarkup))

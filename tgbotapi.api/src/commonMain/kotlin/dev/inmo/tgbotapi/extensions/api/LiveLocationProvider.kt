@@ -23,13 +23,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
-const val indefiniteLivePeriodDelayMillis = LiveLocation.INDEFINITE_LIVE_PERIOD * 1000L
-const val defaultLivePeriodDelayMillis = indefiniteLivePeriodDelayMillis
+public const val indefiniteLivePeriodDelayMillis: Long = LiveLocation.INDEFINITE_LIVE_PERIOD * 1000L
+public const val defaultLivePeriodDelayMillis: Long = indefiniteLivePeriodDelayMillis
 
 /**
  * @see startLiveLocation
  */
-class LiveLocationProvider internal constructor(
+public class LiveLocationProvider internal constructor(
     private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
     autoCloseTimeDelay: Double,
@@ -41,23 +41,23 @@ class LiveLocationProvider internal constructor(
         }
     }
     private val autoCloseTime = DateTime.now() + TimeSpan(autoCloseTimeDelay)
-    val leftUntilCloseMillis: TimeSpan
+    public val leftUntilCloseMillis: TimeSpan
         get() = autoCloseTime - DateTime.now()
 
-    var isClosed: Boolean = false
+    public var isClosed: Boolean = false
         private set
         get() = field || leftUntilCloseMillis.millisecondsLong < 0L
 
-    var message: ContentMessage<LocationContent> = initMessage
+    public var message: ContentMessage<LocationContent> = initMessage
         private set
-    val lastLocation: LiveLocation
+    public val lastLocation: LiveLocation
         get() = message.content.location as LiveLocation
 
     /**
      * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
      * as a builder for that
      */
-    suspend fun updateLocation(
+    public suspend fun updateLocation(
         location: LiveLocation,
         replyMarkup: InlineKeyboardMarkup? = null
     ): LiveLocation {
@@ -86,7 +86,7 @@ class LiveLocationProvider internal constructor(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.startLiveLocation(
+public suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatIdentifier,
     latitude: Double,
@@ -135,7 +135,7 @@ suspend fun TelegramBot.startLiveLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.startLiveLocation(
+public suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     latitude: Double,
@@ -173,7 +173,7 @@ suspend fun TelegramBot.startLiveLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.startLiveLocation(
+public suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: IdChatIdentifier,
     location: StaticLocation,
@@ -210,7 +210,7 @@ suspend fun TelegramBot.startLiveLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.startLiveLocation(
+public suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     location: StaticLocation,
@@ -247,7 +247,7 @@ suspend fun TelegramBot.startLiveLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.replyWithLiveLocation(
+public suspend inline fun TelegramBot.replyWithLiveLocation(
     to: AccessibleMessage,
     scope: CoroutineScope,
     latitude: Double,
@@ -263,7 +263,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = startLiveLocation(
+): LiveLocationProvider = startLiveLocation(
     scope,
     to.chat,
     latitude,
@@ -285,7 +285,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.replyWithLiveLocation(
+public suspend inline fun TelegramBot.replyWithLiveLocation(
     to: AccessibleMessage,
     scope: CoroutineScope,
     location: StaticLocation,
@@ -300,7 +300,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = startLiveLocation(
+): LiveLocationProvider = startLiveLocation(
     scope,
     to.chat,
     location,

@@ -9,30 +9,30 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
-suspend fun TelegramBot.banChatMember(
+public suspend fun TelegramBot.banChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-) = execute(BanChatMember(chatId, userId, untilDate, revokeMessages))
+): Boolean = execute(BanChatMember(chatId, userId, untilDate, revokeMessages))
 
-suspend fun TelegramBot.banChatMember(
+public suspend fun TelegramBot.banChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-) = banChatMember(chat.id, userId, untilDate, revokeMessages)
+): Boolean = banChatMember(chat.id, userId, untilDate, revokeMessages)
 
-suspend fun TelegramBot.banChatMember(
+public suspend fun TelegramBot.banChatMember(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-) = banChatMember(chatId, user.id, untilDate, revokeMessages)
+): Boolean = banChatMember(chatId, user.id, untilDate, revokeMessages)
 
-suspend fun TelegramBot.banChatMember(
+public suspend fun TelegramBot.banChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-) = banChatMember(chat.id, user.id, untilDate, revokeMessages)
+): Boolean = banChatMember(chat.id, user.id, untilDate, revokeMessages)

@@ -6,12 +6,12 @@ import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.MenuButton
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 
-suspend fun TelegramBot.setChatMenuButton(
+public suspend fun TelegramBot.setChatMenuButton(
     chatId: IdChatIdentifier,
     menuButton: MenuButton
-) = execute(SetChatMenuButton(chatId, menuButton))
+): Boolean = execute(SetChatMenuButton(chatId, menuButton))
 
-suspend fun TelegramBot.setChatMenuButton(
+public suspend fun TelegramBot.setChatMenuButton(
     chat: PrivateChat,
     menuButton: MenuButton
-) = setChatMenuButton(chat.id, menuButton)
+): Boolean = setChatMenuButton(chat.id, menuButton)

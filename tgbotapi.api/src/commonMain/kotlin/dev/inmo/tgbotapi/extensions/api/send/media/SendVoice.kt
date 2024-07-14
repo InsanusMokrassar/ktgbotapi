@@ -10,12 +10,14 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.VoiceContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVoice(
+public suspend fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
     text: String? = null,
@@ -28,7 +30,7 @@ suspend fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<VoiceContent> = execute(
     SendVoice(
         chatId,
         voice,
@@ -49,7 +51,7 @@ suspend fun TelegramBot.sendVoice(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVoice(
+public suspend fun TelegramBot.sendVoice(
     chat: Chat,
     voice: InputFile,
     text: String? = null,
@@ -62,13 +64,13 @@ suspend fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(chat.id, voice, text, parseMode, duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVoice(
+public suspend fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: VoiceFile,
     text: String? = null,
@@ -80,7 +82,7 @@ suspend fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(
+): ContentMessage<VoiceContent> = sendVoice(
     chatId, voice.fileId, text, parseMode, voice.duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -88,7 +90,7 @@ suspend fun TelegramBot.sendVoice(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendVoice(
+public suspend fun TelegramBot.sendVoice(
     chat: Chat,
     voice: VoiceFile,
     text: String? = null,
@@ -100,14 +102,14 @@ suspend fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(chat.id, voice, text, parseMode, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVoice(
+public suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
     entities: TextSourcesList,
@@ -119,7 +121,7 @@ suspend inline fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<VoiceContent> = execute(
     SendVoice(
         chatId = chatId,
         voice = voice,
@@ -139,7 +141,7 @@ suspend inline fun TelegramBot.sendVoice(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVoice(
+public suspend inline fun TelegramBot.sendVoice(
     chat: Chat,
     voice: InputFile,
     entities: TextSourcesList,
@@ -151,13 +153,13 @@ suspend inline fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(chat.id, voice, entities, duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVoice(
+public suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: VoiceFile,
     entities: TextSourcesList,
@@ -168,14 +170,14 @@ suspend inline fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(
+): ContentMessage<VoiceContent> = sendVoice(
     chatId, voice.fileId, entities, voice.duration, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.sendVoice(
+public suspend inline fun TelegramBot.sendVoice(
     chat: Chat,
     voice: VoiceFile,
     entities: TextSourcesList,
@@ -186,4 +188,4 @@ suspend inline fun TelegramBot.sendVoice(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(chat.id, voice, entities, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
