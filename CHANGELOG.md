@@ -2,6 +2,12 @@
 
 ## 15.1.1
 
+* `API`:
+  * Enabled an `explicit mode` for `API` module ([PR #876](https://github.com/InsanusMokrassar/ktgbotapi/pull/876))
+* `WebApps`:
+  * Built-in `onClick` and `offClick` of `MainButton` become public ([PR #875](https://github.com/InsanusMokrassar/ktgbotapi/pull/875))
+  * Old `MainButton.onClick` extension **has been removed** to avoid collisions of types
+
 ## 15.1.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
