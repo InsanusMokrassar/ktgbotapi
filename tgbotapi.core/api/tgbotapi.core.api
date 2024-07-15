@@ -4689,7 +4689,12 @@ public abstract interface class dev/inmo/tgbotapi/requests/send/SendLocation : d
 	public abstract fun method ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/requests/send/SendLocation$Companion {
+public final class dev/inmo/tgbotapi/requests/send/SendLocation$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/send/SendLocation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/send/SendLocation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
 }
 
