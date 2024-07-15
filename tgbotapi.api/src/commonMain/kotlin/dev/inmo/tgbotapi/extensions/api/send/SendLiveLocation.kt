@@ -7,12 +7,15 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
+import dev.inmo.tgbotapi.types.message.content.LocationContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLocation(
+public suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
@@ -27,7 +30,7 @@ suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<LiveLocationContent> = execute(
     SendLiveLocation(
         chatId,
         latitude,
@@ -50,7 +53,7 @@ suspend fun TelegramBot.sendLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLocation(
+public suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     location: Location,
     livePeriod: Seconds,
@@ -64,7 +67,7 @@ suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(
+): ContentMessage<LiveLocationContent> = sendLocation(
     chatId,
     location.latitude,
     location.longitude,
@@ -85,7 +88,7 @@ suspend fun TelegramBot.sendLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLocation(
+public suspend fun TelegramBot.sendLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
@@ -100,7 +103,7 @@ suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(
+): ContentMessage<LiveLocationContent> = sendLocation(
     chat.id,
     latitude,
     longitude,
@@ -121,7 +124,7 @@ suspend fun TelegramBot.sendLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLocation(
+public suspend fun TelegramBot.sendLocation(
     chat: Chat,
     location: Location,
     livePeriod: Seconds,
@@ -135,7 +138,7 @@ suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(
+): ContentMessage<LiveLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -156,7 +159,7 @@ suspend fun TelegramBot.sendLocation(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLiveLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
@@ -171,13 +174,13 @@ suspend fun TelegramBot.sendLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<LiveLocationContent> = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLiveLocation(
     chatId: ChatIdentifier,
     location: Location,
     livePeriod: Seconds,
@@ -191,13 +194,13 @@ suspend fun TelegramBot.sendLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<LiveLocationContent> = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLiveLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
@@ -212,13 +215,13 @@ suspend fun TelegramBot.sendLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<LiveLocationContent> = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLiveLocation(
     chat: Chat,
     location: Location,
     livePeriod: Seconds,
@@ -232,4 +235,4 @@ suspend fun TelegramBot.sendLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<LiveLocationContent> = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

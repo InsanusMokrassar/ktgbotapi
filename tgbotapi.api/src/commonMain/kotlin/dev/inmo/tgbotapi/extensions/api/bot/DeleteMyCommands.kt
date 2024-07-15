@@ -6,12 +6,12 @@ import dev.inmo.tgbotapi.requests.bot.DeleteMyCommands
 import dev.inmo.tgbotapi.types.commands.BotCommandScope
 import dev.inmo.tgbotapi.types.commands.BotCommandScopeDefault
 
-suspend fun TelegramBot.deleteMyCommands(
+public suspend fun TelegramBot.deleteMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: IetfLang?
-) = execute(DeleteMyCommands(scope, languageCode))
+): Boolean = execute(DeleteMyCommands(scope, languageCode))
 
-suspend fun TelegramBot.deleteMyCommands(
+public suspend fun TelegramBot.deleteMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: String? = null
-) = deleteMyCommands(scope, languageCode ?.let(::IetfLang))
+): Boolean = deleteMyCommands(scope, languageCode ?.let(::IetfLang))

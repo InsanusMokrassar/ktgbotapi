@@ -6,12 +6,12 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.StickerSetName
 import dev.inmo.tgbotapi.types.chat.SupergroupChat
 
-suspend fun TelegramBot.setChatStickerSet(
+public suspend fun TelegramBot.setChatStickerSet(
     chatId: ChatIdentifier,
     stickerSetName: StickerSetName
-) = execute(SetChatStickerSet(chatId, stickerSetName))
+): Boolean = execute(SetChatStickerSet(chatId, stickerSetName))
 
-suspend fun TelegramBot.setChatStickerSet(
+public suspend fun TelegramBot.setChatStickerSet(
     chat: SupergroupChat,
     stickerSetName: StickerSetName
-) = setChatStickerSet(chat.id, stickerSetName)
+): Boolean = setChatStickerSet(chat.id, stickerSetName)

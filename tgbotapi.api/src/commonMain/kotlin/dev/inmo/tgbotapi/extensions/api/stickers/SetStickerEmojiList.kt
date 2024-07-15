@@ -6,20 +6,20 @@ import dev.inmo.tgbotapi.requests.stickers.SetStickerEmojiList
 import dev.inmo.tgbotapi.requests.stickers.SetStickerPositionInSet
 import dev.inmo.tgbotapi.types.files.Sticker
 
-suspend fun TelegramBot.setStickerEmojiList(
+public suspend fun TelegramBot.setStickerEmojiList(
     sticker: FileId,
     emojis: List<String>
-) = execute(
+): Boolean = execute(
     SetStickerEmojiList(
         sticker,
         emojis
     )
 )
 
-suspend fun TelegramBot.setStickerEmojiList(
+public suspend fun TelegramBot.setStickerEmojiList(
     sticker: Sticker,
     vararg emojis: String
-) = setStickerEmojiList(
+): Boolean = setStickerEmojiList(
     sticker.fileId,
     emojis.toList()
 )

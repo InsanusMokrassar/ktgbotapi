@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 /**
  * This method will send [content] to the [chatId] as is
  */
-suspend inline fun <T : MessageContent> TelegramBot.resend(
+public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
     content: T,
     messageThreadId: MessageThreadId? = chatId.threadId,
@@ -19,7 +19,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<T> = execute(
     content.createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
@@ -34,7 +34,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
 /**
  * This method will send [content] to the [chat] as is
  */
-suspend inline fun <T : MessageContent> TelegramBot.resend(
+public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,
     content: T,
     messageThreadId: MessageThreadId? = chat.id.threadId,
@@ -43,7 +43,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = resend(
+): ContentMessage<T> = resend(
     chatId = chat.id,
     content = content,
     messageThreadId = messageThreadId,
@@ -59,7 +59,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
  * native methods for data sending (like [dev.inmo.tgbotapi.extensions.api.send.media.sendPhoto] if inoming content is
  * [dev.inmo.tgbotapi.types.message.content.PhotoContent])
  */
-suspend inline fun <T : MessageContent> TelegramBot.resend(
+public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
     message: ContentMessage<T>,
     messageThreadId: MessageThreadId? = chatId.threadId,
@@ -68,7 +68,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = resend(
+): ContentMessage<T> = resend(
     chatId = chatId,
     content = message.content,
     messageThreadId = messageThreadId,
@@ -84,7 +84,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
  * native methods for data sending (like [dev.inmo.tgbotapi.extensions.api.send.media.sendPhoto] if inoming content is
  * [dev.inmo.tgbotapi.types.message.content.PhotoContent])
  */
-suspend inline fun <T : MessageContent> TelegramBot.resend(
+public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,
     message: ContentMessage<T>,
     messageThreadId: MessageThreadId? = chat.id.threadId,
@@ -93,7 +93,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = resend(
+): ContentMessage<T> = resend(
     chatId = chat.id,
     message = message,
     messageThreadId = messageThreadId,

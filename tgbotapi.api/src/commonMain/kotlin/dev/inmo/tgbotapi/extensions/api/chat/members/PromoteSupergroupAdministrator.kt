@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
-suspend fun TelegramBot.promoteSupergroupAdministrator(
+public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -24,7 +24,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-) = execute(
+): Boolean = execute(
     PromoteSupergroupAdministrator(
         chatId = chatId,
         userId = userId,
@@ -42,7 +42,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     )
 )
 
-suspend fun TelegramBot.promoteSupergroupAdministrator(
+public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -56,7 +56,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-) = promoteSupergroupAdministrator(
+): Boolean = promoteSupergroupAdministrator(
     chat.id,
     userId,
     untilDate = untilDate,
@@ -72,7 +72,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageTopics = canManageTopics
 )
 
-suspend fun TelegramBot.promoteSupergroupAdministrator(
+public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
@@ -86,7 +86,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-) = promoteSupergroupAdministrator(
+): Boolean = promoteSupergroupAdministrator(
     chatId,
     user.id,
     untilDate = untilDate,
@@ -102,7 +102,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageTopics = canManageTopics
 )
 
-suspend fun TelegramBot.promoteSupergroupAdministrator(
+public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
@@ -116,7 +116,7 @@ suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-) = promoteSupergroupAdministrator(
+): Boolean = promoteSupergroupAdministrator(
     chat.id,
     user.id,
     untilDate = untilDate,

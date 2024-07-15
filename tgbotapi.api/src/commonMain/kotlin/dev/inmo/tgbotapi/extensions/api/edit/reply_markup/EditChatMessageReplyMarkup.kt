@@ -9,17 +9,19 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageReplyMarkup(
+public suspend fun TelegramBot.editMessageReplyMarkup(
     chatId: ChatIdentifier,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<MessageContent> = execute(
     EditChatMessageReplyMarkup(chatId, messageId, businessConnectionId, replyMarkup)
 )
 
@@ -27,20 +29,20 @@ suspend fun TelegramBot.editMessageReplyMarkup(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageReplyMarkup(
+public suspend fun TelegramBot.editMessageReplyMarkup(
     chat: Chat,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(chat.id, messageId, businessConnectionId, replyMarkup)
+): ContentMessage<MessageContent> = editMessageReplyMarkup(chat.id, messageId, businessConnectionId, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageReplyMarkup(
+public suspend fun TelegramBot.editMessageReplyMarkup(
     message: AccessibleMessage,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(message.chat.id, message.messageId, businessConnectionId, replyMarkup)
+): ContentMessage<MessageContent> = editMessageReplyMarkup(message.chat.id, message.messageId, businessConnectionId, replyMarkup)
 

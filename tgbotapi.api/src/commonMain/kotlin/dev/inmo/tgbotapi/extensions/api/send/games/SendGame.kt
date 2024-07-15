@@ -7,12 +7,14 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.games.Game
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.GameContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendGame(
+public suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
     threadId: MessageThreadId? = chatId.threadId,
@@ -22,7 +24,7 @@ suspend fun TelegramBot.sendGame(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<GameContent> = execute(
     SendGame(
         chatId, gameShortName, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
     )
@@ -32,7 +34,7 @@ suspend fun TelegramBot.sendGame(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendGame(
+public suspend fun TelegramBot.sendGame(
     chat: Chat,
     gameShortName: String,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -42,7 +44,7 @@ suspend fun TelegramBot.sendGame(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(
+): ContentMessage<GameContent> = sendGame(
     chat.id, gameShortName, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -50,7 +52,7 @@ suspend fun TelegramBot.sendGame(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendGame(
+public suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     game: Game,
     threadId: MessageThreadId? = chatId.threadId,
@@ -60,7 +62,7 @@ suspend fun TelegramBot.sendGame(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(
+): ContentMessage<GameContent> = sendGame(
     chatId, game.title, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -68,7 +70,7 @@ suspend fun TelegramBot.sendGame(
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend fun TelegramBot.sendGame(
+public suspend fun TelegramBot.sendGame(
     chat: Chat,
     game: Game,
     threadId: MessageThreadId? = chat.id.threadId,
@@ -78,6 +80,6 @@ suspend fun TelegramBot.sendGame(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(
+): ContentMessage<GameContent> = sendGame(
     chat.id, game.title, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )

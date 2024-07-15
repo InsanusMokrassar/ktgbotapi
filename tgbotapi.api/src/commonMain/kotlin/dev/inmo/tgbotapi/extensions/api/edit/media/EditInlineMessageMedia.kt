@@ -10,8 +10,8 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageMedia(
+public suspend fun TelegramBot.editMessageMedia(
     inlineMessageId: InlineMessageId,
     media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))
+): Boolean = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))

@@ -10,17 +10,18 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.stopLiveLocation(
+public suspend fun TelegramBot.stopLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<StaticLocationContent> = execute(
     StopChatMessageLiveLocation(
         chatId, messageId, businessConnectionId, replyMarkup
     )
@@ -30,19 +31,19 @@ suspend fun TelegramBot.stopLiveLocation(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.stopLiveLocation(
+public suspend fun TelegramBot.stopLiveLocation(
     chat: Chat,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = stopLiveLocation(chat.id, messageId, businessConnectionId, replyMarkup)
+): ContentMessage<StaticLocationContent> = stopLiveLocation(chat.id, messageId, businessConnectionId, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.stopLiveLocation(
+public suspend fun TelegramBot.stopLiveLocation(
     message: ContentMessage<LocationContent>,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
-) = stopLiveLocation(message.chat, message.messageId, businessConnectionId, replyMarkup)
+): ContentMessage<StaticLocationContent> = stopLiveLocation(message.chat, message.messageId, businessConnectionId, replyMarkup)

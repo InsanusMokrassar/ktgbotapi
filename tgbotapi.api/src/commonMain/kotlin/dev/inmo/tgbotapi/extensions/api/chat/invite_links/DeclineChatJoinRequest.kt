@@ -9,34 +9,34 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chatId: ChatIdentifier,
     userId: UserId
-) = execute(DeclineChatJoinRequest(chatId, userId))
+): Boolean = execute(DeclineChatJoinRequest(chatId, userId))
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chat: PublicChat,
     userId: UserId
-) = declineChatJoinRequest(chat.id, userId)
+): Boolean = declineChatJoinRequest(chat.id, userId)
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chatId: ChatIdentifier,
     user: User
-) = declineChatJoinRequest(chatId, user.id)
+): Boolean = declineChatJoinRequest(chatId, user.id)
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chat: PublicChat,
     user: User
-) = declineChatJoinRequest(chat.id, user.id)
+): Boolean = declineChatJoinRequest(chat.id, user.id)
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chatJoinRequest: ChatJoinRequest
-) = declineChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
+): Boolean = declineChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
 
-suspend fun TelegramBot.decline(
+public suspend fun TelegramBot.decline(
     chatJoinRequest: ChatJoinRequest
-) = declineChatJoinRequest(chatJoinRequest)
+): Boolean = declineChatJoinRequest(chatJoinRequest)
 
-suspend fun TelegramBot.declineChatJoinRequest(
+public suspend fun TelegramBot.declineChatJoinRequest(
     chatJoinRequestUpdate: ChatJoinRequestUpdate
-) = declineChatJoinRequest(chatJoinRequestUpdate.data)
+): Boolean = declineChatJoinRequest(chatJoinRequestUpdate.data)

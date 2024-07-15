@@ -22,8 +22,11 @@ external class MainButton {
     fun showProgress(leaveActive: Boolean = definedExternally): MainButton
     fun hideProgress(): MainButton
 
-    internal fun onClick(eventHandler: () -> Unit): MainButton
-    internal fun offClick(eventHandler: () -> Unit): MainButton
+    /**
+     * **This method argument do not accept `this` [WebApp] object**
+     */
+    fun onClick(eventHandler: () -> Unit): MainButton
+    fun offClick(eventHandler: () -> Unit): MainButton
 
     internal fun setParams(params: Json): MainButton
 }
@@ -35,11 +38,6 @@ data class MainButtonParams(
     val isActive: Boolean? = null,
     val isVisible: Boolean? = null
 )
-
-fun MainButton.onClick(eventHandler: EventHandler) = onClick {
-    val that = js("this").unsafeCast<WebApp>()
-    that.eventHandler()
-}
 
 fun MainButton.setParams(params: MainButtonParams) = setParams(
     json(

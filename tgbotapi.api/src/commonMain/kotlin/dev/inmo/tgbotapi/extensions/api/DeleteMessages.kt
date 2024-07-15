@@ -7,10 +7,10 @@ import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import kotlin.jvm.JvmName
 
-suspend fun TelegramBot.deleteMessages(
+public suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
     messageIds: List<MessageId>
-) = messageIds.chunked(deleteMessagesLimit.last).map {
+): Boolean = messageIds.chunked(deleteMessagesLimit.last).map {
     execute(
         DeleteMessages(
             chatId = chatId,
@@ -19,17 +19,17 @@ suspend fun TelegramBot.deleteMessages(
     )
 }.all { it }
 
-suspend fun TelegramBot.deleteMessages(
+public suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
     messageIds: Array<MessageId>
-) = deleteMessages(
+): Boolean = deleteMessages(
     chatId = chatId,
     messageIds = messageIds.toList()
 )
 
-suspend fun TelegramBot.deleteMessages(
+public suspend fun TelegramBot.deleteMessages(
     messagesMetas: List<Message.MetaInfo>
-) = messagesMetas.groupBy { it.chatId }.map { (chatId, messages) ->
+): Boolean = messagesMetas.groupBy { it.chatId }.map { (chatId, messages) ->
     deleteMessages(
         chatId = chatId,
         messageIds = messages.map { it.messageId }
@@ -37,25 +37,25 @@ suspend fun TelegramBot.deleteMessages(
 }.all { it }
 
 @JvmName("deleteMessagesWithMessages")
-suspend fun TelegramBot.deleteMessages(
+public suspend fun TelegramBot.deleteMessages(
     messages: List<AccessibleMessage>
-) = deleteMessages(messages.map { it.metaInfo })
+): Boolean = deleteMessages(messages.map { it.metaInfo })
 
-suspend fun TelegramBot.delete(
+public suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageIds: List<MessageId>
-) = deleteMessages(chatId = chatId, messageIds = messageIds)
+): Boolean = deleteMessages(chatId = chatId, messageIds = messageIds)
 
-suspend fun TelegramBot.delete(
+public suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageIds: Array<MessageId>
-) = deleteMessages(chatId = chatId, messageIds = messageIds)
+): Boolean = deleteMessages(chatId = chatId, messageIds = messageIds)
 
-suspend fun TelegramBot.delete(
+public suspend fun TelegramBot.delete(
     messagesMetas: List<Message.MetaInfo>
-) = deleteMessages(messagesMetas)
+): Boolean = deleteMessages(messagesMetas)
 
 @JvmName("deleteWithMessages")
-suspend fun TelegramBot.delete(
+public suspend fun TelegramBot.delete(
     messages: List<AccessibleMessage>
-) = deleteMessages(messages)
+): Boolean = deleteMessages(messages)

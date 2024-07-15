@@ -5,10 +5,10 @@ import dev.inmo.tgbotapi.requests.chat.modify.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.deleteChatPhoto(
+public suspend fun TelegramBot.deleteChatPhoto(
     chatId: ChatIdentifier
-) = execute(DeleteChatPhoto(chatId))
+): Boolean = execute(DeleteChatPhoto(chatId))
 
-suspend fun TelegramBot.deleteChatPhoto(
+public suspend fun TelegramBot.deleteChatPhoto(
     chat: PublicChat
-) = deleteChatPhoto(chat.id)
+): Boolean = deleteChatPhoto(chat.id)

@@ -119,7 +119,7 @@ data class LiveLocationContent(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
-    ) as SendMessageRequest<ContentMessage<LiveLocationContent>>
+    )
 }
 
 /**
@@ -150,5 +150,5 @@ data class StaticLocationContent(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
-    ) as SendMessageRequest<ContentMessage<StaticLocationContent>>
+    )
 }

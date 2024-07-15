@@ -6,12 +6,12 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.payments.abstracts.TelegramPaymentChargeId
 
-suspend fun TelegramBot.refundStarPayment(
+public suspend fun TelegramBot.refundStarPayment(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId
-) = execute(RefundStarPayment(userId, telegramPaymentChargeId))
+): Boolean = execute(RefundStarPayment(userId, telegramPaymentChargeId))
 
-suspend fun TelegramBot.refundStarPayment(
+public suspend fun TelegramBot.refundStarPayment(
     userId: UserId,
     successfulPayment: SuccessfulPayment
-) = refundStarPayment(userId, successfulPayment.telegramPaymentChargeId)
+): Boolean = refundStarPayment(userId, successfulPayment.telegramPaymentChargeId)

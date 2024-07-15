@@ -6,22 +6,22 @@ import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.banChatSenderChat(
+public suspend fun TelegramBot.banChatSenderChat(
     chatId: ChatIdentifier,
     senderChatId: IdChatIdentifier
-) = execute(BanChatSenderChat(chatId, senderChatId))
+): Boolean = execute(BanChatSenderChat(chatId, senderChatId))
 
-suspend fun TelegramBot.banChatSenderChat(
+public suspend fun TelegramBot.banChatSenderChat(
     chat: PublicChat,
     senderChatId: IdChatIdentifier
-) = banChatSenderChat(chat.id, senderChatId)
+): Boolean = banChatSenderChat(chat.id, senderChatId)
 
-suspend fun TelegramBot.banChatSenderChat(
+public suspend fun TelegramBot.banChatSenderChat(
     chatId: IdChatIdentifier,
     senderChat: PublicChat
-) = banChatSenderChat(chatId, senderChat.id)
+): Boolean = banChatSenderChat(chatId, senderChat.id)
 
-suspend fun TelegramBot.banChatSenderChat(
+public suspend fun TelegramBot.banChatSenderChat(
     chat: PublicChat,
     senderChat: PublicChat,
-) = banChatSenderChat(chat.id, senderChat)
+): Boolean = banChatSenderChat(chat.id, senderChat)

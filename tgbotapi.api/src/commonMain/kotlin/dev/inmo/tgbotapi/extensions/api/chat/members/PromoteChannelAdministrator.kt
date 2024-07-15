@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
-suspend fun TelegramBot.promoteChannelAdministrator(
+public suspend fun TelegramBot.promoteChannelAdministrator(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -27,7 +27,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = execute(
+): Boolean = execute(
     PromoteChannelAdministrator(
         chatId = chatId,
         userId = userId,
@@ -48,7 +48,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     )
 )
 
-suspend fun TelegramBot.promoteChannelAdministrator(
+public suspend fun TelegramBot.promoteChannelAdministrator(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -65,7 +65,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChannelAdministrator(
+): Boolean = promoteChannelAdministrator(
     chat.id,
     userId,
     untilDate = untilDate,
@@ -84,7 +84,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canDeleteStories = canDeleteStories
 )
 
-suspend fun TelegramBot.promoteChannelAdministrator(
+public suspend fun TelegramBot.promoteChannelAdministrator(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
@@ -101,7 +101,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChannelAdministrator(
+): Boolean = promoteChannelAdministrator(
     chatId,
     user.id,
     untilDate = untilDate,
@@ -120,7 +120,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canDeleteStories = canDeleteStories
 )
 
-suspend fun TelegramBot.promoteChannelAdministrator(
+public suspend fun TelegramBot.promoteChannelAdministrator(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
@@ -137,7 +137,7 @@ suspend fun TelegramBot.promoteChannelAdministrator(
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null
-) = promoteChannelAdministrator(
+): Boolean = promoteChannelAdministrator(
     chat.id,
     user.id,
     untilDate = untilDate,

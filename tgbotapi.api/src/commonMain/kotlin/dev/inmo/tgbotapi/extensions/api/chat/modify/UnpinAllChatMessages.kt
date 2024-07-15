@@ -5,10 +5,10 @@ import dev.inmo.tgbotapi.requests.chat.modify.UnpinAllChatMessages
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.unpinAllChatMessages(
+public suspend fun TelegramBot.unpinAllChatMessages(
     chatId: ChatIdentifier
-) = execute(UnpinAllChatMessages(chatId))
+): Boolean = execute(UnpinAllChatMessages(chatId))
 
-suspend fun TelegramBot.unpinAllChatMessages(
+public suspend fun TelegramBot.unpinAllChatMessages(
     chat: Chat
-) = unpinAllChatMessages(chat.id)
+): Boolean = unpinAllChatMessages(chat.id)

@@ -7,22 +7,22 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.unpinAllForumTopicMessages(
+public suspend fun TelegramBot.unpinAllForumTopicMessages(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId
-) = execute(
+): Boolean = execute(
     UnpinAllForumTopicMessages(
         chatId,
         messageThreadId
     )
 )
 
-suspend fun TelegramBot.unpinAllForumTopicMessages(
+public suspend fun TelegramBot.unpinAllForumTopicMessages(
     chat: Chat,
     messageThreadId: MessageThreadId
-) = unpinAllForumTopicMessages(chat.id, messageThreadId)
+): Boolean = unpinAllForumTopicMessages(chat.id, messageThreadId)
 
-suspend fun TelegramBot.unpinAllForumTopicMessages(
+public suspend fun TelegramBot.unpinAllForumTopicMessages(
     chat: Chat,
     forumTopic: ForumTopic
-) = unpinAllForumTopicMessages(chat.id, forumTopic.messageThreadId)
+): Boolean = unpinAllForumTopicMessages(chat.id, forumTopic.messageThreadId)

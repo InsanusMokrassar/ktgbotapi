@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import dev.inmo.micro_utils.coroutines.LinkedSupervisorJob
 import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
-import dev.inmo.tgbotapi.abstracts.*
+import dev.inmo.tgbotapi.abstracts.Headed
+import dev.inmo.tgbotapi.abstracts.HorizontallyAccured
+import dev.inmo.tgbotapi.abstracts.Locationed
+import dev.inmo.tgbotapi.abstracts.ProximityAlertable
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.edit
@@ -15,18 +17,22 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.isActive
 import kotlinx.serialization.Serializable
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 import kotlin.math.ceil
 
 @Serializable
-data class EditLiveLocationInfo(
+public data class EditLiveLocationInfo(
     override val latitude: Double,
     override val longitude: Double,
     override val horizontalAccuracy: Meters? = null,
@@ -39,7 +45,7 @@ data class EditLiveLocationInfo(
  * Will [sendLiveLocation] with the first [EditLiveLocationInfo] data and update than. Each [liveTimeMillis] passing,
  * the message will be sent again and new edits will be applied to the new message
  */
-suspend fun TelegramBot.handleLiveLocation(
+public suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<EditLiveLocationInfo>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
@@ -49,9 +55,9 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
-    var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
+    var currentLiveLocationMessage: ContentMessage<LiveLocationContent>? = null
     val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
         null
     } else {
@@ -112,7 +118,7 @@ suspend fun TelegramBot.handleLiveLocation(
  */
 @JvmName("handleLiveLocationWithLocation")
 @JsName("handleLiveLocationWithLocation")
-suspend fun TelegramBot.handleLiveLocation(
+public suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<Location>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
@@ -122,7 +128,7 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId = chatId,
@@ -153,7 +159,7 @@ suspend fun TelegramBot.handleLiveLocation(
  */
 @JvmName("handleLiveLocationWithLatLong")
 @JsName("handleLiveLocationWithLatLong")
-suspend fun TelegramBot.handleLiveLocation(
+public suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<Pair<Double, Double>>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
@@ -163,7 +169,7 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId = chatId,

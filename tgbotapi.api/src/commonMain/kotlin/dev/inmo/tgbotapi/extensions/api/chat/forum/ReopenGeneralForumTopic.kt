@@ -8,12 +8,12 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.reopenGeneralForumTopic(
+public suspend fun TelegramBot.reopenGeneralForumTopic(
     chatId: ChatIdentifier
-) = execute(
+): Boolean = execute(
     ReopenGeneralForumTopic(chatId)
 )
 
-suspend fun TelegramBot.reopenGeneralForumTopic(
+public suspend fun TelegramBot.reopenGeneralForumTopic(
     chat: Chat
-) = reopenGeneralForumTopic(chat.id)
+): Boolean = reopenGeneralForumTopic(chat.id)

@@ -14,35 +14,35 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.types.stickers.StickerSet
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSetName: StickerSetName,
     oldSticker: FileId,
     newSticker: InputSticker
-) = execute(
+): Boolean = execute(
     ReplaceStickerInSet(userId, stickerSetName, oldSticker, newSticker)
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSetName: String,
     oldSticker: FileId,
     newSticker: InputSticker
-) = replaceStickerInSet(userId, StickerSetName(stickerSetName), oldSticker, newSticker)
+): Boolean = replaceStickerInSet(userId, StickerSetName(stickerSetName), oldSticker, newSticker)
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     userId,
     stickerSet.name,
     oldSticker,
     newSticker
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSet: StickerSet,
     oldSticker: FileId,
@@ -50,7 +50,7 @@ suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     userId,
     stickerSet,
     oldSticker,
@@ -76,7 +76,7 @@ suspend fun TelegramBot.replaceStickerInSet(
     }
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSet: StickerSet,
     oldSticker: FileId,
@@ -84,7 +84,7 @@ suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     userId,
     stickerSet.name,
     oldSticker,
@@ -111,19 +111,19 @@ suspend fun TelegramBot.replaceStickerInSet(
     }
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     user.id,
     stickerSet.name,
     oldSticker,
     newSticker
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
     stickerSet: StickerSet,
     oldSticker: FileId,
@@ -131,11 +131,11 @@ suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     user.id, stickerSet, oldSticker, sticker, format, emojis, keywords
 )
 
-suspend fun TelegramBot.replaceStickerInSet(
+public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
     stickerSet: StickerSet,
     oldSticker: FileId,
@@ -143,6 +143,6 @@ suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-) = replaceStickerInSet(
+): Boolean = replaceStickerInSet(
     user.id, stickerSet, oldSticker, sticker, format, emojis, maskPosition
 )

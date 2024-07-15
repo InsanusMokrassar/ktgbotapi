@@ -7,16 +7,16 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
-suspend fun TelegramBot.unpinChatMessage(
+public suspend fun TelegramBot.unpinChatMessage(
     chatId: ChatIdentifier,
     messageId: MessageId? = null
-) = execute(UnpinChatMessage(chatId, messageId))
+): Boolean = execute(UnpinChatMessage(chatId, messageId))
 
-suspend fun TelegramBot.unpinChatMessage(
+public suspend fun TelegramBot.unpinChatMessage(
     chat: Chat,
     messageId: MessageId? = null
-) = unpinChatMessage(chat.id, messageId)
+): Boolean = unpinChatMessage(chat.id, messageId)
 
-suspend fun TelegramBot.unpinChatMessage(
+public suspend fun TelegramBot.unpinChatMessage(
     message: AccessibleMessage
-) = unpinChatMessage(message.chat.id, message.messageId)
+): Boolean = unpinChatMessage(message.chat.id, message.messageId)
