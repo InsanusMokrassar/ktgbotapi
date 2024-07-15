@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 15.1.1
+## 15.2.0
 
 * `API`:
   * Enabled an `explicit mode` for `API` module ([PR #876](https://github.com/InsanusMokrassar/ktgbotapi/pull/876))
