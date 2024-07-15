@@ -11,6 +11,9 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
@@ -102,7 +105,7 @@ fun SendLiveLocation(
     replyMarkup = replyMarkup
 )
 
-@Serializable
+@Serializable(SendLocation.Companion::class)
 sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<ContentMessage<T>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<T>>,
     PositionedSendMessageRequest<ContentMessage<T>>,
@@ -121,6 +124,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(longitudeField)
         override val longitude: Double,
         @SerialName(livePeriodField)
+        @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val livePeriod: Seconds = LiveLocation.INDEFINITE_LIVE_PERIOD,
         @SerialName(horizontalAccuracyField)
@@ -130,9 +134,11 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(proximityAlertRadiusField)
         override val proximityAlertRadius: Meters? = null,
         @SerialName(messageThreadIdField)
+        @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
         @SerialName(businessConnectionIdField)
+        @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         @SerialName(disableNotificationField)
@@ -149,7 +155,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val resultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>>
             get() = liveResultDeserializer
         override val requestSerializer: SerializationStrategy<*>
-            get() = Live.serializer()
+            get() = serializer()
 
         init {
             if (livePeriod !in livePeriodLimit) {
@@ -170,9 +176,11 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(longitudeField)
         override val longitude: Double,
         @SerialName(messageThreadIdField)
+        @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
         @SerialName(businessConnectionIdField)
+        @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         @SerialName(disableNotificationField)
@@ -198,5 +206,99 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             get() = staticResultDeserializer
         override val requestSerializer: SerializationStrategy<*>
             get() = serializer()
+    }
+
+    companion object : KSerializer<SendLocation<*>> {
+        @Serializable
+        private class Surrogate(
+            @SerialName(chatIdField)
+            val chatId: ChatIdentifier,
+            @SerialName(latitudeField)
+            val latitude: Double,
+            @SerialName(longitudeField)
+            val longitude: Double,
+            @SerialName(livePeriodField)
+            val livePeriod: Seconds? = null,
+            @SerialName(horizontalAccuracyField)
+            val horizontalAccuracy: Meters? = null,
+            @SerialName(headingField)
+            val heading: Degrees? = null,
+            @SerialName(proximityAlertRadiusField)
+            val proximityAlertRadius: Meters? = null,
+            @SerialName(messageThreadIdField)
+            val threadId: MessageThreadId? = chatId.threadId,
+            @SerialName(businessConnectionIdField)
+            val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+            @SerialName(disableNotificationField)
+            val disableNotification: Boolean = false,
+            @SerialName(protectContentField)
+            val protectContent: Boolean = false,
+            @SerialName(messageEffectIdField)
+            val effectId: EffectId? = null,
+            @SerialName(replyParametersField)
+            val replyParameters: ReplyParameters? = null,
+            @SerialName(replyMarkupField)
+            val replyMarkup: KeyboardMarkup? = null
+        )
+
+        override val descriptor: SerialDescriptor
+            get() = Surrogate.serializer().descriptor
+
+        override fun deserialize(decoder: Decoder): SendLocation<*> {
+            val surrogate = Surrogate.serializer().deserialize(decoder)
+
+            return when (surrogate.livePeriod) {
+                null -> Static(
+                    chatId = surrogate.chatId,
+                    latitude = surrogate.latitude,
+                    longitude = surrogate.longitude,
+                    threadId = surrogate.threadId,
+                    businessConnectionId = surrogate.businessConnectionId,
+                    disableNotification = surrogate.disableNotification,
+                    protectContent = surrogate.protectContent,
+                    effectId = surrogate.effectId,
+                    replyParameters = surrogate.replyParameters,
+                    replyMarkup = surrogate.replyMarkup
+                )
+                else -> Live(
+                    chatId = surrogate.chatId,
+                    latitude = surrogate.latitude,
+                    longitude = surrogate.longitude,
+                    livePeriod = surrogate.livePeriod,
+                    horizontalAccuracy = surrogate.horizontalAccuracy,
+                    heading = surrogate.heading,
+                    proximityAlertRadius = surrogate.proximityAlertRadius,
+                    threadId = surrogate.threadId,
+                    businessConnectionId = surrogate.businessConnectionId,
+                    disableNotification = surrogate.disableNotification,
+                    protectContent = surrogate.protectContent,
+                    effectId = surrogate.effectId,
+                    replyParameters = surrogate.replyParameters,
+                    replyMarkup = surrogate.replyMarkup
+                )
+            }
+        }
+
+        override fun serialize(encoder: Encoder, value: SendLocation<*>) {
+            val surrogate = with(value) {
+                Surrogate(
+                    chatId = chatId,
+                    latitude = latitude,
+                    longitude = longitude,
+                    livePeriod = livePeriod,
+                    horizontalAccuracy = horizontalAccuracy,
+                    heading = heading,
+                    proximityAlertRadius = proximityAlertRadius,
+                    threadId = threadId,
+                    businessConnectionId = businessConnectionId,
+                    disableNotification = disableNotification,
+                    protectContent = protectContent,
+                    effectId = effectId,
+                    replyParameters = replyParameters,
+                    replyMarkup = replyMarkup
+                )
+            }
+            Surrogate.serializer().serialize(encoder, surrogate)
+        }
     }
 }
