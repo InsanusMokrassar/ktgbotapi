@@ -83,7 +83,6 @@ sealed interface KeyboardButtonRequestUsers {
             get() = null
     }
 
-    @Serializer(KeyboardButtonRequestUsers::class)
     companion object : KSerializer<KeyboardButtonRequestUsers> {
         @Serializable
         private data class Surrogate(
