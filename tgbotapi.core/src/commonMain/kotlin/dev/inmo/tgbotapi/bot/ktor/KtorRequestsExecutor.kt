@@ -4,6 +4,7 @@ import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
+import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
@@ -26,7 +27,10 @@ expect class KtorRequestsExecutor internal constructor(
     pipelineStepsHolder: KtorPipelineStepsHolder,
     logger: KSLog,
     diff: Unit // just a diff property to know where constructor and where calling function with defaults
-) : BaseRequestsExecutor
+) : BaseRequestsExecutor {
+    override suspend fun <T : Any> execute(request: Request<T>): T
+    override fun close()
+}
 
 fun KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

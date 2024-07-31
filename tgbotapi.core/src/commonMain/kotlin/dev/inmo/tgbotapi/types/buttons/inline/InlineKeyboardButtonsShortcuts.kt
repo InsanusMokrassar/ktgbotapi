@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.buttons.inline
 
 import dev.inmo.tgbotapi.types.LoginURL

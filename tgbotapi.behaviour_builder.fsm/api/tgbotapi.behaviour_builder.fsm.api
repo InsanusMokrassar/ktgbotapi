@@ -1,0 +1,126 @@
+public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM : dev/inmo/micro_utils/fsm/common/StatesMachine, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext {
+	public static final field Companion Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$Companion;
+	public abstract fun add (Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public abstract fun addStrict (Lkotlin/reflect/KClass;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public abstract fun start (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$Companion {
+	public final fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/util/List;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContextWithFSM;
+	public static synthetic fun invoke$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$Companion;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/util/List;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContextWithFSM;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$DefaultImpls {
+	public static synthetic fun add$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;ILjava/lang/Object;)V
+	public static fun addStrict (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Lkotlin/reflect/KClass;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public static fun copy (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public static fun copy (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public static fun getAllowedUpdates (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ljava/util/List;
+	public static fun getBot (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static fun getChannelPostMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
+	public static fun getEditedChannelPostMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
+	public static fun getEditedMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
+	public static fun getFlowsUpdatesFilter (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public static fun getMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
+	public static fun getScope (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/CoroutineScope;
+	public static fun launchStateHandling (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun launchStateHandling (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun start (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSMBuilderKt {
+	public static final fun buildBehaviourWithFSM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun buildBehaviourWithFSM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviourWithFSM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviourWithFSM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun buildBehaviourWithFSMAndStartLongPolling (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun buildBehaviourWithFSMAndStartLongPolling (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviourWithFSMAndStartLongPolling$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviourWithFSMAndStartLongPolling$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler : dev/inmo/micro_utils/fsm/common/StatesHandler {
+	public abstract fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun handleState (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler$DefaultImpls {
+	public static fun handleState (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder : dev/inmo/micro_utils/fsm/common/CheckableHandlerHolder, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler {
+	public fun <init> (Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public synthetic fun <init> (Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun checkHandleable (Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun handleState (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContextWithFSM : dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM {
+	public fun <init> (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun add (Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public fun addStrict (Lkotlin/reflect/KClass;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public fun close ()V
+	public synthetic fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
+	public synthetic fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContextWithFSM;
+	public synthetic fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContextWithFSM;
+	public fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getAllUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getAllowedUpdates ()Ljava/util/List;
+	public fun getAsUpdateReceiver ()Lkotlin/jvm/functions/Function2;
+	public fun getBot ()Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public fun getBusinessConnectionUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getCallbackQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChannelPostMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChannelPostsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatBoostRemovedUpdateFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatBoostUpdatedUpdateFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatJoinRequestUpdateFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatMessageReactionUpdatedUpdateFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChatMessageReactionsCountUpdatedUpdateFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getChosenInlineResultsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getCoroutineContext ()Lkotlin/coroutines/CoroutineContext;
+	public fun getDeleteBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getEditBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getEditedChannelPostMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getEditedChannelPostsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getEditedMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getEditedMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getFlowsUpdatesFilter ()Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public fun getInlineQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getMyChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getPollAnswersFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getPollsFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getPreCheckoutQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public fun getShippingQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getTriggersHolder ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;
+	public fun getUnknownUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun launchStateHandling (Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun launchStateHandling (Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun start (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun start (Lkotlinx/coroutines/CoroutineScope;)Lkotlinx/coroutines/Job;
+	public fun startChain (Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/TelegramBotWithFSMKt {
+	public static final fun telegramBotWithBehaviourAndFSM (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;ZLkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun telegramBotWithBehaviourAndFSM$default (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;ZLkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun telegramBotWithBehaviourAndFSMAndStartLongPolling (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;ZLkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun telegramBotWithBehaviourAndFSMAndStartLongPolling$default (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ldev/inmo/micro_utils/fsm/common/StatesManager;Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandlerHolder;ZLkotlin/jvm/functions/Function3;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+

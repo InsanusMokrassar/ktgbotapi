@@ -2687,13 +2687,13 @@ public final class dev/inmo/tgbotapi/extensions/utils/SlotMachineResult {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/extensions/utils/SlotMachineResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public synthetic class dev/inmo/tgbotapi/extensions/utils/SlotMachineResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult;)V
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
@@ -2932,13 +2932,13 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquar
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public synthetic class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare;)V
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
@@ -2972,13 +2972,13 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePla
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public synthetic class dev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace;)V
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
