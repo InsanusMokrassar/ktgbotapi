@@ -308,6 +308,8 @@ data class ExtendedBot(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
+    @SerialName(hasMainWebAppField)
+    val hasMainWebApp: Boolean = false
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
