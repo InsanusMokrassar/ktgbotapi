@@ -12,6 +12,6 @@ fun StoryShareParams(
 ): StoryShareParams {
     val result: dynamic = js("{}")
     result["text"] = text
-    widgetLink ?.let { result["widgetLink"] = it }
+    widgetLink ?.let { result["widget_link"] = it }
     return result.unsafeCast<StoryShareParams>()
 }
