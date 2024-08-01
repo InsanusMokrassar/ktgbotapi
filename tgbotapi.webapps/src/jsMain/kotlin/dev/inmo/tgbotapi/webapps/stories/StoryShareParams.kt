@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.webapps.stories
 
+import kotlin.js.json
+
 external interface StoryShareParams {
     val text: String
     @JsName("widget_link")
@@ -10,8 +12,8 @@ fun StoryShareParams(
     text: String,
     widgetLink: StoryWidgetLink?
 ): StoryShareParams {
-    val result: dynamic = js("{}")
-    result["text"] = text
-    widgetLink ?.let { result["widget_link"] = it }
-    return result.unsafeCast<StoryShareParams>()
+    val json = json()
+    json["text"] = text
+    widgetLink ?.let { json["widget_link"] = it }
+    return json.unsafeCast<StoryShareParams>()
 }

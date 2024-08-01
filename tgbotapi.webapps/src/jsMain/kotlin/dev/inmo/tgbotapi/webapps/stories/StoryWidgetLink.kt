@@ -11,8 +11,8 @@ fun StoryWidgetLink(
     url: String,
     name: String?
 ): StoryWidgetLink {
-    val result: dynamic = js("{}")
-    result["url"] = url
-    name ?.let { result["name"] = it }
-    return result.unsafeCast<StoryWidgetLink>()
+    val json = json()
+    json["url"] = url
+    name ?.let { json["name"] = it }
+    return json.unsafeCast<StoryWidgetLink>()
 }
