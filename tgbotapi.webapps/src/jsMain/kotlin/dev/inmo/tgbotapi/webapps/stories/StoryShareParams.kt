@@ -10,7 +10,7 @@ external interface StoryShareParams {
 
 fun StoryShareParams(
     text: String,
-    widgetLink: StoryWidgetLink?
+    widgetLink: StoryWidgetLink? = null
 ): StoryShareParams {
     val json = json()
     json["text"] = text

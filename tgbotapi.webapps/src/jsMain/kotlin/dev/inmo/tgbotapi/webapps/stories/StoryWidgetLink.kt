@@ -9,7 +9,7 @@ external interface StoryWidgetLink {
 
 fun StoryWidgetLink(
     url: String,
-    name: String?
+    name: String? = null
 ): StoryWidgetLink {
     val json = json()
     json["url"] = url
