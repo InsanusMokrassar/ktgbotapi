@@ -4,6 +4,15 @@
 
 **THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.8**
 
+* `Core`:
+  * `OptionallyBusinessConnectionRequest` now extends `WithOptionalBusinessConnectionId`
+  * Add `hasMainWebApp` in `ExtendedBot`
+* `API`:
+  * Add `BusinessConnectionId` to pin/unpin methods
+* `WebApp`:
+  * Add `shareToStory` in `WebApp`
+ 
+
 
 ## 15.2.0
 
