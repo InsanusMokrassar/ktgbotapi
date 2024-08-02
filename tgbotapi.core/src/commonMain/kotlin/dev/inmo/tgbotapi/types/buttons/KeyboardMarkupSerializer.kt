@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
@@ -9,7 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @RiskFeature
 object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
-    @OptIn(InternalSerializationApi::class)
+    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(
         KeyboardMarkup::class.toString(),
         PolymorphicKind.OPEN

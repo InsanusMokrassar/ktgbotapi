@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 16.0.0
+
 ## 15.3.0
 
 **THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.8**
@@ -11,8 +13,6 @@
   * Add `BusinessConnectionId` to pin/unpin methods
 * `WebApp`:
   * Add `shareToStory` in `WebApp`
- 
-
 
 ## 15.2.0
 

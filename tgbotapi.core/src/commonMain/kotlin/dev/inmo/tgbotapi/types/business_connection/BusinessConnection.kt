@@ -56,7 +56,6 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
         override val isEnabled: Boolean = false
     }
 
-    @Serializer(BusinessConnection::class)
     companion object : KSerializer<BusinessConnection> {
         override val descriptor: SerialDescriptor
             get() = RawBusinessConnection.serializer().descriptor

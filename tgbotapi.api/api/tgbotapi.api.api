@@ -88,13 +88,13 @@ public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo : dev/i
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;)V
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
