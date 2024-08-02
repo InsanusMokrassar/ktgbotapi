@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.popup.*
+import dev.inmo.tgbotapi.webapps.stories.StoryShareParams
 
 external class WebApp {
     val version: String
@@ -100,6 +101,8 @@ external class WebApp {
     fun openLink(url: String)
     fun openTelegramLink(url: String)
     fun openInvoice(url: String, callback: (InvoiceClosedInfo) -> Unit = definedExternally)
+
+    fun shareToStory(mediaUrl: String, params: StoryShareParams?)
 
     fun requestWriteAccess(callback: ((Boolean) -> Unit)? = definedExternally)
     fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)

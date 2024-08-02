@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.chat.modify
 import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -17,9 +18,11 @@ data class PinChatMessage (
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false
-): ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification {
+): ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification, OptionallyBusinessConnectionRequest {
     override fun method(): String = "pinChatMessage"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()

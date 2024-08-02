@@ -667,12 +667,12 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/modify/DeleteChatPhotoK
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/modify/PinChatMessageKt {
-	public static final fun pinChatMessage (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun pinChatMessage$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun pinChatMessage-SAUdIcY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun pinChatMessage-SAUdIcY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;JZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun pinChatMessage-SAUdIcY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun pinChatMessage-SAUdIcY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;JZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun pinChatMessage-iJMbh4A (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun pinChatMessage-iJMbh4A$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun pinChatMessage-rd3ngj0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun pinChatMessage-rd3ngj0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;JLjava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun pinChatMessage-rd3ngj0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun pinChatMessage-rd3ngj0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;JLjava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/modify/SetChatDescriptionKt {
@@ -712,11 +712,12 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/modify/UnpinAllChatMess
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/modify/UnpinChatMessageKt {
-	public static final fun unpinChatMessage (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun unpinChatMessage-MzaUNdY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun unpinChatMessage-MzaUNdY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun unpinChatMessage-MzaUNdY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun unpinChatMessage-MzaUNdY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageId;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun unpinChatMessage-DZdi6a4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun unpinChatMessage-DZdi6a4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun unpinChatMessage-DZdi6a4$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun unpinChatMessage-DZdi6a4$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun unpinChatMessage-efQd2eE (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun unpinChatMessage-efQd2eE$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/stickers/DeleteChatStickerSetKt {

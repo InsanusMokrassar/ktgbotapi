@@ -168,8 +168,7 @@ public abstract interface class dev/inmo/tgbotapi/abstracts/types/OptionalChatRe
 	public abstract fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 }
 
-public abstract interface class dev/inmo/tgbotapi/abstracts/types/OptionallyBusinessConnectionRequest {
-	public abstract fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+public abstract interface class dev/inmo/tgbotapi/abstracts/types/OptionallyBusinessConnectionRequest : dev/inmo/tgbotapi/abstracts/types/WithOptionalBusinessConnectionId {
 }
 
 public abstract interface class dev/inmo/tgbotapi/abstracts/types/OptionallyWithEffectId {
@@ -3076,16 +3075,18 @@ public final class dev/inmo/tgbotapi/requests/chat/modify/DeleteChatPhoto$Compan
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/requests/chat/modify/PinChatMessage : dev/inmo/tgbotapi/abstracts/types/ChatRequest, dev/inmo/tgbotapi/abstracts/types/DisableNotification, dev/inmo/tgbotapi/abstracts/types/MessageAction, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+public final class dev/inmo/tgbotapi/requests/chat/modify/PinChatMessage : dev/inmo/tgbotapi/abstracts/types/ChatRequest, dev/inmo/tgbotapi/abstracts/types/DisableNotification, dev/inmo/tgbotapi/abstracts/types/MessageAction, dev/inmo/tgbotapi/abstracts/types/OptionallyBusinessConnectionRequest, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2-APLFQys ()J
-	public final fun component3 ()Z
-	public final fun copy-HkzWJnM (Ldev/inmo/tgbotapi/types/ChatIdentifier;JZ)Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;
-	public static synthetic fun copy-HkzWJnM$default (Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;JZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;
+	public final fun component3-nXr5wdE ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun copy-HtX6zsU (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Z)Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;
+	public static synthetic fun copy-HtX6zsU$default (Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/modify/PinChatMessage;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDisableNotification ()Z
 	public fun getMessageId-APLFQys ()J
@@ -3337,15 +3338,17 @@ public final class dev/inmo/tgbotapi/requests/chat/modify/UnpinAllChatMessages$C
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage : dev/inmo/tgbotapi/abstracts/types/ChatRequest, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+public final class dev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage : dev/inmo/tgbotapi/abstracts/types/ChatRequest, dev/inmo/tgbotapi/abstracts/types/OptionallyBusinessConnectionRequest, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
-	public final fun copy-rTT8EQM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;)Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;
-	public static synthetic fun copy-rTT8EQM$default (Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;
+	public final fun component3-nXr5wdE ()Ljava/lang/String;
+	public final fun copy-PPbMvFs (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;
+	public static synthetic fun copy-PPbMvFs$default (Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/modify/UnpinChatMessage;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -8553,6 +8556,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field hasAggressiveAntiSpamEnabledField Ljava/lang/String;
 	public static final field hasCustomCertificateField Ljava/lang/String;
 	public static final field hasHiddenMembersField Ljava/lang/String;
+	public static final field hasMainWebAppField Ljava/lang/String;
 	public static final field hasPrivateForwardsField Ljava/lang/String;
 	public static final field hasPublicWinnersField Ljava/lang/String;
 	public static final field hasRestrictedVoiceAndVideoMessagesField Ljava/lang/String;
@@ -14515,14 +14519,15 @@ public final class dev/inmo/tgbotapi/types/chat/CommonUser$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/types/chat/Bot, dev/inmo/tgbotapi/types/chat/ExtendedChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedBot$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-f3WtEc0 ()I
 	public final fun component11-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
 	public final fun component12-GbmMWyQ ()Ljava/lang/String;
 	public final fun component13-GbmMWyQ ()Ljava/lang/String;
 	public final fun component14 ()I
+	public final fun component15 ()Z
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4-san03mo ()Ljava/lang/String;
@@ -14531,8 +14536,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
-	public final fun copy-gWg6A_4 (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;I)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
-	public static synthetic fun copy-gWg6A_4$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public final fun copy-IItryQQ (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZ)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public static synthetic fun copy-IItryQQ$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
@@ -14541,6 +14546,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun getCanReadAllGroupMessages ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getFirstName ()Ljava/lang/String;
+	public final fun getHasMainWebApp ()Z
 	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getId-tHkBKVM ()J
 	public fun getLastName ()Ljava/lang/String;
