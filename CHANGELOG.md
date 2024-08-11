@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 16.0.0
+
+**THIS UPDATE CONTAINS KOTLIN UPDATE UP TO 2.0**
+
+* `Version`:
+  * `Kotlin`: `1.9.23` -> `2.0.10`
+  * `Serialization`: `1.6.3` -> `1.7.1`
+  * `MicroUtils`: `0.21.2` -> `0.22.0`
+  * `KSLog`: `1.3.4` -> `1.3.5`
+
 ## 15.3.0
 
 **THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.8**
@@ -11,8 +21,6 @@
   * Add `BusinessConnectionId` to pin/unpin methods
 * `WebApp`:
   * Add `shareToStory` in `WebApp`
- 
-
 
 ## 15.2.0
 

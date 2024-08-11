@@ -162,7 +162,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
-    markerFactory: MarkerFactory<in CommonMessage<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
+    markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
