@@ -181,3 +181,30 @@ public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     expiration: DateTime,
     name: String? = null,
 ): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name , expiration.toTelegramDate())
+
+
+// Subscriptions
+
+public suspend fun TelegramBot.editChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    previousLink: String,
+    name: String,
+): ChatInviteLinkUnlimited = execute(EditChatInviteLink.subscription(chatId, previousLink, name))
+
+public suspend fun TelegramBot.editChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    previousLink: ChatInviteLink,
+    name: String,
+): ChatInviteLinkUnlimited = editChatSubscriptionInviteLink(chatId, previousLink.inviteLink, name)
+
+public suspend fun TelegramBot.editChatSubscriptionInviteLink(
+    chat: PublicChat,
+    previousLink: String,
+    name: String,
+): ChatInviteLinkUnlimited = editChatSubscriptionInviteLink(chat.id, previousLink, name)
+
+public suspend fun TelegramBot.editChatSubscriptionInviteLink(
+    chat: PublicChat,
+    previousLink: ChatInviteLink,
+    name: String,
+): ChatInviteLinkUnlimited = editChatSubscriptionInviteLink(chat.id, previousLink, name)
