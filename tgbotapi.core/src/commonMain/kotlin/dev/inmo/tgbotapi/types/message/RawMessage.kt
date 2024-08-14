@@ -51,7 +51,7 @@ internal data class RawMessage(
     private val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     private val messageThreadId: MessageThreadId? = null,
-    private val from: User? = null,
+    private val from: PreviewUser? = null,
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
     private val is_topic_message: Boolean? = null,
@@ -339,8 +339,8 @@ internal data class RawMessage(
                     is PreviewPublicChat -> when (chat) {
                         is PreviewChannelChat -> ChannelContentMessageImpl(
                             messageId = messageId,
-                            from = checkedFrom ?: from,
                             chat = chat,
+                            senderChat = checkedFrom ?: sender_chat ?: chat,
                             content = content,
                             date = date.asDate,
                             editDate = edit_date?.asDate,
