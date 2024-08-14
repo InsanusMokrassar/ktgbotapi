@@ -10,6 +10,7 @@ value class RawChatId(
 ) {
     companion object {
         val DefaultUserId = RawChatId(136817688L) // I do not know why, it is Telegram crutch
+        val FakeUserId = RawChatId(777000L) // Brought with Telegram Bot API 7.9 as backward compatibility value for from field
     }
 
     override fun toString(): String {

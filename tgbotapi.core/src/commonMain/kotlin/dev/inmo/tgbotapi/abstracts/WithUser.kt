@@ -9,6 +9,14 @@ import dev.inmo.tgbotapi.types.chat.User
  * @see FromUser
  */
 @ClassCastsIncluded(excludeRegex = ".*Impl")
-interface WithUser {
-    val user: User
+interface OptionallyWithUser {
+    val user: User?
+}
+/**
+ * All inheritors of this type have [User] in their data as one of the main data
+ *
+ * @see FromUser
+ */
+interface WithUser : OptionallyWithUser {
+    override val user: User
 }
