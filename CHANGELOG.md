@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 17.0.0
+
 ## 16.0.0
 
 **THIS UPDATE CONTAINS KOTLIN UPDATE UP TO 2.0**
