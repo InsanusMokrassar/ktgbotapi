@@ -91,9 +91,7 @@ data class CreateChatInviteLinkUnlimited(
 /**
  * Represent [request](https://core.telegram.org/bots/api#createchatsubscriptioninvitelink)
  *
- * @see CreateChatInviteLink.unlimited
- * @see CreateChatInviteLinkWithLimitedMembers
- * @see CreateChatInviteLinkWithJoinRequest
+ * @see CreateChatInviteLink.subscription
  */
 @Serializable
 data class CreateChatSubscriptionInviteLink(
