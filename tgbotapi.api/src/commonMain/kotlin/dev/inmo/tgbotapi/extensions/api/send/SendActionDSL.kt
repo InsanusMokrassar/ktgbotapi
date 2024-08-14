@@ -24,17 +24,17 @@ public suspend fun <T> TelegramBot.withAction(
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
-    val actionScope = currentCoroutineContext().LinkedSupervisorScope(Job())
+    val actionScope = currentCoroutineContext().LinkedSupervisorScope()
     actionScope.launch {
         while (isActive) {
-            safelyWithoutExceptions {
+            runCatching {
                 execute(actionRequest)
             }
             delay(refreshTime)
         }
     }
     val result = runCatchingSafely { block() }
-    actionScope.cancel()
+    actionScope.coroutineContext.job.cancel()
     return result.getOrThrow()
 }
 
