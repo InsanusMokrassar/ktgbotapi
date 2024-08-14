@@ -4,6 +4,8 @@ import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import korlibs.time.TimeSpan
+import korlibs.time.days
 import kotlinx.serialization.*
 
 sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInviteLinkRequest<R> {
@@ -11,6 +13,11 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
     override val expireDate: DateTime?
         get() = expirationUnixTimeStamp ?.asDate
     override fun method(): String = "createChatInviteLink"
+
+    sealed interface Subscription : CreateChatInviteLink<ChatInviteLinkUnlimited> {
+        val subscriptionPeriod: TimeSpan
+        val subscriptionPrice: UInt
+    }
 
     companion object {
         fun unlimited(
@@ -45,6 +52,13 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
             expiration: DateTime,
             name: String? = null,
         ) = withJoinRequest(chatId, name, expiration.toTelegramDate())
+        fun paid(
+            chatId: ChatIdentifier,
+            subscriptionPrice: UInt,
+            subscriptionPeriod: TimeSpan = 30.days,
+            name: String? = null,
+            expirationUnixTimeStamp: TelegramDate? = null,
+        ) = CreateChatSubscriptionInviteLink(chatId, subscriptionPrice, name, subscriptionPeriod, expirationUnixTimeStamp)
     }
 }
 
@@ -65,6 +79,33 @@ data class CreateChatInviteLinkUnlimited(
     @SerialName(expireDateField)
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : CreateChatInviteLink<ChatInviteLinkUnlimited> {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+    override val resultDeserializer: DeserializationStrategy<ChatInviteLinkUnlimited>
+        get() = ChatInviteLinkUnlimited.serializer()
+}
+
+/**
+ * Represent [https://core.telegram.org/bots/api#createchatsubscriptioninvitelink] request
+ *
+ * @see CreateChatInviteLink.unlimited
+ * @see CreateChatInviteLinkWithLimitedMembers
+ * @see CreateChatInviteLinkWithJoinRequest
+ */
+@Serializable
+data class CreateChatSubscriptionInviteLink(
+    @SerialName(chatIdField)
+    override val chatId: ChatIdentifier,
+    @SerialName(subscriptionPriceField)
+    override val subscriptionPrice: UInt,
+    @SerialName(nameField)
+    override val name: String? = null,
+    @SerialName(subscriptionPeriodField)
+    @EncodeDefault
+    override val subscriptionPeriod: TimeSpan = 30.days,
+    @SerialName(expireDateField)
+    override val expirationUnixTimeStamp: TelegramDate? = null,
+) : CreateChatInviteLink.Subscription {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
     override val resultDeserializer: DeserializationStrategy<ChatInviteLinkUnlimited>
