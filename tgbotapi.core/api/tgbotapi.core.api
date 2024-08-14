@@ -25224,14 +25224,12 @@ public final class dev/inmo/tgbotapi/types/reactions/Reaction$Emoji$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/reactions/Reaction$Paid : dev/inmo/tgbotapi/types/reactions/Reaction {
-	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid$Companion;
-	public static final field type Ljava/lang/String;
-	public fun <init> ()V
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getType ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/reactions/Reaction$Paid$Companion {
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/reactions/Reaction$Unknown : dev/inmo/tgbotapi/types/reactions/Reaction {
