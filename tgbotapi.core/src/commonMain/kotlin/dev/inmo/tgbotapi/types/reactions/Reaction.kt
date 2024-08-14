@@ -44,6 +44,15 @@ sealed interface Reaction {
     }
 
     @Serializable(Reaction.Companion::class)
+    class Paid : Reaction {
+        override val type: String
+            get() = Companion.type
+        companion object {
+            const val type: String = "paid"
+        }
+    }
+
+    @Serializable(Reaction.Companion::class)
     data class Unknown(
         override val type: String,
         val sourceJson: JsonElement?
@@ -73,6 +82,7 @@ sealed interface Reaction {
             return when {
                 surrogate.emoji != null -> Emoji(surrogate.emoji)
                 surrogate.customEmojiId != null -> CustomEmoji(surrogate.customEmojiId)
+                surrogate.type == Paid.type -> Paid()
                 else -> Unknown(surrogate.type, json)
             }
         }
