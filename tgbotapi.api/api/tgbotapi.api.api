@@ -486,6 +486,14 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/invite_links/CreateChat
 	public static final fun createChatInviteLinkWithLimitedMembers-R4jdXRs (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IDLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createChatInviteLinkWithLimitedMembers-R4jdXRs$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;IDLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun createChatInviteLinkWithLimitedMembers-R4jdXRs$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IDLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun createChatSubscriptionInviteLink-9yjpIiU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;IJLjava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun createChatSubscriptionInviteLink-9yjpIiU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IJLjava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createChatSubscriptionInviteLink-9yjpIiU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;IJLjava/lang/String;DLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun createChatSubscriptionInviteLink-9yjpIiU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IJLjava/lang/String;DLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun createChatSubscriptionInviteLink-u39P7bI (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;IJLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun createChatSubscriptionInviteLink-u39P7bI (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IJLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createChatSubscriptionInviteLink-u39P7bI$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;IJLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun createChatSubscriptionInviteLink-u39P7bI$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;IJLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/invite_links/DeclineChatJoinRequestKt {
@@ -547,6 +555,10 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/invite_links/EditChatIn
 	public static synthetic fun editChatInviteLinkWithLimitedMembers-3EthhN0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;IDLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun editChatInviteLinkWithLimitedMembers-3EthhN0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/ChatInviteLink;IDLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun editChatInviteLinkWithLimitedMembers-3EthhN0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ljava/lang/String;IDLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editChatSubscriptionInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/ChatInviteLink;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun editChatSubscriptionInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun editChatSubscriptionInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/ChatInviteLink;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun editChatSubscriptionInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/invite_links/RevokeChatInviteLinkKt {
