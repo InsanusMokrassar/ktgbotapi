@@ -12,6 +12,10 @@ sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInvit
         get() = expirationUnixTimeStamp ?.asDate
     override fun method(): String = "editChatInviteLink"
 
+    sealed interface Subscription : EditChatInviteLink<ChatInviteLinkUnlimited> {
+        override fun method(): String = "editChatSubscriptionInviteLink"
+    }
+
     companion object {
         fun unlimited(
             chatId: ChatIdentifier,
@@ -51,6 +55,11 @@ sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInvit
             expiration: DateTime,
             name: String? = null,
         ) = withJoinRequest(chatId, inviteLink, name, expiration.toTelegramDate())
+        fun subscription(
+            chatId: ChatIdentifier,
+            inviteLink: String,
+            name: String,
+        ) = EditChatSubscriptionInviteLink(chatId, inviteLink, name)
     }
 }
 
@@ -73,6 +82,28 @@ data class EditChatInviteLinkUnlimited(
     @SerialName(expireDateField)
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : EditChatInviteLink<ChatInviteLinkUnlimited> {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+    override val resultDeserializer: DeserializationStrategy<ChatInviteLinkUnlimited>
+        get() = ChatInviteLinkUnlimited.serializer()
+}
+
+/**
+ * Represent [request](https://core.telegram.org/bots/api#editchatsubscriptioninvitelink)
+ *
+ * @see EditChatInviteLink.subscription
+ */
+@Serializable
+data class EditChatSubscriptionInviteLink(
+    @SerialName(chatIdField)
+    override val chatId: ChatIdentifier,
+    @SerialName(inviteLinkField)
+    override val inviteLink: String,
+    @SerialName(nameField)
+    override val name: String? = null,
+) : EditChatInviteLink.Subscription {
+    override val expirationUnixTimeStamp: TelegramDate?
+        get() = null
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
     override val resultDeserializer: DeserializationStrategy<ChatInviteLinkUnlimited>

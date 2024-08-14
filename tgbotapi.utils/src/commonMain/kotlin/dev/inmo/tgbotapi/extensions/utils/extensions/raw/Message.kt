@@ -23,10 +23,10 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.from: User?
-    get() = asFromUser() ?.from
+    get() = optionallyFromUserMessageOrNull() ?.from
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.sender_chat: PublicChat?
-    get() = asFromChannelGroupContentMessage() ?.senderChat
+inline val Message.sender_chat: PreviewChat?
+    get() = withSenderChatMessageOrNull() ?.senderChat
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_from: User?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asUserForwardInfo() ?.from

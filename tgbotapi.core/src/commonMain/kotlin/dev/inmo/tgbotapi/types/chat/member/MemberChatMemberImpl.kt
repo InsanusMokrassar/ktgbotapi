@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.User
+import korlibs.time.DateTime
 import kotlinx.serialization.*
 
 @Serializable

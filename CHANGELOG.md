@@ -1,5 +1,25 @@
 # TelegramBotAPI changelog
 
+## 17.0.0
+
+**THIS UPDATE CONTAINS SUPPORT OF BOTS API 7.9**
+
+* Add support of subscriptions links handling
+* Add support of info about sender chat. **It is important, that for channels will be actual `senderChat` instead of
+`from` field due to `User` type of the last one**. You also may use extensions `Message.sender_chat` or `Any.withSenderChatMessageOrNull`
+to access sender chat
+* Add `Reaction.Paid`
+
+Additional changes:
+
+* `Core`:
+    * Add top level interfaces `OptionallyWithUser` and `OptionallyFromUser`. Old `WithUser` and `FromUser` interfaces
+    extending them with following overrides of `user` and `from` fields
+* `API`:
+    * Change order of delay and sending action in [SendActionDSL](tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/SendActionDSL.kt)
+    (thanks to [DRSchlaubi](https://github.com/DRSchlaubi), [PR #833](https://github.com/InsanusMokrassar/ktgbotapi/pull/883)).
+    Besides, there has been changed way to create parallel sending of action and it must not lead to memory leaks anymore
+
 ## 16.0.0
 
 **THIS UPDATE CONTAINS KOTLIN UPDATE UP TO 2.0**

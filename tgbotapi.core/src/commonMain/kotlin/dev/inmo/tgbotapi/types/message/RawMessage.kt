@@ -37,6 +37,7 @@ import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.venue.Venue
+import dev.inmo.tgbotapi.utils.isFakeTelegramUser
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
@@ -50,7 +51,7 @@ internal data class RawMessage(
     private val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     private val messageThreadId: MessageThreadId? = null,
-    private val from: User? = null,
+    private val from: PreviewUser? = null,
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
     private val is_topic_message: Boolean? = null,
@@ -160,6 +161,7 @@ internal data class RawMessage(
     private val giveaway_created: GiveawayCreated? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 ) {
+    private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
             (caption_entities ?: emptyList()).asTextSources(caption)
@@ -298,14 +300,14 @@ internal data class RawMessage(
                 when (chat) {
                     is PreviewSupergroupChat -> CommonSupergroupEventMessage(
                         messageId,
-                        from ?: error("Supergroup events are expected to contain 'from' field"),
+                        checkedFrom ?: from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
                         date.asDate
                     )
                     is PreviewGroupChat -> CommonGroupEventMessage(
                         messageId,
-                        from ?: error("Supergroup events are expected to contain 'from' field"),
+                        checkedFrom ?: from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
                         date.asDate
@@ -338,6 +340,7 @@ internal data class RawMessage(
                         is PreviewChannelChat -> ChannelContentMessageImpl(
                             messageId = messageId,
                             chat = chat,
+                            senderChat = checkedFrom ?: sender_chat ?: chat,
                             content = content,
                             date = date.asDate,
                             editDate = edit_date?.asDate,
@@ -396,7 +399,7 @@ internal data class RawMessage(
                                     chat = actualForumChat,
                                     messageId = messageId,
                                     threadId = messageThreadId,
-                                    from = from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                    from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                     date = date.asDate,
                                     forwardOrigin = forward_origin,
                                     editDate = edit_date ?.asDate,
@@ -465,7 +468,7 @@ internal data class RawMessage(
                                 null -> CommonGroupContentMessageImpl(
                                     chat = chat,
                                     messageId = messageId,
-                                    from = from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                    from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                     date = date.asDate,
                                     forwardOrigin = forward_origin,
                                     editDate = edit_date ?.asDate,
@@ -534,7 +537,7 @@ internal data class RawMessage(
                             null -> CommonGroupContentMessageImpl(
                                 chat = chat,
                                 messageId = messageId,
-                                from = from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                 date = date.asDate,
                                 forwardOrigin = forward_origin,
                                 editDate = edit_date ?.asDate,
@@ -552,7 +555,7 @@ internal data class RawMessage(
                     is PreviewPrivateChat -> if (business_connection_id == null) {
                         PrivateContentMessageImpl(
                             messageId = messageId,
-                            from = from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                            from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                             chat = chat,
                             content = content,
                             date = date.asDate,
@@ -569,7 +572,7 @@ internal data class RawMessage(
                     } else {
                         BusinessContentMessageImpl(
                             messageId = messageId,
-                            from = from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                            from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                             chat = BusinessChatImpl(
                                 chat.id.toBusinessChatId(business_connection_id),
                                 chat
@@ -594,7 +597,7 @@ internal data class RawMessage(
                 PassportMessage(
                     messageId,
                     chat,
-                    from ?: error("For passport must be provided user, but got null"),
+                    checkedFrom ?: from ?: error("For passport must be provided user, but got null"),
                     date.asDate,
                     passport_data
                 )

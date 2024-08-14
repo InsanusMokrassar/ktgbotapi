@@ -11,6 +11,8 @@ package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.abstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.OptionallyFromUser
+import dev.inmo.tgbotapi.abstracts.OptionallyWithUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
@@ -168,6 +170,7 @@ import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
+import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -296,6 +299,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
@@ -525,519 +529,585 @@ public inline fun <T>
     CommonSendInvoiceData.ifInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T): T?
     = inputInvoiceMessageContentOrNull() ?.let(block)
 
-public inline fun WithUser.fromUserOrNull(): FromUser? = this as?
+public inline fun OptionallyWithUser.optionallyFromUserOrNull(): OptionallyFromUser? = this as?
+    dev.inmo.tgbotapi.abstracts.OptionallyFromUser
+
+public inline fun OptionallyWithUser.optionallyFromUserOrThrow(): OptionallyFromUser = this as
+    dev.inmo.tgbotapi.abstracts.OptionallyFromUser
+
+public inline fun <T> OptionallyWithUser.ifOptionallyFromUser(block: (OptionallyFromUser) -> T): T?
+    = optionallyFromUserOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.fromUserOrNull(): FromUser? = this as?
     dev.inmo.tgbotapi.abstracts.FromUser
 
-public inline fun WithUser.fromUserOrThrow(): FromUser = this as
+public inline fun OptionallyWithUser.fromUserOrThrow(): FromUser = this as
     dev.inmo.tgbotapi.abstracts.FromUser
 
-public inline fun <T> WithUser.ifFromUser(block: (FromUser) -> T): T? = fromUserOrNull()
+public inline fun <T> OptionallyWithUser.ifFromUser(block: (FromUser) -> T): T? = fromUserOrNull()
     ?.let(block)
 
-public inline fun WithUser.chatInviteLinkOrNull(): ChatInviteLink? = this as?
+public inline fun OptionallyWithUser.withUserOrNull(): WithUser? = this as?
+    dev.inmo.tgbotapi.abstracts.WithUser
+
+public inline fun OptionallyWithUser.withUserOrThrow(): WithUser = this as
+    dev.inmo.tgbotapi.abstracts.WithUser
+
+public inline fun <T> OptionallyWithUser.ifWithUser(block: (WithUser) -> T): T? = withUserOrNull()
+    ?.let(block)
+
+public inline fun OptionallyWithUser.chatInviteLinkOrNull(): ChatInviteLink? = this as?
     dev.inmo.tgbotapi.types.ChatInviteLink
 
-public inline fun WithUser.chatInviteLinkOrThrow(): ChatInviteLink = this as
+public inline fun OptionallyWithUser.chatInviteLinkOrThrow(): ChatInviteLink = this as
     dev.inmo.tgbotapi.types.ChatInviteLink
 
-public inline fun <T> WithUser.ifChatInviteLink(block: (ChatInviteLink) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifChatInviteLink(block: (ChatInviteLink) -> T): T? =
     chatInviteLinkOrNull() ?.let(block)
 
-public inline fun WithUser.secondaryChatInviteLinkOrNull(): SecondaryChatInviteLink? = this as?
-    dev.inmo.tgbotapi.types.SecondaryChatInviteLink
+public inline fun OptionallyWithUser.secondaryChatInviteLinkOrNull(): SecondaryChatInviteLink? =
+    this as? dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 
-public inline fun WithUser.secondaryChatInviteLinkOrThrow(): SecondaryChatInviteLink = this as
-    dev.inmo.tgbotapi.types.SecondaryChatInviteLink
-
-public inline fun <T> WithUser.ifSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T): T?
-    = secondaryChatInviteLinkOrNull() ?.let(block)
-
-public inline fun WithUser.primaryInviteLinkOrNull(): PrimaryInviteLink? = this as?
-    dev.inmo.tgbotapi.types.PrimaryInviteLink
-
-public inline fun WithUser.primaryInviteLinkOrThrow(): PrimaryInviteLink = this as
-    dev.inmo.tgbotapi.types.PrimaryInviteLink
-
-public inline fun <T> WithUser.ifPrimaryInviteLink(block: (PrimaryInviteLink) -> T): T? =
-    primaryInviteLinkOrNull() ?.let(block)
-
-public inline fun WithUser.chatInviteLinkWithJoinRequestOrNull(): ChatInviteLinkWithJoinRequest? =
-    this as? dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
-
-public inline fun WithUser.chatInviteLinkWithJoinRequestOrThrow(): ChatInviteLinkWithJoinRequest =
-    this as dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
+public inline fun OptionallyWithUser.secondaryChatInviteLinkOrThrow(): SecondaryChatInviteLink =
+    this as dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 
 public inline fun <T>
-    WithUser.ifChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T): T? =
-    chatInviteLinkWithJoinRequestOrNull() ?.let(block)
+    OptionallyWithUser.ifSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T): T? =
+    secondaryChatInviteLinkOrNull() ?.let(block)
 
-public inline fun WithUser.chatInviteLinkWithLimitedMembersOrNull():
+public inline fun OptionallyWithUser.primaryInviteLinkOrNull(): PrimaryInviteLink? = this as?
+    dev.inmo.tgbotapi.types.PrimaryInviteLink
+
+public inline fun OptionallyWithUser.primaryInviteLinkOrThrow(): PrimaryInviteLink = this as
+    dev.inmo.tgbotapi.types.PrimaryInviteLink
+
+public inline fun <T> OptionallyWithUser.ifPrimaryInviteLink(block: (PrimaryInviteLink) -> T): T? =
+    primaryInviteLinkOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.chatInviteLinkWithJoinRequestOrNull():
+    ChatInviteLinkWithJoinRequest? = this as? dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
+
+public inline fun OptionallyWithUser.chatInviteLinkWithJoinRequestOrThrow():
+    ChatInviteLinkWithJoinRequest = this as dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
+
+public inline fun <T>
+    OptionallyWithUser.ifChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T):
+    T? = chatInviteLinkWithJoinRequestOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.chatInviteLinkWithLimitedMembersOrNull():
     ChatInviteLinkWithLimitedMembers? = this as?
     dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
 
-public inline fun WithUser.chatInviteLinkWithLimitedMembersOrThrow():
+public inline fun OptionallyWithUser.chatInviteLinkWithLimitedMembersOrThrow():
     ChatInviteLinkWithLimitedMembers = this as
     dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
 
 public inline fun <T>
-    WithUser.ifChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T): T?
-    = chatInviteLinkWithLimitedMembersOrNull() ?.let(block)
+    OptionallyWithUser.ifChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T):
+    T? = chatInviteLinkWithLimitedMembersOrNull() ?.let(block)
 
-public inline fun WithUser.chatInviteLinkUnlimitedOrNull(): ChatInviteLinkUnlimited? = this as?
-    dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
+public inline fun OptionallyWithUser.chatInviteLinkUnlimitedOrNull(): ChatInviteLinkUnlimited? =
+    this as? dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 
-public inline fun WithUser.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlimited = this as
-    dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
+public inline fun OptionallyWithUser.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlimited =
+    this as dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 
-public inline fun <T> WithUser.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T): T?
-    = chatInviteLinkUnlimitedOrNull() ?.let(block)
+public inline fun <T>
+    OptionallyWithUser.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T): T? =
+    chatInviteLinkUnlimitedOrNull() ?.let(block)
 
-public inline fun WithUser.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
+public inline fun OptionallyWithUser.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this
+    as? dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 
-public inline fun WithUser.baseChosenInlineResultOrThrow(): BaseChosenInlineResult = this as
-    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
+public inline fun OptionallyWithUser.baseChosenInlineResultOrThrow(): BaseChosenInlineResult = this
+    as dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 
-public inline fun <T> WithUser.ifBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T): T? =
+public inline fun <T>
+    OptionallyWithUser.ifBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T): T? =
     baseChosenInlineResultOrNull() ?.let(block)
 
-public inline fun WithUser.chosenInlineResultOrNull(): ChosenInlineResult? = this as?
+public inline fun OptionallyWithUser.chosenInlineResultOrNull(): ChosenInlineResult? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 
-public inline fun WithUser.chosenInlineResultOrThrow(): ChosenInlineResult = this as
+public inline fun OptionallyWithUser.chosenInlineResultOrThrow(): ChosenInlineResult = this as
     dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 
-public inline fun <T> WithUser.ifChosenInlineResult(block: (ChosenInlineResult) -> T): T? =
-    chosenInlineResultOrNull() ?.let(block)
+public inline fun <T> OptionallyWithUser.ifChosenInlineResult(block: (ChosenInlineResult) -> T): T?
+    = chosenInlineResultOrNull() ?.let(block)
 
-public inline fun WithUser.locationChosenInlineResultOrNull(): LocationChosenInlineResult? = this
-    as? dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
+public inline fun OptionallyWithUser.locationChosenInlineResultOrNull(): LocationChosenInlineResult?
+    = this as? dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
 
-public inline fun WithUser.locationChosenInlineResultOrThrow(): LocationChosenInlineResult = this as
-    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
+public inline fun OptionallyWithUser.locationChosenInlineResultOrThrow(): LocationChosenInlineResult
+    = this as dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
 
 public inline fun <T>
-    WithUser.ifLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T): T? =
+    OptionallyWithUser.ifLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T): T? =
     locationChosenInlineResultOrNull() ?.let(block)
 
-public inline fun WithUser.baseInlineQueryOrNull(): BaseInlineQuery? = this as?
+public inline fun OptionallyWithUser.baseInlineQueryOrNull(): BaseInlineQuery? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 
-public inline fun WithUser.baseInlineQueryOrThrow(): BaseInlineQuery = this as
+public inline fun OptionallyWithUser.baseInlineQueryOrThrow(): BaseInlineQuery = this as
     dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 
-public inline fun <T> WithUser.ifBaseInlineQuery(block: (BaseInlineQuery) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifBaseInlineQuery(block: (BaseInlineQuery) -> T): T? =
     baseInlineQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inlineQueryOrNull(): InlineQuery? = this as?
+public inline fun OptionallyWithUser.inlineQueryOrNull(): InlineQuery? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 
-public inline fun WithUser.inlineQueryOrThrow(): InlineQuery = this as
+public inline fun OptionallyWithUser.inlineQueryOrThrow(): InlineQuery = this as
     dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 
-public inline fun <T> WithUser.ifInlineQuery(block: (InlineQuery) -> T): T? = inlineQueryOrNull()
-    ?.let(block)
+public inline fun <T> OptionallyWithUser.ifInlineQuery(block: (InlineQuery) -> T): T? =
+    inlineQueryOrNull() ?.let(block)
 
-public inline fun WithUser.locationInlineQueryOrNull(): LocationInlineQuery? = this as?
+public inline fun OptionallyWithUser.locationInlineQueryOrNull(): LocationInlineQuery? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 
-public inline fun WithUser.locationInlineQueryOrThrow(): LocationInlineQuery = this as
+public inline fun OptionallyWithUser.locationInlineQueryOrThrow(): LocationInlineQuery = this as
     dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 
-public inline fun <T> WithUser.ifLocationInlineQuery(block: (LocationInlineQuery) -> T): T? =
-    locationInlineQueryOrNull() ?.let(block)
+public inline fun <T> OptionallyWithUser.ifLocationInlineQuery(block: (LocationInlineQuery) -> T):
+    T? = locationInlineQueryOrNull() ?.let(block)
 
-public inline fun WithUser.chatJoinRequestOrNull(): ChatJoinRequest? = this as?
+public inline fun OptionallyWithUser.chatJoinRequestOrNull(): ChatJoinRequest? = this as?
     dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 
-public inline fun WithUser.chatJoinRequestOrThrow(): ChatJoinRequest = this as
+public inline fun OptionallyWithUser.chatJoinRequestOrThrow(): ChatJoinRequest = this as
     dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 
-public inline fun <T> WithUser.ifChatJoinRequest(block: (ChatJoinRequest) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifChatJoinRequest(block: (ChatJoinRequest) -> T): T? =
     chatJoinRequestOrNull() ?.let(block)
 
-public inline fun WithUser.administratorChatMemberOrNull(): AdministratorChatMember? = this as?
-    dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
+public inline fun OptionallyWithUser.administratorChatMemberOrNull(): AdministratorChatMember? =
+    this as? dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
-public inline fun WithUser.administratorChatMemberOrThrow(): AdministratorChatMember = this as
-    dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
+public inline fun OptionallyWithUser.administratorChatMemberOrThrow(): AdministratorChatMember =
+    this as dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
-public inline fun <T> WithUser.ifAdministratorChatMember(block: (AdministratorChatMember) -> T): T?
-    = administratorChatMemberOrNull() ?.let(block)
+public inline fun <T>
+    OptionallyWithUser.ifAdministratorChatMember(block: (AdministratorChatMember) -> T): T? =
+    administratorChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.bannedChatMemberOrNull(): BannedChatMember? = this as?
+public inline fun OptionallyWithUser.bannedChatMemberOrNull(): BannedChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 
-public inline fun WithUser.bannedChatMemberOrThrow(): BannedChatMember = this as
+public inline fun OptionallyWithUser.bannedChatMemberOrThrow(): BannedChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 
-public inline fun <T> WithUser.ifBannedChatMember(block: (BannedChatMember) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifBannedChatMember(block: (BannedChatMember) -> T): T? =
     bannedChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.chatMemberOrNull(): ChatMember? = this as?
+public inline fun OptionallyWithUser.chatMemberOrNull(): ChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.ChatMember
 
-public inline fun WithUser.chatMemberOrThrow(): ChatMember = this as
+public inline fun OptionallyWithUser.chatMemberOrThrow(): ChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.ChatMember
 
-public inline fun <T> WithUser.ifChatMember(block: (ChatMember) -> T): T? = chatMemberOrNull()
-    ?.let(block)
+public inline fun <T> OptionallyWithUser.ifChatMember(block: (ChatMember) -> T): T? =
+    chatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.chatMemberUpdatedOrNull(): ChatMemberUpdated? = this as?
+public inline fun OptionallyWithUser.chatMemberUpdatedOrNull(): ChatMemberUpdated? = this as?
     dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 
-public inline fun WithUser.chatMemberUpdatedOrThrow(): ChatMemberUpdated = this as
+public inline fun OptionallyWithUser.chatMemberUpdatedOrThrow(): ChatMemberUpdated = this as
     dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 
-public inline fun <T> WithUser.ifChatMemberUpdated(block: (ChatMemberUpdated) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifChatMemberUpdated(block: (ChatMemberUpdated) -> T): T? =
     chatMemberUpdatedOrNull() ?.let(block)
 
-public inline fun WithUser.kickedChatMemberOrNull(): KickedChatMember? = this as?
+public inline fun OptionallyWithUser.kickedChatMemberOrNull(): KickedChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 
-public inline fun WithUser.kickedChatMemberOrThrow(): KickedChatMember = this as
+public inline fun OptionallyWithUser.kickedChatMemberOrThrow(): KickedChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 
-public inline fun <T> WithUser.ifKickedChatMember(block: (KickedChatMember) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifKickedChatMember(block: (KickedChatMember) -> T): T? =
     kickedChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.leftChatMemberOrNull(): LeftChatMember? = this as?
+public inline fun OptionallyWithUser.leftChatMemberOrNull(): LeftChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 
-public inline fun WithUser.leftChatMemberOrThrow(): LeftChatMember = this as
+public inline fun OptionallyWithUser.leftChatMemberOrThrow(): LeftChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 
-public inline fun <T> WithUser.ifLeftChatMember(block: (LeftChatMember) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifLeftChatMember(block: (LeftChatMember) -> T): T? =
     leftChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.memberChatMemberOrNull(): MemberChatMember? = this as?
+public inline fun OptionallyWithUser.memberChatMemberOrNull(): MemberChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 
-public inline fun WithUser.memberChatMemberOrThrow(): MemberChatMember = this as
+public inline fun OptionallyWithUser.memberChatMemberOrThrow(): MemberChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 
-public inline fun <T> WithUser.ifMemberChatMember(block: (MemberChatMember) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifMemberChatMember(block: (MemberChatMember) -> T): T? =
     memberChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.ownerChatMemberOrNull(): OwnerChatMember? = this as?
+public inline fun OptionallyWithUser.ownerChatMemberOrNull(): OwnerChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 
-public inline fun WithUser.ownerChatMemberOrThrow(): OwnerChatMember = this as
+public inline fun OptionallyWithUser.ownerChatMemberOrThrow(): OwnerChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 
-public inline fun <T> WithUser.ifOwnerChatMember(block: (OwnerChatMember) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifOwnerChatMember(block: (OwnerChatMember) -> T): T? =
     ownerChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.restrictedChatMemberOrNull(): RestrictedChatMember? = this as?
+public inline fun OptionallyWithUser.restrictedChatMemberOrNull(): RestrictedChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 
-public inline fun WithUser.restrictedChatMemberOrThrow(): RestrictedChatMember = this as
+public inline fun OptionallyWithUser.restrictedChatMemberOrThrow(): RestrictedChatMember = this as
     dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 
-public inline fun <T> WithUser.ifRestrictedChatMember(block: (RestrictedChatMember) -> T): T? =
-    restrictedChatMemberOrNull() ?.let(block)
+public inline fun <T> OptionallyWithUser.ifRestrictedChatMember(block: (RestrictedChatMember) -> T):
+    T? = restrictedChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.specialRightsChatMemberOrNull(): SpecialRightsChatMember? = this as?
-    dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
+public inline fun OptionallyWithUser.specialRightsChatMemberOrNull(): SpecialRightsChatMember? =
+    this as? dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 
-public inline fun WithUser.specialRightsChatMemberOrThrow(): SpecialRightsChatMember = this as
-    dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
+public inline fun OptionallyWithUser.specialRightsChatMemberOrThrow(): SpecialRightsChatMember =
+    this as dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 
-public inline fun <T> WithUser.ifSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T): T?
-    = specialRightsChatMemberOrNull() ?.let(block)
+public inline fun <T>
+    OptionallyWithUser.ifSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T): T? =
+    specialRightsChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as?
+public inline fun OptionallyWithUser.subscriptionMemberChatMemberOrNull():
+    SubscriptionMemberChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+
+public inline fun OptionallyWithUser.subscriptionMemberChatMemberOrThrow():
+    SubscriptionMemberChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+
+public inline fun <T>
+    OptionallyWithUser.ifSubscriptionMemberChatMember(block: (SubscriptionMemberChatMember) -> T):
+    T? = subscriptionMemberChatMemberOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-public inline fun WithUser.leftChatMemberEventOrThrow(): LeftChatMemberEvent = this as
+public inline fun OptionallyWithUser.leftChatMemberEventOrThrow(): LeftChatMemberEvent = this as
     dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-public inline fun <T> WithUser.ifLeftChatMemberEvent(block: (LeftChatMemberEvent) -> T): T? =
-    leftChatMemberEventOrNull() ?.let(block)
+public inline fun <T> OptionallyWithUser.ifLeftChatMemberEvent(block: (LeftChatMemberEvent) -> T):
+    T? = leftChatMemberEventOrNull() ?.let(block)
 
-public inline fun WithUser.commonGroupEventMessageOrNull(): CommonGroupEventMessage<GroupEvent>? =
-    this as?
+public inline fun OptionallyWithUser.commonGroupEventMessageOrNull():
+    CommonGroupEventMessage<GroupEvent>? = this as?
     dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-public inline fun WithUser.commonGroupEventMessageOrThrow(): CommonGroupEventMessage<GroupEvent> =
-    this as
+public inline fun OptionallyWithUser.commonGroupEventMessageOrThrow():
+    CommonGroupEventMessage<GroupEvent> = this as
     dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
 public inline fun <T>
-    WithUser.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T): T? =
-    commonGroupEventMessageOrNull() ?.let(block)
+    OptionallyWithUser.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T):
+    T? = commonGroupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.commonSupergroupEventMessageOrNull():
+public inline fun OptionallyWithUser.commonSupergroupEventMessageOrNull():
     CommonSupergroupEventMessage<SupergroupEvent>? = this as?
     dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-public inline fun WithUser.commonSupergroupEventMessageOrThrow():
+public inline fun OptionallyWithUser.commonSupergroupEventMessageOrThrow():
     CommonSupergroupEventMessage<SupergroupEvent> = this as
     dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
 public inline fun <T>
-    WithUser.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
+    OptionallyWithUser.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
     T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.passportMessageOrNull(): PassportMessage? = this as?
+public inline fun OptionallyWithUser.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
 
-public inline fun WithUser.passportMessageOrThrow(): PassportMessage = this as
+public inline fun OptionallyWithUser.passportMessageOrThrow(): PassportMessage = this as
     dev.inmo.tgbotapi.types.message.PassportMessage
 
-public inline fun <T> WithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
     passportMessageOrNull() ?.let(block)
 
-public inline fun WithUser.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? =
-    this as?
+public inline fun OptionallyWithUser.businessContentMessageOrNull():
+    BusinessContentMessage<MessageContent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-public inline fun WithUser.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> =
-    this as
+public inline fun OptionallyWithUser.businessContentMessageOrThrow():
+    BusinessContentMessage<MessageContent> = this as
     dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T>
-    WithUser.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T): T? =
-    businessContentMessageOrNull() ?.let(block)
+    OptionallyWithUser.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T):
+    T? = businessContentMessageOrNull() ?.let(block)
 
-public inline fun WithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
+public inline fun OptionallyWithUser.channelContentMessageOrNull():
+    ChannelContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.channelContentMessageOrThrow():
+    ChannelContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    OptionallyWithUser.ifChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T):
+    T? = channelContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.optionallyFromUserMessageOrNull(): OptionallyFromUserMessage? =
+    this as? dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
+
+public inline fun OptionallyWithUser.optionallyFromUserMessageOrThrow(): OptionallyFromUserMessage =
+    this as dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
+
+public inline fun <T>
+    OptionallyWithUser.ifOptionallyFromUserMessage(block: (OptionallyFromUserMessage) -> T): T? =
+    optionallyFromUserMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-public inline fun WithUser.fromUserMessageOrThrow(): FromUserMessage = this as
+public inline fun OptionallyWithUser.fromUserMessageOrThrow(): FromUserMessage = this as
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-public inline fun <T> WithUser.ifFromUserMessage(block: (FromUserMessage) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifFromUserMessage(block: (FromUserMessage) -> T): T? =
     fromUserMessageOrNull() ?.let(block)
 
-public inline fun WithUser.groupEventMessageOrNull(): GroupEventMessage<GroupEvent>? = this as?
+public inline fun OptionallyWithUser.groupEventMessageOrNull(): GroupEventMessage<GroupEvent>? =
+    this as?
     dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-public inline fun WithUser.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as
+public inline fun OptionallyWithUser.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> =
+    this as
     dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-public inline fun <T> WithUser.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T?
-    = groupEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    OptionallyWithUser.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T? =
+    groupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.commonGroupContentMessageOrNull():
+public inline fun OptionallyWithUser.commonGroupContentMessageOrNull():
     CommonGroupContentMessage<MessageContent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-public inline fun WithUser.commonGroupContentMessageOrThrow():
+public inline fun OptionallyWithUser.commonGroupContentMessageOrThrow():
     CommonGroupContentMessage<MessageContent> = this as
     dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T>
-    WithUser.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T):
+    OptionallyWithUser.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T):
     T? = commonGroupContentMessageOrNull() ?.let(block)
 
-public inline fun WithUser.commonForumContentMessageOrNull():
+public inline fun OptionallyWithUser.commonForumContentMessageOrNull():
     CommonForumContentMessage<MessageContent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-public inline fun WithUser.commonForumContentMessageOrThrow():
+public inline fun OptionallyWithUser.commonForumContentMessageOrThrow():
     CommonForumContentMessage<MessageContent> = this as
     dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T>
-    WithUser.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T):
+    OptionallyWithUser.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T):
     T? = commonForumContentMessageOrNull() ?.let(block)
 
-public inline fun WithUser.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
-    this as?
+public inline fun OptionallyWithUser.privateContentMessageOrNull():
+    PrivateContentMessage<MessageContent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-public inline fun WithUser.privateContentMessageOrThrow(): PrivateContentMessage<MessageContent> =
-    this as
+public inline fun OptionallyWithUser.privateContentMessageOrThrow():
+    PrivateContentMessage<MessageContent> = this as
     dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T>
-    WithUser.ifPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T): T? =
-    privateContentMessageOrNull() ?.let(block)
+    OptionallyWithUser.ifPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T):
+    T? = privateContentMessageOrNull() ?.let(block)
 
-public inline fun WithUser.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>?
-    = this as?
+public inline fun OptionallyWithUser.supergroupEventMessageOrNull():
+    SupergroupEventMessage<SupergroupEvent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-public inline fun WithUser.supergroupEventMessageOrThrow(): SupergroupEventMessage<SupergroupEvent>
-    = this as
+public inline fun OptionallyWithUser.supergroupEventMessageOrThrow():
+    SupergroupEventMessage<SupergroupEvent> = this as
     dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
 public inline fun <T>
-    WithUser.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T): T? =
-    supergroupEventMessageOrNull() ?.let(block)
+    OptionallyWithUser.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T):
+    T? = supergroupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.preCheckoutQueryOrNull(): PreCheckoutQuery? = this as?
+public inline fun OptionallyWithUser.preCheckoutQueryOrNull(): PreCheckoutQuery? = this as?
     dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
-public inline fun WithUser.preCheckoutQueryOrThrow(): PreCheckoutQuery = this as
+public inline fun OptionallyWithUser.preCheckoutQueryOrThrow(): PreCheckoutQuery = this as
     dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
-public inline fun <T> WithUser.ifPreCheckoutQuery(block: (PreCheckoutQuery) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifPreCheckoutQuery(block: (PreCheckoutQuery) -> T): T? =
     preCheckoutQueryOrNull() ?.let(block)
 
-public inline fun WithUser.shippingQueryOrNull(): ShippingQuery? = this as?
+public inline fun OptionallyWithUser.shippingQueryOrNull(): ShippingQuery? = this as?
     dev.inmo.tgbotapi.types.payments.ShippingQuery
 
-public inline fun WithUser.shippingQueryOrThrow(): ShippingQuery = this as
+public inline fun OptionallyWithUser.shippingQueryOrThrow(): ShippingQuery = this as
     dev.inmo.tgbotapi.types.payments.ShippingQuery
 
-public inline fun <T> WithUser.ifShippingQuery(block: (ShippingQuery) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifShippingQuery(block: (ShippingQuery) -> T): T? =
     shippingQueryOrNull() ?.let(block)
 
-public inline fun WithUser.pollAnswerOrNull(): PollAnswer? = this as?
+public inline fun OptionallyWithUser.pollAnswerOrNull(): PollAnswer? = this as?
     dev.inmo.tgbotapi.types.polls.PollAnswer
 
-public inline fun WithUser.pollAnswerOrThrow(): PollAnswer = this as
+public inline fun OptionallyWithUser.pollAnswerOrThrow(): PollAnswer = this as
     dev.inmo.tgbotapi.types.polls.PollAnswer
 
-public inline fun <T> WithUser.ifPollAnswer(block: (PollAnswer) -> T): T? = pollAnswerOrNull()
-    ?.let(block)
+public inline fun <T> OptionallyWithUser.ifPollAnswer(block: (PollAnswer) -> T): T? =
+    pollAnswerOrNull() ?.let(block)
 
-public inline fun WithUser.abstractMessageCallbackQueryOrNull(): AbstractMessageCallbackQuery? =
-    this as? dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
+public inline fun OptionallyWithUser.abstractMessageCallbackQueryOrNull():
+    AbstractMessageCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
 
-public inline fun WithUser.abstractMessageCallbackQueryOrThrow(): AbstractMessageCallbackQuery =
-    this as dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
+public inline fun OptionallyWithUser.abstractMessageCallbackQueryOrThrow():
+    AbstractMessageCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
 
 public inline fun <T>
-    WithUser.ifAbstractMessageCallbackQuery(block: (AbstractMessageCallbackQuery) -> T): T? =
-    abstractMessageCallbackQueryOrNull() ?.let(block)
+    OptionallyWithUser.ifAbstractMessageCallbackQuery(block: (AbstractMessageCallbackQuery) -> T):
+    T? = abstractMessageCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.callbackQueryOrNull(): CallbackQuery? = this as?
+public inline fun OptionallyWithUser.callbackQueryOrNull(): CallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
-public inline fun WithUser.callbackQueryOrThrow(): CallbackQuery = this as
+public inline fun OptionallyWithUser.callbackQueryOrThrow(): CallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
-public inline fun <T> WithUser.ifCallbackQuery(block: (CallbackQuery) -> T): T? =
+public inline fun <T> OptionallyWithUser.ifCallbackQuery(block: (CallbackQuery) -> T): T? =
     callbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.unknownCallbackQueryTypeOrNull(): UnknownCallbackQueryType? = this as?
-    dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
+public inline fun OptionallyWithUser.unknownCallbackQueryTypeOrNull(): UnknownCallbackQueryType? =
+    this as? dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
 
-public inline fun WithUser.unknownCallbackQueryTypeOrThrow(): UnknownCallbackQueryType = this as
-    dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
-
-public inline fun <T> WithUser.ifUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T):
-    T? = unknownCallbackQueryTypeOrNull() ?.let(block)
-
-public inline fun WithUser.dataCallbackQueryOrNull(): DataCallbackQuery? = this as?
-    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
-
-public inline fun WithUser.dataCallbackQueryOrThrow(): DataCallbackQuery = this as
-    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
-
-public inline fun <T> WithUser.ifDataCallbackQuery(block: (DataCallbackQuery) -> T): T? =
-    dataCallbackQueryOrNull() ?.let(block)
-
-public inline fun WithUser.gameShortNameCallbackQueryOrNull(): GameShortNameCallbackQuery? = this
-    as? dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
-
-public inline fun WithUser.gameShortNameCallbackQueryOrThrow(): GameShortNameCallbackQuery = this as
-    dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
+public inline fun OptionallyWithUser.unknownCallbackQueryTypeOrThrow(): UnknownCallbackQueryType =
+    this as dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
 
 public inline fun <T>
-    WithUser.ifGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T): T? =
+    OptionallyWithUser.ifUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T): T? =
+    unknownCallbackQueryTypeOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.dataCallbackQueryOrNull(): DataCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
+
+public inline fun OptionallyWithUser.dataCallbackQueryOrThrow(): DataCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
+
+public inline fun <T> OptionallyWithUser.ifDataCallbackQuery(block: (DataCallbackQuery) -> T): T? =
+    dataCallbackQueryOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.gameShortNameCallbackQueryOrNull(): GameShortNameCallbackQuery?
+    = this as? dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
+
+public inline fun OptionallyWithUser.gameShortNameCallbackQueryOrThrow(): GameShortNameCallbackQuery
+    = this as dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
+
+public inline fun <T>
+    OptionallyWithUser.ifGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T): T? =
     gameShortNameCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inaccessibleMessageCallbackQueryOrNull():
+public inline fun OptionallyWithUser.inaccessibleMessageCallbackQueryOrNull():
     InaccessibleMessageCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageCallbackQuery
 
-public inline fun WithUser.inaccessibleMessageCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.inaccessibleMessageCallbackQueryOrThrow():
     InaccessibleMessageCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInaccessibleMessageCallbackQuery(block: (InaccessibleMessageCallbackQuery) -> T): T?
-    = inaccessibleMessageCallbackQueryOrNull() ?.let(block)
+    OptionallyWithUser.ifInaccessibleMessageCallbackQuery(block: (InaccessibleMessageCallbackQuery) -> T):
+    T? = inaccessibleMessageCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inaccessibleMessageDataCallbackQueryOrNull():
+public inline fun OptionallyWithUser.inaccessibleMessageDataCallbackQueryOrNull():
     InaccessibleMessageDataCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageDataCallbackQuery
 
-public inline fun WithUser.inaccessibleMessageDataCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.inaccessibleMessageDataCallbackQueryOrThrow():
     InaccessibleMessageDataCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageDataCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInaccessibleMessageDataCallbackQuery(block: (InaccessibleMessageDataCallbackQuery) -> T):
+    OptionallyWithUser.ifInaccessibleMessageDataCallbackQuery(block: (InaccessibleMessageDataCallbackQuery) -> T):
     T? = inaccessibleMessageDataCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inaccessibleMessageGameShortNameCallbackQueryOrNull():
+public inline fun OptionallyWithUser.inaccessibleMessageGameShortNameCallbackQueryOrNull():
     InaccessibleMessageGameShortNameCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageGameShortNameCallbackQuery
 
-public inline fun WithUser.inaccessibleMessageGameShortNameCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.inaccessibleMessageGameShortNameCallbackQueryOrThrow():
     InaccessibleMessageGameShortNameCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageGameShortNameCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInaccessibleMessageGameShortNameCallbackQuery(block: (InaccessibleMessageGameShortNameCallbackQuery) -> T):
+    OptionallyWithUser.ifInaccessibleMessageGameShortNameCallbackQuery(block: (InaccessibleMessageGameShortNameCallbackQuery) -> T):
     T? = inaccessibleMessageGameShortNameCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inlineMessageIdCallbackQueryOrNull(): InlineMessageIdCallbackQuery? =
-    this as? dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
+public inline fun OptionallyWithUser.inlineMessageIdCallbackQueryOrNull():
+    InlineMessageIdCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
 
-public inline fun WithUser.inlineMessageIdCallbackQueryOrThrow(): InlineMessageIdCallbackQuery =
-    this as dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
+public inline fun OptionallyWithUser.inlineMessageIdCallbackQueryOrThrow():
+    InlineMessageIdCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T): T? =
-    inlineMessageIdCallbackQueryOrNull() ?.let(block)
+    OptionallyWithUser.ifInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T):
+    T? = inlineMessageIdCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inlineMessageIdDataCallbackQueryOrNull():
+public inline fun OptionallyWithUser.inlineMessageIdDataCallbackQueryOrNull():
     InlineMessageIdDataCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
 
-public inline fun WithUser.inlineMessageIdDataCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.inlineMessageIdDataCallbackQueryOrThrow():
     InlineMessageIdDataCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T): T?
-    = inlineMessageIdDataCallbackQueryOrNull() ?.let(block)
+    OptionallyWithUser.ifInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T):
+    T? = inlineMessageIdDataCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.inlineMessageIdGameShortNameCallbackQueryOrNull():
+public inline fun OptionallyWithUser.inlineMessageIdGameShortNameCallbackQueryOrNull():
     InlineMessageIdGameShortNameCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
 
-public inline fun WithUser.inlineMessageIdGameShortNameCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.inlineMessageIdGameShortNameCallbackQueryOrThrow():
     InlineMessageIdGameShortNameCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
 
 public inline fun <T>
-    WithUser.ifInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T):
+    OptionallyWithUser.ifInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T):
     T? = inlineMessageIdGameShortNameCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.messageCallbackQueryOrNull(): MessageCallbackQuery? = this as?
+public inline fun OptionallyWithUser.messageCallbackQueryOrNull(): MessageCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 
-public inline fun WithUser.messageCallbackQueryOrThrow(): MessageCallbackQuery = this as
+public inline fun OptionallyWithUser.messageCallbackQueryOrThrow(): MessageCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 
-public inline fun <T> WithUser.ifMessageCallbackQuery(block: (MessageCallbackQuery) -> T): T? =
-    messageCallbackQueryOrNull() ?.let(block)
+public inline fun <T> OptionallyWithUser.ifMessageCallbackQuery(block: (MessageCallbackQuery) -> T):
+    T? = messageCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.messageDataCallbackQueryOrNull(): MessageDataCallbackQuery? = this as?
-    dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
+public inline fun OptionallyWithUser.messageDataCallbackQueryOrNull(): MessageDataCallbackQuery? =
+    this as? dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 
-public inline fun WithUser.messageDataCallbackQueryOrThrow(): MessageDataCallbackQuery = this as
-    dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
+public inline fun OptionallyWithUser.messageDataCallbackQueryOrThrow(): MessageDataCallbackQuery =
+    this as dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 
-public inline fun <T> WithUser.ifMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T):
-    T? = messageDataCallbackQueryOrNull() ?.let(block)
+public inline fun <T>
+    OptionallyWithUser.ifMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T): T? =
+    messageDataCallbackQueryOrNull() ?.let(block)
 
-public inline fun WithUser.messageGameShortNameCallbackQueryOrNull():
+public inline fun OptionallyWithUser.messageGameShortNameCallbackQueryOrNull():
     MessageGameShortNameCallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 
-public inline fun WithUser.messageGameShortNameCallbackQueryOrThrow():
+public inline fun OptionallyWithUser.messageGameShortNameCallbackQueryOrThrow():
     MessageGameShortNameCallbackQuery = this as
     dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 
 public inline fun <T>
-    WithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
+    OptionallyWithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
     T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
 
 public inline fun InlineQueryResultsButton.startOrNull(): InlineQueryResultsButton.Start? = this as?
@@ -3701,6 +3771,15 @@ public inline fun Message.contentMessageOrThrow(): ContentMessage<MessageContent
 public inline fun <T> Message.ifContentMessage(block: (ContentMessage<MessageContent>) -> T): T? =
     contentMessageOrNull() ?.let(block)
 
+public inline fun Message.optionallyFromUserMessageOrNull(): OptionallyFromUserMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
+
+public inline fun Message.optionallyFromUserMessageOrThrow(): OptionallyFromUserMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
+
+public inline fun <T> Message.ifOptionallyFromUserMessage(block: (OptionallyFromUserMessage) -> T):
+    T? = optionallyFromUserMessageOrNull() ?.let(block)
+
 public inline fun Message.fromUserMessageOrNull(): FromUserMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
@@ -5328,6 +5407,14 @@ public inline fun Reaction.emojiOrThrow(): Reaction.Emoji = this as
 
 public inline fun <T> Reaction.ifEmoji(block: (Reaction.Emoji) -> T): T? = emojiOrNull()
     ?.let(block)
+
+public inline fun Reaction.paidOrNull(): Reaction.Paid? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.Paid
+
+public inline fun Reaction.paidOrThrow(): Reaction.Paid = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.Paid
+
+public inline fun <T> Reaction.ifPaid(block: (Reaction.Paid) -> T): T? = paidOrNull() ?.let(block)
 
 public inline fun Reaction.unknownOrNull(): Reaction.Unknown? = this as?
     dev.inmo.tgbotapi.types.reactions.Reaction.Unknown

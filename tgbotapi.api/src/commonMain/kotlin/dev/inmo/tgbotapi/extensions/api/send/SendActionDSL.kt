@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
+import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
+import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.micro_utils.coroutines.safelyWithResult
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -22,16 +24,17 @@ public suspend fun <T> TelegramBot.withAction(
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
-    val botActionJob = CoroutineScope(currentCoroutineContext()).launch {
+    val actionScope = currentCoroutineContext().LinkedSupervisorScope()
+    actionScope.launch {
         while (isActive) {
-            delay(refreshTime)
-            safelyWithoutExceptions {
+            runCatching {
                 execute(actionRequest)
             }
+            delay(refreshTime)
         }
     }
-    val result = safelyWithResult { block() }
-    botActionJob.cancel()
+    val result = runCatchingSafely { block() }
+    actionScope.coroutineContext.job.cancel()
     return result.getOrThrow()
 }
 

@@ -1,16 +1,26 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
 import korlibs.time.DateTime
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
+import korlibs.time.TimeSpan
+import korlibs.time.days
 import kotlinx.serialization.*
 
 sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInviteLinkRequest<R> {
     val expirationUnixTimeStamp: TelegramDate?
     override val expireDate: DateTime?
         get() = expirationUnixTimeStamp ?.asDate
+
     override fun method(): String = "createChatInviteLink"
+
+    sealed interface Subscription : CreateChatInviteLink<ChatInviteLinkUnlimited> {
+        val subscriptionPeriod: TimeSpan
+        val subscriptionPrice: UInt
+
+        override fun method(): String = "createChatSubscriptionInviteLink"
+    }
 
     companion object {
         fun unlimited(
@@ -45,11 +55,18 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
             expiration: DateTime,
             name: String? = null,
         ) = withJoinRequest(chatId, name, expiration.toTelegramDate())
+        fun subscription(
+            chatId: ChatIdentifier,
+            subscriptionPrice: UInt,
+            subscriptionPeriod: TimeSpan = 30.days,
+            name: String? = null,
+            expirationUnixTimeStamp: TelegramDate? = null,
+        ) = CreateChatSubscriptionInviteLink(chatId, subscriptionPrice, name, subscriptionPeriod, expirationUnixTimeStamp)
     }
 }
 
 /**
- * Represent [https://core.telegram.org/bots/api#createchatinvitelink] request WITHOUT `member_limit`
+ * Represent [request](https://core.telegram.org/bots/api#createchatinvitelink) WITHOUT `member_limit`
  * and `creates_join_request`
  *
  * @see CreateChatInviteLink.unlimited
@@ -72,7 +89,33 @@ data class CreateChatInviteLinkUnlimited(
 }
 
 /**
- * Represent [https://core.telegram.org/bots/api#createchatinvitelink] request WITH `member_limit`
+ * Represent [request](https://core.telegram.org/bots/api#createchatsubscriptioninvitelink)
+ *
+ * @see CreateChatInviteLink.subscription
+ */
+@Serializable
+data class CreateChatSubscriptionInviteLink(
+    @SerialName(chatIdField)
+    override val chatId: ChatIdentifier,
+    @SerialName(subscriptionPriceField)
+    override val subscriptionPrice: UInt,
+    @SerialName(nameField)
+    override val name: String? = null,
+    @SerialName(subscriptionPeriodField)
+    @EncodeDefault
+    @Serializable(TimeSpanAsSecondsSerializer::class)
+    override val subscriptionPeriod: TimeSpan = 30.days,
+    @SerialName(expireDateField)
+    override val expirationUnixTimeStamp: TelegramDate? = null,
+) : CreateChatInviteLink.Subscription {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+    override val resultDeserializer: DeserializationStrategy<ChatInviteLinkUnlimited>
+        get() = ChatInviteLinkUnlimited.serializer()
+}
+
+/**
+ * Represent [request](https://core.telegram.org/bots/api#createchatinvitelink) WITH `member_limit`
  * and WITHOUT `creates_join_request`
  *
  * @see CreateChatInviteLink.withLimitedMembers
@@ -95,7 +138,7 @@ data class CreateChatInviteLinkWithLimitedMembers(
 }
 
 /**
- * Represent [https://core.telegram.org/bots/api#createchatinvitelink] request WITHOUT `member_limit`
+ * Represent [request](https://core.telegram.org/bots/api#createchatinvitelink) WITHOUT `member_limit`
  * and WITH `creates_join_request`
  *
  * @see CreateChatInviteLink.withJoinRequest

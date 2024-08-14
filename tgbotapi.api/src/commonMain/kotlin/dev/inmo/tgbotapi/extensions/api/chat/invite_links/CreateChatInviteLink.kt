@@ -5,6 +5,8 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.CreateChatInviteLink
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PublicChat
+import korlibs.time.TimeSpan
+import korlibs.time.days
 
 public suspend fun TelegramBot.createChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
@@ -81,3 +83,71 @@ public suspend fun TelegramBot.createChatInviteLinkWithJoinRequest(
     expiration: DateTime,
     name: String? = null,
 ): ChatInviteLinkWithJoinRequest = createChatInviteLinkWithJoinRequest(chat.id, name, expiration.toTelegramDate())
+
+
+// Subscriptions
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    subscriptionPrice: UInt,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: TelegramDate? = null,
+): ChatInviteLinkUnlimited = execute(CreateChatInviteLink.subscription(chatId, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp))
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chat: PublicChat,
+    subscriptionPrice: UInt,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: TelegramDate? = null,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chat.id, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp)
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    subscriptionPrice: UInt,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: DateTime,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chatId, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp.toTelegramDate())
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chat: PublicChat,
+    subscriptionPrice: UInt,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: DateTime,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chat.id, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp)
+
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    subscriptionPrice: Int,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: TelegramDate? = null,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chatId, subscriptionPrice.toUInt(), subscriptionPeriod, name, expirationUnixTimeStamp)
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chat: PublicChat,
+    subscriptionPrice: Int,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: TelegramDate? = null,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chat, subscriptionPrice.toUInt(), subscriptionPeriod, name, expirationUnixTimeStamp)
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chatId: ChatIdentifier,
+    subscriptionPrice: Int,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: DateTime,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chatId, subscriptionPrice.toUInt(), subscriptionPeriod, name, expirationUnixTimeStamp)
+
+public suspend fun TelegramBot.createChatSubscriptionInviteLink(
+    chat: PublicChat,
+    subscriptionPrice: Int,
+    subscriptionPeriod: TimeSpan = 30.days,
+    name: String? = null,
+    expirationUnixTimeStamp: DateTime,
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(chat, subscriptionPrice.toUInt(), subscriptionPeriod, name, expirationUnixTimeStamp)

@@ -457,6 +457,8 @@ const val permissionsField = "permissions"
 const val typeField = "type"
 const val valueField = "value"
 const val creatorField = "creator"
+const val subscriptionPeriodField = "subscription_period"
+const val subscriptionPriceField = "subscription_price"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
