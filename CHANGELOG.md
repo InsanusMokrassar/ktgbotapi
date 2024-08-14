@@ -2,6 +2,10 @@
 
 ## 17.0.0
 
+* `API`:
+    * Change order of delay and sending action in [SendActionDSL](tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/SendActionDSL.kt)
+    (thanks to [DRSchlaubi](https://github.com/DRSchlaubi), [PR #833](https://github.com/InsanusMokrassar/ktgbotapi/pull/883))
+
 ## 16.0.0
 
 **THIS UPDATE CONTAINS KOTLIN UPDATE UP TO 2.0**
