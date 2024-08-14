@@ -24,10 +24,10 @@ public suspend fun <T> TelegramBot.withAction(
     }
     val botActionJob = CoroutineScope(currentCoroutineContext()).launch {
         while (isActive) {
-            delay(refreshTime)
             safelyWithoutExceptions {
                 execute(actionRequest)
             }
+            delay(refreshTime)
         }
     }
     val result = safelyWithResult { block() }
