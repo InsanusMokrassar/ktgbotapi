@@ -1775,6 +1775,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifOtherDocumentsSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifOutgoing (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifOwnerChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPaid (Ldev/inmo/tgbotapi/types/reactions/Reaction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPaidMediaInfoContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPassport (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPassportElementErrorDataField (Ldev/inmo/tgbotapi/types/passport/PassportElementError;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2197,6 +2198,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ownerChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/OwnerChatMember;
 	public static final fun paidMediaInfoContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/PaidMediaInfoContent;
 	public static final fun paidMediaInfoContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/PaidMediaInfoContent;
+	public static final fun paidOrNull (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid;
+	public static final fun paidOrThrow (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid;
 	public static final fun passportElementErrorDataFieldOrNull (Ldev/inmo/tgbotapi/types/passport/PassportElementError;)Ldev/inmo/tgbotapi/types/passport/PassportElementErrorDataField;
 	public static final fun passportElementErrorDataFieldOrThrow (Ldev/inmo/tgbotapi/types/passport/PassportElementError;)Ldev/inmo/tgbotapi/types/passport/PassportElementErrorDataField;
 	public static final fun passportElementErrorFileOrNull (Ldev/inmo/tgbotapi/types/passport/PassportElementError;)Ldev/inmo/tgbotapi/types/passport/PassportElementErrorFile;

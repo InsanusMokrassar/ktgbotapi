@@ -5408,6 +5408,14 @@ public inline fun Reaction.emojiOrThrow(): Reaction.Emoji = this as
 public inline fun <T> Reaction.ifEmoji(block: (Reaction.Emoji) -> T): T? = emojiOrNull()
     ?.let(block)
 
+public inline fun Reaction.paidOrNull(): Reaction.Paid? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.Paid
+
+public inline fun Reaction.paidOrThrow(): Reaction.Paid = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.Paid
+
+public inline fun <T> Reaction.ifPaid(block: (Reaction.Paid) -> T): T? = paidOrNull() ?.let(block)
+
 public inline fun Reaction.unknownOrNull(): Reaction.Unknown? = this as?
     dev.inmo.tgbotapi.types.reactions.Reaction.Unknown
 
