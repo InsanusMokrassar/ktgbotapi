@@ -170,6 +170,7 @@ import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
+import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -771,6 +772,18 @@ public inline fun OptionallyWithUser.specialRightsChatMemberOrThrow(): SpecialRi
 public inline fun <T>
     OptionallyWithUser.ifSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T): T? =
     specialRightsChatMemberOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.subscriptionMemberChatMemberOrNull():
+    SubscriptionMemberChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+
+public inline fun OptionallyWithUser.subscriptionMemberChatMemberOrThrow():
+    SubscriptionMemberChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+
+public inline fun <T>
+    OptionallyWithUser.ifSubscriptionMemberChatMember(block: (SubscriptionMemberChatMember) -> T):
+    T? = subscriptionMemberChatMemberOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent

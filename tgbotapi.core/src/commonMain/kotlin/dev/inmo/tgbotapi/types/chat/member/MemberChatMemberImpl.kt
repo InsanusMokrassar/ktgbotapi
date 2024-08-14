@@ -8,10 +8,7 @@ import kotlinx.serialization.*
 @Serializable
 data class MemberChatMemberImpl(
     @SerialName(userField)
-    override val user: User,
-    @SerialName(untilDateField)
-    @Serializable(TelegramDateSerializer::class)
-    override val untilDate: TelegramDate? = null
+    override val user: User
 ) : MemberChatMember {
     @SerialName(statusField)
     @Required
