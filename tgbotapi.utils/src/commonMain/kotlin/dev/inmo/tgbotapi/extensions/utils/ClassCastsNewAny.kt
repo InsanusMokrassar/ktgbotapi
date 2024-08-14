@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.abstracts.OptionallyFromUser
 import dev.inmo.tgbotapi.abstracts.OptionallyWithUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
+import dev.inmo.tgbotapi.types.message.abstracts.WithSenderChatMessage
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
@@ -54,3 +55,13 @@ inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = thi
 
 @PreviewFeature
 inline fun Any.withOptionalLanguageCodeOrThrow(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
+
+@PreviewFeature
+inline fun <T> Any.ifWithSenderChatMessage(block: (WithSenderChatMessage) -> T) =
+    withSenderChatMessageOrNull()?.let(block)
+
+@PreviewFeature
+inline fun Any.withSenderChatMessageOrNull(): WithSenderChatMessage? = this as? WithSenderChatMessage
+
+@PreviewFeature
+inline fun Any.withSenderChatMessageOrThrow(): WithSenderChatMessage = this as WithSenderChatMessage

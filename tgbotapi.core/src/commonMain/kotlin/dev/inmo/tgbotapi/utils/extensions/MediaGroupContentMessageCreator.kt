@@ -17,8 +17,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
     return when (sourceMessage) {
         is ChannelContentMessage -> ChannelContentMessageImpl(
             messageId = sourceMessage.messageId,
-            from = sourceMessage.from,
             chat = sourceMessage.chat,
+            senderChat = sourceMessage.senderChat,
             content = content,
             date = sourceMessage.date,
             editDate = sourceMessage.editDate,
