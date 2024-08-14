@@ -2,11 +2,9 @@
 
 package dev.inmo.tgbotapi.types.payments.stars
 
-import dev.inmo.tgbotapi.types.InvoicePayload
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.invoicePayloadField
-import dev.inmo.tgbotapi.types.userField
-import dev.inmo.tgbotapi.types.withdrawalStateField
+import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
@@ -43,7 +41,9 @@ sealed interface TransactionPartner {
         @SerialName(userField)
         val user: PreviewUser,
         @SerialName(invoicePayloadField)
-        val invoicePayload: InvoicePayload? = null
+        val invoicePayload: InvoicePayload? = null,
+        @SerialName(paidMediaField)
+        val paidMedia: List<PaidMedia>? = null
     ) : TransactionPartner {
         @EncodeDefault
         override val type: String = Companion.type
