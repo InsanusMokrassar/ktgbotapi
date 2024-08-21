@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.types.updateIdField
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -47,6 +48,18 @@ object UpdateSerializerWithoutSerialization : KSerializer<Update> {
  * @see kotlinx.serialization.json.Json.parse
  */
 object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
+    private val _customDeserializationStrategies = LinkedHashSet<JsonDeserializerStrategy>()
+
+    /**
+     * Contains [JsonDeserializerStrategy] which will be used in [deserialize] method when standard
+     * [RawUpdate] serializer will be unable to create [RawUpdate] (and [Update] as well)
+     */
+    val customDeserializationStrategies: Set<JsonDeserializerStrategy>
+        get() = _customDeserializationStrategies.toSet()
+    fun interface JsonDeserializerStrategy {
+        fun deserializeOrNull(json: JsonElement): Update?
+    }
+
     override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Update {
@@ -59,11 +72,27 @@ object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
                 asJson
             )
         }.getOrElse {
-            UnknownUpdate(
+            customDeserializationStrategies.firstNotNullOfOrNull {
+                it.deserializeOrNull(asJson)
+            } ?: UnknownUpdate(
                 UpdateId((asJson as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
                 asJson,
                 it
             )
         }
     }
+
+    /**
+     * Adding [deserializationStrategy] into [customDeserializationStrategies] for using in case of unknown update
+     */
+    fun addUpdateDeserializationStrategy(
+        deserializationStrategy: JsonDeserializerStrategy
+    ) = _customDeserializationStrategies.add(deserializationStrategy)
+
+    /**
+     * Removing [deserializationStrategy] from [customDeserializationStrategies]
+     */
+    fun removeUpdateDeserializationStrategy(
+        deserializationStrategy: JsonDeserializerStrategy
+    ) = _customDeserializationStrategies.remove(deserializationStrategy)
 }
