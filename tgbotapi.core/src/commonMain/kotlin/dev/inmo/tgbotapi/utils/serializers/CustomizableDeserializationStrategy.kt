@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.utils.serializers
 
+import dev.inmo.micro_utils.common.Optional
+import dev.inmo.micro_utils.common.onPresented
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy.deserialize
@@ -11,7 +13,7 @@ import kotlinx.serialization.json.JsonElement
 
 interface CustomizableDeserializationStrategy<T> : DeserializationStrategy<T> {
     fun interface JsonDeserializerStrategy<T> {
-        fun deserializeOrNull(json: JsonElement): T?
+        fun deserializeOrNull(json: JsonElement): Optional<T>
     }
     /**
      * Contains [JsonDeserializerStrategy] which will be used in [deserialize] method when standard
@@ -48,18 +50,27 @@ open class CallbackCustomizableDeserializationStrategy<T>(
     override val customDeserializationStrategies: Set<CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>>
         get() = _customDeserializationStrategies.toSet()
 
+    /**
+     * Trying to get [JsonElement] if [decoder] is [JsonDecoder]. Then it will use [defaultDeserializeCallback] to
+     * deserialize data. In case if [defaultDeserializeCallback] will throw exception it will firstly try to deserialize
+     * data by strategies from [customDeserializationStrategies] and, if no one will return presented data in [Optional]
+     * it will use [fallbackDeserialization] as last option to deserialize data
+     */
     override fun deserialize(decoder: Decoder): T {
         val jsonDecoder = decoder as? JsonDecoder
         val jsonElement = jsonDecoder ?.decodeJsonElement()
         return runCatching {
             defaultDeserializeCallback(decoder, jsonElement)
-        }.onFailure {
-            return (jsonElement ?.let {
-                customDeserializationStrategies.firstNotNullOfOrNull {
-                    it.deserializeOrNull(jsonElement)
+        }.getOrElse {
+            (jsonElement ?.let {
+                customDeserializationStrategies.forEach {
+                    it.deserializeOrNull(jsonElement).onPresented {
+                        return@deserialize it
+                    }
                 }
-            }) ?: fallbackDeserialization(it, decoder, jsonElement)
-        }.getOrThrow()
+            })
+            fallbackDeserialization(it, decoder, jsonElement)
+        }
     }
 
     /**

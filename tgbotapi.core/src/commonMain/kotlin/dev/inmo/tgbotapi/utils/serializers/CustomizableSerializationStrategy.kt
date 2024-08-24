@@ -34,6 +34,11 @@ interface CustomizableSerializationStrategy<T> : SerializationStrategy<T> {
     ): Boolean
 }
 
+/**
+ * @param defaultSerializeCallback Default way of serialization
+ * @param fallbackSerialization Fallback way which will be used in case when [defaultSerializeCallback] and [customSerializationStrategies]
+ * were unable to serialize data
+ */
 open class CallbackCustomizableSerializationStrategy<T>(
     override val descriptor: SerialDescriptor,
     private val defaultSerializeCallback: (encoder: Encoder, value: T) -> Unit,
@@ -48,13 +53,23 @@ open class CallbackCustomizableSerializationStrategy<T>(
     override val customSerializationStrategies: Set<CustomizableSerializationStrategy.CustomSerializerStrategy<T>>
         get() = _customSerializationStrategies.toSet()
 
+    /**
+     * Trying to serialize data by [defaultSerializeCallback]. If [defaultSerializeCallback] it will try to use each
+     * strategy from [customSerializationStrategies] until one of them will return true (means, serialized). If there
+     * are no any strategy success serialization and [defaultSerializeCallback] thrown exception will be used
+     * [fallbackSerialization] callback
+     */
     override fun serialize(encoder: Encoder, value: T) {
         runCatching {
             defaultSerializeCallback(encoder, value)
-        }.onFailure {
-            customSerializationStrategies.firstOrNull() {
-                it.optionallySerialize(encoder, value)
-            } ?: fallbackSerialization(it, encoder, value)
+        }.getOrElse {
+            customSerializationStrategies.forEach {
+                if (it.optionallySerialize(encoder, value)) {
+                    return@getOrElse
+                }
+            }
+            // next line will be called onle in case all
+            fallbackSerialization(it, encoder, value)
         }
     }
 

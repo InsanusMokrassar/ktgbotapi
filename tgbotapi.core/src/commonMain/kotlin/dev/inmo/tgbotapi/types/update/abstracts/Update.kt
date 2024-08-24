@@ -49,8 +49,8 @@ object UpdateSerializerWithoutSerialization : KSerializer<Update> {
  * @see kotlinx.serialization.json.Json.parse
  */
 object UpdateDeserializationStrategy : CallbackCustomizableDeserializationStrategy<Update>(
-    JsonElement.serializer().descriptor,
-    { _, jsonElement ->
+    descriptor = JsonElement.serializer().descriptor,
+    defaultDeserializeCallback = { _, jsonElement ->
         nonstrictJsonFormat.decodeFromJsonElement(
             RawUpdate.serializer(),
             jsonElement!!
@@ -58,7 +58,7 @@ object UpdateDeserializationStrategy : CallbackCustomizableDeserializationStrate
             jsonElement
         )
     },
-    { it, _, jsonElement ->
+    fallbackDeserialization = { it, _, jsonElement ->
         UnknownUpdate(
             UpdateId((jsonElement as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
             jsonElement!!,

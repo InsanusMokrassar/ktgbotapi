@@ -26132,11 +26132,8 @@ public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/Update 
 	public abstract fun getUpdateId-4k5XoGU ()J
 }
 
-public final class dev/inmo/tgbotapi/types/update/abstracts/UpdateDeserializationStrategy : kotlinx/serialization/DeserializationStrategy {
+public final class dev/inmo/tgbotapi/types/update/abstracts/UpdateDeserializationStrategy : dev/inmo/tgbotapi/utils/serializers/CallbackCustomizableDeserializationStrategy {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/update/abstracts/UpdateDeserializationStrategy;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/update/abstracts/Update;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 }
 
 public final class dev/inmo/tgbotapi/types/update/abstracts/UpdateSerializerWithoutSerialization : kotlinx/serialization/KSerializer {
@@ -26833,5 +26830,64 @@ public final class dev/inmo/tgbotapi/utils/passport/PassportDataDecryptionHandli
 	public static final fun doInDecryptionContextWithPKCS8Key (Ldev/inmo/tgbotapi/types/passport/PassportData;Ljava/security/PrivateKey;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static synthetic fun doInDecryptionContextWithPKCS8Key$default (Ldev/inmo/tgbotapi/types/passport/PassportData;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun doInDecryptionContextWithPKCS8Key$default (Ldev/inmo/tgbotapi/types/passport/PassportData;Ljava/security/PrivateKey;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public class dev/inmo/tgbotapi/utils/serializers/CallbackCustomizableDeserializationStrategy : dev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy {
+	public fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun addUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getCustomDeserializationStrategies ()Ljava/util/Set;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	protected final fun get_customDeserializationStrategies ()Ljava/util/LinkedHashSet;
+	public fun removeUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+}
+
+public class dev/inmo/tgbotapi/utils/serializers/CallbackCustomizableSerializationStrategy : dev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy {
+	public fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun addUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+	public fun getCustomSerializationStrategies ()Ljava/util/Set;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	protected final fun get_customSerializationStrategies ()Ljava/util/LinkedHashSet;
+	public fun removeUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public class dev/inmo/tgbotapi/utils/serializers/CallbacksCustomizableDeserializationStrategy : dev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy, dev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy, dev/inmo/tgbotapi/utils/serializers/CustomizableSerializer {
+	public fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun addUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+	public fun addUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getCustomDeserializationStrategies ()Ljava/util/Set;
+	public fun getCustomSerializationStrategies ()Ljava/util/Set;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun removeUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+	public fun removeUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public abstract interface class dev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy : kotlinx/serialization/DeserializationStrategy {
+	public abstract fun addUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+	public abstract fun getCustomDeserializationStrategies ()Ljava/util/Set;
+	public abstract fun removeUpdateDeserializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy;)Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy$JsonDeserializerStrategy {
+	public abstract fun deserializeOrNull (Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/micro_utils/common/Optional;
+}
+
+public abstract interface class dev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy : kotlinx/serialization/SerializationStrategy {
+	public abstract fun addUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+	public abstract fun getCustomSerializationStrategies ()Ljava/util/Set;
+	public abstract fun removeUpdateSerializationStrategy (Ldev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy;)Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy$CustomSerializerStrategy {
+	public abstract fun optionallySerialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/utils/serializers/CustomizableSerializer : dev/inmo/tgbotapi/utils/serializers/CustomizableDeserializationStrategy, dev/inmo/tgbotapi/utils/serializers/CustomizableSerializationStrategy, kotlinx/serialization/KSerializer {
 }
 
