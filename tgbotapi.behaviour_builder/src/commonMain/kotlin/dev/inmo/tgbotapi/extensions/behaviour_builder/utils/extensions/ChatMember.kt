@@ -14,11 +14,11 @@ val ChatMember.isAdministrator: Boolean get() = this is AdministratorChatMember
 /**
  * Checks if member is strictly [MemberChatMember], not any derivatives
  */
-val ChatMember.isMemberStrict: Boolean get() = this::class == MemberChatMemberImpl::class
+val ChatMember.isMemberStrict: Boolean get() = this is MemberChatMemberImpl
 /**
  * Checks if member is strictly [AdministratorChatMember], not any derivatives
  */
-val ChatMember.isAdministratorStrict: Boolean get() = this::class == AdministratorChatMemberImpl::class
+val ChatMember.isAdministratorStrict: Boolean get() = this is AdministratorChatMemberImpl
 
 val ChatMember.hasSpecialRights: Boolean get() = this is SpecialRightsChatMember
 val ChatMember.isKickedOrRestricted: Boolean get() = this is BannedChatMember
