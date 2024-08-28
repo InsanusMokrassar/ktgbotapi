@@ -1274,6 +1274,37 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/Subconte
 	public static final fun times (Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/ChatMemberKt {
+	public static final fun getHasSpecialRights (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isAdministrator (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isAdministratorStrict (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isKickedOrRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isLeft (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isLeftOrKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isMemberStrict (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isSubscriber (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/ChatMemberUpdatedKt {
+	public static final fun getAdministratorChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getBecameOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getCeasedOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotDemoted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotPromoted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotRestrictionsChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotUnrestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getJoinedChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getLeftChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getSubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getSubscriptionChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getUnsubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/EnablePrivacyPolicyCommandKt {
 	public static final field DefaultKTgBotAPIPrivacyCommand Ljava/lang/String;
 	public static final fun onCommandPrivacy (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
