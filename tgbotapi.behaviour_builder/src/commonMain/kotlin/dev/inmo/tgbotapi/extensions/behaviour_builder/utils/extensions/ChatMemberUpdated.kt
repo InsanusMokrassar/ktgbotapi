@@ -35,7 +35,7 @@ val ChatMemberUpdated.gotPromoted: Boolean get() = !oldChatMemberState.isAdminis
 /**
  * Member was promoted to chat administrator (or owner) or got it permissions/title changed
  */
-val ChatMemberUpdated.administratorChanged: Boolean get() = newChatMemberState.isAdministrator
+val ChatMemberUpdated.gotPromotionChanged: Boolean get() = newChatMemberState.isAdministrator
 
 /**
  * Member was demoted from administrators (or ceased chat ownership)
@@ -50,7 +50,7 @@ val ChatMemberUpdated.becameOwner: Boolean get() = !oldChatMemberState.isOwner &
 /**
  * Member ceased their chat ownership
  */
-val ChatMemberUpdated.ceasedOwner: Boolean get() = oldChatMemberState.isOwner && !newChatMemberState.isOwner
+val ChatMemberUpdated.ceasedOwnership: Boolean get() = oldChatMemberState.isOwner && !newChatMemberState.isOwner
 
 /**
  * Member was restricted or some restrictions have changed
