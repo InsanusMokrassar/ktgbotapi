@@ -2,6 +2,13 @@
 
 ## 17.1.0
 
+* `Version`:
+  * `Kotlin`: `2.0.10` -> `2.0.20`
+  * `Serialization`: `1.7.1` -> `1.7.2`
+  * `MicroUtils`: `0.22.0` -> `0.22.1`
+  * `KSLog`: `1.3.5` -> `1.3.6`
+  * `Ktor`: `2.3.11` -> `2.3.12`
+
 ## 17.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF BOTS API 7.9**
