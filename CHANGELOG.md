@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 17.1.0
+## 18.0.0
 
 * `Version`:
   * `Kotlin`: `2.0.10` -> `2.0.20`
