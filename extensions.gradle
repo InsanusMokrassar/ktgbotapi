@@ -1,8 +1,17 @@
+File templatesFolder = new File("$rootProject.projectDir.absolutePath${File.separatorChar}gradle${File.separatorChar}templates")
+
+Map properties = new HashMap<String, String>()
+
+if (templatesFolder.exists() && templatesFolder.isDirectory()) {
+    templatesFolder.listFiles().each {
+        properties[it.name - ".gradle"] = it.absolutePath
+    }
+}
+
 allprojects {
     ext {
-        mppProjectWithSerializationPresetPath = "${rootProject.projectDir.absolutePath}/mppProjectWithSerialization.gradle"
-        mppJsProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJsProject.gradle"
-
-        publishGradlePath = "${rootProject.projectDir.absolutePath}/publish.gradle"
+        properties.forEach { k, v ->
+            it[k] = v
+        }
     }
 }

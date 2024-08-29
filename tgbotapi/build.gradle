@@ -6,8 +6,8 @@ plugins {
 
 project.description = "Full collection of all built-in tgbotapi tools"
 
-apply from: "$mppProjectWithSerializationPresetPath"
-apply from: "$publishGradlePath"
+apply from: "$mppProjectWithSerialization"
+apply from: "$mpp_publish"
 
 kotlin {
     sourceSets {

@@ -6,8 +6,8 @@ plugins {
 
 project.description = "API extensions with \"Telegram Bot API\"-like extensions for TelegramBot and RequestsExecutor"
 
-apply from: "$mppProjectWithSerializationPresetPath"
-apply from: "$publishGradlePath"
+apply from: "$mppProjectWithSerialization"
+apply from: "$mpp_publish"
 
 kotlin {
     sourceSets {
