@@ -1961,14 +1961,14 @@ inline fun ChatMember.asMemberChatMember(): MemberChatMember? = this as? MemberC
 inline fun ChatMember.requireMemberChatMember(): MemberChatMember = this as MemberChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenRestrictedChatMember(block: (RestrictedChatMember) -> T) =
+inline fun <T> ChatMember.whenRestrictedChatMember(block: (RestrictedMemberChatMember) -> T) =
     asRestrictedChatMember()?.let(block)
 
 @PreviewFeature
-inline fun ChatMember.asRestrictedChatMember(): RestrictedChatMember? = this as? RestrictedChatMember
+inline fun ChatMember.asRestrictedChatMember(): RestrictedMemberChatMember? = this as? RestrictedMemberChatMember
 
 @PreviewFeature
-inline fun ChatMember.requireRestrictedChatMember(): RestrictedChatMember = this as RestrictedChatMember
+inline fun ChatMember.requireRestrictedChatMember(): RestrictedMemberChatMember = this as RestrictedMemberChatMember
 
 @PreviewFeature
 inline fun <T> ChatMember.whenAdministratorChatMember(block: (AdministratorChatMember) -> T) =
@@ -1981,13 +1981,13 @@ inline fun ChatMember.asAdministratorChatMember(): AdministratorChatMember? = th
 inline fun ChatMember.requireAdministratorChatMember(): AdministratorChatMember = this as AdministratorChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenBannedChatMember(block: (BannedChatMember) -> T) = asBannedChatMember()?.let(block)
+inline fun <T> ChatMember.whenBannedChatMember(block: (RestrictedChatMember) -> T) = asBannedChatMember()?.let(block)
 
 @PreviewFeature
-inline fun ChatMember.asBannedChatMember(): BannedChatMember? = this as? BannedChatMember
+inline fun ChatMember.asBannedChatMember(): RestrictedChatMember? = this as? RestrictedChatMember
 
 @PreviewFeature
-inline fun ChatMember.requireBannedChatMember(): BannedChatMember = this as BannedChatMember
+inline fun ChatMember.requireBannedChatMember(): RestrictedChatMember = this as RestrictedChatMember
 
 @PreviewFeature
 inline fun <T> ChatMember.whenSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T) =

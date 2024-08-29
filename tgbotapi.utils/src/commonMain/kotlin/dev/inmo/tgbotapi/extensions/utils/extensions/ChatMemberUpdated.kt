@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.extensions.behaviour_builder.utils.extensions
+package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.types.chat.member.*
 
@@ -15,17 +15,24 @@ val ChatMemberUpdated.leftChat get() = !oldChatMemberState.isLeftOrKicked && new
 /**
  * Member became a chat subscriber
  */
-val ChatMemberUpdated.subscribed: Boolean get() = !oldChatMemberState.isSubscriber && newChatMemberState.isSubscriber
+val ChatMemberUpdated.subscribed: Boolean get() = !oldChatMemberState.isSubscriberMember && newChatMemberState.isSubscriberMember
 
 /**
  * Member became a chat subscriber or renewed their subscription
  */
-val ChatMemberUpdated.subscriptionChanged: Boolean get() = newChatMemberState.isSubscriber
+val ChatMemberUpdated.subscriptionUpdated: Boolean get() = newChatMemberState.isSubscriberMember
 
 /**
- * Member subscription was expired
+ * Member subscription was expired. User still can be a member
+ *
+ * @see unsubscribedAndLeft
  */
-val ChatMemberUpdated.unsubscribed: Boolean get() = oldChatMemberState.isSubscriber && !newChatMemberState.isSubscriber
+val ChatMemberUpdated.unsubscribed: Boolean get() = oldChatMemberState.isSubscriberMember && !newChatMemberState.isSubscriberMember
+
+/**
+ * Member subscription was expired and user left the chat
+ */
+val ChatMemberUpdated.unsubscribedAndLeft: Boolean get() = oldChatMemberState.isSubscriberMember && !newChatMemberState.isMember
 
 /**
  * Member was promoted to chat administrator (or owner)

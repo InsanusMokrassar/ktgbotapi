@@ -1369,18 +1369,21 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/Subconte
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/ChatMemberKt {
-	public static final fun getHasSpecialRights (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isAdministrator (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
-	public static final fun isAdministratorStrict (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isBanned (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isCommonAdministrator (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isCommonMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isKickedOrRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isLeft (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isLeftOrKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
-	public static final fun isMemberStrict (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 	public static final fun isRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
-	public static final fun isSubscriber (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestrictedAndNotKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestrictedMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isSpecialRightsMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isSubscriberMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/ChatMemberUpdatedKt {
@@ -1395,8 +1398,9 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensio
 	public static final fun getJoinedChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getLeftChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getSubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
-	public static final fun getSubscriptionChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getSubscriptionUpdated (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getUnsubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getUnsubscribedAndLeft (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/extensions/EnablePrivacyPolicyCommandKt {

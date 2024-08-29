@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.extensions.*
+import dev.inmo.tgbotapi.extensions.utils.extensions.*
 import dev.inmo.tgbotapi.types.chat.member.*
 
 /**
@@ -26,10 +26,10 @@ val chatMemberSubscribedFilter = SimpleFilter<ChatMemberUpdated> {
 }
 
 /**
- * Allows only member [subscriptionChanged] updates
+ * Allows only member [subscriptionUpdated] updates
  */
 val chatMemberSubscriptionChangedFilter = SimpleFilter<ChatMemberUpdated> {
-    it.subscriptionChanged
+    it.subscriptionUpdated
 }
 
 /**

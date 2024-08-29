@@ -12,7 +12,6 @@ import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
@@ -28,7 +27,7 @@ sealed interface ChatMember : WithUser {
         Administrator("administrator", AdministratorChatMemberImpl.serializer()),
         Member("member", MemberChatMemberImpl.serializer(), { status, json -> status == "member" && json[untilDateField] ?.jsonPrimitive == null }),
         SubscriptionMember("member", SubscriptionMemberChatMemberImpl.serializer(), { status, json -> status == "member" && json[untilDateField] ?.jsonPrimitive != null }),
-        Restricted("restricted", RestrictedChatMember.serializer()),
+        Restricted("restricted", RestrictedMemberChatMember.serializer()),
         Left("left", LeftChatMemberImpl.serializer()),
         Kicked("kicked", KickedChatMember.serializer())
     }
@@ -74,7 +73,7 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
             is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer().serialize(encoder, value)
             is SubscriptionMemberChatMemberImpl -> SubscriptionMemberChatMemberImpl.serializer().serialize(encoder, value)
             is MemberChatMemberImpl -> MemberChatMemberImpl.serializer().serialize(encoder, value)
-            is RestrictedChatMember -> RestrictedChatMember.serializer().serialize(encoder, value)
+            is RestrictedMemberChatMember -> RestrictedMemberChatMember.serializer().serialize(encoder, value)
             is LeftChatMemberImpl -> LeftChatMemberImpl.serializer().serialize(encoder, value)
             is KickedChatMember -> KickedChatMember.serializer().serialize(encoder, value)
         }

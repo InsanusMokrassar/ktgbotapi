@@ -20,7 +20,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asAudioMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;)Ldev/inmo/tgbotapi/types/media/AudioMediaGroupMemberTelegramMedia;
 	public static final fun asBankStatement (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/BankStatement;
 	public static final fun asBankStatementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/BankStatementSecureValue;
-	public static final fun asBannedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/BannedChatMember;
+	public static final fun asBannedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
 	public static final fun asBaseChosenInlineResult (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public static final fun asBaseEditMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate;
 	public static final fun asBaseInlineQuery (Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
@@ -256,7 +256,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asRentalAgreementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/RentalAgreementSecureValue;
 	public static final fun asReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun asReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
-	public static final fun asRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
+	public static final fun asRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
 	public static final fun asSecondaryChatInviteLink (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun asSecureValueIdentity (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueIdentity;
 	public static final fun asSecureValueWithData (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueWithData;
@@ -363,7 +363,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireAudioMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;)Ldev/inmo/tgbotapi/types/media/AudioMediaGroupMemberTelegramMedia;
 	public static final fun requireBankStatement (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/BankStatement;
 	public static final fun requireBankStatementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/BankStatementSecureValue;
-	public static final fun requireBannedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/BannedChatMember;
+	public static final fun requireBannedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
 	public static final fun requireBaseChosenInlineResult (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public static final fun requireBaseEditMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate;
 	public static final fun requireBaseInlineQuery (Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
@@ -599,7 +599,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireRentalAgreementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/RentalAgreementSecureValue;
 	public static final fun requireReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun requireReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
-	public static final fun requireRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
+	public static final fun requireRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
 	public static final fun requireSecondaryChatInviteLink (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun requireSecureValueIdentity (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueIdentity;
 	public static final fun requireSecureValueWithData (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueWithData;
@@ -1095,8 +1095,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun bankStatementOrThrow (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/BankStatement;
 	public static final fun bankStatementSecureValueOrNull (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/BankStatementSecureValue;
 	public static final fun bankStatementSecureValueOrThrow (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/BankStatementSecureValue;
-	public static final fun bannedChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/BannedChatMember;
-	public static final fun bannedChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/BannedChatMember;
 	public static final fun baseChosenInlineResultOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public static final fun baseChosenInlineResultOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public static final fun baseEditMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate;
@@ -1490,7 +1488,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifAudioMediaGroupPartContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBankStatement (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBankStatementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifBannedChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBaseChosenInlineResult (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBaseEditMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBaseInlineQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

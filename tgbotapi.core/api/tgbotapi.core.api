@@ -15681,14 +15681,6 @@ public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberSe
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/member/BannedChatMember : dev/inmo/tgbotapi/abstracts/types/UntilDate, dev/inmo/tgbotapi/types/chat/member/ChatMember {
-	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/BannedChatMember$Companion;
-}
-
-public final class dev/inmo/tgbotapi/types/chat/member/BannedChatMember$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public abstract interface class dev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights : dev/inmo/tgbotapi/types/chat/member/SpecialChatAdministratorRights {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights$Companion;
 	public abstract fun getCanDeleteStories ()Z
@@ -15856,7 +15848,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/chat/member/KickedChatMember : dev/inmo/tgbotapi/types/chat/member/BannedChatMember {
+public final class dev/inmo/tgbotapi/types/chat/member/KickedChatMember : dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/KickedChatMember$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -16008,8 +16000,18 @@ public final class dev/inmo/tgbotapi/types/chat/member/OwnerChatMember$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember : dev/inmo/tgbotapi/types/chat/ChatPermissions, dev/inmo/tgbotapi/types/chat/member/BannedChatMember, dev/inmo/tgbotapi/types/chat/member/SpecialRightsChatMember {
+public abstract interface class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember : dev/inmo/tgbotapi/abstracts/types/UntilDate, dev/inmo/tgbotapi/types/chat/member/ChatMember {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$Companion {
+	public final fun invoke (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
+	public static synthetic fun invoke$default (Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$Companion;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl : dev/inmo/tgbotapi/types/chat/ChatPermissions, dev/inmo/tgbotapi/types/chat/member/MemberChatMember, dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember, dev/inmo/tgbotapi/types/chat/member/SpecialRightsChatMember {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZ)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -16029,8 +16031,8 @@ public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember : de
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/TelegramDate;ZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
 	public fun copyCommon (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
 	public fun copyGranular (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
 	public fun equals (Ljava/lang/Object;)Z
@@ -16062,18 +16064,18 @@ public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember : de
 	public fun toString ()Ljava/lang/String;
 }
 
-public synthetic class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$$serializer;
+public synthetic class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMember$Companion {
+public final class dev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

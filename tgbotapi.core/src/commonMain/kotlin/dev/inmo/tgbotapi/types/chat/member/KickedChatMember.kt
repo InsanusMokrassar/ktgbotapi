@@ -10,7 +10,7 @@ data class KickedChatMember(
     override val user: User,
     @SerialName(untilDateField)
     override val untilDate: TelegramDate? = null
-) : BannedChatMember {
+) : RestrictedChatMember {
     @SerialName(statusField)
     @Required
     @EncodeDefault
