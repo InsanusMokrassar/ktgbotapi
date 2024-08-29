@@ -168,6 +168,7 @@ import dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
+import dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
@@ -752,6 +753,16 @@ public inline fun OptionallyWithUser.restrictedChatMemberOrThrow(): RestrictedCh
 
 public inline fun <T> OptionallyWithUser.ifRestrictedChatMember(block: (RestrictedChatMember) -> T):
     T? = restrictedChatMemberOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.restrictedMemberChatMemberOrNull(): RestrictedMemberChatMember?
+    = this as? dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
+
+public inline fun OptionallyWithUser.restrictedMemberChatMemberOrThrow(): RestrictedMemberChatMember
+    = this as dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
+
+public inline fun <T>
+    OptionallyWithUser.ifRestrictedMemberChatMember(block: (RestrictedMemberChatMember) -> T): T? =
+    restrictedMemberChatMemberOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.specialRightsChatMemberOrNull(): SpecialRightsChatMember? =
     this as? dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember

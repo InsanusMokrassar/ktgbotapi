@@ -1865,6 +1865,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRestrictedChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRestrictedMemberChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSecondaryChatInviteLink (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSecureValueIdentity (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSecureValueWithData (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2379,6 +2380,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun replyKeyboardRemoveOrThrow (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
 	public static final fun restrictedChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
 	public static final fun restrictedChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
+	public static final fun restrictedMemberChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedMemberChatMember;
+	public static final fun restrictedMemberChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedMemberChatMember;
 	public static final fun secondaryChatInviteLinkOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun secondaryChatInviteLinkOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun secureValueIdentityOrNull (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueIdentity;
