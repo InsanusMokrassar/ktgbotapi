@@ -256,7 +256,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asRentalAgreementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/RentalAgreementSecureValue;
 	public static final fun asReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun asReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
-	public static final fun asRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
+	public static final fun asRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedMemberChatMember;
 	public static final fun asSecondaryChatInviteLink (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun asSecureValueIdentity (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueIdentity;
 	public static final fun asSecureValueWithData (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueWithData;
@@ -599,7 +599,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireRentalAgreementSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/RentalAgreementSecureValue;
 	public static final fun requireReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun requireReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
-	public static final fun requireRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMemberImpl;
+	public static final fun requireRestrictedChatMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedMemberChatMember;
 	public static final fun requireSecondaryChatInviteLink (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;
 	public static final fun requireSecureValueIdentity (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueIdentity;
 	public static final fun requireSecureValueWithData (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValueWithData;
@@ -2763,6 +2763,41 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/BotCommandsArgs
 	public static final fun parseCommandsWithArgsSources (Ldev/inmo/tgbotapi/abstracts/TextedWithTextSources;)Ljava/util/Map;
 	public static final fun parseCommandsWithArgsSources (Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;)Ljava/util/Map;
 	public static final fun parseCommandsWithArgsSources (Ljava/util/List;)Ljava/util/Map;
+}
+
+public final class dev/inmo/tgbotapi/extensions/utils/extensions/ChatMemberKt {
+	public static final fun isAdministrator (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isBanned (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isCommonAdministrator (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isCommonMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isKickedOrRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isLeft (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isLeftOrKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestrictedAndNotKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isRestrictedMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isSpecialRightsMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+	public static final fun isSubscriberMember (Ldev/inmo/tgbotapi/types/chat/member/ChatMember;)Z
+}
+
+public final class dev/inmo/tgbotapi/extensions/utils/extensions/ChatMemberUpdatedKt {
+	public static final fun getBecameOwner (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getCeasedOwnership (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotDemoted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotPromoted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotPromotionChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotRestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotRestrictionsChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getGotUnrestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getJoinedChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getLeftChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getSubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getSubscriptionUpdated (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getUnsubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getUnsubscribedAndLeft (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/FilesDownloadingKt {
