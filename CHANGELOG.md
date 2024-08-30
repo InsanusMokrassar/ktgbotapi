@@ -4,6 +4,9 @@
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
 
+This update contains solution for [issue #888](https://github.com/InsanusMokrassar/ktgbotapi/issues/888), made by
+[@Nik-mmzd](https://github.com/Nik-mmzd)
+
 ---
 
 **Migration (step-by-step)**
