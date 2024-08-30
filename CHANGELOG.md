@@ -23,7 +23,7 @@ Replace in a whole project:
 * `Version`:
   * `Kotlin`: `2.0.10` -> `2.0.20`
   * `Serialization`: `1.7.1` -> `1.7.2`
-  * `MicroUtils`: `0.22.0` -> `0.22.1`
+  * `MicroUtils`: `0.22.0` -> `0.22.2`
   * `KSLog`: `1.3.5` -> `1.3.6`
   * `Ktor`: `2.3.11` -> `2.3.12`
 * `Core`:
