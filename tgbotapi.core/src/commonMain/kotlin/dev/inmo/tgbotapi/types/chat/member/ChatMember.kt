@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.abstracts.WithUser
+import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.statusField
 import dev.inmo.tgbotapi.types.untilDateField
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -17,6 +19,7 @@ import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(ChatMemberSerializer::class)
 sealed interface ChatMember : WithUser {
+    override val user: PreviewUser
     @Serializable(StatusSerializer::class)
     enum class Status(
         val status: String,

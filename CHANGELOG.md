@@ -27,6 +27,7 @@ Replace in a whole project:
   * `RestrictedChatMember` has been renamed to `RestrictedMemberChatMember`
   * `BannedChatMember` has been renamed to `RestrictedChatMember`
   * `KickedChatMember` now implements `RestrictedChatMember` (due to rename)
+  * All `ChatMember`s now use `PreviewUser`s instead of `User`s
 * `Utils`:
   * Add a lot of extensions like `ChatMember.isMember`
   * Add a lot of extensions like `ChatMemberUpdated.joinedChat`
