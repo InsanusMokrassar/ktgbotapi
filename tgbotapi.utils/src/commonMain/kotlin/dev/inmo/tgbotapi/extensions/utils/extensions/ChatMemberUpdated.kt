@@ -67,7 +67,7 @@ val ChatMemberUpdated.gotRestricted: Boolean get() = !oldChatMemberState.isRestr
 /**
  * Member restrictions were changed (but not removed)
  */
-val ChatMemberUpdated.gotRestrictionsChanged: Boolean get() = newChatMemberState.isRestricted
+val ChatMemberUpdated.gotRestrictionsChanged: Boolean get() = oldChatMemberState.isRestricted && newChatMemberState.isRestricted
 
 /**
  * All member restrictions were removed
