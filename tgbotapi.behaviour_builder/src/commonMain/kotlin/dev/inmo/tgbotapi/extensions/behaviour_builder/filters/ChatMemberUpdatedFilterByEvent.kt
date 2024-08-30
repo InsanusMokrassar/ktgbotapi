@@ -94,3 +94,10 @@ val chatMemberGotRestrictionsChangedFilter = SimpleFilter<ChatMemberUpdated> {
 val chatMemberGotUnrestrictedFilter = SimpleFilter<ChatMemberUpdated> {
     it.gotUnrestricted
 }
+
+/**
+ * Allows only member [gotUnrestricted] updates
+ */
+val chatMemberKickedFilter = SimpleFilter<ChatMemberUpdated> {
+    it.kicked
+}

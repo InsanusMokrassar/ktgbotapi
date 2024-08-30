@@ -2796,6 +2796,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/ChatMemberUpdat
 	public static final fun getGotRestrictionsChanged (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getGotUnrestricted (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getJoinedChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
+	public static final fun getKicked (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getLeftChat (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getSubscribed (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
 	public static final fun getSubscriptionUpdated (Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Z
