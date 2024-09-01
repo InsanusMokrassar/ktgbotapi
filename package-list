@@ -156,6 +156,7 @@ dev.inmo.tgbotapi.utils
 dev.inmo.tgbotapi.utils.extensions
 dev.inmo.tgbotapi.utils.internal
 dev.inmo.tgbotapi.utils.passport
+dev.inmo.tgbotapi.utils.serializers
 module:tgbotapi.utils
 dev.inmo.tgbotapi.extensions.utils
 dev.inmo.tgbotapi.extensions.utils.extensions
