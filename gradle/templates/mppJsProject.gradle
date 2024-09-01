@@ -1,7 +1,7 @@
 project.version = "$version"
 project.group = "$group"
 
-apply from: "$publishGradlePath"
+apply from: "$mpp_publish"
 
 kotlin {
     js (IR) {

@@ -6,8 +6,8 @@ plugins {
 
 project.description = "Web App bindings for the Telegram Web Apps API"
 
-apply from: "$mppProjectWithSerializationPresetPath"
-apply from: "$publishGradlePath"
+apply from: "$mppProjectWithSerialization"
+apply from: "$mpp_publish"
 
 kotlin {
     sourceSets {

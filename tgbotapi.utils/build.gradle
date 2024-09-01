@@ -6,8 +6,8 @@ plugins {
 
 project.description = "Additional extensions for core part of tgbotapi"
 
-apply from: "$mppProjectWithSerializationPresetPath"
-apply from: "$publishGradlePath"
+apply from: "$mppProjectWithSerialization"
+apply from: "$mpp_publish"
 
 kotlin {
     sourceSets {

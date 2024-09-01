@@ -5,7 +5,9 @@ import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.types.updateIdField
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import dev.inmo.tgbotapi.utils.serializers.CallbackCustomizableDeserializationStrategy
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -46,24 +48,21 @@ object UpdateSerializerWithoutSerialization : KSerializer<Update> {
  * @see StringFormat.parse
  * @see kotlinx.serialization.json.Json.parse
  */
-object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
-    override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor
-
-    override fun deserialize(decoder: Decoder): Update {
-        val asJson = JsonElement.serializer().deserialize(decoder)
-        return runCatching {
-            nonstrictJsonFormat.decodeFromJsonElement(
-                RawUpdate.serializer(),
-                asJson
-            ).asUpdate(
-                asJson
-            )
-        }.getOrElse {
-            UnknownUpdate(
-                UpdateId((asJson as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
-                asJson,
-                it
-            )
-        }
+object UpdateDeserializationStrategy : CallbackCustomizableDeserializationStrategy<Update>(
+    descriptor = JsonElement.serializer().descriptor,
+    defaultDeserializeCallback = { _, jsonElement ->
+        nonstrictJsonFormat.decodeFromJsonElement(
+            RawUpdate.serializer(),
+            jsonElement!!
+        ).asUpdate(
+            jsonElement
+        )
+    },
+    fallbackDeserialization = { it, _, jsonElement ->
+        UnknownUpdate(
+            UpdateId((jsonElement as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
+            jsonElement!!,
+            it
+        )
     }
-}
+)

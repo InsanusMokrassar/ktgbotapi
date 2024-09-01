@@ -161,7 +161,6 @@ import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.UsernameChat
 import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
-import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.chat.member.KickedChatMember
@@ -169,6 +168,7 @@ import dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
+import dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
@@ -691,15 +691,6 @@ public inline fun <T>
     OptionallyWithUser.ifAdministratorChatMember(block: (AdministratorChatMember) -> T): T? =
     administratorChatMemberOrNull() ?.let(block)
 
-public inline fun OptionallyWithUser.bannedChatMemberOrNull(): BannedChatMember? = this as?
-    dev.inmo.tgbotapi.types.chat.member.BannedChatMember
-
-public inline fun OptionallyWithUser.bannedChatMemberOrThrow(): BannedChatMember = this as
-    dev.inmo.tgbotapi.types.chat.member.BannedChatMember
-
-public inline fun <T> OptionallyWithUser.ifBannedChatMember(block: (BannedChatMember) -> T): T? =
-    bannedChatMemberOrNull() ?.let(block)
-
 public inline fun OptionallyWithUser.chatMemberOrNull(): ChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.ChatMember
 
@@ -762,6 +753,16 @@ public inline fun OptionallyWithUser.restrictedChatMemberOrThrow(): RestrictedCh
 
 public inline fun <T> OptionallyWithUser.ifRestrictedChatMember(block: (RestrictedChatMember) -> T):
     T? = restrictedChatMemberOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.restrictedMemberChatMemberOrNull(): RestrictedMemberChatMember?
+    = this as? dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
+
+public inline fun OptionallyWithUser.restrictedMemberChatMemberOrThrow(): RestrictedMemberChatMember
+    = this as dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
+
+public inline fun <T>
+    OptionallyWithUser.ifRestrictedMemberChatMember(block: (RestrictedMemberChatMember) -> T): T? =
+    restrictedMemberChatMemberOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.specialRightsChatMemberOrNull(): SpecialRightsChatMember? =
     this as? dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember

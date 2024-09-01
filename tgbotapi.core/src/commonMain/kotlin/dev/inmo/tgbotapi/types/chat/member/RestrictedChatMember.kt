@@ -1,49 +1,61 @@
 package dev.inmo.tgbotapi.types.chat.member
 
+import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.ChatPermissions
+import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.User
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
 
-@Serializable
-data class RestrictedChatMember(
-    @SerialName(userField)
-    override val user: User,
-    @SerialName(untilDateField)
-    override val untilDate: TelegramDate? = null,
-    @SerialName(isMemberField)
-    val isMember: Boolean = false,
-    @SerialName(canSendMessagesField)
-    override val canSendMessages: Boolean = false,
-    @SerialName(canSendAudiosField)
-    override val canSendAudios: Boolean = false,
-    @SerialName(canSendDocumentsField)
-    override val canSendDocuments: Boolean = false,
-    @SerialName(canSendPhotosField)
-    override val canSendPhotos: Boolean = false,
-    @SerialName(canSendVideosField)
-    override val canSendVideos: Boolean = false,
-    @SerialName(canSendVideoNotesField)
-    override val canSendVideoNotes: Boolean = false,
-    @SerialName(canSendVoiceNotesField)
-    override val canSendVoiceNotes: Boolean = false,
-    @SerialName(canSendPollsField)
-    override val canSendPolls: Boolean = false,
-    @SerialName(canSendOtherMessagesField)
-    override val canSendOtherMessages: Boolean = false,
-    @SerialName(canAddWebPagePreviewsField)
-    override val canAddWebPagePreviews: Boolean = false,
-    @SerialName(canChangeInfoField)
-    override val canChangeInfo: Boolean = false,
-    @SerialName(canInviteUsersField)
-    override val canInviteUsers: Boolean = false,
-    @SerialName(canPinMessagesField)
-    override val canPinMessages: Boolean = false,
-    @SerialName(canManageTopicsField)
-    override val canManageTopics: Boolean = false
-) : BannedChatMember, SpecialRightsChatMember, ChatPermissions {
-    @SerialName(statusField)
-    @Required
-    @EncodeDefault
-    override val status: ChatMember.Status = ChatMember.Status.Restricted
+@Serializable(ChatMemberSerializer::class)
+sealed interface RestrictedChatMember : ChatMember, UntilDate {
+    companion object {
+        // backward compatibility fun
+        @Deprecated(
+            "Renamed",
+            ReplaceWith(
+                "RestrictedChatMemberImpl(user, untilDate, isMember, canSendMessages, canSendAudios, canSendDocuments, canSendPhotos, canSendVideos, canSendVideoNotes, canSendVoiceNotes, canSendPolls, canSendOtherMessages, canAddWebPagePreviews, canChangeInfo, canInviteUsers, canPinMessages, canManageTopics)",
+                "dev.inmo.tgbotapi.types.chat.members.RestrictedChatMemberImpl",
+            )
+        )
+        operator fun invoke(
+            user: PreviewUser,
+            untilDate: TelegramDate? = null,
+            isMember: Boolean = false,
+            canSendMessages: Boolean = false,
+            canSendAudios: Boolean = false,
+            canSendDocuments: Boolean = false,
+            canSendPhotos: Boolean = false,
+            canSendVideos: Boolean = false,
+            canSendVideoNotes: Boolean = false,
+            canSendVoiceNotes: Boolean = false,
+            canSendPolls: Boolean = false,
+            canSendOtherMessages: Boolean = false,
+            canAddWebPagePreviews: Boolean = false,
+            canChangeInfo: Boolean = false,
+            canInviteUsers: Boolean = false,
+            canPinMessages: Boolean = false,
+            canManageTopics: Boolean = false
+        ) = RestrictedMemberChatMember(
+            user = user,
+            untilDate = untilDate,
+            isMember = isMember,
+            canSendMessages = canSendMessages,
+            canSendAudios = canSendAudios,
+            canSendDocuments = canSendDocuments,
+            canSendPhotos = canSendPhotos,
+            canSendVideos = canSendVideos,
+            canSendVideoNotes = canSendVideoNotes,
+            canSendVoiceNotes = canSendVoiceNotes,
+            canSendPolls = canSendPolls,
+            canSendOtherMessages = canSendOtherMessages,
+            canAddWebPagePreviews = canAddWebPagePreviews,
+            canChangeInfo = canChangeInfo,
+            canInviteUsers = canInviteUsers,
+            canPinMessages = canPinMessages,
+            canManageTopics = canManageTopics
+        )
+    }
 }
+
+@Deprecated("Renamed", ReplaceWith("RestrictedChatMember", "dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember"))
+typealias BannedChatMember = RestrictedChatMember

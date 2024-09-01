@@ -1,12 +1,13 @@
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
 data class OwnerChatMember(
-    override val user: User,
+    override val user: PreviewUser,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @SerialName(customTitleField)
