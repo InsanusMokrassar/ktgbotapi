@@ -31,14 +31,14 @@ internal suspend fun <BC : BehaviourContext, T> BC.on(
 ).run {
     val handler: suspend (Pair<Update, T>) -> Unit = subcontextUpdatesFilter ?.let {
         { (update, triggerData) ->
-            createSubContextAndDoWithUpdatesFilter {
+            createSubContextAndDoSynchronouslyWithUpdatesFilter {
                 if (subcontextUpdatesFilter(this, triggerData, update)) {
                     scenarioReceiver(triggerData)
                 }
             }
         }
     } ?: { (_, triggerData) ->
-        createSubContextAndDoWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
+        createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
     }
     markerFactory ?.let {
         subscribeSafelyWithoutExceptionsAsync(
