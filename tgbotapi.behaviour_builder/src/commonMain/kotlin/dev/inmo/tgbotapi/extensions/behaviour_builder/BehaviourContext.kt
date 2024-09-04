@@ -11,6 +11,8 @@ import dev.inmo.tgbotapi.updateshandlers.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 typealias CustomBehaviourContextReceiver<BC, T> = suspend BC.() -> T
 typealias BehaviourContextReceiver<T> = CustomBehaviourContextReceiver<BehaviourContext, T>
@@ -145,9 +147,12 @@ suspend fun <T, BC : BehaviourContext> BC.doInContext(
 
 /**
  * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
- * using [doInContext]
+ * using [doInContext].
+ *
+ * This action will be executed in **synchronous** manner which means that until the context created with
+ * [createSubContext] will be done this function will not let execution of code continue
  */
-suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
+suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoSynchronouslyWithUpdatesFilter(
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
@@ -160,6 +165,45 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter
         ).behaviourContextReceiver()
     }
 }
+
+/**
+ * Uses [createSubContextAndDoSynchronouslyWithUpdatesFilter], but wrapping it in [async]. That means, that
+ * execution of this function will be **asynchronous** and **will not** block execution of code by default
+ */
+suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoAsynchronouslyWithUpdatesFilter(
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    context: CoroutineContext = EmptyCoroutineContext,
+    start: CoroutineStart = CoroutineStart.DEFAULT,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): Deferred<T> = async(
+    context,
+    start
+) {
+    createSubContextAndDoSynchronouslyWithUpdatesFilter(
+        triggersHolder,
+        updatesUpstreamFlow,
+        behaviourContextReceiver
+    )
+}
+
+/**
+ * It is just backward compatibility function which will be removed in next updates.
+ *
+ * Uses [createSubContextAndDoAsynchronouslyWithUpdatesFilter] under the hood with passing of parameters as is
+ */
+@Deprecated(
+    "Renamed",
+    ReplaceWith(
+        "createSubContextAndDoAsynchronouslyWithUpdatesFilter(triggersHolder, updatesUpstreamFlow, behaviourContextReceiver = behaviourContextReceiver)",
+        "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoAsynchronouslyWithUpdatesFilter"
+    )
+)
+suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): Deferred<T> = createSubContextAndDoAsynchronouslyWithUpdatesFilter(triggersHolder, updatesUpstreamFlow, behaviourContextReceiver = behaviourContextReceiver)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 18.1.0
+
+* `BehaviourBuilder`:
+  * Add `createSubContextAndDoSynchronouslyWithUpdatesFilter` as old logic of `createSubContextAndDoWithUpdatesFilter`
+  * `createSubContextAndDoWithUpdatesFilter` has been renamed to `createSubContextAndDoAsynchronouslyWithUpdatesFilter`
+
 ## 18.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
