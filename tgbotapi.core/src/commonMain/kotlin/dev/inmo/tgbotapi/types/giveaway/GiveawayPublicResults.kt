@@ -90,7 +90,7 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
 
     @Serializable
     private data class Surrogate(
-        @SerialName(chatsField)
+        @SerialName(chatField)
         val chat: PreviewChat,
         @SerialName(giveawayMessageIdField)
         val messageId: MessageId,
