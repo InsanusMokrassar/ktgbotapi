@@ -102,6 +102,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehavio
 	public fun getMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMyChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getPaidMediaPurchasedUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getPollAnswersFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getPollsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getPreCheckoutQueriesFlow ()Lkotlinx/coroutines/flow/Flow;

@@ -787,6 +787,15 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 	public static synthetic fun waitContentMessageWithTextMentions-4iNBclM$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;JLdev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitPaidMediaPurchasedKt {
+	public static final fun waitPaidMediaPurchased (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun waitPaidMediaPurchased (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitPaidMediaPurchased$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun waitPaidMediaPurchased$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun waitPaidMediaPurchased-730Ce14 (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitPaidMediaPurchased-730Ce14$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitPassportDataKt {
 	public static final fun waitAnyPassportMessages (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun waitAnyPassportMessages$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1409,6 +1418,15 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handl
 	public static synthetic fun onTextMentionWithVoiceContent-VjR9mJc$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;JLdev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/PaidMediaPurchasedTriggersKt {
+	public static final fun onPaidMediaPurchased (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun onPaidMediaPurchased (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onPaidMediaPurchased$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun onPaidMediaPurchased$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun onPaidMediaPurchased-GWrqPhk (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onPaidMediaPurchased-GWrqPhk$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/PassportTriggersKt {
 	public static final fun onPassportMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun onPassportMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1614,6 +1632,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserMessageMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserMessageMarkerFactory;
 	public fun invoke (Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserPaidMediaPurchasedMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserPaidMediaPurchasedMarkerFactory;
+	public fun invoke (Ldev/inmo/tgbotapi/types/message/payments/PaidMediaPurchased;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

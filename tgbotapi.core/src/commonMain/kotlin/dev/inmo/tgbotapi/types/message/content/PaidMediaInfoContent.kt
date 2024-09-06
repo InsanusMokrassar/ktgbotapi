@@ -33,9 +33,9 @@ data class PaidMediaInfoContent(
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<PaidMediaInfoContent>> = SendPaidMedia(
-        chatId,
-        paidMediaInfo.stars,
-        paidMediaInfo.media.mapNotNull {
+        chatId = chatId,
+        starCount = paidMediaInfo.stars,
+        media = paidMediaInfo.media.mapNotNull {
             when (it) {
                 is PaidMedia.Photo -> it.photo.biggest.toTelegramPaidMediaPhoto()
                 is PaidMedia.Preview -> null
@@ -45,9 +45,13 @@ data class PaidMediaInfoContent(
         }.ifEmpty {
             error("Unable to create resend for paid media content without any revealed content")
         },
-        textSources,
-        showCaptionAboveMedia,
-        messageThreadId,
-        businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 }

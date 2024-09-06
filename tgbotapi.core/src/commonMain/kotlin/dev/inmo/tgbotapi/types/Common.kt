@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
+import kotlinx.serialization.Serializable
+import kotlin.jvm.JvmInline
 
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
@@ -23,6 +25,14 @@ typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
+
+@Serializable
+@JvmInline
+value class PaidMediaPayload(val string: String) {
+    override fun toString(): String {
+        return string
+    }
+}
 
 val usernameRegex = Regex("@[\\w\\d_]+")
 
@@ -490,6 +500,7 @@ const val currencyField = "currency"
 const val startParameterField = "start_parameter"
 const val totalAmountField = "total_amount"
 const val invoicePayloadField = "invoice_payload"
+const val paidMediaPayloadField = "paid_media_payload"
 const val shippingOptionIdField = "shipping_option_id"
 const val shippingQueryIdField = "shipping_query_id"
 const val preCheckoutQueryIdField = "pre_checkout_query_id"

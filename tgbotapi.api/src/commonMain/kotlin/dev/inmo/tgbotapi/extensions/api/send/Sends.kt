@@ -752,6 +752,7 @@ public suspend fun TelegramBot.send(
     media: List<TelegramPaidMedia>,
     text: String? = null,
     parseMode: ParseMode? = null,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -759,7 +760,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chat, starCount, media, text, parseMode, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chat, starCount, media, text, parseMode, payload, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendPaidMedia] request
@@ -772,6 +773,7 @@ public suspend fun TelegramBot.send(
     media: List<TelegramPaidMedia>,
     text: String? = null,
     parseMode: ParseMode? = null,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -779,7 +781,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chatId, starCount, media, text, parseMode, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chatId, starCount, media, text, parseMode, payload, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendPaidMedia] request
@@ -791,6 +793,7 @@ public suspend fun TelegramBot.send(
     starCount: Int,
     media: List<TelegramPaidMedia>,
     entities: TextSourcesList,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -798,7 +801,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chat, starCount, media, entities, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chat, starCount, media, entities, payload, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendPaidMedia] request
@@ -810,6 +813,7 @@ public suspend fun TelegramBot.send(
     starCount: Int,
     media: List<TelegramPaidMedia>,
     entities: TextSourcesList,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -817,7 +821,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chatId, starCount, media, entities, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(chatId, starCount, media, entities, payload, showCaptionAboveMedia, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request

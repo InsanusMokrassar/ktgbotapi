@@ -47,6 +47,7 @@ fun Update.sourceChatWithConverters(
     businessMessageUpdateConverter: (BusinessMessageUpdate) -> Chat? = { it.data.chat },
     editBusinessMessageUpdateConverter: (EditBusinessMessageUpdate) -> Chat? = { it.data.chat },
     deleteBusinessMessageUpdateConverter: (DeletedBusinessMessageUpdate) -> Chat? = { it.data.chat },
+    paidMediaPurchasedUpdatesFlowConverter: (PaidMediaPurchasedUpdate) -> Chat? = { it.data.user },
     commonChatMemberUpdatedUpdateConverter: (CommonChatMemberUpdatedUpdate) -> Chat? = { it.data.chat }
 ): Chat? = when (this) {
     is BaseMessageUpdate -> baseMessageUpdateConverter(this)
@@ -72,6 +73,7 @@ fun Update.sourceChatWithConverters(
     is BusinessMessageUpdate -> businessMessageUpdateConverter(this)
     is EditBusinessMessageUpdate -> editBusinessMessageUpdateConverter(this)
     is DeletedBusinessMessageUpdate -> deleteBusinessMessageUpdateConverter(this)
+    is PaidMediaPurchasedUpdate -> paidMediaPurchasedUpdatesFlowConverter(this)
     else -> {
         when (val data = data) {
             is FromUser -> data.from

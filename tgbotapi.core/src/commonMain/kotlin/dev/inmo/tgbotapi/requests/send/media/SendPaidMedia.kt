@@ -28,6 +28,7 @@ fun SendPaidMedia(
     media: List<TelegramPaidMedia>,
     text: String? = null,
     parseMode: ParseMode? = null,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -40,6 +41,7 @@ fun SendPaidMedia(
         chatId = chatId,
         starCount = starCount,
         media = media,
+        payload = payload,
         text = text,
         parseMode = parseMode,
         rawEntities = null,
@@ -78,6 +80,7 @@ fun SendPaidMedia(
     starCount: Int,
     media: List<TelegramPaidMedia>,
     entities: TextSourcesList,
+    payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -90,6 +93,7 @@ fun SendPaidMedia(
         chatId = chatId,
         starCount = starCount,
         media = media,
+        payload = payload,
         text = entities.makeString(),
         parseMode = null,
         rawEntities = entities.toRawMessageEntities(),
@@ -140,6 +144,8 @@ data class SendPaidMediaData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(payloadField)
+    val payload: PaidMediaPayload? = null,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
     @SerialName(messageThreadIdField)

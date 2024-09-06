@@ -43,7 +43,9 @@ sealed interface TransactionPartner {
         @SerialName(invoicePayloadField)
         val invoicePayload: InvoicePayload? = null,
         @SerialName(paidMediaField)
-        val paidMedia: List<PaidMedia>? = null
+        val paidMedia: List<PaidMedia>? = null,
+        @SerialName(paidMediaPayloadField)
+        val paidMediaPayload: PaidMediaPayload? = null
     ) : TransactionPartner {
         @EncodeDefault
         override val type: String = Companion.type
