@@ -57,13 +57,16 @@ sealed interface ChatBoostSource {
         val unclaimed: Boolean
         val claimed: Boolean
             get() = !unclaimed
+        val prizeStarCount: Int?
 
         @Serializable(ChatBoostSource.Companion::class)
         data class Claimed(
             @SerialName(giveawayMessageIdField)
             override val messageId: MessageId,
             @SerialName(userField)
-            override val user: PreviewUser
+            override val user: PreviewUser,
+            @SerialName(prizeStarCountField)
+            override val prizeStarCount: Int?
         ) : Giveaway, ByUser {
             @Required
             @EncodeDefault
@@ -78,7 +81,9 @@ sealed interface ChatBoostSource {
         @Serializable(ChatBoostSource.Companion::class)
         data class Unclaimed(
             @SerialName(giveawayMessageIdField)
-            override val messageId: MessageId
+            override val messageId: MessageId,
+            @SerialName(prizeStarCountField)
+            override val prizeStarCount: Int?
         ) : Giveaway {
             @Required
             @EncodeDefault
@@ -115,7 +120,9 @@ sealed interface ChatBoostSource {
         @SerialName(giveawayMessageIdField)
         val messageId: MessageId? = null,
         @SerialName(isUnclaimedField)
-        val unclaimed: Boolean? = null
+        val unclaimed: Boolean? = null,
+        @SerialName(prizeStarCountField)
+        val prizeStarCount: Int?
     )
 
     companion object : KSerializer<ChatBoostSource> {
@@ -143,10 +150,12 @@ sealed interface ChatBoostSource {
                     when {
                         surrogate.user != null && surrogate.unclaimed == false -> Giveaway.Claimed(
                             surrogate.messageId,
-                            surrogate.user
+                            surrogate.user,
+                            surrogate.prizeStarCount
                         )
                         surrogate.unclaimed == true -> Giveaway.Unclaimed(
-                            surrogate.messageId
+                            surrogate.messageId,
+                            surrogate.prizeStarCount
                         )
                         else -> null
                     }
@@ -166,6 +175,7 @@ sealed interface ChatBoostSource {
                 value.user,
                 (value as? Giveaway) ?.messageId,
                 (value as? Giveaway) ?.unclaimed,
+                (value as? Giveaway) ?.prizeStarCount
             )
 
             Surrogate.serializer().serialize(encoder, surrogate)

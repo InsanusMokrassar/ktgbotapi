@@ -288,6 +288,7 @@ const val requestUsernameField = "request_username"
 const val requestPhotoField = "request_photo"
 const val requestNameField = "request_name"
 const val maxQuantityField = "max_quantity"
+const val prizeStarCountField = "prize_star_count"
 
 const val userIsBotField = "user_is_bot"
 const val userIsPremiumField = "user_is_premium"
