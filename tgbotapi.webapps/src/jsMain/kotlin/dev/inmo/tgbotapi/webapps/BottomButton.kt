@@ -3,35 +3,35 @@ package dev.inmo.tgbotapi.webapps
 import kotlin.js.Json
 import kotlin.js.json
 
-external class MainButton {
+external class BottomButton {
     val text: String
-    fun setText(text: String): MainButton
+    fun setText(text: String): BottomButton
 
     var color: String
     var textColor: String
 
     val isVisible: Boolean
-    fun show(): MainButton
-    fun hide(): MainButton
+    fun show(): BottomButton
+    fun hide(): BottomButton
 
     val isActive: Boolean
-    fun enable(): MainButton
-    fun disable(): MainButton
+    fun enable(): BottomButton
+    fun disable(): BottomButton
 
     val isProgressVisible: Boolean
-    fun showProgress(leaveActive: Boolean = definedExternally): MainButton
-    fun hideProgress(): MainButton
+    fun showProgress(leaveActive: Boolean = definedExternally): BottomButton
+    fun hideProgress(): BottomButton
 
     /**
      * **This method argument do not accept `this` [WebApp] object**
      */
-    fun onClick(eventHandler: () -> Unit): MainButton
-    fun offClick(eventHandler: () -> Unit): MainButton
+    fun onClick(eventHandler: () -> Unit): BottomButton
+    fun offClick(eventHandler: () -> Unit): BottomButton
 
-    internal fun setParams(params: Json): MainButton
+    internal fun setParams(params: Json): BottomButton
 }
 
-data class MainButtonParams(
+data class BottomButtonParams(
     val text: String? = null,
     val color: String? = null,
     val textColor: String? = null,
@@ -39,7 +39,7 @@ data class MainButtonParams(
     val isVisible: Boolean? = null
 )
 
-fun MainButton.setParams(params: MainButtonParams) = setParams(
+fun BottomButton.setParams(params: BottomButtonParams) = setParams(
     json(
         *listOfNotNull(
             params.text ?.let { "text" to params.text },
@@ -50,5 +50,8 @@ fun MainButton.setParams(params: MainButtonParams) = setParams(
         ).toTypedArray()
     )
 )
+
+@Deprecated("Renamed in telegram api", ReplaceWith("BottomButton", "dev.inmo.tgbotapi.webapps.BottomButton"))
+typealias MainButton = BottomButton
 
 

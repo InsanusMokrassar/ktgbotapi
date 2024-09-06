@@ -4,6 +4,7 @@ sealed class EventType(val typeName: String) {
     data object ThemeChanged : EventType("themeChanged")
     data object ViewportChanged : EventType("viewportChanged")
     data object MainButtonClicked : EventType("mainButtonClicked")
+    data object SecondaryButtonClicked : EventType("secondaryButtonClicked")
     data object BackButtonClicked : EventType("backButtonClicked")
     data object SettingsButtonClicked : EventType("settingsButtonClicked")
     data object InvoiceClosed : EventType("invoiceClosed")
