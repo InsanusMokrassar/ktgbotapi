@@ -1445,6 +1445,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun giveawayPrivateResultsOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
 	public static final fun giveawayPublicResultsContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayPublicResultsContent;
 	public static final fun giveawayPublicResultsContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayPublicResultsContent;
+	public static final fun giveawayPublicResultsOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults;
+	public static final fun giveawayPublicResultsOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults;
+	public static final fun giveawayResultsOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayResults;
+	public static final fun giveawayResultsOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayResults;
 	public static final fun gradientOrNull (Ldev/inmo/tgbotapi/types/BackgroundFill;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
 	public static final fun gradientOrThrow (Ldev/inmo/tgbotapi/types/BackgroundFill;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
 	public static final fun groupChatCreatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/GroupChatCreated;
@@ -1662,7 +1666,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifGiveawayContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayPrivateResults (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayPublicResults (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayPublicResultsContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayResults (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGradient (Ldev/inmo/tgbotapi/types/BackgroundFill;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupChatCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

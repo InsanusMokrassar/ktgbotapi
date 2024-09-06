@@ -122,7 +122,7 @@ sealed interface ChatBoostSource {
         @SerialName(isUnclaimedField)
         val unclaimed: Boolean? = null,
         @SerialName(prizeStarCountField)
-        val prizeStarCount: Int?
+        val prizeStarCount: Int? = null
     )
 
     companion object : KSerializer<ChatBoostSource> {

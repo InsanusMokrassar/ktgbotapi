@@ -17966,18 +17966,18 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Stars$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults : dev/inmo/tgbotapi/types/giveaway/GiveawayResults, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
+public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults : dev/inmo/tgbotapi/types/giveaway/GiveawayResults {
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Z)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public fun <init> (IILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Z)V
+	public synthetic fun <init> (IILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
 	public final fun component2 ()I
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public final fun component4 ()Z
-	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Z)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
+	public final fun copy (IILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Z)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;IILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public final fun getCount ()I
 	public final fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public fun getUnclaimedCount ()I
 	public fun hashCode ()I
@@ -18000,7 +18000,7 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults$Compa
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults : dev/inmo/tgbotapi/abstracts/WithPreviewChatAndMessageId, dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyPremium, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyStars, dev/inmo/tgbotapi/types/giveaway/GiveawayResults {
+public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults : dev/inmo/tgbotapi/abstracts/WithPreviewChat, dev/inmo/tgbotapi/abstracts/WithPreviewChatAndMessageId, dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyPremium, dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyStars, dev/inmo/tgbotapi/types/giveaway/GiveawayResults {
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Companion;
 	public abstract fun getAdditionalChats ()I
 	public abstract fun getCount ()I
@@ -18110,7 +18110,7 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winner
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayResults : dev/inmo/tgbotapi/abstracts/WithPreviewChat {
+public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayResults : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayResults$Companion;
 	public abstract fun getUnclaimedCount ()I
 }

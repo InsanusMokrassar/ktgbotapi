@@ -12,8 +12,8 @@ import kotlinx.serialization.Transient
 
 @Serializable
 data class GiveawayPrivateResults(
-    @SerialName(chatField)
-    override val chat: PreviewChat,
+    @SerialName(winnersCountField)
+    val count: Int,
     @SerialName(unclaimedPrizeCountField)
     override val unclaimedCount: Int,
     @SerialName(giveawayMessageField)
@@ -21,4 +21,4 @@ data class GiveawayPrivateResults(
     val message: AccessibleMessage? = null,
     @SerialName(isStarGiveawayField)
     val isStarGiveaway: Boolean = false,
-) : GiveawayResults, ChatEvent, PublicChatEvent
+) : GiveawayResults

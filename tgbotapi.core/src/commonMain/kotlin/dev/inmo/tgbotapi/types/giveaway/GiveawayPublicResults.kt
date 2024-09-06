@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.types.giveaway
 
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -11,7 +13,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable(GiveawayPublicResults.Companion::class)
 sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPreviewChatAndMessageId,
-    ReplyInfo.External.ContentVariant, GiveawayInfo.OptionallyStars, GiveawayInfo.OptionallyPremium {
+    ReplyInfo.External.ContentVariant, GiveawayInfo.OptionallyStars, GiveawayInfo.OptionallyPremium, WithPreviewChat {
     val count: Int
     val winners: List<PreviewUser>
     val additionalChats: Int

@@ -103,7 +103,7 @@ internal data class RawMessage(
     private val successful_payment: SuccessfulPayment? = null,
     private val refunded_payment: RefundedPayment? = null,
     private val giveaway: Giveaway? = null,
-    private val giveaway_winners: GiveawayResults? = null,
+    private val giveaway_winners: GiveawayPublicResults? = null,
     private val sender_boost_count: Int? = null,
 
     private val users_shared: UsersShared? = null,
@@ -279,7 +279,7 @@ internal data class RawMessage(
             users_shared != null -> users_shared
             chat_shared != null -> chat_shared
             giveaway_created != null -> giveaway_created
-            giveaway_winners is GiveawayPrivateResults -> giveaway_winners
+            giveaway_winners != null -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
             boost_added != null -> boost_added
             chat_background_set != null -> chat_background_set
