@@ -12565,6 +12565,28 @@ public final class dev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Compa
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created : dev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway {
+	public static final field Companion Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created$Companion;
+	public synthetic fun <init> (JLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-APLFQys ()J
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun copy-58uUwjI (JLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
+	public static synthetic fun copy-58uUwjI$default (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;JLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getClaimed ()Z
+	public fun getMessageId-APLFQys ()J
+	public fun getPrizeStarCount ()Ljava/lang/Integer;
+	public fun getSourceName ()Ljava/lang/String;
+	public fun getUnclaimed ()Z
+	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$DefaultImpls {
 	public static fun getClaimed (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway;)Z
 }

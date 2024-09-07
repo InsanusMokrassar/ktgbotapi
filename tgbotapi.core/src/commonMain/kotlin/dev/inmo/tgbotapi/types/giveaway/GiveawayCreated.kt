@@ -22,6 +22,7 @@ sealed interface GiveawayCreated : ChatEvent, PublicChatEvent {
     object Serializer : KSerializer<GiveawayCreated> {
         @Serializable
         private data class Surrogate(
+            @SerialName(prizeStarCountField)
             val prizeStarCount: Int? = null
         )
 

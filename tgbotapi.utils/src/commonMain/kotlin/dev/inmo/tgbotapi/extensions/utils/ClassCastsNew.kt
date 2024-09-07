@@ -2058,6 +2058,15 @@ public inline fun ChatBoostSource.giveawayOrThrow(): ChatBoostSource.Giveaway = 
 public inline fun <T> ChatBoostSource.ifGiveaway(block: (ChatBoostSource.Giveaway) -> T): T? =
     giveawayOrNull() ?.let(block)
 
+public inline fun ChatBoostSource.createdOrNull(): ChatBoostSource.Giveaway.Created? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
+
+public inline fun ChatBoostSource.createdOrThrow(): ChatBoostSource.Giveaway.Created = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
+
+public inline fun <T> ChatBoostSource.ifCreated(block: (ChatBoostSource.Giveaway.Created) -> T): T?
+    = createdOrNull() ?.let(block)
+
 public inline fun ChatBoostSource.unclaimedOrNull(): ChatBoostSource.Giveaway.Unclaimed? = this as?
     dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
 

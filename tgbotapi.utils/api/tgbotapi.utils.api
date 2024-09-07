@@ -1263,6 +1263,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun contentOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
 	public static final fun createInvoiceLinkOrNull (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createInvoiceLinkOrThrow (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
+	public static final fun createdOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
+	public static final fun createdOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
 	public static final fun cubeDiceAnimationTypeOrNull (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/CubeDiceAnimationType;
 	public static final fun cubeDiceAnimationTypeOrThrow (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/CubeDiceAnimationType;
 	public static final fun customBotActionOrNull (Ldev/inmo/tgbotapi/types/actions/BotAction;)Ldev/inmo/tgbotapi/types/actions/CustomBotAction;
@@ -1576,6 +1578,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifContent (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreateInvoiceLink (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCreated (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCubeDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomBotAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

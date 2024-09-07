@@ -60,6 +60,27 @@ sealed interface ChatBoostSource {
         val prizeStarCount: Int?
 
         @Serializable(ChatBoostSource.Companion::class)
+        data class Created(
+            @SerialName(giveawayMessageIdField)
+            override val messageId: MessageId,
+            @SerialName(prizeStarCountField)
+            override val prizeStarCount: Int?
+        ) : Giveaway {
+            @Required
+            @EncodeDefault
+            @SerialName(sourceField)
+            override val sourceName: String = Giveaway.sourceCode
+            @Required
+            @EncodeDefault
+            @SerialName(isUnclaimedField)
+            override val unclaimed: Boolean = false
+            @SerialName(userField)
+            @EncodeDefault
+            override val user: PreviewUser?
+                get() = null
+        }
+
+        @Serializable(ChatBoostSource.Companion::class)
         data class Claimed(
             @SerialName(giveawayMessageIdField)
             override val messageId: MessageId,
@@ -120,7 +141,7 @@ sealed interface ChatBoostSource {
         @SerialName(giveawayMessageIdField)
         val messageId: MessageId? = null,
         @SerialName(isUnclaimedField)
-        val unclaimed: Boolean? = null,
+        val unclaimed: Boolean = false,
         @SerialName(prizeStarCountField)
         val prizeStarCount: Int? = null
     )
@@ -153,6 +174,10 @@ sealed interface ChatBoostSource {
                             surrogate.user,
                             surrogate.prizeStarCount
                         )
+                        surrogate.user == null && surrogate.unclaimed == false -> Giveaway.Created(
+                            surrogate.messageId,
+                            surrogate.prizeStarCount
+                        )
                         surrogate.unclaimed == true -> Giveaway.Unclaimed(
                             surrogate.messageId,
                             surrogate.prizeStarCount
@@ -174,7 +199,7 @@ sealed interface ChatBoostSource {
                 value.sourceName,
                 value.user,
                 (value as? Giveaway) ?.messageId,
-                (value as? Giveaway) ?.unclaimed,
+                (value as? Giveaway) ?.unclaimed ?: false,
                 (value as? Giveaway) ?.prizeStarCount
             )
 
