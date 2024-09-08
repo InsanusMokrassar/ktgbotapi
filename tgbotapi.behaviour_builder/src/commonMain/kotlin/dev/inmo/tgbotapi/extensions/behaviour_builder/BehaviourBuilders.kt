@@ -73,9 +73,6 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         defaultExceptionsHandler = defaultExceptionsHandler,
         block = block
     )
-    if (!behaviourContext.triggersHolder.handleableCommandsHolder.isHandled(DefaultKTgBotAPIPrivacyCommand)) {
-        DefaultKTgBotAPIKSLog.e { "Currently, there are no any handling of \"$DefaultKTgBotAPIPrivacyCommand\" command. According to https://telegram.org/tos/bot-developers#4-privacy it may lead to bot deactivation or removing" }
-    }
     return longPolling(
         behaviourContext,
         scope = behaviourContext,

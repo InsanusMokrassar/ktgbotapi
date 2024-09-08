@@ -12,6 +12,8 @@
   * Fix `GiveawayPrivateResults` to be correctly deserializable
   * `GiveawayResults` become `PublicChannelEvent`
   * Fixes in deserialization of updates with giveaways
+* `BehaviourBuilder`:
+  * Extension `buildBehaviourWithLongPolling` will not report absence of `/privacy` handling
 * `WebApp`:
   * `MainButton` has been deprecated in favor to `BottomButton`. Their functionality is equal
 
