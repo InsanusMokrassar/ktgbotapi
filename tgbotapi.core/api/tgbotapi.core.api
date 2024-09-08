@@ -17970,24 +17970,6 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyStars
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Premium : dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyPremium {
-	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Premium$Companion;
-	public abstract fun getPremiumMonths ()Ljava/lang/Integer;
-}
-
-public final class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Premium$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Stars : dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$OptionallyStars {
-	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Stars$Companion;
-	public abstract fun getPrizeStarCount ()Ljava/lang/Integer;
-}
-
-public final class dev/inmo/tgbotapi/types/giveaway/GiveawayInfo$Stars$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults : dev/inmo/tgbotapi/types/giveaway/GiveawayResults {
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults$Companion;
 	public fun <init> (IILdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Z)V
