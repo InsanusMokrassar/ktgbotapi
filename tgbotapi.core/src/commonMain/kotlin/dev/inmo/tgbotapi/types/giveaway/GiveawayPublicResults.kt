@@ -17,7 +17,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
     val count: Int
     val winners: List<PreviewUser>
     val additionalChats: Int
-    val publicWinners: Boolean
     val refunded: Boolean
 
     @Serializable
@@ -43,8 +42,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         override val unclaimedCount: Int = 0
         @SerialName(onlyNewMembersField)
         override val onlyNewMembers: Boolean = false
-        @SerialName(hasPublicWinnersField)
-        override val publicWinners: Boolean = false
         @SerialName(prizeDescriptionField)
         override val additionalPrizeDescription: String? = null
         @SerialName(premiumSubscriptionMonthCountField)
@@ -73,8 +70,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         override val unclaimedCount: Int = 0,
         @SerialName(onlyNewMembersField)
         override val onlyNewMembers: Boolean = false,
-        @SerialName(hasPublicWinnersField)
-        override val publicWinners: Boolean = false,
         @SerialName(prizeDescriptionField)
         override val additionalPrizeDescription: String? = null,
         @SerialName(premiumSubscriptionMonthCountField)
@@ -106,8 +101,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         val unclaimedCount: Int = 0,
         @SerialName(onlyNewMembersField)
         val onlyNewMembers: Boolean = false,
-        @SerialName(hasPublicWinnersField)
-        val publicWinners: Boolean = false,
         @SerialName(wasRefundedField)
         val refunded: Boolean = false,
         @SerialName(prizeDescriptionField)
@@ -140,7 +133,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
                     additionalChats = surrogate.additionalChats,
                     unclaimedCount = surrogate.unclaimedCount,
                     onlyNewMembers = surrogate.onlyNewMembers,
-                    publicWinners = surrogate.publicWinners,
                     additionalPrizeDescription = surrogate.additionalPrizeDescription,
                     premiumMonths = surrogate.premiumMonths,
                     prizeStarCount = surrogate.starsCount,
@@ -158,7 +150,6 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
                 additionalChats = value.additionalChats,
                 unclaimedCount = value.unclaimedCount,
                 onlyNewMembers = value.onlyNewMembers,
-                publicWinners = value.publicWinners,
                 additionalPrizeDescription = value.additionalPrizeDescription,
                 premiumMonths = value.premiumMonths,
                 starsCount = value.prizeStarCount,

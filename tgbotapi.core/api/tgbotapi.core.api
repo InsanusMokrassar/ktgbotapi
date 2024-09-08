@@ -18026,7 +18026,6 @@ public abstract interface class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicR
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Companion;
 	public abstract fun getAdditionalChats ()I
 	public abstract fun getCount ()I
-	public abstract fun getPublicWinners ()Z
 	public abstract fun getRefunded ()Z
 	public abstract fun getWinners ()Ljava/util/List;
 }
@@ -18057,7 +18056,6 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Refund
 	public fun getOnlyNewMembers ()Z
 	public fun getPremiumMonths ()Ljava/lang/Integer;
 	public fun getPrizeStarCount ()Ljava/lang/Integer;
-	public fun getPublicWinners ()Z
 	public fun getRefunded ()Z
 	public fun getSelectionDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getUnclaimedCount ()I
@@ -18083,12 +18081,11 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Refund
 
 public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners : dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults {
 	public static final field Companion Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
-	public final fun component10 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/Integer;
-	public final fun component12 ()Ljava/lang/Integer;
 	public final fun component2-APLFQys ()J
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component4 ()I
@@ -18096,9 +18093,9 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winner
 	public final fun component6 ()I
 	public final fun component7 ()I
 	public final fun component8 ()Z
-	public final fun component9 ()Z
-	public final fun copy-1D2Tc4A (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;
-	public static synthetic fun copy-1D2Tc4A$default (Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy-lWeNI4M (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;
+	public static synthetic fun copy-lWeNI4M$default (Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/TelegramDate;ILjava/util/List;IIZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winners;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdditionalChats ()I
 	public fun getAdditionalPrizeDescription ()Ljava/lang/String;
@@ -18108,7 +18105,6 @@ public final class dev/inmo/tgbotapi/types/giveaway/GiveawayPublicResults$Winner
 	public fun getOnlyNewMembers ()Z
 	public fun getPremiumMonths ()Ljava/lang/Integer;
 	public fun getPrizeStarCount ()Ljava/lang/Integer;
-	public fun getPublicWinners ()Z
 	public fun getRefunded ()Z
 	public fun getSelectionDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getUnclaimedCount ()I

@@ -102,8 +102,6 @@ internal data class RawMessage(
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
     private val refunded_payment: RefundedPayment? = null,
-    private val giveaway: Giveaway? = null,
-    private val giveaway_winners: GiveawayPublicResults? = null,
     private val sender_boost_count: Int? = null,
 
     private val users_shared: UsersShared? = null,
@@ -159,6 +157,8 @@ internal data class RawMessage(
 
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
+    private val giveaway: Giveaway? = null,
+    private val giveaway_winners: GiveawayPublicResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 ) {
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
