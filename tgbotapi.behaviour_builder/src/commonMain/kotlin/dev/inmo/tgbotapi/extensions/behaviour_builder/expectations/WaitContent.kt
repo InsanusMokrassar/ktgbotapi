@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -148,6 +149,11 @@ suspend fun BehaviourContext.waitGiveawayPublicResultsContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContent(initRequest, errorFactory).mapContent<GiveawayPublicResultsContent>()
+
+suspend fun BehaviourContext.waitGiveawayWinners(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitGiveawayPublicResultsContent(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitPaidMediaInfoContent(
     initRequest: Request<*>? = null,

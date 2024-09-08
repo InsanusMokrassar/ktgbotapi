@@ -23,5 +23,7 @@ data class Giveaway(
     @SerialName(countryCodesField)
     val countries: List<IetfLang>? = null,
     @SerialName(premiumSubscriptionMonthCountField)
-    override val premiumMonths: Int? = null
-) : GiveawayInfo, ReplyInfo.External.ContentVariant
+    override val premiumMonths: Int? = null,
+    @SerialName(prizeStarCountField)
+    override val prizeStarCount: Int? = null
+) : GiveawayInfo.OptionallyStars, GiveawayInfo.OptionallyPremium, ReplyInfo.External.ContentVariant

@@ -351,6 +351,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
+import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
@@ -487,6 +488,7 @@ import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
 import dev.inmo.tgbotapi.types.update.MessageUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
 import dev.inmo.tgbotapi.types.update.PollAnswerUpdate
 import dev.inmo.tgbotapi.types.update.PollUpdate
 import dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
@@ -930,6 +932,15 @@ public inline fun OptionallyWithUser.supergroupEventMessageOrThrow():
 public inline fun <T>
     OptionallyWithUser.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T):
     T? = supergroupEventMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.paidMediaPurchasedOrNull(): PaidMediaPurchased? = this as?
+    dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
+
+public inline fun OptionallyWithUser.paidMediaPurchasedOrThrow(): PaidMediaPurchased = this as
+    dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
+
+public inline fun <T> OptionallyWithUser.ifPaidMediaPurchased(block: (PaidMediaPurchased) -> T): T?
+    = paidMediaPurchasedOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.preCheckoutQueryOrNull(): PreCheckoutQuery? = this as?
     dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
@@ -2044,6 +2055,15 @@ public inline fun ChatBoostSource.giveawayOrThrow(): ChatBoostSource.Giveaway = 
 
 public inline fun <T> ChatBoostSource.ifGiveaway(block: (ChatBoostSource.Giveaway) -> T): T? =
     giveawayOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.createdOrNull(): ChatBoostSource.Giveaway.Created? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
+
+public inline fun ChatBoostSource.createdOrThrow(): ChatBoostSource.Giveaway.Created = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
+
+public inline fun <T> ChatBoostSource.ifCreated(block: (ChatBoostSource.Giveaway.Created) -> T): T?
+    = createdOrNull() ?.let(block)
 
 public inline fun ChatBoostSource.unclaimedOrNull(): ChatBoostSource.Giveaway.Unclaimed? = this as?
     dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
@@ -5620,6 +5640,15 @@ public inline fun Update.myChatMemberUpdatedUpdateOrThrow(): MyChatMemberUpdated
 
 public inline fun <T> Update.ifMyChatMemberUpdatedUpdate(block: (MyChatMemberUpdatedUpdate) -> T):
     T? = myChatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.paidMediaPurchasedUpdateOrNull(): PaidMediaPurchasedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
+
+public inline fun Update.paidMediaPurchasedUpdateOrThrow(): PaidMediaPurchasedUpdate = this as
+    dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
+
+public inline fun <T> Update.ifPaidMediaPurchasedUpdate(block: (PaidMediaPurchasedUpdate) -> T): T?
+    = paidMediaPurchasedUpdateOrNull() ?.let(block)
 
 public inline fun Update.pollAnswerUpdateOrNull(): PollAnswerUpdate? = this as?
     dev.inmo.tgbotapi.types.update.PollAnswerUpdate

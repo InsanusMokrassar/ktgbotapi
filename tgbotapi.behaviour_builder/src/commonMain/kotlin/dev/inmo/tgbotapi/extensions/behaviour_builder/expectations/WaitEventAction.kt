@@ -6,6 +6,9 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.chat.ChatBackground
+import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -230,3 +233,18 @@ suspend fun BehaviourContext.waitChatBackgroundSet(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChatBackground>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitGiveawayCreated(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GiveawayCreated>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitGiveawayCompleted(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GiveawayPrivateResults>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitGiveawayCompletedWithPrivateWinners(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitGiveawayCompleted(initRequest, errorFactory)

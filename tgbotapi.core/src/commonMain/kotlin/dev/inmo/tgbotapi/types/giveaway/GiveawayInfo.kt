@@ -10,6 +10,16 @@ import kotlinx.serialization.Serializable
 sealed interface GiveawayInfo {
     val selectionDate: TelegramDate
     val onlyNewMembers: Boolean
-    val premiumMonths: Int?
     val additionalPrizeDescription: String?
+
+
+    @Serializable
+    sealed interface OptionallyPremium : GiveawayInfo {
+        val premiumMonths: Int?
+    }
+
+    @Serializable
+    sealed interface OptionallyStars : GiveawayInfo {
+        val prizeStarCount: Int?
+    }
 }

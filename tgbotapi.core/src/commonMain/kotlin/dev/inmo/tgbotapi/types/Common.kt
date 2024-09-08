@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
+import kotlinx.serialization.Serializable
+import kotlin.jvm.JvmInline
 
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
@@ -23,6 +25,14 @@ typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
+
+@Serializable
+@JvmInline
+value class PaidMediaPayload(val string: String) {
+    override fun toString(): String {
+        return string
+    }
+}
 
 val usernameRegex = Regex("@[\\w\\d_]+")
 
@@ -278,6 +288,7 @@ const val requestUsernameField = "request_username"
 const val requestPhotoField = "request_photo"
 const val requestNameField = "request_name"
 const val maxQuantityField = "max_quantity"
+const val prizeStarCountField = "prize_star_count"
 
 const val userIsBotField = "user_is_bot"
 const val userIsPremiumField = "user_is_premium"
@@ -490,6 +501,7 @@ const val currencyField = "currency"
 const val startParameterField = "start_parameter"
 const val totalAmountField = "total_amount"
 const val invoicePayloadField = "invoice_payload"
+const val paidMediaPayloadField = "paid_media_payload"
 const val shippingOptionIdField = "shipping_option_id"
 const val shippingQueryIdField = "shipping_query_id"
 const val preCheckoutQueryIdField = "pre_checkout_query_id"
@@ -608,6 +620,8 @@ const val premiumSubscriptionMonthCountField = "premium_subscription_month_count
 const val winnersField = "winners"
 const val additionalChatCountField = "additional_chat_count"
 const val unclaimedPrizeCountField = "unclaimed_prize_count"
+const val isStarGiveawayField = "is_star_giveaway"
+const val giveawayMessageField = "giveaway_message"
 const val wasRefundedField = "was_refunded"
 const val isManualField = "is_manual"
 const val starCountField = "star_count"

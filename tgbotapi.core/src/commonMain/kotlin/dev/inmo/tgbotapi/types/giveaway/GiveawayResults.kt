@@ -6,6 +6,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface GiveawayResults : WithPreviewChat {
+sealed interface GiveawayResults {
     val unclaimedCount: Int
 }

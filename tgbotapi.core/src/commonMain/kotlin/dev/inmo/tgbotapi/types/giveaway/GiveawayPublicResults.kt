@@ -1,21 +1,22 @@
 package dev.inmo.tgbotapi.types.giveaway
 
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(GiveawayPublicResults.Companion::class)
-sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPreviewChatAndMessageId,
-    ReplyInfo.External.ContentVariant {
+sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPreviewChatAndMessageId,
+    ReplyInfo.External.ContentVariant, GiveawayInfo.OptionallyStars, GiveawayInfo.OptionallyPremium, WithPreviewChat {
     val count: Int
     val winners: List<PreviewUser>
     val additionalChats: Int
-    val publicWinners: Boolean
     val refunded: Boolean
 
     @Serializable
@@ -41,16 +42,18 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
         override val unclaimedCount: Int = 0
         @SerialName(onlyNewMembersField)
         override val onlyNewMembers: Boolean = false
-        @SerialName(hasPublicWinnersField)
-        override val publicWinners: Boolean = false
         @SerialName(prizeDescriptionField)
         override val additionalPrizeDescription: String? = null
         @SerialName(premiumSubscriptionMonthCountField)
-        override val premiumMonths: Int? = null
+        override val premiumMonths: Int?
+            get() = null
+        @SerialName(prizeStarCountField)
+        override val prizeStarCount: Int?
+            get() = null
     }
 
     @Serializable
-    data class Winners (
+    data class Winners(
         @SerialName(chatsField)
         override val chat: PreviewChat,
         @SerialName(giveawayMessageIdField)
@@ -67,12 +70,12 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
         override val unclaimedCount: Int = 0,
         @SerialName(onlyNewMembersField)
         override val onlyNewMembers: Boolean = false,
-        @SerialName(hasPublicWinnersField)
-        override val publicWinners: Boolean = false,
         @SerialName(prizeDescriptionField)
         override val additionalPrizeDescription: String? = null,
         @SerialName(premiumSubscriptionMonthCountField)
-        override val premiumMonths: Int? = null
+        override val premiumMonths: Int? = null,
+        @SerialName(prizeStarCountField)
+        override val prizeStarCount: Int? = null,
     ) : GiveawayPublicResults {
         @SerialName(wasRefundedField)
         @Required
@@ -82,7 +85,7 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
 
     @Serializable
     private data class Surrogate(
-        @SerialName(chatsField)
+        @SerialName(chatField)
         val chat: PreviewChat,
         @SerialName(giveawayMessageIdField)
         val messageId: MessageId,
@@ -98,14 +101,14 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
         val unclaimedCount: Int = 0,
         @SerialName(onlyNewMembersField)
         val onlyNewMembers: Boolean = false,
-        @SerialName(hasPublicWinnersField)
-        val publicWinners: Boolean = false,
         @SerialName(wasRefundedField)
         val refunded: Boolean = false,
         @SerialName(prizeDescriptionField)
         val additionalPrizeDescription: String? = null,
         @SerialName(premiumSubscriptionMonthCountField)
-        val premiumMonths: Int? = null
+        val premiumMonths: Int? = null,
+        @SerialName(prizeStarCountField)
+        val starsCount: Int? = null
     )
 
     companion object : KSerializer<GiveawayPublicResults> {
@@ -115,27 +118,25 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
         override fun deserialize(decoder: Decoder): GiveawayPublicResults {
             val surrogate = Surrogate.serializer().deserialize(decoder)
 
-            return when (surrogate.refunded) {
-                true -> Refunded(
+            return when {
+                surrogate.refunded -> Refunded(
                     chat = surrogate.chat,
                     messageId = surrogate.messageId,
                     selectionDate = surrogate.selectionDate
                 )
-                false -> {
-                    Winners(
-                        chat = surrogate.chat,
-                        messageId = surrogate.messageId,
-                        selectionDate = surrogate.selectionDate,
-                        count = surrogate.count,
-                        winners = surrogate.winners,
-                        additionalChats = surrogate.additionalChats,
-                        unclaimedCount = surrogate.unclaimedCount,
-                        onlyNewMembers = surrogate.onlyNewMembers,
-                        publicWinners = surrogate.publicWinners,
-                        additionalPrizeDescription = surrogate.additionalPrizeDescription,
-                        premiumMonths = surrogate.premiumMonths,
-                    )
-                }
+                else -> Winners(
+                    chat = surrogate.chat,
+                    messageId = surrogate.messageId,
+                    selectionDate = surrogate.selectionDate,
+                    count = surrogate.count,
+                    winners = surrogate.winners,
+                    additionalChats = surrogate.additionalChats,
+                    unclaimedCount = surrogate.unclaimedCount,
+                    onlyNewMembers = surrogate.onlyNewMembers,
+                    additionalPrizeDescription = surrogate.additionalPrizeDescription,
+                    premiumMonths = surrogate.premiumMonths,
+                    prizeStarCount = surrogate.starsCount,
+                )
             }
         }
 
@@ -149,9 +150,9 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
                 additionalChats = value.additionalChats,
                 unclaimedCount = value.unclaimedCount,
                 onlyNewMembers = value.onlyNewMembers,
-                publicWinners = value.publicWinners,
                 additionalPrizeDescription = value.additionalPrizeDescription,
                 premiumMonths = value.premiumMonths,
+                starsCount = value.prizeStarCount,
                 refunded = value.refunded
             )
 

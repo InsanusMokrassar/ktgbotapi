@@ -11,6 +11,9 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
 import dev.inmo.tgbotapi.types.chat.ChatBackground
+import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -928,3 +931,69 @@ suspend fun <BC : BehaviourContext> BC.onChatBackgroundSet(
     markerFactory: MarkerFactory<in ChatEventMessage<ChatBackground>, Any>? = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<ChatBackground>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onGiveawayCreated(
+    initialFilter: SimpleFilter<ChatEventMessage<GiveawayCreated>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiveawayCreated>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<GiveawayCreated>, Any>? = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiveawayCreated>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onGiveawayCompleted(
+    initialFilter: SimpleFilter<ChatEventMessage<GiveawayPrivateResults>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiveawayPrivateResults>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<GiveawayPrivateResults>, Any>? = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiveawayPrivateResults>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onGiveawayCompletedWithPrivateWinners(
+    initialFilter: SimpleFilter<ChatEventMessage<GiveawayPrivateResults>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiveawayPrivateResults>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<GiveawayPrivateResults>, Any>? = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiveawayPrivateResults>>
+) = onGiveawayCompleted(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

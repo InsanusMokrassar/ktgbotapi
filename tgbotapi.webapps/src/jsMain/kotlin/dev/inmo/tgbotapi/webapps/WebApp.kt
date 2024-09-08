@@ -19,9 +19,14 @@ external class WebApp {
     val headerColor: HEXColor?
     fun setHeaderColor(color: Color.BackgroundColor)
     fun setHeaderColor(color: Color.Hex)
+
     val backgroundColor: HEXColor?
     fun setBackgroundColor(color: Color.Hex)
     fun setBackgroundColor(color: Color.BackgroundColor)
+
+    val bottomBarColor: HEXColor?
+    fun setBottomBarColor(color: Color.Hex)
+    fun setBottomBarColor(color: Color.BackgroundColor)
 
     @JsName("colorScheme")
     val colorSchemeRaw: String
@@ -48,7 +53,9 @@ external class WebApp {
     fun readTextFromClipboard(callback: TextReceivedCallback? = definedExternally)
 
     @JsName("MainButton")
-    val mainButton: MainButton
+    val mainButton: BottomButton
+    @JsName("SecondaryButton")
+    val secondaryButton: BottomButton
 
     @JsName("BackButton")
     val backButton: BackButton
@@ -243,6 +250,10 @@ fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeC
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onMainButtonClicked(eventHandler: EventHandler) = onEvent(EventType.MainButtonClicked, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onSecondaryButtonClicked(eventHandler: EventHandler) = onEvent(EventType.SecondaryButtonClicked, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */

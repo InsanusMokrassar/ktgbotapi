@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -56,6 +57,7 @@ internal data class RawUpdate constructor(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_business_message: BusinessContentMessage<*>? = null,
     private val deleted_business_messages: BusinessMessagesDeleted? = null,
+    private val purchased_paid_media: PaidMediaPurchased? = null,
 ) {
     @Transient
     private var initedUpdate: Update? = null
@@ -91,6 +93,7 @@ internal data class RawUpdate constructor(
                 business_message != null -> BusinessMessageUpdate(updateId, business_message)
                 edited_business_message != null -> EditBusinessMessageUpdate(updateId, edited_business_message)
                 deleted_business_messages != null -> DeletedBusinessMessageUpdate(updateId, deleted_business_messages)
+                purchased_paid_media != null -> PaidMediaPurchasedUpdate(updateId, purchased_paid_media)
                 else -> UnknownUpdate(
                     updateId,
                     raw
