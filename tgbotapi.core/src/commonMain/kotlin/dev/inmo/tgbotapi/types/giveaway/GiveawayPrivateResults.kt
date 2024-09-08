@@ -21,4 +21,4 @@ data class GiveawayPrivateResults(
     val message: AccessibleMessage? = null,
     @SerialName(isStarGiveawayField)
     val isStarGiveaway: Boolean = false,
-) : GiveawayResults
+) : GiveawayResults, ChatEvent, PublicChatEvent

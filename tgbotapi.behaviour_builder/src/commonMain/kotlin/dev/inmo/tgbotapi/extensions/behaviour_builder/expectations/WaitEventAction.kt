@@ -248,13 +248,3 @@ suspend fun BehaviourContext.waitGiveawayCompletedWithPrivateWinners(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitGiveawayCompleted(initRequest, errorFactory)
-
-suspend fun BehaviourContext.waitGiveawayCompletedWithPublicWinners(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiveawayPublicResults>(initRequest, errorFactory)
-
-suspend fun BehaviourContext.waitGiveawayWinners(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitGiveawayCompletedWithPublicWinners(initRequest, errorFactory)

@@ -279,7 +279,6 @@ internal data class RawMessage(
             users_shared != null -> users_shared
             chat_shared != null -> chat_shared
             giveaway_created != null -> giveaway_created
-            giveaway_winners != null -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
             boost_added != null -> boost_added
             chat_background_set != null -> chat_background_set

@@ -10,7 +10,6 @@
   * `GiveawayPublicResults` lost parameter `publicWinners` because of its abcence in Telegram Bot API
   * Fix `GiveawayPublicResults` to be correctly deserializable
   * Fix `GiveawayPrivateResults` to be correctly deserializable
-  * `GiveawayResults` become `PublicChannelEvent`
   * Fixes in deserialization of updates with giveaways
 * `BehaviourBuilder`:
   * Extension `buildBehaviourWithLongPolling` will not report absence of `/privacy` handling
