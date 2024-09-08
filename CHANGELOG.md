@@ -2,6 +2,19 @@
 
 ## 18.2.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [BOTS API 7.10](https://core.telegram.org/bots/api-changelog#september-6-2024)**
+
+* `Core`:
+  * Customize `GiveawayCreated` to use stars in some cases
+  * `GiveawayInfo` lost parameter `premiumMonths` because of it is no included by default
+  * `GiveawayPublicResults` lost parameter `publicWinners` because of its abcence in Telegram Bot API
+  * Fix `GiveawayPublicResults` to be correctly deserializable
+  * Fix `GiveawayPrivateResults` to be correctly deserializable
+  * `GiveawayResults` become `PublicChannelEvent`
+  * Fixes in deserialization of updates with giveaways
+* `WebApp`:
+  * `MainButton` has been deprecated in favor to `BottomButton`. Their functionality is equal
+
 ## 18.1.0
 
 * `BehaviourBuilder`:
