@@ -2,11 +2,10 @@ package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.micro_utils.coroutines.safely
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.*
 
 /**
- * Analog of [merge] function for [Flow]s. The difference is in the usage of [BroadcastChannel] in this case
+ * Analog of [merge] function for [Flow]s. The difference is in the usage of [MutableSharedFlow] in this case
  */
 fun <T> aggregateFlows(
     withScope: CoroutineScope,
