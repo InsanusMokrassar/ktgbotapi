@@ -5,7 +5,7 @@
 * `Version`:
   * `Serialization`: `1.7.2` -> `1.7.3`
   * `Coroutines`: `1.8.1` -> `1.9.0`
-  * `MicroUtils`: `0.22.2` -> `0.22.3`
+  * `MicroUtils`: `0.22.2` -> `0.22.4`
 
 ## 18.2.0
 
