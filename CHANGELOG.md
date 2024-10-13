@@ -2,6 +2,10 @@
 
 ## 18.2.2
 
+* `BehaviourBuilder`:
+  * Add `CommonMessageFilterExcludeCommand` to filter commands in messages
+  * Add `minus` operation for `SimpleFilter`s
+
 ## 18.2.1
 
 * `Version`:
