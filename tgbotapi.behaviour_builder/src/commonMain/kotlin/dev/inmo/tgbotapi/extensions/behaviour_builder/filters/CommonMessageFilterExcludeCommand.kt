@@ -1,10 +1,8 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
-import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.CommonMessageFilter
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.not
 import dev.inmo.tgbotapi.extensions.utils.textedContentOrNull
-import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 
 /**
@@ -21,13 +19,12 @@ fun CommonMessageFilterExcludeCommand(
     command: String?,
     textBeginOnly: Boolean = true
 ): CommonMessageFilter<*> {
-    val regex = when {
-        command == null -> BotCommandTextSource.CommandRegex
-        textBeginOnly -> Regex("^[/!]$command(\\s|$)")
-        !textBeginOnly -> Regex("[/!]$command(\\s|$)")
-        else -> error("Unreachable code has been reached. It is error and must not happen")
-    }
-    return CommonMessageFilter {
-        it.content.textedContentOrNull() ?.text ?.contains(regex) == true
-    }
+    return !CommonMessageFilterIncludeText(
+        when {
+            command == null -> BotCommandTextSource.CommandRegex
+            textBeginOnly -> Regex("^[/!]$command(\\s|$)")
+            !textBeginOnly -> Regex("[/!]$command(\\s|$)")
+            else -> error("Unreachable code has been reached. It is error and must not happen")
+        }
+    )
 }
