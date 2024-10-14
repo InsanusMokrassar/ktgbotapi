@@ -4,6 +4,22 @@ import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
+/**
+ * @param onRequestException Will be called when some exception happen during [Request] handling. Non-null result of
+ * lambda will be used as the result of request handling
+ * @param onBeforeSearchCallFactory Will be called when telegram bot starts to choose which [KtorCallFactory] will handle
+ * [Request]
+ * @param onBeforeCallFactoryMakeCall Will be called when telegram bot trying to use [KtorCallFactory] as potential
+ * handler for [Request]
+ * @param onAfterCallFactoryMakeCall Will be called when [KtorCallFactory] made call. Non-null result of
+ * lambda will be used as the result of request handling
+ * @param onRequestResultPresented Will be called when [KtorCallFactory] **or** [TelegramBotPipelinesHandler]/[TelegramBotMiddleware]
+ * returned non-null result. Non-null result of lambda will be used as the result of request handling
+ * @param onRequestResultAbsent Will be called when some there is no any result of [Request] handling. Non-null result of
+ * lambda will be used as the result of request handling
+ * @param onRequestReturnResult Latest lambda before result returning. Will be called after all previous stages.
+ * Non-null result of lambda will be used as the result of request handling
+ */
 class TelegramBotMiddleware(
     internal val onRequestException: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null,
     internal val onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null,

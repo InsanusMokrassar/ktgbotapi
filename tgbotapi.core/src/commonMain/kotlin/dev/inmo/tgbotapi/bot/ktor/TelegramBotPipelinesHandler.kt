@@ -68,7 +68,7 @@ interface TelegramBotPipelinesHandler {
         result: Result<T>,
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
-    ): Result<T> = result.getOrThrow()
+    ): Result<T> = result
 
     companion object : TelegramBotPipelinesHandler
 }
