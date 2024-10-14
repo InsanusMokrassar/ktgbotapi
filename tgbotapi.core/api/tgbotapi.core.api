@@ -21771,6 +21771,7 @@ public synthetic class dev/inmo/tgbotapi/types/message/textsources/BotCommandTex
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource$Companion {
+	public final fun getCommandRegex ()Lkotlin/text/Regex;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
