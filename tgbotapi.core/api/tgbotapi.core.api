@@ -452,6 +452,13 @@ public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareB
 	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareBuilder$Companion;
 	public fun <init> ()V
 	public final fun build ()Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware;
+	public final fun doOnAfterCallFactoryMakeCall (Lkotlin/jvm/functions/Function4;)V
+	public final fun doOnBeforeCallFactoryMakeCall (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnBeforeSearchCallFactory (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestException (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestResultAbsent (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestResultPresented (Lkotlin/jvm/functions/Function5;)V
+	public final fun doOnRequestReturnResult (Lkotlin/jvm/functions/Function4;)V
 	public final fun getOnAfterCallFactoryMakeCall ()Lkotlin/jvm/functions/Function4;
 	public final fun getOnBeforeCallFactoryMakeCall ()Lkotlin/jvm/functions/Function3;
 	public final fun getOnBeforeSearchCallFactory ()Lkotlin/jvm/functions/Function3;
