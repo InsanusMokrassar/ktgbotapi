@@ -13,6 +13,48 @@ class TelegramBotMiddlewareBuilder {
     var onRequestResultAbsent: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?)? = null
     var onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null
 
+    /**
+     * Useful way to set [onRequestException]
+     */
+    fun doOnRequestException(block: suspend (request: Request<*>, t: Throwable?) -> Any?) {
+        onRequestException = block
+    }
+    /**
+     * Useful way to set [onBeforeSearchCallFactory]
+     */
+    fun doOnBeforeSearchCallFactory(block: suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit) {
+        onBeforeSearchCallFactory = block
+    }
+    /**
+     * Useful way to set [onBeforeCallFactoryMakeCall]
+     */
+    fun doOnBeforeCallFactoryMakeCall(block: suspend (request: Request<*>, potentialFactory: KtorCallFactory) -> Unit) {
+        onBeforeCallFactoryMakeCall = block
+    }
+    /**
+     * Useful way to set [onAfterCallFactoryMakeCall]
+     */
+    fun doOnAfterCallFactoryMakeCall(block: suspend (result: Any?, request: Request<*>, potentialFactory: KtorCallFactory) -> Any?) {
+        onAfterCallFactoryMakeCall = block
+    }
+    /**
+     * Useful way to set [onRequestResultPresented]
+     */
+    fun doOnRequestResultPresented(block: suspend (result: Any?, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?) {
+        onRequestResultPresented = block
+    }
+    /**
+     * Useful way to set [onRequestResultAbsent]
+     */
+    fun doOnRequestResultAbsent(block: suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?) {
+        onRequestResultAbsent = block
+    }
+    /**
+     * Useful way to set [onRequestReturnResult]
+     */
+    fun doOnRequestReturnResult(block: suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?) {
+        onRequestReturnResult = block
+    }
 
     fun build(): TelegramBotMiddleware {
         return TelegramBotMiddleware(
