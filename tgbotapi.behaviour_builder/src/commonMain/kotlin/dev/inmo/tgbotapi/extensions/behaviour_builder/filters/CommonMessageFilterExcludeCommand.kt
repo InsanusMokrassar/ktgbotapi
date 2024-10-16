@@ -11,12 +11,12 @@ import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
  *
  * **Command line starts with `/` or `!`**
  *
- * @param command Pass non-null value to search specific command or null to search any command
+ * @param command Pass non-null value to search specific command or null (default) to search any command
  * @param textBeginOnly Pass true (default) to check only start of message. Pass false to search in whole text of
  * content
  */
 fun CommonMessageFilterExcludeCommand(
-    command: String?,
+    command: String? = null,
     textBeginOnly: Boolean = true
 ): CommonMessageFilter<*> {
     return !CommonMessageFilterIncludeText(
