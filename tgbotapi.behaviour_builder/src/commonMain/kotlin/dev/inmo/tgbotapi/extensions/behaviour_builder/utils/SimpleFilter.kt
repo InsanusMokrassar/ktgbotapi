@@ -59,3 +59,14 @@ infix operator fun <T> SimpleFilter<T>?.plus(other: SimpleFilter<T>?): SimpleFil
 operator fun <T> SimpleFilter<T>.not() = SimpleFilter<T> {
     !this(it)
 }
+
+/**
+ * Works as [not]
+ */
+operator fun <T> SimpleFilter<T>.unaryMinus() = not()
+
+/**
+ * Making +! operation. In fact that means that [other] will be inversed with [not] and that added to [this] via
+ * [plus]
+ */
+operator fun <T> SimpleFilter<T>?.minus(other: SimpleFilter<T>?): SimpleFilter<T> = this + (other ?.not())

@@ -24,7 +24,7 @@ expect class KtorRequestsExecutor internal constructor(
     excludeDefaultFactories: Boolean,
     requestsLimiter: RequestLimiter,
     jsonFormatter: Json,
-    pipelineStepsHolder: KtorPipelineStepsHolder,
+    pipelineStepsHolder: TelegramBotPipelinesHandler,
     logger: KSLog,
     diff: Unit // just a diff property to know where constructor and where calling function with defaults
 ) : BaseRequestsExecutor {
@@ -39,7 +39,7 @@ fun KtorRequestsExecutor(
     excludeDefaultFactories: Boolean = false,
     requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
     jsonFormatter: Json = nonstrictJsonFormat,
-    pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder,
+    pipelineStepsHolder: TelegramBotPipelinesHandler = TelegramBotPipelinesHandler,
     logger: KSLog = DefaultKTgBotAPIKSLog,
 ) = KtorRequestsExecutor(
     telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,

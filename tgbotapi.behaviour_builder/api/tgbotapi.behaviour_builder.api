@@ -852,6 +852,15 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/ChatMe
 	public static final fun getChatMemberUnsubscribedFilter ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/CommonMessageFilterExcludeCommandKt {
+	public static final fun CommonMessageFilterExcludeCommand (Ljava/lang/String;Z)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
+	public static synthetic fun CommonMessageFilterExcludeCommand$default (Ljava/lang/String;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/CommonMessageFilterIncludeTextKt {
+	public static final fun CommonMessageFilterIncludeText (Lkotlin/text/Regex;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/MessageFilterByChatKt {
 	public static final fun getCallbackQueryFilterByUser ()Lkotlin/jvm/functions/Function4;
 	public static final fun getChatJoinRequestFilterByChat ()Lkotlin/jvm/functions/Function4;
@@ -1488,9 +1497,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFi
 	public static final fun listAll (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 	public static final fun listAny (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 	public static final fun listNone (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
+	public static final fun minus (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 	public static final fun not (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 	public static final fun plus (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 	public static final fun times (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
+	public static final fun unaryMinus (Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/SubcontextUpdatesFilterOperationsKt {
