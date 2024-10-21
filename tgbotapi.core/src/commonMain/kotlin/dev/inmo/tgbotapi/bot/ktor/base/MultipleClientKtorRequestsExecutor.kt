@@ -4,13 +4,10 @@ import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
-import dev.inmo.tgbotapi.bot.ktor.KtorPipelineStepsHolder
-import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutor
-import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
+import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import io.ktor.client.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -47,7 +44,7 @@ class MultipleClientKtorRequestsExecutor (
     excludeDefaultFactories: Boolean,
     requestsLimiter: RequestLimiter,
     jsonFormatter: Json,
-    pipelineStepsHolder: KtorPipelineStepsHolder,
+    pipelineStepsHolder: TelegramBotPipelinesHandler,
     requestExecutorsCount: Int,
     logger: KSLog,
     clientFactory: () -> HttpClient
@@ -82,7 +79,7 @@ class MultipleClientKtorRequestsExecutor (
         excludeDefaultFactories: Boolean,
         requestsLimiter: RequestLimiter,
         jsonFormatter: Json,
-        pipelineStepsHolder: KtorPipelineStepsHolder,
+        pipelineStepsHolder: TelegramBotPipelinesHandler,
         logger: KSLog,
         diff: Unit
     ) : this(

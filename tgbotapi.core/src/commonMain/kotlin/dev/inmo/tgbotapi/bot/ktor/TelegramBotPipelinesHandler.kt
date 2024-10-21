@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.bot.ktor
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
-interface KtorPipelineStepsHolder {
+interface TelegramBotPipelinesHandler {
     /**
      * Will be called when any exception will happen due to the [request] handling. If returns value - that value
      * will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
@@ -68,7 +68,10 @@ interface KtorPipelineStepsHolder {
         result: Result<T>,
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
-    ): T = result.getOrThrow()
+    ): Result<T> = result
 
-    companion object : KtorPipelineStepsHolder
+    companion object : TelegramBotPipelinesHandler
 }
+
+@Deprecated("Renamed", ReplaceWith("TelegramBotPipelinesHandler", "dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler"))
+typealias KtorPipelineStepsHolder = TelegramBotPipelinesHandler

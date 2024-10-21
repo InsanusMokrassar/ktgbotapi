@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
 import dev.inmo.kslog.common.*
-import dev.inmo.micro_utils.coroutines.defaultSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.BotException
@@ -9,15 +8,12 @@ import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
 import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
-import dev.inmo.tgbotapi.bot.ktor.KtorPipelineStepsHolder
-import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutor
+import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.bot.ktor.createTelegramBotDefaultKtorCallRequestsFactories
-import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.statement.*
@@ -30,7 +26,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     excludeDefaultFactories: Boolean,
     private val requestsLimiter: RequestLimiter,
     private val jsonFormatter: Json,
-    private val pipelineStepsHolder: KtorPipelineStepsHolder,
+    private val pipelineStepsHolder: TelegramBotPipelinesHandler,
     private val logger: KSLog,
     diff: Unit
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
@@ -110,7 +106,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                     }
                 }
             } ?.let { Result.failure(it) } ?: it
-            pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).also {
+            pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).getOrThrow().also {
                 logger.v { "Result of handling $request: $it" }
             }
         }

@@ -312,37 +312,6 @@ public abstract interface class dev/inmo/tgbotapi/bot/ktor/KtorCallFactory {
 	public abstract fun makeCall (Lio/ktor/client/HttpClient;Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlinx/serialization/json/Json;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
-public abstract interface class dev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder {
-	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder$Companion;
-	public abstract fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun onRequestReturnResult (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
-public final class dev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder$Companion : dev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder {
-	public fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun onRequestReturnResult (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
-public final class dev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder$DefaultImpls {
-	public static fun onAfterCallFactoryMakeCall (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onRequestException (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onRequestResultAbsent (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onRequestResultPresented (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun onRequestReturnResult (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorBuilder {
 	public fun <init> (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;)V
 	public final fun build ()Ldev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor;
@@ -351,15 +320,16 @@ public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorBuilder {
 	public final fun getExcludeDefaultFactories ()Z
 	public final fun getJsonFormatter ()Lkotlinx/serialization/json/Json;
 	public final fun getLogger ()Ldev/inmo/kslog/common/KSLog;
-	public final fun getPipelineStepsHolder ()Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;
+	public final fun getPipelineStepsHolder ()Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;
 	public final fun getRequestsLimiter ()Ldev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;
 	public final fun getTelegramAPIUrlsKeeper ()Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;
+	public final fun includeMiddlewares (Lkotlin/jvm/functions/Function1;)V
 	public final fun setCallsFactories (Ljava/util/List;)V
 	public final fun setClient (Lio/ktor/client/HttpClient;)V
 	public final fun setExcludeDefaultFactories (Z)V
 	public final fun setJsonFormatter (Lkotlinx/serialization/json/Json;)V
 	public final fun setLogger (Ldev/inmo/kslog/common/KSLog;)V
-	public final fun setPipelineStepsHolder (Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;)V
+	public final fun setPipelineStepsHolder (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;)V
 	public final fun setRequestsLimiter (Ldev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;)V
 	public final fun setTelegramAPIUrlsKeeper (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;)V
 }
@@ -374,8 +344,39 @@ public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorFactoriesKt {
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorKt {
-	public static final fun KtorRequestsExecutor (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/HttpClient;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/kslog/common/KSLog;)Ldev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor;
-	public static synthetic fun KtorRequestsExecutor$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/HttpClient;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;Ldev/inmo/kslog/common/KSLog;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor;
+	public static final fun KtorRequestsExecutor (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/HttpClient;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/kslog/common/KSLog;)Ldev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor;
+	public static synthetic fun KtorRequestsExecutor$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/HttpClient;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/kslog/common/KSLog;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor;
+}
+
+public abstract interface class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler {
+	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler$Companion;
+	public abstract fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler$Companion : dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler {
+	public fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler$DefaultImpls {
+	public static fun onAfterCallFactoryMakeCall (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequestException (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequestResultAbsent (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequestResultPresented (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequestReturnResult-3t6e044 (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public abstract class dev/inmo/tgbotapi/bot/ktor/base/AbstractRequestCallFactory : dev/inmo/tgbotapi/bot/ktor/KtorCallFactory {
@@ -414,7 +415,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/MultipartRequestCallFactory :
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/base/MultipleClientKtorRequestsExecutor : dev/inmo/tgbotapi/bot/BaseRequestsExecutor {
-	public fun <init> (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/KtorPipelineStepsHolder;ILdev/inmo/kslog/common/KSLog;Lkotlin/jvm/functions/Function0;)V
+	public fun <init> (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;ILdev/inmo/kslog/common/KSLog;Lkotlin/jvm/functions/Function0;)V
 	public fun close ()V
 	public fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
@@ -423,6 +424,82 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/SimpleRequestCallFactory : de
 	public fun <init> ()V
 	public fun <init> (Ldev/inmo/kslog/common/KSLog;)V
 	public synthetic fun <init> (Ldev/inmo/kslog/common/KSLog;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware : dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler {
+	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;)V
+	public synthetic fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware$Companion {
+	public final fun build (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware$ResultAbsence : java/lang/Throwable {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware$ResultAbsence;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareBuilder {
+	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareBuilder$Companion;
+	public fun <init> ()V
+	public final fun build ()Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware;
+	public final fun doOnAfterCallFactoryMakeCall (Lkotlin/jvm/functions/Function4;)V
+	public final fun doOnBeforeCallFactoryMakeCall (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnBeforeSearchCallFactory (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestException (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestResultAbsent (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestResultPresented (Lkotlin/jvm/functions/Function5;)V
+	public final fun doOnRequestReturnResult (Lkotlin/jvm/functions/Function4;)V
+	public final fun getOnAfterCallFactoryMakeCall ()Lkotlin/jvm/functions/Function4;
+	public final fun getOnBeforeCallFactoryMakeCall ()Lkotlin/jvm/functions/Function3;
+	public final fun getOnBeforeSearchCallFactory ()Lkotlin/jvm/functions/Function3;
+	public final fun getOnRequestException ()Lkotlin/jvm/functions/Function3;
+	public final fun getOnRequestResultAbsent ()Lkotlin/jvm/functions/Function3;
+	public final fun getOnRequestResultPresented ()Lkotlin/jvm/functions/Function5;
+	public final fun getOnRequestReturnResult ()Lkotlin/jvm/functions/Function4;
+	public final fun setOnAfterCallFactoryMakeCall (Lkotlin/jvm/functions/Function4;)V
+	public final fun setOnBeforeCallFactoryMakeCall (Lkotlin/jvm/functions/Function3;)V
+	public final fun setOnBeforeSearchCallFactory (Lkotlin/jvm/functions/Function3;)V
+	public final fun setOnRequestException (Lkotlin/jvm/functions/Function3;)V
+	public final fun setOnRequestResultAbsent (Lkotlin/jvm/functions/Function3;)V
+	public final fun setOnRequestResultPresented (Lkotlin/jvm/functions/Function5;)V
+	public final fun setOnRequestReturnResult (Lkotlin/jvm/functions/Function4;)V
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareBuilder$Companion {
+	public final fun from (Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler : dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler {
+	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler$Companion;
+	public fun <init> (Ljava/util/List;)V
+	public fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler$Builder {
+	public fun <init> ()V
+	public final fun addMiddleware (Lkotlin/jvm/functions/Function1;)Z
+	public final fun build ()Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler;
+	public final fun getMiddlewares ()Ljava/util/List;
+}
+
+public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler$Companion {
+	public final fun build (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewaresPipelinesHandler;
 }
 
 public final class dev/inmo/tgbotapi/bot/multiserver/SimpleMultiServerRequestsExecutor : dev/inmo/tgbotapi/bot/RequestsExecutor {
@@ -20010,6 +20087,57 @@ public final class dev/inmo/tgbotapi/types/message/PrivateEventMessage : dev/inm
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntity {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/RawMessageEntity$Companion;
+	public synthetic fun <init> (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7-GbmMWyQ ()Ljava/lang/String;
+	public final fun copy-SbQeJ6M (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public static synthetic fun copy-SbQeJ6M$default (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustom_emoji_id-GbmMWyQ ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getLength ()I
+	public final fun getOffset ()I
+	public final fun getPriority ()I
+	public final fun getType ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/message/RawMessageEntity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/RawMessageEntity$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/RawMessageEntity;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntity$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntityKt {
+	public static final fun asTextSource (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextSource;
+	public static final fun asTextSources (Ljava/util/List;Ljava/lang/String;)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;I)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ljava/util/List;)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ljava/util/List;I)Ljava/util/List;
+	public static synthetic fun toRawMessageEntities$default (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;IILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun toRawMessageEntities$default (Ljava/util/List;IILjava/lang/Object;)Ljava/util/List;
+}
+
 public final class dev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/UnconnectedFromChannelGroupContentMessage {
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -21771,6 +21899,7 @@ public synthetic class dev/inmo/tgbotapi/types/message/textsources/BotCommandTex
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource$Companion {
+	public final fun getCommandRegex ()Lkotlin/text/Regex;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

@@ -7,8 +7,6 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
-private val commandRegex = Regex("[/!][^@\\s]*")
-
 /**
  * @see botCommand
  */
@@ -17,7 +15,7 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
     override val source: String
 ) : TextSource {
     val command: String by lazy {
-        commandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
+        CommandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
     val username: Username? by lazy {
         Username(usernameRegex.find(source) ?.value ?: return@lazy null)
@@ -26,6 +24,10 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
     override val markdown: String by lazy { source.commandMarkdown() }
     override val markdownV2: String by lazy { source.commandMarkdownV2() }
     override val html: String by lazy { source.commandHTML() }
+
+    companion object {
+        val CommandRegex = Regex("[/!][^@\\s]*")
+    }
 }
 
 /**

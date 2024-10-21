@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
@@ -9,7 +10,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
-internal data class RawMessageEntity(
+@Warning("This thing is subject of changes. Library do not guarantee stability of this class")
+data class RawMessageEntity(
     val type: String,
     val offset: Int,
     val length: Int,
@@ -49,7 +51,8 @@ internal data class RawMessageEntity(
     }
 }
 
-internal fun RawMessageEntity.asTextSource(
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
+fun RawMessageEntity.asTextSource(
     source: String,
     subParts: List<Pair<Int, TextSource>>
 ): TextSource {
@@ -92,6 +95,7 @@ private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: C
     return start <= other.start && endInclusive >= other.endInclusive
 }
 
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
 internal fun List<Pair<Int, TextSource>>.fillWithRegulars(source: String): TextSourcesList {
     var index = 0
     val result = mutableListOf<TextSource>()
@@ -174,7 +178,8 @@ private fun createTextSources(
     return resultList
 }
 
-internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
+fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
     val source = source
     val length = source.length
     return listOfNotNull(
@@ -208,7 +213,8 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
 }
 
 
-internal fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
+fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
@@ -217,9 +223,12 @@ internal fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawM
     }
 }
 
-internal fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
+fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
-internal fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
+@Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
+fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
     createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
-internal typealias RawMessageEntities = List<RawMessageEntity>
+@Warning("This thing is subject of changes. Library do not guarantee stability of this typealias")
+typealias RawMessageEntities = List<RawMessageEntity>
