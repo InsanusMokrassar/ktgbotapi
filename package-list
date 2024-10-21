@@ -50,6 +50,7 @@ dev.inmo.tgbotapi.bot
 dev.inmo.tgbotapi.bot.exceptions
 dev.inmo.tgbotapi.bot.ktor
 dev.inmo.tgbotapi.bot.ktor.base
+dev.inmo.tgbotapi.bot.ktor.middlewares
 dev.inmo.tgbotapi.bot.multiserver
 dev.inmo.tgbotapi.bot.settings
 dev.inmo.tgbotapi.bot.settings.limiters
