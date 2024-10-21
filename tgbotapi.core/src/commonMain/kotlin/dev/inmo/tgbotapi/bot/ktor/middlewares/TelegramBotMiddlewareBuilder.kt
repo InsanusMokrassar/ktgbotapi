@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.bot.ktor.middlewares
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
+@Warning("This API is experimental and subject of changes")
 class TelegramBotMiddlewareBuilder {
     var onRequestException: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null
     var onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null
@@ -56,6 +58,7 @@ class TelegramBotMiddlewareBuilder {
         onRequestReturnResult = block
     }
 
+    @Warning("This API is experimental and subject of changes")
     fun build(): TelegramBotMiddleware {
         return TelegramBotMiddleware(
             onRequestException = onRequestException,
@@ -69,6 +72,7 @@ class TelegramBotMiddlewareBuilder {
     }
 
     companion object {
+        @Warning("This API is experimental and subject of changes")
         fun from(middleware: TelegramBotMiddleware, additionalSetup: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware {
             return TelegramBotMiddlewareBuilder().apply {
                 onRequestException = middleware.onRequestException

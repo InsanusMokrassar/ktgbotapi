@@ -20087,6 +20087,57 @@ public final class dev/inmo/tgbotapi/types/message/PrivateEventMessage : dev/inm
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntity {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/RawMessageEntity$Companion;
+	public synthetic fun <init> (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7-GbmMWyQ ()Ljava/lang/String;
+	public final fun copy-SbQeJ6M (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public static synthetic fun copy-SbQeJ6M$default (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustom_emoji_id-GbmMWyQ ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getLength ()I
+	public final fun getOffset ()I
+	public final fun getPriority ()I
+	public final fun getType ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/message/RawMessageEntity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/RawMessageEntity$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/RawMessageEntity;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntity$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/RawMessageEntityKt {
+	public static final fun asTextSource (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextSource;
+	public static final fun asTextSources (Ljava/util/List;Ljava/lang/String;)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;I)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ljava/util/List;)Ljava/util/List;
+	public static final fun toRawMessageEntities (Ljava/util/List;I)Ljava/util/List;
+	public static synthetic fun toRawMessageEntities$default (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;IILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun toRawMessageEntities$default (Ljava/util/List;IILjava/lang/Object;)Ljava/util/List;
+}
+
 public final class dev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/UnconnectedFromChannelGroupContentMessage {
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V

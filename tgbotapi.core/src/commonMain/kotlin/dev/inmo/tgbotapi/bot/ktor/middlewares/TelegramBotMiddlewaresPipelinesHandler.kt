@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.bot.ktor.middlewares
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
+@Warning("This API is experimental and subject of changes")
 class TelegramBotMiddlewaresPipelinesHandler(
     private val middlewares: List<TelegramBotMiddleware>
 ) : TelegramBotPipelinesHandler {
@@ -68,19 +70,23 @@ class TelegramBotMiddlewaresPipelinesHandler(
         } ?: super.onRequestReturnResult(result, request, callsFactories)
     }
 
+    @Warning("This API is experimental and subject of changes")
     class Builder {
         val middlewares = mutableListOf<TelegramBotMiddleware>()
 
+        @Warning("This API is experimental and subject of changes")
         fun addMiddleware(block: TelegramBotMiddlewareBuilder.() -> Unit) = middlewares.add(
             TelegramBotMiddleware.build(block)
         )
 
+        @Warning("This API is experimental and subject of changes")
         fun build(): TelegramBotMiddlewaresPipelinesHandler = TelegramBotMiddlewaresPipelinesHandler(
             middlewares.toList()
         )
     }
 
     companion object {
+        @Warning("This API is experimental and subject of changes")
         fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
     }
 }

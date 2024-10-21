@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.middlewares
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -20,6 +21,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
  * @param onRequestReturnResult Latest lambda before result returning. Will be called after all previous stages.
  * Non-null result of lambda will be used as the result of request handling
  */
+@Warning("This API is experimental and subject of changes")
 class TelegramBotMiddleware(
     internal val onRequestException: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null,
     internal val onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null,
@@ -75,6 +77,7 @@ class TelegramBotMiddleware(
     }
 
     companion object {
+        @Warning("This API is experimental and subject of changes")
         fun build(block: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware = TelegramBotMiddlewareBuilder().apply(block).build()
     }
 }
