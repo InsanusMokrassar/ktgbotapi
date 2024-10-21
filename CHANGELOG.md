@@ -2,6 +2,9 @@
 
 ## 18.2.2
 
+* `Version`:
+  * `Kotlin`: `2.0.20` -> `2.0.21`
+  * `MicroUtils`: `0.22.4` -> `0.22.7`
 * `Core`:
   * Fixes in blockquotes serializations
   * Now `RawMessageEntity` is public. It is still under `Warning` annotation and is subject of changes
