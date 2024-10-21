@@ -2,6 +2,9 @@
 
 ## 18.2.2
 
+* `Core`:
+  * Fixes in blockquotes serializations
+  * Now `RawMessageEntity` is public. It is still under `Warning` annotation and is subject of changes
 * `BehaviourBuilder`:
   * Add `CommonMessageFilterExcludeCommand` to filter commands in messages
   * Add `minus` operation for `SimpleFilter`s
