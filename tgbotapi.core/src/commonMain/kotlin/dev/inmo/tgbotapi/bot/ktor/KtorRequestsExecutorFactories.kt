@@ -27,7 +27,7 @@ class KtorRequestsExecutorBuilder(
     var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter
     var jsonFormatter: Json = nonstrictJsonFormat
     var logger: KSLog = DefaultKTgBotAPIKSLog
-    var pipelineStepsHolder: TelegramBotPipelinesHandler = TelegramBotPipelinesHandler
+    var pipelineStepsHolder: TelegramBotPipelinesHandler = TelegramBotMiddlewaresPipelinesHandler()
 
     fun includeMiddlewares(block: TelegramBotMiddlewaresPipelinesHandler.Builder.() -> Unit) {
         pipelineStepsHolder = TelegramBotMiddlewaresPipelinesHandler.build(block)

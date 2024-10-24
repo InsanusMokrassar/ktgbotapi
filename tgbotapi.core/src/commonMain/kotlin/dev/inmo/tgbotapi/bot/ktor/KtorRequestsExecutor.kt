@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.bot.ktor
 
 import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
+import dev.inmo.tgbotapi.bot.ktor.middlewares.TelegramBotMiddlewaresPipelinesHandler
 import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -39,7 +40,7 @@ fun KtorRequestsExecutor(
     excludeDefaultFactories: Boolean = false,
     requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
     jsonFormatter: Json = nonstrictJsonFormat,
-    pipelineStepsHolder: TelegramBotPipelinesHandler = TelegramBotPipelinesHandler,
+    pipelineStepsHolder: TelegramBotPipelinesHandler = TelegramBotMiddlewaresPipelinesHandler(),
     logger: KSLog = DefaultKTgBotAPIKSLog,
 ) = KtorRequestsExecutor(
     telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,

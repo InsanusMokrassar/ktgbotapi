@@ -47,7 +47,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return runCatchingSafely {
+        return runCatching {
             logger.v { "Start request $request" }
             pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
             requestsLimiter.limit(request) {
