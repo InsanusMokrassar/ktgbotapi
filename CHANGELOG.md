@@ -5,6 +5,7 @@
 * `Core`:
   * Add default middleware `ExceptionsThrottlerTelegramBotMiddleware`
   * Make `TelegramBotMiddlewaresPipelinesHandler` to be default `TelegramBotPipelinesHandler`
+  * Make `DefaultKtorRequestsExecutor` now uses `runCatching` instead of `runCatchingSafely`
 
 ## 18.2.2
 
