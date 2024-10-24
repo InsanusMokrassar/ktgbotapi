@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.middlewares
 
+import com.benasher44.uuid.uuid4
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
@@ -14,6 +15,7 @@ class TelegramBotMiddlewareBuilder {
     var onRequestResultPresented: (suspend (result: Any?, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?)? = null
     var onRequestResultAbsent: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?)? = null
     var onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null
+    var id: String = uuid4().toString()
 
     /**
      * Useful way to set [onRequestException]
@@ -67,7 +69,8 @@ class TelegramBotMiddlewareBuilder {
             onAfterCallFactoryMakeCall = onAfterCallFactoryMakeCall,
             onRequestResultPresented = onRequestResultPresented,
             onRequestResultAbsent = onRequestResultAbsent,
-            onRequestReturnResult = onRequestReturnResult
+            onRequestReturnResult = onRequestReturnResult,
+            id = id
         )
     }
 
@@ -82,6 +85,7 @@ class TelegramBotMiddlewareBuilder {
                 onRequestResultPresented = middleware.onRequestResultPresented
                 onRequestResultAbsent = middleware.onRequestResultAbsent
                 onRequestReturnResult = middleware.onRequestReturnResult
+                id = middleware.id
                 additionalSetup()
             }.build()
         }

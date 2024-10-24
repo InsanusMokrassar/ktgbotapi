@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.middlewares
 
+import com.benasher44.uuid.uuid4
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
@@ -22,7 +23,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
  * Non-null result of lambda will be used as the result of request handling
  */
 @Warning("This API is experimental and subject of changes")
-class TelegramBotMiddleware(
+open class TelegramBotMiddleware(
     internal val onRequestException: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null,
     internal val onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null,
     internal val onBeforeCallFactoryMakeCall: (suspend (request: Request<*>, potentialFactory: KtorCallFactory) -> Unit)? = null,
@@ -30,6 +31,7 @@ class TelegramBotMiddleware(
     internal val onRequestResultPresented: (suspend (result: Any?, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?)? = null,
     internal val onRequestResultAbsent: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?)? = null,
     internal val onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null,
+    val id: String = uuid4().toString()
 ) : TelegramBotPipelinesHandler {
     object ResultAbsence : Throwable()
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
