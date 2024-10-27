@@ -8,9 +8,7 @@ import dev.inmo.tgbotapi.utils.ByteReadChannelAllocator
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
 import io.ktor.client.request.get
-import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.utils.io.*
 import kotlinx.coroutines.*
