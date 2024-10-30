@@ -38,7 +38,7 @@ internal expect inline fun platformClientCopy(client: HttpClient): HttpClient
  * @param requestExecutorsCount Amount of [DefaultKtorRequestsExecutor] which will be created and used under the
  * hood
  */
-class MultipleClientKtorRequestsExecutor (
+class MultipleClientKtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     callsFactories: List<KtorCallFactory>,
     excludeDefaultFactories: Boolean,
@@ -47,7 +47,7 @@ class MultipleClientKtorRequestsExecutor (
     pipelineStepsHolder: TelegramBotPipelinesHandler,
     requestExecutorsCount: Int,
     logger: KSLog,
-    clientFactory: () -> HttpClient
+    clientFactory: () -> HttpClient,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val requestExecutors = (0 until requestExecutorsCount).map {
         DefaultKtorRequestsExecutor(
@@ -66,7 +66,7 @@ class MultipleClientKtorRequestsExecutor (
     private val clientAllocationMutex = Mutex()
     private val takerFlow = freeClients.mapNotNull {
         clientAllocationMutex.withLock {
-            freeClients.value.firstOrNull() ?.also {
+            freeClients.value.firstOrNull()?.also {
                 freeClients.value -= it
             } ?: return@mapNotNull null
         }
@@ -81,7 +81,7 @@ class MultipleClientKtorRequestsExecutor (
         jsonFormatter: Json,
         pipelineStepsHolder: TelegramBotPipelinesHandler,
         logger: KSLog,
-        diff: Unit
+        diff: Unit,
     ) : this(
         telegramAPIUrlsKeeper,
         callsFactories,
@@ -89,7 +89,7 @@ class MultipleClientKtorRequestsExecutor (
         requestsLimiter,
         jsonFormatter,
         pipelineStepsHolder,
-        client.engineConfig.threadsCount,
+        requestExecutorsCount = 4, // default threads count; configurable through dispatcher property
         logger,
         { platformClientCopy(client) }
     )
