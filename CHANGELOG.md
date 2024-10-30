@@ -6,6 +6,7 @@
   * Add default middleware `ExceptionsThrottlerTelegramBotMiddleware`
   * Make `TelegramBotMiddlewaresPipelinesHandler` to be default `TelegramBotPipelinesHandler`
   * Make `DefaultKtorRequestsExecutor` now uses `runCatching` instead of `runCatchingSafely`
+  * `onRequestResultPresented` lambda now accepts non-nullable `result`
 
 ## 18.2.2
 
