@@ -3,11 +3,12 @@ package dev.inmo.tgbotapi.bot.ktor.middlewares
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
+import dev.inmo.tgbotapi.bot.ktor.middlewares.builtins.ExceptionsThrottlerTelegramBotMiddleware
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
 @Warning("This API is experimental and subject of changes")
 class TelegramBotMiddlewaresPipelinesHandler(
-    private val middlewares: List<TelegramBotMiddleware>
+    private val middlewares: List<TelegramBotMiddleware> = emptyList()
 ) : TelegramBotPipelinesHandler {
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
         return middlewares.firstNotNullOfOrNull {
@@ -72,6 +73,7 @@ class TelegramBotMiddlewaresPipelinesHandler(
 
     @Warning("This API is experimental and subject of changes")
     class Builder {
+        @Warning("This API is experimental and subject of changes")
         val middlewares = mutableListOf<TelegramBotMiddleware>()
 
         @Warning("This API is experimental and subject of changes")
