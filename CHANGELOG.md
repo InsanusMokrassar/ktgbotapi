@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 19.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**THIS UPDATE CONTAINS UPGRADE UP TO KTOR 3.0 (thanks to [@d1snin](https://github.com/d1snin))**
+
 ## 18.2.3
 
 * `Core`:

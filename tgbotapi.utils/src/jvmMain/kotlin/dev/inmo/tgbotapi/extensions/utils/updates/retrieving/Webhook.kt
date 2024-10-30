@@ -1,19 +1,21 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
-import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
+import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
 import dev.inmo.tgbotapi.requests.webhook.SetWebhookRequest
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
-import dev.inmo.tgbotapi.updateshandlers.*
+import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
+import dev.inmo.tgbotapi.updateshandlers.UpdatesFilter
 import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
-import io.ktor.http.HttpStatusCode
-import io.ktor.server.application.call
+import io.ktor.http.*
 import io.ktor.server.engine.*
-import io.ktor.server.request.receiveText
-import io.ktor.server.response.respond
+import io.ktor.server.request.*
+import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
@@ -38,7 +40,7 @@ fun Route.includeWebhookHandlingInRoute(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     mediaGroupsDebounceTimeMillis: Long = 1000L,
-    block: UpdateReceiver<Update>
+    block: UpdateReceiver<Update>,
 ) {
     val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis)
     post {
@@ -55,7 +57,7 @@ fun Route.includeWebhookHandlingInRoute(
                 call.respond(HttpStatusCode.InternalServerError)
             }.getOrThrow()
         } catch (e: Throwable) {
-            exceptionsHandler ?.invoke(e)
+            exceptionsHandler?.invoke(e)
         }
     }
 }
@@ -69,7 +71,7 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     mediaGroupsDebounceTimeMillis: Long = 1000L,
-    block: FlowsUpdatesFilter.() -> Unit
+    block: FlowsUpdatesFilter.() -> Unit,
 ) = includeWebhookHandlingInRoute(
     scope,
     exceptionsHandler,
@@ -92,50 +94,57 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
-fun startListenWebhooks(
+fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configuration> startListenWebhooks(
     listenPort: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
+    engineFactory: ApplicationEngineFactory<TEngine, TConfiguration>,
     exceptionsHandler: ExceptionHandler<Unit>,
     listenHost: String = "0.0.0.0",
     listenRoute: String? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     mediaGroupsDebounceTimeMillis: Long = 1000L,
-    additionalApplicationEngineEnvironmentConfigurator: ApplicationEngineEnvironmentBuilder.() -> Unit = {},
-    block: UpdateReceiver<Update>
-): ApplicationEngine {
-    val env = applicationEngineEnvironment {
-
-        module {
-            routing {
-                listenRoute ?.also {
-                    createRouteFromPath(it).includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
-                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
-            }
-        }
-
-        privateKeyConfig ?.let {
-            sslConnector(
-                privateKeyConfig.keyStore,
-                privateKeyConfig.aliasName,
-                privateKeyConfig::keyStorePassword,
-                privateKeyConfig::aliasPassword
-            ) {
+    additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
+    additionalEngineConfigurator: TConfiguration.() -> Unit = {},
+    block: UpdateReceiver<Update>,
+): EmbeddedServer<TEngine, TConfiguration> =
+    embeddedServer(
+        factory = engineFactory,
+        environment = applicationEnvironment {
+            additionalApplicationEnvironmentConfigurator()
+        },
+        configure = {
+            privateKeyConfig?.let {
+                sslConnector(
+                    privateKeyConfig.keyStore,
+                    privateKeyConfig.aliasName,
+                    privateKeyConfig::keyStorePassword,
+                    privateKeyConfig::aliasPassword
+                ) {
+                    host = listenHost
+                    port = listenPort
+                }
+            } ?: connector {
                 host = listenHost
                 port = listenPort
             }
-        } ?: connector {
-            host = listenHost
-            port = listenPort
+
+            additionalEngineConfigurator()
+        },
+        module = {
+            routing {
+                listenRoute?.also {
+                    createRouteFromPath(it).includeWebhookHandlingInRoute(
+                        scope,
+                        exceptionsHandler,
+                        mediaGroupsDebounceTimeMillis,
+                        block
+                    )
+                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
+            }
         }
-
-        additionalApplicationEngineEnvironmentConfigurator()
-    }
-
-    return embeddedServer(engineFactory, env).also {
+    ).also {
         it.start(false)
     }
-}
 
 /**
  * Setting up ktor server, set webhook info via [SetWebhookRequest] request.
@@ -152,9 +161,9 @@ fun startListenWebhooks(
  * @see UpdatesFilter.asUpdateReceiver
  */
 @Suppress("unused")
-suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
+suspend fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configuration> RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     listenPort: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
+    engineFactory: ApplicationEngineFactory<TEngine, TConfiguration>,
     setWebhookRequest: SetWebhookRequest,
     exceptionsHandler: ExceptionHandler<Unit> = {},
     listenHost: String = "0.0.0.0",
@@ -162,11 +171,24 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     mediaGroupsDebounceTimeMillis: Long = 1000L,
-    additionalApplicationEngineEnvironmentConfigurator: ApplicationEngineEnvironmentBuilder.() -> Unit = {},
-    block: UpdateReceiver<Update>
-): ApplicationEngine = try {
+    additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
+    additionalEngineConfigurator: TConfiguration.() -> Unit = {},
+    block: UpdateReceiver<Update>,
+): EmbeddedServer<TEngine, TConfiguration> = try {
     execute(setWebhookRequest)
-    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, mediaGroupsDebounceTimeMillis, additionalApplicationEngineEnvironmentConfigurator, block)
+    startListenWebhooks(
+        listenPort,
+        engineFactory,
+        exceptionsHandler,
+        listenHost,
+        listenRoute,
+        privateKeyConfig,
+        scope,
+        mediaGroupsDebounceTimeMillis,
+        additionalApplicationEnvironmentConfigurator,
+        additionalEngineConfigurator,
+        block
+    )
 } catch (e: Exception) {
     throw e
 }

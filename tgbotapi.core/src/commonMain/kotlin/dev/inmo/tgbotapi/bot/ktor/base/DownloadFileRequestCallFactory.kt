@@ -6,9 +6,9 @@ import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.readBytes
+import io.ktor.client.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import kotlinx.serialization.json.Json
 
 @RiskFeature
@@ -17,13 +17,13 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-        jsonFormatter: Json
-    ): T? = (request as? DownloadFile) ?.let {
+        jsonFormatter: Json,
+    ): T? = (request as? DownloadFile)?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
         safely {
             @Suppress("UNCHECKED_CAST")
-            client.get(fullUrl).readBytes() as T // always ByteArray
+            client.get(fullUrl).readRawBytes() as T // always ByteArray
         }
     }
 }
