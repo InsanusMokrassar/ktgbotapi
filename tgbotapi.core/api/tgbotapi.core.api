@@ -1034,7 +1034,7 @@ public final class dev/inmo/tgbotapi/requests/abstracts/MultipartFile : dev/inmo
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFileId ()Ljava/lang/String;
 	public final fun getFilename ()Ljava/lang/String;
-	public final fun getInput ()Lio/ktor/utils/io/core/Input;
+	public final fun getInput ()Lkotlinx/io/Source;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
