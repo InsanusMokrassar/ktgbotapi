@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 
 @Warning("This API is experimental and subject of changes")
 class TelegramBotMiddlewaresPipelinesHandler(
-    private val middlewares: List<TelegramBotMiddleware> = listOf(ExceptionsThrottlerTelegramBotMiddleware())
+    private val middlewares: List<TelegramBotMiddleware> = emptyList()
 ) : TelegramBotPipelinesHandler {
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
         return middlewares.firstNotNullOfOrNull {
