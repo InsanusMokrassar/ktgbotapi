@@ -6,6 +6,10 @@
 
 **THIS UPDATE CONTAINS UPGRADE UP TO KTOR 3.0 (thanks to [@d1snin](https://github.com/d1snin))**
 
+* `Version`:
+  * `Ktor`: `2.3.12` -> `3.0.1`
+  * `MicroUtils`: `0.22.7` -> `0.23.0`
+
 ## 18.2.3
 
 * `Core`:
