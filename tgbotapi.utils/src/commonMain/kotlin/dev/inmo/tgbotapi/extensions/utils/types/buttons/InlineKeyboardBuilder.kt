@@ -93,6 +93,16 @@ inline fun InlineKeyboardRowBuilder.loginButton(
 ) = add(LoginURLInlineKeyboardButton(text, loginUrl))
 
 /**
+ * Creates and put [LoginURLInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.copyTextButton(
+    text: String
+) = add(CopyTextButton(text))
+
+/**
  * Creates and put [SwitchInlineQueryCurrentChatInlineKeyboardButton]
  *
  * @see inlineKeyboard

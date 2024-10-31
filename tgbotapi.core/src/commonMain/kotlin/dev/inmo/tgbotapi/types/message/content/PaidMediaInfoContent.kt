@@ -29,6 +29,7 @@ data class PaidMediaInfoContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
@@ -51,6 +52,7 @@ data class PaidMediaInfoContent(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

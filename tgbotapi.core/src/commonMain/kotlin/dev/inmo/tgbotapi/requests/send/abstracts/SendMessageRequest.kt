@@ -6,4 +6,5 @@ interface SendMessageRequest<T: Any> : SendChatMessageRequest<T>,
     WithReplyParameters,
     DisableNotification,
     ProtectContent,
+    AllowPaidBroadcast,
     OptionallyMessageThreadRequest

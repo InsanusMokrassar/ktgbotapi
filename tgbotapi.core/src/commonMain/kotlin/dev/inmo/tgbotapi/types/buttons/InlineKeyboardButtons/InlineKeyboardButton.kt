@@ -142,6 +142,14 @@ data class URLInlineKeyboardButton(
 ) : InlineKeyboardButton
 
 /**
+ * Simple [url] button. Can be forwarded in any chat with message in case if it is the only one button in message
+ */
+@Serializable
+data class CopyTextButton(
+    override val text: String
+) : InlineKeyboardButton
+
+/**
  * Button with [WebAppInfo]. Web App will be launched when the button is pressed. The Web App will be able to send a
  * `web_app_data` service message. **Available in private chats only**.
  */

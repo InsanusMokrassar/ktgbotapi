@@ -34,6 +34,7 @@ fun SendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PaidMediaInfoContent>> {
@@ -50,6 +51,7 @@ fun SendPaidMedia(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -86,6 +88,7 @@ fun SendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PaidMediaInfoContent>> {
@@ -102,6 +105,7 @@ fun SendPaidMedia(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -156,6 +160,8 @@ data class SendPaidMediaData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(allowPaidBroadcastField)
+    override val allowPaidBroadcast: Boolean = false,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

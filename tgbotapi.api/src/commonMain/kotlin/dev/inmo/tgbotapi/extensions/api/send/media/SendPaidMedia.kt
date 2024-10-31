@@ -28,6 +28,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = execute(
@@ -43,6 +44,7 @@ public suspend fun TelegramBot.sendPaidMedia(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -64,6 +66,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -78,6 +81,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -98,6 +102,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = execute(
@@ -112,6 +117,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -132,6 +138,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -145,6 +152,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

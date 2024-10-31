@@ -30,22 +30,24 @@ fun SendTextMessage(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
-    chatId,
-    text,
-    parseMode,
-    null,
-    threadId,
-    businessConnectionId,
-    linkPreviewOptions,
-    disableNotification,
-    protectContent,
-    effectId,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    linkPreviewOptions = linkPreviewOptions,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun SendTextMessage(
@@ -56,22 +58,24 @@ fun SendTextMessage(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
-    chatId,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    threadId,
-    businessConnectionId,
-    linkPreviewOptions,
-    disableNotification,
-    protectContent,
-    effectId,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    linkPreviewOptions = linkPreviewOptions,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 @Serializable
@@ -94,6 +98,8 @@ data class SendTextMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(allowPaidBroadcastField)
+    override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(replyParametersField)

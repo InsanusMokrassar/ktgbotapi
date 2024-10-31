@@ -101,6 +101,7 @@ import dev.inmo.tgbotapi.types.boosts.ChatBoostSource
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CopyTextButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
@@ -2204,6 +2205,15 @@ public inline fun InlineKeyboardButton.uRLInlineKeyboardButtonOrThrow(): URLInli
 public inline fun <T>
     InlineKeyboardButton.ifURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T): T? =
     uRLInlineKeyboardButtonOrNull() ?.let(block)
+
+public inline fun InlineKeyboardButton.copyTextButtonOrNull(): CopyTextButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CopyTextButton
+
+public inline fun InlineKeyboardButton.copyTextButtonOrThrow(): CopyTextButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CopyTextButton
+
+public inline fun <T> InlineKeyboardButton.ifCopyTextButton(block: (CopyTextButton) -> T): T? =
+    copyTextButtonOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.webAppInlineKeyboardButtonOrNull():
     WebAppInlineKeyboardButton? = this as?

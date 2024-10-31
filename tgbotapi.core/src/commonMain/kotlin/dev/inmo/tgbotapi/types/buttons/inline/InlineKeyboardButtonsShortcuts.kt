@@ -37,6 +37,13 @@ inline fun loginInlineButton(
 ) = LoginURLInlineKeyboardButton(text, loginUrl)
 
 /**
+ * Creates [LoginURLInlineKeyboardButton]
+ */
+inline fun copyTextButton(
+    text: String
+) = CopyTextButton(text)
+
+/**
  * Creates [SwitchInlineQueryCurrentChatInlineKeyboardButton]
  */
 inline fun inlineQueryInCurrentChatInlineButton(

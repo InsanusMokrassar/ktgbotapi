@@ -50,12 +50,14 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
+    allowPaidBroadcast: Boolean = false,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
 ) = onCommandPrivacy(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory) {
     execute(
         SendTextMessage(
             it.chat.id,
             textSources,
+            allowPaidBroadcast = allowPaidBroadcast,
             replyParameters = ReplyParameters(it.metaInfo)
         )
     )
@@ -73,6 +75,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
+    allowPaidBroadcast: Boolean = false,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
 ) = onCommandPrivacy(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory) {
     execute(
@@ -80,6 +83,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
             it.chat.id,
             text,
             parseMode,
+            allowPaidBroadcast = allowPaidBroadcast,
             replyParameters = ReplyParameters(it.metaInfo)
         )
     )

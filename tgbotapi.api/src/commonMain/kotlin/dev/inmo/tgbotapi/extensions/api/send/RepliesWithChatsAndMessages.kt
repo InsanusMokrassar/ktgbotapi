@@ -27,9 +27,6 @@ import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.payments.PaidMedia
-import dev.inmo.tgbotapi.types.message.payments.toTelegramMediaPhoto
-import dev.inmo.tgbotapi.types.message.payments.toTelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -57,21 +54,23 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
-    replyInChatId,
-    phoneNumber,
-    firstName,
-    lastName,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    phoneNumber = phoneNumber,
+    firstName = firstName,
+    lastName = lastName,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -87,19 +86,21 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
-    replyInChatId,
-    contact,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    contact = contact,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 
@@ -118,10 +119,22 @@ public suspend inline fun TelegramBot.replyWithDice(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = sendDice(replyInChatId, animationType, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<DiceContent> = sendDice(
+    chatId = replyInChatId,
+    animationType = animationType,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -136,10 +149,24 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = replyWithDice(toChatId, toMessageId, animationType, replyInChatId, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, allowSendingWithoutReply, replyMarkup)
+): ContentMessage<DiceContent> = replyWithDice(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    animationType = animationType,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 
 // Location
@@ -158,20 +185,22 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendLocation(
-    replyInChatId,
-    latitude,
-    longitude,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    latitude = latitude,
+    longitude = longitude,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -187,19 +216,21 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendLocation(
-    replyInChatId,
-    location,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    location = location,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 
@@ -220,21 +251,23 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
-    replyInChatId,
-    text,
-    parseMode,
-    linkPreviewOptions,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    text = text,
+    parseMode = parseMode,
+    linkPreviewOptions = linkPreviewOptions,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -251,20 +284,22 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
-    replyInChatId,
-    entities,
-    linkPreviewOptions,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    entities = entities,
+    linkPreviewOptions = linkPreviewOptions,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -281,11 +316,26 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = reply(toChatId, toMessageId, buildEntities(separator, builderBody), linkPreviewOptions, replyInChatId, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, allowSendingWithoutReply, replyMarkup)
+): ContentMessage<TextContent> = reply(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    entities = buildEntities(separator, builderBody),
+    linkPreviewOptions = linkPreviewOptions,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -301,11 +351,26 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = reply(toChatId, toMessageId, buildEntities(separator, builderBody), linkPreviewOptions, replyInChatId, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, allowSendingWithoutReply, replyMarkup)
+): ContentMessage<TextContent> = reply(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    entities = buildEntities(separator, builderBody),
+    linkPreviewOptions = linkPreviewOptions,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 
 // Venue
@@ -330,6 +395,7 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -347,6 +413,7 @@ public suspend inline fun TelegramBot.reply(
     businessConnectionId = replyInBusinessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
@@ -367,6 +434,7 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -384,6 +452,7 @@ public suspend inline fun TelegramBot.reply(
     businessConnectionId = replyInBusinessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
@@ -398,6 +467,7 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -408,6 +478,7 @@ public suspend inline fun TelegramBot.reply(
     businessConnectionId = replyInBusinessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
@@ -425,11 +496,21 @@ public suspend inline fun TelegramBot.replyWithGame(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
-    replyInChatId, gameShortName, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup
+    chatId = replyInChatId,
+    gameShortName = gameShortName,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 public suspend inline fun TelegramBot.replyWithGame(
@@ -441,11 +522,21 @@ public suspend inline fun TelegramBot.replyWithGame(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
-    replyInChatId, game.title, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup
+    chatId = replyInChatId,
+    gameShortName = game.title,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 public suspend inline fun TelegramBot.reply(
@@ -457,10 +548,24 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = replyWithGame(toChatId, toMessageId, game, replyInChatId, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, allowSendingWithoutReply, replyMarkup)
+): ContentMessage<GameContent> = replyWithGame(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    game = game,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 
 // Animation
@@ -482,27 +587,29 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
-    replyInChatId,
-    animation,
-    thumb,
-    text,
-    parseMode,
-    showCaptionAboveMedia,
-    spoilered,
-    duration,
-    width,
-    height,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    animation = animation,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 public suspend inline fun TelegramBot.reply(
@@ -521,10 +628,29 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(replyInChatId, animation, text, parseMode, showCaptionAboveMedia, spoilered, duration, width, height, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AnimationContent> = sendAnimation(
+    chatId = replyInChatId,
+    animation = animation,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.replyWithAnimation(
     toChatId: IdChatIdentifier,
@@ -542,26 +668,28 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
-    replyInChatId,
-    animation,
-    thumb,
-    entities,
-    showCaptionAboveMedia,
-    spoilered,
-    duration,
-    width,
-    height,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    chatId = replyInChatId,
+    animation = animation,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 public suspend inline fun TelegramBot.reply(
@@ -579,10 +707,28 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(replyInChatId, animation, entities, showCaptionAboveMedia, spoilered, duration, width, height, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AnimationContent> = sendAnimation(
+    chatId = replyInChatId,
+    animation = animation,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Audio
@@ -602,10 +748,28 @@ public suspend inline fun TelegramBot.replyWithAudio(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(replyInChatId, audio, thumb, text, parseMode, duration, performer, title, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AudioContent> = sendAudio(
+    chatId = replyInChatId,
+    audio = audio,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    performer = performer,
+    title = title,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -619,10 +783,25 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(replyInChatId, audio, text, parseMode, title, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AudioContent> = sendAudio(
+    chatId = replyInChatId,
+    audio = audio,
+    text = text,
+    parseMode = parseMode,
+    title = title,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.replyWithAudio(
     toChatId: IdChatIdentifier,
@@ -638,10 +817,27 @@ public suspend inline fun TelegramBot.replyWithAudio(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(replyInChatId, audio, thumb, entities, duration, performer, title, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AudioContent> = sendAudio(
+    chatId = replyInChatId,
+    audio = audio,
+    thumb = thumb,
+    entities = entities,
+    duration = duration,
+    performer = performer,
+    title = title,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -654,10 +850,24 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(replyInChatId, audio, entities, title, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<AudioContent> = sendAudio(
+    chatId = replyInChatId,
+    audio = audio,
+    entities = entities,
+    title = title,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Documents
@@ -674,11 +884,27 @@ public suspend inline fun TelegramBot.replyWithDocument(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(replyInChatId, document, thumb, text, parseMode, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup, disableContentTypeDetection)
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = replyInChatId,
+    document = document,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -691,11 +917,26 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(replyInChatId, document, text, parseMode, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup, disableContentTypeDetection)
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = replyInChatId,
+    document = document,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
 
 public suspend inline fun TelegramBot.replyWithDocument(
     toChatId: IdChatIdentifier,
@@ -708,11 +949,26 @@ public suspend inline fun TelegramBot.replyWithDocument(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(replyInChatId, document, thumb, entities, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup, disableContentTypeDetection)
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = replyInChatId,
+    document = document,
+    thumb = thumb,
+    entities = entities,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -724,11 +980,25 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(replyInChatId, document, entities, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup, disableContentTypeDetection)
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = replyInChatId,
+    document = document,
+    entities = entities,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
 
 
 // Media Group
@@ -743,9 +1013,20 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(replyInChatId, media, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply))
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+    chatId = replyInChatId,
+    media = media,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+)
 
 public suspend inline fun TelegramBot.replyWithPlaylist(
     toChatId: IdChatIdentifier,
@@ -756,9 +1037,20 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(replyInChatId, media, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply))
+): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+    chatId = replyInChatId,
+    media = media,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+)
 
 public suspend inline fun TelegramBot.replyWithDocuments(
     toChatId: IdChatIdentifier,
@@ -769,9 +1061,20 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(replyInChatId, media, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply))
+): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+    chatId = replyInChatId,
+    media = media,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+)
 
 public suspend inline fun TelegramBot.replyWithGallery(
     toChatId: IdChatIdentifier,
@@ -782,9 +1085,20 @@ public suspend inline fun TelegramBot.replyWithGallery(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(replyInChatId, media, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply))
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+    chatId = replyInChatId,
+    media = media,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+)
 
 
 // Photo
@@ -802,10 +1116,26 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, fileId, text, parseMode, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    fileId = fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -820,10 +1150,26 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, photo, text, parseMode, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    photo = photo,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -838,10 +1184,26 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, photoSize, text, parseMode, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    photoSize = photoSize,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 public suspend inline fun TelegramBot.replyWithPhoto(
@@ -856,10 +1218,25 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, fileId, entities, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    fileId = fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -873,10 +1250,25 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, photo, entities, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    photo = photo,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -890,10 +1282,25 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(replyInChatId, photoSize, entities, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PhotoContent> = sendPhoto(
+    chatId = replyInChatId,
+    photoSize = photoSize,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Sticker
@@ -908,10 +1315,23 @@ public suspend inline fun TelegramBot.replyWithSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(replyInChatId, sticker, replyInThreadId, replyInBusinessConnectionId, emoji, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<StickerContent> = sendSticker(
+    chatId = replyInChatId,
+    sticker = sticker,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -923,10 +1343,23 @@ public suspend inline fun TelegramBot.reply(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(replyInChatId, sticker, replyInThreadId, replyInBusinessConnectionId, emoji, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<StickerContent> = sendSticker(
+    chatId = replyInChatId,
+    sticker = sticker,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Videos
@@ -948,10 +1381,30 @@ public suspend inline fun TelegramBot.replyWithVideo(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(replyInChatId, video, thumb, text, parseMode, showCaptionAboveMedia, spoilered, duration, width, height, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoContent> = sendVideo(
+    chatId = replyInChatId,
+    video = video,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -966,10 +1419,26 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(replyInChatId, video, text, parseMode, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoContent> = sendVideo(
+    chatId = replyInChatId,
+    video = video,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.replyWithVideo(
     toChatId: IdChatIdentifier,
@@ -987,10 +1456,29 @@ public suspend inline fun TelegramBot.replyWithVideo(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(replyInChatId, video, thumb, entities, showCaptionAboveMedia, spoilered, duration, width, height, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoContent> = sendVideo(
+    chatId = replyInChatId,
+    video = video,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1004,10 +1492,25 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(replyInChatId, video, entities, showCaptionAboveMedia, spoilered, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoContent> = sendVideo(
+    chatId = replyInChatId,
+    video = video,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // VideoNotes
@@ -1024,10 +1527,25 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(replyInChatId, videoNote, thumb, duration, size, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(
+    chatId = replyInChatId,
+    videoNote = videoNote,
+    thumb = thumb,
+    duration = duration,
+    size = size,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1038,10 +1556,22 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(replyInChatId, videoNote, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(
+    chatId = replyInChatId,
+    videoNote = videoNote,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Voice
@@ -1058,10 +1588,25 @@ public suspend inline fun TelegramBot.replyWithVoice(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(replyInChatId, voice, text, parseMode, duration, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(
+    chatId = replyInChatId,
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1074,10 +1619,24 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(replyInChatId, voice, text, parseMode, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(
+    chatId = replyInChatId,
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 public suspend inline fun TelegramBot.replyWithVoice(
@@ -1091,10 +1650,24 @@ public suspend inline fun TelegramBot.replyWithVoice(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(replyInChatId, voice, entities, duration, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(
+    chatId = replyInChatId,
+    voice = voice,
+    entities = entities,
+    duration = duration,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1106,10 +1679,23 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(replyInChatId, voice, entities, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<VoiceContent> = sendVoice(
+    chatId = replyInChatId,
+    voice = voice,
+    entities = entities,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Invoice
@@ -1142,10 +1728,37 @@ public suspend inline fun TelegramBot.reply(
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(replyInChatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, replyInThreadId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<InvoiceContent> = sendInvoice(
+    chatId = replyInChatId,
+    title = title,
+    description = description,
+    payload = payload,
+    providerToken = providerToken,
+    currency = currency,
+    prices = prices,
+    maxTipAmount = maxTipAmount,
+    suggestedTipAmounts = suggestedTipAmounts,
+    startParameter = startParameter,
+    providerData = providerData,
+    requireName = requireName,
+    requirePhoneNumber = requirePhoneNumber,
+    requireEmail = requireEmail,
+    requireShippingAddress = requireShippingAddress,
+    shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+    shouldSendEmailToProvider = shouldSendEmailToProvider,
+    priceDependOnShipAddress = priceDependOnShipAddress,
+    threadId = replyInThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 // Polls
@@ -1165,10 +1778,28 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(replyInChatId, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendRegularPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowMultipleAnswers = allowMultipleAnswers,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1186,10 +1817,28 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(replyInChatId, question, options, closeInfo, questionParseMode, isAnonymous, allowMultipleAnswers, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendRegularPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = allowMultipleAnswers,
+    allowMultipleAnswers = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 public suspend inline fun TelegramBot.reply(
@@ -1206,10 +1855,27 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(replyInChatId, questionTextSources, options, closeInfo, isAnonymous, isClosed, allowMultipleAnswers, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendRegularPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    closeInfo = closeInfo,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowMultipleAnswers = allowMultipleAnswers,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1226,10 +1892,27 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(replyInChatId, questionTextSources, options, closeInfo, isAnonymous, allowMultipleAnswers, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendRegularPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    closeInfo = closeInfo,
+    isAnonymous = isAnonymous,
+    isClosed = allowMultipleAnswers,
+    allowMultipleAnswers = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1248,10 +1931,30 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    explanation = explanation,
+    explanationParseMode = explanationParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1272,10 +1975,30 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    explanation = explanation,
+    explanationParseMode = explanationParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1293,10 +2016,29 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    explanation = explanation,
+    explanationParseMode = explanationParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1316,10 +2058,29 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    explanation = explanation,
+    explanationParseMode = explanationParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1337,10 +2098,29 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    explanationTextSources = explanationTextSources,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1360,10 +2140,29 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    question = question,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    questionParseMode = questionParseMode,
+    explanationTextSources = explanationTextSources,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1380,10 +2179,28 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    explanationTextSources = explanationTextSources,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1402,10 +2219,28 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, effectId, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+): ContentMessage<PollContent> = sendQuizPoll(
+    chatId = replyInChatId,
+    questionEntities = questionTextSources,
+    options = options,
+    correctOptionId = correctOptionId,
+    closeInfo = closeInfo,
+    explanationTextSources = explanationTextSources,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
 
 
 public suspend inline fun TelegramBot.reply(
@@ -1422,6 +2257,7 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1441,6 +2277,7 @@ public suspend inline fun TelegramBot.reply(
         replyInBusinessConnectionId = replyInBusinessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -1461,6 +2298,7 @@ public suspend inline fun TelegramBot.reply(
         replyInBusinessConnectionId = replyInBusinessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
     )
@@ -1479,6 +2317,7 @@ public suspend inline fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1498,6 +2337,7 @@ public suspend inline fun TelegramBot.reply(
         replyInBusinessConnectionId = replyInBusinessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -1518,6 +2358,7 @@ public suspend inline fun TelegramBot.reply(
         replyInBusinessConnectionId = replyInBusinessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -1537,20 +2378,22 @@ public suspend inline fun TelegramBot.reply(
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): MessageId = copyMessage(
-    replyInChatId,
-    fromChatId,
-    messageId,
-    text,
-    parseMode,
-    showCaptionAboveMedia,
-    replyInThreadId,
-    disableNotification,
-    protectContent,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup
+    fromChatId = fromChatId,
+    messageId = messageId,
+    toChatId = replyInChatId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = replyInThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
 )
 
 public suspend inline fun TelegramBot.reply(
@@ -1565,9 +2408,25 @@ public suspend inline fun TelegramBot.reply(
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): MessageId = reply(toChatId, toMessageId, fromChat.id, messageId, text, parseMode, showCaptionAboveMedia, replyInChatId, replyInThreadId, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+): MessageId = reply(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    fromChatId = fromChat.id,
+    messageId = messageId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1580,9 +2439,25 @@ public suspend inline fun TelegramBot.reply(
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): MessageId = reply(toChatId, toMessageId, copy.chat.id, copy.messageId, text, parseMode, showCaptionAboveMedia, replyInChatId, replyInThreadId, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+): MessageId = reply(
+    toChatId = toChatId,
+    toMessageId = toMessageId,
+    fromChatId = copy.chat.id,
+    messageId = copy.messageId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyInChatId = replyInChatId,
+    replyInThreadId = replyInThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
 
 public suspend fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
@@ -1593,6 +2468,7 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1604,6 +2480,7 @@ public suspend fun TelegramBot.reply(
             businessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
             replyMarkup = replyMarkup
@@ -1626,18 +2503,20 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
 ): Unit = handleLiveLocation(
-    replyInChatId,
-    locationsFlow,
-    liveTimeMillis,
-    replyInThreadId,
-    replyInBusinessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    chatId = replyInChatId,
+    locationsFlow = locationsFlow,
+    liveTimeMillis = liveTimeMillis,
+    threadId = replyInThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
 )
 
 /**
@@ -1657,19 +2536,21 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) {
     handleLiveLocation(
-        replyInChatId,
-        locationsFlow,
-        liveTimeMillis,
-        replyInThreadId,
-        replyInBusinessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+        chatId = replyInChatId,
+        locationsFlow = locationsFlow,
+        liveTimeMillis = liveTimeMillis,
+        threadId = replyInThreadId,
+        businessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
     )
 }
 
@@ -1690,19 +2571,21 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) {
     handleLiveLocation(
-        replyInChatId,
-        locationsFlow,
-        liveTimeMillis,
-        replyInThreadId,
-        replyInBusinessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+        chatId = replyInChatId,
+        locationsFlow = locationsFlow,
+        liveTimeMillis = liveTimeMillis,
+        threadId = replyInThreadId,
+        businessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
     )
 }
 
@@ -1715,6 +2598,7 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1729,6 +2613,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1742,6 +2627,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1755,6 +2641,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1768,6 +2655,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1781,6 +2669,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1794,6 +2683,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1807,6 +2697,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1820,6 +2711,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1833,6 +2725,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1851,6 +2744,7 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1867,6 +2761,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1882,6 +2777,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1897,6 +2793,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1912,6 +2809,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1927,6 +2825,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1942,6 +2841,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1959,6 +2859,7 @@ public suspend fun TelegramBot.reply(
     replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1974,6 +2875,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -1988,6 +2890,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -2002,6 +2905,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
@@ -2015,6 +2919,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -2029,6 +2934,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -2043,6 +2949,7 @@ public suspend fun TelegramBot.reply(
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
@@ -2062,6 +2969,7 @@ public suspend fun TelegramBot.reply(
     businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
@@ -2076,6 +2984,7 @@ public suspend fun TelegramBot.reply(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyMarkup = replyMarkup,
         replyParameters = ReplyParameters(
             messageId = toMessageId,
@@ -2098,6 +3007,7 @@ public suspend fun TelegramBot.reply(
     businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
@@ -2113,6 +3023,7 @@ public suspend fun TelegramBot.reply(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         replyMarkup = replyMarkup,
         replyParameters = ReplyParameters(
             messageId = toMessageId,
