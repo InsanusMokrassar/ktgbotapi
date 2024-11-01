@@ -142,11 +142,13 @@ data class URLInlineKeyboardButton(
 ) : InlineKeyboardButton
 
 /**
- * Simple [url] button. Can be forwarded in any chat with message in case if it is the only one button in message
+ * `copy_text` button
  */
 @Serializable
 data class CopyTextButton(
-    override val text: String
+    override val text: String,
+    @SerialName(copyTextField)
+    val data: CopyTextButtonData
 ) : InlineKeyboardButton
 
 /**
