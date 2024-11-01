@@ -18,6 +18,7 @@ data class InvoiceContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?

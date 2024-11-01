@@ -31,6 +31,8 @@ data class SendDice(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(allowPaidBroadcastField)
+    override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(replyParametersField)

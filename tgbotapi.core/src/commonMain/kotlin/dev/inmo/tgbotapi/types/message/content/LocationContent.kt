@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.requests.send.SendStaticLocation
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -101,6 +100,7 @@ data class LiveLocationContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
@@ -116,6 +116,7 @@ data class LiveLocationContent(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -136,6 +137,7 @@ data class StaticLocationContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
@@ -147,6 +149,7 @@ data class StaticLocationContent(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup

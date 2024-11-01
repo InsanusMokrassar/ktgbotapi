@@ -1,9 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.abstracts.types.DisableNotification
-import dev.inmo.tgbotapi.abstracts.types.MessagesAction
-import dev.inmo.tgbotapi.abstracts.types.OptionallyBusinessConnectionRequest
-import dev.inmo.tgbotapi.abstracts.types.ProtectContent
+import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
@@ -50,7 +47,7 @@ data class CopyMessages (
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(removeCaptionField)
-    private val removeCaption: Boolean = false
+    private val removeCaption: Boolean = false,
 ): SimpleRequest<List<MessageId>>,
     MessagesAction,
     ProtectContent,

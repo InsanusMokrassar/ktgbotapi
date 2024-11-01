@@ -25,23 +25,25 @@ public suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = execute(
     SendVideoNote(
-        chatId,
-        videoNote,
-        thumb,
-        duration,
-        size,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        videoNote = videoNote,
+        thumbnail = thumb,
+        duration = duration,
+        size = size,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -56,11 +58,24 @@ public suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
-    chatId, videoNote.fileId, videoNote.thumbnail ?.fileId, videoNote.duration, videoNote.width, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
+    chatId = chatId,
+    videoNote = videoNote.fileId,
+    thumb = videoNote.thumbnail ?.fileId,
+    duration = videoNote.duration,
+    size = videoNote.width,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -77,10 +92,25 @@ public suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(chat.id, videoNote, thumb, duration, size, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(
+    chatId = chat.id,
+    videoNote = videoNote,
+    thumb = thumb,
+    duration = duration,
+    size = size,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -93,7 +123,19 @@ public suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(chat.id, videoNote, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<VideoNoteContent> = sendVideoNote(
+    chatId = chat.id,
+    videoNote = videoNote,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)

@@ -20,6 +20,7 @@ data class StickerContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
@@ -30,6 +31,7 @@ data class StickerContent(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup

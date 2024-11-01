@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.caption.editMessageCaption
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
+import dev.inmo.tgbotapi.extensions.api.edit.media.addMessageMedia
 import dev.inmo.tgbotapi.extensions.api.edit.media.editMessageMedia
 import dev.inmo.tgbotapi.extensions.api.edit.reply_markup.editMessageReplyMarkup
 import dev.inmo.tgbotapi.extensions.api.edit.text.editMessageText
@@ -172,6 +173,17 @@ public suspend fun TelegramBot.edit(
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<MediaContent> = editMessageMedia(message, media, businessConnectionId, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+public suspend fun TelegramBot.addMedia(
+    message: ContentMessage<TextContent>,
+    media: TelegramFreeMedia,
+    businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
+    replyMarkup: InlineKeyboardMarkup? = null
+): ContentMessage<MediaContent> = addMessageMedia(message, media, businessConnectionId, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

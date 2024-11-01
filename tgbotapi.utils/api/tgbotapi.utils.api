@@ -1261,6 +1261,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun contentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public static final fun contentOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
 	public static final fun contentOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
+	public static final fun copyTextButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun copyTextButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun createInvoiceLinkOrNull (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createInvoiceLinkOrThrow (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createdOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
@@ -1573,6 +1575,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifContactContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContent (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCopyTextButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreateInvoiceLink (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreated (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCubeDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1911,6 +1914,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifSwitchInlineQueryChosenChatInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSwitchInlineQueryCurrentChatInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSwitchInlineQueryInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifTelegramAPI (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramFreeMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaAnimation (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaAudio (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2471,6 +2475,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun switchInlineQueryCurrentChatInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
 	public static final fun switchInlineQueryInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
 	public static final fun switchInlineQueryInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public static final fun telegramAPIOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
+	public static final fun telegramAPIOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
 	public static final fun telegramFreeMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;
 	public static final fun telegramFreeMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;
 	public static final fun telegramMediaAnimationOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
@@ -3370,6 +3376,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/RequestsExecutor
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardBuilderKt {
 	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun copyTextButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Z
+	public static final fun copyTextButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun dataButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun flatInlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun gameButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z

@@ -11,6 +11,8 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.types.message.content.TextContent
+import kotlin.jvm.JvmName
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -44,6 +46,17 @@ public suspend fun TelegramBot.editMessageMedia(
  */
 public suspend fun TelegramBot.editMessageMedia(
     message: ContentMessage<out MediaContent>,
+    media: TelegramFreeMedia,
+    businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
+    replyMarkup: InlineKeyboardMarkup? = null
+): ContentMessage<MediaContent> = editMessageMedia(message.chat.id, message.messageId, media, businessConnectionId, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+public suspend fun TelegramBot.addMessageMedia(
+    message: ContentMessage<TextContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null

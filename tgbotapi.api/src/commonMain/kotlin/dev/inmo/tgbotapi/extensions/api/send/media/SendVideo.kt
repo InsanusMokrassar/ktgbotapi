@@ -32,6 +32,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -52,6 +53,7 @@ public suspend fun TelegramBot.sendVideo(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -73,6 +75,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -91,6 +94,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -115,6 +119,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -133,6 +138,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -154,6 +160,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -168,6 +175,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -191,6 +199,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -210,6 +219,7 @@ public suspend inline fun TelegramBot.sendVideo(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -230,6 +240,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -247,6 +258,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -270,6 +282,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -287,6 +300,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -307,6 +321,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -320,6 +335,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup

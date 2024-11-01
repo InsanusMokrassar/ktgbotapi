@@ -46,7 +46,7 @@ class StringFormattingTests {
                 " " +
                 spoiler("hello world") +
                 " with " +
-                hashtag("tag") +
+                hashtag("tag@sample") +
                 " and " +
                 mention("mention") +
                 ". Start of blockquote: " +

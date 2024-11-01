@@ -23,6 +23,7 @@ data class TextContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
@@ -34,6 +35,7 @@ data class TextContent(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup

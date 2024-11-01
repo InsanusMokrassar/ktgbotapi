@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
-import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.Serializable
@@ -154,6 +153,7 @@ sealed interface ResendableContent {
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
@@ -165,6 +165,7 @@ sealed interface ResendableContent {
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
@@ -175,6 +176,7 @@ sealed interface ResendableContent {
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyToMessageId ?.let {
             ReplyParameters(

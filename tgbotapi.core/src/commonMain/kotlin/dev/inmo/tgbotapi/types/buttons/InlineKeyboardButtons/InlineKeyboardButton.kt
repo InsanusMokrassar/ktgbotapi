@@ -142,6 +142,16 @@ data class URLInlineKeyboardButton(
 ) : InlineKeyboardButton
 
 /**
+ * `copy_text` button
+ */
+@Serializable
+data class CopyTextButton(
+    override val text: String,
+    @SerialName(copyTextField)
+    val data: CopyTextButtonData
+) : InlineKeyboardButton
+
+/**
  * Button with [WebAppInfo]. Web App will be launched when the button is pressed. The Web App will be able to send a
  * `web_app_data` service message. **Available in private chats only**.
  */

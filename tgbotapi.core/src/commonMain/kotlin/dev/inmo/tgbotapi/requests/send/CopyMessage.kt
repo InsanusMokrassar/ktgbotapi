@@ -24,16 +24,74 @@ import kotlinx.serialization.*
 
 const val OrderChangingDeprecationWarn = "The order of parameters in this factory will be changed soon. To avoid unexpected behaviour, swap message id and target chat id parameters"
 
+//fun CopyMessage(
+//    toChatId: ChatIdentifier,
+//    fromChatId: ChatIdentifier,
+//    messageId: MessageId,
+//    text: String? = null,
+//    parseMode: ParseMode? = null,
+//    showCaptionAboveMedia: Boolean = false,
+//    threadId: MessageThreadId? = toChatId.threadId,
+//    disableNotification: Boolean = false,
+//    protectContent: Boolean = false,
+//    allowPaidBroadcast: Boolean = false,
+//    replyParameters: ReplyParameters? = null,
+//    replyMarkup: KeyboardMarkup? = null
+//) = CopyMessage(
+//    toChatId = toChatId,
+//    fromChatId = fromChatId,
+//    messageId = messageId,
+//    text = text,
+//    parseMode = parseMode,
+//    rawEntities = null,
+//    showCaptionAboveMedia = showCaptionAboveMedia,
+//    threadId = threadId,
+//    disableNotification = disableNotification,
+//    protectContent = protectContent,
+//    allowPaidBroadcast = allowPaidBroadcast,
+//    replyParameters = replyParameters,
+//    replyMarkup = replyMarkup
+//)
+//
+//fun CopyMessage(
+//    toChatId: ChatIdentifier,
+//    fromChatId: ChatIdentifier,
+//    messageId: MessageId,
+//    entities: List<TextSource>,
+//    showCaptionAboveMedia: Boolean = false,
+//    threadId: MessageThreadId? = toChatId.threadId,
+//    disableNotification: Boolean = false,
+//    protectContent: Boolean = false,
+//    allowPaidBroadcast: Boolean = false,
+//    replyParameters: ReplyParameters? = null,
+//    replyMarkup: KeyboardMarkup? = null
+//) = CopyMessage(
+//    toChatId = toChatId,
+//    fromChatId = fromChatId,
+//    messageId = messageId,
+//    text = entities.makeString(),
+//    parseMode = null,
+//    rawEntities = entities.toRawMessageEntities(),
+//    showCaptionAboveMedia = showCaptionAboveMedia,
+//    threadId = threadId,
+//    disableNotification = disableNotification,
+//    protectContent = protectContent,
+//    allowPaidBroadcast = allowPaidBroadcast,
+//    replyParameters = replyParameters,
+//    replyMarkup = replyMarkup
+//)
+
 fun CopyMessage(
-    toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
     messageId: MessageId,
+    toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -47,59 +105,7 @@ fun CopyMessage(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-fun CopyMessage(
-    toChatId: ChatIdentifier,
-    fromChatId: ChatIdentifier,
-    messageId: MessageId,
-    entities: List<TextSource>,
-    showCaptionAboveMedia: Boolean = false,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    messageId = messageId,
-    text = entities.makeString(),
-    parseMode = null,
-    rawEntities = entities.toRawMessageEntities(),
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-fun CopyMessage(
-    fromChatId: ChatIdentifier,
-    messageId: MessageId,
-    toChatId: ChatIdentifier,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    showCaptionAboveMedia: Boolean = false,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    messageId = messageId,
-    text = text,
-    parseMode = parseMode,
-    rawEntities = null,
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -113,6 +119,7 @@ fun CopyMessage(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -126,6 +133,7 @@ fun CopyMessage(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -152,6 +160,8 @@ data class CopyMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(allowPaidBroadcastField)
+    override val allowPaidBroadcast: Boolean = false,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

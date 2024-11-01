@@ -28,6 +28,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -43,6 +44,7 @@ public suspend fun TelegramBot.sendPhoto(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -64,6 +66,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -78,6 +81,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -98,6 +102,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -112,6 +117,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -132,6 +138,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -146,6 +153,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -166,6 +174,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -180,6 +189,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -200,6 +210,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -214,6 +225,7 @@ public suspend fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -234,6 +246,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -248,6 +261,7 @@ public suspend inline fun TelegramBot.sendPhoto(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -268,6 +282,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -281,6 +296,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -300,6 +316,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -313,6 +330,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -332,6 +350,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -345,6 +364,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -364,6 +384,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -377,6 +398,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -396,6 +418,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -409,6 +432,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup

@@ -22,6 +22,7 @@ data class GiveawayContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?

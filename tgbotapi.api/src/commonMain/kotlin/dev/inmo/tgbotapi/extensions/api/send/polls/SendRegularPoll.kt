@@ -27,27 +27,29 @@ public suspend fun TelegramBot.sendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
-        chatId,
-        question,
-        options,
-        questionParseMode,
-        isAnonymous,
-        isClosed,
-        allowMultipleAnswers,
-        openPeriod,
-        closeDate,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        question = question,
+        options = options,
+        questionParseMode = questionParseMode,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowMultipleAnswers = allowMultipleAnswers,
+        openPeriod = openPeriod,
+        closeDate = closeDate,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -64,26 +66,28 @@ public suspend fun TelegramBot.sendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
-        chatId,
-        questionEntities,
-        options,
-        isAnonymous,
-        isClosed,
-        allowMultipleAnswers,
-        openPeriod,
-        closeDate,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        questionEntities = questionEntities,
+        options = options,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowMultipleAnswers = allowMultipleAnswers,
+        openPeriod = openPeriod,
+        closeDate = closeDate,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -100,26 +104,28 @@ public suspend fun TelegramBot.sendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
-        chatId,
-        question,
-        options,
-        closeInfo,
-        questionParseMode,
-        isAnonymous,
-        isClosed,
-        allowMultipleAnswers,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        question = question,
+        options = options,
+        closeInfo = closeInfo,
+        questionParseMode = questionParseMode,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowMultipleAnswers = allowMultipleAnswers,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -135,24 +141,26 @@ public suspend fun TelegramBot.sendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
-        chatId,
-        questionEntities,
-        options,
-        closeInfo,
-        isAnonymous,
-        isClosed,
-        allowMultipleAnswers,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        effectId,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        questionTextSources = questionEntities,
+        options = options,
+        closeInfo = closeInfo,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowMultipleAnswers = allowMultipleAnswers,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )

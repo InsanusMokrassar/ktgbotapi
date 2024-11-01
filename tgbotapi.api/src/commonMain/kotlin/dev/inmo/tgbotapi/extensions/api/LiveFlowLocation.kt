@@ -53,6 +53,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
@@ -90,6 +91,7 @@ public suspend fun TelegramBot.handleLiveLocation(
                 businessConnectionId,
                 disableNotification,
                 protectContent,
+                allowPaidBroadcast,
                 effectId,
                 replyParameters,
                 it.replyMarkup
@@ -126,6 +128,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
@@ -147,6 +150,7 @@ public suspend fun TelegramBot.handleLiveLocation(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         sentMessageFlow = sentMessageFlow
@@ -167,6 +171,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
@@ -184,6 +189,7 @@ public suspend fun TelegramBot.handleLiveLocation(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         sentMessageFlow = sentMessageFlow

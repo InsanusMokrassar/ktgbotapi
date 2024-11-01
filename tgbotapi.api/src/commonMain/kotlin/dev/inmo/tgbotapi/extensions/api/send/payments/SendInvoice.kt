@@ -37,11 +37,38 @@ public suspend fun TelegramBot.sendInvoice(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = execute(
-    SendInvoice(chatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+    SendInvoice(
+        chatId = chatId,
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = providerToken,
+        currency = currency,
+        prices = prices,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
+        startParameter = startParameter,
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress,
+        threadId = threadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
 )
 
 /**
@@ -69,10 +96,37 @@ public suspend fun TelegramBot.sendInvoice(
     priceDependOnShipAddress: Boolean = false,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, null, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<InvoiceContent> = sendInvoice(
+    chatId = user.id,
+    title = title,
+    description = description,
+    payload = payload,
+    providerToken = providerToken,
+    currency = currency,
+    prices = prices,
+    maxTipAmount = maxTipAmount,
+    suggestedTipAmounts = suggestedTipAmounts,
+    startParameter = startParameter,
+    providerData = providerData,
+    requireName = requireName,
+    requirePhoneNumber = requirePhoneNumber,
+    requireEmail = requireEmail,
+    requireShippingAddress = requireShippingAddress,
+    shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+    shouldSendEmailToProvider = shouldSendEmailToProvider,
+    priceDependOnShipAddress = priceDependOnShipAddress,
+    threadId = null,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 
 /**
@@ -90,11 +144,27 @@ public suspend fun TelegramBot.sendInvoice(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = execute(
-    SendInvoice(chatId, title, description, payload, price, startParameter, providerData, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+    SendInvoice(
+        chatId = chatId,
+        title = title,
+        description = description,
+        payload = payload,
+        price = price,
+        startParameter = startParameter,
+        providerData = providerData,
+        threadId = threadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
 )
 
 /**
@@ -111,6 +181,7 @@ public suspend fun TelegramBot.sendInvoice(
     providerData: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -125,6 +196,7 @@ public suspend fun TelegramBot.sendInvoice(
     threadId = null,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup

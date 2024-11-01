@@ -41,6 +41,8 @@ data class SendVenue(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(allowPaidBroadcastField)
+    override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
@@ -59,6 +61,7 @@ data class SendVenue(
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
@@ -76,6 +79,7 @@ data class SendVenue(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -94,17 +98,19 @@ fun Venue.toRequest(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendVenue = SendVenue(
-    chatId,
-    this,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    venue = this,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )

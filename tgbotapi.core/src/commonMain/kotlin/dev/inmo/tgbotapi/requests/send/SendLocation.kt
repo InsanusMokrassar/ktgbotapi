@@ -33,30 +33,7 @@ fun SendLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = SendLocation.Static(
-    chatId,
-    latitude,
-    longitude,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    effectId,
-    replyParameters,
-    replyMarkup
-)
-
-fun SendStaticLocation(
-    chatId: ChatIdentifier,
-    latitude: Double,
-    longitude: Double,
-    threadId: MessageThreadId? = chatId.threadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -68,6 +45,33 @@ fun SendStaticLocation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+fun SendStaticLocation(
+    chatId: ChatIdentifier,
+    latitude: Double,
+    longitude: Double,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendLocation.Static(
+    chatId = chatId,
+    latitude = latitude,
+    longitude = longitude,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -85,6 +89,7 @@ fun SendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -100,6 +105,7 @@ fun SendLiveLocation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -145,6 +151,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val disableNotification: Boolean = false,
         @SerialName(protectContentField)
         override val protectContent: Boolean = false,
+        @SerialName(allowPaidBroadcastField)
+        override val allowPaidBroadcast: Boolean = false,
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(replyParametersField)
@@ -187,6 +195,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val disableNotification: Boolean = false,
         @SerialName(protectContentField)
         override val protectContent: Boolean = false,
+        @SerialName(allowPaidBroadcastField)
+        override val allowPaidBroadcast: Boolean = false,
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(replyParametersField)
@@ -233,6 +243,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val disableNotification: Boolean = false,
             @SerialName(protectContentField)
             val protectContent: Boolean = false,
+            @SerialName(allowPaidBroadcastField)
+            val allowPaidBroadcast: Boolean = false,
             @SerialName(messageEffectIdField)
             val effectId: EffectId? = null,
             @SerialName(replyParametersField)
@@ -256,6 +268,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     businessConnectionId = surrogate.businessConnectionId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
+                    allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
@@ -272,6 +285,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     businessConnectionId = surrogate.businessConnectionId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
+                    allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
@@ -293,6 +307,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     businessConnectionId = businessConnectionId,
                     disableNotification = disableNotification,
                     protectContent = protectContent,
+                    allowPaidBroadcast = allowPaidBroadcast,
                     effectId = effectId,
                     replyParameters = replyParameters,
                     replyMarkup = replyMarkup
