@@ -55,6 +55,22 @@ sealed interface TransactionPartner {
         }
     }
 
+    /**
+     * Represents [TransactionPartnerTelegramApi](https://core.telegram.org/bots/api#transactionpartnertelegramapi)
+     */
+    @Serializable(TransactionPartner.Companion::class)
+    data class TelegramAPI(
+        @SerialName(requestCountField)
+        val requestCount: Int
+    ) : TransactionPartner {
+        @EncodeDefault
+        override val type: String = Companion.type
+
+        companion object {
+            const val type: String = "telegram_api"
+        }
+    }
+
     @Serializable(TransactionPartner.Companion::class)
     data object Ads : TransactionPartner {
         @EncodeDefault
@@ -79,7 +95,8 @@ sealed interface TransactionPartner {
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
             val user: PreviewUser? = null,
-            val invoice_payload: InvoicePayload? = null
+            val invoice_payload: InvoicePayload? = null,
+            val request_count: Int? = null
         )
 
         override val descriptor: SerialDescriptor
@@ -96,6 +113,9 @@ sealed interface TransactionPartner {
                 User.type -> User(
                     data.user ?: return unknown,
                 )
+                TelegramAPI.type -> TelegramAPI(
+                    data.request_count ?: return unknown,
+                )
                 Ads.type -> Ads
                 Fragment.type -> Fragment(
                     data.withdrawal_state ?: return unknown,
@@ -109,6 +129,7 @@ sealed interface TransactionPartner {
                 Other -> Surrogate(value.type)
                 Ads -> Surrogate(value.type)
                 is User -> Surrogate(value.type, user = value.user)
+                is TelegramAPI -> Surrogate(value.type, request_count = value.requestCount)
                 is Fragment -> Surrogate(
                     value.type,
                     value.withdrawalState
