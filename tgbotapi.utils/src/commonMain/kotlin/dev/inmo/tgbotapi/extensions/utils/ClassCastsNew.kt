@@ -5348,6 +5348,16 @@ public inline fun TransactionPartner.otherOrThrow(): TransactionPartner.Other = 
 public inline fun <T> TransactionPartner.ifOther(block: (TransactionPartner.Other) -> T): T? =
     otherOrNull() ?.let(block)
 
+public inline fun TransactionPartner.telegramAPIOrNull(): TransactionPartner.TelegramAPI? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.TelegramAPI
+
+public inline fun TransactionPartner.telegramAPIOrThrow(): TransactionPartner.TelegramAPI = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.TelegramAPI
+
+public inline fun <T>
+    TransactionPartner.ifTelegramAPI(block: (TransactionPartner.TelegramAPI) -> T): T? =
+    telegramAPIOrNull() ?.let(block)
+
 public inline fun TransactionPartner.unknownOrNull(): TransactionPartner.Unknown? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Unknown
 
