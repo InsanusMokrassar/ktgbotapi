@@ -2,6 +2,8 @@
 
 ## 20.0.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [BOTS API 7.11](https://core.telegram.org/bots/api-changelog#october-31-2024)**
+
 * `All`:
   * **ALL SEND METHODS GOT PARAMETER `allowPaidBroadcast` WHICH POTENTIALLY MAY SPEND MONEYS FROM BOT BALANCE**
 
