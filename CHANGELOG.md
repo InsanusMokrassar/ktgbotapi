@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 19.1.0
+## 20.0.0
 
 * `All`:
   * **ALL SEND METHODS GOT PARAMETER `allowPaidBroadcast` WHICH POTENTIALLY MAY SPEND MONEYS FROM BOT BALANCE**
