@@ -13211,11 +13211,13 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Callbac
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -13233,6 +13235,33 @@ public synthetic class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Cop
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -14155,7 +14184,8 @@ public final class dev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton$Companio
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/inline/InlineKeyboardButtonsShortcutsKt {
-	public static final fun copyTextButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun copyTextButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun copyTextButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun dataInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
 	public static final fun gameInlineButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
 	public static final fun inlineQueryInAnyCurrentChatInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;

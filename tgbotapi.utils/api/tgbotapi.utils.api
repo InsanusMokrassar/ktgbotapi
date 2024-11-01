@@ -3376,7 +3376,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/RequestsExecutor
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardBuilderKt {
 	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public static final fun copyTextButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
+	public static final fun copyTextButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Z
+	public static final fun copyTextButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun dataButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun flatInlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun gameButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
