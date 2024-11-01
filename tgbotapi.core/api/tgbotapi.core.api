@@ -8973,6 +8973,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field replyToMessageIdField Ljava/lang/String;
 	public static final field requestChatField Ljava/lang/String;
 	public static final field requestContactField Ljava/lang/String;
+	public static final field requestCountField Ljava/lang/String;
 	public static final field requestIdField Ljava/lang/String;
 	public static final field requestLocationField Ljava/lang/String;
 	public static final field requestNameField Ljava/lang/String;
@@ -22004,6 +22005,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/CashTagTextSource
 	public fun getMarkdownV2 ()Ljava/lang/String;
 	public fun getSource ()Ljava/lang/String;
 	public fun getSubsources ()Ljava/util/List;
+	public final fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -22197,6 +22199,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/HashTagTextSource
 	public fun getMarkdownV2 ()Ljava/lang/String;
 	public fun getSource ()Ljava/lang/String;
 	public fun getSubsources ()Ljava/util/List;
+	public final fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -24906,6 +24909,24 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Oth
 	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI : dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI$Companion;
+	public static final field type Ljava/lang/String;
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRequestCount ()I
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Unknown : dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
