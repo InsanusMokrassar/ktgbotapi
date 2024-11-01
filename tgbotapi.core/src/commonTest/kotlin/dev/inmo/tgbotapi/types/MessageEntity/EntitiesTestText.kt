@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
+import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.*
@@ -8,14 +9,14 @@ import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-const val testText = "It (is?) is simple hello world with #tag and @mention. Start of blockquote: Block quotation started\n" +
+const val testText = "It (is?) is simple hello world with #tag@sample and @mention. Start of blockquote: Block quotation started\n" +
         "Block quotation continued\n" +
         "The last line of the block quotation\n" +
         ". Start of expandable blockquote: Block quotation started\n" +
         "Block quotation continued\n" +
         "The last line of the block quotation"
-const val formattedV2Text = "It \\(is?\\) *_is_ ~__simple__~* ||hello world|| with \\#tag and @mention\\. Start of blockquote: >Block quotation started\n>Block quotation continued\n>The last line of the block quotation\n\\. Start of expandable blockquote: **>Block quotation started\n>Block quotation continued\n>The last line of the block quotation||"
-const val formattedHtmlText = "It (is?) <b><i>is</i> <s><u>simple</u></s></b> <span class=\"tg-spoiler\">hello world</span> with #tag and @mention. Start of blockquote: <blockquote>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>\n. Start of expandable blockquote: <blockquote expandable>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>"
+const val formattedV2Text = "It \\(is?\\) *_is_ ~__simple__~* ||hello world|| with \\#tag@sample and @mention\\. Start of blockquote: >Block quotation started\n>Block quotation continued\n>The last line of the block quotation\n\\. Start of expandable blockquote: **>Block quotation started\n>Block quotation continued\n>The last line of the block quotation||"
+const val formattedHtmlText = "It (is?) <b><i>is</i> <s><u>simple</u></s></b> <span class=\"tg-spoiler\">hello world</span> with #tag@sample and @mention. Start of blockquote: <blockquote>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>\n. Start of expandable blockquote: <blockquote expandable>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>"
 internal val testTextEntities = listOf(
     RawMessageEntity(
         "bold",
@@ -45,21 +46,21 @@ internal val testTextEntities = listOf(
     RawMessageEntity(
         "hashtag",
         36,
-        4
+        11
     ),
     RawMessageEntity(
         "mention",
-        45,
+        52,
         8
     ),
     RawMessageEntity(
         "blockquote",
-        76,
+        83,
         86
     ),
     RawMessageEntity(
         "expandable_blockquote",
-        197,
+        204,
         86
     )
 )
@@ -71,6 +72,7 @@ fun TextSourcesList.testTextSources() {
     assertTrue (get(3) is SpoilerTextSource)
     assertTrue (get(4) is RegularTextSource)
     assertTrue (get(5) is HashTagTextSource)
+    assertEquals(Username("@sample"), (get(5) as HashTagTextSource).username)
     assertTrue (get(6) is RegularTextSource)
     assertTrue (get(7) is MentionTextSource)
     assertTrue (get(8) is RegularTextSource)
