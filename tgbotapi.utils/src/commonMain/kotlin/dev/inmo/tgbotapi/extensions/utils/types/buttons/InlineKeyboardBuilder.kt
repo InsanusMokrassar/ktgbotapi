@@ -49,6 +49,19 @@ inline fun flatInlineKeyboard(
     block: InlineKeyboardRowBuilder.() -> Unit
 ) = inlineKeyboard { row<InlineKeyboardButton>(block) }
 
+/**
+ * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
+ * and [InlineKeyboardBuilder.build] [InlineKeyboardMarkup] then
+ *
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardMarkup.modified(
+    block: InlineKeyboardBuilder.() -> Unit
+) = InlineKeyboardBuilder().apply {
+    keyboard.forEach { add(it) }
+    block()
+}.build()
+
 
 /**
  * Creates and put [PayInlineKeyboardButton]

@@ -29,6 +29,10 @@ sealed class ChatType {
     object Channel : ChatType() { override val stringified = "channel" }
     @Serializable(ChatTypeSerializer::class)
     class Unknown(override val stringified: String) : ChatType()
+
+    override fun toString(): String {
+        return stringified
+    }
 }
 val String.asChatType
     get() = when (this) {

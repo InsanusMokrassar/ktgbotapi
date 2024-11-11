@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 20.0.1
+
+* `Core`:
+  * Fix of logger propagation (fix of [#860](https://github.com/InsanusMokrassar/ktgbotapi/issues/860))
+  * Add opportunity to modify keyboards (fix of [#761](https://github.com/InsanusMokrassar/ktgbotapi/issues/761))
+  * Fields of `OrderInfo` became nullable (fix of [#917](https://github.com/InsanusMokrassar/ktgbotapi/issues/917))
+  * Add default `toString` to `ChatType` (fix of [#919](https://github.com/InsanusMokrassar/ktgbotapi/issues/919))
+  * Fix of method in `CreateInvoiceLink` (merging of [#920](https://github.com/InsanusMokrassar/ktgbotapi/issues/920), made by [byteduck-exploit](https://github.com/byteduck-exploit))
+
 ## 20.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [BOTS API 7.11](https://core.telegram.org/bots/api-changelog#october-31-2024)**
