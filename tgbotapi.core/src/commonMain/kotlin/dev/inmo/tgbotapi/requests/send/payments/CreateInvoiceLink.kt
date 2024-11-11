@@ -54,7 +54,7 @@ data class CreateInvoiceLink(
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false
 ) : CommonSendInvoiceData, SimpleRequest<String> {
-    override fun method(): String = "sendInvoice"
+    override fun method(): String = "createInvoiceLink"
     override val resultDeserializer: DeserializationStrategy<String>
         get() = String.serializer()
     override val requestSerializer: SerializationStrategy<*>
