@@ -3390,6 +3390,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboa
 	public static synthetic fun inlineQueryInChosenChatButton$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;ZZZZILjava/lang/Object;)Z
 	public static final fun inlineQueryInCurrentChatButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun loginButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;)Z
+	public static final fun modified (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun payButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
 	public static final fun urlButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z
 	public static final fun webAppButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Z
