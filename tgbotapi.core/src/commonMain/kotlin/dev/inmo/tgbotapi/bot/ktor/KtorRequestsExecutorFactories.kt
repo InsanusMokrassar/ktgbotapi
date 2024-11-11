@@ -34,14 +34,14 @@ class KtorRequestsExecutorBuilder(
     }
 
     fun build() = KtorRequestsExecutor(
-        telegramAPIUrlsKeeper,
-        client,
-        callsFactories,
-        excludeDefaultFactories,
-        requestsLimiter,
-        jsonFormatter,
-        pipelineStepsHolder,
-        logger
+        telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
+        client = client,
+        callsFactories = callsFactories,
+        excludeDefaultFactories = excludeDefaultFactories,
+        requestsLimiter = requestsLimiter,
+        jsonFormatter = jsonFormatter,
+        pipelineStepsHolder = pipelineStepsHolder,
+        logger = logger
     )
 }
 
