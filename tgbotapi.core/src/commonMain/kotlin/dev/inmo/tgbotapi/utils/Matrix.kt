@@ -97,9 +97,10 @@ open class MatrixBuilder<T> {
         exists.forEach { rowBuilder.add(it) }
         mutMatrix[i] = rowBuilder.apply(block).row
     }
-    fun modifyRow(row: List<T>, block: RowBuilder<T>.() -> Unit) {
+    fun modifyRow(row: List<T>, block: RowBuilder<T>.() -> Unit): Boolean {
         val i = mutMatrix.indexOf(row).takeIf { it > -1 } ?: return false
         modifyRow(i, block)
+        return true
     }
     fun remove(i: Int): List<T> {
         return mutMatrix.removeAt(i)
