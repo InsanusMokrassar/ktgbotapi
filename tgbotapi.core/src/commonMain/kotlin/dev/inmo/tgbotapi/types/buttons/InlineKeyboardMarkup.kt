@@ -25,4 +25,23 @@ data class InlineKeyboardMarkup(
             }
         }
     }
+
+    operator fun plus(other: InlineKeyboardMarkup): InlineKeyboardMarkup {
+        return InlineKeyboardMarkup(
+            keyboard + other.keyboard
+        )
+    }
+
+    operator fun minus(other: InlineKeyboardMarkup): InlineKeyboardMarkup {
+        val otherButtons = other.keyboard.flatten()
+        return InlineKeyboardMarkup(
+            keyboard.mapNotNull { row ->
+                row.filter { button ->
+                    button !in otherButtons
+                }.takeIf {
+                    it.isNotEmpty()
+                }
+            }
+        )
+    }
 }

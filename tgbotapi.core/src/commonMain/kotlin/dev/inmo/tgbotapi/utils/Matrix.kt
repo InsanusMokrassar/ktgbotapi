@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.utils
 
+import dev.inmo.micro_utils.common.withReplaced
 import dev.inmo.tgbotapi.types.buttons.Matrix
 
 /**
@@ -67,6 +68,18 @@ open class RowBuilder<T> {
 
     fun add(t: T) = mutRow.add(t)
     operator fun T.unaryPlus() = add(this)
+
+    fun replace(i: Int, new: T) {
+        mutRow[i] = new
+    }
+    fun replace(old: T, new: T): Boolean {
+        val i = mutRow.indexOf(old).takeIf { it > -1 } ?: return false
+        replace(i, new)
+        return mutRow[i] == new
+    }
+    fun remove(i: Int): T {
+        return mutRow.removeAt(i)
+    }
 }
 
 open class MatrixBuilder<T> {
@@ -77,4 +90,18 @@ open class MatrixBuilder<T> {
     fun add(t: List<T>) = mutMatrix.add(t)
     operator fun plus(t: List<T>) = add(t)
     operator fun T.unaryPlus() = add(listOf(this))
+
+    fun modifyRow(i: Int, block: RowBuilder<T>.() -> Unit) {
+        val exists = matrix[i]
+        val rowBuilder = RowBuilder<T>()
+        exists.forEach { rowBuilder.add(it) }
+        mutMatrix[i] = rowBuilder.apply(block).row
+    }
+    fun modifyRow(row: List<T>, block: RowBuilder<T>.() -> Unit) {
+        val i = mutMatrix.indexOf(row).takeIf { it > -1 } ?: return false
+        modifyRow(i, block)
+    }
+    fun remove(i: Int): List<T> {
+        return mutMatrix.removeAt(i)
+    }
 }
