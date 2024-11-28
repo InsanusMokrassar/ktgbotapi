@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
 
@@ -29,17 +30,19 @@ suspend fun TelegramBot.buildBehaviour(
     flowUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     block: BehaviourContextReceiver<Unit>
 ): BehaviourContext = BehaviourContext(
-    this,
-    scope.let {
-          if (defaultExceptionsHandler == null) {
-              it
-          } else {
-              it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
-          }
+    bot = this,
+    scope = scope.let {
+        if (defaultExceptionsHandler == null) {
+            it
+        } else {
+            it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
+        }
     },
-    flowUpdatesFilter
+    flowsUpdatesFilter = flowUpdatesFilter,
+    subcontextInitialAction = subcontextInitialAction
 ).apply {
     block()
 }
@@ -63,11 +66,13 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     block: BehaviourContextReceiver<Unit>
 ): Job {
     val behaviourContext = buildBehaviour(
         scope = scope,
         defaultExceptionsHandler = defaultExceptionsHandler,
+        subcontextInitialAction = subcontextInitialAction,
         block = block
     )
     return longPolling(

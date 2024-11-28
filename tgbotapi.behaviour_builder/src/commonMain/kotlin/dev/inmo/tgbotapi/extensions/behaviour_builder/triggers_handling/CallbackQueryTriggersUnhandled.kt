@@ -29,11 +29,13 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in DataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, DataCallbackQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DataCallbackQuery>
 ) = onCallbackQuery (
     initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )
 
@@ -55,11 +57,13 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQue
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, InlineMessageIdDataCallbackQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineMessageIdDataCallbackQuery>
 ) = onCallbackQuery (
     initialFilter * !SimpleFilter<InlineMessageIdDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )
 
@@ -81,10 +85,12 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledMessageDataCallbackQuery(
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MessageDataCallbackQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MessageDataCallbackQuery>
 ) = onCallbackQuery(
     initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )

@@ -19,8 +19,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartCo
     initialFilter: SimpleFilter<MediaGroupMessage<T>>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<T>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<T>, Any>? = ByChatMessageMarkerFactory,
+    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<T>>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<T>>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     it.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
         if (it.content.group.all { it.content is T }) {
             listOf(it as MediaGroupMessage<T>)
@@ -47,8 +48,9 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<MediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<MediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<MediaGroupPartContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -67,8 +69,9 @@ suspend fun <BC : BehaviourContext> BC.onPlaylistMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<AudioMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<AudioMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<AudioMediaGroupPartContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -87,8 +90,9 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<DocumentMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<DocumentMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<DocumentMediaGroupPartContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -107,8 +111,9 @@ suspend fun <BC : BehaviourContext> BC.onVisualGalleryMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -127,8 +132,9 @@ suspend fun <BC : BehaviourContext> BC.onVisualMediaGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>
-) = onVisualGalleryMessages(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = onVisualGalleryMessages(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -147,8 +153,9 @@ suspend fun <BC : BehaviourContext> BC.onPhotoGalleryMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<PhotoContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<PhotoContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<PhotoContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<PhotoContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<PhotoContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -167,5 +174,6 @@ suspend fun <BC : BehaviourContext> BC.onVideoGalleryMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<VideoContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VideoContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<VideoContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VideoContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VideoContent>>
-) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)

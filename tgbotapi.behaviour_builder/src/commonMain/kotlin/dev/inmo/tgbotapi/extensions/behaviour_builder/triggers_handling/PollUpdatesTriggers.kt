@@ -14,8 +14,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollU
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByIdPollMarkerFactory,
+    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.pollUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
@@ -36,11 +37,13 @@ suspend fun <BC : BehaviourContext> BC.onPollUpdates(
     initialFilter: SimpleFilter<Poll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Poll, Update>? = null,
     markerFactory: MarkerFactory<in Poll, Any>? = ByIdPollMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Poll>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Poll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )
 
@@ -61,11 +64,13 @@ suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
     initialFilter: SimpleFilter<RegularPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RegularPoll, Update>? = null,
     markerFactory: MarkerFactory<in RegularPoll, Any>? = ByIdPollMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, RegularPoll>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, RegularPoll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )
 
@@ -86,10 +91,12 @@ suspend fun <BC : BehaviourContext> BC.onQuizPollUpdates(
     initialFilter: SimpleFilter<QuizPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, QuizPoll, Update>? = null,
     markerFactory: MarkerFactory<in QuizPoll, Any>? = ByIdPollMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, QuizPoll>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, QuizPoll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )

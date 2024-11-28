@@ -27,15 +27,17 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ) {
     onCommand(
-        DefaultKTgBotAPIPrivacyCommand,
-        requireOnlyCommandInMessage,
-        initialFilter,
-        subcontextUpdatesFilter,
-        markerFactory,
-        scenarioReceiver
+        command = DefaultKTgBotAPIPrivacyCommand,
+        requireOnlyCommandInMessage = requireOnlyCommandInMessage,
+        initialFilter = initialFilter,
+        subcontextUpdatesFilter = subcontextUpdatesFilter,
+        markerFactory = markerFactory,
+        additionalSubcontextInitialAction = additionalSubcontextInitialAction,
+        scenarioReceiver = scenarioReceiver
     )
 }
 
@@ -51,8 +53,15 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
     allowPaidBroadcast: Boolean = false,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
-) = onCommandPrivacy(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory) {
+) = onCommandPrivacy(
+    requireOnlyCommandInMessage = requireOnlyCommandInMessage,
+    initialFilter = initialFilter,
+    subcontextUpdatesFilter = subcontextUpdatesFilter,
+    markerFactory = markerFactory,
+    additionalSubcontextInitialAction = additionalSubcontextInitialAction
+) {
     execute(
         SendTextMessage(
             it.chat.id,
@@ -76,13 +85,20 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
     allowPaidBroadcast: Boolean = false,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
-) = onCommandPrivacy(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory) {
+) = onCommandPrivacy(
+    requireOnlyCommandInMessage = requireOnlyCommandInMessage,
+    initialFilter = initialFilter,
+    subcontextUpdatesFilter = subcontextUpdatesFilter,
+    markerFactory = markerFactory,
+    additionalSubcontextInitialAction = additionalSubcontextInitialAction
+) {
     execute(
         SendTextMessage(
-            it.chat.id,
-            text,
-            parseMode,
+            chatId = it.chat.id,
+            text = text,
+            parseMode = parseMode,
             allowPaidBroadcast = allowPaidBroadcast,
             replyParameters = ReplyParameters(it.metaInfo)
         )

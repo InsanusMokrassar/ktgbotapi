@@ -32,8 +32,9 @@ suspend fun <BC : BehaviourContext> BC.onBusinessMessagesDeleted(
     initialFilter: SimpleFilter<BusinessMessagesDeleted>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessMessagesDeleted, Update>? = null,
     markerFactory: MarkerFactory<in BusinessMessagesDeleted, Any>? = ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BusinessMessagesDeleted>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessMessagesDeleted>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.deletedBusinessMessageUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
 
