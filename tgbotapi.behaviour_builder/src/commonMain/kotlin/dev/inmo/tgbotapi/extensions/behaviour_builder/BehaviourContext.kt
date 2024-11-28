@@ -52,6 +52,8 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
 
     val triggersHolder: TriggersHolder
 
+    val data: BehaviourContextData
+
     fun copy(
         bot: TelegramBot = this.bot,
         scope: CoroutineScope = this.scope,
@@ -91,6 +93,8 @@ class DefaultBehaviourContext(
         }
     }.accumulatorFlow(WeakScope(scope))
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
+
+    override val data: BehaviourContextData = BehaviourContextData()
 
     override fun copy(
         bot: TelegramBot,
