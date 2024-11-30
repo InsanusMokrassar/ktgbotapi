@@ -30,7 +30,8 @@ suspend fun <BC : BehaviourContext> BC.onShippingQuery(
     initialFilter: SimpleFilter<ShippingQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ShippingQuery, Update>? = ShippingQueryFilterByUser,
     markerFactory: MarkerFactory<in ShippingQuery, Any>? = ByUserShippingQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ShippingQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ShippingQuery>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.shippingQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

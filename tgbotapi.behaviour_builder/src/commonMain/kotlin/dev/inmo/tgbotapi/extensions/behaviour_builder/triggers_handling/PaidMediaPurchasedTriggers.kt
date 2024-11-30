@@ -34,8 +34,9 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.paidMediaPurchasedUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
 
@@ -58,11 +59,13 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
 ) = onPaidMediaPurchased(
     SimpleFilter<PaidMediaPurchased> { paidMediaPayloadRegex.matches(it.payload.string) } * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )
 
@@ -85,10 +88,12 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
 ) = onPaidMediaPurchased(
     SimpleFilter<PaidMediaPurchased> { it.payload == paidMediaPayload } * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )

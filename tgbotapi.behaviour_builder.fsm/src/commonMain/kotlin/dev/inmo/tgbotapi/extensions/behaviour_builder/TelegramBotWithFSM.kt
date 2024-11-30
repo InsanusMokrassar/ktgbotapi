@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.CoroutineScope
@@ -53,6 +54,8 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -61,18 +64,20 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     builder
 ).apply {
     buildBehaviourWithFSMAndStartLongPolling(
-        flowsUpdatesFilter.allUpdatesFlow,
-        scope ?: CoroutineScope(coroutineContext),
-        defaultExceptionsHandler,
-        statesManager,
-        presetHandlers,
-        fallbackHandler,
-        onStateHandlingErrorHandler,
-        timeoutSeconds,
-        autoDisableWebhooks,
-        autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis,
-        block
+        upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+        scope = scope ?: CoroutineScope(coroutineContext),
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        statesManager = statesManager,
+        presetHandlers = presetHandlers,
+        fallbackHandler = fallbackHandler,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+        timeoutSeconds = timeoutSeconds,
+        autoDisableWebhooks = autoDisableWebhooks,
+        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+        subcontextInitialAction = subcontextInitialAction,
+        stateInitialAction = stateInitialAction,
+        block = block
     )
 }
 
@@ -106,6 +111,8 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -115,17 +122,19 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
         builder
     ).let {
         it to it.buildBehaviourWithFSMAndStartLongPolling (
-            scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler,
-            statesManager,
-            presetHandlers,
-            fallbackHandler,
-            onStateHandlingErrorHandler,
-            timeoutSeconds,
-            autoDisableWebhooks,
-            autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis,
-            block
+            scope = scope ?: CoroutineScope(coroutineContext),
+            defaultExceptionsHandler = defaultExceptionsHandler,
+            statesManager = statesManager,
+            presetHandlers = presetHandlers,
+            fallbackHandler = fallbackHandler,
+            onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+            timeoutSeconds = timeoutSeconds,
+            autoDisableWebhooks = autoDisableWebhooks,
+            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+            subcontextInitialAction = subcontextInitialAction,
+            stateInitialAction = stateInitialAction,
+            block = block
         )
     }
 }
