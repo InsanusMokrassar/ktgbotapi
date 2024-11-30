@@ -2,6 +2,13 @@
 
 ## 21.0.0
 
+* `BehaviourBuilder`:
+  * Add special `val data: BehaviourContextData` into all realizations of `BehaviourContext`
+  * Add `CombinedSubcontextInitialAction` and functions
+`buildSubcontextInitialAction`/`buildSubcontextInitialActionWithSubActions`
+  * Add `subcontextInitialAction` for all the functions-builders of `BehaviourContext` and
+`additionalSubcontextInitialAction` to all triggers
+
 ## 20.0.1
 
 * `Core`:

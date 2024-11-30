@@ -4,10 +4,17 @@ import dev.inmo.kslog.common.KSLog
 import dev.inmo.kslog.common.error
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
+/**
+ * Contains [SubAction]s which will be used in [subcontextInitialAction] in order they has been passed in [subactions].
+ */
 class CombinedSubcontextInitialAction(
     val subactions: List<SubAction>,
     private val logger: KSLog = KSLog("CombinedSubcontextInitialAction_${subactions.size}")
 ) {
+    /**
+     * Represents interface-like variant of [CustomBehaviourContextAndTypeReceiver] useful for [BehaviourContext]
+     * builders
+     */
     fun interface SubAction {
         suspend operator fun BehaviourContext.invoke(update: Update)
 
@@ -30,6 +37,10 @@ class CombinedSubcontextInitialAction(
     }
 }
 
+/**
+ * Build [CombinedSubcontextInitialAction] with [block] and return callback, which appropriate for [BehaviourContext]
+ * builders with `subcontextInitialAction` argument
+ */
 inline fun buildSubcontextInitialActionWithSubActions(
     block: MutableList<CombinedSubcontextInitialAction.SubAction>.() -> Unit
 ): CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> {
@@ -40,6 +51,10 @@ inline fun buildSubcontextInitialActionWithSubActions(
     ).subcontextInitialAction
 }
 
+/**
+ * Build [CombinedSubcontextInitialAction] with [block] and return callback, which appropriate for [BehaviourContext]
+ * builders with `subcontextInitialAction` argument
+ */
 inline fun buildSubcontextInitialAction(
     block: MutableList<CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>>.() -> Unit
 ): CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> {
