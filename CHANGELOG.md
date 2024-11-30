@@ -2,6 +2,9 @@
 
 ## 21.0.0
 
+* `Version`:
+  * `Kotlin`: `2.0.21` -> `2.1.0`
+  * `MicroUtils`: `0.23.0` -> `0.23.1`
 * `BehaviourBuilder`:
   * Add special `val data: BehaviourContextData` into all realizations of `BehaviourContext`
   * Add `CombinedSubcontextInitialAction` and functions
