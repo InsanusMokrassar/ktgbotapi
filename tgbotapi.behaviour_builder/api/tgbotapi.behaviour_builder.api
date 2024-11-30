@@ -82,6 +82,27 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 	public static final fun stop (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)V
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcontextInitialAction {
+	public fun <init> (Ljava/util/List;Ldev/inmo/kslog/common/KSLog;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/kslog/common/KSLog;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getSubactions ()Ljava/util/List;
+	public final fun getSubcontextInitialAction ()Lkotlin/jvm/functions/Function3;
+}
+
+public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcontextInitialAction$SubAction {
+	public abstract fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcontextInitialAction$SubAction$Callback : dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcontextInitialAction$SubAction {
+	public fun <init> (Lkotlin/jvm/functions/Function3;)V
+	public fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcontextInitialActionKt {
+	public static final fun buildSubcontextInitialAction (Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function3;
+	public static final fun buildSubcontextInitialActionWithSubActions (Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function3;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext : dev/inmo/tgbotapi/updateshandlers/AbstractFlowsUpdatesFilter, dev/inmo/tgbotapi/bot/RequestsExecutor, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext, kotlinx/coroutines/CoroutineScope {
 	public fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
