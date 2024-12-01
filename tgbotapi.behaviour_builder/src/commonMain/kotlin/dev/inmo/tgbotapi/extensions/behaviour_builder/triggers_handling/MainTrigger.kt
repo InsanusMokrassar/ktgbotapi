@@ -13,6 +13,7 @@ internal suspend fun <BC : BehaviourContext, T> BC.on(
     markerFactory: MarkerFactory<in T, Any>?,
     initialFilter: SimpleFilter<T>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
     updateToData: (Update) -> List<T>?
 ) = flowsUpdatesFilter.expectFlow(
@@ -29,15 +30,25 @@ internal suspend fun <BC : BehaviourContext, T> BC.on(
         } ?: emptyList()
     }
 ).run {
+    val localSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T> = additionalSubcontextInitialAction ?.let { _ ->
+        { update, it ->
+            additionalSubcontextInitialAction(update, it)
+            subcontextInitialAction(update)
+        }
+    } ?: { update, _ ->
+        subcontextInitialAction(update)
+    }
     val handler: suspend (Pair<Update, T>) -> Unit = subcontextUpdatesFilter ?.let {
         { (update, triggerData) ->
             createSubContextAndDoSynchronouslyWithUpdatesFilter {
                 if (subcontextUpdatesFilter(this, triggerData, update)) {
+                    localSubcontextInitialAction(update, triggerData)
                     scenarioReceiver(triggerData)
                 }
             }
         }
-    } ?: { (_, triggerData) ->
+    } ?: { (update, triggerData) ->
+        localSubcontextInitialAction(update, triggerData)
         createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
     }
     markerFactory ?.let {

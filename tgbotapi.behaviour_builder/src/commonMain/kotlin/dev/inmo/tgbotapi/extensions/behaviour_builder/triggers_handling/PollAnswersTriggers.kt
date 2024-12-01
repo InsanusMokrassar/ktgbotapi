@@ -14,8 +14,9 @@ internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
+    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PollAnswer>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.pollAnswerUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
 
@@ -36,10 +37,12 @@ suspend fun <BC : BehaviourContext> BC.onPollAnswer(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PollAnswer>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = onPollAnswered(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
+    additionalSubcontextInitialAction,
     scenarioReceiver
 )

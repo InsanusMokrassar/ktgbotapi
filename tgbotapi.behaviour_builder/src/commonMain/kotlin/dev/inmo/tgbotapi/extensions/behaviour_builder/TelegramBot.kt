@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.*
@@ -33,6 +34,7 @@ suspend fun telegramBotWithBehaviour(
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     testServer: Boolean = false,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -41,10 +43,11 @@ suspend fun telegramBotWithBehaviour(
     builder
 ).apply {
     buildBehaviour(
-        flowsUpdatesFilter,
-        scope ?: CoroutineScope(coroutineContext),
-        defaultExceptionsHandler,
-        block
+        flowUpdatesFilter = flowsUpdatesFilter,
+        scope = scope ?: CoroutineScope(coroutineContext),
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        subcontextInitialAction = subcontextInitialAction,
+        block = block
     )
 }
 
@@ -76,6 +79,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -85,13 +89,14 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
         builder
     ).let {
         it to it.buildBehaviourWithLongPolling(
-            scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler,
-            timeoutSeconds,
-            autoDisableWebhooks,
-            autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis,
-            block
+            scope = scope ?: CoroutineScope(coroutineContext),
+            defaultExceptionsHandler = defaultExceptionsHandler,
+            timeoutSeconds = timeoutSeconds,
+            autoDisableWebhooks = autoDisableWebhooks,
+            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+            subcontextInitialAction = subcontextInitialAction,
+            block = block
         )
     }
 }

@@ -33,7 +33,8 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionsCountUpdated(
     initialFilter: SimpleFilter<ChatMessageReactionsCountUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionsCountUpdated, Update>? = null,
     markerFactory: MarkerFactory<ChatMessageReactionsCountUpdated, Any>? = ByChatIdChatMessageReactionsCountUpdatedMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMessageReactionsCountUpdated>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionsCountUpdated>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.chatMessageReactionsCountUpdatedUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

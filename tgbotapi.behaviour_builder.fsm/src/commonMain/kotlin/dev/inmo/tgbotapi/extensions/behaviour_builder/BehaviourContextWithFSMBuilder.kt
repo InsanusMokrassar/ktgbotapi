@@ -33,17 +33,21 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-    DefaultBehaviourContext(
-        this,
-        defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = upstreamUpdatesFlow
+    behaviourContext = DefaultBehaviourContext(
+        bot = this,
+        scope = defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
+        upstreamUpdatesFlow = upstreamUpdatesFlow,
+        subcontextInitialAction = subcontextInitialAction
     ),
-    presetHandlers,
-    statesManager,
-    fallbackHandler,
-    onStateHandlingErrorHandler
+    handlers = presetHandlers,
+    statesManager = statesManager,
+    fallbackHandler = fallbackHandler,
+    stateInitialAction = stateInitialAction,
+    onStateHandlingErrorHandler = onStateHandlingErrorHandler
 ).apply { block() }
 
 /**
@@ -67,16 +71,20 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
-    upstreamUpdatesFlow,
-    scope,
-    defaultExceptionsHandler,
-    statesManager,
-    presetHandlers,
-    fallbackHandler,
-    onStateHandlingErrorHandler,
-    block
+    upstreamUpdatesFlow = upstreamUpdatesFlow,
+    scope = scope,
+    defaultExceptionsHandler = defaultExceptionsHandler,
+    statesManager = statesManager,
+    presetHandlers = presetHandlers,
+    fallbackHandler = fallbackHandler,
+    onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+    subcontextInitialAction = subcontextInitialAction,
+    stateInitialAction = stateInitialAction,
+    block = block
 ).run {
     this to scope.launch {
         start()
@@ -110,16 +118,20 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow
+        upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow,
+        subcontextInitialAction = subcontextInitialAction
     ),
     presetHandlers,
     statesManager,
     fallbackHandler,
+    stateInitialAction,
     onStateHandlingErrorHandler
 ).apply { block() }
 
@@ -149,27 +161,31 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
-        it,
-        scope,
-        defaultExceptionsHandler,
-        statesManager,
-        presetHandlers,
-        fallbackHandler,
-        onStateHandlingErrorHandler,
-        block
+        flowUpdatesFilter = it,
+        scope = scope,
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        statesManager = statesManager,
+        presetHandlers = presetHandlers,
+        fallbackHandler = fallbackHandler,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+        subcontextInitialAction = subcontextInitialAction,
+        stateInitialAction = stateInitialAction,
+        block = block
     ).run {
         start()
         longPolling(
-            flowsUpdatesFilter,
-            timeoutSeconds,
-            scope,
-            autoDisableWebhooks,
-            autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis,
-            defaultExceptionsHandler
+            updatesFilter = flowsUpdatesFilter,
+            timeoutSeconds = timeoutSeconds,
+            scope = scope,
+            autoDisableWebhooks = autoDisableWebhooks,
+            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+            exceptionsHandler = defaultExceptionsHandler
         )
     }
 }

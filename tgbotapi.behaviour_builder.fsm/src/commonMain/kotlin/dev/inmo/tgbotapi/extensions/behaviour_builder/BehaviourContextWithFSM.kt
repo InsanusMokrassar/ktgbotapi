@@ -5,6 +5,7 @@ import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
 import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextWithFSM.Companion.DATA_FSM_KEY
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
 import kotlinx.coroutines.*
@@ -22,6 +23,11 @@ import kotlin.reflect.KClass
  * @see buildBehaviourWithFSM
  */
 interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T> {
+    /**
+     * Will be called BEFORE handling of [State] will be started
+     */
+    val stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T>
+
     suspend fun start() = start(this)
 
     /**
@@ -49,7 +55,8 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
-        triggersHolder: TriggersHolder
+        triggersHolder: TriggersHolder,
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>
     ): BehaviourContextWithFSM<T>
 
     fun copy(
@@ -58,35 +65,11 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         broadcastChannelsSize: Int = 100,
         onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
         upstreamUpdatesFlow: Flow<Update>? = null,
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
         triggersHolder: TriggersHolder = this.triggersHolder,
+        stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = this.stateInitialAction,
         onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
-    ): BehaviourContextWithFSM<T> = copy(
-        bot,
-        scope,
-        broadcastChannelsSize,
-        onBufferOverflow,
-        upstreamUpdatesFlow,
-        triggersHolder
-    )
-
-    fun copy(
-        bot: TelegramBot = this.bot,
-        scope: CoroutineScope = this.scope,
-        broadcastChannelsSize: Int = 100,
-        onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-        upstreamUpdatesFlow: Flow<Update>? = null,
-        triggersHolder: TriggersHolder = this.triggersHolder,
-        onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
-        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
-    ): BehaviourContextWithFSM<T> = copy(
-        bot,
-        scope,
-        broadcastChannelsSize,
-        onBufferOverflow,
-        upstreamUpdatesFlow,
-        triggersHolder,
-        onStateHandlingErrorHandler
-    )
+    ): BehaviourContextWithFSM<T>
 
     companion object {
         operator fun <T : State> invoke(
@@ -94,8 +77,11 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
             statesManager: StatesManager<T>,
             fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
+            stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
             onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
-        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers, fallbackHandler, onStateHandlingErrorHandler)
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers, fallbackHandler, stateInitialAction, onStateHandlingErrorHandler)
+
+        val DATA_FSM_KEY = "ktgbotapi_fsm"
     }
 }
 
@@ -131,6 +117,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private val statesManager: StatesManager<T>,
     private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
     private val fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
+    override val stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     private val onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, DefaultBehaviourContextWithFSM<T>>()
@@ -139,6 +126,10 @@ class DefaultBehaviourContextWithFSM<T : State>(
 
     protected val statesJobs = mutableMapOf<T, Job>()
     protected val statesJobsMutex = Mutex()
+
+    init {
+        data[DATA_FSM_KEY] = this
+    }
 
     override suspend fun launchStateHandling(state: T, handlers: List<CheckableHandlerHolder<in T, T>>): T? {
         return launchStateHandling(state, handlers, onStateHandlingErrorHandler)
@@ -151,7 +142,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
     override suspend fun StatesMachine<in T>.handleState(state: T): T? {
         return getSubContext(
             state.context
-        ).launchStateHandling(
+        ).apply {
+            stateInitialAction(state)
+        }.launchStateHandling(
             state,
             actualHandlersList
         )
@@ -247,13 +240,23 @@ class DefaultBehaviourContextWithFSM<T : State>(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
-        triggersHolder: TriggersHolder
+        triggersHolder: TriggersHolder,
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>
     ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
-        handlers,
-        statesManager,
-        fallbackHandler,
-        onStateHandlingErrorHandler
+        behaviourContext = behaviourContext.copy(
+            bot = bot,
+            scope = scope,
+            broadcastChannelsSize = broadcastChannelsSize,
+            onBufferOverflow = onBufferOverflow,
+            upstreamUpdatesFlow = upstreamUpdatesFlow,
+            subcontextInitialAction = subcontextInitialAction,
+            triggersHolder = triggersHolder
+        ),
+        handlers = handlers,
+        statesManager = statesManager,
+        fallbackHandler = fallbackHandler,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+        stateInitialAction = stateInitialAction
     )
 
     override fun copy(
@@ -262,13 +265,40 @@ class DefaultBehaviourContextWithFSM<T : State>(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>,
         triggersHolder: TriggersHolder,
+        stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T>,
         onStateHandlingErrorHandler: StateHandlingErrorHandler<T>
-    ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
-        handlers,
-        statesManager,
-        fallbackHandler,
-        onStateHandlingErrorHandler
+    ): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+        behaviourContext = behaviourContext.copy(
+            bot = bot,
+            scope = scope,
+            broadcastChannelsSize = broadcastChannelsSize,
+            onBufferOverflow = onBufferOverflow,
+            upstreamUpdatesFlow = upstreamUpdatesFlow,
+            subcontextInitialAction = subcontextInitialAction,
+            triggersHolder = triggersHolder
+        ),
+        handlers = handlers,
+        statesManager = statesManager,
+        fallbackHandler = fallbackHandler,
+        stateInitialAction = stateInitialAction,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler
     )
+
+    fun fsm() = this
 }
+
+/**
+ * Extracting from [BehaviourContext.data] exists [StatesMachine] by key [DATA_FSM_KEY], which usually some [BehaviourContextWithFSM].
+ * In case if value absent in [BehaviourContext.data] will return null
+ */
+fun <T : State> BehaviourContext.fsmOrNull(): StatesMachine<T>? = data[DATA_FSM_KEY] as? StatesMachine<T>
+
+/**
+ * Extracting from [BehaviourContext.data] exists [StatesMachine] by key [DATA_FSM_KEY], which usually some [BehaviourContextWithFSM].
+ * In case if value absent in [BehaviourContext.data] will throw [NullPointerException]
+ *
+ * @throws NullPointerException
+ */
+fun <T : State> BehaviourContext.fsmOrThrow(): StatesMachine<T> = fsmOrNull<T>()!!

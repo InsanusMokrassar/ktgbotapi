@@ -13,8 +13,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any>? = ByUserInlineQueryMarkerFactory,
+    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.inlineQueryUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
@@ -35,8 +36,9 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, InlineQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>
-) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 
 /**
@@ -56,8 +58,9 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in BaseInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BaseInlineQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>
-) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 
 /**
@@ -77,5 +80,6 @@ suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in LocationInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, LocationInlineQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>
-) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
