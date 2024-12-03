@@ -22,34 +22,21 @@ data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val html: String by lazy { textMentionHTML(user.id) }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(parts: TextSourcesList, user: User) = TextMentionTextSource(parts.makeString(), user, parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun User.mention(parts: TextSourcesList) = mention(parts, this)
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(parts: TextSourcesList, userId: UserId) = mention(parts, CommonUser(userId, ""))
-@Suppress("NOTHING_TO_INLINE")
 inline fun UserId.mention(parts: TextSourcesList) = mention(parts, this)
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(parts: TextSourcesList, id: RawChatId) = mention(parts, UserId(id))
-@Suppress("NOTHING_TO_INLINE")
 inline fun RawChatId.mention(parts: TextSourcesList) = mention(parts, this)
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(user: User, vararg parts: TextSource) = mention(
     textSourcesOrElseTextSource(parts.toList()) {
         RegularTextSource("${user.lastName} ${user.firstName}")
     },
     user
 )
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(text: String, user: User) = mention(user, regular(text))
-@Suppress("NOTHING_TO_INLINE")
 inline fun User.mention(text: String) = mention(this, regular(text))
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(text: String, userId: UserId) = mention(text, CommonUser(userId, ""))
-@Suppress("NOTHING_TO_INLINE")
 inline fun UserId.mention(text: String) = mention(text, this)
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(text: String, id: RawChatId) = mention(text, UserId(id))
-@Suppress("NOTHING_TO_INLINE")
 inline fun RawChatId.mention(text: String) = mention(text, this)

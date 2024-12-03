@@ -6,6 +6,13 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
  * Contains [SubAction]s which will be used in [subcontextInitialAction] in order they has been passed in [subactions].
+ *
+ * Its [subcontextInitialAction] will iterate over incoming [subactions] until all will be completed successfully OR
+ * none will be successful during round of running:
+ *
+ * * Run all
+ * * Exclude from current running successful items
+ * * Do again if there are some items to run
  */
 class CombinedSubcontextInitialAction(
     val subactions: List<SubAction>,
@@ -25,14 +32,30 @@ class CombinedSubcontextInitialAction(
         }
     }
     val subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = { update ->
-        subactions.forEach { subaction ->
-            with(subaction) {
-                runCatching {
-                    invoke(update)
-                }.onFailure {
-                    logger.error("Unable to execute $subaction for update $update", it)
+        val leftSubActions = subactions.toMutableSet()
+        val successSubActions = mutableSetOf<SubAction>()
+        while (leftSubActions.isNotEmpty()) {
+            leftSubActions.forEach { subaction ->
+                with(subaction) {
+                    runCatching {
+                        invoke(update)
+                    }.onFailure {
+                        logger.error(it) {
+                            "Unable to execute $subaction for update $update. Will try on next round"
+                        }
+                    }.onSuccess {
+                        successSubActions.add(subaction)
+                    }
                 }
             }
+            leftSubActions.removeAll(successSubActions)
+            if (successSubActions.isEmpty()) {
+                logger.error {
+                    "Some SubActions have been unable to complete successfully:${leftSubActions.joinToString("\n") { it.toString() }}"
+                }
+                break
+            }
+            successSubActions.clear()
         }
     }
 }

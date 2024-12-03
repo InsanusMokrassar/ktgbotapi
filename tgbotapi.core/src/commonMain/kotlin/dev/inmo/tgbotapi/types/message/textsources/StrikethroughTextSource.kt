@@ -18,9 +18,6 @@ data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceCons
     override val markdown: String by lazy { source.strikethroughMarkdown() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun strikethrough(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun strikethrough(text: String) = strikethrough(regular(text))

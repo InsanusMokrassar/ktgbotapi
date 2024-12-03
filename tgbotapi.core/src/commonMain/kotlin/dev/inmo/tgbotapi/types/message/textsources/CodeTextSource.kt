@@ -16,5 +16,4 @@ data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
     override val html: String by lazy { source.codeHTML() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun code(code: String) = CodeTextSource(code)

@@ -18,10 +18,7 @@ data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor
     override val html: String by lazy { italicHTML() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun italic(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun italic(vararg parts: TextSource) = italic(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun italic(text: String) = italic(regular(text))
 
