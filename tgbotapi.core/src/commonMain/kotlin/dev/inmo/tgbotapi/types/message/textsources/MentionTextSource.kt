@@ -33,17 +33,13 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(parts: TextSourcesList) = (regular("@") + parts).let { MentionTextSource(it.makeString(), it) }
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(vararg parts: TextSource) = mention(parts.toList())
 
 /**
  * Without leading "@"
  */
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(whoToMention: String) = mention(regular(whoToMention))
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun mention(whoToMention: Username) = mention(whoToMention.full.dropWhile { it == '@' })
 

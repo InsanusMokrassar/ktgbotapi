@@ -17,6 +17,5 @@ data class PreTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) c
     override val html: String by lazy { source.preHTML(language) }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun pre(code: String, language: String? = null) = PreTextSource(code, language)
 

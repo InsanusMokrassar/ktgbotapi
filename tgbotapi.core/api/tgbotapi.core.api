@@ -26989,6 +26989,9 @@ public final class dev/inmo/tgbotapi/utils/EntitiesBuilderKt {
 	public static final fun mention (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mention (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mention (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mention-dEpx-Zg (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;J[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mention-rcVkPyE (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;J)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mention-rcVkPyE (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;J)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ldev/inmo/tgbotapi/types/chat/User;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
@@ -26996,6 +26999,9 @@ public final class dev/inmo/tgbotapi/utils/EntitiesBuilderKt {
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun mentionln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mentionln-dEpx-Zg (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;J[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mentionln-rcVkPyE (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;J)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun mentionln-rcVkPyE (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;J)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun phone (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun phone (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun phone (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;

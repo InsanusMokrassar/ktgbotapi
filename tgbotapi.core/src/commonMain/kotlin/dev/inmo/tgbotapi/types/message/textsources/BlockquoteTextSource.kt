@@ -18,9 +18,6 @@ data class BlockquoteTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
     override val html: String by lazy { blockquoteHTML() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun blockquote(parts: TextSourcesList) = BlockquoteTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun blockquote(vararg parts: TextSource) = blockquote(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun blockquote(text: String) = blockquote(regular(text))

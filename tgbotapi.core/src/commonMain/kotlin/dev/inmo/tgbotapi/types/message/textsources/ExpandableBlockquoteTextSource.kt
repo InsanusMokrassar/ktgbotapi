@@ -18,9 +18,6 @@ data class ExpandableBlockquoteTextSource @RiskFeature(DirectInvocationOfTextSou
     override val html: String by lazy { expandableBlockquoteHTML() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun expandableBlockquote(parts: TextSourcesList) = ExpandableBlockquoteTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun expandableBlockquote(vararg parts: TextSource) = expandableBlockquote(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun expandableBlockquote(text: String) = expandableBlockquote(regular(text))
