@@ -27121,6 +27121,10 @@ public final class dev/inmo/tgbotapi/utils/MimeTypeSerializer : kotlinx/serializ
 public abstract interface annotation class dev/inmo/tgbotapi/utils/PreviewFeature : java/lang/annotation/Annotation {
 }
 
+public final class dev/inmo/tgbotapi/utils/PrivateChatToUserKt {
+	public static final fun toUser (Ldev/inmo/tgbotapi/types/chat/PrivateChat;)Ldev/inmo/tgbotapi/types/chat/User;
+}
+
 public final class dev/inmo/tgbotapi/utils/RGBColor {
 	public static final field Companion Ldev/inmo/tgbotapi/utils/RGBColor$Companion;
 	public static final synthetic fun box-impl (I)Ldev/inmo/tgbotapi/utils/RGBColor;
