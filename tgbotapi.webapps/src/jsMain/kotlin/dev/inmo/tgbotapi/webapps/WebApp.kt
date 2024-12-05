@@ -15,8 +15,6 @@ external class WebApp {
 
     val platform: String
 
-    val isActive: Boolean
-
     val initData: String
     val initDataUnsafe: WebAppInitData
 
@@ -56,6 +54,7 @@ external class WebApp {
     fun closeScanQrPopup()
     fun readTextFromClipboard(callback: TextReceivedCallback? = definedExternally)
 
+    val isActive: Boolean
     val isFullscreen: Boolean
     fun requestFullscreen()
     fun exitFullscreen()
