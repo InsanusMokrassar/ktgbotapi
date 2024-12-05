@@ -18,9 +18,6 @@ data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor)
     override val html: String by lazy { emailHTML(source) }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun email(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun email(vararg parts: TextSource) = email(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun email(emailAddress: String) = email(regular(emailAddress))

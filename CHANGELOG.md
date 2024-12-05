@@ -2,6 +2,18 @@
 
 ## 22.0.0
 
+## 21.0.1
+
+* `Core`:
+  * Improvements in `Update.sourceUser` extension
+  * Add extension `PrivateChat.toUser`
+  * Builder methods of `TextSource`s (like `pre` which returns `PreTextSource`) lost suppression of `redundant inline`
+due to its redundancy
+  * Add `mention` builders for `EntitiesBuilder` with `UserId` as variant instead of `User`
+* `BehaviourBuilder`:
+  * Add support of several rounds for `CombinedSubcontextInitialAction`. Now it will try hard to execute all its
+`SubAction` while all actions will not be completed successfully OR all left actions will not complete with errors
+
 ## 21.0.0
 
 * `Version`:

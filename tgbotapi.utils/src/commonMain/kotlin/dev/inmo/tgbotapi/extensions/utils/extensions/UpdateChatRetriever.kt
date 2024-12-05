@@ -9,12 +9,14 @@ import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenIn
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.PrivateChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
+import dev.inmo.tgbotapi.utils.toUser
 
 fun CallbackQuery.sourceChat() = when (this) {
     is InlineMessageIdDataCallbackQuery -> null
@@ -86,9 +88,13 @@ fun Update.sourceChatWithConverters(
 @PreviewFeature
 fun Update.sourceChat(): Chat? = sourceChatWithConverters()
 
+/**
+ * Trying to get the user from [Update]. In some cases it can be the user without actual fields like
+ * [dev.inmo.tgbotapi.types.chat.CommonUser.isPremium] due to in these cases will be used [toUser] cast
+ */
 @PreviewFeature
 fun Update.sourceUser(): User? = when (val data = data) {
     is FromUser -> data.from
     is WithUser -> data.user
-    else -> sourceChat()?.asUser()
+    else -> sourceChat() ?.asUser() ?: ((sourceChat() as? PrivateChat) ?.toUser())
 }

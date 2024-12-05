@@ -32,12 +32,10 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     }
 }
 
-@Suppress("NOTHING_TO_INLINE", "EXPERIMENTAL_API_USAGE")
+@Suppress("EXPERIMENTAL_API_USAGE")
 inline fun hashtag(parts: TextSourcesList) = (regular("#") + parts).let { HashTagTextSource(it.makeString(), it) }
-@Suppress("NOTHING_TO_INLINE")
 inline fun hashtag(vararg parts: TextSource) = hashtag(parts.toList())
 /**
  * Without sharp (#)
  */
-@Suppress("NOTHING_TO_INLINE")
 inline fun hashtag(hashtag: String) = hashtag(regular(hashtag))

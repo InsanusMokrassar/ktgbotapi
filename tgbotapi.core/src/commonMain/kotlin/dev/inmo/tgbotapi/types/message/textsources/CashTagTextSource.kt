@@ -25,9 +25,6 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { cashTagHTML() }
 }
 
-@Suppress("NOTHING_TO_INLINE")
 inline fun cashTag(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun cashTag(vararg parts: TextSource) = cashTag(parts.toList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun cashTag(tag: String) = cashTag(regular(tag))

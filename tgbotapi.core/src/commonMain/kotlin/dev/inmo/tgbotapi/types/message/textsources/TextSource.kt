@@ -101,7 +101,6 @@ fun List<TextSource>.splitForCaption(): List<List<TextSource>> {
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]
  */
-@Suppress("NOTHING_TO_INLINE")
 inline fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMessage(textLength)
 
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> = splitForMessage(limit, numberOfParts)
@@ -115,5 +114,4 @@ fun List<TextSource>.separateForCaption(): List<List<TextSource>> = splitForCapt
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]
  */
-@Suppress("NOTHING_TO_INLINE")
 inline fun List<TextSource>.separateForText(): List<List<TextSource>> = splitForText()

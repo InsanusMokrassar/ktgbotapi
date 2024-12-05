@@ -20,12 +20,10 @@ data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val html: String by lazy { source.customEmojiHTML(customEmojiId) }
 }
 
-@Suppress("NOTHING_TO_INLINE", "EXPERIMENTAL_API_USAGE")
+@Suppress("EXPERIMENTAL_API_USAGE")
 inline fun customEmoji(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
-@Suppress("NOTHING_TO_INLINE")
 inline fun customEmoji(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmoji(emojiId, parts.toList())
 /**
  * Without sharp (#)
  */
-@Suppress("NOTHING_TO_INLINE")
 inline fun customEmoji(emojiId: CustomEmojiId, text: String) = customEmoji(emojiId, regular(text))

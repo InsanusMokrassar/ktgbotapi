@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.utils
 import dev.inmo.micro_utils.common.joinTo
 import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
 
@@ -457,6 +458,31 @@ inline fun EntitiesBuilder.mention(text: String, user: User) = add(dev.inmo.tgbo
  * Version of [EntitiesBuilder.mention] with new line at the end
  */
 inline fun EntitiesBuilder.mentionln(text: String, user: User) = mention(text, user) + newLine
+
+/**
+ * Add mention using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.mention]
+ */
+inline fun EntitiesBuilder.mention(parts: TextSourcesList, userId: UserId) = add(dev.inmo.tgbotapi.types.message.textsources.mention(parts, userId))
+/**
+ * Version of [EntitiesBuilder.mention] with new line at the end
+ */
+inline fun EntitiesBuilder.mentionln(parts: TextSourcesList, userId: UserId) = mention(parts, userId) + newLine
+inline fun EntitiesBuilder.mention(
+    userId: UserId,
+    vararg parts: TextSource
+) = mention(parts.toList(), userId)
+/**
+ * Version of [EntitiesBuilder.mention] with new line at the end
+ */
+inline fun EntitiesBuilder.mentionln(userId: UserId, vararg parts: TextSource) = mention(userId, *parts) + newLine
+/**
+ * Add mention using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.mention]
+ */
+inline fun EntitiesBuilder.mention(text: String, userId: UserId) = add(dev.inmo.tgbotapi.types.message.textsources.mention(text, userId))
+/**
+ * Version of [EntitiesBuilder.mention] with new line at the end
+ */
+inline fun EntitiesBuilder.mentionln(text: String, userId: UserId) = mention(text, userId) + newLine
 
 
 /**
