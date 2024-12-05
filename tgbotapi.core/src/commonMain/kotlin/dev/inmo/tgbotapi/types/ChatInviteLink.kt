@@ -2,8 +2,12 @@ package dev.inmo.tgbotapi.types
 
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithUser
+import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
+import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
+import korlibs.time.TimeSpan
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -64,7 +68,7 @@ sealed interface ChatInviteLink : WithUser {
  * Base interface for all [ChatInviteLink]s which are NOT [PrimaryInviteLink]
  */
 @Serializable(ChatInviteLinkSerializer::class)
-sealed interface SecondaryChatInviteLink : ChatInviteLink {
+sealed interface SecondaryChatInviteLink : ChatInviteLink, SubscriptionInfo {
     override val isPrimary: Boolean
         get() = false
 }
@@ -108,7 +112,12 @@ data class ChatInviteLinkWithJoinRequest(
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
-    private val expireDate: TelegramDate? = null
+    private val expireDate: TelegramDate? = null,
+    @SerialName(subscriptionPeriodField)
+    @Serializable(TimeSpanAsSecondsSerializer::class)
+    override val subscriptionPeriod: TimeSpan? = null,
+    @SerialName(subscriptionPriceField)
+    override val subscriptionPrice: UInt? = null
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
@@ -131,6 +140,11 @@ data class ChatInviteLinkWithLimitedMembers(
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
     private val expireDate: TelegramDate? = null,
+    @SerialName(subscriptionPeriodField)
+    @Serializable(TimeSpanAsSecondsSerializer::class)
+    override val subscriptionPeriod: TimeSpan? = null,
+    @SerialName(subscriptionPriceField)
+    override val subscriptionPrice: UInt? = null
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
@@ -152,6 +166,11 @@ data class ChatInviteLinkUnlimited(
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
     private val expireDate: TelegramDate? = null,
+    @SerialName(subscriptionPeriodField)
+    @Serializable(TimeSpanAsSecondsSerializer::class)
+    override val subscriptionPeriod: TimeSpan? = null,
+    @SerialName(subscriptionPriceField)
+    override val subscriptionPrice: UInt? = null
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate

@@ -2,12 +2,15 @@
 
 package dev.inmo.tgbotapi.types.payments.stars
 
+import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.gifts.Gift
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
+import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import korlibs.time.TimeSpan
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -43,13 +46,16 @@ sealed interface TransactionPartner {
         val user: PreviewUser,
         @SerialName(invoicePayloadField)
         val invoicePayload: InvoicePayload? = null,
+        @SerialName(subscriptionPeriodField)
+        @Serializable(TimeSpanAsSecondsSerializer::class)
+        override val subscriptionPeriod: TimeSpan? = null,
         @SerialName(paidMediaField)
         val paidMedia: List<PaidMedia>? = null,
         @SerialName(paidMediaPayloadField)
         val paidMediaPayload: PaidMediaPayload? = null,
         @SerialName(giftField)
         val gift: Gift? = null
-    ) : TransactionPartner {
+    ) : TransactionPartner, SubscriptionPeriodInfo {
         @EncodeDefault
         override val type: String = Companion.type
 
