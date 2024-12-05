@@ -1,0 +1,1 @@
+data object {{$event_name_uppercase}} : EventType("{{$event_name}}")
