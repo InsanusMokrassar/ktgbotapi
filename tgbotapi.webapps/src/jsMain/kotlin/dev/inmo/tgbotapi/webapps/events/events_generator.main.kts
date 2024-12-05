@@ -10,9 +10,11 @@ val rfAbsolutePath = rootFolder.absolutePath
 
 fun generateEvent(eventName: String, callbacks: String) {
     val uppercaseEventName = eventName.take(1).uppercase() + eventName.drop(1)
-    val command = "${rfAbsolutePath}/.templates/generator.kts -s -a \"event_name=$eventName\" -a \"event_name_uppercase=$uppercaseEventName\" -a \"callback_args=$callbacks\" --env \"${rfAbsolutePath}/.templates/events/.env\" -o \"./\" -ex \"kt\" \"${rfAbsolutePath}/.templates/events/\""
+    val subpackage = eventName.map { if (it.isUpperCase()) "_${it.lowercase()}" else it }.joinToString("")
+    val command = "${rfAbsolutePath}/.templates/generator.kts -s -a \"subpackage=$subpackage\" -a \"event_name=$eventName\" -a \"event_name_uppercase=$uppercaseEventName\" -a \"callback_args=$callbacks\" -o \"./\" -ex \"kt\" \"${rfAbsolutePath}/.templates/{{\$subpackage}}\""
 
-    Runtime.getRuntime().exec(command).waitFor()
+    println(command)
+    println(Runtime.getRuntime().exec(command).waitFor())
 }
 
 val eventsList: JsonArray = Json.parseToJsonElement(File("EventsList.json").readText()).jsonArray
@@ -23,5 +25,3 @@ eventsList.forEach {
         it.jsonObject["callback"] ?.jsonPrimitive ?.content ?: ""
     )
 }
-
-println(eventsList.toString())

@@ -35,7 +35,7 @@ val templatesFolders = mutableListOf<File>()
 var extensions: List<String>? = null
 var skipPrompts: Boolean = false
 val commandLineArgs = mutableMapOf<String, String>()
-val globalEnvs = System.getenv()
+val globalEnvs = System.getenv().toMutableMap()
 
 fun String.replaceWithVariables(envs: Map<String, String>): String {
     var currentString = this
@@ -183,7 +183,7 @@ fun readParameters() {
 
 readParameters()
 
-val envs: MutableMap<String, String> = envFile ?.let { readEnvs(it.readText(), null) } ?.toMutableMap() ?: mutableMapOf()
+val envs: MutableMap<String, String> = (envFile ?.let { readEnvs(it.readText(), null) } ?: (globalEnvs + commandLineArgs)).toMutableMap()
 
 println(
     """
