@@ -34,6 +34,12 @@ value class PaidMediaPayload(val string: String) {
     }
 }
 
+@Serializable
+@JvmInline
+value class GiftId(
+    val string: String
+)
+
 val usernameRegex = Regex("@[\\w\\d_]+")
 
 val degreesLimit = 1 .. 360
@@ -190,6 +196,7 @@ const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
 const val userIdsField = "user_ids"
+const val giftIdField = "gift_id"
 const val onlyIfBannedField = "only_if_banned"
 const val containsMasksField = "contains_masks"
 const val resultIdField = "result_id"
@@ -472,6 +479,8 @@ const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+const val giftField = "gift"
+const val giftsField = "gifts"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
@@ -512,6 +521,7 @@ const val shippingOptionsField = "shipping_options"
 const val countryCodeField = "country_code"
 const val countryCodesField = "country_codes"
 const val totalCountField = "total_count"
+const val remainingCountField = "remaining_count"
 const val stateField = "state"
 const val cityField = "city"
 const val firstStreetLineField = "street_line1"

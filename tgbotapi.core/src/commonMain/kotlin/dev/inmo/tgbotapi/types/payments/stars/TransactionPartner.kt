@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.gifts.Gift
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -45,7 +46,9 @@ sealed interface TransactionPartner {
         @SerialName(paidMediaField)
         val paidMedia: List<PaidMedia>? = null,
         @SerialName(paidMediaPayloadField)
-        val paidMediaPayload: PaidMediaPayload? = null
+        val paidMediaPayload: PaidMediaPayload? = null,
+        @SerialName(giftField)
+        val gift: Gift? = null
     ) : TransactionPartner {
         @EncodeDefault
         override val type: String = Companion.type
