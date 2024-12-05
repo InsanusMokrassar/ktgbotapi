@@ -1,12 +1,15 @@
 package dev.inmo.tgbotapi.webapps
 
-import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.PreparedMessageId
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.webapps.accelerometer.Accelerometer
 import dev.inmo.tgbotapi.webapps.biometric.BiometricManager
 import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
+import dev.inmo.tgbotapi.webapps.gyroscope.Gyroscope
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
+import dev.inmo.tgbotapi.webapps.location.LocationManager
+import dev.inmo.tgbotapi.webapps.orientation.DeviceOrientation
 import dev.inmo.tgbotapi.webapps.popup.*
 import dev.inmo.tgbotapi.webapps.stories.StoryShareParams
 
@@ -56,6 +59,8 @@ external class WebApp {
 
     val isActive: Boolean
     val isFullscreen: Boolean
+    val safeAreaInset: SafeAreaInset
+    val contentSafeAreaInset: ContentSafeAreaInset
     fun requestFullscreen()
     fun exitFullscreen()
 
@@ -84,6 +89,18 @@ external class WebApp {
 
     @JsName("BiometricManager")
     val biometricManager: BiometricManager
+
+    @JsName("Accelerometer")
+    val accelerometer: Accelerometer
+
+    @JsName("DeviceOrientation")
+    val deviceOrientation: DeviceOrientation
+
+    @JsName("Gyroscope")
+    val gyroscope: Gyroscope
+
+    @JsName("LocationManager")
+    val locationManager: LocationManager
 
     @JsName("SettingsButton")
     val settingsButton: SettingsButton
