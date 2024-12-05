@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.webapps
 
+import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.PreparedMessageId
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.webapps.biometric.BiometricManager
 import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
@@ -12,6 +14,8 @@ external class WebApp {
     val version: String
 
     val platform: String
+
+    val isActive: Boolean
 
     val initData: String
     val initDataUnsafe: WebAppInitData
@@ -51,6 +55,19 @@ external class WebApp {
     fun showScanQrPopup(params: ScanQrPopupParams, callback: QRTextReceivedCallback? = definedExternally)
     fun closeScanQrPopup()
     fun readTextFromClipboard(callback: TextReceivedCallback? = definedExternally)
+
+    val isFullscreen: Boolean
+    fun requestFullscreen()
+    fun exitFullscreen()
+
+    val isOrientationLocked: Boolean
+    fun lockOrientation()
+    fun unlockOrientation()
+
+    fun addToHomeScreen()
+    fun checkHomeScreenStatus(callback: (HomeScreenStatus) -> Unit = definedExternally)
+
+    fun shareMessage(messageId: PreparedMessageId, callback: (Boolean) -> Unit = definedExternally)
 
     @JsName("MainButton")
     val mainButton: BottomButton

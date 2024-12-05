@@ -40,6 +40,12 @@ value class GiftId(
     val string: String
 )
 
+@Serializable
+@JvmInline
+value class PreparedMessageId(
+    val string: String
+)
+
 val usernameRegex = Regex("@[\\w\\d_]+")
 
 val degreesLimit = 1 .. 360
