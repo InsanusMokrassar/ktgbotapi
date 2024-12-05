@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.webapps
 
+import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.PreparedMessageId
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.webapps.accelerometer.Accelerometer
@@ -71,8 +72,6 @@ external class WebApp {
     fun addToHomeScreen()
     fun checkHomeScreenStatus(callback: (HomeScreenStatus) -> Unit = definedExternally)
 
-    fun shareMessage(messageId: PreparedMessageId, callback: (Boolean) -> Unit = definedExternally)
-
     @JsName("MainButton")
     val mainButton: BottomButton
     @JsName("SecondaryButton")
@@ -143,6 +142,13 @@ external class WebApp {
     fun openInvoice(url: String, callback: (InvoiceClosedInfo) -> Unit = definedExternally)
 
     fun shareToStory(mediaUrl: String, params: StoryShareParams? = definedExternally)
+
+    fun shareMessage(messageId: PreparedMessageId, callback: (Boolean) -> Unit = definedExternally)
+
+    fun setEmojiStatus(customEmojiId: CustomEmojiId, params: EmojiStatusParams = definedExternally, callback: (Boolean) -> Unit = definedExternally)
+    fun requestEmojiStatusAccess(callback: (Boolean) -> Unit = definedExternally)
+
+    fun downloadFile(params: DownloadFileParams, callback: (Boolean) -> Unit = definedExternally)
 
     fun requestWriteAccess(callback: ((Boolean) -> Unit)? = definedExternally)
     fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)
