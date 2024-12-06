@@ -24,6 +24,7 @@
  *         folders: Folders-templates
  * -s, --skip: Skip variables setup
  * -a, --args: Pass several for several args. Use with syntax `--args a=b` or `-a a=b` to set variable with key `a` to value `b`
+ * -v, --verbose: Show more verbose output
  */
 import java.io.File
 
@@ -36,6 +37,11 @@ var extensions: List<String>? = null
 var skipPrompts: Boolean = false
 val commandLineArgs = mutableMapOf<String, String>()
 val globalEnvs = System.getenv().toMutableMap()
+var verboseMode: Boolean = false
+
+if (args.any { it == "-v" || it == "--verbose" }) {
+    println(args.joinToString("\n"))
+}
 
 fun String.replaceWithVariables(envs: Map<String, String>): String {
     var currentString = this
@@ -133,12 +139,19 @@ fun readParameters() {
                 i++
                 outputFolder = File(realArgs[i])
             }
+            "--verbose",
+            "-v" -> {
+                verboseMode = true
+            }
             "--args",
             "-a" -> {
                 i++
                 val subarg = realArgs[i]
                 val key = subarg.takeWhile { it != '=' }
                 val value = subarg.dropWhile { it != '=' }.removePrefix("=")
+                if (verboseMode) {
+                    println("Argument $key=$value")
+                }
                 commandLineArgs[key] = value
             }
             "--help",

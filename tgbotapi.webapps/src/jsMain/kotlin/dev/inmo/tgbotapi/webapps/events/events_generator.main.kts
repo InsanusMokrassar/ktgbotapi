@@ -1,4 +1,5 @@
 #!/usr/bin/env kotlin
+// This script will read Event
 @file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
 import kotlinx.serialization.json.*
@@ -37,12 +38,46 @@ fun readParameters() {
     }
 }
 
-fun generateEvent(eventName: String, callbacks: String) {
+readParameters()
+
+fun generateEvent(eventName: String, callbackArgs: String) {
+    println("Start generating $eventName (callbacks: $callbackArgs)")
     val uppercaseEventName = eventName.take(1).uppercase() + eventName.drop(1)
     val subpackage = eventName.map { if (it.isUpperCase()) "_${it.lowercase()}" else it }.joinToString("")
-    val command = "${rfAbsolutePath}/.templates/generator.kts -s -a \"subpackage=$subpackage\" -a \"event_name=$eventName\" -a \"event_name_uppercase=$uppercaseEventName\" -a \"callback_args=$callbacks\" -a \"callback_typealias_name=${uppercaseEventName}EventHandler\" -o \"$cfAbsolutePath\" -ex \"kt\" \"${rfAbsolutePath}/.templates/{{\$subpackage}}\""
+    var callbackNumber: Int = -1
+    val splittedCallbacks = callbackArgs.split(Regex(" ?, ?")).filter { !it.isBlank() }
+    val callback_args_names = splittedCallbacks.joinToString(", ") {
+        callbackNumber++
+        "p$callbackNumber"
+    }
+    callbackNumber = -1
+    val callback_args_definitions = splittedCallbacks.joinToString(", ") {
+        callbackNumber++
+        "p$callbackNumber: $it"
+    }
+    val verboseFlag = if (verboseMode) "-v" else ""
 
-    val process = Runtime.getRuntime().exec(command)
+    val commandParts = arrayOf(
+        "${rfAbsolutePath}/.templates/generator.kts",
+        verboseFlag,
+        "-s",
+        "-a", "subpackage=$subpackage",
+        "-a", "event_name=$eventName",
+        "-a", "callback_args_names=$callback_args_names",
+        "-a", "event_name_uppercase=$uppercaseEventName",
+        "-a", "callback_args_definitions=$callback_args_definitions",
+        "-a", "callback_args=$callbackArgs",
+        "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
+        "-o", cfAbsolutePath,
+        "-ex", "kt",
+        "${rfAbsolutePath}/.templates/{{\$subpackage}}"
+    )
+    val command = commandParts.joinToString(" ") { "\"$it\"" }
+    if (verboseMode) {
+        println(command)
+    }
+
+    val process = Runtime.getRuntime().exec(commandParts)
     val inputStream: InputStream = process.getInputStream()
     val errorStream: InputStream = process.getErrorStream()
 
@@ -61,6 +96,7 @@ fun generateEvent(eventName: String, callbacks: String) {
         }
         Runtime.getRuntime().exit(exitCode)
     }
+    println("Complete generating $eventName")
 }
 
 val eventsList: JsonArray = Json.parseToJsonElement(File("EventsList.json").readText()).jsonArray
@@ -68,7 +104,7 @@ val eventsList: JsonArray = Json.parseToJsonElement(File("EventsList.json").read
 eventsList.forEach {
     generateEvent(
         it.jsonObject["event_name"]!!.jsonPrimitive.content,
-        it.jsonObject["callback"] ?.jsonPrimitive ?.content ?: ""
+        it.jsonObject["callback_args"] ?.jsonPrimitive ?.content ?: ""
     )
 }
 
@@ -96,8 +132,10 @@ currentFolder.listFiles() ?.forEach { generatedFolder: File ->
 
 val eventTypePartsString = eventTypeParts.joinToString("\n") { "    $it" }
 eventTypeParts.clear()
-val eventTypeFileContent = "package dev.inmo.tgbotapi.webapps\n\nsealed class EventType(val typeName: String) {\n${eventTypePartsString}\n}\n"
-println(eventTypeFileContent)
+val eventTypeFileContent = "package dev.inmo.tgbotapi.webapps\n\nimport dev.inmo.tgbotapi.webapps.EventType\nimport dev.inmo.tgbotapi.webapps.WebApp\n\nsealed class EventType(val typeName: String) {\n${eventTypePartsString}\n}\n"
+if (verboseMode) {
+    println(eventTypeFileContent)
+}
 
 val eventTypeOutputFile = File(currentFolder, "../EventType.kt")
 eventTypeOutputFile.writeText(
@@ -106,18 +144,22 @@ eventTypeOutputFile.writeText(
 
 val webAppPartsString = webAppParts.joinToString("\n")
 webAppParts.clear()
-val eventTypeFileContent = webAppPartsString
-println(eventTypeFileContent)
+val webAppPartsFileContent = webAppPartsString
+if (verboseMode) {
+    println(webAppPartsFileContent)
+}
 
 val webAppOutputFile = File(currentFolder, "ToPutInWebApp!!!!!.kt")
 webAppOutputFile.writeText(
-    webAppPartsString
+    webAppPartsFileContent
 )
 
 val extensionsPartsString = extensionsParts.joinToString("\n")
 extensionsParts.clear()
 val extensionsPartsFileContent = "package dev.inmo.tgbotapi.webapps.events\n\n${extensionsPartsString}\n"
-println(extensionsPartsFileContent)
+if (verboseMode) {
+    println(extensionsPartsFileContent)
+}
 
 val extensionsPartsOutputFile = File(currentFolder, "Extensions.kt")
 extensionsPartsOutputFile.writeText(
@@ -126,7 +168,7 @@ extensionsPartsOutputFile.writeText(
 
 
 currentFolder.listFiles() ?.toList() ?.forEach { generatedFolder: File ->
-    if (it.isDirectory) {
-        it.deleteRecursively()
+    if (generatedFolder.isDirectory) {
+        generatedFolder.deleteRecursively()
     }
 }
