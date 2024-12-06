@@ -8,6 +8,10 @@
 
 **THIS UPDATE ADDING SUPPORT OF [BOT API 8.0](https://core.telegram.org/bots/api-changelog#november-17-2024) AND [BOT API 8.1](https://core.telegram.org/bots/api-changelog#december-4-2024)**
 
+* `Version`:
+  * `MicroUtils`: `0.23.1` -> `0.23.2`
+  * `Ktor`: `3.0.1` -> `3.0.2`
+
 ## 21.0.1
 
 * `Core`:
