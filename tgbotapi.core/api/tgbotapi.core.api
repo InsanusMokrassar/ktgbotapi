@@ -8818,6 +8818,9 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field addedToAttachmentMenuField Ljava/lang/String;
 	public static final field additionalChatCountField Ljava/lang/String;
 	public static final field addressField Ljava/lang/String;
+	public static final field affiliateChatField Ljava/lang/String;
+	public static final field affiliateField Ljava/lang/String;
+	public static final field affiliateUserField Ljava/lang/String;
 	public static final field allowBotChatsField Ljava/lang/String;
 	public static final field allowChannelChatsField Ljava/lang/String;
 	public static final field allowGroupChatsField Ljava/lang/String;
@@ -8910,6 +8913,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field closingMinuteField Ljava/lang/String;
 	public static final field colorField Ljava/lang/String;
 	public static final field colorsField Ljava/lang/String;
+	public static final field commissionPerMilleField Ljava/lang/String;
 	public static final field containsMasksField Ljava/lang/String;
 	public static final field copyTextField Ljava/lang/String;
 	public static final field correctOptionIdField Ljava/lang/String;
@@ -9085,6 +9089,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field mpeg4GifUrlField Ljava/lang/String;
 	public static final field mpeg4GifWidthField Ljava/lang/String;
 	public static final field nameField Ljava/lang/String;
+	public static final field nanostarAmountField Ljava/lang/String;
 	public static final field needsRepaintingField Ljava/lang/String;
 	public static final field newChatMemberField Ljava/lang/String;
 	public static final field newReactionField Ljava/lang/String;
@@ -9217,6 +9222,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field smallFileIdField Ljava/lang/String;
 	public static final field smallFileUniqueIdField Ljava/lang/String;
 	public static final field sourceField Ljava/lang/String;
+	public static final field sponsorUserField Ljava/lang/String;
 	public static final field starCountField Ljava/lang/String;
 	public static final field startDateField Ljava/lang/String;
 	public static final field startParameterField Ljava/lang/String;
@@ -24719,6 +24725,43 @@ public final class dev/inmo/tgbotapi/types/passport/encrypted/abstracts/UnknownE
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/payments/AffiliateInfo : dev/inmo/tgbotapi/types/payments/abstracts/Amounted {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/AffiliateInfo$Companion;
+	public fun <init> (IJJLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChat;)V
+	public synthetic fun <init> (IJJLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()J
+	public final fun component3 ()J
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public final fun copy (IJJLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChat;)Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;IJJLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChat;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAdaptedMajorityTotalAmount ()D
+	public final fun getAffiliateChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public final fun getAffiliateUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun getAmount ()J
+	public final fun getCommissionPerMille ()I
+	public final fun getNanostarAmount ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/payments/AffiliateInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/AffiliateInfo$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/AffiliateInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/payments/CurrenciedKt {
 	public static final fun javaCurrency (Ldev/inmo/tgbotapi/types/payments/abstracts/Currencied;)Ljava/util/Currency;
 }
@@ -25211,11 +25254,11 @@ public final class dev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
+public abstract interface class dev/inmo/tgbotapi/types/payments/stars/StarTransaction : dev/inmo/tgbotapi/types/payments/abstracts/Amounted {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Companion;
-	public abstract fun getAmount ()I
 	public abstract fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public abstract fun getId-xINTbLo ()Ljava/lang/String;
+	public abstract fun getNanostarAmount ()I
 	public abstract fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public abstract fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public abstract fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -25230,19 +25273,26 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Compan
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$DefaultImpls {
+	public static fun getAdaptedMajorityTotalAmount (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction;)D
+}
+
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming$Companion;
-	public synthetic fun <init> (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
-	public final fun component2 ()I
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
-	public final fun copy-39qJ92g (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
-	public static synthetic fun copy-39qJ92g$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
+	public final fun component2 ()J
+	public final fun component3 ()I
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
+	public final fun copy-UiV6LeQ (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
+	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()I
+	public fun getAdaptedMajorityTotalAmount ()D
+	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
+	public fun getNanostarAmount ()I
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -25256,17 +25306,20 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incomi
 
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing$Companion;
-	public synthetic fun <init> (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
-	public final fun component2 ()I
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
-	public final fun copy-39qJ92g (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
-	public static synthetic fun copy-39qJ92g$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
+	public final fun component2 ()J
+	public final fun component3 ()I
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
+	public final fun copy-UiV6LeQ (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
+	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()I
+	public fun getAdaptedMajorityTotalAmount ()D
+	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
+	public fun getNanostarAmount ()I
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -25280,19 +25333,22 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoi
 
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown$Companion;
-	public synthetic fun <init> (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
-	public final fun component2 ()I
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
+	public final fun component2 ()J
+	public final fun component3 ()I
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
-	public final fun component6 ()Lkotlinx/serialization/json/JsonElement;
-	public final fun copy-XW4r_4I (Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
-	public static synthetic fun copy-XW4r_4I$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;Ljava/lang/String;ILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
+	public final fun component7 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy-58pZDbM (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
+	public static synthetic fun copy-58pZDbM$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()I
+	public fun getAdaptedMajorityTotalAmount ()D
+	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
+	public fun getNanostarAmount ()I
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -25344,6 +25400,26 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Ads
 	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram : dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram$Companion;
+	public static final field type Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewBot;I)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public final fun component2 ()I
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewBot;I)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram;Ldev/inmo/tgbotapi/types/chat/PreviewBot;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommissionPerMille ()I
+	public final fun getSponsorUser ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Companion : kotlinx/serialization/KSerializer {
@@ -25421,17 +25497,19 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Unk
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User : dev/inmo/tgbotapi/abstracts/types/SubscriptionPeriodInfo, dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User$Companion;
 	public static final field type Ljava/lang/String;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3-FghU774 ()Lkotlin/time/Duration;
-	public final fun component4 ()Ljava/util/List;
-	public final fun component5-Y25QJn4 ()Ljava/lang/String;
-	public final fun component6 ()Ldev/inmo/tgbotapi/types/gifts/Gift;
-	public final fun copy-Fdc6SRo (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
-	public static synthetic fun copy-Fdc6SRo$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4-FghU774 ()Lkotlin/time/Duration;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6-Y25QJn4 ()Ljava/lang/String;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public final fun copy-13OOIVY (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public static synthetic fun copy-13OOIVY$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAffiliate ()Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
 	public final fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
 	public final fun getInvoicePayload ()Ljava/lang/String;
 	public final fun getPaidMedia ()Ljava/util/List;

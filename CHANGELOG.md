@@ -2,6 +2,12 @@
 
 ## 22.0.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**IN THIS UPDATE HAS BEEN REWORKED EVENTS API IN WEBAPPS**
+
+**THIS UPDATE ADDING SUPPORT OF [BOT API 8.0](https://core.telegram.org/bots/api-changelog#november-17-2024) AND [BOT API 8.1](https://core.telegram.org/bots/api-changelog#december-4-2024)**
+
 ## 21.0.1
 
 * `Core`:
