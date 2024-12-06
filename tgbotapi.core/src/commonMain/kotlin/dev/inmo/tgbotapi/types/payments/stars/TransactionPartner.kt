@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.PreviewBot
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.gifts.Gift
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
@@ -80,6 +81,24 @@ sealed interface TransactionPartner {
         }
     }
 
+    /**
+     * Represents [TransactionPartnerAffiliateProgram](https://core.telegram.org/bots/api#transactionpartneraffiliateprogram)
+     */
+    @Serializable(TransactionPartner.Companion::class)
+    data class AffiliateProgram(
+        @SerialName(sponsorUserField)
+        val sponsorUser: PreviewBot?,
+        @SerialName(commisionPerMilleField)
+        val commisionPerMille: Int,
+    ) : TransactionPartner {
+        @EncodeDefault
+        override val type: String = Companion.type
+
+        companion object {
+            const val type: String = "affiliate_program"
+        }
+    }
+
     @Serializable(TransactionPartner.Companion::class)
     data object Ads : TransactionPartner {
         @EncodeDefault
@@ -105,7 +124,9 @@ sealed interface TransactionPartner {
             val withdrawal_state: RevenueWithdrawalState? = null,
             val user: PreviewUser? = null,
             val invoice_payload: InvoicePayload? = null,
-            val request_count: Int? = null
+            val request_count: Int? = null,
+            val sponsor_user: PreviewBot? = null,
+            val commission_per_mille: Int? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -129,23 +150,32 @@ sealed interface TransactionPartner {
                 Fragment.type -> Fragment(
                     data.withdrawal_state ?: return unknown,
                 )
+                AffiliateProgram.type -> AffiliateProgram(
+                    data.sponsor_user,
+                    data.commission_per_mille ?: return unknown,
+                )
                 else -> unknown
             }
         }
 
         override fun serialize(encoder: Encoder, value: TransactionPartner) {
             val surrogate = when (value) {
-                Other -> Surrogate(value.type)
-                Ads -> Surrogate(value.type)
-                is User -> Surrogate(value.type, user = value.user)
-                is TelegramAPI -> Surrogate(value.type, request_count = value.requestCount)
+                Other -> Surrogate(type = value.type)
+                Ads -> Surrogate(type = value.type)
+                is User -> Surrogate(type = value.type, user = value.user)
+                is TelegramAPI -> Surrogate(type = value.type, request_count = value.requestCount)
                 is Fragment -> Surrogate(
-                    value.type,
-                    value.withdrawalState
+                    type = value.type,
+                    withdrawal_state = value.withdrawalState
+                )
+                is AffiliateProgram -> Surrogate(
+                    type = value.type,
+                    sponsor_user = value.sponsorUser,
+                    commission_per_mille = value.commisionPerMille
                 )
                 is Unknown -> value.raw ?.let {
                     return JsonElement.serializer().serialize(encoder, it)
-                } ?: Surrogate(value.type)
+                } ?: Surrogate(type = value.type)
             }
 
             Surrogate.serializer().serialize(encoder, surrogate)
