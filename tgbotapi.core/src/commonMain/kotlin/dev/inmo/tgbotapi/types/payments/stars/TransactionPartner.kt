@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewBot
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.gifts.Gift
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
+import dev.inmo.tgbotapi.types.payments.AffiliateInfo
 import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -45,6 +46,8 @@ sealed interface TransactionPartner {
     data class User(
         @SerialName(userField)
         val user: PreviewUser,
+        @SerialName(affiliateField)
+        val affiliate: AffiliateInfo? = null,
         @SerialName(invoicePayloadField)
         val invoicePayload: InvoicePayload? = null,
         @SerialName(subscriptionPeriodField)
@@ -88,8 +91,8 @@ sealed interface TransactionPartner {
     data class AffiliateProgram(
         @SerialName(sponsorUserField)
         val sponsorUser: PreviewBot?,
-        @SerialName(commisionPerMilleField)
-        val commisionPerMille: Int,
+        @SerialName(commissionPerMilleField)
+        val commissionPerMille: Int,
     ) : TransactionPartner {
         @EncodeDefault
         override val type: String = Companion.type
@@ -123,10 +126,17 @@ sealed interface TransactionPartner {
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
             val user: PreviewUser? = null,
+            val affiliate: AffiliateInfo? = null,
             val invoice_payload: InvoicePayload? = null,
+            @Serializable(TimeSpanAsSecondsSerializer::class)
+            val subscription_period: TimeSpan? = null,
+            val paid_media: List<PaidMedia>? = null,
+            val paid_media_payload: PaidMediaPayload? = null,
+            val gift: Gift? = null,
             val request_count: Int? = null,
             val sponsor_user: PreviewBot? = null,
             val commission_per_mille: Int? = null,
+            val invoicePayload: InvoicePayload? = null
         )
 
         override val descriptor: SerialDescriptor
@@ -138,44 +148,63 @@ sealed interface TransactionPartner {
             val unknown by lazy {
                 Unknown(data.type, json)
             }
-            return when (data.type) {
-                Other.type -> Other
-                User.type -> User(
-                    data.user ?: return unknown,
-                )
-                TelegramAPI.type -> TelegramAPI(
-                    data.request_count ?: return unknown,
-                )
-                Ads.type -> Ads
-                Fragment.type -> Fragment(
-                    data.withdrawal_state ?: return unknown,
-                )
-                AffiliateProgram.type -> AffiliateProgram(
-                    data.sponsor_user,
-                    data.commission_per_mille ?: return unknown,
-                )
-                else -> unknown
+            return with(data) {
+                when (data.type) {
+                    Other.type -> Other
+                    User.type -> User(
+                        user = user ?: return unknown,
+                        affiliate = affiliate,
+                        invoicePayload = invoice_payload,
+                        subscriptionPeriod = subscription_period,
+                        paidMedia = paid_media,
+                        paidMediaPayload = paid_media_payload,
+                        gift = gift
+                    )
+                    TelegramAPI.type -> TelegramAPI(
+                        data.request_count ?: return unknown,
+                    )
+                    Ads.type -> Ads
+                    Fragment.type -> Fragment(
+                        data.withdrawal_state ?: return unknown,
+                    )
+                    AffiliateProgram.type -> AffiliateProgram(
+                        data.sponsor_user,
+                        data.commission_per_mille ?: return unknown,
+                    )
+                    else -> unknown
+                }
             }
         }
 
         override fun serialize(encoder: Encoder, value: TransactionPartner) {
-            val surrogate = when (value) {
-                Other -> Surrogate(type = value.type)
-                Ads -> Surrogate(type = value.type)
-                is User -> Surrogate(type = value.type, user = value.user)
-                is TelegramAPI -> Surrogate(type = value.type, request_count = value.requestCount)
-                is Fragment -> Surrogate(
-                    type = value.type,
-                    withdrawal_state = value.withdrawalState
-                )
-                is AffiliateProgram -> Surrogate(
-                    type = value.type,
-                    sponsor_user = value.sponsorUser,
-                    commission_per_mille = value.commisionPerMille
-                )
-                is Unknown -> value.raw ?.let {
-                    return JsonElement.serializer().serialize(encoder, it)
-                } ?: Surrogate(type = value.type)
+            val surrogate = with (value) {
+                when (this) {
+                    Other -> Surrogate(type = value.type)
+                    Ads -> Surrogate(type = value.type)
+                    is User -> Surrogate(
+                        type = value.type,
+                        user = user,
+                        affiliate = affiliate,
+                        invoice_payload = invoicePayload,
+                        subscription_period = subscriptionPeriod,
+                        paid_media = paidMedia,
+                        paid_media_payload = paidMediaPayload,
+                        gift = gift
+                    )
+                    is TelegramAPI -> Surrogate(type = value.type, request_count = requestCount)
+                    is Fragment -> Surrogate(
+                        type = value.type,
+                        withdrawal_state = withdrawalState
+                    )
+                    is AffiliateProgram -> Surrogate(
+                        type = value.type,
+                        sponsor_user = sponsorUser,
+                        commission_per_mille = commissionPerMille
+                    )
+                    is Unknown -> raw ?.let {
+                        return JsonElement.serializer().serialize(encoder, it)
+                    } ?: Surrogate(type = value.type)
+                }
             }
 
             Surrogate.serializer().serialize(encoder, surrogate)

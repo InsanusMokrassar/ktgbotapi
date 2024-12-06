@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.payments.abstracts.Amounted
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
@@ -16,9 +17,8 @@ import kotlinx.serialization.json.JsonElement
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(StarTransaction.Companion::class)
 @ClassCastsIncluded
-sealed interface StarTransaction {
+sealed interface StarTransaction : Amounted {
     val id: StarTransactionId
-    val amount: Int
     val nanostarAmount: Int
     val date: TelegramDate
     val partner: TransactionPartner
@@ -30,7 +30,7 @@ sealed interface StarTransaction {
         @SerialName(idField)
         override val id: StarTransactionId,
         @SerialName(amountField)
-        override val amount: Int,
+        override val amount: Long,
         @SerialName(nanostarAmountField)
         override val nanostarAmount: Int,
         @SerialName(dateField)
@@ -50,7 +50,7 @@ sealed interface StarTransaction {
         @SerialName(idField)
         override val id: StarTransactionId,
         @SerialName(amountField)
-        override val amount: Int,
+        override val amount: Long,
         @SerialName(nanostarAmountField)
         override val nanostarAmount: Int,
         @SerialName(dateField)
@@ -69,7 +69,7 @@ sealed interface StarTransaction {
     data class Unknown(
         @SerialName(idField)
         override val id: StarTransactionId,
-        override val amount: Int,
+        override val amount: Long,
         @SerialName(nanostarAmountField)
         override val nanostarAmount: Int,
         override val date: TelegramDate,
@@ -85,7 +85,7 @@ sealed interface StarTransaction {
         @Serializable
         private data class Surrogate(
             val id: StarTransactionId,
-            val amount: Int,
+            val amount: Long,
             @SerialName(nanostarAmountField)
             val nanostarAmount: Int,
             val date: TelegramDate,
