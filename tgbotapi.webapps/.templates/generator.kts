@@ -101,15 +101,23 @@ fun readEnvs(content: String, presets: Map<String, String>?): Map<String, String
     return (presets ?: emptyMap()) + readEnvs
 }
 
+val realArgs = args.map { sourceArg ->
+    if (sourceArg.startsWith("\"") && sourceArg.endsWith("\"")) {
+        sourceArg.removePrefix("\"").removeSuffix("\"")
+    } else {
+        sourceArg
+    }
+}
+
 fun readParameters() {
     var i = 0
-    while (i < args.size) {
-        val arg = args[i]
+    while (i < realArgs.size) {
+        val arg = realArgs[i]
         when (arg) {
             "--env",
             "-e" -> {
                 i++
-                envFile = File(args[i])
+                envFile = File(realArgs[i])
             }
             "--skip",
             "-s" -> {
@@ -118,17 +126,17 @@ fun readParameters() {
             "--extensions",
             "-ex" -> {
                 i++
-                extensions = args[i].split(",")
+                extensions = realArgs[i].split(",")
             }
             "--outputFolder",
             "-o" -> {
                 i++
-                outputFolder = File(args[i])
+                outputFolder = File(realArgs[i])
             }
             "--args",
             "-a" -> {
                 i++
-                val subarg = args[i]
+                val subarg = realArgs[i]
                 val key = subarg.takeWhile { it != '=' }
                 val value = subarg.dropWhile { it != '=' }.removePrefix("=")
                 commandLineArgs[key] = value
@@ -164,6 +172,7 @@ fun readParameters() {
                 Runtime.getRuntime().exit(0)
             }
             else -> {
+                println(arg)
                 val potentialFile = File(arg)
                 println("Potential file/folder as template: ${potentialFile.absolutePath}")
                 runCatching {

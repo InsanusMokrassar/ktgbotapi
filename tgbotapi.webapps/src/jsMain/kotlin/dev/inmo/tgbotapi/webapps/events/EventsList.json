@@ -2,5 +2,177 @@
   {
     "event_name": "activated",
     "callback_args": ""
+  },
+  {
+    "event_name": "deactivated",
+    "callback_args": ""
+  },
+  {
+    "event_name": "themeChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "viewportChanged",
+    "callback_args": "Boolean"
+  },
+  {
+    "event_name": "safeAreaChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "contentSafeAreaChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "mainButtonClicked",
+    "callback_args": ""
+  },
+  {
+    "event_name": "secondaryButtonClicked",
+    "callback_args": ""
+  },
+  {
+    "event_name": "backButtonClicked",
+    "callback_args": ""
+  },
+  {
+    "event_name": "settingsButtonClicked",
+    "callback_args": ""
+  },
+  {
+    "event_name": "invoiceClosed",
+    "callback_args": "String, dev.inmo.tgbotapi.webapps.invoice.InvoiceStatus"
+  },
+  {
+    "event_name": "popupClosed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.popup.PopupClosedEventArg"
+  },
+  {
+    "event_name": "qrTextReceived",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgDataObject"
+  },
+  {
+    "event_name": "scanQrPopupClosed",
+    "callback_args": ""
+  },
+  {
+    "event_name": "clipboardTextReceived",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgDataNullableObject"
+  },
+  {
+    "event_name": "writeAccessRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgStatusObject"
+  },
+  {
+    "event_name": "contactRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgStatusObject"
+  },
+  {
+    "event_name": "biometricManagerUpdated",
+    "callback_args": ""
+  },
+  {
+    "event_name": "biometricAuthRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgBiometricAuthRequested"
+  },
+  {
+    "event_name": "biometricTokenUpdated",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgIsUpdatedObject"
+  },
+  {
+    "event_name": "fullscreenChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "fullscreenFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "homeScreenAdded",
+    "callback_args": ""
+  },
+  {
+    "event_name": "homeScreenChecked",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgStatusObject"
+  },
+  {
+    "event_name": "accelerometerStarted",
+    "callback_args": ""
+  },
+  {
+    "event_name": "accelerometerStopped",
+    "callback_args": ""
+  },
+  {
+    "event_name": "accelerometerChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "accelerometerFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "deviceOrientationStarted",
+    "callback_args": ""
+  },
+  {
+    "event_name": "deviceOrientationStopped",
+    "callback_args": ""
+  },
+  {
+    "event_name": "deviceOrientationChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "deviceOrientationFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "gyroscopeStarted",
+    "callback_args": ""
+  },
+  {
+    "event_name": "gyroscopeStopped",
+    "callback_args": ""
+  },
+  {
+    "event_name": "gyroscopeChanged",
+    "callback_args": ""
+  },
+  {
+    "event_name": "gyroscopeFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "locationManagerUpdated",
+    "callback_args": ""
+  },
+  {
+    "event_name": "locationRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgLocationDataObject"
+  },
+  {
+    "event_name": "shareMessageSent",
+    "callback_args": ""
+  },
+  {
+    "event_name": "shareMessageFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "emojiStatusSet",
+    "callback_args": ""
+  },
+  {
+    "event_name": "emojiStatusFailed",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgErrorObject"
+  },
+  {
+    "event_name": "emojiStatusAccessRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgStatusObject"
+  },
+  {
+    "event_name": "fileDownloadRequested",
+    "callback_args": "dev.inmo.tgbotapi.webapps.args.ArgStatusObject"
   }
 ]
