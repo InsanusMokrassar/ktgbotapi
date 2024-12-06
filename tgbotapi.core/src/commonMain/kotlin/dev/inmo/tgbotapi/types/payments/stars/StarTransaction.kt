@@ -19,6 +19,7 @@ import kotlinx.serialization.json.JsonElement
 sealed interface StarTransaction {
     val id: StarTransactionId
     val amount: Int
+    val nanostarAmount: Int
     val date: TelegramDate
     val partner: TransactionPartner
     val source: TransactionPartner?
@@ -30,6 +31,8 @@ sealed interface StarTransaction {
         override val id: StarTransactionId,
         @SerialName(amountField)
         override val amount: Int,
+        @SerialName(nanostarAmountField)
+        override val nanostarAmount: Int,
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(sourceField)
@@ -48,6 +51,8 @@ sealed interface StarTransaction {
         override val id: StarTransactionId,
         @SerialName(amountField)
         override val amount: Int,
+        @SerialName(nanostarAmountField)
+        override val nanostarAmount: Int,
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(receiverField)
@@ -65,6 +70,8 @@ sealed interface StarTransaction {
         @SerialName(idField)
         override val id: StarTransactionId,
         override val amount: Int,
+        @SerialName(nanostarAmountField)
+        override val nanostarAmount: Int,
         override val date: TelegramDate,
         override val source: TransactionPartner?,
         override val receiver: TransactionPartner?,
@@ -79,6 +86,8 @@ sealed interface StarTransaction {
         private data class Surrogate(
             val id: StarTransactionId,
             val amount: Int,
+            @SerialName(nanostarAmountField)
+            val nanostarAmount: Int,
             val date: TelegramDate,
             val source: TransactionPartner? = null,
             val receiver: TransactionPartner? = null,
@@ -94,6 +103,7 @@ sealed interface StarTransaction {
                 Unknown(
                     id = data.id,
                     amount = data.amount,
+                    nanostarAmount = data.nanostarAmount,
                     date = data.date,
                     source = data.source,
                     receiver = data.receiver,
@@ -104,12 +114,14 @@ sealed interface StarTransaction {
                 data.source != null -> Incoming(
                     id = data.id,
                     amount = data.amount,
+                    nanostarAmount = data.nanostarAmount,
                     date = data.date,
                     partner = data.source
                 )
                 data.receiver != null -> Outgoing(
                     id = data.id,
                     amount = data.amount,
+                    nanostarAmount = data.nanostarAmount,
                     date = data.date,
                     partner = data.receiver
                 )
@@ -126,6 +138,7 @@ sealed interface StarTransaction {
             val surrogate = Surrogate(
                 id = value.id,
                 amount = value.amount,
+                nanostarAmount = value.nanostarAmount,
                 date = value.date,
                 source = value.source,
                 receiver = value.receiver,
