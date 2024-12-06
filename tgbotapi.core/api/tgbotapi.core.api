@@ -27649,6 +27649,12 @@ public final class dev/inmo/tgbotapi/utils/TimeSpanAsSecondsSerializer : kotlinx
 	public fun serialize-HG0u8IE (Lkotlinx/serialization/encoding/Encoder;J)V
 }
 
+public final class dev/inmo/tgbotapi/utils/crypto/Ed25519TelegramKeys {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/crypto/Ed25519TelegramKeys;
+	public static final field Production Ljava/lang/String;
+	public static final field TestEnvironment Ljava/lang/String;
+}
+
 public final class dev/inmo/tgbotapi/utils/extensions/AsReferenceKt {
 	public static final fun asReference (Ljava/lang/Object;)Ljava/lang/ref/WeakReference;
 }
