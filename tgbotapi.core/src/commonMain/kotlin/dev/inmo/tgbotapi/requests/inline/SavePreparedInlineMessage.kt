@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.requests.inline
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.requests.answers.InlineQueryAnswersResultsSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
 import dev.inmo.tgbotapi.types.InlineQueries.prepared.PreparedInlineMessage
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
@@ -14,7 +14,7 @@ import kotlinx.serialization.SerializationStrategy
 data class SavePreparedInlineMessage(
     @SerialName(idField)
     val userId: UserId,
-    @Serializable(InlineQueryAnswersResultsSerializer::class)
+    @Serializable(InlineQueryResultSerializer::class)
     @SerialName(resultField)
     val result: InlineQueryResult,
     @SerialName(allowUserChatsField)
