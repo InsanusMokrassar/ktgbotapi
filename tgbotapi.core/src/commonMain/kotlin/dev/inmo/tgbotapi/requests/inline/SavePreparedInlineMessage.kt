@@ -12,7 +12,7 @@ import kotlinx.serialization.SerializationStrategy
 
 @Serializable
 data class SavePreparedInlineMessage(
-    @SerialName(idField)
+    @SerialName(userIdField)
     val userId: UserId,
     @Serializable(InlineQueryResultSerializer::class)
     @SerialName(resultField)
