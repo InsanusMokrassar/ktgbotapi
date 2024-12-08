@@ -18,11 +18,11 @@ external interface CloudStorage {
     ): CloudStorage
     fun removeItem(
         key: CloudStorageKey,
-        callback: (e: Any?, success: Boolean?) -> Unit
+        callback: (e: Any?, success: Boolean?) -> Unit = definedExternally
     ): CloudStorage
     fun removeItems(
         key: Array<CloudStorageKey>,
-        callback: (e: Any?, success: Boolean?) -> Unit
+        callback: (e: Any?, success: Boolean?) -> Unit = definedExternally
     ): CloudStorage
     fun getKeys(
         callback: (e: Any?, success: Array<CloudStorageKey>?) -> Unit
