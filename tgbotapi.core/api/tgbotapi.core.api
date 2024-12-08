@@ -25111,10 +25111,10 @@ public final class dev/inmo/tgbotapi/types/payments/SuccessfulPayment : dev/inmo
 	public final fun getRecurringInfo ()Ldev/inmo/tgbotapi/types/payments/RecurringInfo;
 	public final fun getShippingOptionId ()Ljava/lang/String;
 	public final fun getSubscriptionExpirationDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun getSubscriptionPayment ()Ljava/lang/Boolean;
 	public final fun getTelegramPaymentChargeId-voYifgM ()Ljava/lang/String;
 	public fun hashCode ()I
 	public final fun isFirstPeriodPayment ()Ljava/lang/Boolean;
+	public final fun isSubscriptionPayment ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
 }
 

@@ -16,7 +16,7 @@ data class SuccessfulPayment(
     @SerialName(subscriptionExpirationDateField)
     val subscriptionExpirationDate: TelegramDate? = null,
     @SerialName(isRecurringField)
-    val subscriptionPayment: Boolean? = null,
+    val isSubscriptionPayment: Boolean? = null,
     @SerialName(isFirstRecurringField)
     val isFirstPeriodPayment: Boolean? = null,
     @SerialName(telegramPaymentChargeIdField)
@@ -29,7 +29,7 @@ data class SuccessfulPayment(
     val orderInfo: OrderInfo? = null
 ) : Amounted, Currencied {
     val recurringInfo: RecurringInfo? by lazy {
-        if (subscriptionPayment == true && subscriptionExpirationDate != null) {
+        if (isSubscriptionPayment == true && subscriptionExpirationDate != null) {
             RecurringInfo(
                 subscriptionExpirationDate,
                 isFirstPeriodPayment == true,
