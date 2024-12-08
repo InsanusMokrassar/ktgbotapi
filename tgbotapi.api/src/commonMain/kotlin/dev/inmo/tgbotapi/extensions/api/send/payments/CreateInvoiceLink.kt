@@ -2,9 +2,11 @@ package dev.inmo.tgbotapi.extensions.api.send.payments
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
+import korlibs.time.TimeSpan
 
 public suspend fun TelegramBot.createInvoiceLink(
     title: String,
@@ -24,7 +26,25 @@ public suspend fun TelegramBot.createInvoiceLink(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false
 ): String = execute(
-    CreateInvoiceLink(title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress)
+    CreateInvoiceLink(
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = providerToken,
+        currency = currency,
+        prices = prices,
+        subscriptionPeriod = null,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress
+    )
 )
 
 /**
@@ -35,6 +55,8 @@ public suspend fun TelegramBot.createInvoiceLink(
     description: String,
     payload: String,
     prices: List<LabeledPrice>,
+    businessConnectionId: BusinessConnectionId? = null,
+    subscriptionPeriod: TimeSpan? = null,
     maxTipAmount: Int? = null,
     suggestedTipAmounts: List<Int>? = null,
     providerData: String? = null,
@@ -46,5 +68,24 @@ public suspend fun TelegramBot.createInvoiceLink(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false
 ): String = execute(
-    CreateInvoiceLink(title, description, payload, null, Currency.XTR, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress)
+    CreateInvoiceLink(
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = null,
+        currency = Currency.XTR,
+        businessConnectionId = businessConnectionId,
+        prices = prices,
+        subscriptionPeriod = subscriptionPeriod,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress
+    )
 )

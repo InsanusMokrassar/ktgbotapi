@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
+import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
+import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*
@@ -15,9 +17,9 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
 
     override fun method(): String = "createChatInviteLink"
 
-    sealed interface Subscription : CreateChatInviteLink<ChatInviteLinkUnlimited> {
-        val subscriptionPeriod: TimeSpan
-        val subscriptionPrice: UInt
+    sealed interface Subscription : CreateChatInviteLink<ChatInviteLinkUnlimited>, SubscriptionInfo {
+        override val subscriptionPeriod: TimeSpan
+        override val subscriptionPrice: UInt
 
         override fun method(): String = "createChatSubscriptionInviteLink"
     }

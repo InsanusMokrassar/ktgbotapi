@@ -34,6 +34,18 @@ value class PaidMediaPayload(val string: String) {
     }
 }
 
+@Serializable
+@JvmInline
+value class GiftId(
+    val string: String
+)
+
+@Serializable
+@JvmInline
+value class PreparedMessageId(
+    val string: String
+)
+
 val usernameRegex = Regex("@[\\w\\d_]+")
 
 val degreesLimit = 1 .. 360
@@ -190,6 +202,7 @@ const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
 const val userIdsField = "user_ids"
+const val giftIdField = "gift_id"
 const val onlyIfBannedField = "only_if_banned"
 const val containsMasksField = "contains_masks"
 const val resultIdField = "result_id"
@@ -454,6 +467,7 @@ const val actionField = "action"
 const val positionField = "position"
 const val labelField = "label"
 const val amountField = "amount"
+const val nanostarAmountField = "nanostar_amount"
 const val pricesField = "prices"
 const val payloadField = "payload"
 const val vcardField = "vcard"
@@ -472,6 +486,8 @@ const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+const val giftField = "gift"
+const val giftsField = "gifts"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
@@ -504,6 +520,11 @@ const val startParameterField = "start_parameter"
 const val totalAmountField = "total_amount"
 const val invoicePayloadField = "invoice_payload"
 const val requestCountField = "request_count"
+const val sponsorUserField = "sponsor_user"
+const val affiliateUserField = "affiliate_user"
+const val affiliateChatField = "affiliate_chat"
+const val commissionPerMilleField = "commission_per_mille"
+const val affiliateField = "affiliate"
 const val paidMediaPayloadField = "paid_media_payload"
 const val shippingOptionIdField = "shipping_option_id"
 const val shippingQueryIdField = "shipping_query_id"
@@ -512,6 +533,7 @@ const val shippingOptionsField = "shipping_options"
 const val countryCodeField = "country_code"
 const val countryCodesField = "country_codes"
 const val totalCountField = "total_count"
+const val remainingCountField = "remaining_count"
 const val stateField = "state"
 const val cityField = "city"
 const val firstStreetLineField = "street_line1"
@@ -519,7 +541,11 @@ const val secondStreetLineField = "street_line2"
 const val postCodeField = "post_code"
 const val shippingAddressField = "shipping_address"
 const val orderInfoField = "order_info"
+const val subscriptionExpirationDateField = "subscription_expiration_date"
+const val isRecurringField = "is_recurring"
+const val isFirstRecurringField = "is_first_recurring"
 const val telegramPaymentChargeIdField = "telegram_payment_charge_id"
+const val isCanceledField = "is_canceled"
 const val providerPaymentChargeIdField = "provider_payment_charge_id"
 const val providerTokenField = "provider_token"
 const val providerDataField = "provider_data"

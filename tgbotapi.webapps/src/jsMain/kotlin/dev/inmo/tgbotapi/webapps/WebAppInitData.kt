@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.ChatType
 
 external interface WebAppInitData {
     @JsName("query_id")
@@ -9,6 +10,14 @@ external interface WebAppInitData {
     val user: WebAppUser?
     val receiver: WebAppUser?
 
+    val chat: WebAppChat?
+
+    @JsName("chat_type")
+    val chatType: ChatType?
+
+    @JsName("chat_instance")
+    val chatInstance: String?
+
     @JsName("start_param")
     val startParam: String?
 
@@ -16,9 +25,9 @@ external interface WebAppInitData {
     val authDate: MilliSeconds
 
     @JsName("can_send_after")
-    val canSendAfter: MilliSeconds
-
-    val chat: WebAppChat
+    val canSendAfter: MilliSeconds?
 
     val hash: String
+
+    val signature: String
 }

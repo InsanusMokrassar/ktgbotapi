@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.requests.send.payments
 import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
@@ -12,6 +12,8 @@ import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
+import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
+import korlibs.time.TimeSpan
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -30,9 +32,14 @@ data class CreateInvoiceLink(
     override val providerToken: String?,
     @SerialName(currencyField)
     override val currency: Currency,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = null,
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
+    @SerialName(subscriptionPeriodField)
+    @Serializable(TimeSpanAsSecondsSerializer::class)
+    override val subscriptionPeriod: TimeSpan? = null,
     @SerialName(maxTipAmountField)
     override val maxTipAmount: Int? = null,
     @SerialName(suggestedTipAmountsField)
@@ -53,7 +60,7 @@ data class CreateInvoiceLink(
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false
-) : CommonSendInvoiceData, SimpleRequest<String> {
+) : CommonSendInvoiceData, SimpleRequest<String>, WithOptionalBusinessConnectionId, SubscriptionPeriodInfo {
     override fun method(): String = "createInvoiceLink"
     override val resultDeserializer: DeserializationStrategy<String>
         get() = String.serializer()
@@ -136,5 +143,9 @@ data class CreateInvoiceLink(
         photoSize = null
         photoWidth = null
         photoHeight = null
+    }
+
+    companion object {
+        const val DEFAULT: Seconds = 2592000 // 30 days
     }
 }

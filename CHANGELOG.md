@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 22.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**IN THIS UPDATE HAS BEEN REWORKED EVENTS API IN WEBAPPS**
+
+**THIS UPDATE ADDING SUPPORT OF [BOT API 8.0](https://core.telegram.org/bots/api-changelog#november-17-2024) AND [BOT API 8.1](https://core.telegram.org/bots/api-changelog#december-4-2024)**
+
+* `Version`:
+  * `MicroUtils`: `0.23.1` -> `0.23.2`
+  * `Ktor`: `3.0.1` -> `3.0.2`
+
 ## 21.0.1
 
 * `Core`:
@@ -20,9 +32,9 @@ due to its redundancy
 * `BehaviourBuilder`:
   * Add special `val data: BehaviourContextData` into all realizations of `BehaviourContext`
   * Add `CombinedSubcontextInitialAction` and functions
-`buildSubcontextInitialAction`/`buildSubcontextInitialActionWithSubActions`
+    `buildSubcontextInitialAction`/`buildSubcontextInitialActionWithSubActions`
   * Add `subcontextInitialAction` for all the functions-builders of `BehaviourContext` and
-`additionalSubcontextInitialAction` to all triggers
+    `additionalSubcontextInitialAction` to all triggers
 
 ## 20.0.1
 

@@ -1069,6 +1069,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun administratorChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMember;
 	public static final fun adsOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Ads;
 	public static final fun adsOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Ads;
+	public static final fun affiliateProgramOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram;
+	public static final fun affiliateProgramOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram;
 	public static final fun animatedStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/AnimatedSticker;
 	public static final fun animatedStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/AnimatedSticker;
 	public static final fun animationContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/AnimationContent;
@@ -1479,6 +1481,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifAddressSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAdministratorChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAds (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifAffiliateProgram (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAnimatedSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAnimationContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAnimationFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

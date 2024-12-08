@@ -5330,6 +5330,16 @@ public inline fun TransactionPartner.adsOrThrow(): TransactionPartner.Ads = this
 public inline fun <T> TransactionPartner.ifAds(block: (TransactionPartner.Ads) -> T): T? =
     adsOrNull() ?.let(block)
 
+public inline fun TransactionPartner.affiliateProgramOrNull(): TransactionPartner.AffiliateProgram?
+    = this as? dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
+
+public inline fun TransactionPartner.affiliateProgramOrThrow(): TransactionPartner.AffiliateProgram
+    = this as dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
+
+public inline fun <T>
+    TransactionPartner.ifAffiliateProgram(block: (TransactionPartner.AffiliateProgram) -> T): T? =
+    affiliateProgramOrNull() ?.let(block)
+
 public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment
 
