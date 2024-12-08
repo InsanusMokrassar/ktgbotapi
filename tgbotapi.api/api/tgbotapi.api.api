@@ -2151,10 +2151,10 @@ public final class dev/inmo/tgbotapi/extensions/api/send/media/SendVoiceKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/send/payments/CreateInvoiceLinkKt {
+	public static final fun createInvoiceLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun createInvoiceLink$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun createInvoiceLink-1vVIECE (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lkotlin/time/Duration;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createInvoiceLink-1vVIECE$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lkotlin/time/Duration;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun createInvoiceLink-B82mBWQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun createInvoiceLink-B82mBWQ$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/String;ZZZZZZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/send/payments/RefundStarPaymentKt {
@@ -2201,6 +2201,15 @@ public final class dev/inmo/tgbotapi/extensions/api/send/polls/SendRegularPollKt
 	public static synthetic fun sendRegularPoll-qttyOhY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;ZZZLjava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun sendRegularPoll-smr50Sk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ZZZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun sendRegularPoll-smr50Sk$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ZZZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/set/SetUserEmojiStatusKt {
+	public static final fun setUserEmojiStatus-8OHYyMQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setUserEmojiStatus-OZgzbMQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setUserEmojiStatus-SrqJ0BM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setUserEmojiStatus-SrqJ0BM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun setUserEmojiStatus-bic5Y5o (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setUserEmojiStatus-bic5Y5o$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/stickers/AddStickerToSetKt {

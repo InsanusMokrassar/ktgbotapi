@@ -26,7 +26,7 @@ data class SendGift internal constructor(
     override val text: String,
     @SerialName(textParseModeField)
     override val parseMode: ParseMode?,
-    @SerialName(entitiesField)
+    @SerialName(textEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
 ) : SimpleRequest<Boolean>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
