@@ -41,7 +41,7 @@
   },
   {
     "event_name": "invoiceClosed",
-    "callback_args": "String, dev.inmo.tgbotapi.webapps.invoice.InvoiceStatus"
+    "callback_args": "String, String"
   },
   {
     "event_name": "popupClosed",

@@ -218,7 +218,7 @@ external class WebApp {
     @JsName("onEvent")
     internal fun onContactRequested(type: String, callback: (dev.inmo.tgbotapi.webapps.args.ArgStatusObject) -> Unit)
     @JsName("onEvent")
-    internal fun onInvoiceClosed(type: String, callback: (String, dev.inmo.tgbotapi.webapps.invoice.InvoiceStatus) -> Unit)
+    internal fun onInvoiceClosed(type: String, callback: (String, String) -> Unit)
     @JsName("onEvent")
     internal fun onGyroscopeStarted(type: String, callback: () -> Unit)
     @JsName("onEvent")

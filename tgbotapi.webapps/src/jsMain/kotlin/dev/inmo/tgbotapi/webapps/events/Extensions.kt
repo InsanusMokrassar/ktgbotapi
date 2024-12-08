@@ -885,14 +885,14 @@ fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactReques
 fun WebApp.onContactRequested(eventHandler: ContactRequestedEventHandler) = onEvent(EventType.ContactRequested, eventHandler)
 // Part for callback typealias
 
-typealias InvoiceClosedEventHandler = WebApp.(String, dev.inmo.tgbotapi.webapps.invoice.InvoiceStatus) -> Unit
+typealias InvoiceClosedEventHandler = WebApp.(String, String) -> Unit
 
 // Part for outside of WebApp
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.InvoiceClosed, eventHandler: InvoiceClosedEventHandler) = { p0: String, p1: dev.inmo.tgbotapi.webapps.invoice.InvoiceStatus ->
+fun WebApp.onEvent(type: EventType.InvoiceClosed, eventHandler: InvoiceClosedEventHandler) = { p0: String, p1: String ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0, p1)
 }.also {
     onInvoiceClosed(
