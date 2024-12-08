@@ -1,5 +1,8 @@
 package dev.inmo.tgbotapi.webapps
 
+import dev.inmo.micro_utils.ksp.sealed.GenerateSealedWorkaround
+
+@GenerateSealedWorkaround
 sealed class EventType(val typeName: String) {
     data object EmojiStatusAccessRequested : EventType("emojiStatusAccessRequested")
     data object AccelerometerChanged : EventType("accelerometerChanged")
@@ -45,4 +48,6 @@ sealed class EventType(val typeName: String) {
     data object GyroscopeStarted : EventType("gyroscopeStarted")
     data object GyroscopeChanged : EventType("gyroscopeChanged")
     data object DeviceOrientationChanged : EventType("deviceOrientationChanged")
+
+    companion object
 }

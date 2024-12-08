@@ -2,6 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
+    id "com.google.devtools.ksp"
 }
 
 project.description = "Web App bindings for the Telegram Web Apps API"
@@ -14,7 +15,15 @@ kotlin {
         commonMain {
             dependencies {
                 api project(":tgbotapi.core")
+                api libs.microutils.ksp.sealed
             }
         }
     }
 }
+
+dependencies {
+    add("kspJs", libs.microutils.ksp.sealed.generator)
+}
+
+ksp {}
+
