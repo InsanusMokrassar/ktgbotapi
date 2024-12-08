@@ -80,24 +80,24 @@ fun CloudStorage.get(
 
 fun CloudStorage.remove(
     key: CloudStorageKey,
-    callback: (result: Result<Boolean>) -> Unit
+    callback: (result: Result<Boolean>) -> Unit = {}
 ) = removeItem(key) { e, v -> callback(resultsToResult(e, v)) }
 
 fun CloudStorage.remove(
     key: String,
-    callback: (result: Result<Boolean>) -> Unit
+    callback: (result: Result<Boolean>) -> Unit = {}
 ) = remove(CloudStorageKey(key), callback)
 
 fun CloudStorage.remove(
     keys: Array<CloudStorageKey>,
-    callback: (result: Result<Boolean>) -> Unit
+    callback: (result: Result<Boolean>) -> Unit = {}
 ) = removeItems(
     keys
 ) { e, v -> callback(resultsToResult(e, v)) }
 
 fun CloudStorage.remove(
     keys: Array<String>,
-    callback: (result: Result<Boolean>) -> Unit
+    callback: (result: Result<Boolean>) -> Unit = {}
 ) = remove(
     Array(keys.size) {
         CloudStorageKey(keys[it])
@@ -109,7 +109,7 @@ fun CloudStorage.remove(
     key: String,
     key2: String,
     vararg otherKeys: String,
-    callback: (result: Result<Boolean>) -> Unit
+    callback: (result: Result<Boolean>) -> Unit = {}
 ) = remove(
     arrayOf(key, key2) + otherKeys,
     callback
