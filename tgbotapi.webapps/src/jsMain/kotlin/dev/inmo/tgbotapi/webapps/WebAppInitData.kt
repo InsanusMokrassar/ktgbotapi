@@ -10,7 +10,7 @@ external interface WebAppInitData {
     val user: WebAppUser?
     val receiver: WebAppUser?
 
-    val chat: WebAppChat
+    val chat: WebAppChat?
 
     @JsName("chat_type")
     val chatType: ChatType?
