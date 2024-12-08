@@ -7,7 +7,7 @@ external interface DeviceOrientation {
     val beta: Double
     val gamma: Double
 
-    fun start(params: DeviceOrientationStartParams, callback: (Boolean) -> Unit)
+    fun start(params: DeviceOrientationStartParams, callback: (Boolean) -> Unit = definedExternally)
     fun stop(callback: (Boolean) -> Unit)
 }
 
