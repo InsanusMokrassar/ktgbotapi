@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see cashTag
+ * @see cashTagTextSource
  */
 @Serializable
 data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -25,6 +25,6 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { cashTagHTML() }
 }
 
-inline fun cashTag(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
-inline fun cashTag(vararg parts: TextSource) = cashTag(parts.toList())
-inline fun cashTag(tag: String) = cashTag(regular(tag))
+inline fun cashTagTextSource(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
+inline fun cashTagTextSource(vararg parts: TextSource) = cashTagTextSource(parts.toList())
+inline fun cashTagTextSource(tag: String) = cashTagTextSource(regularTextSource(tag))

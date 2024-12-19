@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see customEmoji
+ * @see customEmojiTextSource
  */
 @Serializable
 data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -21,9 +21,9 @@ data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-inline fun customEmoji(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
-inline fun customEmoji(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmoji(emojiId, parts.toList())
+inline fun customEmojiTextSource(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
+inline fun customEmojiTextSource(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmojiTextSource(emojiId, parts.toList())
 /**
  * Without sharp (#)
  */
-inline fun customEmoji(emojiId: CustomEmojiId, text: String) = customEmoji(emojiId, regular(text))
+inline fun customEmojiTextSource(emojiId: CustomEmojiId, text: String) = customEmojiTextSource(emojiId, regularTextSource(text))

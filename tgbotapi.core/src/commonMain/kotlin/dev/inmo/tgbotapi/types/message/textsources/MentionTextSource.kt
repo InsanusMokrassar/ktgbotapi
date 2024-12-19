@@ -14,7 +14,7 @@ private val String.withoutCommercialAt
     }
 
 /**
- * @see mention
+ * @see mentionTextSource
  */
 @Serializable
 data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -33,13 +33,13 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     }
 }
 
-inline fun mention(parts: TextSourcesList) = (regular("@") + parts).let { MentionTextSource(it.makeString(), it) }
-inline fun mention(vararg parts: TextSource) = mention(parts.toList())
+inline fun mentionTextSource(parts: TextSourcesList) = (regularTextSource("@") + parts).let { MentionTextSource(it.makeString(), it) }
+inline fun mentionTextSource(vararg parts: TextSource) = mentionTextSource(parts.toList())
 
 /**
  * Without leading "@"
  */
-inline fun mention(whoToMention: String) = mention(regular(whoToMention))
+inline fun mentionTextSource(whoToMention: String) = mentionTextSource(regularTextSource(whoToMention))
 
-inline fun mention(whoToMention: Username) = mention(whoToMention.full.dropWhile { it == '@' })
+inline fun mentionTextSource(whoToMention: Username) = mentionTextSource(whoToMention.full.dropWhile { it == '@' })
 

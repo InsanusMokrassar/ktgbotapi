@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see pre
+ * @see preTextSource
  */
 @Serializable
 data class PreTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -17,5 +17,5 @@ data class PreTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) c
     override val html: String by lazy { source.preHTML(language) }
 }
 
-inline fun pre(code: String, language: String? = null) = PreTextSource(code, language)
+inline fun preTextSource(code: String, language: String? = null) = PreTextSource(code, language)
 

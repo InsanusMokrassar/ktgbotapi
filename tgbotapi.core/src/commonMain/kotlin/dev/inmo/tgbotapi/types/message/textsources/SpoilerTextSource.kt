@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see italic
+ * @see italicTextSource
  */
 @Serializable
 data class SpoilerTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,7 +18,7 @@ data class SpoilerTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { spoilerHTML() }
 }
 
-inline fun spoiler(parts: TextSourcesList) = SpoilerTextSource(parts.makeString(), parts)
-inline fun spoiler(vararg parts: TextSource) = spoiler(parts.toList())
-inline fun spoiler(text: String) = spoiler(regular(text))
+inline fun spoilerTextSource(parts: TextSourcesList) = SpoilerTextSource(parts.makeString(), parts)
+inline fun spoilerTextSource(vararg parts: TextSource) = spoilerTextSource(parts.toList())
+inline fun spoilerTextSource(text: String) = spoilerTextSource(regularTextSource(text))
 

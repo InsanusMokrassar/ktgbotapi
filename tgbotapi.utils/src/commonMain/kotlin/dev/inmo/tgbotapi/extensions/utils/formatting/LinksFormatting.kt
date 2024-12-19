@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.formatting
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
-import dev.inmo.tgbotapi.types.message.textsources.link
+import dev.inmo.tgbotapi.types.message.textsources.linkTextSource
 import io.ktor.http.encodeURLQueryComponent
 
 
@@ -115,4 +115,4 @@ val Chat.chatLink: String?
 private const val stickerSetAddingLinkPrefix = "$internalLinkBeginning/addstickers"
 
 val StickerSetName.stickerSetLink
-    get() = link(string, "$stickerSetAddingLinkPrefix/$this")
+    get() = linkTextSource(string, "$stickerSetAddingLinkPrefix/$this")
