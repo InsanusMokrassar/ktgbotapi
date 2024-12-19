@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 23.0.0
+
+* `Core`:
+  * All old factory methods for `TextSource`s took suffix `TextSource`. For example: `regular` -> `regularTextSource`.
+  That has been for excluding names resolution ambiguity with extensions for `EntitiesBuilder`
+
 ## 22.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
