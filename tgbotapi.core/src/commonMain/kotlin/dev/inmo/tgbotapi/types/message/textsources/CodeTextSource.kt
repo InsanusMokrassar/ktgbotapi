@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see code
+ * @see codeTextSource
  */
 @Serializable
 data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -16,4 +16,4 @@ data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
     override val html: String by lazy { source.codeHTML() }
 }
 
-inline fun code(code: String) = CodeTextSource(code)
+inline fun codeTextSource(code: String) = CodeTextSource(code)

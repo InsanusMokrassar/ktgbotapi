@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see botCommand
+ * @see botCommandTextSource
  */
 @Serializable
 data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -33,6 +33,6 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
 /**
  * @param command Without leading "/"
  */
-inline fun botCommand(command: String) = BotCommandTextSource("/$command")
+inline fun botCommandTextSource(command: String) = BotCommandTextSource("/$command")
 
-inline fun botCommand(botCommand: BotCommand) = botCommand(botCommand.command)
+inline fun botCommandTextSource(botCommand: BotCommand) = botCommandTextSource(botCommand.command)

@@ -20,4 +20,4 @@ data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceCons
 
 inline fun strikethrough(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
 inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
-inline fun strikethrough(text: String) = strikethrough(regular(text))
+inline fun strikethrough(text: String) = strikethrough(regularTextSource(text))

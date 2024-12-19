@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see link
+ * @see linkTextSource
  */
 @Serializable
 data class TextLinkTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -17,4 +17,4 @@ data class TextLinkTextSource @RiskFeature(DirectInvocationOfTextSourceConstruct
     override val html: String by lazy { source.linkHTML(url) }
 }
 
-inline fun link(text: String, url: String) = TextLinkTextSource(text, url)
+inline fun linkTextSource(text: String, url: String) = TextLinkTextSource(text, url)
