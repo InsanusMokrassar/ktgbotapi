@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see italic
+ * @see italicTextSource
  */
 @Serializable
 data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,7 +18,7 @@ data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor
     override val html: String by lazy { italicHTML() }
 }
 
-inline fun italic(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
-inline fun italic(vararg parts: TextSource) = italic(parts.toList())
-inline fun italic(text: String) = italic(regular(text))
+inline fun italicTextSource(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
+inline fun italicTextSource(vararg parts: TextSource) = italicTextSource(parts.toList())
+inline fun italicTextSource(text: String) = italicTextSource(regularTextSource(text))
 

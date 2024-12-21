@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see mention
+ * @see mentionTextSource
  */
 @Serializable
 data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -22,21 +22,21 @@ data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val html: String by lazy { textMentionHTML(user.id) }
 }
 
-inline fun mention(parts: TextSourcesList, user: User) = TextMentionTextSource(parts.makeString(), user, parts)
-inline fun User.mention(parts: TextSourcesList) = mention(parts, this)
-inline fun mention(parts: TextSourcesList, userId: UserId) = mention(parts, CommonUser(userId, ""))
-inline fun UserId.mention(parts: TextSourcesList) = mention(parts, this)
-inline fun mention(parts: TextSourcesList, id: RawChatId) = mention(parts, UserId(id))
-inline fun RawChatId.mention(parts: TextSourcesList) = mention(parts, this)
-inline fun mention(user: User, vararg parts: TextSource) = mention(
+inline fun mentionTextSource(parts: TextSourcesList, user: User) = TextMentionTextSource(parts.makeString(), user, parts)
+inline fun User.mentionTextSource(parts: TextSourcesList) = mentionTextSource(parts, this)
+inline fun mentionTextSource(parts: TextSourcesList, userId: UserId) = mentionTextSource(parts, CommonUser(userId, ""))
+inline fun UserId.mentionTextSource(parts: TextSourcesList) = mentionTextSource(parts, this)
+inline fun mentionTextSource(parts: TextSourcesList, id: RawChatId) = mentionTextSource(parts, UserId(id))
+inline fun RawChatId.mentionTextSource(parts: TextSourcesList) = mentionTextSource(parts, this)
+inline fun mentionTextSource(user: User, vararg parts: TextSource) = mentionTextSource(
     textSourcesOrElseTextSource(parts.toList()) {
         RegularTextSource("${user.lastName} ${user.firstName}")
     },
     user
 )
-inline fun mention(text: String, user: User) = mention(user, regular(text))
-inline fun User.mention(text: String) = mention(this, regular(text))
-inline fun mention(text: String, userId: UserId) = mention(text, CommonUser(userId, ""))
-inline fun UserId.mention(text: String) = mention(text, this)
-inline fun mention(text: String, id: RawChatId) = mention(text, UserId(id))
-inline fun RawChatId.mention(text: String) = mention(text, this)
+inline fun mentionTextSource(text: String, user: User) = mentionTextSource(user, regularTextSource(text))
+inline fun User.mentionTextSource(text: String) = mentionTextSource(this, regularTextSource(text))
+inline fun mentionTextSource(text: String, userId: UserId) = mentionTextSource(text, CommonUser(userId, ""))
+inline fun UserId.mentionTextSource(text: String) = mentionTextSource(text, this)
+inline fun mentionTextSource(text: String, id: RawChatId) = mentionTextSource(text, UserId(id))
+inline fun RawChatId.mentionTextSource(text: String) = mentionTextSource(text, this)

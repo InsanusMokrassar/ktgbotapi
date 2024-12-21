@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 23.0.0
+
+* `Version`:
+  * `Coroutines`: `1.9.0` -> `1.10.1`
+  * `MicroUtils`: `0.23.2` -> `0.24.0`
+  * `KSLog`: `1.3.6` -> `1.4.0`
+  * `Ktor`: `3.0.2` -> `3.0.3`
+* `Core`:
+  * All old factory methods for `TextSource`s took suffix `TextSource`. For example: `regular` -> `regularTextSource`.
+  That has been for excluding names resolution ambiguity with extensions for `EntitiesBuilder`
+
 ## 22.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**

@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see regular
+ * @see regularTextSource
  */
 @Serializable
 data class RegularTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -16,6 +16,6 @@ data class RegularTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { source.regularHtml() }
 }
 
-inline fun regular(text: String) = RegularTextSource(text)
+inline fun regularTextSource(text: String) = RegularTextSource(text)
 
-inline fun regularln(text: String) = regular("$text\n")
+inline fun regularTextSourceLn(text: String) = regularTextSource("$text\n")

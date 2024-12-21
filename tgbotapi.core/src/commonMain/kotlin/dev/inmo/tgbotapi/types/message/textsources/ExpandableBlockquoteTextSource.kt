@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see expandableBlockquote
+ * @see expandableBlockquoteTextSource
  */
 @Serializable
 data class ExpandableBlockquoteTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,6 +18,6 @@ data class ExpandableBlockquoteTextSource @RiskFeature(DirectInvocationOfTextSou
     override val html: String by lazy { expandableBlockquoteHTML() }
 }
 
-inline fun expandableBlockquote(parts: TextSourcesList) = ExpandableBlockquoteTextSource(parts.makeString(), parts)
-inline fun expandableBlockquote(vararg parts: TextSource) = expandableBlockquote(parts.toList())
-inline fun expandableBlockquote(text: String) = expandableBlockquote(regular(text))
+inline fun expandableBlockquoteTextSource(parts: TextSourcesList) = ExpandableBlockquoteTextSource(parts.makeString(), parts)
+inline fun expandableBlockquoteTextSource(vararg parts: TextSource) = expandableBlockquoteTextSource(parts.toList())
+inline fun expandableBlockquoteTextSource(text: String) = expandableBlockquoteTextSource(regularTextSource(text))
