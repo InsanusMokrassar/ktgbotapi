@@ -550,18 +550,18 @@ inline fun EntitiesBuilder.regularln(text: String) = regular(text) + newLine
 
 
 /**
- * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethrough]
+ * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource]
  */
-inline fun EntitiesBuilder.strikethrough(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.strikethrough(parts))
+inline fun EntitiesBuilder.strikethrough(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(parts))
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end
  */
 inline fun EntitiesBuilder.strikethroughln(parts: TextSourcesList) = strikethrough(parts) + newLine
 /**
- * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethrough].
+ * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.message.textsources.strikethrough(
+inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(
     buildEntities(separator, init)
 ))
 /**
@@ -570,17 +570,17 @@ inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) = a
  */
 inline fun EntitiesBuilder.strikethroughln(noinline init: EntitiesBuilderBody) = strikethrough(init) + newLine
 /**
- * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethrough]
+ * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource]
  */
-inline fun EntitiesBuilder.strikethrough(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.strikethrough(*parts))
+inline fun EntitiesBuilder.strikethrough(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(*parts))
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end
  */
 inline fun EntitiesBuilder.strikethroughln(vararg parts: TextSource) = strikethrough(*parts) + newLine
 /**
- * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethrough]
+ * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource]
  */
-inline fun EntitiesBuilder.strikethrough(text: String) = add(dev.inmo.tgbotapi.types.message.textsources.strikethrough(text))
+inline fun EntitiesBuilder.strikethrough(text: String) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(text))
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end
  */

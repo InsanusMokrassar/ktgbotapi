@@ -42,7 +42,7 @@ class StringFormattingTests {
         val sources: TextSourcesList = regularTextSource("It (is?) ") +
             boldTextSource(italicTextSource("is") +
                 " " +
-                strikethrough(underlineTextSource("simple"))) +
+                strikethroughTextSource(underlineTextSource("simple"))) +
                 " " +
                 spoilerTextSource("hello world") +
                 " with " +

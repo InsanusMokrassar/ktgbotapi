@@ -22946,9 +22946,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/StrikethroughText
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSourceKt {
-	public static final fun strikethrough (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
-	public static final fun strikethrough (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
-	public static final fun strikethrough ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
