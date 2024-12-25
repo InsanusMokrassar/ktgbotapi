@@ -8110,24 +8110,24 @@ public final class dev/inmo/tgbotapi/types/BackgroundType$Companion : kotlinx/se
 
 public final class dev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType {
 	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Percentage;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Percentage;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Percentage;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Percentage;ZLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
-	public final fun component3-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun component3-wnFeB1k ()Ldev/inmo/micro_utils/common/Percentage;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
 	public final fun component5 ()Z
 	public final fun component6 ()Z
-	public final fun component7-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun component7-wnFeB1k ()Ldev/inmo/micro_utils/common/Percentage;
 	public final fun component8 ()Z
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-2M0JUcM (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
-	public static synthetic fun copy-2M0JUcM$default (Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
+	public final fun copy-GfAbPXE (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Percentage;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Percentage;ZLjava/lang/String;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
+	public static synthetic fun copy-GfAbPXE$default (Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Percentage;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Percentage;ZLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getDarkThemeDimming-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun getDarkThemeDimming-wnFeB1k ()Ldev/inmo/micro_utils/common/Percentage;
 	public final fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
 	public final fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
-	public final fun getIntensity-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun getIntensity-wnFeB1k ()Ldev/inmo/micro_utils/common/Percentage;
 	public final fun getThemeName ()Ljava/lang/String;
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -8153,7 +8153,7 @@ public final class dev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroun
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/BackgroundType$Dimmable : dev/inmo/tgbotapi/types/BackgroundType {
-	public abstract fun getDarkThemeDimming-3szG9qg ()D
+	public abstract fun getDarkThemeDimming-1Wau4v0 ()D
 }
 
 public final class dev/inmo/tgbotapi/types/BackgroundType$Fill : dev/inmo/tgbotapi/types/BackgroundType$Dimmable, dev/inmo/tgbotapi/types/BackgroundType$Fillable {
@@ -8161,11 +8161,11 @@ public final class dev/inmo/tgbotapi/types/BackgroundType$Fill : dev/inmo/tgbota
 	public static final field type Ljava/lang/String;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/BackgroundFill;DLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
-	public final fun component2-3szG9qg ()D
-	public final fun copy-Ki7qfkc (Ldev/inmo/tgbotapi/types/BackgroundFill;D)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
-	public static synthetic fun copy-Ki7qfkc$default (Ldev/inmo/tgbotapi/types/BackgroundType$Fill;Ldev/inmo/tgbotapi/types/BackgroundFill;DILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
+	public final fun component2-1Wau4v0 ()D
+	public final fun copy-hey4pQk (Ldev/inmo/tgbotapi/types/BackgroundFill;D)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
+	public static synthetic fun copy-hey4pQk$default (Ldev/inmo/tgbotapi/types/BackgroundType$Fill;Ldev/inmo/tgbotapi/types/BackgroundFill;DILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDarkThemeDimming-3szG9qg ()D
+	public fun getDarkThemeDimming-1Wau4v0 ()D
 	public fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -8202,15 +8202,15 @@ public final class dev/inmo/tgbotapi/types/BackgroundType$Pattern : dev/inmo/tgb
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
-	public final fun component3-3szG9qg ()D
+	public final fun component3-1Wau4v0 ()D
 	public final fun component4 ()Z
 	public final fun component5 ()Z
-	public final fun copy-b_JbxZk (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
-	public static synthetic fun copy-b_JbxZk$default (Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
+	public final fun copy-vfZnahQ (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
+	public static synthetic fun copy-vfZnahQ$default (Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
 	public fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
-	public final fun getIntensity-3szG9qg ()D
+	public final fun getIntensity-1Wau4v0 ()D
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public final fun isInverted ()Z
@@ -8268,13 +8268,13 @@ public final class dev/inmo/tgbotapi/types/BackgroundType$Wallpaper : dev/inmo/t
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
-	public final fun component2-3szG9qg ()D
+	public final fun component2-1Wau4v0 ()D
 	public final fun component3 ()Z
 	public final fun component4 ()Z
-	public final fun copy-VAT9Qd8 (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
-	public static synthetic fun copy-VAT9Qd8$default (Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
+	public final fun copy-WnQI0W0 (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
+	public static synthetic fun copy-WnQI0W0$default (Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDarkThemeDimming-3szG9qg ()D
+	public fun getDarkThemeDimming-1Wau4v0 ()D
 	public fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -22349,9 +22349,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSou
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSourceKt {
-	public static final fun blockquote (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
-	public static final fun blockquote (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
-	public static final fun blockquote ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
+	public static final fun blockquoteTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
+	public static final fun blockquoteTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
+	public static final fun blockquoteTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/BlockquoteTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BoldTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22388,9 +22388,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/BoldTextSource$Co
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BoldTextSourceKt {
-	public static final fun bold (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
-	public static final fun bold (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
-	public static final fun bold ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
+	public static final fun boldTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
+	public static final fun boldTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
+	public static final fun boldTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/BoldTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22428,8 +22428,8 @@ public final class dev/inmo/tgbotapi/types/message/textsources/BotCommandTextSou
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/BotCommandTextSourceKt {
-	public static final fun botCommand (Ldev/inmo/tgbotapi/types/BotCommand;)Ldev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource;
-	public static final fun botCommand (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource;
+	public static final fun botCommandTextSource (Ldev/inmo/tgbotapi/types/BotCommand;)Ldev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource;
+	public static final fun botCommandTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/BotCommandTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CashTagTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22467,9 +22467,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/CashTagTextSource
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CashTagTextSourceKt {
-	public static final fun cashTag (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
-	public static final fun cashTag (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
-	public static final fun cashTag ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
+	public static final fun cashTagTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
+	public static final fun cashTagTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
+	public static final fun cashTagTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CashTagTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CodeTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22504,7 +22504,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/CodeTextSource$Co
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CodeTextSourceKt {
-	public static final fun code (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
+	public static final fun codeTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22543,9 +22543,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSo
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSourceKt {
-	public static final fun customEmoji-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
-	public static final fun customEmoji-R1fjqgo (Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
-	public static final fun customEmoji-R1fjqgo (Ljava/lang/String;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
+	public static final fun customEmojiTextSource-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
+	public static final fun customEmojiTextSource-R1fjqgo (Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
+	public static final fun customEmojiTextSource-R1fjqgo (Ljava/lang/String;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/EMailTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22582,9 +22582,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/EMailTextSource$C
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/EMailTextSourceKt {
-	public static final fun email (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
-	public static final fun email (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
-	public static final fun email ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
+	public static final fun emailTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
+	public static final fun emailTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
+	public static final fun emailTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22621,9 +22621,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/ExpandableBlockqu
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSourceKt {
-	public static final fun expandableBlockquote (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
-	public static final fun expandableBlockquote (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
-	public static final fun expandableBlockquote ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
+	public static final fun expandableBlockquoteTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
+	public static final fun expandableBlockquoteTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
+	public static final fun expandableBlockquoteTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/HashTagTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22661,9 +22661,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/HashTagTextSource
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/HashTagTextSourceKt {
-	public static final fun hashtag (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
-	public static final fun hashtag (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
-	public static final fun hashtag ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
+	public static final fun hashtagTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
+	public static final fun hashtagTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
+	public static final fun hashtagTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/ItalicTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22700,9 +22700,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/ItalicTextSource$
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/ItalicTextSourceKt {
-	public static final fun italic (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
-	public static final fun italic (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
-	public static final fun italic ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
+	public static final fun italicTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
+	public static final fun italicTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
+	public static final fun italicTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/ItalicTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/MentionTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22740,10 +22740,10 @@ public final class dev/inmo/tgbotapi/types/message/textsources/MentionTextSource
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/MentionTextSourceKt {
-	public static final fun mention (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
-	public static final fun mention (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
-	public static final fun mention ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
-	public static final fun mention-hkcqQtM (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
+	public static final fun mentionTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
+	public static final fun mentionTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
+	public static final fun mentionTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
+	public static final fun mentionTextSource-hkcqQtM (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22793,9 +22793,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSo
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSourceKt {
-	public static final fun phone (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
-	public static final fun phone (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
-	public static final fun phone ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
+	public static final fun phoneTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
+	public static final fun phoneTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
+	public static final fun phoneTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/PhoneNumberTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/PreTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22833,8 +22833,8 @@ public final class dev/inmo/tgbotapi/types/message/textsources/PreTextSource$Com
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/PreTextSourceKt {
-	public static final fun pre (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/PreTextSource;
-	public static synthetic fun pre$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/textsources/PreTextSource;
+	public static final fun preTextSource (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/PreTextSource;
+	public static synthetic fun preTextSource$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/textsources/PreTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/RegularTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22869,8 +22869,8 @@ public final class dev/inmo/tgbotapi/types/message/textsources/RegularTextSource
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/RegularTextSourceKt {
-	public static final fun regular (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/RegularTextSource;
-	public static final fun regularln (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/RegularTextSource;
+	public static final fun regularTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/RegularTextSource;
+	public static final fun regularTextSourceLn (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/RegularTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22907,9 +22907,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/SpoilerTextSourceKt {
-	public static final fun spoiler (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
-	public static final fun spoiler (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
-	public static final fun spoiler ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
+	public static final fun spoilerTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
+	public static final fun spoilerTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
+	public static final fun spoilerTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/SpoilerTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -22946,9 +22946,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/StrikethroughText
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSourceKt {
-	public static final fun strikethrough (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
-	public static final fun strikethrough (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
-	public static final fun strikethrough ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
+	public static final fun strikethroughTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/StrikethroughTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -22985,7 +22985,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/TextLinkTextSourc
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextLinkTextSourceKt {
-	public static final fun link (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
+	public static final fun linkTextSource (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -23024,19 +23024,19 @@ public final class dev/inmo/tgbotapi/types/message/textsources/TextMentionTextSo
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextMentionTextSourceKt {
-	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ljava/util/List;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-WiG6Fm4 (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-WiG6Fm4 (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-tJfg6EE (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-tJfg6EE (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-tafjJLY (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-tafjJLY (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-zv9neSE (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention-zv9neSE (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource (Ldev/inmo/tgbotapi/types/chat/User;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource (Ldev/inmo/tgbotapi/types/chat/User;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource (Ljava/util/List;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-WiG6Fm4 (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-WiG6Fm4 (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-tJfg6EE (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-tJfg6EE (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-tafjJLY (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-tafjJLY (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-zv9neSE (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mentionTextSource-zv9neSE (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/textsources/TextSource {
@@ -23119,7 +23119,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/URLTextSource$Com
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/URLTextSourceKt {
-	public static final fun link (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/URLTextSource;
+	public static final fun linkTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/URLTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -23156,9 +23156,9 @@ public final class dev/inmo/tgbotapi/types/message/textsources/UnderlineTextSour
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/UnderlineTextSourceKt {
-	public static final fun underline (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
-	public static final fun underline (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
-	public static final fun underline ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
+	public static final fun underlineTextSource (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
+	public static final fun underlineTextSource (Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
+	public static final fun underlineTextSource ([Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/passport/FileHashesKt {
@@ -27563,10 +27563,10 @@ public final class dev/inmo/tgbotapi/utils/ExtractDataAndJsonFromDecoderKt {
 public final class dev/inmo/tgbotapi/utils/IntProgress100Serializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/IntProgress100Serializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize-PBVPzMA (Lkotlinx/serialization/encoding/Decoder;)D
+	public fun deserialize-prK6XWc (Lkotlinx/serialization/encoding/Decoder;)D
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize-Ki7qfkc (Lkotlinx/serialization/encoding/Encoder;D)V
+	public fun serialize-hey4pQk (Lkotlinx/serialization/encoding/Encoder;D)V
 }
 
 public final class dev/inmo/tgbotapi/utils/IntRGB24HEXAColorSerializer : kotlinx/serialization/KSerializer {

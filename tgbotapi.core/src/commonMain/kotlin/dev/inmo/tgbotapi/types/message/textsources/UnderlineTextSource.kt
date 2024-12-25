@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see underline
+ * @see underlineTextSource
  */
 @Serializable
 data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,6 +18,6 @@ data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstruc
     override val html: String by lazy { underlineHTML() }
 }
 
-inline fun underline(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
-inline fun underline(vararg parts: TextSource) = underline(parts.toList())
-inline fun underline(text: String) = underline(regular(text))
+inline fun underlineTextSource(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
+inline fun underlineTextSource(vararg parts: TextSource) = underlineTextSource(parts.toList())
+inline fun underlineTextSource(text: String) = underlineTextSource(regularTextSource(text))

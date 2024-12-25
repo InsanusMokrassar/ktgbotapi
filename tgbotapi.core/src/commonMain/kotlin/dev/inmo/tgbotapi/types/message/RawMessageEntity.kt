@@ -1,13 +1,10 @@
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.micro_utils.common.Warning
-import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
 @Warning("This thing is subject of changes. Library do not guarantee stability of this class")
@@ -102,7 +99,7 @@ internal fun List<Pair<Int, TextSource>>.fillWithRegulars(source: String): TextS
     for (i in indices) {
         val (offset, textSource) = get(i)
         if (offset - index > 0) {
-            result.add(regular(source.substring(index, offset)))
+            result.add(regularTextSource(source.substring(index, offset)))
             index = offset
         }
         result.add(textSource)
@@ -110,7 +107,7 @@ internal fun List<Pair<Int, TextSource>>.fillWithRegulars(source: String): TextS
     }
 
     if (index != source.length) {
-        result.add(regular(source.substring(index, source.length)))
+        result.add(regularTextSource(source.substring(index, source.length)))
     }
 
     return result

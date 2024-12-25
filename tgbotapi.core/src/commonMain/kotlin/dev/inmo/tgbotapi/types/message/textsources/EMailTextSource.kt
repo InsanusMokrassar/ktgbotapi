@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see email
+ * @see emailTextSource
  */
 @Serializable
 data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,6 +18,6 @@ data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor)
     override val html: String by lazy { emailHTML(source) }
 }
 
-inline fun email(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
-inline fun email(vararg parts: TextSource) = email(parts.toList())
-inline fun email(emailAddress: String) = email(regular(emailAddress))
+inline fun emailTextSource(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
+inline fun emailTextSource(vararg parts: TextSource) = emailTextSource(parts.toList())
+inline fun emailTextSource(emailAddress: String) = emailTextSource(regularTextSource(emailAddress))

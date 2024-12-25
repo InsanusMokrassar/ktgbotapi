@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see strikethrough
+ * @see strikethroughTextSource
  */
 @Serializable
 data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -18,6 +18,6 @@ data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceCons
     override val markdown: String by lazy { source.strikethroughMarkdown() }
 }
 
-inline fun strikethrough(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
-inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
-inline fun strikethrough(text: String) = strikethrough(regular(text))
+inline fun strikethroughTextSource(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
+inline fun strikethroughTextSource(vararg parts: TextSource) = strikethroughTextSource(parts.toList())
+inline fun strikethroughTextSource(text: String) = strikethroughTextSource(regularTextSource(text))

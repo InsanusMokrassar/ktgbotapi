@@ -39,24 +39,24 @@ class StringFormattingTests {
 
     @Test
     fun testThatCreatingOfStringWithSimpleDSLWorksCorrectly() {
-        val sources: TextSourcesList = regular("It (is?) ") +
-            bold(italic("is") +
+        val sources: TextSourcesList = regularTextSource("It (is?) ") +
+            boldTextSource(italicTextSource("is") +
                 " " +
-                strikethrough(underline("simple"))) +
+                strikethroughTextSource(underlineTextSource("simple"))) +
                 " " +
-                spoiler("hello world") +
+                spoilerTextSource("hello world") +
                 " with " +
-                hashtag("tag@sample") +
+                hashtagTextSource("tag@sample") +
                 " and " +
-                mention("mention") +
+                mentionTextSource("mention") +
                 ". Start of blockquote: " +
-                blockquote(
+                blockquoteTextSource(
                     "Block quotation started\n" +
                         "Block quotation continued\n" +
                         "The last line of the block quotation"
                 ) +
                 "\n. Start of expandable blockquote: " +
-                expandableBlockquote(
+                expandableBlockquoteTextSource(
                     "Block quotation started\n" +
                         "Block quotation continued\n" +
                         "The last line of the block quotation"

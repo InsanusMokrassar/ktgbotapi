@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
 /**
- * @see hashtag
+ * @see hashtagTextSource
  */
 @Serializable
 data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
@@ -33,9 +33,9 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-inline fun hashtag(parts: TextSourcesList) = (regular("#") + parts).let { HashTagTextSource(it.makeString(), it) }
-inline fun hashtag(vararg parts: TextSource) = hashtag(parts.toList())
+inline fun hashtagTextSource(parts: TextSourcesList) = (regularTextSource("#") + parts).let { HashTagTextSource(it.makeString(), it) }
+inline fun hashtagTextSource(vararg parts: TextSource) = hashtagTextSource(parts.toList())
 /**
  * Without sharp (#)
  */
-inline fun hashtag(hashtag: String) = hashtag(regular(hashtag))
+inline fun hashtagTextSource(hashtag: String) = hashtagTextSource(regularTextSource(hashtag))

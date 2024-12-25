@@ -26,7 +26,7 @@ operator fun TextSource.plus(other: TextSource) = when {
     this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
     else -> listOf(this, other)
 }
-operator fun TextSource.plus(text: String) = this + regular(text)
+operator fun TextSource.plus(text: String) = this + regularTextSource(text)
 operator fun List<TextSource>.plus(text: String): List<TextSource> {
     val newList = mutableListOf<TextSource>()
 
@@ -36,7 +36,7 @@ operator fun List<TextSource>.plus(text: String): List<TextSource> {
 
     val sublist = lastOrNull() ?.let {
         it + text
-    } ?: listOf(regular(text))
+    } ?: listOf(regularTextSource(text))
 
     newList.addAll(sublist)
 
