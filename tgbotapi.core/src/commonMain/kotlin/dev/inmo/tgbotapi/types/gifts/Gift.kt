@@ -15,6 +15,7 @@ sealed interface Gift {
     val sticker: Sticker
     val starCount: Int
     val totalCount: Int?
+    val upgradeStarCount: Int?
     val remainingCount: Int?
 
     @Serializable
@@ -24,7 +25,9 @@ sealed interface Gift {
         @SerialName(stickerField)
         override val sticker: Sticker,
         @SerialName(starCountField)
-        override val starCount: Int
+        override val starCount: Int,
+        @SerialName(upgradeStarCountField)
+        override val upgradeStarCount: Int? = null
     ) : Gift {
         override val totalCount: Int?
             get() = null
@@ -44,6 +47,8 @@ sealed interface Gift {
         override val totalCount: Int,
         @SerialName(remainingCountField)
         override val remainingCount: Int,
+        @SerialName(upgradeStarCountField)
+        override val upgradeStarCount: Int? = null,
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -54,6 +59,7 @@ sealed interface Gift {
             val star_count: Int,
             val total_count: Int? = null,
             val remaining_count: Int? = null,
+            val upgrade_star_count: Int? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -64,29 +70,33 @@ sealed interface Gift {
 
             return if (surrogate.total_count != null && surrogate.remaining_count != null) {
                 Limited(
-                    surrogate.id,
-                    surrogate.sticker,
-                    surrogate.star_count,
-                    surrogate.total_count,
-                    surrogate.remaining_count
+                    id = surrogate.id,
+                    sticker = surrogate.sticker,
+                    starCount = surrogate.star_count,
+                    totalCount = surrogate.total_count,
+                    remainingCount = surrogate.remaining_count,
+                    upgradeStarCount = surrogate.upgrade_star_count,
                 )
             } else {
                 Unlimited(
-                    surrogate.id,
-                    surrogate.sticker,
-                    surrogate.star_count,
+                    id = surrogate.id,
+                    sticker = surrogate.sticker,
+                    starCount = surrogate.star_count,
+                    upgradeStarCount = surrogate.upgrade_star_count,
                 )
             }
         }
 
         override fun serialize(encoder: Encoder, value: Gift) {
             val surrogate = GiftSurrogate(
-                value.id,
-                value.sticker,
-                value.starCount,
-                value.totalCount,
-                value.remainingCount
+                id = value.id,
+                sticker = value.sticker,
+                star_count = value.starCount,
+                total_count = value.totalCount,
+                remaining_count = value.remainingCount,
+                upgrade_star_count = value.upgradeStarCount
             )
+            GiftSurrogate.serializer().serialize(encoder, surrogate)
         }
     }
 }
