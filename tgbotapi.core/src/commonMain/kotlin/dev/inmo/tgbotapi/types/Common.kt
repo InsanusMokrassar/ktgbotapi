@@ -655,6 +655,7 @@ const val wasRefundedField = "was_refunded"
 const val isManualField = "is_manual"
 const val starCountField = "star_count"
 const val upgradeStarCountField = "upgrade_star_count"
+const val payToUpgradeField = "pay_for_upgrade"
 const val paidMediaField = "paid_media"
 
 const val businessConnectionIdField = "business_connection_id"

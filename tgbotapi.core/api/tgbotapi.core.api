@@ -4674,15 +4674,18 @@ public final class dev/inmo/tgbotapi/requests/gifts/GetAvailableGifts : dev/inmo
 
 public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-OyCYJok ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun copy-LbrZz8c (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
-	public static synthetic fun copy-LbrZz8c$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public final fun component6 ()Z
+	public final fun copy-ekxNoiw (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun copy-ekxNoiw$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public final fun getGiftId-OyCYJok ()Ljava/lang/String;
@@ -4691,6 +4694,7 @@ public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
+	public final fun getUpgradableToUnique ()Z
 	public final fun getUserId-tHkBKVM ()J
 	public fun hashCode ()I
 	public fun method ()Ljava/lang/String;
@@ -9115,6 +9119,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field passportField Ljava/lang/String;
 	public static final field passportRegistrationField Ljava/lang/String;
 	public static final field payField Ljava/lang/String;
+	public static final field payToUpgradeField Ljava/lang/String;
 	public static final field payloadField Ljava/lang/String;
 	public static final field pendingJoinRequestCountField Ljava/lang/String;
 	public static final field pendingUpdateCountField Ljava/lang/String;
@@ -9276,6 +9281,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field unspecifiedField Ljava/lang/String;
 	public static final field untilDateField Ljava/lang/String;
 	public static final field updateIdField Ljava/lang/String;
+	public static final field upgradeStarCountField Ljava/lang/String;
 	public static final field urlField Ljava/lang/String;
 	public static final field useIndependentChatPermissionsField Ljava/lang/String;
 	public static final field userAdministratorRightsField Ljava/lang/String;
@@ -18345,6 +18351,7 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/Gift {
 	public abstract fun getStarCount ()I
 	public abstract fun getSticker ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public abstract fun getTotalCount ()Ljava/lang/Integer;
+	public abstract fun getUpgradeStarCount ()Ljava/lang/Integer;
 }
 
 public final class dev/inmo/tgbotapi/types/gifts/Gift$Companion : kotlinx/serialization/KSerializer {
@@ -18358,20 +18365,23 @@ public final class dev/inmo/tgbotapi/types/gifts/Gift$Companion : kotlinx/serial
 
 public final class dev/inmo/tgbotapi/types/gifts/Gift$Limited : dev/inmo/tgbotapi/types/gifts/Gift {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/Gift$Limited$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIILjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIILjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-OyCYJok ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public final fun component3 ()I
 	public final fun component4 ()I
 	public final fun component5 ()I
-	public final fun copy-dAh8QC0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;III)Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;
-	public static synthetic fun copy-dAh8QC0$default (Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIIILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;
+	public final fun component6 ()Ljava/lang/Integer;
+	public final fun copy-RpW899k (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIILjava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;
+	public static synthetic fun copy-RpW899k$default (Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IIILjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/Gift$Limited;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getId-OyCYJok ()Ljava/lang/String;
 	public fun getRemainingCount ()Ljava/lang/Integer;
 	public fun getStarCount ()I
 	public fun getSticker ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public fun getTotalCount ()Ljava/lang/Integer;
+	public fun getUpgradeStarCount ()Ljava/lang/Integer;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -18393,18 +18403,21 @@ public final class dev/inmo/tgbotapi/types/gifts/Gift$Limited$Companion {
 
 public final class dev/inmo/tgbotapi/types/gifts/Gift$Unlimited : dev/inmo/tgbotapi/types/gifts/Gift {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-OyCYJok ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public final fun component3 ()I
-	public final fun copy-IqAKj4o (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;I)Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;
-	public static synthetic fun copy-IqAKj4o$default (Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun copy-Pd50qfQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILjava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;
+	public static synthetic fun copy-Pd50qfQ$default (Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/Gift$Unlimited;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getId-OyCYJok ()Ljava/lang/String;
 	public fun getRemainingCount ()Ljava/lang/Integer;
 	public fun getStarCount ()I
 	public fun getSticker ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public fun getTotalCount ()Ljava/lang/Integer;
+	public fun getUpgradeStarCount ()Ljava/lang/Integer;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }

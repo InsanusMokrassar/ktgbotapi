@@ -28,6 +28,8 @@ data class SendGift internal constructor(
     override val parseMode: ParseMode?,
     @SerialName(textEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(payToUpgradeField)
+    val upgradableToUnique: Boolean
 ) : SimpleRequest<Boolean>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
@@ -46,12 +48,28 @@ data class SendGift internal constructor(
         userId: UserId,
         giftId: GiftId,
         text: String,
-        parseMode: ParseMode?
-    ) : this(userId, giftId, text, parseMode, null)
+        parseMode: ParseMode?,
+        upgradableToUnique: Boolean = false
+    ) : this(
+        userId = userId,
+        giftId = giftId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        upgradableToUnique = upgradableToUnique
+    )
 
     constructor(
         userId: UserId,
         giftId: GiftId,
         textSources: TextSourcesList,
-    ) : this(userId, giftId, textSources.makeSourceString(), null, textSources.toRawMessageEntities())
+        upgradableToUnique: Boolean = false,
+    ) : this(
+        userId = userId,
+        giftId = giftId,
+        text = textSources.makeSourceString(),
+        parseMode = null,
+        rawEntities = textSources.toRawMessageEntities(),
+        upgradableToUnique = upgradableToUnique
+    )
 }
