@@ -35,6 +35,7 @@ dev.inmo.tgbotapi.extensions.api.set
 dev.inmo.tgbotapi.extensions.api.stickers
 dev.inmo.tgbotapi.extensions.api.thumbs
 dev.inmo.tgbotapi.extensions.api.utils
+dev.inmo.tgbotapi.extensions.api.verifications
 dev.inmo.tgbotapi.extensions.api.webhook
 module:tgbotapi.behaviour_builder
 dev.inmo.tgbotapi.extensions.behaviour_builder
@@ -96,6 +97,7 @@ dev.inmo.tgbotapi.requests.send.polls
 dev.inmo.tgbotapi.requests.set
 dev.inmo.tgbotapi.requests.stickers
 dev.inmo.tgbotapi.requests.stickers.abstracts
+dev.inmo.tgbotapi.requests.verifications
 dev.inmo.tgbotapi.requests.webhook
 dev.inmo.tgbotapi.types
 dev.inmo.tgbotapi.types.InlineQueries
