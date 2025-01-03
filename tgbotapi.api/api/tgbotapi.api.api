@@ -2319,6 +2319,20 @@ public final class dev/inmo/tgbotapi/extensions/api/utils/UpdatesHandlingKt {
 	public static synthetic fun updateHandlerWithMediaGroupsAdaptation$default (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;JILjava/lang/Object;)Lkotlin/jvm/functions/Function2;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/verifications/VerifyChatKt {
+	public static final fun verifyChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun verifyChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun verifyChat$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun verifyChat$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/verifications/VerifyUserKt {
+	public static final fun verifyUser (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun verifyUser$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun verifyUser-nc95W0g (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun verifyUser-nc95W0g$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/webhook/DeleteWebhookKt {
 	public static final fun deleteWebhook (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
