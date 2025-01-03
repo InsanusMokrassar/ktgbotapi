@@ -9683,8 +9683,10 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultArticle$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getDescription ()Ljava/lang/String;
-	public final fun getHideUrl ()Ljava/lang/Boolean;
+	public final fun getHideUrl ()Z
 	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
