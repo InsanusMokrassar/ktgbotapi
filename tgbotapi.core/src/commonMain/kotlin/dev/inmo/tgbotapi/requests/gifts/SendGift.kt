@@ -29,7 +29,7 @@ data class SendGift internal constructor(
     @SerialName(textEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(payToUpgradeField)
-    val upgradableToUnique: Boolean
+    val upgradableToUnique: Boolean = false
 ) : SimpleRequest<Boolean>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
