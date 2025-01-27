@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 23.1.1
+
+* `Version`:
+  * `MicroUtils`: `0.24.0` -> `0.24.4`
+* `Core`:
+  * Replace `removeFirst` with `removeAt(0)` in `createTextSources`
+
 ## 23.1.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 8.2](https://core.telegram.org/bots/api-changelog#january-1-2025)**

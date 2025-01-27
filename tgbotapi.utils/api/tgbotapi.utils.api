@@ -2743,7 +2743,6 @@ public synthetic class dev/inmo/tgbotapi/extensions/utils/SlotMachineResult$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/SlotMachineResult;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/SlotMachineResult$Companion {
@@ -3024,7 +3023,6 @@ public synthetic class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Fours
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Foursquare$Companion {
@@ -3064,7 +3062,6 @@ public synthetic class dev/inmo/tgbotapi/extensions/utils/extensions/venue/Googl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/venue/GooglePlace$Companion {

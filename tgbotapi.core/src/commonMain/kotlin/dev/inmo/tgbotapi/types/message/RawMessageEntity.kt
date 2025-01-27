@@ -124,7 +124,7 @@ private fun createTextSources(
     val resultList = mutableListOf<Pair<Int, TextSource>>()
 
     while (mutableEntities.isNotEmpty()) {
-        var parent = mutableEntities.removeFirst()
+        var parent = mutableEntities.removeAt(0)
         val subentities = mutableListOf<RawMessageEntity>()
         val toAddCutted = mutableListOf<RawMessageEntity>()
         while (mutableEntities.isNotEmpty()) {
