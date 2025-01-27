@@ -4,6 +4,8 @@
 
 * `Version`:
   * `MicroUtils`: `0.24.0` -> `0.24.4`
+* `Core`:
+  * Replace `removeFirst` with `removeAt(0)` in `createTextSources`
 
 ## 23.1.0
 
