@@ -1,7 +1,7 @@
 [versions]
 
-kotlin = "2.1.0"
-kotlin-serialization = "1.7.3"
+kotlin = "2.1.10"
+kotlin-serialization = "1.8.0"
 kotlin-coroutines = "1.10.1"
 
 javax-activation = "1.1.1"
@@ -10,11 +10,11 @@ korlibs = "5.4.0"
 uuid = "0.8.4"
 ktor = "3.0.3"
 
-ksp = "2.1.0-1.0.29"
+ksp = "2.1.10-1.0.29"
 kotlin-poet = "1.18.1"
 
-microutils = "0.24.4"
-kslog = "1.4.0"
+microutils = "0.24.5"
+kslog = "1.4.1"
 
 versions = "0.51.0"
 

@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 23.1.2
+
+* `Version`:
+  * `Kotlin`: `2.1.0` -> `2.1.10`
+  * `Serialization`: `1.7.3` -> `1.8.0`
+  * `MicroUtils`: `0.24.4` -> `0.24.5`
+  * `KSLog`: `1.4.0` -> `1.4.1`
+
 ## 23.1.1
 
 * `Version`:
