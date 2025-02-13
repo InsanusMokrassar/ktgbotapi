@@ -4570,19 +4570,21 @@ public final class dev/inmo/tgbotapi/requests/gifts/GetAvailableGifts : dev/inmo
 
 public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-tHkBKVM ()J
-	public final fun component2-OyCYJok ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun component6 ()Z
-	public final fun copy-ekxNoiw (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
-	public static synthetic fun copy-ekxNoiw$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-_eYXl24 ()Ldev/inmo/tgbotapi/types/ChatId;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public final fun component3-OyCYJok ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun component7 ()Z
+	public final fun copy-xmxulwY (Ldev/inmo/tgbotapi/types/ChatId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun copy-xmxulwY$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift;Ldev/inmo/tgbotapi/types/ChatId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getEntities ()Ljava/util/List;
 	public final fun getGiftId-OyCYJok ()Ljava/lang/String;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -4591,7 +4593,7 @@ public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
 	public final fun getUpgradableToUnique ()Z
-	public final fun getUserId-tHkBKVM ()J
+	public final fun getUserId-_eYXl24 ()Ldev/inmo/tgbotapi/types/ChatId;
 	public fun hashCode ()I
 	public fun method ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -4609,6 +4611,14 @@ public synthetic class dev/inmo/tgbotapi/requests/gifts/SendGift$$serializer : k
 
 public final class dev/inmo/tgbotapi/requests/gifts/SendGift$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public final fun toChat-A6CMM0Q (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun toChat-A6CMM0Q$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public final fun toChat-MXj3T_8 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun toChat-MXj3T_8$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public final fun toUser-IEl38uo (JLjava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun toUser-IEl38uo$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;JLjava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public final fun toUser-LbrZz8c (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
+	public static synthetic fun toUser-LbrZz8c$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
 }
 
 public final class dev/inmo/tgbotapi/requests/inline/SavePreparedInlineMessage : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
