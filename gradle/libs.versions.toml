@@ -8,12 +8,12 @@ javax-activation = "1.1.1"
 
 korlibs = "5.4.0"
 uuid = "0.8.4"
-ktor = "3.0.3"
+ktor = "3.1.0"
 
 ksp = "2.1.10-1.0.29"
 kotlin-poet = "1.18.1"
 
-microutils = "0.24.5"
+microutils = "0.24.6"
 kslog = "1.4.1"
 
 versions = "0.51.0"
@@ -59,6 +59,8 @@ microutils-ktor-common = { module = "dev.inmo:micro_utils.ktor.common", version.
 microutils-fsm-common = { module = "dev.inmo:micro_utils.fsm.common", version.ref = "microutils" }
 microutils-ksp-sealed = { module = "dev.inmo:micro_utils.ksp.sealed", version.ref = "microutils" }
 microutils-ksp-sealed-generator = { module = "dev.inmo:micro_utils.ksp.sealed.generator", version.ref = "microutils" }
+microutils-ksp-variations = { module = "dev.inmo:micro_utils.ksp.variations", version.ref = "microutils" }
+microutils-ksp-variations-generator = { module = "dev.inmo:micro_utils.ksp.variations.generator", version.ref = "microutils" }
 
 kslog = { module = "dev.inmo:kslog", version.ref = "kslog" }
 
