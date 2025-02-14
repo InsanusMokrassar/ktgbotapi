@@ -8846,6 +8846,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field canRestrictMembersField Ljava/lang/String;
 	public static final field canSendAudiosField Ljava/lang/String;
 	public static final field canSendDocumentsField Ljava/lang/String;
+	public static final field canSendGiftsField Ljava/lang/String;
 	public static final field canSendMessagesField Ljava/lang/String;
 	public static final field canSendOtherMessagesField Ljava/lang/String;
 	public static final field canSendPaidMediaField Ljava/lang/String;
@@ -15028,8 +15029,8 @@ public final class dev/inmo/tgbotapi/types/chat/CommonUser$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/types/chat/Bot, dev/inmo/tgbotapi/types/chat/ExtendedChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedBot$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-f3WtEc0 ()I
 	public final fun component11-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
@@ -15037,6 +15038,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun component13-GbmMWyQ ()Ljava/lang/String;
 	public final fun component14 ()I
 	public final fun component15 ()Z
+	public final fun component16 ()Z
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4-san03mo ()Ljava/lang/String;
@@ -15045,14 +15047,15 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
-	public final fun copy-IItryQQ (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZ)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
-	public static synthetic fun copy-IItryQQ$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public final fun copy-NtAqVms (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZ)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public static synthetic fun copy-NtAqVms$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getCanConnectToBusiness ()Z
 	public final fun getCanJoinGroups ()Z
 	public final fun getCanReadAllGroupMessages ()Z
+	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getFirstName ()Ljava/lang/String;
 	public final fun getHasMainWebApp ()Z
@@ -15101,6 +15104,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChatImpl : dev/i
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getId-y8AA8dk ()Lkotlin/Pair;
@@ -15139,8 +15143,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedChannelChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component11 ()Z
@@ -15154,6 +15158,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl : dev/in
 	public final fun component19 ()Z
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component20 ()I
+	public final fun component21 ()Z
 	public final fun component3-san03mo ()Ljava/lang/String;
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
@@ -15161,13 +15166,14 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl : dev/in
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public final fun component9 ()Z
-	public final fun copy-nJ3zSvE (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZI)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;
-	public static synthetic fun copy-nJ3zSvE$default (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;
+	public final fun copy-tkF88cM (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZ)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;
+	public static synthetic fun copy-tkF88cM$default (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getActiveUsernames ()Ljava/util/List;
 	public fun getAvailableReactions ()Ljava/util/List;
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getCanSendPaidMedia ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getDescription ()Ljava/lang/String;
@@ -15207,6 +15213,7 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedChat : dev/
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedChat$Companion;
 	public abstract fun getAccentColorId-f3WtEc0 ()I
 	public abstract fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public abstract fun getCanReceiveGifts ()Z
 	public abstract fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public abstract fun getMaxReactionsCount ()I
 	public abstract fun getProfileAccentColorId-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
@@ -15260,8 +15267,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedForumChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component10-eaLzeK0 ()Ljava/lang/String;
 	public final fun component11 ()Ljava/lang/Long;
@@ -15285,19 +15292,21 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl : dev/inmo
 	public final fun component28-eaLzeK0 ()Ljava/lang/String;
 	public final fun component29 ()I
 	public final fun component3-san03mo ()Ljava/lang/String;
+	public final fun component30 ()Z
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy-828r2UA (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;I)Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;
-	public static synthetic fun copy-828r2UA$default (Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;
+	public final fun copy-reSXiMQ (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZ)Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;
+	public static synthetic fun copy-reSXiMQ$default (Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getActiveUsernames ()Ljava/util/List;
 	public fun getAvailableReactions ()Ljava/util/List;
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getCanSetStickerSet ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getCustomEmojiStickerSetName-eaLzeK0 ()Ljava/lang/String;
@@ -15352,8 +15361,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedGroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-GbmMWyQ ()Ljava/lang/String;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/TelegramDate;
@@ -15363,6 +15372,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl : dev/inmo
 	public final fun component15-GbmMWyQ ()Ljava/lang/String;
 	public final fun component16 ()Z
 	public final fun component17 ()I
+	public final fun component18 ()Z
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
@@ -15371,12 +15381,13 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl : dev/inmo
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public final fun component8 ()Z
 	public final fun component9 ()Ljava/util/List;
-	public final fun copy-qqB_u8A (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZI)Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;
-	public static synthetic fun copy-qqB_u8A$default (Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;
+	public final fun copy-S0sfXWc (JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZ)Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;
+	public static synthetic fun copy-S0sfXWc$default (Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;JLjava/lang/String;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZIZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getAvailableReactions ()Ljava/util/List;
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getDescription ()Ljava/lang/String;
 	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
@@ -15443,8 +15454,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$DefaultImpls
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl$Companion;
-	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-GbmMWyQ ()Ljava/lang/String;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/TelegramDate;
@@ -15459,6 +15470,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public final fun component20 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component21 ()I
+	public final fun component22 ()Z
 	public final fun component3-san03mo ()Ljava/lang/String;
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ljava/lang/String;
@@ -15466,8 +15478,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-kPGT6zE (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;I)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
-	public static synthetic fun copy-kPGT6zE$default (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
+	public final fun copy-5RSODus (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IZ)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
+	public static synthetic fun copy-5RSODus$default (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;IZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getActiveUsernames ()Ljava/util/List;
@@ -15478,6 +15490,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public fun getBusinessIntro ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
 	public fun getBusinessLocation ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
 	public fun getBusinessOpeningHours ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
+	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getFirstName ()Ljava/lang/String;
 	public fun getHasPrivateForwards ()Z
@@ -15539,8 +15552,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat$Companion
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-eaLzeK0 ()Ljava/lang/String;
 	public final fun component11 ()Ljava/lang/Long;
@@ -15564,19 +15577,21 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl : dev
 	public final fun component28-eaLzeK0 ()Ljava/lang/String;
 	public final fun component29 ()I
 	public final fun component3-san03mo ()Ljava/lang/String;
+	public final fun component30 ()Z
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy-rqcd4JA (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;I)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;
-	public static synthetic fun copy-rqcd4JA$default (Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;
+	public final fun copy-HPKNO20 (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZ)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;
+	public static synthetic fun copy-HPKNO20$default (Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;IZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getActiveUsernames ()Ljava/util/List;
 	public fun getAvailableReactions ()Ljava/util/List;
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getCanSetStickerSet ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getCustomEmojiStickerSetName-eaLzeK0 ()Ljava/lang/String;
@@ -15938,6 +15953,7 @@ public final class dev/inmo/tgbotapi/types/chat/UnknownExtendedChat : dev/inmo/t
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
 	public fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getMaxReactionsCount ()I
@@ -25085,6 +25101,27 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Aff
 }
 
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$AffiliateProgram$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat : dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat$Companion;
+	public static final field type Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/gifts/Gift;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/gifts/Gift;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/gifts/Gift;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/gifts/Gift;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public final fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

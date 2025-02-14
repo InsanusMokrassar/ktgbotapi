@@ -5340,6 +5340,15 @@ public inline fun <T>
     TransactionPartner.ifAffiliateProgram(block: (TransactionPartner.AffiliateProgram) -> T): T? =
     affiliateProgramOrNull() ?.let(block)
 
+public inline fun TransactionPartner.chatOrNull(): TransactionPartner.Chat? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun TransactionPartner.chatOrThrow(): TransactionPartner.Chat = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun <T> TransactionPartner.ifChat(block: (TransactionPartner.Chat) -> T): T? =
+    chatOrNull() ?.let(block)
+
 public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment
 
