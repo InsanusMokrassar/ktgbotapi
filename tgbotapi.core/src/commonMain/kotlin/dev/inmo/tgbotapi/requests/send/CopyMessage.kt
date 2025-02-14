@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
@@ -89,6 +90,7 @@ fun CopyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -103,6 +105,7 @@ fun CopyMessage(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -117,6 +120,7 @@ fun CopyMessage(
     entities: List<TextSource>,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -131,6 +135,7 @@ fun CopyMessage(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -156,6 +161,8 @@ data class CopyMessage internal constructor(
     override val showCaptionAboveMedia: Boolean = false,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @SerialName(videoStartTimestampField)
+    override val startTimestamp: Seconds? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -172,7 +179,8 @@ data class CopyMessage internal constructor(
     MessageAction,
     TextedOutput,
     ProtectContent,
-    OptionallyMessageThreadRequest {
+    OptionallyMessageThreadRequest,
+    WithCustomStartMediaData {
     override val chatId: ChatIdentifier
         get() = fromChatId
     override val textSources: List<TextSource>? by lazy {

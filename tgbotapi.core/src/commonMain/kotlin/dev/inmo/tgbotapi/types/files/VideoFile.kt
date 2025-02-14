@@ -24,13 +24,17 @@ data class VideoFile(
     override val duration: Long? = null,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
+    @SerialName(coverField)
+    override val cover: Photo? = null,
+    @SerialName(startTimestampField)
+    override val startTimestamp: Seconds? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
-) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
+) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, CoveredMediaFile, CustomStartMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
     MediaContentVariant, UsefulAsPaidMediaFile
 
 @Suppress("NOTHING_TO_INLINE")

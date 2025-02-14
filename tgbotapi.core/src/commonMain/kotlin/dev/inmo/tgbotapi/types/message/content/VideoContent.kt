@@ -38,6 +38,8 @@ data class VideoContent(
         entities = textSources,
         showCaptionAboveMedia = showCaptionAboveMedia,
         spoilered = spoilered,
+        cover = media.cover ?.fileId,
+        startTimestamp = media.startTimestamp,
         duration = media.duration,
         width = media.width,
         height = media.height,
