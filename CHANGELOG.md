@@ -2,6 +2,8 @@
 
 ## 23.2.0
 
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 8.3](https://core.telegram.org/bots/api-changelog#february-12-2025)**
+
 * `Version`:
   * `MicroUtils`: `0.24.5` -> `0.24.6`
   * `Ktor`: `3.0.3` -> `3.1.0`
