@@ -42,13 +42,16 @@ inline fun VideoFile.toTelegramMediaVideo(
     text: String? = null,
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
-    showCaptionAboveMedia: Boolean = false
+    showCaptionAboveMedia: Boolean = false,
+    startTimestamp: Seconds? = this.startTimestamp
 ) = TelegramMediaVideo(
     file = fileId,
     text = text,
     parseMode = parseMode,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -59,12 +62,15 @@ inline fun VideoFile.toTelegramMediaVideo(
 inline fun VideoFile.toTelegramMediaVideo(
     textSources: TextSourcesList,
     spoilered: Boolean = false,
-    showCaptionAboveMedia: Boolean = false
+    showCaptionAboveMedia: Boolean = false,
+    startTimestamp: Seconds? = this.startTimestamp
 ) = TelegramMediaVideo(
     file = fileId,
     entities = textSources,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -76,5 +82,7 @@ inline fun VideoFile.toTelegramPaidMediaVideo() = TelegramPaidMediaVideo(
     width = width,
     height = height,
     duration = duration,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     thumb = thumbnail ?.fileId
 )

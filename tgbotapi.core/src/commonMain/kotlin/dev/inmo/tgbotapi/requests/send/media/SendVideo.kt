@@ -53,7 +53,7 @@ fun SendVideo(
         chatId = chatId,
         video = video,
         thumbnail = thumbnail ?.fileId,
-        cover = cover ?.fileId,
+        cover = cover,
         startTimestamp = startTimestamp,
         text = text,
         parseMode = parseMode,
@@ -114,7 +114,7 @@ fun SendVideo(
         chatId = chatId,
         video = video,
         thumbnail = thumbnail ?.fileId,
-        cover = cover ?.fileId,
+        cover = cover,
         startTimestamp = startTimestamp,
         text = entities.makeString(),
         parseMode = null,
@@ -157,7 +157,7 @@ data class SendVideoData internal constructor(
     @SerialName(thumbnailField)
     override val thumbnail: String? = null,
     @SerialName(coverField)
-    override val cover: String? = null,
+    override val cover: InputFile? = null,
     @SerialName(startTimestampField)
     override val startTimestamp: Seconds? = null,
     @SerialName(captionField)

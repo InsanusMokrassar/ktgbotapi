@@ -59,6 +59,7 @@ data class VideoContent(
     override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(
         textSources = textSources,
         spoilered = spoilered,
-        showCaptionAboveMedia = showCaptionAboveMedia
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        startTimestamp = media.startTimestamp,
     )
 }

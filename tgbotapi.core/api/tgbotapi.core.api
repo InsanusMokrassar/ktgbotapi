@@ -5271,7 +5271,7 @@ public final class dev/inmo/tgbotapi/requests/send/SetMessageReactions$Companion
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/send/abstracts/CoveredSendMessageRequest : dev/inmo/tgbotapi/requests/send/abstracts/SendMessageRequest {
-	public abstract fun getCover ()Ljava/lang/String;
+	public abstract fun getCover ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/abstracts/CoveredSendMessageRequest$DefaultImpls {
@@ -6180,7 +6180,7 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendStickerKt {
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inmo/tgbotapi/abstracts/WithCustomStartMediaData, dev/inmo/tgbotapi/requests/send/abstracts/CoveredSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyWithSpoilerRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SizedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendVideoData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Z
 	public final fun component11 ()Ljava/lang/Long;
@@ -6197,19 +6197,19 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inm
 	public final fun component21 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public final fun component22 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component5 ()Ljava/lang/Integer;
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component9 ()Z
-	public final fun copy-2N3v4LM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
-	public static synthetic fun copy-2N3v4LM$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
+	public final fun copy-2N3v4LM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
+	public static synthetic fun copy-2N3v4LM$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public fun getCover ()Ljava/lang/String;
+	public fun getCover ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getDisableNotification ()Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
@@ -18019,10 +18019,10 @@ public final class dev/inmo/tgbotapi/types/files/VideoFile$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/files/VideoFileKt {
-	public static final fun toTelegramMediaVideo (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZ)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static final fun toTelegramMediaVideo (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/util/List;ZZ)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static synthetic fun toTelegramMediaVideo$default (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static synthetic fun toTelegramMediaVideo$default (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/util/List;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static final fun toTelegramMediaVideo (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static final fun toTelegramMediaVideo (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/util/List;ZZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static synthetic fun toTelegramMediaVideo$default (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static synthetic fun toTelegramMediaVideo$default (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/util/List;ZZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
 	public static final fun toTelegramPaidMediaVideo (Ldev/inmo/tgbotapi/types/files/VideoFile;)Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaVideo;
 }
 
@@ -18993,10 +18993,10 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideo$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideoKt {
-	public static final fun TelegramMediaVideo (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static final fun TelegramMediaVideo (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static final fun TelegramMediaVideo (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static final fun TelegramMediaVideo (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/media/TelegramPaidMedia : dev/inmo/tgbotapi/types/media/TelegramMedia {
