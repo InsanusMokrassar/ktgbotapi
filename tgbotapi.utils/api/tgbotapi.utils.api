@@ -1267,6 +1267,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun contentOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
 	public static final fun copyTextButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun copyTextButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun coveredMediaFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CoveredMediaFile;
+	public static final fun coveredMediaFileOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CoveredMediaFile;
+	public static final fun coveredTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/CoveredTelegramMedia;
+	public static final fun coveredTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/CoveredTelegramMedia;
 	public static final fun createInvoiceLinkOrNull (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createInvoiceLinkOrThrow (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createdOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
@@ -1582,6 +1586,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifContent (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCopyTextButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCoveredMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCoveredTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreateInvoiceLink (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreated (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCubeDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2007,6 +2013,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifWebApp (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWebAppData (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWebAppInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWithCustomStartTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithCustomizableCaptionInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithCustomizableCaptionTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithCustomizedCaptionMediaContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2655,6 +2662,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun webAppInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
 	public static final fun webAppOrNull (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$WebApp;
 	public static final fun webAppOrThrow (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$WebApp;
+	public static final fun withCustomStartTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia;
+	public static final fun withCustomStartTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia;
 	public static final fun withCustomizableCaptionInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithCustomizableCaptionInlineQueryResult;
 	public static final fun withCustomizableCaptionInlineQueryResultOrThrow (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithCustomizableCaptionInlineQueryResult;
 	public static final fun withCustomizableCaptionTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/WithCustomizableCaptionTelegramMedia;
