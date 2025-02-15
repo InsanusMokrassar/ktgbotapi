@@ -1,0 +1,307 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CoveredSendMessageRequest</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    ktgbotapi
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":tgbotapi.core:dokkaHtmlPartial/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filter=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    ktgbotapi
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="tgbotapi.core::dev.inmo.tgbotapi.requests.send.abstracts/CoveredSendMessageRequest///PointingToDeclaration//789214110">
+  <div class="breadcrumbs"><a href="../../index.html">tgbotapi.core</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.requests.send.abstracts</a><span class="delimiter">/</span><span class="current">CoveredSendMessageRequest</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Covered</span><wbr><span>Send</span><wbr><span>Message</span><wbr><span><span>Request</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">CoveredSendMessageRequest</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span> : <a href="../-send-message-request/index.html">SendMessageRequest</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../dev.inmo.tgbotapi.requests.send.media/-send-video-data/index.html">SendVideoData</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1769665275%2FProperties%2F789214110" anchor-label="allowPaidBroadcast" id="1769665275%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-allow-paid-broadcast/allow-paid-broadcast.html"><span>allow</span><wbr><span>Paid</span><wbr><span><span>Broadcast</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1769665275%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-allow-paid-broadcast/allow-paid-broadcast.html">allowPaidBroadcast</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1341415612%2FProperties%2F789214110" anchor-label="allowSendingWithoutReply" id="1341415612%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/allow-sending-without-reply.html"><span>allow</span><wbr><span>Sending</span><wbr><span>Without</span><wbr><span><span>Reply</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1341415612%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/allow-sending-without-reply.html">allowSendingWithoutReply</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="169265253%2FProperties%2F789214110" anchor-label="chatId" id="169265253%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-chat-request/chat-id.html"><span>chat</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="169265253%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-chat-request/chat-id.html">chatId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-chat-identifier/index.html">ChatIdentifier</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1821351773%2FProperties%2F789214110" anchor-label="cover" id="-1821351773%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cover.html"><span><span>cover</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1821351773%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="cover.html">cover</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-input-file/index.html">InputFile</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1391334445%2FProperties%2F789214110" anchor-label="disableNotification" id="-1391334445%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-disable-notification/disable-notification.html"><span>disable</span><wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1391334445%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-disable-notification/disable-notification.html">disableNotification</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1498635835%2FProperties%2F789214110" anchor-label="protectContent" id="1498635835%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-protect-content/protect-content.html"><span>protect</span><wbr><span><span>Content</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1498635835%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-protect-content/protect-content.html">protectContent</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="806894199%2FProperties%2F789214110" anchor-label="replyParameters" id="806894199%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/reply-parameters.html"><span>reply</span><wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806894199%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/reply-parameters.html">replyParameters</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-reply-parameters/index.html">ReplyParameters</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1594969742%2FProperties%2F789214110" anchor-label="replyToMessageId" id="-1594969742%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/reply-to-message-id.html"><span>reply</span><wbr><span>To</span><wbr><span>Message</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594969742%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-parameters/reply-to-message-id.html">replyToMessageId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1704558364%2FProperties%2F789214110" anchor-label="requestSerializer" id="1704558364%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.requests.abstracts/-simple-request/request-serializer.html"><span>request</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1704558364%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-simple-request/request-serializer.html">requestSerializer</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/SerializationStrategy///PointingToDeclaration/">SerializationStrategy</span><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-968551681%2FProperties%2F789214110" anchor-label="resultDeserializer" id="-968551681%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/result-deserializer.html"><span>result</span><wbr><span><span>Deserializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-968551681%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/result-deserializer.html">resultDeserializer</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/DeserializationStrategy///PointingToDeclaration/">DeserializationStrategy</span><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-735203480%2FProperties%2F789214110" anchor-label="threadId" id="-735203480%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-optionally-message-thread-request/thread-id.html"><span>thread</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-735203480%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-optionally-message-thread-request/thread-id.html">threadId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-message-thread-id/index.html">MessageThreadId</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-545552434%2FFunctions%2F789214110" anchor-label="method" id="-545552434%2FFunctions%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/method.html"><span><span>method</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-545552434%2FFunctions%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/method.html"><span class="token function">method</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
