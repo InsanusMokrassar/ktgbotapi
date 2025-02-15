@@ -45,6 +45,6 @@ data class VideoNoteContent(
         width = media.width,
         height = media.height,
         duration = media.duration,
-        thumb = media.thumbnail ?.fileId
+        thumb = media.thumbnail ?.fileId,
     )
 }

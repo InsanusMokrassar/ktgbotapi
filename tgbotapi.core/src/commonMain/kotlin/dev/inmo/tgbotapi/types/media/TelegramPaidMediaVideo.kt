@@ -18,7 +18,16 @@ data class TelegramPaidMediaVideo (
     override val duration: Long? = null,
     @SerialName(supportsStreamingField)
     val supportsStreaming: Boolean = false,
-) : VisualTelegramPaidMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia {
+    @SerialName(coverField)
+    override val cover: InputFile? = null,
+    @SerialName(startTimestampField)
+    override val startTimestamp: Seconds? = null,
+) : VisualTelegramPaidMedia,
+    SizedTelegramMedia,
+    DuratedTelegramMedia,
+    ThumbedTelegramMedia,
+    CoveredTelegramMedia,
+    WithCustomStartTelegramMedia {
     override val type: String = videoTelegramPaidMediaType
 
     @SerialName(mediaField)
@@ -31,7 +40,9 @@ fun VideoFile.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = TelegramPaidM
     thumb = thumbnail ?.fileId,
     width = width,
     height = height,
-    duration = duration
+    duration = duration,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
 )
 
 fun PaidMedia.Video.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = video.toTelegramPaidMediaVideo()

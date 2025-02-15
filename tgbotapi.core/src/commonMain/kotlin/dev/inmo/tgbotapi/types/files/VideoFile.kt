@@ -24,13 +24,17 @@ data class VideoFile(
     override val duration: Long? = null,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
+    @SerialName(coverField)
+    override val cover: Photo? = null,
+    @SerialName(startTimestampField)
+    override val startTimestamp: Seconds? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
-) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
+) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, CoveredMediaFile, CustomStartMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
     MediaContentVariant, UsefulAsPaidMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
@@ -38,13 +42,16 @@ inline fun VideoFile.toTelegramMediaVideo(
     text: String? = null,
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
-    showCaptionAboveMedia: Boolean = false
+    showCaptionAboveMedia: Boolean = false,
+    startTimestamp: Seconds? = this.startTimestamp
 ) = TelegramMediaVideo(
     file = fileId,
     text = text,
     parseMode = parseMode,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -55,12 +62,15 @@ inline fun VideoFile.toTelegramMediaVideo(
 inline fun VideoFile.toTelegramMediaVideo(
     textSources: TextSourcesList,
     spoilered: Boolean = false,
-    showCaptionAboveMedia: Boolean = false
+    showCaptionAboveMedia: Boolean = false,
+    startTimestamp: Seconds? = this.startTimestamp
 ) = TelegramMediaVideo(
     file = fileId,
     entities = textSources,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -72,5 +82,7 @@ inline fun VideoFile.toTelegramPaidMediaVideo() = TelegramPaidMediaVideo(
     width = width,
     height = height,
     duration = duration,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
     thumb = thumbnail ?.fileId
 )

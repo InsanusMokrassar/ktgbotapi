@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
@@ -29,6 +30,8 @@ fun SendVideo(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -44,11 +47,14 @@ fun SendVideo(
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
+    val coverAsFile = cover as? MultipartFile
 
     val data = SendVideoData(
         chatId = chatId,
         video = video,
         thumbnail = thumbnail ?.fileId,
+        cover = cover,
+        startTimestamp = startTimestamp,
         text = text,
         parseMode = parseMode,
         rawEntities = null,
@@ -68,12 +74,12 @@ fun SendVideo(
         replyMarkup = replyMarkup
     )
 
-    return if (videoAsFile == null && thumbAsFile == null) {
+    return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(videoAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -85,6 +91,8 @@ fun SendVideo(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -100,11 +108,14 @@ fun SendVideo(
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
+    val coverAsFile = cover as? MultipartFile
 
     val data = SendVideoData(
         chatId = chatId,
         video = video,
         thumbnail = thumbnail ?.fileId,
+        cover = cover,
+        startTimestamp = startTimestamp,
         text = entities.makeString(),
         parseMode = null,
         rawEntities = entities.toRawMessageEntities(),
@@ -124,12 +135,12 @@ fun SendVideo(
         replyMarkup = replyMarkup
     )
 
-    return if (videoAsFile == null && thumbAsFile == null) {
+    return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(videoAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -145,6 +156,10 @@ data class SendVideoData internal constructor(
     val video: InputFile,
     @SerialName(thumbnailField)
     override val thumbnail: String? = null,
+    @SerialName(coverField)
+    override val cover: InputFile? = null,
+    @SerialName(startTimestampField)
+    override val startTimestamp: Seconds? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -187,6 +202,8 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>,
     WithCustomizableCaptionRequest<ContentMessage<VideoContent>>,
+    CoveredSendMessageRequest<ContentMessage<VideoContent>>,
+    WithCustomStartMediaData,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {

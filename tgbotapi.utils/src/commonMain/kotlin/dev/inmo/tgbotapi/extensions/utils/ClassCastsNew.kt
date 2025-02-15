@@ -183,6 +183,7 @@ import dev.inmo.tgbotapi.types.dice.SlotMachineDiceAnimationType
 import dev.inmo.tgbotapi.types.files.AnimatedSticker
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.CoveredMediaFile
 import dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
 import dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
 import dev.inmo.tgbotapi.types.files.CustomEmojiSticker
@@ -220,6 +221,7 @@ import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
@@ -239,6 +241,7 @@ import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualTelegramPaidMedia
+import dev.inmo.tgbotapi.types.media.WithCustomStartTelegramMedia
 import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
@@ -2764,6 +2767,15 @@ public inline fun TelegramMediaFile.audioFileOrThrow(): AudioFile = this as
 public inline fun <T> TelegramMediaFile.ifAudioFile(block: (AudioFile) -> T): T? = audioFileOrNull()
     ?.let(block)
 
+public inline fun TelegramMediaFile.coveredMediaFileOrNull(): CoveredMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.CoveredMediaFile
+
+public inline fun TelegramMediaFile.coveredMediaFileOrThrow(): CoveredMediaFile = this as
+    dev.inmo.tgbotapi.types.files.CoveredMediaFile
+
+public inline fun <T> TelegramMediaFile.ifCoveredMediaFile(block: (CoveredMediaFile) -> T): T? =
+    coveredMediaFileOrNull() ?.let(block)
+
 public inline fun TelegramMediaFile.documentFileOrNull(): DocumentFile? = this as?
     dev.inmo.tgbotapi.types.files.DocumentFile
 
@@ -3064,6 +3076,15 @@ public inline fun Location.liveLocationOrThrow(): LiveLocation = this as
 public inline fun <T> Location.ifLiveLocation(block: (LiveLocation) -> T): T? = liveLocationOrNull()
     ?.let(block)
 
+public inline fun TelegramMedia.coveredTelegramMediaOrNull(): CoveredTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
+
+public inline fun TelegramMedia.coveredTelegramMediaOrThrow(): CoveredTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
+
+public inline fun <T> TelegramMedia.ifCoveredTelegramMedia(block: (CoveredTelegramMedia) -> T): T? =
+    coveredTelegramMediaOrNull() ?.let(block)
+
 public inline fun TelegramMedia.duratedTelegramMediaOrNull(): DuratedTelegramMedia? = this as?
     dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 
@@ -3248,6 +3269,16 @@ public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedi
 
 public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
     titledTelegramMediaOrNull() ?.let(block)
+
+public inline fun TelegramMedia.withCustomStartTelegramMediaOrNull(): WithCustomStartTelegramMedia?
+    = this as? dev.inmo.tgbotapi.types.media.WithCustomStartTelegramMedia
+
+public inline fun TelegramMedia.withCustomStartTelegramMediaOrThrow(): WithCustomStartTelegramMedia
+    = this as dev.inmo.tgbotapi.types.media.WithCustomStartTelegramMedia
+
+public inline fun <T>
+    TelegramMedia.ifWithCustomStartTelegramMedia(block: (WithCustomStartTelegramMedia) -> T): T? =
+    withCustomStartTelegramMediaOrNull() ?.let(block)
 
 public inline fun TelegramMedia.withCustomizableCaptionTelegramMediaOrNull():
     WithCustomizableCaptionTelegramMedia? = this as?
@@ -5339,6 +5370,15 @@ public inline fun TransactionPartner.affiliateProgramOrThrow(): TransactionPartn
 public inline fun <T>
     TransactionPartner.ifAffiliateProgram(block: (TransactionPartner.AffiliateProgram) -> T): T? =
     affiliateProgramOrNull() ?.let(block)
+
+public inline fun TransactionPartner.chatOrNull(): TransactionPartner.Chat? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun TransactionPartner.chatOrThrow(): TransactionPartner.Chat = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun <T> TransactionPartner.ifChat(block: (TransactionPartner.Chat) -> T): T? =
+    chatOrNull() ?.let(block)
 
 public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment

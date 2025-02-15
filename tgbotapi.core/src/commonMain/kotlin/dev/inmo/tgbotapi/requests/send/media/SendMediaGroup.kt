@@ -51,6 +51,11 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
                 it.thumb as? MultipartFile
             } else {
                 null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
+            } else {
+                null
             }
         )
     }

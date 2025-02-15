@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -61,6 +62,11 @@ fun SendPaidMedia(
             it.file as? MultipartFile,
             if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
+            } else {
+                null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
             } else {
                 null
             }
@@ -115,6 +121,11 @@ fun SendPaidMedia(
             it.file as? MultipartFile,
             if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
+            } else {
+                null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
             } else {
                 null
             }

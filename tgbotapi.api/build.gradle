@@ -2,6 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
+    id "com.google.devtools.ksp"
 }
 
 project.description = "API extensions with \"Telegram Bot API\"-like extensions for TelegramBot and RequestsExecutor"
@@ -14,6 +15,7 @@ kotlin {
         commonMain {
             dependencies {
                 api project(":tgbotapi.core")
+                api libs.microutils.ksp.variations
             }
         }
         configureEach {
@@ -22,3 +24,8 @@ kotlin {
     }
     explicitApi()
 }
+
+dependencies {
+    add("kspCommonMainMetadata", libs.microutils.ksp.variations.generator)
+}
+

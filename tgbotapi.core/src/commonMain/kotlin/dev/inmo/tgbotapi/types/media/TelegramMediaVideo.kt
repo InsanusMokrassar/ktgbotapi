@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types.media
 
+import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
+import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -20,6 +22,8 @@ fun TelegramMediaVideo(
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
@@ -31,6 +35,8 @@ fun TelegramMediaVideo(
     rawEntities = null,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -42,6 +48,8 @@ fun TelegramMediaVideo(
     entities: TextSourcesList,
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
@@ -53,6 +61,8 @@ fun TelegramMediaVideo(
     rawEntities = entities.toRawMessageEntities(),
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    cover = cover,
+    startTimestamp = startTimestamp,
     width = width,
     height = height,
     duration = duration,
@@ -70,13 +80,23 @@ data class TelegramMediaVideo internal constructor (
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(hasSpoilerField)
     override val spoilered: Boolean = false,
+    @SerialName(coverField)
+    override val cover: InputFile? = null,
+    @SerialName(startTimestampField)
+    override val startTimestamp: Seconds? = null,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : TelegramFreeMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualMediaGroupMemberTelegramMedia {
+) : TelegramFreeMedia,
+    SizedTelegramMedia,
+    DuratedTelegramMedia,
+    ThumbedTelegramMedia,
+    CoveredTelegramMedia,
+    WithCustomStartTelegramMedia,
+    VisualMediaGroupMemberTelegramMedia {
     override val type: String = videoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

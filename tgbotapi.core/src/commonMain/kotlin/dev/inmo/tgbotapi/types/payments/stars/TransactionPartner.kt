@@ -5,6 +5,8 @@ package dev.inmo.tgbotapi.types.payments.stars
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewBot
+import dev.inmo.tgbotapi.types.chat.PreviewChat
+import dev.inmo.tgbotapi.types.chat.PreviewPublicChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.gifts.Gift
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
@@ -68,6 +70,21 @@ sealed interface TransactionPartner {
         }
     }
 
+    @Serializable(TransactionPartner.Companion::class)
+    data class Chat(
+        @SerialName(chatField)
+        val chat: PreviewChat,
+        @SerialName(giftField)
+        val gift: Gift? = null
+    ) : TransactionPartner {
+        @EncodeDefault
+        override val type: String = Companion.type
+
+        companion object {
+            const val type: String = "chat"
+        }
+    }
+
     /**
      * Represents [TransactionPartnerTelegramApi](https://core.telegram.org/bots/api#transactionpartnertelegramapi)
      */
@@ -126,6 +143,7 @@ sealed interface TransactionPartner {
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
             val user: PreviewUser? = null,
+            val chat: PreviewChat? = null,
             val affiliate: AffiliateInfo? = null,
             val invoice_payload: InvoicePayload? = null,
             @Serializable(TimeSpanAsSecondsSerializer::class)
@@ -151,6 +169,10 @@ sealed interface TransactionPartner {
             return with(data) {
                 when (data.type) {
                     Other.type -> Other
+                    Chat.type -> Chat(
+                        chat ?: return unknown,
+                        gift
+                    )
                     User.type -> User(
                         user = user ?: return unknown,
                         affiliate = affiliate,
@@ -181,6 +203,11 @@ sealed interface TransactionPartner {
                 when (this) {
                     Other -> Surrogate(type = value.type)
                     Ads -> Surrogate(type = value.type)
+                    is Chat -> Surrogate(
+                        type = value.type,
+                        chat = chat,
+                        gift = gift
+                    )
                     is User -> Surrogate(
                         type = value.type,
                         user = user,
