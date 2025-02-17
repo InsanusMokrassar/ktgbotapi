@@ -2,6 +2,9 @@
 
 ## 23.2.1
 
+* `Core`:
+  * Fix of `year` field in `Birthdate`
+
 ## 23.2.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 8.3](https://core.telegram.org/bots/api-changelog#february-12-2025)**
