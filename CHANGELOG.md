@@ -4,6 +4,8 @@
 
 **THIS UPDATE CONTAINS BREAKING CHANGES IN `subcontextUpdatesFilter` WORK. TAKE CARE IN MIGRATION**
 
+* `Version`:
+  * `MicroUtils`: `0.24.6` -> `0.24.7`
 * `BehaviourBuilder`:
   * Fix of overall `subcontextUpdatesFilter` behaviour. In fact, this update will fix its affection on scenaries
 
