@@ -6,6 +6,8 @@
 
 * `Version`:
   * `MicroUtils`: `0.24.6` -> `0.24.7`
+* `Core`:
+  * `ForumContentMessage` got property `threadCreatingInfo` which represents information about topic where message has been sent
 * `BehaviourBuilder`:
   * Fix of overall `subcontextUpdatesFilter` behaviour. In fact, this update will fix its affection on scenaries
 
