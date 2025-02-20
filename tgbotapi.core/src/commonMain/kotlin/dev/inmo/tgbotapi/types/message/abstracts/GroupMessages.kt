@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
+import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<T> {
@@ -15,6 +17,9 @@ sealed interface PotentiallyFromUserGroupContentMessage<T : MessageContent> : Gr
 sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyTopicMessage {
     override val chat: PreviewForumChat
     override val threadId: MessageThreadId
+
+    override val threadCreatingInfo: ForumTopicCreated?
+        get() = (replyTo as? ChatEventMessage<*>) ?.chatEvent as? ForumTopicCreated
 }
 
 
