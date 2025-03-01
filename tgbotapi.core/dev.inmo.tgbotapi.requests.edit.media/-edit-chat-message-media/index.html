@@ -94,7 +94,7 @@
   <div class="breadcrumbs"><a href="../../index.html">tgbotapi.core</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.requests.edit.media</a><span class="delimiter">/</span><span class="current">EditChatMessageMedia</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Edit</span><wbr><span>Chat</span><wbr><span>Message</span><wbr><span><span>Media</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">EditChatMessageMedia</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>chatId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-chat-identifier/index.html">ChatIdentifier</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>messageId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>media<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.media/-telegram-free-media/index.html">TelegramFreeMedia</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>businessConnectionId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.business_connection/-business-connection-id/index.html">BusinessConnectionId</a><span class="token operator">?</span><span class="token operator"> = </span>chatId.businessConnectionId<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>replyMarkup<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html">InlineKeyboardMarkup</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-chat-message/index.html">EditChatMessage</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.content/-media-content/index.html">MediaContent</a><span class="token operator">&gt; </span>, <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-reply-message/index.html">EditReplyMessage</a>, <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-media-message/index.html">EditMediaMessage</a></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">EditChatMessageMedia</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>chatId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-chat-identifier/index.html">ChatIdentifier</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>messageId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>media<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.media/-telegram-free-media/index.html">TelegramFreeMedia</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>businessConnectionId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.business_connection/-business-connection-id/index.html">BusinessConnectionId</a><span class="token operator">?</span><span class="token operator"> = </span>chatId.businessConnectionId<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>replyMarkup<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html">InlineKeyboardMarkup</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-chat-message/index.html">EditChatMessage</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.content/-media-content/index.html">MediaContent</a><span class="token operator">&gt; </span>, <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-reply-message/index.html">EditReplyMessage</a>, <a href="../../dev.inmo.tgbotapi.requests.edit.abstracts/-edit-media-message/index.html">EditMediaMessage</a>, <a href="../../dev.inmo.tgbotapi.requests.abstracts/-multipart-request/-common/index.html">MultipartRequest.Common</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.abstracts/-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.content/-media-content/index.html">MediaContent</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
@@ -150,6 +150,21 @@
               </div>
             </div>
           </div>
+<a data-name="1627054978%2FProperties%2F789214110" anchor-label="data" id="1627054978%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="data.html"><span><span>data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1627054978%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="data.html">data</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-simple-request/index.html">SimpleRequest</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.abstracts/-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.message.content/-media-content/index.html">MediaContent</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1665041930%2FProperties%2F789214110" anchor-label="media" id="1665041930%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
@@ -165,6 +180,21 @@
               </div>
             </div>
           </div>
+<a data-name="2067493012%2FProperties%2F789214110" anchor-label="mediaMap" id="2067493012%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="media-map.html"><span>media</span><wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2067493012%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="media-map.html">mediaMap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-multipart-file/index.html">MultipartFile</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="868564908%2FProperties%2F789214110" anchor-label="messageId" id="868564908%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
@@ -176,6 +206,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"message_id"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="message-id.html">messageId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="537515208%2FProperties%2F789214110" anchor-label="paramsJson" id="537515208%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.requests.abstracts/-multipart-request/-common/params-json.html"><span>params</span><wbr><span><span>Json</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="537515208%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-multipart-request/-common/params-json.html">paramsJson</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonObject///PointingToDeclaration/">JsonObject</span></div></div></div>
                 </div>
               </div>
             </div>
