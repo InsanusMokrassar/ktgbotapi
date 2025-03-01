@@ -9,8 +9,23 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.forms.*
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
+import kotlinx.serialization.json.Json
 
 class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFactory(logger ?: DefaultKTgBotAPIKSLog) {
+    private val localSimpleRequestCallFactory = SimpleRequestCallFactory(logger)
+    override suspend fun <T : Any> makeCall(
+        client: HttpClient,
+        urlsKeeper: TelegramAPIUrlsKeeper,
+        request: Request<T>,
+        jsonFormatter: Json
+    ): T? {
+        return when (request) {
+            !is MultipartRequest -> null
+            is MultipartRequest.Common -> localSimpleRequestCallFactory.makeCall(client, urlsKeeper, request.data, jsonFormatter)
+            else -> super.makeCall(client, urlsKeeper, request, jsonFormatter)
+        }
+    }
+
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,

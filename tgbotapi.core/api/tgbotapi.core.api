@@ -432,6 +432,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/MultipartRequestCallFactory :
 	public fun <init> ()V
 	public fun <init> (Ldev/inmo/kslog/common/KSLog;)V
 	public synthetic fun <init> (Ldev/inmo/kslog/common/KSLog;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun makeCall (Lio/ktor/client/HttpClient;Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlinx/serialization/json/Json;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/base/MultipleClientKtorRequestsExecutor : dev/inmo/tgbotapi/bot/BaseRequestsExecutor {
@@ -3895,7 +3896,7 @@ public final class dev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessa
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/requests/edit/media/EditChatMessageMedia : dev/inmo/tgbotapi/requests/edit/abstracts/EditChatMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditMediaMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
+public final class dev/inmo/tgbotapi/requests/edit/media/EditChatMessageMedia : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/edit/abstracts/EditChatMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditMediaMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/media/EditChatMessageMedia$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -3909,8 +3910,11 @@ public final class dev/inmo/tgbotapi/requests/edit/media/EditChatMessageMedia : 
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public fun getData ()Ldev/inmo/tgbotapi/requests/abstracts/SimpleRequest;
 	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;
+	public fun getMediaMap ()Ljava/util/Map;
 	public fun getMessageId-APLFQys ()J
+	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;

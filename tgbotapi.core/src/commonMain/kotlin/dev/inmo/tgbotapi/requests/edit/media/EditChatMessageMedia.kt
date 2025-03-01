@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.requests.edit.media
 
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
+import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
+import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -27,13 +29,20 @@ data class EditChatMessageMedia(
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage {
-
-    init {
-        if (media.file is MultipartFile) {
-            throw IllegalArgumentException("For editing of media messages you MUST use file id (according to documentation)")
-        }
+) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage, MultipartRequest.Common<ContentMessage<MediaContent>> {
+    override val data: SimpleRequest<ContentMessage<MediaContent>>
+        get() = this
+    override val mediaMap: Map<String, MultipartFile> by lazy {
+        (media.file as? MultipartFile) ?.let {
+            mapOf(it.fileId to it)
+        } ?: emptyMap()
     }
+
+//    init {
+//        if (media.file is MultipartFile) {
+//            throw IllegalArgumentException("For editing of media messages you MUST use file id (according to documentation)")
+//        }
+//    }
 
     override fun method(): String = editMessageMediaMethod
     override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>

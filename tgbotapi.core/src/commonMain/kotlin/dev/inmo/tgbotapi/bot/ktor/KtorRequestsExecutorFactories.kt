@@ -12,8 +12,8 @@ import kotlinx.serialization.json.Json
 
 @RiskFeature
 fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) = listOf(
-    SimpleRequestCallFactory(logger),
     MultipartRequestCallFactory(logger),
+    SimpleRequestCallFactory(logger),
     DownloadFileRequestCallFactory,
     DownloadFileChannelRequestCallFactory
 )

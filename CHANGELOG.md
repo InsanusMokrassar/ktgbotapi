@@ -2,6 +2,9 @@
 
 ## 24.0.1
 
+* `Core`:
+  * Now you may upload photos with `EditChatMessageMedia`
+
 ## 24.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES IN `subcontextUpdatesFilter` WORK. TAKE CARE IN MIGRATION**
