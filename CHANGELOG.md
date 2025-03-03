@@ -2,6 +2,9 @@
 
 ## 24.0.2
 
+* `DefaultKTgBotAPIKSLog` will drop `CancellationException`s by default
+* You may configure `DefaultKTgBotAPIKSLog` in simple way with `SetDefaultKTgBotAPIKSLog`
+
 ## 24.0.1
 
 * `Core`:
