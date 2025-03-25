@@ -27147,6 +27147,8 @@ public final class dev/inmo/tgbotapi/utils/ByteReadChannelAllocatorDeserializati
 }
 
 public final class dev/inmo/tgbotapi/utils/DefaultKSLogKt {
+	public static final fun SetDefaultKTgBotAPIKSLog (ZLkotlin/jvm/functions/Function1;)V
+	public static synthetic fun SetDefaultKTgBotAPIKSLog$default (ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public static final fun getDefaultKTgBotAPIKSLog ()Ldev/inmo/kslog/common/KSLog;
 	public static final fun getDefaultKTgBotAPIKSLogSystemTag ()Ljava/lang/String;
 	public static final fun setDefaultKTgBotAPIKSLog (Ldev/inmo/kslog/common/KSLog;)V
