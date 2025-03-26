@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 24.0.2
+
+* `Version`:
+  * `Kotlin`: `2.1.10` -> `2.1.20`
+  * `Ktor`: `3.1.0` -> `3.1.1`
+  * `MicroUtils`: `0.24.7` -> `0.25.3`
+* `DefaultKTgBotAPIKSLog` will drop `CancellationException`s by default
+* You may configure `DefaultKTgBotAPIKSLog` in simple way with `SetDefaultKTgBotAPIKSLog`
+* `BehaviourBuilder`:
+  * `FSM`:
+    * Fix chains cancelling on their ends
+
 ## 24.0.1
 
 * `Core`:
