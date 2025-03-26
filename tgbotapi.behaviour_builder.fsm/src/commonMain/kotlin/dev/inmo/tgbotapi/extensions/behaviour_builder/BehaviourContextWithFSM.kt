@@ -144,10 +144,12 @@ class DefaultBehaviourContextWithFSM<T : State>(
             state.context
         ).apply {
             stateInitialAction(state)
-        }.launchStateHandling(
-            state,
-            actualHandlersList
-        )
+        }.run {
+            launchStateHandling(
+                state,
+                actualHandlersList
+            )
+        }
     }
 
     override fun <I : T> add(kClass: KClass<I>, strict: Boolean, handler: BehaviourWithFSMStateHandler<I, T>) {
@@ -188,7 +190,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
             statesJobsMutex.withLock {
                 runCatchingSafely { statesJobs.remove(it) ?.cancel() }
             }
-            updatesFlows.remove(it.context)
+            updatesFlows.remove(it.context) ?.cancel()
         }
         statesManager.onChainStateUpdated.subscribeSafelyWithoutExceptions(this) { (old, new) ->
             statesJobsMutex.withLock {
@@ -197,7 +199,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
                 statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(new) }
             }
             if (old.context != new.context) {
-                updatesFlows.remove(old.context)
+                updatesFlows.remove(old.context) ?.cancel()
             }
         }
 
