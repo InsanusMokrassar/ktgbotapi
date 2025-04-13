@@ -5,11 +5,11 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
-import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject

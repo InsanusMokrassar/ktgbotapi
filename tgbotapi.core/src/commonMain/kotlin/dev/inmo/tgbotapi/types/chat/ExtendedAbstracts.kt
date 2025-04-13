@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction

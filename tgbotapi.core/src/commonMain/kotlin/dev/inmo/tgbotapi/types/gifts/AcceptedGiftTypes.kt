@@ -1,5 +1,9 @@
-package dev.inmo.tgbotapi.types
+package dev.inmo.tgbotapi.types.gifts
 
+import dev.inmo.tgbotapi.types.limitedGiftsField
+import dev.inmo.tgbotapi.types.premiumSubscriptionField
+import dev.inmo.tgbotapi.types.uniqueGiftsField
+import dev.inmo.tgbotapi.types.unlimitedGiftsField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
