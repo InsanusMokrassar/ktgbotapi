@@ -666,6 +666,11 @@ const val upgradeStarCountField = "upgrade_star_count"
 const val payToUpgradeField = "pay_for_upgrade"
 const val paidMediaField = "paid_media"
 
+const val centerColorField = "center_color"
+const val edgeColorField = "edge_color"
+const val symbolColorField = "symbol_color"
+const val textColorField = "text_color"
+
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
