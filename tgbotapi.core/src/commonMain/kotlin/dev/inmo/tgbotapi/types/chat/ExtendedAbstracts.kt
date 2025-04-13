@@ -20,10 +20,7 @@ sealed interface ExtendedChat : Chat {
     val profileBackgroundCustomEmojiId: CustomEmojiId?
     val maxReactionsCount: Int
 
-    /**
-     * Represent `can_send_gifts` field
-     */
-    val canReceiveGifts: Boolean
+    val acceptedGiftTypes: AcceptedGiftTypes
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

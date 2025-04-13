@@ -58,8 +58,8 @@ data class ExtendedChannelChatImpl(
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : ExtendedChannelChat
 
 @Serializable
@@ -100,8 +100,8 @@ data class ExtendedGroupChatImpl(
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : ExtendedGroupChat
 
 @Serializable
@@ -150,8 +150,8 @@ data class ExtendedPrivateChatImpl(
     override val personalChat: PreviewChannelChat? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -218,8 +218,8 @@ data class ExtendedSupergroupChatImpl(
     override val customEmojiStickerSetName: StickerSetName? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -284,8 +284,8 @@ data class ExtendedForumChatImpl(
     override val customEmojiStickerSetName: StickerSetName? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : ExtendedForumChat
 
 @Serializable
@@ -320,8 +320,8 @@ data class ExtendedBot(
     override val maxReactionsCount: Int = 3,
     @SerialName(hasMainWebAppField)
     val hasMainWebApp: Boolean = false,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -351,6 +351,11 @@ data class UnknownExtendedChat(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(
+        unlimitedGifts = false,
+        limitedGifts = false,
+        uniqueGifts = false,
+        premiumSubscription = false
+    )
 }
