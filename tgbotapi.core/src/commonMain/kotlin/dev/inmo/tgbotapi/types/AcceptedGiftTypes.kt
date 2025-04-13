@@ -14,11 +14,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AcceptedGiftTypes(
     @SerialName(unlimitedGiftsField)
-    val unlimitedGifts: Boolean,
+    val unlimitedGifts: Boolean = true,
     @SerialName(limitedGiftsField)
-    val limitedGifts: Boolean,
+    val limitedGifts: Boolean = true,
     @SerialName(uniqueGiftsField)
-    val uniqueGifts: Boolean,
+    val uniqueGifts: Boolean = true,
     @SerialName(premiumSubscriptionField)
-    val premiumSubscription: Boolean
+    val premiumSubscription: Boolean = true
 )
