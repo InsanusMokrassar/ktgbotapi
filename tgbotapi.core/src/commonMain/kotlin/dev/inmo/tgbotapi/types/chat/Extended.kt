@@ -59,7 +59,7 @@ data class ExtendedChannelChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedChannelChat
 
 @Serializable
@@ -101,7 +101,7 @@ data class ExtendedGroupChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedGroupChat
 
 @Serializable
@@ -151,7 +151,7 @@ data class ExtendedPrivateChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -219,7 +219,7 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -285,7 +285,7 @@ data class ExtendedForumChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedForumChat
 
 @Serializable
@@ -321,7 +321,7 @@ data class ExtendedBot(
     @SerialName(hasMainWebAppField)
     val hasMainWebApp: Boolean = false,
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes,
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -352,10 +352,5 @@ data class UnknownExtendedChat(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3
     @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(
-        unlimitedGifts = false,
-        limitedGifts = false,
-        uniqueGifts = false,
-        premiumSubscription = false
-    )
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes()
 }
