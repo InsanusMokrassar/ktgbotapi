@@ -677,6 +677,11 @@ const val modelField = "model"
 const val symbolField = "symbol"
 const val backdropField = "backdrop"
 
+const val unlimitedGiftsField = "unlimited_gifts"
+const val limitedGiftsField = "limited_gifts"
+const val uniqueGiftsField = "unique_gifts"
+const val premiumSubscriptionField = "premium_subscription"
+
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
