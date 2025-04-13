@@ -671,6 +671,12 @@ const val edgeColorField = "edge_color"
 const val symbolColorField = "symbol_color"
 const val textColorField = "text_color"
 
+const val baseNameField = "base_name"
+const val numberField = "number"
+const val modelField = "model"
+const val symbolField = "symbol"
+const val backdropField = "backdrop"
+
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
