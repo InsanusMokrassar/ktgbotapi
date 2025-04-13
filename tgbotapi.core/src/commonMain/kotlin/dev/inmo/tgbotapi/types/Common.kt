@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 
+
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
@@ -494,6 +495,7 @@ const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
 const val giftField = "gift"
 const val giftsField = "gifts"
+const val rarityPerMilleField = "rarity_per_mille"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
