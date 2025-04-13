@@ -21,6 +21,8 @@ data class ExtendedChannelChatImpl(
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(activeUsernamesField)
@@ -57,9 +59,7 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
-    override val maxReactionsCount: Int = 3,
-    @SerialName(acceptedGiftTypesField)
-    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    override val maxReactionsCount: Int = 3
 ) : ExtendedChannelChat
 
 @Serializable
