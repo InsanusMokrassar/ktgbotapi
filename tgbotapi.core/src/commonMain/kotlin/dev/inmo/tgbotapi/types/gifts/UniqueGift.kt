@@ -1,5 +1,6 @@
-package dev.inmo.tgbotapi.types
+package dev.inmo.tgbotapi.types.gifts
 
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

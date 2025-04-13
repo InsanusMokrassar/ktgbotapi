@@ -1,5 +1,9 @@
-package dev.inmo.tgbotapi.types
+package dev.inmo.tgbotapi.types.gifts
 
+import dev.inmo.tgbotapi.types.centerColorField
+import dev.inmo.tgbotapi.types.edgeColorField
+import dev.inmo.tgbotapi.types.symbolColorField
+import dev.inmo.tgbotapi.types.textColorField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
