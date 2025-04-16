@@ -19,6 +19,7 @@ typealias GooglePlaceType = String
 typealias MembersLimit = Int
 
 typealias Seconds = Int
+typealias DoubleSeconds = Double
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
 typealias UnixTimeStamp = LongSeconds
@@ -505,6 +506,7 @@ const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+const val isPublicField = "is_public"
 const val giftField = "gift"
 const val giftsField = "gifts"
 
@@ -599,6 +601,8 @@ const val animationField = "animation"
 const val voiceField = "voice"
 const val videoNoteField = "video_note"
 const val mediaField = "media"
+
+const val mainFrameTimestampField = "main_frame_timestamp"
 
 const val disableEditMessageField = "disable_edit_message"
 const val scoreField = "score"
