@@ -48,6 +48,8 @@ sealed interface TransactionPartner {
     data class User(
         @SerialName(userField)
         val user: PreviewUser,
+        @SerialName(transactionTypeField)
+        val transactionType: String,
         @SerialName(affiliateField)
         val affiliate: AffiliateInfo? = null,
         @SerialName(invoicePayloadField)
@@ -63,8 +65,6 @@ sealed interface TransactionPartner {
         val gift: Gift? = null,
         @SerialName(premiumSubscriptionDurationField)
         val premiumSubscriptionDuration: Int? = null,
-        @SerialName(transactionTypeField)
-        val transactionType: String,
     ) : TransactionPartner, SubscriptionPeriodInfo {
         @EncodeDefault
         override val type: String = Companion.type
