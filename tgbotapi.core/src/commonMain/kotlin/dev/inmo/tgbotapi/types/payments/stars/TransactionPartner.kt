@@ -60,7 +60,9 @@ sealed interface TransactionPartner {
         @SerialName(paidMediaPayloadField)
         val paidMediaPayload: PaidMediaPayload? = null,
         @SerialName(giftField)
-        val gift: Gift? = null
+        val gift: Gift? = null,
+        @SerialName(premiumSubscriptionDurationField)
+        val premiumSubscriptionDuration: Int? = null,
     ) : TransactionPartner, SubscriptionPeriodInfo {
         @EncodeDefault
         override val type: String = Companion.type
@@ -151,6 +153,7 @@ sealed interface TransactionPartner {
             val paid_media: List<PaidMedia>? = null,
             val paid_media_payload: PaidMediaPayload? = null,
             val gift: Gift? = null,
+            val premium_subscription_duration: Int? = null,
             val request_count: Int? = null,
             val sponsor_user: PreviewBot? = null,
             val commission_per_mille: Int? = null,
@@ -180,7 +183,8 @@ sealed interface TransactionPartner {
                         subscriptionPeriod = subscription_period,
                         paidMedia = paid_media,
                         paidMediaPayload = paid_media_payload,
-                        gift = gift
+                        gift = gift,
+                        premiumSubscriptionDuration = premium_subscription_duration,
                     )
                     TelegramAPI.type -> TelegramAPI(
                         data.request_count ?: return unknown,
@@ -216,7 +220,8 @@ sealed interface TransactionPartner {
                         subscription_period = subscriptionPeriod,
                         paid_media = paidMedia,
                         paid_media_payload = paidMediaPayload,
-                        gift = gift
+                        gift = gift,
+                        premium_subscription_duration = premiumSubscriptionDuration,
                     )
                     is TelegramAPI -> Surrogate(type = value.type, request_count = requestCount)
                     is Fragment -> Surrogate(
