@@ -25,7 +25,7 @@ data class SetBusinessAccountName(
     @SerialName(firstNameField)
     val firstName: String,
     @SerialName(lastNameField)
-    val lastName: String
+    val lastName: String? = null
 ) : BusinessRequest.Simple<Boolean> {
     override fun method(): String = "setBusinessAccountName"
 
