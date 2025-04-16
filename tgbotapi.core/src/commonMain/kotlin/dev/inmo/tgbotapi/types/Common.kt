@@ -96,7 +96,7 @@ val openPeriodPollSecondsLimit = 5 .. 600
 val membersLimit = 1 .. 99999
 
 val suggestedTipAmountsLimit = 1 .. 4
-git
+
 val inputFieldPlaceholderLimit = 1 .. 64
 
 val emojisInStickerLimit = 1 .. 20
