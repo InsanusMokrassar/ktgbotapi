@@ -20,6 +20,7 @@ typealias GooglePlaceType = String
 typealias MembersLimit = Int
 
 typealias Seconds = Int
+typealias DoubleSeconds = Double
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
 typealias UnixTimeStamp = LongSeconds
@@ -95,7 +96,7 @@ val openPeriodPollSecondsLimit = 5 .. 600
 val membersLimit = 1 .. 99999
 
 val suggestedTipAmountsLimit = 1 .. 4
-
+git
 val inputFieldPlaceholderLimit = 1 .. 64
 
 val emojisInStickerLimit = 1 .. 20
@@ -187,6 +188,19 @@ const val hasMainWebAppField = "has_main_web_app"
 const val canJoinGroupsField = "can_join_groups"
 const val canReadAllGroupMessagesField = "can_read_all_group_messages"
 const val canReplyField = "can_reply"
+const val canReadMessagesField = "can_read_messages"
+const val canDeleteOutgoingMessagesField = "can_delete_outgoing_messages"
+const val canDeleteAllMessagesField = "can_delete_all_messages"
+const val canEditNameField = "can_edit_name"
+const val canEditBioField = "can_edit_bio"
+const val canEditProfilePhotoField = "can_edit_profile_photo"
+const val canEditUsernameField = "can_edit_username"
+const val canChangeGiftSettingsField = "can_change_gift_settings"
+const val canViewGiftsAndStarsField = "can_view_gifts_and_stars"
+const val canConvertGiftsToStarsField = "can_convert_gifts_to_stars"
+const val canTransferAndUpgradeGiftsField = "can_transfer_and_upgrade_gifts"
+const val canTransferStarsField = "can_transfer_stars"
+const val canManageStoriesField = "can_manage_stories"
 const val supportInlineQueriesField = "supports_inline_queries"
 const val canConnectToBusinessField = "can_connect_to_business"
 const val textEntitiesField = "text_entities"
@@ -494,6 +508,8 @@ const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
 
+const val isPublicField = "is_public"
+
 const val giftField = "gift"
 const val giftsField = "gifts"
 const val rarityPerMilleField = "rarity_per_mille"
@@ -596,6 +612,8 @@ const val animationField = "animation"
 const val voiceField = "voice"
 const val videoNoteField = "video_note"
 const val mediaField = "media"
+
+const val mainFrameTimestampField = "main_frame_timestamp"
 
 const val disableEditMessageField = "disable_edit_message"
 const val scoreField = "score"
