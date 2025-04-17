@@ -12,11 +12,12 @@ import kotlin.jvm.JvmName
 @Serializable
 sealed interface GiftInfo {
     val ownedGiftId: GiftId?
+    val gift: Gift
 
     @Serializable
     data class Regular(
         @SerialName(giftField)
-        val gift: Gift,
+        override val gift: Gift.Regular,
         @SerialName(ownedGiftIdField)
         override val ownedGiftId: GiftId? = null,
         @SerialName(convertStarCountField)
@@ -35,7 +36,7 @@ sealed interface GiftInfo {
         companion object {
             @JvmName("PublicConstructor")
             operator fun invoke(
-                gift: Gift,
+                gift: Gift.Regular,
                 ownedGiftId: GiftId? = null,
                 convertStarCount: Int? = null,
                 prepaidUpgradeStarCount: Int? = null,
@@ -60,7 +61,7 @@ sealed interface GiftInfo {
     @Serializable
     data class Unique(
         @SerialName(giftField)
-        val gift: UniqueGift,
+        override val gift: Gift.Unique,
         @SerialName(originField)
         val origin: String? = null,
         @SerialName(ownedGiftIdField)
