@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.types.gifts
+package dev.inmo.tgbotapi.types.gifts.unique
 
 import dev.inmo.tgbotapi.types.centerColorField
 import dev.inmo.tgbotapi.types.edgeColorField

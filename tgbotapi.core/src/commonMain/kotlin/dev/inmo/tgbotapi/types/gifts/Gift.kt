@@ -2,6 +2,9 @@ package dev.inmo.tgbotapi.types.gifts
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftBackdrop
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftModel
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftSymbol
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
