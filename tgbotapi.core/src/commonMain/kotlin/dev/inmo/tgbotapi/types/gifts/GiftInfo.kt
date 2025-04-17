@@ -24,7 +24,7 @@ data class GiftInfo private constructor(
     @SerialName(textField)
     val text: String? = null,
     @SerialName(entitiesField)
-    val entities: RawMessageEntities,
+    val entities: RawMessageEntities = emptyList(),
     @SerialName(isPrivateField)
     val isPrivate: Boolean = false
 ) {
