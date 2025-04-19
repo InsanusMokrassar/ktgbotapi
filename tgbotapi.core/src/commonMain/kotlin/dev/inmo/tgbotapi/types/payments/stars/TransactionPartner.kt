@@ -49,7 +49,7 @@ sealed interface TransactionPartner {
         @SerialName(userField)
         val user: PreviewUser,
         @SerialName(transactionTypeField)
-        val transactionType: String,
+        val transactionType: TransactionType,
         @SerialName(affiliateField)
         val affiliate: AffiliateInfo? = null,
         @SerialName(invoicePayloadField)
@@ -156,7 +156,7 @@ sealed interface TransactionPartner {
             val paid_media_payload: PaidMediaPayload? = null,
             val gift: Gift? = null,
             val premium_subscription_duration: Int? = null,
-            val transaction_type: String? = null,
+            val transaction_type: TransactionType? = null,
             val request_count: Int? = null,
             val sponsor_user: PreviewBot? = null,
             val commission_per_mille: Int? = null,
