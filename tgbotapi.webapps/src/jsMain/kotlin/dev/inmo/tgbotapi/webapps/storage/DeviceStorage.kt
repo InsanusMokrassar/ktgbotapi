@@ -16,7 +16,7 @@ external interface DeviceStorage {
      * @param value The value to store.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun setItem(key: String, value: String, callback: (Throwable?, Boolean?) -> Unit)
+    fun setItem(key: String, value: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
 
     /**
      * Retrieves the value associated with a key.
@@ -24,7 +24,7 @@ external interface DeviceStorage {
      * @param key The key to retrieve the value for.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is the value associated with the key, or null if the key is not found.
      */
-    fun getItem(key: String, callback: (Throwable?, String?) -> Unit)
+    fun getItem(key: String, callback: (Throwable?, String?) -> Unit): DeviceStorage
 
     /**
      * Removes the key-value pair associated with a key.
@@ -32,14 +32,14 @@ external interface DeviceStorage {
      * @param key The key to remove.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun removeItem(key: String, callback: (Throwable?, Boolean?) -> Unit)
+    fun removeItem(key: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
 
     /**
      * Clears all key-value pairs from the storage.
      *
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun clear(callback: (Throwable?, Boolean?) -> Unit)
+    fun clear(callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
 }
 
 /**
