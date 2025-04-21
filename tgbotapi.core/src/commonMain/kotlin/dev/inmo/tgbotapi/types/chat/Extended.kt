@@ -5,11 +5,11 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
-import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -21,6 +21,8 @@ data class ExtendedChannelChatImpl(
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(activeUsernamesField)
@@ -57,9 +59,7 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
-    override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    override val maxReactionsCount: Int = 3
 ) : ExtendedChannelChat
 
 @Serializable
@@ -100,8 +100,8 @@ data class ExtendedGroupChatImpl(
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedGroupChat
 
 @Serializable
@@ -150,8 +150,8 @@ data class ExtendedPrivateChatImpl(
     override val personalChat: PreviewChannelChat? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -218,8 +218,8 @@ data class ExtendedSupergroupChatImpl(
     override val customEmojiStickerSetName: StickerSetName? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -284,8 +284,8 @@ data class ExtendedForumChatImpl(
     override val customEmojiStickerSetName: StickerSetName? = null,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedForumChat
 
 @Serializable
@@ -320,8 +320,8 @@ data class ExtendedBot(
     override val maxReactionsCount: Int = 3,
     @SerialName(hasMainWebAppField)
     val hasMainWebApp: Boolean = false,
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -351,6 +351,6 @@ data class UnknownExtendedChat(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3
-    @SerialName(canSendGiftsField)
-    override val canReceiveGifts: Boolean = false
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes()
 }

@@ -34,7 +34,7 @@ public suspend fun TelegramBot.sendGiftToChat(
 
 public suspend fun TelegramBot.sendGiftToChat(
   chatId: ChatIdentifier,
-  gift: Gift,
+  gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
 ): Boolean = sendGiftToChat(
@@ -43,7 +43,7 @@ public suspend fun TelegramBot.sendGiftToChat(
 
 public suspend fun TelegramBot.sendGiftToChat(
   chatId: ChatIdentifier,
-  gift: Gift,
+  gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
   upgradableToUnique: Boolean,
@@ -54,7 +54,7 @@ public suspend fun TelegramBot.sendGiftToChat(
 
 public suspend fun TelegramBot.sendGiftToChat(
   chat: PublicChat,
-  gift: Gift,
+  gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
 ): Boolean = sendGiftToChat(
@@ -63,7 +63,7 @@ public suspend fun TelegramBot.sendGiftToChat(
 
 public suspend fun TelegramBot.sendGiftToChat(
   chat: PublicChat,
-  gift: Gift,
+  gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
   upgradableToUnique: Boolean,

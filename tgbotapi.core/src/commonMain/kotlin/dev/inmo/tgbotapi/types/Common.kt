@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 
+
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
@@ -506,9 +507,19 @@ const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+
 const val isPublicField = "is_public"
+
 const val giftField = "gift"
 const val giftsField = "gifts"
+const val rarityPerMilleField = "rarity_per_mille"
+const val acceptedGiftTypesField = "accepted_gift_types"
+const val ownedGiftIdField = "owned_gift_id"
+const val convertStarCountField = "convert_star_count"
+const val prepaidUpgradeStarCountField = "prepaid_upgrade_star_count"
+const val canBeUpgradedField = "can_be_upgraded"
+const val isPrivateField = "is_private"
+const val transferStarCountField = "transfer_star_count"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
@@ -683,6 +694,22 @@ const val starCountField = "star_count"
 const val upgradeStarCountField = "upgrade_star_count"
 const val payToUpgradeField = "pay_for_upgrade"
 const val paidMediaField = "paid_media"
+
+const val centerColorField = "center_color"
+const val edgeColorField = "edge_color"
+const val symbolColorField = "symbol_color"
+const val textColorField = "text_color"
+
+const val baseNameField = "base_name"
+const val numberField = "number"
+const val modelField = "model"
+const val symbolField = "symbol"
+const val backdropField = "backdrop"
+
+const val unlimitedGiftsField = "unlimited_gifts"
+const val limitedGiftsField = "limited_gifts"
+const val uniqueGiftsField = "unique_gifts"
+const val premiumSubscriptionField = "premium_subscription"
 
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
