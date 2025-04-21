@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import kotlinx.serialization.SerialName
 
 data class ChannelContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
@@ -25,6 +26,8 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : ChannelContentMessage<T> {
     constructor(
         messageId: MessageId,

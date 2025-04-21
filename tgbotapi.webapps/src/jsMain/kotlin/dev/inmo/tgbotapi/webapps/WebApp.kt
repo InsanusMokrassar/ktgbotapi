@@ -12,6 +12,8 @@ import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.location.LocationManager
 import dev.inmo.tgbotapi.webapps.orientation.DeviceOrientation
 import dev.inmo.tgbotapi.webapps.popup.*
+import dev.inmo.tgbotapi.webapps.storage.DeviceStorage
+import dev.inmo.tgbotapi.webapps.storage.SecureStorage
 import dev.inmo.tgbotapi.webapps.stories.StoryShareParams
 
 external class WebApp {
@@ -103,6 +105,13 @@ external class WebApp {
 
     @JsName("SettingsButton")
     val settingsButton: SettingsButton
+
+    @JsName("DeviceStorage")
+    val deviceStorage: DeviceStorage
+
+    @JsName("SecureStorage")
+    val secureStorage: SecureStorage
+
 
     internal fun onEvent(type: String, callback: () -> Unit)
 

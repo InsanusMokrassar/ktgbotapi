@@ -29,7 +29,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is BusinessContentMessage -> BusinessContentMessageImpl(
             messageId = sourceMessage.messageId,
@@ -46,7 +47,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             mediaGroupId = sourceMessage.mediaGroupId,
             senderBusinessBot = sourceMessage.senderBusinessBot,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is PrivateContentMessage -> PrivateContentMessageImpl(
             messageId = sourceMessage.messageId,
@@ -62,7 +64,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             mediaGroupId = sourceMessage.mediaGroupId,
             fromOffline = sourceMessage.fromOffline,
-            effectId = sourceMessage.effectId
+            effectId = sourceMessage.effectId,
+            cost = sourceMessage.cost,
         )
         is AnonymousGroupContentMessage -> AnonymousGroupContentMessageImpl(
             chat = sourceMessage.chat,
@@ -77,7 +80,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is CommonGroupContentMessage -> CommonGroupContentMessageImpl(
             chat = sourceMessage.chat,
@@ -93,7 +97,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             mediaGroupId = sourceMessage.mediaGroupId,
             senderBoostsCount = sourceMessage.senderBoostsCount,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is ConnectedFromChannelGroupContentMessage -> ConnectedFromChannelGroupContentMessageImpl(
             chat = sourceMessage.chat,
@@ -109,7 +114,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is UnconnectedFromChannelGroupContentMessage -> UnconnectedFromChannelGroupContentMessageImpl(
             chat = sourceMessage.chat,
@@ -125,7 +131,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is AnonymousForumContentMessage -> AnonymousForumContentMessageImpl(
             chat = sourceMessage.chat,
@@ -141,7 +148,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is CommonForumContentMessage -> CommonForumContentMessageImpl(
             chat = sourceMessage.chat,
@@ -158,7 +166,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             mediaGroupId = sourceMessage.mediaGroupId,
             senderBoostsCount = sourceMessage.senderBoostsCount,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
         is FromChannelForumContentMessage -> FromChannelForumContentMessageImpl(
             chat = sourceMessage.chat,
@@ -175,7 +184,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBot = sourceMessage.senderBot,
             authorSignature = sourceMessage.authorSignature,
             mediaGroupId = sourceMessage.mediaGroupId,
-            fromOffline = sourceMessage.fromOffline
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
         )
     }
 }

@@ -80,6 +80,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessa
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
 import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
@@ -308,6 +309,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
@@ -3292,6 +3294,15 @@ public inline fun <T>
     TelegramMedia.ifWithCustomizableCaptionTelegramMedia(block: (WithCustomizableCaptionTelegramMedia) -> T):
     T? = withCustomizableCaptionTelegramMediaOrNull() ?.let(block)
 
+public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceChanged? = this as?
+    dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+
+public inline fun ChatEvent.paidMessagePriceChangedOrThrow(): PaidMessagePriceChanged = this as
+    dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+
+public inline fun <T> ChatEvent.ifPaidMessagePriceChanged(block: (PaidMessagePriceChanged) -> T): T?
+    = paidMessagePriceChangedOrNull() ?.let(block)
+
 public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as?
     dev.inmo.tgbotapi.types.chat.ChatBackground
 
@@ -4057,6 +4068,15 @@ public inline fun Message.possiblyOfflineMessageOrThrow(): PossiblyOfflineMessag
 
 public inline fun <T> Message.ifPossiblyOfflineMessage(block: (PossiblyOfflineMessage) -> T): T? =
     possiblyOfflineMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyPaidMessageOrNull(): PossiblyPaidMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
+
+public inline fun Message.possiblyPaidMessageOrThrow(): PossiblyPaidMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
+
+public inline fun <T> Message.ifPossiblyPaidMessage(block: (PossiblyPaidMessage) -> T): T? =
+    possiblyPaidMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
