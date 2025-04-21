@@ -44,7 +44,7 @@ data class GiftPremiumSubscription internal constructor(
         }
     }
 
-    override fun method(): String = "sendPremiumGift"
+    override fun method(): String = "giftPremiumSubscription"
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
