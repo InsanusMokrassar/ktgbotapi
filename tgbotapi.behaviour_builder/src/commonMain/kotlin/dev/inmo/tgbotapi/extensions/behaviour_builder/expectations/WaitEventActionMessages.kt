@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -230,3 +231,13 @@ suspend fun BehaviourContext.waitPaidMessagePriceChangedMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<PaidMessagePriceChanged>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitRegularGiftSentOrReceivedMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<GiftSentOrReceived.Regular>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitUniqueGiftSentOrReceivedMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<GiftSentOrReceived.Unique>(initRequest, errorFactory)

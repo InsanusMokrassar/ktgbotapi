@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
-import dev.inmo.tgbotapi.types.gifts.GiftInfo
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
 import dev.inmo.tgbotapi.types.giveaway.*
 import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
@@ -166,7 +166,8 @@ internal data class RawMessage(
     private val giveaway_completed: GiveawayPrivateResults? = null,
 
     // Gifts
-    private val gift: GiftInfo? = null,
+    private val gift: GiftSentOrReceived.Regular? = null,
+    private val unique_gift: GiftSentOrReceived.Unique? = null,
 ) {
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
     private val content: MessageContent? by lazy {
@@ -290,6 +291,8 @@ internal data class RawMessage(
             boost_added != null -> boost_added
             chat_background_set != null -> chat_background_set
             paid_message_price_changed != null -> paid_message_price_changed
+            gift != null -> gift
+            unique_gift != null -> unique_gift
             else -> null
         }
     }
