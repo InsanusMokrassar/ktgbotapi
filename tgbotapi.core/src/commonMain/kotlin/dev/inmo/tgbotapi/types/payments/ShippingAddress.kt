@@ -17,5 +17,5 @@ data class ShippingAddress(
     @SerialName(stateField)
     val state: String = "",
     @SerialName(postCodeField)
-    val postCode: String = ""
+    val postCode: String = "",
 )

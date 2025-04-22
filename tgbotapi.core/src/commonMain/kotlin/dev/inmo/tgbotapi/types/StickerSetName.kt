@@ -6,7 +6,7 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class StickerSetName(
-    val string: String
+    val string: String,
 ) {
     override fun toString(): String {
         return string

@@ -25,7 +25,8 @@ fun Flow<InlineQueryUpdate>.onlyBaseInlineQueries(): Flow<BaseInlineQuery> = onl
  * @return Mapped [Flow] with [Pair]s. [Pair.first] in this pair will be [UpdateId]. It could be useful in
  * cases you are using [InlineQueryUpdate.updateId] for some reasons. [Pair.second] will always be [LocationInlineQuery].
  */
-fun Flow<InlineQueryUpdate>.onlyLocationInlineQueriesWithUpdates(): Flow<Pair<UpdateId, LocationInlineQuery>> = onlySpecifiedTypeOfDataWithUpdates()
+fun Flow<InlineQueryUpdate>.onlyLocationInlineQueriesWithUpdates(): Flow<Pair<UpdateId, LocationInlineQuery>> =
+    onlySpecifiedTypeOfDataWithUpdates()
 
 /**
  * @return Filter updates only with [LocationInlineQuery] and map it to a [Flow] with values [LocationInlineQuery]

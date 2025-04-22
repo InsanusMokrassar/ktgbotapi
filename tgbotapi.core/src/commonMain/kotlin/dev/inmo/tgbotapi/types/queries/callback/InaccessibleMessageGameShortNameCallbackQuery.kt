@@ -9,5 +9,5 @@ data class InaccessibleMessageGameShortNameCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val message: InaccessibleMessage,
-    override val gameShortName: String
+    override val gameShortName: String,
 ) : GameShortNameCallbackQuery, InaccessibleMessageCallbackQuery

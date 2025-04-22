@@ -19,7 +19,7 @@ data class WebhookInfo(
     @SerialName(lastSynchronizationErrorDateField)
     val lastSynchronizationErrorDate: TelegramDate? = null,
     @SerialName(lastErrorMessageField)
-    val lastErrorMessage: String? = null
+    val lastErrorMessage: String? = null,
 ) {
     @Transient
     val isNotUseWebhook: Boolean = url.isEmpty()

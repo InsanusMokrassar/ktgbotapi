@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class InvoiceContent(
-    val invoice: Invoice
+    val invoice: Invoice,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -21,9 +21,11 @@ data class InvoiceContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<InvoiceContent>> {
-        error("Unfortunately, currently InvoiceOfPayment can not be resend due to requirement of additional parameters," +
-            " which can't be provided during the call of this method")
+        error(
+            "Unfortunately, currently InvoiceOfPayment can not be resend due to requirement of additional parameters," +
+                " which can't be provided during the call of this method",
+        )
     }
 }

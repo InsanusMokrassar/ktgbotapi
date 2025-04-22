@@ -6,5 +6,5 @@ import kotlinx.serialization.json.JsonObject
 data class UnknownChatType(
     override val id: IdChatIdentifier,
     val raw: String,
-    val rawJson: JsonObject
+    val rawJson: JsonObject,
 ) : Chat, PreviewChat

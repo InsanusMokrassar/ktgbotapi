@@ -25,23 +25,24 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = execute(
-    SendContact(
-        chatId = chatId,
-        phoneNumber = phoneNumber,
-        firstName = firstName,
-        lastName = lastName,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<ContactContent> =
+    execute(
+        SendContact(
+            chatId = chatId,
+            phoneNumber = phoneNumber,
+            firstName = firstName,
+            lastName = lastName,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        ),
     )
-)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -57,21 +58,22 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = execute(
-    SendContact(
-        chatId = chatId,
-        contact = contact,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<ContactContent> =
+    execute(
+        SendContact(
+            chatId = chatId,
+            contact = contact,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        ),
     )
-)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -89,21 +91,22 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
-    chatId = chat.id,
-    phoneNumber = phoneNumber,
-    firstName = firstName,
-    lastName = lastName,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<ContactContent> =
+    sendContact(
+        chatId = chat.id,
+        phoneNumber = phoneNumber,
+        firstName = firstName,
+        lastName = lastName,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -119,16 +122,17 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
-    chatId = chat.id,
-    contact = contact,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<ContactContent> =
+    sendContact(
+        chatId = chat.id,
+        contact = contact,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )

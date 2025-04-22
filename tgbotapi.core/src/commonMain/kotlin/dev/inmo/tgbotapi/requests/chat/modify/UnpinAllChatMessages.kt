@@ -18,9 +18,10 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class UnpinAllChatMessages(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<Boolean> {
+    override val chatId: ChatIdentifier,
+) : ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "unpinAllChatMessages"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

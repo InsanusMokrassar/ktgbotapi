@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.chat.member.*
  */
 val ChatMember.isLeft: Boolean get() = this is LeftChatMember
 
-
 /**
  * Check if receiver object is [MemberChatMember]
  */
@@ -28,7 +27,6 @@ val ChatMember.isCommonMember: Boolean get() = this is MemberChatMemberImpl
  */
 val ChatMember.isSubscriberMember: Boolean get() = this is SubscriptionMemberChatMember
 
-
 /**
  * Check if receiver object is [RestrictedChatMember]
  */
@@ -48,7 +46,6 @@ val ChatMember.isLeftOrKicked: Boolean get() = isLeft || isKicked
  * Check if receiver object [isRestricted] and not [isKicked]
  */
 val ChatMember.isRestrictedAndNotKicked: Boolean get() = isRestricted && !isKicked
-
 
 /**
  * Check if receiver object is [SpecialRightsChatMember]

@@ -20,12 +20,16 @@ public suspend fun TelegramBot.stopLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = execute(
-    StopChatMessageLiveLocation(
-        chatId, messageId, businessConnectionId, replyMarkup
+    replyMarkup: InlineKeyboardMarkup? = null,
+): ContentMessage<StaticLocationContent> =
+    execute(
+        StopChatMessageLiveLocation(
+            chatId,
+            messageId,
+            businessConnectionId,
+            replyMarkup,
+        ),
     )
-)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -35,7 +39,7 @@ public suspend fun TelegramBot.stopLiveLocation(
     chat: Chat,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = stopLiveLocation(chat.id, messageId, businessConnectionId, replyMarkup)
 
 /**
@@ -45,5 +49,5 @@ public suspend fun TelegramBot.stopLiveLocation(
 public suspend fun TelegramBot.stopLiveLocation(
     message: ContentMessage<LocationContent>,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = stopLiveLocation(message.chat, message.messageId, businessConnectionId, replyMarkup)

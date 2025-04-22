@@ -5,7 +5,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 
 const val inlineQueryResultPhotoType = "photo"
 
-interface InlineQueryResultPhotoCommon : InlineQueryResult,
+interface InlineQueryResultPhotoCommon :
+    InlineQueryResult,
     OptionallyTitledInlineQueryResult,
     DescribedInlineQueryResult,
     TextedOutput,

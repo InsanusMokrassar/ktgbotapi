@@ -64,10 +64,12 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
 
         override fun deserialize(decoder: Decoder): BusinessConnection {
             return RawBusinessConnection.serializer().deserialize(decoder).asBusinessConnection
-
         }
 
-        override fun serialize(encoder: Encoder, value: BusinessConnection) {
+        override fun serialize(
+            encoder: Encoder,
+            value: BusinessConnection,
+        ) {
             RawBusinessConnection.serializer().serialize(encoder, RawBusinessConnection(value))
         }
     }

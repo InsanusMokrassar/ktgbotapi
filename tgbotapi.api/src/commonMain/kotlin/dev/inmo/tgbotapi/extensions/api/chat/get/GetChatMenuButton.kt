@@ -6,10 +6,6 @@ import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.MenuButton
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 
-public suspend fun TelegramBot.getChatMenuButton(
-    chatId: IdChatIdentifier
-): MenuButton = execute(GetChatMenuButton(chatId))
+public suspend fun TelegramBot.getChatMenuButton(chatId: IdChatIdentifier): MenuButton = execute(GetChatMenuButton(chatId))
 
-public suspend fun TelegramBot.getChatMenuButton(
-    chat: PrivateChat
-): MenuButton = getChatMenuButton(chat.id)
+public suspend fun TelegramBot.getChatMenuButton(chat: PrivateChat): MenuButton = getChatMenuButton(chat.id)

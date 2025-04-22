@@ -26,8 +26,14 @@ data class AudioFile(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
     @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile,
-    Performerable, MediaContentVariant
+    override val thumbnail: PhotoSize? = null,
+) : TelegramMediaFile,
+    CustomNamedMediaFile,
+    MimedMediaFile,
+    ThumbedMediaFile,
+    PlayableMediaFile,
+    TitledMediaFile,
+    Performerable,
+    MediaContentVariant
 
 fun AudioFile.asVoiceFile() = VoiceFile(fileId, fileUniqueId, duration, mimeType, fileSize)

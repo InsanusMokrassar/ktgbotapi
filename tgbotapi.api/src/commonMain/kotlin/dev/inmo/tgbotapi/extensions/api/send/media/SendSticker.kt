@@ -26,22 +26,23 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = execute(
-    SendSticker(
-        chatId = chatId,
-        sticker = sticker,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        emoji = emoji,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<StickerContent> =
+    execute(
+        SendSticker(
+            chatId = chatId,
+            sticker = sticker,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            emoji = emoji,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        ),
     )
-)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -58,20 +59,21 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
-    chatId = chat.id,
-    sticker = sticker,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<StickerContent> =
+    sendSticker(
+        chatId = chat.id,
+        sticker = sticker,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -88,20 +90,21 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
-    chatId = chatId,
-    sticker = sticker.fileId,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<StickerContent> =
+    sendSticker(
+        chatId = chatId,
+        sticker = sticker.fileId,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -118,17 +121,18 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
-    chat = chat,
-    sticker = sticker.fileId,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<StickerContent> =
+    sendSticker(
+        chat = chat,
+        sticker = sticker.fileId,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )

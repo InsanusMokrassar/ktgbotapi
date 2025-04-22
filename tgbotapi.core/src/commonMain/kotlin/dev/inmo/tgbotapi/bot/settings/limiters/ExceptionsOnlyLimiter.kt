@@ -11,15 +11,16 @@ object ExceptionsOnlyLimiter : RequestLimiter {
     override suspend fun <T> limit(block: suspend () -> T): T {
         var result: Result<T>? = null
         while (result == null || result.isFailure) {
-            result = runCatchingSafely {
-                block()
-            }.onFailure {
-                if (it is TooMuchRequestsException) {
-                    delay(it.retryAfter.leftToRetry)
-                } else {
-                    throw it
+            result =
+                runCatchingSafely {
+                    block()
+                }.onFailure {
+                    if (it is TooMuchRequestsException) {
+                        delay(it.retryAfter.leftToRetry)
+                    } else {
+                        throw it
+                    }
                 }
-            }
         }
         return result.getOrThrow()
     }

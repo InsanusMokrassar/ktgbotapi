@@ -34,12 +34,13 @@ sealed interface LinkPreviewOptions {
         @SerialName(urlField)
         override val url: String?,
         @SerialName(showAboveTextField)
-        override val showAboveText: Boolean
+        override val showAboveText: Boolean,
     ) : LinkPreviewOptions {
         @Required
         @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = false
+
         @Required
         @EncodeDefault
         @SerialName(preferLargeMediaField)
@@ -53,12 +54,13 @@ sealed interface LinkPreviewOptions {
         @SerialName(urlField)
         override val url: String?,
         @SerialName(showAboveTextField)
-        override val showAboveText: Boolean
+        override val showAboveText: Boolean,
     ) : LinkPreviewOptions {
         @Required
         @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = false
+
         @Required
         @EncodeDefault
         @SerialName(preferSmallMediaField)
@@ -72,7 +74,7 @@ sealed interface LinkPreviewOptions {
         @SerialName(urlField)
         override val url: String?,
         @SerialName(showAboveTextField)
-        override val showAboveText: Boolean
+        override val showAboveText: Boolean,
     ) : LinkPreviewOptions {
         @Required
         @EncodeDefault
@@ -113,7 +115,10 @@ sealed interface LinkPreviewOptions {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: LinkPreviewOptions) {
+        override fun serialize(
+            encoder: Encoder,
+            value: LinkPreviewOptions,
+        ) {
             Surrogate.serializer().serialize(
                 encoder,
                 Surrogate(
@@ -121,8 +126,8 @@ sealed interface LinkPreviewOptions {
                     url = value.url,
                     preferSmallMedia = value.preferSmallMedia,
                     preferLargeMedia = value.preferLargeMedia,
-                    showAboveText = value.showAboveText
-                )
+                    showAboveText = value.showAboveText,
+                ),
             )
         }
     }

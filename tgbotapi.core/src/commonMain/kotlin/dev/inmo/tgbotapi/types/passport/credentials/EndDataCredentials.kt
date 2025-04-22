@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 sealed class EndDataCredentials {
     @Serializable(Base64BytesToFromStringSerializer::class)
     abstract val hash: SourceBytes
+
     @Serializable(Base64BytesToFromStringSerializer::class)
     abstract val secret: SourceBytes
 }
@@ -21,7 +22,7 @@ data class DataCredentials(
     override val hash: SourceBytes,
     @SerialName(secretField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val secret: SourceBytes
+    override val secret: SourceBytes,
 ) : EndDataCredentials()
 
 @Serializable
@@ -31,5 +32,5 @@ data class FileCredentials(
     override val hash: SourceBytes,
     @SerialName(secretField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val secret: SourceBytes
+    override val secret: SourceBytes,
 ) : EndDataCredentials()

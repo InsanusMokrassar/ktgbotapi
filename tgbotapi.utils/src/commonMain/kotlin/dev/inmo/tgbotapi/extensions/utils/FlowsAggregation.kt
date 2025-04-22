@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 fun <T> aggregateFlows(
     withScope: CoroutineScope,
     vararg flows: Flow<T>,
-    internalBufferSize: Int = 64
+    internalBufferSize: Int = 64,
 ): Flow<T> {
     val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
     flows.forEach {
@@ -21,18 +21,20 @@ fun <T> aggregateFlows(
     return sharedFlow
 }
 
-fun <T> Flow<Iterable<T>>.flatten(): Flow<T> = flow {
-    collect {
-        it.forEach {
-            emit(it)
+fun <T> Flow<Iterable<T>>.flatten(): Flow<T> =
+    flow {
+        collect {
+            it.forEach {
+                emit(it)
+            }
         }
     }
-}
 
-fun <T, R> Flow<T>.flatMap(mapper: suspend (T) -> Iterable<R>): Flow<R> = flow {
-    collect {
-        mapper(it).forEach {
-            emit(it)
+fun <T, R> Flow<T>.flatMap(mapper: suspend (T) -> Iterable<R>): Flow<R> =
+    flow {
+        collect {
+            mapper(it).forEach {
+                emit(it)
+            }
         }
     }
-}

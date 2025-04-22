@@ -10,10 +10,11 @@ typealias PreCheckoutQueryMapper = suspend PreCheckoutQuery.() -> PreCheckoutQue
 
 suspend fun BehaviourContext.waitPreCheckoutQueries(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<PreCheckoutQuery> = expectFlow(
-    initRequest,
-    errorFactory
-) {
-    it.preCheckoutQueryUpdateOrNull() ?.data.let(::listOfNotNull)
-}
+    errorFactory: NullableRequestBuilder<*> = { null },
+): Flow<PreCheckoutQuery> =
+    expectFlow(
+        initRequest,
+        errorFactory,
+    ) {
+        it.preCheckoutQueryUpdateOrNull() ?.data.let(::listOfNotNull)
+    }

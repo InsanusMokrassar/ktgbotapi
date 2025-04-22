@@ -5,10 +5,6 @@ import dev.inmo.tgbotapi.requests.chat.get.GetChatMemberCount
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-public suspend fun TelegramBot.getChatMemberCount(
-    chatId: ChatIdentifier
-): Int = execute(GetChatMemberCount(chatId))
+public suspend fun TelegramBot.getChatMemberCount(chatId: ChatIdentifier): Int = execute(GetChatMemberCount(chatId))
 
-public suspend fun TelegramBot.getChatMemberCount(
-    chat: PublicChat
-): Int = getChatMemberCount(chat.id)
+public suspend fun TelegramBot.getChatMemberCount(chat: PublicChat): Int = getChatMemberCount(chat.id)

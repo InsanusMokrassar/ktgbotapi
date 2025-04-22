@@ -59,7 +59,7 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
-    override val maxReactionsCount: Int = 3
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedChannelChat
 
 @Serializable
@@ -332,25 +332,31 @@ data class ExtendedBusinessChatImpl(
     @SerialName(idField)
     override val id: BusinessChatId,
     @SerialName(originField)
-    override val original: ExtendedPrivateChat
+    override val original: ExtendedPrivateChat,
 ) : ExtendedBusinessChat, ExtendedChat by original
 
 data class UnknownExtendedChat(
     override val id: IdChatIdentifier,
     val raw: String,
-    val rawJson: JsonObject
+    val rawJson: JsonObject,
 ) : ExtendedChat {
     override val chatPhoto: ChatPhoto? = null
+
     @SerialName(accentColorIdField)
     override val accentColorId: ColorId = ColorId(0)
+
     @SerialName(profileAccentColorIdField)
     override val profileAccentColorId: ColorId? = null
+
     @SerialName(backgroundCustomEmojiIdField)
     override val backgroundCustomEmojiId: CustomEmojiId? = null
+
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
+
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3
+
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes()
 }

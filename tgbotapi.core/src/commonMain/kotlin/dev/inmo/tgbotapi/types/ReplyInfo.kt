@@ -5,8 +5,8 @@ import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
-import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.giveaway.Giveaway
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.MessageOrigin
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -27,16 +27,16 @@ sealed interface ReplyInfo {
     val messageMeta: Message.MetaInfo?
 
     data class Internal(
-        val message: Message
-    ): ReplyInfo {
+        val message: Message,
+    ) : ReplyInfo {
         override val messageMeta: Message.MetaInfo
             get() = message.metaInfo
     }
 
     @Serializable
     data class ToStory(
-        val story: Story
-    ): ReplyInfo {
+        val story: Story,
+    ) : ReplyInfo {
         override val messageMeta: Message.MetaInfo?
             get() = null
     }
@@ -53,20 +53,19 @@ sealed interface ReplyInfo {
             override val origin: MessageOrigin,
             override val chat: SuperPublicChat?,
             override val messageMeta: Message.MetaInfo?,
-            val linkPreviewOptions: LinkPreviewOptions?
+            val linkPreviewOptions: LinkPreviewOptions?,
         ) : External
 
         @Serializable(External.Companion::class)
         sealed interface Content : External {
             val content: ContentVariant
 
-
             @Serializable
             data class Simple(
                 override val origin: MessageOrigin,
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
-                override val content: ContentVariant
+                override val content: ContentVariant,
             ) : Content
 
             @Serializable
@@ -75,7 +74,7 @@ sealed interface ReplyInfo {
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
                 override val spoilered: Boolean,
-                override val content: MediaContentVariant
+                override val content: MediaContentVariant,
             ) : Content, SpoilerableData
         }
 
@@ -109,36 +108,38 @@ sealed interface ReplyInfo {
         ) {
             val asExternalReplyInfo: External
                 get() {
-                    val messageMeta = chat ?.let {
-                        message_id ?.let {
-                            Message.MetaInfo(
-                                chat.id,
-                                message_id
-                            )
+                    val messageMeta =
+                        chat ?.let {
+                            message_id ?.let {
+                                Message.MetaInfo(
+                                    chat.id,
+                                    message_id,
+                                )
+                            }
                         }
-                    }
-                    val content: ContentVariant? = when {
-                        story != null -> story
-                        audio != null -> audio
-                        video != null -> video
-                        video_note != null -> video_note
-                        animation != null -> animation
-                        document != null -> document
-                        paid_media != null -> paid_media
-                        voice != null -> voice
-                        photo != null -> photo
-                        sticker != null -> sticker
-                        dice != null -> dice
-                        game != null -> game.asGame
-                        contact != null -> contact
-                        location != null -> location
-                        venue != null -> venue
-                        poll != null -> poll
-                        invoice != null -> invoice
-                        giveaway != null -> giveaway
-                        giveaway_winners != null -> giveaway_winners
-                        else -> null
-                    }
+                    val content: ContentVariant? =
+                        when {
+                            story != null -> story
+                            audio != null -> audio
+                            video != null -> video
+                            video_note != null -> video_note
+                            animation != null -> animation
+                            document != null -> document
+                            paid_media != null -> paid_media
+                            voice != null -> voice
+                            photo != null -> photo
+                            sticker != null -> sticker
+                            dice != null -> dice
+                            game != null -> game.asGame
+                            contact != null -> contact
+                            location != null -> location
+                            venue != null -> venue
+                            poll != null -> poll
+                            invoice != null -> invoice
+                            giveaway != null -> giveaway
+                            giveaway_winners != null -> giveaway_winners
+                            else -> null
+                        }
 
                     return content ?.let {
                         when (it) {
@@ -148,21 +149,22 @@ sealed interface ReplyInfo {
                                     chat,
                                     messageMeta,
                                     has_media_spoiler == true,
-                                    it
+                                    it,
                                 )
                             }
-                            else -> Content.Simple(
-                                origin,
-                                chat,
-                                messageMeta,
-                                it
-                            )
+                            else ->
+                                Content.Simple(
+                                    origin,
+                                    chat,
+                                    messageMeta,
+                                    it,
+                                )
                         }
                     } ?: Text(
                         origin,
                         chat,
                         messageMeta,
-                        link_preview_options
+                        link_preview_options,
                     )
                 }
         }
@@ -176,8 +178,10 @@ sealed interface ReplyInfo {
                 return Surrogate.serializer().deserialize(decoder).asExternalReplyInfo
             }
 
-            override fun serialize(encoder: Encoder, value: External) {
-
+            override fun serialize(
+                encoder: Encoder,
+                value: External,
+            ) {
             }
         }
     }

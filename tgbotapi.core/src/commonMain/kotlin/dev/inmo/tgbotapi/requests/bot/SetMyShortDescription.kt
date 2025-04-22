@@ -15,9 +15,10 @@ class SetMyShortDescription(
     val shortDescription: String? = null,
     @SerialName(languageCodeField)
     @Serializable(IetfLangSerializer::class)
-    override val ietfLanguageCode: IetfLang? = null
+    override val ietfLanguageCode: IetfLang? = null,
 ) : SimpleRequest<Boolean>, WithOptionalLanguageCode {
     override fun method(): String = "setMyShortDescription"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

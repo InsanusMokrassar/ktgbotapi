@@ -7,15 +7,16 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 val Venue.googlePlace: GooglePlace?
-    get() = googlePlaceId?.let {
-        GooglePlace(it, googlePlaceType)
-    }
+    get() =
+        googlePlaceId?.let {
+            GooglePlace(it, googlePlaceType)
+        }
 
 fun Venue(
     location: StaticLocation,
     title: String,
     address: String,
-    googlePlace: GooglePlace
+    googlePlace: GooglePlace,
 ) = Venue(location, title, address, googlePlaceId = googlePlace.id, googlePlaceType = googlePlace.type)
 
 @Serializable
@@ -23,5 +24,5 @@ data class GooglePlace(
     @SerialName(googlePlaceIdField)
     val id: GooglePlaceId,
     @SerialName(googlePlaceTypeField)
-    val type: GooglePlaceType? = null
+    val type: GooglePlaceType? = null,
 )

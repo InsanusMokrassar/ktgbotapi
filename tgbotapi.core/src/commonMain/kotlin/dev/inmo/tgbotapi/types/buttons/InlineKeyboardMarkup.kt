@@ -9,14 +9,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineKeyboardMarkup(
     @SerialName(inlineKeyboardField)
-    val keyboard: Matrix<InlineKeyboardButton>
+    val keyboard: Matrix<InlineKeyboardButton>,
 ) : KeyboardMarkup {
     init {
-        val isTherePayButton = keyboard.any { it ->
-            it.any {
-                it is PayInlineKeyboardButton
+        val isTherePayButton =
+            keyboard.any { it ->
+                it.any {
+                    it is PayInlineKeyboardButton
+                }
             }
-        }
         if (isTherePayButton) {
             // first button is not PayInlineKeyboardButton
             val firstIsPaymentButton = keyboard.first().firstOrNull() is PayInlineKeyboardButton
@@ -28,7 +29,7 @@ data class InlineKeyboardMarkup(
 
     operator fun plus(other: InlineKeyboardMarkup): InlineKeyboardMarkup {
         return InlineKeyboardMarkup(
-            keyboard + other.keyboard
+            keyboard + other.keyboard,
         )
     }
 
@@ -41,7 +42,7 @@ data class InlineKeyboardMarkup(
                 }.takeIf {
                     it.isNotEmpty()
                 }
-            }
+            },
         )
     }
 }

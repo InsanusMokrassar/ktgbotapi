@@ -9,5 +9,5 @@ data class BaseInlineQuery(
     override val from: CommonUser,
     override val query: String,
     override val offset: String,
-    override val chatType: ChatType?
+    override val chatType: ChatType?,
 ) : InlineQuery

@@ -25,7 +25,7 @@ sealed interface ChatBoostSource {
     @Serializable(ChatBoostSource.Companion::class)
     data class Premium(
         @SerialName(userField)
-        override val user: PreviewUser
+        override val user: PreviewUser,
     ) : ByUser {
         @Required
         @EncodeDefault
@@ -40,7 +40,7 @@ sealed interface ChatBoostSource {
     @Serializable(ChatBoostSource.Companion::class)
     data class GiftCode(
         @SerialName(userField)
-        override val user: PreviewUser
+        override val user: PreviewUser,
     ) : ByUser {
         @Required
         @EncodeDefault
@@ -64,16 +64,18 @@ sealed interface ChatBoostSource {
             @SerialName(giveawayMessageIdField)
             override val messageId: MessageId,
             @SerialName(prizeStarCountField)
-            override val prizeStarCount: Int?
+            override val prizeStarCount: Int?,
         ) : Giveaway {
             @Required
             @EncodeDefault
             @SerialName(sourceField)
             override val sourceName: String = Giveaway.sourceCode
+
             @Required
             @EncodeDefault
             @SerialName(isUnclaimedField)
             override val unclaimed: Boolean = false
+
             @SerialName(userField)
             @EncodeDefault
             override val user: PreviewUser?
@@ -87,12 +89,13 @@ sealed interface ChatBoostSource {
             @SerialName(userField)
             override val user: PreviewUser,
             @SerialName(prizeStarCountField)
-            override val prizeStarCount: Int?
+            override val prizeStarCount: Int?,
         ) : Giveaway, ByUser {
             @Required
             @EncodeDefault
             @SerialName(sourceField)
             override val sourceName: String = Giveaway.sourceCode
+
             @Required
             @EncodeDefault
             @SerialName(isUnclaimedField)
@@ -104,16 +107,18 @@ sealed interface ChatBoostSource {
             @SerialName(giveawayMessageIdField)
             override val messageId: MessageId,
             @SerialName(prizeStarCountField)
-            override val prizeStarCount: Int?
+            override val prizeStarCount: Int?,
         ) : Giveaway {
             @Required
             @EncodeDefault
             @SerialName(sourceField)
             override val sourceName: String = Giveaway.sourceCode
+
             @Required
             @EncodeDefault
             @SerialName(isUnclaimedField)
             override val unclaimed: Boolean = true
+
             @SerialName(userField)
             override val user: PreviewUser? = null
         }
@@ -127,7 +132,7 @@ sealed interface ChatBoostSource {
     data class Unknown(
         override val sourceName: String,
         override val user: PreviewUser?,
-        val json: JsonElement?
+        val json: JsonElement?,
     ) : ChatBoostSource
 
     @Serializable
@@ -143,7 +148,7 @@ sealed interface ChatBoostSource {
         @SerialName(isUnclaimedField)
         val unclaimed: Boolean = false,
         @SerialName(prizeStarCountField)
-        val prizeStarCount: Int? = null
+        val prizeStarCount: Int? = null,
     )
 
     companion object : KSerializer<ChatBoostSource> {
@@ -151,14 +156,15 @@ sealed interface ChatBoostSource {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): ChatBoostSource {
-            val (surrogate, json) = when {
-                decoder is JsonDecoder -> {
-                    val json = decoder.decodeJsonElement()
-                    val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
-                    surrogate to json
+            val (surrogate, json) =
+                when {
+                    decoder is JsonDecoder -> {
+                        val json = decoder.decodeJsonElement()
+                        val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
+                        surrogate to json
+                    }
+                    else -> Surrogate.serializer().deserialize(decoder) to null
                 }
-                else -> Surrogate.serializer().deserialize(decoder) to null
-            }
 
             return when {
                 surrogate.sourceName == Premium.sourceCode && surrogate.user != null -> {
@@ -169,19 +175,22 @@ sealed interface ChatBoostSource {
                 }
                 surrogate.sourceName == Giveaway.sourceCode && surrogate.messageId != null -> {
                     when {
-                        surrogate.user != null && surrogate.unclaimed == false -> Giveaway.Claimed(
-                            surrogate.messageId,
-                            surrogate.user,
-                            surrogate.prizeStarCount
-                        )
-                        surrogate.user == null && surrogate.unclaimed == false -> Giveaway.Created(
-                            surrogate.messageId,
-                            surrogate.prizeStarCount
-                        )
-                        surrogate.unclaimed == true -> Giveaway.Unclaimed(
-                            surrogate.messageId,
-                            surrogate.prizeStarCount
-                        )
+                        surrogate.user != null && surrogate.unclaimed == false ->
+                            Giveaway.Claimed(
+                                surrogate.messageId,
+                                surrogate.user,
+                                surrogate.prizeStarCount,
+                            )
+                        surrogate.user == null && surrogate.unclaimed == false ->
+                            Giveaway.Created(
+                                surrogate.messageId,
+                                surrogate.prizeStarCount,
+                            )
+                        surrogate.unclaimed == true ->
+                            Giveaway.Unclaimed(
+                                surrogate.messageId,
+                                surrogate.prizeStarCount,
+                            )
                         else -> null
                     }
                 }
@@ -189,22 +198,25 @@ sealed interface ChatBoostSource {
             } ?: Unknown(surrogate.sourceName, surrogate.user, json)
         }
 
-        override fun serialize(encoder: Encoder, value: ChatBoostSource) {
+        override fun serialize(
+            encoder: Encoder,
+            value: ChatBoostSource,
+        ) {
             if (value is Unknown && value.json != null) {
                 JsonElement.serializer().serialize(encoder, value.json)
                 return
             }
 
-            val surrogate = Surrogate(
-                value.sourceName,
-                value.user,
-                (value as? Giveaway) ?.messageId,
-                (value as? Giveaway) ?.unclaimed ?: false,
-                (value as? Giveaway) ?.prizeStarCount
-            )
+            val surrogate =
+                Surrogate(
+                    value.sourceName,
+                    value.user,
+                    (value as? Giveaway) ?.messageId,
+                    (value as? Giveaway) ?.unclaimed ?: false,
+                    (value as? Giveaway) ?.prizeStarCount,
+                )
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }
-
     }
 }

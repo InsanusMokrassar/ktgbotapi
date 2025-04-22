@@ -3,5 +3,9 @@ package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.result
 import dev.inmo.tgbotapi.abstracts.Performerable
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 
-interface InlineQueryResultAudio : InlineQueryResultAudioCommon, UrlInlineQueryResult, DuratedInlineResultQuery,
-    Performerable, TitledInlineQueryResult
+interface InlineQueryResultAudio :
+    InlineQueryResultAudioCommon,
+    UrlInlineQueryResult,
+    DuratedInlineResultQuery,
+    Performerable,
+    TitledInlineQueryResult

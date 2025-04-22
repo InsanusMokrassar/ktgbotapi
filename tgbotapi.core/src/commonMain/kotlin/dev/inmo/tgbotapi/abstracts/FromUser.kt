@@ -14,6 +14,7 @@ interface OptionallyFromUser : OptionallyWithUser {
     override val user: User?
         get() = from
 }
+
 /**
  * Inheritors of this interface **must** have some [User] as a source of data. For example, any [dev.inmo.tgbotapi.types.queries.callback.CallbackQuery]
  * have [User] as the source of that query

@@ -16,5 +16,5 @@ data class UnknownCallbackQueryType(
     override val id: CallbackQueryId,
     override val from: CommonUser,
     override val chatInstance: String,
-    val raw: String
+    val raw: String,
 ) : CallbackQuery

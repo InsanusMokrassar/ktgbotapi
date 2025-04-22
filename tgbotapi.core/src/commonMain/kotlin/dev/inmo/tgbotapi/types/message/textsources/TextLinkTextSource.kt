@@ -8,13 +8,18 @@ import kotlinx.serialization.Serializable
  * @see linkTextSource
  */
 @Serializable
-data class TextLinkTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    val url: String
-) : TextSource {
-    override val markdown: String by lazy { source.linkMarkdown(url) }
-    override val markdownV2: String by lazy { source.linkMarkdownV2(url) }
-    override val html: String by lazy { source.linkHTML(url) }
-}
+data class TextLinkTextSource
+    @RiskFeature(DirectInvocationOfTextSourceConstructor)
+    constructor(
+        override val source: String,
+        val url: String,
+    ) : TextSource {
+        override val markdown: String by lazy { source.linkMarkdown(url) }
+        override val markdownV2: String by lazy { source.linkMarkdownV2(url) }
+        override val html: String by lazy { source.linkHTML(url) }
+    }
 
-inline fun linkTextSource(text: String, url: String) = TextLinkTextSource(text, url)
+inline fun linkTextSource(
+    text: String,
+    url: String,
+) = TextLinkTextSource(text, url)

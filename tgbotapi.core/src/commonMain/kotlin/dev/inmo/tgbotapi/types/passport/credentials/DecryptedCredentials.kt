@@ -11,5 +11,5 @@ data class DecryptedCredentials(
     @SerialName(secureDataField)
     val secureData: SecureData,
     @SerialName(nonceField)
-    val nonce: String
+    val nonce: String,
 )

@@ -20,5 +20,5 @@ data class OrderInfo(
     @SerialName(emailField)
     val email: String?,
     @SerialName(shippingAddressField)
-    val shippingAddress: ShippingAddress?
+    val shippingAddress: ShippingAddress?,
 )

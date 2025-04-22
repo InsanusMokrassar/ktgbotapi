@@ -10,5 +10,5 @@ data class MessageDataCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val message: ContentMessage<MessageContent>,
-    override val data: String
+    override val data: String,
 ) : DataCallbackQuery, MessageCallbackQuery

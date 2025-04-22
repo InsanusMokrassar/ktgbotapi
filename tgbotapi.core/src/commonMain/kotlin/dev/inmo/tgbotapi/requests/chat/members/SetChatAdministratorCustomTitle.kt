@@ -12,9 +12,10 @@ data class SetChatAdministratorCustomTitle(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(customTitleField)
-    val customTitle: String
+    val customTitle: String,
 ) : ChatMemberRequest<Boolean> {
     override fun method(): String = "setChatAdministratorCustomTitle"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types.chat.member
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.ChatPermissions
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 /**
@@ -45,7 +44,7 @@ data class RestrictedMemberChatMember(
     @SerialName(canPinMessagesField)
     override val canPinMessages: Boolean = false,
     @SerialName(canManageTopicsField)
-    override val canManageTopics: Boolean = false
+    override val canManageTopics: Boolean = false,
 ) : RestrictedChatMember, SpecialRightsChatMember, MemberChatMember, ChatPermissions {
     @SerialName(statusField)
     @Required

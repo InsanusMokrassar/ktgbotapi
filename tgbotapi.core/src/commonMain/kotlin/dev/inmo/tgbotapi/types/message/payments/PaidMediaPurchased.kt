@@ -13,5 +13,5 @@ data class PaidMediaPurchased(
     @SerialName(fromField)
     override val from: User,
     @SerialName(paidMediaPayloadField)
-    val payload: PaidMediaPayload
+    val payload: PaidMediaPayload,
 ) : FromUser

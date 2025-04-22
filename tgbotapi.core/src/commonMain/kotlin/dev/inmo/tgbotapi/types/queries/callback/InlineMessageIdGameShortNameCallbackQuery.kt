@@ -8,5 +8,5 @@ data class InlineMessageIdGameShortNameCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val inlineMessageId: InlineMessageId,
-    override val gameShortName: String
+    override val gameShortName: String,
 ) : GameShortNameCallbackQuery, InlineMessageIdCallbackQuery

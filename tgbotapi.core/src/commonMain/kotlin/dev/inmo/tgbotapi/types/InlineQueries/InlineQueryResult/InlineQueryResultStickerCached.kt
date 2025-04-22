@@ -17,7 +17,7 @@ data class InlineQueryResultStickerCached(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResult, WithInputMessageContentInlineQueryResult, WithFileIdInlineQueryResult {
     override val type: String = "sticker"
 }

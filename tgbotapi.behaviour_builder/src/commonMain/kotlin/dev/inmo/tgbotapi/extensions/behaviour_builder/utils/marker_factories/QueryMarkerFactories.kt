@@ -28,5 +28,3 @@ object ByIdCallbackQueryMarkerFactory : MarkerFactory<CallbackQuery, Any> {
 object ByChatInstanceCallbackQueryMarkerFactory : MarkerFactory<CallbackQuery, Any> {
     override suspend fun invoke(data: CallbackQuery) = data.chatInstance
 }
-
-

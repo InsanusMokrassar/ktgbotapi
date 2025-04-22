@@ -47,8 +47,7 @@ inline fun Any.withUserOrNull(): WithUser? = this as? WithUser
 inline fun Any.withUserOrThrow(): WithUser = this as WithUser
 
 @PreviewFeature
-inline fun <T> Any.ifWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) =
-    withOptionalLanguageCodeOrNull()?.let(block)
+inline fun <T> Any.ifWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = withOptionalLanguageCodeOrNull()?.let(block)
 
 @PreviewFeature
 inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = this as? WithOptionalLanguageCode
@@ -57,8 +56,7 @@ inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = thi
 inline fun Any.withOptionalLanguageCodeOrThrow(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
 
 @PreviewFeature
-inline fun <T> Any.ifWithSenderChatMessage(block: (WithSenderChatMessage) -> T) =
-    withSenderChatMessageOrNull()?.let(block)
+inline fun <T> Any.ifWithSenderChatMessage(block: (WithSenderChatMessage) -> T) = withSenderChatMessageOrNull()?.let(block)
 
 @PreviewFeature
 inline fun Any.withSenderChatMessageOrNull(): WithSenderChatMessage? = this as? WithSenderChatMessage

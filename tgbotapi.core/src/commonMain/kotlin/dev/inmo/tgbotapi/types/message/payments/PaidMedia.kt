@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.message.payments
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.PhotoFile
-import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.EncodeDefault
@@ -25,7 +24,7 @@ sealed interface PaidMedia {
         @SerialName(heightField)
         val height: Int? = null,
         @SerialName(durationField)
-        val duration: Int? = null
+        val duration: Int? = null,
     ) : PaidMedia {
         @EncodeDefault
         @SerialName(typeField)
@@ -39,7 +38,7 @@ sealed interface PaidMedia {
     @Serializable
     data class Photo(
         @SerialName(photoField)
-        val photo: PhotoFile
+        val photo: PhotoFile,
     ) : PaidMedia {
         @EncodeDefault
         @SerialName(typeField)
@@ -53,7 +52,7 @@ sealed interface PaidMedia {
     @Serializable
     data class Video(
         @SerialName(videoField)
-        val video: VideoFile
+        val video: VideoFile,
     ) : PaidMedia {
         @EncodeDefault
         @SerialName(typeField)
@@ -68,7 +67,7 @@ sealed interface PaidMedia {
     data class Unknown(
         @SerialName(typeField)
         override val type: String,
-        val raw: JsonElement?
+        val raw: JsonElement?,
     ) : PaidMedia
 
     companion object : KSerializer<PaidMedia> {
@@ -85,7 +84,7 @@ sealed interface PaidMedia {
             @SerialName(photoField)
             val photo: PhotoFile? = null,
             @SerialName(videoField)
-            val video: VideoFile? = null
+            val video: VideoFile? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -97,36 +96,42 @@ sealed interface PaidMedia {
                 Unknown(data.type, json)
             }
             return when (data.type) {
-                Preview.type -> Preview(
-                    data.width,
-                    data.height,
-                    data.duration
-                )
-                Photo.type -> Photo(
-                    data.photo ?: return unknown
-                )
-                Video.type -> Video(
-                    data.video ?: return unknown
-                )
+                Preview.type ->
+                    Preview(
+                        data.width,
+                        data.height,
+                        data.duration,
+                    )
+                Photo.type ->
+                    Photo(
+                        data.photo ?: return unknown,
+                    )
+                Video.type ->
+                    Video(
+                        data.video ?: return unknown,
+                    )
                 else -> unknown
             }
         }
 
-        override fun serialize(encoder: Encoder, value: PaidMedia) {
+        override fun serialize(
+            encoder: Encoder,
+            value: PaidMedia,
+        ) {
             if (value is Unknown && value.raw != null) {
                 JsonElement.serializer().serialize(encoder, value.raw)
             } else {
-                val surrogate = Surrogate(
-                    value.type,
-                    (value as? Preview) ?.width,
-                    (value as? Preview) ?.height,
-                    (value as? Preview) ?.duration,
-                    (value as? Photo) ?.photo,
-                    (value as? Video) ?.video,
-                )
+                val surrogate =
+                    Surrogate(
+                        value.type,
+                        (value as? Preview) ?.width,
+                        (value as? Preview) ?.height,
+                        (value as? Preview) ?.duration,
+                        (value as? Photo) ?.photo,
+                        (value as? Video) ?.video,
+                    )
                 Surrogate.serializer().serialize(encoder, surrogate)
             }
         }
-
     }
 }

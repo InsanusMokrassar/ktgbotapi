@@ -4,13 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
-import dev.inmo.tgbotapi.types.message.toRawMessageEntities
-import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -21,7 +15,7 @@ fun CopyMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ) = CopyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -29,11 +23,11 @@ fun CopyMessages(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 @Serializable
-data class CopyMessages (
+data class CopyMessages(
     @SerialName(chatIdField)
     val toChatId: ChatIdentifier,
     @SerialName(fromChatIdField)
@@ -48,7 +42,7 @@ data class CopyMessages (
     override val protectContent: Boolean = false,
     @SerialName(removeCaptionField)
     private val removeCaption: Boolean = false,
-): SimpleRequest<List<MessageId>>,
+) : SimpleRequest<List<MessageId>>,
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,

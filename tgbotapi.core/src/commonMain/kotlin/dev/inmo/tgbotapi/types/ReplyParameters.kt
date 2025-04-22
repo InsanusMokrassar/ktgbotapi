@@ -28,7 +28,7 @@ data class ReplyParameters internal constructor(
     @SerialName(quoteEntitiesField)
     private val quoteEntities: List<RawMessageEntity>? = null,
     @SerialName(quotePositionField)
-    val quotePosition: Int?
+    val quotePosition: Int?,
 ) : WithMessageId, TextedInput {
     override val text: String?
         get() = quote
@@ -41,7 +41,7 @@ data class ReplyParameters internal constructor(
         messageId: MessageId,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -49,30 +49,30 @@ data class ReplyParameters internal constructor(
         entities.makeSourceString(),
         null,
         entities.toRawMessageEntities(),
-        quotePosition
+        quotePosition,
     )
     constructor(
         metaInfo: Message.MetaInfo,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         entities,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
     constructor(
         message: Message,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         message.metaInfo,
         entities,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
     constructor(
         chatIdentifier: ChatIdentifier,
@@ -80,7 +80,7 @@ data class ReplyParameters internal constructor(
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -88,40 +88,40 @@ data class ReplyParameters internal constructor(
         quote,
         quoteParseMode,
         null,
-        quotePosition
+        quotePosition,
     )
     constructor(
         metaInfo: Message.MetaInfo,
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         quote,
         quoteParseMode,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
     constructor(
         message: Message,
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         message.metaInfo,
         quote,
         quoteParseMode,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
     constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -129,25 +129,25 @@ data class ReplyParameters internal constructor(
         null,
         null,
         null,
-        quotePosition
+        quotePosition,
     )
     constructor(
         metaInfo: Message.MetaInfo,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
     constructor(
         message: Message,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
     ) : this(
         message.metaInfo,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
     )
 }

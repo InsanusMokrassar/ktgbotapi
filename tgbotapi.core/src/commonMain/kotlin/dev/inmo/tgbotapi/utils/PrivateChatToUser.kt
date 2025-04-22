@@ -12,10 +12,11 @@ import dev.inmo.tgbotapi.types.chat.*
  * [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage] due to absence of some fields (like premium flag or
  * language)
  */
-fun PrivateChat.toUser(): User = when (this) {
-    is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
-    is CommonUser -> this
-    is CommonBot -> this
-    is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
-    is ExtendedBot -> this
-}
+fun PrivateChat.toUser(): User =
+    when (this) {
+        is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+        is CommonUser -> this
+        is CommonBot -> this
+        is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+        is ExtendedBot -> this
+    }

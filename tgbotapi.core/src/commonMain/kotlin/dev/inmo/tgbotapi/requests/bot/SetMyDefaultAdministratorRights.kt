@@ -11,9 +11,10 @@ class SetMyDefaultAdministratorRights(
     @SerialName(rightsField)
     val rights: ChatCommonAdministratorRights,
     @SerialName(forChannelsField)
-    val forChannels: Boolean? = null
+    val forChannels: Boolean? = null,
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "setMyDefaultAdministratorRights"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

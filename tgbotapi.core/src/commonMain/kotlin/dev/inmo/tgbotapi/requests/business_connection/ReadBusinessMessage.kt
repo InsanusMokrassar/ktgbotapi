@@ -1,13 +1,11 @@
 package dev.inmo.tgbotapi.requests.business_connection
 
 import dev.inmo.tgbotapi.requests.abstracts.BusinessRequest
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.businessConnectionIdField
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.chatIdField
-import dev.inmo.tgbotapi.types.message.RawMessage
 import dev.inmo.tgbotapi.types.messageIdField
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
@@ -22,7 +20,7 @@ data class ReadBusinessMessage(
     @SerialName(chatIdField)
     val chatId: ChatId,
     @SerialName(messageIdField)
-    val messageId: MessageId
+    val messageId: MessageId,
 ) : BusinessRequest.Simple<Boolean> {
     override fun method(): String = "readBusinessMessage"
 

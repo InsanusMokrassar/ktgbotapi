@@ -4,12 +4,12 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
-data class EditGeneralForumTopic (
+data class EditGeneralForumTopic(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(nameField)
-    val name: String
-): ModifyForumRequest, GeneralForumRequest<Boolean> {
+    val name: String,
+) : ModifyForumRequest, GeneralForumRequest<Boolean> {
     init {
         if (name.length !in threadNameLength) {
             throw IllegalArgumentException("Thread name must be in $threadNameLength range")
@@ -17,6 +17,7 @@ data class EditGeneralForumTopic (
     }
 
     override fun method(): String = "editGeneralForumTopic"
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -9,8 +9,9 @@ sealed interface MediaGroupMemberTelegramMedia : TelegramMedia, TextedOutput {
     fun serialize(format: StringFormat): String
 }
 
-sealed interface AudioMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
-sealed interface DocumentMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
+sealed interface AudioMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia
+
+sealed interface DocumentMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia
 
 @Serializable(MediaGroupMemberTelegramMediaSerializer::class)
 sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia

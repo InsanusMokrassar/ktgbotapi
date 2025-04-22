@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.stickerField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class UniqueGiftSymbol(
     @SerialName(nameField)
@@ -15,5 +14,5 @@ data class UniqueGiftSymbol(
     @SerialName(stickerField)
     val sticker: Sticker,
     @SerialName(rarityPerMilleField)
-    val rarityPerMille: Int
+    val rarityPerMille: Int,
 )

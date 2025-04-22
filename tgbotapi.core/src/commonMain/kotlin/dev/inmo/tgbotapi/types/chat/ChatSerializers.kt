@@ -17,16 +17,32 @@ private val formatter
 @Serializable(ChatTypeSerializer::class)
 sealed class ChatType {
     abstract val stringified: String
+
     @Serializable(ChatTypeSerializer::class)
-    object Sender : ChatType() { override val stringified = "sender" }
+    object Sender : ChatType() {
+        override val stringified = "sender"
+    }
+
     @Serializable(ChatTypeSerializer::class)
-    object Private : ChatType() { override val stringified = "private" }
+    object Private : ChatType() {
+        override val stringified = "private"
+    }
+
     @Serializable(ChatTypeSerializer::class)
-    object Group : ChatType() { override val stringified = "group" }
+    object Group : ChatType() {
+        override val stringified = "group"
+    }
+
     @Serializable(ChatTypeSerializer::class)
-    object Supergroup : ChatType() { override val stringified = "supergroup" }
+    object Supergroup : ChatType() {
+        override val stringified = "supergroup"
+    }
+
     @Serializable(ChatTypeSerializer::class)
-    object Channel : ChatType() { override val stringified = "channel" }
+    object Channel : ChatType() {
+        override val stringified = "channel"
+    }
+
     @Serializable(ChatTypeSerializer::class)
     class Unknown(override val stringified: String) : ChatType()
 
@@ -34,24 +50,30 @@ sealed class ChatType {
         return stringified
     }
 }
+
 val String.asChatType
-    get() = when (this) {
-        ChatType.Sender.stringified -> ChatType.Sender
-        ChatType.Private.stringified -> ChatType.Private
-        ChatType.Group.stringified -> ChatType.Group
-        ChatType.Supergroup.stringified -> ChatType.Supergroup
-        ChatType.Channel.stringified -> ChatType.Channel
-        else -> ChatType.Unknown(this)
-    }
+    get() =
+        when (this) {
+            ChatType.Sender.stringified -> ChatType.Sender
+            ChatType.Private.stringified -> ChatType.Private
+            ChatType.Group.stringified -> ChatType.Group
+            ChatType.Supergroup.stringified -> ChatType.Supergroup
+            ChatType.Channel.stringified -> ChatType.Channel
+            else -> ChatType.Unknown(this)
+        }
 
 @RiskFeature
 object ChatTypeSerializer : KSerializer<ChatType> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
+
     override fun deserialize(decoder: Decoder): ChatType {
         return decoder.decodeString().asChatType
     }
 
-    override fun serialize(encoder: Encoder, value: ChatType) {
+    override fun serialize(
+        encoder: Encoder,
+        value: ChatType,
+    ) {
         encoder.encodeString(value.stringified)
     }
 }
@@ -75,28 +97,36 @@ object ChatSerializer : KSerializer<Chat> {
                 ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
                 ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
                 ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-                ChatType.Supergroup -> if (isForum) {
-                    formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
-                } else {
-                    formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
-                }
+                ChatType.Supergroup ->
+                    if (isForum) {
+                        formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
+                    } else {
+                        formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+                    }
                 ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
-                is ChatType.Unknown -> UnknownChatType(
-                    formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
-                    decodedJson.toString(),
-                    decodedJson
-                )
+                is ChatType.Unknown ->
+                    UnknownChatType(
+                        formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
+                        decodedJson.toString(),
+                        decodedJson,
+                    )
                 null -> {
                     when {
                         original != null -> formatter.decodeFromJsonElement(BusinessChatImpl.serializer(), decodedJson)
-                        else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                        else ->
+                            error(
+                                "Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson",
+                            )
                     }
                 }
             }
         }
     }
 
-    override fun serialize(encoder: Encoder, value: Chat) {
+    override fun serialize(
+        encoder: Encoder,
+        value: Chat,
+    ) {
         when (value) {
             is ExtendedChat -> ExtendedChatSerializer.serialize(encoder, value)
             is PreviewChat -> PreviewChatSerializer.serialize(encoder, value)
@@ -121,27 +151,35 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
             ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
             ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-            ChatType.Supergroup -> if (isForum) {
-                formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
-            } else {
-                formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
-            }
+            ChatType.Supergroup ->
+                if (isForum) {
+                    formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
+                } else {
+                    formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+                }
             ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
-            is ChatType.Unknown -> UnknownChatType(
-                formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
-                decodedJson.toString(),
-                decodedJson
-            )
+            is ChatType.Unknown ->
+                UnknownChatType(
+                    formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
+                    decodedJson.toString(),
+                    decodedJson,
+                )
             null -> {
                 when {
                     original != null -> formatter.decodeFromJsonElement(PreviewBusinessChat.serializer(), decodedJson)
-                    else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                    else ->
+                        error(
+                            "Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson",
+                        )
                 }
             }
         }
     }
 
-    override fun serialize(encoder: Encoder, value: PreviewChat) {
+    override fun serialize(
+        encoder: Encoder,
+        value: PreviewChat,
+    ) {
         when (value) {
             is PrivateChatImpl -> PrivateChatImpl.serializer().serialize(encoder, value)
             is BusinessChatImpl -> BusinessChatImpl.serializer().serialize(encoder, value)
@@ -172,27 +210,35 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
             ChatType.Sender -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
             ChatType.Private -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
-            ChatType.Supergroup -> if (isForum) {
-                formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
-            } else {
-                formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
-            }
+            ChatType.Supergroup ->
+                if (isForum) {
+                    formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
+                } else {
+                    formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+                }
             ChatType.Channel -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
-            is ChatType.Unknown -> UnknownExtendedChat(
-                formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
-                decodedJson.toString(),
-                decodedJson
-            )
+            is ChatType.Unknown ->
+                UnknownExtendedChat(
+                    formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
+                    decodedJson.toString(),
+                    decodedJson,
+                )
             null -> {
                 when {
                     original != null -> formatter.decodeFromJsonElement(ExtendedBusinessChatImpl.serializer(), decodedJson)
-                    else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                    else ->
+                        error(
+                            "Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson",
+                        )
                 }
             }
         }
     }
 
-    override fun serialize(encoder: Encoder, value: ExtendedChat) {
+    override fun serialize(
+        encoder: Encoder,
+        value: ExtendedChat,
+    ) {
         when (value) {
             is ExtendedBusinessChatImpl -> ExtendedBusinessChatImpl.serializer().serialize(encoder, value)
             is ExtendedPrivateChatImpl -> ExtendedPrivateChatImpl.serializer().serialize(encoder, value)
@@ -210,7 +256,7 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
             return super.deserialize(decoder).let {
                 if (it is ExtendedForumChatImpl) {
                     it.copy(
-                        id = (it.id as? ChatIdWithThreadId) ?: ChatIdWithThreadId(it.id.chatId, threadId)
+                        id = (it.id as? ChatIdWithThreadId) ?: ChatIdWithThreadId(it.id.chatId, threadId),
                     )
                 } else {
                     it
@@ -218,13 +264,14 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
             }
         }
     }
+
     class BasedOnBusinessConnection(private val businessConnectionId: BusinessConnectionId) : ExtendedChatSerializer() {
         override fun deserialize(decoder: Decoder): ExtendedChat {
             return super.deserialize(decoder).let {
                 if (it is ExtendedPrivateChatImpl) {
                     ExtendedBusinessChatImpl(
                         BusinessChatId(it.id.chatId, businessConnectionId),
-                        it
+                        it,
                     )
                 } else {
                     it
@@ -240,34 +287,41 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
 object UserSerializer : KSerializer<User> {
     private val internalSerializer = JsonObject.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
+
     override fun deserialize(decoder: Decoder): User {
         val asJson = internalSerializer.deserialize(decoder)
 
         return when {
-            asJson[isBotField] ?.jsonPrimitive ?.booleanOrNull != true -> nonstrictJsonFormat.decodeFromJsonElement(
-                CommonUser.serializer(),
-                asJson
-            )
+            asJson[isBotField] ?.jsonPrimitive ?.booleanOrNull != true ->
+                nonstrictJsonFormat.decodeFromJsonElement(
+                    CommonUser.serializer(),
+                    asJson,
+                )
             else -> {
-                if ((asJson[canJoinGroupsField]
-                        ?: asJson[canReadAllGroupMessagesField]
-                        ?: asJson[supportInlineQueriesField]) != null
+                if ((
+                        asJson[canJoinGroupsField]
+                            ?: asJson[canReadAllGroupMessagesField]
+                            ?: asJson[supportInlineQueriesField]
+                    ) != null
                 ) {
                     nonstrictJsonFormat.decodeFromJsonElement(
                         ExtendedBot.serializer(),
-                        asJson
+                        asJson,
                     )
                 } else {
                     nonstrictJsonFormat.decodeFromJsonElement(
                         CommonBot.serializer(),
-                        asJson
+                        asJson,
                     )
                 }
             }
         }
     }
 
-    override fun serialize(encoder: Encoder, value: User) {
+    override fun serialize(
+        encoder: Encoder,
+        value: User,
+    ) {
         when (value) {
             is CommonUser -> CommonUser.serializer().serialize(encoder, value)
             is CommonBot -> CommonBot.serializer().serialize(encoder, value)

@@ -12,5 +12,5 @@ data class ChatPhoto(
     @SerialName(smallFileUniqueIdField)
     val smallFileUniqueId: TgFileUniqueId,
     @SerialName(bigFileUniqueIdField)
-    val bigFileUniqueId: TgFileUniqueId
+    val bigFileUniqueId: TgFileUniqueId,
 )

@@ -5,13 +5,14 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 open class HandleableTriggersHolder<T>(
-    preset: List<T> = emptyList()
+    preset: List<T> = emptyList(),
 ) {
     protected val commandsMutex = Mutex()
     protected val handleableCounts = mutableMapOf<T, Int>()
-    protected val _handleable = mutableListOf<T>().also {
-        it.addAll(preset)
-    }
+    protected val _handleable =
+        mutableListOf<T>().also {
+            it.addAll(preset)
+        }
     val handleable: List<T>
         get() = _handleable.toList()
 
@@ -37,12 +38,13 @@ open class HandleableTriggersHolder<T>(
 
 suspend fun <T, R> HandleableTriggersHolder<T>.doWithRegistration(
     data: T,
-    block: suspend () -> R
+    block: suspend () -> R,
 ): R {
     registerHandleable(data)
-    val result = runCatchingSafely {
-        block()
-    }
+    val result =
+        runCatchingSafely {
+            block()
+        }
     unregisterHandleable(data)
     return result.getOrThrow()
 }

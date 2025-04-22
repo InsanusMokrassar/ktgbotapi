@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  */
 class CombinedSubcontextInitialAction(
     val subactions: List<SubAction>,
-    private val logger: KSLog = KSLog("CombinedSubcontextInitialAction_${subactions.size}")
+    private val logger: KSLog = KSLog("CombinedSubcontextInitialAction_${subactions.size}"),
 ) {
     /**
      * Represents interface-like variant of [CustomBehaviourContextAndTypeReceiver] useful for [BehaviourContext]
@@ -31,6 +31,7 @@ class CombinedSubcontextInitialAction(
             }
         }
     }
+
     val subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = { update ->
         val leftSubActions = subactions.toMutableSet()
         val successSubActions = mutableSetOf<SubAction>()
@@ -65,12 +66,12 @@ class CombinedSubcontextInitialAction(
  * builders with `subcontextInitialAction` argument
  */
 inline fun buildSubcontextInitialActionWithSubActions(
-    block: MutableList<CombinedSubcontextInitialAction.SubAction>.() -> Unit
+    block: MutableList<CombinedSubcontextInitialAction.SubAction>.() -> Unit,
 ): CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> {
     val list = mutableListOf<CombinedSubcontextInitialAction.SubAction>()
     list.block()
     return CombinedSubcontextInitialAction(
-        list.toList()
+        list.toList(),
     ).subcontextInitialAction
 }
 
@@ -79,13 +80,13 @@ inline fun buildSubcontextInitialActionWithSubActions(
  * builders with `subcontextInitialAction` argument
  */
 inline fun buildSubcontextInitialAction(
-    block: MutableList<CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>>.() -> Unit
+    block: MutableList<CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>>.() -> Unit,
 ): CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> {
     val list = mutableListOf<CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>>()
     list.block()
     return CombinedSubcontextInitialAction(
         list.map {
             CombinedSubcontextInitialAction.SubAction.Callback(it)
-        }
+        },
     ).subcontextInitialAction
 }

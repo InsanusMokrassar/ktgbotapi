@@ -12,5 +12,5 @@ data class LoginURL(
     @SerialName(botUsernameField)
     val botUsername: String? = null,
     @SerialName(requestWriteAccessField)
-    val requestWriteAccess: Boolean? = null
+    val requestWriteAccess: Boolean? = null,
 )

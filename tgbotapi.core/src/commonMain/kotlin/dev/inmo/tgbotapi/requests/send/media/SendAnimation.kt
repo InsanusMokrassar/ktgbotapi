@@ -6,15 +6,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
@@ -39,39 +39,40 @@ fun SendAnimation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<AnimationContent>> {
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data = SendAnimationData(
-        chatId = chatId,
-        animation = animation,
-        thumbnail = thumbnail ?.fileId,
-        text = text,
-        parseMode = parseMode,
-        rawEntities = null,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendAnimationData(
+            chatId = chatId,
+            animation = animation,
+            thumbnail = thumbnail ?.fileId,
+            text = text,
+            parseMode = parseMode,
+            rawEntities = null,
+            showCaptionAboveMedia = showCaptionAboveMedia,
+            spoilered = spoilered,
+            duration = duration,
+            width = width,
+            height = height,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (animationAsFile == null && thumbAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
@@ -93,45 +94,46 @@ fun SendAnimation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<AnimationContent>> {
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data = SendAnimationData(
-        chatId = chatId,
-        animation = animation,
-        thumbnail = thumbnail ?.fileId,
-        text = entities.makeString(),
-        parseMode = null,
-        rawEntities = entities.toRawMessageEntities(),
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendAnimationData(
+            chatId = chatId,
+            animation = animation,
+            thumbnail = thumbnail ?.fileId,
+            text = entities.makeString(),
+            parseMode = null,
+            rawEntities = entities.toRawMessageEntities(),
+            showCaptionAboveMedia = showCaptionAboveMedia,
+            spoilered = spoilered,
+            duration = duration,
+            width = width,
+            height = height,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (animationAsFile == null && thumbAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendAnimationData internal constructor(
@@ -172,7 +174,7 @@ data class SendAnimationData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<AnimationContent>>,
     SendContentMessageRequest<ContentMessage<AnimationContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<AnimationContent>>,
@@ -181,8 +183,7 @@ data class SendAnimationData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
     SizedSendMessageRequest<ContentMessage<AnimationContent>>,
     WithCustomizableCaptionRequest<ContentMessage<AnimationContent>>,
-    OptionallyWithSpoilerRequest
-{
+    OptionallyWithSpoilerRequest {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -196,6 +197,7 @@ data class SendAnimationData internal constructor(
     }
 
     override fun method(): String = "sendAnimation"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -204,8 +206,8 @@ data class SendAnimationData internal constructor(
 
 data class SendAnimationFiles internal constructor(
     val animation: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-    animationField to animation,
-    thumbnailField to thumbnail
-)
+        animationField to animation,
+        thumbnailField to thumbnail,
+    )

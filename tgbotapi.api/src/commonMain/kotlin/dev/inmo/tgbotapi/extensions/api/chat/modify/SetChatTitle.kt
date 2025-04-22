@@ -7,10 +7,10 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 
 public suspend fun TelegramBot.setChatTitle(
     chatId: ChatIdentifier,
-    title: String
+    title: String,
 ): Boolean = execute(SetChatTitle(chatId, title))
 
 public suspend fun TelegramBot.setChatTitle(
     chat: PublicChat,
-    title: String
+    title: String,
 ): Boolean = setChatTitle(chat.id, title)

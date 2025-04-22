@@ -2,12 +2,12 @@ package dev.inmo.tgbotapi.types.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
@@ -19,21 +19,21 @@ fun TelegramMediaDocument(
     text: String? = null,
     parseMode: ParseMode? = null,
     thumb: InputFile? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ) = TelegramMediaDocument(file, text, parseMode, null, thumb, disableContentTypeDetection)
 
 fun TelegramMediaDocument(
     file: InputFile,
     entities: TextSourcesList,
     thumb: InputFile? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ) = TelegramMediaDocument(
     file,
     entities.makeString(),
     null,
     entities.toRawMessageEntities(),
     thumb,
-    disableContentTypeDetection
+    disableContentTypeDetection,
 )
 
 /**
@@ -57,7 +57,7 @@ data class TelegramMediaDocument internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     override val thumb: InputFile? = null,
     @SerialName(disableContentTypeDetectionField)
-    val disableContentTypeDetection: Boolean? = null
+    val disableContentTypeDetection: Boolean? = null,
 ) : TelegramFreeMedia, DocumentMediaGroupMemberTelegramMedia, ThumbedTelegramMedia {
     override val type: String = documentTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
@@ -68,23 +68,25 @@ data class TelegramMediaDocument internal constructor(
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    init {
+        media = file.fileIdToSend
+    } // crutch until js compiling will be fixed
 }
 
 fun DocumentFile.toTelegramMediaDocument(
     text: String? = null,
-    parseMode: ParseMode? = null
+    parseMode: ParseMode? = null,
 ) = TelegramMediaDocument(
     fileId,
     text,
     parseMode,
-    thumbnail ?.fileId
+    thumbnail ?.fileId,
 )
 
-fun DocumentFile.toTelegramMediaDocument(
-    textSources: TextSourcesList = emptyList()
-) = TelegramMediaDocument(
-    fileId,
-    textSources,
-    thumbnail ?.fileId
-)
+fun DocumentFile.toTelegramMediaDocument(textSources: TextSourcesList = emptyList()) =
+    TelegramMediaDocument(
+        fileId,
+        textSources,
+        thumbnail ?.fileId,
+    )

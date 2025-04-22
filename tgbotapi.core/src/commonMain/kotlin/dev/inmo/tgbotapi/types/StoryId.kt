@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class StoryId(
-    val long: Long
+    val long: Long,
 )

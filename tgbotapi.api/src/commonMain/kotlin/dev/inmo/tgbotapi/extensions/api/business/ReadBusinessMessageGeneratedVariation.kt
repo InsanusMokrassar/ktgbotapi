@@ -11,10 +11,13 @@ import dev.inmo.tgbotapi.types.toChatId
 import kotlin.Boolean
 
 public suspend fun TelegramBot.readBusinessMessage(
-  businessConnectionId: BusinessConnectionId,
-  chat: Chat,
-  messageId: MessageId,
-): Boolean = readBusinessMessage(
-    businessConnectionId = businessConnectionId, chatId = with(chat) {chat.id.toChatId()}, messageId
-    = messageId
-)
+    businessConnectionId: BusinessConnectionId,
+    chat: Chat,
+    messageId: MessageId,
+): Boolean =
+    readBusinessMessage(
+        businessConnectionId = businessConnectionId,
+        chatId = with(chat) { chat.id.toChatId() },
+        messageId =
+        messageId,
+    )

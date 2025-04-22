@@ -15,5 +15,5 @@ data class ChatLocation(
     @SerialName(locationField)
     val location: StaticLocation,
     @SerialName(addressField)
-    val address: String
+    val address: String,
 )

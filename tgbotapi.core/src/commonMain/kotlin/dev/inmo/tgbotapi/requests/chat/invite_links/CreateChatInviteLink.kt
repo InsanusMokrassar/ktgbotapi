@@ -1,11 +1,10 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
-import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
+import korlibs.time.DateTime
 import korlibs.time.TimeSpan
 import korlibs.time.days
 import kotlinx.serialization.*
@@ -30,33 +29,39 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = CreateChatInviteLinkUnlimited(chatId, name, expirationUnixTimeStamp)
+
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             membersLimit: MembersLimit,
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = CreateChatInviteLinkWithLimitedMembers(chatId, membersLimit, name, expirationUnixTimeStamp)
+
         fun withJoinRequest(
             chatId: ChatIdentifier,
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = CreateChatInviteLinkWithJoinRequest(chatId, name, expirationUnixTimeStamp)
+
         fun unlimited(
             chatId: ChatIdentifier,
             expiration: DateTime,
             name: String? = null,
         ) = unlimited(chatId, name, expiration.toTelegramDate())
+
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             membersLimit: MembersLimit,
             expiration: DateTime,
             name: String? = null,
         ) = withLimitedMembers(chatId, membersLimit, name, expiration.toTelegramDate())
+
         fun withJoinRequest(
             chatId: ChatIdentifier,
             expiration: DateTime,
             name: String? = null,
         ) = withJoinRequest(chatId, name, expiration.toTelegramDate())
+
         fun subscription(
             chatId: ChatIdentifier,
             subscriptionPrice: UInt,

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PollContent(
-    val poll: Poll
+    val poll: Poll,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -22,16 +22,17 @@ data class PollContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<PollContent>> = poll.createRequest(
-        chatId = chatId,
-        threadId = messageThreadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup: KeyboardMarkup?,
+    ): Request<ContentMessage<PollContent>> =
+        poll.createRequest(
+            chatId = chatId,
+            threadId = messageThreadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 }

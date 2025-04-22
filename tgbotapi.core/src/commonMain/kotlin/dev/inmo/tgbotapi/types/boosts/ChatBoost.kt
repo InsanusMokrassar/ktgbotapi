@@ -13,5 +13,5 @@ data class ChatBoost(
     @SerialName(expirationDateField)
     val expirationDate: TelegramDate,
     @SerialName(sourceField)
-    val source: ChatBoostSource
+    val source: ChatBoostSource,
 )

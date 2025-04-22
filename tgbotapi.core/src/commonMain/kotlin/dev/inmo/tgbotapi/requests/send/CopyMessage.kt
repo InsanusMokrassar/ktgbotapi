@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
-import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
@@ -10,13 +9,12 @@ import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
@@ -25,7 +23,7 @@ import kotlinx.serialization.*
 
 const val OrderChangingDeprecationWarn = "The order of parameters in this factory will be changed soon. To avoid unexpected behaviour, swap message id and target chat id parameters"
 
-//fun CopyMessage(
+// fun CopyMessage(
 //    toChatId: ChatIdentifier,
 //    fromChatId: ChatIdentifier,
 //    messageId: MessageId,
@@ -38,7 +36,7 @@ const val OrderChangingDeprecationWarn = "The order of parameters in this factor
 //    allowPaidBroadcast: Boolean = false,
 //    replyParameters: ReplyParameters? = null,
 //    replyMarkup: KeyboardMarkup? = null
-//) = CopyMessage(
+// ) = CopyMessage(
 //    toChatId = toChatId,
 //    fromChatId = fromChatId,
 //    messageId = messageId,
@@ -52,9 +50,9 @@ const val OrderChangingDeprecationWarn = "The order of parameters in this factor
 //    allowPaidBroadcast = allowPaidBroadcast,
 //    replyParameters = replyParameters,
 //    replyMarkup = replyMarkup
-//)
+// )
 //
-//fun CopyMessage(
+// fun CopyMessage(
 //    toChatId: ChatIdentifier,
 //    fromChatId: ChatIdentifier,
 //    messageId: MessageId,
@@ -66,7 +64,7 @@ const val OrderChangingDeprecationWarn = "The order of parameters in this factor
 //    allowPaidBroadcast: Boolean = false,
 //    replyParameters: ReplyParameters? = null,
 //    replyMarkup: KeyboardMarkup? = null
-//) = CopyMessage(
+// ) = CopyMessage(
 //    toChatId = toChatId,
 //    fromChatId = fromChatId,
 //    messageId = messageId,
@@ -80,7 +78,7 @@ const val OrderChangingDeprecationWarn = "The order of parameters in this factor
 //    allowPaidBroadcast = allowPaidBroadcast,
 //    replyParameters = replyParameters,
 //    replyMarkup = replyMarkup
-//)
+// )
 
 fun CopyMessage(
     fromChatId: ChatIdentifier,
@@ -95,7 +93,7 @@ fun CopyMessage(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = CopyMessage(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -110,7 +108,7 @@ fun CopyMessage(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun CopyMessage(
@@ -125,7 +123,7 @@ fun CopyMessage(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = CopyMessage(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -140,7 +138,7 @@ fun CopyMessage(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 @Serializable
@@ -172,8 +170,8 @@ data class CopyMessage internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
-): SimpleRequest<MessageId>,
+    override val replyMarkup: KeyboardMarkup? = null,
+) : SimpleRequest<MessageId>,
     ReplyingMarkupSendMessageRequest<MessageId>,
     WithCustomizableCaptionRequest<MessageId>,
     MessageAction,

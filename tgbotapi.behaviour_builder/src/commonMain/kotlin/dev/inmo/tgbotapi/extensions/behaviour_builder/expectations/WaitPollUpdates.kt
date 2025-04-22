@@ -13,20 +13,21 @@ typealias PollMapper<T> = suspend T.() -> T?
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<O> = expectFlow(
-    initRequest,
-    errorFactory
-) {
-    (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-}
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+): Flow<O> =
+    expectFlow(
+        initRequest,
+        errorFactory,
+    ) {
+        (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+    }
 
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
 suspend fun BehaviourContext.waitPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<Poll>(initRequest, errorFactory)
 
 /**
@@ -34,7 +35,7 @@ suspend fun BehaviourContext.waitPollUpdates(
  */
 suspend fun BehaviourContext.waitQuizPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<QuizPoll>(initRequest, errorFactory)
 
 /**
@@ -42,5 +43,5 @@ suspend fun BehaviourContext.waitQuizPollUpdates(
  */
 suspend fun BehaviourContext.waitRegularPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<RegularPoll>(initRequest, errorFactory)

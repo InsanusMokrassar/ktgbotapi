@@ -21,6 +21,11 @@ data class AnimationFile(
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null
-) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, CustomNamedMediaFile, SizedMediaFile,
+    override val fileSize: Long? = null,
+) : TelegramMediaFile,
+    MimedMediaFile,
+    ThumbedMediaFile,
+    PlayableMediaFile,
+    CustomNamedMediaFile,
+    SizedMediaFile,
     MediaContentVariant

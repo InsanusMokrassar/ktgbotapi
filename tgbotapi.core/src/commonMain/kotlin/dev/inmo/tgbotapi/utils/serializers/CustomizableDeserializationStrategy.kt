@@ -15,6 +15,7 @@ interface CustomizableDeserializationStrategy<T> : DeserializationStrategy<T> {
     fun interface JsonDeserializerStrategy<T> {
         fun deserializeOrNull(json: JsonElement): Optional<T>
     }
+
     /**
      * Contains [JsonDeserializerStrategy] which will be used in [deserialize] method when standard
      * [RawUpdate] serializer will be unable to create [RawUpdate] (and [Update] as well)
@@ -24,22 +25,22 @@ interface CustomizableDeserializationStrategy<T> : DeserializationStrategy<T> {
     /**
      * Adding [deserializationStrategy] into [customDeserializationStrategies] for using in case of unknown update
      */
-    fun addUpdateDeserializationStrategy(
-        deserializationStrategy: JsonDeserializerStrategy<T>
-    ): Boolean
+    fun addUpdateDeserializationStrategy(deserializationStrategy: JsonDeserializerStrategy<T>): Boolean
 
     /**
      * Removing [deserializationStrategy] from [customDeserializationStrategies]
      */
-    fun removeUpdateDeserializationStrategy(
-        deserializationStrategy: JsonDeserializerStrategy<T>
-    ): Boolean
+    fun removeUpdateDeserializationStrategy(deserializationStrategy: JsonDeserializerStrategy<T>): Boolean
 }
 
 open class CallbackCustomizableDeserializationStrategy<T>(
     override val descriptor: SerialDescriptor,
     private val defaultDeserializeCallback: (decoder: Decoder, jsonElement: JsonElement?) -> T,
-    private val fallbackDeserialization: (initialException: Throwable, decoder: Decoder, jsonElement: JsonElement?) -> T = { initialException, _, _ -> throw initialException }
+    private val fallbackDeserialization: (
+        initialException: Throwable,
+        decoder: Decoder,
+        jsonElement: JsonElement?,
+    ) -> T = { initialException, _, _ -> throw initialException },
 ) : CustomizableDeserializationStrategy<T> {
     protected val _customDeserializationStrategies = LinkedHashSet<CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>>()
 
@@ -62,13 +63,15 @@ open class CallbackCustomizableDeserializationStrategy<T>(
         return runCatching {
             defaultDeserializeCallback(decoder, jsonElement)
         }.getOrElse {
-            (jsonElement ?.let {
-                customDeserializationStrategies.forEach {
-                    it.deserializeOrNull(jsonElement).onPresented {
-                        return@deserialize it
+            (
+                jsonElement ?.let {
+                    customDeserializationStrategies.forEach {
+                        it.deserializeOrNull(jsonElement).onPresented {
+                            return@deserialize it
+                        }
                     }
                 }
-            })
+            )
             fallbackDeserialization(it, decoder, jsonElement)
         }
     }
@@ -77,13 +80,13 @@ open class CallbackCustomizableDeserializationStrategy<T>(
      * Adding [deserializationStrategy] into [customDeserializationStrategies] for using in case of unknown update
      */
     override fun addUpdateDeserializationStrategy(
-        deserializationStrategy: CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>
+        deserializationStrategy: CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>,
     ): Boolean = _customDeserializationStrategies.add(deserializationStrategy)
 
     /**
      * Removing [deserializationStrategy] from [customDeserializationStrategies]
      */
     override fun removeUpdateDeserializationStrategy(
-        deserializationStrategy: CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>
+        deserializationStrategy: CustomizableDeserializationStrategy.JsonDeserializerStrategy<T>,
     ): Boolean = _customDeserializationStrategies.remove(deserializationStrategy)
 }

@@ -6,39 +6,39 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import kotlinx.coroutines.*
 import kotlin.coroutines.coroutineContext
 
-fun <T: Any> RequestsExecutor.executeAsync(
+fun <T : Any> RequestsExecutor.executeAsync(
     request: Request<T>,
-    scope: CoroutineScope
-): Deferred<T> = scope.async {
-    safely {
-        execute(request)
+    scope: CoroutineScope,
+): Deferred<T> =
+    scope.async {
+        safely {
+            execute(request)
+        }
     }
-}
 
-suspend fun <T: Any> RequestsExecutor.executeAsync(
-    request: Request<T>
-): Deferred<T> = executeAsync(request, CoroutineScope(coroutineContext))
+suspend fun <T : Any> RequestsExecutor.executeAsync(request: Request<T>): Deferred<T> =
+    executeAsync(request, CoroutineScope(coroutineContext))
 
-suspend fun <T: Any> RequestsExecutor.executeUnsafe(
+suspend fun <T : Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,
     retries: Int = 0,
     retriesDelay: Long = 1000L,
-    onAllFailed: (suspend (exceptions: Array<Throwable>) -> Unit)? = null
+    onAllFailed: (suspend (exceptions: Array<Throwable>) -> Unit)? = null,
 ): T? {
     var leftRetries = retries
     val exceptions = onAllFailed ?.let { mutableListOf<Throwable>() }
     do {
-        return safely (
+        return safely(
             {
                 leftRetries--
                 delay(retriesDelay)
                 exceptions ?.add(it)
                 null
-            }
+            },
         ) {
             execute(request)
         } ?: continue
-    } while(leftRetries >= 0)
+    } while (leftRetries >= 0)
     onAllFailed ?.invoke(exceptions ?.toTypedArray() ?: emptyArray())
     return null
 }

@@ -6,5 +6,5 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 data class ChosenInlineResultUpdate(
     override val updateId: UpdateId,
-    override val data: ChosenInlineResult
+    override val data: ChosenInlineResult,
 ) : Update

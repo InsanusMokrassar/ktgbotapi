@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
-data class SwitchInlineQueryChosenChat (
+data class SwitchInlineQueryChosenChat(
     @SerialName(queryField)
     val query: String? = null,
     @SerialName(allowUserChatsField)

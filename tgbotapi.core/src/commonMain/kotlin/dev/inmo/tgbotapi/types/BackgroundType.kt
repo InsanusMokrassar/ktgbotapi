@@ -22,12 +22,15 @@ sealed interface BackgroundType {
     sealed interface Movable : BackgroundType {
         val isMoving: Boolean
     }
+
     sealed interface Dimmable : BackgroundType {
         val darkThemeDimming: Progress
     }
+
     sealed interface Fillable : BackgroundType {
         val fill: BackgroundFill
     }
+
     sealed interface WithDocument : BackgroundType {
         val document: DocumentFile
     }
@@ -38,11 +41,12 @@ sealed interface BackgroundType {
         override val fill: BackgroundFill,
         @SerialName(darkThemeDimmingField)
         @Serializable(IntProgress100Serializer::class)
-        override val darkThemeDimming: Progress
+        override val darkThemeDimming: Progress,
     ) : Fillable, Dimmable {
         @EncodeDefault
         @SerialName(typeField)
         override val type: String = Companion.type
+
         companion object {
             const val type: String = "fill"
         }
@@ -58,11 +62,12 @@ sealed interface BackgroundType {
         @SerialName(isBlurredField)
         val isBlurred: Boolean = false,
         @SerialName(isMovingField)
-        override val isMoving: Boolean = false
+        override val isMoving: Boolean = false,
     ) : WithDocument, Dimmable, Movable {
         @EncodeDefault
         @SerialName(typeField)
         override val type: String = Companion.type
+
         companion object {
             const val type: String = "wallpaper"
         }
@@ -80,11 +85,12 @@ sealed interface BackgroundType {
         @SerialName(isInvertedField)
         val isInverted: Boolean = false,
         @SerialName(isMovingField)
-        override val isMoving: Boolean = false
+        override val isMoving: Boolean = false,
     ) : WithDocument, Fillable, Movable {
         @EncodeDefault
         @SerialName(typeField)
         override val type: String = Companion.type
+
         companion object {
             const val type: String = "pattern"
         }
@@ -93,11 +99,12 @@ sealed interface BackgroundType {
     @Serializable
     data class ChatTheme(
         @SerialName(themeNameField)
-        val themeName: String
-    ): BackgroundType {
+        val themeName: String,
+    ) : BackgroundType {
         @EncodeDefault
         @SerialName(typeField)
         override val type: String = Companion.type
+
         companion object {
             const val type: String = "chat_theme"
         }
@@ -107,8 +114,8 @@ sealed interface BackgroundType {
     data class Unknown(
         @SerialName(typeField)
         override val type: String,
-        val raw: JsonElement?
-    ): BackgroundType
+        val raw: JsonElement?,
+    ) : BackgroundType
 
     companion object : KSerializer<BackgroundType> {
         @Serializable
@@ -131,7 +138,7 @@ sealed interface BackgroundType {
             @SerialName(isInvertedField)
             val isInverted: Boolean = false,
             @SerialName(themeNameField)
-            val themeName: String? = null
+            val themeName: String? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -141,39 +148,47 @@ sealed interface BackgroundType {
             val (raw, json) = decoder.decodeDataAndJson(RawBackgroundType.serializer())
             val unknown by lazy { Unknown(raw.type, json) }
             return when (raw.type) {
-                Fill.type -> Fill(
-                    raw.fill ?: return unknown,
-                    raw.darkThemeDimming ?: return unknown
-                )
-                Wallpaper.type -> Wallpaper(
-                    document = raw.document ?: return unknown,
-                    darkThemeDimming = raw.darkThemeDimming ?: return unknown,
-                    isBlurred = raw.isBlurred,
-                    isMoving = raw.isMoving
-                )
-                Pattern.type -> Pattern(
-                    document = raw.document ?: return unknown,
-                    fill = raw.fill ?: return unknown,
-                    intensity = raw.intensity ?: return unknown,
-                    isInverted = raw.isInverted,
-                    isMoving = raw.isMoving
-                )
-                ChatTheme.type -> ChatTheme(
-                    raw.themeName ?: return unknown
-                )
+                Fill.type ->
+                    Fill(
+                        raw.fill ?: return unknown,
+                        raw.darkThemeDimming ?: return unknown,
+                    )
+                Wallpaper.type ->
+                    Wallpaper(
+                        document = raw.document ?: return unknown,
+                        darkThemeDimming = raw.darkThemeDimming ?: return unknown,
+                        isBlurred = raw.isBlurred,
+                        isMoving = raw.isMoving,
+                    )
+                Pattern.type ->
+                    Pattern(
+                        document = raw.document ?: return unknown,
+                        fill = raw.fill ?: return unknown,
+                        intensity = raw.intensity ?: return unknown,
+                        isInverted = raw.isInverted,
+                        isMoving = raw.isMoving,
+                    )
+                ChatTheme.type ->
+                    ChatTheme(
+                        raw.themeName ?: return unknown,
+                    )
                 else -> unknown
             }
         }
 
-        override fun serialize(encoder: Encoder, value: BackgroundType) {
+        override fun serialize(
+            encoder: Encoder,
+            value: BackgroundType,
+        ) {
             when (value) {
                 is ChatTheme -> ChatTheme.serializer().serialize(encoder, value)
                 is Fill -> Fill.serializer().serialize(encoder, value)
                 is Wallpaper -> Wallpaper.serializer().serialize(encoder, value)
                 is Pattern -> Pattern.serializer().serialize(encoder, value)
-                is Unknown -> value.raw ?.also {
-                    JsonElement.serializer().serialize(encoder, it)
-                } ?: Unknown.serializer().serialize(encoder, value)
+                is Unknown ->
+                    value.raw ?.also {
+                        JsonElement.serializer().serialize(encoder, it)
+                    } ?: Unknown.serializer().serialize(encoder, value)
             }
         }
     }

@@ -13,18 +13,18 @@ public suspend fun TelegramBot.pinChatMessage(
     chatId: ChatIdentifier,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false
+    disableNotification: Boolean = false,
 ): Boolean = execute(PinChatMessage(chatId, messageId, businessConnectionId, disableNotification))
 
 public suspend fun TelegramBot.pinChatMessage(
     chat: Chat,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    disableNotification: Boolean = false
+    disableNotification: Boolean = false,
 ): Boolean = pinChatMessage(chat.id, messageId, businessConnectionId, disableNotification)
 
 public suspend fun TelegramBot.pinChatMessage(
     message: AccessibleMessage,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    disableNotification: Boolean = false
+    disableNotification: Boolean = false,
 ): Boolean = pinChatMessage(message.chat.id, message.messageId, businessConnectionId, disableNotification)

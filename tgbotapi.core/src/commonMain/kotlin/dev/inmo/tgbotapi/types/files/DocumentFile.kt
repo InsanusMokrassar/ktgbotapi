@@ -18,19 +18,20 @@ data class DocumentFile(
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileNameField)
-    override val fileName: String? = null
+    override val fileName: String? = null,
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile, MediaContentVariant
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun TelegramMediaFile.asDocumentFile() = if (this is DocumentFile) {
-    this
-} else {
-    DocumentFile(
-        fileId,
-        fileUniqueId,
-        fileSize,
-        (this as? ThumbedMediaFile) ?.thumbnail,
-        (this as? MimedMediaFile) ?.mimeType,
-        (this as? CustomNamedMediaFile) ?.fileName
-    )
-}
+inline fun TelegramMediaFile.asDocumentFile() =
+    if (this is DocumentFile) {
+        this
+    } else {
+        DocumentFile(
+            fileId,
+            fileUniqueId,
+            fileSize,
+            (this as? ThumbedMediaFile) ?.thumbnail,
+            (this as? MimedMediaFile) ?.mimeType,
+            (this as? CustomNamedMediaFile) ?.fileName,
+        )
+    }

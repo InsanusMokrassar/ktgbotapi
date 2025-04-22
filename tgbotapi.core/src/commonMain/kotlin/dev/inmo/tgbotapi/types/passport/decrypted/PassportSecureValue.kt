@@ -21,7 +21,7 @@ data class CommonPassportSecureValue(
     @SerialName(selfieField)
     override val selfie: FileCredentials? = null,
     @SerialName(translationField)
-    override val translation: List<FileCredentials> = emptyList()
+    override val translation: List<FileCredentials> = emptyList(),
 ) : PassportSecureValue()
 
 @Serializable
@@ -33,6 +33,5 @@ data class InternalPassportSecureValue(
     @SerialName(selfieField)
     override val selfie: FileCredentials? = null,
     @SerialName(translationField)
-    override val translation: List<FileCredentials> = emptyList()
+    override val translation: List<FileCredentials> = emptyList(),
 ) : PassportSecureValue()
-

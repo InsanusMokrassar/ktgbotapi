@@ -18,10 +18,11 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChatId.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = execute(
-    ForwardMessage(fromChatId, toChatId, messageId, threadId, startTimestamp, disableNotification, protectContent)
-)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    execute(
+        ForwardMessage(fromChatId, toChatId, messageId, threadId, startTimestamp, disableNotification, protectContent),
+    )
 
 public suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
@@ -30,8 +31,17 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChatId.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = forwardMessage(fromChat.id, toChatId, messageId, threadId, startTimestamp, disableNotification, protectContent)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    forwardMessage(
+        fromChat.id,
+        toChatId,
+        messageId,
+        threadId,
+        startTimestamp,
+        disableNotification,
+        protectContent,
+    )
 
 public suspend fun TelegramBot.forwardMessage(
     fromChatId: ChatIdentifier,
@@ -40,8 +50,17 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChat.id.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = forwardMessage(fromChatId, toChat.id, messageId, threadId, startTimestamp, disableNotification, protectContent)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    forwardMessage(
+        fromChatId,
+        toChat.id,
+        messageId,
+        threadId,
+        startTimestamp,
+        disableNotification,
+        protectContent,
+    )
 
 public suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
@@ -50,8 +69,17 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChat.id.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = forwardMessage(fromChat.id, toChat.id, messageId, threadId, startTimestamp, disableNotification, protectContent)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    forwardMessage(
+        fromChat.id,
+        toChat.id,
+        messageId,
+        threadId,
+        startTimestamp,
+        disableNotification,
+        protectContent,
+    )
 
 public suspend fun TelegramBot.forwardMessage(
     toChatId: ChatIdentifier,
@@ -59,8 +87,17 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChatId.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = forwardMessage(message.chat, toChatId, message.messageId, threadId, startTimestamp, disableNotification, protectContent)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    forwardMessage(
+        message.chat,
+        toChatId,
+        message.messageId,
+        threadId,
+        startTimestamp,
+        disableNotification,
+        protectContent,
+    )
 
 public suspend fun TelegramBot.forwardMessage(
     toChat: Chat,
@@ -68,5 +105,14 @@ public suspend fun TelegramBot.forwardMessage(
     threadId: MessageThreadId? = toChat.id.threadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
-    protectContent: Boolean = false
-): PossiblyForwardedMessage = forwardMessage(message.chat, toChat, message.messageId, threadId, startTimestamp, disableNotification, protectContent)
+    protectContent: Boolean = false,
+): PossiblyForwardedMessage =
+    forwardMessage(
+        message.chat,
+        toChat,
+        message.messageId,
+        threadId,
+        startTimestamp,
+        disableNotification,
+        protectContent,
+    )

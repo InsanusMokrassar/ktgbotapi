@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
-import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
-import dev.inmo.tgbotapi.extensions.utils.ifBotCommandTextSource
 import dev.inmo.tgbotapi.extensions.utils.whenBotCommandTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent

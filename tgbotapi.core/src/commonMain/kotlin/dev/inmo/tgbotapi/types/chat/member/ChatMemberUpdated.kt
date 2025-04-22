@@ -3,10 +3,8 @@ package dev.inmo.tgbotapi.types.chat.member
 import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -27,7 +25,7 @@ data class ChatMemberUpdated(
     @SerialName(viaChatFolderInviteLinkField)
     val viaChatFolderInviteLink: Boolean? = false,
     @SerialName(viaJoinRequestField)
-    val viaJoinRequest: Boolean? = false
+    val viaJoinRequest: Boolean? = false,
 ) : WithPreviewChat, WithUser {
     val member: PreviewUser
         get() = newChatMemberState.user

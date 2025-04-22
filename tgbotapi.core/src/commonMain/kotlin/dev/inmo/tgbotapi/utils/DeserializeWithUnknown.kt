@@ -23,11 +23,11 @@ fun <T> Decoder.deserializeEitherWithRaw(serializer: KSerializer<T>): Either<Pai
         EitherFirst(
             runCatching {
                 this.json.decodeFromJsonElement(serializer, json)
-            }.getOrNull() to json
+            }.getOrNull() to json,
         )
     } else {
         EitherSecond(
-            serializer.deserialize(this) to null
+            serializer.deserialize(this) to null,
         )
     }
 }

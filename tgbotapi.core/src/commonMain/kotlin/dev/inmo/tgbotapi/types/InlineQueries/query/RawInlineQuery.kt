@@ -20,7 +20,7 @@ internal data class RawInlineQuery(
     @Serializable(ChatTypeSerializer::class)
     val chatType: ChatType? = null,
     @SerialName(locationField)
-    val location: Location? = null
+    val location: Location? = null,
 ) {
     val asInlineQuery by lazy {
         location ?.let {

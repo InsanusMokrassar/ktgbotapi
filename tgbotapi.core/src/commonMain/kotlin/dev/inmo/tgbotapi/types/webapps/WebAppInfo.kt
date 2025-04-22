@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class WebAppInfo(
     @SerialName(urlField)
-    val url: String
+    val url: String,
 )

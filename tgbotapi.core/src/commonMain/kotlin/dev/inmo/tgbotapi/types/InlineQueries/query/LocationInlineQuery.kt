@@ -11,5 +11,5 @@ data class LocationInlineQuery(
     override val query: String,
     override val offset: String,
     override val chatType: ChatType?,
-    val location: Location
+    val location: Location,
 ) : InlineQuery

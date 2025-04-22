@@ -5,7 +5,6 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatIdChatMessageReactionUpdatedMarkerFactory
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByIdPollMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.chatMessageReactionUpdatedUpdateOrNull
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
@@ -17,7 +16,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatMessageReact
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.chatMessageReactionUpdatedUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -40,13 +39,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByUser(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.ByUser, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.ByUser, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMessageReactionUpdated.ByUser>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.ByUser>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.ByUser>,
 ) = onChatMessageReactionUpdated(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -67,13 +66,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByChat(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.ByChat, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.ByChat, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMessageReactionUpdated.ByChat>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.ByChat>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.ByChat>,
 ) = onChatMessageReactionUpdated(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -94,11 +93,11 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedUnknown(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.Unknown, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.Unknown, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMessageReactionUpdated.Unknown>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.Unknown>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionUpdated.Unknown>,
 ) = onChatMessageReactionUpdated(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )

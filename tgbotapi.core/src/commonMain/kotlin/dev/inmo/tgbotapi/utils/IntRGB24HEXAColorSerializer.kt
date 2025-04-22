@@ -16,7 +16,10 @@ object IntRGB24HEXAColorSerializer : KSerializer<HEXAColor> {
         return HEXAColor(raw.shl(2).toUInt() + 0xffu)
     }
 
-    override fun serialize(encoder: Encoder, value: HEXAColor) {
+    override fun serialize(
+        encoder: Encoder,
+        value: HEXAColor,
+    ) {
         encoder.encodeInt(value.rgbInt)
     }
 }

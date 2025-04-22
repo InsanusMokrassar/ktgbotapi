@@ -6,5 +6,5 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 data class PollUpdate(
     override val updateId: UpdateId,
-    override val data: Poll
+    override val data: Poll,
 ) : Update

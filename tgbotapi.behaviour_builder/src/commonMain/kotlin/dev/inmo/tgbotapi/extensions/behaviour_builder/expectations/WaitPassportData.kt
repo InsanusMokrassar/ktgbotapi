@@ -16,15 +16,16 @@ typealias PassportMessageMapper = suspend PassportMessage.() -> PassportData
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<O> = expectFlow(
-    initRequest,
-    errorFactory
-) {
-    it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.passportData ?.data ?.filterIsInstance<O>() ?: emptyList()
-}
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+): Flow<O> =
+    expectFlow(
+        initRequest,
+        errorFactory,
+    ) {
+        it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.passportData ?.data ?.filterIsInstance<O>() ?: emptyList()
+    }
 
 suspend fun BehaviourContext.waitAnyPassportMessages(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPassportMessagesWith<EncryptedPassportElement>(initRequest, errorFactory)

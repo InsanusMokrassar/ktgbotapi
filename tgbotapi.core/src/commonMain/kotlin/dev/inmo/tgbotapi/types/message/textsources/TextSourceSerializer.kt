@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
-import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.micro_utils.serialization.typed_serializer.TypedSerializer
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.encoding.CompositeEncoder
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
@@ -37,7 +35,10 @@ object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, emp
         }
     }
 
-    override fun serialize(encoder: Encoder, value: TextSource) {
+    override fun serialize(
+        encoder: Encoder,
+        value: TextSource,
+    ) {
         baseSerializers // init base serializers
         super.serialize(encoder, value)
     }
@@ -47,7 +48,10 @@ object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, emp
         return super.deserialize(decoder)
     }
 
-    override fun <T: TextSource> include(type: String, serializer: KSerializer<T>) {
+    override fun <T : TextSource> include(
+        type: String,
+        serializer: KSerializer<T>,
+    ) {
         require(type !in serializers.keys)
         super.include(type, serializer)
     }

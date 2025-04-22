@@ -9,5 +9,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class VideoChatParticipantsInvited(
     @SerialName(usersField)
-    val users: List<User> = emptyList()
+    val users: List<User> = emptyList(),
 ) : VideoChatEvent

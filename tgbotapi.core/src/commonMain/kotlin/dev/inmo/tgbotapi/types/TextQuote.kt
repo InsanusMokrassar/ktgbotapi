@@ -18,7 +18,7 @@ data class TextQuote private constructor(
     @SerialName(entitiesField)
     private val entities: RawMessageEntities? = null,
     @SerialName(isManualField)
-    val isManual: Boolean = false
+    val isManual: Boolean = false,
 ) : TextedInput {
     override val textSources: List<TextSource> by lazy {
         (entities ?: emptyList()).asTextSources(text)
@@ -30,9 +30,12 @@ data class TextQuote private constructor(
             text: String,
             position: Int,
             textSources: List<TextSource> = emptyList(),
-            isManual: Boolean = false
-        )  = TextQuote(
-            text, position, textSources.toRawMessageEntities(position), isManual
+            isManual: Boolean = false,
+        ) = TextQuote(
+            text,
+            position,
+            textSources.toRawMessageEntities(position),
+            isManual,
         )
     }
 }

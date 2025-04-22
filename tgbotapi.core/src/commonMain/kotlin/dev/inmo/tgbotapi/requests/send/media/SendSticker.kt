@@ -4,7 +4,6 @@ import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -24,31 +23,33 @@ fun SendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
-    chatId = chatId,
-    sticker = sticker,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-).let {
-    when (sticker) {
-        is MultipartFile -> CommonMultipartFileRequest(
-            it,
-            listOf(sticker).associateBy { it.fileId }
-        )
-        is FileId -> it
+    replyMarkup: KeyboardMarkup? = null,
+): Request<ContentMessage<StickerContent>> =
+    SendStickerByFileId(
+        chatId = chatId,
+        sticker = sticker,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    ).let {
+        when (sticker) {
+            is MultipartFile ->
+                CommonMultipartFileRequest(
+                    it,
+                    listOf(sticker).associateBy { it.fileId },
+                )
+            is FileId -> it
+        }
     }
-}
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendStickerByFileId internal constructor(
@@ -73,9 +74,10 @@ data class SendStickerByFileId internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendContentMessageRequest<ContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<StickerContent>> {
     override fun method(): String = "sendSticker"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

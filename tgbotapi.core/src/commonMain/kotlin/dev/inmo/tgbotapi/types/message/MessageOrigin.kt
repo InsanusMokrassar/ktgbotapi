@@ -20,7 +20,7 @@ sealed interface MessageOrigin {
         @SerialName(senderUserField)
         val user: dev.inmo.tgbotapi.types.chat.User,
         @SerialName(dateField)
-        override val date: TelegramDate
+        override val date: TelegramDate,
     ) : MessageOrigin {
         @SerialName(typeField)
         @Required
@@ -37,7 +37,7 @@ sealed interface MessageOrigin {
         @SerialName(senderUserNameField)
         val name: String,
         @SerialName(dateField)
-        override val date: TelegramDate
+        override val date: TelegramDate,
     ) : MessageOrigin {
         @SerialName(typeField)
         @Required
@@ -61,7 +61,7 @@ sealed interface MessageOrigin {
             @SerialName(dateField)
             override val date: TelegramDate,
             @SerialName(authorSignatureField)
-            override val authorSignature: AuthorSignature? = null
+            override val authorSignature: AuthorSignature? = null,
         ) : Public {
             @SerialName(typeField)
             @Required
@@ -82,7 +82,7 @@ sealed interface MessageOrigin {
             @SerialName(dateField)
             override val date: TelegramDate,
             @SerialName(authorSignatureField)
-            override val authorSignature: AuthorSignature? = null
+            override val authorSignature: AuthorSignature? = null,
         ) : Public {
             @SerialName(typeField)
             @Required
@@ -99,7 +99,7 @@ sealed interface MessageOrigin {
     data class Unknown internal constructor(
         override val type: String,
         override val date: TelegramDate,
-        val source: JsonElement?
+        val source: JsonElement?,
     ) : MessageOrigin
 
     @Serializable
@@ -121,7 +121,7 @@ sealed interface MessageOrigin {
         @SerialName(senderUserNameField)
         val name: String? = null,
         @SerialName(senderUserField)
-        val user: PreviewUser? = null
+        val user: PreviewUser? = null,
     )
 
     companion object : KSerializer<MessageOrigin> {
@@ -129,45 +129,53 @@ sealed interface MessageOrigin {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): MessageOrigin {
-            val (surrogate, json) = if (decoder is JsonDecoder) {
-                val json = decoder.decodeJsonElement()
-                val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
-                surrogate to json
-            } else {
-                Surrogate.serializer().deserialize(decoder) to null
-            }
+            val (surrogate, json) =
+                if (decoder is JsonDecoder) {
+                    val json = decoder.decodeJsonElement()
+                    val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
+                    surrogate to json
+                } else {
+                    Surrogate.serializer().deserialize(decoder) to null
+                }
 
             return let {
                 when (surrogate.type) {
-                    HiddenUser.type -> HiddenUser(
-                        surrogate.name ?: return@let null,
-                        surrogate.date
-                    )
-                    Public.Channel.type -> Public.Channel(
-                        surrogate.chat as? ChannelChat ?: return@let null,
-                        surrogate.messageId ?: return@let null,
-                        surrogate.date,
-                        surrogate.authorSignature
-                    )
-                    Public.Sender.type -> Public.Sender(
-                        surrogate.senderChat as? ChannelChat ?: return@let null,
-                        surrogate.date,
-                        surrogate.authorSignature
-                    )
-                    User.type -> User(
-                        surrogate.user ?: return@let null,
-                        surrogate.date
-                    )
+                    HiddenUser.type ->
+                        HiddenUser(
+                            surrogate.name ?: return@let null,
+                            surrogate.date,
+                        )
+                    Public.Channel.type ->
+                        Public.Channel(
+                            surrogate.chat as? ChannelChat ?: return@let null,
+                            surrogate.messageId ?: return@let null,
+                            surrogate.date,
+                            surrogate.authorSignature,
+                        )
+                    Public.Sender.type ->
+                        Public.Sender(
+                            surrogate.senderChat as? ChannelChat ?: return@let null,
+                            surrogate.date,
+                            surrogate.authorSignature,
+                        )
+                    User.type ->
+                        User(
+                            surrogate.user ?: return@let null,
+                            surrogate.date,
+                        )
                     else -> null
                 }
             } ?: Unknown(
                 surrogate.type,
                 surrogate.date,
-                json
+                json,
             )
         }
 
-        override fun serialize(encoder: Encoder, value: MessageOrigin) {
+        override fun serialize(
+            encoder: Encoder,
+            value: MessageOrigin,
+        ) {
             when (value) {
                 is HiddenUser -> HiddenUser.serializer().serialize(encoder, value)
                 is Public.Channel -> Public.Channel.serializer().serialize(encoder, value)
@@ -176,6 +184,5 @@ sealed interface MessageOrigin {
                 is User -> User.serializer().serialize(encoder, value)
             }
         }
-
     }
 }

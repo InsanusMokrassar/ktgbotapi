@@ -10,17 +10,22 @@ public suspend fun TelegramBot.setGameScore(
     score: Long,
     inlineMessageId: InlineMessageId,
     force: Boolean = false,
-    disableEditMessage: Boolean = false
-): Boolean = execute(
-    SetGameScoreByInlineMessageId(
-        userId, score, inlineMessageId, force, disableEditMessage
+    disableEditMessage: Boolean = false,
+): Boolean =
+    execute(
+        SetGameScoreByInlineMessageId(
+            userId,
+            score,
+            inlineMessageId,
+            force,
+            disableEditMessage,
+        ),
     )
-)
 
 public suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     inlineMessageId: InlineMessageId,
     force: Boolean = false,
-    disableEditMessage: Boolean = false
+    disableEditMessage: Boolean = false,
 ): Boolean = setGameScore(user.id, score, inlineMessageId, force, disableEditMessage)

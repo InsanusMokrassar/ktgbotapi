@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupMessage
 /**
  * Allow only messages which are not [MediaGroupMessage]
  */
-val CommonMessageFilterExcludeMediaGroups = SimpleFilter<AccessibleMessage> {
-    it !is CommonMessage<*> || it.content !is MediaGroupContent<*>
-}
+val CommonMessageFilterExcludeMediaGroups =
+    SimpleFilter<AccessibleMessage> {
+        it !is CommonMessage<*> || it.content !is MediaGroupContent<*>
+    }

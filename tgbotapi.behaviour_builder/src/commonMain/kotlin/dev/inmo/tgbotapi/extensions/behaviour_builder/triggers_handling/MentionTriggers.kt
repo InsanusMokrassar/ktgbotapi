@@ -31,7 +31,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any>? = AnyMarkerFactory(),
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<T>>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>,
 ) = onContentMessageWithType<BC, T>(
     initialFilter * {
         it.content.isWithMention(username)
@@ -39,7 +39,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onTextMention(
@@ -48,7 +48,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any>? = AnyMarkerFactory(),
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<T>>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>,
 ) = onContentMessageWithType<BC, T>(
     initialFilter * {
         it.content.isWithTextMention(userId)
@@ -56,7 +56,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onMention(
@@ -65,7 +65,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any>? = AnyMarkerFactory(),
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<T>>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>,
 ) = onContentMessageWithType<BC, T>(
     initialFilter * {
         it.content.isWithMention(user)
@@ -73,9 +73,8 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -88,7 +87,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextedContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextedContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -102,7 +101,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextedContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextedContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -116,10 +115,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextedContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextedContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -132,7 +129,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VoiceContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VoiceContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -146,7 +143,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VoiceContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VoiceContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -160,10 +157,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VoiceContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VoiceContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -173,10 +168,12 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -187,10 +184,12 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -201,13 +200,13 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     user: User,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -220,7 +219,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -234,7 +233,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupPartContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -248,10 +247,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -264,7 +261,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AudioContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AudioContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -278,7 +275,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAudioContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AudioContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AudioContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -292,10 +289,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AudioContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AudioContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -308,7 +303,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<DocumentContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<DocumentContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -322,7 +317,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithDocumentContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<DocumentContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<DocumentContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -336,10 +331,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<DocumentContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<DocumentContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -351,8 +344,9 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -365,8 +359,9 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVisualMediaGroupPartCont
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -379,11 +374,10 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>
+    additionalSubcontextInitialAction:
+        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -396,7 +390,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VideoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -410,7 +404,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVideoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VideoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -424,10 +418,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VideoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -440,7 +432,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PhotoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<PhotoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<PhotoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -454,7 +446,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithPhotoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PhotoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<PhotoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<PhotoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -468,10 +460,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PhotoContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<PhotoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<PhotoContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -484,7 +474,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AnimationContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AnimationContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AnimationContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -498,7 +488,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnimationContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AnimationContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AnimationContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AnimationContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -512,10 +502,8 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AnimationContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<AnimationContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<AnimationContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
-
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -528,7 +516,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithTextContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -542,7 +530,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithTextContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 /**
@@ -556,6 +544,5 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithTextContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<TextContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-

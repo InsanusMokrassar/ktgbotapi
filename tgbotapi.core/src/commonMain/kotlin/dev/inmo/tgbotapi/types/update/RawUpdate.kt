@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.update
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
 import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
@@ -18,6 +17,7 @@ import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollAnswer
+import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.serialization.*
@@ -61,6 +61,7 @@ internal data class RawUpdate constructor(
 ) {
     @Transient
     private var initedUpdate: Update? = null
+
     /**
      * @return One of children of [Update] interface or null in case of unknown type of update
      */
@@ -74,10 +75,11 @@ internal data class RawUpdate constructor(
 
                 chosen_inline_result != null -> ChosenInlineResultUpdate(updateId, chosen_inline_result.asChosenInlineResult)
                 inline_query != null -> InlineQueryUpdate(updateId, inline_query.asInlineQuery)
-                callback_query != null -> CallbackQueryUpdate(
-                    updateId,
-                    callback_query.asCallbackQuery(raw.jsonObject["callback_query"].toString())
-                )
+                callback_query != null ->
+                    CallbackQueryUpdate(
+                        updateId,
+                        callback_query.asCallbackQuery(raw.jsonObject["callback_query"].toString()),
+                    )
                 shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
                 pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
                 poll != null -> PollUpdate(updateId, poll)
@@ -94,20 +96,21 @@ internal data class RawUpdate constructor(
                 edited_business_message != null -> EditBusinessMessageUpdate(updateId, edited_business_message)
                 deleted_business_messages != null -> DeletedBusinessMessageUpdate(updateId, deleted_business_messages)
                 purchased_paid_media != null -> PaidMediaPurchasedUpdate(updateId, purchased_paid_media)
-                else -> UnknownUpdate(
-                    updateId,
-                    raw
-                )
+                else ->
+                    UnknownUpdate(
+                        updateId,
+                        raw,
+                    )
             }
         } catch (e: NotImplementedError) {
             UnknownUpdate(
                 updateId,
-                raw
+                raw,
             )
         } catch (e: SerializationException) {
             UnknownUpdate(
                 updateId,
-                raw
+                raw,
             )
         }.also {
             initedUpdate = it

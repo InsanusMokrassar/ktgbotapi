@@ -6,9 +6,7 @@ import dev.inmo.tgbotapi.extensions.utils.textedContentOrNull
 /**
  * Includes messages only contains text with [textRegex]
  */
-fun CommonMessageFilterIncludeText(
-    textRegex: Regex,
-): CommonMessageFilter<*> {
+fun CommonMessageFilterIncludeText(textRegex: Regex): CommonMessageFilter<*> {
     return CommonMessageFilter {
         it.content.textedContentOrNull() ?.text ?.contains(textRegex) == true
     }

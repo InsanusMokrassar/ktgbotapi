@@ -18,25 +18,28 @@ internal data class RawBusinessConnection(
     @SerialName(rightsField)
     val rights: BusinessBotRights = BusinessBotRights(),
     @SerialName(isEnabledField)
-    val isEnabled: Boolean
+    val isEnabled: Boolean,
 ) {
     val asBusinessConnection
-        get() = when (isEnabled) {
-            true -> BusinessConnection.Enabled(
-                id = id,
-                user = user,
-                userChatId = userChatId,
-                date = date,
-                rights = rights
-            )
-            false -> BusinessConnection.Disabled(
-                id = id,
-                user = user,
-                userChatId = userChatId,
-                date = date,
-                rights = rights
-            )
-        }
+        get() =
+            when (isEnabled) {
+                true ->
+                    BusinessConnection.Enabled(
+                        id = id,
+                        user = user,
+                        userChatId = userChatId,
+                        date = date,
+                        rights = rights,
+                    )
+                false ->
+                    BusinessConnection.Disabled(
+                        id = id,
+                        user = user,
+                        userChatId = userChatId,
+                        date = date,
+                        rights = rights,
+                    )
+            }
 
     constructor(businessConnection: BusinessConnection) : this(
         id = businessConnection.id,

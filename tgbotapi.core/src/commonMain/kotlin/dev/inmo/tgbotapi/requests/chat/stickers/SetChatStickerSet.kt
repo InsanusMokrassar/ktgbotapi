@@ -11,9 +11,10 @@ data class SetChatStickerSet(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(stickerSetNameField)
-    val stickerSetName: StickerSetName
-): ChatRequest, SimpleRequest<Boolean> {
+    val stickerSetName: StickerSetName,
+) : ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatStickerSet"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

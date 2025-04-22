@@ -10,9 +10,10 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class ExportChatInviteLink(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<String> {
+    override val chatId: ChatIdentifier,
+) : ChatRequest, SimpleRequest<String> {
     override fun method(): String = "exportChatInviteLink"
+
     override val resultDeserializer: DeserializationStrategy<String>
         get() = String.serializer()
     override val requestSerializer: SerializationStrategy<*>

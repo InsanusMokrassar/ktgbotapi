@@ -16,5 +16,5 @@ data class ChatShared(
     @SerialName(usernameField)
     val username: Username? = null,
     @SerialName(photoField)
-    val photo: PhotoFile? = null
+    val photo: PhotoFile? = null,
 ) : ChatSharedRequest

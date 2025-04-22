@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.whenMentionTextSource
-import dev.inmo.tgbotapi.extensions.utils.whenTextMentionTextSource
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.Username
@@ -25,23 +23,26 @@ fun CommonMessage<TextedContent>.isWithMention(user: User): Boolean = content.is
 /**
  * Uses [isWithMention] passing [username] as argument to take only messages with [username] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(username: Username) = filter {
-    it.isWithMention(username)
-}
+fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(username: Username) =
+    filter {
+        it.isWithMention(username)
+    }
 
 /**
  * Uses [isWithTextMention] passing [userId] as argument to take only messages with [userId] text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) = filter {
-    it.isWithTextMention(userId)
-}
+fun Flow<CommonMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) =
+    filter {
+        it.isWithTextMention(userId)
+    }
 
 /**
  * Uses [isWithMention] passing [user] as argument to take only messages with [user] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filter {
-    it.isWithMention(user)
-}
+fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) =
+    filter {
+        it.isWithMention(user)
+    }
 
 /**
  * Creates cold [Flow] with the messages with [TextedContent] where [username] has been mentioned
@@ -49,10 +50,10 @@ fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filt
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+suspend fun BehaviourContext.waitContentMessageWithMentions(
     username: Username,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitContentMessage(initRequest, errorFactory).mapWithContent<TextedContent>().filterMentionsMessages(username)
 
 /**
@@ -62,10 +63,10 @@ suspend fun BehaviourContext.waitContentMessageWithMentions (
  * @see filterMentions
  * @see dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
  */
-suspend fun BehaviourContext.waitContentMessageWithTextMentions (
+suspend fun BehaviourContext.waitContentMessageWithTextMentions(
     userId: UserId,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContentMessage(initRequest, errorFactory).filterTextMentionsMessages(userId)
 
 /**
@@ -75,8 +76,8 @@ suspend fun BehaviourContext.waitContentMessageWithTextMentions (
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+suspend fun BehaviourContext.waitContentMessageWithMentions(
     user: User,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContentMessage(initRequest, errorFactory).filterMentionsMessages(user)

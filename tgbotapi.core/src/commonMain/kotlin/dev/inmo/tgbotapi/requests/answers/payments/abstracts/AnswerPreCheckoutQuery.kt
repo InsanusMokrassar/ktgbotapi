@@ -7,6 +7,7 @@ import kotlinx.serialization.builtins.serializer
 
 interface AnswerPreCheckoutQuery : SimpleRequest<Boolean> {
     override fun method(): String = "answerPreCheckoutQuery"
+
     override val resultDeserializer: KSerializer<Boolean>
         get() = Boolean.serializer()
 

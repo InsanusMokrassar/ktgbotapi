@@ -14,7 +14,7 @@ data class BotCommand(
     @SerialName(botCommandField)
     val command: String,
     @SerialName(descriptionField)
-    val description: String
+    val description: String,
 ) {
     init {
         if (command.length !in botCommandLengthLimit) {

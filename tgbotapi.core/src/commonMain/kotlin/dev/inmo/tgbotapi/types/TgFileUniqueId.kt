@@ -6,14 +6,15 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class TgFileUniqueId(
-    val string: String
+    val string: String,
 ) {
     override fun toString(): String {
         return string
     }
 }
+
 @Deprecated(
     "Renamed",
-    ReplaceWith("TgFileUniqueId", "dev.inmo.tgbotapi.types.TgFileUniqueId")
+    ReplaceWith("TgFileUniqueId", "dev.inmo.tgbotapi.types.TgFileUniqueId"),
 )
 typealias FileUniqueId = TgFileUniqueId

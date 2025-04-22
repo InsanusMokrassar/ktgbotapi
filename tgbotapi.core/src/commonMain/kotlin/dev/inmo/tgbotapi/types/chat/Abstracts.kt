@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.Serializable
 
 @Serializable(ChatSerializer::class)

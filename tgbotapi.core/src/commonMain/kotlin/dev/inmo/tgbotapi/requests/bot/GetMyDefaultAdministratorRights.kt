@@ -8,9 +8,10 @@ import kotlinx.serialization.*
 @Serializable
 data class GetMyDefaultAdministratorRights(
     @SerialName(forChannelsField)
-    val forChannels: Boolean? = null
+    val forChannels: Boolean? = null,
 ) : SimpleRequest<AdministratorChatMemberImpl> {
     override fun method(): String = "getMyDefaultAdministratorRights"
+
     override val resultDeserializer: DeserializationStrategy<AdministratorChatMemberImpl>
         get() = AdministratorChatMemberImpl.serializer()
     override val requestSerializer: SerializationStrategy<*>

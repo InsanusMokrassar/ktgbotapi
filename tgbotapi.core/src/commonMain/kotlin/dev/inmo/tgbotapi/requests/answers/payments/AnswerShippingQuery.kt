@@ -14,7 +14,7 @@ data class AnswerShippingQueryOk(
     override val shippingQueryId: ShippingQueryId,
     @Serializable(ShippingOptionsSerializer::class)
     @SerialName(shippingOptionsField)
-    val shippingOptions: List<ShippingOption>
+    val shippingOptions: List<ShippingOption>,
 ) : AnswerShippingQuery {
     @SerialName(okField)
     override val isOk: Boolean = true
@@ -24,7 +24,7 @@ data class AnswerShippingQueryOk(
 
 @RiskFeature
 object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ListSerializer(
-    ShippingOption.serializer()
+    ShippingOption.serializer(),
 )
 
 @Serializable
@@ -32,7 +32,7 @@ data class AnswerShippingQueryError(
     @SerialName(shippingQueryIdField)
     override val shippingQueryId: ShippingQueryId,
     @SerialName(errorMessageField)
-    val error: String
+    val error: String,
 ) : AnswerShippingQuery {
     @SerialName(okField)
     override val isOk: Boolean = false
@@ -40,16 +40,14 @@ data class AnswerShippingQueryError(
         get() = serializer()
 }
 
-fun ShippingQuery.createAnswerOk(
-    shippingOptions: List<ShippingOption>
-): AnswerShippingQueryOk = AnswerShippingQueryOk(
-    id,
-    shippingOptions
-)
+fun ShippingQuery.createAnswerOk(shippingOptions: List<ShippingOption>): AnswerShippingQueryOk =
+    AnswerShippingQueryOk(
+        id,
+        shippingOptions,
+    )
 
-fun ShippingQuery.createAnswerError(
-    error: String
-): AnswerShippingQueryError = AnswerShippingQueryError(
-    id,
-    error
-)
+fun ShippingQuery.createAnswerError(error: String): AnswerShippingQueryError =
+    AnswerShippingQueryError(
+        id,
+        error,
+    )

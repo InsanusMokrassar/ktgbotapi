@@ -14,37 +14,43 @@ private class SurrogateBotCommandScope(
     @SerialName(chatIdField)
     val chatId: ChatIdentifier? = null,
     @SerialName(userIdField)
-    val userId: UserId? = null
+    val userId: UserId? = null,
 ) {
-    fun asBotCommandScope() = when (type) {
-        BotCommandScopeDefault.type -> BotCommandScopeDefault
-        BotCommandScopeAllPrivateChats.type -> BotCommandScopeAllPrivateChats
-        BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
-        BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
-        BotCommandScopeChatAdministrators.type -> BotCommandScopeChatAdministrators(
-            chatId ?: error("${BotCommandScopeChatAdministrators.type} type must have $chatIdField field, but have no")
-        )
-        BotCommandScopeChatMember.type -> BotCommandScopeChatMember(
-            chatId ?: error("${BotCommandScopeChatMember.type} type must have $chatIdField field, but have no"),
-            userId ?: error("${BotCommandScopeChatMember.type} type must have $userIdField field, but have no")
-        )
-        BotCommandScopeChat.type -> BotCommandScopeChat(
-            chatId ?: error("${BotCommandScopeChat.type} type must have $chatIdField field, but have no")
-        )
-        else -> UnknownBotCommandScope(type)
-    }
+    fun asBotCommandScope() =
+        when (type) {
+            BotCommandScopeDefault.type -> BotCommandScopeDefault
+            BotCommandScopeAllPrivateChats.type -> BotCommandScopeAllPrivateChats
+            BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
+            BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
+            BotCommandScopeChatAdministrators.type ->
+                BotCommandScopeChatAdministrators(
+                    chatId ?: error("${BotCommandScopeChatAdministrators.type} type must have $chatIdField field, but have no"),
+                )
+            BotCommandScopeChatMember.type ->
+                BotCommandScopeChatMember(
+                    chatId ?: error("${BotCommandScopeChatMember.type} type must have $chatIdField field, but have no"),
+                    userId ?: error("${BotCommandScopeChatMember.type} type must have $userIdField field, but have no"),
+                )
+            BotCommandScopeChat.type ->
+                BotCommandScopeChat(
+                    chatId ?: error("${BotCommandScopeChat.type} type must have $chatIdField field, but have no"),
+                )
+            else -> UnknownBotCommandScope(type)
+        }
 
     companion object {
-        fun from(scope: BotCommandScope) = when (scope) {
-            is UnknownBotCommandScope,
-            BotCommandScopeDefault,
-            BotCommandScopeAllPrivateChats,
-            BotCommandScopeAllGroupChats,
-            BotCommandScopeAllChatAdministrators -> SurrogateBotCommandScope(scope.type)
-            is BotCommandScopeChatAdministrators -> SurrogateBotCommandScope(scope.type, scope.chatId)
-            is BotCommandScopeChatMember -> SurrogateBotCommandScope(scope.type, scope.chatId, scope.userId)
-            is BotCommandScopeChat -> SurrogateBotCommandScope(scope.type, scope.chatId)
-        }
+        fun from(scope: BotCommandScope) =
+            when (scope) {
+                is UnknownBotCommandScope,
+                BotCommandScopeDefault,
+                BotCommandScopeAllPrivateChats,
+                BotCommandScopeAllGroupChats,
+                BotCommandScopeAllChatAdministrators,
+                -> SurrogateBotCommandScope(scope.type)
+                is BotCommandScopeChatAdministrators -> SurrogateBotCommandScope(scope.type, scope.chatId)
+                is BotCommandScopeChatMember -> SurrogateBotCommandScope(scope.type, scope.chatId, scope.userId)
+                is BotCommandScopeChat -> SurrogateBotCommandScope(scope.type, scope.chatId)
+            }
     }
 }
 
@@ -57,15 +63,21 @@ sealed interface BotCommandScope {
         val AllPrivateChats = BotCommandScopeAllPrivateChats
         val AllGroupChats = BotCommandScopeAllGroupChats
         val AllChatAdministrators = BotCommandScopeAllChatAdministrators
+
         fun ChatAdministrators(chatId: ChatIdentifier) = BotCommandScopeChatAdministrators(chatId)
+
         fun Chat(chatId: ChatIdentifier) = BotCommandScopeChat(chatId)
-        fun ChatMember(chatId: ChatIdentifier, userId: UserId) = BotCommandScopeChatMember(chatId, userId)
+
+        fun ChatMember(
+            chatId: ChatIdentifier,
+            userId: UserId,
+        ) = BotCommandScopeChatMember(chatId, userId)
     }
 }
 
 @Serializable
 data class UnknownBotCommandScope internal constructor(
-    override val type: String
+    override val type: String,
 ) : BotCommandScope
 
 @Serializable
@@ -96,18 +108,18 @@ object BotCommandScopeAllChatAdministrators : BotCommandScope {
     override val type: String = "all_chat_administrators"
 }
 
-
 sealed interface ChatBotCommandScope : BotCommandScope {
     val chatId: ChatIdentifier
 }
 
 @Serializable
 data class BotCommandScopeChatAdministrators(
-    override val chatId: ChatIdentifier
+    override val chatId: ChatIdentifier,
 ) : ChatBotCommandScope {
     @Required
     @EncodeDefault
     override val type: String = BotCommandScopeChatAdministrators.type
+
     companion object {
         const val type = "chat_administrators"
     }
@@ -115,11 +127,12 @@ data class BotCommandScopeChatAdministrators(
 
 @Serializable
 data class BotCommandScopeChat(
-    override val chatId: ChatIdentifier
+    override val chatId: ChatIdentifier,
 ) : ChatBotCommandScope {
     @Required
     @EncodeDefault
     override val type: String = BotCommandScopeChat.type
+
     companion object {
         const val type = "chat"
     }
@@ -128,29 +141,30 @@ data class BotCommandScopeChat(
 @Serializable
 data class BotCommandScopeChatMember(
     override val chatId: ChatIdentifier,
-    val userId: UserId
+    val userId: UserId,
 ) : ChatBotCommandScope {
     @Required
     @EncodeDefault
     override val type: String = BotCommandScopeChatMember.type
+
     companion object {
         const val type = "chat_member"
     }
 }
 
-
 object BotCommandScopeSerializer : KSerializer<BotCommandScope> {
-
     override val descriptor: SerialDescriptor = SurrogateBotCommandScope.serializer().descriptor
 
-    override fun deserialize(
-        decoder: Decoder
-    ): BotCommandScope = SurrogateBotCommandScope.serializer().deserialize(decoder).asBotCommandScope()
+    override fun deserialize(decoder: Decoder): BotCommandScope =
+        SurrogateBotCommandScope.serializer().deserialize(decoder).asBotCommandScope()
 
-    override fun serialize(encoder: Encoder, value: BotCommandScope) {
+    override fun serialize(
+        encoder: Encoder,
+        value: BotCommandScope,
+    ) {
         SurrogateBotCommandScope.serializer().serialize(
-            encoder, SurrogateBotCommandScope.from(value)
+            encoder,
+            SurrogateBotCommandScope.from(value),
         )
     }
-
 }

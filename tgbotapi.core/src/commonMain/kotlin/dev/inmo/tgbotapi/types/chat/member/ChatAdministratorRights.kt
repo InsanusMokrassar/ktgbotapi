@@ -36,7 +36,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
             canManageTopics: Boolean = false,
             canPostStories: Boolean = false,
             canEditStories: Boolean = false,
-            canDeleteStories: Boolean = false
+            canDeleteStories: Boolean = false,
         ) = ChatCommonAdministratorRights(
             canChangeInfo = canChangeInfo,
             canPostMessages = canPostMessages,
@@ -52,7 +52,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
             canManageTopics = canManageTopics,
             canPostStories = canPostStories,
             canEditStories = canEditStories,
-            canDeleteStories = canDeleteStories
+            canDeleteStories = canDeleteStories,
         )
     }
 }

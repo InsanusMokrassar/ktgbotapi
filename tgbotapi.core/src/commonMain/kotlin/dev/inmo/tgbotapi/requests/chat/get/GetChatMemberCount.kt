@@ -10,9 +10,10 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class GetChatMemberCount(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<Int> {
+    override val chatId: ChatIdentifier,
+) : ChatRequest, SimpleRequest<Int> {
     override fun method(): String = "getChatMemberCount"
+
     override val resultDeserializer: DeserializationStrategy<Int>
         get() = Int.serializer()
     override val requestSerializer: SerializationStrategy<*>

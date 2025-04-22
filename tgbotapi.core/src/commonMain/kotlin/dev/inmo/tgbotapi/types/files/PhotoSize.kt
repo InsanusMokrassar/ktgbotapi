@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class PhotoFile(
-    val photos: List<PhotoSize>
+    val photos: List<PhotoSize>,
 ) : List<PhotoSize> by photos, MediaContentVariant, UsefulAsPaidMediaFile {
     val biggest: PhotoSize
         get() = biggest()!!
@@ -29,9 +29,10 @@ value class PhotoFile(
 
 typealias Photo = PhotoFile
 
-fun PhotoFile.biggest(): PhotoSize? = maxByOrNull {
-    it.resolution
-}
+fun PhotoFile.biggest(): PhotoSize? =
+    maxByOrNull {
+        it.resolution
+    }
 
 @RiskFeature
 object PhotoSerializer : KSerializer<PhotoFile> by PhotoFile.serializer()
@@ -45,7 +46,7 @@ data class PhotoSize(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
     override val width: Int,
-    override val height: Int
+    override val height: Int,
 ) : SizedMediaFile {
     val resolution: Long by lazy {
         width.toLong() * height

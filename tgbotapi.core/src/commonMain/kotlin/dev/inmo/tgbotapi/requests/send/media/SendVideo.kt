@@ -7,15 +7,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VideoContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
@@ -43,43 +43,44 @@ fun SendVideo(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
 
-    val data = SendVideoData(
-        chatId = chatId,
-        video = video,
-        thumbnail = thumbnail ?.fileId,
-        cover = cover,
-        startTimestamp = startTimestamp,
-        text = text,
-        parseMode = parseMode,
-        rawEntities = null,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        supportStreaming = supportStreaming,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendVideoData(
+            chatId = chatId,
+            video = video,
+            thumbnail = thumbnail ?.fileId,
+            cover = cover,
+            startTimestamp = startTimestamp,
+            text = text,
+            parseMode = parseMode,
+            rawEntities = null,
+            showCaptionAboveMedia = showCaptionAboveMedia,
+            spoilered = spoilered,
+            duration = duration,
+            width = width,
+            height = height,
+            supportStreaming = supportStreaming,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
+            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId },
         )
     }
 }
@@ -104,49 +105,50 @@ fun SendVideo(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
 
-    val data = SendVideoData(
-        chatId = chatId,
-        video = video,
-        thumbnail = thumbnail ?.fileId,
-        cover = cover,
-        startTimestamp = startTimestamp,
-        text = entities.makeString(),
-        parseMode = null,
-        rawEntities = entities.toRawMessageEntities(),
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        supportStreaming = supportStreaming,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendVideoData(
+            chatId = chatId,
+            video = video,
+            thumbnail = thumbnail ?.fileId,
+            cover = cover,
+            startTimestamp = startTimestamp,
+            text = entities.makeString(),
+            parseMode = null,
+            rawEntities = entities.toRawMessageEntities(),
+            showCaptionAboveMedia = showCaptionAboveMedia,
+            spoilered = spoilered,
+            duration = duration,
+            width = width,
+            height = height,
+            supportStreaming = supportStreaming,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
+            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVideoData internal constructor(
@@ -193,7 +195,7 @@ data class SendVideoData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<VideoContent>>,
     SendContentMessageRequest<ContentMessage<VideoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VideoContent>>,
@@ -204,8 +206,7 @@ data class SendVideoData internal constructor(
     WithCustomizableCaptionRequest<ContentMessage<VideoContent>>,
     CoveredSendMessageRequest<ContentMessage<VideoContent>>,
     WithCustomStartMediaData,
-    OptionallyWithSpoilerRequest
-{
+    OptionallyWithSpoilerRequest {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -219,6 +220,7 @@ data class SendVideoData internal constructor(
     }
 
     override fun method(): String = "sendVideo"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -227,8 +229,8 @@ data class SendVideoData internal constructor(
 
 data class SendVideoFiles internal constructor(
     val video: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-    videoField to video,
-    thumbnailField to thumbnail
-)
+        videoField to video,
+        thumbnailField to thumbnail,
+    )

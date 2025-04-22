@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
-import dev.inmo.tgbotapi.abstracts.types.WithOptionalBusinessConnectionId
 import dev.inmo.tgbotapi.extensions.utils.usernameChatOrNull
 import dev.inmo.tgbotapi.extensions.utils.whenUsernameChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -20,16 +19,17 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun WithPreviewChat.sameChat(chatId: ChatIdentifier) =
-    chat.id == chatId || (chatId is Username && chat.whenUsernameChat {
-        it.username == chatId
-    } ?: false)
+    chat.id == chatId || (
+        chatId is Username && chat.whenUsernameChat {
+            it.username == chatId
+        } ?: false
+    )
 
 /**
  * @return true in case if [this] message is placed in the [chat]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithPreviewChat.sameChat(chat: Chat) =
-    sameChat(chat.id) || chat.usernameChatOrNull()?.username?.let { sameChat(it) } ?: false
+inline fun WithPreviewChat.sameChat(chat: Chat) = sameChat(chat.id) || chat.usernameChatOrNull()?.username?.let { sameChat(it) } ?: false
 
 /**
  * @return true in case if [this] message is placed in the same chat that [other]
@@ -44,7 +44,7 @@ inline fun WithPreviewChat.sameChat(other: Message) = sameChat(other.chat)
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameMessage(
     chatId: ChatIdentifier,
-    messageId: MessageId
+    messageId: MessageId,
 ) = sameChat(chatId) && this.messageId == messageId
 
 /**
@@ -54,7 +54,7 @@ inline fun Message.sameMessage(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameMessage(
     chat: Chat,
-    messageId: MessageId
+    messageId: MessageId,
 ) = sameChat(chat) && this.messageId == messageId
 
 /**
@@ -73,7 +73,7 @@ inline fun Message.sameMessage(other: Message) = sameMessage(other.chat, other.m
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameTopic(
     chatId: ChatIdentifier,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
 ) = sameChat(chatId) && threadIdOrNull == threadId
 
 /**
@@ -85,7 +85,7 @@ inline fun Message.sameTopic(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameThread(
     chatId: ChatIdentifier,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
 ) = sameTopic(chatId, threadId)
 
 /**
@@ -97,7 +97,7 @@ inline fun Message.sameThread(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameTopic(
     chat: Chat,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
 ) = sameTopic(chat.id, threadId)
 
 /**
@@ -109,7 +109,7 @@ inline fun Message.sameTopic(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameThread(
     chat: Chat,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
 ) = sameThread(chat.id, threadId)
 
 /**
@@ -134,9 +134,7 @@ inline fun Message.sameThread(other: Message) = sameTopic(other)
  * @return true in case if [this] message is from the same business connection (with businessConnectionId == [id])
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun Message.sameBusinessConnection(
-    id: BusinessConnectionId
-) = businessConnectionId == id
+inline fun Message.sameBusinessConnection(id: BusinessConnectionId) = businessConnectionId == id
 
 /**
  * @return true in case if [this] message is from the same business connection (with businessConnectionId == [other.businessConnectionId])

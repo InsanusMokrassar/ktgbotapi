@@ -6,5 +6,5 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 data class PreCheckoutQueryUpdate(
     override val updateId: UpdateId,
-    override val data: PreCheckoutQuery
+    override val data: PreCheckoutQuery,
 ) : Update

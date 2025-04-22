@@ -8,4 +8,3 @@ interface WithOptionalLanguageCode {
     val languageCode: String?
         get() = ietfLanguageCode ?.code
 }
-

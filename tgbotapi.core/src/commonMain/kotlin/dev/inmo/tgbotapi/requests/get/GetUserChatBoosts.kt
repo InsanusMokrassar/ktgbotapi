@@ -14,11 +14,12 @@ data class GetUserChatBoosts(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
-    val userId: UserId
+    val userId: UserId,
 ) : SimpleRequest<UserChatBoosts>, ChatRequest {
     override fun method(): String = "getUserChatBoosts"
+
     override val resultDeserializer: DeserializationStrategy<UserChatBoosts>
-    get() = UserChatBoosts.serializer()
+        get() = UserChatBoosts.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

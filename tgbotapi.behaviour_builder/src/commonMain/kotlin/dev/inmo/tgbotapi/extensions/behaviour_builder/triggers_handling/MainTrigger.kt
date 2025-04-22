@@ -2,15 +2,12 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.micro_utils.coroutines.SpecialMutableStateFlow
 import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.flatMap
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.filter
@@ -22,57 +19,61 @@ internal suspend fun <BC : BehaviourContext, T> BC.on(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
-    updateToData: (Update) -> List<T>?
+    updateToData: (Update) -> List<T>?,
 ) = flowsUpdatesFilter.expectFlow(
     bot,
-    filter = initialFilter ?.let {
-        {
-            updateToData(it) ?.mapNotNull { data ->
-                if (initialFilter(data)) it to data else null
+    filter =
+        initialFilter ?.let {
+            {
+                updateToData(it) ?.mapNotNull { data ->
+                    if (initialFilter(data)) it to data else null
+                } ?: emptyList()
+            }
+        } ?: {
+            updateToData(it) ?.map { data ->
+                it to data
             } ?: emptyList()
-        }
-    } ?: {
-        updateToData(it) ?.map { data ->
-            it to data
-        } ?: emptyList()
-    }
+        },
 ).run {
-    val localSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T> = additionalSubcontextInitialAction ?.let { _ ->
-        { update, it ->
-            additionalSubcontextInitialAction(update, it)
+    val localSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T> =
+        additionalSubcontextInitialAction ?.let { _ ->
+            { update, it ->
+                additionalSubcontextInitialAction(update, it)
+                subcontextInitialAction(update)
+            }
+        } ?: { update, _ ->
             subcontextInitialAction(update)
         }
-    } ?: { update, _ ->
-        subcontextInitialAction(update)
-    }
-    val handler: suspend (Pair<Update, T>) -> Unit = subcontextUpdatesFilter ?.let {
-        { (update, triggerData) ->
-            val contextStateFlow = SpecialMutableStateFlow<BC?>(null)
-            createSubContextAndDoSynchronouslyWithUpdatesFilter(
-                updatesUpstreamFlow = contextStateFlow.flatMapLatest { context ->
-                    if (context == null) {
-                        emptyFlow()
-                    } else {
-                        allUpdatesFlow.filter {
-                            context.subcontextUpdatesFilter(triggerData, it)
-                        }
-                    }
+    val handler: suspend (Pair<Update, T>) -> Unit =
+        subcontextUpdatesFilter ?.let {
+            { (update, triggerData) ->
+                val contextStateFlow = SpecialMutableStateFlow<BC?>(null)
+                createSubContextAndDoSynchronouslyWithUpdatesFilter(
+                    updatesUpstreamFlow =
+                        contextStateFlow.flatMapLatest { context ->
+                            if (context == null) {
+                                emptyFlow()
+                            } else {
+                                allUpdatesFlow.filter {
+                                    context.subcontextUpdatesFilter(triggerData, it)
+                                }
+                            }
+                        },
+                ) {
+                    contextStateFlow.value = this
+                    localSubcontextInitialAction(update, triggerData)
+                    scenarioReceiver(triggerData)
                 }
-            ) {
-                contextStateFlow.value = this
-                localSubcontextInitialAction(update, triggerData)
-                scenarioReceiver(triggerData)
             }
+        } ?: { (update, triggerData) ->
+            localSubcontextInitialAction(update, triggerData)
+            createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
         }
-    } ?: { (update, triggerData) ->
-        localSubcontextInitialAction(update, triggerData)
-        createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
-    }
     markerFactory ?.let {
         subscribeSafelyWithoutExceptionsAsync(
             scope,
             { markerFactory(it.second) },
-            block = handler
+            block = handler,
         )
     } ?: subscribeLoggingDropExceptions(scope) {
         scope.launchLoggingDropExceptions {

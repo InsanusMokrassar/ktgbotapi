@@ -2,8 +2,8 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
-import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
@@ -21,21 +21,22 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-): Boolean = execute(
-    PromoteChatMember(
-        chatId,
-        userId,
-        untilDate,
-        isAnonymous,
-        canChangeInfo,
-        canDeleteMessages,
-        canInviteUsers,
-        canRestrictMembers,
-        canPromoteMembers,
-        canManageVideoChats,
-        canManageChat
+): Boolean =
+    execute(
+        PromoteChatMember(
+            chatId,
+            userId,
+            untilDate,
+            isAnonymous,
+            canChangeInfo,
+            canDeleteMessages,
+            canInviteUsers,
+            canRestrictMembers,
+            canPromoteMembers,
+            canManageVideoChats,
+            canManageChat,
+        ),
     )
-)
 
 public suspend fun TelegramBot.promoteChatAdministrator(
     chat: PublicChat,
@@ -49,19 +50,20 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-): Boolean = promoteChatAdministrator(
-    chat.id,
-    userId,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
-)
+): Boolean =
+    promoteChatAdministrator(
+        chat.id,
+        userId,
+        untilDate,
+        isAnonymous,
+        canChangeInfo,
+        canDeleteMessages,
+        canInviteUsers,
+        canRestrictMembers,
+        canPromoteMembers,
+        canManageVideoChats,
+        canManageChat,
+    )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
     chatId: IdChatIdentifier,
@@ -75,19 +77,20 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-): Boolean = promoteChatAdministrator(
-    chatId,
-    user.id,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
-)
+): Boolean =
+    promoteChatAdministrator(
+        chatId,
+        user.id,
+        untilDate,
+        isAnonymous,
+        canChangeInfo,
+        canDeleteMessages,
+        canInviteUsers,
+        canRestrictMembers,
+        canPromoteMembers,
+        canManageVideoChats,
+        canManageChat,
+    )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
     chat: PublicChat,
@@ -101,16 +104,17 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-): Boolean = promoteChatAdministrator(
-    chat.id,
-    user.id,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
-)
+): Boolean =
+    promoteChatAdministrator(
+        chat.id,
+        user.id,
+        untilDate,
+        isAnonymous,
+        canChangeInfo,
+        canDeleteMessages,
+        canInviteUsers,
+        canRestrictMembers,
+        canPromoteMembers,
+        canManageVideoChats,
+        canManageChat,
+    )

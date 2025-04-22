@@ -35,9 +35,7 @@ typealias InlineKeyboardRowBuilder = RowBuilder<InlineKeyboardButton>
  *
  * @see InlineKeyboardBuilder.row
  */
-inline fun inlineKeyboard(
-    block: InlineKeyboardBuilder.() -> Unit
-) = InlineKeyboardBuilder().apply(block).build()
+inline fun inlineKeyboard(block: InlineKeyboardBuilder.() -> Unit) = InlineKeyboardBuilder().apply(block).build()
 
 /**
  * Factory-function for [InlineKeyboardBuilder], but in difference with [inlineKeyboard] this function will create single-row
@@ -45,9 +43,7 @@ inline fun inlineKeyboard(
  *
  * @see InlineKeyboardBuilder.row
  */
-inline fun flatInlineKeyboard(
-    block: InlineKeyboardRowBuilder.() -> Unit
-) = inlineKeyboard { row<InlineKeyboardButton>(block) }
+inline fun flatInlineKeyboard(block: InlineKeyboardRowBuilder.() -> Unit) = inlineKeyboard { row<InlineKeyboardButton>(block) }
 
 /**
  * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
@@ -55,13 +51,11 @@ inline fun flatInlineKeyboard(
  *
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardMarkup.modified(
-    block: InlineKeyboardBuilder.() -> Unit
-) = InlineKeyboardBuilder().apply {
-    keyboard.forEach { add(it) }
-    block()
-}.build()
-
+inline fun InlineKeyboardMarkup.modified(block: InlineKeyboardBuilder.() -> Unit) =
+    InlineKeyboardBuilder().apply {
+        keyboard.forEach { add(it) }
+        block()
+    }.build()
 
 /**
  * Creates and put [PayInlineKeyboardButton]
@@ -69,9 +63,7 @@ inline fun InlineKeyboardMarkup.modified(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.payButton(
-    text: String
-) = add(PayInlineKeyboardButton(text))
+inline fun InlineKeyboardRowBuilder.payButton(text: String) = add(PayInlineKeyboardButton(text))
 
 /**
  * Creates and put [CallbackDataInlineKeyboardButton]
@@ -81,7 +73,7 @@ inline fun InlineKeyboardRowBuilder.payButton(
  */
 inline fun InlineKeyboardRowBuilder.dataButton(
     text: String,
-    data: String
+    data: String,
 ) = add(CallbackDataInlineKeyboardButton(text, data))
 
 /**
@@ -90,9 +82,7 @@ inline fun InlineKeyboardRowBuilder.dataButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.gameButton(
-    text: String
-) = add(CallbackGameInlineKeyboardButton(text))
+inline fun InlineKeyboardRowBuilder.gameButton(text: String) = add(CallbackGameInlineKeyboardButton(text))
 
 /**
  * Creates and put [LoginURLInlineKeyboardButton]
@@ -102,7 +92,7 @@ inline fun InlineKeyboardRowBuilder.gameButton(
  */
 inline fun InlineKeyboardRowBuilder.loginButton(
     text: String,
-    loginUrl: LoginURL
+    loginUrl: LoginURL,
 ) = add(LoginURLInlineKeyboardButton(text, loginUrl))
 
 /**
@@ -113,7 +103,7 @@ inline fun InlineKeyboardRowBuilder.loginButton(
  */
 inline fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
-    data: CopyTextButtonData
+    data: CopyTextButtonData,
 ) = add(CopyTextButton(text, data))
 
 /**
@@ -124,7 +114,7 @@ inline fun InlineKeyboardRowBuilder.copyTextButton(
  */
 inline fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
-    data: String
+    data: String,
 ) = copyTextButton(text, CopyTextButtonData(data))
 
 /**
@@ -135,7 +125,7 @@ inline fun InlineKeyboardRowBuilder.copyTextButton(
  */
 inline fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
     text: String,
-    data: String
+    data: String,
 ) = add(SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data))
 
 /**
@@ -146,7 +136,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
  */
 inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     text: String,
-    parameters: SwitchInlineQueryChosenChat
+    parameters: SwitchInlineQueryChosenChat,
 ) = add(SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters))
 
 /**
@@ -169,9 +159,10 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
         allowUsers = allowUsers,
         allowBots = allowBots,
         allowGroups = allowGroups,
-        allowChannels = allowChannels
-    )
+        allowChannels = allowChannels,
+    ),
 )
+
 inline fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
     text: String,
     query: String? = null,
@@ -185,7 +176,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
  */
 inline fun InlineKeyboardRowBuilder.inlineQueryButton(
     text: String,
-    data: String
+    data: String,
 ) = add(SwitchInlineQueryInlineKeyboardButton(text, data))
 
 /**
@@ -196,7 +187,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryButton(
  */
 inline fun InlineKeyboardRowBuilder.urlButton(
     text: String,
-    url: String
+    url: String,
 ) = add(URLInlineKeyboardButton(text, url))
 
 /**
@@ -207,7 +198,7 @@ inline fun InlineKeyboardRowBuilder.urlButton(
  */
 inline fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
-    webApp: WebAppInfo
+    webApp: WebAppInfo,
 ) = add(WebAppInlineKeyboardButton(text, webApp))
 
 /**
@@ -218,5 +209,5 @@ inline fun InlineKeyboardRowBuilder.webAppButton(
  */
 inline fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
-    url: String
+    url: String,
 ) = webAppButton(text, WebAppInfo(url))

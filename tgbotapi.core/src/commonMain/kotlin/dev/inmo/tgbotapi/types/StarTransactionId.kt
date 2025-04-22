@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class StarTransactionId(
-    val string: String
+    val string: String,
 )

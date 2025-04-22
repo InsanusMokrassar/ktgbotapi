@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PaidMessagePriceChanged(
     @SerialName(paidMessageStarCountField)
-    val cost: Int
+    val cost: Int,
 ) : CommonEvent

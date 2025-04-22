@@ -14,9 +14,10 @@ data class AnswerWebAppQuery(
     @SerialName(webAppQueryIdField)
     val webAppQueryId: WebAppQueryId,
     @SerialName(resultField)
-    val result: InlineQueryResult
+    val result: InlineQueryResult,
 ) : SimpleRequest<SentWebAppMessage> {
     override fun method(): String = "answerWebAppQuery"
+
     override val resultDeserializer: DeserializationStrategy<SentWebAppMessage>
         get() = SentWebAppMessage.serializer()
     override val requestSerializer: SerializationStrategy<*>

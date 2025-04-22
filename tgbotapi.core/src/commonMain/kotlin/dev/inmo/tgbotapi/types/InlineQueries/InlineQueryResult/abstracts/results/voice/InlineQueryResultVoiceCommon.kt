@@ -5,7 +5,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 
 const val inlineQueryResultVoiceType = "voice"
 
-interface InlineQueryResultVoiceCommon : InlineQueryResult,
+interface InlineQueryResultVoiceCommon :
+    InlineQueryResult,
     TextedOutput,
     WithInputMessageContentInlineQueryResult,
     TitledInlineQueryResult

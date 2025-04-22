@@ -16,7 +16,10 @@ object TimeSpanAsSecondsSerializer : KSerializer<TimeSpan> {
         return decoder.decodeLong().seconds
     }
 
-    override fun serialize(encoder: Encoder, value: TimeSpan) {
+    override fun serialize(
+        encoder: Encoder,
+        value: TimeSpan,
+    ) {
         encoder.encodeLong(value.inWholeSeconds)
     }
 }

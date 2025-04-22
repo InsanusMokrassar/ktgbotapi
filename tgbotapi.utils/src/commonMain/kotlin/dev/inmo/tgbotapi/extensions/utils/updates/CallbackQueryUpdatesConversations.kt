@@ -8,18 +8,23 @@ import kotlinx.coroutines.flow.mapNotNull
 /**
  * @return New [Flow] with [DataCallbackQuery] type, got from [CallbackQueryUpdate.data] field
  */
-fun Flow<CallbackQueryUpdate>.asDataCallbackQueryFlow() = mapNotNull {
-    it.data as? DataCallbackQuery
-}
+fun Flow<CallbackQueryUpdate>.asDataCallbackQueryFlow() =
+    mapNotNull {
+        it.data as? DataCallbackQuery
+    }
+
 /**
  * @return New [Flow] with [GameShortNameCallbackQuery] type, got from [CallbackQueryUpdate.data] field
  */
-fun Flow<CallbackQueryUpdate>.asGameShortNameCallbackQueryFlow() = mapNotNull {
-    it.data as? GameShortNameCallbackQuery
-}
+fun Flow<CallbackQueryUpdate>.asGameShortNameCallbackQueryFlow() =
+    mapNotNull {
+        it.data as? GameShortNameCallbackQuery
+    }
+
 /**
  * @return New [Flow] with [UnknownCallbackQueryType] type, got from [CallbackQueryUpdate.data] field
  */
-fun Flow<CallbackQueryUpdate>.asUnknownCallbackQueryFlow() = mapNotNull {
-    it.data as? UnknownCallbackQueryType
-}
+fun Flow<CallbackQueryUpdate>.asUnknownCallbackQueryFlow() =
+    mapNotNull {
+        it.data as? UnknownCallbackQueryType
+    }

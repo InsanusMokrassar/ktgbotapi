@@ -5,5 +5,5 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 
 data class NewChatMembers(
-    val members: List<User>
-): GroupEvent, SupergroupEvent
+    val members: List<User>,
+) : GroupEvent, SupergroupEvent

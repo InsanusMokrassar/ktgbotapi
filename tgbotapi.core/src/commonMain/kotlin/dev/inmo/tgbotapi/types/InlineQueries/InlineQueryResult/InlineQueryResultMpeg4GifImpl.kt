@@ -4,12 +4,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.inlineQueryResultMpeg4GifType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.MimeType
 import dev.inmo.tgbotapi.utils.extensions.makeString
@@ -29,7 +29,7 @@ fun InlineQueryResultMpeg4GifImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultMpeg4GifImpl(
     id = id,
     url = url,
@@ -44,7 +44,7 @@ fun InlineQueryResultMpeg4GifImpl(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultMpeg4GifImpl(
@@ -59,7 +59,7 @@ fun InlineQueryResultMpeg4GifImpl(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultMpeg4GifImpl(
     id = id,
     url = url,
@@ -74,7 +74,7 @@ fun InlineQueryResultMpeg4GifImpl(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 @Serializable
@@ -106,7 +106,7 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultMpeg4Gif {
     override val type: String = inlineQueryResultMpeg4GifType
     override val textSources: TextSourcesList? by lazy {
@@ -115,7 +115,9 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
 
     init {
         if (thumbnailMimeType != null && thumbnailMimeType !in telegramInlineModeGifPermittedMimeTypes) {
-            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
+            error(
+                "Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes",
+            )
         }
     }
 }

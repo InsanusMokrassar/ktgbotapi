@@ -7,14 +7,14 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
-data class UserProfilePhotos (
+data class UserProfilePhotos(
     @SerialName("total_count")
     val count: Int,
     @Serializable(UserProfilePhotosPhotosSerializer::class)
-    val photos: List<PhotoFile>
+    val photos: List<PhotoFile>,
 )
 
 @RiskFeature
 object UserProfilePhotosPhotosSerializer : KSerializer<List<PhotoFile>> by ListSerializer(
-    PhotoSerializer
+    PhotoSerializer,
 )

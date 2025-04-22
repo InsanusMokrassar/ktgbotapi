@@ -7,15 +7,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.AudioContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
@@ -38,37 +38,38 @@ fun SendAudio(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<AudioContent>> {
     val audioAsFile = audio as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data = SendAudioData(
-        chatId = chatId,
-        audio = audio,
-        thumbnail = thumbnail ?.fileId,
-        text = text,
-        parseMode = parseMode,
-        rawEntities = null,
-        duration = duration,
-        performer = performer,
-        title = title,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendAudioData(
+            chatId = chatId,
+            audio = audio,
+            thumbnail = thumbnail ?.fileId,
+            text = text,
+            parseMode = parseMode,
+            rawEntities = null,
+            duration = duration,
+            performer = performer,
+            title = title,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (audioAsFile == null && thumbAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
@@ -88,43 +89,44 @@ fun SendAudio(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<AudioContent>> {
     val audioAsFile = audio as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data = SendAudioData(
-        chatId = chatId,
-        audio = audio,
-        thumbnail = thumbnail ?.fileId,
-        text = entities.makeString(),
-        parseMode = null,
-        rawEntities = entities.toRawMessageEntities(),
-        duration = duration,
-        performer = performer,
-        title = title,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    val data =
+        SendAudioData(
+            chatId = chatId,
+            audio = audio,
+            thumbnail = thumbnail ?.fileId,
+            text = entities.makeString(),
+            parseMode = null,
+            rawEntities = entities.toRawMessageEntities(),
+            duration = duration,
+            performer = performer,
+            title = title,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 
     return if (audioAsFile == null && thumbAsFile == null) {
         data
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendAudioData internal constructor(
@@ -161,7 +163,7 @@ data class SendAudioData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<AudioContent>>,
     SendContentMessageRequest<ContentMessage<AudioContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<AudioContent>>,
@@ -169,8 +171,7 @@ data class SendAudioData internal constructor(
     ThumbedSendMessageRequest<ContentMessage<AudioContent>>,
     TitledSendMessageRequest<ContentMessage<AudioContent>>,
     DuratedSendMessageRequest<ContentMessage<AudioContent>>,
-    Performerable
-{
+    Performerable {
     override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -184,6 +185,7 @@ data class SendAudioData internal constructor(
     }
 
     override fun method(): String = "sendAudio"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -192,8 +194,8 @@ data class SendAudioData internal constructor(
 
 data class SendAudioFiles internal constructor(
     val audio: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-    audioField to audio,
-    thumbnailField to thumbnail
-)
+        audioField to audio,
+        thumbnailField to thumbnail,
+    )

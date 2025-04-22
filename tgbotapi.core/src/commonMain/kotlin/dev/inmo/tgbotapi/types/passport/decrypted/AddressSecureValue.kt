@@ -9,7 +9,7 @@ import kotlinx.serialization.*
 @Serializable
 data class AddressSecureValue(
     @SerialName(dataField)
-    override val data: DataCredentials
+    override val data: DataCredentials,
 ) : SecureValueWithData {
     @Transient
     override val credentials: List<EndDataCredentials> = listOf(data)

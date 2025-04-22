@@ -11,12 +11,17 @@ import kotlinx.serialization.encoding.Encoder
 @RiskFeature
 object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
     @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
-    override val descriptor: SerialDescriptor = buildSerialDescriptor(
-        KeyboardMarkup::class.toString(),
-        PolymorphicKind.OPEN
-    )
-    override fun serialize(encoder: Encoder, value: KeyboardMarkup) {
-        when(value) {
+    override val descriptor: SerialDescriptor =
+        buildSerialDescriptor(
+            KeyboardMarkup::class.toString(),
+            PolymorphicKind.OPEN,
+        )
+
+    override fun serialize(
+        encoder: Encoder,
+        value: KeyboardMarkup,
+    ) {
+        when (value) {
             is ReplyForce -> ReplyForce.serializer().serialize(encoder, value)
             is InlineKeyboardMarkup -> InlineKeyboardMarkup.serializer().serialize(encoder, value)
             is ReplyKeyboardMarkup -> ReplyKeyboardMarkup.serializer().serialize(encoder, value)

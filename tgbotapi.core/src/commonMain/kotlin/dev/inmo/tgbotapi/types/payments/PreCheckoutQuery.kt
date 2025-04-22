@@ -23,5 +23,5 @@ data class PreCheckoutQuery(
     @SerialName(shippingOptionIdField)
     val shippingOptionId: ShippingOptionId? = null,
     @SerialName(orderInfoField)
-    val orderInfo: OrderInfo? = null
+    val orderInfo: OrderInfo? = null,
 ) : Currencied, Amounted, FromUser

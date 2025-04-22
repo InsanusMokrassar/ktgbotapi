@@ -18,5 +18,5 @@ data class InputLocationMessageContent(
     @SerialName(headingField)
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
-    override val proximityAlertRadius: Meters? = null
+    override val proximityAlertRadius: Meters? = null,
 ) : Locationed, HorizontallyAccured, ProximityAlertable, Livable, Headed, InputMessageContent

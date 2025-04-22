@@ -33,7 +33,7 @@ data class AnswerInlineQuery(
         isPersonal: Boolean? = null,
         nextOffset: String? = null,
         switchPmText: String?,
-        switchPmParameter: String?
+        switchPmParameter: String?,
     ) : this(
         inlineQueryID,
         results,
@@ -44,10 +44,11 @@ data class AnswerInlineQuery(
             switchPmParameter ?.let {
                 InlineQueryResultsButton.Start(switchPmText, switchPmParameter)
             }
-        }
+        },
     )
 
     override fun method(): String = "answerInlineQuery"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
@@ -66,7 +67,7 @@ fun InlineQuery.createAnswer(
     cachedTime,
     isPersonal,
     nextOffset,
-    button
+    button,
 )
 
 fun InlineQuery.createAnswer(
@@ -75,7 +76,7 @@ fun InlineQuery.createAnswer(
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
     switchPmText: String?,
-    switchPmParameter: String?
+    switchPmParameter: String?,
 ) = AnswerInlineQuery(
     id,
     results,
@@ -83,10 +84,10 @@ fun InlineQuery.createAnswer(
     isPersonal,
     nextOffset,
     switchPmText,
-    switchPmParameter
+    switchPmParameter,
 )
 
 @RiskFeature
 object InlineQueryAnswersResultsSerializer : KSerializer<List<InlineQueryResult>> by ListSerializer(
-    InlineQueryResultSerializer
+    InlineQueryResultSerializer,
 )

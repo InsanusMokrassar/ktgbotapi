@@ -7,9 +7,10 @@ object ByChatMessageMarkerFactory : MarkerFactory<AccessibleMessage, Any> {
 }
 
 object ByUserMessageMarkerFactory : MarkerFactory<AccessibleMessage, Any> {
-    override suspend fun invoke(data: AccessibleMessage) = when (data) {
-        is FromUserMessage -> data.user
-        is FromChannelGroupContentMessage<*> -> data.channel
-        else -> data.chat // including anonymous
-    }
+    override suspend fun invoke(data: AccessibleMessage) =
+        when (data) {
+            is FromUserMessage -> data.user
+            is FromChannelGroupContentMessage<*> -> data.channel
+            else -> data.chat // including anonymous
+        }
 }

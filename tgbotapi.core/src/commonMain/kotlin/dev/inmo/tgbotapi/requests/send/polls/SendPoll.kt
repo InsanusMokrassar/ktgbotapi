@@ -1,23 +1,24 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.polls.*
+import korlibs.time.DateTime
 import korlibs.time.millisecondsLong
 import korlibs.time.seconds
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 internal inline val ApproximateScheduledCloseInfo.openPeriod
     get() = openDuration.millisecondsLong.div(1000)
@@ -26,18 +27,24 @@ internal inline val ExactScheduledCloseInfo.closeDate
 
 internal fun checkPollInfo(
     question: String,
-    options: List<InputPollOption>
+    options: List<InputPollOption>,
 ) {
     if (question.length !in pollQuestionTextLength) {
-        throw IllegalArgumentException("The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}")
+        throw IllegalArgumentException(
+            "The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}",
+        )
     }
     options.forEach {
         if (it.text.length !in pollOptionTextLength) {
-            throw IllegalArgumentException("The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}")
+            throw IllegalArgumentException(
+                "The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}",
+            )
         }
     }
     if (options.size !in pollOptionsLimit) {
-        throw IllegalArgumentException("The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}")
+        throw IllegalArgumentException(
+            "The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}",
+        )
     }
 }
 
@@ -54,7 +61,7 @@ fun SendPoll(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendRegularPoll(
     chatId,
     question,
@@ -68,7 +75,7 @@ fun SendPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     disableNotification = disableNotification,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendPoll(
@@ -83,7 +90,7 @@ fun SendPoll(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendRegularPoll(
     chatId = chatId,
     questionEntities = textSources,
@@ -96,7 +103,7 @@ fun SendPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     disableNotification = disableNotification,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -112,35 +119,17 @@ fun Poll.createRequest(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = when (this) {
-    is RegularPoll -> SendRegularPoll(
-        chatId = chatId,
-        questionTextSources = textSources,
-        options = options.map { it.asInput() },
-        closeInfo = scheduledCloseInfo,
-        isAnonymous = isAnonymous,
-        isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-    is QuizPoll -> correctOptionId ?.let { correctOptionId ->
-        SendQuizPoll(
+    is RegularPoll ->
+        SendRegularPoll(
             chatId = chatId,
-            questionEntities = textSources,
+            questionTextSources = textSources,
             options = options.map { it.asInput() },
-            correctOptionId = correctOptionId,
             closeInfo = scheduledCloseInfo,
-            explanationTextSources = explanationTextSources,
             isAnonymous = isAnonymous,
             isClosed = isClosed,
+            allowMultipleAnswers = allowMultipleAnswers,
             threadId = threadId,
             businessConnectionId = businessConnectionId,
             disableNotification = disableNotification,
@@ -148,56 +137,80 @@ fun Poll.createRequest(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             replyParameters = replyParameters,
-            replyMarkup = replyMarkup
+            replyMarkup = replyMarkup,
         )
-    } ?: SendRegularPoll(
-        chatId = chatId,
-        questionTextSources = textSources,
-        options = options.map { it.asInput() },
-        closeInfo = scheduledCloseInfo,
-        isAnonymous = isAnonymous,
-        isClosed = isClosed,
-        allowMultipleAnswers = false,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-    is UnknownPollType -> SendRegularPoll(
-        chatId = chatId,
-        questionTextSources = textSources,
-        options = options.map { it.asInput() },
-        closeInfo = scheduledCloseInfo,
-        isAnonymous = isAnonymous,
-        isClosed = isClosed,
-        allowMultipleAnswers = false,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+    is QuizPoll ->
+        correctOptionId ?.let { correctOptionId ->
+            SendQuizPoll(
+                chatId = chatId,
+                questionEntities = textSources,
+                options = options.map { it.asInput() },
+                correctOptionId = correctOptionId,
+                closeInfo = scheduledCloseInfo,
+                explanationTextSources = explanationTextSources,
+                isAnonymous = isAnonymous,
+                isClosed = isClosed,
+                threadId = threadId,
+                businessConnectionId = businessConnectionId,
+                disableNotification = disableNotification,
+                protectContent = protectContent,
+                allowPaidBroadcast = allowPaidBroadcast,
+                effectId = effectId,
+                replyParameters = replyParameters,
+                replyMarkup = replyMarkup,
+            )
+        } ?: SendRegularPoll(
+            chatId = chatId,
+            questionTextSources = textSources,
+            options = options.map { it.asInput() },
+            closeInfo = scheduledCloseInfo,
+            isAnonymous = isAnonymous,
+            isClosed = isClosed,
+            allowMultipleAnswers = false,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
+    is UnknownPollType ->
+        SendRegularPoll(
+            chatId = chatId,
+            questionTextSources = textSources,
+            options = options.map { it.asInput() },
+            closeInfo = scheduledCloseInfo,
+            isAnonymous = isAnonymous,
+            isClosed = isClosed,
+            allowMultipleAnswers = false,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        )
 }
 
 internal fun ScheduledCloseInfo.checkSendData() {
-    val span = when (this) {
-        is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
-        is ApproximateScheduledCloseInfo -> openDuration.seconds
-    }.toInt()
+    val span =
+        when (this) {
+            is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
+            is ApproximateScheduledCloseInfo -> openDuration.seconds
+        }.toInt()
     if (span !in openPeriodPollSecondsLimit) {
         error("Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span")
     }
 }
 
-sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>>, TextedInput {
+sealed class SendPoll :
+    SendContentMessageRequest<ContentMessage<PollContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>>,
+    TextedInput {
     abstract val question: String
     override val text: String
         get() = question
@@ -223,7 +236,7 @@ sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
         }
 
     override fun method(): String = "sendPoll"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
         get() = commonResultDeserializer
 }
-

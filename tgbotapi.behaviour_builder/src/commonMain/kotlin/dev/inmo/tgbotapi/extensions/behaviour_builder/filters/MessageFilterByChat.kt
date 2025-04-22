@@ -20,6 +20,7 @@ val MessageFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, Accessible
         it.id == message.chat.id
     } != false
 }
+
 /**
  * Allow only events from the same chat as base [List] of [AccessibleMessage]
  */
@@ -36,6 +37,7 @@ val CallbackQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, Call
         it.id == query.user.id
     } != false
 }
+
 /**
  * Allow only updates from the same user as base [ShippingQuery.user]
  */
@@ -44,6 +46,7 @@ val ShippingQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, Ship
         it.id == query.user.id
     } != false
 }
+
 /**
  * Allow only updates from the same user as base [ShippingQuery.user]
  */
@@ -52,6 +55,7 @@ val PreCheckoutQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, P
         it.id == query.user.id
     } != false
 }
+
 /**
  * Allow only updates from the same user as base [InlineQuery.from]
  */
@@ -60,6 +64,7 @@ val InlineQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, Inline
         it.id == query.user.id
     } != false
 }
+
 /**
  * Allow only events from the same chat as base [ChatMemberUpdated]
  */
@@ -68,6 +73,7 @@ val ChatMemberUpdatedFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, 
         it.id == updated.chat.id
     } != false
 }
+
 /**
  * Allow only events from the same chat as base [ChatMemberUpdated]
  */

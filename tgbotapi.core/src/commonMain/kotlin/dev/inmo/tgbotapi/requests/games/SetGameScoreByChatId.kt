@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
-data class SetGameScoreByChatId (
+data class SetGameScoreByChatId(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(scoreField)
@@ -18,7 +18,7 @@ data class SetGameScoreByChatId (
     @SerialName(forceField)
     override val force: Boolean = false,
     @SerialName(disableEditMessageField)
-    override val disableEditMessage: Boolean = false
+    override val disableEditMessage: Boolean = false,
 ) : SetGameScore, MessageAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

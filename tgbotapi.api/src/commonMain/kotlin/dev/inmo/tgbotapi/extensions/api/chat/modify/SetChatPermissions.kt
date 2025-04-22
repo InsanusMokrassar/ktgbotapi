@@ -9,11 +9,11 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 public suspend fun TelegramBot.setDefaultChatMembersPermissions(
     chatId: ChatIdentifier,
     permissions: ChatPermissions,
-    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it },
 ): Boolean = execute(SetChatPermissions(chatId, permissions, useIndependentChatPermissions))
 
 public suspend fun TelegramBot.setDefaultChatMembersPermissions(
     chat: PublicChat,
     permissions: ChatPermissions,
-    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it },
 ): Boolean = setDefaultChatMembersPermissions(chat.id, permissions, useIndependentChatPermissions)

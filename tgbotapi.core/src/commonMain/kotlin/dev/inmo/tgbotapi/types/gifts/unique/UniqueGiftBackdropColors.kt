@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.utils.RGBColor
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class UniqueGiftBackdropColors(
     @SerialName(centerColorField)
@@ -18,5 +17,5 @@ data class UniqueGiftBackdropColors(
     @SerialName(symbolColorField)
     val symbolColor: RGBColor,
     @SerialName(textColorField)
-    val textColor: RGBColor
+    val textColor: RGBColor,
 )

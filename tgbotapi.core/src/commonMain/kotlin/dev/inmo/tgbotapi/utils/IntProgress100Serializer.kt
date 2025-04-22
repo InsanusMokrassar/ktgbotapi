@@ -14,14 +14,16 @@ object IntProgress100Serializer : KSerializer<Progress> {
     override fun deserialize(decoder: Decoder): Progress {
         return Progress(
             decoder.decodeInt(),
-            100
+            100,
         )
     }
 
-    override fun serialize(encoder: Encoder, value: Progress) {
+    override fun serialize(
+        encoder: Encoder,
+        value: Progress,
+    ) {
         encoder.encodeInt(
-            value.of100Int
+            value.of100Int,
         )
     }
-
 }

@@ -7,7 +7,8 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 public suspend fun TelegramBot.setBusinessAccountName(
     businessConnectionId: BusinessConnectionId,
     firstName: String,
-    lastName: String? = null
-): Boolean = execute(
-    SetBusinessAccountName(businessConnectionId, firstName, lastName)
-) 
+    lastName: String? = null,
+): Boolean =
+    execute(
+        SetBusinessAccountName(businessConnectionId, firstName, lastName),
+    ) 

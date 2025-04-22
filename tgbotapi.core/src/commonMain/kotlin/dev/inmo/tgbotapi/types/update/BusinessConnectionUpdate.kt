@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BusinessConnectionUpdate(
     override val updateId: UpdateId,
-    override val data: BusinessConnection
+    override val data: BusinessConnection,
 ) : Update

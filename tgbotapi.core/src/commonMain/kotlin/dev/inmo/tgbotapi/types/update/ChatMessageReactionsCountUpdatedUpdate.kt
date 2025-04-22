@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ChatMessageReactionsCountUpdatedUpdate(
     override val updateId: UpdateId,
-    override val data: ChatMessageReactionsCountUpdated
+    override val data: ChatMessageReactionsCountUpdated,
 ) : Update

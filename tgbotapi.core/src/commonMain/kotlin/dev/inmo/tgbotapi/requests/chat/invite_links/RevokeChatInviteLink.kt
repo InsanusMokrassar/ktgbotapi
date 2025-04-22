@@ -9,7 +9,7 @@ data class RevokeChatInviteLink(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(inviteLinkField)
-    override val inviteLink: String
+    override val inviteLink: String,
 ) : KnownChatInviteLinkRequest<SecondaryChatInviteLink> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

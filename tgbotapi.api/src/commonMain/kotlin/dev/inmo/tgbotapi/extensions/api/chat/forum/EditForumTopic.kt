@@ -12,25 +12,26 @@ public suspend fun TelegramBot.editForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId,
     name: String? = null,
-    iconEmojiId: CustomEmojiId? = null
-): Boolean = execute(
-    EditForumTopic(
-        chatId,
-        messageThreadId,
-        name,
-        iconEmojiId
+    iconEmojiId: CustomEmojiId? = null,
+): Boolean =
+    execute(
+        EditForumTopic(
+            chatId,
+            messageThreadId,
+            name,
+            iconEmojiId,
+        ),
     )
-)
 
 public suspend fun TelegramBot.editForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId,
     name: String? = null,
-    iconEmojiId: CustomEmojiId? = null
+    iconEmojiId: CustomEmojiId? = null,
 ): Boolean = editForumTopic(chat.id, messageThreadId, name, iconEmojiId)
 
 public suspend fun TelegramBot.editForumTopic(
     chatIdentifier: ChatIdentifier,
     forumTopic: ForumTopic,
-    iconEmojiId: CustomEmojiId? = forumTopic.iconEmojiId
+    iconEmojiId: CustomEmojiId? = forumTopic.iconEmojiId,
 ): Boolean = editForumTopic(chatIdentifier, forumTopic.messageThreadId, forumTopic.name, iconEmojiId)

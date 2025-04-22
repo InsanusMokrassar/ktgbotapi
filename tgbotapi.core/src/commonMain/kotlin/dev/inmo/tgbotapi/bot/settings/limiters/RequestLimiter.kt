@@ -8,5 +8,8 @@ interface RequestLimiter {
      */
     suspend fun <T> limit(block: suspend () -> T): T
 
-    suspend fun <T : Any> limit(request: Request<T>, block: suspend () -> T) = limit(block)
+    suspend fun <T : Any> limit(
+        request: Request<T>,
+        block: suspend () -> T,
+    ) = limit(block)
 }

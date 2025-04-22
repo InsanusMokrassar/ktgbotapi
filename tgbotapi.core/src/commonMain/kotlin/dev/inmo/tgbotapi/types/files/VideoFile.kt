@@ -4,8 +4,8 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,9 +33,17 @@ data class VideoFile(
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null
-) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, CoveredMediaFile, CustomStartMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
-    MediaContentVariant, UsefulAsPaidMediaFile
+    override val fileSize: Long? = null,
+) : TelegramMediaFile,
+    CustomNamedMediaFile,
+    MimedMediaFile,
+    CoveredMediaFile,
+    CustomStartMediaFile,
+    ThumbedMediaFile,
+    PlayableMediaFile,
+    SizedMediaFile,
+    MediaContentVariant,
+    UsefulAsPaidMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(
@@ -43,7 +51,7 @@ inline fun VideoFile.toTelegramMediaVideo(
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
-    startTimestamp: Seconds? = this.startTimestamp
+    startTimestamp: Seconds? = this.startTimestamp,
 ) = TelegramMediaVideo(
     file = fileId,
     text = text,
@@ -55,7 +63,7 @@ inline fun VideoFile.toTelegramMediaVideo(
     width = width,
     height = height,
     duration = duration,
-    thumb = thumbnail ?.fileId
+    thumb = thumbnail ?.fileId,
 )
 
 @Suppress("NOTHING_TO_INLINE")
@@ -63,7 +71,7 @@ inline fun VideoFile.toTelegramMediaVideo(
     textSources: TextSourcesList,
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
-    startTimestamp: Seconds? = this.startTimestamp
+    startTimestamp: Seconds? = this.startTimestamp,
 ) = TelegramMediaVideo(
     file = fileId,
     entities = textSources,
@@ -74,15 +82,17 @@ inline fun VideoFile.toTelegramMediaVideo(
     width = width,
     height = height,
     duration = duration,
-    thumb = thumbnail ?.fileId
+    thumb = thumbnail ?.fileId,
 )
+
 @Suppress("NOTHING_TO_INLINE")
-inline fun VideoFile.toTelegramPaidMediaVideo() = TelegramPaidMediaVideo(
-    file = fileId,
-    width = width,
-    height = height,
-    duration = duration,
-    cover = cover ?.fileId,
-    startTimestamp = startTimestamp,
-    thumb = thumbnail ?.fileId
-)
+inline fun VideoFile.toTelegramPaidMediaVideo() =
+    TelegramPaidMediaVideo(
+        file = fileId,
+        width = width,
+        height = height,
+        duration = duration,
+        cover = cover ?.fileId,
+        startTimestamp = startTimestamp,
+        thumb = thumbnail ?.fileId,
+    )

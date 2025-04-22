@@ -20,10 +20,15 @@ typealias CustomBehaviourContextAndTypeReceiver<BC, T, I> = suspend BC.(I) -> T
 typealias BehaviourContextAndTypeReceiver<T, I> = CustomBehaviourContextAndTypeReceiver<BehaviourContext, T, I>
 typealias CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2> = suspend BC.(I1, I2) -> T
 typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = CustomBehaviourContextAndTwoTypesReceiver<BehaviourContext, T, I1, I2>
+
 inline fun <T> BehaviourContextReceiver(noinline block: BehaviourContextReceiver<T>) = block
+
 inline fun <BC, T> CustomBehaviourContextReceiver(noinline block: CustomBehaviourContextReceiver<BC, T>) = block
+
 inline fun <T, I> BehaviourContextAndTypeReceiver(noinline block: BehaviourContextAndTypeReceiver<T, I>) = block
+
 inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver(noinline block: BehaviourContextAndTwoTypesReceiver<T, I1, I2>) = block
+
 internal inline fun <BC, T, I1, I2> CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2>.toOneType(
     i1: I1,
 ): CustomBehaviourContextAndTypeReceiver<BC, T, I2> = { invoke(this, i1, it) }
@@ -69,7 +74,7 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
         onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
         upstreamUpdatesFlow: Flow<Update>? = null,
         triggersHolder: TriggersHolder = TriggersHolder(),
-        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = this.subcontextInitialAction
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = this.subcontextInitialAction,
     ): BehaviourContext
 }
 
@@ -80,28 +85,28 @@ class DefaultBehaviourContext(
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     override val triggersHolder: TriggersHolder = TriggersHolder(),
-    override val subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {}
+    override val subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
-
     private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
-    override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
-        if (upstreamUpdatesFlow != null) {
-            val handledUpdates = mutableSetOf<UpdateId>()
-            (it + upstreamUpdatesFlow).filter {
-                val passed = handledUpdates.add(it.updateId)
-                (passed).also { passed ->
-                    val needToDropCount = handledUpdates.size - broadcastChannelsSize
-                    if (needToDropCount > 0) {
-                        handledUpdates.removeAll(
-                            handledUpdates.take(needToDropCount).ifEmpty { return@also }
-                        )
+    override val allUpdatesFlow: Flow<Update> =
+        (additionalUpdatesSharedFlow.asSharedFlow()).let {
+            if (upstreamUpdatesFlow != null) {
+                val handledUpdates = mutableSetOf<UpdateId>()
+                (it + upstreamUpdatesFlow).filter {
+                    val passed = handledUpdates.add(it.updateId)
+                    (passed).also { passed ->
+                        val needToDropCount = handledUpdates.size - broadcastChannelsSize
+                        if (needToDropCount > 0) {
+                            handledUpdates.removeAll(
+                                handledUpdates.take(needToDropCount).ifEmpty { return@also },
+                            )
+                        }
                     }
                 }
+            } else {
+                it
             }
-        } else {
-            it
-        }
-    }.accumulatorFlow(WeakScope(scope))
+        }.accumulatorFlow(WeakScope(scope))
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
     override val data: BehaviourContextData = BehaviourContextData()
@@ -113,18 +118,19 @@ class DefaultBehaviourContext(
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         triggersHolder: TriggersHolder,
-        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>
-    ): DefaultBehaviourContext = DefaultBehaviourContext(
-        bot = bot,
-        scope = scope,
-        broadcastChannelsSize = broadcastChannelsSize,
-        onBufferOverflow = onBufferOverflow,
-        upstreamUpdatesFlow = upstreamUpdatesFlow,
-        triggersHolder = triggersHolder,
-        subcontextInitialAction = subcontextInitialAction
-    ).apply {
-        data.include(this@DefaultBehaviourContext.data)
-    }
+        subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>,
+    ): DefaultBehaviourContext =
+        DefaultBehaviourContext(
+            bot = bot,
+            scope = scope,
+            broadcastChannelsSize = broadcastChannelsSize,
+            onBufferOverflow = onBufferOverflow,
+            upstreamUpdatesFlow = upstreamUpdatesFlow,
+            triggersHolder = triggersHolder,
+            subcontextInitialAction = subcontextInitialAction,
+        ).apply {
+            data.include(this@DefaultBehaviourContext.data)
+        }
 }
 
 fun BehaviourContext(
@@ -132,8 +138,14 @@ fun BehaviourContext(
     scope: CoroutineScope,
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     triggersHolder: TriggersHolder = TriggersHolder(),
-    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {}
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder, subcontextInitialAction = subcontextInitialAction)
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+) = DefaultBehaviourContext(
+    bot,
+    scope,
+    upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+    triggersHolder = triggersHolder,
+    subcontextInitialAction = subcontextInitialAction,
+)
 
 inline fun <T> BehaviourContext(
     bot: TelegramBot,
@@ -141,8 +153,14 @@ inline fun <T> BehaviourContext(
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     triggersHolder: TriggersHolder = TriggersHolder(),
     noinline subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    crossinline block: BehaviourContext.() -> T
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder, subcontextInitialAction = subcontextInitialAction).run(block)
+    crossinline block: BehaviourContext.() -> T,
+) = DefaultBehaviourContext(
+    bot,
+    scope,
+    upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+    triggersHolder = triggersHolder,
+    subcontextInitialAction = subcontextInitialAction,
+).run(block)
 
 /**
  * Creates new [BehaviourContext] using its [BehaviourContext.copy] method
@@ -158,7 +176,7 @@ fun <BC : BehaviourContext> BC.createSubContext(
     scope = scope,
     upstreamUpdatesFlow = updatesUpstreamFlow,
     triggersHolder = triggersHolder,
-    subcontextInitialAction = subcontextInitialAction
+    subcontextInitialAction = subcontextInitialAction,
 ) as BC
 
 /**
@@ -166,9 +184,7 @@ fun <BC : BehaviourContext> BC.createSubContext(
  *
  * [this] [BehaviourContext] will **NOT** be closed automatically
  */
-suspend fun <T, BC : BehaviourContext> BC.doInContext(
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): T {
+suspend fun <T, BC : BehaviourContext> BC.doInContext(behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>): T {
     return withContext(coroutineContext) {
         behaviourContextReceiver()
     }
@@ -185,18 +201,22 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoSynchronouslyWith
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     additionalSubcontextInitialAction: (CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>)? = null,
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>,
 ): T {
     return supervisorScope {
         createSubContext(
             scope = this@supervisorScope,
             triggersHolder = triggersHolder,
             updatesUpstreamFlow = updatesUpstreamFlow,
-            subcontextInitialAction = if (additionalSubcontextInitialAction == null) {
-                subcontextInitialAction
-            } else {
-                { subcontextInitialAction(it); additionalSubcontextInitialAction(it) }
-            }
+            subcontextInitialAction =
+                if (additionalSubcontextInitialAction == null) {
+                    subcontextInitialAction
+                } else {
+                    {
+                        subcontextInitialAction(it)
+                        additionalSubcontextInitialAction(it)
+                    }
+                },
         ).behaviourContextReceiver()
     }
 }
@@ -211,18 +231,19 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoAsynchronouslyWit
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
     additionalSubcontextInitialAction: (CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>)? = null,
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): Deferred<T> = async(
-    context,
-    start
-) {
-    createSubContextAndDoSynchronouslyWithUpdatesFilter(
-        triggersHolder = triggersHolder,
-        updatesUpstreamFlow = updatesUpstreamFlow,
-        additionalSubcontextInitialAction = additionalSubcontextInitialAction,
-        behaviourContextReceiver = behaviourContextReceiver
-    )
-}
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>,
+): Deferred<T> =
+    async(
+        context,
+        start,
+    ) {
+        createSubContextAndDoSynchronouslyWithUpdatesFilter(
+            triggersHolder = triggersHolder,
+            updatesUpstreamFlow = updatesUpstreamFlow,
+            additionalSubcontextInitialAction = additionalSubcontextInitialAction,
+            behaviourContextReceiver = behaviourContextReceiver,
+        )
+    }
 
 /**
  * It is just backward compatibility function which will be removed in next updates.
@@ -233,20 +254,21 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoAsynchronouslyWit
     "Renamed",
     ReplaceWith(
         "createSubContextAndDoAsynchronouslyWithUpdatesFilter(triggersHolder, updatesUpstreamFlow, behaviourContextReceiver = behaviourContextReceiver)",
-        "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoAsynchronouslyWithUpdatesFilter"
-    )
+        "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoAsynchronouslyWithUpdatesFilter",
+    ),
 )
 suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     additionalSubcontextInitialAction: (CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>)? = null,
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): Deferred<T> = createSubContextAndDoAsynchronouslyWithUpdatesFilter(
-    triggersHolder = triggersHolder,
-    updatesUpstreamFlow = updatesUpstreamFlow,
-    additionalSubcontextInitialAction = additionalSubcontextInitialAction,
-    behaviourContextReceiver = behaviourContextReceiver
-)
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>,
+): Deferred<T> =
+    createSubContextAndDoAsynchronouslyWithUpdatesFilter(
+        triggersHolder = triggersHolder,
+        updatesUpstreamFlow = updatesUpstreamFlow,
+        additionalSubcontextInitialAction = additionalSubcontextInitialAction,
+        behaviourContextReceiver = behaviourContextReceiver,
+    )
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

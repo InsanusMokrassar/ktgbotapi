@@ -1,16 +1,16 @@
 package dev.inmo.tgbotapi.extensions.api.chat.invite_links
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.EditChatInviteLink
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PublicChat
+import korlibs.time.DateTime
 
 public suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: String,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkUnlimited = execute(EditChatInviteLink.unlimited(chatId, previousLink, name, expiration))
 
 public suspend fun TelegramBot.editChatInviteLinkUnlimited(
@@ -25,21 +25,21 @@ public suspend fun TelegramBot.editChatInviteLinkUnlimited(
     previousLink: String,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chatId, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chatId, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chat: PublicChat,
     previousLink: String,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chat.id, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chat.id, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: String,
     membersLimit: MembersLimit,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkWithLimitedMembers = execute(EditChatInviteLink.withLimitedMembers(chatId, previousLink, membersLimit, name, expiration))
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
@@ -56,7 +56,14 @@ public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     membersLimit: MembersLimit,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithLimitedMembers = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, name , expiration.toTelegramDate())
+): ChatInviteLinkWithLimitedMembers =
+    editChatInviteLinkWithLimitedMembers(
+        chatId,
+        previousLink,
+        membersLimit,
+        name,
+        expiration.toTelegramDate(),
+    )
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
@@ -64,13 +71,20 @@ public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     membersLimit: MembersLimit,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithLimitedMembers = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name , expiration.toTelegramDate())
+): ChatInviteLinkWithLimitedMembers =
+    editChatInviteLinkWithLimitedMembers(
+        chat.id,
+        previousLink,
+        membersLimit,
+        name,
+        expiration.toTelegramDate(),
+    )
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: String,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkWithJoinRequest = execute(EditChatInviteLink.withJoinRequest(chatId, previousLink, name, expiration))
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
@@ -85,20 +99,20 @@ public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     previousLink: String,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chatId, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chatId, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: String,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chatId, previousLink.inviteLink, name, expiration)
 
 public suspend fun TelegramBot.editChatInviteLinkUnlimited(
@@ -120,14 +134,14 @@ public suspend fun TelegramBot.editChatInviteLinkUnlimited(
     previousLink: ChatInviteLink,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chat.id, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkUnlimited = editChatInviteLinkUnlimited(chat.id, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     membersLimit: MembersLimit,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkWithLimitedMembers = editChatInviteLinkWithLimitedMembers(chatId, previousLink.inviteLink, membersLimit, name, expiration)
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
@@ -144,7 +158,14 @@ public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     membersLimit: MembersLimit,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithLimitedMembers = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, name , expiration.toTelegramDate())
+): ChatInviteLinkWithLimitedMembers =
+    editChatInviteLinkWithLimitedMembers(
+        chatId,
+        previousLink,
+        membersLimit,
+        name,
+        expiration.toTelegramDate(),
+    )
 
 public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
@@ -152,13 +173,20 @@ public suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     membersLimit: MembersLimit,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithLimitedMembers = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name , expiration.toTelegramDate())
+): ChatInviteLinkWithLimitedMembers =
+    editChatInviteLinkWithLimitedMembers(
+        chat.id,
+        previousLink,
+        membersLimit,
+        name,
+        expiration.toTelegramDate(),
+    )
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     name: String? = null,
-    expiration: TelegramDate? = null
+    expiration: TelegramDate? = null,
 ): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chatId, previousLink.inviteLink, name, expiration)
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
@@ -173,15 +201,14 @@ public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     previousLink: ChatInviteLink,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chatId, previousLink, name , expiration.toTelegramDate())
+): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chatId, previousLink, name, expiration.toTelegramDate())
 
 public suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: ChatInviteLink,
     expiration: DateTime,
     name: String? = null,
-): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name , expiration.toTelegramDate())
-
+): ChatInviteLinkWithJoinRequest = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name, expiration.toTelegramDate())
 
 // Subscriptions
 

@@ -33,7 +33,7 @@ data class KeyboardButtonRequestChat(
     @SerialName(requestUsernameField)
     val requestUsername: Boolean? = null,
     @SerialName(requestPhotoField)
-    val requestPhoto: Boolean? = null
+    val requestPhoto: Boolean? = null,
 ) {
     companion object {
         fun Channel(
@@ -86,4 +86,3 @@ data class KeyboardButtonRequestChat(
         )
     }
 }
-

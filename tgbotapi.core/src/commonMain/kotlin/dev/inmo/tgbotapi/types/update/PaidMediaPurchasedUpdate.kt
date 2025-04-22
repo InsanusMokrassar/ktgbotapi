@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PaidMediaPurchasedUpdate(
     override val updateId: UpdateId,
-    override val data: PaidMediaPurchased
+    override val data: PaidMediaPurchased,
 ) : Update

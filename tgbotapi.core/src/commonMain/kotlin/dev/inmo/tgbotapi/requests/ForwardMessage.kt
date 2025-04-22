@@ -27,8 +27,8 @@ data class ForwardMessage(
     @SerialName(disableNotificationField)
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)
-    override val protectContent: Boolean = false
-): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent, OptionallyMessageThreadRequest, WithCustomStartMediaData {
+    override val protectContent: Boolean = false,
+) : SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent, OptionallyMessageThreadRequest, WithCustomStartMediaData {
     override val chatId: ChatIdentifier
         get() = fromChatId
 

@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
 

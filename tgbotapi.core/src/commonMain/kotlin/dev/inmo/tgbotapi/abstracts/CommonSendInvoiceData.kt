@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.abstracts
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.payments.abstracts.Currencied
 import dev.inmo.tgbotapi.types.payments.abstracts.Priced
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 
 @ClassCastsIncluded
 interface CommonSendInvoiceData : Titled, Currencied, Priced {
@@ -25,13 +25,11 @@ interface CommonSendInvoiceData : Titled, Currencied, Priced {
     val photoWidth: Int?
     val photoHeight: Int?
 
-
-
     fun setPhoto(
         photoUrl: String,
         photoSize: Long? = null,
         photoWidth: Int? = null,
-        photoHeight: Int? = null
+        photoHeight: Int? = null,
     )
 
     fun unsetPhoto()

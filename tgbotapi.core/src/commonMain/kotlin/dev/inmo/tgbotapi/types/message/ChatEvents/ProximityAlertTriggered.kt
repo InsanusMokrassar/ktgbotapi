@@ -13,5 +13,5 @@ import kotlinx.serialization.Serializable
 data class ProximityAlertTriggered(
     val traveler: User,
     val watcher: User,
-    val distance: Meters
+    val distance: Meters,
 ) : PublicChatEvent

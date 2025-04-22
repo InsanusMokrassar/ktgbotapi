@@ -29,12 +29,11 @@ data class InlineQueryResultContact(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResult,
     CommonContactData,
     WithInputMessageContentInlineQueryResult,
     ThumbedInlineQueryResult,
-    ThumbSizedInlineQueryResult
-{
+    ThumbSizedInlineQueryResult {
     override val type: String = "contact"
 }

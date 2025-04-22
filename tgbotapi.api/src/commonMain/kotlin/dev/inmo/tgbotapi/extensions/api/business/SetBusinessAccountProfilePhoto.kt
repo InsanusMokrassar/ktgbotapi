@@ -8,7 +8,8 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 public suspend fun TelegramBot.setBusinessAccountProfilePhoto(
     businessConnectionId: BusinessConnectionId,
     photo: InputProfilePhoto,
-    isPublic: Boolean = false
-): Boolean = execute(
-    SetBusinessAccountProfilePhoto(businessConnectionId, photo, isPublic)
-) 
+    isPublic: Boolean = false,
+): Boolean =
+    execute(
+        SetBusinessAccountProfilePhoto(businessConnectionId, photo, isPublic),
+    ) 

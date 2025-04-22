@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.ksp.processor
 
 import com.google.devtools.ksp.KspExperimental
-import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.isAnnotationPresent
 import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.*
@@ -24,7 +23,7 @@ private fun FileSpec.Builder.createTypeDefinition(ksClassDeclaration: KSClassDec
                     val typeClassName = it.toClassName()
                     addTopLevelImport(typeClassName)
                 }.toTypeName()
-            }
+            },
         )
     } else {
         className
@@ -33,17 +32,19 @@ private fun FileSpec.Builder.createTypeDefinition(ksClassDeclaration: KSClassDec
 
 @OptIn(KspExperimental::class)
 private fun KSClassDeclaration.buildPrefix(sourceDeclaration: KSClassDeclaration): String {
-    val ownName = if (isAnnotationPresent(ClassCastsIncluded.ExcludeSubName::class)) {
-        ""
-    } else {
-        simpleName.asString()
-    }
-    when (val parentDeclaration = parentDeclaration) {
-        is KSClassDeclaration -> if (parentDeclaration === sourceDeclaration) {
-            return ownName
+    val ownName =
+        if (isAnnotationPresent(ClassCastsIncluded.ExcludeSubName::class)) {
+            ""
         } else {
-            return "${parentDeclaration.buildPrefix(sourceDeclaration)}$ownName"
+            simpleName.asString()
         }
+    when (val parentDeclaration = parentDeclaration) {
+        is KSClassDeclaration ->
+            if (parentDeclaration === sourceDeclaration) {
+                return ownName
+            } else {
+                return "${parentDeclaration.buildPrefix(sourceDeclaration)}$ownName"
+            }
     }
     return ownName
 }
@@ -52,7 +53,7 @@ private fun KSClassDeclaration.buildPrefix(sourceDeclaration: KSClassDeclaration
 fun FileSpec.Builder.fill(
     sourceKSClassDeclaration: KSClassDeclaration,
     subtypesMap: Map<KSClassDeclaration, Set<KSClassDeclaration>>,
-    targetClassDeclaration: KSClassDeclaration = sourceKSClassDeclaration
+    targetClassDeclaration: KSClassDeclaration = sourceKSClassDeclaration,
 ) {
     if (sourceKSClassDeclaration == targetClassDeclaration) {
         subtypesMap[sourceKSClassDeclaration] ?.forEach {
@@ -74,22 +75,22 @@ fun FileSpec.Builder.fill(
                 receiver(sourceClassName)
                 addCode(
                     "return this as? %L",
-                    targetClassTypeDefinition
+                    targetClassTypeDefinition,
                 )
                 returns(targetClassTypeDefinition.copy(nullable = true))
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
         addFunction(
             FunSpec.builder("${withFirstLowerCase}OrThrow").apply {
                 receiver(sourceClassName)
                 addCode(
                     "return this as %L",
-                    targetClassTypeDefinition
+                    targetClassTypeDefinition,
                 )
                 returns(targetClassTypeDefinition)
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
         addFunction(
             FunSpec.builder("if$resultPrefix").apply {
@@ -101,16 +102,16 @@ fun FileSpec.Builder.fill(
                     LambdaTypeName.get(
                         null,
                         targetClassTypeDefinition,
-                        returnType = genericType
-                    )
+                        returnType = genericType,
+                    ),
                 )
                 addCode(
-                    "return ${castedOrNullName}() ?.let(block)",
-                    targetClassTypeDefinition
+                    "return $castedOrNullName() ?.let(block)",
+                    targetClassTypeDefinition,
                 )
                 returns(genericType.copy(nullable = true))
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
 
         subtypesMap[targetClassDeclaration] ?.let {
@@ -119,7 +120,7 @@ fun FileSpec.Builder.fill(
             } else {
                 it.filter { it.classKind != ClassKind.CLASS }
             }
-        } ?.forEach {
+        }?.forEach {
             fill(sourceKSClassDeclaration, subtypesMap, it)
             fill(targetClassDeclaration, subtypesMap, it)
         }

@@ -12,9 +12,10 @@ internal val getCustomEmojiStickersResultSerializer = ListSerializer(StickerSeri
 @Serializable
 data class GetCustomEmojiStickers(
     @SerialName(customEmojiIdsField)
-    val customEmojiIds: List<CustomEmojiId>
-): SimpleRequest<List<CustomEmojiSticker>> {
+    val customEmojiIds: List<CustomEmojiId>,
+) : SimpleRequest<List<CustomEmojiSticker>> {
     override fun method(): String = "getCustomEmojiStickers"
+
     override val resultDeserializer: DeserializationStrategy<List<CustomEmojiSticker>>
         get() = getCustomEmojiStickersResultSerializer
     override val requestSerializer: SerializationStrategy<*>

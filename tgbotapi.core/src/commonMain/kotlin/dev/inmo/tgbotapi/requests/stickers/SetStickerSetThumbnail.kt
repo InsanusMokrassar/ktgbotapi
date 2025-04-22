@@ -10,11 +10,11 @@ fun SetStickerSetThumbnail(
     userId: UserId,
     stickerSetName: StickerSetName,
     format: StickerFormat,
-    thumbnail: MultipartFile
+    thumbnail: MultipartFile,
 ): Request<Boolean> {
     return CommonMultipartFileRequest(
         SetStickerSetThumbnail(userId, stickerSetName, format),
-        mapOf(thumbnailField to thumbnail)
+        mapOf(thumbnailField to thumbnail),
     )
 }
 
@@ -22,16 +22,17 @@ fun SetStickerSetThumbnail(
     userId: UserId,
     stickerSetName: String,
     format: StickerFormat,
-    thumbnail: MultipartFile
-): Request<Boolean> = SetStickerSetThumbnail(
-    userId = userId,
-    stickerSetName = StickerSetName(stickerSetName, ),
-    format = format,
-    thumbnail = thumbnail
-)
+    thumbnail: MultipartFile,
+): Request<Boolean> =
+    SetStickerSetThumbnail(
+        userId = userId,
+        stickerSetName = StickerSetName(stickerSetName),
+        format = format,
+        thumbnail = thumbnail,
+    )
 
 @Serializable
-data class SetStickerSetThumbnail (
+data class SetStickerSetThumbnail(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
@@ -39,7 +40,7 @@ data class SetStickerSetThumbnail (
     @SerialName(formatField)
     val format: StickerFormat,
     @SerialName(thumbnailField)
-    val thumbnail: FileId? = null
+    val thumbnail: FileId? = null,
 ) : OwnerStickerSetAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

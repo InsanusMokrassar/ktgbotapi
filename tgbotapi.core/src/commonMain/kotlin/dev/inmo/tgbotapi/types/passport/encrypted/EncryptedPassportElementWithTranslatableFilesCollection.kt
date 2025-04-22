@@ -18,8 +18,9 @@ data class UtilityBill(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableFilesCollection()
+
 @Serializable
 data class BankStatement(
     @SerialName(filesField)
@@ -28,8 +29,9 @@ data class BankStatement(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableFilesCollection()
+
 @Serializable
 data class RentalAgreement(
     @SerialName(filesField)
@@ -38,8 +40,9 @@ data class RentalAgreement(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableFilesCollection()
+
 @Serializable
 data class PassportRegistration(
     @SerialName(filesField)
@@ -48,8 +51,9 @@ data class PassportRegistration(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableFilesCollection()
+
 @Serializable
 data class TemporaryRegistration(
     @SerialName(filesField)
@@ -58,6 +62,5 @@ data class TemporaryRegistration(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableFilesCollection()
-

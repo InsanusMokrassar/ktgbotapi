@@ -1,15 +1,15 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.abstracts.WithMessageId
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.message.RawMessage
 import dev.inmo.tgbotapi.types.threadId
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import korlibs.time.DateTime
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
@@ -25,7 +25,7 @@ interface Message : WithPreviewChatAndMessageId, PossiblyBusinessMessage {
     @Serializable
     @JvmInline
     value class MetaInfo(
-        val chatIdMessageIdThreadId: Triple<ChatIdentifier, MessageId, MessageThreadId?>
+        val chatIdMessageIdThreadId: Triple<ChatIdentifier, MessageId, MessageThreadId?>,
     ) : WithMessageId {
         val chatId: ChatIdentifier
             get() = chatIdMessageIdThreadId.first
@@ -34,11 +34,18 @@ interface Message : WithPreviewChatAndMessageId, PossiblyBusinessMessage {
         val threadId: MessageThreadId?
             get() = chatIdMessageIdThreadId.third
 
-        constructor(chatId: ChatIdentifier, messageId: MessageId, threadId: MessageThreadId? = chatId.threadId) : this(Triple(chatId, messageId, threadId))
-        constructor(chatIdMessageId: Pair<ChatIdentifier, MessageId>, threadId: MessageThreadId? = chatIdMessageId.first.threadId) : this(Triple(chatIdMessageId.first, chatIdMessageId.second, threadId))
+        constructor(chatId: ChatIdentifier, messageId: MessageId, threadId: MessageThreadId? = chatId.threadId) : this(
+            Triple(chatId, messageId, threadId),
+        )
+        constructor(
+            chatIdMessageId: Pair<ChatIdentifier, MessageId>,
+            threadId: MessageThreadId? = chatIdMessageId.first.threadId,
+        ) : this(Triple(chatIdMessageId.first, chatIdMessageId.second, threadId))
 
         fun copy(
-            chatId: ChatIdentifier = this.chatId, messageId: MessageId = this.messageId, threadId: MessageThreadId? = chatId.threadId
+            chatId: ChatIdentifier = this.chatId,
+            messageId: MessageId = this.messageId,
+            threadId: MessageThreadId? = chatId.threadId,
         ) = MetaInfo(chatId, messageId, threadId)
     }
 }
@@ -58,7 +65,7 @@ data class UnknownMessageType(
     override val messageId: MessageId,
     override val chat: PreviewChat,
     override val date: DateTime,
-    val insideException: Exception
+    val insideException: Exception,
 ) : AccessibleMessage
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
@@ -73,6 +80,7 @@ internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : Deserializ
 
 internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> : KSerializer<T> {
     private val deserializer = TelegramBotAPIMessageDeserializationStrategyClass<T>()
+
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor
         get() = deserializer.descriptor
@@ -81,9 +89,13 @@ internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> 
         return deserializer.deserialize(decoder)
     }
 
-    override fun serialize(encoder: Encoder, value: T) {
+    override fun serialize(
+        encoder: Encoder,
+        value: T,
+    ) {
         throw UnsupportedOperationException("Currently, Message objects can't be serialized y this serializer")
     }
 }
-internal object TelegramBotAPIMessageDeserializeOnlySerializer
-    : KSerializer<Message> by TelegramBotAPIMessageDeserializeOnlySerializerClass()
+
+internal object TelegramBotAPIMessageDeserializeOnlySerializer :
+    KSerializer<Message> by TelegramBotAPIMessageDeserializeOnlySerializerClass()

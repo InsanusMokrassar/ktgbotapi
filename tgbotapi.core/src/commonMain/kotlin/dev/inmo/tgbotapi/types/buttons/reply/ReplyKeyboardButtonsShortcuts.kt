@@ -4,41 +4,29 @@ import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
 import dev.inmo.tgbotapi.types.request.RequestId
-import dev.inmo.tgbotapi.types.requestNameField
-import dev.inmo.tgbotapi.types.requestPhotoField
-import dev.inmo.tgbotapi.types.requestUsernameField
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import kotlinx.serialization.SerialName
-import kotlin.math.max
-
 
 /**
  * Creates [SimpleKeyboardButton]
  */
-inline fun simpleReplyButton(
-    text: String
-) = SimpleKeyboardButton(text)
+inline fun simpleReplyButton(text: String) = SimpleKeyboardButton(text)
 
 /**
  * Creates [RequestContactKeyboardButton]
  */
-inline fun requestContactReplyButton(
-    text: String
-) = RequestContactKeyboardButton(text)
+inline fun requestContactReplyButton(text: String) = RequestContactKeyboardButton(text)
 
 /**
  * Creates [RequestLocationKeyboardButton]
  */
-inline fun requestLocationReplyButton(
-    text: String
-) = RequestLocationKeyboardButton(text)
+inline fun requestLocationReplyButton(text: String) = RequestLocationKeyboardButton(text)
 
 /**
  * Creates [RequestPollKeyboardButton]
  */
 inline fun requestPollReplyButton(
     text: String,
-    pollType: KeyboardButtonPollType
+    pollType: KeyboardButtonPollType,
 ) = RequestPollKeyboardButton(text, pollType)
 
 /**
@@ -46,7 +34,7 @@ inline fun requestPollReplyButton(
  */
 inline fun webAppReplyButton(
     text: String,
-    webApp: WebAppInfo
+    webApp: WebAppInfo,
 ) = WebAppKeyboardButton(text, webApp)
 
 /**
@@ -54,19 +42,18 @@ inline fun webAppReplyButton(
  */
 inline fun webAppReplyButton(
     text: String,
-    url: String
+    url: String,
 ) = webAppReplyButton(text, WebAppInfo(url))
-
 
 /**
  * Creates [RequestUserKeyboardButton]
  */
 inline fun requestUsersReplyButton(
     text: String,
-    requestUser: KeyboardButtonRequestUsers
+    requestUser: KeyboardButtonRequestUsers,
 ) = RequestUserKeyboardButton(
     text,
-    requestUser
+    requestUser,
 )
 
 /**
@@ -86,8 +73,8 @@ inline fun requestBotsReplyButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -109,8 +96,8 @@ inline fun requestUsersReplyButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -131,7 +118,7 @@ inline fun requestUserReplyButton(
     maxCount,
     requestName = requestName,
     requestUsername = requestUsername,
-    requestPhoto = requestPhoto
+    requestPhoto = requestPhoto,
 )
 
 /**
@@ -153,8 +140,8 @@ inline fun requestUsersOrBotsReplyButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -172,20 +159,19 @@ inline fun requestUserOrBotReplyButton(
         requestId = requestId,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
-
 
 /**
  * Creates [RequestChatKeyboardButton]
  */
 inline fun requestChatReplyButton(
     text: String,
-    requestChat: KeyboardButtonRequestChat
+    requestChat: KeyboardButtonRequestChat,
 ) = RequestChatKeyboardButton(
     text,
-    requestChat
+    requestChat,
 )
 
 /**
@@ -218,7 +204,7 @@ inline fun requestChatReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )
 
 /**
@@ -247,9 +233,8 @@ inline fun requestChannelReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )
-
 
 /**
  * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
@@ -279,5 +264,5 @@ inline fun requestChannelReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )

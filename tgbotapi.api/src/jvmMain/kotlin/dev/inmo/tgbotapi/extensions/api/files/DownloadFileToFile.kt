@@ -10,14 +10,13 @@ import dev.inmo.tgbotapi.types.message.content.MediaContent
 import io.ktor.util.cio.use
 import io.ktor.util.cio.writeChannel
 import io.ktor.utils.io.copyAndClose
-import io.ktor.utils.io.copyTo
 import kotlinx.coroutines.job
 import java.io.File
 import kotlin.coroutines.coroutineContext
 
 public suspend fun TelegramBot.downloadFile(
     filePath: String,
-    destFile: File
+    destFile: File,
 ): File {
     val readChannel = downloadFileStream(filePath)
 
@@ -34,32 +33,36 @@ public suspend fun TelegramBot.downloadFile(
 
 public suspend fun TelegramBot.downloadFile(
     pathedFile: PathedFile,
-    destFile: File
-): File = downloadFile(
-    pathedFile.filePath,
-    destFile
-)
+    destFile: File,
+): File =
+    downloadFile(
+        pathedFile.filePath,
+        destFile,
+    )
 
 public suspend fun TelegramBot.downloadFile(
     fileId: FileId,
-    destFile: File
-): File = downloadFile(
-    getFileAdditionalInfo(fileId),
-    destFile
-)
+    destFile: File,
+): File =
+    downloadFile(
+        getFileAdditionalInfo(fileId),
+        destFile,
+    )
 
 public suspend fun TelegramBot.downloadFile(
     file: TelegramMediaFile,
-    destFile: File
-): File = downloadFile(
-    getFileAdditionalInfo(file),
-    destFile
-)
+    destFile: File,
+): File =
+    downloadFile(
+        getFileAdditionalInfo(file),
+        destFile,
+    )
 
 public suspend fun TelegramBot.downloadFile(
     file: MediaContent,
-    destFile: File
-): File = downloadFile(
-    getFileAdditionalInfo(file.media),
-    destFile
-)
+    destFile: File,
+): File =
+    downloadFile(
+        getFileAdditionalInfo(file.media),
+        destFile,
+    )

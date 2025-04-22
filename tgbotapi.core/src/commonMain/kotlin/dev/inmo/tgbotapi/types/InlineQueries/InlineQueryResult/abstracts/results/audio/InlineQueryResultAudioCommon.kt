@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInp
 
 const val inlineQueryResultAudioType = "audio"
 
-interface InlineQueryResultAudioCommon : InlineQueryResult,
+interface InlineQueryResultAudioCommon :
+    InlineQueryResult,
     TextedOutput,
     WithInputMessageContentInlineQueryResult

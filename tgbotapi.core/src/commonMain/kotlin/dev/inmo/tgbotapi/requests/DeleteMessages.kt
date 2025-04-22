@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests
 
-import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.MessagesAction
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
@@ -12,7 +11,7 @@ data class DeleteMessages(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdsField)
-    override val messageIds: List<MessageId>
+    override val messageIds: List<MessageId>,
 ) : SimpleRequest<Boolean>, MessagesAction {
     override fun method(): String = "deleteMessages"
 

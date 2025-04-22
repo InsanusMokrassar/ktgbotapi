@@ -14,5 +14,5 @@ data class EncryptedPersonalDetails(
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val data: EncryptedData,
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithData

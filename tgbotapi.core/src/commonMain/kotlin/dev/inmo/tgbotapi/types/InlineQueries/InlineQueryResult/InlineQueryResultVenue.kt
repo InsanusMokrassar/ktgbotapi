@@ -38,14 +38,13 @@ data class InlineQueryResultVenue(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResult,
     Locationed,
     CommonVenueData,
     TitledInlineQueryResult,
     WithInputMessageContentInlineQueryResult,
     ThumbedInlineQueryResult,
-    ThumbSizedInlineQueryResult
-{
+    ThumbSizedInlineQueryResult {
     override val type: String = "venue"
 }

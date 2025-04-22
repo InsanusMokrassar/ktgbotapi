@@ -20,7 +20,13 @@ sealed interface AdministratorChatMember : SpecialRightsChatMember, ChatAdminist
 object AdministratorChatMemberSerializer : KSerializer<AdministratorChatMember> {
     override val descriptor: SerialDescriptor = ChatMemberSerializer.descriptor
 
-    override fun deserialize(decoder: Decoder): AdministratorChatMember = ChatMemberSerializer.deserialize(decoder) as AdministratorChatMember
-    override fun serialize(encoder: Encoder, value: AdministratorChatMember) =
-        ChatMemberSerializer.serialize(encoder, value)
+    override fun deserialize(decoder: Decoder): AdministratorChatMember =
+        ChatMemberSerializer.deserialize(
+            decoder,
+        ) as AdministratorChatMember
+
+    override fun serialize(
+        encoder: Encoder,
+        value: AdministratorChatMember,
+    ) = ChatMemberSerializer.serialize(encoder, value)
 }

@@ -12,5 +12,5 @@ data class PaidMediaInfo(
     @SerialName(starCountField)
     val stars: Int,
     @SerialName(paidMediaField)
-    val media: List<PaidMedia>
+    val media: List<PaidMedia>,
 ) : ReplyInfo.External.ContentVariant

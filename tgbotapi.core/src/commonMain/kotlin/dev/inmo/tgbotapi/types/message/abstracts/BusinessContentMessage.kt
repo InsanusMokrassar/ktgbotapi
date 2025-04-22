@@ -7,7 +7,9 @@ import dev.inmo.tgbotapi.types.chat.PreviewBot
 import dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
-interface BusinessContentMessage<T: MessageContent> : PossiblySentViaBotCommonMessage<T>, FromUserMessage,
+interface BusinessContentMessage<T : MessageContent> :
+    PossiblySentViaBotCommonMessage<T>,
+    FromUserMessage,
     WithBusinessConnectionId {
     override val chat: PreviewBusinessChat
     override val businessConnectionId: BusinessConnectionId

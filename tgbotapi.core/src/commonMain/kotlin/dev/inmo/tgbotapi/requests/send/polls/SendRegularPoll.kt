@@ -38,7 +38,7 @@ class SendRegularPoll private constructor(
     @SerialName(allowsMultipleAnswersField)
     val allowMultipleAnswers: Boolean = false,
     @SerialName(openPeriodField)
-    override val openPeriod: LongSeconds?= null,
+    override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
     override val closeDate: LongSeconds? = null,
     @SerialName(messageThreadIdField)
@@ -56,7 +56,7 @@ class SendRegularPoll private constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendPoll() {
     override val textSources: List<TextSource>
         get() = rawQuestionEntities.asTextSources(text)
@@ -68,7 +68,7 @@ class SendRegularPoll private constructor(
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
         allowMultipleAnswers: Boolean = false,
-        openPeriod: LongSeconds?= null,
+        openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -77,7 +77,7 @@ class SendRegularPoll private constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
@@ -96,7 +96,7 @@ class SendRegularPoll private constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     constructor(
@@ -107,7 +107,7 @@ class SendRegularPoll private constructor(
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
         allowMultipleAnswers: Boolean = false,
-        openPeriod: LongSeconds?= null,
+        openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -116,7 +116,7 @@ class SendRegularPoll private constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = question,
@@ -135,7 +135,7 @@ class SendRegularPoll private constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     override val type: String = regularPollType
@@ -164,7 +164,7 @@ fun SendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendRegularPoll(
     chatId = chatId,
     question = question,
@@ -182,7 +182,7 @@ fun SendRegularPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendRegularPoll(
@@ -200,7 +200,7 @@ fun SendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendRegularPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -217,7 +217,7 @@ fun SendRegularPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendRegularPoll(
@@ -235,7 +235,7 @@ fun SendRegularPoll(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builder: EntitiesBuilderBody
+    builder: EntitiesBuilderBody,
 ) = SendRegularPoll(
     chatId = chatId,
     questionTextSources = EntitiesBuilder().apply(builder).build(),
@@ -251,5 +251,5 @@ fun SendRegularPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

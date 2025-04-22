@@ -25,7 +25,7 @@ sealed interface InputSticker {
         @SerialName(emojiListField)
         override val emojisList: List<String>,
         @SerialName(maskPositionField)
-        val maskPosition: MaskPosition? = null
+        val maskPosition: MaskPosition? = null,
     ) : InputSticker
 
     @Serializable
@@ -41,7 +41,7 @@ sealed interface InputSticker {
             @SerialName(emojiListField)
             override val emojisList: List<String>,
             @SerialName(keywordsField)
-            override val keywords: List<String>
+            override val keywords: List<String>,
         ) : WithKeywords
 
         @Serializable
@@ -53,7 +53,7 @@ sealed interface InputSticker {
             @SerialName(emojiListField)
             override val emojisList: List<String>,
             @SerialName(keywordsField)
-            override val keywords: List<String>
+            override val keywords: List<String>,
         ) : WithKeywords
     }
 }
@@ -62,58 +62,65 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
     SurrogateInputSticker.serializer(),
     { it ->
         when (it) {
-            is InputSticker.Mask -> SurrogateInputSticker(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                emptyList(),
-                it.maskPosition,
-                StickerType.Mask
-            )
-            is InputSticker.WithKeywords.CustomEmoji -> SurrogateInputSticker(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.keywords,
-                null,
-                StickerType.CustomEmoji
-            )
-            is InputSticker.WithKeywords.Regular -> SurrogateInputSticker(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.keywords,
-                null,
-                StickerType.Regular
-            )
+            is InputSticker.Mask ->
+                SurrogateInputSticker(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    emptyList(),
+                    it.maskPosition,
+                    StickerType.Mask,
+                )
+            is InputSticker.WithKeywords.CustomEmoji ->
+                SurrogateInputSticker(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.keywords,
+                    null,
+                    StickerType.CustomEmoji,
+                )
+            is InputSticker.WithKeywords.Regular ->
+                SurrogateInputSticker(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.keywords,
+                    null,
+                    StickerType.Regular,
+                )
         }
     },
     { it ->
         when (it.internalType) {
-            StickerType.CustomEmoji -> InputSticker.WithKeywords.CustomEmoji(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.keywords
-            )
-            StickerType.Mask -> InputSticker.Mask(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.maskPosition
-            )
-            StickerType.Regular -> InputSticker.WithKeywords.Regular(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.keywords
-            )
-            is StickerType.Unknown -> InputSticker.WithKeywords.Regular(
-                it.sticker,
-                it.format,
-                it.emojisList,
-                it.keywords
-            )
+            StickerType.CustomEmoji ->
+                InputSticker.WithKeywords.CustomEmoji(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.keywords,
+                )
+            StickerType.Mask ->
+                InputSticker.Mask(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.maskPosition,
+                )
+            StickerType.Regular ->
+                InputSticker.WithKeywords.Regular(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.keywords,
+                )
+            is StickerType.Unknown ->
+                InputSticker.WithKeywords.Regular(
+                    it.sticker,
+                    it.format,
+                    it.emojisList,
+                    it.keywords,
+                )
         }
     },
 ) {
@@ -129,6 +136,6 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
         val keywords: List<String> = emptyList(),
         @SerialName(maskPositionField)
         val maskPosition: MaskPosition? = null,
-        internal val internalType: StickerType = StickerType.Unknown()
+        internal val internalType: StickerType = StickerType.Unknown(),
     )
 }

@@ -14,10 +14,10 @@ data class ShippingOption(
     val title: String,
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
-    override val prices: List<LabeledPrice>
+    override val prices: List<LabeledPrice>,
 ) : Priced
 
 @RiskFeature
 object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ListSerializer(
-    LabeledPrice.serializer()
+    LabeledPrice.serializer(),
 )

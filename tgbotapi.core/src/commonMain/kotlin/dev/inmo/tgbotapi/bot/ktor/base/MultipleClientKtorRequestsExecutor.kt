@@ -49,28 +49,30 @@ class MultipleClientKtorRequestsExecutor(
     logger: KSLog,
     clientFactory: () -> HttpClient,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
-    private val requestExecutors = (0 until requestExecutorsCount).map {
-        DefaultKtorRequestsExecutor(
-            telegramAPIUrlsKeeper,
-            clientFactory(),
-            callsFactories,
-            excludeDefaultFactories,
-            requestsLimiter,
-            jsonFormatter,
-            pipelineStepsHolder,
-            logger,
-            Unit
-        )
-    }.toSet()
+    private val requestExecutors =
+        (0 until requestExecutorsCount).map {
+            DefaultKtorRequestsExecutor(
+                telegramAPIUrlsKeeper,
+                clientFactory(),
+                callsFactories,
+                excludeDefaultFactories,
+                requestsLimiter,
+                jsonFormatter,
+                pipelineStepsHolder,
+                logger,
+                Unit,
+            )
+        }.toSet()
     private val freeClients = MutableStateFlow<Set<DefaultKtorRequestsExecutor>>(requestExecutors)
     private val clientAllocationMutex = Mutex()
-    private val takerFlow = freeClients.mapNotNull {
-        clientAllocationMutex.withLock {
-            freeClients.value.firstOrNull()?.also {
-                freeClients.value -= it
-            } ?: return@mapNotNull null
+    private val takerFlow =
+        freeClients.mapNotNull {
+            clientAllocationMutex.withLock {
+                freeClients.value.firstOrNull()?.also {
+                    freeClients.value -= it
+                } ?: return@mapNotNull null
+            }
         }
-    }
 
     internal constructor(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
@@ -91,7 +93,7 @@ class MultipleClientKtorRequestsExecutor(
         pipelineStepsHolder,
         requestExecutorsCount = 4, // default threads count; configurable through dispatcher property
         logger,
-        { platformClientCopy(client) }
+        { platformClientCopy(client) },
     )
 
     private suspend fun prepareRequestsExecutor(): DefaultKtorRequestsExecutor {
@@ -106,16 +108,18 @@ class MultipleClientKtorRequestsExecutor(
 
     private suspend fun <T> withRequestExecutor(block: suspend (DefaultKtorRequestsExecutor) -> T): T {
         val requestsExecutor = prepareRequestsExecutor()
-        val result = runCatchingSafely {
-            block(requestsExecutor)
-        }
+        val result =
+            runCatchingSafely {
+                block(requestsExecutor)
+            }
         freeRequestsExecutor(requestsExecutor)
         return result.getOrThrow()
     }
 
-    override suspend fun <T : Any> execute(request: Request<T>): T = withRequestExecutor {
-        it.execute(request)
-    }
+    override suspend fun <T : Any> execute(request: Request<T>): T =
+        withRequestExecutor {
+            it.execute(request)
+        }
 
     override fun close() {
         requestExecutors.forEach {

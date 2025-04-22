@@ -6,10 +6,8 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.transform
 
 /**
  * Will pass only those [T] which have [sameChat] as [chatId]
@@ -34,4 +32,3 @@ inline fun <T : FromUser> Flow<T>.fromUser(userId: UserId): Flow<T> = filter { i
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun <T : FromUser> Flow<T>.fromUser(user: User): Flow<T> = fromUser(user.id)
-

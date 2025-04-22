@@ -14,5 +14,5 @@ data class Email(
     override val email: String,
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithEmail

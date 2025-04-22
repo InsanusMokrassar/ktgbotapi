@@ -17,9 +17,10 @@ data class AnswerCallbackQuery(
     @SerialName(urlField)
     val url: String? = null,
     @SerialName(cacheTimeField)
-    val cachedTimeSeconds: Int? = null
+    val cachedTimeSeconds: Int? = null,
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "answerCallbackQuery"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
@@ -30,5 +31,5 @@ fun CallbackQuery.createAnswer(
     text: String? = null,
     showAlert: Boolean? = null,
     url: String? = null,
-    cachedTimeSeconds: Int? = null
+    cachedTimeSeconds: Int? = null,
 ): AnswerCallbackQuery = AnswerCallbackQuery(id, text, showAlert, url, cachedTimeSeconds)

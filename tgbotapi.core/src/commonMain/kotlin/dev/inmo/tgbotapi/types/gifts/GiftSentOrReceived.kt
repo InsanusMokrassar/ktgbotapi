@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -16,7 +15,6 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlin.jvm.JvmName
-
 
 /**
  * Represent Telegram Bots API abstraction [GiftInfo](https://core.telegram.org/bots/api#giftinfo) and
@@ -61,7 +59,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(entitiesField)
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false
+            override val isPrivate: Boolean = false,
         ) : Regular {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
@@ -87,7 +85,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(entitiesField)
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false
+            override val isPrivate: Boolean = false,
         ) : Regular, GiftSentOrReceived.ReceivedInBusinessAccount {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
@@ -112,13 +110,16 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 @SerialName(entitiesField)
                 val entities: RawMessageEntities? = null,
                 @SerialName(isPrivateField)
-                val isPrivate: Boolean = false
+                val isPrivate: Boolean = false,
             )
 
             override val descriptor: SerialDescriptor
                 get() = Surrogate.serializer().descriptor
 
-            override fun serialize(encoder: Encoder, value: Regular) {
+            override fun serialize(
+                encoder: Encoder,
+                value: Regular,
+            ) {
                 when (value) {
                     is Common -> Common.serializer().serialize(encoder, value)
                     is ReceivedInBusinessAccount -> ReceivedInBusinessAccount.serializer().serialize(encoder, value)
@@ -128,7 +129,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override fun deserialize(decoder: Decoder): Regular {
                 val surrogate = Surrogate.serializer().deserialize(decoder)
 
-               return when {
+                return when {
                     surrogate.ownedGiftId == null -> {
                         Common(
                             gift = surrogate.gift,
@@ -137,7 +138,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             canBeUpgraded = surrogate.canBeUpgraded,
                             text = surrogate.text,
                             entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate
+                            isPrivate = surrogate.isPrivate,
                         )
                     }
                     else -> {
@@ -149,11 +150,12 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             canBeUpgraded = surrogate.canBeUpgraded,
                             text = surrogate.text,
                             entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate
+                            isPrivate = surrogate.isPrivate,
                         )
                     }
                 }
             }
+
             @JvmName("PublicConstructor")
             operator fun invoke(
                 gift: Gift.Regular,
@@ -164,7 +166,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 text: String? = null,
                 textSources: TextSourcesList = emptyList(),
                 position: Int,
-                isPrivate: Boolean = false
+                isPrivate: Boolean = false,
             ) = ownedGiftId ?.let {
                 ReceivedInBusinessAccount(
                     gift,
@@ -174,7 +176,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
                     canBeUpgraded,
                     text,
                     textSources.toRawMessageEntities(position),
-                    isPrivate
+                    isPrivate,
                 )
             } ?: Common(
                 gift,
@@ -183,7 +185,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 canBeUpgraded,
                 text,
                 textSources.toRawMessageEntities(position),
-                isPrivate
+                isPrivate,
             )
         }
     }
@@ -201,7 +203,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(originField)
             override val origin: String? = null,
             @SerialName(transferStarCountField)
-            override val transferStarCount: Int? = null
+            override val transferStarCount: Int? = null,
         ) : Unique {
             override val ownedGiftId: GiftId?
                 get() = null
@@ -216,7 +218,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(originField)
             override val origin: String? = null,
             @SerialName(transferStarCountField)
-            override val transferStarCount: Int? = null
+            override val transferStarCount: Int? = null,
         ) : Unique, GiftSentOrReceived.ReceivedInBusinessAccount
 
         companion object : KSerializer<GiftSentOrReceived.Unique> {
@@ -229,13 +231,16 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 @SerialName(originField)
                 val origin: String? = null,
                 @SerialName(transferStarCountField)
-                val transferStarCount: Int? = null
+                val transferStarCount: Int? = null,
             )
 
             override val descriptor: SerialDescriptor
                 get() = Surrogate.serializer().descriptor
 
-            override fun serialize(encoder: Encoder, value: Unique) {
+            override fun serialize(
+                encoder: Encoder,
+                value: Unique,
+            ) {
                 when (value) {
                     is Common -> Common.serializer().serialize(encoder, value)
                     is ReceivedInBusinessAccount -> ReceivedInBusinessAccount.serializer().serialize(encoder, value)
@@ -250,7 +255,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
                         Common(
                             gift = surrogate.gift,
                             origin = surrogate.origin,
-                            transferStarCount = surrogate.transferStarCount
+                            transferStarCount = surrogate.transferStarCount,
                         )
                     }
                     else -> {
@@ -258,17 +263,18 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             gift = surrogate.gift,
                             ownedGiftId = surrogate.ownedGiftId,
                             origin = surrogate.origin,
-                            transferStarCount = surrogate.transferStarCount
+                            transferStarCount = surrogate.transferStarCount,
                         )
                     }
                 }
             }
+
             @JvmName("PublicConstructor")
             operator fun invoke(
                 gift: Gift.Unique,
                 origin: String? = null,
                 ownedGiftId: GiftId? = null,
-                transferStarCount: Int? = null
+                transferStarCount: Int? = null,
             ) = ownedGiftId ?.let {
                 ReceivedInBusinessAccount(
                     gift,

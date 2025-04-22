@@ -13,8 +13,12 @@ import kotlinx.serialization.encoding.Encoder
 object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InlineQueryResult::class.toString(), PolymorphicKind.OPEN)
-    override fun serialize(encoder: Encoder, value: InlineQueryResult) {
-        when(value) {
+
+    override fun serialize(
+        encoder: Encoder,
+        value: InlineQueryResult,
+    ) {
+        when (value) {
             is InlineQueryResultArticle -> InlineQueryResultArticle.serializer().serialize(encoder, value)
             is InlineQueryResultAudioCachedImpl -> InlineQueryResultAudioCachedImpl.serializer().serialize(encoder, value)
             is InlineQueryResultAudioImpl -> InlineQueryResultAudioImpl.serializer().serialize(encoder, value)

@@ -10,5 +10,5 @@ data class MessageGameShortNameCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val message: ContentMessage<MessageContent>,
-    override val gameShortName: String
+    override val gameShortName: String,
 ) : GameShortNameCallbackQuery, MessageCallbackQuery

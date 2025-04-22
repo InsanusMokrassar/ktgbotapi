@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.micro_utils.coroutines.safelyWithResult
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.flatten
@@ -35,29 +34,31 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> List<T>
+    filter: suspend (Update) -> List<T>,
 ): Flow<T> {
-    val flow = allUpdatesFlow.map {
-        val result = runCatching {
-            filter(it)
-        }
-        if (result.isFailure || result.getOrThrow().isEmpty()) {
-            if (cancelTrigger(it)) {
-                cancelRequestFactory(it) ?.also {
-                    safelyWithResult { bot.execute(it) }
-                    throw cancelledByFilterException
-                }
-            }
-            errorFactory(it) ?.also { errorRequest ->
+    val flow =
+        allUpdatesFlow.map {
+            val result =
                 runCatching {
-                    bot.execute(errorRequest)
+                    filter(it)
                 }
+            if (result.isFailure || result.getOrThrow().isEmpty()) {
+                if (cancelTrigger(it)) {
+                    cancelRequestFactory(it) ?.also {
+                        safelyWithResult { bot.execute(it) }
+                        throw cancelledByFilterException
+                    }
+                }
+                errorFactory(it) ?.also { errorRequest ->
+                    runCatching {
+                        bot.execute(errorRequest)
+                    }
+                }
+                emptyList()
+            } else {
+                result.getOrThrow()
             }
-            emptyList()
-        } else {
-            result.getOrThrow()
-        }
-    }.flatten()
+        }.flatten()
     initRequest ?.also {
         runCatching {
             bot.execute(initRequest)
@@ -82,7 +83,7 @@ suspend fun <T> BehaviourContext.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> List<T>
+    filter: suspend (Update) -> List<T>,
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger, filter)
 
 /**
@@ -102,10 +103,11 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
-): T = expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger) {
-    listOfNotNull(filter.invoke(it))
-}.first()
+    filter: suspend (Update) -> T?,
+): T =
+    expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger) {
+        listOfNotNull(filter.invoke(it))
+    }.first()
 
 /**
  * @param initRequest If not null, this request will be sent by [bot] before returning value
@@ -123,5 +125,5 @@ suspend fun <T> BehaviourContext.expectOne(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
+    filter: suspend (Update) -> T?,
 ) = flowsUpdatesFilter.expectOne(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger, filter)

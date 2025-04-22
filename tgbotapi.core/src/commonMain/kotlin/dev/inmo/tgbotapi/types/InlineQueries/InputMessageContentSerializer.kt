@@ -12,7 +12,11 @@ import kotlinx.serialization.encoding.Encoder
 object InputMessageContentSerializer : KSerializer<InputMessageContent> {
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMessageContent::class.toString(), PolymorphicKind.OPEN)
-    override fun serialize(encoder: Encoder, value: InputMessageContent) {
+
+    override fun serialize(
+        encoder: Encoder,
+        value: InputMessageContent,
+    ) {
         when (value) {
             is InputContactMessageContent -> InputContactMessageContent.serializer().serialize(encoder, value)
             is InputLocationMessageContent -> InputLocationMessageContent.serializer().serialize(encoder, value)

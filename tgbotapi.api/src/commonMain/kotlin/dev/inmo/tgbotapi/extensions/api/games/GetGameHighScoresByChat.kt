@@ -12,45 +12,61 @@ import dev.inmo.tgbotapi.types.message.content.GameContent
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chatId: IdChatIdentifier,
-    messageId: MessageId
-): List<GameHighScore> = execute(
-    GetGameHighScoresByChat(userId, chatId, messageId)
-)
+    messageId: MessageId,
+): List<GameHighScore> =
+    execute(
+        GetGameHighScoresByChat(userId, chatId, messageId),
+    )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chatId: IdChatIdentifier,
-    messageId: MessageId
-): List<GameHighScore> = getGameScore(
-    user.id, chatId, messageId
-)
+    messageId: MessageId,
+): List<GameHighScore> =
+    getGameScore(
+        user.id,
+        chatId,
+        messageId,
+    )
 
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chat: Chat,
-    messageId: MessageId
-): List<GameHighScore> = getGameScore(
-    userId, chat.id, messageId
-)
+    messageId: MessageId,
+): List<GameHighScore> =
+    getGameScore(
+        userId,
+        chat.id,
+        messageId,
+    )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chat: Chat,
-    messageId: MessageId
-): List<GameHighScore> = getGameScore(
-    user.id, chat.id, messageId
-)
+    messageId: MessageId,
+): List<GameHighScore> =
+    getGameScore(
+        user.id,
+        chat.id,
+        messageId,
+    )
 
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
-    message: ContentMessage<GameContent>
-): List<GameHighScore> = getGameScore(
-    userId, message.chat.id, message.messageId
-)
+    message: ContentMessage<GameContent>,
+): List<GameHighScore> =
+    getGameScore(
+        userId,
+        message.chat.id,
+        message.messageId,
+    )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
-    message: ContentMessage<GameContent>
-): List<GameHighScore> = getGameScore(
-    user.id, message.chat.id, message.messageId
-)
+    message: ContentMessage<GameContent>,
+): List<GameHighScore> =
+    getGameScore(
+        user.id,
+        message.chat.id,
+        message.messageId,
+    )

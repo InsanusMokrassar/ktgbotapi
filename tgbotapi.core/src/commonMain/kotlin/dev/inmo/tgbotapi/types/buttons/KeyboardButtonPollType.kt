@@ -23,7 +23,7 @@ sealed interface KeyboardButtonPollType {
 
 @Serializable
 @Warning("This type should be used only in cases you are sure that it is required")
-class UnknownKeyboardButtonPollType internal constructor(override val type: String): KeyboardButtonPollType
+class UnknownKeyboardButtonPollType internal constructor(override val type: String) : KeyboardButtonPollType
 
 /**
  * Just a regular poll type
@@ -53,10 +53,11 @@ object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
 
     override fun deserialize(decoder: Decoder): KeyboardButtonPollType {
-        val type = when (val asJson = internalSerializer.deserialize(decoder)) {
-            is JsonPrimitive -> asJson.content
-            else -> asJson.jsonObject[typeField] ?.jsonPrimitive ?.content ?: "absent"
-        }
+        val type =
+            when (val asJson = internalSerializer.deserialize(decoder)) {
+                is JsonPrimitive -> asJson.content
+                else -> asJson.jsonObject[typeField] ?.jsonPrimitive ?.content ?: "absent"
+            }
 
         return when (type) {
             regularPollType -> RegularKeyboardButtonPollType
@@ -68,14 +69,17 @@ object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
     /**
      * Crutch due to the fact that direct serialization of objects currently does not work perfectly
      */
-    override fun serialize(encoder: Encoder, value: KeyboardButtonPollType) {
+    override fun serialize(
+        encoder: Encoder,
+        value: KeyboardButtonPollType,
+    ) {
         internalSerializer.serialize(
             encoder,
             JsonObject(
                 mapOf(
-                    typeField to JsonPrimitive(value.type)
-                )
-            )
+                    typeField to JsonPrimitive(value.type),
+                ),
+            ),
         )
     }
 }

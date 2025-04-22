@@ -7,12 +7,12 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 @Serializable
-data class SetChatDescription (
+data class SetChatDescription(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(descriptionField)
-    val description: String
-): ChatRequest, SimpleRequest<Boolean> {
+    val description: String,
+) : ChatRequest, SimpleRequest<Boolean> {
     init {
         if (description.length !in chatDescriptionLength) {
             throw IllegalArgumentException("Chat description must be in $chatDescriptionLength range")
@@ -20,6 +20,7 @@ data class SetChatDescription (
     }
 
     override fun method(): String = "setChatDescription"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

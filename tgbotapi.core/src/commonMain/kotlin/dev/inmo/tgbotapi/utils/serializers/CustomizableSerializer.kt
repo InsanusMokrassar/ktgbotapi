@@ -15,9 +15,25 @@ open class CallbacksCustomizableDeserializationStrategy<T>(
     override val descriptor: SerialDescriptor,
     defaultDeserializeCallback: (decoder: Decoder, jsonElement: JsonElement?) -> T,
     defaultSerializeCallback: (encoder: Encoder, value: T) -> Unit,
-    fallbackDeserialization: (initialException: Throwable, decoder: Decoder, jsonElement: JsonElement?) -> T = { initialException, _, _ -> throw initialException },
-    fallbackSerialization: (initialException: Throwable, encoder: Encoder, value: T) -> T = { initialException, _, _ -> throw initialException }
+    fallbackDeserialization: (
+        initialException: Throwable,
+        decoder: Decoder,
+        jsonElement: JsonElement?,
+    ) -> T = { initialException, _, _ -> throw initialException },
+    fallbackSerialization: (
+        initialException: Throwable,
+        encoder: Encoder,
+        value: T,
+    ) -> T = { initialException, _, _ -> throw initialException },
 ) : CustomizableSerializer<T>,
-    CustomizableSerializationStrategy<T> by CallbackCustomizableSerializationStrategy(descriptor, defaultSerializeCallback, fallbackSerialization),
-    CustomizableDeserializationStrategy<T> by CallbackCustomizableDeserializationStrategy(descriptor, defaultDeserializeCallback, fallbackDeserialization){
+    CustomizableSerializationStrategy<T> by CallbackCustomizableSerializationStrategy(
+        descriptor,
+        defaultSerializeCallback,
+        fallbackSerialization,
+    ),
+    CustomizableDeserializationStrategy<T> by CallbackCustomizableDeserializationStrategy(
+        descriptor,
+        defaultDeserializeCallback,
+        fallbackDeserialization,
+    ) {
 }

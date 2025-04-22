@@ -18,12 +18,13 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
         jsonFormatter: Json,
-    ): T? = (request as? DownloadFile)?.let {
-        val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
+    ): T? =
+        (request as? DownloadFile)?.let {
+            val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-        safely {
-            @Suppress("UNCHECKED_CAST")
-            client.get(fullUrl).readRawBytes() as T // always ByteArray
+            safely {
+                @Suppress("UNCHECKED_CAST")
+                client.get(fullUrl).readRawBytes() as T // always ByteArray
+            }
         }
-    }
 }

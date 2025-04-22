@@ -15,22 +15,23 @@ import io.ktor.client.engine.*
 public data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
     var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,
-    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null
+    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit)? = null,
 ) {
-    internal fun createHttpClient(): HttpClient = ktorClientEngineFactory ?.let {
-        HttpClient(
-            it.create {
-                this@create.proxy = this@BotBuilder.proxy ?: this@create.proxy
+    internal fun createHttpClient(): HttpClient =
+        ktorClientEngineFactory ?.let {
+            HttpClient(
+                it.create {
+                    this@create.proxy = this@BotBuilder.proxy ?: this@create.proxy
+                },
+            ) {
+                ktorClientConfig ?.let { it() }
             }
-        ) {
+        } ?: HttpClient {
             ktorClientConfig ?.let { it() }
+            engine {
+                this@engine.proxy = this@BotBuilder.proxy ?: this@engine.proxy
+            }
         }
-    } ?: HttpClient {
-        ktorClientConfig ?.let { it() }
-        engine {
-            this@engine.proxy = this@BotBuilder.proxy ?: this@engine.proxy
-        }
-    }
 }
 
 /**
@@ -41,8 +42,9 @@ public fun buildBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    block: BotBuilder.() -> Unit
-): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-    BotBuilder().apply(block).createHttpClient()
-)
+    block: BotBuilder.() -> Unit,
+): TelegramBot =
+    telegramBot(
+        TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+        BotBuilder().apply(block).createHttpClient(),
+    )

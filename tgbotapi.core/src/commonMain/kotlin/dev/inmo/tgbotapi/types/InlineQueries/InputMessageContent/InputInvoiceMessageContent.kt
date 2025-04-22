@@ -43,11 +43,12 @@ class InputInvoiceMessageContent(
     @SerialName(shouldSendEmailToProviderField)
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
-    override val priceDependOnShipAddress: Boolean = false
+    override val priceDependOnShipAddress: Boolean = false,
 ) : InputMessageContent, CommonSendInvoiceData {
     @SerialName(photoUrlField)
     override var photoUrl: String? = null
         private set
+
     @SerialName(photoSizeField)
     override var photoSize: Long? = null
         private set
@@ -55,6 +56,7 @@ class InputInvoiceMessageContent(
     @SerialName(photoWidthField)
     override var photoWidth: Int? = null
         private set
+
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
@@ -73,7 +75,7 @@ class InputInvoiceMessageContent(
         requireShippingAddress: Boolean = false,
         shouldSendPhoneNumberToProvider: Boolean = false,
         shouldSendEmailToProvider: Boolean = false,
-        priceDependOnShipAddress: Boolean = false
+        priceDependOnShipAddress: Boolean = false,
     ) : this(
         title = title,
         description = description,
@@ -90,14 +92,14 @@ class InputInvoiceMessageContent(
         requireShippingAddress = requireShippingAddress,
         shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
         shouldSendEmailToProvider = shouldSendEmailToProvider,
-        priceDependOnShipAddress = priceDependOnShipAddress
+        priceDependOnShipAddress = priceDependOnShipAddress,
     )
 
     override fun setPhoto(
         photoUrl: String,
         photoSize: Long?,
         photoWidth: Int?,
-        photoHeight: Int?
+        photoHeight: Int?,
     ) {
         this.photoUrl = photoUrl
         this.photoSize = photoSize

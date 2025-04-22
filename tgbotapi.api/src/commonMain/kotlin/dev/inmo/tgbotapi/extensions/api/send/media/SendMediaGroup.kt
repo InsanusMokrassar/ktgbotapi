@@ -4,8 +4,8 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -24,20 +24,21 @@ public suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = execute(
-    SendMediaGroup<MediaGroupPartContent>(
-        chatId = chatId,
-        media = media,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> =
+    execute(
+        SendMediaGroup<MediaGroupPartContent>(
+            chatId = chatId,
+            media = media,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+        ),
     )
-)
 
 /**
  * @see SendMediaGroup
@@ -52,18 +53,19 @@ public suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> =
+    sendMediaGroup(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendMediaGroup
@@ -79,18 +81,19 @@ public suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
-    chatId = chatId,
-    media = media.map { it.toMediaGroupMemberTelegramMedia() },
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> =
+    sendMediaGroup(
+        chatId = chatId,
+        media = media.map { it.toMediaGroupMemberTelegramMedia() },
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendMediaGroup
@@ -106,18 +109,19 @@ public suspend fun TelegramBot.sendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<MediaGroupPartContent>> =
+    sendMediaGroup(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendPlaylist
@@ -131,20 +135,21 @@ public suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = execute(
-    SendPlaylist(
-        chatId = chatId,
-        media = media,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<AudioContent>> =
+    execute(
+        SendPlaylist(
+            chatId = chatId,
+            media = media,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+        ),
     )
-)
 
 /**
  * @see SendPlaylist
@@ -158,18 +163,19 @@ public suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<AudioContent>> =
+    sendPlaylist(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendPlaylist
@@ -184,18 +190,19 @@ public suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
-    chatId = chatId,
-    media = media.map { it.toMediaGroupMemberTelegramMedia() },
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<AudioContent>> =
+    sendPlaylist(
+        chatId = chatId,
+        media = media.map { it.toMediaGroupMemberTelegramMedia() },
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendPlaylist
@@ -210,18 +217,19 @@ public suspend fun TelegramBot.sendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<AudioContent>> =
+    sendPlaylist(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendDocumentsGroup
@@ -235,20 +243,21 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = execute(
-    SendDocumentsGroup(
-        chatId = chatId,
-        media = media,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<DocumentContent>> =
+    execute(
+        SendDocumentsGroup(
+            chatId = chatId,
+            media = media,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+        ),
     )
-)
 
 /**
  * @see SendDocumentsGroup
@@ -262,18 +271,19 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<DocumentContent>> =
+    sendDocumentsGroup(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendDocumentsGroup
@@ -288,18 +298,19 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
-    chatId = chatId,
-    media = media.map { it.toMediaGroupMemberTelegramMedia() },
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<DocumentContent>> =
+    sendDocumentsGroup(
+        chatId = chatId,
+        media = media.map { it.toMediaGroupMemberTelegramMedia() },
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendDocumentsGroup
@@ -314,35 +325,10 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
-
-/**
- * @see SendVisualMediaGroup
- */
-public suspend fun TelegramBot.sendVisualMediaGroup(
-    chatId: ChatIdentifier,
-    media: List<VisualMediaGroupMemberTelegramMedia>,
-    threadId: MessageThreadId? = chatId.threadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = execute(
-    SendVisualMediaGroup(
-        chatId = chatId,
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<DocumentContent>> =
+    sendDocumentsGroup(
+        chatId = chat.id,
         media = media,
         threadId = threadId,
         businessConnectionId = businessConnectionId,
@@ -350,9 +336,36 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
-        replyParameters = replyParameters
+        replyParameters = replyParameters,
     )
-)
+
+/**
+ * @see SendVisualMediaGroup
+ */
+public suspend fun TelegramBot.sendVisualMediaGroup(
+    chatId: ChatIdentifier,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> =
+    execute(
+        SendVisualMediaGroup(
+            chatId = chatId,
+            media = media,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+        ),
+    )
 
 /**
  * @see SendVisualMediaGroup
@@ -366,18 +379,19 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> =
+    sendVisualMediaGroup(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendVisualMediaGroup
@@ -392,18 +406,19 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
-    chatId = chatId,
-    media = media.map { it.toMediaGroupMemberTelegramMedia() },
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> =
+    sendVisualMediaGroup(
+        chatId = chatId,
+        media = media.map { it.toMediaGroupMemberTelegramMedia() },
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
 /**
  * @see SendVisualMediaGroup
@@ -418,15 +433,16 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
-    chatId = chat.id,
-    media = media,
-    threadId = threadId,
-    businessConnectionId = businessConnectionId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    replyParameters = replyParameters
-)
+    replyParameters: ReplyParameters? = null,
+): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> =
+    sendVisualMediaGroup(
+        chatId = chat.id,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )

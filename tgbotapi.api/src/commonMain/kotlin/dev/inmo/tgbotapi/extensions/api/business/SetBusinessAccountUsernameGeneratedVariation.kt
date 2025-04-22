@@ -9,8 +9,11 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import kotlin.Boolean
 import kotlin.String
 
-public suspend
-    fun TelegramBot.setBusinessAccountUsername(businessConnectionId: BusinessConnectionId,
-    username: String): Boolean = setBusinessAccountUsername(
-    businessConnectionId = businessConnectionId, username = with(username) { Username(username) }
-)
+public suspend fun TelegramBot.setBusinessAccountUsername(
+    businessConnectionId: BusinessConnectionId,
+    username: String,
+): Boolean =
+    setBusinessAccountUsername(
+        businessConnectionId = businessConnectionId,
+        username = with(username) { Username(username) },
+    )

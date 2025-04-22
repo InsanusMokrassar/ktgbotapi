@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.statusField
 import dev.inmo.tgbotapi.types.untilDateField
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -20,6 +19,7 @@ import kotlinx.serialization.json.jsonPrimitive
 @Serializable(ChatMemberSerializer::class)
 sealed interface ChatMember : WithUser {
     override val user: PreviewUser
+
     @Serializable(StatusSerializer::class)
     enum class Status(
         val status: String,
@@ -28,11 +28,21 @@ sealed interface ChatMember : WithUser {
     ) {
         Creator("creator", OwnerChatMember.serializer()),
         Administrator("administrator", AdministratorChatMemberImpl.serializer()),
-        Member("member", MemberChatMemberImpl.serializer(), { status, json -> status == "member" && json[untilDateField] ?.jsonPrimitive == null }),
-        SubscriptionMember("member", SubscriptionMemberChatMemberImpl.serializer(), { status, json -> status == "member" && json[untilDateField] ?.jsonPrimitive != null }),
+        Member("member", MemberChatMemberImpl.serializer(), {
+                status,
+                json,
+            ->
+            status == "member" && json[untilDateField] ?.jsonPrimitive == null
+        }),
+        SubscriptionMember("member", SubscriptionMemberChatMemberImpl.serializer(), {
+                status,
+                json,
+            ->
+            status == "member" && json[untilDateField] ?.jsonPrimitive != null
+        }),
         Restricted("restricted", RestrictedMemberChatMember.serializer()),
         Left("left", LeftChatMemberImpl.serializer()),
-        Kicked("kicked", KickedChatMember.serializer())
+        Kicked("kicked", KickedChatMember.serializer()),
     }
 
     object StatusSerializer : KSerializer<Status> {
@@ -46,7 +56,10 @@ sealed interface ChatMember : WithUser {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: Status) {
+        override fun serialize(
+            encoder: Encoder,
+            value: Status,
+        ) {
             encoder.encodeString(value.status)
         }
     }
@@ -70,7 +83,10 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
         } ?: error("Unknown type of chat member in json: $json")
     }
 
-    override fun serialize(encoder: Encoder, value: ChatMember) {
+    override fun serialize(
+        encoder: Encoder,
+        value: ChatMember,
+    ) {
         when (value) {
             is OwnerChatMember -> OwnerChatMember.serializer().serialize(encoder, value)
             is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer().serialize(encoder, value)

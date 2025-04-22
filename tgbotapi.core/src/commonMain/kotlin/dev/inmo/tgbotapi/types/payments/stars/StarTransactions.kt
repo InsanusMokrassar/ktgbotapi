@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StarTransactions(
     @SerialName(transactionsField)
-    val transactions: List<StarTransaction>
+    val transactions: List<StarTransaction>,
 )

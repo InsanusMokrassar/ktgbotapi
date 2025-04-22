@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.Serializable
 
 const val DirectInvocationOfTextSourceConstructor = "It is strongly not recommended to use constructors directly instead of factory methods"
@@ -22,11 +22,14 @@ sealed interface TextSource {
         get() = source
 }
 
-operator fun TextSource.plus(other: TextSource) = when {
-    this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
-    else -> listOf(this, other)
-}
+operator fun TextSource.plus(other: TextSource) =
+    when {
+        this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
+        else -> listOf(this, other)
+    }
+
 operator fun TextSource.plus(text: String) = this + regularTextSource(text)
+
 operator fun List<TextSource>.plus(text: String): List<TextSource> {
     val newList = mutableListOf<TextSource>()
 
@@ -34,32 +37,38 @@ operator fun List<TextSource>.plus(text: String): List<TextSource> {
         newList.add(get(i))
     }
 
-    val sublist = lastOrNull() ?.let {
-        it + text
-    } ?: listOf(regularTextSource(text))
+    val sublist =
+        lastOrNull() ?.let {
+            it + text
+        } ?: listOf(regularTextSource(text))
 
     newList.addAll(sublist)
 
     return newList
 }
-operator fun TextSource.plus(other: List<TextSource>) = other.fold(listOf(this)) { acc, textSource ->
-    val newList = mutableListOf<TextSource>()
 
-    for (i in 0 until acc.size - 1) {
-        newList.add(acc.get(i))
+operator fun TextSource.plus(other: List<TextSource>) =
+    other.fold(listOf(this)) { acc, textSource ->
+        val newList = mutableListOf<TextSource>()
+
+        for (i in 0 until acc.size - 1) {
+            newList.add(acc.get(i))
+        }
+
+        newList.addAll(acc.last() + textSource)
+
+        newList
     }
-
-    newList.addAll(acc.last() + textSource)
-
-    newList
-}
 
 @Serializable(TextSourceSerializer::class)
 sealed interface MultilevelTextSource : TextSource {
     val subsources: List<TextSource>
 }
 
-fun List<TextSource>.splitForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
+fun List<TextSource>.splitForMessage(
+    limit: IntRange,
+    numberOfParts: Int? = null,
+): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()
     }
@@ -70,7 +79,7 @@ fun List<TextSource>.splitForMessage(limit: IntRange, numberOfParts: Int? = null
 
     for (current in this) {
         if (current.source.length > maxSize) {
-            error("Currently unsupported parts with size more than target one-message parts (${current.source.length} > ${maxSize})")
+            error("Currently unsupported parts with size more than target one-message parts (${current.source.length} > $maxSize)")
         }
 
         if (currentPartLength + current.source.length > maxSize) {
@@ -103,7 +112,14 @@ fun List<TextSource>.splitForCaption(): List<List<TextSource>> {
  */
 inline fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMessage(textLength)
 
-fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> = splitForMessage(limit, numberOfParts)
+fun List<TextSource>.separateForMessage(
+    limit: IntRange,
+    numberOfParts: Int? = null,
+): List<List<TextSource>> =
+    splitForMessage(
+        limit,
+        numberOfParts,
+    )
 
 /**
  * This method will prepare [TextSource]s list for messages. Remember, that first part will be separated with

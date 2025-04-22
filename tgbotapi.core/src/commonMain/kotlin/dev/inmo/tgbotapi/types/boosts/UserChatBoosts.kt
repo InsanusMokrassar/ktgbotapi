@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class UserChatBoosts(
     @SerialName(boostsField)
-    val boosts: List<ChatBoost>
+    val boosts: List<ChatBoost>,
 )

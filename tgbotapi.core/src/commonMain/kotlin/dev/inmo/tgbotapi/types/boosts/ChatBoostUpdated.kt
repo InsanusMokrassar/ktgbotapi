@@ -12,5 +12,5 @@ data class ChatBoostUpdated(
     @SerialName(chatField)
     override val chat: PreviewChat,
     @SerialName(boostField)
-    val boost: ChatBoost
+    val boost: ChatBoost,
 ) : WithPreviewChat

@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.unlimitedGiftsField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class AcceptedGiftTypes(
     @SerialName(unlimitedGiftsField)
@@ -17,5 +16,5 @@ data class AcceptedGiftTypes(
     @SerialName(uniqueGiftsField)
     val uniqueGifts: Boolean = false,
     @SerialName(premiumSubscriptionField)
-    val premiumSubscription: Boolean = false
+    val premiumSubscription: Boolean = false,
 )

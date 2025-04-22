@@ -7,6 +7,7 @@ import kotlinx.serialization.builtins.serializer
 
 interface AnswerShippingQuery : SimpleRequest<Boolean> {
     override fun method(): String = "answerShippingQuery"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
 

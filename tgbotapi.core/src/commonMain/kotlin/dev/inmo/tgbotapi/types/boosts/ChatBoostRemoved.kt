@@ -15,5 +15,5 @@ data class ChatBoostRemoved(
     @SerialName(removeDateField)
     val removeDate: TelegramDate,
     @SerialName(sourceField)
-    val source: ChatBoostSource
+    val source: ChatBoostSource,
 ) : WithPreviewChat

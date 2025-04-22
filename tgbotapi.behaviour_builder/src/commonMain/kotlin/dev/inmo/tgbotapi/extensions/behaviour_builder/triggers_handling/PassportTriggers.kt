@@ -16,11 +16,10 @@ internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPasspor
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PassportMessage>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -40,12 +39,11 @@ suspend fun <BC : BehaviourContext> BC.onPassportMessage(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PassportMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>,
 ) = onPassportMessageWith<BC, EncryptedPassportElement>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
-

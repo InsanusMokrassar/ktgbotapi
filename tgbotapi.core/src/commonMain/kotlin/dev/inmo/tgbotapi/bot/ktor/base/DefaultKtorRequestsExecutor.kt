@@ -28,23 +28,25 @@ class DefaultKtorRequestsExecutor internal constructor(
     private val jsonFormatter: Json,
     private val pipelineStepsHolder: TelegramBotPipelinesHandler,
     private val logger: KSLog,
-    diff: Unit
+    diff: Unit,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
-    private val callsFactories: List<KtorCallFactory> = callsFactories.run {
-        if (!excludeDefaultFactories) {
-            this@DefaultKtorRequestsExecutor.logger.v { "Installing default factories" }
-            this + createTelegramBotDefaultKtorCallRequestsFactories(this@DefaultKtorRequestsExecutor.logger)
-        } else {
-            this@DefaultKtorRequestsExecutor.logger.v { "Default factories will not be installed" }
-            this
+    private val callsFactories: List<KtorCallFactory> =
+        callsFactories.run {
+            if (!excludeDefaultFactories) {
+                this@DefaultKtorRequestsExecutor.logger.v { "Installing default factories" }
+                this + createTelegramBotDefaultKtorCallRequestsFactories(this@DefaultKtorRequestsExecutor.logger)
+            } else {
+                this@DefaultKtorRequestsExecutor.logger.v { "Default factories will not be installed" }
+                this
+            }
         }
-    }
 
-    private val client = client.config {
-        if (client.pluginOrNull(HttpTimeout) == null) {
-            install(HttpTimeout)
+    private val client =
+        client.config {
+            if (client.pluginOrNull(HttpTimeout) == null) {
+                install(HttpTimeout)
+            }
         }
-    }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
         return runCatching {
@@ -56,12 +58,13 @@ class DefaultKtorRequestsExecutor internal constructor(
                 for (potentialFactory in callsFactories) {
                     pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
                     logger.v { "Trying factory $potentialFactory for $request" }
-                    val resultFromFactory = potentialFactory.makeCall(
-                        client,
-                        telegramAPIUrlsKeeper,
-                        request,
-                        jsonFormatter
-                    )
+                    val resultFromFactory =
+                        potentialFactory.makeCall(
+                            client,
+                            telegramAPIUrlsKeeper,
+                            request,
+                            jsonFormatter,
+                        )
                     logger.v { "Result of factory $potentialFactory handling $request: $resultFromFactory" }
                     result = pipelineStepsHolder.onAfterCallFactoryMakeCall(resultFromFactory, request, potentialFactory)
                     logger.v { "Result of pipeline $pipelineStepsHolder handling $resultFromFactory: $result" }
@@ -76,36 +79,38 @@ class DefaultKtorRequestsExecutor internal constructor(
                 } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
             }
         }.let {
-            val result = it.exceptionOrNull() ?.let { e ->
-                logger.v(e) { "Got exception on handling of $request" }
-                pipelineStepsHolder.onRequestException(request, e) ?.let { return@let it }
+            val result =
+                it.exceptionOrNull() ?.let { e ->
+                    logger.v(e) { "Got exception on handling of $request" }
+                    pipelineStepsHolder.onRequestException(request, e) ?.let { return@let it }
 
-                when (e) {
-                    is ClientRequestException -> {
-                        val exceptionResult = runCatchingSafely {
-                            val content = e.response.bodyAsText()
-                            val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
-                            newRequestException(
-                                responseObject,
-                                content,
-                                "Can't get result object from $content"
-                            )
+                    when (e) {
+                        is ClientRequestException -> {
+                            val exceptionResult =
+                                runCatchingSafely {
+                                    val content = e.response.bodyAsText()
+                                    val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
+                                    newRequestException(
+                                        responseObject,
+                                        content,
+                                        "Can't get result object from $content",
+                                    )
+                                }
+                            exceptionResult.exceptionOrNull() ?.let {
+                                CommonBotException(cause = e)
+                            } ?: exceptionResult.getOrThrow()
                         }
-                        exceptionResult.exceptionOrNull() ?.let {
-                            CommonBotException(cause = e)
-                        } ?: exceptionResult.getOrThrow()
-                    }
-                    is BotException -> e
-                    else -> CommonBotException(cause = e)
-                }.also { newException ->
-                    logger.v(newException) { "Result exception on handling of $request is an exception: ${newException.stackTraceToString()}" }
-                    if (newException is GetUpdatesConflict) {
-                        logger.w(newException) {
-                            "Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel"
+                        is BotException -> e
+                        else -> CommonBotException(cause = e)
+                    }.also { newException ->
+                        logger.v(newException) { "Result exception on handling of $request is an exception: ${newException.stackTraceToString()}" }
+                        if (newException is GetUpdatesConflict) {
+                            logger.w(newException) {
+                                "Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel"
+                            }
                         }
                     }
-                }
-            } ?.let { Result.failure(it) } ?: it
+                }?.let { Result.failure(it) } ?: it
             pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).getOrThrow().also {
                 logger.v { "Result of handling $request: $it" }
             }

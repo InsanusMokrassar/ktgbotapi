@@ -7,13 +7,15 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
-private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")) {
-    sourceUrl
-} else {
-    "https://$sourceUrl"
-}
+private fun correctWebhookUrl(sourceUrl: String) =
+    if (sourceUrl.contains("://")) {
+        sourceUrl
+    } else {
+        "https://$sourceUrl"
+    }
 
 sealed class SetWebhookRequest : Request<Boolean>
+
 class MultipartSetWebhookRequest(
     url: String,
     certificate: MultipartFile,
@@ -21,19 +23,20 @@ class MultipartSetWebhookRequest(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
-    secretToken: String? = null
-) : SetWebhookRequest(), MultipartRequest<Boolean> by MultipartRequestImpl(
-    SetWebhook(
-        correctWebhookUrl(url),
-        null as String?,
-        ipAddress,
-        maxAllowedConnections,
-        allowedUpdates,
-        dropPendingUpdates,
-        secretToken
-    ),
-    mapOf(certificateField to certificate)
-)
+    secretToken: String? = null,
+) : SetWebhookRequest(),
+    MultipartRequest<Boolean> by MultipartRequestImpl(
+        SetWebhook(
+            correctWebhookUrl(url),
+            null as String?,
+            ipAddress,
+            maxAllowedConnections,
+            allowedUpdates,
+            dropPendingUpdates,
+            secretToken,
+        ),
+        mapOf(certificateField to certificate),
+    )
 
 fun SetWebhook(
     url: String,
@@ -42,16 +45,17 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
-    secretToken: String? = null
-): MultipartSetWebhookRequest = MultipartSetWebhookRequest(
-    correctWebhookUrl(url),
-    certificate,
-    ipAddress,
-    maxAllowedConnections,
-    allowedUpdates,
-    dropPendingUpdates,
-    secretToken
-)
+    secretToken: String? = null,
+): MultipartSetWebhookRequest =
+    MultipartSetWebhookRequest(
+        correctWebhookUrl(url),
+        certificate,
+        ipAddress,
+        maxAllowedConnections,
+        allowedUpdates,
+        dropPendingUpdates,
+        secretToken,
+    )
 
 fun SetWebhook(
     url: String,
@@ -60,16 +64,17 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
-    secretToken: String? = null
-): SetWebhook = SetWebhook(
-    correctWebhookUrl(url),
-    certificate.fileId,
-    ipAddress,
-    maxAllowedConnections,
-    allowedUpdates,
-    dropPendingUpdates,
-    secretToken
-)
+    secretToken: String? = null,
+): SetWebhook =
+    SetWebhook(
+        correctWebhookUrl(url),
+        certificate.fileId,
+        ipAddress,
+        maxAllowedConnections,
+        allowedUpdates,
+        dropPendingUpdates,
+        secretToken,
+    )
 
 /**
  * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
@@ -86,10 +91,28 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
-    secretToken: String? = null
+    secretToken: String? = null,
 ) = when (certificate) {
-    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken)
-    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken)
+    is MultipartFile ->
+        SetWebhook(
+            correctWebhookUrl(url),
+            certificate as MultipartFile,
+            ipAddress,
+            maxAllowedConnections,
+            allowedUpdates,
+            dropPendingUpdates,
+            secretToken,
+        )
+    is FileId ->
+        SetWebhook(
+            correctWebhookUrl(url),
+            certificate as FileId,
+            ipAddress,
+            maxAllowedConnections,
+            allowedUpdates,
+            dropPendingUpdates,
+            secretToken,
+        )
 }
 
 /**
@@ -106,7 +129,7 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
-    secretToken: String? = null
+    secretToken: String? = null,
 ) = SetWebhook(
     correctWebhookUrl(url),
     null,
@@ -114,7 +137,7 @@ fun SetWebhook(
     maxAllowedConnections,
     allowedUpdates,
     dropPendingUpdates,
-    secretToken
+    secretToken,
 )
 
 /**
@@ -139,9 +162,10 @@ data class SetWebhook internal constructor(
     @SerialName(dropPendingUpdatesField)
     val dropPendingUpdates: Boolean? = null,
     @SerialName(secretTokenField)
-    val secretToken: String? = null
+    val secretToken: String? = null,
 ) : SetWebhookRequest(), DataRequest<Boolean> {
     override fun method(): String = "setWebhook"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

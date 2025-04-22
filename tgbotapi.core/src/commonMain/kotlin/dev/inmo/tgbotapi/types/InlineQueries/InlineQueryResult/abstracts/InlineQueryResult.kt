@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
 import dev.inmo.tgbotapi.types.InlineQueryId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.Serializable
 
 @Serializable(InlineQueryResultSerializer::class)

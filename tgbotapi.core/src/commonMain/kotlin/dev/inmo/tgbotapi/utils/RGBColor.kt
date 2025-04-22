@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class RGBColor(
-    val int: Int
+    val int: Int,
 )

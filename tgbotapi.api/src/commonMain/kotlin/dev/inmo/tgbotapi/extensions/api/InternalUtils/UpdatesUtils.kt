@@ -12,16 +12,18 @@ import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
  */
 internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
+    val mediaGroups =
+        mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
 
     for (update in this) {
-        val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.let {
-            if (it.content is MediaGroupPartContent) {
-                it as PossiblySentViaBotCommonMessage<MediaGroupPartContent>
-            } else {
-                null
+        val message =
+            (update.data as? PossiblySentViaBotCommonMessage<*>) ?.let {
+                if (it.content is MediaGroupPartContent) {
+                    it as PossiblySentViaBotCommonMessage<MediaGroupPartContent>
+                } else {
+                    null
+                }
             }
-        }
         val mediaGroupId = message ?.mediaGroupId
         if (message == null || mediaGroupId == null) {
             resultUpdates.add(update)
@@ -40,7 +42,7 @@ internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     mediaGroups.map { (_, updatesWithMessages) ->
         val update = updatesWithMessages.maxBy { it.first.updateId }.first
         resultUpdates.add(
-            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage())
+            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage()),
         )
     }
 

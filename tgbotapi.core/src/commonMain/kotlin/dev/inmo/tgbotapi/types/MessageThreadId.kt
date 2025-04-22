@@ -6,7 +6,7 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class MessageThreadId(
-    val long: Long
+    val long: Long,
 ) {
     override fun toString(): String {
         return long.toString()

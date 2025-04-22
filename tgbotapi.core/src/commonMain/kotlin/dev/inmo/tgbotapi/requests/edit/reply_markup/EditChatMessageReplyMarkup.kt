@@ -23,10 +23,10 @@ data class EditChatMessageReplyMarkup(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditChatMessage<MessageContent>, EditReplyMessage {
-
     override fun method(): String = editMessageReplyMarkupMethod
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<MessageContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

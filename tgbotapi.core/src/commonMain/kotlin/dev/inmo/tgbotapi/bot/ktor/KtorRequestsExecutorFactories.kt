@@ -11,15 +11,16 @@ import io.ktor.client.HttpClient
 import kotlinx.serialization.json.Json
 
 @RiskFeature
-fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) = listOf(
-    MultipartRequestCallFactory(logger),
-    SimpleRequestCallFactory(logger),
-    DownloadFileRequestCallFactory,
-    DownloadFileChannelRequestCallFactory
-)
+fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) =
+    listOf(
+        MultipartRequestCallFactory(logger),
+        SimpleRequestCallFactory(logger),
+        DownloadFileRequestCallFactory,
+        DownloadFileChannelRequestCallFactory,
+    )
 
 class KtorRequestsExecutorBuilder(
-    var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
+    var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
 ) {
     var client: HttpClient = HttpClient()
     var callsFactories: List<KtorCallFactory> = emptyList()
@@ -33,21 +34,22 @@ class KtorRequestsExecutorBuilder(
         pipelineStepsHolder = TelegramBotMiddlewaresPipelinesHandler.build(block)
     }
 
-    fun build() = KtorRequestsExecutor(
-        telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
-        client = client,
-        callsFactories = callsFactories,
-        excludeDefaultFactories = excludeDefaultFactories,
-        requestsLimiter = requestsLimiter,
-        jsonFormatter = jsonFormatter,
-        pipelineStepsHolder = pipelineStepsHolder,
-        logger = logger
-    )
+    fun build() =
+        KtorRequestsExecutor(
+            telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
+            client = client,
+            callsFactories = callsFactories,
+            excludeDefaultFactories = excludeDefaultFactories,
+            requestsLimiter = requestsLimiter,
+            jsonFormatter = jsonFormatter,
+            pipelineStepsHolder = pipelineStepsHolder,
+            logger = logger,
+        )
 }
 
 inline fun telegramBot(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
 ): TelegramBot = KtorRequestsExecutorBuilder(telegramAPIUrlsKeeper).apply(builder).build()
 
 /**
@@ -58,6 +60,5 @@ inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl), builder)
-

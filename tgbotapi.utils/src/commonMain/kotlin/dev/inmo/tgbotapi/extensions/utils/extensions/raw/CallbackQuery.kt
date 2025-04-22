@@ -10,12 +10,15 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 @RiskFeature(RawFieldsUsageWarning)
 val CallbackQuery.message: ContentMessage<MessageContent>?
     get() = asMessageCallbackQuery() ?.message
+
 @RiskFeature(RawFieldsUsageWarning)
 val CallbackQuery.inline_message_id: InlineMessageId?
     get() = asInlineMessageIdCallbackQuery() ?.inlineMessageId
+
 @RiskFeature(RawFieldsUsageWarning)
 val CallbackQuery.data: String?
     get() = asDataCallbackQuery() ?.data
+
 @RiskFeature(RawFieldsUsageWarning)
 val CallbackQuery.game_short_name: String?
     get() = asGameShortNameCallbackQuery() ?.gameShortName

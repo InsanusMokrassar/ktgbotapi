@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
  * @see [Update.lastUpdateIdentifier]
  */
 fun List<Update>.lastUpdateIdentifier(): UpdateId? {
-    return maxByOrNull { it.updateId } ?.updateId ?.takeIf { it.long > -1 }
+    return maxByOrNull { it.updateId }?.updateId ?.takeIf { it.long > -1 }
 }
 
 /**
@@ -26,7 +26,8 @@ fun List<Update>.lastUpdateIdentifier(): UpdateId? {
 @OptIn(RiskFeature::class)
 fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
+    val mediaGroups =
+        mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
 
     for (update in this) {
         val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.withContentOrNull<MediaGroupPartContent>()
@@ -48,7 +49,7 @@ fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     mediaGroups.map { (_, updatesWithMessages) ->
         val update = updatesWithMessages.maxBy { it.first.updateId }.first
         resultUpdates.add(
-            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage())
+            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage()),
         )
     }
 

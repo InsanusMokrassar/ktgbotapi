@@ -16,5 +16,5 @@ data class Invoice(
     @SerialName(currencyField)
     override val currency: Currency,
     @SerialName(totalAmountField)
-    override val amount: Long
+    override val amount: Long,
 ) : Amounted, Currencied, ReplyInfo.External.ContentVariant

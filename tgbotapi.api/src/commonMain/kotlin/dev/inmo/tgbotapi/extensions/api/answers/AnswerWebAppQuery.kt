@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.types.webapps.query.SentWebAppMessage
 
 public suspend fun TelegramBot.answerWebAppQuery(
     webAppQueryId: WebAppQueryId,
-    result: InlineQueryResult
+    result: InlineQueryResult,
 ): SentWebAppMessage = execute(AnswerWebAppQuery(webAppQueryId, result))
 
 public suspend fun TelegramBot.answer(
     webAppQueryId: WebAppQueryId,
-    result: InlineQueryResult
+    result: InlineQueryResult,
 ): SentWebAppMessage = execute(AnswerWebAppQuery(webAppQueryId, result))

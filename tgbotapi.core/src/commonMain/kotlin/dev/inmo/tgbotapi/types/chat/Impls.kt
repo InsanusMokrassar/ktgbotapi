@@ -14,7 +14,7 @@ data class GroupChatImpl(
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
-    override val title: String
+    override val title: String,
 ) : PreviewGroupChat
 
 @Serializable
@@ -27,7 +27,7 @@ data class PrivateChatImpl(
     @SerialName(firstNameField)
     override val firstName: String = "",
     @SerialName(lastNameField)
-    override val lastName: String = ""
+    override val lastName: String = "",
 ) : PreviewPrivateChat
 
 @Serializable
@@ -36,7 +36,7 @@ data class BusinessChatImpl(
     @SerialName(idField)
     override val id: BusinessChatId,
     @SerialName(originField)
-    override val original: PreviewPrivateChat
+    override val original: PreviewPrivateChat,
 ) : PreviewBusinessChat
 
 @Serializable
@@ -47,7 +47,7 @@ data class SupergroupChatImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
-    override val username: Username? = null
+    override val username: Username? = null,
 ) : PreviewSupergroupChat
 
 @Serializable
@@ -58,7 +58,7 @@ data class ForumChatImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
-    override val username: Username? = null
+    override val username: Username? = null,
 ) : PreviewForumChat
 
 @Serializable
@@ -69,7 +69,7 @@ data class ChannelChatImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
-    override val username: Username? = null
+    override val username: Username? = null,
 ) : PreviewChannelChat
 
 @Serializable(UserSerializer::class)
@@ -113,13 +113,13 @@ data class CommonUser(
     @SerialName(isPremiumField)
     override val isPremium: Boolean = false,
     @SerialName(addedToAttachmentMenuField)
-    override val addedToAttachmentMenu: Boolean = false
+    override val addedToAttachmentMenu: Boolean = false,
 ) : PreviewUser(), WithOptionalLanguageCode, PossiblyPremiumChat, AbleToAddInAttachmentMenuChat {
     constructor(
         id: UserId,
         firstName: String,
         lastName: String = "",
         username: Username? = null,
-        languageCode: String
+        languageCode: String,
     ) : this(id, firstName, lastName, username, IetfLang(languageCode))
 }

@@ -15,15 +15,14 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val liveResultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val liveResultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
-
-private val staticResultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val staticResultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>> =
+    TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendLocation(
     chatId: ChatIdentifier,
@@ -36,7 +35,7 @@ fun SendLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendLocation.Static(
     chatId = chatId,
     latitude = latitude,
@@ -48,7 +47,7 @@ fun SendLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendStaticLocation(
@@ -62,7 +61,7 @@ fun SendStaticLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendLocation.Static(
     chatId = chatId,
     latitude = latitude,
@@ -74,7 +73,7 @@ fun SendStaticLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendLiveLocation(
@@ -92,7 +91,7 @@ fun SendLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendLocation.Live(
     chatId = chatId,
     latitude = latitude,
@@ -108,11 +107,12 @@ fun SendLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 @Serializable(SendLocation.Companion::class)
-sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<ContentMessage<T>>,
+sealed interface SendLocation<T : LocationContent> :
+    SendContentMessageRequest<ContentMessage<T>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<T>>,
     PositionedSendMessageRequest<ContentMessage<T>>,
     HorizontallyAccured,
@@ -122,7 +122,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     override fun method(): String = "sendLocation"
 
     @Serializable
-    data class Live (
+    data class Live(
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier,
         @SerialName(latitudeField)
@@ -158,7 +158,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
-        override val replyMarkup: KeyboardMarkup? = null
+        override val replyMarkup: KeyboardMarkup? = null,
     ) : SendLocation<LiveLocationContent> {
         override val resultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>>
             get() = liveResultDeserializer
@@ -176,7 +176,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     }
 
     @Serializable
-    data class Static (
+    data class Static(
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier,
         @SerialName(latitudeField)
@@ -202,7 +202,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
-        override val replyMarkup: KeyboardMarkup? = null
+        override val replyMarkup: KeyboardMarkup? = null,
     ) : SendLocation<StaticLocationContent> {
         override val livePeriod: Seconds?
             get() = null
@@ -250,7 +250,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             @SerialName(replyParametersField)
             val replyParameters: ReplyParameters? = null,
             @SerialName(replyMarkupField)
-            val replyMarkup: KeyboardMarkup? = null
+            val replyMarkup: KeyboardMarkup? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -260,59 +260,65 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val surrogate = Surrogate.serializer().deserialize(decoder)
 
             return when (surrogate.livePeriod) {
-                null -> Static(
-                    chatId = surrogate.chatId,
-                    latitude = surrogate.latitude,
-                    longitude = surrogate.longitude,
-                    threadId = surrogate.threadId,
-                    businessConnectionId = surrogate.businessConnectionId,
-                    disableNotification = surrogate.disableNotification,
-                    protectContent = surrogate.protectContent,
-                    allowPaidBroadcast = surrogate.allowPaidBroadcast,
-                    effectId = surrogate.effectId,
-                    replyParameters = surrogate.replyParameters,
-                    replyMarkup = surrogate.replyMarkup
-                )
-                else -> Live(
-                    chatId = surrogate.chatId,
-                    latitude = surrogate.latitude,
-                    longitude = surrogate.longitude,
-                    livePeriod = surrogate.livePeriod,
-                    horizontalAccuracy = surrogate.horizontalAccuracy,
-                    heading = surrogate.heading,
-                    proximityAlertRadius = surrogate.proximityAlertRadius,
-                    threadId = surrogate.threadId,
-                    businessConnectionId = surrogate.businessConnectionId,
-                    disableNotification = surrogate.disableNotification,
-                    protectContent = surrogate.protectContent,
-                    allowPaidBroadcast = surrogate.allowPaidBroadcast,
-                    effectId = surrogate.effectId,
-                    replyParameters = surrogate.replyParameters,
-                    replyMarkup = surrogate.replyMarkup
-                )
+                null ->
+                    Static(
+                        chatId = surrogate.chatId,
+                        latitude = surrogate.latitude,
+                        longitude = surrogate.longitude,
+                        threadId = surrogate.threadId,
+                        businessConnectionId = surrogate.businessConnectionId,
+                        disableNotification = surrogate.disableNotification,
+                        protectContent = surrogate.protectContent,
+                        allowPaidBroadcast = surrogate.allowPaidBroadcast,
+                        effectId = surrogate.effectId,
+                        replyParameters = surrogate.replyParameters,
+                        replyMarkup = surrogate.replyMarkup,
+                    )
+                else ->
+                    Live(
+                        chatId = surrogate.chatId,
+                        latitude = surrogate.latitude,
+                        longitude = surrogate.longitude,
+                        livePeriod = surrogate.livePeriod,
+                        horizontalAccuracy = surrogate.horizontalAccuracy,
+                        heading = surrogate.heading,
+                        proximityAlertRadius = surrogate.proximityAlertRadius,
+                        threadId = surrogate.threadId,
+                        businessConnectionId = surrogate.businessConnectionId,
+                        disableNotification = surrogate.disableNotification,
+                        protectContent = surrogate.protectContent,
+                        allowPaidBroadcast = surrogate.allowPaidBroadcast,
+                        effectId = surrogate.effectId,
+                        replyParameters = surrogate.replyParameters,
+                        replyMarkup = surrogate.replyMarkup,
+                    )
             }
         }
 
-        override fun serialize(encoder: Encoder, value: SendLocation<*>) {
-            val surrogate = with(value) {
-                Surrogate(
-                    chatId = chatId,
-                    latitude = latitude,
-                    longitude = longitude,
-                    livePeriod = livePeriod,
-                    horizontalAccuracy = horizontalAccuracy,
-                    heading = heading,
-                    proximityAlertRadius = proximityAlertRadius,
-                    threadId = threadId,
-                    businessConnectionId = businessConnectionId,
-                    disableNotification = disableNotification,
-                    protectContent = protectContent,
-                    allowPaidBroadcast = allowPaidBroadcast,
-                    effectId = effectId,
-                    replyParameters = replyParameters,
-                    replyMarkup = replyMarkup
-                )
-            }
+        override fun serialize(
+            encoder: Encoder,
+            value: SendLocation<*>,
+        ) {
+            val surrogate =
+                with(value) {
+                    Surrogate(
+                        chatId = chatId,
+                        latitude = latitude,
+                        longitude = longitude,
+                        livePeriod = livePeriod,
+                        horizontalAccuracy = horizontalAccuracy,
+                        heading = heading,
+                        proximityAlertRadius = proximityAlertRadius,
+                        threadId = threadId,
+                        businessConnectionId = businessConnectionId,
+                        disableNotification = disableNotification,
+                        protectContent = protectContent,
+                        allowPaidBroadcast = allowPaidBroadcast,
+                        effectId = effectId,
+                        replyParameters = replyParameters,
+                        replyMarkup = replyMarkup,
+                    )
+                }
             Surrogate.serializer().serialize(encoder, surrogate)
         }
     }

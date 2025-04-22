@@ -19,5 +19,5 @@ data class EncryptedCredentials(
     val hash: SourceBytes,
     @SerialName(secretField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    val secret: EncryptedByBotPublicKeyData
+    val secret: EncryptedByBotPublicKeyData,
 )

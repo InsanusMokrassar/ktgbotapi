@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.utils
 
-import korlibs.crypto.*
 import io.ktor.http.decodeURLQueryComponent
 import io.ktor.utils.io.core.toByteArray
+import korlibs.crypto.*
 
 const val telegramBotAPIDefaultUrl = "https://api.telegram.org"
 
@@ -21,7 +21,7 @@ private inline val String.withoutLastSlash: String
 class TelegramAPIUrlsKeeper(
     token: String,
     hostUrl: String = telegramBotAPIDefaultUrl,
-    urlsSuffixes: String = ""
+    urlsSuffixes: String = "",
 ) {
     val webAppDataSecretKeyHash by lazy {
         HMAC.hmacSHA256("WebAppData".toByteArray(), token.toByteArray())
@@ -35,7 +35,7 @@ class TelegramAPIUrlsKeeper(
     constructor(token: String, testServer: Boolean, hostUrl: String = telegramBotAPIDefaultUrl) : this(
         token,
         hostUrl,
-        "/test".takeIf { testServer } ?: ""
+        "/test".takeIf { testServer } ?: "",
     )
 
     init {
@@ -44,19 +44,23 @@ class TelegramAPIUrlsKeeper(
         fileBaseUrl = "$correctedHost/file/bot$token$urlsSuffixes"
     }
 
-    fun createFileLinkUrl(filePath: String) = "${fileBaseUrl}/$filePath"
+    fun createFileLinkUrl(filePath: String) = "$fileBaseUrl/$filePath"
 
     /**
      * @param rawData Data from [dev.inmo.tgbotapi.webapps.WebApp.initData]
      * @param hash Data from [dev.inmo.tgbotapi.webapps.WebApp.initDataUnsafe] from the field [dev.inmo.tgbotapi.webapps.WebAppInitData.hash]
      */
-    fun checkWebAppData(rawData: String, hash: String): Boolean {
-        val preparedData = rawData
-            .decodeURLQueryComponent()
-            .split("&")
-            .filterNot { it.startsWith("hash=") }
-            .sorted()
-            .joinToString("\n")
+    fun checkWebAppData(
+        rawData: String,
+        hash: String,
+    ): Boolean {
+        val preparedData =
+            rawData
+                .decodeURLQueryComponent()
+                .split("&")
+                .filterNot { it.startsWith("hash=") }
+                .sorted()
+                .joinToString("\n")
 
         return HMAC.hmacSHA256(webAppDataSecretKeyHash.bytes, preparedData.toByteArray()).hexLower == hash.lowercase()
     }

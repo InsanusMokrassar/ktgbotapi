@@ -30,7 +30,7 @@ suspend fun <BC : BehaviourContext> BC.onBusinessConnection(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BusinessConnection>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.businessConnectionUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
@@ -53,10 +53,11 @@ suspend fun <BC : BehaviourContext> BC.onBusinessConnectionEnabled(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection.Enabled, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection.Enabled, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BusinessConnection.Enabled>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection.Enabled>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection.Enabled>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.businessConnectionUpdateOrNull() ?.data ?.enabledOrNull()) ?.let(::listOfNotNull)
 }
+
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
@@ -75,8 +76,7 @@ suspend fun <BC : BehaviourContext> BC.onBusinessConnectionDisabled(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection.Disabled, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection.Disabled, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BusinessConnection.Disabled>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection.Disabled>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessConnection.Disabled>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.businessConnectionUpdateOrNull() ?.data ?.disabledOrNull()) ?.let(::listOfNotNull)
 }
-

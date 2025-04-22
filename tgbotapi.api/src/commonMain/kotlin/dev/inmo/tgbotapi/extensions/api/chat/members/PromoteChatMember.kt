@@ -26,29 +26,30 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
-): Boolean = execute(
-    PromoteChatMember(
-        chatId = chatId,
-        userId = userId,
-        untilDate = untilDate,
-        isAnonymous = isAnonymous,
-        canChangeInfo = canChangeInfo,
-        canPostMessages = canPostMessages,
-        canEditMessages = canEditMessages,
-        canDeleteMessages = canDeleteMessages,
-        canInviteUsers = canInviteUsers,
-        canRestrictMembers = canRestrictMembers,
-        canPinMessages = canPinMessages,
-        canPromoteMembers = canPromoteMembers,
-        canManageVideoChats = canManageVideoChats,
-        canManageChat = canManageChat,
-        canManageTopics = canManageTopics,
-        canPostStories = canPostStories,
-        canEditStories = canEditStories,
-        canDeleteStories = canDeleteStories
+    canDeleteStories: Boolean? = null,
+): Boolean =
+    execute(
+        PromoteChatMember(
+            chatId = chatId,
+            userId = userId,
+            untilDate = untilDate,
+            isAnonymous = isAnonymous,
+            canChangeInfo = canChangeInfo,
+            canPostMessages = canPostMessages,
+            canEditMessages = canEditMessages,
+            canDeleteMessages = canDeleteMessages,
+            canInviteUsers = canInviteUsers,
+            canRestrictMembers = canRestrictMembers,
+            canPinMessages = canPinMessages,
+            canPromoteMembers = canPromoteMembers,
+            canManageVideoChats = canManageVideoChats,
+            canManageChat = canManageChat,
+            canManageTopics = canManageTopics,
+            canPostStories = canPostStories,
+            canEditStories = canEditStories,
+            canDeleteStories = canDeleteStories,
+        ),
     )
-)
 
 @Warning("This method is too common. Use it with caution")
 public suspend fun TelegramBot.promoteChatMember(
@@ -69,27 +70,28 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
-): Boolean = promoteChatMember(
-    chat.id,
-    userId,
-    untilDate = untilDate,
-    isAnonymous = isAnonymous,
-    canChangeInfo = canChangeInfo,
-    canPostMessages = canPostMessages,
-    canEditMessages = canEditMessages,
-    canDeleteMessages = canDeleteMessages,
-    canInviteUsers = canInviteUsers,
-    canRestrictMembers = canRestrictMembers,
-    canPinMessages = canPinMessages,
-    canPromoteMembers = canPromoteMembers,
-    canManageVideoChats = canManageVideoChats,
-    canManageChat = canManageChat,
-    canManageTopics = canManageTopics,
-    canPostStories = canPostStories,
-    canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
-)
+    canDeleteStories: Boolean? = null,
+): Boolean =
+    promoteChatMember(
+        chat.id,
+        userId,
+        untilDate = untilDate,
+        isAnonymous = isAnonymous,
+        canChangeInfo = canChangeInfo,
+        canPostMessages = canPostMessages,
+        canEditMessages = canEditMessages,
+        canDeleteMessages = canDeleteMessages,
+        canInviteUsers = canInviteUsers,
+        canRestrictMembers = canRestrictMembers,
+        canPinMessages = canPinMessages,
+        canPromoteMembers = canPromoteMembers,
+        canManageVideoChats = canManageVideoChats,
+        canManageChat = canManageChat,
+        canManageTopics = canManageTopics,
+        canPostStories = canPostStories,
+        canEditStories = canEditStories,
+        canDeleteStories = canDeleteStories,
+    )
 
 @Warning("This method is too common. Use it with caution")
 public suspend fun TelegramBot.promoteChatMember(
@@ -110,27 +112,28 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
-): Boolean = promoteChatMember(
-    chatId,
-    user.id,
-    untilDate = untilDate,
-    isAnonymous = isAnonymous,
-    canChangeInfo = canChangeInfo,
-    canPostMessages = canPostMessages,
-    canEditMessages = canEditMessages,
-    canDeleteMessages = canDeleteMessages,
-    canInviteUsers = canInviteUsers,
-    canRestrictMembers = canRestrictMembers,
-    canPinMessages = canPinMessages,
-    canPromoteMembers = canPromoteMembers,
-    canManageVideoChats = canManageVideoChats,
-    canManageChat = canManageChat,
-    canManageTopics = canManageTopics,
-    canPostStories = canPostStories,
-    canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
-)
+    canDeleteStories: Boolean? = null,
+): Boolean =
+    promoteChatMember(
+        chatId,
+        user.id,
+        untilDate = untilDate,
+        isAnonymous = isAnonymous,
+        canChangeInfo = canChangeInfo,
+        canPostMessages = canPostMessages,
+        canEditMessages = canEditMessages,
+        canDeleteMessages = canDeleteMessages,
+        canInviteUsers = canInviteUsers,
+        canRestrictMembers = canRestrictMembers,
+        canPinMessages = canPinMessages,
+        canPromoteMembers = canPromoteMembers,
+        canManageVideoChats = canManageVideoChats,
+        canManageChat = canManageChat,
+        canManageTopics = canManageTopics,
+        canPostStories = canPostStories,
+        canEditStories = canEditStories,
+        canDeleteStories = canDeleteStories,
+    )
 
 @Warning("This method is too common. Use it with caution")
 public suspend fun TelegramBot.promoteChatMember(
@@ -151,24 +154,25 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
-): Boolean = promoteChatMember(
-    chat.id,
-    user.id,
-    untilDate = untilDate,
-    isAnonymous = isAnonymous,
-    canChangeInfo = canChangeInfo,
-    canPostMessages = canPostMessages,
-    canEditMessages = canEditMessages,
-    canDeleteMessages = canDeleteMessages,
-    canInviteUsers = canInviteUsers,
-    canRestrictMembers = canRestrictMembers,
-    canPinMessages = canPinMessages,
-    canPromoteMembers = canPromoteMembers,
-    canManageVideoChats = canManageVideoChats,
-    canManageChat = canManageChat,
-    canManageTopics = canManageTopics,
-    canPostStories = canPostStories,
-    canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
-)
+    canDeleteStories: Boolean? = null,
+): Boolean =
+    promoteChatMember(
+        chat.id,
+        user.id,
+        untilDate = untilDate,
+        isAnonymous = isAnonymous,
+        canChangeInfo = canChangeInfo,
+        canPostMessages = canPostMessages,
+        canEditMessages = canEditMessages,
+        canDeleteMessages = canDeleteMessages,
+        canInviteUsers = canInviteUsers,
+        canRestrictMembers = canRestrictMembers,
+        canPinMessages = canPinMessages,
+        canPromoteMembers = canPromoteMembers,
+        canManageVideoChats = canManageVideoChats,
+        canManageChat = canManageChat,
+        canManageTopics = canManageTopics,
+        canPostStories = canPostStories,
+        canEditStories = canEditStories,
+        canDeleteStories = canDeleteStories,
+    )

@@ -11,10 +11,11 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(PollAnswer.Companion::class)
-sealed interface PollAnswer: FromUser {
+sealed interface PollAnswer : FromUser {
     val pollId: PollId
     override val user: User
     val chosen: List<Int>
+
     @Transient
     override val from: User
         get() = user
@@ -36,18 +37,19 @@ sealed interface PollAnswer: FromUser {
         @SerialName(voterChatField)
         val voterChat: ChannelChat,
         @SerialName(optionIdsField)
-        override val chosen: List<Int>
+        override val chosen: List<Int>,
     ) : PollAnswer {
         @SerialName(userField)
         override val user: User = defaultUser
 
         companion object {
-            val defaultUser = CommonBot(
-                UserId(RawChatId.DefaultUserId),
-                "",
-                "",
-                Username("@Channel_Bot")
-            )
+            val defaultUser =
+                CommonBot(
+                    UserId(RawChatId.DefaultUserId),
+                    "",
+                    "",
+                    Username("@Channel_Bot"),
+                )
         }
     }
 
@@ -61,8 +63,9 @@ sealed interface PollAnswer: FromUser {
             @SerialName(userField)
             val user: User = Anonymous.defaultUser,
             @SerialName(voterChatField)
-            val voterChat: ChannelChat? = null
+            val voterChat: ChannelChat? = null,
         )
+
         operator fun invoke(
             pollId: PollId,
             user: User,
@@ -81,15 +84,18 @@ sealed interface PollAnswer: FromUser {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: PollAnswer) {
+        override fun serialize(
+            encoder: Encoder,
+            value: PollAnswer,
+        ) {
             PollAnswerSurrogate.serializer().serialize(
                 encoder,
                 PollAnswerSurrogate(
                     value.pollId,
                     value.chosen,
                     value.user,
-                    (value as? Anonymous) ?.voterChat
-                )
+                    (value as? Anonymous) ?.voterChat,
+                ),
             )
         }
     }

@@ -35,7 +35,7 @@ data class InlineQueryResultLocation(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResult,
     Locationed,
     HorizontallyAccured,
@@ -45,7 +45,6 @@ data class InlineQueryResultLocation(
     TitledInlineQueryResult,
     WithInputMessageContentInlineQueryResult,
     ThumbedInlineQueryResult,
-    ThumbSizedInlineQueryResult
-{
+    ThumbSizedInlineQueryResult {
     override val type: String = "location"
 }

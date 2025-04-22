@@ -12,7 +12,7 @@ data class SetChatMenuButton(
     override val chatId: ChatIdentifier,
     @Serializable(MenuButtonSerializer::class)
     @SerialName(menuButtonField)
-    val menuButton: MenuButton
+    val menuButton: MenuButton,
 ) : ChatRequest, SimpleRequest<Boolean> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

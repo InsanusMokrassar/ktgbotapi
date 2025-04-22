@@ -6,7 +6,7 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class RawChatId(
-    val long: Long
+    val long: Long,
 ) {
     companion object {
         val DefaultUserId = RawChatId(136817688L) // I do not know why, it is Telegram crutch
@@ -17,5 +17,6 @@ value class RawChatId(
         return long.toString()
     }
 }
+
 @Deprecated("Renamed", ReplaceWith("RawChatId", "dev.inmo.tgbotapi.types.RawChatId"))
 typealias Identifier = RawChatId

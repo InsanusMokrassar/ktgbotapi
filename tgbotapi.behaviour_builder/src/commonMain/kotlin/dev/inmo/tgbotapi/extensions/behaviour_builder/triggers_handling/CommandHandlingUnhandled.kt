@@ -28,28 +28,31 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = onText(
-    CommonMessageFilter<TextContent> { message ->
-        val content = message.content
-        val textSources = content.textSources
-        val sizeRequirement = if (requireOnlyCommandInMessage) {
-            textSources.size == 1
-        } else {
-            true
-        }
-        sizeRequirement && textSources.any {
-            val command = it.botCommandTextSourceOrNull() ?.command ?: return@any false
-            !triggersHolder.handleableCommandsHolder.isHandled(command)
-        }
-    }.let {
-        initialFilter ?.times(it) ?: it
-    },
-    subcontextUpdatesFilter,
-    markerFactory,
-    additionalSubcontextInitialAction,
-    scenarioReceiver
-)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+): Job =
+    onText(
+        CommonMessageFilter<TextContent> { message ->
+            val content = message.content
+            val textSources = content.textSources
+            val sizeRequirement =
+                if (requireOnlyCommandInMessage) {
+                    textSources.size == 1
+                } else {
+                    true
+                }
+            sizeRequirement &&
+                textSources.any {
+                    val command = it.botCommandTextSourceOrNull() ?.command ?: return@any false
+                    !triggersHolder.handleableCommandsHolder.isHandled(command)
+                }
+        }.let {
+            initialFilter ?.times(it) ?: it
+        },
+        subcontextUpdatesFilter,
+        markerFactory,
+        additionalSubcontextInitialAction,
+        scenarioReceiver,
+    )
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -63,8 +66,16 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = unhandledCommand(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+): Job =
+    unhandledCommand(
+        requireOnlyCommandInMessage,
+        initialFilter,
+        subcontextUpdatesFilter,
+        markerFactory,
+        additionalSubcontextInitialAction,
+        scenarioReceiver,
+    )
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -77,16 +88,17 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>,
 ) = onUnhandledCommand(
     requireOnlyCommandInMessage = false,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
-    markerFactory = markerFactory
+    markerFactory = markerFactory,
 ) {
-    val args = it.parseCommandsWithArgs().let { commandsWithArgs ->
-        commandsWithArgs
-    }
+    val args =
+        it.parseCommandsWithArgs().let { commandsWithArgs ->
+            commandsWithArgs
+        }
     scenarioReceiver(it, args)
 }
 
@@ -101,5 +113,12 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>
-): Job = unhandledCommandWithArgs(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>,
+): Job =
+    unhandledCommandWithArgs(
+        initialFilter,
+        subcontextUpdatesFilter,
+        markerFactory,
+        additionalSubcontextInitialAction,
+        scenarioReceiver,
+    )

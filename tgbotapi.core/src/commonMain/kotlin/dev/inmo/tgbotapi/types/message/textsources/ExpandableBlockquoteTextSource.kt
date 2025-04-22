@@ -9,15 +9,19 @@ import kotlinx.serialization.Serializable
  * @see expandableBlockquoteTextSource
  */
 @Serializable
-data class ExpandableBlockquoteTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.expandableBlockquoteMarkdown() }
-    override val markdownV2: String by lazy { expandableBlockquoteMarkdownV2() }
-    override val html: String by lazy { expandableBlockquoteHTML() }
-}
+data class ExpandableBlockquoteTextSource
+    @RiskFeature(DirectInvocationOfTextSourceConstructor)
+    constructor(
+        override val source: String,
+        override val subsources: TextSourcesList,
+    ) : MultilevelTextSource {
+        override val markdown: String by lazy { source.expandableBlockquoteMarkdown() }
+        override val markdownV2: String by lazy { expandableBlockquoteMarkdownV2() }
+        override val html: String by lazy { expandableBlockquoteHTML() }
+    }
 
 inline fun expandableBlockquoteTextSource(parts: TextSourcesList) = ExpandableBlockquoteTextSource(parts.makeString(), parts)
+
 inline fun expandableBlockquoteTextSource(vararg parts: TextSource) = expandableBlockquoteTextSource(parts.toList())
+
 inline fun expandableBlockquoteTextSource(text: String) = expandableBlockquoteTextSource(regularTextSource(text))

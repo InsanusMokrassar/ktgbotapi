@@ -10,23 +10,23 @@ import dev.inmo.tgbotapi.types.chat.User
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     userId: UserId,
-    customTitle: String
+    customTitle: String,
 ): Boolean = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     userId: UserId,
-    customTitle: String
+    customTitle: String,
 ): Boolean = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     user: User,
-    customTitle: String
+    customTitle: String,
 ): Boolean = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     user: User,
-    customTitle: String
+    customTitle: String,
 ): Boolean = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)

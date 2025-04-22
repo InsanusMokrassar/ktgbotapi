@@ -26,7 +26,7 @@ data class DriverLicense(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableIDDocument()
 
 @Serializable
@@ -44,5 +44,5 @@ data class IdentityCard(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithTranslatableIDDocument()

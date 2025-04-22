@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types.chat.member
 import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.Serializable
 
 @Serializable(ChatMemberSerializer::class)
@@ -15,7 +14,7 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate {
             ReplaceWith(
                 "RestrictedChatMemberImpl(user, untilDate, isMember, canSendMessages, canSendAudios, canSendDocuments, canSendPhotos, canSendVideos, canSendVideoNotes, canSendVoiceNotes, canSendPolls, canSendOtherMessages, canAddWebPagePreviews, canChangeInfo, canInviteUsers, canPinMessages, canManageTopics)",
                 "dev.inmo.tgbotapi.types.chat.members.RestrictedChatMemberImpl",
-            )
+            ),
         )
         operator fun invoke(
             user: PreviewUser,
@@ -34,7 +33,7 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate {
             canChangeInfo: Boolean = false,
             canInviteUsers: Boolean = false,
             canPinMessages: Boolean = false,
-            canManageTopics: Boolean = false
+            canManageTopics: Boolean = false,
         ) = RestrictedMemberChatMember(
             user = user,
             untilDate = untilDate,
@@ -52,7 +51,7 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate {
             canChangeInfo = canChangeInfo,
             canInviteUsers = canInviteUsers,
             canPinMessages = canPinMessages,
-            canManageTopics = canManageTopics
+            canManageTopics = canManageTopics,
         )
     }
 }

@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.rarityPerMilleField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class UniqueGiftBackdrop(
     @SerialName(nameField)
@@ -14,5 +13,5 @@ data class UniqueGiftBackdrop(
     @SerialName(colorsField)
     val colors: UniqueGiftBackdropColors,
     @SerialName(rarityPerMilleField)
-    val rarityPerMille: Int
+    val rarityPerMille: Int,
 )

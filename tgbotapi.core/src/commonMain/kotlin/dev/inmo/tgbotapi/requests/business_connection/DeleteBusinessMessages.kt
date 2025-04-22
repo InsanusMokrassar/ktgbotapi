@@ -16,7 +16,7 @@ data class DeleteBusinessMessages(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId,
     @SerialName(messageIdsField)
-    val messagesIds: List<MessageId>
+    val messagesIds: List<MessageId>,
 ) : BusinessRequest.Simple<Boolean> {
     override fun method(): String = "deleteBusinessMessages"
 

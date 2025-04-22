@@ -10,5 +10,5 @@ data class ReactionsCount(
     @SerialName(typeField)
     val reaction: Reaction,
     @SerialName(totalCountField)
-    val count: Int
+    val count: Int,
 )

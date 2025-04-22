@@ -14,7 +14,11 @@ import kotlinx.serialization.json.*
 object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTelegramMedia> {
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(MediaGroupMemberTelegramMedia::class.toString(), PolymorphicKind.OPEN)
-    override fun serialize(encoder: Encoder, value: MediaGroupMemberTelegramMedia) {
+
+    override fun serialize(
+        encoder: Encoder,
+        value: MediaGroupMemberTelegramMedia,
+    ) {
         when (value) {
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
             is TelegramMediaVideo -> TelegramMediaVideo.serializer().serialize(encoder, value)

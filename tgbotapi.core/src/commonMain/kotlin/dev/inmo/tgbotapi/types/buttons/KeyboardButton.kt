@@ -27,13 +27,13 @@ sealed interface KeyboardButton {
 */
 @Serializable
 data class SimpleKeyboardButton(
-    override val text: String
+    override val text: String,
 ) : KeyboardButton
 
 @Serializable
 data class UnknownKeyboardButton internal constructor(
     override val text: String,
-    val raw: String
+    val raw: String,
 ) : KeyboardButton
 
 /**
@@ -45,7 +45,7 @@ data class UnknownKeyboardButton internal constructor(
 */
 @Serializable
 data class RequestContactKeyboardButton(
-    override val text: String
+    override val text: String,
 ) : KeyboardButton {
     @SerialName(requestContactField)
     @EncodeDefault
@@ -61,7 +61,7 @@ data class RequestContactKeyboardButton(
  */
 @Serializable
 data class RequestLocationKeyboardButton(
-    override val text: String
+    override val text: String,
 ) : KeyboardButton {
     @SerialName(requestLocationField)
     @Required
@@ -78,7 +78,7 @@ data class RequestLocationKeyboardButton(
 data class WebAppKeyboardButton(
     override val text: String,
     @SerialName(webAppField)
-    val webApp: WebAppInfo
+    val webApp: WebAppInfo,
 ) : KeyboardButton
 
 /**
@@ -92,7 +92,7 @@ data class WebAppKeyboardButton(
 data class RequestPollKeyboardButton(
     override val text: String,
     @SerialName(requestPollField)
-    val requestPoll: KeyboardButtonPollType
+    val requestPoll: KeyboardButtonPollType,
 ) : KeyboardButton
 
 /**
@@ -110,7 +110,7 @@ data class RequestPollKeyboardButton(
 data class RequestUserKeyboardButton(
     override val text: String,
     @SerialName(requestUsersField)
-    val requestUsers: KeyboardButtonRequestUsers
+    val requestUsers: KeyboardButtonRequestUsers,
 ) : KeyboardButton
 
 /**
@@ -128,7 +128,7 @@ data class RequestUserKeyboardButton(
 data class RequestChatKeyboardButton(
     override val text: String,
     @SerialName(requestChatField)
-    val requestChat: KeyboardButtonRequestChat
+    val requestChat: KeyboardButtonRequestChat,
 ) : KeyboardButton
 
 @RiskFeature
@@ -141,52 +141,62 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
 
         return when {
             asJson is JsonPrimitive -> SimpleKeyboardButton(asJson.content)
-            asJson is JsonObject && asJson[requestContactField] != null -> RequestContactKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content
-            )
-            asJson is JsonObject && asJson[requestLocationField] != null -> RequestLocationKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content
-            )
-            asJson is JsonObject && asJson[webAppField] != null -> WebAppKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    WebAppInfo.serializer(),
-                    asJson[webAppField]!!
+            asJson is JsonObject && asJson[requestContactField] != null ->
+                RequestContactKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
                 )
-            )
-            asJson is JsonObject && asJson[requestPollField] != null -> RequestPollKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonPollTypeSerializer,
-                    asJson[requestPollField] ?.jsonObject ?: buildJsonObject {  }
+            asJson is JsonObject && asJson[requestLocationField] != null ->
+                RequestLocationKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
                 )
-            )
-            asJson is JsonObject && asJson[requestUsersField] != null -> RequestUserKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonRequestUsers.serializer(),
-                    asJson[requestUsersField] ?.jsonObject ?: buildJsonObject {  }
+            asJson is JsonObject && asJson[webAppField] != null ->
+                WebAppKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        WebAppInfo.serializer(),
+                        asJson[webAppField]!!,
+                    ),
                 )
-            )
-            asJson is JsonObject && asJson[requestChatField] != null -> RequestChatKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonRequestChat.serializer(),
-                    asJson[requestChatField] ?.jsonObject ?: buildJsonObject {  }
+            asJson is JsonObject && asJson[requestPollField] != null ->
+                RequestPollKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        KeyboardButtonPollTypeSerializer,
+                        asJson[requestPollField] ?.jsonObject ?: buildJsonObject { },
+                    ),
                 )
-            )
-            else -> UnknownKeyboardButton(
-                when (asJson) {
-                    is JsonObject -> asJson[textField]!!.jsonPrimitive.content
-                    is JsonArray -> ""
-                    is JsonPrimitive -> asJson.content
-                },
-                asJson.toString()
-            )
+            asJson is JsonObject && asJson[requestUsersField] != null ->
+                RequestUserKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        KeyboardButtonRequestUsers.serializer(),
+                        asJson[requestUsersField] ?.jsonObject ?: buildJsonObject { },
+                    ),
+                )
+            asJson is JsonObject && asJson[requestChatField] != null ->
+                RequestChatKeyboardButton(
+                    asJson[textField]!!.jsonPrimitive.content,
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        KeyboardButtonRequestChat.serializer(),
+                        asJson[requestChatField] ?.jsonObject ?: buildJsonObject { },
+                    ),
+                )
+            else ->
+                UnknownKeyboardButton(
+                    when (asJson) {
+                        is JsonObject -> asJson[textField]!!.jsonPrimitive.content
+                        is JsonArray -> ""
+                        is JsonPrimitive -> asJson.content
+                    },
+                    asJson.toString(),
+                )
         }
     }
 
-    override fun serialize(encoder: Encoder, value: KeyboardButton) {
+    override fun serialize(
+        encoder: Encoder,
+        value: KeyboardButton,
+    ) {
         when (value) {
             is RequestContactKeyboardButton -> RequestContactKeyboardButton.serializer().serialize(encoder, value)
             is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
@@ -199,4 +209,3 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
         }
     }
 }
-

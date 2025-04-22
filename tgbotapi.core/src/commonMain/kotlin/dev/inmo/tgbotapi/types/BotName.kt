@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BotName(
     @SerialName(nameField)
-    val name: String
+    val name: String,
 )

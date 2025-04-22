@@ -19,7 +19,7 @@ data class EditUserStarSubscription(
     @SerialName(telegramPaymentChargeIdField)
     val telegramPaymentChargeId: TelegramPaymentChargeId,
     @SerialName(isCanceledField)
-    val isCanceled: Boolean
+    val isCanceled: Boolean,
 ) : SimpleRequest<Boolean> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
@@ -28,5 +28,4 @@ data class EditUserStarSubscription(
 
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
-
 }

@@ -9,20 +9,20 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 
 public suspend fun TelegramBot.revokeChatInviteLink(
     chatId: ChatIdentifier,
-    previousLink: String
+    previousLink: String,
 ): SecondaryChatInviteLink = execute(RevokeChatInviteLink(chatId, previousLink))
 
 public suspend fun TelegramBot.revokeChatInviteLink(
     chat: PublicChat,
-    previousLink: String
+    previousLink: String,
 ): SecondaryChatInviteLink = revokeChatInviteLink(chat.id, previousLink)
 
 public suspend fun TelegramBot.revokeChatInviteLink(
     chatId: ChatIdentifier,
-    previousLink: ChatInviteLink
+    previousLink: ChatInviteLink,
 ): SecondaryChatInviteLink = revokeChatInviteLink(chatId, previousLink.inviteLink)
 
 public suspend fun TelegramBot.revokeChatInviteLink(
     chat: PublicChat,
-    previousLink: ChatInviteLink
+    previousLink: ChatInviteLink,
 ): SecondaryChatInviteLink = revokeChatInviteLink(chat, previousLink.inviteLink)

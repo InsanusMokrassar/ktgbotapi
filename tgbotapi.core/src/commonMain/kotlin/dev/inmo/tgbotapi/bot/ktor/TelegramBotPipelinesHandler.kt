@@ -7,9 +7,9 @@ interface TelegramBotPipelinesHandler {
      * Will be called when any exception will happen due to the [request] handling. If returns value - that value
      * will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T: Any> onRequestException(
+    suspend fun <T : Any> onRequestException(
         request: Request<T>,
-        t: Throwable
+        t: Throwable,
     ): T? = null
 
     /**
@@ -18,7 +18,7 @@ interface TelegramBotPipelinesHandler {
      */
     suspend fun onBeforeSearchCallFactory(
         request: Request<*>,
-        callsFactories: List<KtorCallFactory>
+        callsFactories: List<KtorCallFactory>,
     ) {}
 
     /**
@@ -26,17 +26,17 @@ interface TelegramBotPipelinesHandler {
      */
     suspend fun onBeforeCallFactoryMakeCall(
         request: Request<*>,
-        potentialFactory: KtorCallFactory
+        potentialFactory: KtorCallFactory,
     ) {}
 
     /**
      * Will always be called after [potentialFactory] has tried to make [request] and got some [result]. If returns
      * value - that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T: Any> onAfterCallFactoryMakeCall(
+    suspend fun <T : Any> onAfterCallFactoryMakeCall(
         result: T?,
         request: Request<T>,
-        potentialFactory: KtorCallFactory
+        potentialFactory: KtorCallFactory,
     ): T? = result
 
     /**
@@ -44,30 +44,30 @@ interface TelegramBotPipelinesHandler {
      * handled [request] and returned [result]. If returns value - that value will be returned from
      * [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T: Any> onRequestResultPresented(
+    suspend fun <T : Any> onRequestResultPresented(
         result: T,
         request: Request<T>,
         resultCallFactory: KtorCallFactory,
-        callsFactories: List<KtorCallFactory>
+        callsFactories: List<KtorCallFactory>,
     ): T? = result
 
     /**
      * Will be called when there is no [KtorCallFactory] from [callsFactories] which may handle [request]. If returns
      * value - that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T: Any> onRequestResultAbsent(
+    suspend fun <T : Any> onRequestResultAbsent(
         request: Request<T>,
-        callsFactories: List<KtorCallFactory>
+        callsFactories: List<KtorCallFactory>,
     ): T? = null
 
     /**
      * This step will be called when the [result] has been retrieved (or exception has happened). If returns value -
      * that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T: Any> onRequestReturnResult(
+    suspend fun <T : Any> onRequestReturnResult(
         result: Result<T>,
         request: Request<T>,
-        callsFactories: List<KtorCallFactory>
+        callsFactories: List<KtorCallFactory>,
     ): Result<T> = result
 
     companion object : TelegramBotPipelinesHandler

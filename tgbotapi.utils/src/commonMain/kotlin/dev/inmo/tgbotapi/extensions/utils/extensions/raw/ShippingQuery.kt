@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 @RiskFeature(RawFieldsUsageWarning)
 val ShippingQuery.invoice_payload: InvoicePayload
     get() = invoicePayload
+
 @RiskFeature(RawFieldsUsageWarning)
 val ShippingQuery.shipping_address: ShippingAddress
     get() = shippingAddress

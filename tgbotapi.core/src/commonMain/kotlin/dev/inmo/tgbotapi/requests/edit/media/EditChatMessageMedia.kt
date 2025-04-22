@@ -6,8 +6,8 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.MediaContent
@@ -28,7 +28,7 @@ data class EditChatMessageMedia(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage, MultipartRequest.Common<ContentMessage<MediaContent>> {
     override val data: SimpleRequest<ContentMessage<MediaContent>>
         get() = this
@@ -45,6 +45,7 @@ data class EditChatMessageMedia(
 //    }
 
     override fun method(): String = editMessageMediaMethod
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>
         get() = MediaContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

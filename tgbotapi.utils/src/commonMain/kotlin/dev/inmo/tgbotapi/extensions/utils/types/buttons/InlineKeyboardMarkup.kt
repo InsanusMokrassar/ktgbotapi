@@ -4,8 +4,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButto
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.utils.flatMatrix
 
-fun InlineKeyboardMarkup(
-    vararg buttons: InlineKeyboardButton
-): InlineKeyboardMarkup = InlineKeyboardMarkup(
-    flatMatrix { buttons.forEach { +it } }
-)
+fun InlineKeyboardMarkup(vararg buttons: InlineKeyboardButton): InlineKeyboardMarkup =
+    InlineKeyboardMarkup(
+        flatMatrix { buttons.forEach { +it } },
+    )

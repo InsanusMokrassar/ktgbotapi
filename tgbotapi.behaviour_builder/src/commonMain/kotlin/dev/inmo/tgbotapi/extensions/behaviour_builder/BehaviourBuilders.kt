@@ -31,21 +31,23 @@ suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
-): BehaviourContext = BehaviourContext(
-    bot = this,
-    scope = scope.let {
-        if (defaultExceptionsHandler == null) {
-            it
-        } else {
-            it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
-        }
-    },
-    flowsUpdatesFilter = flowUpdatesFilter,
-    subcontextInitialAction = subcontextInitialAction
-).apply {
-    block()
-}
+    block: BehaviourContextReceiver<Unit>,
+): BehaviourContext =
+    BehaviourContext(
+        bot = this,
+        scope =
+            scope.let {
+                if (defaultExceptionsHandler == null) {
+                    it
+                } else {
+                    it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
+                }
+            },
+        flowsUpdatesFilter = flowUpdatesFilter,
+        subcontextInitialAction = subcontextInitialAction,
+    ).apply {
+        block()
+    }
 
 /**
  * Use this method to build bot behaviour and run it via long polling. In case you wish to get [FlowsUpdatesFilter] for
@@ -67,20 +69,21 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>,
 ): Job {
-    val behaviourContext = buildBehaviour(
-        scope = scope,
-        defaultExceptionsHandler = defaultExceptionsHandler,
-        subcontextInitialAction = subcontextInitialAction,
-        block = block
-    )
+    val behaviourContext =
+        buildBehaviour(
+            scope = scope,
+            defaultExceptionsHandler = defaultExceptionsHandler,
+            subcontextInitialAction = subcontextInitialAction,
+            block = block,
+        )
     return longPolling(
         behaviourContext,
         scope = behaviourContext,
         timeoutSeconds = timeoutSeconds,
         autoDisableWebhooks = autoDisableWebhooks,
         autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
     )
 }
