@@ -1,0 +1,16 @@
+name: Lint check
+on:
+  - push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+      - name: Lint
+        run: ./gradlew ktlintCheck
