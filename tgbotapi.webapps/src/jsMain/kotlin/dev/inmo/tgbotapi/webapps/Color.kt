@@ -5,12 +5,21 @@ import kotlinx.serialization.Serializable
 
 sealed interface Color {
     val value: String
+
     @Serializable
-    value class BackgroundColor @Warning("This constructor is not supposed to be called ouside of ktgbotapi library") constructor (override val value: String) : Color
+    value class BackgroundColor
+        @Warning("This constructor is not supposed to be called ouside of ktgbotapi library")
+        constructor(
+            override val value: String,
+        ) : Color
 
     @Serializable
     value class Hex(override val value: String) : Color {
-        constructor(r: UByte, g: UByte, b: UByte) : this("#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}")
+        constructor(
+            r: UByte,
+            g: UByte,
+            b: UByte,
+        ) : this("#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}")
     }
 
     companion object {

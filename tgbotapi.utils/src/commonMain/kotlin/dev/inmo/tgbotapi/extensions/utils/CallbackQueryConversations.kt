@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.types.queries.callback.*
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 

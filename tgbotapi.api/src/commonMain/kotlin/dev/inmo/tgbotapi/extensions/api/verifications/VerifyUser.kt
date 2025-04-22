@@ -2,8 +2,9 @@ package dev.inmo.tgbotapi.extensions.api.verifications
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.verifications.VerifyUser
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.toChatId
 
 public suspend fun TelegramBot.verifyUser(
     userId: UserId,

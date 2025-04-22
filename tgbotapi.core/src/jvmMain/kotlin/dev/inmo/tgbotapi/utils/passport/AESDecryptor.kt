@@ -7,7 +7,7 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 class AESDecryptor(key: SourceBytes, private val iv: ByteArray) : Decryptor {
-    private val key = SecretKeySpec(key, "AES");
+    private val key = SecretKeySpec(key, "AES")
 
     override fun decrypt(data: EncryptedData): SourceBytes {
         return Cipher.getInstance("AES/CBC/NOPADDING").run {

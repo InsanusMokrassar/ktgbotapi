@@ -14,7 +14,7 @@ class TextPartsCreatingTests {
 
         assertEquals(
             formattedV2Text,
-            textSources.toMarkdownV2Texts().first()
+            textSources.toMarkdownV2Texts().first(),
         )
     }
 
@@ -25,7 +25,7 @@ class TextPartsCreatingTests {
 
         assertEquals(
             formattedHtmlText,
-            textSources.toHtmlTexts().first()
+            textSources.toHtmlTexts().first(),
         )
     }
 }

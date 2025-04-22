@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 value class BiometricType(
-    val title: String
+    val title: String,
 ) {
     val isFinger: Boolean
         get() = title == FingerTypeTitle

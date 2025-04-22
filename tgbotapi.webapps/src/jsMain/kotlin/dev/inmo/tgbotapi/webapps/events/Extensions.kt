@@ -12,19 +12,23 @@ typealias EmojiStatusAccessRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.web
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.EmojiStatusAccessRequested, eventHandler: EmojiStatusAccessRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
+fun WebApp.onEvent(
+    type: EventType.EmojiStatusAccessRequested,
+    eventHandler: EmojiStatusAccessRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onEmojiStatusAccessRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEmojiStatusAccessRequested(eventHandler: EmojiStatusAccessRequestedEventHandler) = onEvent(EventType.EmojiStatusAccessRequested, eventHandler)
+fun WebApp.onEmojiStatusAccessRequested(eventHandler: EmojiStatusAccessRequestedEventHandler) =
+    onEvent(EventType.EmojiStatusAccessRequested, eventHandler)
 // Part for callback typealias
 
 typealias AccelerometerChangedEventHandler = WebApp.() -> Unit
@@ -34,12 +38,15 @@ typealias AccelerometerChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.AccelerometerChanged, eventHandler: AccelerometerChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.AccelerometerChanged,
+    eventHandler: AccelerometerChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onAccelerometerChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -56,19 +63,23 @@ typealias DeviceOrientationStartedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.DeviceOrientationStarted, eventHandler: DeviceOrientationStartedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.DeviceOrientationStarted,
+    eventHandler: DeviceOrientationStartedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onDeviceOrientationStarted(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationStarted(eventHandler: DeviceOrientationStartedEventHandler) = onEvent(EventType.DeviceOrientationStarted, eventHandler)
+fun WebApp.onDeviceOrientationStarted(eventHandler: DeviceOrientationStartedEventHandler) =
+    onEvent(EventType.DeviceOrientationStarted, eventHandler)
 // Part for callback typealias
 
 typealias EmojiStatusFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgErrorObject) -> Unit
@@ -78,12 +89,15 @@ typealias EmojiStatusFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.EmojiStatusFailed, eventHandler: EmojiStatusFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.EmojiStatusFailed,
+    eventHandler: EmojiStatusFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onEmojiStatusFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -100,12 +114,15 @@ typealias ActivatedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.Activated, eventHandler: ActivatedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.Activated,
+    eventHandler: ActivatedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onActivated(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -122,12 +139,15 @@ typealias ShareMessageSentEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ShareMessageSent, eventHandler: ShareMessageSentEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.ShareMessageSent,
+    eventHandler: ShareMessageSentEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onShareMessageSent(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -144,19 +164,23 @@ typealias LocationManagerUpdatedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.LocationManagerUpdated, eventHandler: LocationManagerUpdatedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.LocationManagerUpdated,
+    eventHandler: LocationManagerUpdatedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onLocationManagerUpdated(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onLocationManagerUpdated(eventHandler: LocationManagerUpdatedEventHandler) = onEvent(EventType.LocationManagerUpdated, eventHandler)
+fun WebApp.onLocationManagerUpdated(eventHandler: LocationManagerUpdatedEventHandler) =
+    onEvent(EventType.LocationManagerUpdated, eventHandler)
 // Part for callback typealias
 
 typealias BiometricTokenUpdatedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgIsUpdatedObject) -> Unit
@@ -166,12 +190,15 @@ typealias BiometricTokenUpdatedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.BiometricTokenUpdated, eventHandler: BiometricTokenUpdatedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgIsUpdatedObject ->
+fun WebApp.onEvent(
+    type: EventType.BiometricTokenUpdated,
+    eventHandler: BiometricTokenUpdatedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgIsUpdatedObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onBiometricTokenUpdated(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -188,19 +215,23 @@ typealias DeviceOrientationFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapp
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.DeviceOrientationFailed, eventHandler: DeviceOrientationFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.DeviceOrientationFailed,
+    eventHandler: DeviceOrientationFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onDeviceOrientationFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationFailed(eventHandler: DeviceOrientationFailedEventHandler) = onEvent(EventType.DeviceOrientationFailed, eventHandler)
+fun WebApp.onDeviceOrientationFailed(eventHandler: DeviceOrientationFailedEventHandler) =
+    onEvent(EventType.DeviceOrientationFailed, eventHandler)
 // Part for callback typealias
 
 typealias SafeAreaChangedEventHandler = WebApp.() -> Unit
@@ -210,12 +241,15 @@ typealias SafeAreaChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.SafeAreaChanged, eventHandler: SafeAreaChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.SafeAreaChanged,
+    eventHandler: SafeAreaChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onSafeAreaChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -232,12 +266,15 @@ typealias WriteAccessRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.a
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAccessRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
+fun WebApp.onEvent(
+    type: EventType.WriteAccessRequested,
+    eventHandler: WriteAccessRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onWriteAccessRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -254,19 +291,23 @@ typealias ContentSafeAreaChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ContentSafeAreaChanged, eventHandler: ContentSafeAreaChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.ContentSafeAreaChanged,
+    eventHandler: ContentSafeAreaChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onContentSafeAreaChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onContentSafeAreaChanged(eventHandler: ContentSafeAreaChangedEventHandler) = onEvent(EventType.ContentSafeAreaChanged, eventHandler)
+fun WebApp.onContentSafeAreaChanged(eventHandler: ContentSafeAreaChangedEventHandler) =
+    onEvent(EventType.ContentSafeAreaChanged, eventHandler)
 // Part for callback typealias
 
 typealias AccelerometerStartedEventHandler = WebApp.() -> Unit
@@ -276,12 +317,15 @@ typealias AccelerometerStartedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.AccelerometerStarted, eventHandler: AccelerometerStartedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.AccelerometerStarted,
+    eventHandler: AccelerometerStartedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onAccelerometerStarted(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -298,12 +342,15 @@ typealias AccelerometerStoppedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.AccelerometerStopped, eventHandler: AccelerometerStoppedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.AccelerometerStopped,
+    eventHandler: AccelerometerStoppedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onAccelerometerStopped(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -320,12 +367,15 @@ typealias PopupClosedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.popup.Popu
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.PopupClosed, eventHandler: PopupClosedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.popup.PopupClosedEventArg ->
+fun WebApp.onEvent(
+    type: EventType.PopupClosed,
+    eventHandler: PopupClosedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.popup.PopupClosedEventArg ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onPopupClosed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -342,12 +392,15 @@ typealias GyroscopeStoppedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.GyroscopeStopped, eventHandler: GyroscopeStoppedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.GyroscopeStopped,
+    eventHandler: GyroscopeStoppedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onGyroscopeStopped(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -364,12 +417,15 @@ typealias BackButtonClickedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.BackButtonClicked, eventHandler: BackButtonClickedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.BackButtonClicked,
+    eventHandler: BackButtonClickedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onBackButtonClicked(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -386,12 +442,15 @@ typealias HomeScreenAddedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.HomeScreenAdded, eventHandler: HomeScreenAddedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.HomeScreenAdded,
+    eventHandler: HomeScreenAddedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onHomeScreenAdded(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -408,12 +467,15 @@ typealias ShareMessageFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.arg
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ShareMessageFailed, eventHandler: ShareMessageFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.ShareMessageFailed,
+    eventHandler: ShareMessageFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onShareMessageFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -430,12 +492,15 @@ typealias ThemeChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ThemeChanged, eventHandler: ThemeChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.ThemeChanged,
+    eventHandler: ThemeChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onThemeChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -452,19 +517,23 @@ typealias BiometricManagerUpdatedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.BiometricManagerUpdated, eventHandler: BiometricManagerUpdatedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.BiometricManagerUpdated,
+    eventHandler: BiometricManagerUpdatedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onBiometricManagerUpdated(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onBiometricManagerUpdated(eventHandler: BiometricManagerUpdatedEventHandler) = onEvent(EventType.BiometricManagerUpdated, eventHandler)
+fun WebApp.onBiometricManagerUpdated(eventHandler: BiometricManagerUpdatedEventHandler) =
+    onEvent(EventType.BiometricManagerUpdated, eventHandler)
 // Part for callback typealias
 
 typealias ScanQrPopupClosedEventHandler = WebApp.() -> Unit
@@ -474,12 +543,15 @@ typealias ScanQrPopupClosedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ScanQrPopupClosed, eventHandler: ScanQrPopupClosedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.ScanQrPopupClosed,
+    eventHandler: ScanQrPopupClosedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onScanQrPopupClosed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -496,19 +568,23 @@ typealias BiometricAuthRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.BiometricAuthRequested, eventHandler: BiometricAuthRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgBiometricAuthRequested ->
+fun WebApp.onEvent(
+    type: EventType.BiometricAuthRequested,
+    eventHandler: BiometricAuthRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgBiometricAuthRequested ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onBiometricAuthRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onBiometricAuthRequested(eventHandler: BiometricAuthRequestedEventHandler) = onEvent(EventType.BiometricAuthRequested, eventHandler)
+fun WebApp.onBiometricAuthRequested(eventHandler: BiometricAuthRequestedEventHandler) =
+    onEvent(EventType.BiometricAuthRequested, eventHandler)
 // Part for callback typealias
 
 typealias HomeScreenCheckedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgStatusObject) -> Unit
@@ -518,12 +594,15 @@ typealias HomeScreenCheckedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.HomeScreenChecked, eventHandler: HomeScreenCheckedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
+fun WebApp.onEvent(
+    type: EventType.HomeScreenChecked,
+    eventHandler: HomeScreenCheckedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onHomeScreenChecked(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -540,12 +619,15 @@ typealias LocationRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.LocationRequested, eventHandler: LocationRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgLocationDataObject ->
+fun WebApp.onEvent(
+    type: EventType.LocationRequested,
+    eventHandler: LocationRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgLocationDataObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onLocationRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -562,19 +644,23 @@ typealias SecondaryButtonClickedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.SecondaryButtonClicked, eventHandler: SecondaryButtonClickedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.SecondaryButtonClicked,
+    eventHandler: SecondaryButtonClickedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onSecondaryButtonClicked(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onSecondaryButtonClicked(eventHandler: SecondaryButtonClickedEventHandler) = onEvent(EventType.SecondaryButtonClicked, eventHandler)
+fun WebApp.onSecondaryButtonClicked(eventHandler: SecondaryButtonClickedEventHandler) =
+    onEvent(EventType.SecondaryButtonClicked, eventHandler)
 // Part for callback typealias
 
 typealias QrTextReceivedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgDataObject) -> Unit
@@ -584,12 +670,15 @@ typealias QrTextReceivedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.Ar
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.QrTextReceived, eventHandler: QrTextReceivedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgDataObject ->
+fun WebApp.onEvent(
+    type: EventType.QrTextReceived,
+    eventHandler: QrTextReceivedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgDataObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onQrTextReceived(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -606,12 +695,15 @@ typealias EmojiStatusSetEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.EmojiStatusSet, eventHandler: EmojiStatusSetEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.EmojiStatusSet,
+    eventHandler: EmojiStatusSetEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onEmojiStatusSet(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -628,12 +720,15 @@ typealias FullscreenFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.FullscreenFailed, eventHandler: FullscreenFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.FullscreenFailed,
+    eventHandler: FullscreenFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onFullscreenFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -650,12 +745,15 @@ typealias GyroscopeFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.A
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.GyroscopeFailed, eventHandler: GyroscopeFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.GyroscopeFailed,
+    eventHandler: GyroscopeFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onGyroscopeFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -672,12 +770,15 @@ typealias SettingsButtonClickedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.SettingsButtonClicked, eventHandler: SettingsButtonClickedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.SettingsButtonClicked,
+    eventHandler: SettingsButtonClickedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onSettingsButtonClicked(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -694,12 +795,15 @@ typealias DeactivatedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.Deactivated, eventHandler: DeactivatedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.Deactivated,
+    eventHandler: DeactivatedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onDeactivated(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -716,19 +820,23 @@ typealias DeviceOrientationStoppedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.DeviceOrientationStopped, eventHandler: DeviceOrientationStoppedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.DeviceOrientationStopped,
+    eventHandler: DeviceOrientationStoppedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onDeviceOrientationStopped(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationStopped(eventHandler: DeviceOrientationStoppedEventHandler) = onEvent(EventType.DeviceOrientationStopped, eventHandler)
+fun WebApp.onDeviceOrientationStopped(eventHandler: DeviceOrientationStoppedEventHandler) =
+    onEvent(EventType.DeviceOrientationStopped, eventHandler)
 // Part for callback typealias
 
 typealias FullscreenChangedEventHandler = WebApp.() -> Unit
@@ -738,12 +846,15 @@ typealias FullscreenChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.FullscreenChanged, eventHandler: FullscreenChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.FullscreenChanged,
+    eventHandler: FullscreenChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onFullscreenChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -760,12 +871,15 @@ typealias ViewportChangedEventHandler = WebApp.(Boolean) -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ViewportChanged, eventHandler: ViewportChangedEventHandler) = { p0: Boolean ->
+fun WebApp.onEvent(
+    type: EventType.ViewportChanged,
+    eventHandler: ViewportChangedEventHandler,
+) = { p0: Boolean ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onViewportChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -782,12 +896,15 @@ typealias MainButtonClickedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.MainButtonClicked, eventHandler: MainButtonClickedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.MainButtonClicked,
+    eventHandler: MainButtonClickedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onMainButtonClicked(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -804,12 +921,15 @@ typealias AccelerometerFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.ar
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.AccelerometerFailed, eventHandler: AccelerometerFailedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
+fun WebApp.onEvent(
+    type: EventType.AccelerometerFailed,
+    eventHandler: AccelerometerFailedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgErrorObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onAccelerometerFailed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -826,12 +946,15 @@ typealias ClipboardTextReceivedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ClipboardTextReceived, eventHandler: ClipboardTextReceivedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgDataNullableObject ->
+fun WebApp.onEvent(
+    type: EventType.ClipboardTextReceived,
+    eventHandler: ClipboardTextReceivedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgDataNullableObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onClipboardTextReceived(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -848,12 +971,15 @@ typealias FileDownloadRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.FileDownloadRequested, eventHandler: FileDownloadRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
+fun WebApp.onEvent(
+    type: EventType.FileDownloadRequested,
+    eventHandler: FileDownloadRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onFileDownloadRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -870,12 +996,15 @@ typealias ContactRequestedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactRequestedEventHandler) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
+fun WebApp.onEvent(
+    type: EventType.ContactRequested,
+    eventHandler: ContactRequestedEventHandler,
+) = { p0: dev.inmo.tgbotapi.webapps.args.ArgStatusObject ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0)
 }.also {
     onContactRequested(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -892,12 +1021,15 @@ typealias InvoiceClosedEventHandler = WebApp.(String, String) -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.InvoiceClosed, eventHandler: InvoiceClosedEventHandler) = { p0: String, p1: String ->
+fun WebApp.onEvent(
+    type: EventType.InvoiceClosed,
+    eventHandler: InvoiceClosedEventHandler,
+) = { p0: String, p1: String ->
     eventHandler(js("this").unsafeCast<WebApp>(), p0, p1)
 }.also {
     onInvoiceClosed(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -914,12 +1046,15 @@ typealias GyroscopeStartedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.GyroscopeStarted, eventHandler: GyroscopeStartedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.GyroscopeStarted,
+    eventHandler: GyroscopeStartedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onGyroscopeStarted(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -936,12 +1071,15 @@ typealias GyroscopeChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.GyroscopeChanged, eventHandler: GyroscopeChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.GyroscopeChanged,
+    eventHandler: GyroscopeChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onGyroscopeChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
@@ -958,16 +1096,20 @@ typealias DeviceOrientationChangedEventHandler = WebApp.() -> Unit
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.DeviceOrientationChanged, eventHandler: DeviceOrientationChangedEventHandler) = {  ->
-    eventHandler(js("this").unsafeCast<WebApp>(), )
+fun WebApp.onEvent(
+    type: EventType.DeviceOrientationChanged,
+    eventHandler: DeviceOrientationChangedEventHandler,
+) = { ->
+    eventHandler(js("this").unsafeCast<WebApp>())
 }.also {
     onDeviceOrientationChanged(
         type.typeName,
-        callback = it
+        callback = it,
     )
 }
 
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationChanged(eventHandler: DeviceOrientationChangedEventHandler) = onEvent(EventType.DeviceOrientationChanged, eventHandler)
+fun WebApp.onDeviceOrientationChanged(eventHandler: DeviceOrientationChangedEventHandler) =
+    onEvent(EventType.DeviceOrientationChanged, eventHandler)

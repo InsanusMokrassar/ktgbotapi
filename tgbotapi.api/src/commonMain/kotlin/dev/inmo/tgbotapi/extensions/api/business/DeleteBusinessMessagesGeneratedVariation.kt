@@ -19,6 +19,6 @@ public suspend fun TelegramBot.deleteBusinessMessages(
             with(messages) {
                 messages.map {
                     it.messageId
-                } 
+                }
             },
     )

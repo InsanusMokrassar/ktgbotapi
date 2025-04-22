@@ -10,4 +10,4 @@ public suspend fun TelegramBot.setBusinessAccountBio(
 ): Boolean =
     execute(
         SetBusinessAccountBio(businessConnectionId, bio),
-    ) 
+    )

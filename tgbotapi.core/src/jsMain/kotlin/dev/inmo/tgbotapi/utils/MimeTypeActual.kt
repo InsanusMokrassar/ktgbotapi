@@ -7,7 +7,7 @@ import org.w3c.dom.get
 
 @Serializable(MimeTypeSerializer::class)
 actual class MimeType(
-    actual val raw: String
+    actual val raw: String,
 ) {
     @Transient
     val jsMimeType = window.navigator.mimeTypes[raw]

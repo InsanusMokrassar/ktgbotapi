@@ -13,13 +13,14 @@ val rfAbsolutePath = rootFolder.absolutePath
 val currentFolder = File("./")
 val cfAbsolutePath = currentFolder.absolutePath
 
-val realArgs = args.map { sourceArg ->
-    if (sourceArg.startsWith("\"") && sourceArg.endsWith("\"")) {
-        sourceArg.removePrefix("\"").removeSuffix("\"")
-    } else {
-        sourceArg
+val realArgs =
+    args.map { sourceArg ->
+        if (sourceArg.startsWith("\"") && sourceArg.endsWith("\"")) {
+            sourceArg.removePrefix("\"").removeSuffix("\"")
+        } else {
+            sourceArg
+        }
     }
-}
 
 var verboseMode: Boolean = false
 
@@ -40,38 +41,44 @@ fun readParameters() {
 
 readParameters()
 
-fun generateEvent(eventName: String, callbackArgs: String) {
+fun generateEvent(
+    eventName: String,
+    callbackArgs: String,
+) {
     println("Start generating $eventName (callbacks: $callbackArgs)")
     val uppercaseEventName = eventName.take(1).uppercase() + eventName.drop(1)
     val subpackage = eventName.map { if (it.isUpperCase()) "_${it.lowercase()}" else it }.joinToString("")
     var callbackNumber: Int = -1
     val splittedCallbacks = callbackArgs.split(Regex(" ?, ?")).filter { !it.isBlank() }
-    val callback_args_names = splittedCallbacks.joinToString(", ") {
-        callbackNumber++
-        "p$callbackNumber"
-    }
+    val callback_args_names =
+        splittedCallbacks.joinToString(", ") {
+            callbackNumber++
+            "p$callbackNumber"
+        }
     callbackNumber = -1
-    val callback_args_definitions = splittedCallbacks.joinToString(", ") {
-        callbackNumber++
-        "p$callbackNumber: $it"
-    }
+    val callback_args_definitions =
+        splittedCallbacks.joinToString(", ") {
+            callbackNumber++
+            "p$callbackNumber: $it"
+        }
     val verboseFlag = if (verboseMode) "-v" else ""
 
-    val commandParts = arrayOf(
-        "${rfAbsolutePath}/.templates/generator.kts",
-        verboseFlag,
-        "-s",
-        "-a", "subpackage=$subpackage",
-        "-a", "event_name=$eventName",
-        "-a", "callback_args_names=$callback_args_names",
-        "-a", "event_name_uppercase=$uppercaseEventName",
-        "-a", "callback_args_definitions=$callback_args_definitions",
-        "-a", "callback_args=$callbackArgs",
-        "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
-        "-o", cfAbsolutePath,
-        "-ex", "kt",
-        "${rfAbsolutePath}/.templates/{{\$subpackage}}"
-    )
+    val commandParts =
+        arrayOf(
+            "$rfAbsolutePath/.templates/generator.kts",
+            verboseFlag,
+            "-s",
+            "-a", "subpackage=$subpackage",
+            "-a", "event_name=$eventName",
+            "-a", "callback_args_names=$callback_args_names",
+            "-a", "event_name_uppercase=$uppercaseEventName",
+            "-a", "callback_args_definitions=$callback_args_definitions",
+            "-a", "callback_args=$callbackArgs",
+            "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
+            "-o", cfAbsolutePath,
+            "-ex", "kt",
+            "$rfAbsolutePath/.templates/{{\$subpackage}}",
+        )
     val command = commandParts.joinToString(" ") { "\"$it\"" }
     if (verboseMode) {
         println(command)
@@ -104,7 +111,7 @@ val eventsList: JsonArray = Json.parseToJsonElement(File("EventsList.json").read
 eventsList.forEach {
     generateEvent(
         it.jsonObject["event_name"]!!.jsonPrimitive.content,
-        it.jsonObject["callback_args"] ?.jsonPrimitive ?.content ?: ""
+        it.jsonObject["callback_args"] ?.jsonPrimitive ?.content ?: "",
     )
 }
 
@@ -139,7 +146,7 @@ if (verboseMode) {
 
 val eventTypeOutputFile = File(currentFolder, "../EventType.kt")
 eventTypeOutputFile.writeText(
-    eventTypeFileContent
+    eventTypeFileContent,
 )
 
 val webAppPartsString = webAppParts.joinToString("\n")
@@ -151,7 +158,7 @@ if (verboseMode) {
 
 val webAppOutputFile = File(currentFolder, "ToPutInWebApp!!!!!.kt")
 webAppOutputFile.writeText(
-    webAppPartsFileContent
+    webAppPartsFileContent,
 )
 
 val extensionsPartsString = extensionsParts.joinToString("\n")
@@ -163,9 +170,8 @@ if (verboseMode) {
 
 val extensionsPartsOutputFile = File(currentFolder, "Extensions.kt")
 extensionsPartsOutputFile.writeText(
-    extensionsPartsFileContent
+    extensionsPartsFileContent,
 )
-
 
 currentFolder.listFiles() ?.toList() ?.forEach { generatedFolder: File ->
     if (generatedFolder.isDirectory) {

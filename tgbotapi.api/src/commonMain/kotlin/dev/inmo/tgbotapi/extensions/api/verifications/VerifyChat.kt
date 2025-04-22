@@ -3,7 +3,12 @@ package dev.inmo.tgbotapi.extensions.api.verifications
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.verifications.VerifyChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.chat.BusinessChat
+import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PublicChat
+import dev.inmo.tgbotapi.types.chat.UnknownChatType
+import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 
 public suspend fun TelegramBot.verifyChat(
     chatId: ChatIdentifier,

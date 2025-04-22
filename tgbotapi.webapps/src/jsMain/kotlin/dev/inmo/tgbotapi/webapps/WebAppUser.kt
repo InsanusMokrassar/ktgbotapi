@@ -7,21 +7,29 @@ import dev.inmo.tgbotapi.types.chat.CommonUser
 
 external interface WebAppUser {
     val id: RawChatId
+
     @JsName(isBotField)
     val isBot: Boolean?
+
     @JsName(firstNameField)
     val firstName: String
+
     @JsName(lastNameField)
     val lastName: String?
+
     @JsName(usernameField)
     val username: String?
+
     @JsName(languageCodeField)
     val languageCode: String?
     val is_premium: Boolean?
+
     @JsName(photoUrlField)
     val photoUrl: String?
+
     @JsName(addedToAttachmentMenuField)
     val addedToAttachmentMenu: Boolean?
+
     @JsName(allowsWriteToPMField)
     val allowsWriteToPM: Boolean?
 }
@@ -29,20 +37,21 @@ external interface WebAppUser {
 val WebAppUser.isPremium
     get() = is_premium == true
 
-fun WebAppUser.asUser() = if (isBot == true) {
-    CommonBot(
-        id = UserId(id),
-        firstName = firstName,
-        lastName = lastName ?: "",
-        username = username ?.let(::Username)
-    )
-} else {
-    CommonUser(
-        id = UserId(id),
-        firstName = firstName,
-        lastName = lastName ?: "",
-        username = username ?.let(::Username),
-        ietfLanguageCode = languageCode ?.let(::IetfLang),
-        isPremium = isPremium
-    )
-}
+fun WebAppUser.asUser() =
+    if (isBot == true) {
+        CommonBot(
+            id = UserId(id),
+            firstName = firstName,
+            lastName = lastName ?: "",
+            username = username ?.let(::Username),
+        )
+    } else {
+        CommonUser(
+            id = UserId(id),
+            firstName = firstName,
+            lastName = lastName ?: "",
+            username = username ?.let(::Username),
+            ietfLanguageCode = languageCode ?.let(::IetfLang),
+            isPremium = isPremium,
+        )
+    }

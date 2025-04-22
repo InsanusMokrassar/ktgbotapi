@@ -11,17 +11,17 @@ external interface PopupButton {
 fun PopupButton(
     id: String,
     type: PopupButtonType,
-    text: String? = null
+    text: String? = null,
 ) = json(
     *listOfNotNull(
         "id" to id,
         "type" to type.typeName,
-        ("text" to text).takeIf { text != null }
-    ).toTypedArray()
+        ("text" to text).takeIf { text != null },
+    ).toTypedArray(),
 ).unsafeCast<PopupButton>()
 
 value class PopupButtonType(
-    val typeName: String
+    val typeName: String,
 ) {
     companion object {
         val Default = PopupButtonType("default")
@@ -34,22 +34,16 @@ value class PopupButtonType(
 
 fun DefaultPopupButton(
     id: String,
-    text: String
+    text: String,
 ) = PopupButton(id, PopupButtonType.Default, text)
 
-fun OkPopupButton(
-    id: String
-) = PopupButton(id, PopupButtonType.Ok)
+fun OkPopupButton(id: String) = PopupButton(id, PopupButtonType.Ok)
 
-fun ClosePopupButton(
-    id: String
-) = PopupButton(id, PopupButtonType.Close)
+fun ClosePopupButton(id: String) = PopupButton(id, PopupButtonType.Close)
 
-fun CancelPopupButton(
-    id: String
-) = PopupButton(id, PopupButtonType.Cancel)
+fun CancelPopupButton(id: String) = PopupButton(id, PopupButtonType.Cancel)
 
 fun DestructivePopupButton(
     id: String,
-    text: String
+    text: String,
 ) = PopupButton(id, PopupButtonType.Destructive, text)

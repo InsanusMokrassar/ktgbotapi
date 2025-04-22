@@ -6,7 +6,10 @@ external interface Accelerometer {
     val y: Double
     val z: Double
 
-    fun start(params: AccelerometerStartParams, callback: (Boolean) -> Unit = definedExternally)
+    fun start(
+        params: AccelerometerStartParams,
+        callback: (Boolean) -> Unit = definedExternally,
+    )
+
     fun stop(callback: (Boolean) -> Unit)
 }
-

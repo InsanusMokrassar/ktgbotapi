@@ -12,17 +12,19 @@ import javax.crypto.Cipher
 private val regexToRemoveFromKey = Regex("(-----(BEGIN|END) ((?:.*? KEY)|CERTIFICATE)-----|[\\s])")
 
 fun EncryptedCredentials.decryptWithPKCS8PrivateKey(privateKey: PrivateKey): DecryptedCredentials {
-    val decrypted = Cipher.getInstance("RSA/ECB/OAEPWithSHA-1AndMGF1Padding").run {
-        init(Cipher.DECRYPT_MODE, privateKey)
-        doFinal(secret)
-    }
+    val decrypted =
+        Cipher.getInstance("RSA/ECB/OAEPWithSHA-1AndMGF1Padding").run {
+            init(Cipher.DECRYPT_MODE, privateKey)
+            doFinal(secret)
+        }
     val dataDecryptor = (decrypted to hash).createDecryptor()
     val decryptedCredentials = dataDecryptor.decrypt(data).decodeToString()
     return nonstrictJsonFormat.decodeFromString(DecryptedCredentials.serializer(), decryptedCredentials)
 }
 
-fun EncryptedCredentials.decryptWithPKCS8PrivateKey(key: String) = decryptWithPKCS8PrivateKey(
-    KeyFactory.getInstance("RSA").generatePrivate(
-        PKCS8EncodedKeySpec(key.replace(regexToRemoveFromKey, "").decodeBase64())
+fun EncryptedCredentials.decryptWithPKCS8PrivateKey(key: String) =
+    decryptWithPKCS8PrivateKey(
+        KeyFactory.getInstance("RSA").generatePrivate(
+            PKCS8EncodedKeySpec(key.replace(regexToRemoveFromKey, "").decodeBase64()),
+        ),
     )
-)

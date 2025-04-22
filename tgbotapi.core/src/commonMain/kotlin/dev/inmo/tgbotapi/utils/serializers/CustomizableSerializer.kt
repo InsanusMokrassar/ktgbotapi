@@ -35,5 +35,4 @@ open class CallbacksCustomizableDeserializationStrategy<T>(
         descriptor,
         defaultDeserializeCallback,
         fallbackDeserialization,
-    ) {
-}
+    )

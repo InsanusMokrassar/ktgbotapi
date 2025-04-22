@@ -6,4 +6,3 @@ external interface SafeAreaInset {
     val left: Int
     val right: Int
 }
-

@@ -14,11 +14,13 @@ class ChatIdentifierTests {
         val chatId = chatIdentifierChatId.long.toInt().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
+
     @Test
     fun `Cast_from_Byte_to_ChatId_is_working_correctly`() {
         val chatId = chatIdentifierChatId.long.toByte().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
+
     @Test
     fun `Cast_from_Identifier_to_ChatId_is_working_correctly`() {
         val chatId = chatIdentifierChatId.toChatId()
@@ -42,12 +44,11 @@ class ChatIdentifierTests {
 
     @Serializable
     data class Example(
-        val identifier: ChatIdentifier
+        val identifier: ChatIdentifier,
     )
 
     @Test
     fun `Deserializing_from_String_must_work_correctly`() {
-
         Example(chatIdentifierChatId.toChatId()).let { withChatId ->
             val stringified = TestsJsonFormat.encodeToString(Example.serializer(), withChatId)
             assertEquals(stringified, "{\"identifier\":$chatIdentifierChatId}")

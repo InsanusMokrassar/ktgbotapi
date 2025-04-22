@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.webapps.storage
 
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Deferred
 
 /**
  * This object is used to access the device's local storage.
@@ -16,7 +15,11 @@ external interface DeviceStorage {
      * @param value The value to store.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun setItem(key: String, value: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
+    fun setItem(
+        key: String,
+        value: String,
+        callback: (Throwable?, Boolean?) -> Unit,
+    ): DeviceStorage
 
     /**
      * Retrieves the value associated with a key.
@@ -24,7 +27,10 @@ external interface DeviceStorage {
      * @param key The key to retrieve the value for.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is the value associated with the key, or null if the key is not found.
      */
-    fun getItem(key: String, callback: (Throwable?, String?) -> Unit): DeviceStorage
+    fun getItem(
+        key: String,
+        callback: (Throwable?, String?) -> Unit,
+    ): DeviceStorage
 
     /**
      * Removes the key-value pair associated with a key.
@@ -32,7 +38,10 @@ external interface DeviceStorage {
      * @param key The key to remove.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun removeItem(key: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
+    fun removeItem(
+        key: String,
+        callback: (Throwable?, Boolean?) -> Unit,
+    ): DeviceStorage
 
     /**
      * Clears all key-value pairs from the storage.
@@ -49,7 +58,10 @@ external interface DeviceStorage {
  * @param value The value to store.
  * @return A [Result] object containing the result of the operation.
  */
-suspend fun DeviceStorage.setWithResult(key: String, value: String): Result<Boolean> {
+suspend fun DeviceStorage.setWithResult(
+    key: String,
+    value: String,
+): Result<Boolean> {
     val deferred = CompletableDeferred<Result<Boolean>>()
 
     setItem(key, value) { error, result ->
@@ -130,7 +142,10 @@ suspend fun DeviceStorage.clearWithResult(): Result<Boolean> {
  * @return Boolean indicating whether the operation was successful.
  * @throws Throwable If an error occurs during the operation.
  */
-suspend fun DeviceStorage.setItem(key: String, value: String): Boolean {
+suspend fun DeviceStorage.setItem(
+    key: String,
+    value: String,
+): Boolean {
     return setWithResult(key, value).getOrThrow()
 }
 

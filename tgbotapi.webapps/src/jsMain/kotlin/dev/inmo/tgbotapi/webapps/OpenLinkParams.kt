@@ -7,10 +7,9 @@ external interface OpenLinkParams {
     val tryInstantView: Boolean
 }
 
-fun OpenLinkParams(
-    tryInstantView: Boolean
-) = json(
-    *listOfNotNull(
-        "try_instant_view" to tryInstantView
-    ).toTypedArray()
-).unsafeCast<OpenLinkParams>()
+fun OpenLinkParams(tryInstantView: Boolean) =
+    json(
+        *listOfNotNull(
+            "try_instant_view" to tryInstantView,
+        ).toTypedArray(),
+    ).unsafeCast<OpenLinkParams>()

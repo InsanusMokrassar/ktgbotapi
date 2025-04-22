@@ -21,7 +21,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.Executors
 
-
 /**
  * Allows to include webhook in custom route everywhere in your server
  *
@@ -46,10 +45,11 @@ fun Route.includeWebhookHandlingInRoute(
     post {
         try {
             runCatchingSafely {
-                val update = nonstrictJsonFormat.decodeFromString(
-                    UpdateDeserializationStrategy,
-                    call.receiveText()
-                )
+                val update =
+                    nonstrictJsonFormat.decodeFromString(
+                        UpdateDeserializationStrategy,
+                        call.receiveText(),
+                    )
                 transformer(update)
             }.onSuccess {
                 call.respond(HttpStatusCode.OK)
@@ -76,7 +76,7 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
     scope,
     exceptionsHandler,
     mediaGroupsDebounceTimeMillis,
-    flowsUpdatesFilter(block = block).asUpdateReceiver
+    flowsUpdatesFilter(block = block).asUpdateReceiver,
 )
 
 /**
@@ -109,16 +109,17 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
 ): EmbeddedServer<TEngine, TConfiguration> =
     embeddedServer(
         factory = engineFactory,
-        environment = applicationEnvironment {
-            additionalApplicationEnvironmentConfigurator()
-        },
+        environment =
+            applicationEnvironment {
+                additionalApplicationEnvironmentConfigurator()
+            },
         configure = {
             privateKeyConfig?.let {
                 sslConnector(
                     privateKeyConfig.keyStore,
                     privateKeyConfig.aliasName,
                     privateKeyConfig::keyStorePassword,
-                    privateKeyConfig::aliasPassword
+                    privateKeyConfig::aliasPassword,
                 ) {
                     host = listenHost
                     port = listenPort
@@ -137,11 +138,11 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
                         scope,
                         exceptionsHandler,
                         mediaGroupsDebounceTimeMillis,
-                        block
+                        block,
                     )
                 } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
             }
-        }
+        },
     ).also {
         it.start(false)
     }
@@ -174,21 +175,22 @@ suspend fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Con
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
     block: UpdateReceiver<Update>,
-): EmbeddedServer<TEngine, TConfiguration> = try {
-    execute(setWebhookRequest)
-    startListenWebhooks(
-        listenPort,
-        engineFactory,
-        exceptionsHandler,
-        listenHost,
-        listenRoute,
-        privateKeyConfig,
-        scope,
-        mediaGroupsDebounceTimeMillis,
-        additionalApplicationEnvironmentConfigurator,
-        additionalEngineConfigurator,
-        block
-    )
-} catch (e: Exception) {
-    throw e
-}
+): EmbeddedServer<TEngine, TConfiguration> =
+    try {
+        execute(setWebhookRequest)
+        startListenWebhooks(
+            listenPort,
+            engineFactory,
+            exceptionsHandler,
+            listenHost,
+            listenRoute,
+            privateKeyConfig,
+            scope,
+            mediaGroupsDebounceTimeMillis,
+            additionalApplicationEnvironmentConfigurator,
+            additionalEngineConfigurator,
+            block,
+        )
+    } catch (e: Exception) {
+        throw e
+    }

@@ -7,4 +7,4 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 public suspend fun TelegramBot.removeBusinessAccountProfilePhoto(businessConnectionId: BusinessConnectionId): Boolean =
     execute(
         RemoveBusinessAccountProfilePhoto(businessConnectionId),
-    ) 
+    )

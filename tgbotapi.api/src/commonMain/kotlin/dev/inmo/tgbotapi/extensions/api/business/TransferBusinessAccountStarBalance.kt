@@ -10,4 +10,4 @@ public suspend fun TelegramBot.transferBusinessAccountStarBalance(
 ): Boolean =
     execute(
         TransferBusinessAccountStarBalance(businessConnectionId, amount),
-    ) 
+    )
