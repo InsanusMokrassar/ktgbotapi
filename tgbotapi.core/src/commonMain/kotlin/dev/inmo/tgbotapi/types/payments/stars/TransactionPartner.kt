@@ -61,10 +61,10 @@ sealed interface TransactionPartner {
         val paidMedia: List<PaidMedia>? = null,
         @SerialName(paidMediaPayloadField)
         val paidMediaPayload: PaidMediaPayload? = null,
-        @SerialName(giftField)
-        val gift: Gift? = null,
         @SerialName(premiumSubscriptionDurationField)
         val premiumSubscriptionDuration: Int? = null,
+        @SerialName(giftField)
+        val gift: Gift.Regular? = null,
     ) : TransactionPartner, SubscriptionPeriodInfo {
         @EncodeDefault
         override val type: String = Companion.type
@@ -79,7 +79,7 @@ sealed interface TransactionPartner {
         @SerialName(chatField)
         val chat: PreviewChat,
         @SerialName(giftField)
-        val gift: Gift? = null
+        val gift: Gift.Regular? = null
     ) : TransactionPartner {
         @EncodeDefault
         override val type: String = Companion.type
@@ -154,9 +154,9 @@ sealed interface TransactionPartner {
             val subscription_period: TimeSpan? = null,
             val paid_media: List<PaidMedia>? = null,
             val paid_media_payload: PaidMediaPayload? = null,
-            val gift: Gift? = null,
             val premium_subscription_duration: Int? = null,
             val transaction_type: TransactionType? = null,
+            val gift: Gift.Regular? = null,
             val request_count: Int? = null,
             val sponsor_user: PreviewBot? = null,
             val commission_per_mille: Int? = null,

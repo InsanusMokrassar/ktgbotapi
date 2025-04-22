@@ -57,6 +57,7 @@ microutils-serialization-mapper = { module = "dev.inmo:micro_utils.serialization
 microutils-languageCodes = { module = "dev.inmo:micro_utils.language_codes", version.ref = "microutils" }
 microutils-ktor-common = { module = "dev.inmo:micro_utils.ktor.common", version.ref = "microutils" }
 microutils-fsm-common = { module = "dev.inmo:micro_utils.fsm.common", version.ref = "microutils" }
+microutils-ksp-generator = { module = "dev.inmo:micro_utils.ksp.generator", version.ref = "microutils" }
 microutils-ksp-sealed = { module = "dev.inmo:micro_utils.ksp.sealed", version.ref = "microutils" }
 microutils-ksp-sealed-generator = { module = "dev.inmo:micro_utils.ksp.sealed.generator", version.ref = "microutils" }
 microutils-ksp-variations = { module = "dev.inmo:micro_utils.ksp.variations", version.ref = "microutils" }

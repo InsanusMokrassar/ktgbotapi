@@ -78,6 +78,6 @@ dependencies {
 
 ksp {
     arg("cctargetPackage", "dev.inmo.tgbotapi.extensions.utils")
-    arg("ccoutputFileName", "ClassCastsNew")
-    arg("ccoutputFolder", project(":tgbotapi.utils").file("src/commonMain/kotlin").absolutePath)
+    arg("ccoutputFileName", "ClassCastsNew.kt")
+    arg("ccoutputFolder", project(":tgbotapi.utils").file("src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/utils").absolutePath)
 }

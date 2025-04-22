@@ -330,6 +330,57 @@ public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyShortDescriptionKt 
 	public static synthetic fun setMyShortDescription$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/business/DeleteBusinessMessagesGeneratedVariationKt {
+	public static final fun deleteBusinessMessages-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/DeleteBusinessMessagesKt {
+	public static final fun deleteBusinessMessages-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountStarBalanceKt {
+	public static final fun getBusinessAccountStarBalance-spp27rg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/ReadBusinessMessageGeneratedVariationKt {
+	public static final fun readBusinessMessage-1MWLODE (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/Chat;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/ReadBusinessMessageKt {
+	public static final fun readBusinessMessage-kYJnN-U (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JJLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun readBusinessMessage-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/RemoveBusinessAccountProfilePhotoKt {
+	public static final fun removeBusinessAccountProfilePhoto-spp27rg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountBioKt {
+	public static final fun setBusinessAccountBio-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountNameKt {
+	public static final fun setBusinessAccountName-XzFA9qU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setBusinessAccountName-XzFA9qU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountProfilePhotoKt {
+	public static final fun setBusinessAccountProfilePhoto-XzFA9qU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setBusinessAccountProfilePhoto-XzFA9qU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountUsernameGeneratedVariationKt {
+	public static final fun setBusinessAccountUsername-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountUsernameKt {
+	public static final fun setBusinessAccountUsername-_dB6Ko0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/TransferBusinessAccountStarBalanceKt {
+	public static final fun transferBusinessAccountStarBalance-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/chat/ExportChatInviteLinkKt {
 	public static final fun exportChatInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun exportChatInviteLink (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -1089,12 +1140,12 @@ public final class dev/inmo/tgbotapi/extensions/api/gifts/GetAvailableGiftsKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/gifts/SendGiftGeneratedVariationKt {
-	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun sendGift-0SDnvgk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun sendGift-GROm3fU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGift-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGift-ySMgKnk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGift-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGift-ySMgKnk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/gifts/SendGiftKt {
@@ -1109,10 +1160,10 @@ public final class dev/inmo/tgbotapi/extensions/api/gifts/SendGiftKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/gifts/SendGiftToChatGeneratedVariationKt {
-	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/gifts/Gift;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun sendGiftToChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun sendGiftToChat-0SDnvgk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun sendGiftToChat-GROm3fU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
