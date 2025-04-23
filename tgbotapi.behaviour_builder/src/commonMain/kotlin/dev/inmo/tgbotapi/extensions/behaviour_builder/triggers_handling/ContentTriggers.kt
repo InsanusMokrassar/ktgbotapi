@@ -28,7 +28,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> 
     when (it) {
         is BaseSentMessageUpdate -> it.data.whenCommonMessage(::listOfNotNull)
         else -> null
-    }?.mapNotNull { message ->
+    } ?.mapNotNull { message ->
         message.withContentOrNull<T>()
     }
 }

@@ -171,18 +171,18 @@ sealed interface Gift {
             value: Gift,
         ) {
             val surrogate = GiftSurrogate(
-                id = (value as? Regular)?.id,
-                sticker = (value as? Regular)?.sticker,
-                star_count = (value as? Regular)?.starCount,
-                total_count = (value as? Regular.Limited)?.totalCount,
-                remaining_count = (value as? Regular.Limited)?.remainingCount,
-                upgrade_star_count = (value as? Regular)?.upgradeStarCount,
-                base_name = (value as? Unique)?.baseName,
-                name = (value as? Unique)?.name,
-                number = (value as? Unique)?.number,
-                model = (value as? Unique)?.model,
-                symbol = (value as? Unique)?.symbol,
-                backdrop = (value as? Unique)?.backdrop,
+                id = (value as? Regular) ?.id,
+                sticker = (value as? Regular) ?.sticker,
+                star_count = (value as? Regular) ?.starCount,
+                total_count = (value as? Regular.Limited) ?.totalCount,
+                remaining_count = (value as? Regular.Limited) ?.remainingCount,
+                upgrade_star_count = (value as? Regular) ?.upgradeStarCount,
+                base_name = (value as? Unique) ?.baseName,
+                name = (value as? Unique) ?.name,
+                number = (value as? Unique) ?.number,
+                model = (value as? Unique) ?.model,
+                symbol = (value as? Unique) ?.symbol,
+                backdrop = (value as? Unique) ?.backdrop,
             )
             GiftSurrogate.serializer().serialize(encoder, surrogate)
         }

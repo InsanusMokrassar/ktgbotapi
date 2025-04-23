@@ -127,7 +127,7 @@ fun FileSpec.Builder.fill(
             } else {
                 it.filter { it.classKind != ClassKind.CLASS }
             }
-        }?.forEach {
+        } ?.forEach {
             fill(sourceKSClassDeclaration, subtypesMap, it)
             fill(targetClassDeclaration, subtypesMap, it)
         }

@@ -120,7 +120,7 @@ fun TelegramBot.longPollingFlow(
             ) {
                 execute(
                     GetUpdates(
-                        offset = lastUpdateIdentifier?.plus(1),
+                        offset = lastUpdateIdentifier ?.plus(1),
                         timeout = timeoutSeconds,
                         allowed_updates = allowedUpdates,
                     ),

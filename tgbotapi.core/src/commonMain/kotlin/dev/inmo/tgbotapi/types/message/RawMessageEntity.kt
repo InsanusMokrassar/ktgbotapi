@@ -223,7 +223,7 @@ fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEnt
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
-            i += it.maxByOrNull { it.length }?.length ?: textSource.source.length
+            i += it.maxByOrNull { it.length } ?.length ?: textSource.source.length
         }
     }
 }

@@ -43,7 +43,7 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
 ) {
     (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
         message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
-    }?.let(::listOfNotNull)
+    } ?.let(::listOfNotNull)
 }.also {
     triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
     it.invokeOnCompletion {

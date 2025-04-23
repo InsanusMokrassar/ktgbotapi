@@ -36,7 +36,7 @@ fun makeUsernameStartattachLink(
     data: String? = null,
 ) = "${makeUsernameStartattachPrefix(
     username,
-)}${data?.let { "=$it" } ?: ""}"
+)}${data ?.let { "=$it" } ?: ""}"
 
 inline val Username.usernameLink
     get() = makeUsernameLink(withoutAt)

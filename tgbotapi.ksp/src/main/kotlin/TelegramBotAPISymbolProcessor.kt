@@ -37,7 +37,7 @@ class TelegramBotAPISymbolProcessor(
         val classesRegexes: Map<KSClassDeclaration, Pair<Regex?, Regex?>> = classes.mapNotNull {
             it to (
                 it.getAnnotationsByType(ClassCastsIncluded::class).firstNotNullOfOrNull {
-                    it.typesRegex.takeIf { it.isNotEmpty() }?.let(::Regex) to it.excludeRegex.takeIf { it.isNotEmpty() }?.let(::Regex)
+                    it.typesRegex.takeIf { it.isNotEmpty() } ?.let(::Regex) to it.excludeRegex.takeIf { it.isNotEmpty() } ?.let(::Regex)
                 } ?: return@mapNotNull null
                 )
         }.toMap()

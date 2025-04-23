@@ -183,7 +183,7 @@ object PollSerializer : KSerializer<Poll> {
                     rawPoll.votesCount,
                     rawPoll.correctOptionId,
                     rawPoll.explanation,
-                    rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
+                    rawPoll.explanation ?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
                     rawPoll.isClosed,
                     rawPoll.isAnonymous,
                     rawPoll.scheduledCloseInfo,

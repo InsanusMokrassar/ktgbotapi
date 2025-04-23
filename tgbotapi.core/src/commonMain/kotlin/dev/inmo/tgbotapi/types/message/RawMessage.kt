@@ -333,7 +333,7 @@ internal data class RawMessage(
                         )
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
-            } ?: content?.let { content ->
+            } ?: content ?.let { content ->
                 val replyInfo: ReplyInfo? = when {
                     reply_to_message != null ->
                         ReplyInfo.Internal(
@@ -353,7 +353,7 @@ internal data class RawMessage(
                                     senderChat = checkedFrom ?: sender_chat ?: chat,
                                     content = content,
                                     date = date.asDate,
-                                    editDate = edit_date?.asDate,
+                                    editDate = edit_date ?.asDate,
                                     hasProtectedContent = has_protected_content == true,
                                     forwardOrigin = forward_origin,
                                     replyInfo = replyInfo,
@@ -593,7 +593,7 @@ internal data class RawMessage(
                                 chat = chat,
                                 content = content,
                                 date = date.asDate,
-                                editDate = edit_date?.asDate,
+                                editDate = edit_date ?.asDate,
                                 hasProtectedContent = has_protected_content == true,
                                 forwardOrigin = forward_origin,
                                 replyInfo = replyInfo,
@@ -615,7 +615,7 @@ internal data class RawMessage(
                                 businessConnectionId = business_connection_id,
                                 content = content,
                                 date = date.asDate,
-                                editDate = edit_date?.asDate,
+                                editDate = edit_date ?.asDate,
                                 hasProtectedContent = has_protected_content == true,
                                 forwardOrigin = forward_origin,
                                 replyInfo = replyInfo,

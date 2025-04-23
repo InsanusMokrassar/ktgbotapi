@@ -66,7 +66,7 @@ class MultipleClientKtorRequestsExecutor(
     private val clientAllocationMutex = Mutex()
     private val takerFlow = freeClients.mapNotNull {
         clientAllocationMutex.withLock {
-            freeClients.value.firstOrNull()?.also {
+            freeClients.value.firstOrNull() ?.also {
                 freeClients.value -= it
             } ?: return@mapNotNull null
         }

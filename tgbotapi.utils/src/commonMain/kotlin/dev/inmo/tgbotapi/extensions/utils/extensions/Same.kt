@@ -28,7 +28,7 @@ inline fun WithPreviewChat.sameChat(chatId: ChatIdentifier) = chat.id == chatId 
  * @return true in case if [this] message is placed in the [chat]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithPreviewChat.sameChat(chat: Chat) = sameChat(chat.id) || chat.usernameChatOrNull()?.username?.let { sameChat(it) } ?: false
+inline fun WithPreviewChat.sameChat(chat: Chat) = sameChat(chat.id) || chat.usernameChatOrNull() ?.username ?.let { sameChat(it) } ?: false
 
 /**
  * @return true in case if [this] message is placed in the same chat that [other]

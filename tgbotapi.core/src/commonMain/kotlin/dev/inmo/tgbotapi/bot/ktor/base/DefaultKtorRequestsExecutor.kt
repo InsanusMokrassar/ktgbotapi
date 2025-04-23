@@ -105,7 +105,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                         }
                     }
                 }
-            }?.let { Result.failure(it) } ?: it
+            } ?.let { Result.failure(it) } ?: it
             pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).getOrThrow().also {
                 logger.v { "Result of handling $request: $it" }
             }

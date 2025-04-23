@@ -176,7 +176,7 @@ object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
                 it.title,
                 it.stickers,
                 it.stickerType,
-                (it as? CreateNewStickerSet.CustomEmoji)?.needsRepainting,
+                (it as? CreateNewStickerSet.CustomEmoji) ?.needsRepainting,
             )
         },
         { it ->

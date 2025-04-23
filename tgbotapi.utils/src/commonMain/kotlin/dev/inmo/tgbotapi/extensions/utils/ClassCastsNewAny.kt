@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.WithSenderChatMessage
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-inline fun <T> Any.ifOptionallyFromUser(block: (OptionallyFromUser) -> T) = optionallyFromUserOrNull()?.let(block)
+inline fun <T> Any.ifOptionallyFromUser(block: (OptionallyFromUser) -> T) = optionallyFromUserOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.optionallyFromUserOrNull(): OptionallyFromUser? = this as? OptionallyFromUser
@@ -20,7 +20,7 @@ inline fun Any.optionallyFromUserOrNull(): OptionallyFromUser? = this as? Option
 inline fun Any.optionallyFromUserOrThrow(): OptionallyFromUser = this as OptionallyFromUser
 
 @PreviewFeature
-inline fun <T> Any.ifFromUser(block: (FromUser) -> T) = fromUserOrNull()?.let(block)
+inline fun <T> Any.ifFromUser(block: (FromUser) -> T) = fromUserOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.fromUserOrNull(): FromUser? = this as? FromUser
@@ -29,7 +29,7 @@ inline fun Any.fromUserOrNull(): FromUser? = this as? FromUser
 inline fun Any.fromUserOrThrow(): FromUser = this as FromUser
 
 @PreviewFeature
-inline fun <T> Any.ifOptionallyWithUser(block: (OptionallyWithUser) -> T) = optionallyWithUserOrNull()?.let(block)
+inline fun <T> Any.ifOptionallyWithUser(block: (OptionallyWithUser) -> T) = optionallyWithUserOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.optionallyWithUserOrNull(): OptionallyWithUser? = this as? OptionallyWithUser
@@ -38,7 +38,7 @@ inline fun Any.optionallyWithUserOrNull(): OptionallyWithUser? = this as? Option
 inline fun Any.optionallyWithUserOrThrow(): OptionallyWithUser = this as OptionallyWithUser
 
 @PreviewFeature
-inline fun <T> Any.ifWithUser(block: (WithUser) -> T) = withUserOrNull()?.let(block)
+inline fun <T> Any.ifWithUser(block: (WithUser) -> T) = withUserOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.withUserOrNull(): WithUser? = this as? WithUser
@@ -47,7 +47,7 @@ inline fun Any.withUserOrNull(): WithUser? = this as? WithUser
 inline fun Any.withUserOrThrow(): WithUser = this as WithUser
 
 @PreviewFeature
-inline fun <T> Any.ifWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = withOptionalLanguageCodeOrNull()?.let(block)
+inline fun <T> Any.ifWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = withOptionalLanguageCodeOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = this as? WithOptionalLanguageCode
@@ -56,7 +56,7 @@ inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = thi
 inline fun Any.withOptionalLanguageCodeOrThrow(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
 
 @PreviewFeature
-inline fun <T> Any.ifWithSenderChatMessage(block: (WithSenderChatMessage) -> T) = withSenderChatMessageOrNull()?.let(block)
+inline fun <T> Any.ifWithSenderChatMessage(block: (WithSenderChatMessage) -> T) = withSenderChatMessageOrNull() ?.let(block)
 
 @PreviewFeature
 inline fun Any.withSenderChatMessageOrNull(): WithSenderChatMessage? = this as? WithSenderChatMessage

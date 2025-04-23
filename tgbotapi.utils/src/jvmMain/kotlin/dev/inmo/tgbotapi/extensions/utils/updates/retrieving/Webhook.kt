@@ -56,7 +56,7 @@ fun Route.includeWebhookHandlingInRoute(
                 call.respond(HttpStatusCode.InternalServerError)
             }.getOrThrow()
         } catch (e: Throwable) {
-            exceptionsHandler?.invoke(e)
+            exceptionsHandler ?.invoke(e)
         }
     }
 }
@@ -111,7 +111,7 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
         additionalApplicationEnvironmentConfigurator()
     },
     configure = {
-        privateKeyConfig?.let {
+        privateKeyConfig ?.let {
             sslConnector(
                 privateKeyConfig.keyStore,
                 privateKeyConfig.aliasName,
@@ -130,7 +130,7 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
     },
     module = {
         routing {
-            listenRoute?.also {
+            listenRoute ?.also {
                 createRouteFromPath(it).includeWebhookHandlingInRoute(
                     scope,
                     exceptionsHandler,

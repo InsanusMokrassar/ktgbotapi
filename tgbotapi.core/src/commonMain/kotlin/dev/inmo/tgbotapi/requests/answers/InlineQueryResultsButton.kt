@@ -83,8 +83,8 @@ object InlineQueryResultsButtonSerializer : KSerializer<InlineQueryResultsButton
             encoder,
             InlineQueryResultsButton.Raw(
                 value.text,
-                (value as? InlineQueryResultsButton.WebApp)?.webAppInfo,
-                (value as? InlineQueryResultsButton.Start)?.deepLinkParameter,
+                (value as? InlineQueryResultsButton.WebApp) ?.webAppInfo,
+                (value as? InlineQueryResultsButton.Start) ?.deepLinkParameter,
             ),
         )
     }

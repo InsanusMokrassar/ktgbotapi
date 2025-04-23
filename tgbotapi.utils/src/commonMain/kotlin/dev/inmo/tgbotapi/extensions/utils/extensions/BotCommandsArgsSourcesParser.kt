@@ -42,7 +42,7 @@ fun List<TextSource>.parseCommandsWithArgsSources(): Map<BotCommandTextSource, A
  * Parse text sources to find commands with their arguments. This method will skip all the text sources __before__
  * first command and all following text sources until the next command will be guessed as an args of last found command
  */
-fun TextedWithTextSources.parseCommandsWithArgsSources() = textSources?.parseCommandsWithArgsSources() ?: emptyMap()
+fun TextedWithTextSources.parseCommandsWithArgsSources() = textSources ?.parseCommandsWithArgsSources() ?: emptyMap()
 
 /**
  * Parse text sources to find commands with their arguments. This method will skip all the text sources __before__

@@ -52,7 +52,7 @@ abstract class AbstractRequestCallFactory(
             accept(ContentType.Application.Json)
 
             if (request is GetUpdatesRequest) {
-                request.timeout?.times(1000L) ?.let { customTimeoutMillis ->
+                request.timeout ?.times(1000L) ?.let { customTimeoutMillis ->
                     if (customTimeoutMillis > 0) {
                         timeout {
                             requestTimeoutMillis = customTimeoutMillis
@@ -76,7 +76,7 @@ abstract class AbstractRequestCallFactory(
 
             return runCatchingSafely {
                 (
-                    responseObject.result?.let {
+                    responseObject.result ?.let {
                         jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
                     } ?: response.let {
                         throw newRequestException(

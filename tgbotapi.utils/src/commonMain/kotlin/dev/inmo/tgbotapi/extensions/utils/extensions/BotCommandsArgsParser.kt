@@ -23,7 +23,7 @@ fun List<TextSource>.parseCommandsWithArgs(
     var currentBotCommandSource: BotCommandTextSource? = null
     var currentArgs = ""
 
-    fun includeCurrent() = currentBotCommandSource?.let {
+    fun includeCurrent() = currentBotCommandSource ?.let {
         currentArgs = currentArgs.trim()
         result[it.command] =
             if (currentArgs.isNotEmpty()) {
@@ -51,7 +51,7 @@ fun List<TextSource>.parseCommandsWithArgs(
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun TextedWithTextSources.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) = textSources?.parseCommandsWithArgs(argsSeparator) ?: emptyMap()
+fun TextedWithTextSources.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) = textSources ?.parseCommandsWithArgs(argsSeparator) ?: emptyMap()
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
@@ -121,7 +121,7 @@ fun List<TextSource>.parseCommandsWithNamedArgs(
 fun TextedWithTextSources.parseCommandsWithNamedArgs(
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-) = textSources?.parseCommandsWithNamedArgs(argsSeparator = argsSeparator, nameArgSeparator = nameArgSeparator) ?: emptyMap()
+) = textSources ?.parseCommandsWithNamedArgs(argsSeparator = argsSeparator, nameArgSeparator = nameArgSeparator) ?: emptyMap()
 
 /**
  * Uses [parseCommandsWithArgs] to create base [argsSeparator] split args for commands and map their as k-v pairs.

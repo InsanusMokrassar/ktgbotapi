@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
  * @see [Update.lastUpdateIdentifier]
  */
 fun List<Update>.lastUpdateIdentifier(): UpdateId? {
-    return maxByOrNull { it.updateId }?.updateId ?.takeIf { it.long > -1 }
+    return maxByOrNull { it.updateId } ?.updateId ?.takeIf { it.long > -1 }
 }
 
 /**
