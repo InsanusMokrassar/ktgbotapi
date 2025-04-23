@@ -168,11 +168,9 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -184,11 +182,9 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -200,11 +196,9 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     user: User,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -344,8 +338,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -359,8 +352,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVisualMediaGroupPartCont
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -374,8 +366,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in CommonMessage<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>,
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 

@@ -21,34 +21,29 @@ inline fun FlowsUpdatesFilter.events(): Flow<ChatEventMessage<*>> {
 }
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> =
-    channelPostsFlow.mapNotNull {
-        it.data as? ChannelEventMessage<*>
-    }
+inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> = channelPostsFlow.mapNotNull {
+    it.data as? ChannelEventMessage<*>
+}
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.groupEvents(): Flow<GroupEventMessage<*>> =
-    messagesFlow.mapNotNull {
-        it.data as? GroupEventMessage<*>
-    }
+inline fun FlowsUpdatesFilter.groupEvents(): Flow<GroupEventMessage<*>> = messagesFlow.mapNotNull {
+    it.data as? GroupEventMessage<*>
+}
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>> =
-    messagesFlow.mapNotNull {
-        it.data as? SupergroupEventMessage<*>
-    }
+inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>> = messagesFlow.mapNotNull {
+    it.data as? SupergroupEventMessage<*>
+}
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.privateEvents(): Flow<PrivateEventMessage<*>> =
-    messagesFlow.mapNotNull {
-        it.data as? PrivateEventMessage<*>
-    }
+inline fun FlowsUpdatesFilter.privateEvents(): Flow<PrivateEventMessage<*>> = messagesFlow.mapNotNull {
+    it.data as? PrivateEventMessage<*>
+}
 
 @RiskFeature("Use with caution")
-inline fun <reified T : ChatEvent, reified O : ChatEventMessage<T>> Flow<ChatEventMessage<*>>.filterByChatEvent(): Flow<O> =
-    mapNotNull {
-        if (it.chatEvent is T) it as? O else null
-    }
+inline fun <reified T : ChatEvent, reified O : ChatEventMessage<T>> Flow<ChatEventMessage<*>>.filterByChatEvent(): Flow<O> = mapNotNull {
+    if (it.chatEvent is T) it as? O else null
+}
 
 @RiskFeature("Use with caution")
 inline fun <reified T : ChannelEvent> Flow<ChatEventMessage<*>>.filterChannelEvents() = filterByChatEvent<T, ChannelEventMessage<T>>()
@@ -135,12 +130,10 @@ inline fun FlowsUpdatesFilter.refundedPaymentInGroupEvents() = filterGroupEvents
 inline fun Flow<ChatEventMessage<*>>.groupEvents() = filterGroupEvents<GroupEvent>()
 
 @RiskFeature("Use with caution")
-inline fun <reified T : SupergroupEvent> Flow<ChatEventMessage<*>>.filterSupergroupEvents() =
-    filterByChatEvent<T, SupergroupEventMessage<T>>()
+inline fun <reified T : SupergroupEvent> Flow<ChatEventMessage<*>>.filterSupergroupEvents() = filterByChatEvent<T, SupergroupEventMessage<T>>()
 
 @RiskFeature("Use with caution")
-inline fun <reified T : SupergroupEvent> FlowsUpdatesFilter.filterSupergroupEvents() =
-    supergroupEvents().filterByChatEvent<T, SupergroupEventMessage<T>>()
+inline fun <reified T : SupergroupEvent> FlowsUpdatesFilter.filterSupergroupEvents() = supergroupEvents().filterByChatEvent<T, SupergroupEventMessage<T>>()
 
 inline fun Flow<ChatEventMessage<*>>.supergroupCreatedEvents() = filterSupergroupEvents<SupergroupChatCreated>()
 
@@ -188,8 +181,7 @@ inline fun Flow<ChatEventMessage<*>>.supergroupEvents() = filterSupergroupEvents
 inline fun <reified T : PrivateEvent> Flow<ChatEventMessage<*>>.filterPrivateEvents() = filterByChatEvent<T, PrivateEventMessage<T>>()
 
 @RiskFeature("Use with caution")
-inline fun <reified T : PrivateEvent> FlowsUpdatesFilter.filterPrivateEvents() =
-    privateEvents().filterByChatEvent<T, PrivateEventMessage<T>>()
+inline fun <reified T : PrivateEvent> FlowsUpdatesFilter.filterPrivateEvents() = privateEvents().filterByChatEvent<T, PrivateEventMessage<T>>()
 
 inline fun Flow<ChatEventMessage<*>>.successfulPaymentInPrivateEvents() = filterPrivateEvents<SuccessfulPaymentEvent>()
 

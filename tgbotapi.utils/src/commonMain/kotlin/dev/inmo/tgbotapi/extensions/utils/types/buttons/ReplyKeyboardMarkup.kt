@@ -11,12 +11,11 @@ fun ReplyKeyboardMarkup(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
-): ReplyKeyboardMarkup =
-    ReplyKeyboardMarkup(
-        flatMatrix { buttons.forEach { +it } },
-        resizeKeyboard,
-        oneTimeKeyboard,
-        inputFieldPlaceholder,
-        selective,
-        persistent,
-    )
+): ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+    flatMatrix { buttons.forEach { +it } },
+    resizeKeyboard,
+    oneTimeKeyboard,
+    inputFieldPlaceholder,
+    selective,
+    persistent,
+)

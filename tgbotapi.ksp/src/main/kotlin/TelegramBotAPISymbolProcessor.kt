@@ -34,14 +34,13 @@ class TelegramBotAPISymbolProcessor(
     @OptIn(KspExperimental::class, RiskFeature::class)
     override fun process(resolver: Resolver): List<KSAnnotated> {
         val classes = resolver.getSymbolsWithAnnotation(classCastsIncludedClassName.canonicalName).filterIsInstance<KSClassDeclaration>()
-        val classesRegexes: Map<KSClassDeclaration, Pair<Regex?, Regex?>> =
-            classes.mapNotNull {
-                it to (
-                    it.getAnnotationsByType(ClassCastsIncluded::class).firstNotNullOfOrNull {
-                        it.typesRegex.takeIf { it.isNotEmpty() }?.let(::Regex) to it.excludeRegex.takeIf { it.isNotEmpty() }?.let(::Regex)
-                    } ?: return@mapNotNull null
+        val classesRegexes: Map<KSClassDeclaration, Pair<Regex?, Regex?>> = classes.mapNotNull {
+            it to (
+                it.getAnnotationsByType(ClassCastsIncluded::class).firstNotNullOfOrNull {
+                    it.typesRegex.takeIf { it.isNotEmpty() }?.let(::Regex) to it.excludeRegex.takeIf { it.isNotEmpty() }?.let(::Regex)
+                } ?: return@mapNotNull null
                 )
-            }.toMap()
+        }.toMap()
         val classesSubtypes = mutableMapOf<KSClassDeclaration, MutableSet<KSClassDeclaration>>()
 
         resolver.getAllFiles().forEach {
@@ -101,37 +100,35 @@ class TelegramBotAPISymbolProcessor(
         }
         classes.forEach { fillWithSealeds(it) }
 
-        val fileSpec =
-            FileSpec.builder(
-                targetPackage,
-                outputFile,
-            ).apply {
-                addAnnotation(
-                    AnnotationSpec.builder(Suppress::class).apply {
-                        addMember("\"unused\"")
-                        addMember("\"RemoveRedundantQualifierName\"")
-                        addMember("\"RedundantVisibilityModifier\"")
-                        addMember("\"NOTHING_TO_INLINE\"")
-                        addMember("\"UNCHECKED_CAST\"")
-                        addMember("\"OPT_IN_USAGE\"")
-                        useSiteTarget(AnnotationSpec.UseSiteTarget.FILE)
-                    }.build(),
+        val fileSpec = FileSpec.builder(
+            targetPackage,
+            outputFile,
+        ).apply {
+            addAnnotation(
+                AnnotationSpec.builder(Suppress::class).apply {
+                    addMember("\"unused\"")
+                    addMember("\"RemoveRedundantQualifierName\"")
+                    addMember("\"RedundantVisibilityModifier\"")
+                    addMember("\"NOTHING_TO_INLINE\"")
+                    addMember("\"UNCHECKED_CAST\"")
+                    addMember("\"OPT_IN_USAGE\"")
+                    useSiteTarget(AnnotationSpec.UseSiteTarget.FILE)
+                }.build(),
+            )
+            classes.forEach {
+                fill(
+                    it,
+                    classesSubtypes.toMap(),
                 )
-                classes.forEach {
-                    fill(
-                        it,
-                        classesSubtypes.toMap(),
-                    )
-                }
-            }.build()
+            }
+        }.build()
 
         outputFolder ?.also {
             File(it, outputFile).apply {
-                val text =
-                    StringWriter().use {
-                        fileSpec.writeTo(it)
-                        it.toString()
-                    }
+                val text = StringWriter().use {
+                    fileSpec.writeTo(it)
+                    it.toString()
+                }
                 if (exists() == false || readText() != text) {
                     delete()
                     runCatching { parentFile.mkdirs() }

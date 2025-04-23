@@ -11,10 +11,9 @@ typealias PollAnswerMapper = suspend PollAnswer.() -> PollAnswer?
 suspend fun BehaviourContext.waitPollAnswers(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<PollAnswer> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        it.pollAnswerUpdateOrNull() ?.data.let(::listOfNotNull)
-    }
+): Flow<PollAnswer> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    it.pollAnswerUpdateOrNull() ?.data.let(::listOfNotNull)
+}

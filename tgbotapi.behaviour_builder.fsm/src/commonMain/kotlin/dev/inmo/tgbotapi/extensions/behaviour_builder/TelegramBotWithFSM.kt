@@ -56,30 +56,29 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>,
-): TelegramBot =
-    telegramBot(
-        token,
-        apiUrl,
-        testServer,
-        builder,
-    ).apply {
-        buildBehaviourWithFSMAndStartLongPolling(
-            upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
-            scope = scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler = defaultExceptionsHandler,
-            statesManager = statesManager,
-            presetHandlers = presetHandlers,
-            fallbackHandler = fallbackHandler,
-            onStateHandlingErrorHandler = onStateHandlingErrorHandler,
-            timeoutSeconds = timeoutSeconds,
-            autoDisableWebhooks = autoDisableWebhooks,
-            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-            subcontextInitialAction = subcontextInitialAction,
-            stateInitialAction = stateInitialAction,
-            block = block,
-        )
-    }
+): TelegramBot = telegramBot(
+    token,
+    apiUrl,
+    testServer,
+    builder,
+).apply {
+    buildBehaviourWithFSMAndStartLongPolling(
+        upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+        scope = scope ?: CoroutineScope(coroutineContext),
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        statesManager = statesManager,
+        presetHandlers = presetHandlers,
+        fallbackHandler = fallbackHandler,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+        timeoutSeconds = timeoutSeconds,
+        autoDisableWebhooks = autoDisableWebhooks,
+        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+        subcontextInitialAction = subcontextInitialAction,
+        stateInitialAction = stateInitialAction,
+        block = block,
+    )
+}
 
 /**
  * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithFSMAndStartLongPolling]. This

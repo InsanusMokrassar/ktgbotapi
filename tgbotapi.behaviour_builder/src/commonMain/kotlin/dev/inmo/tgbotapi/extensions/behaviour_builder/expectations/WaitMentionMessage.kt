@@ -23,26 +23,23 @@ fun CommonMessage<TextedContent>.isWithMention(user: User): Boolean = content.is
 /**
  * Uses [isWithMention] passing [username] as argument to take only messages with [username] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(username: Username) =
-    filter {
-        it.isWithMention(username)
-    }
+fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(username: Username) = filter {
+    it.isWithMention(username)
+}
 
 /**
  * Uses [isWithTextMention] passing [userId] as argument to take only messages with [userId] text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) =
-    filter {
-        it.isWithTextMention(userId)
-    }
+fun Flow<CommonMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) = filter {
+    it.isWithTextMention(userId)
+}
 
 /**
  * Uses [isWithMention] passing [user] as argument to take only messages with [user] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) =
-    filter {
-        it.isWithMention(user)
-    }
+fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filter {
+    it.isWithMention(user)
+}
 
 /**
  * Creates cold [Flow] with the messages with [TextedContent] where [username] has been mentioned

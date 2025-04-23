@@ -91,25 +91,23 @@ inline val Message.entities: TextSourcesList?
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.caption: String?
-    get() =
-        whenContentMessage {
-            if (it.content !is TextContent) {
-                it.content.asTextedInput() ?.text
-            } else {
-                null
-            }
+    get() = whenContentMessage {
+        if (it.content !is TextContent) {
+            it.content.asTextedInput() ?.text
+        } else {
+            null
         }
+    }
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.caption_entities: TextSourcesList?
-    get() =
-        whenContentMessage {
-            if (it.content !is TextContent) {
-                it.content.asTextedInput() ?.textSources
-            } else {
-                null
-            }
+    get() = whenContentMessage {
+        if (it.content !is TextContent) {
+            it.content.asTextedInput() ?.textSources
+        } else {
+            null
         }
+    }
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.audio: AudioFile?
@@ -209,10 +207,9 @@ inline val Message.migrate_to_chat_id: IdChatIdentifier?
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.migrate_from_chat_id: IdChatIdentifier?
-    get() =
-        asChatEventMessage() ?.chatEvent ?.let {
-            it ?.asSupergroupChatCreated() ?.migratedFrom ?: it ?.asMigratedToSupergroup() ?.migratedFrom
-        }
+    get() = asChatEventMessage() ?.chatEvent ?.let {
+        it ?.asSupergroupChatCreated() ?.migratedFrom ?: it ?.asMigratedToSupergroup() ?.migratedFrom
+    }
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.pinned_message: Message?

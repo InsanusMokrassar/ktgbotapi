@@ -20,14 +20,13 @@ import kotlinx.coroutines.flow.filter
  * * Any [dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource] with [dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource.user]
  * with the same [username]
  */
-fun TextedContent.isWithMention(username: Username) =
-    textSources.any {
-        it.whenMentionTextSource {
-            it.username == username
-        } ?: it.whenTextMentionTextSource {
-            it.user.username == username
-        } ?: false
-    }
+fun TextedContent.isWithMention(username: Username) = textSources.any {
+    it.whenMentionTextSource {
+        it.username == username
+    } ?: it.whenTextMentionTextSource {
+        it.user.username == username
+    } ?: false
+}
 
 /**
  * Check, that [TextedContent.textSources] contains:
@@ -35,43 +34,38 @@ fun TextedContent.isWithMention(username: Username) =
  * * Any [dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource] with [dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource.user]
  * with the same [userId]
  */
-fun TextedContent.isWithTextMention(userId: UserId) =
-    textSources.any {
-        it.whenTextMentionTextSource {
-            it.user.id == userId
-        } ?: false
-    }
+fun TextedContent.isWithTextMention(userId: UserId) = textSources.any {
+    it.whenTextMentionTextSource {
+        it.user.id == userId
+    } ?: false
+}
 
 /**
  * Uses [isWithMention] with [user] [Username] (is presented) or [isWithTextMention] with [user] [UserId] to determine
  * user mentioning in [this] [CommonMessage]
  */
-fun TextedContent.isWithMention(user: User): Boolean =
-    user.username ?.let { username -> isWithMention(username) } == true || isWithTextMention(user.id)
+fun TextedContent.isWithMention(user: User): Boolean = user.username ?.let { username -> isWithMention(username) } == true || isWithTextMention(user.id)
 
 /**
  * Uses [isWithMention] passing [username] as argument to take only messages with [username] mentions or text mentions
  */
-fun Flow<TextedContent>.filterMentions(username: Username) =
-    filter {
-        it.isWithMention(username)
-    }
+fun Flow<TextedContent>.filterMentions(username: Username) = filter {
+    it.isWithMention(username)
+}
 
 /**
  * Uses [isWithTextMention] passing [userId] as argument to take only messages with [userId] text mentions
  */
-fun Flow<TextedContent>.filterTextMentions(userId: UserId) =
-    filter {
-        it.isWithTextMention(userId)
-    }
+fun Flow<TextedContent>.filterTextMentions(userId: UserId) = filter {
+    it.isWithTextMention(userId)
+}
 
 /**
  * Uses [isWithMention] passing [user] as argument to take only messages with [user] mentions or text mentions
  */
-fun Flow<TextedContent>.filterMentions(user: User) =
-    filter {
-        it.isWithMention(user)
-    }
+fun Flow<TextedContent>.filterMentions(user: User) = filter {
+    it.isWithMention(user)
+}
 
 /**
  * Creates cold [Flow] with the messages with [TextedContent] where [username] has been mentioned

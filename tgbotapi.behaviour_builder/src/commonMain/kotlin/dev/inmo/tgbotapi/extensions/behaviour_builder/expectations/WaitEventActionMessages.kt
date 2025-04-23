@@ -33,13 +33,12 @@ import kotlinx.coroutines.flow.filter
 suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEventsMessages(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<ChatEventMessage<O>> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>().let(::listOfNotNull)
-    }
+): Flow<ChatEventMessage<O>> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>().let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChannelEventsMessages(
     initRequest: Request<*>? = null,

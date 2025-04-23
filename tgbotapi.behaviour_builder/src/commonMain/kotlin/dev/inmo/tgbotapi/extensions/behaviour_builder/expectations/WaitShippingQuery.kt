@@ -11,10 +11,9 @@ typealias ShippingQueryMapper = suspend ShippingQuery.() -> ShippingQuery?
 suspend fun BehaviourContext.waitShippingQueries(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<ShippingQuery> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.shippingQueryUpdateOrNull() ?.data).let(::listOfNotNull)
-    }
+): Flow<ShippingQuery> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.shippingQueryUpdateOrNull() ?.data).let(::listOfNotNull)
+}

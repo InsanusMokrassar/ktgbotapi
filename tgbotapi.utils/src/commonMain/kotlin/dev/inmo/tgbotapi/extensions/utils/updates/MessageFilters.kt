@@ -23,10 +23,9 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
  * @return true if this [CommonMessage] contains any commands. False otherwise.
  * @see hasNoCommands
  */
-fun CommonMessage<*>.hasCommands(): Boolean =
-    withContentOrNull<TextContent>() ?.content ?.textSources ?.any {
-        it is BotCommandTextSource
-    } ?: false
+fun CommonMessage<*>.hasCommands(): Boolean = withContentOrNull<TextContent>() ?.content ?.textSources ?.any {
+    it is BotCommandTextSource
+} ?: false
 
 /**
  * A predicate to test whether a message contains any commands in its body.

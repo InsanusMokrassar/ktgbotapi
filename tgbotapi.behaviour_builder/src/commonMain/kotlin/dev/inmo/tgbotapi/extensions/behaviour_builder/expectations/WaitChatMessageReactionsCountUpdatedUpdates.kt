@@ -9,10 +9,9 @@ import kotlinx.coroutines.flow.Flow
 suspend inline fun BehaviourContext.waitChatMessageReactionsCountUpdated(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<ChatMessageReactionsCountUpdated> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.chatMessageReactionsCountUpdatedUpdateOrNull() ?.data).let(::listOfNotNull)
-    }
+): Flow<ChatMessageReactionsCountUpdated> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.chatMessageReactionsCountUpdatedUpdateOrNull() ?.data).let(::listOfNotNull)
+}

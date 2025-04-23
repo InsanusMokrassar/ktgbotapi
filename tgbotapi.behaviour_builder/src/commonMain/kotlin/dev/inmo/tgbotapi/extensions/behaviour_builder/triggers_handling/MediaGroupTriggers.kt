@@ -47,8 +47,7 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroup(
     initialFilter: SimpleFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<MediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<MediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<MediaGroupPartContent>>,
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -67,11 +66,9 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroup(
  */
 suspend fun <BC : BehaviourContext> BC.onPlaylist(
     initialFilter: SimpleFilter<MediaGroupContent<AudioMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<AudioMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<AudioMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<AudioMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<AudioMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<AudioMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<AudioMediaGroupPartContent>>,
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -90,11 +87,9 @@ suspend fun <BC : BehaviourContext> BC.onPlaylist(
  */
 suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
     initialFilter: SimpleFilter<MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<DocumentMediaGroupPartContent>, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<DocumentMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<DocumentMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<DocumentMediaGroupPartContent>>,
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -113,11 +108,9 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
  */
 suspend fun <BC : BehaviourContext> BC.onVisualGallery(
     initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>,
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -136,11 +129,9 @@ suspend fun <BC : BehaviourContext> BC.onVisualGallery(
  */
 suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
     initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupContent<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>,
 ) = onVisualGallery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 

@@ -12,13 +12,12 @@ import kotlinx.coroutines.flow.Flow
 suspend inline fun <reified O : ChatMessageReactionUpdated> BehaviourContext.waitChatMessageReactionUpdated(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.chatMessageReactionUpdatedUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.chatMessageReactionUpdatedUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChatMessageReactionUpdatedByUser(
     initRequest: Request<*>? = null,

@@ -19,16 +19,15 @@ typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() ->
 suspend inline fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<CommonMessage<MessageContent>> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        if (it !is BaseSentMessageUpdate) {
-            return@expectFlow emptyList()
-        }
-        listOfNotNull((it.data as? CommonMessage<*>))
+): Flow<CommonMessage<MessageContent>> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    if (it !is BaseSentMessageUpdate) {
+        return@expectFlow emptyList()
     }
+    listOfNotNull((it.data as? CommonMessage<*>))
+}
 
 inline fun <reified T : MessageContent> Flow<CommonMessage<MessageContent>>.mapWithContent() = mapNotNull { it.withContentOrNull<T>() }
 

@@ -14,13 +14,12 @@ typealias PollMapper<T> = suspend T.() -> T?
 suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+}
 
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot

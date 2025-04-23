@@ -19,13 +19,12 @@ typealias ChatMemberUpdatedMapper<T> = suspend T.() -> T?
 suspend inline fun <reified O : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<ChatMemberUpdated> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it as? O) ?.data.let(::listOfNotNull)
-    }
+): Flow<ChatMemberUpdated> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it as? O) ?.data.let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChatMemberUpdated(
     initRequest: Request<*>? = null,

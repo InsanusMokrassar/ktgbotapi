@@ -9,10 +9,9 @@ import kotlinx.coroutines.flow.Flow
 suspend fun BehaviourContext.waitDeletedBusinessMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<BusinessMessagesDeleted> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.deletedBusinessMessageUpdateOrNull() ?.data).let(::listOfNotNull)
-    }
+): Flow<BusinessMessagesDeleted> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.deletedBusinessMessageUpdateOrNull() ?.data).let(::listOfNotNull)
+}

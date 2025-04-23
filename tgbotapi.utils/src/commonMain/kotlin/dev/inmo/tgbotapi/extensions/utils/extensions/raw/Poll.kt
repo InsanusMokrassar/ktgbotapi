@@ -15,12 +15,11 @@ val Poll.total_voter_count: Int
 
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.type: String
-    get() =
-        when (this) {
-            is RegularPoll -> "regular"
-            is UnknownPollType -> raw!!.jsonObject["type"]!!.jsonPrimitive.content
-            is QuizPoll -> "quiz"
-        }
+    get() = when (this) {
+        is RegularPoll -> "regular"
+        is UnknownPollType -> raw!!.jsonObject["type"]!!.jsonPrimitive.content
+        is QuizPoll -> "quiz"
+    }
 
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.allows_multiple_answers: Boolean

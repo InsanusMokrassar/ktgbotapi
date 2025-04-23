@@ -9,10 +9,9 @@ open class HandleableTriggersHolder<T>(
 ) {
     protected val commandsMutex = Mutex()
     protected val handleableCounts = mutableMapOf<T, Int>()
-    protected val _handleable =
-        mutableListOf<T>().also {
-            it.addAll(preset)
-        }
+    protected val _handleable = mutableListOf<T>().also {
+        it.addAll(preset)
+    }
     val handleable: List<T>
         get() = _handleable.toList()
 
@@ -41,10 +40,9 @@ suspend fun <T, R> HandleableTriggersHolder<T>.doWithRegistration(
     block: suspend () -> R,
 ): R {
     registerHandleable(data)
-    val result =
-        runCatchingSafely {
-            block()
-        }
+    val result = runCatchingSafely {
+        block()
+    }
     unregisterHandleable(data)
     return result.getOrThrow()
 }

@@ -45,11 +45,10 @@ fun Route.includeWebhookHandlingInRoute(
     post {
         try {
             runCatchingSafely {
-                val update =
-                    nonstrictJsonFormat.decodeFromString(
-                        UpdateDeserializationStrategy,
-                        call.receiveText(),
-                    )
+                val update = nonstrictJsonFormat.decodeFromString(
+                    UpdateDeserializationStrategy,
+                    call.receiveText(),
+                )
                 transformer(update)
             }.onSuccess {
                 call.respond(HttpStatusCode.OK)
@@ -106,46 +105,44 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
     block: UpdateReceiver<Update>,
-): EmbeddedServer<TEngine, TConfiguration> =
-    embeddedServer(
-        factory = engineFactory,
-        environment =
-            applicationEnvironment {
-                additionalApplicationEnvironmentConfigurator()
-            },
-        configure = {
-            privateKeyConfig?.let {
-                sslConnector(
-                    privateKeyConfig.keyStore,
-                    privateKeyConfig.aliasName,
-                    privateKeyConfig::keyStorePassword,
-                    privateKeyConfig::aliasPassword,
-                ) {
-                    host = listenHost
-                    port = listenPort
-                }
-            } ?: connector {
+): EmbeddedServer<TEngine, TConfiguration> = embeddedServer(
+    factory = engineFactory,
+    environment = applicationEnvironment {
+        additionalApplicationEnvironmentConfigurator()
+    },
+    configure = {
+        privateKeyConfig?.let {
+            sslConnector(
+                privateKeyConfig.keyStore,
+                privateKeyConfig.aliasName,
+                privateKeyConfig::keyStorePassword,
+                privateKeyConfig::aliasPassword,
+            ) {
                 host = listenHost
                 port = listenPort
             }
+        } ?: connector {
+            host = listenHost
+            port = listenPort
+        }
 
-            additionalEngineConfigurator()
-        },
-        module = {
-            routing {
-                listenRoute?.also {
-                    createRouteFromPath(it).includeWebhookHandlingInRoute(
-                        scope,
-                        exceptionsHandler,
-                        mediaGroupsDebounceTimeMillis,
-                        block,
-                    )
-                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
-            }
-        },
-    ).also {
-        it.start(false)
-    }
+        additionalEngineConfigurator()
+    },
+    module = {
+        routing {
+            listenRoute?.also {
+                createRouteFromPath(it).includeWebhookHandlingInRoute(
+                    scope,
+                    exceptionsHandler,
+                    mediaGroupsDebounceTimeMillis,
+                    block,
+                )
+            } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
+        }
+    },
+).also {
+    it.start(false)
+}
 
 /**
  * Setting up ktor server, set webhook info via [SetWebhookRequest] request.
@@ -175,22 +172,21 @@ suspend fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Con
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
     block: UpdateReceiver<Update>,
-): EmbeddedServer<TEngine, TConfiguration> =
-    try {
-        execute(setWebhookRequest)
-        startListenWebhooks(
-            listenPort,
-            engineFactory,
-            exceptionsHandler,
-            listenHost,
-            listenRoute,
-            privateKeyConfig,
-            scope,
-            mediaGroupsDebounceTimeMillis,
-            additionalApplicationEnvironmentConfigurator,
-            additionalEngineConfigurator,
-            block,
-        )
-    } catch (e: Exception) {
-        throw e
-    }
+): EmbeddedServer<TEngine, TConfiguration> = try {
+    execute(setWebhookRequest)
+    startListenWebhooks(
+        listenPort,
+        engineFactory,
+        exceptionsHandler,
+        listenHost,
+        listenRoute,
+        privateKeyConfig,
+        scope,
+        mediaGroupsDebounceTimeMillis,
+        additionalApplicationEnvironmentConfigurator,
+        additionalEngineConfigurator,
+        block,
+    )
+} catch (e: Exception) {
+    throw e
+}

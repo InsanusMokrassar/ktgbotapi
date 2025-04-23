@@ -309,8 +309,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedMediaCollection(
     initialFilter: CommonMessageFilter<MediaCollectionContent<TelegramMediaFile>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaCollectionMessage<TelegramMediaFile>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in MediaCollectionMessage<TelegramMediaFile>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaCollectionMessage<TelegramMediaFile>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaCollectionMessage<TelegramMediaFile>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaCollectionMessage<TelegramMediaFile>>,
 ) = onEditedContent(
     initialFilter,

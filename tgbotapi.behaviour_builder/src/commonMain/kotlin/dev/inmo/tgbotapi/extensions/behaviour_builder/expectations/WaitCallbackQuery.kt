@@ -16,13 +16,12 @@ typealias CallbackQueryMapper<T> = suspend T.() -> T?
 suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.callbackQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.callbackQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitDataCallbackQuery(
     initRequest: Request<*>? = null,

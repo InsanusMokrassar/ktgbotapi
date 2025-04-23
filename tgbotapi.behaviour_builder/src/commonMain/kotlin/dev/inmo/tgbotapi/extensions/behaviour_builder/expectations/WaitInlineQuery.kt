@@ -14,13 +14,12 @@ typealias InlineQueryMapper<T> = suspend T.() -> T?
 suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitAnyInlineQuery(
     initRequest: Request<*>? = null,

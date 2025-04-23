@@ -7,24 +7,20 @@ import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import korlibs.time.DateTime
 import korlibs.time.TimeSpan
 
-fun closePollExactAt(dateTime: DateTime) =
-    ExactScheduledCloseInfo(
-        dateTime,
-    )
+fun closePollExactAt(dateTime: DateTime) = ExactScheduledCloseInfo(
+    dateTime,
+)
 
-fun closePollExactAfter(seconds: LongSeconds) =
-    closePollExactAt(
-        DateTime.now() + TimeSpan(seconds.toDouble() * 1000L),
-    )
+fun closePollExactAfter(seconds: LongSeconds) = closePollExactAt(
+    DateTime.now() + TimeSpan(seconds.toDouble() * 1000L),
+)
 
-fun closePollExactAfter(seconds: Seconds) =
-    closePollExactAfter(
-        seconds.toLong(),
-    )
+fun closePollExactAfter(seconds: Seconds) = closePollExactAfter(
+    seconds.toLong(),
+)
 
-fun closePollAfter(seconds: LongSeconds) =
-    ApproximateScheduledCloseInfo(
-        TimeSpan(seconds.toDouble() * 1000L),
-    )
+fun closePollAfter(seconds: LongSeconds) = ApproximateScheduledCloseInfo(
+    TimeSpan(seconds.toDouble() * 1000L),
+)
 
 fun closePollAfter(seconds: Seconds) = closePollAfter(seconds.toLong())

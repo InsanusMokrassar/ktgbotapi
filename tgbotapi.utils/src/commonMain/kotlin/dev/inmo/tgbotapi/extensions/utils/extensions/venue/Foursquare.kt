@@ -7,10 +7,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 val Venue.foursquare: Foursquare?
-    get() =
-        foursquareId?.let {
-            Foursquare(it, foursquareType)
-        }
+    get() = foursquareId?.let {
+        Foursquare(it, foursquareType)
+    }
 
 fun Venue(
     location: StaticLocation,

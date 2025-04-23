@@ -115,13 +115,12 @@ fun makeLinkToMessage(
     chatId: RawChatId,
     messageId: MessageId,
     threadId: MessageThreadId? = null,
-): String =
-    chatId.toString().replace(
-        linkIdRedundantPartRegex,
-        "",
-    ).let { bareId ->
-        "$internalLinkBeginning/c/$bareId/${threadId ?.let { "$it/" } ?: ""}$messageId"
-    }
+): String = chatId.toString().replace(
+    linkIdRedundantPartRegex,
+    "",
+).let { bareId ->
+    "$internalLinkBeginning/c/$bareId/${threadId ?.let { "$it/" } ?: ""}$messageId"
+}
 
 fun makeLinkToMessage(
     chatId: IdChatIdentifier,
@@ -150,11 +149,10 @@ fun makeLinkToMessage(
  * @see makeLinkToMessage
  */
 val Message.messageLink: String?
-    get() =
-        makeLinkToMessage(
-            chat,
-            messageId,
-        )
+    get() = makeLinkToMessage(
+        chat,
+        messageId,
+    )
 
 /**
  * Link which can be used as by any user to get access to [Chat]. Returns null in case when there are no

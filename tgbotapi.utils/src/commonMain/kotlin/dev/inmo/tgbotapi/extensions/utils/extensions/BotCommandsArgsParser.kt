@@ -23,18 +23,17 @@ fun List<TextSource>.parseCommandsWithArgs(
     var currentBotCommandSource: BotCommandTextSource? = null
     var currentArgs = ""
 
-    fun includeCurrent() =
-        currentBotCommandSource?.let {
-            currentArgs = currentArgs.trim()
-            result[it.command] =
-                if (currentArgs.isNotEmpty()) {
-                    currentArgs.split(argsSeparator).toTypedArray()
-                } else {
-                    emptyArray()
-                }
-            currentArgs = ""
-            currentBotCommandSource = null
-        }
+    fun includeCurrent() = currentBotCommandSource?.let {
+        currentArgs = currentArgs.trim()
+        result[it.command] =
+            if (currentArgs.isNotEmpty()) {
+                currentArgs.split(argsSeparator).toTypedArray()
+            } else {
+                emptyArray()
+            }
+        currentArgs = ""
+        currentBotCommandSource = null
+    }
 
     for (textSource in this) {
         if (textSource is BotCommandTextSource) {
@@ -52,20 +51,17 @@ fun List<TextSource>.parseCommandsWithArgs(
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun TextedWithTextSources.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) =
-    textSources?.parseCommandsWithArgs(argsSeparator) ?: emptyMap()
+fun TextedWithTextSources.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) = textSources?.parseCommandsWithArgs(argsSeparator) ?: emptyMap()
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun ContentMessage<TextContent>.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) =
-    content.parseCommandsWithArgs(argsSeparator)
+fun ContentMessage<TextContent>.parseCommandsWithArgs(argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex) = content.parseCommandsWithArgs(argsSeparator)
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun List<TextSource>.parseCommandsWithArgs(argsSeparator: String): MutableMap<String, Array<String>> =
-    parseCommandsWithArgs(Regex(argsSeparator))
+fun List<TextSource>.parseCommandsWithArgs(argsSeparator: String): MutableMap<String, Array<String>> = parseCommandsWithArgs(Regex(argsSeparator))
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command

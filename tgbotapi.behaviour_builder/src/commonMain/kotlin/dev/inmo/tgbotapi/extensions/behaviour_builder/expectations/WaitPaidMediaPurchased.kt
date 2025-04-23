@@ -10,34 +10,31 @@ import kotlinx.coroutines.flow.Flow
 suspend fun BehaviourContext.waitPaidMediaPurchased(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<PaidMediaPurchased> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.paidMediaPurchasedUpdateOrNull() ?.data).let(::listOfNotNull)
-    }
+): Flow<PaidMediaPurchased> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.paidMediaPurchasedUpdateOrNull() ?.data).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitPaidMediaPurchased(
     paidMediaPayloadRegex: Regex,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<PaidMediaPurchased> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.paidMediaPurchasedUpdateOrNull() ?.data ?.takeIf { paidMediaPayloadRegex.matches(it.payload.string) }).let(::listOfNotNull)
-    }
+): Flow<PaidMediaPurchased> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.paidMediaPurchasedUpdateOrNull() ?.data ?.takeIf { paidMediaPayloadRegex.matches(it.payload.string) }).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitPaidMediaPurchased(
     paidMediaPayload: PaidMediaPayload,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<PaidMediaPurchased> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.paidMediaPurchasedUpdateOrNull() ?.data ?.takeIf { it.payload == paidMediaPayload }).let(::listOfNotNull)
-    }
+): Flow<PaidMediaPurchased> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.paidMediaPurchasedUpdateOrNull() ?.data ?.takeIf { it.payload == paidMediaPayload }).let(::listOfNotNull)
+}

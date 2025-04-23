@@ -14,16 +14,15 @@ import kotlinx.coroutines.flow.Flow
 suspend inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupMessagesWaiter(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<MediaGroupMessage<T>> =
-    flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
-        update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
-            if (message.content.group.all { it is T }) {
-                listOf(message as MediaGroupMessage<T>)
-            } else {
-                null
-            }
-        } ?: emptyList()
-    }
+): Flow<MediaGroupMessage<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
+    update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
+        if (message.content.group.all { it is T }) {
+            listOf(message as MediaGroupMessage<T>)
+        } else {
+            null
+        }
+    } ?: emptyList()
+}
 
 suspend fun BehaviourContext.waitMediaGroupMessages(
     initRequest: Request<*>? = null,

@@ -107,8 +107,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
  * @see BehaviourContextWithFSM.add
  */
 @Suppress("MemberVisibilityCanBePrivate")
-inline fun <reified I : O, O : State> BehaviourContextWithFSM<O>.onStateOrSubstate(handler: BehaviourWithFSMStateHandler<I, O>) =
-    add(I::class, strict = false, handler)
+inline fun <reified I : O, O : State> BehaviourContextWithFSM<O>.onStateOrSubstate(handler: BehaviourWithFSMStateHandler<I, O>) = add(I::class, strict = false, handler)
 
 /**
  * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
@@ -119,8 +118,7 @@ inline fun <reified I : O, O : State> BehaviourContextWithFSM<O>.onStateOrSubsta
  * @see BehaviourContextWithFSM.addStrict
  */
 @Suppress("MemberVisibilityCanBePrivate")
-inline fun <reified I : O, O : State> BehaviourContextWithFSM<O>.strictlyOn(handler: BehaviourWithFSMStateHandler<I, O>) =
-    addStrict(I::class, handler)
+inline fun <reified I : O, O : State> BehaviourContextWithFSM<O>.strictlyOn(handler: BehaviourWithFSMStateHandler<I, O>) = addStrict(I::class, handler)
 
 /**
  * Default realization of [BehaviourContextWithFSM]. It uses [behaviourContext] as a base for this object as
@@ -153,10 +151,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
         return launchStateHandling(state, handlers, onStateHandlingErrorHandler)
     }
 
-    private fun getSubContext(context: Any) =
-        updatesFlows.getOrPut(context) {
-            createSubContext()
-        }
+    private fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
+        createSubContext()
+    }
 
     override suspend fun StatesMachine<in T>.handleState(state: T): T? {
         return getSubContext(
@@ -180,61 +177,60 @@ class DefaultBehaviourContextWithFSM<T : State>(
         actualHandlersList = additionalHandlers + handlers
     }
 
-    override fun start(scope: CoroutineScope): Job =
-        scope.launchSafelyWithoutExceptions {
-            val statePerformer: suspend (T) -> Unit = { state: T ->
-                val newState = getSubContext(state.context).launchStateHandling(state, actualHandlersList)
-                if (newState != null) {
-                    statesManager.update(state, newState)
-                } else {
-                    statesManager.endChain(state)
-                }
+    override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
+        val statePerformer: suspend (T) -> Unit = { state: T ->
+            val newState = getSubContext(state.context).launchStateHandling(state, actualHandlersList)
+            if (newState != null) {
+                statesManager.update(state, newState)
+            } else {
+                statesManager.endChain(state)
             }
+        }
 
-            fun Job.enableRemoveOnCompletion(state: T) {
-                invokeOnCompletion {
-                    launchSafelyWithoutExceptions {
-                        statesJobsMutex.withLock {
-                            if (this@enableRemoveOnCompletion === statesJobs[state]) {
-                                statesJobs.remove(state)
-                            }
+        fun Job.enableRemoveOnCompletion(state: T) {
+            invokeOnCompletion {
+                launchSafelyWithoutExceptions {
+                    statesJobsMutex.withLock {
+                        if (this@enableRemoveOnCompletion === statesJobs[state]) {
+                            statesJobs.remove(state)
                         }
                     }
                 }
             }
+        }
 
-            statesManager.onStartChain.subscribeSafelyWithoutExceptions(this) {
-                statesJobsMutex.withLock {
-                    runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+        statesManager.onStartChain.subscribeSafelyWithoutExceptions(this) {
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
 
-                    statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
-                }
-            }
-            statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
-                statesJobsMutex.withLock {
-                    runCatchingSafely { statesJobs.remove(it) ?.cancel() }
-                }
-                updatesFlows.remove(it.context) ?.cancel()
-            }
-            statesManager.onChainStateUpdated.subscribeSafelyWithoutExceptions(this) { (old, new) ->
-                statesJobsMutex.withLock {
-                    runCatchingSafely { statesJobs.remove(old) ?.cancel() }
-                    runCatchingSafely { statesJobs.remove(new) ?.cancel() }
-                    statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(new) }
-                }
-                if (old.context != new.context) {
-                    updatesFlows.remove(old.context) ?.cancel()
-                }
-            }
-
-            statesManager.getActiveStates().forEach {
-                statesJobsMutex.withLock {
-                    runCatchingSafely { statesJobs.remove(it) ?.cancel() }
-
-                    statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
-                }
+                statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
             }
         }
+        statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+            }
+            updatesFlows.remove(it.context) ?.cancel()
+        }
+        statesManager.onChainStateUpdated.subscribeSafelyWithoutExceptions(this) { (old, new) ->
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(old) ?.cancel() }
+                runCatchingSafely { statesJobs.remove(new) ?.cancel() }
+                statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(new) }
+            }
+            if (old.context != new.context) {
+                updatesFlows.remove(old.context) ?.cancel()
+            }
+        }
+
+        statesManager.getActiveStates().forEach {
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+
+                statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
+            }
+        }
+    }
 
     /**
      * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
@@ -269,24 +265,22 @@ class DefaultBehaviourContextWithFSM<T : State>(
         upstreamUpdatesFlow: Flow<Update>?,
         triggersHolder: TriggersHolder,
         subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>,
-    ): DefaultBehaviourContextWithFSM<T> =
-        BehaviourContextWithFSM(
-            behaviourContext =
-                behaviourContext.copy(
-                    bot = bot,
-                    scope = scope,
-                    broadcastChannelsSize = broadcastChannelsSize,
-                    onBufferOverflow = onBufferOverflow,
-                    upstreamUpdatesFlow = upstreamUpdatesFlow,
-                    subcontextInitialAction = subcontextInitialAction,
-                    triggersHolder = triggersHolder,
-                ),
-            handlers = handlers,
-            statesManager = statesManager,
-            fallbackHandler = fallbackHandler,
-            onStateHandlingErrorHandler = onStateHandlingErrorHandler,
-            stateInitialAction = stateInitialAction,
-        )
+    ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+        behaviourContext = behaviourContext.copy(
+            bot = bot,
+            scope = scope,
+            broadcastChannelsSize = broadcastChannelsSize,
+            onBufferOverflow = onBufferOverflow,
+            upstreamUpdatesFlow = upstreamUpdatesFlow,
+            subcontextInitialAction = subcontextInitialAction,
+            triggersHolder = triggersHolder,
+        ),
+        handlers = handlers,
+        statesManager = statesManager,
+        fallbackHandler = fallbackHandler,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+        stateInitialAction = stateInitialAction,
+    )
 
     override fun copy(
         bot: TelegramBot,
@@ -298,24 +292,22 @@ class DefaultBehaviourContextWithFSM<T : State>(
         triggersHolder: TriggersHolder,
         stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T>,
         onStateHandlingErrorHandler: StateHandlingErrorHandler<T>,
-    ): BehaviourContextWithFSM<T> =
-        BehaviourContextWithFSM(
-            behaviourContext =
-                behaviourContext.copy(
-                    bot = bot,
-                    scope = scope,
-                    broadcastChannelsSize = broadcastChannelsSize,
-                    onBufferOverflow = onBufferOverflow,
-                    upstreamUpdatesFlow = upstreamUpdatesFlow,
-                    subcontextInitialAction = subcontextInitialAction,
-                    triggersHolder = triggersHolder,
-                ),
-            handlers = handlers,
-            statesManager = statesManager,
-            fallbackHandler = fallbackHandler,
-            stateInitialAction = stateInitialAction,
-            onStateHandlingErrorHandler = onStateHandlingErrorHandler,
-        )
+    ): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+        behaviourContext = behaviourContext.copy(
+            bot = bot,
+            scope = scope,
+            broadcastChannelsSize = broadcastChannelsSize,
+            onBufferOverflow = onBufferOverflow,
+            upstreamUpdatesFlow = upstreamUpdatesFlow,
+            subcontextInitialAction = subcontextInitialAction,
+            triggersHolder = triggersHolder,
+        ),
+        handlers = handlers,
+        statesManager = statesManager,
+        fallbackHandler = fallbackHandler,
+        stateInitialAction = stateInitialAction,
+        onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+    )
 
     fun fsm() = this
 }

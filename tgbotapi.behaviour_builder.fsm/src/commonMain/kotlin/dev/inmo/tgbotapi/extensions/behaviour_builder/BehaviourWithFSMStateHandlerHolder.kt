@@ -29,17 +29,15 @@ class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
     /**
      * Handling of state :)
      */
-    override suspend fun BehaviourContextWithFSM<in O>.handleState(state: O): O? =
-        with(delegateTo) {
-            @Suppress("UNCHECKED_CAST")
-            handleState(state as I)
-        }
+    override suspend fun BehaviourContextWithFSM<in O>.handleState(state: O): O? = with(delegateTo) {
+        @Suppress("UNCHECKED_CAST")
+        handleState(state as I)
+    }
 
-    override suspend fun StatesMachine<in O>.handleState(state: O): O? =
-        with(delegateTo) {
-            @Suppress("UNCHECKED_CAST")
-            handleState(state as I)
-        }
+    override suspend fun StatesMachine<in O>.handleState(state: O): O? = with(delegateTo) {
+        @Suppress("UNCHECKED_CAST")
+        handleState(state as I)
+    }
 }
 
 inline fun <reified I : O, O : State> BehaviourWithFSMStateHandlerHolder(

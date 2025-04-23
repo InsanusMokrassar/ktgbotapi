@@ -52,9 +52,8 @@ data class SlotMachineResult(
     val rightReel = right.asSlotMachineReelImage
 }
 
-fun Dice.calculateSlotMachineResult() =
-    if (animationType == SlotMachineDiceAnimationType) {
-        SlotMachineResult(value - 1)
-    } else {
-        null
-    }
+fun Dice.calculateSlotMachineResult() = if (animationType == SlotMachineDiceAnimationType) {
+    SlotMachineResult(value - 1)
+} else {
+    null
+}

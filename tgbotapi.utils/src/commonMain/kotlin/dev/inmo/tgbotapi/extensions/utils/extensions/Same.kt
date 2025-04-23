@@ -18,11 +18,10 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
  * @return true in case if [this] message is placed in the chat with id == [chatId]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithPreviewChat.sameChat(chatId: ChatIdentifier) =
-    chat.id == chatId || (
-        chatId is Username && chat.whenUsernameChat {
-            it.username == chatId
-        } ?: false
+inline fun WithPreviewChat.sameChat(chatId: ChatIdentifier) = chat.id == chatId || (
+    chatId is Username && chat.whenUsernameChat {
+        it.username == chatId
+    } ?: false
     )
 
 /**

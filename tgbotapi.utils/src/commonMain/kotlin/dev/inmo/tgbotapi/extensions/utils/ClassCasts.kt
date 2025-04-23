@@ -229,8 +229,7 @@ inline fun Chat.asPossiblyPremiumChat(): PossiblyPremiumChat? = this as? Possibl
 inline fun Chat.requirePossiblyPremiumChat(): PossiblyPremiumChat = this as PossiblyPremiumChat
 
 @PreviewFeature
-inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) =
-    asAbleToAddInAttachmentMenuChat()?.let(block)
+inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = asAbleToAddInAttachmentMenuChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat? = this as? AbleToAddInAttachmentMenuChat
@@ -248,8 +247,7 @@ inline fun CallbackQuery.asDataCallbackQuery(): DataCallbackQuery? = this as? Da
 inline fun CallbackQuery.requireDataCallbackQuery(): DataCallbackQuery = this as DataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T) =
-    asGameShortNameCallbackQuery()?.let(block)
+inline fun <T> CallbackQuery.whenGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T) = asGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asGameShortNameCallbackQuery(): GameShortNameCallbackQuery? = this as? GameShortNameCallbackQuery
@@ -258,8 +256,7 @@ inline fun CallbackQuery.asGameShortNameCallbackQuery(): GameShortNameCallbackQu
 inline fun CallbackQuery.requireGameShortNameCallbackQuery(): GameShortNameCallbackQuery = this as GameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T) =
-    asInlineMessageIdCallbackQuery()?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T) = asInlineMessageIdCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asInlineMessageIdCallbackQuery(): InlineMessageIdCallbackQuery? = this as? InlineMessageIdCallbackQuery
@@ -268,27 +265,22 @@ inline fun CallbackQuery.asInlineMessageIdCallbackQuery(): InlineMessageIdCallba
 inline fun CallbackQuery.requireInlineMessageIdCallbackQuery(): InlineMessageIdCallbackQuery = this as InlineMessageIdCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T) =
-    asInlineMessageIdDataCallbackQuery()?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T) = asInlineMessageIdDataCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asInlineMessageIdDataCallbackQuery(): InlineMessageIdDataCallbackQuery? = this as? InlineMessageIdDataCallbackQuery
 
 @PreviewFeature
-inline fun CallbackQuery.requireInlineMessageIdDataCallbackQuery(): InlineMessageIdDataCallbackQuery =
-    this as InlineMessageIdDataCallbackQuery
+inline fun CallbackQuery.requireInlineMessageIdDataCallbackQuery(): InlineMessageIdDataCallbackQuery = this as InlineMessageIdDataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T) =
-    asInlineMessageIdGameShortNameCallbackQuery()?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T) = asInlineMessageIdGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
-inline fun CallbackQuery.asInlineMessageIdGameShortNameCallbackQuery(): InlineMessageIdGameShortNameCallbackQuery? =
-    this as? InlineMessageIdGameShortNameCallbackQuery
+inline fun CallbackQuery.asInlineMessageIdGameShortNameCallbackQuery(): InlineMessageIdGameShortNameCallbackQuery? = this as? InlineMessageIdGameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun CallbackQuery.requireInlineMessageIdGameShortNameCallbackQuery(): InlineMessageIdGameShortNameCallbackQuery =
-    this as InlineMessageIdGameShortNameCallbackQuery
+inline fun CallbackQuery.requireInlineMessageIdGameShortNameCallbackQuery(): InlineMessageIdGameShortNameCallbackQuery = this as InlineMessageIdGameShortNameCallbackQuery
 
 @PreviewFeature
 inline fun <T> CallbackQuery.whenMessageCallbackQuery(block: (MessageCallbackQuery) -> T) = asMessageCallbackQuery()?.let(block)
@@ -309,16 +301,13 @@ inline fun CallbackQuery.asMessageDataCallbackQuery(): MessageDataCallbackQuery?
 inline fun CallbackQuery.requireMessageDataCallbackQuery(): MessageDataCallbackQuery = this as MessageDataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T) =
-    asMessageGameShortNameCallbackQuery()?.let(block)
+inline fun <T> CallbackQuery.whenMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T) = asMessageGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
-inline fun CallbackQuery.asMessageGameShortNameCallbackQuery(): MessageGameShortNameCallbackQuery? =
-    this as? MessageGameShortNameCallbackQuery
+inline fun CallbackQuery.asMessageGameShortNameCallbackQuery(): MessageGameShortNameCallbackQuery? = this as? MessageGameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun CallbackQuery.requireMessageGameShortNameCallbackQuery(): MessageGameShortNameCallbackQuery =
-    this as MessageGameShortNameCallbackQuery
+inline fun CallbackQuery.requireMessageGameShortNameCallbackQuery(): MessageGameShortNameCallbackQuery = this as MessageGameShortNameCallbackQuery
 
 @PreviewFeature
 inline fun <T> CallbackQuery.whenUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T) = asUnknownCallbackQueryType()?.let(block)
@@ -330,19 +319,16 @@ inline fun CallbackQuery.asUnknownCallbackQueryType(): UnknownCallbackQueryType?
 inline fun CallbackQuery.requireUnknownCallbackQueryType(): UnknownCallbackQueryType = this as UnknownCallbackQueryType
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T) =
-    asPassportElementErrorDataField()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T) = asPassportElementErrorDataField()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorDataField(): PassportElementErrorDataField? = this as? PassportElementErrorDataField
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorDataField(): PassportElementErrorDataField =
-    this as PassportElementErrorDataField
+inline fun PassportElementError.requirePassportElementErrorDataField(): PassportElementErrorDataField = this as PassportElementErrorDataField
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFile(block: (PassportElementErrorFile) -> T) =
-    asPassportElementErrorFile()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFile(block: (PassportElementErrorFile) -> T) = asPassportElementErrorFile()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFile(): PassportElementErrorFile? = this as? PassportElementErrorFile
@@ -351,8 +337,7 @@ inline fun PassportElementError.asPassportElementErrorFile(): PassportElementErr
 inline fun PassportElementError.requirePassportElementErrorFile(): PassportElementErrorFile = this as PassportElementErrorFile
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T) =
-    asPassportElementErrorFiles()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T) = asPassportElementErrorFiles()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFiles(): PassportElementErrorFiles? = this as? PassportElementErrorFiles
@@ -361,31 +346,25 @@ inline fun PassportElementError.asPassportElementErrorFiles(): PassportElementEr
 inline fun PassportElementError.requirePassportElementErrorFiles(): PassportElementErrorFiles = this as PassportElementErrorFiles
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T) =
-    asPassportElementErrorFrontSide()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T) = asPassportElementErrorFrontSide()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFrontSide(): PassportElementErrorFrontSide? = this as? PassportElementErrorFrontSide
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorFrontSide(): PassportElementErrorFrontSide =
-    this as PassportElementErrorFrontSide
+inline fun PassportElementError.requirePassportElementErrorFrontSide(): PassportElementErrorFrontSide = this as PassportElementErrorFrontSide
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T) =
-    asPassportElementErrorReverseSide()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T) = asPassportElementErrorReverseSide()?.let(block)
 
 @PreviewFeature
-inline fun PassportElementError.asPassportElementErrorReverseSide(): PassportElementErrorReverseSide? =
-    this as? PassportElementErrorReverseSide
+inline fun PassportElementError.asPassportElementErrorReverseSide(): PassportElementErrorReverseSide? = this as? PassportElementErrorReverseSide
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorReverseSide(): PassportElementErrorReverseSide =
-    this as PassportElementErrorReverseSide
+inline fun PassportElementError.requirePassportElementErrorReverseSide(): PassportElementErrorReverseSide = this as PassportElementErrorReverseSide
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T) =
-    asPassportElementErrorSelfie()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T) = asPassportElementErrorSelfie()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorSelfie(): PassportElementErrorSelfie? = this as? PassportElementErrorSelfie
@@ -394,44 +373,34 @@ inline fun PassportElementError.asPassportElementErrorSelfie(): PassportElementE
 inline fun PassportElementError.requirePassportElementErrorSelfie(): PassportElementErrorSelfie = this as PassportElementErrorSelfie
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T) =
-    asPassportElementErrorTranslationFile()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T) = asPassportElementErrorTranslationFile()?.let(block)
 
 @PreviewFeature
-inline fun PassportElementError.asPassportElementErrorTranslationFile(): PassportElementErrorTranslationFile? =
-    this as? PassportElementErrorTranslationFile
+inline fun PassportElementError.asPassportElementErrorTranslationFile(): PassportElementErrorTranslationFile? = this as? PassportElementErrorTranslationFile
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorTranslationFile(): PassportElementErrorTranslationFile =
-    this as PassportElementErrorTranslationFile
+inline fun PassportElementError.requirePassportElementErrorTranslationFile(): PassportElementErrorTranslationFile = this as PassportElementErrorTranslationFile
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T) =
-    asPassportElementErrorTranslationFiles()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T) = asPassportElementErrorTranslationFiles()?.let(block)
 
 @PreviewFeature
-inline fun PassportElementError.asPassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles? =
-    this as? PassportElementErrorTranslationFiles
+inline fun PassportElementError.asPassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles? = this as? PassportElementErrorTranslationFiles
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles =
-    this as PassportElementErrorTranslationFiles
+inline fun PassportElementError.requirePassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles = this as PassportElementErrorTranslationFiles
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T) =
-    asPassportElementErrorUnspecified()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T) = asPassportElementErrorUnspecified()?.let(block)
 
 @PreviewFeature
-inline fun PassportElementError.asPassportElementErrorUnspecified(): PassportElementErrorUnspecified? =
-    this as? PassportElementErrorUnspecified
+inline fun PassportElementError.asPassportElementErrorUnspecified(): PassportElementErrorUnspecified? = this as? PassportElementErrorUnspecified
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportElementErrorUnspecified(): PassportElementErrorUnspecified =
-    this as PassportElementErrorUnspecified
+inline fun PassportElementError.requirePassportElementErrorUnspecified(): PassportElementErrorUnspecified = this as PassportElementErrorUnspecified
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementFileError(block: (PassportElementFileError) -> T) =
-    asPassportElementFileError()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementFileError(block: (PassportElementFileError) -> T) = asPassportElementFileError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementFileError(): PassportElementFileError? = this as? PassportElementFileError
@@ -440,8 +409,7 @@ inline fun PassportElementError.asPassportElementFileError(): PassportElementFil
 inline fun PassportElementError.requirePassportElementFileError(): PassportElementFileError = this as PassportElementFileError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementFilesError(block: (PassportElementFilesError) -> T) =
-    asPassportElementFilesError()?.let(block)
+inline fun <T> PassportElementError.whenPassportElementFilesError(block: (PassportElementFilesError) -> T) = asPassportElementFilesError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementFilesError(): PassportElementFilesError? = this as? PassportElementFilesError
@@ -450,19 +418,16 @@ inline fun PassportElementError.asPassportElementFilesError(): PassportElementFi
 inline fun PassportElementError.requirePassportElementFilesError(): PassportElementFilesError = this as PassportElementFilesError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T) =
-    asPassportMultipleElementsError()?.let(block)
+inline fun <T> PassportElementError.whenPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T) = asPassportMultipleElementsError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportMultipleElementsError(): PassportMultipleElementsError? = this as? PassportMultipleElementsError
 
 @PreviewFeature
-inline fun PassportElementError.requirePassportMultipleElementsError(): PassportMultipleElementsError =
-    this as PassportMultipleElementsError
+inline fun PassportElementError.requirePassportMultipleElementsError(): PassportMultipleElementsError = this as PassportMultipleElementsError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportSingleElementError(block: (PassportSingleElementError) -> T) =
-    asPassportSingleElementError()?.let(block)
+inline fun <T> PassportElementError.whenPassportSingleElementError(block: (PassportSingleElementError) -> T) = asPassportSingleElementError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportSingleElementError(): PassportSingleElementError? = this as? PassportSingleElementError
@@ -471,8 +436,7 @@ inline fun PassportElementError.asPassportSingleElementError(): PassportSingleEl
 inline fun PassportElementError.requirePassportSingleElementError(): PassportSingleElementError = this as PassportSingleElementError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenUnknownPassportElementError(block: (UnknownPassportElementError) -> T) =
-    asUnknownPassportElementError()?.let(block)
+inline fun <T> PassportElementError.whenUnknownPassportElementError(block: (UnknownPassportElementError) -> T) = asUnknownPassportElementError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asUnknownPassportElementError(): UnknownPassportElementError? = this as? UnknownPassportElementError
@@ -526,8 +490,7 @@ inline fun EncryptedPassportElement.asEncryptedAddress(): EncryptedAddress? = th
 inline fun EncryptedPassportElement.requireEncryptedAddress(): EncryptedAddress = this as EncryptedAddress
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T) =
-    asEncryptedPersonalDetails()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T) = asEncryptedPersonalDetails()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPersonalDetails(): EncryptedPersonalDetails? = this as? EncryptedPersonalDetails
@@ -590,8 +553,7 @@ inline fun EncryptedPassportElement.asRentalAgreement(): RentalAgreement? = this
 inline fun EncryptedPassportElement.requireRentalAgreement(): RentalAgreement = this as RentalAgreement
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenTemporaryRegistration(block: (TemporaryRegistration) -> T) =
-    asTemporaryRegistration()?.let(block)
+inline fun <T> EncryptedPassportElement.whenTemporaryRegistration(block: (TemporaryRegistration) -> T) = asTemporaryRegistration()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asTemporaryRegistration(): TemporaryRegistration? = this as? TemporaryRegistration
@@ -605,12 +567,10 @@ inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslat
 ) = asEncryptedPassportElementWithTranslatableFilesCollection()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? =
-    this as? EncryptedPassportElementWithTranslatableFilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? = this as? EncryptedPassportElementWithTranslatableFilesCollection
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection =
-    this as EncryptedPassportElementWithTranslatableFilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection = this as EncryptedPassportElementWithTranslatableFilesCollection
 
 @PreviewFeature
 inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslatableIDDocument(
@@ -618,12 +578,10 @@ inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslat
 ) = asEncryptedPassportElementWithTranslatableIDDocument()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? =
-    this as? EncryptedPassportElementWithTranslatableIDDocument
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? = this as? EncryptedPassportElementWithTranslatableIDDocument
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument =
-    this as EncryptedPassportElementWithTranslatableIDDocument
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument = this as EncryptedPassportElementWithTranslatableIDDocument
 
 @PreviewFeature
 inline fun <T> EncryptedPassportElement.whenUtilityBill(block: (UtilityBill) -> T) = asUtilityBill()?.let(block)
@@ -640,108 +598,82 @@ inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFilesCol
 ) = asEncryptedPassportElementWithFilesCollection()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? =
-    this as? EncryptedPassportElementWithFilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? = this as? EncryptedPassportElementWithFilesCollection
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection =
-    this as EncryptedPassportElementWithFilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection = this as EncryptedPassportElementWithFilesCollection
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T) =
-    asEncryptedPassportElementTranslatable()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T) = asEncryptedPassportElementTranslatable()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? =
-    this as? EncryptedPassportElementTranslatable
+inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? = this as? EncryptedPassportElementTranslatable
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable =
-    this as EncryptedPassportElementTranslatable
+inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable = this as EncryptedPassportElementTranslatable
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T) =
-    asUnknownEncryptedPassportElement()?.let(block)
+inline fun <T> EncryptedPassportElement.whenUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T) = asUnknownEncryptedPassportElement()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? =
-    this as? UnknownEncryptedPassportElement
+inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? = this as? UnknownEncryptedPassportElement
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement =
-    this as UnknownEncryptedPassportElement
+inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement = this as UnknownEncryptedPassportElement
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T) =
-    asEncryptedPassportElementWithData()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T) = asEncryptedPassportElementWithData()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? =
-    this as? EncryptedPassportElementWithData
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? = this as? EncryptedPassportElementWithData
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): EncryptedPassportElementWithData =
-    this as EncryptedPassportElementWithData
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): EncryptedPassportElementWithData = this as EncryptedPassportElementWithData
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T) =
-    asEncryptedPassportElementWithEmail()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T) = asEncryptedPassportElementWithEmail()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? =
-    this as? EncryptedPassportElementWithEmail
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? = this as? EncryptedPassportElementWithEmail
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail =
-    this as EncryptedPassportElementWithEmail
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail = this as EncryptedPassportElementWithEmail
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T) =
-    asEncryptedPassportElementWithFrontSide()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T) = asEncryptedPassportElementWithFrontSide()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? =
-    this as? EncryptedPassportElementWithFrontSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? = this as? EncryptedPassportElementWithFrontSide
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide =
-    this as EncryptedPassportElementWithFrontSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide = this as EncryptedPassportElementWithFrontSide
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T) =
-    asEncryptedPassportElementWithPhoneNumber()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T) = asEncryptedPassportElementWithPhoneNumber()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? =
-    this as? EncryptedPassportElementWithPhoneNumber
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? = this as? EncryptedPassportElementWithPhoneNumber
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber =
-    this as EncryptedPassportElementWithPhoneNumber
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber = this as EncryptedPassportElementWithPhoneNumber
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T) =
-    asEncryptedPassportElementWithReverseSide()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T) = asEncryptedPassportElementWithReverseSide()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? =
-    this as? EncryptedPassportElementWithReverseSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? = this as? EncryptedPassportElementWithReverseSide
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide =
-    this as EncryptedPassportElementWithReverseSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide = this as EncryptedPassportElementWithReverseSide
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T) =
-    asEncryptedPassportElementWithSelfie()?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T) = asEncryptedPassportElementWithSelfie()?.let(block)
 
 @PreviewFeature
-inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? =
-    this as? EncryptedPassportElementWithSelfie
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? = this as? EncryptedPassportElementWithSelfie
 
 @PreviewFeature
-inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie =
-    this as EncryptedPassportElementWithSelfie
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie = this as EncryptedPassportElementWithSelfie
 
 @PreviewFeature
 inline fun <T> SecureValue.whenAddressSecureValue(block: (AddressSecureValue) -> T) = asAddressSecureValue()?.let(block)
@@ -762,8 +694,7 @@ inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? =
 inline fun SecureValue.requireBankStatementSecureValue(): BankStatementSecureValue = this as BankStatementSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T) =
-    asCommonPassportSecureValue()?.let(block)
+inline fun <T> SecureValue.whenCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T) = asCommonPassportSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
@@ -790,20 +721,16 @@ inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = t
 inline fun SecureValue.requireIdentityCardSecureValue(): IdentityCardSecureValue = this as IdentityCardSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T) =
-    asIdentityWithReverseSideSecureValue()?.let(block)
+inline fun <T> SecureValue.whenIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T) = asIdentityWithReverseSideSecureValue()?.let(block)
 
 @PreviewFeature
-inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? =
-    this as? IdentityWithReverseSideSecureValue
+inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? = this as? IdentityWithReverseSideSecureValue
 
 @PreviewFeature
-inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue =
-    this as IdentityWithReverseSideSecureValue
+inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue = this as IdentityWithReverseSideSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T) =
-    asInternalPassportSecureValue()?.let(block)
+inline fun <T> SecureValue.whenInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T) = asInternalPassportSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureValue? = this as? InternalPassportSecureValue
@@ -812,8 +739,7 @@ inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureVa
 inline fun SecureValue.requireInternalPassportSecureValue(): InternalPassportSecureValue = this as InternalPassportSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T) =
-    asOtherDocumentsSecureValue()?.let(block)
+inline fun <T> SecureValue.whenOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T) = asOtherDocumentsSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
@@ -822,8 +748,7 @@ inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue?
 inline fun SecureValue.requireOtherDocumentsSecureValue(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T) =
-    asPassportRegistrationSecureValue()?.let(block)
+inline fun <T> SecureValue.whenPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T) = asPassportRegistrationSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asPassportRegistrationSecureValue(): PassportRegistrationSecureValue? = this as? PassportRegistrationSecureValue
@@ -841,8 +766,7 @@ inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? 
 inline fun SecureValue.requirePassportSecureValue(): PassportSecureValue = this as PassportSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T) =
-    asPersonalDetailsSecureValue()?.let(block)
+inline fun <T> SecureValue.whenPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T) = asPersonalDetailsSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
@@ -851,8 +775,7 @@ inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValu
 inline fun SecureValue.requirePersonalDetailsSecureValue(): PersonalDetailsSecureValue = this as PersonalDetailsSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T) =
-    asRentalAgreementSecureValue()?.let(block)
+inline fun <T> SecureValue.whenRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T) = asRentalAgreementSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
@@ -861,8 +784,7 @@ inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValu
 inline fun SecureValue.requireRentalAgreementSecureValue(): RentalAgreementSecureValue = this as RentalAgreementSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T) =
-    asTemporalRegistrationSecureValue()?.let(block)
+inline fun <T> SecureValue.whenTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T) = asTemporalRegistrationSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue? = this as? TemporalRegistrationSecureValue
@@ -907,8 +829,7 @@ inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as
 inline fun SecureValue.requireSecureValueWithFiles(): SecureValueWithFiles = this as SecureValueWithFiles
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T) =
-    asSecureValueWithReverseSide()?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T) = asSecureValueWithReverseSide()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
@@ -917,8 +838,7 @@ inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSid
 inline fun SecureValue.requireSecureValueWithReverseSide(): SecureValueWithReverseSide = this as SecureValueWithReverseSide
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T) =
-    asSecureValueWithTranslations()?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T) = asSecureValueWithTranslations()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslations? = this as? SecureValueWithTranslations
@@ -927,28 +847,22 @@ inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslati
 inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTranslations = this as SecureValueWithTranslations
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) =
-    asAnonymousGroupContentMessageImpl()?.let(block)
+inline fun <T> Message.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) = asAnonymousGroupContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? =
-    this as? AnonymousGroupContentMessageImpl<MessageContent>
+inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? = this as? AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> =
-    this as AnonymousGroupContentMessageImpl<MessageContent>
+inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> = this as AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) =
-    asChannelContentMessageImpl()?.let(block)
+inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) = asChannelContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
-    this as? UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
+inline fun Message.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? = this as? UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> =
-    this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
+inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> = this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage()?.let(block)
@@ -960,16 +874,13 @@ inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMess
 inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) =
-    asPrivateContentMessageImpl()?.let(block)
+inline fun <T> Message.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) = asPrivateContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? =
-    this as? PrivateContentMessageImpl<MessageContent>
+inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? = this as? PrivateContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> =
-    this as PrivateContentMessageImpl<MessageContent>
+inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> = this as PrivateContentMessageImpl<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) = asChannelEventMessage()?.let(block)
@@ -981,8 +892,7 @@ inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
 inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> = this as ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
-    asCommonGroupEventMessage()?.let(block)
+inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) = asCommonGroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? = this as? CommonGroupEventMessage<GroupEvent>
@@ -991,32 +901,25 @@ inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEve
 inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> = this as CommonGroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
-    asCommonSupergroupEventMessage()?.let(block)
+inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) = asCommonSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? =
-    this as? CommonSupergroupEventMessage<SupergroupEvent>
+inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? CommonSupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> =
-    this as CommonSupergroupEventMessage<SupergroupEvent>
+inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> = this as CommonSupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) =
-    asAnonymousGroupContentMessage()?.let(block)
+inline fun <T> Message.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) = asAnonymousGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? =
-    this as? AnonymousGroupContentMessage<MessageContent>
+inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? = this as? AnonymousGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> =
-    this as AnonymousGroupContentMessage<MessageContent>
+inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> = this as AnonymousGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) =
-    asChannelContentMessage()?.let(block)
+inline fun <T> Message.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) = asChannelContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChannelContentMessage(): ChannelContentMessage<MessageContent>? = this as? ChannelContentMessage<MessageContent>
@@ -1025,16 +928,13 @@ inline fun Message.asChannelContentMessage(): ChannelContentMessage<MessageConte
 inline fun Message.requireChannelContentMessage(): ChannelContentMessage<MessageContent> = this as ChannelContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
-    asConnectedFromChannelGroupContentMessage()?.let(block)
+inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) = asConnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
-    this as? ConnectedFromChannelGroupContentMessage<MessageContent>
+inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? = this as? ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> =
-    this as ConnectedFromChannelGroupContentMessage<MessageContent>
+inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> = this as ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(
@@ -1042,12 +942,10 @@ inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(
 ) = asUnconnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
-    this as? UnconnectedFromChannelGroupContentMessage<MessageContent>
+inline fun Message.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? = this as? UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent> =
-    this as UnconnectedFromChannelGroupContentMessage<MessageContent>
+inline fun Message.requireUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent> = this as UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) = asChatEventMessage()?.let(block)
@@ -1059,16 +957,13 @@ inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as?
 inline fun Message.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) =
-    asCommonGroupContentMessage()?.let(block)
+inline fun <T> Message.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) = asCommonGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? =
-    this as? CommonGroupContentMessage<MessageContent>
+inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? = this as? CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> =
-    this as CommonGroupContentMessage<MessageContent>
+inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> = this as CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
@@ -1089,16 +984,13 @@ inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as
 inline fun Message.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) =
-    asFromChannelGroupContentMessage()?.let(block)
+inline fun <T> Message.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) = asFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? =
-    this as? FromChannelGroupContentMessage<MessageContent>
+inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? = this as? FromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> =
-    this as FromChannelGroupContentMessage<MessageContent>
+inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> = this as FromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) = asGroupEventMessage()?.let(block)
@@ -1173,8 +1065,7 @@ inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as
 inline fun Message.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) =
-    asPrivateContentMessage()?.let(block)
+inline fun <T> Message.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) = asPrivateContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? = this as? PrivateContentMessage<MessageContent>
@@ -1201,15 +1092,13 @@ inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
 inline fun Message.requireSignedMessage(): SignedMessage = this as SignedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) =
-    asSupergroupEventMessage()?.let(block)
+inline fun <T> Message.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) = asSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent>? = this as? SupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun Message.requireSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent> =
-    this as SupergroupEventMessage<SupergroupEvent>
+inline fun Message.requireSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent> = this as SupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
 inline fun <T> Message.whenUnknownMessageType(block: (UnknownMessageType) -> T) = asUnknownMessageType()?.let(block)
@@ -1221,16 +1110,13 @@ inline fun Message.asUnknownMessageType(): UnknownMessageType? = this as? Unknow
 inline fun Message.requireUnknownMessageType(): UnknownMessageType = this as UnknownMessageType
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) =
-    asPossiblySentViaBotCommonMessage()?.let(block)
+inline fun <T> Message.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) = asPossiblySentViaBotCommonMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent>? =
-    this as? PossiblySentViaBotCommonMessage<MessageContent>
+inline fun Message.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent>? = this as? PossiblySentViaBotCommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent> =
-    this as PossiblySentViaBotCommonMessage<MessageContent>
+inline fun Message.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent> = this as PossiblySentViaBotCommonMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenFromUserMessage(block: (FromUserMessage) -> T) = asFromUserMessage()?.let(block)
@@ -1359,8 +1245,7 @@ inline fun InlineQuery.asLocationInlineQuery(): LocationInlineQuery? = this as? 
 inline fun InlineQuery.requireLocationInlineQuery(): LocationInlineQuery = this as LocationInlineQuery
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputContactMessageContent(block: (InputContactMessageContent) -> T) =
-    asInputContactMessageContent()?.let(block)
+inline fun <T> InputMessageContent.whenInputContactMessageContent(block: (InputContactMessageContent) -> T) = asInputContactMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputContactMessageContent(): InputContactMessageContent? = this as? InputContactMessageContent
@@ -1369,8 +1254,7 @@ inline fun InputMessageContent.asInputContactMessageContent(): InputContactMessa
 inline fun InputMessageContent.requireInputContactMessageContent(): InputContactMessageContent = this as InputContactMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputLocationMessageContent(block: (InputLocationMessageContent) -> T) =
-    asInputLocationMessageContent()?.let(block)
+inline fun <T> InputMessageContent.whenInputLocationMessageContent(block: (InputLocationMessageContent) -> T) = asInputLocationMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputLocationMessageContent(): InputLocationMessageContent? = this as? InputLocationMessageContent
@@ -1379,8 +1263,7 @@ inline fun InputMessageContent.asInputLocationMessageContent(): InputLocationMes
 inline fun InputMessageContent.requireInputLocationMessageContent(): InputLocationMessageContent = this as InputLocationMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputTextMessageContent(block: (InputTextMessageContent) -> T) =
-    asInputTextMessageContent()?.let(block)
+inline fun <T> InputMessageContent.whenInputTextMessageContent(block: (InputTextMessageContent) -> T) = asInputTextMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputTextMessageContent(): InputTextMessageContent? = this as? InputTextMessageContent
@@ -1389,8 +1272,7 @@ inline fun InputMessageContent.asInputTextMessageContent(): InputTextMessageCont
 inline fun InputMessageContent.requireInputTextMessageContent(): InputTextMessageContent = this as InputTextMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputVenueMessageContent(block: (InputVenueMessageContent) -> T) =
-    asInputVenueMessageContent()?.let(block)
+inline fun <T> InputMessageContent.whenInputVenueMessageContent(block: (InputVenueMessageContent) -> T) = asInputVenueMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputVenueMessageContent(): InputVenueMessageContent? = this as? InputVenueMessageContent
@@ -1399,8 +1281,7 @@ inline fun InputMessageContent.asInputVenueMessageContent(): InputVenueMessageCo
 inline fun InputMessageContent.requireInputVenueMessageContent(): InputVenueMessageContent = this as InputVenueMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) =
-    asInputInvoiceMessageContent()?.let(block)
+inline fun <T> InputMessageContent.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputInvoiceMessageContent(): InputInvoiceMessageContent? = this as? InputInvoiceMessageContent
@@ -1409,8 +1290,7 @@ inline fun InputMessageContent.asInputInvoiceMessageContent(): InputInvoiceMessa
 inline fun InputMessageContent.requireInputInvoiceMessageContent(): InputInvoiceMessageContent = this as InputInvoiceMessageContent
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T) =
-    asInlineQueryResultArticle()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T) = asInlineQueryResultArticle()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultArticle(): InlineQueryResultArticle? = this as? InlineQueryResultArticle
@@ -1419,8 +1299,7 @@ inline fun InlineQueryResult.asInlineQueryResultArticle(): InlineQueryResultArti
 inline fun InlineQueryResult.requireInlineQueryResultArticle(): InlineQueryResultArticle = this as InlineQueryResultArticle
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultContact(block: (InlineQueryResultContact) -> T) =
-    asInlineQueryResultContact()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultContact(block: (InlineQueryResultContact) -> T) = asInlineQueryResultContact()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultContact(): InlineQueryResultContact? = this as? InlineQueryResultContact
@@ -1438,8 +1317,7 @@ inline fun InlineQueryResult.asInlineQueryResultGame(): InlineQueryResultGame? =
 inline fun InlineQueryResult.requireInlineQueryResultGame(): InlineQueryResultGame = this as InlineQueryResultGame
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T) =
-    asInlineQueryResultLocation()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T) = asInlineQueryResultLocation()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultLocation(): InlineQueryResultLocation? = this as? InlineQueryResultLocation
@@ -1448,15 +1326,13 @@ inline fun InlineQueryResult.asInlineQueryResultLocation(): InlineQueryResultLoc
 inline fun InlineQueryResult.requireInlineQueryResultLocation(): InlineQueryResultLocation = this as InlineQueryResultLocation
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T) =
-    asInlineQueryResultStickerCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T) = asInlineQueryResultStickerCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultStickerCached(): InlineQueryResultStickerCached? = this as? InlineQueryResultStickerCached
 
 @PreviewFeature
-inline fun InlineQueryResult.requireInlineQueryResultStickerCached(): InlineQueryResultStickerCached =
-    this as InlineQueryResultStickerCached
+inline fun InlineQueryResult.requireInlineQueryResultStickerCached(): InlineQueryResultStickerCached = this as InlineQueryResultStickerCached
 
 @PreviewFeature
 inline fun <T> InlineQueryResult.whenInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T) = asInlineQueryResultVenue()?.let(block)
@@ -1468,8 +1344,7 @@ inline fun InlineQueryResult.asInlineQueryResultVenue(): InlineQueryResultVenue?
 inline fun InlineQueryResult.requireInlineQueryResultVenue(): InlineQueryResultVenue = this as InlineQueryResultVenue
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T) =
-    asDescribedInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T) = asDescribedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asDescribedInlineQueryResult(): DescribedInlineQueryResult? = this as? DescribedInlineQueryResult
@@ -1487,16 +1362,13 @@ inline fun InlineQueryResult.asFileInlineQueryResult(): FileInlineQueryResult? =
 inline fun InlineQueryResult.requireFileInlineQueryResult(): FileInlineQueryResult = this as FileInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T) =
-    asOptionallyTitledInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T) = asOptionallyTitledInlineQueryResult()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asOptionallyTitledInlineQueryResult(): OptionallyTitledInlineQueryResult? =
-    this as? OptionallyTitledInlineQueryResult
+inline fun InlineQueryResult.asOptionallyTitledInlineQueryResult(): OptionallyTitledInlineQueryResult? = this as? OptionallyTitledInlineQueryResult
 
 @PreviewFeature
-inline fun InlineQueryResult.requireOptionallyTitledInlineQueryResult(): OptionallyTitledInlineQueryResult =
-    this as OptionallyTitledInlineQueryResult
+inline fun InlineQueryResult.requireOptionallyTitledInlineQueryResult(): OptionallyTitledInlineQueryResult = this as OptionallyTitledInlineQueryResult
 
 @PreviewFeature
 inline fun <T> InlineQueryResult.whenSizedInlineQueryResult(block: (SizedInlineQueryResult) -> T) = asSizedInlineQueryResult()?.let(block)
@@ -1508,8 +1380,7 @@ inline fun InlineQueryResult.asSizedInlineQueryResult(): SizedInlineQueryResult?
 inline fun InlineQueryResult.requireSizedInlineQueryResult(): SizedInlineQueryResult = this as SizedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T) =
-    asThumbSizedInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T) = asThumbSizedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asThumbSizedInlineQueryResult(): ThumbSizedInlineQueryResult? = this as? ThumbSizedInlineQueryResult
@@ -1518,8 +1389,7 @@ inline fun InlineQueryResult.asThumbSizedInlineQueryResult(): ThumbSizedInlineQu
 inline fun InlineQueryResult.requireThumbSizedInlineQueryResult(): ThumbSizedInlineQueryResult = this as ThumbSizedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T) =
-    asThumbedInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T) = asThumbedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asThumbedInlineQueryResult(): ThumbedInlineQueryResult? = this as? ThumbedInlineQueryResult
@@ -1528,20 +1398,16 @@ inline fun InlineQueryResult.asThumbedInlineQueryResult(): ThumbedInlineQueryRes
 inline fun InlineQueryResult.requireThumbedInlineQueryResult(): ThumbedInlineQueryResult = this as ThumbedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T) =
-    asThumbedWithMimeTypeInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T) = asThumbedWithMimeTypeInlineQueryResult()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asThumbedWithMimeTypeInlineQueryResult(): ThumbedWithMimeTypeInlineQueryResult? =
-    this as? ThumbedWithMimeTypeInlineQueryResult
+inline fun InlineQueryResult.asThumbedWithMimeTypeInlineQueryResult(): ThumbedWithMimeTypeInlineQueryResult? = this as? ThumbedWithMimeTypeInlineQueryResult
 
 @PreviewFeature
-inline fun InlineQueryResult.requireThumbedWithMimeTypeInlineQueryResult(): ThumbedWithMimeTypeInlineQueryResult =
-    this as ThumbedWithMimeTypeInlineQueryResult
+inline fun InlineQueryResult.requireThumbedWithMimeTypeInlineQueryResult(): ThumbedWithMimeTypeInlineQueryResult = this as ThumbedWithMimeTypeInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T) =
-    asTitledInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T) = asTitledInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asTitledInlineQueryResult(): TitledInlineQueryResult? = this as? TitledInlineQueryResult
@@ -1559,16 +1425,13 @@ inline fun InlineQueryResult.asUrlInlineQueryResult(): UrlInlineQueryResult? = t
 inline fun InlineQueryResult.requireUrlInlineQueryResult(): UrlInlineQueryResult = this as UrlInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T) =
-    asWithInputMessageContentInlineQueryResult()?.let(block)
+inline fun <T> InlineQueryResult.whenWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T) = asWithInputMessageContentInlineQueryResult()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asWithInputMessageContentInlineQueryResult(): WithInputMessageContentInlineQueryResult? =
-    this as? WithInputMessageContentInlineQueryResult
+inline fun InlineQueryResult.asWithInputMessageContentInlineQueryResult(): WithInputMessageContentInlineQueryResult? = this as? WithInputMessageContentInlineQueryResult
 
 @PreviewFeature
-inline fun InlineQueryResult.requireWithInputMessageContentInlineQueryResult(): WithInputMessageContentInlineQueryResult =
-    this as WithInputMessageContentInlineQueryResult
+inline fun InlineQueryResult.requireWithInputMessageContentInlineQueryResult(): WithInputMessageContentInlineQueryResult = this as WithInputMessageContentInlineQueryResult
 
 @PreviewFeature
 inline fun <T> InlineQueryResult.whenInlineQueryResultAudio(block: (InlineQueryResultAudio) -> T) = asInlineQueryResultAudio()?.let(block)
@@ -1580,8 +1443,7 @@ inline fun InlineQueryResult.asInlineQueryResultAudio(): InlineQueryResultAudio?
 inline fun InlineQueryResult.requireInlineQueryResultAudio(): InlineQueryResultAudio = this as InlineQueryResultAudio
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T) =
-    asInlineQueryResultAudioCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T) = asInlineQueryResultAudioCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultAudioCached(): InlineQueryResultAudioCached? = this as? InlineQueryResultAudioCached
@@ -1590,8 +1452,7 @@ inline fun InlineQueryResult.asInlineQueryResultAudioCached(): InlineQueryResult
 inline fun InlineQueryResult.requireInlineQueryResultAudioCached(): InlineQueryResultAudioCached = this as InlineQueryResultAudioCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T) =
-    asInlineQueryResultAudioCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T) = asInlineQueryResultAudioCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultAudioCommon(): InlineQueryResultAudioCommon? = this as? InlineQueryResultAudioCommon
@@ -1600,8 +1461,7 @@ inline fun InlineQueryResult.asInlineQueryResultAudioCommon(): InlineQueryResult
 inline fun InlineQueryResult.requireInlineQueryResultAudioCommon(): InlineQueryResultAudioCommon = this as InlineQueryResultAudioCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T) =
-    asInlineQueryResultDocument()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T) = asInlineQueryResultDocument()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultDocument(): InlineQueryResultDocument? = this as? InlineQueryResultDocument
@@ -1610,28 +1470,22 @@ inline fun InlineQueryResult.asInlineQueryResultDocument(): InlineQueryResultDoc
 inline fun InlineQueryResult.requireInlineQueryResultDocument(): InlineQueryResultDocument = this as InlineQueryResultDocument
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T) =
-    asInlineQueryResultDocumentCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T) = asInlineQueryResultDocumentCached()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asInlineQueryResultDocumentCached(): InlineQueryResultDocumentCached? =
-    this as? InlineQueryResultDocumentCached
+inline fun InlineQueryResult.asInlineQueryResultDocumentCached(): InlineQueryResultDocumentCached? = this as? InlineQueryResultDocumentCached
 
 @PreviewFeature
-inline fun InlineQueryResult.requireInlineQueryResultDocumentCached(): InlineQueryResultDocumentCached =
-    this as InlineQueryResultDocumentCached
+inline fun InlineQueryResult.requireInlineQueryResultDocumentCached(): InlineQueryResultDocumentCached = this as InlineQueryResultDocumentCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T) =
-    asInlineQueryResultDocumentCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T) = asInlineQueryResultDocumentCommon()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asInlineQueryResultDocumentCommon(): InlineQueryResultDocumentCommon? =
-    this as? InlineQueryResultDocumentCommon
+inline fun InlineQueryResult.asInlineQueryResultDocumentCommon(): InlineQueryResultDocumentCommon? = this as? InlineQueryResultDocumentCommon
 
 @PreviewFeature
-inline fun InlineQueryResult.requireInlineQueryResultDocumentCommon(): InlineQueryResultDocumentCommon =
-    this as InlineQueryResultDocumentCommon
+inline fun InlineQueryResult.requireInlineQueryResultDocumentCommon(): InlineQueryResultDocumentCommon = this as InlineQueryResultDocumentCommon
 
 @PreviewFeature
 inline fun <T> InlineQueryResult.whenInlineQueryResultGif(block: (InlineQueryResultGif) -> T) = asInlineQueryResultGif()?.let(block)
@@ -1643,8 +1497,7 @@ inline fun InlineQueryResult.asInlineQueryResultGif(): InlineQueryResultGif? = t
 inline fun InlineQueryResult.requireInlineQueryResultGif(): InlineQueryResultGif = this as InlineQueryResultGif
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T) =
-    asInlineQueryResultGifCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T) = asInlineQueryResultGifCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGifCached(): InlineQueryResultGifCached? = this as? InlineQueryResultGifCached
@@ -1653,8 +1506,7 @@ inline fun InlineQueryResult.asInlineQueryResultGifCached(): InlineQueryResultGi
 inline fun InlineQueryResult.requireInlineQueryResultGifCached(): InlineQueryResultGifCached = this as InlineQueryResultGifCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T) =
-    asInlineQueryResultGifCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T) = asInlineQueryResultGifCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGifCommon(): InlineQueryResultGifCommon? = this as? InlineQueryResultGifCommon
@@ -1663,8 +1515,7 @@ inline fun InlineQueryResult.asInlineQueryResultGifCommon(): InlineQueryResultGi
 inline fun InlineQueryResult.requireInlineQueryResultGifCommon(): InlineQueryResultGifCommon = this as InlineQueryResultGifCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T) =
-    asInlineQueryResultMpeg4Gif()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T) = asInlineQueryResultMpeg4Gif()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultMpeg4Gif(): InlineQueryResultMpeg4Gif? = this as? InlineQueryResultMpeg4Gif
@@ -1673,28 +1524,22 @@ inline fun InlineQueryResult.asInlineQueryResultMpeg4Gif(): InlineQueryResultMpe
 inline fun InlineQueryResult.requireInlineQueryResultMpeg4Gif(): InlineQueryResultMpeg4Gif = this as InlineQueryResultMpeg4Gif
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T) =
-    asInlineQueryResultMpeg4GifCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T) = asInlineQueryResultMpeg4GifCached()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCached(): InlineQueryResultMpeg4GifCached? =
-    this as? InlineQueryResultMpeg4GifCached
+inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCached(): InlineQueryResultMpeg4GifCached? = this as? InlineQueryResultMpeg4GifCached
 
 @PreviewFeature
-inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCached(): InlineQueryResultMpeg4GifCached =
-    this as InlineQueryResultMpeg4GifCached
+inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCached(): InlineQueryResultMpeg4GifCached = this as InlineQueryResultMpeg4GifCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T) =
-    asInlineQueryResultMpeg4GifCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T) = asInlineQueryResultMpeg4GifCommon()?.let(block)
 
 @PreviewFeature
-inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCommon(): InlineQueryResultMpeg4GifCommon? =
-    this as? InlineQueryResultMpeg4GifCommon
+inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCommon(): InlineQueryResultMpeg4GifCommon? = this as? InlineQueryResultMpeg4GifCommon
 
 @PreviewFeature
-inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCommon(): InlineQueryResultMpeg4GifCommon =
-    this as InlineQueryResultMpeg4GifCommon
+inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCommon(): InlineQueryResultMpeg4GifCommon = this as InlineQueryResultMpeg4GifCommon
 
 @PreviewFeature
 inline fun <T> InlineQueryResult.whenInlineQueryResultPhoto(block: (InlineQueryResultPhoto) -> T) = asInlineQueryResultPhoto()?.let(block)
@@ -1706,8 +1551,7 @@ inline fun InlineQueryResult.asInlineQueryResultPhoto(): InlineQueryResultPhoto?
 inline fun InlineQueryResult.requireInlineQueryResultPhoto(): InlineQueryResultPhoto = this as InlineQueryResultPhoto
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T) =
-    asInlineQueryResultPhotoCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T) = asInlineQueryResultPhotoCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultPhotoCached(): InlineQueryResultPhotoCached? = this as? InlineQueryResultPhotoCached
@@ -1716,8 +1560,7 @@ inline fun InlineQueryResult.asInlineQueryResultPhotoCached(): InlineQueryResult
 inline fun InlineQueryResult.requireInlineQueryResultPhotoCached(): InlineQueryResultPhotoCached = this as InlineQueryResultPhotoCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T) =
-    asInlineQueryResultPhotoCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T) = asInlineQueryResultPhotoCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultPhotoCommon(): InlineQueryResultPhotoCommon? = this as? InlineQueryResultPhotoCommon
@@ -1735,8 +1578,7 @@ inline fun InlineQueryResult.asInlineQueryResultVideo(): InlineQueryResultVideo?
 inline fun InlineQueryResult.requireInlineQueryResultVideo(): InlineQueryResultVideo = this as InlineQueryResultVideo
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T) =
-    asInlineQueryResultVideoCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T) = asInlineQueryResultVideoCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVideoCached(): InlineQueryResultVideoCached? = this as? InlineQueryResultVideoCached
@@ -1745,8 +1587,7 @@ inline fun InlineQueryResult.asInlineQueryResultVideoCached(): InlineQueryResult
 inline fun InlineQueryResult.requireInlineQueryResultVideoCached(): InlineQueryResultVideoCached = this as InlineQueryResultVideoCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T) =
-    asInlineQueryResultVideoCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T) = asInlineQueryResultVideoCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVideoCommon(): InlineQueryResultVideoCommon? = this as? InlineQueryResultVideoCommon
@@ -1764,8 +1605,7 @@ inline fun InlineQueryResult.asInlineQueryResultVoice(): InlineQueryResultVoice?
 inline fun InlineQueryResult.requireInlineQueryResultVoice(): InlineQueryResultVoice = this as InlineQueryResultVoice
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T) =
-    asInlineQueryResultVoiceCached()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T) = asInlineQueryResultVoiceCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVoiceCached(): InlineQueryResultVoiceCached? = this as? InlineQueryResultVoiceCached
@@ -1774,8 +1614,7 @@ inline fun InlineQueryResult.asInlineQueryResultVoiceCached(): InlineQueryResult
 inline fun InlineQueryResult.requireInlineQueryResultVoiceCached(): InlineQueryResultVoiceCached = this as InlineQueryResultVoiceCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T) =
-    asInlineQueryResultVoiceCommon()?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T) = asInlineQueryResultVoiceCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVoiceCommon(): InlineQueryResultVoiceCommon? = this as? InlineQueryResultVoiceCommon
@@ -1856,28 +1695,22 @@ inline fun ChatMember.asSpecialRightsChatMember(): SpecialRightsChatMember? = th
 inline fun ChatMember.requireSpecialRightsChatMember(): SpecialRightsChatMember = this as SpecialRightsChatMember
 
 @PreviewFeature
-inline fun <T> TelegramFreeMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) =
-    asAudioMediaGroupMemberTelegramMedia()?.let(block)
+inline fun <T> TelegramFreeMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) = asAudioMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramFreeMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? =
-    this as? AudioMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? = this as? AudioMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramFreeMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia =
-    this as AudioMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia = this as AudioMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramFreeMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) =
-    asDocumentMediaGroupMemberTelegramMedia()?.let(block)
+inline fun <T> TelegramFreeMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) = asDocumentMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramFreeMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? =
-    this as? DocumentMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? = this as? DocumentMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramFreeMedia.requireDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia =
-    this as DocumentMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.requireDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia = this as DocumentMediaGroupMemberTelegramMedia
 
 @PreviewFeature
 inline fun <T> TelegramFreeMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) = asDuratedTelegramMedia()?.let(block)
@@ -1934,8 +1767,7 @@ inline fun TelegramFreeMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this 
 inline fun TelegramFreeMedia.requireTelegramMediaVideo(): TelegramMediaVideo = this as TelegramMediaVideo
 
 @PreviewFeature
-inline fun <T> TelegramFreeMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) =
-    asMediaGroupMemberTelegramMedia()?.let(block)
+inline fun <T> TelegramFreeMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) = asMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramFreeMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? = this as? MediaGroupMemberTelegramMedia
@@ -1971,16 +1803,13 @@ inline fun TelegramFreeMedia.asTitledTelegramMedia(): TitledTelegramMedia? = thi
 inline fun TelegramFreeMedia.requireTitledTelegramMedia(): TitledTelegramMedia = this as TitledTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramFreeMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) =
-    asVisualMediaGroupMemberTelegramMedia()?.let(block)
+inline fun <T> TelegramFreeMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) = asVisualMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramFreeMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? =
-    this as? VisualMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? = this as? VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramFreeMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia =
-    this as VisualMediaGroupMemberTelegramMedia
+inline fun TelegramFreeMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia = this as VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature
 inline fun <T> Update.whenCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T) = asCallbackQueryUpdate()?.let(block)
@@ -2118,8 +1947,7 @@ inline fun Update.asUnknownUpdate(): UnknownUpdate? = this as? UnknownUpdate
 inline fun Update.requireUnknownUpdate(): UnknownUpdate = this as UnknownUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T) =
-    asCommonChatMemberUpdatedUpdate()?.let(block)
+inline fun <T> Update.whenCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T) = asCommonChatMemberUpdatedUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate? = this as? CommonChatMemberUpdatedUpdate
@@ -2335,32 +2163,25 @@ inline fun KeyboardMarkup.asReplyKeyboardRemove(): ReplyKeyboardRemove? = this a
 inline fun KeyboardMarkup.requireReplyKeyboardRemove(): ReplyKeyboardRemove = this as ReplyKeyboardRemove
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T) =
-    asCallbackDataInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T) = asCallbackDataInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
-inline fun InlineKeyboardButton.asCallbackDataInlineKeyboardButton(): CallbackDataInlineKeyboardButton? =
-    this as? CallbackDataInlineKeyboardButton
+inline fun InlineKeyboardButton.asCallbackDataInlineKeyboardButton(): CallbackDataInlineKeyboardButton? = this as? CallbackDataInlineKeyboardButton
 
 @PreviewFeature
-inline fun InlineKeyboardButton.requireCallbackDataInlineKeyboardButton(): CallbackDataInlineKeyboardButton =
-    this as CallbackDataInlineKeyboardButton
+inline fun InlineKeyboardButton.requireCallbackDataInlineKeyboardButton(): CallbackDataInlineKeyboardButton = this as CallbackDataInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T) =
-    asCallbackGameInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T) = asCallbackGameInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
-inline fun InlineKeyboardButton.asCallbackGameInlineKeyboardButton(): CallbackGameInlineKeyboardButton? =
-    this as? CallbackGameInlineKeyboardButton
+inline fun InlineKeyboardButton.asCallbackGameInlineKeyboardButton(): CallbackGameInlineKeyboardButton? = this as? CallbackGameInlineKeyboardButton
 
 @PreviewFeature
-inline fun InlineKeyboardButton.requireCallbackGameInlineKeyboardButton(): CallbackGameInlineKeyboardButton =
-    this as CallbackGameInlineKeyboardButton
+inline fun InlineKeyboardButton.requireCallbackGameInlineKeyboardButton(): CallbackGameInlineKeyboardButton = this as CallbackGameInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T) =
-    asLoginURLInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T) = asLoginURLInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asLoginURLInlineKeyboardButton(): LoginURLInlineKeyboardButton? = this as? LoginURLInlineKeyboardButton
@@ -2369,8 +2190,7 @@ inline fun InlineKeyboardButton.asLoginURLInlineKeyboardButton(): LoginURLInline
 inline fun InlineKeyboardButton.requireLoginURLInlineKeyboardButton(): LoginURLInlineKeyboardButton = this as LoginURLInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T) =
-    asPayInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T) = asPayInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asPayInlineKeyboardButton(): PayInlineKeyboardButton? = this as? PayInlineKeyboardButton
@@ -2384,28 +2204,22 @@ inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryCurrentChatInlineKeyboa
 ) = asSwitchInlineQueryCurrentChatInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
-inline fun InlineKeyboardButton.asSwitchInlineQueryCurrentChatInlineKeyboardButton(): SwitchInlineQueryCurrentChatInlineKeyboardButton? =
-    this as? SwitchInlineQueryCurrentChatInlineKeyboardButton
+inline fun InlineKeyboardButton.asSwitchInlineQueryCurrentChatInlineKeyboardButton(): SwitchInlineQueryCurrentChatInlineKeyboardButton? = this as? SwitchInlineQueryCurrentChatInlineKeyboardButton
 
 @PreviewFeature
-inline fun InlineKeyboardButton.requireSwitchInlineQueryCurrentChatInlineKeyboardButton(): SwitchInlineQueryCurrentChatInlineKeyboardButton =
-    this as SwitchInlineQueryCurrentChatInlineKeyboardButton
+inline fun InlineKeyboardButton.requireSwitchInlineQueryCurrentChatInlineKeyboardButton(): SwitchInlineQueryCurrentChatInlineKeyboardButton = this as SwitchInlineQueryCurrentChatInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T) =
-    asSwitchInlineQueryInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T) = asSwitchInlineQueryInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
-inline fun InlineKeyboardButton.asSwitchInlineQueryInlineKeyboardButton(): SwitchInlineQueryInlineKeyboardButton? =
-    this as? SwitchInlineQueryInlineKeyboardButton
+inline fun InlineKeyboardButton.asSwitchInlineQueryInlineKeyboardButton(): SwitchInlineQueryInlineKeyboardButton? = this as? SwitchInlineQueryInlineKeyboardButton
 
 @PreviewFeature
-inline fun InlineKeyboardButton.requireSwitchInlineQueryInlineKeyboardButton(): SwitchInlineQueryInlineKeyboardButton =
-    this as SwitchInlineQueryInlineKeyboardButton
+inline fun InlineKeyboardButton.requireSwitchInlineQueryInlineKeyboardButton(): SwitchInlineQueryInlineKeyboardButton = this as SwitchInlineQueryInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T) =
-    asURLInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T) = asURLInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asURLInlineKeyboardButton(): URLInlineKeyboardButton? = this as? URLInlineKeyboardButton
@@ -2423,8 +2237,7 @@ inline fun InlineKeyboardButton.asWebAppKeyboardButton(): WebAppKeyboardButton? 
 inline fun InlineKeyboardButton.requireWebAppKeyboardButton(): WebAppKeyboardButton = this as WebAppKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) =
-    asUnknownInlineKeyboardButton()?.let(block)
+inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) = asUnknownInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asUnknownInlineKeyboardButton(): UnknownInlineKeyboardButton? = this as? UnknownInlineKeyboardButton
@@ -2550,8 +2363,7 @@ inline fun ResendableContent.asVenueContent(): VenueContent? = this as? VenueCon
 inline fun ResendableContent.requireVenueContent(): VenueContent = this as VenueContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupPartContent) -> T) =
-    asAudioMediaGroupContent()?.let(block)
+inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupPartContent) -> T) = asAudioMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupPartContent? = this as? AudioMediaGroupPartContent
@@ -2560,8 +2372,7 @@ inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupPartCont
 inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupPartContent = this as AudioMediaGroupPartContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupPartContent) -> T) =
-    asDocumentMediaGroupContent()?.let(block)
+inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupPartContent) -> T) = asDocumentMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupPartContent? = this as? DocumentMediaGroupPartContent
@@ -2570,16 +2381,13 @@ inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupPa
 inline fun ResendableContent.requireDocumentMediaGroupContent(): DocumentMediaGroupPartContent = this as DocumentMediaGroupPartContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) =
-    asMediaCollectionContent()?.let(block)
+inline fun <T> ResendableContent.whenMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) = asMediaCollectionContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile>? =
-    this as? MediaCollectionContent<TelegramMediaFile>
+inline fun ResendableContent.asMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile>? = this as? MediaCollectionContent<TelegramMediaFile>
 
 @PreviewFeature
-inline fun ResendableContent.requireMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile> =
-    this as MediaCollectionContent<TelegramMediaFile>
+inline fun ResendableContent.requireMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile> = this as MediaCollectionContent<TelegramMediaFile>
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenTextedMediaContent(block: (TextedMediaContent) -> T) = asTextedMediaContent()?.let(block)
@@ -2618,8 +2426,7 @@ inline fun ResendableContent.asMessageContent(): MessageContent? = this as? Mess
 inline fun ResendableContent.requireMessageContent(): MessageContent = this as MessageContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupPartContent) -> T) =
-    asVisualMediaGroupContent()?.let(block)
+inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupPartContent) -> T) = asVisualMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupPartContent? = this as? VisualMediaGroupPartContent
@@ -2862,8 +2669,7 @@ inline fun TextSource.asUnderlineTextSource(): UnderlineTextSource? = this as? U
 inline fun TextSource.requireUnderlineTextSource(): UnderlineTextSource = this as UnderlineTextSource
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T) =
-    asBasketballDiceAnimationType()?.let(block)
+inline fun <T> DiceAnimationType.whenBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T) = asBasketballDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asBasketballDiceAnimationType(): BasketballDiceAnimationType? = this as? BasketballDiceAnimationType
@@ -2872,8 +2678,7 @@ inline fun DiceAnimationType.asBasketballDiceAnimationType(): BasketballDiceAnim
 inline fun DiceAnimationType.requireBasketballDiceAnimationType(): BasketballDiceAnimationType = this as BasketballDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T) =
-    asBowlingDiceAnimationType()?.let(block)
+inline fun <T> DiceAnimationType.whenBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T) = asBowlingDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asBowlingDiceAnimationType(): BowlingDiceAnimationType? = this as? BowlingDiceAnimationType
@@ -2891,8 +2696,7 @@ inline fun DiceAnimationType.asCubeDiceAnimationType(): CubeDiceAnimationType? =
 inline fun DiceAnimationType.requireCubeDiceAnimationType(): CubeDiceAnimationType = this as CubeDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T) =
-    asCustomDiceAnimationType()?.let(block)
+inline fun <T> DiceAnimationType.whenCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T) = asCustomDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asCustomDiceAnimationType(): CustomDiceAnimationType? = this as? CustomDiceAnimationType
@@ -2910,8 +2714,7 @@ inline fun DiceAnimationType.asDartsDiceAnimationType(): DartsDiceAnimationType?
 inline fun DiceAnimationType.requireDartsDiceAnimationType(): DartsDiceAnimationType = this as DartsDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T) =
-    asFootballDiceAnimationType()?.let(block)
+inline fun <T> DiceAnimationType.whenFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T) = asFootballDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asFootballDiceAnimationType(): FootballDiceAnimationType? = this as? FootballDiceAnimationType
@@ -2920,8 +2723,7 @@ inline fun DiceAnimationType.asFootballDiceAnimationType(): FootballDiceAnimatio
 inline fun DiceAnimationType.requireFootballDiceAnimationType(): FootballDiceAnimationType = this as FootballDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T) =
-    asSlotMachineDiceAnimationType()?.let(block)
+inline fun <T> DiceAnimationType.whenSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T) = asSlotMachineDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType? = this as? SlotMachineDiceAnimationType
@@ -2966,8 +2768,7 @@ inline fun ChatEvent.asLeftChatMember(): LeftChatMemberEvent? = this as? LeftCha
 inline fun ChatEvent.requireLeftChatMember(): LeftChatMemberEvent = this as LeftChatMemberEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) =
-    asMessageAutoDeleteTimerChanged()?.let(block)
+inline fun <T> ChatEvent.whenMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) = asMessageAutoDeleteTimerChanged()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged? = this as? MessageAutoDeleteTimerChanged
@@ -3120,8 +2921,7 @@ inline fun ChatEvent.asVideoChatEnded(): VideoChatEnded? = this as? VideoChatEnd
 inline fun ChatEvent.requireVideoChatEnded(): VideoChatEnded = this as VideoChatEnded
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) =
-    asVideoChatParticipantsInvited()?.let(block)
+inline fun <T> ChatEvent.whenVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) = asVideoChatParticipantsInvited()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatParticipantsInvited(): VideoChatParticipantsInvited? = this as? VideoChatParticipantsInvited
@@ -3175,8 +2975,7 @@ inline fun CommonSendInvoiceData.asCreateInvoiceLink(): CreateInvoiceLink? = thi
 inline fun CommonSendInvoiceData.requireCreateInvoiceLink(): CreateInvoiceLink = this as CreateInvoiceLink
 
 @PreviewFeature
-inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) =
-    asInputInvoiceMessageContent()?.let(block)
+inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun CommonSendInvoiceData.asInputInvoiceMessageContent(): InputInvoiceMessageContent? = this as? InputInvoiceMessageContent
@@ -3248,8 +3047,7 @@ inline fun ChatInviteLink.asSecondaryChatInviteLink(): SecondaryChatInviteLink? 
 inline fun ChatInviteLink.requireSecondaryChatInviteLink(): SecondaryChatInviteLink = this as SecondaryChatInviteLink
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) =
-    asChatInviteLinkWithJoinRequest()?.let(block)
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) = asChatInviteLinkWithJoinRequest()?.let(block)
 
 @PreviewFeature
 inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest? = this as? ChatInviteLinkWithJoinRequest
@@ -3258,16 +3056,13 @@ inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJ
 inline fun ChatInviteLink.requireChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest = this as ChatInviteLinkWithJoinRequest
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) =
-    asChatInviteLinkWithLimitedMembers()?.let(block)
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) = asChatInviteLinkWithLimitedMembers()?.let(block)
 
 @PreviewFeature
-inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? =
-    this as? ChatInviteLinkWithLimitedMembers
+inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? = this as? ChatInviteLinkWithLimitedMembers
 
 @PreviewFeature
-inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers =
-    this as ChatInviteLinkWithLimitedMembers
+inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers = this as ChatInviteLinkWithLimitedMembers
 
 @PreviewFeature
 inline fun <T> ChatInviteLink.whenChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) = asChatInviteLinkUnlimited()?.let(block)
@@ -3315,8 +3110,7 @@ inline fun MessageContent.asTextedInput(): TextedInput? = this as? TextedInput
 inline fun MessageContent.requireTextedInput(): TextedInput = this as TextedInput
 
 @PreviewFeature
-inline fun <T> ScheduledCloseInfo.whenExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) =
-    asExactScheduledCloseInfo()?.let(block)
+inline fun <T> ScheduledCloseInfo.whenExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) = asExactScheduledCloseInfo()?.let(block)
 
 @PreviewFeature
 inline fun ScheduledCloseInfo.asExactScheduledCloseInfo(): ExactScheduledCloseInfo? = this as? ExactScheduledCloseInfo
@@ -3325,8 +3119,7 @@ inline fun ScheduledCloseInfo.asExactScheduledCloseInfo(): ExactScheduledCloseIn
 inline fun ScheduledCloseInfo.requireExactScheduledCloseInfo(): ExactScheduledCloseInfo = this as ExactScheduledCloseInfo
 
 @PreviewFeature
-inline fun <T> ScheduledCloseInfo.whenApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) =
-    asApproximateScheduledCloseInfo()?.let(block)
+inline fun <T> ScheduledCloseInfo.whenApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) = asApproximateScheduledCloseInfo()?.let(block)
 
 @PreviewFeature
 inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo? = this as? ApproximateScheduledCloseInfo
@@ -3335,8 +3128,7 @@ inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateSche
 inline fun ScheduledCloseInfo.requireApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo = this as ApproximateScheduledCloseInfo
 
 @PreviewFeature
-inline fun <T> ChosenInlineResult.whenLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) =
-    asLocationChosenInlineResult()?.let(block)
+inline fun <T> ChosenInlineResult.whenLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) = asLocationChosenInlineResult()?.let(block)
 
 @PreviewFeature
 inline fun ChosenInlineResult.asLocationChosenInlineResult(): LocationChosenInlineResult? = this as? LocationChosenInlineResult

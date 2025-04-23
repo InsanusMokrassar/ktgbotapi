@@ -20,28 +20,25 @@ inline fun <C : MessageContent, T : ContentMessage<C>> Flow<T>.commonMessages() 
  * Filter the messages and checking that incoming [CommonMessage] is [PossiblySentViaBotCommonMessage] and its
  * [PossiblySentViaBotCommonMessage.senderBot] is not null
  */
-fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.onlySentViaBot() =
-    mapNotNull {
-        if (it is PossiblySentViaBot && it.senderBot != null) {
-            it
-        } else {
-            null
-        }
+fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.onlySentViaBot() = mapNotNull {
+    if (it is PossiblySentViaBot && it.senderBot != null) {
+        it
+    } else {
+        null
     }
+}
 
 /**
  * Filter the messages and checking that incoming [CommonMessage] not is [PossiblySentViaBotCommonMessage] or its
  * [PossiblySentViaBotCommonMessage.senderBot] is null
  */
-fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.withoutSentViaBot() =
-    filter {
-        it !is PossiblySentViaBot || it.senderBot == null
-    }
+fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.withoutSentViaBot() = filter {
+    it !is PossiblySentViaBot || it.senderBot == null
+}
 
 /**
  * Filter the messages and checking that incoming [ContentMessage.content] is not [MediaGroupContent]
  */
-fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.withoutMediaGroups() =
-    filter {
-        it.content !is MediaGroupContent<*>
-    }
+fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.withoutMediaGroups() = filter {
+    it.content !is MediaGroupContent<*>
+}

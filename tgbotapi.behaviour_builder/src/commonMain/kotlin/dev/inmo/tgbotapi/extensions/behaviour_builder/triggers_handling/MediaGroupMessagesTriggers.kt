@@ -47,8 +47,7 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<MediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<MediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<MediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<MediaGroupPartContent>>,
 ) = buildMediaGroupMessagesTrigger(
     initialFilter,
@@ -73,11 +72,9 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroupMessages(
  */
 suspend fun <BC : BehaviourContext> BC.onPlaylistMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<AudioMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<AudioMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<AudioMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<AudioMediaGroupPartContent>>,
 ) = buildMediaGroupMessagesTrigger(
     initialFilter,
@@ -102,11 +99,9 @@ suspend fun <BC : BehaviourContext> BC.onPlaylistMessages(
  */
 suspend fun <BC : BehaviourContext> BC.onDocumentsGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<DocumentMediaGroupPartContent>, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<DocumentMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<DocumentMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<DocumentMediaGroupPartContent>>,
 ) = buildMediaGroupMessagesTrigger(
     initialFilter,
@@ -131,11 +126,9 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroupMessages(
  */
 suspend fun <BC : BehaviourContext> BC.onVisualGalleryMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>,
 ) = buildMediaGroupMessagesTrigger(
     initialFilter,
@@ -160,11 +153,9 @@ suspend fun <BC : BehaviourContext> BC.onVisualGalleryMessages(
  */
 suspend fun <BC : BehaviourContext> BC.onVisualMediaGroupMessages(
     initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? =
-        null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>,
 ) = onVisualGalleryMessages(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 

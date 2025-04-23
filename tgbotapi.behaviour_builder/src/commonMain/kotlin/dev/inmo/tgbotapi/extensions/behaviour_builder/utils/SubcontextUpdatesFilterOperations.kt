@@ -24,7 +24,6 @@ operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).times
 /**
  * Reverse results of [this]
  */
-operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).not() =
-    BehaviourContextAndTwoTypesReceiver<Boolean, T, Update> { t, update ->
-        !this@not(t, update)
-    }
+operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).not() = BehaviourContextAndTwoTypesReceiver<Boolean, T, Update> { t, update ->
+    !this@not(t, update)
+}

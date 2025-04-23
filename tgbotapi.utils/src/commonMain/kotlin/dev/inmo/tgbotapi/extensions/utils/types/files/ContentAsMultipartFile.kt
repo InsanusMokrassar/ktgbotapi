@@ -16,11 +16,10 @@ suspend fun multipartFile(
     return downloadStreamAllocator.asMultipartFile(pathedFile.fileName)
 }
 
-suspend fun TelegramBot.multipartFile(pathedFile: PathedFile): MultipartFile =
-    multipartFile(
-        execute(DownloadFileStream(pathedFile.filePath)),
-        pathedFile,
-    )
+suspend fun TelegramBot.multipartFile(pathedFile: PathedFile): MultipartFile = multipartFile(
+    execute(DownloadFileStream(pathedFile.filePath)),
+    pathedFile,
+)
 
 suspend fun TelegramBot.multipartFile(fileId: FileId): MultipartFile = multipartFile(execute(GetFile(fileId)))
 

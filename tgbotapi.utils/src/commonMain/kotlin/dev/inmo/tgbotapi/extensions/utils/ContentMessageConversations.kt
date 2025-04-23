@@ -5,10 +5,9 @@ import dev.inmo.tgbotapi.types.message.content.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 
-private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withContentType() =
-    mapNotNull {
-        it.withContent<T>()
-    }
+private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withContentType() = mapNotNull {
+    it.withContent<T>()
+}
 
 fun Flow<ContentMessage<*>>.onlyAnimationContentMessages() = withContentType<AnimationContent>()
 

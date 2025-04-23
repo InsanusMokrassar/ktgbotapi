@@ -30,27 +30,26 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
-): Job =
-    on(
-        markerFactory,
-        SimpleFilter<Pair<TextMessage, String>> { (message, _) ->
-            message.content.textSources.size == 2 &&
-                message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start" &&
-                message.content.textSources.getOrNull(1) is RegularTextSource
-        } * initialFilter,
-        subcontextUpdatesFilter,
-        additionalSubcontextInitialAction,
-        scenarioReceiver,
-    ) {
-        (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
-            message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
-        }?.let(::listOfNotNull)
-    }.also {
-        triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
-        it.invokeOnCompletion {
-            this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
-        }
+): Job = on(
+    markerFactory,
+    SimpleFilter<Pair<TextMessage, String>> { (message, _) ->
+        message.content.textSources.size == 2 &&
+            message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start" &&
+            message.content.textSources.getOrNull(1) is RegularTextSource
+    } * initialFilter,
+    subcontextUpdatesFilter,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+) {
+    (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
+        message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
+    }?.let(::listOfNotNull)
+}.also {
+    triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
+    it.invokeOnCompletion {
+        this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
     }
+}
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -70,10 +69,9 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
 ): Job {
-    val internalFilter =
-        SimpleFilter<Pair<TextMessage, String>> {
-            regex.matches(it.second)
-        }
+    val internalFilter = SimpleFilter<Pair<TextMessage, String>> {
+        regex.matches(it.second)
+    }
     return onDeepLink(
         initialFilter ?.let {
             internalFilter * it
@@ -102,12 +100,11 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
-): Job =
-    onDeepLink(
-        Regex("^$deepLink$"),
-        initialFilter,
-        subcontextUpdatesFilter,
-        markerFactory,
-        additionalSubcontextInitialAction,
-        scenarioReceiver,
-    )
+): Job = onDeepLink(
+    Regex("^$deepLink$"),
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)

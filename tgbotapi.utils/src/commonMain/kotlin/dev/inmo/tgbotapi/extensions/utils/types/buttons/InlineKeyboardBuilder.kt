@@ -51,11 +51,10 @@ inline fun flatInlineKeyboard(block: InlineKeyboardRowBuilder.() -> Unit) = inli
  *
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardMarkup.modified(block: InlineKeyboardBuilder.() -> Unit) =
-    InlineKeyboardBuilder().apply {
-        keyboard.forEach { add(it) }
-        block()
-    }.build()
+inline fun InlineKeyboardMarkup.modified(block: InlineKeyboardBuilder.() -> Unit) = InlineKeyboardBuilder().apply {
+    keyboard.forEach { add(it) }
+    block()
+}.build()
 
 /**
  * Creates and put [PayInlineKeyboardButton]

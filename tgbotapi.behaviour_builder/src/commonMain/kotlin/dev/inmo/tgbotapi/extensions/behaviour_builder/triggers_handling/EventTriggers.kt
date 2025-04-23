@@ -47,7 +47,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent> BC.on
         it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.takeIf {
             it.chatEvent is T
         } as? ChatEventMessage<T>
-    ) ?.let(::listOfNotNull)
+        ) ?.let(::listOfNotNull)
 }
 
 internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent, reified CEM : ChatEventMessage<T>> BC.onEventWithCustomChatEventMessage(
@@ -202,11 +202,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatEndedEvent(
  */
 suspend fun <BC : BehaviourContext> BC.onVideoChatParticipantsInvitedEvent(
     initialFilter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatParticipantsInvited>, Update>? =
-        MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatParticipantsInvited>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<VideoChatParticipantsInvited>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<VideoChatParticipantsInvited>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<VideoChatParticipantsInvited>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatParticipantsInvited>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -225,11 +223,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatParticipantsInvitedEvent(
  */
 suspend fun <BC : BehaviourContext> BC.onMessageAutoDeleteTimerChangedEvent(
     initialFilter: SimpleFilter<ChatEventMessage<MessageAutoDeleteTimerChanged>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<MessageAutoDeleteTimerChanged>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<MessageAutoDeleteTimerChanged>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<MessageAutoDeleteTimerChanged>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<MessageAutoDeleteTimerChanged>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<MessageAutoDeleteTimerChanged>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<MessageAutoDeleteTimerChanged>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -502,8 +498,7 @@ suspend fun <BC : BehaviourContext> BC.onProximityAlertTriggered(
     initialFilter: SimpleFilter<ChatEventMessage<ProximityAlertTriggered>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<ProximityAlertTriggered>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<ProximityAlertTriggered>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<ProximityAlertTriggered>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<ProximityAlertTriggered>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<ProximityAlertTriggered>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -524,8 +519,7 @@ suspend fun <BC : BehaviourContext> BC.onSupergroupChatCreated(
     initialFilter: SimpleFilter<ChatEventMessage<SupergroupChatCreated>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<SupergroupChatCreated>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<SupergroupChatCreated>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<SupergroupChatCreated>>? =
-        null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<SupergroupChatCreated>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<SupergroupChatCreated>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -549,8 +543,7 @@ suspend fun <BC : BehaviourContext> BC.onSuccessfulPayment(
     initialFilter: SimpleFilter<ChatEventMessage<SuccessfulPaymentEvent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<SuccessfulPaymentEvent>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<SuccessfulPaymentEvent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<SuccessfulPaymentEvent>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<SuccessfulPaymentEvent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<SuccessfulPaymentEvent>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -571,8 +564,7 @@ suspend fun <BC : BehaviourContext> BC.onRefundedPayment(
     initialFilter: SimpleFilter<ChatEventMessage<RefundedPaymentEvent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<RefundedPaymentEvent>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<RefundedPaymentEvent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<RefundedPaymentEvent>>? =
-        null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<RefundedPaymentEvent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<RefundedPaymentEvent>>,
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -747,11 +739,9 @@ suspend fun <BC : BehaviourContext> BC.onForumTopicEdited(
  */
 suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicHidden(
     initialFilter: SimpleFilter<SupergroupEventMessage<GeneralForumTopicHidden>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<GeneralForumTopicHidden>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<GeneralForumTopicHidden>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GeneralForumTopicHidden>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GeneralForumTopicHidden>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GeneralForumTopicHidden>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<GeneralForumTopicHidden>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -776,11 +766,9 @@ suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicHidden(
  */
 suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicUnhidden(
     initialFilter: SimpleFilter<SupergroupEventMessage<GeneralForumTopicUnhidden>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<GeneralForumTopicUnhidden>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<GeneralForumTopicUnhidden>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GeneralForumTopicUnhidden>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GeneralForumTopicUnhidden>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GeneralForumTopicUnhidden>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<GeneralForumTopicUnhidden>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -832,11 +820,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowed(
  */
 suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromRequest(
     initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromRequest>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromRequest>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromRequest>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromRequest>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromRequest>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromRequest>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromRequest>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -861,11 +847,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromRequest(
  */
 suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromAttachmentMenu(
     initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -892,8 +876,7 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedOther(
     initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.Other>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.Other>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.Other>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.Other>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.Other>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.Other>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -918,11 +901,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedOther(
  */
 suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromWebAppLink(
     initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>? = null,
-    subcontextUpdatesFilter:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromWebAppLink>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -1140,8 +1121,7 @@ suspend fun <BC : BehaviourContext> BC.onGiveawayCompleted(
     initialFilter: SimpleFilter<ChatEventMessage<GiveawayPrivateResults>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiveawayPrivateResults>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GiveawayPrivateResults>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiveawayPrivateResults>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiveawayPrivateResults>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiveawayPrivateResults>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -1168,8 +1148,7 @@ suspend fun <BC : BehaviourContext> BC.onGiveawayCompletedWithPrivateWinners(
     initialFilter: SimpleFilter<ChatEventMessage<GiveawayPrivateResults>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiveawayPrivateResults>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GiveawayPrivateResults>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiveawayPrivateResults>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiveawayPrivateResults>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiveawayPrivateResults>>,
 ) = onGiveawayCompleted(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
@@ -1190,8 +1169,7 @@ suspend fun <BC : BehaviourContext> BC.onPaidMessagePriceChanged(
     initialFilter: SimpleFilter<ChatEventMessage<PaidMessagePriceChanged>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<PaidMessagePriceChanged>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<PaidMessagePriceChanged>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<PaidMessagePriceChanged>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<PaidMessagePriceChanged>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<PaidMessagePriceChanged>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -1218,8 +1196,7 @@ suspend fun <BC : BehaviourContext> BC.onRegularGiftSentOrReceived(
     initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceived.Regular>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceived.Regular>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceived.Regular>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Regular>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Regular>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceived.Regular>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,
@@ -1246,8 +1223,7 @@ suspend fun <BC : BehaviourContext> BC.onUniqueGiftSentOrReceived(
     initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceived.Unique>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceived.Unique>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceived.Unique>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction:
-        CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Unique>>? = null,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Unique>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceived.Unique>>,
 ) = onEventWithCustomChatEventMessage(
     initialFilter,

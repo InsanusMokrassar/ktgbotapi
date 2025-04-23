@@ -7,10 +7,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 val Venue.googlePlace: GooglePlace?
-    get() =
-        googlePlaceId?.let {
-            GooglePlace(it, googlePlaceType)
-        }
+    get() = googlePlaceId?.let {
+        GooglePlace(it, googlePlaceType)
+    }
 
 fun Venue(
     location: StaticLocation,

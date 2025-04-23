@@ -29,30 +29,28 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
-): Job =
-    onText(
-        CommonMessageFilter<TextContent> { message ->
-            val content = message.content
-            val textSources = content.textSources
-            val sizeRequirement =
-                if (requireOnlyCommandInMessage) {
-                    textSources.size == 1
-                } else {
-                    true
-                }
-            sizeRequirement &&
-                textSources.any {
-                    val command = it.botCommandTextSourceOrNull() ?.command ?: return@any false
-                    !triggersHolder.handleableCommandsHolder.isHandled(command)
-                }
-        }.let {
-            initialFilter ?.times(it) ?: it
-        },
-        subcontextUpdatesFilter,
-        markerFactory,
-        additionalSubcontextInitialAction,
-        scenarioReceiver,
-    )
+): Job = onText(
+    CommonMessageFilter<TextContent> { message ->
+        val content = message.content
+        val textSources = content.textSources
+        val sizeRequirement = if (requireOnlyCommandInMessage) {
+            textSources.size == 1
+        } else {
+            true
+        }
+        sizeRequirement &&
+            textSources.any {
+                val command = it.botCommandTextSourceOrNull() ?.command ?: return@any false
+                !triggersHolder.handleableCommandsHolder.isHandled(command)
+            }
+    }.let {
+        initialFilter ?.times(it) ?: it
+    },
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -67,15 +65,14 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
-): Job =
-    unhandledCommand(
-        requireOnlyCommandInMessage,
-        initialFilter,
-        subcontextUpdatesFilter,
-        markerFactory,
-        additionalSubcontextInitialAction,
-        scenarioReceiver,
-    )
+): Job = unhandledCommand(
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -95,10 +92,9 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
 ) {
-    val args =
-        it.parseCommandsWithArgs().let { commandsWithArgs ->
-            commandsWithArgs
-        }
+    val args = it.parseCommandsWithArgs().let { commandsWithArgs ->
+        commandsWithArgs
+    }
     scenarioReceiver(it, args)
 }
 
@@ -114,11 +110,10 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>,
-): Job =
-    unhandledCommandWithArgs(
-        initialFilter,
-        subcontextUpdatesFilter,
-        markerFactory,
-        additionalSubcontextInitialAction,
-        scenarioReceiver,
-    )
+): Job = unhandledCommandWithArgs(
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)

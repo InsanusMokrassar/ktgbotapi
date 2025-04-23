@@ -9,15 +9,13 @@ import kotlin.coroutines.coroutineContext
 fun <T : Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     scope: CoroutineScope,
-): Deferred<T> =
-    scope.async {
-        safely {
-            execute(request)
-        }
+): Deferred<T> = scope.async {
+    safely {
+        execute(request)
     }
+}
 
-suspend fun <T : Any> RequestsExecutor.executeAsync(request: Request<T>): Deferred<T> =
-    executeAsync(request, CoroutineScope(coroutineContext))
+suspend fun <T : Any> RequestsExecutor.executeAsync(request: Request<T>): Deferred<T> = executeAsync(request, CoroutineScope(coroutineContext))
 
 suspend fun <T : Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,

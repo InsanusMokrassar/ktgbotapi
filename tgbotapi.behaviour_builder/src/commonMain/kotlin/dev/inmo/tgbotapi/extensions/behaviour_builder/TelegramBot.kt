@@ -36,21 +36,20 @@ suspend fun telegramBotWithBehaviour(
     testServer: Boolean = false,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     block: BehaviourContextReceiver<Unit>,
-): TelegramBot =
-    telegramBot(
-        token,
-        apiUrl,
-        testServer,
-        builder,
-    ).apply {
-        buildBehaviour(
-            flowUpdatesFilter = flowsUpdatesFilter,
-            scope = scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler = defaultExceptionsHandler,
-            subcontextInitialAction = subcontextInitialAction,
-            block = block,
-        )
-    }
+): TelegramBot = telegramBot(
+    token,
+    apiUrl,
+    testServer,
+    builder,
+).apply {
+    buildBehaviour(
+        flowUpdatesFilter = flowsUpdatesFilter,
+        scope = scope ?: CoroutineScope(coroutineContext),
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        subcontextInitialAction = subcontextInitialAction,
+        block = block,
+    )
+}
 
 /**
  * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithLongPolling].

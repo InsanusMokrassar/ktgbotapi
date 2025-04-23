@@ -35,8 +35,7 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(commandRegex: Regex)
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(commandRegex: Regex) =
-    textMessages().filterCommandsInsideTextMessages(commandRegex)
+fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(commandRegex: Regex) = textMessages().filterCommandsInsideTextMessages(commandRegex)
 
 /**
  * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of

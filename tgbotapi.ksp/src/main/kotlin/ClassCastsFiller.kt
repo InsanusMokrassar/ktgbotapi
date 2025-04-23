@@ -40,12 +40,11 @@ private fun FileSpec.Builder.createTypeDefinition(ksClassDeclaration: KSClassDec
 
 @OptIn(KspExperimental::class)
 private fun KSClassDeclaration.buildPrefix(sourceDeclaration: KSClassDeclaration): String {
-    val ownName =
-        if (isAnnotationPresent(ClassCastsIncluded.ExcludeSubName::class)) {
-            ""
-        } else {
-            simpleName.asString()
-        }
+    val ownName = if (isAnnotationPresent(ClassCastsIncluded.ExcludeSubName::class)) {
+        ""
+    } else {
+        simpleName.asString()
+    }
     when (val parentDeclaration = parentDeclaration) {
         is KSClassDeclaration ->
             if (parentDeclaration === sourceDeclaration) {

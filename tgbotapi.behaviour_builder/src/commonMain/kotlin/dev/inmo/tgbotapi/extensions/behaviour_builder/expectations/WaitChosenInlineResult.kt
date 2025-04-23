@@ -14,13 +14,12 @@ typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.chosenInlineResultUpdateOrNull() ?.data as? O).let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.chosenInlineResultUpdateOrNull() ?.data as? O).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChosenInlineResult(
     initRequest: Request<*>? = null,

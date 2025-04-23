@@ -11,32 +11,29 @@ import kotlinx.coroutines.flow.Flow
 suspend fun BehaviourContext.waitBusinessConnection(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<BusinessConnection> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.businessConnectionUpdateOrNull() ?.data).let(::listOfNotNull)
-    }
+): Flow<BusinessConnection> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.businessConnectionUpdateOrNull() ?.data).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitBusinessConnectionEnabled(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<BusinessConnection> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.businessConnectionUpdateOrNull() ?.data ?.enabledOrNull()).let(::listOfNotNull)
-    }
+): Flow<BusinessConnection> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.businessConnectionUpdateOrNull() ?.data ?.enabledOrNull()).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitBusinessConnectionDisabled(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<BusinessConnection> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        (it.businessConnectionUpdateOrNull() ?.data ?.disabledOrNull()).let(::listOfNotNull)
-    }
+): Flow<BusinessConnection> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    (it.businessConnectionUpdateOrNull() ?.data ?.disabledOrNull()).let(::listOfNotNull)
+}

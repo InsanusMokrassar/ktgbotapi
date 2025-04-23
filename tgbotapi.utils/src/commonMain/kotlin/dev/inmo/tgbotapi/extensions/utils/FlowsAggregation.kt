@@ -21,20 +21,18 @@ fun <T> aggregateFlows(
     return sharedFlow
 }
 
-fun <T> Flow<Iterable<T>>.flatten(): Flow<T> =
-    flow {
-        collect {
-            it.forEach {
-                emit(it)
-            }
+fun <T> Flow<Iterable<T>>.flatten(): Flow<T> = flow {
+    collect {
+        it.forEach {
+            emit(it)
         }
     }
+}
 
-fun <T, R> Flow<T>.flatMap(mapper: suspend (T) -> Iterable<R>): Flow<R> =
-    flow {
-        collect {
-            mapper(it).forEach {
-                emit(it)
-            }
+fun <T, R> Flow<T>.flatMap(mapper: suspend (T) -> Iterable<R>): Flow<R> = flow {
+    collect {
+        mapper(it).forEach {
+            emit(it)
         }
     }
+}

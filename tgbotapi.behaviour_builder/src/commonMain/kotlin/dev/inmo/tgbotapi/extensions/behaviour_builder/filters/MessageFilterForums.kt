@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 /**
  * Allow only messages which are not in some forum
  */
-val MessageFilterForums =
-    SimpleFilter<AccessibleMessage> {
-        it.threadIdOrNull == null
-    }
+val MessageFilterForums = SimpleFilter<AccessibleMessage> {
+    it.threadIdOrNull == null
+}

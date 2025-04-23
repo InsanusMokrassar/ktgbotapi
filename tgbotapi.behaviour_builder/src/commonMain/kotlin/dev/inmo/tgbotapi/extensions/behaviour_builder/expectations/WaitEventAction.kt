@@ -37,13 +37,12 @@ typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
 suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEvents(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<O> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>() ?.chatEvent.let(::listOfNotNull)
-    }
+): Flow<O> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>() ?.chatEvent.let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChannelEvents(
     initRequest: Request<*>? = null,

@@ -17,23 +17,21 @@ import kotlinx.coroutines.flow.Flow
 suspend inline fun <reified O : MessageContent> BehaviourContext.waitEditedContentMessage(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<CommonMessage<O>> =
-    expectFlow(
-        initRequest,
-        errorFactory,
-    ) {
-        val messages =
-            when (it) {
-                is BaseEditMessageUpdate -> {
-                    val commonMessage = it.data.commonMessageOrNull() ?: return@expectFlow emptyList()
-                    listOf(commonMessage)
-                }
-                else -> return@expectFlow emptyList()
-            }
-        messages.mapNotNull { message ->
-            (message as CommonMessage<*>).withContent<O>()
+): Flow<CommonMessage<O>> = expectFlow(
+    initRequest,
+    errorFactory,
+) {
+    val messages = when (it) {
+        is BaseEditMessageUpdate -> {
+            val commonMessage = it.data.commonMessageOrNull() ?: return@expectFlow emptyList()
+            listOf(commonMessage)
         }
+        else -> return@expectFlow emptyList()
     }
+    messages.mapNotNull { message ->
+        (message as CommonMessage<*>).withContent<O>()
+    }
+}
 
 suspend fun BehaviourContext.waitEditedMessageContentMessage(
     initRequest: Request<*>? = null,

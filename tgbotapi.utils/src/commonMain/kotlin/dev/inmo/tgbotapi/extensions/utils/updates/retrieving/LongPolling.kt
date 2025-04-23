@@ -31,111 +31,106 @@ fun TelegramBot.longPollingFlow(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-): Flow<Update> =
-    channelFlow {
-        if (autoDisableWebhooks) {
-            runCatchingSafely {
-                execute(DeleteWebhook())
+): Flow<Update> = channelFlow {
+    if (autoDisableWebhooks) {
+        runCatchingSafely {
+            execute(DeleteWebhook())
+        }
+    }
+
+    val contextSafelyExceptionHandler = coroutineContext[ContextSafelyExceptionHandlerKey]
+    val contextToWork = if (contextSafelyExceptionHandler == null || !autoSkipTimeoutExceptions) {
+        coroutineContext
+    } else {
+        coroutineContext +
+            ContextSafelyExceptionHandler { e ->
+                if (e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)) {
+                    return@ContextSafelyExceptionHandler
+                } else {
+                    contextSafelyExceptionHandler.handler(e)
+                }
+            }
+    }
+
+    var lastUpdateIdentifier: UpdateId? = null
+
+    val updatesHandler: (suspend (List<Update>) -> Unit) = if (mediaGroupsDebounceTimeMillis != null) {
+        val scope = CoroutineScope(contextToWork)
+        val updatesReceiver = scope.updateHandlerWithMediaGroupsAdaptation(
+            {
+                withContext(contextToWork) {
+                    send(it)
+                }
+            },
+            mediaGroupsDebounceTimeMillis,
+        )
+        ;
+        { originalUpdates: List<Update> ->
+            originalUpdates.forEach {
+                updatesReceiver(it)
+                lastUpdateIdentifier = maxOf(lastUpdateIdentifier ?: it.updateId, it.updateId)
             }
         }
+    } else {
+        { originalUpdates: List<Update> ->
+            val converted = originalUpdates.convertWithMediaGroupUpdates()
 
-        val contextSafelyExceptionHandler = coroutineContext[ContextSafelyExceptionHandlerKey]
-        val contextToWork =
-            if (contextSafelyExceptionHandler == null || !autoSkipTimeoutExceptions) {
-                coroutineContext
+            /**
+             * Dirty hack for cases when the media group was retrieved not fully:
+             *
+             * We are throw out the last media group and will reretrieve it again in the next get updates
+             * and it will guarantee that it is full
+             */
+            val updates = if (
+                originalUpdates.size == getUpdatesLimit.last &&
+                ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
+            ) {
+                converted - converted.last()
             } else {
-                coroutineContext +
-                    ContextSafelyExceptionHandler { e ->
-                        if (e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)) {
-                            return@ContextSafelyExceptionHandler
-                        } else {
-                            contextSafelyExceptionHandler.handler(e)
-                        }
-                    }
+                converted
             }
 
-        var lastUpdateIdentifier: UpdateId? = null
+            safelyWithResult {
+                for (update in updates) {
+                    send(update)
 
-        val updatesHandler: (suspend (List<Update>) -> Unit) =
-            if (mediaGroupsDebounceTimeMillis != null) {
-                val scope = CoroutineScope(contextToWork)
-                val updatesReceiver =
-                    scope.updateHandlerWithMediaGroupsAdaptation(
-                        {
-                            withContext(contextToWork) {
-                                send(it)
-                            }
-                        },
-                        mediaGroupsDebounceTimeMillis,
-                    )
-                ;
-                { originalUpdates: List<Update> ->
-                    originalUpdates.forEach {
-                        updatesReceiver(it)
-                        lastUpdateIdentifier = maxOf(lastUpdateIdentifier ?: it.updateId, it.updateId)
+                    if (update.updateId.long > -1) {
+                        lastUpdateIdentifier = update.updateId
                     }
                 }
-            } else {
-                { originalUpdates: List<Update> ->
-                    val converted = originalUpdates.convertWithMediaGroupUpdates()
-
-                    /**
-                     * Dirty hack for cases when the media group was retrieved not fully:
-                     *
-                     * We are throw out the last media group and will reretrieve it again in the next get updates
-                     * and it will guarantee that it is full
-                     */
-                    val updates =
-                        if (
-                            originalUpdates.size == getUpdatesLimit.last &&
-                            ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
-                        ) {
-                            converted - converted.last()
-                        } else {
-                            converted
-                        }
-
-                    safelyWithResult {
-                        for (update in updates) {
-                            send(update)
-
-                            if (update.updateId.long > -1) {
-                                lastUpdateIdentifier = update.updateId
-                            }
-                        }
-                    }.onFailure {
-                        cancel(it as? CancellationException ?: return@onFailure)
-                    }
-                }
+            }.onFailure {
+                cancel(it as? CancellationException ?: return@onFailure)
             }
+        }
+    }
 
-        withContext(contextToWork) {
-            while (isActive) {
-                safely(
-                    { e ->
-                        val isHttpRequestTimeoutException = e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
-                        if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
-                            return@safely
-                        }
-                        exceptionsHandler ?.invoke(e)
-                        if (e is RequestException) {
-                            delay(1000L)
-                        }
-                    },
-                ) {
-                    execute(
-                        GetUpdates(
-                            offset = lastUpdateIdentifier?.plus(1),
-                            timeout = timeoutSeconds,
-                            allowed_updates = allowedUpdates,
-                        ),
-                    ).let { originalUpdates ->
-                        updatesHandler(originalUpdates)
+    withContext(contextToWork) {
+        while (isActive) {
+            safely(
+                { e ->
+                    val isHttpRequestTimeoutException = e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
+                    if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
+                        return@safely
                     }
+                    exceptionsHandler ?.invoke(e)
+                    if (e is RequestException) {
+                        delay(1000L)
+                    }
+                },
+            ) {
+                execute(
+                    GetUpdates(
+                        offset = lastUpdateIdentifier?.plus(1),
+                        timeout = timeoutSeconds,
+                        allowed_updates = allowedUpdates,
+                    ),
+                ).let { originalUpdates ->
+                    updatesHandler(originalUpdates)
                 }
             }
         }
     }
+}
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -151,19 +146,18 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     updatesReceiver: UpdateReceiver<Update>,
-): Job =
-    longPollingFlow(
-        timeoutSeconds = timeoutSeconds,
-        exceptionsHandler = exceptionsHandler,
-        allowedUpdates = allowedUpdates,
-        autoDisableWebhooks = autoDisableWebhooks,
-        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-    ).subscribeSafely(
-        scope,
-        exceptionsHandler ?: defaultSafelyExceptionHandler,
-        updatesReceiver,
-    )
+): Job = longPollingFlow(
+    timeoutSeconds = timeoutSeconds,
+    exceptionsHandler = exceptionsHandler,
+    allowedUpdates = allowedUpdates,
+    autoDisableWebhooks = autoDisableWebhooks,
+    autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+).subscribeSafely(
+    scope,
+    exceptionsHandler ?: defaultSafelyExceptionHandler,
+    updatesReceiver,
+)
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -180,25 +174,24 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-): Flow<Update> =
-    longPollingFlow(
-        timeoutSeconds = 0,
-        exceptionsHandler = {
-            when {
-                it is HttpRequestTimeoutException ||
-                    (it is CommonBotException && it.cause is HttpRequestTimeoutException) -> throw CancellationException(
-                    "Cancel due to absence of new updates",
-                )
-                else -> exceptionsHandler ?.invoke(it)
-            }
-        },
-        allowedUpdates = allowedUpdates,
-        autoDisableWebhooks = autoDisableWebhooks,
-        autoSkipTimeoutExceptions = false,
-        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-    ).filter {
-        !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
-    }
+): Flow<Update> = longPollingFlow(
+    timeoutSeconds = 0,
+    exceptionsHandler = {
+        when {
+            it is HttpRequestTimeoutException ||
+                (it is CommonBotException && it.cause is HttpRequestTimeoutException) -> throw CancellationException(
+                "Cancel due to absence of new updates",
+            )
+            else -> exceptionsHandler ?.invoke(it)
+        }
+    },
+    allowedUpdates = allowedUpdates,
+    autoDisableWebhooks = autoDisableWebhooks,
+    autoSkipTimeoutExceptions = false,
+    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+).filter {
+    !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
+}
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -214,19 +207,18 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     updatesReceiver: UpdateReceiver<Update>,
-): Job =
-    createAccumulatedUpdatesRetrieverFlow(
-        avoidInlineQueries,
-        avoidCallbackQueries,
-        exceptionsHandler,
-        allowedUpdates,
-        autoDisableWebhooks,
-        mediaGroupsDebounceTimeMillis,
-    ).subscribeSafelyWithoutExceptions(
-        scope.LinkedSupervisorScope(),
-    ) {
-        updatesReceiver(it)
-    }
+): Job = createAccumulatedUpdatesRetrieverFlow(
+    avoidInlineQueries,
+    avoidCallbackQueries,
+    exceptionsHandler,
+    allowedUpdates,
+    autoDisableWebhooks,
+    mediaGroupsDebounceTimeMillis,
+).subscribeSafelyWithoutExceptions(
+    scope.LinkedSupervisorScope(),
+) {
+    updatesReceiver(it)
+}
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -293,19 +285,18 @@ fun TelegramBot.longPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-): Job =
-    updatesFilter.run {
-        startGettingOfUpdatesByLongPolling(
-            timeoutSeconds = timeoutSeconds,
-            scope = scope,
-            exceptionsHandler = exceptionsHandler,
-            allowedUpdates = allowedUpdates,
-            autoDisableWebhooks = autoDisableWebhooks,
-            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-            updatesReceiver = asUpdateReceiver,
-        )
-    }
+): Job = updatesFilter.run {
+    startGettingOfUpdatesByLongPolling(
+        timeoutSeconds = timeoutSeconds,
+        scope = scope,
+        exceptionsHandler = exceptionsHandler,
+        allowedUpdates = allowedUpdates,
+        autoDisableWebhooks = autoDisableWebhooks,
+        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+        updatesReceiver = asUpdateReceiver,
+    )
+}
 
 /**
  * Will enable [longPolling] by creating [FlowsUpdatesFilter] with [flowsUpdatesFilterUpdatesKeeperCount] as an argument
@@ -326,16 +317,15 @@ fun TelegramBot.longPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit,
-): Job =
-    longPolling(
-        FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset),
-        timeoutSeconds,
-        scope,
-        autoDisableWebhooks,
-        autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis,
-        exceptionsHandler,
-    )
+): Job = longPolling(
+    FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset),
+    timeoutSeconds,
+    scope,
+    autoDisableWebhooks,
+    autoSkipTimeoutExceptions,
+    mediaGroupsDebounceTimeMillis,
+    exceptionsHandler,
+)
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -350,14 +340,13 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     autoSkipTimeoutExceptions: Boolean = true,
-): Job =
-    startGettingOfUpdatesByLongPolling(
-        timeoutSeconds,
-        scope,
-        exceptionsHandler,
-        updatesFilter.allowedUpdates,
-        autoDisableWebhooks,
-        autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis,
-        updatesFilter.asUpdateReceiver,
-    )
+): Job = startGettingOfUpdatesByLongPolling(
+    timeoutSeconds,
+    scope,
+    exceptionsHandler,
+    updatesFilter.allowedUpdates,
+    autoDisableWebhooks,
+    autoSkipTimeoutExceptions,
+    mediaGroupsDebounceTimeMillis,
+    updatesFilter.asUpdateReceiver,
+)
