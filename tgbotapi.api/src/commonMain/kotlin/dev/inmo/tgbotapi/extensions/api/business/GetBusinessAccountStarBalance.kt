@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.requests.business_connection.GetBusinessAccountStarBala
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.payments.stars.StarAmount
 
-public suspend fun TelegramBot.getBusinessAccountStarBalance(businessConnectionId: BusinessConnectionId): StarAmount =
-    execute(
-        GetBusinessAccountStarBalance(businessConnectionId),
-    )
+public suspend fun TelegramBot.getBusinessAccountStarBalance(businessConnectionId: BusinessConnectionId): StarAmount = execute(
+    GetBusinessAccountStarBalance(businessConnectionId),
+)

@@ -12,16 +12,14 @@ public suspend fun TelegramBot.uploadStickerFile(
     userId: UserId,
     sticker: MultipartFile,
     stickerFormat: StickerFormat,
-): File =
-    execute(
-        UploadStickerFile(userId, sticker, stickerFormat),
-    )
+): File = execute(
+    UploadStickerFile(userId, sticker, stickerFormat),
+)
 
 public suspend fun TelegramBot.uploadStickerFile(
     user: CommonUser,
     sticker: MultipartFile,
     stickerFormat: StickerFormat,
-): File =
-    execute(
-        UploadStickerFile(user.id, sticker, stickerFormat),
-    )
+): File = execute(
+    UploadStickerFile(user.id, sticker, stickerFormat),
+)

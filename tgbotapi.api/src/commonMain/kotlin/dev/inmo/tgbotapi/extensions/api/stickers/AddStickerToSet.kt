@@ -16,10 +16,9 @@ public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSetName: StickerSetName,
     inputSticker: InputSticker,
-): Boolean =
-    execute(
-        AddStickerToSet(userId, stickerSetName, inputSticker),
-    )
+): Boolean = execute(
+    AddStickerToSet(userId, stickerSetName, inputSticker),
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
@@ -31,12 +30,11 @@ public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: InputSticker,
-): Boolean =
-    addStickerToSet(
-        userId,
-        stickerSet.name,
-        sticker,
-    )
+): Boolean = addStickerToSet(
+    userId,
+    stickerSet.name,
+    sticker,
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
@@ -45,34 +43,33 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList(),
-): Boolean =
-    addStickerToSet(
-        userId,
-        stickerSet,
-        when (stickerSet.stickerType) {
-            StickerType.CustomEmoji ->
-                InputSticker.WithKeywords.CustomEmoji(
-                    sticker,
-                    format,
-                    emojis,
-                    keywords,
-                )
-            StickerType.Mask ->
-                InputSticker.Mask(
-                    sticker,
-                    format,
-                    emojis,
-                )
-            StickerType.Regular ->
-                InputSticker.WithKeywords.Regular(
-                    sticker,
-                    format,
-                    emojis,
-                    keywords,
-                )
-            is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
-        },
-    )
+): Boolean = addStickerToSet(
+    userId,
+    stickerSet,
+    when (stickerSet.stickerType) {
+        StickerType.CustomEmoji ->
+            InputSticker.WithKeywords.CustomEmoji(
+                sticker,
+                format,
+                emojis,
+                keywords,
+            )
+        StickerType.Mask ->
+            InputSticker.Mask(
+                sticker,
+                format,
+                emojis,
+            )
+        StickerType.Regular ->
+            InputSticker.WithKeywords.Regular(
+                sticker,
+                format,
+                emojis,
+                keywords,
+            )
+        is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
+    },
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
@@ -81,46 +78,44 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null,
-): Boolean =
-    addStickerToSet(
-        userId,
-        stickerSet.name,
-        when (stickerSet.stickerType) {
-            StickerType.CustomEmoji ->
-                InputSticker.WithKeywords.CustomEmoji(
-                    sticker,
-                    format,
-                    emojis,
-                    emptyList(),
-                )
-            StickerType.Mask ->
-                InputSticker.Mask(
-                    sticker,
-                    format,
-                    emojis,
-                    maskPosition,
-                )
-            StickerType.Regular ->
-                InputSticker.WithKeywords.Regular(
-                    sticker,
-                    format,
-                    emojis,
-                    emptyList(),
-                )
-            is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
-        },
-    )
+): Boolean = addStickerToSet(
+    userId,
+    stickerSet.name,
+    when (stickerSet.stickerType) {
+        StickerType.CustomEmoji ->
+            InputSticker.WithKeywords.CustomEmoji(
+                sticker,
+                format,
+                emojis,
+                emptyList(),
+            )
+        StickerType.Mask ->
+            InputSticker.Mask(
+                sticker,
+                format,
+                emojis,
+                maskPosition,
+            )
+        StickerType.Regular ->
+            InputSticker.WithKeywords.Regular(
+                sticker,
+                format,
+                emojis,
+                emptyList(),
+            )
+        is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
+    },
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: InputSticker,
-): Boolean =
-    addStickerToSet(
-        user.id,
-        stickerSet.name,
-        sticker,
-    )
+): Boolean = addStickerToSet(
+    user.id,
+    stickerSet.name,
+    sticker,
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
@@ -129,15 +124,14 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList(),
-): Boolean =
-    addStickerToSet(
-        user.id,
-        stickerSet,
-        sticker,
-        format,
-        emojis,
-        keywords,
-    )
+): Boolean = addStickerToSet(
+    user.id,
+    stickerSet,
+    sticker,
+    format,
+    emojis,
+    keywords,
+)
 
 public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
@@ -146,12 +140,11 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null,
-): Boolean =
-    addStickerToSet(
-        user.id,
-        stickerSet,
-        sticker,
-        format,
-        emojis,
-        maskPosition,
-    )
+): Boolean = addStickerToSet(
+    user.id,
+    stickerSet,
+    sticker,
+    format,
+    emojis,
+    maskPosition,
+)

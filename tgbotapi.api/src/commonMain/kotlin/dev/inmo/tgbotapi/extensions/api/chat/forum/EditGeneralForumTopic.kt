@@ -9,13 +9,12 @@ import dev.inmo.tgbotapi.types.chat.Chat
 public suspend fun TelegramBot.editGeneralForumTopic(
     chatId: ChatIdentifier,
     name: String,
-): Boolean =
-    execute(
-        EditGeneralForumTopic(
-            chatId,
-            name,
-        ),
-    )
+): Boolean = execute(
+    EditGeneralForumTopic(
+        chatId,
+        name,
+    ),
+)
 
 public suspend fun TelegramBot.editGeneralForumTopic(
     chat: Chat,

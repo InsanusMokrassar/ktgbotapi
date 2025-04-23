@@ -34,35 +34,31 @@ public suspend fun TelegramBot.downloadFile(
 public suspend fun TelegramBot.downloadFile(
     pathedFile: PathedFile,
     destFile: File,
-): File =
-    downloadFile(
-        pathedFile.filePath,
-        destFile,
-    )
+): File = downloadFile(
+    pathedFile.filePath,
+    destFile,
+)
 
 public suspend fun TelegramBot.downloadFile(
     fileId: FileId,
     destFile: File,
-): File =
-    downloadFile(
-        getFileAdditionalInfo(fileId),
-        destFile,
-    )
+): File = downloadFile(
+    getFileAdditionalInfo(fileId),
+    destFile,
+)
 
 public suspend fun TelegramBot.downloadFile(
     file: TelegramMediaFile,
     destFile: File,
-): File =
-    downloadFile(
-        getFileAdditionalInfo(file),
-        destFile,
-    )
+): File = downloadFile(
+    getFileAdditionalInfo(file),
+    destFile,
+)
 
 public suspend fun TelegramBot.downloadFile(
     file: MediaContent,
     destFile: File,
-): File =
-    downloadFile(
-        getFileAdditionalInfo(file.media),
-        destFile,
-    )
+): File = downloadFile(
+    getFileAdditionalInfo(file.media),
+    destFile,
+)

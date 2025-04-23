@@ -21,15 +21,14 @@ public suspend fun TelegramBot.stopLiveLocation(
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null,
-): ContentMessage<StaticLocationContent> =
-    execute(
-        StopChatMessageLiveLocation(
-            chatId,
-            messageId,
-            businessConnectionId,
-            replyMarkup,
-        ),
-    )
+): ContentMessage<StaticLocationContent> = execute(
+    StopChatMessageLiveLocation(
+        chatId,
+        messageId,
+        businessConnectionId,
+        replyMarkup,
+    ),
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

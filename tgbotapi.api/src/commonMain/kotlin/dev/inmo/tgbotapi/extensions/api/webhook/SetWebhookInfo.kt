@@ -16,17 +16,16 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null,
-): Boolean =
-    execute(
-        SetWebhook(
-            url,
-            ipAddress,
-            maxAllowedConnections,
-            allowedUpdates,
-            dropPendingUpdates,
-            secretToken,
-        ),
-    )
+): Boolean = execute(
+    SetWebhook(
+        url,
+        ipAddress,
+        maxAllowedConnections,
+        allowedUpdates,
+        dropPendingUpdates,
+        secretToken,
+    ),
+)
 
 /**
  * Use this method to send information about webhook (like [url] and [certificate])
@@ -39,18 +38,17 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null,
-): Boolean =
-    execute(
-        SetWebhook(
-            url,
-            certificate,
-            ipAddress,
-            maxAllowedConnections,
-            allowedUpdates,
-            dropPendingUpdates,
-            secretToken,
-        ),
-    )
+): Boolean = execute(
+    SetWebhook(
+        url,
+        certificate,
+        ipAddress,
+        maxAllowedConnections,
+        allowedUpdates,
+        dropPendingUpdates,
+        secretToken,
+    ),
+)
 
 /**
  * Use this method to send information about webhook (like [url] and [certificate])
@@ -63,15 +61,14 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null,
-): Boolean =
-    execute(
-        SetWebhook(
-            url,
-            certificate,
-            ipAddress,
-            maxAllowedConnections,
-            allowedUpdates,
-            dropPendingUpdates,
-            secretToken,
-        ),
-    )
+): Boolean = execute(
+    SetWebhook(
+        url,
+        certificate,
+        ipAddress,
+        maxAllowedConnections,
+        allowedUpdates,
+        dropPendingUpdates,
+        secretToken,
+    ),
+)

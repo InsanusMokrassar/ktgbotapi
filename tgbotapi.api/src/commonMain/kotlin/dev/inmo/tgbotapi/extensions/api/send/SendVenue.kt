@@ -33,28 +33,27 @@ public suspend fun TelegramBot.sendVenue(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    execute(
-        SendVenue(
-            chatId = chatId,
-            latitude = latitude,
-            longitude = longitude,
-            title = title,
-            address = address,
-            foursquareId = foursquareId,
-            foursquareType = foursquareType,
-            googlePlaceId = googlePlaceId,
-            googlePlaceType = googlePlaceType,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        ),
-    )
+): ContentMessage<VenueContent> = execute(
+    SendVenue(
+        chatId = chatId,
+        latitude = latitude,
+        longitude = longitude,
+        title = title,
+        address = address,
+        foursquareId = foursquareId,
+        foursquareType = foursquareType,
+        googlePlaceId = googlePlaceId,
+        googlePlaceType = googlePlaceType,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    ),
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -78,26 +77,25 @@ public suspend fun TelegramBot.sendVenue(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    sendVenue(
-        chatId = chat.id,
-        latitude = latitude,
-        longitude = longitude,
-        title = title,
-        address = address,
-        foursquareId = foursquareId,
-        foursquareType = foursquareType,
-        googlePlaceId = googlePlaceId,
-        googlePlaceType = googlePlaceType,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<VenueContent> = sendVenue(
+    chatId = chat.id,
+    latitude = latitude,
+    longitude = longitude,
+    title = title,
+    address = address,
+    foursquareId = foursquareId,
+    foursquareType = foursquareType,
+    googlePlaceId = googlePlaceId,
+    googlePlaceType = googlePlaceType,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -120,118 +118,85 @@ public suspend fun TelegramBot.sendVenue(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    sendVenue(
+): ContentMessage<VenueContent> = sendVenue(
+    chatId = chatId,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    title = title,
+    address = address,
+    foursquareId = foursquareId,
+    foursquareType = foursquareType,
+    googlePlaceId = googlePlaceId,
+    googlePlaceType = googlePlaceType,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendVenue(
+    chat: Chat,
+    location: StaticLocation,
+    title: String,
+    address: String,
+    foursquareId: FoursquareId? = null,
+    foursquareType: FoursquareType? = null,
+    googlePlaceId: GooglePlaceId? = null,
+    googlePlaceType: GooglePlaceType? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<VenueContent> = sendVenue(
+    chatId = chat.id,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    title = title,
+    address = address,
+    foursquareId = foursquareId,
+    foursquareType = foursquareType,
+    googlePlaceId = googlePlaceId,
+    googlePlaceType = googlePlaceType,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendVenue(
+    chatId: ChatIdentifier,
+    venue: Venue,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<VenueContent> = execute(
+    SendVenue(
         chatId = chatId,
-        latitude = location.latitude,
-        longitude = location.longitude,
-        title = title,
-        address = address,
-        foursquareId = foursquareId,
-        foursquareType = foursquareType,
-        googlePlaceId = googlePlaceId,
-        googlePlaceType = googlePlaceType,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendVenue(
-    chat: Chat,
-    location: StaticLocation,
-    title: String,
-    address: String,
-    foursquareId: FoursquareId? = null,
-    foursquareType: FoursquareType? = null,
-    googlePlaceId: GooglePlaceId? = null,
-    googlePlaceType: GooglePlaceType? = null,
-    threadId: MessageThreadId? = chat.id.threadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    sendVenue(
-        chatId = chat.id,
-        latitude = location.latitude,
-        longitude = location.longitude,
-        title = title,
-        address = address,
-        foursquareId = foursquareId,
-        foursquareType = foursquareType,
-        googlePlaceId = googlePlaceId,
-        googlePlaceType = googlePlaceType,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
-    venue: Venue,
-    threadId: MessageThreadId? = chatId.threadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    execute(
-        SendVenue(
-            chatId = chatId,
-            venue = venue,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        ),
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendVenue(
-    chat: Chat,
-    venue: Venue,
-    threadId: MessageThreadId? = chat.id.threadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<VenueContent> =
-    sendVenue(
-        chatId = chat.id,
         venue = venue,
         threadId = threadId,
         businessConnectionId = businessConnectionId,
@@ -241,4 +206,33 @@ public suspend fun TelegramBot.sendVenue(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
-    )
+    ),
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendVenue(
+    chat: Chat,
+    venue: Venue,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+): ContentMessage<VenueContent> = sendVenue(
+    chatId = chat.id,
+    venue = venue,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)

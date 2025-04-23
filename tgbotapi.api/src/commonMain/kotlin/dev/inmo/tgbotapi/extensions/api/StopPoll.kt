@@ -18,10 +18,9 @@ public suspend fun TelegramBot.stopPoll(
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null,
-): Poll =
-    execute(
-        StopPoll(chatId, messageId, businessConnectionId, replyMarkup),
-    )
+): Poll = execute(
+    StopPoll(chatId, messageId, businessConnectionId, replyMarkup),
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

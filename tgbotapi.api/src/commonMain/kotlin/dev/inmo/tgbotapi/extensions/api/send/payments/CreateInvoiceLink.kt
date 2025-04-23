@@ -25,28 +25,27 @@ public suspend fun TelegramBot.createInvoiceLink(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
-): String =
-    execute(
-        CreateInvoiceLink(
-            title = title,
-            description = description,
-            payload = payload,
-            providerToken = providerToken,
-            currency = currency,
-            prices = prices,
-            subscriptionPeriod = null,
-            maxTipAmount = maxTipAmount,
-            suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
-            providerData = providerData,
-            requireName = requireName,
-            requirePhoneNumber = requirePhoneNumber,
-            requireEmail = requireEmail,
-            requireShippingAddress = requireShippingAddress,
-            shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
-            shouldSendEmailToProvider = shouldSendEmailToProvider,
-            priceDependOnShipAddress = priceDependOnShipAddress,
-        ),
-    )
+): String = execute(
+    CreateInvoiceLink(
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = providerToken,
+        currency = currency,
+        prices = prices,
+        subscriptionPeriod = null,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress,
+    ),
+)
 
 /**
  * For links witn XTR currency and using of Telegram Stars
@@ -68,26 +67,25 @@ public suspend fun TelegramBot.createInvoiceLink(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
-): String =
-    execute(
-        CreateInvoiceLink(
-            title = title,
-            description = description,
-            payload = payload,
-            providerToken = null,
-            currency = Currency.XTR,
-            businessConnectionId = businessConnectionId,
-            prices = prices,
-            subscriptionPeriod = subscriptionPeriod,
-            maxTipAmount = maxTipAmount,
-            suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
-            providerData = providerData,
-            requireName = requireName,
-            requirePhoneNumber = requirePhoneNumber,
-            requireEmail = requireEmail,
-            requireShippingAddress = requireShippingAddress,
-            shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
-            shouldSendEmailToProvider = shouldSendEmailToProvider,
-            priceDependOnShipAddress = priceDependOnShipAddress,
-        ),
-    )
+): String = execute(
+    CreateInvoiceLink(
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = null,
+        currency = Currency.XTR,
+        businessConnectionId = businessConnectionId,
+        prices = prices,
+        subscriptionPeriod = subscriptionPeriod,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts ?.sorted(),
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress,
+    ),
+)

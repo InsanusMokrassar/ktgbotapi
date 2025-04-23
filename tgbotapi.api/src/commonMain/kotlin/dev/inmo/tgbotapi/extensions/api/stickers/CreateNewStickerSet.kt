@@ -12,10 +12,9 @@ public suspend fun TelegramBot.createNewStickerSet(
     title: String,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false,
-): Boolean =
-    execute(
-        CreateNewStickerSet(userId, name, title, stickers, needsRepainting),
-    )
+): Boolean = execute(
+    CreateNewStickerSet(userId, name, title, stickers, needsRepainting),
+)
 
 public suspend fun TelegramBot.createNewStickerSet(
     user: CommonUser,
@@ -23,11 +22,10 @@ public suspend fun TelegramBot.createNewStickerSet(
     title: String,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false,
-): Boolean =
-    createNewStickerSet(
-        user.id,
-        name,
-        title,
-        stickers,
-        needsRepainting,
-    )
+): Boolean = createNewStickerSet(
+    user.id,
+    name,
+    title,
+    stickers,
+    needsRepainting,
+)

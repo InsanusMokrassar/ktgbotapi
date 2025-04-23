@@ -12,10 +12,9 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 public suspend fun TelegramBot.deleteMessage(
     chatId: ChatIdentifier,
     messageId: MessageId,
-): Boolean =
-    execute(
-        DeleteMessage(chatId, messageId),
-    )
+): Boolean = execute(
+    DeleteMessage(chatId, messageId),
+)
 
 public suspend fun TelegramBot.deleteMessage(
     chat: Chat,

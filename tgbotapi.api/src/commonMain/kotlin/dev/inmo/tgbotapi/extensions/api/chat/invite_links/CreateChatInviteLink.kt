@@ -92,10 +92,9 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: TelegramDate? = null,
-): ChatInviteLinkUnlimited =
-    execute(
-        CreateChatInviteLink.subscription(chatId, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp),
-    )
+): ChatInviteLinkUnlimited = execute(
+    CreateChatInviteLink.subscription(chatId, subscriptionPrice, subscriptionPeriod, name, expirationUnixTimeStamp),
+)
 
 public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     chat: PublicChat,
@@ -111,14 +110,13 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: DateTime,
-): ChatInviteLinkUnlimited =
-    createChatSubscriptionInviteLink(
-        chatId,
-        subscriptionPrice,
-        subscriptionPeriod,
-        name,
-        expirationUnixTimeStamp.toTelegramDate(),
-    )
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(
+    chatId,
+    subscriptionPrice,
+    subscriptionPeriod,
+    name,
+    expirationUnixTimeStamp.toTelegramDate(),
+)
 
 public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     chat: PublicChat,
@@ -134,14 +132,13 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: TelegramDate? = null,
-): ChatInviteLinkUnlimited =
-    createChatSubscriptionInviteLink(
-        chatId,
-        subscriptionPrice.toUInt(),
-        subscriptionPeriod,
-        name,
-        expirationUnixTimeStamp,
-    )
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(
+    chatId,
+    subscriptionPrice.toUInt(),
+    subscriptionPeriod,
+    name,
+    expirationUnixTimeStamp,
+)
 
 public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     chat: PublicChat,
@@ -149,14 +146,13 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: TelegramDate? = null,
-): ChatInviteLinkUnlimited =
-    createChatSubscriptionInviteLink(
-        chat,
-        subscriptionPrice.toUInt(),
-        subscriptionPeriod,
-        name,
-        expirationUnixTimeStamp,
-    )
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(
+    chat,
+    subscriptionPrice.toUInt(),
+    subscriptionPeriod,
+    name,
+    expirationUnixTimeStamp,
+)
 
 public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     chatId: ChatIdentifier,
@@ -164,14 +160,13 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: DateTime,
-): ChatInviteLinkUnlimited =
-    createChatSubscriptionInviteLink(
-        chatId,
-        subscriptionPrice.toUInt(),
-        subscriptionPeriod,
-        name,
-        expirationUnixTimeStamp,
-    )
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(
+    chatId,
+    subscriptionPrice.toUInt(),
+    subscriptionPeriod,
+    name,
+    expirationUnixTimeStamp,
+)
 
 public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     chat: PublicChat,
@@ -179,11 +174,10 @@ public suspend fun TelegramBot.createChatSubscriptionInviteLink(
     subscriptionPeriod: TimeSpan = 30.days,
     name: String? = null,
     expirationUnixTimeStamp: DateTime,
-): ChatInviteLinkUnlimited =
-    createChatSubscriptionInviteLink(
-        chat,
-        subscriptionPrice.toUInt(),
-        subscriptionPeriod,
-        name,
-        expirationUnixTimeStamp,
-    )
+): ChatInviteLinkUnlimited = createChatSubscriptionInviteLink(
+    chat,
+    subscriptionPrice.toUInt(),
+    subscriptionPeriod,
+    name,
+    expirationUnixTimeStamp,
+)

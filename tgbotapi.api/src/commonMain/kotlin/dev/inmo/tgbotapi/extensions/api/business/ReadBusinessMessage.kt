@@ -17,10 +17,9 @@ public suspend fun TelegramBot.readBusinessMessage(
     @GenerationVariant(Chat::class, "chat.id.toChatId()", "chat")
     chatId: ChatId,
     messageId: MessageId,
-): Boolean =
-    execute(
-        ReadBusinessMessage(businessConnectionId, chatId, messageId),
-    )
+): Boolean = execute(
+    ReadBusinessMessage(businessConnectionId, chatId, messageId),
+)
 
 public suspend fun TelegramBot.readBusinessMessage(
     businessConnectionId: BusinessConnectionId,

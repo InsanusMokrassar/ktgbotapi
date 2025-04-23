@@ -58,19 +58,18 @@ public suspend fun TelegramBot.handleLiveLocation(
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null,
 ) {
     var currentLiveLocationMessage: ContentMessage<LiveLocationContent>? = null
-    val updateMessageJob =
-        if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
-            null
-        } else {
-            val scope = currentCoroutineContext().LinkedSupervisorScope()
-            scope.launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
-                while (scope.isActive) {
-                    delay(liveTimeMillis)
-                    // Remove previous location message info to resend live location message
-                    currentLiveLocationMessage = null
-                }
+    val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
+        null
+    } else {
+        val scope = currentCoroutineContext().LinkedSupervisorScope()
+        scope.launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
+            while (scope.isActive) {
+                delay(liveTimeMillis)
+                // Remove previous location message info to resend live location message
+                currentLiveLocationMessage = null
             }
         }
+    }
     locationsFlow.collect {
         val capturedLiveLocationMessage = currentLiveLocationMessage
         if (capturedLiveLocationMessage == null) {
@@ -136,17 +135,16 @@ public suspend fun TelegramBot.handleLiveLocation(
 ) {
     handleLiveLocation(
         chatId = chatId,
-        locationsFlow =
-            locationsFlow.map {
-                EditLiveLocationInfo(
-                    it.latitude,
-                    it.longitude,
-                    it.horizontalAccuracy,
-                    (it as? LiveLocation) ?.heading,
-                    (it as? LiveLocation) ?.proximityAlertRadius,
-                    (it as? WithReplyMarkup) ?.replyMarkup as? InlineKeyboardMarkup,
-                )
-            },
+        locationsFlow = locationsFlow.map {
+            EditLiveLocationInfo(
+                it.latitude,
+                it.longitude,
+                it.horizontalAccuracy,
+                (it as? LiveLocation) ?.heading,
+                (it as? LiveLocation) ?.proximityAlertRadius,
+                (it as? WithReplyMarkup) ?.replyMarkup as? InlineKeyboardMarkup,
+            )
+        },
         liveTimeMillis = liveTimeMillis,
         threadId = threadId,
         businessConnectionId = businessConnectionId,
@@ -180,13 +178,12 @@ public suspend fun TelegramBot.handleLiveLocation(
 ) {
     handleLiveLocation(
         chatId = chatId,
-        locationsFlow =
-            locationsFlow.map { (lat, long) ->
-                EditLiveLocationInfo(
-                    lat,
-                    long,
-                )
-            },
+        locationsFlow = locationsFlow.map { (lat, long) ->
+            EditLiveLocationInfo(
+                lat,
+                long,
+            )
+        },
         liveTimeMillis = liveTimeMillis,
         threadId = threadId,
         businessConnectionId = businessConnectionId,

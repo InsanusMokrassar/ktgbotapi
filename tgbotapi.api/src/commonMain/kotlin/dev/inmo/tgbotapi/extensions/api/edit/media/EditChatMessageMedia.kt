@@ -23,10 +23,9 @@ public suspend fun TelegramBot.editMessageMedia(
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null,
-): ContentMessage<MediaContent> =
-    execute(
-        EditChatMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup),
-    )
+): ContentMessage<MediaContent> = execute(
+    EditChatMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup),
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

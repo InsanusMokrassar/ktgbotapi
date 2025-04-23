@@ -9,8 +9,6 @@ public suspend fun TelegramBot.setMyDefaultAdministratorRights(
     forChannels: Boolean? = null,
 ): Boolean = execute(SetMyDefaultAdministratorRights(rights, forChannels))
 
-public suspend fun TelegramBot.setMyDefaultAdministratorRightsForChannels(rights: ChatCommonAdministratorRights): Boolean =
-    setMyDefaultAdministratorRights(rights, forChannels = true)
+public suspend fun TelegramBot.setMyDefaultAdministratorRightsForChannels(rights: ChatCommonAdministratorRights): Boolean = setMyDefaultAdministratorRights(rights, forChannels = true)
 
-public suspend fun TelegramBot.setMyDefaultAdministratorRightsForGroupsAndSupergroups(rights: ChatCommonAdministratorRights): Boolean =
-    setMyDefaultAdministratorRights(rights, forChannels = false)
+public suspend fun TelegramBot.setMyDefaultAdministratorRightsForGroupsAndSupergroups(rights: ChatCommonAdministratorRights): Boolean = setMyDefaultAdministratorRights(rights, forChannels = false)

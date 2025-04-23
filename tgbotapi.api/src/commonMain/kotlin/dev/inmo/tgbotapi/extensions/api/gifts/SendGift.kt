@@ -30,16 +30,15 @@ public suspend fun TelegramBot.sendGift(
     text: String,
     parseMode: ParseMode?,
     upgradableToUnique: Boolean = false,
-): Boolean =
-    execute(
-        SendGift.toUser(
-            userId = userId,
-            giftId = giftId,
-            text = text,
-            parseMode = parseMode,
-            upgradableToUnique = upgradableToUnique,
-        ),
-    )
+): Boolean = execute(
+    SendGift.toUser(
+        userId = userId,
+        giftId = giftId,
+        text = text,
+        parseMode = parseMode,
+        upgradableToUnique = upgradableToUnique,
+    ),
+)
 
 @GenerateVariations
 public suspend fun TelegramBot.sendGiftToChat(
@@ -58,16 +57,15 @@ public suspend fun TelegramBot.sendGiftToChat(
     text: String,
     parseMode: ParseMode?,
     upgradableToUnique: Boolean = false,
-): Boolean =
-    execute(
-        SendGift.toChat(
-            chatId = chatId,
-            giftId = giftId,
-            text = text,
-            parseMode = parseMode,
-            upgradableToUnique = upgradableToUnique,
-        ),
-    )
+): Boolean = execute(
+    SendGift.toChat(
+        chatId = chatId,
+        giftId = giftId,
+        text = text,
+        parseMode = parseMode,
+        upgradableToUnique = upgradableToUnique,
+    ),
+)
 
 @GenerateVariations
 public suspend fun TelegramBot.sendGift(
@@ -85,15 +83,14 @@ public suspend fun TelegramBot.sendGift(
     giftId: GiftId,
     textSources: TextSourcesList,
     upgradableToUnique: Boolean = false,
-): Boolean =
-    execute(
-        SendGift.toUser(
-            userId = userId,
-            giftId = giftId,
-            textSources = textSources,
-            upgradableToUnique = upgradableToUnique,
-        ),
-    )
+): Boolean = execute(
+    SendGift.toUser(
+        userId = userId,
+        giftId = giftId,
+        textSources = textSources,
+        upgradableToUnique = upgradableToUnique,
+    ),
+)
 
 @GenerateVariations
 public suspend fun TelegramBot.sendGiftToChat(
@@ -111,12 +108,11 @@ public suspend fun TelegramBot.sendGiftToChat(
     giftId: GiftId,
     textSources: TextSourcesList,
     upgradableToUnique: Boolean = false,
-): Boolean =
-    execute(
-        SendGift.toChat(
-            chatId = chatId,
-            giftId = giftId,
-            textSources = textSources,
-            upgradableToUnique = upgradableToUnique,
-        ),
-    )
+): Boolean = execute(
+    SendGift.toChat(
+        chatId = chatId,
+        giftId = giftId,
+        textSources = textSources,
+        upgradableToUnique = upgradableToUnique,
+    ),
+)

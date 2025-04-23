@@ -37,12 +37,11 @@ public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null,
-): Boolean =
-    editLiveLocation(
-        messageId,
-        location,
-        replyMarkup,
-    )
+): Boolean = editLiveLocation(
+    messageId,
+    location,
+    replyMarkup,
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

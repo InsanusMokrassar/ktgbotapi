@@ -16,10 +16,9 @@ import io.ktor.client.engine.HttpClientEngineFactory
 public fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient = HttpClient(),
-): TelegramBot =
-    telegramBot(urlsKeeper) {
-        this.client = client
-    }
+): TelegramBot = telegramBot(urlsKeeper) {
+    this.client = client
+}
 
 /**
  * Allows to create bot using bot [urlsKeeper] and specify [HttpClientEngineFactory] by passing [clientFactory] param and optionally
@@ -30,11 +29,10 @@ public inline fun <T : HttpClientEngineConfig> telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     clientFactory: HttpClientEngineFactory<T>,
     noinline clientConfig: HttpClientConfig<T>.() -> Unit = {},
-): TelegramBot =
-    telegramBot(
-        urlsKeeper,
-        HttpClient(clientFactory, clientConfig),
-    )
+): TelegramBot = telegramBot(
+    urlsKeeper,
+    HttpClient(clientFactory, clientConfig),
+)
 
 /**
  * Allows to create bot using bot [urlsKeeper] and specify [HttpClientEngine] by passing [clientEngine] param and optionally
@@ -45,11 +43,10 @@ public inline fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     clientEngine: HttpClientEngine,
     noinline clientConfig: HttpClientConfig<*>.() -> Unit = {},
-): TelegramBot =
-    telegramBot(
-        urlsKeeper,
-        HttpClient(clientEngine, clientConfig),
-    )
+): TelegramBot = telegramBot(
+    urlsKeeper,
+    HttpClient(clientEngine, clientConfig),
+)
 
 /**
  * Allows to create bot using bot [urlsKeeper] and specify [HttpClientEngine] by configuring [HttpClient] using
@@ -59,11 +56,10 @@ public inline fun telegramBot(
 public inline fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     noinline clientConfig: HttpClientConfig<*>.() -> Unit,
-): TelegramBot =
-    telegramBot(
-        urlsKeeper,
-        HttpClient(clientConfig),
-    )
+): TelegramBot = telegramBot(
+    urlsKeeper,
+    HttpClient(clientConfig),
+)
 
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
@@ -83,12 +79,11 @@ public inline fun <T : HttpClientEngineConfig> telegramBot(
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
     noinline clientConfig: HttpClientConfig<T>.() -> Unit = {},
-): TelegramBot =
-    telegramBot(
-        TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-        clientFactory,
-        clientConfig,
-    )
+): TelegramBot = telegramBot(
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    clientFactory,
+    clientConfig,
+)
 
 /**
  * Allows to create bot using bot [token] and specify [HttpClientEngine] by passing [clientEngine] param and optionally
@@ -101,12 +96,11 @@ public inline fun telegramBot(
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
     noinline clientConfig: HttpClientConfig<*>.() -> Unit = {},
-): TelegramBot =
-    telegramBot(
-        TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-        clientEngine,
-        clientConfig,
-    )
+): TelegramBot = telegramBot(
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    clientEngine,
+    clientConfig,
+)
 
 /**
  * Allows to create bot using bot [token] and [apiUrl] and specify [HttpClientEngine] by configuring [HttpClient] using
@@ -118,8 +112,7 @@ public inline fun telegramBot(
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
     noinline clientConfig: HttpClientConfig<*>.() -> Unit,
-): TelegramBot =
-    telegramBot(
-        TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-        clientConfig,
-    )
+): TelegramBot = telegramBot(
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    clientConfig,
+)

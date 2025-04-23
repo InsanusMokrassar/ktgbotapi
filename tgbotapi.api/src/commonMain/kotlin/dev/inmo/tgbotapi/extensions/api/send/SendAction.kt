@@ -15,10 +15,9 @@ public suspend fun TelegramBot.sendBotAction(
     action: BotAction,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-): Boolean =
-    execute(
-        SendAction(chatId, action, threadId, businessConnectionId),
-    )
+): Boolean = execute(
+    SendAction(chatId, action, threadId, businessConnectionId),
+)
 
 public suspend fun TelegramBot.sendBotAction(
     chat: Chat,

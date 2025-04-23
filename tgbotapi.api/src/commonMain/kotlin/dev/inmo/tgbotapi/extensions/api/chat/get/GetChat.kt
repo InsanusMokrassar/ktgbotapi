@@ -71,8 +71,7 @@ public suspend fun TelegramBot.getChat(chat: SupergroupChat): ExtendedSupergroup
  * @throws ClassCastException
  */
 @PreviewFeature
-public suspend fun TelegramBot.getChat(chat: SupergroupChatImpl): ExtendedSupergroupChatImpl =
-    getChat(chat.id) as ExtendedSupergroupChatImpl
+public suspend fun TelegramBot.getChat(chat: SupergroupChatImpl): ExtendedSupergroupChatImpl = getChat(chat.id) as ExtendedSupergroupChatImpl
 
 /**
  * Will cast incoming [dev.inmo.tgbotapi.types.chat.ExtendedChat] to a

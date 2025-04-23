@@ -106,26 +106,25 @@ public suspend fun TelegramBot.startLiveLocation(
     replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider {
     val liveTimeAsDouble = liveTimeMillis.toDouble()
-    val locationMessage =
-        execute(
-            SendLiveLocation(
-                chatId = chatId,
-                latitude = latitude,
-                longitude = longitude,
-                livePeriod = ceil(liveTimeAsDouble / 1000).toInt(),
-                horizontalAccuracy = initHorizontalAccuracy,
-                heading = initHeading,
-                proximityAlertRadius = initProximityAlertRadius,
-                threadId = threadId,
-                businessConnectionId = businessConnectionId,
-                disableNotification = disableNotification,
-                protectContent = protectContent,
-                allowPaidBroadcast = allowPaidBroadcast,
-                effectId = effectId,
-                replyParameters = replyParameters,
-                replyMarkup = replyMarkup,
-            ),
-        )
+    val locationMessage = execute(
+        SendLiveLocation(
+            chatId = chatId,
+            latitude = latitude,
+            longitude = longitude,
+            livePeriod = ceil(liveTimeAsDouble / 1000).toInt(),
+            horizontalAccuracy = initHorizontalAccuracy,
+            heading = initHeading,
+            proximityAlertRadius = initProximityAlertRadius,
+            threadId = threadId,
+            businessConnectionId = businessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup,
+        ),
+    )
 
     return LiveLocationProvider(
         this,
@@ -156,25 +155,24 @@ public suspend fun TelegramBot.startLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): LiveLocationProvider =
-    startLiveLocation(
-        scope = scope,
-        chatId = chat.id,
-        latitude = latitude,
-        longitude = longitude,
-        liveTimeMillis = liveTimeMillis,
-        initHorizontalAccuracy = initHorizontalAccuracy,
-        initHeading = initHeading,
-        initProximityAlertRadius = initProximityAlertRadius,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): LiveLocationProvider = startLiveLocation(
+    scope = scope,
+    chatId = chat.id,
+    latitude = latitude,
+    longitude = longitude,
+    liveTimeMillis = liveTimeMillis,
+    initHorizontalAccuracy = initHorizontalAccuracy,
+    initHeading = initHeading,
+    initProximityAlertRadius = initProximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -196,25 +194,24 @@ public suspend fun TelegramBot.startLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): LiveLocationProvider =
-    startLiveLocation(
-        scope = scope,
-        chatId = chatId,
-        latitude = location.latitude,
-        longitude = location.longitude,
-        liveTimeMillis = liveTimeMillis,
-        initHorizontalAccuracy = initHorizontalAccuracy,
-        initHeading = initHeading,
-        initProximityAlertRadius = initProximityAlertRadius,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): LiveLocationProvider = startLiveLocation(
+    scope = scope,
+    chatId = chatId,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    liveTimeMillis = liveTimeMillis,
+    initHorizontalAccuracy = initHorizontalAccuracy,
+    initHeading = initHeading,
+    initProximityAlertRadius = initProximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -236,25 +233,24 @@ public suspend fun TelegramBot.startLiveLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): LiveLocationProvider =
-    startLiveLocation(
-        scope = scope,
-        chatId = chat.id,
-        latitude = location.latitude,
-        longitude = location.longitude,
-        liveTimeMillis = liveTimeMillis,
-        initHorizontalAccuracy = initHorizontalAccuracy,
-        initHeading = initHeading,
-        initProximityAlertRadius = initProximityAlertRadius,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): LiveLocationProvider = startLiveLocation(
+    scope = scope,
+    chatId = chat.id,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    liveTimeMillis = liveTimeMillis,
+    initHorizontalAccuracy = initHorizontalAccuracy,
+    initHeading = initHeading,
+    initProximityAlertRadius = initProximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -277,25 +273,24 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
-): LiveLocationProvider =
-    startLiveLocation(
-        scope = scope,
-        chat = to.chat,
-        latitude = latitude,
-        longitude = longitude,
-        liveTimeMillis = liveTimeMillis,
-        initHorizontalAccuracy = initHorizontalAccuracy,
-        initHeading = initHeading,
-        initProximityAlertRadius = initProximityAlertRadius,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
-        replyMarkup = replyMarkup,
-    )
+): LiveLocationProvider = startLiveLocation(
+    scope = scope,
+    chat = to.chat,
+    latitude = latitude,
+    longitude = longitude,
+    liveTimeMillis = liveTimeMillis,
+    initHorizontalAccuracy = initHorizontalAccuracy,
+    initHeading = initHeading,
+    initProximityAlertRadius = initProximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -317,21 +312,20 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
-): LiveLocationProvider =
-    startLiveLocation(
-        scope = scope,
-        chat = to.chat,
-        location = location,
-        liveTimeMillis = liveTimeMillis,
-        initHorizontalAccuracy = initHorizontalAccuracy,
-        initHeading = initHeading,
-        initProximityAlertRadius = initProximityAlertRadius,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
-        replyMarkup = replyMarkup,
-    )
+): LiveLocationProvider = startLiveLocation(
+    scope = scope,
+    chat = to.chat,
+    location = location,
+    liveTimeMillis = liveTimeMillis,
+    initHorizontalAccuracy = initHorizontalAccuracy,
+    initHeading = initHeading,
+    initProximityAlertRadius = initProximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup,
+)

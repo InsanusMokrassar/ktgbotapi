@@ -12,13 +12,11 @@ import kotlin.collections.List
 public suspend fun TelegramBot.deleteBusinessMessages(
     businessConnectionId: BusinessConnectionId,
     messages: List<AccessibleMessage>,
-): Boolean =
-    deleteBusinessMessages(
-        businessConnectionId = businessConnectionId,
-        messageIds =
-            with(messages) {
-                messages.map {
-                    it.messageId
-                }
-            },
-    )
+): Boolean = deleteBusinessMessages(
+    businessConnectionId = businessConnectionId,
+    messageIds = with(messages) {
+        messages.map {
+            it.messageId
+        }
+    },
+)

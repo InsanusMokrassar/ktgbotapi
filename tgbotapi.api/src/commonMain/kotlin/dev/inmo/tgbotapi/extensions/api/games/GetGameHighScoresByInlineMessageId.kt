@@ -9,13 +9,12 @@ import dev.inmo.tgbotapi.types.games.GameHighScore
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     inlineMessageId: InlineMessageId,
-): List<GameHighScore> =
-    execute(
-        GetGameHighScoresByInlineMessageId(
-            userId,
-            inlineMessageId,
-        ),
-    )
+): List<GameHighScore> = execute(
+    GetGameHighScoresByInlineMessageId(
+        userId,
+        inlineMessageId,
+    ),
+)
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,

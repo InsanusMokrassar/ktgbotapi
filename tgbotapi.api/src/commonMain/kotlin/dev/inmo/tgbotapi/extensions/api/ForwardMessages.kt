@@ -15,20 +15,19 @@ public suspend fun TelegramBot.forwardMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    messageIds.chunked(forwardMessagesLimit.last).flatMap {
-        execute(
-            ForwardMessages(
-                toChatId = toChatId,
-                fromChatId = fromChatId,
-                messageIds = it,
-                threadId = threadId,
-                disableNotification = disableNotification,
-                protectContent = protectContent,
-                removeCaption = removeCaption,
-            ),
-        )
-    }
+): List<MessageId> = messageIds.chunked(forwardMessagesLimit.last).flatMap {
+    execute(
+        ForwardMessages(
+            toChatId = toChatId,
+            fromChatId = fromChatId,
+            messageIds = it,
+            threadId = threadId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            removeCaption = removeCaption,
+        ),
+    )
+}
 
 public suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
@@ -38,16 +37,15 @@ public suspend fun TelegramBot.forwardMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        fromChatId = fromChatId,
-        messageIds = messageIds.toList(),
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageIds = messageIds.toList(),
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)
 
 public suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
@@ -56,18 +54,17 @@ public suspend fun TelegramBot.forwardMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
-        forwardMessages(
-            toChatId = toChatId,
-            fromChatId = chatId,
-            messageIds = messages.map { it.messageId },
-            threadId = threadId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            removeCaption = removeCaption,
-        )
-    }
+): List<MessageId> = messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
+    forwardMessages(
+        toChatId = toChatId,
+        fromChatId = chatId,
+        messageIds = messages.map { it.messageId },
+        threadId = threadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        removeCaption = removeCaption,
+    )
+}
 
 @JvmName("forwardMessagesWithMessages")
 public suspend fun TelegramBot.forwardMessages(
@@ -77,15 +74,14 @@ public suspend fun TelegramBot.forwardMessages(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        messagesMetas = messages.map { it.metaInfo },
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    messagesMetas = messages.map { it.metaInfo },
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)
 
 public suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
@@ -95,16 +91,15 @@ public suspend fun TelegramBot.forward(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        fromChatId = fromChatId,
-        messageIds = messageIds,
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageIds = messageIds,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)
 
 public suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
@@ -114,16 +109,15 @@ public suspend fun TelegramBot.forward(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        fromChatId = fromChatId,
-        messageIds = messageIds,
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageIds = messageIds,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)
 
 public suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
@@ -132,15 +126,14 @@ public suspend fun TelegramBot.forward(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        messagesMetas = messagesMetas,
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    messagesMetas = messagesMetas,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)
 
 @JvmName("forwardWithMessages")
 public suspend fun TelegramBot.forward(
@@ -150,12 +143,11 @@ public suspend fun TelegramBot.forward(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false,
-): List<MessageId> =
-    forwardMessages(
-        toChatId = toChatId,
-        messages = messages,
-        threadId = threadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        removeCaption = removeCaption,
-    )
+): List<MessageId> = forwardMessages(
+    toChatId = toChatId,
+    messages = messages,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption,
+)

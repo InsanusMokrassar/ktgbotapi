@@ -14,8 +14,6 @@ public suspend fun TelegramBot.downloadFileStream(pathedFile: PathedFile): ByteR
 
 public suspend fun TelegramBot.downloadFileStream(fileId: FileId): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(fileId))
 
-public suspend fun TelegramBot.downloadFileStream(file: TelegramMediaFile): ByteReadChannel =
-    downloadFileStream(getFileAdditionalInfo(file))
+public suspend fun TelegramBot.downloadFileStream(file: TelegramMediaFile): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(file))
 
-public suspend fun TelegramBot.downloadFileStream(file: MediaContent): ByteReadChannel =
-    downloadFileStream(getFileAdditionalInfo(file.media))
+public suspend fun TelegramBot.downloadFileStream(file: MediaContent): ByteReadChannel = downloadFileStream(getFileAdditionalInfo(file.media))

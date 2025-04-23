@@ -13,15 +13,14 @@ public suspend fun TelegramBot.createForumTopic(
     name: String,
     color: RGBColor,
     iconEmojiId: CustomEmojiId? = null,
-): ForumTopic =
-    execute(
-        CreateForumTopic(
-            chatId,
-            name,
-            color,
-            iconEmojiId,
-        ),
-    )
+): ForumTopic = execute(
+    CreateForumTopic(
+        chatId,
+        name,
+        color,
+        iconEmojiId,
+    ),
+)
 
 public suspend fun TelegramBot.createForumTopic(
     chat: Chat,

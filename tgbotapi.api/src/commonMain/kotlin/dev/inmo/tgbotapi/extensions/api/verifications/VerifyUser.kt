@@ -9,19 +9,17 @@ import dev.inmo.tgbotapi.types.toChatId
 public suspend fun TelegramBot.verifyUser(
     userId: UserId,
     description: String? = null,
-): Boolean =
-    execute(
-        VerifyUser(
-            userId = userId,
-            description = description,
-        ),
-    )
+): Boolean = execute(
+    VerifyUser(
+        userId = userId,
+        description = description,
+    ),
+)
 
 public suspend fun TelegramBot.verifyUser(
     chat: Chat,
     description: String? = null,
-): Boolean =
-    verifyUser(
-        userId = chat.id.toChatId(),
-        description = description,
-    )
+): Boolean = verifyUser(
+    userId = chat.id.toChatId(),
+    description = description,
+)

@@ -1,0 +1,3 @@
+[*.{kt,kts}]
+# noinspection EditorConfigKeyCorrectness
+ktlint_code_style = intellij_idea

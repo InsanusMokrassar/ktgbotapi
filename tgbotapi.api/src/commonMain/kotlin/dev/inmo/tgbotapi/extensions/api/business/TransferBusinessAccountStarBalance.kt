@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 public suspend fun TelegramBot.transferBusinessAccountStarBalance(
     businessConnectionId: BusinessConnectionId,
     amount: Int,
-): Boolean =
-    execute(
-        TransferBusinessAccountStarBalance(businessConnectionId, amount),
-    )
+): Boolean = execute(
+    TransferBusinessAccountStarBalance(businessConnectionId, amount),
+)

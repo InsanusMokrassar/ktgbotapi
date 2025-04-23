@@ -18,10 +18,9 @@ public suspend fun TelegramBot.replaceStickerInSet(
     stickerSetName: StickerSetName,
     oldSticker: FileId,
     newSticker: InputSticker,
-): Boolean =
-    execute(
-        ReplaceStickerInSet(userId, stickerSetName, oldSticker, newSticker),
-    )
+): Boolean = execute(
+    ReplaceStickerInSet(userId, stickerSetName, oldSticker, newSticker),
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
@@ -35,13 +34,12 @@ public suspend fun TelegramBot.replaceStickerInSet(
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker,
-): Boolean =
-    replaceStickerInSet(
-        userId,
-        stickerSet.name,
-        oldSticker,
-        newSticker,
-    )
+): Boolean = replaceStickerInSet(
+    userId,
+    stickerSet.name,
+    oldSticker,
+    newSticker,
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
@@ -51,35 +49,34 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList(),
-): Boolean =
-    replaceStickerInSet(
-        userId,
-        stickerSet,
-        oldSticker,
-        when (stickerSet.stickerType) {
-            StickerType.CustomEmoji ->
-                InputSticker.WithKeywords.CustomEmoji(
-                    sticker,
-                    format,
-                    emojis,
-                    keywords,
-                )
-            StickerType.Mask ->
-                InputSticker.Mask(
-                    sticker,
-                    format,
-                    emojis,
-                )
-            StickerType.Regular ->
-                InputSticker.WithKeywords.Regular(
-                    sticker,
-                    format,
-                    emojis,
-                    keywords,
-                )
-            is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
-        },
-    )
+): Boolean = replaceStickerInSet(
+    userId,
+    stickerSet,
+    oldSticker,
+    when (stickerSet.stickerType) {
+        StickerType.CustomEmoji ->
+            InputSticker.WithKeywords.CustomEmoji(
+                sticker,
+                format,
+                emojis,
+                keywords,
+            )
+        StickerType.Mask ->
+            InputSticker.Mask(
+                sticker,
+                format,
+                emojis,
+            )
+        StickerType.Regular ->
+            InputSticker.WithKeywords.Regular(
+                sticker,
+                format,
+                emojis,
+                keywords,
+            )
+        is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
+    },
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
@@ -89,49 +86,47 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null,
-): Boolean =
-    replaceStickerInSet(
-        userId,
-        stickerSet.name,
-        oldSticker,
-        when (stickerSet.stickerType) {
-            StickerType.CustomEmoji ->
-                InputSticker.WithKeywords.CustomEmoji(
-                    sticker,
-                    format,
-                    emojis,
-                    emptyList(),
-                )
-            StickerType.Mask ->
-                InputSticker.Mask(
-                    sticker,
-                    format,
-                    emojis,
-                    maskPosition,
-                )
-            StickerType.Regular ->
-                InputSticker.WithKeywords.Regular(
-                    sticker,
-                    format,
-                    emojis,
-                    emptyList(),
-                )
-            is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
-        },
-    )
+): Boolean = replaceStickerInSet(
+    userId,
+    stickerSet.name,
+    oldSticker,
+    when (stickerSet.stickerType) {
+        StickerType.CustomEmoji ->
+            InputSticker.WithKeywords.CustomEmoji(
+                sticker,
+                format,
+                emojis,
+                emptyList(),
+            )
+        StickerType.Mask ->
+            InputSticker.Mask(
+                sticker,
+                format,
+                emojis,
+                maskPosition,
+            )
+        StickerType.Regular ->
+            InputSticker.WithKeywords.Regular(
+                sticker,
+                format,
+                emojis,
+                emptyList(),
+            )
+        is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
+    },
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker,
-): Boolean =
-    replaceStickerInSet(
-        user.id,
-        stickerSet.name,
-        oldSticker,
-        newSticker,
-    )
+): Boolean = replaceStickerInSet(
+    user.id,
+    stickerSet.name,
+    oldSticker,
+    newSticker,
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
@@ -141,16 +136,15 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList(),
-): Boolean =
-    replaceStickerInSet(
-        user.id,
-        stickerSet,
-        oldSticker,
-        sticker,
-        format,
-        emojis,
-        keywords,
-    )
+): Boolean = replaceStickerInSet(
+    user.id,
+    stickerSet,
+    oldSticker,
+    sticker,
+    format,
+    emojis,
+    keywords,
+)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     user: CommonUser,
@@ -160,13 +154,12 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null,
-): Boolean =
-    replaceStickerInSet(
-        user.id,
-        stickerSet,
-        oldSticker,
-        sticker,
-        format,
-        emojis,
-        maskPosition,
-    )
+): Boolean = replaceStickerInSet(
+    user.id,
+    stickerSet,
+    oldSticker,
+    sticker,
+    format,
+    emojis,
+    maskPosition,
+)

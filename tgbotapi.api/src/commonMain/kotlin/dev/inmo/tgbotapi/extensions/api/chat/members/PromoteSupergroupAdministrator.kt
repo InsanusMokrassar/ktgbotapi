@@ -23,24 +23,23 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-): Boolean =
-    execute(
-        PromoteSupergroupAdministrator(
-            chatId = chatId,
-            userId = userId,
-            untilDate = untilDate,
-            isAnonymous = isAnonymous,
-            canChangeInfo = canChangeInfo,
-            canDeleteMessages = canDeleteMessages,
-            canInviteUsers = canInviteUsers,
-            canRestrictMembers = canRestrictMembers,
-            canPinMessages = canPinMessages,
-            canPromoteMembers = canPromoteMembers,
-            canManageVideoChats = canManageVideoChats,
-            canManageChat = canManageChat,
-            canManageTopics = canManageTopics,
-        ),
-    )
+): Boolean = execute(
+    PromoteSupergroupAdministrator(
+        chatId = chatId,
+        userId = userId,
+        untilDate = untilDate,
+        isAnonymous = isAnonymous,
+        canChangeInfo = canChangeInfo,
+        canDeleteMessages = canDeleteMessages,
+        canInviteUsers = canInviteUsers,
+        canRestrictMembers = canRestrictMembers,
+        canPinMessages = canPinMessages,
+        canPromoteMembers = canPromoteMembers,
+        canManageVideoChats = canManageVideoChats,
+        canManageChat = canManageChat,
+        canManageTopics = canManageTopics,
+    ),
+)
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chat: PublicChat,
@@ -56,22 +55,21 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-): Boolean =
-    promoteSupergroupAdministrator(
-        chat.id,
-        userId,
-        untilDate = untilDate,
-        isAnonymous = isAnonymous,
-        canChangeInfo = canChangeInfo,
-        canDeleteMessages = canDeleteMessages,
-        canInviteUsers = canInviteUsers,
-        canRestrictMembers = canRestrictMembers,
-        canPinMessages = canPinMessages,
-        canPromoteMembers = canPromoteMembers,
-        canManageVideoChats = canManageVideoChats,
-        canManageChat = canManageChat,
-        canManageTopics = canManageTopics,
-    )
+): Boolean = promoteSupergroupAdministrator(
+    chat.id,
+    userId,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPinMessages = canPinMessages,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTopics = canManageTopics,
+)
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chatId: IdChatIdentifier,
@@ -87,22 +85,21 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-): Boolean =
-    promoteSupergroupAdministrator(
-        chatId,
-        user.id,
-        untilDate = untilDate,
-        isAnonymous = isAnonymous,
-        canChangeInfo = canChangeInfo,
-        canDeleteMessages = canDeleteMessages,
-        canInviteUsers = canInviteUsers,
-        canRestrictMembers = canRestrictMembers,
-        canPinMessages = canPinMessages,
-        canPromoteMembers = canPromoteMembers,
-        canManageVideoChats = canManageVideoChats,
-        canManageChat = canManageChat,
-        canManageTopics = canManageTopics,
-    )
+): Boolean = promoteSupergroupAdministrator(
+    chatId,
+    user.id,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPinMessages = canPinMessages,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTopics = canManageTopics,
+)
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
     chat: PublicChat,
@@ -118,19 +115,18 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
-): Boolean =
-    promoteSupergroupAdministrator(
-        chat.id,
-        user.id,
-        untilDate = untilDate,
-        isAnonymous = isAnonymous,
-        canChangeInfo = canChangeInfo,
-        canDeleteMessages = canDeleteMessages,
-        canInviteUsers = canInviteUsers,
-        canRestrictMembers = canRestrictMembers,
-        canPinMessages = canPinMessages,
-        canPromoteMembers = canPromoteMembers,
-        canManageVideoChats = canManageVideoChats,
-        canManageChat = canManageChat,
-        canManageTopics = canManageTopics,
-    )
+): Boolean = promoteSupergroupAdministrator(
+    chat.id,
+    user.id,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPinMessages = canPinMessages,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTopics = canManageTopics,
+)

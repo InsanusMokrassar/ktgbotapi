@@ -13,13 +13,12 @@ import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 public suspend fun TelegramBot.verifyChat(
     chatId: ChatIdentifier,
     description: String? = null,
-): Boolean =
-    execute(
-        VerifyChat(
-            chatId = chatId,
-            description = description,
-        ),
-    )
+): Boolean = execute(
+    VerifyChat(
+        chatId = chatId,
+        description = description,
+    ),
+)
 
 /**
  * This method may call [verifyUser] in case when [chat] is [PrivateChat]
@@ -27,20 +26,19 @@ public suspend fun TelegramBot.verifyChat(
 public suspend fun TelegramBot.verifyChat(
     chat: Chat,
     description: String? = null,
-): Boolean =
-    when (chat) {
-        is PrivateChat ->
-            verifyUser(
-                chat = chat,
-                description = description,
-            )
-        is UnknownExtendedChat,
-        is UnknownChatType,
-        is BusinessChat,
-        is PublicChat,
-        ->
-            verifyChat(
-                chatId = chat.id,
-                description = description,
-            )
-    }
+): Boolean = when (chat) {
+    is PrivateChat ->
+        verifyUser(
+            chat = chat,
+            description = description,
+        )
+    is UnknownExtendedChat,
+    is UnknownChatType,
+    is BusinessChat,
+    is PublicChat,
+    ->
+        verifyChat(
+            chatId = chat.id,
+            description = description,
+        )
+}

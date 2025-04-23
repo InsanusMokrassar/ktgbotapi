@@ -12,7 +12,6 @@ public suspend fun TelegramBot.setBusinessAccountUsername(
     businessConnectionId: BusinessConnectionId,
     @GenerationVariant(String::class, "Username(username)", "username")
     username: Username,
-): Boolean =
-    execute(
-        SetBusinessAccountUsername(businessConnectionId, username),
-    )
+): Boolean = execute(
+    SetBusinessAccountUsername(businessConnectionId, username),
+)

@@ -10,13 +10,12 @@ import dev.inmo.tgbotapi.types.chat.Chat
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId,
-): Boolean =
-    execute(
-        DeleteForumTopic(
-            chatId,
-            messageThreadId,
-        ),
-    )
+): Boolean = execute(
+    DeleteForumTopic(
+        chatId,
+        messageThreadId,
+    ),
+)
 
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,

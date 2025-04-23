@@ -29,10 +29,8 @@ public suspend fun TelegramBot.declineChatJoinRequest(
     user: User,
 ): Boolean = declineChatJoinRequest(chat.id, user.id)
 
-public suspend fun TelegramBot.declineChatJoinRequest(chatJoinRequest: ChatJoinRequest): Boolean =
-    declineChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
+public suspend fun TelegramBot.declineChatJoinRequest(chatJoinRequest: ChatJoinRequest): Boolean = declineChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
 
 public suspend fun TelegramBot.decline(chatJoinRequest: ChatJoinRequest): Boolean = declineChatJoinRequest(chatJoinRequest)
 
-public suspend fun TelegramBot.declineChatJoinRequest(chatJoinRequestUpdate: ChatJoinRequestUpdate): Boolean =
-    declineChatJoinRequest(chatJoinRequestUpdate.data)
+public suspend fun TelegramBot.declineChatJoinRequest(chatJoinRequestUpdate: ChatJoinRequestUpdate): Boolean = declineChatJoinRequest(chatJoinRequestUpdate.data)

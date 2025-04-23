@@ -31,25 +31,24 @@ public suspend fun TelegramBot.sendPaidMedia(
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<PaidMediaInfoContent> =
-    execute(
-        SendPaidMedia(
-            chatId = chatId,
-            starCount = starCount,
-            media = media,
-            text = text,
-            parseMode = parseMode,
-            payload = payload,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        ),
-    )
+): ContentMessage<PaidMediaInfoContent> = execute(
+    SendPaidMedia(
+        chatId = chatId,
+        starCount = starCount,
+        media = media,
+        text = text,
+        parseMode = parseMode,
+        payload = payload,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    ),
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -70,23 +69,22 @@ public suspend fun TelegramBot.sendPaidMedia(
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<PaidMediaInfoContent> =
-    sendPaidMedia(
-        chatId = chat.id,
-        starCount = starCount,
-        media = media,
-        text = text,
-        parseMode = parseMode,
-        payload = payload,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+    chatId = chat.id,
+    starCount = starCount,
+    media = media,
+    text = text,
+    parseMode = parseMode,
+    payload = payload,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -106,24 +104,23 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<PaidMediaInfoContent> =
-    execute(
-        SendPaidMedia(
-            chatId = chatId,
-            starCount = starCount,
-            media = media,
-            entities = entities,
-            payload = payload,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        ),
-    )
+): ContentMessage<PaidMediaInfoContent> = execute(
+    SendPaidMedia(
+        chatId = chatId,
+        starCount = starCount,
+        media = media,
+        entities = entities,
+        payload = payload,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    ),
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -143,19 +140,18 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<PaidMediaInfoContent> =
-    sendPaidMedia(
-        chatId = chat.id,
-        starCount = starCount,
-        media = media,
-        entities = entities,
-        payload = payload,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+    chatId = chat.id,
+    starCount = starCount,
+    media = media,
+    entities = entities,
+    payload = payload,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)

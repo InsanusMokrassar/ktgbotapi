@@ -23,11 +23,10 @@ public fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
 ): UpdateReceiver<Update> {
     val updatesChannel = Channel<Update>(Channel.UNLIMITED)
     val mediaGroupChannel = Channel<Pair<String, BaseMessageUpdate>>(Channel.UNLIMITED)
-    val mediaGroupAccumulatedChannel =
-        mediaGroupChannel.accumulateByKey(
-            mediaGroupsDebounceMillis,
-            scope = this,
-        )
+    val mediaGroupAccumulatedChannel = mediaGroupChannel.accumulateByKey(
+        mediaGroupsDebounceMillis,
+        scope = this,
+    )
 
     launch {
         launchSafelyWithoutExceptions {

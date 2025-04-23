@@ -13,15 +13,14 @@ public suspend fun TelegramBot.editForumTopic(
     messageThreadId: MessageThreadId,
     name: String? = null,
     iconEmojiId: CustomEmojiId? = null,
-): Boolean =
-    execute(
-        EditForumTopic(
-            chatId,
-            messageThreadId,
-            name,
-            iconEmojiId,
-        ),
-    )
+): Boolean = execute(
+    EditForumTopic(
+        chatId,
+        messageThreadId,
+        name,
+        iconEmojiId,
+    ),
+)
 
 public suspend fun TelegramBot.editForumTopic(
     chat: Chat,

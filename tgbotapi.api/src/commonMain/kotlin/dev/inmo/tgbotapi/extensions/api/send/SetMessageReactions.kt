@@ -15,10 +15,9 @@ public suspend fun TelegramBot.setMessageReactions(
     messageId: MessageId,
     reactions: List<Reaction> = emptyList(),
     big: Boolean = false,
-): Boolean =
-    execute(
-        SetMessageReactions(chatId, messageId, reactions, big),
-    )
+): Boolean = execute(
+    SetMessageReactions(chatId, messageId, reactions, big),
+)
 
 public suspend fun TelegramBot.setMessageReaction(
     chatId: ChatIdentifier,

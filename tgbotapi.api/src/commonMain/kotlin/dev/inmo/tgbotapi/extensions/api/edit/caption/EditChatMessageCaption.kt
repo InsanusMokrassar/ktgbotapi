@@ -28,10 +28,9 @@ public suspend fun TelegramBot.editMessageCaption(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-): ContentMessage<MediaContent> =
-    execute(
-        EditChatMessageCaption(chatId, messageId, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup),
-    )
+): ContentMessage<MediaContent> = execute(
+    EditChatMessageCaption(chatId, messageId, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup),
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -45,16 +44,15 @@ public suspend fun TelegramBot.editMessageCaption(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-): ContentMessage<MediaContent> =
-    editMessageCaption(
-        chat.id,
-        messageId,
-        text,
-        parseMode,
-        businessConnectionId,
-        showCaptionAboveMedia,
-        replyMarkup,
-    )
+): ContentMessage<MediaContent> = editMessageCaption(
+    chat.id,
+    messageId,
+    text,
+    parseMode,
+    businessConnectionId,
+    showCaptionAboveMedia,
+    replyMarkup,
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -91,10 +89,9 @@ public suspend fun TelegramBot.editMessageCaption(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-): ContentMessage<MediaContent> =
-    execute(
-        EditChatMessageCaption(chatId, messageId, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup),
-    )
+): ContentMessage<MediaContent> = execute(
+    EditChatMessageCaption(chatId, messageId, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup),
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

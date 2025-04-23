@@ -20,19 +20,18 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<T> =
-    execute(
-        content.createResend(
-            chatId = chatId,
-            messageThreadId = messageThreadId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        ),
-    ) as ContentMessage<T>
+): ContentMessage<T> = execute(
+    content.createResend(
+        chatId = chatId,
+        messageThreadId = messageThreadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    ),
+) as ContentMessage<T>
 
 /**
  * This method will send [content] to the [chat] as is
@@ -47,18 +46,17 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<T> =
-    resend(
-        chatId = chat.id,
-        content = content,
-        messageThreadId = messageThreadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<T> = resend(
+    chatId = chat.id,
+    content = content,
+    messageThreadId = messageThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * This method will send [message] content to the [chatId]. In difference with [copyMessage], this method will use
@@ -75,18 +73,17 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<T> =
-    resend(
-        chatId = chatId,
-        content = message.content,
-        messageThreadId = messageThreadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<T> = resend(
+    chatId = chatId,
+    content = message.content,
+    messageThreadId = messageThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
 
 /**
  * This method will send [message] content to the [chat]. In difference with [copyMessage], this method will use
@@ -103,15 +100,14 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<T> =
-    resend(
-        chatId = chat.id,
-        message = message,
-        messageThreadId = messageThreadId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): ContentMessage<T> = resend(
+    chatId = chat.id,
+    message = message,
+    messageThreadId = messageThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)

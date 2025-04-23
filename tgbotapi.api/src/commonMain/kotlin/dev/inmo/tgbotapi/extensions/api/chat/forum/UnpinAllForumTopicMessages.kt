@@ -10,13 +10,12 @@ import dev.inmo.tgbotapi.types.chat.Chat
 public suspend fun TelegramBot.unpinAllForumTopicMessages(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId,
-): Boolean =
-    execute(
-        UnpinAllForumTopicMessages(
-            chatId,
-            messageThreadId,
-        ),
-    )
+): Boolean = execute(
+    UnpinAllForumTopicMessages(
+        chatId,
+        messageThreadId,
+    ),
+)
 
 public suspend fun TelegramBot.unpinAllForumTopicMessages(
     chat: Chat,

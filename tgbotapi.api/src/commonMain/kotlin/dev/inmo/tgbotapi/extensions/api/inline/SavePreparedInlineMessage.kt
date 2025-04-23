@@ -14,17 +14,16 @@ public suspend fun TelegramBot.savePreparedInlineMessage(
     allowSendToBots: Boolean = false,
     allowSendToGroups: Boolean = false,
     allowSendToChannels: Boolean = false,
-): PreparedInlineMessage =
-    execute(
-        SavePreparedInlineMessage(
-            userId = userId,
-            result = result,
-            allowSendToUsers = allowSendToUsers,
-            allowSendToBots = allowSendToBots,
-            allowSendToGroups = allowSendToGroups,
-            allowSendToChannels = allowSendToChannels,
-        ),
-    )
+): PreparedInlineMessage = execute(
+    SavePreparedInlineMessage(
+        userId = userId,
+        result = result,
+        allowSendToUsers = allowSendToUsers,
+        allowSendToBots = allowSendToBots,
+        allowSendToGroups = allowSendToGroups,
+        allowSendToChannels = allowSendToChannels,
+    ),
+)
 
 public suspend fun TelegramBot.savePreparedInlineMessage(
     user: User,
@@ -33,12 +32,11 @@ public suspend fun TelegramBot.savePreparedInlineMessage(
     allowSendToBots: Boolean = false,
     allowSendToGroups: Boolean = false,
     allowSendToChannels: Boolean = false,
-): PreparedInlineMessage =
-    savePreparedInlineMessage(
-        userId = user.id,
-        result = result,
-        allowSendToUsers = allowSendToUsers,
-        allowSendToBots = allowSendToBots,
-        allowSendToGroups = allowSendToGroups,
-        allowSendToChannels = allowSendToChannels,
-    )
+): PreparedInlineMessage = savePreparedInlineMessage(
+    userId = user.id,
+    result = result,
+    allowSendToUsers = allowSendToUsers,
+    allowSendToBots = allowSendToBots,
+    allowSendToGroups = allowSendToGroups,
+    allowSendToChannels = allowSendToChannels,
+)

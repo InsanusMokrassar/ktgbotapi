@@ -19,33 +19,28 @@ public suspend fun TelegramBot.downloadFileToTemp(filePath: String): File {
     )
 }
 
-public suspend fun TelegramBot.downloadFileToTemp(pathedFile: PathedFile): File =
-    downloadFileToTemp(
-        pathedFile.filePath,
-    ).run {
-        val newFile = File(parentFile, "$nameWithoutExtension.${pathedFile.fileName.fileExtension}")
-        val success =
-            runCatching {
-                renameTo(newFile)
-            }.getOrElse { false }
-        if (success) {
-            newFile
-        } else {
-            this@run
-        }
+public suspend fun TelegramBot.downloadFileToTemp(pathedFile: PathedFile): File = downloadFileToTemp(
+    pathedFile.filePath,
+).run {
+    val newFile = File(parentFile, "$nameWithoutExtension.${pathedFile.fileName.fileExtension}")
+    val success = runCatching {
+        renameTo(newFile)
+    }.getOrElse { false }
+    if (success) {
+        newFile
+    } else {
+        this@run
     }
+}
 
-public suspend fun TelegramBot.downloadFileToTemp(fileId: FileId): File =
-    downloadFileToTemp(
-        getFileAdditionalInfo(fileId),
-    )
+public suspend fun TelegramBot.downloadFileToTemp(fileId: FileId): File = downloadFileToTemp(
+    getFileAdditionalInfo(fileId),
+)
 
-public suspend fun TelegramBot.downloadFileToTemp(file: TelegramMediaFile): File =
-    downloadFileToTemp(
-        getFileAdditionalInfo(file),
-    )
+public suspend fun TelegramBot.downloadFileToTemp(file: TelegramMediaFile): File = downloadFileToTemp(
+    getFileAdditionalInfo(file),
+)
 
-public suspend fun TelegramBot.downloadFileToTemp(file: MediaContent): File =
-    downloadFileToTemp(
-        getFileAdditionalInfo(file.media),
-    )
+public suspend fun TelegramBot.downloadFileToTemp(file: MediaContent): File = downloadFileToTemp(
+    getFileAdditionalInfo(file.media),
+)

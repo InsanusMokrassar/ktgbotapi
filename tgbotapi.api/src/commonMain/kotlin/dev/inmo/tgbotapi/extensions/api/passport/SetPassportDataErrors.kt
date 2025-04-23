@@ -25,15 +25,14 @@ public suspend fun TelegramBot.setPassportDataErrors(
     passportData: PassportData,
     decryptor: Decryptor,
     mapper: suspend Decryptor.(EncryptedPassportElement) -> PassportElementError,
-): Boolean =
-    setPassportDataErrors(
-        userId,
-        passportData.data.map { decryptor.mapper(it) }.also {
-            if (it.isEmpty()) {
-                return@setPassportDataErrors false
-            }
-        },
-    )
+): Boolean = setPassportDataErrors(
+    userId,
+    passportData.data.map { decryptor.mapper(it) }.also {
+        if (it.isEmpty()) {
+            return@setPassportDataErrors false
+        }
+    },
+)
 
 public suspend fun TelegramBot.setPassportDataErrors(
     user: User,

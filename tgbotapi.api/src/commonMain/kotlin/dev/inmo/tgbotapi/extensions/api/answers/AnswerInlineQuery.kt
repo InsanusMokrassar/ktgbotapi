@@ -14,10 +14,9 @@ public suspend fun TelegramBot.answerInlineQuery(
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
     button: InlineQueryResultsButton? = null,
-): Boolean =
-    execute(
-        AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, button),
-    )
+): Boolean = execute(
+    AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, button),
+)
 
 public suspend fun TelegramBot.answerInlineQuery(
     inlineQuery: InlineQuery,
@@ -45,10 +44,9 @@ public suspend fun TelegramBot.answerInlineQuery(
     nextOffset: String? = null,
     switchPmText: String?,
     switchPmParameter: String?,
-): Boolean =
-    execute(
-        AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter),
-    )
+): Boolean = execute(
+    AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter),
+)
 
 public suspend fun TelegramBot.answerInlineQuery(
     inlineQuery: InlineQuery,

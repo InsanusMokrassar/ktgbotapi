@@ -13,7 +13,6 @@ public suspend fun TelegramBot.deleteBusinessMessages(
     businessConnectionId: BusinessConnectionId,
     @GenerationVariant(List::class, "messages.map { it.messageId }", "messages", AccessibleMessage::class)
     messageIds: List<MessageId>,
-): Boolean =
-    execute(
-        DeleteBusinessMessages(businessConnectionId, messageIds),
-    )
+): Boolean = execute(
+    DeleteBusinessMessages(businessConnectionId, messageIds),
+)

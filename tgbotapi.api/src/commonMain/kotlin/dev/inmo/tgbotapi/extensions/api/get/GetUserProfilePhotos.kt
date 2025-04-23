@@ -10,14 +10,13 @@ public suspend fun TelegramBot.getUserProfilePhotos(
     userId: UserId,
     offset: Int? = null,
     limit: Int? = null,
-): UserProfilePhotos =
-    execute(
-        GetUserProfilePhotos(
-            userId,
-            offset,
-            limit,
-        ),
-    )
+): UserProfilePhotos = execute(
+    GetUserProfilePhotos(
+        userId,
+        offset,
+        limit,
+    ),
+)
 
 public suspend fun TelegramBot.getUserProfilePhotos(
     user: CommonUser,

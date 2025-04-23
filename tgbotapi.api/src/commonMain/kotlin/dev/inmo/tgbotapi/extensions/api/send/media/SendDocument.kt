@@ -32,86 +32,11 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    execute(
-        SendDocument(
-            chatId = chatId,
-            document = document,
-            thumbnail = thumb,
-            text = text,
-            parseMode = parseMode,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-            disableContentTypeDetection = disableContentTypeDetection,
-        ),
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendDocument(
-    chat: Chat,
-    document: InputFile,
-    thumb: InputFile? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chat.id.threadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
-        chatId = chat.id,
-        document = document,
-        thumb = thumb,
-        text = text,
-        parseMode = parseMode,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection,
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
-    document: DocumentFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chatId.threadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
+): ContentMessage<DocumentContent> = execute(
+    SendDocument(
         chatId = chatId,
-        document = document.fileId,
-        thumb = document.thumbnail ?.fileId,
+        document = document,
+        thumbnail = thumb,
         text = text,
         parseMode = parseMode,
         threadId = threadId,
@@ -123,7 +48,79 @@ public suspend fun TelegramBot.sendDocument(
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
         disableContentTypeDetection = disableContentTypeDetection,
-    )
+    ),
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendDocument(
+    chat: Chat,
+    document: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null,
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chat.id,
+    document = document,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendDocument(
+    chatId: ChatIdentifier,
+    document: DocumentFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null,
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chatId,
+    document = document.fileId,
+    thumb = document.thumbnail ?.fileId,
+    text = text,
+    parseMode = parseMode,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -143,22 +140,21 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
-        chatId = chat.id,
-        document = document,
-        text = text,
-        parseMode = parseMode,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection,
-    )
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chat.id,
+    document = document,
+    text = text,
+    parseMode = parseMode,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -178,82 +174,11 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    execute(
-        SendDocument(
-            chatId = chatId,
-            document = document,
-            thumbnail = thumb,
-            entities = entities,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-            disableContentTypeDetection = disableContentTypeDetection,
-        ),
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend inline fun TelegramBot.sendDocument(
-    chat: Chat,
-    document: InputFile,
-    thumb: InputFile? = null,
-    entities: TextSourcesList,
-    threadId: MessageThreadId? = chat.id.threadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
-        chatId = chat.id,
-        document = document,
-        thumb = thumb,
-        entities = entities,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection,
-    )
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend inline fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
-    document: DocumentFile,
-    entities: TextSourcesList,
-    threadId: MessageThreadId? = chatId.threadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
+): ContentMessage<DocumentContent> = execute(
+    SendDocument(
         chatId = chatId,
-        document = document.fileId,
-        thumb = document.thumbnail ?.fileId,
+        document = document,
+        thumbnail = thumb,
         entities = entities,
         threadId = threadId,
         businessConnectionId = businessConnectionId,
@@ -264,7 +189,75 @@ public suspend inline fun TelegramBot.sendDocument(
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
         disableContentTypeDetection = disableContentTypeDetection,
-    )
+    ),
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.sendDocument(
+    chat: Chat,
+    document: InputFile,
+    thumb: InputFile? = null,
+    entities: TextSourcesList,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null,
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chat.id,
+    document = document,
+    thumb = thumb,
+    entities = entities,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.sendDocument(
+    chatId: ChatIdentifier,
+    document: DocumentFile,
+    entities: TextSourcesList,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null,
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chatId,
+    document = document.fileId,
+    thumb = document.thumbnail ?.fileId,
+    entities = entities,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -283,18 +276,17 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null,
-): ContentMessage<DocumentContent> =
-    sendDocument(
-        chatId = chat.id,
-        document = document,
-        entities = entities,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection,
-    )
+): ContentMessage<DocumentContent> = sendDocument(
+    chatId = chat.id,
+    document = document,
+    entities = entities,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection,
+)
