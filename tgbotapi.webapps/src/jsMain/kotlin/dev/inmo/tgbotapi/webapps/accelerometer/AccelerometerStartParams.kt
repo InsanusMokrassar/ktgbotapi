@@ -8,7 +8,6 @@ external interface AccelerometerStartParams {
     val refreshRate: MilliSeconds
 }
 
-fun AccelerometerStartParams(refreshRate: MilliSeconds = 1000): AccelerometerStartParams =
-    json(
-        "refresh_rate" to refreshRate,
-    ).unsafeCast<AccelerometerStartParams>()
+fun AccelerometerStartParams(refreshRate: MilliSeconds = 1000): AccelerometerStartParams = json(
+    "refresh_rate" to refreshRate,
+).unsafeCast<AccelerometerStartParams>()

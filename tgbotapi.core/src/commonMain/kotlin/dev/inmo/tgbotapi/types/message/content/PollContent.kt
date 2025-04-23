@@ -23,16 +23,15 @@ data class PollContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<PollContent>> =
-        poll.createRequest(
-            chatId = chatId,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<PollContent>> = poll.createRequest(
+        chatId = chatId,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }

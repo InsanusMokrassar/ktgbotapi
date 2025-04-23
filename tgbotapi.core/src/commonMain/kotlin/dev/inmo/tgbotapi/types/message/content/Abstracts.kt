@@ -171,23 +171,21 @@ sealed interface ResendableContent {
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null,
-    ): Request<out AccessibleMessage> =
-        createResend(
-            chatId = chatId,
-            messageThreadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters =
-                replyToMessageId ?.let {
-                    ReplyParameters(
-                        chatId,
-                        replyToMessageId,
-                        allowSendingWithoutReply = allowSendingWithoutReply,
-                    )
-                },
-            replyMarkup = replyMarkup,
-        )
+    ): Request<out AccessibleMessage> = createResend(
+        chatId = chatId,
+        messageThreadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyToMessageId ?.let {
+            ReplyParameters(
+                chatId,
+                replyToMessageId,
+                allowSendingWithoutReply = allowSendingWithoutReply,
+            )
+        },
+        replyMarkup = replyMarkup,
+    )
 }

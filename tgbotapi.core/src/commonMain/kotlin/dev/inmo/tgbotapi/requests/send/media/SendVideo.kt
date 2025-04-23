@@ -49,31 +49,30 @@ fun SendVideo(
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
 
-    val data =
-        SendVideoData(
-            chatId = chatId,
-            video = video,
-            thumbnail = thumbnail ?.fileId,
-            cover = cover,
-            startTimestamp = startTimestamp,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            duration = duration,
-            width = width,
-            height = height,
-            supportStreaming = supportStreaming,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendVideoData(
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail ?.fileId,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = supportStreaming,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
@@ -111,31 +110,30 @@ fun SendVideo(
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
 
-    val data =
-        SendVideoData(
-            chatId = chatId,
-            video = video,
-            thumbnail = thumbnail ?.fileId,
-            cover = cover,
-            startTimestamp = startTimestamp,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            duration = duration,
-            width = width,
-            height = height,
-            supportStreaming = supportStreaming,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendVideoData(
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail ?.fileId,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = supportStreaming,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
         data
@@ -147,8 +145,7 @@ fun SendVideo(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVideoData internal constructor(
@@ -231,6 +228,6 @@ data class SendVideoFiles internal constructor(
     val video: MultipartFile? = null,
     val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-        videoField to video,
-        thumbnailField to thumbnail,
-    )
+    videoField to video,
+    thumbnailField to thumbnail,
+)

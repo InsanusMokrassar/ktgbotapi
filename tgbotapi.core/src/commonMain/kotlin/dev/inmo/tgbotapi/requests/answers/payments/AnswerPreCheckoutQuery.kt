@@ -29,13 +29,11 @@ data class AnswerPreCheckoutQueryError(
         get() = serializer()
 }
 
-fun PreCheckoutQuery.createAnswerOk(): AnswerPreCheckoutQueryOk =
-    AnswerPreCheckoutQueryOk(
-        id,
-    )
+fun PreCheckoutQuery.createAnswerOk(): AnswerPreCheckoutQueryOk = AnswerPreCheckoutQueryOk(
+    id,
+)
 
-fun PreCheckoutQuery.createAnswerError(error: String): AnswerPreCheckoutQueryError =
-    AnswerPreCheckoutQueryError(
-        id,
-        error,
-    )
+fun PreCheckoutQuery.createAnswerError(error: String): AnswerPreCheckoutQueryError = AnswerPreCheckoutQueryError(
+    id,
+    error,
+)

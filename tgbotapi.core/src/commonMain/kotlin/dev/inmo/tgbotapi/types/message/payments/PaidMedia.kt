@@ -121,15 +121,14 @@ sealed interface PaidMedia {
             if (value is Unknown && value.raw != null) {
                 JsonElement.serializer().serialize(encoder, value.raw)
             } else {
-                val surrogate =
-                    Surrogate(
-                        value.type,
-                        (value as? Preview) ?.width,
-                        (value as? Preview) ?.height,
-                        (value as? Preview) ?.duration,
-                        (value as? Photo) ?.photo,
-                        (value as? Video) ?.video,
-                    )
+                val surrogate = Surrogate(
+                    value.type,
+                    (value as? Preview) ?.width,
+                    (value as? Preview) ?.height,
+                    (value as? Preview) ?.duration,
+                    (value as? Photo) ?.photo,
+                    (value as? Video) ?.video,
+                )
                 Surrogate.serializer().serialize(encoder, surrogate)
             }
         }

@@ -84,9 +84,8 @@ fun DocumentFile.toTelegramMediaDocument(
     thumbnail ?.fileId,
 )
 
-fun DocumentFile.toTelegramMediaDocument(textSources: TextSourcesList = emptyList()) =
-    TelegramMediaDocument(
-        fileId,
-        textSources,
-        thumbnail ?.fileId,
-    )
+fun DocumentFile.toTelegramMediaDocument(textSources: TextSourcesList = emptyList()) = TelegramMediaDocument(
+    fileId,
+    textSources,
+    thumbnail ?.fileId,
+)

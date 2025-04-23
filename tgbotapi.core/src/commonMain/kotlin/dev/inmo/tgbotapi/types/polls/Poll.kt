@@ -36,22 +36,19 @@ data class ApproximateScheduledCloseInfo(
 }
 
 val LongSeconds.asApproximateScheduledCloseInfo
-    get() =
-        ApproximateScheduledCloseInfo(
-            TimeSpan(this * 1000.0),
-        )
-
-fun LongSeconds.asApproximateScheduledCloseInfo(startPoint: DateTime) =
-    ApproximateScheduledCloseInfo(
+    get() = ApproximateScheduledCloseInfo(
         TimeSpan(this * 1000.0),
-        startPoint,
     )
 
+fun LongSeconds.asApproximateScheduledCloseInfo(startPoint: DateTime) = ApproximateScheduledCloseInfo(
+    TimeSpan(this * 1000.0),
+    startPoint,
+)
+
 val LongSeconds.asExactScheduledCloseInfo
-    get() =
-        ExactScheduledCloseInfo(
-            DateTime(unixMillis = this * 1000.0),
-        )
+    get() = ExactScheduledCloseInfo(
+        DateTime(unixMillis = this * 1000.0),
+    )
 
 @Serializable(PollSerializer::class)
 @ClassCastsIncluded
@@ -106,8 +103,7 @@ private class RawPoll(
     val closeDate: LongSeconds? = null,
 ) {
     @Transient
-    val scheduledCloseInfo: ScheduledCloseInfo? =
-        closeDate ?.asExactScheduledCloseInfo ?: openPeriod ?.asApproximateScheduledCloseInfo
+    val scheduledCloseInfo: ScheduledCloseInfo? = closeDate ?.asExactScheduledCloseInfo ?: openPeriod ?.asApproximateScheduledCloseInfo
 }
 
 @Serializable
@@ -130,13 +126,12 @@ data class UnknownPollType internal constructor(
     val raw: JsonElement? = null,
 ) : Poll {
     @Transient
-    override val scheduledCloseInfo: ScheduledCloseInfo? =
-        raw ?.jsonObject ?.let {
-            (it[closeDateField] ?: it[openPeriodField])
-                ?.jsonPrimitive
-                ?.longOrNull
-                ?.asApproximateScheduledCloseInfo
-        }
+    override val scheduledCloseInfo: ScheduledCloseInfo? = raw ?.jsonObject ?.let {
+        (it[closeDateField] ?: it[openPeriodField])
+            ?.jsonPrimitive
+            ?.longOrNull
+            ?.asApproximateScheduledCloseInfo
+    }
 }
 
 @Serializable(PollSerializer::class)
@@ -224,47 +219,46 @@ object PollSerializer : KSerializer<Poll> {
         value: Poll,
     ) {
         val closeInfo = value.scheduledCloseInfo
-        val rawPoll =
-            when (value) {
-                is RegularPoll ->
-                    RawPoll(
-                        value.id,
-                        value.question,
-                        value.options,
-                        value.votesCount,
-                        value.textSources.toRawMessageEntities(),
-                        value.isClosed,
-                        value.isAnonymous,
-                        regularPollType,
-                        value.allowMultipleAnswers,
-                        openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
-                        closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
-                    )
-                is QuizPoll ->
-                    RawPoll(
-                        value.id,
-                        value.question,
-                        value.options,
-                        value.votesCount,
-                        value.textSources.toRawMessageEntities(),
-                        value.isClosed,
-                        value.isAnonymous,
-                        regularPollType,
-                        correctOptionId = value.correctOptionId,
-                        explanation = value.text,
-                        explanationEntities = value.textSources.toRawMessageEntities(),
-                        openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
-                        closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
-                    )
-                is UnknownPollType -> {
-                    if (value.raw == null) {
-                        UnknownPollType.serializer().serialize(encoder, value)
-                    } else {
-                        JsonElement.serializer().serialize(encoder, value.raw)
-                    }
-                    return
+        val rawPoll = when (value) {
+            is RegularPoll ->
+                RawPoll(
+                    value.id,
+                    value.question,
+                    value.options,
+                    value.votesCount,
+                    value.textSources.toRawMessageEntities(),
+                    value.isClosed,
+                    value.isAnonymous,
+                    regularPollType,
+                    value.allowMultipleAnswers,
+                    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
+                    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
+                )
+            is QuizPoll ->
+                RawPoll(
+                    value.id,
+                    value.question,
+                    value.options,
+                    value.votesCount,
+                    value.textSources.toRawMessageEntities(),
+                    value.isClosed,
+                    value.isAnonymous,
+                    regularPollType,
+                    correctOptionId = value.correctOptionId,
+                    explanation = value.text,
+                    explanationEntities = value.textSources.toRawMessageEntities(),
+                    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
+                    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
+                )
+            is UnknownPollType -> {
+                if (value.raw == null) {
+                    UnknownPollType.serializer().serialize(encoder, value)
+                } else {
+                    JsonElement.serializer().serialize(encoder, value.raw)
                 }
+                return
             }
+        }
         RawPoll.serializer().serialize(encoder, rawPoll)
     }
 }

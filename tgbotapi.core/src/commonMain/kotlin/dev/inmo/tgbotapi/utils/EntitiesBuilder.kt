@@ -16,10 +16,9 @@ val newLine = regularTextSource("\n")
 inline fun buildEntities(
     separator: TextSource? = null,
     init: EntitiesBuilderBody,
-): TextSourcesList =
-    EntitiesBuilder(
-        separator,
-    ).apply(init).build()
+): TextSourcesList = EntitiesBuilder(
+    separator,
+).apply(init).build()
 
 inline fun buildEntities(
     separator: String,
@@ -74,13 +73,12 @@ class EntitiesBuilder(
 
     operator fun plus(sources: Iterable<TextSource>) = addAll(sources)
 
-    operator fun plus(other: EntitiesBuilder) =
-        if (other == this) {
-            // do nothing; assume user is using something like regular("Hello, ") + bold("world") in buildEntities
-            this
-        } else {
-            addAll(other.entitiesList)
-        }
+    operator fun plus(other: EntitiesBuilder) = if (other == this) {
+        // do nothing; assume user is using something like regular("Hello, ") + bold("world") in buildEntities
+        this
+    } else {
+        addAll(other.entitiesList)
+    }
 }
 
 /**
@@ -97,12 +95,11 @@ inline fun EntitiesBuilder.boldln(parts: TextSourcesList) = bold(parts) + newLin
  * Add bold using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.boldTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.bold(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.boldTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.bold(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.boldTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.bold] with new line at the end.
@@ -144,12 +141,11 @@ inline fun EntitiesBuilder.blockquoteln(parts: TextSourcesList) = blockquote(par
  * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.blockquote(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.blockquote(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.blockquote] with new line at the end.
@@ -160,8 +156,7 @@ inline fun EntitiesBuilder.blockquoteln(noinline init: EntitiesBuilderBody) = bl
 /**
  * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource]
  */
-inline fun EntitiesBuilder.blockquote(vararg parts: TextSource) =
-    add(dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource(*parts))
+inline fun EntitiesBuilder.blockquote(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource(*parts))
 
 /**
  * Version of [EntitiesBuilder.blockquote] with new line at the end
@@ -181,8 +176,7 @@ inline fun EntitiesBuilder.blockquoteln(text: String) = blockquote(text) + newLi
 /**
  * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquoteTextSource]
  */
-inline fun EntitiesBuilder.expandableBlockquote(parts: TextSourcesList) =
-    add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(parts))
+inline fun EntitiesBuilder.expandableBlockquote(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(parts))
 
 /**
  * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
@@ -193,12 +187,11 @@ inline fun EntitiesBuilder.expandableBlockquoteln(parts: TextSourcesList) = expa
  * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.expandableBlockquote(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.expandableBlockquote(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end.
@@ -209,8 +202,7 @@ inline fun EntitiesBuilder.expandableBlockquoteln(noinline init: EntitiesBuilder
 /**
  * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource]
  */
-inline fun EntitiesBuilder.expandableBlockquote(vararg parts: TextSource) =
-    add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(*parts))
+inline fun EntitiesBuilder.expandableBlockquote(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(*parts))
 
 /**
  * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
@@ -220,8 +212,7 @@ inline fun EntitiesBuilder.expandableBlockquoteln(vararg parts: TextSource) = ex
 /**
  * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource]
  */
-inline fun EntitiesBuilder.expandableBlockquote(text: String) =
-    add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(text))
+inline fun EntitiesBuilder.expandableBlockquote(text: String) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquoteTextSource(text))
 
 /**
  * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
@@ -242,12 +233,11 @@ inline fun EntitiesBuilder.spoilerln(parts: TextSourcesList) = spoiler(parts) + 
  * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.spoilerTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.spoiler(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.spoilerTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.spoiler(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.spoilerTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.spoiler] with new line at the end.
@@ -288,8 +278,7 @@ inline fun EntitiesBuilder.botCommandln(command: String) = botCommand(command) +
 /**
  * Add botCommand using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.botCommandTextSource]
  */
-inline fun EntitiesBuilder.botCommand(botCommand: BotCommand) =
-    add(dev.inmo.tgbotapi.types.message.textsources.botCommandTextSource(botCommand))
+inline fun EntitiesBuilder.botCommand(botCommand: BotCommand) = add(dev.inmo.tgbotapi.types.message.textsources.botCommandTextSource(botCommand))
 
 /**
  * Version of [EntitiesBuilder.botCommand] with new line at the end
@@ -310,12 +299,11 @@ inline fun EntitiesBuilder.cashTagln(parts: TextSourcesList) = cashTag(parts) + 
  * Add cashTag using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.cashTagTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.cashTag(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.cashTagTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.cashTag(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.cashTagTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.cashTag] with new line at the end.
@@ -367,12 +355,11 @@ inline fun EntitiesBuilder.emailln(parts: TextSourcesList) = email(parts) + newL
  * Add email using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.emailTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.email(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.emailTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.email(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.emailTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.email] with new line at the end.
@@ -414,12 +401,11 @@ inline fun EntitiesBuilder.hashtagln(parts: TextSourcesList) = hashtag(parts) + 
  * Add hashtag using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.hashtagTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.hashtag(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.hashtagTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.hashtag(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.hashtagTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.hashtag] with new line at the end.
@@ -461,12 +447,11 @@ inline fun EntitiesBuilder.italicln(parts: TextSourcesList) = italic(parts) + ne
  * Add italic using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.italicTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.italic(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.italicTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.italic(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.italicTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.italic] with new line at the end.
@@ -508,12 +493,11 @@ inline fun EntitiesBuilder.mentionln(parts: TextSourcesList) = mention(parts) + 
  * Add mention using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.mentionTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.mention(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.mentionTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.mention(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.mentionTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.mention] with new line at the end.
@@ -645,12 +629,11 @@ inline fun EntitiesBuilder.phoneln(parts: TextSourcesList) = phone(parts) + newL
  * Add phone using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.phoneTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.phone(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.phoneTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.phone(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.phoneTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.phone] with new line at the end.
@@ -713,8 +696,7 @@ inline fun EntitiesBuilder.regularln(text: String) = regular(text) + newLine
 /**
  * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource]
  */
-inline fun EntitiesBuilder.strikethrough(parts: TextSourcesList) =
-    add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(parts))
+inline fun EntitiesBuilder.strikethrough(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(parts))
 
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end
@@ -725,12 +707,11 @@ inline fun EntitiesBuilder.strikethroughln(parts: TextSourcesList) = strikethrou
  * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end.
@@ -741,8 +722,7 @@ inline fun EntitiesBuilder.strikethroughln(noinline init: EntitiesBuilderBody) =
 /**
  * Add strikethrough using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource]
  */
-inline fun EntitiesBuilder.strikethrough(vararg parts: TextSource) =
-    add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(*parts))
+inline fun EntitiesBuilder.strikethrough(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.strikethroughTextSource(*parts))
 
 /**
  * Version of [EntitiesBuilder.strikethrough] with new line at the end
@@ -799,12 +779,11 @@ inline fun EntitiesBuilder.underlineln(parts: TextSourcesList) = underline(parts
  * Add underline using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.underlineTextSource].
  * Will reuse separator config from [buildEntities]
  */
-inline fun EntitiesBuilder.underline(noinline init: EntitiesBuilderBody) =
-    add(
-        dev.inmo.tgbotapi.types.message.textsources.underlineTextSource(
-            buildEntities(separator, init),
-        ),
-    )
+inline fun EntitiesBuilder.underline(noinline init: EntitiesBuilderBody) = add(
+    dev.inmo.tgbotapi.types.message.textsources.underlineTextSource(
+        buildEntities(separator, init),
+    ),
+)
 
 /**
  * Version of [EntitiesBuilder.underline] with new line at the end.
@@ -815,8 +794,7 @@ inline fun EntitiesBuilder.underlineln(noinline init: EntitiesBuilderBody) = und
 /**
  * Add underline using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.underlineTextSource]
  */
-inline fun EntitiesBuilder.underline(vararg parts: TextSource) =
-    add(dev.inmo.tgbotapi.types.message.textsources.underlineTextSource(*parts))
+inline fun EntitiesBuilder.underline(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.underlineTextSource(*parts))
 
 /**
  * Version of [EntitiesBuilder.underline] with new line at the end

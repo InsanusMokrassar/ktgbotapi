@@ -31,26 +31,25 @@ class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFa
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-    ): Any? =
-        (request as? MultipartRequest) ?.let { castedRequest ->
-            MultiPartFormDataContent(
-                formData {
-                    val params = castedRequest.paramsJson.mapWithCommonValues() - castedRequest.mediaMap.keys
-                    for ((key, value) in castedRequest.mediaMap + params) {
-                        when (value) {
-                            is MultipartFile ->
-                                appendInput(
-                                    key,
-                                    Headers.build {
-                                        append(HttpHeaders.ContentDisposition, "filename=${value.filename}")
-                                    },
-                                    block = value::input,
-                                )
-                            is FileId -> append(key, value.fileId)
-                            else -> append(key, value.toString())
-                        }
+    ): Any? = (request as? MultipartRequest) ?.let { castedRequest ->
+        MultiPartFormDataContent(
+            formData {
+                val params = castedRequest.paramsJson.mapWithCommonValues() - castedRequest.mediaMap.keys
+                for ((key, value) in castedRequest.mediaMap + params) {
+                    when (value) {
+                        is MultipartFile ->
+                            appendInput(
+                                key,
+                                Headers.build {
+                                    append(HttpHeaders.ContentDisposition, "filename=${value.filename}")
+                                },
+                                block = value::input,
+                            )
+                        is FileId -> append(key, value.fileId)
+                        else -> append(key, value.toString())
                     }
-                },
-            )
-        }
+                }
+            },
+        )
+    }
 }

@@ -23,17 +23,16 @@ data class DiceContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<DiceContent>> =
-        SendDice(
-            chatId = chatId,
-            animationType = dice.animationType,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<DiceContent>> = SendDice(
+        chatId = chatId,
+        animationType = dice.animationType,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }

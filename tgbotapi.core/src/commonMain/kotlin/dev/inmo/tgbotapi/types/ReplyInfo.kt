@@ -108,38 +108,36 @@ sealed interface ReplyInfo {
         ) {
             val asExternalReplyInfo: External
                 get() {
-                    val messageMeta =
-                        chat ?.let {
-                            message_id ?.let {
-                                Message.MetaInfo(
-                                    chat.id,
-                                    message_id,
-                                )
-                            }
+                    val messageMeta = chat ?.let {
+                        message_id ?.let {
+                            Message.MetaInfo(
+                                chat.id,
+                                message_id,
+                            )
                         }
-                    val content: ContentVariant? =
-                        when {
-                            story != null -> story
-                            audio != null -> audio
-                            video != null -> video
-                            video_note != null -> video_note
-                            animation != null -> animation
-                            document != null -> document
-                            paid_media != null -> paid_media
-                            voice != null -> voice
-                            photo != null -> photo
-                            sticker != null -> sticker
-                            dice != null -> dice
-                            game != null -> game.asGame
-                            contact != null -> contact
-                            location != null -> location
-                            venue != null -> venue
-                            poll != null -> poll
-                            invoice != null -> invoice
-                            giveaway != null -> giveaway
-                            giveaway_winners != null -> giveaway_winners
-                            else -> null
-                        }
+                    }
+                    val content: ContentVariant? = when {
+                        story != null -> story
+                        audio != null -> audio
+                        video != null -> video
+                        video_note != null -> video_note
+                        animation != null -> animation
+                        document != null -> document
+                        paid_media != null -> paid_media
+                        voice != null -> voice
+                        photo != null -> photo
+                        sticker != null -> sticker
+                        dice != null -> dice
+                        game != null -> game.asGame
+                        contact != null -> contact
+                        location != null -> location
+                        venue != null -> venue
+                        poll != null -> poll
+                        invoice != null -> invoice
+                        giveaway != null -> giveaway
+                        giveaway_winners != null -> giveaway_winners
+                        else -> null
+                    }
 
                     return content ?.let {
                         when (it) {

@@ -21,22 +21,21 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
         jsonFormatter: Json,
-    ): T? =
-        (request as? DownloadFileStream) ?.let {
-            val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
+    ): T? = (request as? DownloadFileStream) ?.let {
+        val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-            ByteReadChannelAllocator {
-                val scope = CoroutineScope(currentCoroutineContext() + SupervisorJob())
-                val outChannel = ByteChannel()
-                scope.launch {
-                    runCatchingSafely {
-                        val response = client.get(fullUrl)
-                        val channel: ByteReadChannel = response.bodyAsChannel()
-                        channel.copyAndClose(outChannel)
-                    }
-                    scope.cancel()
+        ByteReadChannelAllocator {
+            val scope = CoroutineScope(currentCoroutineContext() + SupervisorJob())
+            val outChannel = ByteChannel()
+            scope.launch {
+                runCatchingSafely {
+                    val response = client.get(fullUrl)
+                    val channel: ByteReadChannel = response.bodyAsChannel()
+                    channel.copyAndClose(outChannel)
                 }
-                outChannel
-            } as T
-        }
+                scope.cancel()
+            }
+            outChannel
+        } as T
+    }
 }

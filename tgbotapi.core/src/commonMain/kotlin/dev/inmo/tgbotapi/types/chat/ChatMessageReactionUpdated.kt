@@ -106,13 +106,12 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): ChatMessageReactionUpdated {
-            val (surrogate, jsonElement) =
-                if (decoder is JsonDecoder) {
-                    val jsonElement = decoder.decodeJsonElement()
-                    decoder.json.decodeFromJsonElement(Surrogate.serializer(), jsonElement) to jsonElement
-                } else {
-                    Surrogate.serializer().deserialize(decoder) to null
-                }
+            val (surrogate, jsonElement) = if (decoder is JsonDecoder) {
+                val jsonElement = decoder.decodeJsonElement()
+                decoder.json.decodeFromJsonElement(Surrogate.serializer(), jsonElement) to jsonElement
+            } else {
+                Surrogate.serializer().deserialize(decoder) to null
+            }
             return when {
                 surrogate.reactedUser != null ->
                     ByUser(

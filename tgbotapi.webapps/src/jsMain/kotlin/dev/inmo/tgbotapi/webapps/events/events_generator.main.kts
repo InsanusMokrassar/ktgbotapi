@@ -13,14 +13,13 @@ val rfAbsolutePath = rootFolder.absolutePath
 val currentFolder = File("./")
 val cfAbsolutePath = currentFolder.absolutePath
 
-val realArgs =
-    args.map { sourceArg ->
-        if (sourceArg.startsWith("\"") && sourceArg.endsWith("\"")) {
-            sourceArg.removePrefix("\"").removeSuffix("\"")
-        } else {
-            sourceArg
-        }
+val realArgs = args.map { sourceArg ->
+    if (sourceArg.startsWith("\"") && sourceArg.endsWith("\"")) {
+        sourceArg.removePrefix("\"").removeSuffix("\"")
+    } else {
+        sourceArg
     }
+}
 
 var verboseMode: Boolean = false
 
@@ -50,35 +49,32 @@ fun generateEvent(
     val subpackage = eventName.map { if (it.isUpperCase()) "_${it.lowercase()}" else it }.joinToString("")
     var callbackNumber: Int = -1
     val splittedCallbacks = callbackArgs.split(Regex(" ?, ?")).filter { !it.isBlank() }
-    val callback_args_names =
-        splittedCallbacks.joinToString(", ") {
-            callbackNumber++
-            "p$callbackNumber"
-        }
+    val callback_args_names = splittedCallbacks.joinToString(", ") {
+        callbackNumber++
+        "p$callbackNumber"
+    }
     callbackNumber = -1
-    val callback_args_definitions =
-        splittedCallbacks.joinToString(", ") {
-            callbackNumber++
-            "p$callbackNumber: $it"
-        }
+    val callback_args_definitions = splittedCallbacks.joinToString(", ") {
+        callbackNumber++
+        "p$callbackNumber: $it"
+    }
     val verboseFlag = if (verboseMode) "-v" else ""
 
-    val commandParts =
-        arrayOf(
-            "$rfAbsolutePath/.templates/generator.kts",
-            verboseFlag,
-            "-s",
-            "-a", "subpackage=$subpackage",
-            "-a", "event_name=$eventName",
-            "-a", "callback_args_names=$callback_args_names",
-            "-a", "event_name_uppercase=$uppercaseEventName",
-            "-a", "callback_args_definitions=$callback_args_definitions",
-            "-a", "callback_args=$callbackArgs",
-            "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
-            "-o", cfAbsolutePath,
-            "-ex", "kt",
-            "$rfAbsolutePath/.templates/{{\$subpackage}}",
-        )
+    val commandParts = arrayOf(
+        "$rfAbsolutePath/.templates/generator.kts",
+        verboseFlag,
+        "-s",
+        "-a", "subpackage=$subpackage",
+        "-a", "event_name=$eventName",
+        "-a", "callback_args_names=$callback_args_names",
+        "-a", "event_name_uppercase=$uppercaseEventName",
+        "-a", "callback_args_definitions=$callback_args_definitions",
+        "-a", "callback_args=$callbackArgs",
+        "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
+        "-o", cfAbsolutePath,
+        "-ex", "kt",
+        "$rfAbsolutePath/.templates/{{\$subpackage}}",
+    )
     val command = commandParts.joinToString(" ") { "\"$it\"" }
     if (verboseMode) {
         println(command)

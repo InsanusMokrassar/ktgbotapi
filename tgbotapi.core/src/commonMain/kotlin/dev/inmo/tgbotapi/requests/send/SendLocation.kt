@@ -15,14 +15,11 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val liveResultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val liveResultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val staticResultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val staticResultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendLocation(
     chatId: ChatIdentifier,
@@ -299,26 +296,25 @@ sealed interface SendLocation<T : LocationContent> :
             encoder: Encoder,
             value: SendLocation<*>,
         ) {
-            val surrogate =
-                with(value) {
-                    Surrogate(
-                        chatId = chatId,
-                        latitude = latitude,
-                        longitude = longitude,
-                        livePeriod = livePeriod,
-                        horizontalAccuracy = horizontalAccuracy,
-                        heading = heading,
-                        proximityAlertRadius = proximityAlertRadius,
-                        threadId = threadId,
-                        businessConnectionId = businessConnectionId,
-                        disableNotification = disableNotification,
-                        protectContent = protectContent,
-                        allowPaidBroadcast = allowPaidBroadcast,
-                        effectId = effectId,
-                        replyParameters = replyParameters,
-                        replyMarkup = replyMarkup,
-                    )
-                }
+            val surrogate = with(value) {
+                Surrogate(
+                    chatId = chatId,
+                    latitude = latitude,
+                    longitude = longitude,
+                    livePeriod = livePeriod,
+                    horizontalAccuracy = horizontalAccuracy,
+                    heading = heading,
+                    proximityAlertRadius = proximityAlertRadius,
+                    threadId = threadId,
+                    businessConnectionId = businessConnectionId,
+                    disableNotification = disableNotification,
+                    protectContent = protectContent,
+                    allowPaidBroadcast = allowPaidBroadcast,
+                    effectId = effectId,
+                    replyParameters = replyParameters,
+                    replyMarkup = replyMarkup,
+                )
+            }
             Surrogate.serializer().serialize(encoder, surrogate)
         }
     }

@@ -43,13 +43,12 @@ sealed interface PollAnswer : FromUser {
         override val user: User = defaultUser
 
         companion object {
-            val defaultUser =
-                CommonBot(
-                    UserId(RawChatId.DefaultUserId),
-                    "",
-                    "",
-                    Username("@Channel_Bot"),
-                )
+            val defaultUser = CommonBot(
+                UserId(RawChatId.DefaultUserId),
+                "",
+                "",
+                Username("@Channel_Bot"),
+            )
         }
     }
 

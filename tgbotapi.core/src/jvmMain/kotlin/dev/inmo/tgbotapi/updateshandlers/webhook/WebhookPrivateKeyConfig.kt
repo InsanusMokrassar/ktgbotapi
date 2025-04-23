@@ -13,10 +13,9 @@ data class WebhookPrivateKeyConfig(
     private val aliasPassword: String,
 ) {
     @Transient
-    val keyStore =
-        KeyStore.getInstance("JKS").apply {
-            load(FileInputStream(keyStorePath), keyStorePassword())
-        }
+    val keyStore = KeyStore.getInstance("JKS").apply {
+        load(FileInputStream(keyStorePath), keyStorePassword())
+    }
 
     fun keyStorePassword(): CharArray = keyStorePassword.toCharArray()
 

@@ -22,11 +22,10 @@ sealed interface TextSource {
         get() = source
 }
 
-operator fun TextSource.plus(other: TextSource) =
-    when {
-        this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
-        else -> listOf(this, other)
-    }
+operator fun TextSource.plus(other: TextSource) = when {
+    this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
+    else -> listOf(this, other)
+}
 
 operator fun TextSource.plus(text: String) = this + regularTextSource(text)
 
@@ -37,28 +36,26 @@ operator fun List<TextSource>.plus(text: String): List<TextSource> {
         newList.add(get(i))
     }
 
-    val sublist =
-        lastOrNull() ?.let {
-            it + text
-        } ?: listOf(regularTextSource(text))
+    val sublist = lastOrNull() ?.let {
+        it + text
+    } ?: listOf(regularTextSource(text))
 
     newList.addAll(sublist)
 
     return newList
 }
 
-operator fun TextSource.plus(other: List<TextSource>) =
-    other.fold(listOf(this)) { acc, textSource ->
-        val newList = mutableListOf<TextSource>()
+operator fun TextSource.plus(other: List<TextSource>) = other.fold(listOf(this)) { acc, textSource ->
+    val newList = mutableListOf<TextSource>()
 
-        for (i in 0 until acc.size - 1) {
-            newList.add(acc.get(i))
-        }
-
-        newList.addAll(acc.last() + textSource)
-
-        newList
+    for (i in 0 until acc.size - 1) {
+        newList.add(acc.get(i))
     }
+
+    newList.addAll(acc.last() + textSource)
+
+    newList
+}
 
 @Serializable(TextSourceSerializer::class)
 sealed interface MultilevelTextSource : TextSource {
@@ -115,11 +112,10 @@ inline fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMes
 fun List<TextSource>.separateForMessage(
     limit: IntRange,
     numberOfParts: Int? = null,
-): List<List<TextSource>> =
-    splitForMessage(
-        limit,
-        numberOfParts,
-    )
+): List<List<TextSource>> = splitForMessage(
+    limit,
+    numberOfParts,
+)
 
 /**
  * This method will prepare [TextSource]s list for messages. Remember, that first part will be separated with

@@ -11,8 +11,7 @@ import kotlin.test.assertEquals
 class MigratedToSupergroupTest {
     @Test
     fun MigratedToSupergroupEventShouldBeParsed() {
-        val payload =
-            """
+        val payload = """
             {
               "update_id": 42,
               "message": {
@@ -37,7 +36,7 @@ class MigratedToSupergroupTest {
                 "migrate_from_chat_id": 57005
               }
             }
-            """.trimIndent()
+        """.trimIndent()
         val update = TestsJsonFormat.decodeFromString(UpdateDeserializationStrategy, payload)
         val message = update.messageUpdateOrThrow()
         val data = message.data.supergroupEventMessageOrThrow()

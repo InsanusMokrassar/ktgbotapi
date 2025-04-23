@@ -27,18 +27,17 @@ data class TextContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<TextContent>> =
-        SendTextMessage(
-            chatId = chatId,
-            entities = textSources,
-            linkPreviewOptions = linkPreviewOptions,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<TextContent>> = SendTextMessage(
+        chatId = chatId,
+        entities = textSources,
+        linkPreviewOptions = linkPreviewOptions,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }

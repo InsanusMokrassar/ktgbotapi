@@ -16,41 +16,39 @@ private class SurrogateBotCommandScope(
     @SerialName(userIdField)
     val userId: UserId? = null,
 ) {
-    fun asBotCommandScope() =
-        when (type) {
-            BotCommandScopeDefault.type -> BotCommandScopeDefault
-            BotCommandScopeAllPrivateChats.type -> BotCommandScopeAllPrivateChats
-            BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
-            BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
-            BotCommandScopeChatAdministrators.type ->
-                BotCommandScopeChatAdministrators(
-                    chatId ?: error("${BotCommandScopeChatAdministrators.type} type must have $chatIdField field, but have no"),
-                )
-            BotCommandScopeChatMember.type ->
-                BotCommandScopeChatMember(
-                    chatId ?: error("${BotCommandScopeChatMember.type} type must have $chatIdField field, but have no"),
-                    userId ?: error("${BotCommandScopeChatMember.type} type must have $userIdField field, but have no"),
-                )
-            BotCommandScopeChat.type ->
-                BotCommandScopeChat(
-                    chatId ?: error("${BotCommandScopeChat.type} type must have $chatIdField field, but have no"),
-                )
-            else -> UnknownBotCommandScope(type)
-        }
+    fun asBotCommandScope() = when (type) {
+        BotCommandScopeDefault.type -> BotCommandScopeDefault
+        BotCommandScopeAllPrivateChats.type -> BotCommandScopeAllPrivateChats
+        BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
+        BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
+        BotCommandScopeChatAdministrators.type ->
+            BotCommandScopeChatAdministrators(
+                chatId ?: error("${BotCommandScopeChatAdministrators.type} type must have $chatIdField field, but have no"),
+            )
+        BotCommandScopeChatMember.type ->
+            BotCommandScopeChatMember(
+                chatId ?: error("${BotCommandScopeChatMember.type} type must have $chatIdField field, but have no"),
+                userId ?: error("${BotCommandScopeChatMember.type} type must have $userIdField field, but have no"),
+            )
+        BotCommandScopeChat.type ->
+            BotCommandScopeChat(
+                chatId ?: error("${BotCommandScopeChat.type} type must have $chatIdField field, but have no"),
+            )
+        else -> UnknownBotCommandScope(type)
+    }
 
     companion object {
-        fun from(scope: BotCommandScope) =
-            when (scope) {
-                is UnknownBotCommandScope,
-                BotCommandScopeDefault,
-                BotCommandScopeAllPrivateChats,
-                BotCommandScopeAllGroupChats,
-                BotCommandScopeAllChatAdministrators,
-                -> SurrogateBotCommandScope(scope.type)
-                is BotCommandScopeChatAdministrators -> SurrogateBotCommandScope(scope.type, scope.chatId)
-                is BotCommandScopeChatMember -> SurrogateBotCommandScope(scope.type, scope.chatId, scope.userId)
-                is BotCommandScopeChat -> SurrogateBotCommandScope(scope.type, scope.chatId)
-            }
+        fun from(scope: BotCommandScope) = when (scope) {
+            is UnknownBotCommandScope,
+            BotCommandScopeDefault,
+            BotCommandScopeAllPrivateChats,
+            BotCommandScopeAllGroupChats,
+            BotCommandScopeAllChatAdministrators,
+            -> SurrogateBotCommandScope(scope.type)
+            is BotCommandScopeChatAdministrators -> SurrogateBotCommandScope(scope.type, scope.chatId)
+            is BotCommandScopeChatMember -> SurrogateBotCommandScope(scope.type, scope.chatId, scope.userId)
+            is BotCommandScopeChat -> SurrogateBotCommandScope(scope.type, scope.chatId)
+        }
     }
 }
 
@@ -155,8 +153,7 @@ data class BotCommandScopeChatMember(
 object BotCommandScopeSerializer : KSerializer<BotCommandScope> {
     override val descriptor: SerialDescriptor = SurrogateBotCommandScope.serializer().descriptor
 
-    override fun deserialize(decoder: Decoder): BotCommandScope =
-        SurrogateBotCommandScope.serializer().deserialize(decoder).asBotCommandScope()
+    override fun deserialize(decoder: Decoder): BotCommandScope = SurrogateBotCommandScope.serializer().deserialize(decoder).asBotCommandScope()
 
     override fun serialize(
         encoder: Encoder,

@@ -11,13 +11,12 @@ import io.ktor.client.HttpClient
 import kotlinx.serialization.json.Json
 
 @RiskFeature
-fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) =
-    listOf(
-        MultipartRequestCallFactory(logger),
-        SimpleRequestCallFactory(logger),
-        DownloadFileRequestCallFactory,
-        DownloadFileChannelRequestCallFactory,
-    )
+fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) = listOf(
+    MultipartRequestCallFactory(logger),
+    SimpleRequestCallFactory(logger),
+    DownloadFileRequestCallFactory,
+    DownloadFileChannelRequestCallFactory,
+)
 
 class KtorRequestsExecutorBuilder(
     var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
@@ -34,17 +33,16 @@ class KtorRequestsExecutorBuilder(
         pipelineStepsHolder = TelegramBotMiddlewaresPipelinesHandler.build(block)
     }
 
-    fun build() =
-        KtorRequestsExecutor(
-            telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
-            client = client,
-            callsFactories = callsFactories,
-            excludeDefaultFactories = excludeDefaultFactories,
-            requestsLimiter = requestsLimiter,
-            jsonFormatter = jsonFormatter,
-            pipelineStepsHolder = pipelineStepsHolder,
-            logger = logger,
-        )
+    fun build() = KtorRequestsExecutor(
+        telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
+        client = client,
+        callsFactories = callsFactories,
+        excludeDefaultFactories = excludeDefaultFactories,
+        requestsLimiter = requestsLimiter,
+        jsonFormatter = jsonFormatter,
+        pipelineStepsHolder = pipelineStepsHolder,
+        logger = logger,
+    )
 }
 
 inline fun telegramBot(

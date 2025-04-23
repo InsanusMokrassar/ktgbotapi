@@ -34,13 +34,12 @@ interface ChatPermissions {
 
     @Transient
     val isGranular
-        get() =
-            canSendAudios != null ||
-                canSendDocuments != null ||
-                canSendVideoNotes != null ||
-                canSendPhotos != null ||
-                canSendVideos != null ||
-                canSendVoiceNotes != null
+        get() = canSendAudios != null ||
+            canSendDocuments != null ||
+            canSendVideoNotes != null ||
+            canSendPhotos != null ||
+            canSendVideos != null ||
+            canSendVoiceNotes != null
     val canSendStickers: Boolean?
         get() = canSendOtherMessages
     val canSendGifs: Boolean?
@@ -100,10 +99,9 @@ interface ChatPermissions {
             get() = false
 
         @Transient
-        override val canSendMessages: Boolean? =
-            canSendOtherMessages ?.let {
-                it && (canAddWebPagePreviews ?: return@let null)
-            }
+        override val canSendMessages: Boolean? = canSendOtherMessages ?.let {
+            it && (canAddWebPagePreviews ?: return@let null)
+        }
 
         @Transient
         override val canSendAudios: Boolean?
@@ -215,22 +213,21 @@ interface ChatPermissions {
         canChangeInfo: Boolean? = this.canChangeInfo,
         canInviteUsers: Boolean? = this.canInviteUsers,
         canPinMessages: Boolean? = this.canPinMessages,
-    ): ChatPermissions =
-        ChatPermissions(
-            canSendMessages = canSendMessages,
-            canSendAudios = canSendAudios,
-            canSendDocuments = canSendDocuments,
-            canSendPhotos = canSendPhotos,
-            canSendVideos = canSendVideos,
-            canSendVideoNotes = canSendVideoNotes,
-            canSendVoiceNotes = canSendVoiceNotes,
-            canSendPolls = canSendPolls,
-            canSendOtherMessages = canSendOtherMessages,
-            canAddWebPagePreviews = canAddWebPagePreviews,
-            canChangeInfo = canChangeInfo,
-            canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages,
-        )
+    ): ChatPermissions = ChatPermissions(
+        canSendMessages = canSendMessages,
+        canSendAudios = canSendAudios,
+        canSendDocuments = canSendDocuments,
+        canSendPhotos = canSendPhotos,
+        canSendVideos = canSendVideos,
+        canSendVideoNotes = canSendVideoNotes,
+        canSendVoiceNotes = canSendVoiceNotes,
+        canSendPolls = canSendPolls,
+        canSendOtherMessages = canSendOtherMessages,
+        canAddWebPagePreviews = canAddWebPagePreviews,
+        canChangeInfo = canChangeInfo,
+        canInviteUsers = canInviteUsers,
+        canPinMessages = canPinMessages,
+    )
 
     /**
      * Copying current instance as [ChatPermissions], but realizations of this interface may differently override this
@@ -243,54 +240,51 @@ interface ChatPermissions {
         canChangeInfo: Boolean? = this.canChangeInfo,
         canInviteUsers: Boolean? = this.canInviteUsers,
         canPinMessages: Boolean? = this.canPinMessages,
-    ): ChatPermissions =
-        ChatPermissions(
-            canSendMessages = null,
-            canSendAudios = null,
-            canSendDocuments = null,
-            canSendPhotos = null,
-            canSendVideos = null,
-            canSendVideoNotes = null,
-            canSendVoiceNotes = null,
-            canSendPolls = canSendPolls,
-            canSendOtherMessages = canSendOtherMessages,
-            canAddWebPagePreviews = canAddWebPagePreviews,
-            canChangeInfo = canChangeInfo,
-            canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages,
-        )
+    ): ChatPermissions = ChatPermissions(
+        canSendMessages = null,
+        canSendAudios = null,
+        canSendDocuments = null,
+        canSendPhotos = null,
+        canSendVideos = null,
+        canSendVideoNotes = null,
+        canSendVoiceNotes = null,
+        canSendPolls = canSendPolls,
+        canSendOtherMessages = canSendOtherMessages,
+        canAddWebPagePreviews = canAddWebPagePreviews,
+        canChangeInfo = canChangeInfo,
+        canInviteUsers = canInviteUsers,
+        canPinMessages = canPinMessages,
+    )
 }
 
-val LeftRestrictionsChatPermissions =
-    ChatPermissions(
-        canSendMessages = true,
-        canSendAudios = true,
-        canSendDocuments = true,
-        canSendPhotos = true,
-        canSendVideos = true,
-        canSendVideoNotes = true,
-        canSendVoiceNotes = true,
-        canSendPolls = true,
-        canSendOtherMessages = true,
-        canAddWebPagePreviews = true,
-        canChangeInfo = true,
-        canInviteUsers = true,
-        canPinMessages = true,
-    )
+val LeftRestrictionsChatPermissions = ChatPermissions(
+    canSendMessages = true,
+    canSendAudios = true,
+    canSendDocuments = true,
+    canSendPhotos = true,
+    canSendVideos = true,
+    canSendVideoNotes = true,
+    canSendVoiceNotes = true,
+    canSendPolls = true,
+    canSendOtherMessages = true,
+    canAddWebPagePreviews = true,
+    canChangeInfo = true,
+    canInviteUsers = true,
+    canPinMessages = true,
+)
 
-val RestrictionsChatPermissions =
-    ChatPermissions(
-        canSendMessages = false,
-        canSendAudios = false,
-        canSendDocuments = false,
-        canSendPhotos = false,
-        canSendVideos = false,
-        canSendVideoNotes = false,
-        canSendVoiceNotes = false,
-        canSendPolls = false,
-        canSendOtherMessages = false,
-        canAddWebPagePreviews = false,
-        canChangeInfo = false,
-        canInviteUsers = false,
-        canPinMessages = false,
-    )
+val RestrictionsChatPermissions = ChatPermissions(
+    canSendMessages = false,
+    canSendAudios = false,
+    canSendDocuments = false,
+    canSendPhotos = false,
+    canSendVideos = false,
+    canSendVideoNotes = false,
+    canSendVoiceNotes = false,
+    canSendPolls = false,
+    canSendOtherMessages = false,
+    canAddWebPagePreviews = false,
+    canChangeInfo = false,
+    canInviteUsers = false,
+    canPinMessages = false,
+)

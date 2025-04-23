@@ -20,10 +20,9 @@ data class TelegramDate(
     )
 
     @Transient
-    val asDate: DateTime =
-        DateTime(
-            date * 1000,
-        )
+    val asDate: DateTime = DateTime(
+        date * 1000,
+    )
 }
 
 fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)

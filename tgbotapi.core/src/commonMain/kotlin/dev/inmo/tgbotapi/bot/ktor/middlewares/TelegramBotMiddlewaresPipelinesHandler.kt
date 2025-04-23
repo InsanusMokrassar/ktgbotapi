@@ -85,16 +85,14 @@ class TelegramBotMiddlewaresPipelinesHandler(
         val middlewares = mutableListOf<TelegramBotMiddleware>()
 
         @Warning("This API is experimental and subject of changes")
-        fun addMiddleware(block: TelegramBotMiddlewareBuilder.() -> Unit) =
-            middlewares.add(
-                TelegramBotMiddleware.build(block),
-            )
+        fun addMiddleware(block: TelegramBotMiddlewareBuilder.() -> Unit) = middlewares.add(
+            TelegramBotMiddleware.build(block),
+        )
 
         @Warning("This API is experimental and subject of changes")
-        fun build(): TelegramBotMiddlewaresPipelinesHandler =
-            TelegramBotMiddlewaresPipelinesHandler(
-                middlewares.toList(),
-            )
+        fun build(): TelegramBotMiddlewaresPipelinesHandler = TelegramBotMiddlewaresPipelinesHandler(
+            middlewares.toList(),
+        )
     }
 
     companion object {

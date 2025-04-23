@@ -20,29 +20,27 @@ fun CreateNewStickerSet(
     stickers: List<InputSticker>,
     needsRepainting: Boolean? = null,
 ): Request<Boolean> {
-    val data =
-        when (stickers.first()) {
-            is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickers.filterIsInstance<InputSticker.Mask>())
-            is InputSticker.WithKeywords.CustomEmoji ->
-                CreateNewStickerSet.CustomEmoji(
-                    userId,
-                    name,
-                    title,
-                    stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(),
-                    needsRepainting,
-                )
-            is InputSticker.WithKeywords.Regular ->
-                CreateNewStickerSet.Regular(
-                    userId,
-                    name,
-                    title,
-                    stickers.filterIsInstance<InputSticker.WithKeywords.Regular>(),
-                )
-        }
-    val multipartParts =
-        stickers.mapNotNull {
-            (it.sticker as? MultipartFile)
-        }
+    val data = when (stickers.first()) {
+        is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickers.filterIsInstance<InputSticker.Mask>())
+        is InputSticker.WithKeywords.CustomEmoji ->
+            CreateNewStickerSet.CustomEmoji(
+                userId,
+                name,
+                title,
+                stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(),
+                needsRepainting,
+            )
+        is InputSticker.WithKeywords.Regular ->
+            CreateNewStickerSet.Regular(
+                userId,
+                name,
+                title,
+                stickers.filterIsInstance<InputSticker.WithKeywords.Regular>(),
+            )
+    }
+    val multipartParts = stickers.mapNotNull {
+        (it.sticker as? MultipartFile)
+    }
     return if (multipartParts.isNotEmpty()) {
         when (data) { // cratch for exact determining of common multipart data type
             is CreateNewStickerSet.CustomEmoji ->

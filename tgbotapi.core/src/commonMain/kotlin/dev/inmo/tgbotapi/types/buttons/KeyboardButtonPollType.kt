@@ -53,11 +53,10 @@ object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
 
     override fun deserialize(decoder: Decoder): KeyboardButtonPollType {
-        val type =
-            when (val asJson = internalSerializer.deserialize(decoder)) {
-                is JsonPrimitive -> asJson.content
-                else -> asJson.jsonObject[typeField] ?.jsonPrimitive ?.content ?: "absent"
-            }
+        val type = when (val asJson = internalSerializer.deserialize(decoder)) {
+            is JsonPrimitive -> asJson.content
+            else -> asJson.jsonObject[typeField] ?.jsonPrimitive ?.content ?: "absent"
+        }
 
         return when (type) {
             regularPollType -> RegularKeyboardButtonPollType

@@ -23,7 +23,6 @@ data class TelegramPaidMediaPhoto(
     } // crutch until js compiling will be fixed
 }
 
-fun PhotoSize.toTelegramPaidMediaPhoto(): TelegramPaidMediaPhoto =
-    TelegramPaidMediaPhoto(
-        file = fileId,
-    )
+fun PhotoSize.toTelegramPaidMediaPhoto(): TelegramPaidMediaPhoto = TelegramPaidMediaPhoto(
+    file = fileId,
+)

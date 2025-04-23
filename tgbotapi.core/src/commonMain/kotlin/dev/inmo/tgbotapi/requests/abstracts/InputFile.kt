@@ -64,11 +64,10 @@ internal const val attachPrefix = "attach://"
 internal inline val InputFile.attachFileId
     get() = "$attachPrefix$fileId"
 internal inline val InputFile.fileIdToSend
-    get() =
-        when (this) {
-            is FileId -> fileId
-            is MultipartFile -> attachFileId
-        }
+    get() = when (this) {
+        is FileId -> fileId
+        is MultipartFile -> attachFileId
+    }
 
 // TODO:: add checks for file url/file id regex
 
@@ -116,18 +115,16 @@ data class MultipartFile(
 }
 
 @Suppress("NOTHING_TO_INLINE", "unused")
-suspend inline fun ByteReadChannel.asMultipartFile(fileName: String) =
-    MultipartFile(
-        fileName,
-        inputSource = asInput().let { { it } },
-    )
+suspend inline fun ByteReadChannel.asMultipartFile(fileName: String) = MultipartFile(
+    fileName,
+    inputSource = asInput().let { { it } },
+)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asMultipartFile(fileName: String) =
-    MultipartFile(
-        fileName,
-        inputSource = { ByteReadPacket(this) },
-    )
+inline fun ByteArray.asMultipartFile(fileName: String) = MultipartFile(
+    fileName,
+    inputSource = { ByteReadPacket(this) },
+)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannelAllocator.asMultipartFile(fileName: String) = this.invoke().asMultipartFile(fileName)

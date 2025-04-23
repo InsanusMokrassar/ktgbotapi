@@ -13,13 +13,12 @@ class SimpleRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFacto
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-    ): Any? =
-        (request as? SimpleRequest<T>) ?.let { _ ->
-            val content = request.json().toString()
+    ): Any? = (request as? SimpleRequest<T>) ?.let { _ ->
+        val content = request.json().toString()
 
-            TextContent(
-                content,
-                ContentType.Application.Json,
-            )
-        }
+        TextContent(
+            content,
+            ContentType.Application.Json,
+        )
+    }
 }

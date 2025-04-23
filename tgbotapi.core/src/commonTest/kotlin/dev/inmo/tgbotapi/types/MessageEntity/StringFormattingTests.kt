@@ -9,8 +9,7 @@ import kotlin.test.*
 class StringFormattingTests {
     @Test
     fun testThatPreEscapingWorksCorrectly() {
-        val originalHelloWorld =
-            """
+        val originalHelloWorld = """
                 fun main() {
                     println("Hello world")
                 }
@@ -40,31 +39,30 @@ class StringFormattingTests {
 
     @Test
     fun testThatCreatingOfStringWithSimpleDSLWorksCorrectly() {
-        val sources: TextSourcesList =
-            regularTextSource("It (is?) ") +
-                boldTextSource(
-                    italicTextSource("is") +
-                        " " +
-                        strikethroughTextSource(underlineTextSource("simple")),
-                ) +
-                " " +
-                spoilerTextSource("hello world") +
-                " with " +
-                hashtagTextSource("tag@sample") +
-                " and " +
-                mentionTextSource("mention") +
-                ". Start of blockquote: " +
-                blockquoteTextSource(
-                    "Block quotation started\n" +
-                        "Block quotation continued\n" +
-                        "The last line of the block quotation",
-                ) +
-                "\n. Start of expandable blockquote: " +
-                expandableBlockquoteTextSource(
-                    "Block quotation started\n" +
-                        "Block quotation continued\n" +
-                        "The last line of the block quotation",
-                )
+        val sources: TextSourcesList = regularTextSource("It (is?) ") +
+            boldTextSource(
+                italicTextSource("is") +
+                    " " +
+                    strikethroughTextSource(underlineTextSource("simple")),
+            ) +
+            " " +
+            spoilerTextSource("hello world") +
+            " with " +
+            hashtagTextSource("tag@sample") +
+            " and " +
+            mentionTextSource("mention") +
+            ". Start of blockquote: " +
+            blockquoteTextSource(
+                "Block quotation started\n" +
+                    "Block quotation continued\n" +
+                    "The last line of the block quotation",
+            ) +
+            "\n. Start of expandable blockquote: " +
+            expandableBlockquoteTextSource(
+                "Block quotation started\n" +
+                    "Block quotation continued\n" +
+                    "The last line of the block quotation",
+            )
         sources.testTextSources()
 
         assertEquals(formattedV2Text, sources.toMarkdownV2Texts().first())
@@ -74,11 +72,10 @@ class StringFormattingTests {
     @Test
     fun testForRepeatingWordsInOneSentenceWithTheSecondOneFormatted() {
         val sourceText = "link link"
-        val messageEntities =
-            listOf(
-                RawMessageEntity("bold", 5, 4),
-                RawMessageEntity("text_link", 6, 2, "google.com"),
-            )
+        val messageEntities = listOf(
+            RawMessageEntity("bold", 5, 4),
+            RawMessageEntity("text_link", 6, 2, "google.com"),
+        )
         val textSources = messageEntities.asTextSources(sourceText)
         val (regular, bold) = textSources
         assertTrue(regular is RegularTextSource)
@@ -96,11 +93,10 @@ class StringFormattingTests {
     @Test
     fun testForRepeatingWordsInOneSentenceWithTheSecondOneFormattedInsideOfFormatting() {
         val sourceText = "text"
-        val messageEntities =
-            listOf(
-                RawMessageEntity("bold", 0, 4),
-                RawMessageEntity("text_link", 3, 1, "google.com"),
-            )
+        val messageEntities = listOf(
+            RawMessageEntity("bold", 0, 4),
+            RawMessageEntity("text_link", 3, 1, "google.com"),
+        )
         val textSources = messageEntities.asTextSources(sourceText)
         val (bold) = textSources
         assertTrue(bold is BoldTextSource)

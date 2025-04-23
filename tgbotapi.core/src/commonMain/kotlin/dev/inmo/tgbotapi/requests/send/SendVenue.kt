@@ -10,8 +10,7 @@ import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVenue(
@@ -102,16 +101,15 @@ fun Venue.toRequest(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): SendVenue =
-    SendVenue(
-        chatId = chatId,
-        venue = this,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): SendVenue = SendVenue(
+    chatId = chatId,
+    venue = this,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)

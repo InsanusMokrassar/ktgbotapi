@@ -10,15 +10,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class PhoneNumberTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        override val subsources: TextSourcesList,
-    ) : MultilevelTextSource {
-        override val markdown: String by lazy { source.phoneMarkdown() }
-        override val markdownV2: String by lazy { phoneMarkdownV2() }
-        override val html: String by lazy { phoneHTML() }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    override val subsources: TextSourcesList,
+) : MultilevelTextSource {
+    override val markdown: String by lazy { source.phoneMarkdown() }
+    override val markdownV2: String by lazy { phoneMarkdownV2() }
+    override val html: String by lazy { phoneHTML() }
+}
 
 inline fun phoneTextSource(parts: TextSourcesList) = PhoneNumberTextSource(parts.makeString(), parts)
 

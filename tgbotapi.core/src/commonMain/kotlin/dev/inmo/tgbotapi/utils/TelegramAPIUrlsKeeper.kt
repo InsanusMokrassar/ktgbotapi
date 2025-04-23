@@ -54,13 +54,12 @@ class TelegramAPIUrlsKeeper(
         rawData: String,
         hash: String,
     ): Boolean {
-        val preparedData =
-            rawData
-                .decodeURLQueryComponent()
-                .split("&")
-                .filterNot { it.startsWith("hash=") }
-                .sorted()
-                .joinToString("\n")
+        val preparedData = rawData
+            .decodeURLQueryComponent()
+            .split("&")
+            .filterNot { it.startsWith("hash=") }
+            .sorted()
+            .joinToString("\n")
 
         return HMAC.hmacSHA256(webAppDataSecretKeyHash.bytes, preparedData.toByteArray()).hexLower == hash.lowercase()
     }

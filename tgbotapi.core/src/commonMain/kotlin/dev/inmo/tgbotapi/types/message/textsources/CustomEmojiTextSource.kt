@@ -11,16 +11,16 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class CustomEmojiTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        val customEmojiId: CustomEmojiId,
-        override val subsources: TextSourcesList,
-    ) : MultilevelTextSource {
-        override val markdown: String by lazy { source.customEmojiMarkdown() }
-        override val markdownV2: String by lazy { source.customEmojiMarkdownV2(customEmojiId) }
-        override val html: String by lazy { source.customEmojiHTML(customEmojiId) }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    val customEmojiId: CustomEmojiId,
+    override val subsources: TextSourcesList,
+) : MultilevelTextSource {
+    override val markdown: String by lazy { source.customEmojiMarkdown() }
+    override val markdownV2: String by lazy { source.customEmojiMarkdownV2(customEmojiId) }
+    override val html: String by lazy { source.customEmojiHTML(customEmojiId) }
+}
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 inline fun customEmojiTextSource(

@@ -64,23 +64,21 @@ fun PhotoSize.toTelegramMediaPhoto(
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
-): TelegramMediaPhoto =
-    TelegramMediaPhoto(
-        file = fileId,
-        text = text,
-        parseMode = parseMode,
-        spoilered = spoilered,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-    )
+): TelegramMediaPhoto = TelegramMediaPhoto(
+    file = fileId,
+    text = text,
+    parseMode = parseMode,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+)
 
 fun PhotoSize.toTelegramMediaPhoto(
     textSources: TextSourcesList = emptyList(),
     spoilered: Boolean = false,
     showCaptionAboveMedia: Boolean = false,
-): TelegramMediaPhoto =
-    TelegramMediaPhoto(
-        file = fileId,
-        entities = textSources,
-        spoilered = spoilered,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-    )
+): TelegramMediaPhoto = TelegramMediaPhoto(
+    file = fileId,
+    entities = textSources,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+)

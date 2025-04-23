@@ -71,7 +71,7 @@ open class CallbackCustomizableDeserializationStrategy<T>(
                         }
                     }
                 }
-            )
+                )
             fallbackDeserialization(it, decoder, jsonElement)
         }
     }

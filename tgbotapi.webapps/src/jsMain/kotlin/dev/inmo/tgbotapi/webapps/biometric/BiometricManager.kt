@@ -37,30 +37,26 @@ private suspend inline fun <T> doWithAsyncJob(action: (CompletableDeferred<T>) -
     return async.await()
 }
 
-suspend fun BiometricManager.initSuspend() =
-    doWithAsyncJob {
-        init {
-            it.complete(Unit)
-        }
+suspend fun BiometricManager.initSuspend() = doWithAsyncJob {
+    init {
+        it.complete(Unit)
     }
+}
 
-suspend fun BiometricManager.requestAccessSuspend(params: BiometricRequestAccessParams) =
-    doWithAsyncJob {
-        requestAccess(params) { success ->
-            it.complete(success)
-        }
+suspend fun BiometricManager.requestAccessSuspend(params: BiometricRequestAccessParams) = doWithAsyncJob {
+    requestAccess(params) { success ->
+        it.complete(success)
     }
+}
 
-suspend fun BiometricManager.authenticateSuspend(params: BiometricAuthenticateParams) =
-    doWithAsyncJob {
-        authenticate(params) { _, token ->
-            it.complete(token)
-        }
+suspend fun BiometricManager.authenticateSuspend(params: BiometricAuthenticateParams) = doWithAsyncJob {
+    authenticate(params) { _, token ->
+        it.complete(token)
     }
+}
 
-suspend fun BiometricManager.updateBiometricTokenSuspend(token: String) =
-    doWithAsyncJob {
-        updateBiometricToken(token) { success ->
-            it.complete(success)
-        }
+suspend fun BiometricManager.updateBiometricTokenSuspend(token: String) = doWithAsyncJob {
+    updateBiometricToken(token) { success ->
+        it.complete(success)
     }
+}

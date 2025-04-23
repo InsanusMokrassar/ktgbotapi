@@ -6,10 +6,9 @@ import dev.inmo.tgbotapi.types.update.abstracts.UpdateSerializerWithoutSerializa
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
-private val updatesListSerializer =
-    ListSerializer(
-        UpdateSerializerWithoutSerialization,
-    )
+private val updatesListSerializer = ListSerializer(
+    UpdateSerializerWithoutSerialization,
+)
 
 /**
  * Request updates from Telegram Bot API system. It is important, that the result updates WILL NOT include

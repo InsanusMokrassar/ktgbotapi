@@ -60,19 +60,18 @@ object PassportElementErrorSerializer : KSerializer<PassportElementError> {
         encoder: Encoder,
         value: PassportElementError,
     ) {
-        val neverMindAboutThisVariable =
-            when (value) {
-                is PassportElementErrorFrontSide -> PassportElementErrorFrontSide.serializer().serialize(encoder, value)
-                is PassportElementErrorReverseSide -> PassportElementErrorReverseSide.serializer().serialize(encoder, value)
-                is PassportElementErrorSelfie -> PassportElementErrorSelfie.serializer().serialize(encoder, value)
-                is PassportElementErrorFile -> PassportElementErrorFile.serializer().serialize(encoder, value)
-                is PassportElementErrorTranslationFile -> PassportElementErrorTranslationFile.serializer().serialize(encoder, value)
-                is PassportElementErrorUnspecified -> PassportElementErrorUnspecified.serializer().serialize(encoder, value)
-                is PassportElementErrorDataField -> PassportElementErrorDataField.serializer().serialize(encoder, value)
-                is PassportElementErrorFiles -> PassportElementErrorFiles.serializer().serialize(encoder, value)
-                is PassportElementErrorTranslationFiles -> PassportElementErrorTranslationFiles.serializer().serialize(encoder, value)
-                is UnknownPassportElementError -> jsonObjectSerializer.serialize(encoder, value.raw)
-            }
+        val neverMindAboutThisVariable = when (value) {
+            is PassportElementErrorFrontSide -> PassportElementErrorFrontSide.serializer().serialize(encoder, value)
+            is PassportElementErrorReverseSide -> PassportElementErrorReverseSide.serializer().serialize(encoder, value)
+            is PassportElementErrorSelfie -> PassportElementErrorSelfie.serializer().serialize(encoder, value)
+            is PassportElementErrorFile -> PassportElementErrorFile.serializer().serialize(encoder, value)
+            is PassportElementErrorTranslationFile -> PassportElementErrorTranslationFile.serializer().serialize(encoder, value)
+            is PassportElementErrorUnspecified -> PassportElementErrorUnspecified.serializer().serialize(encoder, value)
+            is PassportElementErrorDataField -> PassportElementErrorDataField.serializer().serialize(encoder, value)
+            is PassportElementErrorFiles -> PassportElementErrorFiles.serializer().serialize(encoder, value)
+            is PassportElementErrorTranslationFiles -> PassportElementErrorTranslationFiles.serializer().serialize(encoder, value)
+            is UnknownPassportElementError -> jsonObjectSerializer.serialize(encoder, value.raw)
+        }
     }
 }
 

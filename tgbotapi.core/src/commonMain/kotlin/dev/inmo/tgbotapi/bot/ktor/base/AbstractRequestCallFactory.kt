@@ -35,12 +35,11 @@ abstract class AbstractRequestCallFactory(
     ): T? {
         val preparedBody = prepareCallBody(client, urlsKeeper, request) ?: return null
         logger.v {
-            val bodyValue =
-                if (preparedBody is TextContent) {
-                    preparedBody.text
-                } else {
-                    preparedBody.toString()
-                }
+            val bodyValue = if (preparedBody is TextContent) {
+                preparedBody.text
+            } else {
+                preparedBody.toString()
+            }
             "Prepared body for $request: $bodyValue"
         }
 
@@ -86,7 +85,7 @@ abstract class AbstractRequestCallFactory(
                             "Can't get result object from $content",
                         )
                     }
-                )
+                    )
             }.onFailure {
                 logger.w { "Got exception answer for $request: $it" }
             }.getOrThrow()

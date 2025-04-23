@@ -10,8 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.GameContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendGame(

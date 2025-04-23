@@ -22,10 +22,9 @@ data class UnknownInlineKeyboardButton(
     val rawData: JsonElement,
 ) : InlineKeyboardButton {
     override val text: String
-        get() =
-            runCatching {
-                rawData.jsonObject[textField] ?.jsonPrimitive ?.content
-            }.getOrNull() ?: ""
+        get() = runCatching {
+            rawData.jsonObject[textField] ?.jsonPrimitive ?.content
+        }.getOrNull() ?: ""
 }
 
 /**

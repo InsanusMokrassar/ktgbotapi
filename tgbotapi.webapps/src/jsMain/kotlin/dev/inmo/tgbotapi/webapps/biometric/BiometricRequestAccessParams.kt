@@ -7,7 +7,6 @@ external interface BiometricRequestAccessParams {
     val reason: String?
 }
 
-fun BiometricRequestAccessParams(reason: String? = null) =
-    buildJsonObject {
-        reason ?.let { put("reason", JsonPrimitive(it)) }
-    }.unsafeCast<BiometricRequestAccessParams>()
+fun BiometricRequestAccessParams(reason: String? = null) = buildJsonObject {
+    reason ?.let { put("reason", JsonPrimitive(it)) }
+}.unsafeCast<BiometricRequestAccessParams>()

@@ -7,12 +7,11 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
-private fun correctWebhookUrl(sourceUrl: String) =
-    if (sourceUrl.contains("://")) {
-        sourceUrl
-    } else {
-        "https://$sourceUrl"
-    }
+private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")) {
+    sourceUrl
+} else {
+    "https://$sourceUrl"
+}
 
 sealed class SetWebhookRequest : Request<Boolean>
 
@@ -46,16 +45,15 @@ fun SetWebhook(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null,
-): MultipartSetWebhookRequest =
-    MultipartSetWebhookRequest(
-        correctWebhookUrl(url),
-        certificate,
-        ipAddress,
-        maxAllowedConnections,
-        allowedUpdates,
-        dropPendingUpdates,
-        secretToken,
-    )
+): MultipartSetWebhookRequest = MultipartSetWebhookRequest(
+    correctWebhookUrl(url),
+    certificate,
+    ipAddress,
+    maxAllowedConnections,
+    allowedUpdates,
+    dropPendingUpdates,
+    secretToken,
+)
 
 fun SetWebhook(
     url: String,
@@ -65,16 +63,15 @@ fun SetWebhook(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null,
-): SetWebhook =
-    SetWebhook(
-        correctWebhookUrl(url),
-        certificate.fileId,
-        ipAddress,
-        maxAllowedConnections,
-        allowedUpdates,
-        dropPendingUpdates,
-        secretToken,
-    )
+): SetWebhook = SetWebhook(
+    correctWebhookUrl(url),
+    certificate.fileId,
+    ipAddress,
+    maxAllowedConnections,
+    allowedUpdates,
+    dropPendingUpdates,
+    secretToken,
+)
 
 /**
  * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update

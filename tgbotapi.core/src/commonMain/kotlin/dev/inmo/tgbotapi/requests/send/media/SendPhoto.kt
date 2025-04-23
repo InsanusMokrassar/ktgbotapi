@@ -36,24 +36,23 @@ fun SendPhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PhotoContent>> {
-    val data =
-        SendPhotoData(
-            chatId = chatId,
-            photo = photo,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendPhotoData(
+        chatId = chatId,
+        photo = photo,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
     return if (photo is MultipartFile) {
         CommonMultipartFileRequest(
             data,
@@ -79,24 +78,23 @@ fun SendPhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PhotoContent>> {
-    val data =
-        SendPhotoData(
-            chatId = chatId,
-            photo = photo,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendPhotoData(
+        chatId = chatId,
+        photo = photo,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (photo is MultipartFile) {
         CommonMultipartFileRequest(
@@ -108,8 +106,7 @@ fun SendPhoto(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendPhotoData internal constructor(
@@ -172,5 +169,5 @@ data class SendPhotoData internal constructor(
 data class SendPhotoFiles internal constructor(
     val photo: MultipartFile,
 ) : Files by mapOf(
-        photoField to photo,
-    )
+    photoField to photo,
+)

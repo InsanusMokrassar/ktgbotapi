@@ -14,8 +14,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import kotlinx.serialization.*
 
-internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendDice(

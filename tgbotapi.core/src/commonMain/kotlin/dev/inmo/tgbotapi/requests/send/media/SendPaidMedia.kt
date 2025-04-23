@@ -39,41 +39,39 @@ fun SendPaidMedia(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PaidMediaInfoContent>> {
-    val data =
-        SendPaidMediaData(
-            chatId = chatId,
-            starCount = starCount,
-            media = media,
-            payload = payload,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendPaidMediaData(
+        chatId = chatId,
+        starCount = starCount,
+        media = media,
+        payload = payload,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    val files: List<MultipartFile> =
-        media.flatMap {
-            listOfNotNull(
-                it.file as? MultipartFile,
-                if (it is ThumbedTelegramMedia) {
-                    it.thumb as? MultipartFile
-                } else {
-                    null
-                },
-                if (it is CoveredTelegramMedia) {
-                    it.cover as? MultipartFile
-                } else {
-                    null
-                },
-            )
-        }
+    val files: List<MultipartFile> = media.flatMap {
+        listOfNotNull(
+            it.file as? MultipartFile,
+            if (it is ThumbedTelegramMedia) {
+                it.thumb as? MultipartFile
+            } else {
+                null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
+            } else {
+                null
+            },
+        )
+    }
 
     return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
@@ -100,41 +98,39 @@ fun SendPaidMedia(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PaidMediaInfoContent>> {
-    val data =
-        SendPaidMediaData(
-            chatId = chatId,
-            starCount = starCount,
-            media = media,
-            payload = payload,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendPaidMediaData(
+        chatId = chatId,
+        starCount = starCount,
+        media = media,
+        payload = payload,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    val files: List<MultipartFile> =
-        media.flatMap {
-            listOfNotNull(
-                it.file as? MultipartFile,
-                if (it is ThumbedTelegramMedia) {
-                    it.thumb as? MultipartFile
-                } else {
-                    null
-                },
-                if (it is CoveredTelegramMedia) {
-                    it.cover as? MultipartFile
-                } else {
-                    null
-                },
-            )
-        }
+    val files: List<MultipartFile> = media.flatMap {
+        listOfNotNull(
+            it.file as? MultipartFile,
+            if (it is ThumbedTelegramMedia) {
+                it.thumb as? MultipartFile
+            } else {
+                null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
+            } else {
+                null
+            },
+        )
+    }
 
     return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
@@ -146,8 +142,7 @@ fun SendPaidMedia(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendPaidMediaData internal constructor(
@@ -211,5 +206,5 @@ data class SendPaidMediaData internal constructor(
 data class SendPaidMediaFiles internal constructor(
     val photo: MultipartFile,
 ) : Files by mapOf(
-        photoField to photo,
-    )
+    photoField to photo,
+)

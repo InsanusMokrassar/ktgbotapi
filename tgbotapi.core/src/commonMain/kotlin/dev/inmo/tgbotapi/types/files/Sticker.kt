@@ -46,10 +46,9 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile, 
     val type: StickerType
 
     fun asInputSticker(
-        emojis: List<String> =
-            emoji ?.let {
-                listOf(it)
-            } ?: error("Unable to create input sticker without emojis"),
+        emojis: List<String> = emoji ?.let {
+            listOf(it)
+        } ?: error("Unable to create input sticker without emojis"),
     ): InputSticker
 }
 
@@ -257,13 +256,12 @@ sealed interface RegularSticker : Sticker {
     override val type: StickerType.Regular
         get() = StickerType.Regular
 
-    override fun asInputSticker(emojis: List<String>) =
-        InputSticker.WithKeywords.Regular(
-            fileId,
-            stickerFormat,
-            emojis,
-            emptyList(),
-        )
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        stickerFormat,
+        emojis,
+        emptyList(),
+    )
 }
 
 @Serializable
@@ -361,13 +359,12 @@ sealed interface MaskSticker : Sticker {
     override val type: StickerType.Mask
         get() = StickerType.Mask
 
-    override fun asInputSticker(emojis: List<String>) =
-        InputSticker.Mask(
-            fileId,
-            stickerFormat,
-            emojis,
-            maskPosition,
-        )
+    override fun asInputSticker(emojis: List<String>) = InputSticker.Mask(
+        fileId,
+        stickerFormat,
+        emojis,
+        maskPosition,
+    )
 }
 
 @Serializable
@@ -466,13 +463,12 @@ sealed interface CustomEmojiSticker : Sticker {
     override val type: StickerType.CustomEmoji
         get() = StickerType.CustomEmoji
 
-    override fun asInputSticker(emojis: List<String>) =
-        InputSticker.WithKeywords.CustomEmoji(
-            fileId,
-            stickerFormat,
-            emojis,
-            emptyList(),
-        )
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.CustomEmoji(
+        fileId,
+        stickerFormat,
+        emojis,
+        emptyList(),
+    )
 }
 
 @Serializable
@@ -594,11 +590,10 @@ data class UnknownSticker(
     override val type: StickerType = StickerType.Regular,
     val raw: JsonElement,
 ) : Sticker {
-    override fun asInputSticker(emojis: List<String>) =
-        InputSticker.WithKeywords.Regular(
-            fileId,
-            stickerFormat,
-            emojis,
-            emptyList(),
-        )
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        stickerFormat,
+        emojis,
+        emptyList(),
+    )
 }

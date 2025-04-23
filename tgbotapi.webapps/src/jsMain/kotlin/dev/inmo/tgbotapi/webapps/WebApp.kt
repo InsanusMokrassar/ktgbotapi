@@ -482,12 +482,11 @@ external class WebApp {
 }
 
 val WebApp.colorScheme: ColorScheme
-    get() =
-        when (colorSchemeRaw) {
-            "light" -> ColorScheme.LIGHT
-            "dark" -> ColorScheme.DARK
-            else -> ColorScheme.LIGHT
-        }
+    get() = when (colorSchemeRaw) {
+        "light" -> ColorScheme.LIGHT
+        "dark" -> ColorScheme.DARK
+        else -> ColorScheme.LIGHT
+    }
 
 // /**
 // * @return The callback which should be used in case you want to turn off events handling
@@ -662,11 +661,10 @@ val WebApp.colorScheme: ColorScheme
 // */
 // fun WebApp.onScanQRPopupClosed(eventHandler: onScanQRPopupClosedHandler) = onEvent(EventType.ScanQRPopupClosed, eventHandler)
 
-fun WebApp.isInitDataSafe(botToken: String) =
-    TelegramAPIUrlsKeeper(botToken).checkWebAppData(
-        initData,
-        initDataUnsafe.hash,
-    )
+fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
+    initData,
+    initDataUnsafe.hash,
+)
 
 fun WebApp.showPopup(
     message: String,

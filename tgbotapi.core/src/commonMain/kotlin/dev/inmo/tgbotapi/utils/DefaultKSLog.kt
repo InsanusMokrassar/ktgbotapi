@@ -17,14 +17,13 @@ private inline fun CreateDefaultKSLogger(
     dropCancellationExceptions: Boolean = true,
     noinline additionalLoggerMapper: (KSLog.() -> KSLog)? = null,
 ): KSLog {
-    val filter: MessageFilter? =
-        if (dropCancellationExceptions) {
-            { ll, message, e ->
-                e !is CancellationException
-            }
-        } else {
-            null
+    val filter: MessageFilter? = if (dropCancellationExceptions) {
+        { ll, message, e ->
+            e !is CancellationException
         }
+    } else {
+        null
+    }
     return KSLog { level: LogLevel, tag: String?, message: Any, throwable: Throwable? ->
         TagLogger(loggerTagGetter()).performLog(level, tag, message, throwable)
     }.let {

@@ -26,12 +26,11 @@ fun AddStickerToSet(
     userId: UserId,
     stickerSetName: String,
     inputSticker: InputSticker,
-): Request<Boolean> =
-    AddStickerToSet(
-        userId = userId,
-        stickerSetName = StickerSetName(stickerSetName),
-        inputSticker = inputSticker,
-    )
+): Request<Boolean> = AddStickerToSet(
+    userId = userId,
+    stickerSetName = StickerSetName(stickerSetName),
+    inputSticker = inputSticker,
+)
 
 @Serializable
 data class AddStickerToSetData internal constructor(

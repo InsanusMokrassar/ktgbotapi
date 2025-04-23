@@ -80,21 +80,20 @@ sealed interface RevenueWithdrawalState {
             encoder: Encoder,
             value: RevenueWithdrawalState,
         ) {
-            val surrogate =
-                when (value) {
-                    Failed -> Surrogate(value.type)
-                    Pending -> Surrogate(value.type)
-                    is Succeeded ->
-                        Surrogate(
-                            value.type,
-                            value.date,
-                            value.url,
-                        )
-                    is Unknown ->
-                        value.raw ?.let {
-                            return JsonElement.serializer().serialize(encoder, it)
-                        } ?: Surrogate(value.type)
-                }
+            val surrogate = when (value) {
+                Failed -> Surrogate(value.type)
+                Pending -> Surrogate(value.type)
+                is Succeeded ->
+                    Surrogate(
+                        value.type,
+                        value.date,
+                        value.url,
+                    )
+                is Unknown ->
+                    value.raw ?.let {
+                        return JsonElement.serializer().serialize(encoder, it)
+                    } ?: Surrogate(value.type)
+            }
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

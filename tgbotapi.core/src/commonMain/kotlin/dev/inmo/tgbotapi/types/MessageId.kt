@@ -11,10 +11,9 @@ import kotlin.jvm.JvmInline
 object MessageIdSerializer : KSerializer<MessageId> {
     override val descriptor: SerialDescriptor = JsonObject.serializer().descriptor
 
-    override fun deserialize(decoder: Decoder): MessageId =
-        JsonObject.serializer().deserialize(
-            decoder,
-        )[messageIdField]!!.jsonPrimitive.long.asTelegramMessageId()
+    override fun deserialize(decoder: Decoder): MessageId = JsonObject.serializer().deserialize(
+        decoder,
+    )[messageIdField]!!.jsonPrimitive.long.asTelegramMessageId()
 
     override fun serialize(
         encoder: Encoder,

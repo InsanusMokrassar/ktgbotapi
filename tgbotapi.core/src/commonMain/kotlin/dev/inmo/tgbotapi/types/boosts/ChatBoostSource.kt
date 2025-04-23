@@ -156,15 +156,14 @@ sealed interface ChatBoostSource {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): ChatBoostSource {
-            val (surrogate, json) =
-                when {
-                    decoder is JsonDecoder -> {
-                        val json = decoder.decodeJsonElement()
-                        val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
-                        surrogate to json
-                    }
-                    else -> Surrogate.serializer().deserialize(decoder) to null
+            val (surrogate, json) = when {
+                decoder is JsonDecoder -> {
+                    val json = decoder.decodeJsonElement()
+                    val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
+                    surrogate to json
                 }
+                else -> Surrogate.serializer().deserialize(decoder) to null
+            }
 
             return when {
                 surrogate.sourceName == Premium.sourceCode && surrogate.user != null -> {
@@ -207,14 +206,13 @@ sealed interface ChatBoostSource {
                 return
             }
 
-            val surrogate =
-                Surrogate(
-                    value.sourceName,
-                    value.user,
-                    (value as? Giveaway) ?.messageId,
-                    (value as? Giveaway) ?.unclaimed ?: false,
-                    (value as? Giveaway) ?.prizeStarCount,
-                )
+            val surrogate = Surrogate(
+                value.sourceName,
+                value.user,
+                (value as? Giveaway) ?.messageId,
+                (value as? Giveaway) ?.unclaimed ?: false,
+                (value as? Giveaway) ?.prizeStarCount,
+            )
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

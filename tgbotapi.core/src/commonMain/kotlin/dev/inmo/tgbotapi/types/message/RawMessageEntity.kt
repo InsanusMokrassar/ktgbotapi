@@ -124,11 +124,10 @@ private fun createTextSources(
     originalFullString: String,
     entities: RawMessageEntities,
 ): List<Pair<Int, TextSource>> {
-    val mutableEntities =
-        entities.toMutableList().apply {
-            sortBy { it.priority } // sorting to fix potential issues in source sorting of entities
-            sortBy { it.offset }
-        }
+    val mutableEntities = entities.toMutableList().apply {
+        sortBy { it.priority } // sorting to fix potential issues in source sorting of entities
+        sortBy { it.offset }
+    }
     val resultList = mutableListOf<Pair<Int, TextSource>>()
 
     while (mutableEntities.isNotEmpty()) {
@@ -152,27 +151,26 @@ private fun createTextSources(
             }
             mutableEntities.remove(potentialParent)
         }
-        val subtextSources =
-            if (subentities.isNotEmpty()) {
-                mutableEntities.removeAll(subentities)
-                if (toAddCutted.isNotEmpty()) {
-                    val borderIndex = parent.range.last + 1
-                    mutableEntities.addAll(
-                        0,
-                        toAddCutted.map {
-                            val firstLength = borderIndex - it.offset
-                            subentities.add(it.copy(length = firstLength))
-                            it.copy(
-                                offset = borderIndex,
-                                length = it.length - firstLength,
-                            )
-                        },
-                    )
-                }
-                createTextSources(originalFullString, subentities)
-            } else {
-                emptyList()
+        val subtextSources = if (subentities.isNotEmpty()) {
+            mutableEntities.removeAll(subentities)
+            if (toAddCutted.isNotEmpty()) {
+                val borderIndex = parent.range.last + 1
+                mutableEntities.addAll(
+                    0,
+                    toAddCutted.map {
+                        val firstLength = borderIndex - it.offset
+                        subentities.add(it.copy(length = firstLength))
+                        it.copy(
+                            offset = borderIndex,
+                            length = it.length - firstLength,
+                        )
+                    },
+                )
             }
+            createTextSources(originalFullString, subentities)
+        } else {
+            emptyList()
+        }
         resultList.add(
             parent.offset to
                 parent.asTextSource(
@@ -234,8 +232,7 @@ fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEnt
 fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
 @Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
-fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
-    createTextSources(sourceString, this).fillWithRegulars(sourceString)
+fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList = createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
 @Warning("This thing is subject of changes. Library do not guarantee stability of this typealias")
 typealias RawMessageEntities = List<RawMessageEntity>

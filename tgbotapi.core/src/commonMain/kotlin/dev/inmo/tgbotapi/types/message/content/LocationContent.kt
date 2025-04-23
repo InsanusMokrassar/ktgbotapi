@@ -59,10 +59,9 @@ sealed interface LocationContent : MessageContent {
  * [KSerializer] for [LocationContent]
  */
 object LocationContentSerializer : KSerializer<LocationContent> {
-    override val descriptor: SerialDescriptor =
-        buildClassSerialDescriptor("LocationContent") {
-            element(LocationContent::location.name, LocationSerializer.descriptor)
-        }
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("LocationContent") {
+        element(LocationContent::location.name, LocationSerializer.descriptor)
+    }
 
     override fun deserialize(decoder: Decoder): LocationContent {
         lateinit var location: Location
@@ -110,24 +109,23 @@ data class LiveLocationContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<LiveLocationContent>> =
-        SendLiveLocation(
-            chatId = chatId,
-            latitude = location.latitude,
-            longitude = location.longitude,
-            livePeriod = location.livePeriod,
-            horizontalAccuracy = location.horizontalAccuracy,
-            heading = location.heading,
-            proximityAlertRadius = location.proximityAlertRadius,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<LiveLocationContent>> = SendLiveLocation(
+        chatId = chatId,
+        latitude = location.latitude,
+        longitude = location.longitude,
+        livePeriod = location.livePeriod,
+        horizontalAccuracy = location.horizontalAccuracy,
+        heading = location.heading,
+        proximityAlertRadius = location.proximityAlertRadius,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }
 
 /**
@@ -148,18 +146,17 @@ data class StaticLocationContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<StaticLocationContent>> =
-        SendStaticLocation(
-            chatId = chatId,
-            latitude = location.latitude,
-            longitude = location.longitude,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<StaticLocationContent>> = SendStaticLocation(
+        chatId = chatId,
+        latitude = location.latitude,
+        longitude = location.longitude,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }

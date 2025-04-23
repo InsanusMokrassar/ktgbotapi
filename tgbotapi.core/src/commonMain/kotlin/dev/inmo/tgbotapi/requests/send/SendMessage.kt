@@ -18,8 +18,7 @@ import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
-internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendTextMessage(
     chatId: ChatIdentifier,

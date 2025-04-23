@@ -9,10 +9,9 @@ import dev.inmo.tgbotapi.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
-private val chatMembersListSerializer =
-    ListSerializer(
-        AdministratorChatMemberSerializer,
-    )
+private val chatMembersListSerializer = ListSerializer(
+    AdministratorChatMemberSerializer,
+)
 
 @Serializable
 data class GetChatAdministrators(

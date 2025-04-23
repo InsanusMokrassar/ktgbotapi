@@ -100,7 +100,6 @@ open class TelegramBotMiddleware(
 
     companion object {
         @Warning("This API is experimental and subject of changes")
-        fun build(block: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware =
-            TelegramBotMiddlewareBuilder().apply(block).build()
+        fun build(block: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware = TelegramBotMiddlewareBuilder().apply(block).build()
     }
 }

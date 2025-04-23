@@ -59,68 +59,66 @@ sealed interface ForwardInfo {
     }
 }
 
-fun MessageOrigin.forwardInfo() =
-    when (this) {
-        is MessageOrigin.HiddenUser ->
-            ForwardInfo.ByAnonymous(
-                date,
-                name,
-            )
-        is MessageOrigin.Public.Channel ->
-            ForwardInfo.PublicChat.FromChannel(
-                date,
-                messageId,
-                chat,
-                authorSignature,
-            )
-        is MessageOrigin.Public.Sender ->
-            when (chat) {
-                is ChannelChat ->
-                    ForwardInfo.PublicChat.SentByChannel(
-                        date,
-                        chat,
-                    )
-                is SupergroupChat ->
-                    ForwardInfo.PublicChat.FromSupergroup(
-                        date,
-                        chat,
-                    )
-            }
-        is MessageOrigin.User ->
-            ForwardInfo.ByUser(
-                date,
-                user,
-            )
-        is MessageOrigin.Unknown -> null
-    }
+fun MessageOrigin.forwardInfo() = when (this) {
+    is MessageOrigin.HiddenUser ->
+        ForwardInfo.ByAnonymous(
+            date,
+            name,
+        )
+    is MessageOrigin.Public.Channel ->
+        ForwardInfo.PublicChat.FromChannel(
+            date,
+            messageId,
+            chat,
+            authorSignature,
+        )
+    is MessageOrigin.Public.Sender ->
+        when (chat) {
+            is ChannelChat ->
+                ForwardInfo.PublicChat.SentByChannel(
+                    date,
+                    chat,
+                )
+            is SupergroupChat ->
+                ForwardInfo.PublicChat.FromSupergroup(
+                    date,
+                    chat,
+                )
+        }
+    is MessageOrigin.User ->
+        ForwardInfo.ByUser(
+            date,
+            user,
+        )
+    is MessageOrigin.Unknown -> null
+}
 
-fun ForwardInfo.messageOrigin() =
-    when (this) {
-        is ForwardInfo.ByAnonymous ->
-            MessageOrigin.HiddenUser(
-                senderName,
-                dateOfOriginal,
-            )
-        is ForwardInfo.ByUser ->
-            MessageOrigin.User(
-                user,
-                dateOfOriginal,
-            )
-        is ForwardInfo.PublicChat.FromChannel ->
-            MessageOrigin.Public.Channel(
-                channelChat,
-                messageId,
-                dateOfOriginal,
-                signature,
-            )
-        is ForwardInfo.PublicChat.FromSupergroup ->
-            MessageOrigin.Public.Sender(
-                group,
-                dateOfOriginal,
-            )
-        is ForwardInfo.PublicChat.SentByChannel ->
-            MessageOrigin.Public.Sender(
-                channelChat,
-                dateOfOriginal,
-            )
-    }
+fun ForwardInfo.messageOrigin() = when (this) {
+    is ForwardInfo.ByAnonymous ->
+        MessageOrigin.HiddenUser(
+            senderName,
+            dateOfOriginal,
+        )
+    is ForwardInfo.ByUser ->
+        MessageOrigin.User(
+            user,
+            dateOfOriginal,
+        )
+    is ForwardInfo.PublicChat.FromChannel ->
+        MessageOrigin.Public.Channel(
+            channelChat,
+            messageId,
+            dateOfOriginal,
+            signature,
+        )
+    is ForwardInfo.PublicChat.FromSupergroup ->
+        MessageOrigin.Public.Sender(
+            group,
+            dateOfOriginal,
+        )
+    is ForwardInfo.PublicChat.SentByChannel ->
+        MessageOrigin.Public.Sender(
+            channelChat,
+            dateOfOriginal,
+        )
+}

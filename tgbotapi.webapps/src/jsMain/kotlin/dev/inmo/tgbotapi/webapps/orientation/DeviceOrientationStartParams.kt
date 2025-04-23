@@ -14,8 +14,7 @@ external interface DeviceOrientationStartParams {
 fun DeviceOrientationStartParams(
     refreshRate: MilliSeconds = 1000,
     needAbsolute: Boolean = false,
-): DeviceOrientationStartParams =
-    json(
-        "refresh_rate" to refreshRate,
-        "need_absolute" to needAbsolute,
-    ).unsafeCast<DeviceOrientationStartParams>()
+): DeviceOrientationStartParams = json(
+    "refresh_rate" to refreshRate,
+    "need_absolute" to needAbsolute,
+).unsafeCast<DeviceOrientationStartParams>()

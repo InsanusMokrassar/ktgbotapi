@@ -12,12 +12,11 @@ data class InlineKeyboardMarkup(
     val keyboard: Matrix<InlineKeyboardButton>,
 ) : KeyboardMarkup {
     init {
-        val isTherePayButton =
-            keyboard.any { it ->
-                it.any {
-                    it is PayInlineKeyboardButton
-                }
+        val isTherePayButton = keyboard.any { it ->
+            it.any {
+                it is PayInlineKeyboardButton
             }
+        }
         if (isTherePayButton) {
             // first button is not PayInlineKeyboardButton
             val firstIsPaymentButton = keyboard.first().firstOrNull() is PayInlineKeyboardButton

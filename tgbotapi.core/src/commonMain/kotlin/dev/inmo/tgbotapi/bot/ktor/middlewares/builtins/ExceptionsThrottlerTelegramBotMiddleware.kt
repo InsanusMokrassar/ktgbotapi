@@ -25,37 +25,35 @@ object ExceptionsThrottlerTelegramBotMiddleware {
     operator fun invoke(
         exceptionDurationMultiplier: Float = 2f,
         initialExceptionDuration: Duration = 125.milliseconds,
-    ): TelegramBotMiddleware =
-        TelegramBotMiddleware.build {
-            val exceptionsTimeouts = mutableMapOf<KClass<*>, Duration>()
-            val latestExceptionsRequestsTypes = mutableMapOf<KClass<*>, MutableSet<KClass<*>>>()
-            val mutex = Mutex()
-            onRequestException = onRequestException@{ request, t ->
-                t ?: return@onRequestException null
-                val kclass = t::class
-                val toSleep =
-                    mutex.withLock {
-                        val latestDuration = exceptionsTimeouts[kclass]
-                        exceptionsTimeouts[kclass] = latestDuration ?.times(exceptionDurationMultiplier.toDouble()) ?: initialExceptionDuration
-                        latestExceptionsRequestsTypes.getOrPut(request::class) { mutableSetOf() }.add(kclass)
-                        latestDuration
-                    }
-                toSleep ?.let {
-                    delay(it)
-                }
-                null
+    ): TelegramBotMiddleware = TelegramBotMiddleware.build {
+        val exceptionsTimeouts = mutableMapOf<KClass<*>, Duration>()
+        val latestExceptionsRequestsTypes = mutableMapOf<KClass<*>, MutableSet<KClass<*>>>()
+        val mutex = Mutex()
+        onRequestException = onRequestException@{ request, t ->
+            t ?: return@onRequestException null
+            val kclass = t::class
+            val toSleep = mutex.withLock {
+                val latestDuration = exceptionsTimeouts[kclass]
+                exceptionsTimeouts[kclass] = latestDuration ?.times(exceptionDurationMultiplier.toDouble()) ?: initialExceptionDuration
+                latestExceptionsRequestsTypes.getOrPut(request::class) { mutableSetOf() }.add(kclass)
+                latestDuration
             }
-            onRequestReturnResult = onRequestReturnResult@{ result, request, _ ->
-                if (result.isSuccess) {
-                    mutex.withLock {
-                        val exceptionKClass = latestExceptionsRequestsTypes.remove(request::class) ?: return@withLock
-                        exceptionKClass.forEach {
-                            exceptionsTimeouts.remove(it)
-                        }
-                    }
-                }
-                null
+            toSleep ?.let {
+                delay(it)
             }
-            id = ExceptionsThrottlerTelegramBotMiddleware.id
+            null
         }
+        onRequestReturnResult = onRequestReturnResult@{ result, request, _ ->
+            if (result.isSuccess) {
+                mutex.withLock {
+                    val exceptionKClass = latestExceptionsRequestsTypes.remove(request::class) ?: return@withLock
+                    exceptionKClass.forEach {
+                        exceptionsTimeouts.remove(it)
+                    }
+                }
+            }
+            null
+        }
+        id = ExceptionsThrottlerTelegramBotMiddleware.id
+    }
 }

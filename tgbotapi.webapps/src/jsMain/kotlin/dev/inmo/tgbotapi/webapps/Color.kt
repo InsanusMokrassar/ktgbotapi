@@ -8,10 +8,10 @@ sealed interface Color {
 
     @Serializable
     value class BackgroundColor
-        @Warning("This constructor is not supposed to be called ouside of ktgbotapi library")
-        constructor(
-            override val value: String,
-        ) : Color
+    @Warning("This constructor is not supposed to be called ouside of ktgbotapi library")
+    constructor(
+        override val value: String,
+    ) : Color
 
     @Serializable
     value class Hex(override val value: String) : Color {

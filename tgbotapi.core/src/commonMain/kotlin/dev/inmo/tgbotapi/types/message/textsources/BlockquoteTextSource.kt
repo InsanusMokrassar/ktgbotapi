@@ -10,15 +10,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class BlockquoteTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        override val subsources: TextSourcesList,
-    ) : MultilevelTextSource {
-        override val markdown: String by lazy { source.blockquoteMarkdown() }
-        override val markdownV2: String by lazy { blockquoteMarkdownV2() }
-        override val html: String by lazy { blockquoteHTML() }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    override val subsources: TextSourcesList,
+) : MultilevelTextSource {
+    override val markdown: String by lazy { source.blockquoteMarkdown() }
+    override val markdownV2: String by lazy { blockquoteMarkdownV2() }
+    override val html: String by lazy { blockquoteHTML() }
+}
 
 inline fun blockquoteTextSource(parts: TextSourcesList) = BlockquoteTextSource(parts.makeString(), parts)
 

@@ -38,15 +38,14 @@ data class TelegramPaidMediaVideo(
     } // crutch until js compiling will be fixed
 }
 
-fun VideoFile.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo =
-    TelegramPaidMediaVideo(
-        file = fileId,
-        thumb = thumbnail ?.fileId,
-        width = width,
-        height = height,
-        duration = duration,
-        cover = cover ?.fileId,
-        startTimestamp = startTimestamp,
-    )
+fun VideoFile.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = TelegramPaidMediaVideo(
+    file = fileId,
+    thumb = thumbnail ?.fileId,
+    width = width,
+    height = height,
+    duration = duration,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
+)
 
 fun PaidMedia.Video.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = video.toTelegramPaidMediaVideo()

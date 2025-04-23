@@ -33,29 +33,27 @@ data class PaidMediaInfoContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<PaidMediaInfoContent>> =
-        SendPaidMedia(
-            chatId = chatId,
-            starCount = paidMediaInfo.stars,
-            media =
-                paidMediaInfo.media.mapNotNull {
-                    when (it) {
-                        is PaidMedia.Photo -> it.photo.biggest.toTelegramPaidMediaPhoto()
-                        is PaidMedia.Preview -> null
-                        is PaidMedia.Unknown -> null
-                        is PaidMedia.Video -> it.video.toTelegramPaidMediaVideo()
-                    }
-                }.ifEmpty {
-                    error("Unable to create resend for paid media content without any revealed content")
-                },
-            entities = textSources,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<PaidMediaInfoContent>> = SendPaidMedia(
+        chatId = chatId,
+        starCount = paidMediaInfo.stars,
+        media = paidMediaInfo.media.mapNotNull {
+            when (it) {
+                is PaidMedia.Photo -> it.photo.biggest.toTelegramPaidMediaPhoto()
+                is PaidMedia.Preview -> null
+                is PaidMedia.Unknown -> null
+                is PaidMedia.Video -> it.video.toTelegramPaidMediaVideo()
+            }
+        }.ifEmpty {
+            error("Unable to create resend for paid media content without any revealed content")
+        },
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 }

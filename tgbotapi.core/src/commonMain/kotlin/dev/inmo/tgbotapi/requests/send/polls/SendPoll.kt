@@ -17,8 +17,7 @@ import korlibs.time.millisecondsLong
 import korlibs.time.seconds
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 internal inline val ApproximateScheduledCloseInfo.openPeriod
     get() = openDuration.millisecondsLong.div(1000)
@@ -197,11 +196,10 @@ fun Poll.createRequest(
 }
 
 internal fun ScheduledCloseInfo.checkSendData() {
-    val span =
-        when (this) {
-            is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
-            is ApproximateScheduledCloseInfo -> openDuration.seconds
-        }.toInt()
+    val span = when (this) {
+        is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
+        is ApproximateScheduledCloseInfo -> openDuration.seconds
+    }.toInt()
     if (span !in openPeriodPollSecondsLimit) {
         error("Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span")
     }

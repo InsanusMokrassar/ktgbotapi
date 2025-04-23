@@ -8,7 +8,6 @@ external interface GyroscopeStartParams {
     val refreshRate: MilliSeconds
 }
 
-fun GyroscopeStartParams(refreshRate: MilliSeconds = 1000): GyroscopeStartParams =
-    json(
-        "refresh_rate" to refreshRate,
-    ).unsafeCast<GyroscopeStartParams>()
+fun GyroscopeStartParams(refreshRate: MilliSeconds = 1000): GyroscopeStartParams = json(
+    "refresh_rate" to refreshRate,
+).unsafeCast<GyroscopeStartParams>()

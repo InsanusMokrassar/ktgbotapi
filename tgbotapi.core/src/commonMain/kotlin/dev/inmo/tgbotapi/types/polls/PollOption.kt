@@ -72,10 +72,9 @@ object PollOptionSerializer : KSerializer<PollOption> {
     override val descriptor: SerialDescriptor = RawPollOption.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): PollOption {
-        val raw =
-            RawPollOption.serializer().deserialize(
-                decoder,
-            )
+        val raw = RawPollOption.serializer().deserialize(
+            decoder,
+        )
 
         return SimplePollOption(raw.text, raw.textSources.asTextSources(raw.text), raw.votes)
     }

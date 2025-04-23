@@ -33,12 +33,11 @@ data class ReplyKeyboardMarkup(
             keyboard = keyboard + other.keyboard,
             resizeKeyboard = resizeKeyboard ?.or(other.resizeKeyboard ?: false) ?: other.resizeKeyboard,
             oneTimeKeyboard = oneTimeKeyboard ?.or(other.oneTimeKeyboard ?: false) ?: other.oneTimeKeyboard,
-            inputFieldPlaceholder =
-                inputFieldPlaceholder ?.plus(
-                    other.inputFieldPlaceholder ?.let {
-                        placeholderDelimiter + it
-                    } ?: "",
-                ) ?: other.inputFieldPlaceholder,
+            inputFieldPlaceholder = inputFieldPlaceholder ?.plus(
+                other.inputFieldPlaceholder ?.let {
+                    placeholderDelimiter + it
+                } ?: "",
+            ) ?: other.inputFieldPlaceholder,
             selective = selective ?.or(other.selective ?: false) ?: other.selective,
             persistent = persistent ?.or(other.persistent ?: false) ?: other.persistent,
         )

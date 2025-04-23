@@ -28,8 +28,7 @@ data class SetBusinessAccountProfilePhoto(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override val mediaMap: Map<String, MultipartFile> =
-        mapOf(
-            photo.mediaPair,
-        )
+    override val mediaMap: Map<String, MultipartFile> = mapOf(
+        photo.mediaPair,
+    )
 }

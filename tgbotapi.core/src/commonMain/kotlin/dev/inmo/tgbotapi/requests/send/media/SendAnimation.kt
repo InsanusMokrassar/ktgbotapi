@@ -44,28 +44,27 @@ fun SendAnimation(
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data =
-        SendAnimationData(
-            chatId = chatId,
-            animation = animation,
-            thumbnail = thumbnail ?.fileId,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            duration = duration,
-            width = width,
-            height = height,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendAnimationData(
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumbnail ?.fileId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (animationAsFile == null && thumbAsFile == null) {
         data
@@ -99,28 +98,27 @@ fun SendAnimation(
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data =
-        SendAnimationData(
-            chatId = chatId,
-            animation = animation,
-            thumbnail = thumbnail ?.fileId,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            duration = duration,
-            width = width,
-            height = height,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendAnimationData(
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumbnail ?.fileId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (animationAsFile == null && thumbAsFile == null) {
         data
@@ -132,8 +130,7 @@ fun SendAnimation(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendAnimationData internal constructor(
@@ -208,6 +205,6 @@ data class SendAnimationFiles internal constructor(
     val animation: MultipartFile? = null,
     val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-        animationField to animation,
-        thumbnailField to thumbnail,
-    )
+    animationField to animation,
+    thumbnailField to thumbnail,
+)

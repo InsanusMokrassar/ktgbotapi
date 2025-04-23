@@ -52,15 +52,14 @@ sealed class ChatType {
 }
 
 val String.asChatType
-    get() =
-        when (this) {
-            ChatType.Sender.stringified -> ChatType.Sender
-            ChatType.Private.stringified -> ChatType.Private
-            ChatType.Group.stringified -> ChatType.Group
-            ChatType.Supergroup.stringified -> ChatType.Supergroup
-            ChatType.Channel.stringified -> ChatType.Channel
-            else -> ChatType.Unknown(this)
-        }
+    get() = when (this) {
+        ChatType.Sender.stringified -> ChatType.Sender
+        ChatType.Private.stringified -> ChatType.Private
+        ChatType.Group.stringified -> ChatType.Group
+        ChatType.Supergroup.stringified -> ChatType.Supergroup
+        ChatType.Channel.stringified -> ChatType.Channel
+        else -> ChatType.Unknown(this)
+    }
 
 @RiskFeature
 object ChatTypeSerializer : KSerializer<ChatType> {
@@ -302,7 +301,7 @@ object UserSerializer : KSerializer<User> {
                         asJson[canJoinGroupsField]
                             ?: asJson[canReadAllGroupMessagesField]
                             ?: asJson[supportInlineQueriesField]
-                    ) != null
+                        ) != null
                 ) {
                     nonstrictJsonFormat.decodeFromJsonElement(
                         ExtendedBot.serializer(),

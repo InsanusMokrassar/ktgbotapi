@@ -28,26 +28,24 @@ data class VoiceContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<VoiceContent>> =
-        SendVoice(
-            chatId = chatId,
-            voice = media.fileId,
-            entities = textSources,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            duration = media.duration,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<VoiceContent>> = SendVoice(
+        chatId = chatId,
+        voice = media.fileId,
+        entities = textSources,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        duration = media.duration,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    override fun asTelegramMedia(): TelegramMediaAudio =
-        TelegramMediaAudio(
-            media.fileId,
-            textSources,
-            media.duration,
-        )
+    override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
+        media.fileId,
+        textSources,
+        media.duration,
+    )
 }

@@ -25,9 +25,8 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.buildJsonArray
 
-const val rawSendingMediaGroupsWarning =
-    "Media groups contains restrictions related to combinations of media" +
-        " types. Currently it is possible to combine photo + video OR audio OR documents"
+const val rawSendingMediaGroupsWarning = "Media groups contains restrictions related to combinations of media" +
+    " types. Currently it is possible to combine photo + video OR audio OR documents"
 
 @RiskFeature(rawSendingMediaGroupsWarning)
 fun <T : MediaGroupPartContent> SendMediaGroup(
@@ -45,35 +44,33 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
 
-    val files: List<MultipartFile> =
-        media.flatMap {
-            listOfNotNull(
-                it.file as? MultipartFile,
-                if (it is ThumbedTelegramMedia) {
-                    it.thumb as? MultipartFile
-                } else {
-                    null
-                },
-                if (it is CoveredTelegramMedia) {
-                    it.cover as? MultipartFile
-                } else {
-                    null
-                },
-            )
-        }
-
-    val data =
-        SendMediaGroupData(
-            chatId = chatId,
-            media = media,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
+    val files: List<MultipartFile> = media.flatMap {
+        listOfNotNull(
+            it.file as? MultipartFile,
+            if (it is ThumbedTelegramMedia) {
+                it.thumb as? MultipartFile
+            } else {
+                null
+            },
+            if (it is CoveredTelegramMedia) {
+                it.cover as? MultipartFile
+            } else {
+                null
+            },
         )
+    }
+
+    val data = SendMediaGroupData(
+        chatId = chatId,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+    )
 
     return (
         if (files.isEmpty()) {
@@ -84,7 +81,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
                 files.associateBy { it.fileId },
             )
         }
-    ) as Request<ContentMessage<MediaGroupContent<T>>>
+        ) as Request<ContentMessage<MediaGroupContent<T>>>
 }
 
 /**
@@ -173,8 +170,7 @@ inline fun SendVisualMediaGroup(
 )
 
 private object MessagesListSerializer : KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
-    private val serializer =
-        ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
+    private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
     override val descriptor: SerialDescriptor = serializer.descriptor
 
     override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>> {
@@ -213,12 +209,11 @@ data class SendMediaGroupData internal constructor(
     SendContentMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     @SerialName(mediaField)
     private val convertedMedia: String
-        get() =
-            buildJsonArray {
-                media.forEach {
-                    add(it.toJsonWithoutNulls(MediaGroupMemberTelegramMediaSerializer))
-                }
-            }.toString()
+        get() = buildJsonArray {
+            media.forEach {
+                add(it.toJsonWithoutNulls(MediaGroupMemberTelegramMediaSerializer))
+            }
+        }.toString()
 
     override fun method(): String = "sendMediaGroup"
 

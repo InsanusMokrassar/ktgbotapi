@@ -70,22 +70,21 @@ object MenuButtonSerializer : KSerializer<MenuButton> {
         get() = MenuButtonSurrogate.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): MenuButton {
-        val surrogate =
-            if (decoder is JsonDecoder) {
-                val json = JsonElement.serializer().deserialize(decoder)
-                runCatching {
-                    decoder.json.decodeFromJsonElement(MenuButtonSurrogate.serializer(), json)
-                }.onFailure {
-                    return MenuButton.Unknown(
-                        runCatching { json.jsonObject[typeField] ?.jsonPrimitive ?.content }.getOrNull() ?: "",
-                        json,
-                    )
-                }.getOrThrow().copy(
-                    srcJsonElement = json,
+        val surrogate = if (decoder is JsonDecoder) {
+            val json = JsonElement.serializer().deserialize(decoder)
+            runCatching {
+                decoder.json.decodeFromJsonElement(MenuButtonSurrogate.serializer(), json)
+            }.onFailure {
+                return MenuButton.Unknown(
+                    runCatching { json.jsonObject[typeField] ?.jsonPrimitive ?.content }.getOrNull() ?: "",
+                    json,
                 )
-            } else {
-                MenuButtonSurrogate.serializer().deserialize(decoder)
-            }
+            }.getOrThrow().copy(
+                srcJsonElement = json,
+            )
+        } else {
+            MenuButtonSurrogate.serializer().deserialize(decoder)
+        }
 
         return when (surrogate.type) {
             MenuButton.Commands.type -> MenuButton.Commands

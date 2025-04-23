@@ -86,13 +86,12 @@ inline fun VideoFile.toTelegramMediaVideo(
 )
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun VideoFile.toTelegramPaidMediaVideo() =
-    TelegramPaidMediaVideo(
-        file = fileId,
-        width = width,
-        height = height,
-        duration = duration,
-        cover = cover ?.fileId,
-        startTimestamp = startTimestamp,
-        thumb = thumbnail ?.fileId,
-    )
+inline fun VideoFile.toTelegramPaidMediaVideo() = TelegramPaidMediaVideo(
+    file = fileId,
+    width = width,
+    height = height,
+    duration = duration,
+    cover = cover ?.fileId,
+    startTimestamp = startTimestamp,
+    thumb = thumbnail ?.fileId,
+)

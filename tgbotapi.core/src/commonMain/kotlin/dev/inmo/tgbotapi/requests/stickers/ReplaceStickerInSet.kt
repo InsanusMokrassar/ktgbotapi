@@ -14,13 +14,12 @@ fun ReplaceStickerInSet(
     oldSticker: FileId,
     newSticker: InputSticker,
 ): Request<Boolean> {
-    val data =
-        ReplaceStickerInSetData(
-            userId = userId,
-            name = stickerSetName,
-            oldSticker = oldSticker,
-            newSticker = newSticker,
-        )
+    val data = ReplaceStickerInSetData(
+        userId = userId,
+        name = stickerSetName,
+        oldSticker = oldSticker,
+        newSticker = newSticker,
+    )
     return when (val sticker = newSticker.sticker) {
         is MultipartFile ->
             CommonMultipartFileRequest(
@@ -36,13 +35,12 @@ fun ReplaceStickerInSet(
     stickerSetName: String,
     oldSticker: FileId,
     newSticker: InputSticker,
-): Request<Boolean> =
-    ReplaceStickerInSetData(
-        userId = userId,
-        name = StickerSetName(stickerSetName),
-        oldSticker = oldSticker,
-        newSticker = newSticker,
-    )
+): Request<Boolean> = ReplaceStickerInSetData(
+    userId = userId,
+    name = StickerSetName(stickerSetName),
+    oldSticker = oldSticker,
+    newSticker = newSticker,
+)
 
 @Serializable
 data class ReplaceStickerInSetData internal constructor(

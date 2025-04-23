@@ -32,36 +32,34 @@ data class AnimationContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<AnimationContent>> =
-        SendAnimation(
-            chatId = chatId,
-            animation = media.fileId,
-            thumbnail = media.thumbnail ?.fileId,
-            entities = textSources,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            duration = media.duration,
-            width = media.width,
-            height = media.height,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<AnimationContent>> = SendAnimation(
+        chatId = chatId,
+        animation = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = media.duration,
+        width = media.width,
+        height = media.height,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    override fun asTelegramMedia(): TelegramMediaAnimation =
-        TelegramMediaAnimation(
-            file = media.fileId,
-            entities = textSources,
-            spoilered = spoilered,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            width = media.width,
-            height = media.height,
-            duration = media.duration,
-            thumb = media.thumbnail ?.fileId,
-        )
+    override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
+        file = media.fileId,
+        entities = textSources,
+        spoilered = spoilered,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        width = media.width,
+        height = media.height,
+        duration = media.duration,
+        thumb = media.thumbnail ?.fileId,
+    )
 }

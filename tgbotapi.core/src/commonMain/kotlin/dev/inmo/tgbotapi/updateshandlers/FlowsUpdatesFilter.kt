@@ -96,14 +96,13 @@ class DefaultFlowsUpdatesFilter(
     private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
 
     @Suppress("MemberVisibilityCanBePrivate")
-    override val allUpdatesFlow: Flow<Update> =
-        (additionalUpdatesSharedFlow.asSharedFlow()).let {
-            if (upstreamUpdatesFlow != null) {
-                (it + upstreamUpdatesFlow).distinctUntilChanged { old, new -> old.updateId == new.updateId }
-            } else {
-                it
-            }
+    override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
+        if (upstreamUpdatesFlow != null) {
+            (it + upstreamUpdatesFlow).distinctUntilChanged { old, new -> old.updateId == new.updateId }
+        } else {
+            it
         }
+    }
 
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 }

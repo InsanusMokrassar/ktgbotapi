@@ -24,24 +24,22 @@ data class StickerContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<StickerContent>> =
-        SendSticker(
-            chatId = chatId,
-            sticker = media.fileId,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<StickerContent>> = SendSticker(
+        chatId = chatId,
+        sticker = media.fileId,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    override fun asTelegramMedia(): TelegramMediaDocument =
-        TelegramMediaDocument(
-            media.fileId,
-            null,
-            thumb = media.thumbnail ?.fileId,
-        )
+    override fun asTelegramMedia(): TelegramMediaDocument = TelegramMediaDocument(
+        media.fileId,
+        null,
+        thumb = media.thumbnail ?.fileId,
+    )
 }

@@ -40,14 +40,12 @@ data class AnswerShippingQueryError(
         get() = serializer()
 }
 
-fun ShippingQuery.createAnswerOk(shippingOptions: List<ShippingOption>): AnswerShippingQueryOk =
-    AnswerShippingQueryOk(
-        id,
-        shippingOptions,
-    )
+fun ShippingQuery.createAnswerOk(shippingOptions: List<ShippingOption>): AnswerShippingQueryOk = AnswerShippingQueryOk(
+    id,
+    shippingOptions,
+)
 
-fun ShippingQuery.createAnswerError(error: String): AnswerShippingQueryError =
-    AnswerShippingQueryError(
-        id,
-        error,
-    )
+fun ShippingQuery.createAnswerError(error: String): AnswerShippingQueryError = AnswerShippingQueryError(
+    id,
+    error,
+)

@@ -9,13 +9,13 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class URLTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-    ) : TextSource {
-        override val markdown: String by lazy { source.linkMarkdown(source) }
-        override val markdownV2: String by lazy { source.linkMarkdownV2(source) }
-        override val html: String by lazy { source.linkHTML(source) }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+) : TextSource {
+    override val markdown: String by lazy { source.linkMarkdown(source) }
+    override val markdownV2: String by lazy { source.linkMarkdownV2(source) }
+    override val html: String by lazy { source.linkHTML(source) }
+}
 
 inline fun linkTextSource(url: String) = URLTextSource(url)

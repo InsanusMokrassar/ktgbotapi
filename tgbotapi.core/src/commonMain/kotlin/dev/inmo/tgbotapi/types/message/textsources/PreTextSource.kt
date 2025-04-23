@@ -9,15 +9,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class PreTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        val language: String? = null,
-    ) : TextSource {
-        override val markdown: String by lazy { source.preMarkdown(language) }
-        override val markdownV2: String by lazy { source.preMarkdownV2(language) }
-        override val html: String by lazy { source.preHTML(language) }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    val language: String? = null,
+) : TextSource {
+    override val markdown: String by lazy { source.preMarkdown(language) }
+    override val markdownV2: String by lazy { source.preMarkdownV2(language) }
+    override val html: String by lazy { source.preHTML(language) }
+}
 
 inline fun preTextSource(
     code: String,

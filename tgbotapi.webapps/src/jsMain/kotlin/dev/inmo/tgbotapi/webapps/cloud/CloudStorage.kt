@@ -33,12 +33,11 @@ external interface CloudStorage {
 private fun <T> resultsToResult(
     e: Any?,
     v: T?,
-): Result<T> =
-    when {
-        e != null -> Result.failure(IllegalStateException(JSON.stringify(e)))
-        v != null -> Result.success(v)
-        else -> Result.failure(IllegalStateException("Both value and e"))
-    }
+): Result<T> = when {
+    e != null -> Result.failure(IllegalStateException(JSON.stringify(e)))
+    v != null -> Result.success(v)
+    else -> Result.failure(IllegalStateException("Both value and e"))
+}
 
 fun CloudStorage.set(
     key: String,
@@ -122,23 +121,21 @@ fun CloudStorage.remove(
 
 fun CloudStorage.keys(callback: (result: Result<Array<CloudStorageKey>>) -> Unit) = getKeys { e, v -> callback(resultsToResult(e, v)) }
 
-fun CloudStorage.getAll(callback: (result: Result<Map<CloudStorageKey, CloudStorageValue>>) -> Unit) =
-    keys {
-        it.onSuccess { keys ->
-            console.log(keys)
-            get(keys) {
-                it.onSuccess { values ->
-                    console.log(values)
-                    val resultMap =
-                        keys.withIndex().mapNotNull { (i, it) ->
-                            it to (values.getOrNull(i) ?: return@mapNotNull null)
-                        }.toMap()
-                    callback(Result.success(resultMap))
-                }.onFailure {
-                    callback(Result.failure(it))
-                }
+fun CloudStorage.getAll(callback: (result: Result<Map<CloudStorageKey, CloudStorageValue>>) -> Unit) = keys {
+    it.onSuccess { keys ->
+        console.log(keys)
+        get(keys) {
+            it.onSuccess { values ->
+                console.log(values)
+                val resultMap = keys.withIndex().mapNotNull { (i, it) ->
+                    it to (values.getOrNull(i) ?: return@mapNotNull null)
+                }.toMap()
+                callback(Result.success(resultMap))
+            }.onFailure {
+                callback(Result.failure(it))
             }
-        }.onFailure {
-            callback(Result.failure(it))
         }
+    }.onFailure {
+        callback(Result.failure(it))
     }
+}

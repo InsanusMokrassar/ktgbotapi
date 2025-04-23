@@ -49,24 +49,23 @@ fun SendDocument(
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data =
-        SendDocumentData(
-            chatId = chatId,
-            document = document,
-            thumbnail = thumbnail ?.fileId,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-            disableContentTypeDetection = disableContentTypeDetection,
-        )
+    val data = SendDocumentData(
+        chatId = chatId,
+        document = document,
+        thumbnail = thumbnail ?.fileId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+        disableContentTypeDetection = disableContentTypeDetection,
+    )
 
     return if (documentAsFile == null && thumbAsFile == null) {
         data
@@ -105,24 +104,23 @@ fun SendDocument(
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data =
-        SendDocumentData(
-            chatId = chatId,
-            document = document,
-            thumbnail = thumbnail ?.fileId,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-            disableContentTypeDetection = disableContentTypeDetection,
-        )
+    val data = SendDocumentData(
+        chatId = chatId,
+        document = document,
+        thumbnail = thumbnail ?.fileId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+        disableContentTypeDetection = disableContentTypeDetection,
+    )
 
     return if (documentAsFile == null && thumbAsFile == null) {
         data
@@ -134,8 +132,7 @@ fun SendDocument(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
  * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
@@ -207,6 +204,6 @@ data class SendDocumentFiles internal constructor(
     val document: MultipartFile? = null,
     val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-        documentField to document,
-        thumbnailField to thumbnail,
-    )
+    documentField to document,
+    thumbnailField to thumbnail,
+)

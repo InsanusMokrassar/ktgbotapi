@@ -27,8 +27,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEmojiStatusAccessRequested(eventHandler: EmojiStatusAccessRequestedEventHandler) =
-    onEvent(EventType.EmojiStatusAccessRequested, eventHandler)
+fun WebApp.onEmojiStatusAccessRequested(eventHandler: EmojiStatusAccessRequestedEventHandler) = onEvent(EventType.EmojiStatusAccessRequested, eventHandler)
 // Part for callback typealias
 
 typealias AccelerometerChangedEventHandler = WebApp.() -> Unit
@@ -78,8 +77,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationStarted(eventHandler: DeviceOrientationStartedEventHandler) =
-    onEvent(EventType.DeviceOrientationStarted, eventHandler)
+fun WebApp.onDeviceOrientationStarted(eventHandler: DeviceOrientationStartedEventHandler) = onEvent(EventType.DeviceOrientationStarted, eventHandler)
 // Part for callback typealias
 
 typealias EmojiStatusFailedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgErrorObject) -> Unit
@@ -179,8 +177,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onLocationManagerUpdated(eventHandler: LocationManagerUpdatedEventHandler) =
-    onEvent(EventType.LocationManagerUpdated, eventHandler)
+fun WebApp.onLocationManagerUpdated(eventHandler: LocationManagerUpdatedEventHandler) = onEvent(EventType.LocationManagerUpdated, eventHandler)
 // Part for callback typealias
 
 typealias BiometricTokenUpdatedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgIsUpdatedObject) -> Unit
@@ -230,8 +227,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationFailed(eventHandler: DeviceOrientationFailedEventHandler) =
-    onEvent(EventType.DeviceOrientationFailed, eventHandler)
+fun WebApp.onDeviceOrientationFailed(eventHandler: DeviceOrientationFailedEventHandler) = onEvent(EventType.DeviceOrientationFailed, eventHandler)
 // Part for callback typealias
 
 typealias SafeAreaChangedEventHandler = WebApp.() -> Unit
@@ -306,8 +302,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onContentSafeAreaChanged(eventHandler: ContentSafeAreaChangedEventHandler) =
-    onEvent(EventType.ContentSafeAreaChanged, eventHandler)
+fun WebApp.onContentSafeAreaChanged(eventHandler: ContentSafeAreaChangedEventHandler) = onEvent(EventType.ContentSafeAreaChanged, eventHandler)
 // Part for callback typealias
 
 typealias AccelerometerStartedEventHandler = WebApp.() -> Unit
@@ -532,8 +527,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onBiometricManagerUpdated(eventHandler: BiometricManagerUpdatedEventHandler) =
-    onEvent(EventType.BiometricManagerUpdated, eventHandler)
+fun WebApp.onBiometricManagerUpdated(eventHandler: BiometricManagerUpdatedEventHandler) = onEvent(EventType.BiometricManagerUpdated, eventHandler)
 // Part for callback typealias
 
 typealias ScanQrPopupClosedEventHandler = WebApp.() -> Unit
@@ -583,8 +577,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onBiometricAuthRequested(eventHandler: BiometricAuthRequestedEventHandler) =
-    onEvent(EventType.BiometricAuthRequested, eventHandler)
+fun WebApp.onBiometricAuthRequested(eventHandler: BiometricAuthRequestedEventHandler) = onEvent(EventType.BiometricAuthRequested, eventHandler)
 // Part for callback typealias
 
 typealias HomeScreenCheckedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgStatusObject) -> Unit
@@ -659,8 +652,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onSecondaryButtonClicked(eventHandler: SecondaryButtonClickedEventHandler) =
-    onEvent(EventType.SecondaryButtonClicked, eventHandler)
+fun WebApp.onSecondaryButtonClicked(eventHandler: SecondaryButtonClickedEventHandler) = onEvent(EventType.SecondaryButtonClicked, eventHandler)
 // Part for callback typealias
 
 typealias QrTextReceivedEventHandler = WebApp.(dev.inmo.tgbotapi.webapps.args.ArgDataObject) -> Unit
@@ -835,8 +827,7 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationStopped(eventHandler: DeviceOrientationStoppedEventHandler) =
-    onEvent(EventType.DeviceOrientationStopped, eventHandler)
+fun WebApp.onDeviceOrientationStopped(eventHandler: DeviceOrientationStoppedEventHandler) = onEvent(EventType.DeviceOrientationStopped, eventHandler)
 // Part for callback typealias
 
 typealias FullscreenChangedEventHandler = WebApp.() -> Unit
@@ -1111,5 +1102,4 @@ fun WebApp.onEvent(
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onDeviceOrientationChanged(eventHandler: DeviceOrientationChangedEventHandler) =
-    onEvent(EventType.DeviceOrientationChanged, eventHandler)
+fun WebApp.onDeviceOrientationChanged(eventHandler: DeviceOrientationChangedEventHandler) = onEvent(EventType.DeviceOrientationChanged, eventHandler)

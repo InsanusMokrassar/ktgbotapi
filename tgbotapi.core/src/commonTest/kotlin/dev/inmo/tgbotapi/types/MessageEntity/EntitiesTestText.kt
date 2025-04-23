@@ -9,63 +9,61 @@ import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-const val testText =
-    "It (is?) is simple hello world with #tag@sample and @mention. Start of blockquote: Block quotation started\n" +
-        "Block quotation continued\n" +
-        "The last line of the block quotation\n" +
-        ". Start of expandable blockquote: Block quotation started\n" +
-        "Block quotation continued\n" +
-        "The last line of the block quotation"
+const val testText = "It (is?) is simple hello world with #tag@sample and @mention. Start of blockquote: Block quotation started\n" +
+    "Block quotation continued\n" +
+    "The last line of the block quotation\n" +
+    ". Start of expandable blockquote: Block quotation started\n" +
+    "Block quotation continued\n" +
+    "The last line of the block quotation"
 const val formattedV2Text = "It \\(is?\\) *_is_ ~__simple__~* ||hello world|| with \\#tag@sample and @mention\\. Start of blockquote: >Block quotation started\n>Block quotation continued\n>The last line of the block quotation\n\\. Start of expandable blockquote: **>Block quotation started\n>Block quotation continued\n>The last line of the block quotation||"
 const val formattedHtmlText = "It (is?) <b><i>is</i> <s><u>simple</u></s></b> <span class=\"tg-spoiler\">hello world</span> with #tag@sample and @mention. Start of blockquote: <blockquote>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>\n. Start of expandable blockquote: <blockquote expandable>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>"
-internal val testTextEntities =
-    listOf(
-        RawMessageEntity(
-            "bold",
-            9,
-            9,
-        ),
-        RawMessageEntity(
-            "italic",
-            9,
-            2,
-        ),
-        RawMessageEntity(
-            "strikethrough",
-            12,
-            6,
-        ),
-        RawMessageEntity(
-            "underline",
-            12,
-            6,
-        ),
-        RawMessageEntity(
-            "spoiler",
-            19,
-            11,
-        ),
-        RawMessageEntity(
-            "hashtag",
-            36,
-            11,
-        ),
-        RawMessageEntity(
-            "mention",
-            52,
-            8,
-        ),
-        RawMessageEntity(
-            "blockquote",
-            83,
-            86,
-        ),
-        RawMessageEntity(
-            "expandable_blockquote",
-            204,
-            86,
-        ),
-    )
+internal val testTextEntities = listOf(
+    RawMessageEntity(
+        "bold",
+        9,
+        9,
+    ),
+    RawMessageEntity(
+        "italic",
+        9,
+        2,
+    ),
+    RawMessageEntity(
+        "strikethrough",
+        12,
+        6,
+    ),
+    RawMessageEntity(
+        "underline",
+        12,
+        6,
+    ),
+    RawMessageEntity(
+        "spoiler",
+        19,
+        11,
+    ),
+    RawMessageEntity(
+        "hashtag",
+        36,
+        11,
+    ),
+    RawMessageEntity(
+        "mention",
+        52,
+        8,
+    ),
+    RawMessageEntity(
+        "blockquote",
+        83,
+        86,
+    ),
+    RawMessageEntity(
+        "expandable_blockquote",
+        204,
+        86,
+    ),
+)
 
 fun TextSourcesList.testTextSources() {
     assertTrue(first() is RegularTextSource)

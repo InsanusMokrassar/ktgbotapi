@@ -153,10 +153,9 @@ internal data class RawMessage(
 ) {
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
     private val content: MessageContent? by lazy {
-        val adaptedCaptionEntities =
-            caption ?.let {
-                (caption_entities ?: emptyList()).asTextSources(caption)
-            } ?: emptyList()
+        val adaptedCaptionEntities = caption ?.let {
+            (caption_entities ?: emptyList()).asTextSources(caption)
+        } ?: emptyList()
 
         when {
             story != null ->
@@ -335,16 +334,15 @@ internal data class RawMessage(
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
             } ?: content?.let { content ->
-                val replyInfo: ReplyInfo? =
-                    when {
-                        reply_to_message != null ->
-                            ReplyInfo.Internal(
-                                reply_to_message.asMessage,
-                            )
-                        reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
-                        external_reply != null -> external_reply
-                        else -> null
-                    }
+                val replyInfo: ReplyInfo? = when {
+                    reply_to_message != null ->
+                        ReplyInfo.Internal(
+                            reply_to_message.asMessage,
+                        )
+                    reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
+                    external_reply != null -> external_reply
+                    else -> null
+                }
                 when (chat) {
                     is PreviewPublicChat ->
                         when (chat) {
@@ -368,15 +366,13 @@ internal data class RawMessage(
                                 )
                             is PreviewForumChat ->
                                 if (messageThreadId != null) {
-                                    val chatId =
-                                        ChatIdWithThreadId(
-                                            chat.id.chatId,
-                                            messageThreadId,
-                                        )
-                                    val actualForumChat =
-                                        when (chat) {
-                                            is ForumChatImpl -> chat.copy(id = chatId)
-                                        }
+                                    val chatId = ChatIdWithThreadId(
+                                        chat.id.chatId,
+                                        messageThreadId,
+                                    )
+                                    val actualForumChat = when (chat) {
+                                        is ForumChatImpl -> chat.copy(id = chatId)
+                                    }
                                     when (sender_chat) {
                                         is PreviewChannelChat ->
                                             FromChannelForumContentMessageImpl(
@@ -612,11 +608,10 @@ internal data class RawMessage(
                             BusinessContentMessageImpl(
                                 messageId = messageId,
                                 from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                                chat =
-                                    BusinessChatImpl(
-                                        chat.id.toBusinessChatId(business_connection_id),
-                                        chat,
-                                    ),
+                                chat = BusinessChatImpl(
+                                    chat.id.toBusinessChatId(business_connection_id),
+                                    chat,
+                                ),
                                 businessConnectionId = business_connection_id,
                                 content = content,
                                 date = date.asDate,

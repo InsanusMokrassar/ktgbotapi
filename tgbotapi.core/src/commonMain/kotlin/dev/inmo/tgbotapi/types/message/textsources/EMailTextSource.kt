@@ -10,15 +10,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class EMailTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        override val subsources: TextSourcesList,
-    ) : MultilevelTextSource {
-        override val markdown: String by lazy { source.emailMarkdown() }
-        override val markdownV2: String by lazy { emailMarkdownV2(source) }
-        override val html: String by lazy { emailHTML(source) }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    override val subsources: TextSourcesList,
+) : MultilevelTextSource {
+    override val markdown: String by lazy { source.emailMarkdown() }
+    override val markdownV2: String by lazy { emailMarkdownV2(source) }
+    override val html: String by lazy { emailHTML(source) }
+}
 
 inline fun emailTextSource(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
 

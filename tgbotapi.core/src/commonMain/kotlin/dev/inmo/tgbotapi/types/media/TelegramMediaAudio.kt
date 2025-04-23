@@ -91,26 +91,24 @@ fun AudioFile.toTelegramMediaAudio(
     text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = this.title,
-): TelegramMediaAudio =
-    TelegramMediaAudio(
-        fileId,
-        text,
-        parseMode,
-        duration,
-        performer,
-        title,
-        thumbnail ?.fileId,
-    )
+): TelegramMediaAudio = TelegramMediaAudio(
+    fileId,
+    text,
+    parseMode,
+    duration,
+    performer,
+    title,
+    thumbnail ?.fileId,
+)
 
 fun AudioFile.toTelegramMediaAudio(
     textSources: TextSourcesList = emptyList(),
     title: String? = this.title,
-): TelegramMediaAudio =
-    TelegramMediaAudio(
-        fileId,
-        textSources,
-        duration,
-        performer,
-        title,
-        thumbnail ?.fileId,
-    )
+): TelegramMediaAudio = TelegramMediaAudio(
+    fileId,
+    textSources,
+    duration,
+    performer,
+    title,
+    thumbnail ?.fileId,
+)

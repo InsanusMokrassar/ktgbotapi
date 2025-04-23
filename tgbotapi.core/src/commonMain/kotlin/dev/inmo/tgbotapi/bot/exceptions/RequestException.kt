@@ -55,9 +55,9 @@ sealed class RequestException constructor(
     message: String? = null,
     cause: Throwable? = null,
 ) : BotException(
-        message ?: "Something went wrong",
-        cause,
-    )
+    message ?: "Something went wrong",
+    cause,
+)
 
 class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause) {

@@ -31,37 +31,35 @@ data class VideoContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<VideoContent>> =
-        SendVideo(
-            chatId = chatId,
-            video = media.fileId,
-            thumbnail = media.thumbnail ?.fileId,
-            entities = textSources,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            spoilered = spoilered,
-            cover = media.cover ?.fileId,
-            startTimestamp = media.startTimestamp,
-            duration = media.duration,
-            width = media.width,
-            height = media.height,
-            supportStreaming = null,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<VideoContent>> = SendVideo(
+        chatId = chatId,
+        video = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        cover = media.cover ?.fileId,
+        startTimestamp = media.startTimestamp,
+        duration = media.duration,
+        width = media.width,
+        height = media.height,
+        supportStreaming = null,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaVideo =
-        media.toTelegramMediaVideo(
-            textSources = textSources,
-            spoilered = spoilered,
-            showCaptionAboveMedia = showCaptionAboveMedia,
-            startTimestamp = media.startTimestamp,
-        )
+    override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(
+        textSources = textSources,
+        spoilered = spoilered,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        startTimestamp = media.startTimestamp,
+    )
 }

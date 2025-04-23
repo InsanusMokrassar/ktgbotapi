@@ -21,20 +21,19 @@ class CommonLimiter(
     private val quotaSemaphore = Semaphore(lockCount)
 
     @Transient
-    private val counterRegeneratorJob =
-        scope.launch {
-            val regenDelay: MilliSeconds = (regenTime.toDouble() / lockCount).roundToLong()
-            while (isActive) {
-                delay(regenDelay)
-                if (quotaSemaphore.availablePermits < lockCount) {
-                    try {
-                        quotaSemaphore.release()
-                    } catch (_: IllegalStateException) {
-                        // Skip IllegalStateException due to the fact that this exception may happens in release method
-                    }
+    private val counterRegeneratorJob = scope.launch {
+        val regenDelay: MilliSeconds = (regenTime.toDouble() / lockCount).roundToLong()
+        while (isActive) {
+            delay(regenDelay)
+            if (quotaSemaphore.availablePermits < lockCount) {
+                try {
+                    quotaSemaphore.release()
+                } catch (_: IllegalStateException) {
+                    // Skip IllegalStateException due to the fact that this exception may happens in release method
                 }
             }
         }
+    }
 
     override suspend fun <T> limit(block: suspend () -> T): T {
         quotaSemaphore.acquire()

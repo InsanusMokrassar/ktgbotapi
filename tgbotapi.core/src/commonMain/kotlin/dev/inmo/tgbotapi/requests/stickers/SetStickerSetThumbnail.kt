@@ -23,13 +23,12 @@ fun SetStickerSetThumbnail(
     stickerSetName: String,
     format: StickerFormat,
     thumbnail: MultipartFile,
-): Request<Boolean> =
-    SetStickerSetThumbnail(
-        userId = userId,
-        stickerSetName = StickerSetName(stickerSetName),
-        format = format,
-        thumbnail = thumbnail,
-    )
+): Request<Boolean> = SetStickerSetThumbnail(
+    userId = userId,
+    stickerSetName = StickerSetName(stickerSetName),
+    format = format,
+    thumbnail = thumbnail,
+)
 
 @Serializable
 data class SetStickerSetThumbnail(

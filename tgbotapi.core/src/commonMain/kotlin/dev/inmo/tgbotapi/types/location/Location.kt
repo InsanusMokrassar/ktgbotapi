@@ -56,14 +56,13 @@ object LocationSerializer : KSerializer<Location> {
     private val internalSerializer = JsonObject.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
 
-    override fun deserialize(decoder: Decoder): Location =
-        internalSerializer.deserialize(decoder).let {
-            if (it.containsKey(livePeriodField) && it[livePeriodField] != JsonNull) {
-                nonstrictJsonFormat.decodeFromJsonElement(LiveLocation.serializer(), it)
-            } else {
-                nonstrictJsonFormat.decodeFromJsonElement(StaticLocation.serializer(), it)
-            }
+    override fun deserialize(decoder: Decoder): Location = internalSerializer.deserialize(decoder).let {
+        if (it.containsKey(livePeriodField) && it[livePeriodField] != JsonNull) {
+            nonstrictJsonFormat.decodeFromJsonElement(LiveLocation.serializer(), it)
+        } else {
+            nonstrictJsonFormat.decodeFromJsonElement(StaticLocation.serializer(), it)
         }
+    }
 
     override fun serialize(
         encoder: Encoder,

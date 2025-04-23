@@ -30,33 +30,31 @@ data class PowLimiter(
     private val awaitTimeRange = minAwaitTime..maxAwaitTime
 
     @Transient
-    private val eventsChannel =
-        let {
-            var requestsInWork = 0.0
-            scope.actor<RequestEvent> {
-                when (it) {
-                    is AddRequest -> {
-                        val awaitTime = (requestsInWork.pow(powValue) * powK).toLong()
-                        requestsInWork++
+    private val eventsChannel = let {
+        var requestsInWork = 0.0
+        scope.actor<RequestEvent> {
+            when (it) {
+                is AddRequest -> {
+                    val awaitTime = (requestsInWork.pow(powValue) * powK).toLong()
+                    requestsInWork++
 
-                        it.continuation.resume(
-                            when {
-                                awaitTime in awaitTimeRange -> awaitTime
-                                awaitTime < awaitTimeRange.first -> awaitTimeRange.first
-                                else -> awaitTimeRange.last
-                            },
-                        )
-                    }
-                    is CompleteRequest -> requestsInWork--
+                    it.continuation.resume(
+                        when {
+                            awaitTime in awaitTimeRange -> awaitTime
+                            awaitTime < awaitTimeRange.first -> awaitTimeRange.first
+                            else -> awaitTimeRange.last
+                        },
+                    )
                 }
+                is CompleteRequest -> requestsInWork--
             }
         }
+    }
 
     private suspend inline fun <T> withDelay(crossinline block: suspend () -> T): T {
-        val delayMillis =
-            suspendCoroutine<Long> {
-                scope.launch { eventsChannel.send(AddRequest(it)) }
-            }
+        val delayMillis = suspendCoroutine<Long> {
+            scope.launch { eventsChannel.send(AddRequest(it)) }
+        }
         delay(delayMillis)
         return try {
             safely { block() }

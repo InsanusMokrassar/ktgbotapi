@@ -24,29 +24,27 @@ data class VideoNoteContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<VideoNoteContent>> =
-        SendVideoNote(
-            chatId = chatId,
-            videoNote = media.fileId,
-            thumbnail = media.thumbnail ?.fileId,
-            duration = media.duration,
-            size = media.width,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
+        chatId = chatId,
+        videoNote = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        duration = media.duration,
+        size = media.width,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
-    override fun asTelegramMedia(): TelegramMediaVideo =
-        TelegramMediaVideo(
-            media.fileId,
-            width = media.width,
-            height = media.height,
-            duration = media.duration,
-            thumb = media.thumbnail ?.fileId,
-        )
+    override fun asTelegramMedia(): TelegramMediaVideo = TelegramMediaVideo(
+        media.fileId,
+        width = media.width,
+        height = media.height,
+        duration = media.duration,
+        thumb = media.thumbnail ?.fileId,
+    )
 }

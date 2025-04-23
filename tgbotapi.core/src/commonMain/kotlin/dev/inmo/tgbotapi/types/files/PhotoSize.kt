@@ -29,10 +29,9 @@ value class PhotoFile(
 
 typealias Photo = PhotoFile
 
-fun PhotoFile.biggest(): PhotoSize? =
-    maxByOrNull {
-        it.resolution
-    }
+fun PhotoFile.biggest(): PhotoSize? = maxByOrNull {
+    it.resolution
+}
 
 @RiskFeature
 object PhotoSerializer : KSerializer<PhotoFile> by PhotoFile.serializer()

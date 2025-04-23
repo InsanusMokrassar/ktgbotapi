@@ -38,23 +38,22 @@ fun SendVoice(
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
-    val data =
-        SendVoiceData(
-            chatId = chatId,
-            voice = voice,
-            text = text,
-            parseMode = parseMode,
-            rawEntities = null,
-            duration = duration,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendVoiceData(
+        chatId = chatId,
+        voice = voice,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        duration = duration,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (voiceAsFile == null) {
         data
@@ -82,23 +81,22 @@ fun SendVoice(
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
-    val data =
-        SendVoiceData(
-            chatId = chatId,
-            voice = voice,
-            text = entities.makeString(),
-            parseMode = null,
-            rawEntities = entities.toRawMessageEntities(),
-            duration = duration,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendVoiceData(
+        chatId = chatId,
+        voice = voice,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        duration = duration,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (voiceAsFile == null) {
         data
@@ -110,8 +108,7 @@ fun SendVoice(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVoiceData internal constructor(
@@ -172,6 +169,6 @@ data class SendVoiceFiles internal constructor(
     val voice: MultipartFile? = null,
     val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-        voiceField to voice,
-        thumbnailField to thumbnail,
-    )
+    voiceField to voice,
+    thumbnailField to thumbnail,
+)

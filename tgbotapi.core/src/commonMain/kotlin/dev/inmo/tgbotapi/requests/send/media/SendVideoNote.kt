@@ -31,22 +31,21 @@ fun SendVideoNote(
     val videoNoteAsFile = videoNote as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
-    val data =
-        SendVideoNoteData(
-            chatId = chatId,
-            videoNote = videoNote,
-            thumbnail = thumbnail ?.fileId,
-            duration = duration,
-            width = size,
-            threadId = threadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    val data = SendVideoNoteData(
+        chatId = chatId,
+        videoNote = videoNote,
+        thumbnail = thumbnail ?.fileId,
+        duration = duration,
+        width = size,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     return if (videoNoteAsFile == null && thumbAsFile == null) {
         data
@@ -58,8 +57,7 @@ fun SendVideoNote(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVideoNoteData internal constructor(
@@ -110,6 +108,6 @@ data class SendVideoNoteFiles internal constructor(
     val videoNote: MultipartFile? = null,
     val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
-        videoNoteField to videoNote,
-        thumbnailField to thumbnail,
-    )
+    videoNoteField to videoNote,
+    thumbnailField to thumbnail,
+)

@@ -71,13 +71,12 @@ sealed interface Reaction {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): Reaction {
-            val (surrogate, json) =
-                if (decoder is JsonDecoder) {
-                    val json = decoder.decodeJsonElement()
-                    decoder.json.decodeFromJsonElement(Surrogate.serializer(), json) to json
-                } else {
-                    Surrogate.serializer().deserialize(decoder) to null
-                }
+            val (surrogate, json) = if (decoder is JsonDecoder) {
+                val json = decoder.decodeJsonElement()
+                decoder.json.decodeFromJsonElement(Surrogate.serializer(), json) to json
+            } else {
+                Surrogate.serializer().deserialize(decoder) to null
+            }
 
             return when {
                 surrogate.emoji != null -> Emoji(surrogate.emoji)

@@ -139,15 +139,14 @@ sealed interface StarTransaction : Amounted {
                 return
             }
 
-            val surrogate =
-                Surrogate(
-                    id = value.id,
-                    amount = value.amount,
-                    nanostarAmount = value.nanostarAmount,
-                    date = value.date,
-                    source = value.source,
-                    receiver = value.receiver,
-                )
+            val surrogate = Surrogate(
+                id = value.id,
+                amount = value.amount,
+                nanostarAmount = value.nanostarAmount,
+                date = value.date,
+                source = value.source,
+                receiver = value.receiver,
+            )
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

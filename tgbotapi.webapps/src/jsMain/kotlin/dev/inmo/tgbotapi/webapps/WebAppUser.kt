@@ -37,21 +37,20 @@ external interface WebAppUser {
 val WebAppUser.isPremium
     get() = is_premium == true
 
-fun WebAppUser.asUser() =
-    if (isBot == true) {
-        CommonBot(
-            id = UserId(id),
-            firstName = firstName,
-            lastName = lastName ?: "",
-            username = username ?.let(::Username),
-        )
-    } else {
-        CommonUser(
-            id = UserId(id),
-            firstName = firstName,
-            lastName = lastName ?: "",
-            username = username ?.let(::Username),
-            ietfLanguageCode = languageCode ?.let(::IetfLang),
-            isPremium = isPremium,
-        )
-    }
+fun WebAppUser.asUser() = if (isBot == true) {
+    CommonBot(
+        id = UserId(id),
+        firstName = firstName,
+        lastName = lastName ?: "",
+        username = username ?.let(::Username),
+    )
+} else {
+    CommonUser(
+        id = UserId(id),
+        firstName = firstName,
+        lastName = lastName ?: "",
+        username = username ?.let(::Username),
+        ietfLanguageCode = languageCode ?.let(::IetfLang),
+        isPremium = isPremium,
+    )
+}

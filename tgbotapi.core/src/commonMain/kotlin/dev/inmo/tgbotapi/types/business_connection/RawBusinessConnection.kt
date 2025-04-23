@@ -21,25 +21,24 @@ internal data class RawBusinessConnection(
     val isEnabled: Boolean,
 ) {
     val asBusinessConnection
-        get() =
-            when (isEnabled) {
-                true ->
-                    BusinessConnection.Enabled(
-                        id = id,
-                        user = user,
-                        userChatId = userChatId,
-                        date = date,
-                        rights = rights,
-                    )
-                false ->
-                    BusinessConnection.Disabled(
-                        id = id,
-                        user = user,
-                        userChatId = userChatId,
-                        date = date,
-                        rights = rights,
-                    )
-            }
+        get() = when (isEnabled) {
+            true ->
+                BusinessConnection.Enabled(
+                    id = id,
+                    user = user,
+                    userChatId = userChatId,
+                    date = date,
+                    rights = rights,
+                )
+            false ->
+                BusinessConnection.Disabled(
+                    id = id,
+                    user = user,
+                    userChatId = userChatId,
+                    date = date,
+                    rights = rights,
+                )
+        }
 
     constructor(businessConnection: BusinessConnection) : this(
         id = businessConnection.id,

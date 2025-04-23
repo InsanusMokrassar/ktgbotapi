@@ -10,15 +10,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class UnderlineTextSource
-    @RiskFeature(DirectInvocationOfTextSourceConstructor)
-    constructor(
-        override val source: String,
-        override val subsources: TextSourcesList,
-    ) : MultilevelTextSource {
-        override val markdown: String by lazy { source.underlineMarkdown() }
-        override val markdownV2: String by lazy { underlineMarkdownV2() }
-        override val html: String by lazy { underlineHTML() }
-    }
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
+    override val subsources: TextSourcesList,
+) : MultilevelTextSource {
+    override val markdown: String by lazy { source.underlineMarkdown() }
+    override val markdownV2: String by lazy { underlineMarkdownV2() }
+    override val html: String by lazy { underlineHTML() }
+}
 
 inline fun underlineTextSource(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
 

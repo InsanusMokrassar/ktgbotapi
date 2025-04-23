@@ -10,8 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendContact(
@@ -85,16 +84,15 @@ fun Contact.toRequest(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): SendContact =
-    SendContact(
-        chatId = chatId,
-        contact = this,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    )
+): SendContact = SendContact(
+    chatId = chatId,
+    contact = this,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)

@@ -24,32 +24,30 @@ fun SendSticker(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): Request<ContentMessage<StickerContent>> =
-    SendStickerByFileId(
-        chatId = chatId,
-        sticker = sticker,
-        threadId = threadId,
-        businessConnectionId = businessConnectionId,
-        emoji = emoji,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup,
-    ).let {
-        when (sticker) {
-            is MultipartFile ->
-                CommonMultipartFileRequest(
-                    it,
-                    listOf(sticker).associateBy { it.fileId },
-                )
-            is FileId -> it
-        }
+): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
+    chatId = chatId,
+    sticker = sticker,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+).let {
+    when (sticker) {
+        is MultipartFile ->
+            CommonMultipartFileRequest(
+                it,
+                listOf(sticker).associateBy { it.fileId },
+            )
+        is FileId -> it
     }
+}
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendStickerByFileId internal constructor(

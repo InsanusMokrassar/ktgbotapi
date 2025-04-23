@@ -23,13 +23,12 @@ internal data class RawGame(
     private val animation: AnimationFile? = null,
 ) {
     @Transient
-    val asGame =
-        Game(
-            title,
-            description,
-            photo,
-            text,
-            text ?.let { _ -> textEntities.asTextSources(text) } ?: emptyList(),
-            animation,
-        )
+    val asGame = Game(
+        title,
+        description,
+        photo,
+        text,
+        text ?.let { _ -> textEntities.asTextSources(text) } ?: emptyList(),
+        animation,
+    )
 }

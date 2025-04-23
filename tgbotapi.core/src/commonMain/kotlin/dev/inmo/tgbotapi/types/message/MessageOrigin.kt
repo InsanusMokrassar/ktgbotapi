@@ -129,14 +129,13 @@ sealed interface MessageOrigin {
             get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): MessageOrigin {
-            val (surrogate, json) =
-                if (decoder is JsonDecoder) {
-                    val json = decoder.decodeJsonElement()
-                    val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
-                    surrogate to json
-                } else {
-                    Surrogate.serializer().deserialize(decoder) to null
-                }
+            val (surrogate, json) = if (decoder is JsonDecoder) {
+                val json = decoder.decodeJsonElement()
+                val surrogate = decoder.json.decodeFromJsonElement(Surrogate.serializer(), json)
+                surrogate to json
+            } else {
+                Surrogate.serializer().deserialize(decoder) to null
+            }
 
             return let {
                 when (surrogate.type) {

@@ -15,8 +15,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 import kotlinx.serialization.*
 
-private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>> =
-    TelegramBotAPIMessageDeserializationStrategyClass()
+private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
  * @param providerData - JSON-ENCODED FIELD

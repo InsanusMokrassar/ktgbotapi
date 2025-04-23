@@ -206,46 +206,45 @@ sealed interface TransactionPartner {
             encoder: Encoder,
             value: TransactionPartner,
         ) {
-            val surrogate =
-                with(value) {
-                    when (this) {
-                        Other -> Surrogate(type = value.type)
-                        Ads -> Surrogate(type = value.type)
-                        is Chat ->
-                            Surrogate(
-                                type = value.type,
-                                chat = chat,
-                                gift = gift,
-                            )
-                        is User ->
-                            Surrogate(
-                                type = value.type,
-                                user = user,
-                                affiliate = affiliate,
-                                invoice_payload = invoicePayload,
-                                subscription_period = subscriptionPeriod,
-                                paid_media = paidMedia,
-                                paid_media_payload = paidMediaPayload,
-                                gift = gift,
-                            )
-                        is TelegramAPI -> Surrogate(type = value.type, request_count = requestCount)
-                        is Fragment ->
-                            Surrogate(
-                                type = value.type,
-                                withdrawal_state = withdrawalState,
-                            )
-                        is AffiliateProgram ->
-                            Surrogate(
-                                type = value.type,
-                                sponsor_user = sponsorUser,
-                                commission_per_mille = commissionPerMille,
-                            )
-                        is Unknown ->
-                            raw ?.let {
-                                return JsonElement.serializer().serialize(encoder, it)
-                            } ?: Surrogate(type = value.type)
-                    }
+            val surrogate = with(value) {
+                when (this) {
+                    Other -> Surrogate(type = value.type)
+                    Ads -> Surrogate(type = value.type)
+                    is Chat ->
+                        Surrogate(
+                            type = value.type,
+                            chat = chat,
+                            gift = gift,
+                        )
+                    is User ->
+                        Surrogate(
+                            type = value.type,
+                            user = user,
+                            affiliate = affiliate,
+                            invoice_payload = invoicePayload,
+                            subscription_period = subscriptionPeriod,
+                            paid_media = paidMedia,
+                            paid_media_payload = paidMediaPayload,
+                            gift = gift,
+                        )
+                    is TelegramAPI -> Surrogate(type = value.type, request_count = requestCount)
+                    is Fragment ->
+                        Surrogate(
+                            type = value.type,
+                            withdrawal_state = withdrawalState,
+                        )
+                    is AffiliateProgram ->
+                        Surrogate(
+                            type = value.type,
+                            sponsor_user = sponsorUser,
+                            commission_per_mille = commissionPerMille,
+                        )
+                    is Unknown ->
+                        raw ?.let {
+                            return JsonElement.serializer().serialize(encoder, it)
+                        } ?: Surrogate(type = value.type)
                 }
+            }
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

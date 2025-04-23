@@ -88,12 +88,11 @@ val ChatIdentifier.threadId: MessageThreadId?
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 
-fun IdChatIdentifier.toChatId() =
-    when (this) {
-        is ChatId -> this
-        is ChatIdWithThreadId -> ChatId(chatId)
-        is BusinessChatId -> ChatId(chatId)
-    }
+fun IdChatIdentifier.toChatId() = when (this) {
+    is ChatId -> this
+    is ChatIdWithThreadId -> ChatId(chatId)
+    is BusinessChatId -> ChatId(chatId)
+}
 
 fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdentifier(chatId, threadId)
 

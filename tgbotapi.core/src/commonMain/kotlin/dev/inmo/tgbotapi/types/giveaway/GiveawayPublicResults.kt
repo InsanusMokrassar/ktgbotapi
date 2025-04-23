@@ -159,21 +159,20 @@ sealed interface GiveawayPublicResults :
             encoder: Encoder,
             value: GiveawayPublicResults,
         ) {
-            val surrogate =
-                Surrogate(
-                    chat = value.chat,
-                    messageId = value.messageId,
-                    selectionDate = value.selectionDate,
-                    count = value.count,
-                    winners = value.winners,
-                    additionalChats = value.additionalChats,
-                    unclaimedCount = value.unclaimedCount,
-                    onlyNewMembers = value.onlyNewMembers,
-                    additionalPrizeDescription = value.additionalPrizeDescription,
-                    premiumMonths = value.premiumMonths,
-                    starsCount = value.prizeStarCount,
-                    refunded = value.refunded,
-                )
+            val surrogate = Surrogate(
+                chat = value.chat,
+                messageId = value.messageId,
+                selectionDate = value.selectionDate,
+                count = value.count,
+                winners = value.winners,
+                additionalChats = value.additionalChats,
+                unclaimedCount = value.unclaimedCount,
+                onlyNewMembers = value.onlyNewMembers,
+                additionalPrizeDescription = value.additionalPrizeDescription,
+                premiumMonths = value.premiumMonths,
+                starsCount = value.prizeStarCount,
+                refunded = value.refunded,
+            )
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

@@ -47,18 +47,17 @@ data class BottomButtonParams(
     val isVisible: Boolean? = null,
 )
 
-fun BottomButton.setParams(params: BottomButtonParams) =
-    setParams(
-        json(
-            *listOfNotNull(
-                params.text ?.let { "text" to params.text },
-                params.color ?.let { "color" to params.color },
-                params.textColor ?.let { "text_color" to params.textColor },
-                params.isActive ?.let { "is_active" to params.isActive },
-                params.isVisible ?.let { "is_visible" to params.isVisible },
-            ).toTypedArray(),
-        ),
-    )
+fun BottomButton.setParams(params: BottomButtonParams) = setParams(
+    json(
+        *listOfNotNull(
+            params.text ?.let { "text" to params.text },
+            params.color ?.let { "color" to params.color },
+            params.textColor ?.let { "text_color" to params.textColor },
+            params.isActive ?.let { "is_active" to params.isActive },
+            params.isVisible ?.let { "is_visible" to params.isVisible },
+        ).toTypedArray(),
+    ),
+)
 
 @Deprecated("Renamed in telegram api", ReplaceWith("BottomButton", "dev.inmo.tgbotapi.webapps.BottomButton"))
 typealias MainButton = BottomButton

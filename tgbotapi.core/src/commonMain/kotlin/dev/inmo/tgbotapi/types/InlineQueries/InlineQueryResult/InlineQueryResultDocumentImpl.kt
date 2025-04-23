@@ -29,8 +29,7 @@ fun InlineQueryResultDocumentImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null,
-) =
-    InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbnailUrl, thumbnailWidth, thumbnailHeight, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbnailUrl, thumbnailWidth, thumbnailHeight, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultDocumentImpl(
     id: InlineQueryId,

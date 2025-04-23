@@ -17,10 +17,9 @@ fun String.asMimeType() = buildMimeType(this)
 
 internal expect fun createMimeType(raw: String): MimeType
 
-fun buildMimeType(raw: String): MimeType =
-    mimesCache.getOrPut(raw) {
-        createMimeType(raw)
-    }
+fun buildMimeType(raw: String): MimeType = mimesCache.getOrPut(raw) {
+    createMimeType(raw)
+}
 
 @RiskFeature
 object MimeTypeSerializer : KSerializer<MimeType> {

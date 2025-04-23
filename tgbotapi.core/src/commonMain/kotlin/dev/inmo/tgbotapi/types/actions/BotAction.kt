@@ -193,7 +193,7 @@ inline fun BotAction.asChooseStickerAction() = this as? ChooseStickerAction
 @Serializable(BotActionSerializer::class)
 @Warning("Use this action only in case you are pretty sure that there are no other action for your needs")
 class CustomBotAction
-    @RiskFeature("Usage of this action may lead to errors")
-    constructor(
-        override val actionName: String,
-    ) : BotAction
+@RiskFeature("Usage of this action may lead to errors")
+constructor(
+    override val actionName: String,
+) : BotAction

@@ -32,21 +32,20 @@ data class DocumentContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?,
-    ): Request<ContentMessage<DocumentContent>> =
-        SendDocument(
-            chatId = chatId,
-            document = media.fileId,
-            thumbnail = media.thumbnail ?.fileId,
-            entities = textSources,
-            threadId = messageThreadId,
-            businessConnectionId = businessConnectionId,
-            disableNotification = disableNotification,
-            protectContent = protectContent,
-            allowPaidBroadcast = allowPaidBroadcast,
-            effectId = effectId,
-            replyParameters = replyParameters,
-            replyMarkup = replyMarkup,
-        )
+    ): Request<ContentMessage<DocumentContent>> = SendDocument(
+        chatId = chatId,
+        document = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+    )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaDocument = asTelegramMedia()
 
@@ -54,17 +53,16 @@ data class DocumentContent(
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun MediaContent.asDocumentContent() =
-    when (this) {
-        is TextedInput ->
-            DocumentContent(
-                media.asDocumentFile(),
-                text,
-                textSources,
-                (this as? WithOptionalQuoteInfo) ?.quote,
-            )
-        else ->
-            DocumentContent(
-                media.asDocumentFile(),
-            )
-    }
+inline fun MediaContent.asDocumentContent() = when (this) {
+    is TextedInput ->
+        DocumentContent(
+            media.asDocumentFile(),
+            text,
+            textSources,
+            (this as? WithOptionalQuoteInfo) ?.quote,
+        )
+    else ->
+        DocumentContent(
+            media.asDocumentFile(),
+        )
+}

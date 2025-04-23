@@ -34,18 +34,17 @@ private data class RawChatInviteLink(
     val pendingJoinRequestCount: MembersLimit? = null,
 )
 
-private fun ChatInviteLink.toRawChatInviteLink() =
-    RawChatInviteLink(
-        inviteLink,
-        creator,
-        isPrimary,
-        isRevoked,
-        (this as? SecondaryChatInviteLink) ?.name,
-        expirationDateTime ?.toTelegramDate(),
-        (this as? ChatInviteLinkWithLimitedMembers) ?.membersLimit,
-        this is ChatInviteLinkWithJoinRequest,
-        (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview,
-    )
+private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
+    inviteLink,
+    creator,
+    isPrimary,
+    isRevoked,
+    (this as? SecondaryChatInviteLink) ?.name,
+    expirationDateTime ?.toTelegramDate(),
+    (this as? ChatInviteLinkWithLimitedMembers) ?.membersLimit,
+    this is ChatInviteLinkWithJoinRequest,
+    (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview,
+)
 
 /**
  * Base interface for all chat invite links. See inheritors for more info or official [docs](https://core.telegram.org/bots/api#chatinvitelink)

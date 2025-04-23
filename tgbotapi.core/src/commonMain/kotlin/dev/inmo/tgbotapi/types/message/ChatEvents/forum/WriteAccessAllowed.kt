@@ -63,13 +63,12 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
             encoder: Encoder,
             value: WriteAccessAllowed,
         ) {
-            val raw =
-                when (value) {
-                    FromAttachmentMenu -> WriteAccessAllowedRaw(from_attachment_menu = true)
-                    FromRequest -> WriteAccessAllowedRaw(from_request = true)
-                    Other -> WriteAccessAllowedRaw()
-                    is FromWebAppLink -> WriteAccessAllowedRaw(web_app_name = value.webAppName)
-                }
+            val raw = when (value) {
+                FromAttachmentMenu -> WriteAccessAllowedRaw(from_attachment_menu = true)
+                FromRequest -> WriteAccessAllowedRaw(from_request = true)
+                Other -> WriteAccessAllowedRaw()
+                is FromWebAppLink -> WriteAccessAllowedRaw(web_app_name = value.webAppName)
+            }
             WriteAccessAllowedRaw.serializer().serialize(encoder, raw)
         }
 
