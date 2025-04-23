@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.inlineQueryResultDocumentType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.SerialName
@@ -24,7 +24,7 @@ fun InlineQueryResultDocumentCachedImpl(
     text: String? = null,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultDocumentCachedImpl(id, fileId, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultDocumentCachedImpl(
@@ -34,7 +34,7 @@ fun InlineQueryResultDocumentCachedImpl(
     description: String? = null,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultDocumentCachedImpl(
     id,
     fileId,
@@ -44,7 +44,7 @@ fun InlineQueryResultDocumentCachedImpl(
     null,
     entities.toRawMessageEntities(),
     replyMarkup,
-    inputMessageContent
+    inputMessageContent,
 )
 
 @Serializable
@@ -66,7 +66,7 @@ data class InlineQueryResultDocumentCachedImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultDocumentCached {
     override val type: String = inlineQueryResultDocumentType
     override val textSources: TextSourcesList? by lazy {

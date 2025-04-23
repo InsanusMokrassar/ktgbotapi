@@ -2,6 +2,8 @@ plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
+
+    alias libs.plugins.ktlint
 }
 
 project.description = "Additional extensions for core part of tgbotapi"
@@ -17,4 +19,8 @@ kotlin {
             }
         }
     }
+}
+
+dependencies {
+    ktlintRuleset project(":tgbotapi.linterRules")
 }

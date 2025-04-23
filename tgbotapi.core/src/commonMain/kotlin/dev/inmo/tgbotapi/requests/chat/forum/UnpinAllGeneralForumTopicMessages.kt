@@ -4,11 +4,12 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
-data class UnpinAllGeneralForumTopicMessages (
+data class UnpinAllGeneralForumTopicMessages(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
-): ModifyForumRequest {
+) : ModifyForumRequest {
     override fun method(): String = "unpinAllGeneralForumTopicMessages"
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

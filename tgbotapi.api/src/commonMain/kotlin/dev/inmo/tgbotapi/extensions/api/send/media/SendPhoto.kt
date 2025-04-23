@@ -5,13 +5,13 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -31,7 +31,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
@@ -47,8 +47,8 @@ public suspend fun TelegramBot.sendPhoto(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -69,7 +69,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
@@ -84,7 +84,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -105,7 +105,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
@@ -120,7 +120,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -141,7 +141,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
@@ -156,7 +156,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -177,7 +177,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
@@ -192,7 +192,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -213,7 +213,7 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
@@ -228,9 +228,8 @@ public suspend fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -249,7 +248,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
@@ -264,8 +263,8 @@ public suspend inline fun TelegramBot.sendPhoto(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -285,7 +284,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
@@ -299,7 +298,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -319,7 +318,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
@@ -333,7 +332,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -353,7 +352,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
@@ -367,7 +366,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -387,7 +386,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
@@ -401,7 +400,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -421,7 +420,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
@@ -435,5 +434,5 @@ public suspend inline fun TelegramBot.sendPhoto(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

@@ -10,9 +10,11 @@ import kotlinx.serialization.Serializable
  * @see hashtagTextSource
  */
 @Serializable
-data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
+data class HashTagTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
     override val source: String,
-    override val subsources: TextSourcesList
+    override val subsources: TextSourcesList,
 ) : MultilevelTextSource {
     val username: Username? by lazy {
         val potentialUsername = source.dropWhile { it != '@' }
@@ -34,7 +36,9 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 inline fun hashtagTextSource(parts: TextSourcesList) = (regularTextSource("#") + parts).let { HashTagTextSource(it.makeString(), it) }
+
 inline fun hashtagTextSource(vararg parts: TextSource) = hashtagTextSource(parts.toList())
+
 /**
  * Without sharp (#)
  */

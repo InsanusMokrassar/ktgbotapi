@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
-import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -40,7 +39,7 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = execute(
     SendInvoice(
         chatId = chatId,
@@ -67,8 +66,8 @@ public suspend fun TelegramBot.sendInvoice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -99,7 +98,7 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = sendInvoice(
     chatId = user.id,
     title = title,
@@ -125,9 +124,8 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -147,7 +145,7 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = execute(
     SendInvoice(
         chatId = chatId,
@@ -163,8 +161,8 @@ public suspend fun TelegramBot.sendInvoice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -184,7 +182,7 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = sendInvoice(
     chatId = user.id,
     title = title,
@@ -199,5 +197,5 @@ public suspend fun TelegramBot.sendInvoice(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

@@ -1,12 +1,19 @@
 package dev.inmo.tgbotapi.ksp.processor
 
 import com.google.devtools.ksp.KspExperimental
-import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.isAnnotationPresent
-import com.google.devtools.ksp.symbol.*
-import com.squareup.kotlinpoet.*
+import com.google.devtools.ksp.symbol.ClassKind
+import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
-import com.squareup.kotlinpoet.ksp.*
+import com.squareup.kotlinpoet.TypeName
+import com.squareup.kotlinpoet.TypeVariableName
+import com.squareup.kotlinpoet.ksp.toClassName
+import com.squareup.kotlinpoet.ksp.toTypeName
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 
 private fun FileSpec.Builder.addTopLevelImport(className: ClassName) {
@@ -24,7 +31,7 @@ private fun FileSpec.Builder.createTypeDefinition(ksClassDeclaration: KSClassDec
                     val typeClassName = it.toClassName()
                     addTopLevelImport(typeClassName)
                 }.toTypeName()
-            }
+            },
         )
     } else {
         className
@@ -39,11 +46,12 @@ private fun KSClassDeclaration.buildPrefix(sourceDeclaration: KSClassDeclaration
         simpleName.asString()
     }
     when (val parentDeclaration = parentDeclaration) {
-        is KSClassDeclaration -> if (parentDeclaration === sourceDeclaration) {
-            return ownName
-        } else {
-            return "${parentDeclaration.buildPrefix(sourceDeclaration)}$ownName"
-        }
+        is KSClassDeclaration ->
+            if (parentDeclaration === sourceDeclaration) {
+                return ownName
+            } else {
+                return "${parentDeclaration.buildPrefix(sourceDeclaration)}$ownName"
+            }
     }
     return ownName
 }
@@ -52,7 +60,7 @@ private fun KSClassDeclaration.buildPrefix(sourceDeclaration: KSClassDeclaration
 fun FileSpec.Builder.fill(
     sourceKSClassDeclaration: KSClassDeclaration,
     subtypesMap: Map<KSClassDeclaration, Set<KSClassDeclaration>>,
-    targetClassDeclaration: KSClassDeclaration = sourceKSClassDeclaration
+    targetClassDeclaration: KSClassDeclaration = sourceKSClassDeclaration,
 ) {
     if (sourceKSClassDeclaration == targetClassDeclaration) {
         subtypesMap[sourceKSClassDeclaration] ?.forEach {
@@ -74,22 +82,22 @@ fun FileSpec.Builder.fill(
                 receiver(sourceClassName)
                 addCode(
                     "return this as? %L",
-                    targetClassTypeDefinition
+                    targetClassTypeDefinition,
                 )
                 returns(targetClassTypeDefinition.copy(nullable = true))
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
         addFunction(
             FunSpec.builder("${withFirstLowerCase}OrThrow").apply {
                 receiver(sourceClassName)
                 addCode(
                     "return this as %L",
-                    targetClassTypeDefinition
+                    targetClassTypeDefinition,
                 )
                 returns(targetClassTypeDefinition)
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
         addFunction(
             FunSpec.builder("if$resultPrefix").apply {
@@ -101,16 +109,16 @@ fun FileSpec.Builder.fill(
                     LambdaTypeName.get(
                         null,
                         targetClassTypeDefinition,
-                        returnType = genericType
-                    )
+                        returnType = genericType,
+                    ),
                 )
                 addCode(
-                    "return ${castedOrNullName}() ?.let(block)",
-                    targetClassTypeDefinition
+                    "return $castedOrNullName() ?.let(block)",
+                    targetClassTypeDefinition,
                 )
                 returns(genericType.copy(nullable = true))
                 addModifiers(KModifier.INLINE)
-            }.build()
+            }.build(),
         )
 
         subtypesMap[targetClassDeclaration] ?.let {

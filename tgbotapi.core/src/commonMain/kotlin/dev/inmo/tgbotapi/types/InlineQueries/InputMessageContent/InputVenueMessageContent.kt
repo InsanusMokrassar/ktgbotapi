@@ -23,5 +23,5 @@ data class InputVenueMessageContent(
     @SerialName(googlePlaceIdField)
     override val googlePlaceId: GooglePlaceId? = null,
     @SerialName(googlePlaceTypeField)
-    override val googlePlaceType: GooglePlaceType? = null
+    override val googlePlaceType: GooglePlaceType? = null,
 ) : Locationed, CommonVenueData, InputMessageContent

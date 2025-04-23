@@ -3,6 +3,8 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
     id "com.google.devtools.ksp"
+
+    alias libs.plugins.ktlint
 }
 
 project.description = "Web App bindings for the Telegram Web Apps API"
@@ -23,7 +25,7 @@ kotlin {
 
 dependencies {
     add("kspJs", libs.microutils.ksp.sealed.generator)
+    ktlintRuleset project(":tgbotapi.linterRules")
 }
 
 ksp {}
-

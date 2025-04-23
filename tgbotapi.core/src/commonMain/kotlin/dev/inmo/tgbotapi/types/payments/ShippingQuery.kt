@@ -15,5 +15,5 @@ data class ShippingQuery(
     @SerialName(invoicePayloadField)
     val invoicePayload: InvoicePayload,
     @SerialName(shippingAddressField)
-    val shippingAddress: ShippingAddress
+    val shippingAddress: ShippingAddress,
 ) : FromUser

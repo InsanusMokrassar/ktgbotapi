@@ -14,7 +14,7 @@ enum class SlotMachineReelImage(val text: String, val number: Int) {
     BAR("[bar]", 0),
     BERRIES("\uD83C\uDF52", 1),
     LEMON("\uD83C\uDF4B", 2),
-    SEVEN("7", 3)
+    SEVEN("7", 3),
 }
 
 /**
@@ -31,19 +31,23 @@ val String.asSlotMachineReelImage
 
 @Serializable
 data class SlotMachineResult(
-    val rawValue: DiceResult
+    val rawValue: DiceResult,
 ) {
     @Transient
     val left = rawValue and 3
+
     @Transient
     val center = rawValue shr 2 and 3
+
     @Transient
     val right = rawValue shr 4
 
     @Transient
     val leftReel = left.asSlotMachineReelImage
+
     @Transient
     val centerReel = center.asSlotMachineReelImage
+
     @Transient
     val rightReel = right.asSlotMachineReelImage
 }

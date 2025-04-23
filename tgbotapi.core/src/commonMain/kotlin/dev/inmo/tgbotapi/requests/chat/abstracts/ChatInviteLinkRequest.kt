@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.requests.chat.abstracts
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import korlibs.time.DateTime
 import kotlinx.serialization.DeserializationStrategy
 
 interface ChatInviteLinkRequest<R : SecondaryChatInviteLink> : SimpleRequest<R> {

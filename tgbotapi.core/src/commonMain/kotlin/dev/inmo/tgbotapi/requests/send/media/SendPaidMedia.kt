@@ -1,23 +1,23 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
-import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
@@ -37,7 +37,7 @@ fun SendPaidMedia(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PaidMediaInfoContent>> {
     val data = SendPaidMediaData(
         chatId = chatId,
@@ -54,7 +54,7 @@ fun SendPaidMedia(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     val files: List<MultipartFile> = media.flatMap {
@@ -69,14 +69,14 @@ fun SendPaidMedia(
                 it.cover as? MultipartFile
             } else {
                 null
-            }
+            },
         )
     }
 
     return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
             data,
-            files.associateBy { it.fileId }
+            files.associateBy { it.fileId },
         )
     } else {
         data
@@ -96,7 +96,7 @@ fun SendPaidMedia(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PaidMediaInfoContent>> {
     val data = SendPaidMediaData(
         chatId = chatId,
@@ -113,7 +113,7 @@ fun SendPaidMedia(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     val files: List<MultipartFile> = media.flatMap {
@@ -128,22 +128,21 @@ fun SendPaidMedia(
                 it.cover as? MultipartFile
             } else {
                 null
-            }
+            },
         )
     }
 
     return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
             data,
-            files.associateBy { it.fileId }
+            files.associateBy { it.fileId },
         )
     } else {
         data
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>>
-        = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendPaidMediaData internal constructor(
@@ -176,13 +175,12 @@ data class SendPaidMediaData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<PaidMediaInfoContent>>,
     SendContentMessageRequest<ContentMessage<PaidMediaInfoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PaidMediaInfoContent>>,
     TextableSendMessageRequest<ContentMessage<PaidMediaInfoContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<PaidMediaInfoContent>>
-{
+    WithCustomizableCaptionRequest<ContentMessage<PaidMediaInfoContent>> {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -198,6 +196,7 @@ data class SendPaidMediaData internal constructor(
     }
 
     override fun method(): String = "sendPaidMedia"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -205,7 +204,7 @@ data class SendPaidMediaData internal constructor(
 }
 
 data class SendPaidMediaFiles internal constructor(
-    val photo: MultipartFile
+    val photo: MultipartFile,
 ) : Files by mapOf(
-    photoField to photo
+    photoField to photo,
 )

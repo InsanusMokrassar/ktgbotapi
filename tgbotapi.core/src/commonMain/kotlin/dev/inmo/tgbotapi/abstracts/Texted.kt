@@ -1,11 +1,12 @@
 package dev.inmo.tgbotapi.abstracts
 
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.ParseMode
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 
 interface Texted {
     val text: String?
 }
+
 interface TextedWithTextSources : Texted {
     /**
      * Full list of [TextSource]s

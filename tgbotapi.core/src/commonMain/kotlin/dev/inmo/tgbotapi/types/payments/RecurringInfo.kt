@@ -11,5 +11,5 @@ data class RecurringInfo(
     @SerialName(subscriptionExpirationDateField)
     val subscriptionExpirationDate: TelegramDate,
     @SerialName(isFirstRecurringField)
-    val firstSubscriptionPeriod: Boolean
+    val firstSubscriptionPeriod: Boolean,
 )

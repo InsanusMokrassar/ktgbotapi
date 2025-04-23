@@ -12,6 +12,7 @@ interface GetGameHighScores : SimpleRequest<List<GameHighScore>> {
     val userId: UserId
 
     override fun method(): String = "getGameHighScores"
+
     override val resultDeserializer: DeserializationStrategy<List<GameHighScore>>
         get() = GameHighScoresSerializer
 }

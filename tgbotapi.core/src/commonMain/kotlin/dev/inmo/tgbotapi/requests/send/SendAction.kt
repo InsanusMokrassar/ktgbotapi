@@ -21,9 +21,10 @@ data class SendAction(
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
-    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId
-): SendChatMessageRequest<Boolean>, OptionallyMessageThreadRequest, OptionallyBusinessConnectionRequest {
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+) : SendChatMessageRequest<Boolean>, OptionallyMessageThreadRequest, OptionallyBusinessConnectionRequest {
     override fun method(): String = "sendChatAction"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

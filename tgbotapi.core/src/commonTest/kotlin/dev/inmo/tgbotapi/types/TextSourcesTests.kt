@@ -26,14 +26,14 @@ class TextSourcesTests {
                 buildEntities {
                     strikethrough("comp")
                     underline("lex")
-                }
+                },
             )
             pre("text", "kotlin")
         }
         val serialized = TestsJsonFormat.encodeToString(ListSerializer(TextSourceSerializer), testList)
         val deserialized = TestsJsonFormat.decodeFromString(
             ListSerializer(TextSourceSerializer),
-            serialized
+            serialized,
         )
         assertEquals(testList, deserialized)
         assertEquals(testList.makeString(), deserialized.makeString())

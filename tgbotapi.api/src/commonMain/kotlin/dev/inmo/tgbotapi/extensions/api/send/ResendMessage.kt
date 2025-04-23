@@ -19,7 +19,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<T> = execute(
     content.createResend(
         chatId = chatId,
@@ -29,8 +29,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 ) as ContentMessage<T>
 
 /**
@@ -45,7 +45,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<T> = resend(
     chatId = chat.id,
     content = content,
@@ -55,7 +55,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -72,7 +72,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<T> = resend(
     chatId = chatId,
     content = message.content,
@@ -82,7 +82,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -99,7 +99,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<T> = resend(
     chatId = chat.id,
     message = message,
@@ -109,5 +109,5 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

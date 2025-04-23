@@ -1,12 +1,11 @@
 package dev.inmo.tgbotapi.types
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
-import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
+import korlibs.time.DateTime
 import korlibs.time.TimeSpan
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -28,11 +27,11 @@ private data class RawChatInviteLink(
     @SerialName(expireDateField)
     val expirationDateTime: TelegramDate? = null,
     @SerialName(memberLimitField)
-    val membersLimit: MembersLimit ?= null,
+    val membersLimit: MembersLimit? = null,
     @SerialName(createsJoinRequestField)
     val createsJoinRequest: Boolean? = null,
     @SerialName(pendingJoinRequestCountField)
-    val pendingJoinRequestCount: MembersLimit ?= null
+    val pendingJoinRequestCount: MembersLimit? = null,
 )
 
 private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
@@ -44,7 +43,7 @@ private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
     expirationDateTime ?.toTelegramDate(),
     (this as? ChatInviteLinkWithLimitedMembers) ?.membersLimit,
     this is ChatInviteLinkWithJoinRequest,
-    (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview
+    (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview,
 )
 
 /**
@@ -117,7 +116,7 @@ data class ChatInviteLinkWithJoinRequest(
     @Serializable(TimeSpanAsSecondsSerializer::class)
     override val subscriptionPeriod: TimeSpan? = null,
     @SerialName(subscriptionPriceField)
-    override val subscriptionPrice: UInt? = null
+    override val subscriptionPrice: UInt? = null,
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
@@ -144,7 +143,7 @@ data class ChatInviteLinkWithLimitedMembers(
     @Serializable(TimeSpanAsSecondsSerializer::class)
     override val subscriptionPeriod: TimeSpan? = null,
     @SerialName(subscriptionPriceField)
-    override val subscriptionPrice: UInt? = null
+    override val subscriptionPrice: UInt? = null,
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
@@ -170,7 +169,7 @@ data class ChatInviteLinkUnlimited(
     @Serializable(TimeSpanAsSecondsSerializer::class)
     override val subscriptionPeriod: TimeSpan? = null,
     @SerialName(subscriptionPriceField)
-    override val subscriptionPrice: UInt? = null
+    override val subscriptionPrice: UInt? = null,
 ) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
@@ -185,27 +184,49 @@ object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
         val deserializedRaw = RawChatInviteLink.serializer().deserialize(decoder)
         return deserializedRaw.run {
             when {
-                isPrimary -> PrimaryInviteLink(
-                    inviteLink, creator, isRevoked, expirationDateTime
-                )
+                isPrimary ->
+                    PrimaryInviteLink(
+                        inviteLink,
+                        creator,
+                        isRevoked,
+                        expirationDateTime,
+                    )
                 createsJoinRequest == true -> {
                     ChatInviteLinkWithJoinRequest(
-                        inviteLink, creator, name, pendingJoinRequestCount ?: 0, isRevoked, expirationDateTime
+                        inviteLink,
+                        creator,
+                        name,
+                        pendingJoinRequestCount ?: 0,
+                        isRevoked,
+                        expirationDateTime,
                     )
                 }
                 membersLimit != null -> {
                     ChatInviteLinkWithLimitedMembers(
-                        inviteLink, creator, name, membersLimit, isRevoked, expirationDateTime
+                        inviteLink,
+                        creator,
+                        name,
+                        membersLimit,
+                        isRevoked,
+                        expirationDateTime,
                     )
                 }
-                else -> ChatInviteLinkUnlimited(
-                    inviteLink, creator, name, isRevoked, expirationDateTime
-                )
+                else ->
+                    ChatInviteLinkUnlimited(
+                        inviteLink,
+                        creator,
+                        name,
+                        isRevoked,
+                        expirationDateTime,
+                    )
             }
         }
     }
 
-    override fun serialize(encoder: Encoder, value: ChatInviteLink) {
+    override fun serialize(
+        encoder: Encoder,
+        value: ChatInviteLink,
+    ) {
         RawChatInviteLink.serializer().serialize(encoder, value.toRawChatInviteLink())
     }
 }

@@ -11,11 +11,11 @@ internal val nonstrictJsonFormat = Json {
     encodeDefaults = true
 }
 
-fun <T: Any> T.toJsonWithoutNulls(serializer: SerializationStrategy<T>): JsonObject = toJson(serializer).withoutNulls()
+fun <T : Any> T.toJsonWithoutNulls(serializer: SerializationStrategy<T>): JsonObject = toJson(serializer).withoutNulls()
 
-fun <T: Any> T.toJson(serializer: SerializationStrategy<T>): JsonObject = nonstrictJsonFormat.encodeToJsonElement(
+fun <T : Any> T.toJson(serializer: SerializationStrategy<T>): JsonObject = nonstrictJsonFormat.encodeToJsonElement(
     serializer,
-    this
+    this,
 ).jsonObject
 
 fun JsonArray.withoutNulls(): JsonArray {
@@ -46,10 +46,11 @@ fun JsonObject.withoutNulls(): JsonObject {
 }
 
 fun JsonObject.mapWithCommonValues(): Map<String, Any> = map {
-    (key, value) ->
-    key to when (value) {
-        is JsonPrimitive -> value.contentOrNull ?: value.booleanOrNull ?: value.doubleOrNull ?: value.floatOrNull ?: value.intOrNull
-        is JsonArray, is JsonObject -> value.toString()
-        is JsonNull -> null
-    }
+        (key, value) ->
+    key to
+        when (value) {
+            is JsonPrimitive -> value.contentOrNull ?: value.booleanOrNull ?: value.doubleOrNull ?: value.floatOrNull ?: value.intOrNull
+            is JsonArray, is JsonObject -> value.toString()
+            is JsonNull -> null
+        }
 }.toMap().mapNotNullValues()

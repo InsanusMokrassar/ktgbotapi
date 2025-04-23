@@ -16,7 +16,7 @@ fun ForwardMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ) = ForwardMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -24,11 +24,11 @@ fun ForwardMessages(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 @Serializable
-data class ForwardMessages (
+data class ForwardMessages(
     @SerialName(chatIdField)
     val toChatId: ChatIdentifier,
     @SerialName(fromChatIdField)
@@ -42,8 +42,8 @@ data class ForwardMessages (
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(removeCaptionField)
-    private val removeCaption: Boolean = false
-): SimpleRequest<List<MessageId>>,
+    private val removeCaption: Boolean = false,
+) : SimpleRequest<List<MessageId>>,
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,

@@ -11,11 +11,13 @@ data class SetPassportDataErrors(
     @SerialName(userIdField)
     val user: UserId,
     @SerialName(errorsField)
-    val errors: List<PassportElementError>
+    val errors: List<PassportElementError>,
 ) : SimpleRequest<Boolean> {
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
+
     override fun method(): String = "setPassportDataErrors"
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -13,5 +13,5 @@ data class Story(
     @SerialName(idField)
     val id: StoryId,
     @SerialName(chatField)
-    val chat: PreviewChat
+    val chat: PreviewChat,
 ) : ReplyInfo.External.ContentVariant

@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyWithEffectRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -16,8 +15,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 import kotlinx.serialization.*
 
-private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
  * @param providerData - JSON-ENCODED FIELD
@@ -74,7 +72,7 @@ data class SendInvoice(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : CommonSendInvoiceData,
     ChatRequest,
     DisableNotification,
@@ -83,6 +81,7 @@ data class SendInvoice(
     SendMessageRequest<ContentMessage<InvoiceContent>>,
     OptionallyWithEffectRequest<ContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
         get() = invoiceMessageSerializer
     override val requestSerializer: SerializationStrategy<*>
@@ -91,6 +90,7 @@ data class SendInvoice(
     @SerialName(photoUrlField)
     override var photoUrl: String? = null
         private set
+
     @SerialName(photoSizeField)
     override var photoSize: Long? = null
         private set
@@ -98,6 +98,7 @@ data class SendInvoice(
     @SerialName(photoWidthField)
     override var photoWidth: Int? = null
         private set
+
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
@@ -116,7 +117,7 @@ data class SendInvoice(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: InlineKeyboardMarkup? = null
+        replyMarkup: InlineKeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         title = title,
@@ -133,7 +134,7 @@ data class SendInvoice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     init {
@@ -141,7 +142,7 @@ data class SendInvoice(
             require(suggestedTipAmounts.size in suggestedTipAmountsLimit)
             maxTipAmount ?.let { _ ->
                 require(
-                    suggestedTipAmounts.none { it > maxTipAmount }
+                    suggestedTipAmounts.none { it > maxTipAmount },
                 )
             }
         }
@@ -151,7 +152,7 @@ data class SendInvoice(
         photoUrl: String,
         photoSize: Long?,
         photoWidth: Int?,
-        photoHeight: Int?
+        photoHeight: Int?,
     ) {
         this.photoUrl = photoUrl
         this.photoSize = photoSize

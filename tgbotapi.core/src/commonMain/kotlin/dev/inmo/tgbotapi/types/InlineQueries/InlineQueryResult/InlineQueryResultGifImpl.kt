@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGif
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.inlineQueryResultGifType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.MimeType
 import dev.inmo.tgbotapi.utils.extensions.makeString
@@ -30,7 +30,7 @@ fun InlineQueryResultGifImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifImpl(
     id = id,
     url = url,
@@ -45,7 +45,7 @@ fun InlineQueryResultGifImpl(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultGifImpl(
@@ -60,7 +60,7 @@ fun InlineQueryResultGifImpl(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifImpl(
     id = id,
     url = url,
@@ -75,7 +75,7 @@ fun InlineQueryResultGifImpl(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultGifImpl(
@@ -91,7 +91,7 @@ fun InlineQueryResultGifImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifImpl(
     id = id,
     url = gifFile.fileId,
@@ -105,7 +105,7 @@ fun InlineQueryResultGifImpl(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultGifImpl(
@@ -120,7 +120,7 @@ fun InlineQueryResultGifImpl(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifImpl(
     id = id,
     url = gifFile.fileId,
@@ -133,7 +133,7 @@ fun InlineQueryResultGifImpl(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 @Serializable
@@ -165,7 +165,7 @@ data class InlineQueryResultGifImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultGif {
     override val type: String = inlineQueryResultGifType
     override val textSources: TextSourcesList? by lazy {
@@ -174,7 +174,9 @@ data class InlineQueryResultGifImpl internal constructor(
 
     init {
         if (thumbnailMimeType != null && thumbnailMimeType !in telegramInlineModeGifPermittedMimeTypes) {
-            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
+            error(
+                "Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes",
+            )
         }
     }
 }

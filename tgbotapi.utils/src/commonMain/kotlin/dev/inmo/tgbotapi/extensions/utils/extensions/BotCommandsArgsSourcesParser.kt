@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
-import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
-import dev.inmo.tgbotapi.extensions.utils.ifBotCommandTextSource
 import dev.inmo.tgbotapi.extensions.utils.whenBotCommandTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
@@ -44,7 +42,7 @@ fun List<TextSource>.parseCommandsWithArgsSources(): Map<BotCommandTextSource, A
  * Parse text sources to find commands with their arguments. This method will skip all the text sources __before__
  * first command and all following text sources until the next command will be guessed as an args of last found command
  */
-fun TextedWithTextSources.parseCommandsWithArgsSources() = textSources?.parseCommandsWithArgsSources() ?: emptyMap()
+fun TextedWithTextSources.parseCommandsWithArgsSources() = textSources ?.parseCommandsWithArgsSources() ?: emptyMap()
 
 /**
  * Parse text sources to find commands with their arguments. This method will skip all the text sources __before__

@@ -15,7 +15,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResu
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByUserIdChosenInlineResultMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.chosenInlineResultUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -38,13 +38,13 @@ suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in ChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChosenInlineResult>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChosenInlineResult>,
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -65,13 +65,13 @@ suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in LocationChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, LocationChosenInlineResult>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationChosenInlineResult>,
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -92,11 +92,11 @@ suspend fun <BC : BehaviourContext> BC.onBaseChosenInlineResult(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in BaseChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BaseChosenInlineResult>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseChosenInlineResult>,
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )

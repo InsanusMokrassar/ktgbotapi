@@ -31,6 +31,7 @@ interface ChatPermissions {
     val canChangeInfo: Boolean?
     val canInviteUsers: Boolean?
     val canPinMessages: Boolean?
+
     @Transient
     val isGranular
         get() = canSendAudios != null ||
@@ -71,7 +72,7 @@ interface ChatPermissions {
         @SerialName(canInviteUsersField)
         override val canInviteUsers: Boolean? = null,
         @SerialName(canPinMessagesField)
-        override val canPinMessages: Boolean? = null
+        override val canPinMessages: Boolean? = null,
     ) : ChatPermissions {
         @Transient
         override val isGranular: Boolean
@@ -91,30 +92,37 @@ interface ChatPermissions {
         @SerialName(canInviteUsersField)
         override val canInviteUsers: Boolean? = null,
         @SerialName(canPinMessagesField)
-        override val canPinMessages: Boolean? = null
+        override val canPinMessages: Boolean? = null,
     ) : ChatPermissions {
         @Transient
         override val isGranular: Boolean
             get() = false
+
         @Transient
         override val canSendMessages: Boolean? = canSendOtherMessages ?.let {
             it && (canAddWebPagePreviews ?: return@let null)
         }
+
         @Transient
         override val canSendAudios: Boolean?
             get() = canSendMessages
+
         @Transient
         override val canSendDocuments: Boolean?
             get() = canSendMessages
+
         @Transient
         override val canSendPhotos: Boolean?
             get() = canSendMessages
+
         @Transient
         override val canSendVideos: Boolean?
             get() = canSendMessages
+
         @Transient
         override val canSendVideoNotes: Boolean?
             get() = canSendMessages
+
         @Transient
         override val canSendVoiceNotes: Boolean?
             get() = canSendMessages
@@ -134,7 +142,7 @@ interface ChatPermissions {
             canAddWebPagePreviews: Boolean? = null,
             canChangeInfo: Boolean? = null,
             canInviteUsers: Boolean? = null,
-            canPinMessages: Boolean? = null
+            canPinMessages: Boolean? = null,
         ) = Granular(
             canSendMessages = canSendMessages,
             canSendAudios = canSendAudios,
@@ -148,7 +156,7 @@ interface ChatPermissions {
             canAddWebPagePreviews = canAddWebPagePreviews,
             canChangeInfo = canChangeInfo,
             canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages
+            canPinMessages = canPinMessages,
         )
 
         private val realSerializer = Granular.serializer()
@@ -160,7 +168,10 @@ interface ChatPermissions {
             return realSerializer.deserialize(decoder)
         }
 
-        override fun serialize(encoder: Encoder, value: ChatPermissions) {
+        override fun serialize(
+            encoder: Encoder,
+            value: ChatPermissions,
+        ) {
             realSerializer.serialize(
                 encoder,
                 (value as? Granular) ?: value.run {
@@ -177,9 +188,9 @@ interface ChatPermissions {
                         canAddWebPagePreviews = canAddWebPagePreviews,
                         canChangeInfo = canChangeInfo,
                         canInviteUsers = canInviteUsers,
-                        canPinMessages = canPinMessages
+                        canPinMessages = canPinMessages,
                     )
-                }
+                },
             )
         }
     }
@@ -201,7 +212,7 @@ interface ChatPermissions {
         canAddWebPagePreviews: Boolean? = this.canAddWebPagePreviews,
         canChangeInfo: Boolean? = this.canChangeInfo,
         canInviteUsers: Boolean? = this.canInviteUsers,
-        canPinMessages: Boolean? = this.canPinMessages
+        canPinMessages: Boolean? = this.canPinMessages,
     ): ChatPermissions = ChatPermissions(
         canSendMessages = canSendMessages,
         canSendAudios = canSendAudios,
@@ -215,7 +226,7 @@ interface ChatPermissions {
         canAddWebPagePreviews = canAddWebPagePreviews,
         canChangeInfo = canChangeInfo,
         canInviteUsers = canInviteUsers,
-        canPinMessages = canPinMessages
+        canPinMessages = canPinMessages,
     )
 
     /**
@@ -228,7 +239,7 @@ interface ChatPermissions {
         canAddWebPagePreviews: Boolean? = this.canAddWebPagePreviews,
         canChangeInfo: Boolean? = this.canChangeInfo,
         canInviteUsers: Boolean? = this.canInviteUsers,
-        canPinMessages: Boolean? = this.canPinMessages
+        canPinMessages: Boolean? = this.canPinMessages,
     ): ChatPermissions = ChatPermissions(
         canSendMessages = null,
         canSendAudios = null,
@@ -242,7 +253,7 @@ interface ChatPermissions {
         canAddWebPagePreviews = canAddWebPagePreviews,
         canChangeInfo = canChangeInfo,
         canInviteUsers = canInviteUsers,
-        canPinMessages = canPinMessages
+        canPinMessages = canPinMessages,
     )
 }
 

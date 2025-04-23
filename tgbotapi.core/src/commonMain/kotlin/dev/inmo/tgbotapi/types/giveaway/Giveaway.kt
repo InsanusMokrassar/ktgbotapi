@@ -25,5 +25,5 @@ data class Giveaway(
     @SerialName(premiumSubscriptionMonthCountField)
     override val premiumMonths: Int? = null,
     @SerialName(prizeStarCountField)
-    override val prizeStarCount: Int? = null
+    override val prizeStarCount: Int? = null,
 ) : GiveawayInfo.OptionallyStars, GiveawayInfo.OptionallyPremium, ReplyInfo.External.ContentVariant

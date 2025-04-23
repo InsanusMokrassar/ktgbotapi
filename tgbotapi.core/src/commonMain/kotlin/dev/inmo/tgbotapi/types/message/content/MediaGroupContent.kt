@@ -40,7 +40,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
         chatId = chatId,
         media = group.map { it.content.toMediaGroupMemberTelegramMedia() },

@@ -12,7 +12,6 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
 
-
 public suspend fun TelegramBot.sendRegularPoll(
     chatId: ChatIdentifier,
     question: String,
@@ -30,7 +29,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
@@ -49,8 +48,8 @@ public suspend fun TelegramBot.sendRegularPoll(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 public suspend fun TelegramBot.sendRegularPoll(
@@ -69,7 +68,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
@@ -87,8 +86,8 @@ public suspend fun TelegramBot.sendRegularPoll(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 public suspend fun TelegramBot.sendRegularPoll(
@@ -107,7 +106,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
@@ -125,8 +124,8 @@ public suspend fun TelegramBot.sendRegularPoll(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 public suspend fun TelegramBot.sendRegularPoll(
@@ -144,7 +143,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
@@ -161,6 +160,6 @@ public suspend fun TelegramBot.sendRegularPoll(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )

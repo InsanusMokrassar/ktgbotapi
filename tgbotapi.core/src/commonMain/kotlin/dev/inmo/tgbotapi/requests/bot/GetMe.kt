@@ -7,6 +7,7 @@ import kotlinx.serialization.*
 @Serializable
 object GetMe : SimpleRequest<ExtendedBot> {
     override fun method(): String = "getMe"
+
     override val resultDeserializer: DeserializationStrategy<ExtendedBot>
         get() = ExtendedBot.serializer()
     override val requestSerializer: SerializationStrategy<*>

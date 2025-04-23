@@ -16,8 +16,9 @@ data class GetStarTransactions(
     val limit: Int? = null,
 ) : SimpleRequest<StarTransactions> {
     override fun method(): String = "getStarTransactions"
+
     override val resultDeserializer: DeserializationStrategy<StarTransactions>
-    get() = StarTransactions.serializer()
+        get() = StarTransactions.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -18,11 +18,10 @@ internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdate
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     ((it as? U) ?.data) ?.let(::listOfNotNull)
 }
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -42,13 +41,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -69,13 +68,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -96,13 +95,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -123,13 +122,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberJoined(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberJoinedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -150,13 +149,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberLeft(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberLeftFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -177,13 +176,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberSubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberSubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -204,13 +203,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberSubscriptionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberSubscriptionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -231,13 +230,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberUnsubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberUnsubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -258,13 +257,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotPromotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -285,13 +284,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromotionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotPromotionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -312,13 +311,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotDemoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotDemotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -339,13 +338,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberBecameOwner(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberBecameOwnerFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -366,13 +365,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberCeasedOwnership(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberCeasedOwnershipFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -393,13 +392,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotRestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -420,13 +419,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestrictionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotRestrictionsChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -447,13 +446,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotUnrestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberGotUnrestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -474,13 +473,13 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberKicked(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     chatMemberKickedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -501,13 +500,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberJoined(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberJoinedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -528,13 +527,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberLeft(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberLeftFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -555,13 +554,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberSubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -582,13 +581,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscriptionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberSubscriptionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -609,13 +608,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUnsubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberUnsubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -636,13 +635,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotPromotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -663,13 +662,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromotionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotPromotionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -690,13 +689,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotDemoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotDemotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -717,13 +716,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberBecameOwner(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberBecameOwnerFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -744,13 +743,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberCeasedOwnership(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberCeasedOwnershipFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -771,13 +770,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotRestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -798,13 +797,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestrictionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotRestrictionsChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -825,13 +824,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotUnrestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberGotUnrestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -852,13 +851,13 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberKicked(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     chatMemberKickedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -879,13 +878,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberJoined(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberJoinedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -906,13 +905,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberLeft(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberLeftFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -933,13 +932,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberSubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -960,13 +959,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscriptionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberSubscriptionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -987,13 +986,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberUnsubscribed(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberUnsubscribedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1014,13 +1013,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotPromotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1041,13 +1040,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromotionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotPromotionChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1068,13 +1067,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotDemoted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotDemotedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1095,13 +1094,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberBecameOwner(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberBecameOwnerFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1122,13 +1121,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberCeasedOwnership(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberCeasedOwnershipFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1149,13 +1148,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotRestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1176,13 +1175,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestrictionChanged(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotRestrictionsChangedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1203,13 +1202,13 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotUnrestricted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberGotUnrestrictedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -1230,11 +1229,11 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberKicked(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatMemberUpdated>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>,
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     chatMemberKickedFilter * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )

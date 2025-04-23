@@ -15,5 +15,5 @@ data class Contact(
     @SerialName(userIdField)
     val userId: UserId? = null,
     @SerialName(vcardField)
-    override val vcard: String? = null
+    override val vcard: String? = null,
 ) : CommonContactData, ReplyInfo.External.ContentVariant

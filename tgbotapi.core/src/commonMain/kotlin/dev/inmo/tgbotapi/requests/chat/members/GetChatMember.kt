@@ -11,9 +11,10 @@ data class GetChatMember(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
-    override val userId: UserId
+    override val userId: UserId,
 ) : ChatMemberRequest<ChatMember> {
     override fun method(): String = "getChatMember"
+
     override val resultDeserializer: DeserializationStrategy<ChatMember>
         get() = ChatMemberSerializer
     override val requestSerializer: SerializationStrategy<*>

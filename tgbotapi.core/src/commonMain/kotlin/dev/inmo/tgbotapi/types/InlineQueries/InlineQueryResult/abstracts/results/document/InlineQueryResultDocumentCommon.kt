@@ -5,7 +5,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 
 const val inlineQueryResultDocumentType = "document"
 
-interface InlineQueryResultDocumentCommon : InlineQueryResult,
+interface InlineQueryResultDocumentCommon :
+    InlineQueryResult,
     TitledInlineQueryResult,
     DescribedInlineQueryResult,
     TextedOutput,

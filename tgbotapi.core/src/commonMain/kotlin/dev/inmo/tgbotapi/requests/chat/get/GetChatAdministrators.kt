@@ -10,15 +10,16 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
 private val chatMembersListSerializer = ListSerializer(
-    AdministratorChatMemberSerializer
+    AdministratorChatMemberSerializer,
 )
 
 @Serializable
 data class GetChatAdministrators(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<List<AdministratorChatMember>> {
+    override val chatId: ChatIdentifier,
+) : ChatRequest, SimpleRequest<List<AdministratorChatMember>> {
     override fun method(): String = "getChatAdministrators"
+
     override val resultDeserializer: DeserializationStrategy<List<AdministratorChatMember>>
         get() = chatMembersListSerializer
     override val requestSerializer: SerializationStrategy<*>

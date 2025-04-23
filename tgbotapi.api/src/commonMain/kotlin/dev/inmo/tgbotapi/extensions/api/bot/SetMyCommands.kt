@@ -10,23 +10,23 @@ import dev.inmo.tgbotapi.types.commands.BotCommandScopeDefault
 public suspend fun TelegramBot.setMyCommands(
     commands: List<BotCommand>,
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: IetfLang?
+    languageCode: IetfLang?,
 ): Boolean = execute(SetMyCommands(commands, scope, languageCode))
 
 public suspend fun TelegramBot.setMyCommands(
     vararg commands: BotCommand,
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: IetfLang?
+    languageCode: IetfLang?,
 ): Boolean = setMyCommands(commands.toList(), scope, languageCode)
 
 public suspend fun TelegramBot.setMyCommands(
     commands: List<BotCommand>,
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: String? = null
+    languageCode: String? = null,
 ): Boolean = setMyCommands(commands, scope, languageCode ?.let(::IetfLang))
 
 public suspend fun TelegramBot.setMyCommands(
     vararg commands: BotCommand,
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: String? = null
+    languageCode: String? = null,
 ): Boolean = setMyCommands(commands.toList(), scope, languageCode)

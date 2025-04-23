@@ -30,7 +30,7 @@ suspend fun <BC : BehaviourContext> BC.onChatBoostRemoved(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatBoostRemoved, Update>? = null,
     markerFactory: MarkerFactory<ChatBoostRemoved, Any>? = ByIdChatBoostRemovedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatBoostRemoved>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatBoostRemoved>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatBoostRemoved>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.chatBoostRemovedUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

@@ -4,13 +4,13 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
 
@@ -30,7 +30,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = execute(
     SendTextMessage(
         chatId = chatId,
@@ -44,8 +44,8 @@ public suspend fun TelegramBot.sendMessage(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -64,7 +64,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     text = text,
@@ -77,7 +77,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -96,7 +96,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chat.id,
     text = text,
@@ -109,9 +109,8 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -129,7 +128,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chat.id,
     text = text,
@@ -142,7 +141,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -160,7 +159,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = execute(
     SendTextMessage(
         chatId = chatId,
@@ -173,8 +172,8 @@ public suspend fun TelegramBot.sendMessage(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -193,7 +192,7 @@ public suspend fun TelegramBot.sendMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -205,9 +204,8 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -225,7 +223,7 @@ public suspend fun TelegramBot.sendMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -237,7 +235,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -255,7 +253,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = entities,
@@ -267,7 +265,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -286,7 +284,7 @@ public suspend fun TelegramBot.sendTextMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -298,9 +296,8 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -318,7 +315,7 @@ public suspend fun TelegramBot.sendTextMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -330,7 +327,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -348,7 +345,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendMessage(
     chatId = chat.id,
     entities = entities,
@@ -360,7 +357,7 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -379,7 +376,7 @@ public suspend fun TelegramBot.sendMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -391,9 +388,8 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -411,7 +407,7 @@ public suspend fun TelegramBot.sendMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -423,9 +419,8 @@ public suspend fun TelegramBot.sendMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -442,7 +437,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chat.id,
     entities = entities,
@@ -454,7 +449,7 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -473,7 +468,7 @@ public suspend fun TelegramBot.sendTextMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -485,9 +480,8 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -505,7 +499,7 @@ public suspend fun TelegramBot.sendTextMessage(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -517,5 +511,5 @@ public suspend fun TelegramBot.sendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

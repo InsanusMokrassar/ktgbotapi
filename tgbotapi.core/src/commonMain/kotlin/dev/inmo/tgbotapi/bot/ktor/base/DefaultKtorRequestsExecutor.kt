@@ -28,7 +28,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     private val jsonFormatter: Json,
     private val pipelineStepsHolder: TelegramBotPipelinesHandler,
     private val logger: KSLog,
-    diff: Unit
+    diff: Unit,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
@@ -60,7 +60,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                         client,
                         telegramAPIUrlsKeeper,
                         request,
-                        jsonFormatter
+                        jsonFormatter,
                     )
                     logger.v { "Result of factory $potentialFactory handling $request: $resultFromFactory" }
                     result = pipelineStepsHolder.onAfterCallFactoryMakeCall(resultFromFactory, request, potentialFactory)
@@ -88,7 +88,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                             newRequestException(
                                 responseObject,
                                 content,
-                                "Can't get result object from $content"
+                                "Can't get result object from $content",
                             )
                         }
                         exceptionResult.exceptionOrNull() ?.let {

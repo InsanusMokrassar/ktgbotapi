@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.CommonMessageFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.not
-import dev.inmo.tgbotapi.extensions.utils.textedContentOrNull
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 
 /**
@@ -17,7 +16,7 @@ import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
  */
 fun CommonMessageFilterExcludeCommand(
     excludedCommand: String? = null,
-    textBeginOnly: Boolean = true
+    textBeginOnly: Boolean = true,
 ): CommonMessageFilter<*> {
     return !CommonMessageFilterIncludeText(
         when {
@@ -25,6 +24,6 @@ fun CommonMessageFilterExcludeCommand(
             textBeginOnly -> Regex("^[/!]$excludedCommand(\\s|$)")
             !textBeginOnly -> Regex("[/!]$excludedCommand(\\s|$)")
             else -> error("Unreachable code has been reached. It is error and must not happen")
-        }
+        },
     )
 }

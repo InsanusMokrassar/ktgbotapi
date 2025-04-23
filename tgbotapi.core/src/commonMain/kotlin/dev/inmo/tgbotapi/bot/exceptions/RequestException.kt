@@ -1,16 +1,16 @@
 package dev.inmo.tgbotapi.bot.exceptions
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.types.RetryAfterError
 import io.ktor.utils.io.errors.IOException
+import korlibs.time.DateTime
 import kotlinx.coroutines.CopyableThrowable
 
 fun newRequestException(
     response: Response,
     plainAnswer: String,
     message: String? = null,
-    cause: Throwable? = null
+    cause: Throwable? = null,
 ) = response.description ?.let { description ->
     when {
         description == "Bad Request: reply message not found" || description == "Bad Request: replied message not found" -> ReplyMessageNotFoundException(response, plainAnswer, message, cause)
@@ -19,24 +19,31 @@ fun newRequestException(
         description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
         description.contains("PHOTO_INVALID_DIMENSIONS") -> InvalidPhotoDimensionsException(response, plainAnswer, message, cause)
         description.contains("wrong file identifier") -> WrongFileIdentifierException(response, plainAnswer, message, cause)
-        description.contains("Too Many Requests") -> TooMuchRequestsException(
-            (response.parameters ?.error as? RetryAfterError) ?: RetryAfterError(60, DateTime.now().unixMillisLong),
-            response,
-            plainAnswer,
-            message,
-            cause
-        )
-        description.contains("Conflict: terminated by other getUpdates request") -> GetUpdatesConflict(
-            response,
-            plainAnswer,
-            message,
-            cause
-        )
+        description.contains("Too Many Requests") ->
+            TooMuchRequestsException(
+                (response.parameters ?.error as? RetryAfterError) ?: RetryAfterError(60, DateTime.now().unixMillisLong),
+                response,
+                plainAnswer,
+                message,
+                cause,
+            )
+        description.contains("Conflict: terminated by other getUpdates request") ->
+            GetUpdatesConflict(
+                response,
+                plainAnswer,
+                message,
+                cause,
+            )
         else -> null
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
 
-sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) : IOException(message, cause), CopyableThrowable<BotException>
+sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) :
+    IOException(
+        message,
+        cause,
+    ),
+    CopyableThrowable<BotException>
 
 class CommonBotException(message: String = "Something went wrong", cause: Throwable? = null) : BotException(message, cause) {
     override fun createCopy(): BotException = CommonBotException(message!!, cause)
@@ -46,10 +53,10 @@ sealed class RequestException constructor(
     val response: Response,
     val plainAnswer: String,
     message: String? = null,
-    cause: Throwable? = null
+    cause: Throwable? = null,
 ) : BotException(
     message ?: "Something went wrong",
-    cause
+    cause,
 )
 
 class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :

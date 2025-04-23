@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.utils
 fun <K, V> mapOfNotNull(vararg pairs: Pair<K, V?>): Map<K, V> {
     return HashMap<K, V>().apply {
         pairs.forEach {
-            (key, value) ->
+                (key, value) ->
             value ?.also {
                 put(key, it)
             }

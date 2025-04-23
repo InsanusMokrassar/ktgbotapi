@@ -27,9 +27,10 @@ expect class KtorRequestsExecutor internal constructor(
     jsonFormatter: Json,
     pipelineStepsHolder: TelegramBotPipelinesHandler,
     logger: KSLog,
-    diff: Unit // just a diff property to know where constructor and where calling function with defaults
+    diff: Unit, // just a diff property to know where constructor and where calling function with defaults
 ) : BaseRequestsExecutor {
     override suspend fun <T : Any> execute(request: Request<T>): T
+
     override fun close()
 }
 

@@ -23,7 +23,7 @@ data class DriverLicenseSecureValue(
     @SerialName(selfieField)
     override val selfie: FileCredentials? = null,
     @SerialName(translationField)
-    override val translation: List<FileCredentials> = emptyList()
+    override val translation: List<FileCredentials> = emptyList(),
 ) : IdentityWithReverseSideSecureValue()
 
 @Serializable
@@ -37,5 +37,5 @@ data class IdentityCardSecureValue(
     @SerialName(selfieField)
     override val selfie: FileCredentials? = null,
     @SerialName(translationField)
-    override val translation: List<FileCredentials> = emptyList()
+    override val translation: List<FileCredentials> = emptyList(),
 ) : IdentityWithReverseSideSecureValue()

@@ -8,15 +8,16 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 @Serializable
-data class SetChatPermissions (
+data class SetChatPermissions(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(permissionsField)
     val permissions: ChatPermissions,
     @SerialName(useIndependentChatPermissionsField)
-    val useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): ChatRequest, SimpleRequest<Boolean> {
+    val useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it },
+) : ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatPermissions"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

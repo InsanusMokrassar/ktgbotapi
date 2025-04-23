@@ -11,11 +11,11 @@ import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
-import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.utils.*
 import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
 import kotlinx.serialization.*
@@ -38,7 +38,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): Request<ContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
@@ -56,7 +56,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
                 it.cover as? MultipartFile
             } else {
                 null
-            }
+            },
         )
     }
 
@@ -69,17 +69,19 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
-        replyParameters = replyParameters
+        replyParameters = replyParameters,
     )
 
-    return (if (files.isEmpty()) {
-        data
-    } else {
-        CommonMultipartFileRequest(
-            data,
-            files.associateBy { it.fileId }
-        )
-    }) as Request<ContentMessage<MediaGroupContent<T>>>
+    return (
+        if (files.isEmpty()) {
+            data
+        } else {
+            CommonMultipartFileRequest(
+                data,
+                files.associateBy { it.fileId },
+            )
+        }
+        ) as Request<ContentMessage<MediaGroupContent<T>>>
 }
 
 /**
@@ -97,7 +99,7 @@ inline fun SendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ) = SendMediaGroup<AudioContent>(
     chatId = chatId,
     media = media,
@@ -107,7 +109,7 @@ inline fun SendPlaylist(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -125,7 +127,7 @@ inline fun SendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ) = SendMediaGroup<DocumentContent>(
     chatId = chatId,
     media = media,
@@ -135,7 +137,7 @@ inline fun SendDocumentsGroup(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -164,10 +166,10 @@ inline fun SendVisualMediaGroup(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
-private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
+private object MessagesListSerializer : KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
     override val descriptor: SerialDescriptor = serializer.descriptor
 
@@ -176,10 +178,12 @@ private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessa
         return messages.asMediaGroupMessage()
     }
 
-    override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>) {
+    override fun serialize(
+        encoder: Encoder,
+        value: PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>,
+    ) {
         serializer.serialize(encoder, value.content.group.map { it.sourceMessage })
     }
-
 }
 
 @Serializable
@@ -211,8 +215,8 @@ data class SendMediaGroupData internal constructor(
             }
         }.toString()
 
-
     override fun method(): String = "sendMediaGroup"
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
     override val resultDeserializer: DeserializationStrategy<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>
@@ -220,5 +224,5 @@ data class SendMediaGroupData internal constructor(
 }
 
 data class SendMediaGroupFiles internal constructor(
-    val files: List<MultipartFile>
+    val files: List<MultipartFile>,
 ) : Files by (files.map { it.fileId to it }.toMap())

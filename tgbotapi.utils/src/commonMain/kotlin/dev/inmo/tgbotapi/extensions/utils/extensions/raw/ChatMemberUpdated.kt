@@ -8,9 +8,11 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 @RiskFeature(RawFieldsUsageWarning)
 val ChatMemberUpdated.old_chat_member: ChatMember
     get() = oldChatMemberState
+
 @RiskFeature(RawFieldsUsageWarning)
 val ChatMemberUpdated.new_chat_member: ChatMember
     get() = newChatMemberState
+
 @RiskFeature(RawFieldsUsageWarning)
 val ChatMemberUpdated.invite_link: ChatInviteLink?
     get() = inviteLink

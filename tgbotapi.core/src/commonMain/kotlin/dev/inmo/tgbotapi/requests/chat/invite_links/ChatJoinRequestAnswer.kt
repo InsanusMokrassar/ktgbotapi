@@ -25,12 +25,12 @@ data class ApproveChatJoinRequest(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
-    override val userId: UserId
+    override val userId: UserId,
 ) : ChatJoinRequestAnswer {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override fun method(): String  = "approveChatJoinRequest"
+    override fun method(): String = "approveChatJoinRequest"
 }
 
 /**
@@ -42,10 +42,10 @@ data class DeclineChatJoinRequest(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
-    override val userId: UserId
+    override val userId: UserId,
 ) : ChatJoinRequestAnswer {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override fun method(): String  = "declineChatJoinRequest"
+    override fun method(): String = "declineChatJoinRequest"
 }

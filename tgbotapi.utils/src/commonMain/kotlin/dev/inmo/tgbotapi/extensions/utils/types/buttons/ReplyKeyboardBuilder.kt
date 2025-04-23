@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.reply.requestChatReplyButton
-import dev.inmo.tgbotapi.types.buttons.reply.requestUserReplyButton
 import dev.inmo.tgbotapi.types.buttons.reply.requestUsersReplyButton
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
@@ -51,7 +50,7 @@ inline fun replyKeyboard(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
-    block: ReplyKeyboardBuilder.() -> Unit
+    block: ReplyKeyboardBuilder.() -> Unit,
 ) = ReplyKeyboardBuilder().apply(block).build(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent)
 
 /**
@@ -64,7 +63,7 @@ inline fun flatReplyKeyboard(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
-    block: ReplyKeyboardRowBuilder.() -> Unit
+    block: ReplyKeyboardRowBuilder.() -> Unit,
 ) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent) {
     row<KeyboardButton>(block)
 }
@@ -75,9 +74,7 @@ inline fun flatReplyKeyboard(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.simpleButton(
-    text: String
-) = add(SimpleKeyboardButton(text))
+inline fun ReplyKeyboardRowBuilder.simpleButton(text: String) = add(SimpleKeyboardButton(text))
 
 /**
  * Creates and put [RequestContactKeyboardButton]
@@ -85,9 +82,7 @@ inline fun ReplyKeyboardRowBuilder.simpleButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestContactButton(
-    text: String
-) = add(RequestContactKeyboardButton(text))
+inline fun ReplyKeyboardRowBuilder.requestContactButton(text: String) = add(RequestContactKeyboardButton(text))
 
 /**
  * Creates and put [RequestLocationKeyboardButton]
@@ -95,9 +90,7 @@ inline fun ReplyKeyboardRowBuilder.requestContactButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestLocationButton(
-    text: String
-) = add(RequestLocationKeyboardButton(text))
+inline fun ReplyKeyboardRowBuilder.requestLocationButton(text: String) = add(RequestLocationKeyboardButton(text))
 
 /**
  * Creates and put [RequestPollKeyboardButton]
@@ -107,7 +100,7 @@ inline fun ReplyKeyboardRowBuilder.requestLocationButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestPollButton(
     text: String,
-    pollType: KeyboardButtonPollType
+    pollType: KeyboardButtonPollType,
 ) = add(RequestPollKeyboardButton(text, pollType))
 
 /**
@@ -118,7 +111,7 @@ inline fun ReplyKeyboardRowBuilder.requestPollButton(
  */
 inline fun ReplyKeyboardRowBuilder.webAppButton(
     text: String,
-    webApp: WebAppInfo
+    webApp: WebAppInfo,
 ) = add(WebAppKeyboardButton(text, webApp))
 
 /**
@@ -129,9 +122,8 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
  */
 inline fun ReplyKeyboardRowBuilder.webAppButton(
     text: String,
-    url: String
+    url: String,
 ) = webAppButton(text, WebAppInfo(url))
-
 
 /**
  * Creates and put [RequestUserKeyboardButton]
@@ -141,12 +133,12 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
-    requestUser: KeyboardButtonRequestUsers
+    requestUser: KeyboardButtonRequestUsers,
 ) = add(
     requestUsersReplyButton(
         text,
-        requestUser
-    )
+        requestUser,
+    ),
 )
 
 /**
@@ -169,8 +161,8 @@ inline fun ReplyKeyboardRowBuilder.requestBotsButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -191,7 +183,7 @@ inline fun ReplyKeyboardRowBuilder.requestBotButton(
     maxCount = keyboardButtonRequestUserLimit.first,
     requestName = requestName,
     requestUsername = requestUsername,
-    requestPhoto = requestPhoto
+    requestPhoto = requestPhoto,
 )
 
 /**
@@ -216,8 +208,8 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -240,7 +232,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
     maxCount = keyboardButtonRequestUserLimit.first,
     requestName = requestName,
     requestUsername = requestUsername,
-    requestPhoto = requestPhoto
+    requestPhoto = requestPhoto,
 )
 
 /**
@@ -265,8 +257,8 @@ inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
         maxCount = maxCount,
         requestName = requestName,
         requestUsername = requestUsername,
-        requestPhoto = requestPhoto
-    )
+        requestPhoto = requestPhoto,
+    ),
 )
 
 /**
@@ -290,7 +282,6 @@ inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
     requestPhoto = requestPhoto,
 )
 
-
 /**
  * Creates and put [RequestChatKeyboardButton]
  *
@@ -299,12 +290,12 @@ inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestChatButton(
     text: String,
-    requestChat: KeyboardButtonRequestChat
+    requestChat: KeyboardButtonRequestChat,
 ) = add(
     requestChatReplyButton(
         text,
-        requestChat
-    )
+        requestChat,
+    ),
 )
 
 /**
@@ -340,7 +331,7 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )
 
 /**
@@ -372,7 +363,7 @@ inline fun ReplyKeyboardRowBuilder.requestChannelButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )
 
 /**
@@ -406,5 +397,5 @@ inline fun ReplyKeyboardRowBuilder.requestGroupButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
 )

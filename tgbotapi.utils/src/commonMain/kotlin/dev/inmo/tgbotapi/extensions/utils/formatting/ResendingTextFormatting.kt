@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 fun createFormattedText(
     entities: TextSourcesList,
     partLength: Int = textLength.last,
-    mode: ParseMode = defaultParseMode
+    mode: ParseMode = defaultParseMode,
 ): List<String> {
     val texts = mutableListOf<String>()
     val textBuilder = StringBuilder(partLength)
@@ -45,73 +45,68 @@ fun createFormattedText(
     return texts
 }
 
-
 fun createMarkdownText(
     entities: TextSourcesList,
-    partLength: Int = textLength.last
+    partLength: Int = textLength.last,
 ): List<String> = createFormattedText(entities, partLength, Markdown)
 
 fun TextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
-    captionLength.last
+    captionLength.last,
 )
 
 fun TextSourcesList.toMarkdownTexts(): List<String> = createMarkdownText(
     this,
-    textLength.last
+    textLength.last,
 )
 
 fun TextContent.toMarkdownTexts(): List<String> = textSources.toMarkdownTexts()
 
 fun TextSourcesList.toMarkdownExplanations(): List<String> = createMarkdownText(
     this,
-    explanationLimit.last
+    explanationLimit.last,
 )
-
 
 fun createMarkdownV2Text(
     entities: TextSourcesList,
-    partLength: Int = textLength.last
+    partLength: Int = textLength.last,
 ): List<String> = createFormattedText(entities, partLength, MarkdownV2)
 
 fun TextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
     this,
-    captionLength.last
+    captionLength.last,
 )
 
 fun TextSourcesList.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
     this,
-    textLength.last
+    textLength.last,
 )
 
 fun TextContent.toMarkdownV2Texts(): List<String> = textSources.toMarkdownV2Texts()
 
 fun TextSourcesList.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
     this,
-    explanationLimit.last
+    explanationLimit.last,
 )
-
 
 fun createHtmlText(
     entities: TextSourcesList,
-    partLength: Int = textLength.last
+    partLength: Int = textLength.last,
 ): List<String> = createFormattedText(entities, partLength, HTML)
 
 fun TextSourcesList.toHtmlCaptions(): List<String> = createHtmlText(
     this,
-    captionLength.last
+    captionLength.last,
 )
 
 fun TextSourcesList.toHtmlTexts(): List<String> = createHtmlText(
     this,
-    textLength.last
+    textLength.last,
 )
 
 fun TextContent.toHtmlTexts(): List<String> = textSources.toHtmlTexts()
 
 fun TextSourcesList.toHtmlExplanations(): List<String> = createHtmlText(
     this,
-    explanationLimit.last
+    explanationLimit.last,
 )
-
-

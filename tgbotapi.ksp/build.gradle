@@ -1,5 +1,7 @@
 plugins {
     id "org.jetbrains.kotlin.jvm"
+
+    alias libs.plugins.ktlint
 }
 
 repositories {
@@ -11,4 +13,8 @@ dependencies {
     implementation libs.ksp
     implementation libs.microutils.ksp.generator
     implementation project(":tgbotapi.core")
+}
+
+dependencies {
+    ktlintRuleset project(":tgbotapi.linterRules")
 }

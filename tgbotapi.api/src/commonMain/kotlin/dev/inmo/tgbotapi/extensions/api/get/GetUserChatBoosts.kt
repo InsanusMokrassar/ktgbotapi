@@ -9,12 +9,12 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.getUserChatBoosts(
     chatId: ChatIdentifier,
-    userId: UserId
+    userId: UserId,
 ): UserChatBoosts = execute(
-    GetUserChatBoosts(chatId = chatId, userId = userId)
+    GetUserChatBoosts(chatId = chatId, userId = userId),
 )
 
 public suspend fun TelegramBot.getUserChatBoosts(
     chat: Chat,
-    userId: UserId
+    userId: UserId,
 ): UserChatBoosts = getUserChatBoosts(chatId = chat.id, userId = userId)

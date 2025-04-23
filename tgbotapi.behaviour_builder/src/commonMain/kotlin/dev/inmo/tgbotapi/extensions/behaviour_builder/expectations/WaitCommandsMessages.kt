@@ -25,10 +25,10 @@ import kotlinx.coroutines.flow.*
 suspend fun BehaviourContext.waitCommandMessage(
     commandRegex: Regex,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = channelFlow {
     triggersHolder.handleableCommandsHolder.doWithRegistration(
-        commandRegex
+        commandRegex,
     ) {
         waitTextMessage(initRequest, errorFactory).filter {
             it.content.textSources.any { it.botCommandTextSourceOrNull() ?.command ?.matches(commandRegex) == true }
@@ -41,13 +41,13 @@ suspend fun BehaviourContext.waitCommandMessage(
 suspend fun BehaviourContext.waitCommandMessage(
     command: String,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitCommandMessage(Regex(command), initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitCommandMessage(
     botCommand: BotCommand,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitCommandMessage(botCommand.command, initRequest, errorFactory)
 
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
@@ -93,7 +93,7 @@ fun Flow<CommonMessage<TextContent>>.commandsWithParams(): Flow<Pair<CommonMessa
  * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
-    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
+    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
 ): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = mapNotNull {
     val commandsWithArgs = it.content.textSources.parseCommandsWithArgs(argsSeparator).toList().ifEmpty {
         return@mapNotNull null
@@ -106,7 +106,7 @@ fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
  * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
-    argsSeparator: String
+    argsSeparator: String,
 ): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = commandsWithArgs(Regex(argsSeparator))
 
 /**
@@ -129,7 +129,10 @@ fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
 fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
     argsSeparator: String,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = commandsWithNamedArgs(Regex(argsSeparator), nameArgSeparator)
+): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = commandsWithNamedArgs(
+    Regex(argsSeparator),
+    nameArgSeparator,
+)
 
 /**
  * Flat [commandsWithParams]. Each [Pair] of [BotCommandTextSource] and its [Array] of arg text sources will

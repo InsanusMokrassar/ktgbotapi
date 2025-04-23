@@ -14,8 +14,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import kotlinx.serialization.*
 
-internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendDice(
@@ -38,8 +37,11 @@ data class SendDice(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<DiceContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>, WithReplyParameters, DisableNotification,
+    override val replyMarkup: KeyboardMarkup? = null,
+) : SendContentMessageRequest<ContentMessage<DiceContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>,
+    WithReplyParameters,
+    DisableNotification,
     OptionallyBusinessConnectionRequest {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

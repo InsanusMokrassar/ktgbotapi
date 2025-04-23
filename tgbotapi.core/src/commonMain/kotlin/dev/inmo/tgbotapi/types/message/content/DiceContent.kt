@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DiceContent(
-    val dice: Dice
+    val dice: Dice,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -22,7 +22,7 @@ data class DiceContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<DiceContent>> = SendDice(
         chatId = chatId,
         animationType = dice.animationType,
@@ -33,6 +33,6 @@ data class DiceContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

@@ -3,12 +3,12 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -16,7 +16,7 @@ data class VoiceContent(
     override val media: VoiceFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
-    override val quote: TextQuote? = null
+    override val quote: TextQuote? = null,
 ) : TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -27,7 +27,7 @@ data class VoiceContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<VoiceContent>> = SendVoice(
         chatId = chatId,
         voice = media.fileId,
@@ -40,12 +40,12 @@ data class VoiceContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
         media.fileId,
         textSources,
-        media.duration
+        media.duration,
     )
 }

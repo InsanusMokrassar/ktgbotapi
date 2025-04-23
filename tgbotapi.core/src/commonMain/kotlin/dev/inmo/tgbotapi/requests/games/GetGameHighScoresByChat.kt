@@ -6,13 +6,13 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
-data class GetGameHighScoresByChat (
+data class GetGameHighScoresByChat(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(chatIdField)
     override val chatId: IdChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageId
+    override val messageId: MessageId,
 ) : GetGameHighScores, MessageAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

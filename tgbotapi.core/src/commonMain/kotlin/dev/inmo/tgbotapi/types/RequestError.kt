@@ -6,7 +6,7 @@ sealed class RequestError
 
 data class RetryAfterError(
     val seconds: Seconds,
-    val startCountingMillis: Long
+    val startCountingMillis: Long,
 ) : RequestError() {
     val canContinue = (seconds * 1000L) + startCountingMillis
     val leftToRetry: Long
@@ -14,7 +14,5 @@ data class RetryAfterError(
 }
 
 data class MigrateChatId(
-    val newChatId: IdChatIdentifier
+    val newChatId: IdChatIdentifier,
 ) : RequestError()
-
-

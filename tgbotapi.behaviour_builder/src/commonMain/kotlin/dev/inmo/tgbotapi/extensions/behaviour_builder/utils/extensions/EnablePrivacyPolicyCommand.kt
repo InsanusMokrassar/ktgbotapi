@@ -28,7 +28,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = null,
     markerFactory: MarkerFactory<in TextMessage, Any>? = null,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
 ) {
     onCommand(
         command = DefaultKTgBotAPIPrivacyCommand,
@@ -37,10 +37,9 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
         subcontextUpdatesFilter = subcontextUpdatesFilter,
         markerFactory = markerFactory,
         additionalSubcontextInitialAction = additionalSubcontextInitialAction,
-        scenarioReceiver = scenarioReceiver
+        scenarioReceiver = scenarioReceiver,
     )
 }
-
 
 /**
  * Adding default handler for `/privacy` command. It will send text message with [textSources] as text.
@@ -60,18 +59,17 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
-    additionalSubcontextInitialAction = additionalSubcontextInitialAction
+    additionalSubcontextInitialAction = additionalSubcontextInitialAction,
 ) {
     execute(
         SendTextMessage(
             it.chat.id,
             textSources,
             allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = ReplyParameters(it.metaInfo)
-        )
+            replyParameters = ReplyParameters(it.metaInfo),
+        ),
     )
 }
-
 
 /**
  * Adding default handler for `/privacy` command. It will send text message with [text] as text and [parseMode] if passed.
@@ -92,7 +90,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
-    additionalSubcontextInitialAction = additionalSubcontextInitialAction
+    additionalSubcontextInitialAction = additionalSubcontextInitialAction,
 ) {
     execute(
         SendTextMessage(
@@ -100,7 +98,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
             text = text,
             parseMode = parseMode,
             allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = ReplyParameters(it.metaInfo)
-        )
+            replyParameters = ReplyParameters(it.metaInfo),
+        ),
     )
 }

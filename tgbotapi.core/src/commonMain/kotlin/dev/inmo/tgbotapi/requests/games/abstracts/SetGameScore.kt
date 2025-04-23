@@ -12,6 +12,7 @@ interface SetGameScore : SimpleRequest<Boolean> {
     val disableEditMessage: Boolean
 
     override fun method(): String = "setGameScore"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
 }

@@ -19,13 +19,13 @@ import kotlinx.coroutines.launch
  */
 public fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     output: UpdateReceiver<Update>,
-    mediaGroupsDebounceMillis: Long = 1000L
+    mediaGroupsDebounceMillis: Long = 1000L,
 ): UpdateReceiver<Update> {
     val updatesChannel = Channel<Update>(Channel.UNLIMITED)
     val mediaGroupChannel = Channel<Pair<String, BaseMessageUpdate>>(Channel.UNLIMITED)
     val mediaGroupAccumulatedChannel = mediaGroupChannel.accumulateByKey(
         mediaGroupsDebounceMillis,
-        scope = this
+        scope = this,
     )
 
     launch {

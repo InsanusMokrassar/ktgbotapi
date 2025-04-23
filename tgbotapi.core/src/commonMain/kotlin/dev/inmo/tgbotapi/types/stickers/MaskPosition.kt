@@ -13,5 +13,5 @@ data class MaskPosition(
     @SerialName(yShiftField)
     val yShift: Float,
     @SerialName(scaleField)
-    val scale: Float
+    val scale: Float,
 )

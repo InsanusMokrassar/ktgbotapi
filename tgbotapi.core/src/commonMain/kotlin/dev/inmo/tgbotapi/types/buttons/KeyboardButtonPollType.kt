@@ -23,7 +23,7 @@ sealed interface KeyboardButtonPollType {
 
 @Serializable
 @Warning("This type should be used only in cases you are sure that it is required")
-class UnknownKeyboardButtonPollType internal constructor(override val type: String): KeyboardButtonPollType
+class UnknownKeyboardButtonPollType internal constructor(override val type: String) : KeyboardButtonPollType
 
 /**
  * Just a regular poll type
@@ -68,14 +68,17 @@ object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
     /**
      * Crutch due to the fact that direct serialization of objects currently does not work perfectly
      */
-    override fun serialize(encoder: Encoder, value: KeyboardButtonPollType) {
+    override fun serialize(
+        encoder: Encoder,
+        value: KeyboardButtonPollType,
+    ) {
         internalSerializer.serialize(
             encoder,
             JsonObject(
                 mapOf(
-                    typeField to JsonPrimitive(value.type)
-                )
-            )
+                    typeField to JsonPrimitive(value.type),
+                ),
+            ),
         )
     }
 }

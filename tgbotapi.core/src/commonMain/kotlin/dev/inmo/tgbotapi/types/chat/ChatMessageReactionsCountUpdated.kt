@@ -16,5 +16,5 @@ data class ChatMessageReactionsCountUpdated(
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(reactionsField)
-    val reactions: List<ReactionsCount>
+    val reactions: List<ReactionsCount>,
 ) : WithPreviewChatAndMessageId

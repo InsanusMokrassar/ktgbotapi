@@ -9,9 +9,10 @@ import kotlinx.serialization.*
 @Serializable
 data class GetFile(
     @SerialName(fileIdField)
-    val fileId: FileId
-): SimpleRequest<PathedFile> {
+    val fileId: FileId,
+) : SimpleRequest<PathedFile> {
     override fun method(): String = "getFile"
+
     override val resultDeserializer: DeserializationStrategy<PathedFile>
         get() = PathedFile.serializer()
     override val requestSerializer: SerializationStrategy<*>

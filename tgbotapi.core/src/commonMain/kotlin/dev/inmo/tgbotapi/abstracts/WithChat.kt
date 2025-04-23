@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.abstracts
 
-import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 
 /**

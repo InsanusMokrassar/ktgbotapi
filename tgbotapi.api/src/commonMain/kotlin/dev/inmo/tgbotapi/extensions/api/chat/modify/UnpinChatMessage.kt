@@ -12,13 +12,13 @@ import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 public suspend fun TelegramBot.unpinChatMessage(
     chatId: ChatIdentifier,
     messageId: MessageId? = null,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
 ): Boolean = execute(UnpinChatMessage(chatId, messageId, businessConnectionId))
 
 public suspend fun TelegramBot.unpinChatMessage(
     chat: Chat,
     messageId: MessageId? = null,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
 ): Boolean = unpinChatMessage(chat.id, messageId, businessConnectionId)
 
 public suspend fun TelegramBot.unpinChatMessage(

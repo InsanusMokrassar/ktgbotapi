@@ -13,5 +13,5 @@ data class LocationChosenInlineResult(
     override val from: User,
     val location: StaticLocation,
     override val inlineMessageId: InlineMessageId?,
-    override val query: String
+    override val query: String,
 ) : ChosenInlineResult

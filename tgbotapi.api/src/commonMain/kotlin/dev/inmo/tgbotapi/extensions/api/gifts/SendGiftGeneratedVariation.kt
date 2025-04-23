@@ -13,61 +13,79 @@ import kotlin.Boolean
 import kotlin.String
 
 public suspend fun TelegramBot.sendGift(
-  user: User,
-  giftId: GiftId,
-  text: String,
-  parseMode: ParseMode?,
+    user: User,
+    giftId: GiftId,
+    text: String,
+    parseMode: ParseMode?,
 ): Boolean = sendGift(
-    userId = with(user) {id}, giftId = giftId, text = text, parseMode = parseMode
+    userId = with(user) { id },
+    giftId = giftId,
+    text = text,
+    parseMode = parseMode,
 )
 
 public suspend fun TelegramBot.sendGift(
-  user: User,
-  giftId: GiftId,
-  text: String,
-  parseMode: ParseMode?,
-  upgradableToUnique: Boolean,
+    user: User,
+    giftId: GiftId,
+    text: String,
+    parseMode: ParseMode?,
+    upgradableToUnique: Boolean,
 ): Boolean = sendGift(
-    userId = with(user) {id}, giftId = giftId, text = text, parseMode = parseMode,
-    upgradableToUnique = upgradableToUnique
+    userId = with(user) { id },
+    giftId = giftId,
+    text = text,
+    parseMode = parseMode,
+    upgradableToUnique = upgradableToUnique,
 )
 
 public suspend fun TelegramBot.sendGift(
-  userId: UserId,
-  gift: Gift.Regular,
-  text: String,
-  parseMode: ParseMode?,
+    userId: UserId,
+    gift: Gift.Regular,
+    text: String,
+    parseMode: ParseMode?,
 ): Boolean = sendGift(
-    userId = userId, giftId = with(gift) {id}, text = text, parseMode = parseMode
+    userId = userId,
+    giftId = with(gift) { id },
+    text = text,
+    parseMode = parseMode,
 )
 
 public suspend fun TelegramBot.sendGift(
-  userId: UserId,
-  gift: Gift.Regular,
-  text: String,
-  parseMode: ParseMode?,
-  upgradableToUnique: Boolean,
+    userId: UserId,
+    gift: Gift.Regular,
+    text: String,
+    parseMode: ParseMode?,
+    upgradableToUnique: Boolean,
 ): Boolean = sendGift(
-    userId = userId, giftId = with(gift) {id}, text = text, parseMode = parseMode,
-    upgradableToUnique = upgradableToUnique
+    userId = userId,
+    giftId = with(gift) { id },
+    text = text,
+    parseMode = parseMode,
+    upgradableToUnique = upgradableToUnique,
 )
 
 public suspend fun TelegramBot.sendGift(
-  user: User,
-  gift: Gift.Regular,
-  text: String,
-  parseMode: ParseMode?,
+    user: User,
+    gift: Gift.Regular,
+    text: String,
+    parseMode: ParseMode?,
 ): Boolean = sendGift(
-    user = user, giftId = with(gift) {id}, text = text, parseMode = parseMode
+    user = user,
+    giftId = with(gift) { id },
+    text = text,
+    parseMode = parseMode,
 )
 
 public suspend fun TelegramBot.sendGift(
-  user: User,
-  gift: Gift.Regular,
-  text: String,
-  parseMode: ParseMode?,
-  upgradableToUnique: Boolean,
+    user: User,
+    gift: Gift.Regular,
+    text: String,
+    parseMode: ParseMode?,
+    upgradableToUnique: Boolean,
 ): Boolean = sendGift(
-    user = user, giftId = with(gift) {id}, text = text, parseMode = parseMode, upgradableToUnique =
-    upgradableToUnique
+    user = user,
+    giftId = with(gift) { id },
+    text = text,
+    parseMode = parseMode,
+    upgradableToUnique = upgradableToUnique,
 )

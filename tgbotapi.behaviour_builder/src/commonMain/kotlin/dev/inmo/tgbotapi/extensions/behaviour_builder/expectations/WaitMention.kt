@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
-import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.content.TextedContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
@@ -74,10 +73,10 @@ fun Flow<TextedContent>.filterMentions(user: User) = filter {
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentWithMentions (
+suspend fun BehaviourContext.waitContentWithMentions(
     username: Username,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitContent(initRequest, errorFactory).mapContent<TextedContent>().filterMentions(username)
 
 /**
@@ -87,10 +86,10 @@ suspend fun BehaviourContext.waitContentWithMentions (
  * @see filterMentions
  * @see dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
  */
-suspend fun BehaviourContext.waitContentWithTextMentions (
+suspend fun BehaviourContext.waitContentWithTextMentions(
     userId: UserId,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContent(initRequest, errorFactory).filterTextMentions(userId)
 
 /**
@@ -100,8 +99,8 @@ suspend fun BehaviourContext.waitContentWithTextMentions (
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentWithMentions (
+suspend fun BehaviourContext.waitContentWithMentions(
     user: User,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContent(initRequest, errorFactory).filterMentions(user)

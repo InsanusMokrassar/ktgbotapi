@@ -17,7 +17,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 
-
 @Serializable
 class SendQuizPoll internal constructor(
     @SerialName(chatIdField)
@@ -61,7 +60,7 @@ class SendQuizPoll internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendPoll() {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
@@ -91,7 +90,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = question,
@@ -113,7 +112,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     constructor(
@@ -134,7 +133,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
@@ -156,7 +155,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     constructor(
@@ -177,7 +176,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = question,
@@ -199,7 +198,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     constructor(
@@ -219,7 +218,7 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ) : this(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
@@ -241,20 +240,24 @@ class SendQuizPoll internal constructor(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     init {
         checkPollInfo(question, options)
         closeInfo ?.checkSendData()
-        val correctOptionIdRange = 0 .. options.size
+        val correctOptionIdRange = 0..options.size
         if (correctOptionId !in correctOptionIdRange) {
-            throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
-                    "value is $correctOptionId")
+            throw IllegalArgumentException(
+                "Correct option id must be in range of $correctOptionIdRange, but actual " +
+                    "value is $correctOptionId",
+            )
         }
         if (explanation != null && explanation.length !in explanationLimit) {
-            error("Quiz poll explanation size must be in range $explanationLimit," +
-                    "but actual explanation contains ${text.length} symbols")
+            error(
+                "Quiz poll explanation size must be in range $explanationLimit," +
+                    "but actual explanation contains ${text.length} symbols",
+            )
         }
     }
 }
@@ -277,7 +280,7 @@ fun SendQuizPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendQuizPoll(
     chatId = chatId,
     question = question,
@@ -288,8 +291,8 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
@@ -297,7 +300,7 @@ fun SendQuizPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendQuizPoll(
@@ -317,7 +320,7 @@ fun SendQuizPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
@@ -327,8 +330,8 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
@@ -336,7 +339,7 @@ fun SendQuizPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendQuizPoll(
@@ -356,7 +359,7 @@ fun SendQuizPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendQuizPoll(
     chatId = chatId,
     question = question,
@@ -366,8 +369,8 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
@@ -375,7 +378,7 @@ fun SendQuizPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendQuizPoll(
@@ -394,7 +397,7 @@ fun SendQuizPoll(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
@@ -403,8 +406,8 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
@@ -412,5 +415,5 @@ fun SendQuizPoll(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

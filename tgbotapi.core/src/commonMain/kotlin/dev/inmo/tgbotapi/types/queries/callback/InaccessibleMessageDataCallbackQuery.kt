@@ -9,5 +9,5 @@ data class InaccessibleMessageDataCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val message: InaccessibleMessage,
-    override val data: String
+    override val data: String,
 ) : DataCallbackQuery, InaccessibleMessageCallbackQuery

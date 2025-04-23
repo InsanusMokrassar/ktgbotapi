@@ -14,5 +14,5 @@ data class PhoneNumber(
     override val phoneNumber: String,
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : EncryptedPassportElementWithPhoneNumber

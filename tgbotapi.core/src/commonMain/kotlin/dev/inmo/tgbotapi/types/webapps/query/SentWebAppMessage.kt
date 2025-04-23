@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SentWebAppMessage(
-    val inlineMessageId: InlineMessageId? = null
+    val inlineMessageId: InlineMessageId? = null,
 )

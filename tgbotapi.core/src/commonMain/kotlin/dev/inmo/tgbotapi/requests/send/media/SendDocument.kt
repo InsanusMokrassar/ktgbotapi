@@ -6,15 +6,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
@@ -44,7 +44,7 @@ fun SendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): Request<ContentMessage<DocumentContent>> {
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
@@ -64,7 +64,7 @@ fun SendDocument(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection
+        disableContentTypeDetection = disableContentTypeDetection,
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -72,7 +72,7 @@ fun SendDocument(
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
@@ -99,7 +99,7 @@ fun SendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): Request<ContentMessage<DocumentContent>> {
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
@@ -119,7 +119,7 @@ fun SendDocument(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection
+        disableContentTypeDetection = disableContentTypeDetection,
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -127,13 +127,12 @@ fun SendDocument(
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
  * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
@@ -175,13 +174,12 @@ data class SendDocumentData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null,
     @SerialName(disableContentTypeDetectionField)
-    val disableContentTypeDetection: Boolean? = null
+    val disableContentTypeDetection: Boolean? = null,
 ) : DataRequest<ContentMessage<DocumentContent>>,
     SendContentMessageRequest<ContentMessage<DocumentContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
-    ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
-{
+    ThumbedSendMessageRequest<ContentMessage<DocumentContent>> {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -195,6 +193,7 @@ data class SendDocumentData internal constructor(
     }
 
     override fun method(): String = "sendDocument"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -203,8 +202,8 @@ data class SendDocumentData internal constructor(
 
 data class SendDocumentFiles internal constructor(
     val document: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
     documentField to document,
-    thumbnailField to thumbnail
+    thumbnailField to thumbnail,
 )

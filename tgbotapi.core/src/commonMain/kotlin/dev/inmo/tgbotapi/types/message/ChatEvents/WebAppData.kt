@@ -11,5 +11,5 @@ data class WebAppData(
     @SerialName(dataField)
     val data: String,
     @SerialName(buttonTextField)
-    val buttonText: String
+    val buttonText: String,
 ) : PrivateEvent

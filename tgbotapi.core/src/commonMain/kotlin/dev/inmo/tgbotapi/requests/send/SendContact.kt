@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -11,8 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendContact(
@@ -39,10 +37,9 @@ data class SendContact(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendContentMessageRequest<ContentMessage<ContactContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<ContactContent>>
-{
+    ReplyingMarkupSendMessageRequest<ContentMessage<ContactContent>> {
     constructor(
         chatId: ChatIdentifier,
         contact: Contact,
@@ -53,8 +50,8 @@ data class SendContact(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
-    ): this(
+        replyMarkup: KeyboardMarkup? = null,
+    ) : this(
         chatId,
         contact.phoneNumber,
         contact.firstName,
@@ -66,10 +63,11 @@ data class SendContact(
         allowPaidBroadcast,
         effectId,
         replyParameters,
-        replyMarkup
+        replyMarkup,
     )
 
     override fun method(): String = "sendContact"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -85,7 +83,7 @@ fun Contact.toRequest(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): SendContact = SendContact(
     chatId = chatId,
     contact = this,
@@ -96,5 +94,5 @@ fun Contact.toRequest(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

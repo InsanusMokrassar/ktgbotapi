@@ -11,8 +11,8 @@ data class GetUserProfilePhotos(
     @SerialName(offsetField)
     val offset: Int? = null,
     @SerialName(limitField)
-    val limit: Int? = null
-): SimpleRequest<UserProfilePhotos> {
+    val limit: Int? = null,
+) : SimpleRequest<UserProfilePhotos> {
     init {
         if (offset != null && offset < 0) {
             throw IllegalArgumentException("Offset for getting user profile photos must be positive")
@@ -23,6 +23,7 @@ data class GetUserProfilePhotos(
     }
 
     override fun method(): String = "getUserProfilePhotos"
+
     override val resultDeserializer: DeserializationStrategy<UserProfilePhotos>
         get() = UserProfilePhotos.serializer()
     override val requestSerializer: SerializationStrategy<*>

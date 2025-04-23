@@ -4,5 +4,5 @@ import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 
 class SupergroupChatCreated(
-    val migratedFrom: IdChatIdentifier?
-): SupergroupEvent
+    val migratedFrom: IdChatIdentifier?,
+) : SupergroupEvent

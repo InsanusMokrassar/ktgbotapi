@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.payments.abstracts.Amounted
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -36,7 +35,7 @@ sealed interface StarTransaction : Amounted {
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(sourceField)
-        override val partner: TransactionPartner
+        override val partner: TransactionPartner,
     ) : StarTransaction {
         @Transient
         override val source: TransactionPartner
@@ -56,7 +55,7 @@ sealed interface StarTransaction : Amounted {
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(receiverField)
-        override val partner: TransactionPartner
+        override val partner: TransactionPartner,
     ) : StarTransaction {
         @Transient
         override val source: TransactionPartner?
@@ -75,7 +74,7 @@ sealed interface StarTransaction : Amounted {
         override val date: TelegramDate,
         override val source: TransactionPartner?,
         override val receiver: TransactionPartner?,
-        val raw: JsonElement?
+        val raw: JsonElement?,
     ) : StarTransaction {
         override val partner: TransactionPartner
             get() = source ?: receiver ?: error("Unable to take partner from source or receiver. Raw value: $raw")
@@ -107,29 +106,34 @@ sealed interface StarTransaction : Amounted {
                     date = data.date,
                     source = data.source,
                     receiver = data.receiver,
-                    raw = json
+                    raw = json,
                 )
             }
             return when {
-                data.source != null -> Incoming(
-                    id = data.id,
-                    amount = data.amount,
-                    nanostarAmount = data.nanostarAmount,
-                    date = data.date,
-                    partner = data.source
-                )
-                data.receiver != null -> Outgoing(
-                    id = data.id,
-                    amount = data.amount,
-                    nanostarAmount = data.nanostarAmount,
-                    date = data.date,
-                    partner = data.receiver
-                )
+                data.source != null ->
+                    Incoming(
+                        id = data.id,
+                        amount = data.amount,
+                        nanostarAmount = data.nanostarAmount,
+                        date = data.date,
+                        partner = data.source,
+                    )
+                data.receiver != null ->
+                    Outgoing(
+                        id = data.id,
+                        amount = data.amount,
+                        nanostarAmount = data.nanostarAmount,
+                        date = data.date,
+                        partner = data.receiver,
+                    )
                 else -> unknown
             }
         }
 
-        override fun serialize(encoder: Encoder, value: StarTransaction) {
+        override fun serialize(
+            encoder: Encoder,
+            value: StarTransaction,
+        ) {
             if (value is Unknown && value.raw != null) {
                 JsonElement.serializer().serialize(encoder, value.raw)
                 return

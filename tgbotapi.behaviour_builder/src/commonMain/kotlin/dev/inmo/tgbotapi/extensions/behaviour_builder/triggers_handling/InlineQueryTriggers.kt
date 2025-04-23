@@ -14,7 +14,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any>? = ByUserInlineQueryMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.inlineQueryUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -37,9 +37,8 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, InlineQuery>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>,
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -59,9 +58,8 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in BaseInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BaseInlineQuery>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>,
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -81,5 +79,5 @@ suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in LocationInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, LocationInlineQuery>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>,
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)

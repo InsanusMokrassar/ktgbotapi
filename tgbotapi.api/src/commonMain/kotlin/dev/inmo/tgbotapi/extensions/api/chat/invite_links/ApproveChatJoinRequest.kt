@@ -11,32 +11,26 @@ import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatId: ChatIdentifier,
-    userId: UserId
+    userId: UserId,
 ): Boolean = execute(ApproveChatJoinRequest(chatId, userId))
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chat: PublicChat,
-    userId: UserId
+    userId: UserId,
 ): Boolean = approveChatJoinRequest(chat.id, userId)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatId: ChatIdentifier,
-    user: User
+    user: User,
 ): Boolean = approveChatJoinRequest(chatId, user.id)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chat: PublicChat,
-    user: User
+    user: User,
 ): Boolean = approveChatJoinRequest(chat.id, user.id)
 
-public suspend fun TelegramBot.approveChatJoinRequest(
-    chatJoinRequest: ChatJoinRequest
-): Boolean = approveChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
+public suspend fun TelegramBot.approveChatJoinRequest(chatJoinRequest: ChatJoinRequest): Boolean = approveChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
 
-public suspend fun TelegramBot.approve(
-    chatJoinRequest: ChatJoinRequest
-): Boolean = approveChatJoinRequest(chatJoinRequest)
+public suspend fun TelegramBot.approve(chatJoinRequest: ChatJoinRequest): Boolean = approveChatJoinRequest(chatJoinRequest)
 
-public suspend fun TelegramBot.approveChatJoinRequest(
-    chatJoinRequestUpdate: ChatJoinRequestUpdate
-): Boolean = approveChatJoinRequest(chatJoinRequestUpdate.data)
+public suspend fun TelegramBot.approveChatJoinRequest(chatJoinRequestUpdate: ChatJoinRequestUpdate): Boolean = approveChatJoinRequest(chatJoinRequestUpdate.data)

@@ -1,11 +1,10 @@
 package dev.inmo.tgbotapi.types.update.abstracts
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.types.updateIdField
 import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.decodeDataAndJson
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.utils.serializers.CallbackCustomizableDeserializationStrategy
 import kotlinx.serialization.*
@@ -26,7 +25,7 @@ interface Update {
 data class UnknownUpdate(
     override val updateId: UpdateId,
     override val data: JsonElement,
-    val throwable: Throwable? = null
+    val throwable: Throwable? = null,
 ) : Update {
     val rawJson: JsonElement
         get() = data
@@ -38,7 +37,10 @@ object UpdateSerializerWithoutSerialization : KSerializer<Update> {
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)
 
-    override fun serialize(encoder: Encoder, value: Update) = throw UnsupportedOperationException()
+    override fun serialize(
+        encoder: Encoder,
+        value: Update,
+    ) = throw UnsupportedOperationException()
 }
 
 /**
@@ -53,16 +55,16 @@ object UpdateDeserializationStrategy : CallbackCustomizableDeserializationStrate
     defaultDeserializeCallback = { _, jsonElement ->
         nonstrictJsonFormat.decodeFromJsonElement(
             RawUpdate.serializer(),
-            jsonElement!!
+            jsonElement!!,
         ).asUpdate(
-            jsonElement
+            jsonElement,
         )
     },
     fallbackDeserialization = { it, _, jsonElement ->
         UnknownUpdate(
             UpdateId((jsonElement as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
             jsonElement!!,
-            it
+            it,
         )
-    }
+    },
 )

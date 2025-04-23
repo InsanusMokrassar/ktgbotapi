@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.bot.multiserver
 
-import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
-import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
+import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import kotlinx.coroutines.*
@@ -27,7 +27,7 @@ class SimpleMultiServerRequestsExecutor(
     },
     private val onClose: () -> Unit = {
         bots.forEach(TelegramBot::close)
-    }
+    },
 ) : RequestsExecutor {
     override suspend fun <T : Any> execute(request: Request<T>): T {
         var currentBot = bots.botSelector(-1, null)
@@ -65,7 +65,7 @@ class SimpleMultiServerRequestsExecutor(
             noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
                 getOrElse(i + 1) { first() }
             },
-            noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+            noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
         ): SimpleMultiServerRequestsExecutor {
             val bots = keepers.map { telegramBot(it) { builder(it) } }
             return if (onClose == null) {
@@ -93,7 +93,7 @@ class SimpleMultiServerRequestsExecutor(
             noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
                 getOrElse(i + 1) { first() }
             },
-            noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+            noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
         ): SimpleMultiServerRequestsExecutor {
             val bots = tokens.map { telegramBot(it) { builder(it) } }
             return if (onClose == null) {
@@ -122,7 +122,7 @@ class SimpleMultiServerRequestsExecutor(
             noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
                 getOrElse(i + 1) { first() }
             },
-            noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+            noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
         ): SimpleMultiServerRequestsExecutor {
             val bots = tokens.map { telegramBot(it.first, it.second) { builder(it) } }
             return if (onClose == null) {
@@ -135,7 +135,6 @@ class SimpleMultiServerRequestsExecutor(
         }
     }
 }
-
 
 /**
  * Creates [SimpleMultiServerRequestsExecutor]
@@ -155,7 +154,7 @@ inline fun telegramBot(
     },
     noinline onClose: () -> Unit = {
         bots.forEach(TelegramBot::close)
-    }
+    },
 ): TelegramBot = SimpleMultiServerRequestsExecutor(bots, botSelector, onClose)
 
 /**
@@ -176,7 +175,7 @@ inline fun telegramBot(
     noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
         getOrElse(i + 1) { first() }
     },
-    noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+    noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
 ): TelegramBot = SimpleMultiServerRequestsExecutor(keepers, builder, botSelector, onClose)
 
 /**
@@ -197,7 +196,7 @@ inline fun telegramBot(
     noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
         getOrElse(i + 1) { first() }
     },
-    noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+    noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
 ): TelegramBot = SimpleMultiServerRequestsExecutor(tokens, builder, botSelector, onClose)
 
 /**
@@ -219,5 +218,5 @@ inline fun telegramBot(
     noinline botSelector: suspend List<TelegramBot>.(currentBotIndex: Int, t: Throwable?) -> TelegramBot = { i, _ ->
         getOrElse(i + 1) { first() }
     },
-    noinline onClose: ((List<TelegramBot>) -> Unit)? = null
+    noinline onClose: ((List<TelegramBot>) -> Unit)? = null,
 ): TelegramBot = SimpleMultiServerRequestsExecutor(tokens, builder, botSelector, onClose)

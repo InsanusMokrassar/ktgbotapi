@@ -20,7 +20,7 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-        jsonFormatter: Json
+        jsonFormatter: Json,
     ): T? = (request as? DownloadFileStream) ?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 

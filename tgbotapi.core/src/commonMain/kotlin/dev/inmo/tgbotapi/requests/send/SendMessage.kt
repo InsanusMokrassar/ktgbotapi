@@ -4,22 +4,21 @@ import dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
-internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendTextMessage(
     chatId: ChatIdentifier,
@@ -33,7 +32,7 @@ fun SendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendTextMessage(
     chatId = chatId,
     text = text,
@@ -47,7 +46,7 @@ fun SendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun SendTextMessage(
@@ -61,7 +60,7 @@ fun SendTextMessage(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ) = SendTextMessage(
     chatId = chatId,
     text = entities.makeString(),
@@ -75,7 +74,7 @@ fun SendTextMessage(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 @Serializable
@@ -105,12 +104,11 @@ data class SendTextMessage internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendContentMessageRequest<ContentMessage<TextContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<TextContent>>,
     TextableSendMessageRequest<ContentMessage<TextContent>>,
-    LinkPreviewOptionsContainer
-{
+    LinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
@@ -122,6 +120,7 @@ data class SendTextMessage internal constructor(
     }
 
     override fun method(): String = "sendMessage"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
         get() = TextContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

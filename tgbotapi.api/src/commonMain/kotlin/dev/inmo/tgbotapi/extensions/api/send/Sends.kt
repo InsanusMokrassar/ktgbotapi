@@ -37,7 +37,7 @@ import kotlin.jvm.JvmName
  */
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    action: BotAction
+    action: BotAction,
 ): Boolean = sendBotAction(chatId, action)
 
 /**
@@ -45,7 +45,7 @@ public suspend fun TelegramBot.send(
  */
 public suspend fun TelegramBot.send(
     chat: Chat,
-    action: BotAction
+    action: BotAction,
 ): Boolean = sendBotAction(chat, action)
 
 /**
@@ -70,7 +70,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation,
@@ -88,7 +88,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -113,7 +113,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AnimationContent> = sendAnimation(
     chat = chat,
     animation = animation,
@@ -131,7 +131,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -155,7 +155,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation,
@@ -172,7 +172,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -196,7 +196,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AnimationContent> = sendAnimation(
     chat = chat,
     animation = animation,
@@ -213,7 +213,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -234,7 +234,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio,
@@ -248,7 +248,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -269,7 +269,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AudioContent> = sendAudio(
     chat = chat,
     audio = audio,
@@ -283,7 +283,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -303,7 +303,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio,
@@ -316,7 +316,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -336,7 +336,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<AudioContent> = sendAudio(
     chat = chat,
     audio = audio,
@@ -349,7 +349,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -369,7 +369,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chatId = chatId,
     phoneNumber = phoneNumber,
@@ -382,7 +382,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -400,7 +400,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chatId = chatId,
     contact = contact,
@@ -411,7 +411,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -431,7 +431,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chat = chat,
     phoneNumber = phoneNumber,
@@ -444,7 +444,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -462,7 +462,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chat = chat,
     contact = contact,
@@ -473,7 +473,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -491,7 +491,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<DiceContent> = sendDice(
     chatId = chatId,
     animationType = animationType,
@@ -502,7 +502,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -520,7 +520,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<DiceContent> = sendDice(
     chat = chat,
     animationType = animationType,
@@ -531,7 +531,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -552,7 +552,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document,
@@ -566,7 +566,7 @@ public suspend fun TelegramBot.send(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -587,7 +587,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chat = chat,
     document = document,
@@ -601,7 +601,7 @@ public suspend fun TelegramBot.send(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -621,7 +621,7 @@ public suspend inline fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document,
@@ -634,7 +634,7 @@ public suspend inline fun TelegramBot.send(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -654,7 +654,7 @@ public suspend inline fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chat = chat,
     document = document,
@@ -667,7 +667,7 @@ public suspend inline fun TelegramBot.send(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -685,7 +685,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = sendGame(
     chatId = chatId,
     game = game,
@@ -696,7 +696,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -714,7 +714,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = sendGame(
     chat = chat,
     game = game,
@@ -725,7 +725,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -758,7 +758,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = sendInvoice(
     chatId = chatId,
     title = title,
@@ -784,7 +784,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -816,7 +816,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<InvoiceContent> = sendInvoice(
     user = user,
     title = title,
@@ -841,7 +841,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -860,7 +860,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chatId = chatId,
     latitude = latitude,
@@ -872,7 +872,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -890,7 +890,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chatId = chatId,
     location = location,
@@ -901,7 +901,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -920,7 +920,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chat = chat,
     latitude = latitude,
@@ -932,7 +932,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -950,7 +950,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chat = chat,
     location = location,
@@ -961,7 +961,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -981,7 +981,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     text = text,
@@ -994,7 +994,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1014,7 +1014,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     text = text,
@@ -1027,7 +1027,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1046,7 +1046,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = entities,
@@ -1058,7 +1058,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1077,7 +1077,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = send(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -1089,9 +1089,8 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -1109,7 +1108,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = send(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
@@ -1121,9 +1120,8 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * Will execute [sendTextMessage] request
@@ -1141,7 +1139,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = entities,
@@ -1153,7 +1151,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1172,7 +1170,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = send(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -1184,9 +1182,8 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -1204,7 +1201,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = send(
     chat = chat,
     entities = buildEntities(separator, builderBody),
@@ -1216,7 +1213,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1238,7 +1235,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photo = photo,
@@ -1253,7 +1250,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1275,7 +1272,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chat = chat,
     starCount = starCount,
@@ -1290,7 +1287,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1312,7 +1309,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chatId,
     starCount = starCount,
@@ -1327,7 +1324,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1348,7 +1345,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chat = chat,
     starCount = starCount,
@@ -1362,7 +1359,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1383,7 +1380,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chatId,
     starCount = starCount,
@@ -1397,7 +1394,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1419,7 +1416,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photo = photo,
@@ -1434,7 +1431,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1456,7 +1453,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photoSize = photoSize,
@@ -1471,7 +1468,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1493,7 +1490,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photoSize = photoSize,
@@ -1508,7 +1505,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1529,7 +1526,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photo = photo,
@@ -1543,7 +1540,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1564,7 +1561,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photo = photo,
@@ -1578,7 +1575,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1599,7 +1596,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photoSize = photoSize,
@@ -1613,7 +1610,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1634,7 +1631,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photoSize = photoSize,
@@ -1648,7 +1645,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1672,7 +1669,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     question = question,
@@ -1689,7 +1686,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1712,7 +1709,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -1728,7 +1725,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1753,7 +1750,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     question = question,
@@ -1770,7 +1767,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1794,7 +1791,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -1810,7 +1807,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1834,7 +1831,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     question = question,
@@ -1851,7 +1848,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1876,7 +1873,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     question = question,
@@ -1893,7 +1890,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1917,7 +1914,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
@@ -1933,7 +1930,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -1959,7 +1956,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
@@ -1978,7 +1975,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2004,7 +2001,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
@@ -2023,7 +2020,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2050,7 +2047,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
@@ -2069,7 +2066,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2096,7 +2093,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
@@ -2115,7 +2112,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2140,7 +2137,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -2158,7 +2155,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2183,7 +2180,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
@@ -2201,7 +2198,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2227,7 +2224,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -2245,7 +2242,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2271,7 +2268,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
@@ -2289,7 +2286,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2314,7 +2311,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
@@ -2332,7 +2329,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2357,7 +2354,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
@@ -2375,7 +2372,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2401,7 +2398,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
@@ -2419,7 +2416,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2445,7 +2442,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
@@ -2463,7 +2460,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2487,7 +2484,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -2504,7 +2501,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2528,7 +2525,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
@@ -2545,7 +2542,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2570,7 +2567,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
@@ -2587,7 +2584,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2612,7 +2609,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
@@ -2629,7 +2626,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2648,7 +2645,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
     sticker = sticker,
@@ -2660,7 +2657,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2679,7 +2676,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = sendSticker(
     chat = chat,
     sticker = sticker,
@@ -2691,9 +2688,8 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
-
 
 /**
  * Will execute [sendLiveLocation] request
@@ -2715,7 +2711,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId = chatId,
     latitude = latitude,
@@ -2731,7 +2727,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2753,7 +2749,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId = chatId,
     location = location,
@@ -2768,7 +2764,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2791,7 +2787,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chat = chat,
     latitude = latitude,
@@ -2807,7 +2803,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2829,7 +2825,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chat = chat,
     location = location,
@@ -2844,7 +2840,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2868,8 +2864,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     latitude = latitude,
@@ -2887,7 +2883,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2911,8 +2907,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chat = chat,
     latitude = latitude,
@@ -2930,7 +2926,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2953,8 +2949,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     location = location,
@@ -2971,7 +2967,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -2994,8 +2990,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chat = chat,
     location = location,
@@ -3012,7 +3008,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3029,8 +3025,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     venue = venue,
@@ -3041,7 +3037,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3058,8 +3054,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chat = chat,
     venue = venue,
@@ -3070,7 +3066,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3092,7 +3088,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video,
@@ -3107,7 +3103,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3129,7 +3125,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoContent> = sendVideo(
     chat = chat,
     video = video,
@@ -3144,7 +3140,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3165,7 +3161,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video,
@@ -3179,7 +3175,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3200,7 +3196,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoContent> = sendVideo(
     chat = chat,
     video = video,
@@ -3214,7 +3210,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3232,7 +3228,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chatId,
     videoNote = videoNote,
@@ -3243,7 +3239,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3260,8 +3256,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chat = chat,
     videoNote = videoNote,
@@ -3272,7 +3268,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3291,8 +3287,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice,
@@ -3305,7 +3301,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3324,8 +3320,8 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VoiceContent> = sendVoice(
     chat = chat,
     voice = voice,
@@ -3338,7 +3334,7 @@ public suspend fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3356,8 +3352,8 @@ public suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice,
@@ -3369,7 +3365,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3387,8 +3383,8 @@ public suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VoiceContent> = sendVoice(
     chat = chat,
     voice = voice,
@@ -3400,7 +3396,7 @@ public suspend inline fun TelegramBot.send(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -3417,7 +3413,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
@@ -3427,7 +3423,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3444,7 +3440,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
@@ -3454,7 +3450,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3471,7 +3467,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
@@ -3481,7 +3477,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3498,7 +3494,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
@@ -3508,7 +3504,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3524,7 +3520,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
@@ -3534,7 +3530,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3550,7 +3546,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
@@ -3560,7 +3556,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3576,7 +3572,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
@@ -3586,7 +3582,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3602,7 +3598,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
@@ -3612,7 +3608,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3628,7 +3624,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
@@ -3638,7 +3634,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3654,7 +3650,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
@@ -3664,7 +3660,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3680,7 +3676,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
@@ -3690,7 +3686,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3706,7 +3702,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
@@ -3716,7 +3712,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3732,7 +3728,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
@@ -3742,7 +3738,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3758,7 +3754,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
@@ -3768,7 +3764,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3784,7 +3780,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
@@ -3794,7 +3790,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )
 
 /**
@@ -3810,7 +3806,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    replyParameters: ReplyParameters? = null
+    replyParameters: ReplyParameters? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
@@ -3820,5 +3816,5 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = replyParameters
+    replyParameters = replyParameters,
 )

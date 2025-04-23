@@ -14,7 +14,7 @@ public suspend fun TelegramBot.copyMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = messageIds.chunked(copyMessagesLimit.last).flatMap {
     execute(
         CopyMessages(
@@ -24,8 +24,8 @@ public suspend fun TelegramBot.copyMessages(
             threadId = threadId,
             disableNotification = disableNotification,
             protectContent = protectContent,
-            removeCaption = removeCaption
-        )
+            removeCaption = removeCaption,
+        ),
     )
 }
 
@@ -36,7 +36,7 @@ public suspend fun TelegramBot.copyMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -44,7 +44,7 @@ public suspend fun TelegramBot.copyMessages(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 public suspend fun TelegramBot.copyMessages(
@@ -53,7 +53,7 @@ public suspend fun TelegramBot.copyMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
     copyMessages(
         toChatId = toChatId,
@@ -62,7 +62,7 @@ public suspend fun TelegramBot.copyMessages(
         threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
-        removeCaption = removeCaption
+        removeCaption = removeCaption,
     )
 }
 
@@ -73,14 +73,14 @@ public suspend fun TelegramBot.copyMessages(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messagesMetas = messages.map { it.metaInfo },
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 public suspend fun TelegramBot.copy(
@@ -90,7 +90,7 @@ public suspend fun TelegramBot.copy(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -98,7 +98,7 @@ public suspend fun TelegramBot.copy(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 public suspend fun TelegramBot.copy(
@@ -108,7 +108,7 @@ public suspend fun TelegramBot.copy(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
@@ -116,7 +116,7 @@ public suspend fun TelegramBot.copy(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 public suspend fun TelegramBot.copy(
@@ -125,14 +125,14 @@ public suspend fun TelegramBot.copy(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messagesMetas = messagesMetas,
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )
 
 @JvmName("copyWithMessages")
@@ -142,12 +142,12 @@ public suspend fun TelegramBot.copy(
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    removeCaption: Boolean = false
+    removeCaption: Boolean = false,
 ): List<MessageId> = copyMessages(
     toChatId = toChatId,
     messages = messages,
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    removeCaption = removeCaption
+    removeCaption = removeCaption,
 )

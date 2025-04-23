@@ -21,9 +21,10 @@ data class EditInlineMessageLiveLocation(
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditInlineMessage, EditReplyMessage, EditLocationMessage {
     override fun method(): String = editMessageLiveLocationMethod
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

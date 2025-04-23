@@ -10,8 +10,7 @@ import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVenue(
@@ -48,12 +47,11 @@ data class SendVenue(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendContentMessageRequest<ContentMessage<VenueContent>>,
     PositionedSendMessageRequest<ContentMessage<VenueContent>>,
     TitledSendMessageRequest<ContentMessage<VenueContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<VenueContent>>
-{
+    ReplyingMarkupSendMessageRequest<ContentMessage<VenueContent>> {
     constructor(
         chatId: ChatIdentifier,
         venue: Venue,
@@ -64,8 +62,8 @@ data class SendVenue(
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
-    ): this(
+        replyMarkup: KeyboardMarkup? = null,
+    ) : this(
         chatId = chatId,
         latitude = venue.location.latitude,
         longitude = venue.location.longitude,
@@ -82,10 +80,11 @@ data class SendVenue(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     override fun method(): String = "sendVenue"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -101,7 +100,7 @@ fun Venue.toRequest(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): SendVenue = SendVenue(
     chatId = chatId,
     venue = this,
@@ -112,5 +111,5 @@ fun Venue.toRequest(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

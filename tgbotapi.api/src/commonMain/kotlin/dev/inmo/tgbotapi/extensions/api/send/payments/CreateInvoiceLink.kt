@@ -24,7 +24,7 @@ public suspend fun TelegramBot.createInvoiceLink(
     requireShippingAddress: Boolean = false,
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
-    priceDependOnShipAddress: Boolean = false
+    priceDependOnShipAddress: Boolean = false,
 ): String = execute(
     CreateInvoiceLink(
         title = title,
@@ -43,8 +43,8 @@ public suspend fun TelegramBot.createInvoiceLink(
         requireShippingAddress = requireShippingAddress,
         shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
         shouldSendEmailToProvider = shouldSendEmailToProvider,
-        priceDependOnShipAddress = priceDependOnShipAddress
-    )
+        priceDependOnShipAddress = priceDependOnShipAddress,
+    ),
 )
 
 /**
@@ -66,7 +66,7 @@ public suspend fun TelegramBot.createInvoiceLink(
     requireShippingAddress: Boolean = false,
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
-    priceDependOnShipAddress: Boolean = false
+    priceDependOnShipAddress: Boolean = false,
 ): String = execute(
     CreateInvoiceLink(
         title = title,
@@ -86,6 +86,6 @@ public suspend fun TelegramBot.createInvoiceLink(
         requireShippingAddress = requireShippingAddress,
         shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
         shouldSendEmailToProvider = shouldSendEmailToProvider,
-        priceDependOnShipAddress = priceDependOnShipAddress
-    )
+        priceDependOnShipAddress = priceDependOnShipAddress,
+    ),
 )

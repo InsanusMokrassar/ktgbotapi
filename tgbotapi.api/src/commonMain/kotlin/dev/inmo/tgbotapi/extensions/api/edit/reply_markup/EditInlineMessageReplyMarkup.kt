@@ -11,5 +11,5 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  */
 public suspend fun TelegramBot.editMessageReplyMarkup(
     inlineMessageId: InlineMessageId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = execute(EditInlineMessageReplyMarkup(inlineMessageId, replyMarkup))

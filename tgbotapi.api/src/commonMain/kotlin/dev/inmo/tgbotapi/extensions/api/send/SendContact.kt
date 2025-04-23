@@ -25,7 +25,7 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = execute(
     SendContact(
         chatId = chatId,
@@ -39,8 +39,8 @@ public suspend fun TelegramBot.sendContact(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -57,7 +57,7 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = execute(
     SendContact(
         chatId = chatId,
@@ -69,8 +69,8 @@ public suspend fun TelegramBot.sendContact(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -89,7 +89,7 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chatId = chat.id,
     phoneNumber = phoneNumber,
@@ -102,7 +102,7 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -119,7 +119,7 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<ContactContent> = sendContact(
     chatId = chat.id,
     contact = contact,
@@ -130,5 +130,5 @@ public suspend fun TelegramBot.sendContact(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

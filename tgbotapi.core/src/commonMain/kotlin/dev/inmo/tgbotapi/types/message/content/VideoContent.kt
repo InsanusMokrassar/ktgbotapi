@@ -4,12 +4,12 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toTelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -19,7 +19,7 @@ data class VideoContent(
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,
     override val quote: TextQuote? = null,
-    override val showCaptionAboveMedia: Boolean = false
+    override val showCaptionAboveMedia: Boolean = false,
 ) : VisualMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -30,7 +30,7 @@ data class VideoContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<VideoContent>> = SendVideo(
         chatId = chatId,
         video = media.fileId,
@@ -51,7 +51,7 @@ data class VideoContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()

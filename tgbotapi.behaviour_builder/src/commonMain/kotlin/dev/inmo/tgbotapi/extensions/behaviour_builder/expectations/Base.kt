@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.micro_utils.coroutines.safelyWithResult
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.flatten
@@ -35,7 +34,7 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> List<T>
+    filter: suspend (Update) -> List<T>,
 ): Flow<T> {
     val flow = allUpdatesFlow.map {
         val result = runCatching {
@@ -82,7 +81,7 @@ suspend fun <T> BehaviourContext.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> List<T>
+    filter: suspend (Update) -> List<T>,
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger, filter)
 
 /**
@@ -102,7 +101,7 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
+    filter: suspend (Update) -> T?,
 ): T = expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger) {
     listOfNotNull(filter.invoke(it))
 }.first()
@@ -123,5 +122,5 @@ suspend fun <T> BehaviourContext.expectOne(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
+    filter: suspend (Update) -> T?,
 ) = flowsUpdatesFilter.expectOne(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger, filter)

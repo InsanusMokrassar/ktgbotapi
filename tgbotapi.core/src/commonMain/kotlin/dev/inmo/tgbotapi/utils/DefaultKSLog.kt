@@ -15,7 +15,7 @@ var DefaultKTgBotAPIKSLogSystemTag: String = "KTgBot"
 private inline fun CreateDefaultKSLogger(
     crossinline loggerTagGetter: () -> String,
     dropCancellationExceptions: Boolean = true,
-    noinline additionalLoggerMapper: (KSLog.() -> KSLog)? = null
+    noinline additionalLoggerMapper: (KSLog.() -> KSLog)? = null,
 ): KSLog {
     val filter: MessageFilter? = if (dropCancellationExceptions) {
         { ll, message, e ->
@@ -35,6 +35,7 @@ private inline fun CreateDefaultKSLogger(
         }
     }
 }
+
 /**
  * Default realization of [KSLog] which will be used everywhere where there is no some custom variant of [KSLog]
  *
@@ -43,7 +44,7 @@ private inline fun CreateDefaultKSLogger(
  *
  * @see SetDefaultKTgBotAPIKSLog
  */
-var DefaultKTgBotAPIKSLog: KSLog = CreateDefaultKSLogger({ DefaultKTgBotAPIKSLogSystemTag } )
+var DefaultKTgBotAPIKSLog: KSLog = CreateDefaultKSLogger({ DefaultKTgBotAPIKSLogSystemTag })
 
 /**
  * Setting [DefaultKTgBotAPIKSLog] with applying of [dropCancellationExceptions] and [additionalFilter] to it
@@ -54,7 +55,7 @@ var DefaultKTgBotAPIKSLog: KSLog = CreateDefaultKSLogger({ DefaultKTgBotAPIKSLog
  */
 fun SetDefaultKTgBotAPIKSLog(
     dropCancellationExceptions: Boolean = true,
-    additionalLoggerMapper: (KSLog.() -> KSLog)? = null
+    additionalLoggerMapper: (KSLog.() -> KSLog)? = null,
 ) {
     DefaultKTgBotAPIKSLog = CreateDefaultKSLogger({ DefaultKTgBotAPIKSLogSystemTag }, dropCancellationExceptions, additionalLoggerMapper)
 }

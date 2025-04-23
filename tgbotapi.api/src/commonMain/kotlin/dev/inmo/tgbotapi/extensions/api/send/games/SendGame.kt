@@ -24,7 +24,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = execute(
     SendGame(
         chatId = chatId,
@@ -36,8 +36,8 @@ public suspend fun TelegramBot.sendGame(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -54,7 +54,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = sendGame(
     chatId = chat.id,
     gameShortName = gameShortName,
@@ -65,7 +65,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -82,7 +82,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = sendGame(
     chatId = chatId,
     gameShortName = game.title,
@@ -93,7 +93,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -110,7 +110,7 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<GameContent> = sendGame(
     chatId = chat.id,
     gameShortName = game.title,
@@ -121,5 +121,5 @@ public suspend fun TelegramBot.sendGame(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

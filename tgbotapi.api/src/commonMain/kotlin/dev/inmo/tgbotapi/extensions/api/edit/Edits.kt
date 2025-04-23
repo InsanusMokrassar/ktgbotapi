@@ -15,8 +15,8 @@ import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -33,7 +33,7 @@ public suspend fun <T> TelegramBot.edit(
     parseMode: ParseMode? = null,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
     return editMessageCaption(message, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 }
@@ -47,7 +47,7 @@ public suspend fun <T> TelegramBot.edit(
     entities: List<TextSource>,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
     return editMessageCaption(message, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 }
@@ -66,7 +66,7 @@ public suspend fun TelegramBot.edit(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(chatId, messageId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, businessConnectionId, replyMarkup)
 
 /**
@@ -83,7 +83,7 @@ public suspend fun TelegramBot.edit(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(chat, messageId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, businessConnectionId, replyMarkup)
 
 /**
@@ -99,7 +99,7 @@ public suspend fun TelegramBot.edit(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(message, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, businessConnectionId, replyMarkup)
 
 /**
@@ -111,9 +111,13 @@ public suspend fun TelegramBot.edit(
     messageId: MessageId,
     location: LiveLocation,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(
-    chatId, messageId, location, businessConnectionId, replyMarkup
+    chatId,
+    messageId,
+    location,
+    businessConnectionId,
+    replyMarkup,
 )
 
 /**
@@ -125,7 +129,7 @@ public suspend fun TelegramBot.edit(
     messageId: MessageId,
     location: LiveLocation,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(chat, messageId, location, businessConnectionId, replyMarkup)
 
 /**
@@ -136,7 +140,7 @@ public suspend fun TelegramBot.edit(
     message: ContentMessage<LocationContent>,
     location: LiveLocation,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<LiveLocationContent> = editLiveLocation(message, location, businessConnectionId, replyMarkup)
 
 /**
@@ -148,7 +152,7 @@ public suspend fun TelegramBot.edit(
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup)
 
 /**
@@ -160,7 +164,7 @@ public suspend fun TelegramBot.edit(
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(chat, messageId, media, businessConnectionId, replyMarkup)
 
 /**
@@ -171,7 +175,7 @@ public suspend fun TelegramBot.edit(
     message: ContentMessage<MediaContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(message, media, businessConnectionId, replyMarkup)
 
 /**
@@ -182,7 +186,7 @@ public suspend fun TelegramBot.addMedia(
     message: ContentMessage<TextContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = addMessageMedia(message, media, businessConnectionId, replyMarkup)
 
 /**
@@ -193,7 +197,7 @@ public suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MessageContent> = editMessageReplyMarkup(chatId, messageId, businessConnectionId, replyMarkup)
 
 /**
@@ -204,7 +208,7 @@ public suspend fun TelegramBot.edit(
     chat: Chat,
     messageId: MessageId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MessageContent> = editMessageReplyMarkup(chat, messageId, businessConnectionId, replyMarkup)
 
 /**
@@ -214,7 +218,7 @@ public suspend fun TelegramBot.edit(
 public suspend fun TelegramBot.edit(
     message: AccessibleMessage,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MessageContent> = editMessageReplyMarkup(message, businessConnectionId, replyMarkup)
 
 /**
@@ -228,7 +232,7 @@ public suspend fun TelegramBot.edit(
     parseMode: ParseMode? = null,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<TextContent> = editMessageText(chatId, messageId, text, parseMode, businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -241,7 +245,7 @@ public suspend fun TelegramBot.edit(
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<TextContent> = editMessageText(chatId, messageId, entities, businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -255,8 +259,15 @@ public suspend fun TelegramBot.edit(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = edit(chatId, messageId, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)
+    builderBody: EntitiesBuilderBody,
+): ContentMessage<TextContent> = edit(
+    chatId,
+    messageId,
+    buildEntities(separator, builderBody),
+    businessConnectionId,
+    linkPreviewOptions,
+    replyMarkup,
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -269,8 +280,15 @@ public suspend fun TelegramBot.edit(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = edit(chatId, messageId, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)
+    builderBody: EntitiesBuilderBody,
+): ContentMessage<TextContent> = edit(
+    chatId,
+    messageId,
+    buildEntities(separator, builderBody),
+    businessConnectionId,
+    linkPreviewOptions,
+    replyMarkup,
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -282,8 +300,16 @@ public suspend fun TelegramBot.edit(
     parseMode: ParseMode? = null,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<TextContent> = edit(message.chat.id, message.messageId, text, parseMode, businessConnectionId, linkPreviewOptions, replyMarkup)
+    replyMarkup: InlineKeyboardMarkup? = null,
+): ContentMessage<TextContent> = edit(
+    message.chat.id,
+    message.messageId,
+    text,
+    parseMode,
+    businessConnectionId,
+    linkPreviewOptions,
+    replyMarkup,
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -294,7 +320,7 @@ public suspend fun TelegramBot.edit(
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<TextContent> = edit(message.chat.id, message.messageId, entities, businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -307,7 +333,7 @@ public suspend fun TelegramBot.edit(
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = edit(message, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -320,7 +346,7 @@ public suspend fun TelegramBot.edit(
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = edit(message, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -333,7 +359,7 @@ public suspend fun TelegramBot.editMessageText(
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = edit(message, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)
 
 /**
@@ -346,5 +372,5 @@ public suspend fun TelegramBot.editMessageText(
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): ContentMessage<TextContent> = edit(message, buildEntities(separator, builderBody), businessConnectionId, linkPreviewOptions, replyMarkup)

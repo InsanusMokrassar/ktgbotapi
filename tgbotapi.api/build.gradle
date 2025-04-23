@@ -3,6 +3,8 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
     id "com.google.devtools.ksp"
+
+    alias libs.plugins.ktlint
 }
 
 project.description = "API extensions with \"Telegram Bot API\"-like extensions for TelegramBot and RequestsExecutor"
@@ -27,5 +29,7 @@ kotlin {
 
 dependencies {
     add("kspCommonMainMetadata", libs.microutils.ksp.variations.generator)
+
+    ktlintRuleset project(":tgbotapi.linterRules")
 }
 

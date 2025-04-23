@@ -9,31 +9,27 @@ import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 /**
  * Creates [PayInlineKeyboardButton]
  */
-inline fun payInlineButton(
-    text: String
-) = PayInlineKeyboardButton(text)
+inline fun payInlineButton(text: String) = PayInlineKeyboardButton(text)
 
 /**
  * Creates [CallbackDataInlineKeyboardButton]
  */
 inline fun dataInlineButton(
     text: String,
-    data: String
+    data: String,
 ) = CallbackDataInlineKeyboardButton(text, data)
 
 /**
  * Creates [CallbackGameInlineKeyboardButton]
  */
-inline fun gameInlineButton(
-    text: String
-) = CallbackGameInlineKeyboardButton(text)
+inline fun gameInlineButton(text: String) = CallbackGameInlineKeyboardButton(text)
 
 /**
  * Creates [LoginURLInlineKeyboardButton]
  */
 inline fun loginInlineButton(
     text: String,
-    loginUrl: LoginURL
+    loginUrl: LoginURL,
 ) = LoginURLInlineKeyboardButton(text, loginUrl)
 
 /**
@@ -41,7 +37,7 @@ inline fun loginInlineButton(
  */
 inline fun copyTextButton(
     text: String,
-    data: CopyTextButtonData
+    data: CopyTextButtonData,
 ) = CopyTextButton(text, data)
 
 /**
@@ -49,7 +45,7 @@ inline fun copyTextButton(
  */
 inline fun copyTextButton(
     text: String,
-    data: String
+    data: String,
 ) = copyTextButton(text, CopyTextButtonData(data))
 
 /**
@@ -57,7 +53,7 @@ inline fun copyTextButton(
  */
 inline fun inlineQueryInCurrentChatInlineButton(
     text: String,
-    data: String
+    data: String,
 ) = SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data)
 
 /**
@@ -65,7 +61,7 @@ inline fun inlineQueryInCurrentChatInlineButton(
  */
 inline fun inlineQueryInCurrentChatInlineButton(
     text: String,
-    parameters: SwitchInlineQueryChosenChat
+    parameters: SwitchInlineQueryChosenChat,
 ) = SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters)
 
 /**
@@ -85,8 +81,8 @@ inline fun inlineQueryInCurrentChatInlineButton(
         allowUsers = allowUsers,
         allowBots = allowBots,
         allowGroups = allowGroups,
-        allowChannels = allowChannels
-    )
+        allowChannels = allowChannels,
+    ),
 )
 
 /**
@@ -102,7 +98,7 @@ inline fun inlineQueryInAnyCurrentChatInlineButton(
  */
 inline fun inlineQueryInlineButton(
     text: String,
-    data: String
+    data: String,
 ) = SwitchInlineQueryInlineKeyboardButton(text, data)
 
 /**
@@ -110,7 +106,7 @@ inline fun inlineQueryInlineButton(
  */
 inline fun urlInlineButton(
     text: String,
-    url: String
+    url: String,
 ) = URLInlineKeyboardButton(text, url)
 
 /**
@@ -118,7 +114,7 @@ inline fun urlInlineButton(
  */
 inline fun webAppInlineButton(
     text: String,
-    webApp: WebAppInfo
+    webApp: WebAppInfo,
 ) = WebAppInlineKeyboardButton(text, webApp)
 
 /**
@@ -126,5 +122,5 @@ inline fun webAppInlineButton(
  */
 inline fun webAppInlineButton(
     text: String,
-    url: String
+    url: String,
 ) = webAppInlineButton(text, WebAppInfo(url))

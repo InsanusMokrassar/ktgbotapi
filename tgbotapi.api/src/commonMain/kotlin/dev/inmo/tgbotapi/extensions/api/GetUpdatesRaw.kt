@@ -10,18 +10,24 @@ public suspend fun TelegramBot.getRawUpdates(
     offset: UpdateId? = null,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
-    allowed_updates: List<String>? = ALL_UPDATES_LIST
+    allowed_updates: List<String>? = ALL_UPDATES_LIST,
 ): JsonArray = execute(
     GetUpdatesRaw(
-        offset, limit, timeout, allowed_updates
-    )
+        offset,
+        limit,
+        timeout,
+        allowed_updates,
+    ),
 )
 
 public suspend fun TelegramBot.getRawUpdates(
     lastUpdate: Update,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
-    allowed_updates: List<String>? = ALL_UPDATES_LIST
+    allowed_updates: List<String>? = ALL_UPDATES_LIST,
 ): JsonArray = getRawUpdates(
-    lastUpdate.updateId + 1, limit, timeout, allowed_updates
+    lastUpdate.updateId + 1,
+    limit,
+    timeout,
+    allowed_updates,
 )

@@ -5,7 +5,8 @@ package dev.inmo.tgbotapi.webapps
 
 import kotlin.collections.Set
 
-private val values: Set<EventType> = setOf(EventType.EmojiStatusAccessRequested,
+private val values: Set<EventType> = setOf(
+    EventType.EmojiStatusAccessRequested,
     EventType.AccelerometerChanged,
     EventType.DeviceOrientationStarted,
     EventType.EmojiStatusFailed,
@@ -48,6 +49,7 @@ private val values: Set<EventType> = setOf(EventType.EmojiStatusAccessRequested,
     EventType.InvoiceClosed,
     EventType.GyroscopeStarted,
     EventType.GyroscopeChanged,
-    EventType.DeviceOrientationChanged)
+    EventType.DeviceOrientationChanged,
+)
 
 public fun EventType.Companion.values(): Set<EventType> = values

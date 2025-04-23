@@ -4,12 +4,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.inlineQueryResultVideoType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.MimeType
 import dev.inmo.tgbotapi.utils.extensions.makeString
@@ -30,7 +30,7 @@ fun InlineQueryResultVideoImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultVideoImpl(
     id = id,
     url = url,
@@ -46,7 +46,7 @@ fun InlineQueryResultVideoImpl(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultVideoImpl(
@@ -62,7 +62,7 @@ fun InlineQueryResultVideoImpl(
     entities: List<TextSource>,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultVideoImpl(
     id = id,
     url = url,
@@ -78,7 +78,7 @@ fun InlineQueryResultVideoImpl(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 @Serializable
@@ -112,7 +112,7 @@ data class InlineQueryResultVideoImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultVideo {
     override val type: String = inlineQueryResultVideoType
     override val textSources: List<TextSource>? by lazy {

@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.chat.forum
 
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.builtins.serializer
 

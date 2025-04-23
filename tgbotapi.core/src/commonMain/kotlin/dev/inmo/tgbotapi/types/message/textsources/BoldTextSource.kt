@@ -9,9 +9,11 @@ import kotlinx.serialization.Serializable
  * @see boldTextSource
  */
 @Serializable
-data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
+data class BoldTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
     override val source: String,
-    override val subsources: TextSourcesList
+    override val subsources: TextSourcesList,
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.boldMarkdown() }
     override val markdownV2: String by lazy { boldMarkdownV2() }
@@ -19,5 +21,7 @@ data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
 }
 
 inline fun boldTextSource(parts: TextSourcesList) = BoldTextSource(parts.makeString(), parts)
+
 inline fun boldTextSource(vararg parts: TextSource) = boldTextSource(parts.toList())
+
 inline fun boldTextSource(text: String) = boldTextSource(regularTextSource(text))

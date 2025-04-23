@@ -7,9 +7,9 @@ import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
 import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
+import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
-import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
@@ -19,7 +19,6 @@ import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlin.coroutines.coroutineContext
-
 
 /**
  * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithFSM].
@@ -56,12 +55,12 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
-    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>,
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
     testServer,
-    builder
+    builder,
 ).apply {
     buildBehaviourWithFSMAndStartLongPolling(
         upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
@@ -77,7 +76,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
         subcontextInitialAction = subcontextInitialAction,
         stateInitialAction = stateInitialAction,
-        block = block
+        block = block,
     )
 }
 
@@ -113,28 +112,29 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
-    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>,
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
         testServer,
-        builder
+        builder,
     ).let {
-        it to it.buildBehaviourWithFSMAndStartLongPolling (
-            scope = scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler = defaultExceptionsHandler,
-            statesManager = statesManager,
-            presetHandlers = presetHandlers,
-            fallbackHandler = fallbackHandler,
-            onStateHandlingErrorHandler = onStateHandlingErrorHandler,
-            timeoutSeconds = timeoutSeconds,
-            autoDisableWebhooks = autoDisableWebhooks,
-            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-            subcontextInitialAction = subcontextInitialAction,
-            stateInitialAction = stateInitialAction,
-            block = block
-        )
+        it to
+            it.buildBehaviourWithFSMAndStartLongPolling(
+                scope = scope ?: CoroutineScope(coroutineContext),
+                defaultExceptionsHandler = defaultExceptionsHandler,
+                statesManager = statesManager,
+                presetHandlers = presetHandlers,
+                fallbackHandler = fallbackHandler,
+                onStateHandlingErrorHandler = onStateHandlingErrorHandler,
+                timeoutSeconds = timeoutSeconds,
+                autoDisableWebhooks = autoDisableWebhooks,
+                autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+                mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+                subcontextInitialAction = subcontextInitialAction,
+                stateInitialAction = stateInitialAction,
+                block = block,
+            )
     }
 }

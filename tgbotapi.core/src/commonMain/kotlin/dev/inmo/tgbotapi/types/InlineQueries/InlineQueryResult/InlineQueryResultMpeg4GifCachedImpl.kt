@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCached
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.inlineQueryResultMpeg4GifType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.SerialName
@@ -24,7 +24,7 @@ fun InlineQueryResultMpeg4GifCachedImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultMpeg4GifCachedImpl(
     id = id,
     fileId = fileId,
@@ -34,7 +34,7 @@ fun InlineQueryResultMpeg4GifCachedImpl(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultMpeg4GifCachedImpl(
@@ -44,7 +44,7 @@ fun InlineQueryResultMpeg4GifCachedImpl(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultMpeg4GifCachedImpl(
     id = id,
     fileId = fileId,
@@ -54,7 +54,7 @@ fun InlineQueryResultMpeg4GifCachedImpl(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 @Serializable
@@ -76,7 +76,7 @@ data class InlineQueryResultMpeg4GifCachedImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultMpeg4GifCached {
     override val type: String = inlineQueryResultMpeg4GifType
     override val textSources: TextSourcesList? by lazy {

@@ -7,7 +7,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
 private val updatesListSerializer = ListSerializer(
-    UpdateSerializerWithoutSerialization
+    UpdateSerializerWithoutSerialization,
 )
 
 /**
@@ -21,11 +21,11 @@ private val updatesListSerializer = ListSerializer(
  */
 @Serializable
 data class GetUpdates(
-    override val offset: UpdateId? = null,// set `last update id + 1` to receive next part of updates
+    override val offset: UpdateId? = null, // set `last update id + 1` to receive next part of updates
     override val limit: Int = getUpdatesLimit.last,
     override val timeout: Seconds? = null,
-    override val allowed_updates: List<String>? = ALL_UPDATES_LIST
-): GetUpdatesRequest<List<Update>> {
+    override val allowed_updates: List<String>? = ALL_UPDATES_LIST,
+) : GetUpdatesRequest<List<Update>> {
     override val resultDeserializer: DeserializationStrategy<List<Update>>
         get() = updatesListSerializer
 

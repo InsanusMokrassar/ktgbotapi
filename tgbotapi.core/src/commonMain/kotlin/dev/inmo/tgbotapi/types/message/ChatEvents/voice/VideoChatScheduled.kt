@@ -9,5 +9,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class VideoChatScheduled(
     @SerialName(startDateField)
-    val startDate: TelegramDate
+    val startDate: TelegramDate,
 ) : VideoChatEvent

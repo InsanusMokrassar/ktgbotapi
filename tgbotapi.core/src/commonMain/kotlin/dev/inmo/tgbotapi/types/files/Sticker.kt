@@ -45,7 +45,11 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile, 
         get() = stickerFormat is StickerFormat.Video
     val type: StickerType
 
-    fun asInputSticker(emojis: List<String> = emoji ?.let { listOf(it) } ?: error("Unable to create input sticker without emojis")): InputSticker
+    fun asInputSticker(
+        emojis: List<String> = emoji ?.let {
+            listOf(it)
+        } ?: error("Unable to create input sticker without emojis"),
+    ): InputSticker
 }
 
 @OptIn(RiskFeature::class)
@@ -57,159 +61,174 @@ object StickerSerializer : KSerializer<Sticker> {
         val surrogate = nonstrictJsonFormat.decodeFromJsonElement(StickerSurrogate.serializer(), json)
 
         return when (surrogate.type) {
-            StickerType.Regular -> when {
-                surrogate.is_animated == true -> RegularAnimatedSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.premium_animation,
-                    surrogate.file_size
-                )
-                surrogate.is_video == true -> RegularVideoSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.premium_animation,
-                    surrogate.file_size
-                )
-                else -> RegularSimpleSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.premium_animation,
-                    surrogate.file_size
-                )
-            }
-            StickerType.Mask -> when {
-                surrogate.is_animated == true -> MaskAnimatedSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.mask_position,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size
-                )
-                surrogate.is_video == true -> MaskVideoSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.mask_position,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size
-                )
-                else -> MaskSimpleSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.mask_position,
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size
-                )
-            }
-            StickerType.CustomEmoji -> when {
-                surrogate.is_animated == true -> CustomEmojiAnimatedSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size,
-                    surrogate.needs_repainting
-                )
-                surrogate.is_video == true -> CustomEmojiVideoSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size,
-                    surrogate.needs_repainting
-                )
-                else -> CustomEmojiSimpleSticker(
-                    surrogate.file_id,
-                    surrogate.file_unique_id,
-                    surrogate.width,
-                    surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
-                    surrogate.thumbnail,
-                    surrogate.emoji,
-                    surrogate.set_name,
-                    surrogate.file_size,
-                    surrogate.needs_repainting
-                )
-            }
-            is StickerType.Unknown -> UnknownSticker(
-                surrogate.file_id,
-                surrogate.file_unique_id,
-                surrogate.width,
-                surrogate.height,
-                surrogate.thumbnail,
-                surrogate.emoji,
-                surrogate.set_name,
-                surrogate.file_size,
+            StickerType.Regular ->
                 when {
-                    surrogate.is_animated == true -> StickerFormat.Animated
-                    surrogate.is_video == true -> StickerFormat.Video
-                    else -> StickerFormat.Static
-                },
-                surrogate.type,
-                json
+                    surrogate.is_animated == true ->
+                        RegularAnimatedSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.premium_animation,
+                            surrogate.file_size,
+                        )
+                    surrogate.is_video == true ->
+                        RegularVideoSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.premium_animation,
+                            surrogate.file_size,
+                        )
+                    else ->
+                        RegularSimpleSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.premium_animation,
+                            surrogate.file_size,
+                        )
+                }
+            StickerType.Mask ->
+                when {
+                    surrogate.is_animated == true ->
+                        MaskAnimatedSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.mask_position,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                        )
+                    surrogate.is_video == true ->
+                        MaskVideoSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.mask_position,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                        )
+                    else ->
+                        MaskSimpleSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.mask_position,
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                        )
+                }
+            StickerType.CustomEmoji ->
+                when {
+                    surrogate.is_animated == true ->
+                        CustomEmojiAnimatedSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                            surrogate.needs_repainting,
+                        )
+                    surrogate.is_video == true ->
+                        CustomEmojiVideoSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                            surrogate.needs_repainting,
+                        )
+                    else ->
+                        CustomEmojiSimpleSticker(
+                            surrogate.file_id,
+                            surrogate.file_unique_id,
+                            surrogate.width,
+                            surrogate.height,
+                            surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
+                            surrogate.thumbnail,
+                            surrogate.emoji,
+                            surrogate.set_name,
+                            surrogate.file_size,
+                            surrogate.needs_repainting,
+                        )
+                }
+            is StickerType.Unknown ->
+                UnknownSticker(
+                    surrogate.file_id,
+                    surrogate.file_unique_id,
+                    surrogate.width,
+                    surrogate.height,
+                    surrogate.thumbnail,
+                    surrogate.emoji,
+                    surrogate.set_name,
+                    surrogate.file_size,
+                    when {
+                        surrogate.is_animated == true -> StickerFormat.Animated
+                        surrogate.is_video == true -> StickerFormat.Video
+                        else -> StickerFormat.Static
+                    },
+                    surrogate.type,
+                    json,
+                )
+        }
+    }
+
+    override fun serialize(
+        encoder: Encoder,
+        value: Sticker,
+    ) {
+        with(value) {
+            StickerSurrogate.serializer().serialize(
+                encoder,
+                StickerSurrogate(
+                    fileId,
+                    fileUniqueId,
+                    type,
+                    width,
+                    height,
+                    isAnimated,
+                    isVideo,
+                    thumbnail,
+                    emoji,
+                    stickerSetName,
+                    (this as? RegularSticker) ?.premiumAnimationFile,
+                    (this as? MaskSticker) ?.maskPosition,
+                    (this as? CustomEmojiSticker) ?.customEmojiId,
+                    fileSize,
+                    (this as? CustomEmojiSticker) ?.needsRepainting ?: false,
+                ),
             )
         }
     }
-
-    override fun serialize(encoder: Encoder, value: Sticker) {
-        with(value) {
-           StickerSurrogate.serializer().serialize(
-               encoder,
-               StickerSurrogate(
-                   fileId,
-                   fileUniqueId,
-                   type,
-                   width,
-                   height,
-                   isAnimated,
-                   isVideo,
-                   thumbnail,
-                   emoji,
-                   stickerSetName,
-                   (this as? RegularSticker) ?.premiumAnimationFile,
-                   (this as? MaskSticker) ?.maskPosition,
-                   (this as? CustomEmojiSticker) ?.customEmojiId,
-                   fileSize,
-                   (this as? CustomEmojiSticker) ?.needsRepainting ?: false
-               )
-           )
-        }
-    }
-
 }
 
 @Serializable
@@ -220,6 +239,7 @@ sealed interface VideoSticker : Sticker {
     override val stickerFormat: StickerFormat
         get() = StickerFormat.Video
 }
+
 @Serializable
 sealed interface AnimatedSticker : Sticker {
     override val isAnimated: Boolean
@@ -240,7 +260,7 @@ sealed interface RegularSticker : Sticker {
         fileId,
         stickerFormat,
         emojis,
-        emptyList()
+        emptyList(),
     )
 }
 
@@ -268,6 +288,7 @@ data class RegularSimpleSticker(
     @SerialName(stickerFormatField)
     @EncodeDefault
     override val stickerFormat: StickerFormat = StickerFormat.Static
+
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
     @EncodeDefault
@@ -302,6 +323,7 @@ data class RegularAnimatedSticker(
     override val type: StickerType.Regular
         get() = StickerType.Regular
 }
+
 @Serializable
 data class RegularVideoSticker(
     @SerialName(fileIdField)
@@ -330,7 +352,6 @@ data class RegularVideoSticker(
         get() = StickerType.Regular
 }
 
-
 @Serializable
 sealed interface MaskSticker : Sticker {
     val maskPosition: MaskPosition?
@@ -342,9 +363,10 @@ sealed interface MaskSticker : Sticker {
         fileId,
         stickerFormat,
         emojis,
-        maskPosition
+        maskPosition,
     )
 }
+
 @Serializable
 data class MaskSimpleSticker(
     @SerialName(fileIdField)
@@ -376,6 +398,7 @@ data class MaskSimpleSticker(
     override val type: StickerType.Mask
         get() = StickerType.Mask
 }
+
 @Serializable
 data class MaskAnimatedSticker(
     @SerialName(fileIdField)
@@ -403,6 +426,7 @@ data class MaskAnimatedSticker(
     override val type: StickerType.Mask
         get() = StickerType.Mask
 }
+
 @Serializable
 data class MaskVideoSticker(
     @SerialName(fileIdField)
@@ -443,7 +467,7 @@ sealed interface CustomEmojiSticker : Sticker {
         fileId,
         stickerFormat,
         emojis,
-        emptyList()
+        emptyList(),
     )
 }
 
@@ -468,7 +492,7 @@ data class CustomEmojiSimpleSticker(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
     @SerialName(needsRepaintingField)
-    override val needsRepainting: Boolean = false
+    override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker {
     @SerialName(stickerFormatField)
     @EncodeDefault
@@ -480,6 +504,7 @@ data class CustomEmojiSimpleSticker(
     override val type: StickerType.CustomEmoji
         get() = StickerType.CustomEmoji
 }
+
 @Serializable
 data class CustomEmojiAnimatedSticker(
     @SerialName(fileIdField)
@@ -509,6 +534,7 @@ data class CustomEmojiAnimatedSticker(
     override val type: StickerType.CustomEmoji
         get() = StickerType.CustomEmoji
 }
+
 @Serializable
 data class CustomEmojiVideoSticker(
     @SerialName(fileIdField)
@@ -562,12 +588,12 @@ data class UnknownSticker(
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
     override val type: StickerType = StickerType.Regular,
-    val raw: JsonElement
+    val raw: JsonElement,
 ) : Sticker {
     override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
         fileId,
         stickerFormat,
         emojis,
-        emptyList()
+        emptyList(),
     )
 }

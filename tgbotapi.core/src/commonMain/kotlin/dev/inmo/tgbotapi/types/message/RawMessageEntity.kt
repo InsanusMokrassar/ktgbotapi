@@ -15,7 +15,7 @@ data class RawMessageEntity(
     val url: String? = null,
     val user: User? = null,
     val language: String? = null,
-    val custom_emoji_id: CustomEmojiId? = null
+    val custom_emoji_id: CustomEmojiId? = null,
 ) {
     internal val range by lazy {
         offset until (offset + length)
@@ -51,7 +51,7 @@ data class RawMessageEntity(
 @Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
 fun RawMessageEntity.asTextSource(
     source: String,
-    subParts: List<Pair<Int, TextSource>>
+    subParts: List<Pair<Int, TextSource>>,
 ): TextSource {
     val sourceSubstring: String = source.substring(range)
     val subPartsWithRegulars by lazy {
@@ -71,19 +71,26 @@ fun RawMessageEntity.asTextSource(
         "italic" -> ItalicTextSource(sourceSubstring, subPartsWithRegulars)
         "code" -> CodeTextSource(sourceSubstring)
         "pre" -> PreTextSource(sourceSubstring, language)
-        "text_link" -> TextLinkTextSource(
-            sourceSubstring,
-            url ?: throw IllegalStateException("URL must not be null for text link")
-        )
-        "text_mention" -> TextMentionTextSource(
-            sourceSubstring,
-            user ?: throw IllegalStateException("User must not be null for text mention"),
-            subPartsWithRegulars
-        )
+        "text_link" ->
+            TextLinkTextSource(
+                sourceSubstring,
+                url ?: throw IllegalStateException("URL must not be null for text link"),
+            )
+        "text_mention" ->
+            TextMentionTextSource(
+                sourceSubstring,
+                user ?: throw IllegalStateException("User must not be null for text mention"),
+                subPartsWithRegulars,
+            )
         "underline" -> UnderlineTextSource(sourceSubstring, subPartsWithRegulars)
         "strikethrough" -> StrikethroughTextSource(sourceSubstring, subPartsWithRegulars)
         "spoiler" -> SpoilerTextSource(sourceSubstring, subPartsWithRegulars)
-        "custom_emoji" -> CustomEmojiTextSource(sourceSubstring, custom_emoji_id ?: error("For custom emoji custom_emoji_id should exists"), subPartsWithRegulars)
+        "custom_emoji" ->
+            CustomEmojiTextSource(
+                sourceSubstring,
+                custom_emoji_id ?: error("For custom emoji custom_emoji_id should exists"),
+                subPartsWithRegulars,
+            )
         else -> RegularTextSource(sourceSubstring)
     }
 }
@@ -115,7 +122,7 @@ internal fun List<Pair<Int, TextSource>>.fillWithRegulars(source: String): TextS
 
 private fun createTextSources(
     originalFullString: String,
-    entities: RawMessageEntities
+    entities: RawMessageEntities,
 ): List<Pair<Int, TextSource>> {
     val mutableEntities = entities.toMutableList().apply {
         sortBy { it.priority } // sorting to fix potential issues in source sorting of entities
@@ -155,9 +162,9 @@ private fun createTextSources(
                         subentities.add(it.copy(length = firstLength))
                         it.copy(
                             offset = borderIndex,
-                            length = it.length - firstLength
+                            length = it.length - firstLength,
                         )
-                    }
+                    },
                 )
             }
             createTextSources(originalFullString, subentities)
@@ -165,10 +172,11 @@ private fun createTextSources(
             emptyList()
         }
         resultList.add(
-            parent.offset to parent.asTextSource(
-                originalFullString,
-                subtextSources
-            )
+            parent.offset to
+                parent.asTextSource(
+                    originalFullString,
+                    subtextSources,
+                ),
         )
     }
 
@@ -201,21 +209,21 @@ fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
             is SpoilerTextSource -> RawMessageEntity("spoiler", offset, length)
             is CustomEmojiTextSource -> RawMessageEntity("custom_emoji", offset, length, custom_emoji_id = customEmojiId)
             is RegularTextSource -> null
+        },
+    ) +
+        if (this is MultilevelTextSource) {
+            subsources.toRawMessageEntities(offset)
+        } else {
+            emptyList()
         }
-    ) + if (this is MultilevelTextSource) {
-        subsources.toRawMessageEntities(offset)
-    } else {
-        emptyList()
-    }
 }
-
 
 @Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
 fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
-            i += it.maxByOrNull { it.length }?.length ?: textSource.source.length
+            i += it.maxByOrNull { it.length } ?.length ?: textSource.source.length
         }
     }
 }
@@ -224,8 +232,7 @@ fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEnt
 fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
 @Warning("This thing is subject of changes. Library do not guarantee stability of this extension")
-fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
-    createTextSources(sourceString, this).fillWithRegulars(sourceString)
+fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList = createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
 @Warning("This thing is subject of changes. Library do not guarantee stability of this typealias")
 typealias RawMessageEntities = List<RawMessageEntity>

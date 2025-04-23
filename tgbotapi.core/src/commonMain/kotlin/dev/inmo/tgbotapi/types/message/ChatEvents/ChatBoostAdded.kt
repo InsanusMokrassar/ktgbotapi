@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ChatBoostAdded(
     @SerialName(boostCountField)
-    val count: Int
+    val count: Int,
 ) : PublicChatEvent

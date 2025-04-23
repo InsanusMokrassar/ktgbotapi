@@ -28,7 +28,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = execute(
     SendVideoNote(
         chatId = chatId,
@@ -43,8 +43,8 @@ public suspend fun TelegramBot.sendVideoNote(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -61,7 +61,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chatId,
     videoNote = videoNote.fileId,
@@ -75,7 +75,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -95,7 +95,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chat.id,
     videoNote = videoNote,
@@ -109,7 +109,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -126,7 +126,7 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chat.id,
     videoNote = videoNote,
@@ -137,5 +137,5 @@ public suspend fun TelegramBot.sendVideoNote(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 
 public suspend fun TelegramBot.setChatPhoto(
     chatId: ChatIdentifier,
-    photo: MultipartFile
+    photo: MultipartFile,
 ): Boolean = execute(SetChatPhoto(chatId, photo))
 
 public suspend fun TelegramBot.setChatPhoto(
     chat: PublicChat,
-    photo: MultipartFile
+    photo: MultipartFile,
 ): Boolean = setChatPhoto(chat.id, photo)

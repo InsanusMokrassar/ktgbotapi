@@ -11,5 +11,5 @@ data class LabeledPrice(
     @SerialName(labelField)
     val label: String,
     @SerialName(amountField)
-    override val amount: Long
+    override val amount: Long,
 ) : Amounted

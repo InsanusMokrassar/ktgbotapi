@@ -27,7 +27,7 @@ internal suspend fun <BC : BehaviourContext> BC.commandUncounted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
 ): Job = onText(
     CommonMessageFilter<TextContent> { message ->
         val content = message.content
@@ -37,16 +37,17 @@ internal suspend fun <BC : BehaviourContext> BC.commandUncounted(
         } else {
             true
         }
-        sizeRequirement && textSources.any {
-            commandRegex.matches(it.botCommandTextSourceOrNull() ?.command ?: return@any false)
-        }
+        sizeRequirement &&
+            textSources.any {
+                commandRegex.matches(it.botCommandTextSourceOrNull() ?.command ?: return@any false)
+            }
     }.let {
         initialFilter ?.times(it) ?: it
     },
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 suspend fun <BC : BehaviourContext> BC.command(
@@ -56,7 +57,7 @@ suspend fun <BC : BehaviourContext> BC.command(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
 ): Job = runCatchingSafely {
     commandUncounted(
         commandRegex,
@@ -65,7 +66,7 @@ suspend fun <BC : BehaviourContext> BC.command(
         subcontextUpdatesFilter,
         markerFactory,
         additionalSubcontextInitialAction,
-        scenarioReceiver
+        scenarioReceiver,
     )
 }.onFailure {
     triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
@@ -92,8 +93,16 @@ suspend fun <BC : BehaviourContext> BC.command(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+) = command(
+    command.toRegex(),
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -107,8 +116,16 @@ suspend fun <BC : BehaviourContext> BC.command(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-) = command(botCommand.command, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+) = command(
+    botCommand.command,
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -122,8 +139,16 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = command(commandRegex, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+): Job = command(
+    commandRegex,
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -137,8 +162,16 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+): Job = onCommand(
+    command.toRegex(),
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -152,8 +185,16 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = onCommand(botCommand.command, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>,
+): Job = onCommand(
+    botCommand.command,
+    requireOnlyCommandInMessage,
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
@@ -167,13 +208,13 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ) = command(
     commandRegex,
     requireOnlyCommandInMessage = false,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
-    markerFactory = markerFactory
+    markerFactory = markerFactory,
 ) {
     val args = it.parseCommandsWithArgs(argsSeparator = argsSeparator).let { commandsWithArgs ->
         val key = commandsWithArgs.keys.firstOrNull { it.matches(commandRegex) } ?: return@let null
@@ -194,14 +235,14 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ) = commandWithArgs(
     command.toRegex(),
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -216,14 +257,14 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ) = commandWithArgs(
     botCommand.command,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -239,13 +280,13 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = command(
     commandRegex,
     requireOnlyCommandInMessage = false,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
-    markerFactory = markerFactory
+    markerFactory = markerFactory,
 ) {
     val args = it.parseCommandsWithNamedArgs(argsSeparator = argsSeparator, nameArgSeparator = nameArgSeparator).let { commandsWithArgs ->
         val key = commandsWithArgs.keys.firstOrNull { it.matches(commandRegex) } ?: return@let null
@@ -267,7 +308,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = commandWithNamedArgs(
     command.toRegex(),
     initialFilter = initialFilter,
@@ -275,7 +316,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
     nameArgSeparator = nameArgSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -291,7 +332,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = commandWithNamedArgs(
     botCommand.command,
     initialFilter = initialFilter,
@@ -299,7 +340,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
     nameArgSeparator = nameArgSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -314,14 +355,14 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ): Job = commandWithArgs(
     commandRegex = commandRegex,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -336,14 +377,14 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ): Job = onCommandWithArgs(
     commandRegex = command.toRegex(),
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -358,14 +399,14 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>,
 ): Job = onCommandWithArgs(
     command = botCommand.command,
     initialFilter = initialFilter,
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -381,7 +422,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = commandWithNamedArgs(
     commandRegex,
     initialFilter = initialFilter,
@@ -405,7 +446,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = onCommandWithNamedArgs(
     command.toRegex(),
     initialFilter = initialFilter,
@@ -413,7 +454,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
     nameArgSeparator = nameArgSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )
 
 /**
@@ -429,7 +470,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, List<Pair<String, String>>>,
 ) = onCommandWithNamedArgs(
     botCommand.command,
     initialFilter = initialFilter,
@@ -437,5 +478,5 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     markerFactory = markerFactory,
     argsSeparator = argsSeparator,
     nameArgSeparator = nameArgSeparator,
-    scenarioReceiver = scenarioReceiver
+    scenarioReceiver = scenarioReceiver,
 )

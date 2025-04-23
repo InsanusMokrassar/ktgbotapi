@@ -11,5 +11,5 @@ data class BaseChosenInlineResult(
     @SerialName(fromField)
     override val from: User,
     override val inlineMessageId: InlineMessageId?,
-    override val query: String
+    override val query: String,
 ) : ChosenInlineResult

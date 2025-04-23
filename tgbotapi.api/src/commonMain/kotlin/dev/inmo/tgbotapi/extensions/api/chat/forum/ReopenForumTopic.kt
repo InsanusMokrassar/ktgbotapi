@@ -9,20 +9,20 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.reopenForumTopic(
     chatId: ChatIdentifier,
-    messageThreadId: MessageThreadId
+    messageThreadId: MessageThreadId,
 ): Boolean = execute(
     ReopenForumTopic(
         chatId,
-        messageThreadId
-    )
+        messageThreadId,
+    ),
 )
 
 public suspend fun TelegramBot.reopenForumTopic(
     chat: Chat,
-    messageThreadId: MessageThreadId
+    messageThreadId: MessageThreadId,
 ): Boolean = reopenForumTopic(chat.id, messageThreadId)
 
 public suspend fun TelegramBot.reopenForumTopic(
     chat: Chat,
-    forumTopic: ForumTopic
+    forumTopic: ForumTopic,
 ): Boolean = reopenForumTopic(chat.id, forumTopic.messageThreadId)

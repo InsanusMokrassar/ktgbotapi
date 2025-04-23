@@ -5,9 +5,6 @@ import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
@@ -59,9 +56,10 @@ data class CreateInvoiceLink(
     @SerialName(shouldSendEmailToProviderField)
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
-    override val priceDependOnShipAddress: Boolean = false
+    override val priceDependOnShipAddress: Boolean = false,
 ) : CommonSendInvoiceData, SimpleRequest<String>, WithOptionalBusinessConnectionId, SubscriptionPeriodInfo {
     override fun method(): String = "createInvoiceLink"
+
     override val resultDeserializer: DeserializationStrategy<String>
         get() = String.serializer()
     override val requestSerializer: SerializationStrategy<*>
@@ -70,6 +68,7 @@ data class CreateInvoiceLink(
     @SerialName(photoUrlField)
     override var photoUrl: String? = null
         private set
+
     @SerialName(photoSizeField)
     override var photoSize: Long? = null
         private set
@@ -77,6 +76,7 @@ data class CreateInvoiceLink(
     @SerialName(photoWidthField)
     override var photoWidth: Int? = null
         private set
+
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
@@ -95,7 +95,7 @@ data class CreateInvoiceLink(
         requireShippingAddress: Boolean = false,
         shouldSendPhoneNumberToProvider: Boolean = false,
         shouldSendEmailToProvider: Boolean = false,
-        priceDependOnShipAddress: Boolean = false
+        priceDependOnShipAddress: Boolean = false,
     ) : this(
         title = title,
         description = description,
@@ -112,7 +112,7 @@ data class CreateInvoiceLink(
         requireShippingAddress = requireShippingAddress,
         shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
         shouldSendEmailToProvider = shouldSendEmailToProvider,
-        priceDependOnShipAddress = priceDependOnShipAddress
+        priceDependOnShipAddress = priceDependOnShipAddress,
     )
 
     init {
@@ -120,7 +120,7 @@ data class CreateInvoiceLink(
             require(suggestedTipAmounts.size in suggestedTipAmountsLimit)
             maxTipAmount ?.let { _ ->
                 require(
-                    suggestedTipAmounts.none { it > maxTipAmount }
+                    suggestedTipAmounts.none { it > maxTipAmount },
                 )
             }
         }
@@ -130,7 +130,7 @@ data class CreateInvoiceLink(
         photoUrl: String,
         photoSize: Long?,
         photoWidth: Int?,
-        photoHeight: Int?
+        photoHeight: Int?,
     ) {
         this.photoUrl = photoUrl
         this.photoSize = photoSize

@@ -8,7 +8,7 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class MinutesInterval(
-    val int: Int
+    val int: Int,
 ) {
     val dayTimeSpan: TimeSpan
         get() = int.minutes

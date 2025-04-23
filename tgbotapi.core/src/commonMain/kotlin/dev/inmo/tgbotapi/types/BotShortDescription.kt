@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BotShortDescription(
     @SerialName(shortDescriptionField)
-    val shortDescription: String
+    val shortDescription: String,
 )

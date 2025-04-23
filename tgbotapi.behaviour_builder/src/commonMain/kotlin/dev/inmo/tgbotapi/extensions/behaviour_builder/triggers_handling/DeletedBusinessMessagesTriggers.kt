@@ -5,13 +5,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndT
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserBusinessConnectionUpdatedMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.businessConnectionUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.deletedBusinessMessageUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.disabledOrNull
-import dev.inmo.tgbotapi.extensions.utils.enabledOrNull
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.business_connection.BusinessMessagesDeleted
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -33,8 +28,7 @@ suspend fun <BC : BehaviourContext> BC.onBusinessMessagesDeleted(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessMessagesDeleted, Update>? = null,
     markerFactory: MarkerFactory<in BusinessMessagesDeleted, Any>? = ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, BusinessMessagesDeleted>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessMessagesDeleted>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessMessagesDeleted>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.deletedBusinessMessageUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
-

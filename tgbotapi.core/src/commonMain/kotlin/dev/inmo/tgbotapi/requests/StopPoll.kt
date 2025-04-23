@@ -20,9 +20,10 @@ data class StopPoll(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : MessageAction, SimpleRequest<Poll>, WithReplyMarkup, OptionallyBusinessConnectionRequest {
     override fun method(): String = "stopPoll"
+
     override val resultDeserializer: DeserializationStrategy<Poll>
         get() = PollSerializer
     override val requestSerializer: SerializationStrategy<*>

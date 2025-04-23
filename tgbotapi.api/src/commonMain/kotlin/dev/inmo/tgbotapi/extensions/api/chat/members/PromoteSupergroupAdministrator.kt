@@ -1,10 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
 import dev.inmo.tgbotapi.requests.chat.members.PromoteSupergroupAdministrator
-import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
@@ -38,8 +37,8 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
         canPromoteMembers = canPromoteMembers,
         canManageVideoChats = canManageVideoChats,
         canManageChat = canManageChat,
-        canManageTopics = canManageTopics
-    )
+        canManageTopics = canManageTopics,
+    ),
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -69,7 +68,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -99,7 +98,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -129,5 +128,5 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
 )

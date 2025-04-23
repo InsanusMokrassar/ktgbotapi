@@ -1,15 +1,13 @@
 package dev.inmo.tgbotapi.types.media
 
-import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
-import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
@@ -27,7 +25,7 @@ fun TelegramMediaVideo(
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
-    thumb: InputFile? = null
+    thumb: InputFile? = null,
 ) = TelegramMediaVideo(
     file = file,
     text = text,
@@ -40,7 +38,7 @@ fun TelegramMediaVideo(
     width = width,
     height = height,
     duration = duration,
-    thumb = thumb
+    thumb = thumb,
 )
 
 fun TelegramMediaVideo(
@@ -53,7 +51,7 @@ fun TelegramMediaVideo(
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
-    thumb: InputFile? = null
+    thumb: InputFile? = null,
 ) = TelegramMediaVideo(
     file = file,
     text = entities.makeString(),
@@ -66,11 +64,11 @@ fun TelegramMediaVideo(
     width = width,
     height = height,
     duration = duration,
-    thumb = thumb
+    thumb = thumb,
 )
 
 @Serializable
-data class TelegramMediaVideo internal constructor (
+data class TelegramMediaVideo internal constructor(
     override val file: InputFile,
     @SerialName(captionField)
     override val text: String? = null,
@@ -89,7 +87,7 @@ data class TelegramMediaVideo internal constructor (
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,
-    override val thumb: InputFile? = null
+    override val thumb: InputFile? = null,
 ) : TelegramFreeMedia,
     SizedTelegramMedia,
     DuratedTelegramMedia,
@@ -106,5 +104,8 @@ data class TelegramMediaVideo internal constructor (
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    init {
+        media = file.fileIdToSend
+    } // crutch until js compiling will be fixed
 }

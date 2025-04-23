@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 data class GiveawayContent(
     private val chat: Chat,
     private val messageId: MessageId,
-    val giveaway: Giveaway
+    val giveaway: Giveaway,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -25,7 +25,7 @@ data class GiveawayContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<out AccessibleMessage> {
         return ForwardMessage(
             chat.id,
@@ -33,7 +33,7 @@ data class GiveawayContent(
             messageId = messageId,
             threadId = messageThreadId,
             disableNotification = disableNotification,
-            protectContent = protectContent
+            protectContent = protectContent,
         )
     }
 }

@@ -1,19 +1,16 @@
 package dev.inmo.tgbotapi.utils.extensions
 
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 
 val eachLineRegex = Regex("^[^\n]")
 
-inline fun TextSourcesList.makeString(
-    parseMode: ParseMode? = null
-) = when (parseMode) {
+inline fun TextSourcesList.makeString(parseMode: ParseMode? = null) = when (parseMode) {
     MarkdownParseMode -> makeMarkdownString()
     MarkdownV2ParseMode -> makeMarkdownV2String()
     HTMLParseMode -> makeHtmlString()
     null -> makeSourceString()
 }
-
 
 inline fun TextSourcesList.makeSourceString() = joinToString("") {
     it.source
@@ -37,7 +34,7 @@ inline fun TextSourcesList.makeMarkdownV2String(eachLineSeparator: String? = nul
             }
         }.replace(
             "\n",
-            "\n$eachLineSeparator"
+            "\n$eachLineSeparator",
         )
     }
 }

@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.business_connection
 
 import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
-import dev.inmo.tgbotapi.abstracts.types.WithOptionalBusinessConnectionId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import kotlinx.serialization.SerialName
@@ -14,5 +13,5 @@ data class BusinessMessagesDeleted(
     @SerialName(chatField)
     val chat: PreviewChat,
     @SerialName(messageIdsField)
-    val messageIds: List<MessageId>
+    val messageIds: List<MessageId>,
 ) : WithBusinessConnectionId

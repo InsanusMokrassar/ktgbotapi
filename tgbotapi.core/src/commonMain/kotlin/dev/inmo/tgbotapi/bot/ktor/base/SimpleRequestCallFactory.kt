@@ -12,13 +12,13 @@ class SimpleRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFacto
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
-        request: Request<T>
+        request: Request<T>,
     ): Any? = (request as? SimpleRequest<T>) ?.let { _ ->
         val content = request.json().toString()
 
         TextContent(
             content,
-            ContentType.Application.Json
+            ContentType.Application.Json,
         )
     }
 }

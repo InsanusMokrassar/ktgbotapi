@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 
-
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
@@ -39,82 +38,82 @@ value class PaidMediaPayload(val string: String) {
 @Serializable
 @JvmInline
 value class GiftId(
-    val string: String
+    val string: String,
 )
 
 @Serializable
 @JvmInline
 value class PreparedMessageId(
-    val string: String
+    val string: String,
 )
 
 val usernameRegex = Regex("@[\\w\\d_]+")
 
-val degreesLimit = 1 .. 360
-val horizontalAccuracyLimit = 0F .. 1500F
+val degreesLimit = 1..360
+val horizontalAccuracyLimit = 0F..1500F
 
-val getUpdatesLimit = 1 .. 100
+val getUpdatesLimit = 1..100
 val callbackQueryAnswerLength = 0 until 200
-val captionLength = 0 .. 1024
-val textLength = 1 .. 4096
-val userProfilePhotosRequestLimit = 0 .. 100
+val captionLength = 0..1024
+val textLength = 1..4096
+val userProfilePhotosRequestLimit = 0..100
 val chatTitleLength = 1 until 255
 val threadNameLength = 1 until 128
 val chatDescriptionLength = 0 until 256
 val inlineResultQueryIdLingth = 1 until 64
-val allowedConnectionsLength = 1 .. 100
+val allowedConnectionsLength = 1..100
 
 val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256
 val invoicePayloadBytesLimit = 1 until 128
 
-val pollOptionTextLength = 1 .. 100
-val pollQuestionTextLength = 1 .. 300
-val pollOptionsLimit = 2 .. 10
+val pollOptionTextLength = 1..100
+val pollQuestionTextLength = 1..300
+val pollOptionsLimit = 2..10
 
-val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
+val livePeriodLimit = 60..LiveLocation.INDEFINITE_LIVE_PERIOD
 
-val inlineQueryAnswerResultsLimit = 0 .. 50
+val inlineQueryAnswerResultsLimit = 0..50
 
-val customTitleLength = 0 .. 16
+val customTitleLength = 0..16
 
-val dartsCubeAndBowlingDiceResultLimit = 1 .. 6
-val basketballAndFootballDiceResultLimit = 1 .. 5
-val slotMachineDiceResultLimit = 1 .. 64
+val dartsCubeAndBowlingDiceResultLimit = 1..6
+val basketballAndFootballDiceResultLimit = 1..5
+val slotMachineDiceResultLimit = 1..64
 
-val botCommandLengthLimit = 1 .. 32
+val botCommandLengthLimit = 1..32
 val botCommandLimit = botCommandLengthLimit
-val botCommandDescriptionLimit = 3 .. 256
-val botCommandsLimit = 0 .. 100
+val botCommandDescriptionLimit = 3..256
+val botCommandsLimit = 0..100
 
-val mediaCountInMediaGroup: IntRange = 2 .. 10
+val mediaCountInMediaGroup: IntRange = 2..10
 
-val explanationLimit = 0 .. 200
+val explanationLimit = 0..200
 
-val openPeriodPollSecondsLimit = 5 .. 600
+val openPeriodPollSecondsLimit = 5..600
 
-val membersLimit = 1 .. 99999
+val membersLimit = 1..99999
 
-val suggestedTipAmountsLimit = 1 .. 4
+val suggestedTipAmountsLimit = 1..4
 
-val inputFieldPlaceholderLimit = 1 .. 64
+val inputFieldPlaceholderLimit = 1..64
 
-val emojisInStickerLimit = 1 .. 20
+val emojisInStickerLimit = 1..20
 
-val keywordsInStickerLimit = 0 .. 20
+val keywordsInStickerLimit = 0..20
 
-val stickerKeywordLengthLimit = 0 .. 64
+val stickerKeywordLengthLimit = 0..64
 
-val keyboardButtonRequestUserLimit = 1 .. 10
+val keyboardButtonRequestUserLimit = 1..10
 
-val forwardMessagesLimit = 1 .. 100
+val forwardMessagesLimit = 1..100
 val copyMessagesLimit = forwardMessagesLimit
 val deleteMessagesLimit = forwardMessagesLimit
 
 const val botActionActualityTime: Seconds = 5
 
-val cloudStorageKeyLimit = 1 .. 128
-val cloudStorageValueLimit = 0 .. 4096
+val cloudStorageKeyLimit = 1..128
+val cloudStorageValueLimit = 0..4096
 val cloudStorageKeyRegex = Regex("[A-Za-z0-9_-]{${cloudStorageKeyLimit.first},${cloudStorageKeyLimit.last}}")
 val cloudStorageValueRegex = Regex(".{${cloudStorageValueLimit.first},${cloudStorageValueLimit.last}}")
 
@@ -123,7 +122,7 @@ val telegramInlineModeGifPermittedMimeTypes by lazy {
     listOf(
         BuiltinMimeTypes.Image.Jpg,
         BuiltinMimeTypes.Image.Gif,
-        BuiltinMimeTypes.Video.MP4
+        BuiltinMimeTypes.Video.MP4,
     )
 }
 
@@ -340,9 +339,7 @@ const val fileSizeField = "file_size"
 const val fileDateField = "file_date"
 const val filePathField = "file_path"
 
-
 const val requestWriteAccessField = "request_write_access"
-
 
 const val photoUrlField = "photo_url"
 const val photoSizeField = "photo_size"
@@ -545,7 +542,6 @@ const val smallFileUniqueIdField = "small_file_unique_id"
 const val bigFileUniqueIdField = "big_file_unique_id"
 
 const val fileUniqueIdField = "file_unique_id"
-
 
 const val currencyField = "currency"
 const val startParameterField = "start_parameter"

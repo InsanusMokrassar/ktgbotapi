@@ -64,7 +64,9 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
     override val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatJoinRequestUpdateFlow: Flow<ChatJoinRequestUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatMessageReactionUpdatedUpdateFlow: Flow<ChatMessageReactionUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
-    override val chatMessageReactionsCountUpdatedUpdateFlow: Flow<ChatMessageReactionsCountUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val chatMessageReactionsCountUpdatedUpdateFlow: Flow<ChatMessageReactionsCountUpdatedUpdate> by lazy {
+        allUpdatesFlow.filterIsInstance()
+    }
     override val unknownUpdatesFlow: Flow<UnknownUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatBoostUpdatedUpdateFlow: Flow<ChatBoostUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatBoostRemovedUpdateFlow: Flow<ChatBoostRemovedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
@@ -82,16 +84,17 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
 fun FlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100,
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-    upstreamUpdatesFlow: Flow<Update>? = null
+    upstreamUpdatesFlow: Flow<Update>? = null,
 ) = DefaultFlowsUpdatesFilter(broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow)
 
 @Suppress("unused")
 class DefaultFlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100,
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-    upstreamUpdatesFlow: Flow<Update>? = null
-): AbstractFlowsUpdatesFilter() {
+    upstreamUpdatesFlow: Flow<Update>? = null,
+) : AbstractFlowsUpdatesFilter() {
     private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
+
     @Suppress("MemberVisibilityCanBePrivate")
     override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
         if (upstreamUpdatesFlow != null) {

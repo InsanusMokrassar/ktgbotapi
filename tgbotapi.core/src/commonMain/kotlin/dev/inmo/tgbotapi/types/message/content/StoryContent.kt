@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 data class StoryContent(
     private val chat: Chat,
     private val messageId: MessageId,
-    val story: Story
+    val story: Story,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -25,7 +25,7 @@ data class StoryContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<PossiblyForwardedMessage> {
         return ForwardMessage(
             chat.id,
@@ -33,7 +33,7 @@ data class StoryContent(
             messageId = messageId,
             threadId = messageThreadId,
             disableNotification = disableNotification,
-            protectContent = protectContent
+            protectContent = protectContent,
         )
     }
 }

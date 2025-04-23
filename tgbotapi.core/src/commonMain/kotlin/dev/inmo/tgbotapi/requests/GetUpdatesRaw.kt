@@ -15,11 +15,11 @@ import kotlinx.serialization.json.JsonArray
  */
 @Serializable
 data class GetUpdatesRaw(
-    override val offset: UpdateId? = null,// set `last update id + 1` to receive next part of updates
+    override val offset: UpdateId? = null, // set `last update id + 1` to receive next part of updates
     override val limit: Int = getUpdatesLimit.last,
     override val timeout: Seconds? = null,
-    override val allowed_updates: List<String>? = ALL_UPDATES_LIST
-): GetUpdatesRequest<JsonArray> {
+    override val allowed_updates: List<String>? = ALL_UPDATES_LIST,
+) : GetUpdatesRequest<JsonArray> {
     override fun method(): String = "getUpdates"
 
     override val resultDeserializer: DeserializationStrategy<JsonArray>

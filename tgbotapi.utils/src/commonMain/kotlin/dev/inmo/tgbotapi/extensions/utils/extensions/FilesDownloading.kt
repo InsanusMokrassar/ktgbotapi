@@ -8,15 +8,15 @@ import io.ktor.client.statement.readBytes
 
 suspend fun HttpClient.loadFile(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    filePath: String
+    filePath: String,
 ) = get("${telegramAPIUrlsKeeper.fileBaseUrl}/$filePath").readBytes()
 
 suspend fun HttpClient.loadFile(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    pathedFile: PathedFile
+    pathedFile: PathedFile,
 ) = loadFile(telegramAPIUrlsKeeper, pathedFile.filePath)
 
 suspend fun PathedFile.download(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient()
+    client: HttpClient = HttpClient(),
 ) = client.loadFile(telegramAPIUrlsKeeper, this)

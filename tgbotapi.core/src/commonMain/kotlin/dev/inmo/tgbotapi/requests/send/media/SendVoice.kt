@@ -6,15 +6,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
@@ -34,7 +34,7 @@ fun SendVoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
@@ -52,7 +52,7 @@ fun SendVoice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     return if (voiceAsFile == null) {
@@ -60,7 +60,7 @@ fun SendVoice(
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(voiceAsFile).associateBy { it.fileId }
+            listOfNotNull(voiceAsFile).associateBy { it.fileId },
         )
     }
 }
@@ -77,7 +77,7 @@ fun SendVoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
@@ -95,7 +95,7 @@ fun SendVoice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     return if (voiceAsFile == null) {
@@ -103,13 +103,12 @@ fun SendVoice(
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(voiceAsFile).associateBy { it.fileId }
+            listOfNotNull(voiceAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVoiceData internal constructor(
@@ -140,13 +139,12 @@ data class SendVoiceData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<VoiceContent>>,
     SendContentMessageRequest<ContentMessage<VoiceContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VoiceContent>>,
     TextableSendMessageRequest<ContentMessage<VoiceContent>>,
-    DuratedSendMessageRequest<ContentMessage<VoiceContent>>
-{
+    DuratedSendMessageRequest<ContentMessage<VoiceContent>> {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -160,6 +158,7 @@ data class SendVoiceData internal constructor(
     }
 
     override fun method(): String = "sendVoice"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -168,8 +167,8 @@ data class SendVoiceData internal constructor(
 
 data class SendVoiceFiles internal constructor(
     val voice: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
     voiceField to voice,
-    thumbnailField to thumbnail
+    thumbnailField to thumbnail,
 )

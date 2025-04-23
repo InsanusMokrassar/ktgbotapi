@@ -18,7 +18,9 @@ plugins {
     alias(libs.plugins.kotlin.dokka)
     alias(libs.plugins.versions)
     alias(libs.plugins.validator)
+    alias(libs.plugins.ktlint)
 }
+
 
 // temporal crutch until legacy tests will be stabled or legacy target will be removed
 allprojects {

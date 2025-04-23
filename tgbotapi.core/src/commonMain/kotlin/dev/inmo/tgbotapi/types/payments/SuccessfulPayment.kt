@@ -26,7 +26,7 @@ data class SuccessfulPayment(
     @SerialName(shippingOptionIdField)
     val shippingOptionId: String? = null,
     @SerialName(orderInfoField)
-    val orderInfo: OrderInfo? = null
+    val orderInfo: OrderInfo? = null,
 ) : Amounted, Currencied {
     val recurringInfo: RecurringInfo? by lazy {
         if (isSubscriptionPayment == true && subscriptionExpirationDate != null) {

@@ -16,5 +16,5 @@ data class ForumTopicCreated(
     @SerialName(iconColorField)
     val iconColor: RGBColor,
     @SerialName(iconCustomEmojiIdField)
-    val iconEmojiId: CustomEmojiId? = null
+    val iconEmojiId: CustomEmojiId? = null,
 ) : ForumEvent

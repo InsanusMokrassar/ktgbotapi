@@ -4,13 +4,14 @@ import kotlin.js.json
 
 external interface StoryShareParams {
     val text: String
+
     @JsName("widget_link")
     val widgetLink: StoryWidgetLink?
 }
 
 fun StoryShareParams(
     text: String,
-    widgetLink: StoryWidgetLink? = null
+    widgetLink: StoryWidgetLink? = null,
 ): StoryShareParams {
     val json = json()
     json["text"] = text

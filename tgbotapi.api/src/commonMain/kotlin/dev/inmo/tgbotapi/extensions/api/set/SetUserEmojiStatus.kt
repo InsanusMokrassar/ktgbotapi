@@ -9,42 +9,41 @@ import korlibs.time.DateTime
 public suspend fun TelegramBot.setUserEmojiStatus(
     userId: UserId,
     customEmojiId: CustomEmojiId,
-    expirationDate: TelegramDate? = null
+    expirationDate: TelegramDate? = null,
 ): Boolean = execute(
     SetUserEmojiStatus(
         userId = userId,
         customEmojiId = customEmojiId,
-        expirationDate = expirationDate
-    )
+        expirationDate = expirationDate,
+    ),
 )
 
 public suspend fun TelegramBot.setUserEmojiStatus(
     user: User,
     customEmojiId: CustomEmojiId,
-    expirationDate: TelegramDate? = null
+    expirationDate: TelegramDate? = null,
 ): Boolean = setUserEmojiStatus(
     user.id,
     customEmojiId,
-    expirationDate
+    expirationDate,
 )
-
 
 public suspend fun TelegramBot.setUserEmojiStatus(
     userId: UserId,
     customEmojiId: CustomEmojiId,
-    expirationDate: DateTime
+    expirationDate: DateTime,
 ): Boolean = setUserEmojiStatus(
     userId,
     customEmojiId,
-    expirationDate.toTelegramDate()
+    expirationDate.toTelegramDate(),
 )
 
 public suspend fun TelegramBot.setUserEmojiStatus(
     user: User,
     customEmojiId: CustomEmojiId,
-    expirationDate: DateTime
+    expirationDate: DateTime,
 ): Boolean = setUserEmojiStatus(
     user.id,
     customEmojiId,
-    expirationDate
+    expirationDate,
 )

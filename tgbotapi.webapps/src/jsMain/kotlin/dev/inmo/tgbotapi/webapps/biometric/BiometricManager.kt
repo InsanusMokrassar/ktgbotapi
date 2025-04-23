@@ -12,15 +12,26 @@ external interface BiometricManager {
     val biometricType: BiometricType
 
     fun init(callback: (() -> Unit) = definedExternally): BiometricManager
-    fun requestAccess(params: BiometricRequestAccessParams, callback: ((Boolean) -> Unit) = definedExternally): BiometricManager
-    fun authenticate(params: BiometricAuthenticateParams, callback: ((Boolean, String?) -> Unit) = definedExternally): BiometricManager
-    fun updateBiometricToken(token: String, callback: ((Boolean) -> Unit) = definedExternally): BiometricManager
+
+    fun requestAccess(
+        params: BiometricRequestAccessParams,
+        callback: ((Boolean) -> Unit) = definedExternally,
+    ): BiometricManager
+
+    fun authenticate(
+        params: BiometricAuthenticateParams,
+        callback: ((Boolean, String?) -> Unit) = definedExternally,
+    ): BiometricManager
+
+    fun updateBiometricToken(
+        token: String,
+        callback: ((Boolean) -> Unit) = definedExternally,
+    ): BiometricManager
+
     fun openSettings(): BiometricManager
 }
 
-private suspend inline fun <T> doWithAsyncJob(
-    action: (CompletableDeferred<T>) -> BiometricManager
-): T {
+private suspend inline fun <T> doWithAsyncJob(action: (CompletableDeferred<T>) -> BiometricManager): T {
     val async = CompletableDeferred<T>()
     action(async)
     return async.await()

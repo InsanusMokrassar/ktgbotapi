@@ -7,8 +7,7 @@ import dev.inmo.tgbotapi.types.chat.User
 
 val TelegramFakeUser = CommonUser(
     id = UserId(RawChatId.FakeUserId),
-    firstName = "Telegram"
+    firstName = "Telegram",
 )
 
 fun User.isFakeTelegramUser() = id == TelegramFakeUser.id && firstName == TelegramFakeUser.firstName
-

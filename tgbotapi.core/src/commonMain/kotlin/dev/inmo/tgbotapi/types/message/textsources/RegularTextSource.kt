@@ -8,8 +8,10 @@ import kotlinx.serialization.Serializable
  * @see regularTextSource
  */
 @Serializable
-data class RegularTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String
+data class RegularTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
 ) : TextSource {
     override val markdown: String by lazy { source.regularMarkdown() }
     override val markdownV2: String by lazy { source.regularMarkdownV2() }

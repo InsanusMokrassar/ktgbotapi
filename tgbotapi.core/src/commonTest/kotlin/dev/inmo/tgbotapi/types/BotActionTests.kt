@@ -10,10 +10,13 @@ class BotActionTests {
     @Serializable
     data class Example(
         @Serializable(BotActionSerializer::class)
-        val botAction: BotAction
+        val botAction: BotAction,
     )
 
-    private fun checkBotAction(example: Example, sourceAction: BotAction) {
+    private fun checkBotAction(
+        example: Example,
+        sourceAction: BotAction,
+    ) {
         assertEquals(
             sourceAction.actionName,
             when (example.botAction) {
@@ -29,7 +32,7 @@ class BotActionTests {
                 UploadVideoNoteAction -> example.botAction.actionName
                 ChooseStickerAction -> example.botAction.actionName
                 is CustomBotAction -> example.botAction.actionName
-            }
+            },
         )
     }
 

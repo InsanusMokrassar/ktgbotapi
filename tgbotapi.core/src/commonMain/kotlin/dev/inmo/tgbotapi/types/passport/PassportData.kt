@@ -12,5 +12,5 @@ data class PassportData(
     @SerialName(dataField)
     val data: List<EncryptedPassportElement>,
     @SerialName(credentialsField)
-    val credentials: EncryptedCredentials
+    val credentials: EncryptedCredentials,
 )

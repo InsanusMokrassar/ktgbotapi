@@ -14,5 +14,5 @@ data class InputContactMessageContent(
     @SerialName(lastNameField)
     override val lastName: String? = null,
     @SerialName(vcardField)
-    override val vcard: String? = null
+    override val vcard: String? = null,
 ) : CommonContactData, InputMessageContent

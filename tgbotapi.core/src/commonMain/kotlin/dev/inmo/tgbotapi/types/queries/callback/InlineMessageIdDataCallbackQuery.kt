@@ -10,5 +10,5 @@ data class InlineMessageIdDataCallbackQuery(
     override val from: CommonUser,
     override val chatInstance: String,
     override val inlineMessageId: InlineMessageId,
-    override val data: String
+    override val data: String,
 ) : DataCallbackQuery, InlineMessageIdCallbackQuery

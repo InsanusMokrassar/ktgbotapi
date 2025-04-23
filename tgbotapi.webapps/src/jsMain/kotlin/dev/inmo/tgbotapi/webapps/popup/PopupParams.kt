@@ -11,38 +11,38 @@ external interface PopupParams {
 fun PopupParams(
     message: String,
     title: String?,
-    buttons: Array<PopupButton>
+    buttons: Array<PopupButton>,
 ) = json(
     *listOfNotNull(
         "message" to message,
         "buttons" to buttons,
-        ("title" to title).takeIf { title != null }
-    ).toTypedArray()
+        ("title" to title).takeIf { title != null },
+    ).toTypedArray(),
 ).unsafeCast<PopupParams>()
 
 fun PopupParams(
     message: String,
     firstButton: PopupButton,
-    vararg otherButtons: PopupButton
+    vararg otherButtons: PopupButton,
 ) = PopupParams(
     message,
     null,
     arrayOf(
         firstButton,
-        *otherButtons
-    )
+        *otherButtons,
+    ),
 )
 
 fun PopupParams(
     title: String,
     message: String,
     firstButton: PopupButton,
-    vararg otherButtons: PopupButton
+    vararg otherButtons: PopupButton,
 ) = PopupParams(
     message,
     title,
     arrayOf(
         firstButton,
-        *otherButtons
-    )
+        *otherButtons,
+    ),
 )

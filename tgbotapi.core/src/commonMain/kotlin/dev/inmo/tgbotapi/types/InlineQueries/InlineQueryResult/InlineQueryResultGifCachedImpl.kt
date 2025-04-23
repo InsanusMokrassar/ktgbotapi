@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCached
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.inlineQueryResultGifType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.SerialName
@@ -24,7 +24,7 @@ fun InlineQueryResultGifCachedImpl(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifCachedImpl(
     id = id,
     fileId = fileId,
@@ -34,7 +34,7 @@ fun InlineQueryResultGifCachedImpl(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 fun InlineQueryResultGifCachedImpl(
@@ -44,7 +44,7 @@ fun InlineQueryResultGifCachedImpl(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
-    inputMessageContent: InputMessageContent? = null
+    inputMessageContent: InputMessageContent? = null,
 ) = InlineQueryResultGifCachedImpl(
     id = id,
     fileId = fileId,
@@ -54,7 +54,7 @@ fun InlineQueryResultGifCachedImpl(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup,
-    inputMessageContent = inputMessageContent
+    inputMessageContent = inputMessageContent,
 )
 
 @Serializable
@@ -76,7 +76,7 @@ data class InlineQueryResultGifCachedImpl internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    override val inputMessageContent: InputMessageContent? = null
+    override val inputMessageContent: InputMessageContent? = null,
 ) : InlineQueryResultGifCached {
     override val type: String = inlineQueryResultGifType
     override val textSources: TextSourcesList? by lazy {

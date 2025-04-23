@@ -13,10 +13,10 @@ typealias PollMapper<T> = suspend T.() -> T?
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<O> = expectFlow(
     initRequest,
-    errorFactory
+    errorFactory,
 ) {
     (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
@@ -26,7 +26,7 @@ suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
  */
 suspend fun BehaviourContext.waitPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<Poll>(initRequest, errorFactory)
 
 /**
@@ -34,7 +34,7 @@ suspend fun BehaviourContext.waitPollUpdates(
  */
 suspend fun BehaviourContext.waitQuizPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<QuizPoll>(initRequest, errorFactory)
 
 /**
@@ -42,5 +42,5 @@ suspend fun BehaviourContext.waitQuizPollUpdates(
  */
 suspend fun BehaviourContext.waitRegularPollUpdates(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitPolls<RegularPoll>(initRequest, errorFactory)

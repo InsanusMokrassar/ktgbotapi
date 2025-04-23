@@ -16,7 +16,7 @@ data class SetUserEmojiStatus(
     val customEmojiId: CustomEmojiId,
     @Serializable(TelegramDateSerializer::class)
     @SerialName(emojiStatusExpirationDateField)
-    val expirationDate: TelegramDate? = null
+    val expirationDate: TelegramDate? = null,
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "setUserEmojiStatus"
 

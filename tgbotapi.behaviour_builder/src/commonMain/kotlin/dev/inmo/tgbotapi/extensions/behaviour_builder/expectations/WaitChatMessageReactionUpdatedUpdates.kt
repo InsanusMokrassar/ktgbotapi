@@ -11,21 +11,20 @@ import kotlinx.coroutines.flow.Flow
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : ChatMessageReactionUpdated> BehaviourContext.waitChatMessageReactionUpdated(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<O> = expectFlow(
     initRequest,
-    errorFactory
+    errorFactory,
 ) {
     (it.chatMessageReactionUpdatedUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 suspend fun BehaviourContext.waitChatMessageReactionUpdatedByUser(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitChatMessageReactionUpdated<ChatMessageReactionUpdated.ByUser>(initRequest, errorFactory)
-
 
 suspend fun BehaviourContext.waitChatMessageReactionUpdatedByChat(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitChatMessageReactionUpdated<ChatMessageReactionUpdated.ByChat>(initRequest, errorFactory)

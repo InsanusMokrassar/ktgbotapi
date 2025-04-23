@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class TelegramPaymentChargeId(
-    val string: String
+    val string: String,
 )

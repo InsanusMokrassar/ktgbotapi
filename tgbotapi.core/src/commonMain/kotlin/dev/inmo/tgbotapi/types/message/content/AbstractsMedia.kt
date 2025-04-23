@@ -28,8 +28,9 @@ sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : Texted
     data class PartWrapper<T : MediaGroupPartContent>(
         val messageId: MessageId,
         val content: T,
-        val sourceMessage: PossiblySentViaBotCommonMessage<T>
+        val sourceMessage: PossiblySentViaBotCommonMessage<T>,
     )
+
     val group: List<PartWrapper<T>>
     val mediaGroupId: MediaGroupId
 }

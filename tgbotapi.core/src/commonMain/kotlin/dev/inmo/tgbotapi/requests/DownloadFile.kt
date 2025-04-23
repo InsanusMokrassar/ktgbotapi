@@ -5,7 +5,7 @@ import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.builtins.ByteArraySerializer
 
 class DownloadFile(
-    val filePath: String
+    val filePath: String,
 ) : Request<ByteArray> {
     override fun method(): String = filePath
 

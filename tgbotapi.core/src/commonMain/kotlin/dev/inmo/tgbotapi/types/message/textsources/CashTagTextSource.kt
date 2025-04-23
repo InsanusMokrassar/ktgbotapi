@@ -10,9 +10,11 @@ import kotlinx.serialization.Serializable
  * @see cashTagTextSource
  */
 @Serializable
-data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
+data class CashTagTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
     override val source: String,
-    override val subsources: TextSourcesList
+    override val subsources: TextSourcesList,
 ) : MultilevelTextSource {
     val username: Username? by lazy {
         val potentialUsername = source.dropWhile { it != '@' }
@@ -26,5 +28,7 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 }
 
 inline fun cashTagTextSource(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
+
 inline fun cashTagTextSource(vararg parts: TextSource) = cashTagTextSource(parts.toList())
+
 inline fun cashTagTextSource(tag: String) = cashTagTextSource(regularTextSource(tag))

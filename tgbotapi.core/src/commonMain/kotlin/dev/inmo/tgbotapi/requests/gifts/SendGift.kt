@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
@@ -31,7 +30,7 @@ data class SendGift internal constructor(
     @SerialName(textEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(payToUpgradeField)
-    val upgradableToUnique: Boolean = false
+    val upgradableToUnique: Boolean = false,
 ) : SimpleRequest<Boolean>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.let {
@@ -46,7 +45,6 @@ data class SendGift internal constructor(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
 
@@ -56,14 +54,14 @@ data class SendGift internal constructor(
         giftId: GiftId,
         text: String,
         parseMode: ParseMode?,
-        upgradableToUnique: Boolean = false
+        upgradableToUnique: Boolean = false,
     ) : this(
         userId = userId,
         giftId = giftId,
         text = text,
         parseMode = parseMode,
         rawEntities = null,
-        upgradableToUnique = upgradableToUnique
+        upgradableToUnique = upgradableToUnique,
     )
 
     @Deprecated("Use factory function `toUser` instead", ReplaceWith("toUser(userId, giftId, textSources, upgradableToUnique)"))
@@ -78,7 +76,7 @@ data class SendGift internal constructor(
         text = textSources ?.makeSourceString(),
         parseMode = null,
         rawEntities = textSources ?.toRawMessageEntities(),
-        upgradableToUnique = upgradableToUnique
+        upgradableToUnique = upgradableToUnique,
     )
 
     companion object {
@@ -87,15 +85,16 @@ data class SendGift internal constructor(
             giftId: GiftId,
             text: String,
             parseMode: ParseMode?,
-            upgradableToUnique: Boolean = false
+            upgradableToUnique: Boolean = false,
         ) = SendGift(
             userId = userId,
             giftId = giftId,
             text = text,
             parseMode = parseMode,
             rawEntities = null,
-            upgradableToUnique = upgradableToUnique
+            upgradableToUnique = upgradableToUnique,
         )
+
         fun toUser(
             userId: UserId,
             giftId: GiftId,
@@ -107,22 +106,24 @@ data class SendGift internal constructor(
             text = textSources ?.makeSourceString(),
             parseMode = null,
             rawEntities = textSources ?.toRawMessageEntities(),
-            upgradableToUnique = upgradableToUnique
+            upgradableToUnique = upgradableToUnique,
         )
+
         fun toChat(
             chatId: ChatIdentifier,
             giftId: GiftId,
             text: String,
             parseMode: ParseMode?,
-            upgradableToUnique: Boolean = false
+            upgradableToUnique: Boolean = false,
         ) = SendGift(
             chatId = chatId,
             giftId = giftId,
             text = text,
             parseMode = parseMode,
             rawEntities = null,
-            upgradableToUnique = upgradableToUnique
+            upgradableToUnique = upgradableToUnique,
         )
+
         fun toChat(
             chatId: ChatIdentifier,
             giftId: GiftId,
@@ -134,7 +135,7 @@ data class SendGift internal constructor(
             text = textSources ?.makeSourceString(),
             parseMode = null,
             rawEntities = textSources ?.toRawMessageEntities(),
-            upgradableToUnique = upgradableToUnique
+            upgradableToUnique = upgradableToUnique,
         )
     }
 }

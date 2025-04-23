@@ -21,9 +21,7 @@ import kotlinx.coroutines.flow.Flow
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(
-    commandRegex: Regex
-) = textMessages().filterExactCommands(commandRegex)
+fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(commandRegex: Regex) = textMessages().filterExactCommands(commandRegex)
 
 /**
  * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of
@@ -37,9 +35,7 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
-    commandRegex: Regex
-) = textMessages().filterCommandsInsideTextMessages(commandRegex)
+fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(commandRegex: Regex) = textMessages().filterCommandsInsideTextMessages(commandRegex)
 
 /**
  * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of
@@ -57,5 +53,5 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
  * @see onlyTextContentMessages
  */
 fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsWithArgs(
-    commandRegex: Regex
+    commandRegex: Regex,
 ): Flow<Pair<ContentMessage<TextContent>, TextSourcesList>> = textMessages().filterCommandsWithArgs(commandRegex)

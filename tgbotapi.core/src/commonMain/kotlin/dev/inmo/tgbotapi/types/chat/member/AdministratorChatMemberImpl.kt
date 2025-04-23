@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
@@ -42,7 +41,7 @@ data class AdministratorChatMemberImpl(
     @SerialName(canEditStoriesField)
     override val canEditStories: Boolean = false,
     @SerialName(canDeleteStoriesField)
-    override val canDeleteStories: Boolean = false
+    override val canDeleteStories: Boolean = false,
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required

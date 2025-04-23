@@ -12,7 +12,7 @@ class InlineQueryResultGame(
     override val id: InlineQueryId,
     @SerialName(gameShortNameField)
     val gameShortName: String,
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : InlineQueryResult {
     override val type: String = "game"
 }

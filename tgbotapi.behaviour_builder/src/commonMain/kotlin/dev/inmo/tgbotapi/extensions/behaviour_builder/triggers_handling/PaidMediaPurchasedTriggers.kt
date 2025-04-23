@@ -4,16 +4,11 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserBusinessConnectionUpdatedMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserPaidMediaPurchasedMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
-import dev.inmo.tgbotapi.extensions.utils.businessConnectionUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.disabledOrNull
-import dev.inmo.tgbotapi.extensions.utils.enabledOrNull
 import dev.inmo.tgbotapi.extensions.utils.paidMediaPurchasedUpdateOrNull
 import dev.inmo.tgbotapi.types.PaidMediaPayload
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -35,7 +30,7 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.paidMediaPurchasedUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }
@@ -60,13 +55,13 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>,
 ) = onPaidMediaPurchased(
     SimpleFilter<PaidMediaPurchased> { paidMediaPayloadRegex.matches(it.payload.string) } * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )
 
 /**
@@ -89,11 +84,11 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PaidMediaPurchased>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PaidMediaPurchased>,
 ) = onPaidMediaPurchased(
     SimpleFilter<PaidMediaPurchased> { it.payload == paidMediaPayload } * initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
     additionalSubcontextInitialAction,
-    scenarioReceiver
+    scenarioReceiver,
 )

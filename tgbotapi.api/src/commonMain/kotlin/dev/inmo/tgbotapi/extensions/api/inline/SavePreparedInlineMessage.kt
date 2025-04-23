@@ -1,14 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.inline
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.answers.InlineQueryAnswersResultsSerializer
 import dev.inmo.tgbotapi.requests.inline.SavePreparedInlineMessage
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.prepared.PreparedInlineMessage
 import dev.inmo.tgbotapi.types.chat.User
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 public suspend fun TelegramBot.savePreparedInlineMessage(
     userId: UserId,
@@ -24,8 +21,8 @@ public suspend fun TelegramBot.savePreparedInlineMessage(
         allowSendToUsers = allowSendToUsers,
         allowSendToBots = allowSendToBots,
         allowSendToGroups = allowSendToGroups,
-        allowSendToChannels = allowSendToChannels
-    )
+        allowSendToChannels = allowSendToChannels,
+    ),
 )
 
 public suspend fun TelegramBot.savePreparedInlineMessage(
@@ -41,5 +38,5 @@ public suspend fun TelegramBot.savePreparedInlineMessage(
     allowSendToUsers = allowSendToUsers,
     allowSendToBots = allowSendToBots,
     allowSendToGroups = allowSendToGroups,
-    allowSendToChannels = allowSendToChannels
+    allowSendToChannels = allowSendToChannels,
 )

@@ -31,7 +31,7 @@ suspend fun <BC : BehaviourContext> BC.onPreCheckoutQuery(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PreCheckoutQuery, Update>? = PreCheckoutQueryFilterByUser,
     markerFactory: MarkerFactory<in PreCheckoutQuery, Any>? = ByUserPreCheckoutQueryMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PreCheckoutQuery>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PreCheckoutQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PreCheckoutQuery>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.preCheckoutQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

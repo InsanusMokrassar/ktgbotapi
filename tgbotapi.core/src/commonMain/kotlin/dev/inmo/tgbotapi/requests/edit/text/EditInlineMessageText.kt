@@ -3,12 +3,12 @@ package dev.inmo.tgbotapi.requests.edit.text
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
@@ -19,7 +19,7 @@ fun EditInlineMessageText(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ) = EditInlineMessageText(
     inlineMessageId = inlineMessageId,
     text = text,
@@ -27,7 +27,7 @@ fun EditInlineMessageText(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     linkPreviewOptions = linkPreviewOptions,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun EditInlineMessageText(
@@ -35,7 +35,7 @@ fun EditInlineMessageText(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ) = EditInlineMessageText(
     inlineMessageId = inlineMessageId,
     text = entities.makeString(),
@@ -43,7 +43,7 @@ fun EditInlineMessageText(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     linkPreviewOptions = linkPreviewOptions,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 @Serializable
@@ -61,13 +61,14 @@ data class EditInlineMessageText internal constructor(
     @SerialName(linkPreviewOptionsField)
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditInlineMessage, WithCustomizableCaptionRequest<Boolean>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageTextMethod
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

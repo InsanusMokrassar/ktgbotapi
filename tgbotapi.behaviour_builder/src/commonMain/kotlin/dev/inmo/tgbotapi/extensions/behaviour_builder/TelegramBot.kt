@@ -35,19 +35,19 @@ suspend fun telegramBotWithBehaviour(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     testServer: Boolean = false,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>,
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
     testServer,
-    builder
+    builder,
 ).apply {
     buildBehaviour(
         flowUpdatesFilter = flowsUpdatesFilter,
         scope = scope ?: CoroutineScope(coroutineContext),
         defaultExceptionsHandler = defaultExceptionsHandler,
         subcontextInitialAction = subcontextInitialAction,
-        block = block
+        block = block,
     )
 }
 
@@ -80,23 +80,24 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>,
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
         testServer,
-        builder
+        builder,
     ).let {
-        it to it.buildBehaviourWithLongPolling(
-            scope = scope ?: CoroutineScope(coroutineContext),
-            defaultExceptionsHandler = defaultExceptionsHandler,
-            timeoutSeconds = timeoutSeconds,
-            autoDisableWebhooks = autoDisableWebhooks,
-            autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-            mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-            subcontextInitialAction = subcontextInitialAction,
-            block = block
-        )
+        it to
+            it.buildBehaviourWithLongPolling(
+                scope = scope ?: CoroutineScope(coroutineContext),
+                defaultExceptionsHandler = defaultExceptionsHandler,
+                timeoutSeconds = timeoutSeconds,
+                autoDisableWebhooks = autoDisableWebhooks,
+                autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+                mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+                subcontextInitialAction = subcontextInitialAction,
+                block = block,
+            )
     }
 }

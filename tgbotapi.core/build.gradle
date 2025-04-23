@@ -3,6 +3,8 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization"
     id "com.google.devtools.ksp"
     id "org.jetbrains.dokka"
+
+    alias libs.plugins.ktlint
 }
 
 project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"
@@ -80,4 +82,8 @@ ksp {
     arg("cctargetPackage", "dev.inmo.tgbotapi.extensions.utils")
     arg("ccoutputFileName", "ClassCastsNew.kt")
     arg("ccoutputFolder", project(":tgbotapi.utils").file("src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/utils").absolutePath)
+}
+
+dependencies {
+    ktlintRuleset project(":tgbotapi.linterRules")
 }

@@ -9,5 +9,5 @@ external interface GyroscopeStartParams {
 }
 
 fun GyroscopeStartParams(refreshRate: MilliSeconds = 1000): GyroscopeStartParams = json(
-    "refresh_rate" to refreshRate
+    "refresh_rate" to refreshRate,
 ).unsafeCast<GyroscopeStartParams>()

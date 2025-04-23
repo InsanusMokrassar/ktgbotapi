@@ -24,8 +24,9 @@ data class CommonPassport(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : Passport()
+
 @Serializable
 data class InternalPassport(
     @SerialName(dataField)
@@ -39,5 +40,5 @@ data class InternalPassport(
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
-    override val hash: PassportElementHash
+    override val hash: PassportElementHash,
 ) : Passport()

@@ -24,7 +24,7 @@ public suspend fun TelegramBot.sendDice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<DiceContent> = execute(
     SendDice(
         chatId = chatId,
@@ -36,8 +36,8 @@ public suspend fun TelegramBot.sendDice(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -54,7 +54,7 @@ public suspend fun TelegramBot.sendDice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<DiceContent> = sendDice(
     chatId = chat.id,
     animationType = animationType,
@@ -65,5 +65,5 @@ public suspend fun TelegramBot.sendDice(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

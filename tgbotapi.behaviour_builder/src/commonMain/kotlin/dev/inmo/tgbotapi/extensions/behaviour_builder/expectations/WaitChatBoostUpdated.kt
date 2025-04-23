@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.Flow
 
 suspend fun BehaviourContext.waitChatBoostUpdated(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<ChatBoostUpdated> = expectFlow(
     initRequest,
-    errorFactory
+    errorFactory,
 ) {
     it.chatBoostUpdatedUpdateOrNull() ?.data.let(::listOfNotNull)
 }

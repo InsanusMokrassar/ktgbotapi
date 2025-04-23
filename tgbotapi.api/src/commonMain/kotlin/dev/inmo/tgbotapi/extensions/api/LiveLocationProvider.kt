@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import korlibs.time.DateTime
-import korlibs.time.TimeSpan
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.stopLiveLocation
@@ -13,11 +11,13 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.StaticLocation
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
+import korlibs.time.DateTime
+import korlibs.time.TimeSpan
 import korlibs.time.millisecondsLong
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ public class LiveLocationProvider internal constructor(
     private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
     autoCloseTimeDelay: Double,
-    initMessage: ContentMessage<LocationContent>
+    initMessage: ContentMessage<LocationContent>,
 ) : Closeable {
     private val doWhenClose = {
         scope.launch {
@@ -59,14 +59,15 @@ public class LiveLocationProvider internal constructor(
      */
     public suspend fun updateLocation(
         location: LiveLocation,
-        replyMarkup: InlineKeyboardMarkup? = null
+        replyMarkup: InlineKeyboardMarkup? = null,
     ): LiveLocation {
         if (!isClosed) {
-            message = requestsExecutor.editLiveLocation(
-                message,
-                location,
-                replyMarkup = replyMarkup
-            )
+            message =
+                requestsExecutor.editLiveLocation(
+                    message,
+                    location,
+                    replyMarkup = replyMarkup,
+                )
             return lastLocation
         } else {
             error("LiveLocation is closed")
@@ -102,7 +103,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider {
     val liveTimeAsDouble = liveTimeMillis.toDouble()
     val locationMessage = execute(
@@ -121,15 +122,15 @@ public suspend fun TelegramBot.startLiveLocation(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             replyParameters = replyParameters,
-            replyMarkup = replyMarkup
-        )
+            replyMarkup = replyMarkup,
+        ),
     )
 
     return LiveLocationProvider(
         this,
         scope,
         liveTimeAsDouble,
-        locationMessage
+        locationMessage,
     )
 }
 
@@ -153,7 +154,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider = startLiveLocation(
     scope = scope,
     chatId = chat.id,
@@ -170,7 +171,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -192,7 +193,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider = startLiveLocation(
     scope = scope,
     chatId = chatId,
@@ -209,7 +210,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -231,7 +232,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider = startLiveLocation(
     scope = scope,
     chatId = chat.id,
@@ -248,7 +249,7 @@ public suspend fun TelegramBot.startLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -271,7 +272,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider = startLiveLocation(
     scope = scope,
     chat = to.chat,
@@ -288,7 +289,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -310,7 +311,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): LiveLocationProvider = startLiveLocation(
     scope = scope,
     chat = to.chat,
@@ -326,5 +327,5 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

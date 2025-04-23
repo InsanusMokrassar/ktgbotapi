@@ -26,7 +26,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
 ): Boolean = execute(
     PromoteChatMember(
         chatId = chatId,
@@ -46,8 +46,8 @@ public suspend fun TelegramBot.promoteChatMember(
         canManageTopics = canManageTopics,
         canPostStories = canPostStories,
         canEditStories = canEditStories,
-        canDeleteStories = canDeleteStories
-    )
+        canDeleteStories = canDeleteStories,
+    ),
 )
 
 @Warning("This method is too common. Use it with caution")
@@ -69,7 +69,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
 ): Boolean = promoteChatMember(
     chat.id,
     userId,
@@ -88,7 +88,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics = canManageTopics,
     canPostStories = canPostStories,
     canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
+    canDeleteStories = canDeleteStories,
 )
 
 @Warning("This method is too common. Use it with caution")
@@ -110,7 +110,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
 ): Boolean = promoteChatMember(
     chatId,
     user.id,
@@ -129,7 +129,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics = canManageTopics,
     canPostStories = canPostStories,
     canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
+    canDeleteStories = canDeleteStories,
 )
 
 @Warning("This method is too common. Use it with caution")
@@ -151,7 +151,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
 ): Boolean = promoteChatMember(
     chat.id,
     user.id,
@@ -170,5 +170,5 @@ public suspend fun TelegramBot.promoteChatMember(
     canManageTopics = canManageTopics,
     canPostStories = canPostStories,
     canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
+    canDeleteStories = canDeleteStories,
 )

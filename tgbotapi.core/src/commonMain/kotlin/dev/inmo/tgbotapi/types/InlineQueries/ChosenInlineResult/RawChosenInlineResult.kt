@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class RawChosenInlineResult(
     @SerialName(resultIdField)
-    val resultId: InlineQueryId, //chosen temporary, can be changed
+    val resultId: InlineQueryId, // chosen temporary, can be changed
     @SerialName(fromField)
     val user: User,
     @SerialName(queryField)
@@ -17,7 +17,7 @@ internal data class RawChosenInlineResult(
     @SerialName(locationField)
     val location: StaticLocation? = null,
     @SerialName(inlineMessageIdField)
-    val inlineMessageId: InlineMessageId? = null
+    val inlineMessageId: InlineMessageId? = null,
 ) {
     val asChosenInlineResult: ChosenInlineResult by lazy {
         location ?.let {

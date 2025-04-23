@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.types.commands.BotCommandScopeDefault
 
 public suspend fun TelegramBot.deleteMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: IetfLang?
+    languageCode: IetfLang?,
 ): Boolean = execute(DeleteMyCommands(scope, languageCode))
 
 public suspend fun TelegramBot.deleteMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: String? = null
+    languageCode: String? = null,
 ): Boolean = deleteMyCommands(scope, languageCode ?.let(::IetfLang))

@@ -27,6 +27,7 @@ object MarkdownV2ParseMode : ParseMode {
     @SerialName(parseModeField)
     override val parseModeName: String = "MarkdownV2"
 }
+
 @Serializable(ParseModeSerializer::class)
 object HTMLParseMode : ParseMode {
     @Serializable
@@ -49,6 +50,7 @@ var defaultParseMode: ParseMode = HTML
 @RiskFeature
 object ParseModeSerializer : KSerializer<ParseMode> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
+
     override fun deserialize(decoder: Decoder): ParseMode {
         return when (decoder.decodeString()) {
             MarkdownParseMode.parseModeName -> Markdown
@@ -58,7 +60,10 @@ object ParseModeSerializer : KSerializer<ParseMode> {
         }
     }
 
-    override fun serialize(encoder: Encoder, value: ParseMode) {
+    override fun serialize(
+        encoder: Encoder,
+        value: ParseMode,
+    ) {
         encoder.encodeString(value.parseModeName)
     }
 }

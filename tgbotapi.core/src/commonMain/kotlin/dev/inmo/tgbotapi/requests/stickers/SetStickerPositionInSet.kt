@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
 import dev.inmo.tgbotapi.types.positionField
 import dev.inmo.tgbotapi.types.stickerField
@@ -13,7 +12,7 @@ data class SetStickerPositionInSet(
     @SerialName(stickerField)
     override val sticker: FileId,
     @SerialName(positionField)
-    val position: Int
+    val position: Int,
 ) : StickerAction<Boolean> {
     init {
         if (position < 0) {
@@ -22,6 +21,7 @@ data class SetStickerPositionInSet(
     }
 
     override fun method(): String = "setStickerPositionInSet"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

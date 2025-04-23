@@ -26,7 +26,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = execute(
     SendSticker(
         chatId = chatId,
@@ -39,8 +39,8 @@ public suspend fun TelegramBot.sendSticker(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -58,7 +58,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = chat.id,
     sticker = sticker,
@@ -70,7 +70,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -88,7 +88,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
     sticker = sticker.fileId,
@@ -100,7 +100,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -118,7 +118,7 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StickerContent> = sendSticker(
     chat = chat,
     sticker = sticker.fileId,
@@ -130,5 +130,5 @@ public suspend fun TelegramBot.sendSticker(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

@@ -20,7 +20,7 @@ data class UtilityBillSecureValue(
     @SerialName(translationField)
     override val translation: List<FileCredentials> = emptyList(),
     @SerialName(filesField)
-    override val files: List<FileCredentials> = emptyList()
+    override val files: List<FileCredentials> = emptyList(),
 ) : OtherDocumentsSecureValue()
 
 @Serializable
@@ -28,7 +28,7 @@ data class BankStatementSecureValue(
     @SerialName(translationField)
     override val translation: List<FileCredentials> = emptyList(),
     @SerialName(filesField)
-    override val files: List<FileCredentials> = emptyList()
+    override val files: List<FileCredentials> = emptyList(),
 ) : OtherDocumentsSecureValue()
 
 @Serializable
@@ -36,7 +36,7 @@ data class RentalAgreementSecureValue(
     @SerialName(translationField)
     override val translation: List<FileCredentials> = emptyList(),
     @SerialName(filesField)
-    override val files: List<FileCredentials> = emptyList()
+    override val files: List<FileCredentials> = emptyList(),
 ) : OtherDocumentsSecureValue()
 
 @Serializable
@@ -44,7 +44,7 @@ data class PassportRegistrationSecureValue(
     @SerialName(translationField)
     override val translation: List<FileCredentials> = emptyList(),
     @SerialName(filesField)
-    override val files: List<FileCredentials> = emptyList()
+    override val files: List<FileCredentials> = emptyList(),
 ) : OtherDocumentsSecureValue()
 
 @Serializable
@@ -52,5 +52,5 @@ data class TemporalRegistrationSecureValue(
     @SerialName(translationField)
     override val translation: List<FileCredentials> = emptyList(),
     @SerialName(filesField)
-    override val files: List<FileCredentials> = emptyList()
+    override val files: List<FileCredentials> = emptyList(),
 ) : OtherDocumentsSecureValue()

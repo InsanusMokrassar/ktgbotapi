@@ -5,5 +5,5 @@ import dev.inmo.tgbotapi.types.message.payments.abstracts.PaymentInfo
 import dev.inmo.tgbotapi.types.payments.RefundedPayment
 
 data class RefundedPaymentEvent(
-    val payment: RefundedPayment
+    val payment: RefundedPayment,
 ) : PaymentInfo, CommonEvent

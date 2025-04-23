@@ -11,5 +11,5 @@ data class Response(
     @SerialName("error_code")
     val errorCode: Int? = null,
     val result: JsonElement? = null,
-    val parameters: ResponseParametersRaw? = null
+    val parameters: ResponseParametersRaw? = null,
 )

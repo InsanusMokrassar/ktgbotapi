@@ -14,8 +14,8 @@ data class PathedFile(
     @SerialName(filePathField)
     val filePath: String,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null
-): TelegramMediaFile {
+    override val fileSize: Long? = null,
+) : TelegramMediaFile {
     @Transient
     val fileName: FileName by lazy(LazyThreadSafetyMode.PUBLICATION) {
         filePath.filenameFromUrl
@@ -23,4 +23,5 @@ data class PathedFile(
 }
 
 fun TelegramAPIUrlsKeeper.resolveFileURL(file: PathedFile): String = "$fileBaseUrl/${file.filePath}"
+
 fun PathedFile.fullUrl(keeper: TelegramAPIUrlsKeeper): String = keeper.resolveFileURL(this)

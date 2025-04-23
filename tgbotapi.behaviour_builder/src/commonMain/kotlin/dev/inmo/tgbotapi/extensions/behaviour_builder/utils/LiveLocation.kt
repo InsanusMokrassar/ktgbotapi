@@ -16,13 +16,16 @@ import kotlinx.coroutines.flow.first
  */
 suspend fun BehaviourContext.followLocation(
     message: ContentMessage<LiveLocationContent>,
-    onLocation: BehaviourContextAndTypeReceiver<Unit, Location>
+    onLocation: BehaviourContextAndTypeReceiver<Unit, Location>,
 ) {
     var currentLocation: Location = message.content.location
     onLocation(message.content.location)
 
     while (currentLocation !is StaticLocation) {
-        currentLocation = waitEditedLocationMessage().filter { it.messageId == message.messageId && it.chat.id == message.chat.id }.first().content.location
+        currentLocation =
+            waitEditedLocationMessage().filter {
+                it.messageId == message.messageId && it.chat.id == message.chat.id
+            }.first().content.location
         onLocation(currentLocation)
     }
 }

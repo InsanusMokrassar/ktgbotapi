@@ -16,7 +16,7 @@ import kotlin.reflect.KClass
 class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
     private val inputKlass: KClass<I>,
     private val strict: Boolean = false,
-    private val delegateTo: BehaviourWithFSMStateHandler<I, O>
+    private val delegateTo: BehaviourWithFSMStateHandler<I, O>,
 ) : CheckableHandlerHolder<O, O>, BehaviourWithFSMStateHandler<O, O> {
     /**
      * Check ability of [delegateTo] to handle this [state]
@@ -42,5 +42,5 @@ class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
 
 inline fun <reified I : O, O : State> BehaviourWithFSMStateHandlerHolder(
     strict: Boolean = false,
-    delegateTo: BehaviourWithFSMStateHandler<I, O>
+    delegateTo: BehaviourWithFSMStateHandler<I, O>,
 ) = BehaviourWithFSMStateHandlerHolder(I::class, strict, delegateTo)

@@ -12,11 +12,20 @@ sealed interface StickerType {
     val type: String
 
     @Serializable
-    object Regular : StickerType { override val type: String = "regular" }
+    object Regular : StickerType {
+        override val type: String = "regular"
+    }
+
     @Serializable
-    object Mask : StickerType { override val type: String = "mask" }
+    object Mask : StickerType {
+        override val type: String = "mask"
+    }
+
     @Serializable
-    object CustomEmoji : StickerType { override val type: String = "custom_emoji" }
+    object CustomEmoji : StickerType {
+        override val type: String = "custom_emoji"
+    }
+
     @Serializable
     data class Unknown(override val type: String = "custom_emoji") : StickerType
 
@@ -32,9 +41,11 @@ sealed interface StickerType {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: StickerType) {
+        override fun serialize(
+            encoder: Encoder,
+            value: StickerType,
+        ) {
             encoder.encodeString(value.type)
         }
-
     }
 }

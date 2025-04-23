@@ -16,7 +16,7 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(
         "dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton",
-        PolymorphicKind.SEALED
+        PolymorphicKind.SEALED,
     )
 
     private fun resolveSerializer(json: JsonObject): KSerializer<out InlineKeyboardButton>? {
@@ -42,14 +42,25 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
         } ?: UnknownInlineKeyboardButton(json)
     }
 
-    override fun serialize(encoder: Encoder, value: InlineKeyboardButton) {
+    override fun serialize(
+        encoder: Encoder,
+        value: InlineKeyboardButton,
+    ) {
         when (value) {
             is CallbackDataInlineKeyboardButton -> CallbackDataInlineKeyboardButton.serializer().serialize(encoder, value)
             is LoginURLInlineKeyboardButton -> LoginURLInlineKeyboardButton.serializer().serialize(encoder, value)
             is PayInlineKeyboardButton -> PayInlineKeyboardButton.serializer().serialize(encoder, value)
             is SwitchInlineQueryInlineKeyboardButton -> SwitchInlineQueryInlineKeyboardButton.serializer().serialize(encoder, value)
-            is SwitchInlineQueryCurrentChatInlineKeyboardButton -> SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer().serialize(encoder, value)
-            is SwitchInlineQueryChosenChatInlineKeyboardButton -> SwitchInlineQueryChosenChatInlineKeyboardButton.serializer().serialize(encoder, value)
+            is SwitchInlineQueryCurrentChatInlineKeyboardButton ->
+                SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer().serialize(
+                    encoder,
+                    value,
+                )
+            is SwitchInlineQueryChosenChatInlineKeyboardButton ->
+                SwitchInlineQueryChosenChatInlineKeyboardButton.serializer().serialize(
+                    encoder,
+                    value,
+                )
             is URLInlineKeyboardButton -> URLInlineKeyboardButton.serializer().serialize(encoder, value)
             is CopyTextButton -> CopyTextButton.serializer().serialize(encoder, value)
             is WebAppInlineKeyboardButton -> WebAppInlineKeyboardButton.serializer().serialize(encoder, value)

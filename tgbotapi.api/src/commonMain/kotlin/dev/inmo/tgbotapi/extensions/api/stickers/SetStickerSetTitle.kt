@@ -8,15 +8,15 @@ import dev.inmo.tgbotapi.types.stickers.StickerSet
 
 public suspend fun TelegramBot.setStickerSetTitle(
     name: StickerSetName,
-    title: String
+    title: String,
 ): Boolean = execute(SetStickerSetTitle(name, title))
 
 public suspend fun TelegramBot.setStickerSetTitle(
     sticker: Sticker,
-    title: String
+    title: String,
 ): Boolean = setStickerSetTitle(sticker.stickerSetName ?: error("Unable to take name of sticker set from sticker $sticker"), title)
 
 public suspend fun TelegramBot.setStickerSetTitle(
     stickerSet: StickerSet,
-    title: String
+    title: String,
 ): Boolean = setStickerSetTitle(stickerSet.name, title)

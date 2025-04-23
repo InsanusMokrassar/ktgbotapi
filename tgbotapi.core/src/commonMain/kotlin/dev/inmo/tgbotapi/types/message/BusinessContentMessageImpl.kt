@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.message
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -9,11 +8,11 @@ import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 
-data class BusinessContentMessageImpl<T: MessageContent>(
+data class BusinessContentMessageImpl<T : MessageContent>(
     override val messageId: MessageId,
     override val from: User,
     override val chat: PreviewBusinessChat,
@@ -63,6 +62,6 @@ data class BusinessContentMessageImpl<T: MessageContent>(
         senderBot = senderBot,
         mediaGroupId = mediaGroupId,
         senderBusinessBot = senderBusinessBot,
-        fromOffline = fromOffline
+        fromOffline = fromOffline,
     )
 }

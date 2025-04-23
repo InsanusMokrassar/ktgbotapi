@@ -26,7 +26,7 @@ fun SendVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<VideoNoteContent>> {
     val videoNoteAsFile = videoNote as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
@@ -44,7 +44,7 @@ fun SendVideoNote(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     return if (videoNoteAsFile == null && thumbAsFile == null) {
@@ -52,13 +52,12 @@ fun SendVideoNote(
     } else {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(videoNoteAsFile, thumbAsFile).associateBy { it.fileId }
+            listOfNotNull(videoNoteAsFile, thumbAsFile).associateBy { it.fileId },
         )
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVideoNoteData internal constructor(
@@ -87,18 +86,18 @@ data class SendVideoNoteData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<VideoNoteContent>>,
     SendContentMessageRequest<ContentMessage<VideoNoteContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VideoNoteContent>>,
     ThumbedSendMessageRequest<ContentMessage<VideoNoteContent>>,
     DuratedSendMessageRequest<ContentMessage<VideoNoteContent>>,
-    SizedSendMessageRequest<ContentMessage<VideoNoteContent>>
-{
+    SizedSendMessageRequest<ContentMessage<VideoNoteContent>> {
     override val height: Int?
         get() = width
 
     override fun method(): String = "sendVideoNote"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -107,8 +106,8 @@ data class SendVideoNoteData internal constructor(
 
 data class SendVideoNoteFiles internal constructor(
     val videoNote: MultipartFile? = null,
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 ) : Files by mapOfNotNull(
     videoNoteField to videoNote,
-    thumbnailField to thumbnail
+    thumbnailField to thumbnail,
 )

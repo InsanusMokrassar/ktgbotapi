@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class BoostId(
-    val string: String
+    val string: String,
 )

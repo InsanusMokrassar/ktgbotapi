@@ -16,4 +16,3 @@ val String.statusTyped
 
 val InvoiceClosedInfo.statusTyped
     get() = status.statusTyped
-

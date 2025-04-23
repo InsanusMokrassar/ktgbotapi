@@ -13,7 +13,7 @@ import kotlinx.serialization.SerializationStrategy
 @Serializable
 data class GetBusinessConnection(
     @SerialName(businessConnectionIdField)
-    override val businessConnectionId: BusinessConnectionId
+    override val businessConnectionId: BusinessConnectionId,
 ) : SimpleRequest<BusinessConnection>, WithBusinessConnectionId {
     override fun method(): String {
         return "getBusinessConnection"

@@ -22,9 +22,7 @@ import kotlinx.coroutines.flow.*
  * @see onlyTextContentMessages
  * @see textMessages
  */
-fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
-    commandRegex: Regex
-) = filter { contentMessage ->
+fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(commandRegex: Regex) = filter { contentMessage ->
     (contentMessage.content.textSources.singleOrNull() as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
 }
 
@@ -41,9 +39,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
  * @see onlyTextContentMessages
  * @see textMessages
  */
-fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
-    commandRegex: Regex
-) = filter { contentMessage ->
+fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(commandRegex: Regex) = filter { contentMessage ->
     contentMessage.content.textSources.any {
         (it as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
     }
@@ -65,28 +61,26 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
  * @see onlyTextContentMessages
  * @see textMessages
  */
-fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsWithArgs(
-    commandRegex: Regex
-) = mapNotNull { contentMessage ->
+fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsWithArgs(commandRegex: Regex) = mapNotNull { contentMessage ->
     val allEntities = contentMessage.content.textSources
     (allEntities.firstOrNull() as? BotCommandTextSource) ?.let {
         if (commandRegex.matches(it.command)) {
-            contentMessage to allEntities.flatMap {
-                when (it) {
-                    is RegularTextSource -> it.source.split(" ").mapNotNull { regularTextSourcePart ->
-                        if (regularTextSourcePart.isNotBlank()) {
-                            RegularTextSource(regularTextSourcePart)
-                        } else {
-                            null
-                        }
+            contentMessage to
+                allEntities.flatMap {
+                    when (it) {
+                        is RegularTextSource ->
+                            it.source.split(" ").mapNotNull { regularTextSourcePart ->
+                                if (regularTextSourcePart.isNotBlank()) {
+                                    RegularTextSource(regularTextSourcePart)
+                                } else {
+                                    null
+                                }
+                            }
+                        else -> listOf(it)
                     }
-                    else -> listOf(it)
                 }
-            }
         } else {
             null
         }
     }
 }
-
-

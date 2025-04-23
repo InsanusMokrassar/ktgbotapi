@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.request
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.PreviewUser
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,7 +9,7 @@ data class UsersShared(
     @SerialName(requestIdField)
     override val requestId: RequestId,
     @SerialName(usersField)
-    val users: List<SharedUser>
+    val users: List<SharedUser>,
 ) : ChatSharedRequest {
     val userIds: List<UserId> by lazy {
         users.map { it.id }
@@ -19,7 +18,7 @@ data class UsersShared(
         get() = userIds.first()
     constructor(
         requestId: RequestId,
-        user: SharedUser
+        user: SharedUser,
     ) : this(requestId, listOf(user))
 
     override val chatId: ChatId
@@ -28,11 +27,12 @@ data class UsersShared(
     companion object {
         operator fun invoke(
             requestId: RequestId,
-            userIds: List<UserId>
+            userIds: List<UserId>,
         ) = UsersShared(requestId, userIds.map { SharedUser(it) })
+
         operator fun invoke(
             requestId: RequestId,
-            userId: UserId
+            userId: UserId,
         ) = UsersShared(requestId, SharedUser(userId))
     }
 }

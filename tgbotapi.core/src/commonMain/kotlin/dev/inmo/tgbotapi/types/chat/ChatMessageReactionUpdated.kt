@@ -36,7 +36,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(oldReactionField)
         override val old: List<Reaction>,
         @SerialName(newReactionField)
-        override val new: List<Reaction>
+        override val new: List<Reaction>,
     ) : ChatMessageReactionUpdated {
         override val reactedChat: PreviewChat?
             get() = null
@@ -56,7 +56,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(oldReactionField)
         override val old: List<Reaction>,
         @SerialName(newReactionField)
-        override val new: List<Reaction>
+        override val new: List<Reaction>,
     ) : ChatMessageReactionUpdated {
         override val reactedUser: PreviewUser?
             get() = null
@@ -79,7 +79,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         override val old: List<Reaction>,
         @SerialName(newReactionField)
         override val new: List<Reaction>,
-        val source: JsonElement?
+        val source: JsonElement?,
     ) : ChatMessageReactionUpdated
 
     @Serializable
@@ -98,7 +98,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(oldReactionField)
         val old: List<Reaction>,
         @SerialName(newReactionField)
-        val new: List<Reaction>
+        val new: List<Reaction>,
     )
 
     companion object : KSerializer<ChatMessageReactionUpdated> {
@@ -113,36 +113,42 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
                 Surrogate.serializer().deserialize(decoder) to null
             }
             return when {
-                surrogate.reactedUser != null -> ByUser(
-                    surrogate.chat,
-                    surrogate.messageId,
-                    surrogate.reactedUser,
-                    surrogate.date,
-                    surrogate.old,
-                    surrogate.new
-                )
-                surrogate.reactedChat != null -> ByChat(
-                    surrogate.chat,
-                    surrogate.messageId,
-                    surrogate.reactedChat,
-                    surrogate.date,
-                    surrogate.old,
-                    surrogate.new
-                )
-                else -> Unknown(
-                    surrogate.chat,
-                    surrogate.messageId,
-                    surrogate.reactedUser,
-                    surrogate.reactedChat,
-                    surrogate.date,
-                    surrogate.old,
-                    surrogate.new,
-                    jsonElement
-                )
+                surrogate.reactedUser != null ->
+                    ByUser(
+                        surrogate.chat,
+                        surrogate.messageId,
+                        surrogate.reactedUser,
+                        surrogate.date,
+                        surrogate.old,
+                        surrogate.new,
+                    )
+                surrogate.reactedChat != null ->
+                    ByChat(
+                        surrogate.chat,
+                        surrogate.messageId,
+                        surrogate.reactedChat,
+                        surrogate.date,
+                        surrogate.old,
+                        surrogate.new,
+                    )
+                else ->
+                    Unknown(
+                        surrogate.chat,
+                        surrogate.messageId,
+                        surrogate.reactedUser,
+                        surrogate.reactedChat,
+                        surrogate.date,
+                        surrogate.old,
+                        surrogate.new,
+                        jsonElement,
+                    )
             }
         }
 
-        override fun serialize(encoder: Encoder, value: ChatMessageReactionUpdated) {
+        override fun serialize(
+            encoder: Encoder,
+            value: ChatMessageReactionUpdated,
+        ) {
             if (value is Unknown && value.source != null) {
                 JsonElement.serializer().serialize(encoder, value.source)
             } else {
@@ -153,7 +159,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
                     value.reactedChat,
                     value.date,
                     value.old,
-                    value.new
+                    value.new,
                 )
             }
         }

@@ -1,15 +1,15 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
-import korlibs.time.DateTime
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import korlibs.time.DateTime
 import kotlinx.serialization.*
 
 sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInviteLinkRequest<R>, KnownChatInviteLinkRequest<R> {
     val expirationUnixTimeStamp: TelegramDate?
     override val expireDate: DateTime?
         get() = expirationUnixTimeStamp ?.asDate
+
     override fun method(): String = "editChatInviteLink"
 
     sealed interface Subscription : EditChatInviteLink<ChatInviteLinkUnlimited> {
@@ -23,6 +23,7 @@ sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInvit
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = EditChatInviteLinkUnlimited(chatId, inviteLink, name, expirationUnixTimeStamp)
+
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             inviteLink: String,
@@ -30,18 +31,21 @@ sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInvit
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = EditChatInviteLinkWithLimitedMembers(chatId, inviteLink, membersLimit, name, expirationUnixTimeStamp)
+
         fun withJoinRequest(
             chatId: ChatIdentifier,
             inviteLink: String,
             name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
         ) = EditChatInviteLinkWithJoinRequest(chatId, inviteLink, name, expirationUnixTimeStamp)
+
         fun unlimited(
             chatId: ChatIdentifier,
             inviteLink: String,
             expiration: DateTime,
             name: String? = null,
         ) = unlimited(chatId, inviteLink, name, expiration.toTelegramDate())
+
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             inviteLink: String,
@@ -49,12 +53,14 @@ sealed interface EditChatInviteLink<R : SecondaryChatInviteLink> : EditChatInvit
             expiration: DateTime,
             name: String? = null,
         ) = withLimitedMembers(chatId, inviteLink, membersLimit, name, expiration.toTelegramDate())
+
         fun withJoinRequest(
             chatId: ChatIdentifier,
             inviteLink: String,
             expiration: DateTime,
             name: String? = null,
         ) = withJoinRequest(chatId, inviteLink, name, expiration.toTelegramDate())
+
         fun subscription(
             chatId: ChatIdentifier,
             inviteLink: String,

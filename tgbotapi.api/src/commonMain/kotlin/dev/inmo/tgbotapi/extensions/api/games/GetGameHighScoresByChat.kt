@@ -12,45 +12,55 @@ import dev.inmo.tgbotapi.types.message.content.GameContent
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chatId: IdChatIdentifier,
-    messageId: MessageId
+    messageId: MessageId,
 ): List<GameHighScore> = execute(
-    GetGameHighScoresByChat(userId, chatId, messageId)
+    GetGameHighScoresByChat(userId, chatId, messageId),
 )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chatId: IdChatIdentifier,
-    messageId: MessageId
+    messageId: MessageId,
 ): List<GameHighScore> = getGameScore(
-    user.id, chatId, messageId
+    user.id,
+    chatId,
+    messageId,
 )
 
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chat: Chat,
-    messageId: MessageId
+    messageId: MessageId,
 ): List<GameHighScore> = getGameScore(
-    userId, chat.id, messageId
+    userId,
+    chat.id,
+    messageId,
 )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chat: Chat,
-    messageId: MessageId
+    messageId: MessageId,
 ): List<GameHighScore> = getGameScore(
-    user.id, chat.id, messageId
+    user.id,
+    chat.id,
+    messageId,
 )
 
 public suspend fun TelegramBot.getGameScore(
     userId: UserId,
-    message: ContentMessage<GameContent>
+    message: ContentMessage<GameContent>,
 ): List<GameHighScore> = getGameScore(
-    userId, message.chat.id, message.messageId
+    userId,
+    message.chat.id,
+    message.messageId,
 )
 
 public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
-    message: ContentMessage<GameContent>
+    message: ContentMessage<GameContent>,
 ): List<GameHighScore> = getGameScore(
-    user.id, message.chat.id, message.messageId
+    user.id,
+    message.chat.id,
+    message.messageId,
 )

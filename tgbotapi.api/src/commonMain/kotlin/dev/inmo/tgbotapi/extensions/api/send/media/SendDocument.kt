@@ -5,13 +5,13 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.DocumentFile
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -31,7 +31,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = execute(
     SendDocument(
         chatId = chatId,
@@ -47,8 +47,8 @@ public suspend fun TelegramBot.sendDocument(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection
-    )
+        disableContentTypeDetection = disableContentTypeDetection,
+    ),
 )
 
 /**
@@ -69,7 +69,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
@@ -84,7 +84,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -104,7 +104,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document.fileId,
@@ -119,7 +119,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -139,7 +139,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
@@ -153,7 +153,7 @@ public suspend fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -173,7 +173,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = execute(
     SendDocument(
         chatId = chatId,
@@ -188,8 +188,8 @@ public suspend inline fun TelegramBot.sendDocument(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
-        disableContentTypeDetection = disableContentTypeDetection
-    )
+        disableContentTypeDetection = disableContentTypeDetection,
+    ),
 )
 
 /**
@@ -209,7 +209,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
@@ -223,7 +223,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -242,7 +242,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document.fileId,
@@ -256,7 +256,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )
 
 /**
@@ -275,7 +275,7 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
+    disableContentTypeDetection: Boolean? = null,
 ): ContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
@@ -288,5 +288,5 @@ public suspend inline fun TelegramBot.sendDocument(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    disableContentTypeDetection = disableContentTypeDetection
+    disableContentTypeDetection = disableContentTypeDetection,
 )

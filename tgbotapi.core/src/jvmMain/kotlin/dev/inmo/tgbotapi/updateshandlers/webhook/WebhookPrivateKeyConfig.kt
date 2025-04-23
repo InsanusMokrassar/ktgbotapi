@@ -10,7 +10,7 @@ data class WebhookPrivateKeyConfig(
     private val keyStorePath: String,
     private val keyStorePassword: String,
     val aliasName: String,
-    private val aliasPassword: String
+    private val aliasPassword: String,
 ) {
     @Transient
     val keyStore = KeyStore.getInstance("JKS").apply {

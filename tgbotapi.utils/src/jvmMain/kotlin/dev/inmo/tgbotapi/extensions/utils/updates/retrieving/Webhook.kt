@@ -21,7 +21,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.Executors
 
-
 /**
  * Allows to include webhook in custom route everywhere in your server
  *
@@ -48,7 +47,7 @@ fun Route.includeWebhookHandlingInRoute(
             runCatchingSafely {
                 val update = nonstrictJsonFormat.decodeFromString(
                     UpdateDeserializationStrategy,
-                    call.receiveText()
+                    call.receiveText(),
                 )
                 transformer(update)
             }.onSuccess {
@@ -57,7 +56,7 @@ fun Route.includeWebhookHandlingInRoute(
                 call.respond(HttpStatusCode.InternalServerError)
             }.getOrThrow()
         } catch (e: Throwable) {
-            exceptionsHandler?.invoke(e)
+            exceptionsHandler ?.invoke(e)
         }
     }
 }
@@ -76,7 +75,7 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
     scope,
     exceptionsHandler,
     mediaGroupsDebounceTimeMillis,
-    flowsUpdatesFilter(block = block).asUpdateReceiver
+    flowsUpdatesFilter(block = block).asUpdateReceiver,
 )
 
 /**
@@ -106,45 +105,44 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
     block: UpdateReceiver<Update>,
-): EmbeddedServer<TEngine, TConfiguration> =
-    embeddedServer(
-        factory = engineFactory,
-        environment = applicationEnvironment {
-            additionalApplicationEnvironmentConfigurator()
-        },
-        configure = {
-            privateKeyConfig?.let {
-                sslConnector(
-                    privateKeyConfig.keyStore,
-                    privateKeyConfig.aliasName,
-                    privateKeyConfig::keyStorePassword,
-                    privateKeyConfig::aliasPassword
-                ) {
-                    host = listenHost
-                    port = listenPort
-                }
-            } ?: connector {
+): EmbeddedServer<TEngine, TConfiguration> = embeddedServer(
+    factory = engineFactory,
+    environment = applicationEnvironment {
+        additionalApplicationEnvironmentConfigurator()
+    },
+    configure = {
+        privateKeyConfig ?.let {
+            sslConnector(
+                privateKeyConfig.keyStore,
+                privateKeyConfig.aliasName,
+                privateKeyConfig::keyStorePassword,
+                privateKeyConfig::aliasPassword,
+            ) {
                 host = listenHost
                 port = listenPort
             }
-
-            additionalEngineConfigurator()
-        },
-        module = {
-            routing {
-                listenRoute?.also {
-                    createRouteFromPath(it).includeWebhookHandlingInRoute(
-                        scope,
-                        exceptionsHandler,
-                        mediaGroupsDebounceTimeMillis,
-                        block
-                    )
-                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
-            }
+        } ?: connector {
+            host = listenHost
+            port = listenPort
         }
-    ).also {
-        it.start(false)
-    }
+
+        additionalEngineConfigurator()
+    },
+    module = {
+        routing {
+            listenRoute ?.also {
+                createRouteFromPath(it).includeWebhookHandlingInRoute(
+                    scope,
+                    exceptionsHandler,
+                    mediaGroupsDebounceTimeMillis,
+                    block,
+                )
+            } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
+        }
+    },
+).also {
+    it.start(false)
+}
 
 /**
  * Setting up ktor server, set webhook info via [SetWebhookRequest] request.
@@ -187,7 +185,7 @@ suspend fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Con
         mediaGroupsDebounceTimeMillis,
         additionalApplicationEnvironmentConfigurator,
         additionalEngineConfigurator,
-        block
+        block,
     )
 } catch (e: Exception) {
     throw e

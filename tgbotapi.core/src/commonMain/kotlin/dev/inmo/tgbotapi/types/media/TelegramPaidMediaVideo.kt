@@ -10,7 +10,7 @@ import kotlinx.serialization.*
 internal const val videoTelegramPaidMediaType = "video"
 
 @Serializable
-data class TelegramPaidMediaVideo (
+data class TelegramPaidMediaVideo(
     override val file: InputFile,
     override val thumb: InputFile? = null,
     override val width: Int? = null,
@@ -32,7 +32,10 @@ data class TelegramPaidMediaVideo (
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    init {
+        media = file.fileIdToSend
+    } // crutch until js compiling will be fixed
 }
 
 fun VideoFile.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = TelegramPaidMediaVideo(

@@ -37,7 +37,10 @@ sealed class InputFile {
         /**
          * Creates [MultipartFile] based on incoming [filename] and [inputSource]
          */
-        fun fromInput(filename: String, inputSource: () -> Input) = MultipartFile(filename, inputSource)
+        fun fromInput(
+            filename: String,
+            inputSource: () -> Input,
+        ) = MultipartFile(filename, inputSource)
 
         /**
          * Creates [MultipartFile] based on incoming [MPPFile] (common File in java, for example)
@@ -67,12 +70,13 @@ internal inline val InputFile.fileIdToSend
     }
 
 // TODO:: add checks for file url/file id regex
+
 /**
  * Contains file id or file url
  */
 @Serializable(InputFileSerializer::class)
 data class FileId(
-    override val fileId: String
+    override val fileId: String,
 ) : InputFile()
 
 typealias FileUrl = FileId
@@ -82,20 +86,26 @@ fun String.toInputFile() = FileId(this)
 @RiskFeature
 object InputFileSerializer : KSerializer<InputFile> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
-    override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileIdToSend)
+
+    override fun serialize(
+        encoder: Encoder,
+        value: InputFile,
+    ) = encoder.encodeString(value.fileIdToSend)
+
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString().removePrefix(attachPrefix))
 }
 
 // TODO:: add checks for files size
+
 /**
  * Contains info about file for sending
  *
  * @see asMultipartFile
  */
 @Serializable(InputFileSerializer::class)
-data class MultipartFile (
+data class MultipartFile(
     val filename: String,
-    private val inputSource: () -> Input
+    private val inputSource: () -> Input,
 ) : InputFile() {
     @Required
     @EncodeDefault
@@ -105,26 +115,21 @@ data class MultipartFile (
 }
 
 @Suppress("NOTHING_TO_INLINE", "unused")
-suspend inline fun ByteReadChannel.asMultipartFile(
-    fileName: String
-) = MultipartFile(
+suspend inline fun ByteReadChannel.asMultipartFile(fileName: String) = MultipartFile(
     fileName,
-    inputSource = asInput().let { { it } }
+    inputSource = asInput().let { { it } },
 )
 
 @Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asMultipartFile(
-    fileName: String
-) = MultipartFile(
+inline fun ByteArray.asMultipartFile(fileName: String) = MultipartFile(
     fileName,
-    inputSource = { ByteReadPacket(this) }
+    inputSource = { ByteReadPacket(this) },
 )
 
 @Suppress("NOTHING_TO_INLINE", "unused")
-suspend inline fun ByteReadChannelAllocator.asMultipartFile(
-    fileName: String
-) = this.invoke().asMultipartFile(fileName)
+suspend inline fun ByteReadChannelAllocator.asMultipartFile(fileName: String) = this.invoke().asMultipartFile(fileName)
 
 expect fun MPPFile.asMultipartFile(): MultipartFile
+
 @Suppress("NOTHING_TO_INLINE")
 inline fun MPPFile.multipartFile() = asMultipartFile()

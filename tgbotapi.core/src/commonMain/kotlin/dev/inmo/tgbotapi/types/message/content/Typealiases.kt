@@ -35,5 +35,3 @@ typealias AnimationMessage = CommonMessage<AnimationContent>
 typealias ScheduledGiveawayContentMessage = CommonMessage<GiveawayContent>
 typealias GiveawayPublicResultsContentMessage = CommonMessage<GiveawayPublicResultsContent>
 typealias PaidMediaInfoContentMessage = CommonMessage<PaidMediaInfoContent>
-
-

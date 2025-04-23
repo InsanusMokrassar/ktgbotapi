@@ -13,11 +13,12 @@ import kotlinx.serialization.json.Json
 
 class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFactory(logger ?: DefaultKTgBotAPIKSLog) {
     private val localSimpleRequestCallFactory = SimpleRequestCallFactory(logger)
+
     override suspend fun <T : Any> makeCall(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-        jsonFormatter: Json
+        jsonFormatter: Json,
     ): T? {
         return when (request) {
             !is MultipartRequest -> null
@@ -29,25 +30,26 @@ class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFa
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
-        request: Request<T>
+        request: Request<T>,
     ): Any? = (request as? MultipartRequest) ?.let { castedRequest ->
         MultiPartFormDataContent(
             formData {
                 val params = castedRequest.paramsJson.mapWithCommonValues() - castedRequest.mediaMap.keys
                 for ((key, value) in castedRequest.mediaMap + params) {
                     when (value) {
-                        is MultipartFile -> appendInput(
-                            key,
-                            Headers.build {
-                                append(HttpHeaders.ContentDisposition, "filename=${value.filename}")
-                            },
-                            block = value::input
-                        )
+                        is MultipartFile ->
+                            appendInput(
+                                key,
+                                Headers.build {
+                                    append(HttpHeaders.ContentDisposition, "filename=${value.filename}")
+                                },
+                                block = value::input,
+                            )
                         is FileId -> append(key, value.fileId)
                         else -> append(key, value.toString())
                     }
                 }
-            }
+            },
         )
     }
 }

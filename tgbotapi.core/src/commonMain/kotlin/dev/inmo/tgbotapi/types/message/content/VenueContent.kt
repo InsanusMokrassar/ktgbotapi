@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class VenueContent(
-    val venue: Venue
+    val venue: Venue,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -22,7 +22,7 @@ data class VenueContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<VenueContent>> = SendVenue(
         chatId = chatId,
         venue = venue,
@@ -33,6 +33,6 @@ data class VenueContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

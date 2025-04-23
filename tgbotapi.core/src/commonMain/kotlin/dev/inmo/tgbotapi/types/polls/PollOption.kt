@@ -27,30 +27,32 @@ sealed class PollOption : TextedInput {
         fun simple(
             text: String,
             textSources: List<TextSource>,
-            votes: Int = 0
+            votes: Int = 0,
         ) = SimplePollOption(text, textSources, votes)
+
         fun simple(
             textSources: List<TextSource>,
-            votes: Int = 0
+            votes: Int = 0,
         ) = SimplePollOption(textSources.makeSourceString(), textSources, votes)
+
         fun simple(
             votes: Int = 0,
-            builder: EntitiesBuilderBody
+            builder: EntitiesBuilderBody,
         ) = simple(
             EntitiesBuilder().apply(builder).build(),
-            votes
+            votes,
         )
     }
 }
 
 @Serializable(PollOptionSerializer::class)
-data class SimplePollOption (
+data class SimplePollOption(
     @SerialName(textField)
     override val text: String,
     @SerialName(textEntitiesField)
     override val textSources: List<TextSource> = emptyList(),
     @SerialName(votesCountField)
-    override val votes: Int = 0
+    override val votes: Int = 0,
 ) : PollOption() {
     override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
 }
@@ -64,28 +66,33 @@ object PollOptionSerializer : KSerializer<PollOption> {
         @SerialName(textEntitiesField)
         val textSources: List<RawMessageEntity> = emptyList(),
         @SerialName(votesCountField)
-        val votes: Int = 0
+        val votes: Int = 0,
     )
+
     override val descriptor: SerialDescriptor = RawPollOption.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): PollOption {
         val raw = RawPollOption.serializer().deserialize(
-            decoder
+            decoder,
         )
 
         return SimplePollOption(raw.text, raw.textSources.asTextSources(raw.text), raw.votes)
     }
 
-    override fun serialize(encoder: Encoder, value: PollOption) {
+    override fun serialize(
+        encoder: Encoder,
+        value: PollOption,
+    ) {
         when (value) {
-            is SimplePollOption -> RawPollOption.serializer().serialize(
-                encoder,
-                RawPollOption(
-                    value.text,
-                    value.textSources.toRawMessageEntities(),
-                    value.votes
+            is SimplePollOption ->
+                RawPollOption.serializer().serialize(
+                    encoder,
+                    RawPollOption(
+                        value.text,
+                        value.textSources.toRawMessageEntities(),
+                        value.votes,
+                    ),
                 )
-            )
         }
     }
 }

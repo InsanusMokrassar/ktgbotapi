@@ -32,7 +32,7 @@ sealed interface Gift {
             @SerialName(starCountField)
             override val starCount: Int,
             @SerialName(upgradeStarCountField)
-            override val upgradeStarCount: Int? = null
+            override val upgradeStarCount: Int? = null,
         ) : Regular {
             override val totalCount: Int?
                 get() = null
@@ -93,14 +93,17 @@ sealed interface Gift {
                 }
             }
 
-            override fun serialize(encoder: Encoder, value: Regular) {
+            override fun serialize(
+                encoder: Encoder,
+                value: Regular,
+            ) {
                 val surrogate = RegularGiftSurrogate(
                     id = value.id,
                     sticker = value.sticker,
                     star_count = value.starCount,
                     total_count = value.totalCount,
                     remaining_count = value.remainingCount,
-                    upgrade_star_count = value.upgradeStarCount
+                    upgrade_star_count = value.upgradeStarCount,
                 )
                 RegularGiftSurrogate.serializer().serialize(encoder, surrogate)
             }
@@ -120,7 +123,7 @@ sealed interface Gift {
         @SerialName(symbolField)
         val symbol: UniqueGiftSymbol,
         @SerialName(backdropField)
-        val backdrop: UniqueGiftBackdrop
+        val backdrop: UniqueGiftBackdrop,
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -165,21 +168,21 @@ sealed interface Gift {
 
         override fun serialize(
             encoder: Encoder,
-            value: Gift
+            value: Gift,
         ) {
             val surrogate = GiftSurrogate(
-                id = (value as? Regular)?.id,
-                sticker = (value as? Regular)?.sticker,
-                star_count = (value as? Regular)?.starCount,
-                total_count = (value as? Regular.Limited)?.totalCount,
-                remaining_count = (value as? Regular.Limited)?.remainingCount,
-                upgrade_star_count = (value as? Regular)?.upgradeStarCount,
-                base_name = (value as? Unique)?.baseName,
-                name = (value as? Unique)?.name,
-                number = (value as? Unique)?.number,
-                model = (value as? Unique)?.model,
-                symbol = (value as? Unique)?.symbol,
-                backdrop = (value as? Unique)?.backdrop,
+                id = (value as? Regular) ?.id,
+                sticker = (value as? Regular) ?.sticker,
+                star_count = (value as? Regular) ?.starCount,
+                total_count = (value as? Regular.Limited) ?.totalCount,
+                remaining_count = (value as? Regular.Limited) ?.remainingCount,
+                upgrade_star_count = (value as? Regular) ?.upgradeStarCount,
+                base_name = (value as? Unique) ?.baseName,
+                name = (value as? Unique) ?.name,
+                number = (value as? Unique) ?.number,
+                model = (value as? Unique) ?.model,
+                symbol = (value as? Unique) ?.symbol,
+                backdrop = (value as? Unique) ?.backdrop,
             )
             GiftSurrogate.serializer().serialize(encoder, surrogate)
         }

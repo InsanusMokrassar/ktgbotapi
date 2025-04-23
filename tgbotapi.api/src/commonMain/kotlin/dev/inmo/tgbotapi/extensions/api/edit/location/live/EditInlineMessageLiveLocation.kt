@@ -13,14 +13,29 @@ public suspend fun TelegramBot.editLiveLocation(
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = execute(
     EditInlineMessageLiveLocation(
-        inlineMessageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup
-    )
+        inlineMessageId,
+        latitude,
+        longitude,
+        horizontalAccuracy,
+        heading,
+        proximityAlertRadius,
+        replyMarkup,
+    ),
 )
+
 public suspend fun TelegramBot.editLiveLocation(
     inlineMessageId: InlineMessageId,
     location: LiveLocation,
-    replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editLiveLocation(inlineMessageId, location.latitude, location.longitude, location.horizontalAccuracy, location.heading, location.proximityAlertRadius, replyMarkup)
+    replyMarkup: InlineKeyboardMarkup? = null,
+): Boolean = editLiveLocation(
+    inlineMessageId,
+    location.latitude,
+    location.longitude,
+    location.horizontalAccuracy,
+    location.heading,
+    location.proximityAlertRadius,
+    replyMarkup,
+)

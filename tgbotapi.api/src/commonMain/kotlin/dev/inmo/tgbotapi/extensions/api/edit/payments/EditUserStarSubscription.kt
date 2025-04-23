@@ -9,23 +9,23 @@ import dev.inmo.tgbotapi.types.payments.abstracts.TelegramPaymentChargeId
 public suspend fun TelegramBot.editUserStarSubscription(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-    isCanceled: Boolean
+    isCanceled: Boolean,
 ): Boolean = execute(
     EditUserStarSubscription(
         userId = userId,
         telegramPaymentChargeId = telegramPaymentChargeId,
-        isCanceled = isCanceled
-    )
+        isCanceled = isCanceled,
+    ),
 )
 
 public suspend fun TelegramBot.editUserStarSubscription(
     user: User,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-    isCanceled: Boolean
+    isCanceled: Boolean,
 ): Boolean = editUserStarSubscription(
     userId = user.id,
     telegramPaymentChargeId = telegramPaymentChargeId,
-    isCanceled = isCanceled
+    isCanceled = isCanceled,
 )
 
 public suspend fun TelegramBot.cancelUserStarSubscription(
@@ -34,7 +34,7 @@ public suspend fun TelegramBot.cancelUserStarSubscription(
 ): Boolean = editUserStarSubscription(
     userId = userId,
     telegramPaymentChargeId = telegramPaymentChargeId,
-    isCanceled = true
+    isCanceled = true,
 )
 
 public suspend fun TelegramBot.cancelUserStarSubscription(
@@ -43,7 +43,7 @@ public suspend fun TelegramBot.cancelUserStarSubscription(
 ): Boolean = editUserStarSubscription(
     user = user,
     telegramPaymentChargeId = telegramPaymentChargeId,
-    isCanceled = true
+    isCanceled = true,
 )
 
 public suspend fun TelegramBot.enableUserStarSubscription(
@@ -52,7 +52,7 @@ public suspend fun TelegramBot.enableUserStarSubscription(
 ): Boolean = editUserStarSubscription(
     userId = userId,
     telegramPaymentChargeId = telegramPaymentChargeId,
-    isCanceled = false
+    isCanceled = false,
 )
 
 public suspend fun TelegramBot.enableUserStarSubscription(
@@ -61,5 +61,5 @@ public suspend fun TelegramBot.enableUserStarSubscription(
 ): Boolean = editUserStarSubscription(
     user = user,
     telegramPaymentChargeId = telegramPaymentChargeId,
-    isCanceled = false
+    isCanceled = false,
 )

@@ -1,11 +1,8 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents.forum
 
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
-import dev.inmo.tgbotapi.types.webAppNameField
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -22,10 +19,12 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
 
     @Serializable
     object Other : WriteAccessAllowed
+
     @Serializable
     data class FromWebAppLink(
-        override val webAppName: String
+        override val webAppName: String,
     ) : WriteAccessAllowed
+
     @Serializable
     object FromRequest : WriteAccessAllowed {
         override val fromRequest: Boolean
@@ -42,7 +41,7 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
     private class WriteAccessAllowedRaw(
         val web_app_name: String? = null,
         val from_request: Boolean = false,
-        val from_attachment_menu: Boolean = false
+        val from_attachment_menu: Boolean = false,
     )
 
     companion object : KSerializer<WriteAccessAllowed> {
@@ -60,7 +59,10 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: WriteAccessAllowed) {
+        override fun serialize(
+            encoder: Encoder,
+            value: WriteAccessAllowed,
+        ) {
             val raw = when (value) {
                 FromAttachmentMenu -> WriteAccessAllowedRaw(from_attachment_menu = true)
                 FromRequest -> WriteAccessAllowedRaw(from_request = true)

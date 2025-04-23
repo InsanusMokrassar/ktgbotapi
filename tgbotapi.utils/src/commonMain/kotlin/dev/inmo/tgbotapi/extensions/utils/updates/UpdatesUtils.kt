@@ -48,7 +48,7 @@ fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     mediaGroups.map { (_, updatesWithMessages) ->
         val update = updatesWithMessages.maxBy { it.first.updateId }.first
         resultUpdates.add(
-            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage())
+            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage()),
         )
     }
 

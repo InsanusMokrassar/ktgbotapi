@@ -9,25 +9,25 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,
-    messageThreadId: MessageThreadId
+    messageThreadId: MessageThreadId,
 ): Boolean = execute(
     DeleteForumTopic(
         chatId,
-        messageThreadId
-    )
+        messageThreadId,
+    ),
 )
 
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,
-    forumTopic: ForumTopic
+    forumTopic: ForumTopic,
 ): Boolean = deleteForumTopic(chatId, forumTopic.messageThreadId)
 
 public suspend fun TelegramBot.deleteForumTopic(
     chat: Chat,
-    messageThreadId: MessageThreadId
+    messageThreadId: MessageThreadId,
 ): Boolean = deleteForumTopic(chat.id, messageThreadId)
 
 public suspend fun TelegramBot.deleteForumTopic(
     chat: Chat,
-    forumTopic: ForumTopic
+    forumTopic: ForumTopic,
 ): Boolean = deleteForumTopic(chat.id, forumTopic.messageThreadId)

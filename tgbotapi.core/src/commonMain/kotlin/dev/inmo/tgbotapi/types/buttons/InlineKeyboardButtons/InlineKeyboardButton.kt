@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.games.CallbackGame
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
@@ -18,8 +18,8 @@ sealed interface InlineKeyboardButton {
 }
 
 @Serializable
-data class UnknownInlineKeyboardButton (
-    val rawData: JsonElement
+data class UnknownInlineKeyboardButton(
+    val rawData: JsonElement,
 ) : InlineKeyboardButton {
     override val text: String
         get() = runCatching {
@@ -33,7 +33,7 @@ data class UnknownInlineKeyboardButton (
  */
 @Serializable
 data class PayInlineKeyboardButton(
-    override val text: String
+    override val text: String,
 ) : InlineKeyboardButton {
     @ExperimentalSerializationApi
     @EncodeDefault
@@ -55,7 +55,7 @@ data class CallbackDataInlineKeyboardButton(
      * You will receive this data in [dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery.data] field
      */
     @SerialName(callbackDataField)
-    val callbackData: String
+    val callbackData: String,
 ) : InlineKeyboardButton
 
 /**
@@ -64,7 +64,7 @@ data class CallbackDataInlineKeyboardButton(
 @Serializable
 data class CallbackGameInlineKeyboardButton(
     @SerialName(textField)
-    override val text: String
+    override val text: String,
 ) : InlineKeyboardButton {
     @SerialName(callbackGameField)
     @EncodeDefault
@@ -78,7 +78,7 @@ data class CallbackGameInlineKeyboardButton(
 data class LoginURLInlineKeyboardButton(
     override val text: String,
     @SerialName(loginUrlField)
-    val loginUrl: LoginURL
+    val loginUrl: LoginURL,
 ) : InlineKeyboardButton
 
 /**
@@ -95,7 +95,7 @@ data class LoginURLInlineKeyboardButton(
 data class SwitchInlineQueryCurrentChatInlineKeyboardButton(
     override val text: String,
     @SerialName(switchInlineQueryCurrentChatField)
-    val switchInlineQueryCurrentChat: String
+    val switchInlineQueryCurrentChat: String,
 ) : InlineKeyboardButton
 
 /**
@@ -112,7 +112,7 @@ data class SwitchInlineQueryCurrentChatInlineKeyboardButton(
 data class SwitchInlineQueryChosenChatInlineKeyboardButton(
     override val text: String,
     @SerialName(switchInlineQueryChosenChatField)
-    val parameters: SwitchInlineQueryChosenChat
+    val parameters: SwitchInlineQueryChosenChat,
 ) : InlineKeyboardButton
 
 /**
@@ -128,7 +128,7 @@ data class SwitchInlineQueryChosenChatInlineKeyboardButton(
 data class SwitchInlineQueryInlineKeyboardButton(
     override val text: String,
     @SerialName(switchInlineQueryField)
-    val switchInlineQuery: String
+    val switchInlineQuery: String,
 ) : InlineKeyboardButton
 
 /**
@@ -138,7 +138,7 @@ data class SwitchInlineQueryInlineKeyboardButton(
 data class URLInlineKeyboardButton(
     override val text: String,
     @SerialName(urlField)
-    val url: String
+    val url: String,
 ) : InlineKeyboardButton
 
 /**
@@ -148,7 +148,7 @@ data class URLInlineKeyboardButton(
 data class CopyTextButton(
     override val text: String,
     @SerialName(copyTextField)
-    val data: CopyTextButtonData
+    val data: CopyTextButtonData,
 ) : InlineKeyboardButton
 
 /**
@@ -159,5 +159,5 @@ data class CopyTextButton(
 data class WebAppInlineKeyboardButton(
     override val text: String,
     @SerialName(webAppField)
-    val webApp: WebAppInfo
+    val webApp: WebAppInfo,
 ) : InlineKeyboardButton

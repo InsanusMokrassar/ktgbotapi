@@ -23,6 +23,6 @@ fun EncryptedCredentials.decryptWithPKCS8PrivateKey(privateKey: PrivateKey): Dec
 
 fun EncryptedCredentials.decryptWithPKCS8PrivateKey(key: String) = decryptWithPKCS8PrivateKey(
     KeyFactory.getInstance("RSA").generatePrivate(
-        PKCS8EncodedKeySpec(key.replace(regexToRemoveFromKey, "").decodeBase64())
-    )
+        PKCS8EncodedKeySpec(key.replace(regexToRemoveFromKey, "").decodeBase64()),
+    ),
 )

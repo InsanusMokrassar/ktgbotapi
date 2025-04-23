@@ -6,7 +6,10 @@ external interface Gyroscope {
     val y: Double
     val z: Double
 
-    fun start(params: GyroscopeStartParams, callback: (Boolean) -> Unit = definedExternally)
+    fun start(
+        params: GyroscopeStartParams,
+        callback: (Boolean) -> Unit = definedExternally,
+    )
+
     fun stop(callback: (Boolean) -> Unit)
 }
-

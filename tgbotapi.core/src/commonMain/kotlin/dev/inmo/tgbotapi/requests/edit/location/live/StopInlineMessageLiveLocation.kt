@@ -11,9 +11,10 @@ data class StopInlineMessageLiveLocation(
     @SerialName(inlineMessageIdField)
     override val inlineMessageId: InlineMessageId,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditInlineMessage, EditReplyMessage {
     override fun method(): String = stopMessageLiveLocationMethod
+
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -24,14 +24,16 @@ sealed interface ExtendedChat : Chat {
 
     @Deprecated(
         message = "Telegram Bot API v9.0 introduced the new field, `acceptedGiftTypes`, to allow granular" +
-                " control over which types of gifts user, bot, or chat can accept.",
-        replaceWith = ReplaceWith("acceptedGiftTypes.uniqueGifts || acceptedGiftTypes.unlimitedGifts || acceptedGiftTypes.limitedGifts || acceptedGiftTypes.premiumSubscription")
+            " control over which types of gifts user, bot, or chat can accept.",
+        replaceWith = ReplaceWith(
+            "acceptedGiftTypes.uniqueGifts || acceptedGiftTypes.unlimitedGifts || acceptedGiftTypes.limitedGifts || acceptedGiftTypes.premiumSubscription",
+        ),
     )
     val canReceiveGifts: Boolean
         get() = acceptedGiftTypes.uniqueGifts ||
-                acceptedGiftTypes.unlimitedGifts ||
-                acceptedGiftTypes.limitedGifts ||
-                acceptedGiftTypes.premiumSubscription
+            acceptedGiftTypes.unlimitedGifts ||
+            acceptedGiftTypes.limitedGifts ||
+            acceptedGiftTypes.premiumSubscription
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

@@ -40,7 +40,10 @@ fun readParameters() {
 
 readParameters()
 
-fun generateEvent(eventName: String, callbackArgs: String) {
+fun generateEvent(
+    eventName: String,
+    callbackArgs: String,
+) {
     println("Start generating $eventName (callbacks: $callbackArgs)")
     val uppercaseEventName = eventName.take(1).uppercase() + eventName.drop(1)
     val subpackage = eventName.map { if (it.isUpperCase()) "_${it.lowercase()}" else it }.joinToString("")
@@ -58,7 +61,7 @@ fun generateEvent(eventName: String, callbackArgs: String) {
     val verboseFlag = if (verboseMode) "-v" else ""
 
     val commandParts = arrayOf(
-        "${rfAbsolutePath}/.templates/generator.kts",
+        "$rfAbsolutePath/.templates/generator.kts",
         verboseFlag,
         "-s",
         "-a", "subpackage=$subpackage",
@@ -70,7 +73,7 @@ fun generateEvent(eventName: String, callbackArgs: String) {
         "-a", "callback_typealias_name=${uppercaseEventName}EventHandler",
         "-o", cfAbsolutePath,
         "-ex", "kt",
-        "${rfAbsolutePath}/.templates/{{\$subpackage}}"
+        "$rfAbsolutePath/.templates/{{\$subpackage}}",
     )
     val command = commandParts.joinToString(" ") { "\"$it\"" }
     if (verboseMode) {
@@ -104,7 +107,7 @@ val eventsList: JsonArray = Json.parseToJsonElement(File("EventsList.json").read
 eventsList.forEach {
     generateEvent(
         it.jsonObject["event_name"]!!.jsonPrimitive.content,
-        it.jsonObject["callback_args"] ?.jsonPrimitive ?.content ?: ""
+        it.jsonObject["callback_args"] ?.jsonPrimitive ?.content ?: "",
     )
 }
 
@@ -139,7 +142,7 @@ if (verboseMode) {
 
 val eventTypeOutputFile = File(currentFolder, "../EventType.kt")
 eventTypeOutputFile.writeText(
-    eventTypeFileContent
+    eventTypeFileContent,
 )
 
 val webAppPartsString = webAppParts.joinToString("\n")
@@ -151,7 +154,7 @@ if (verboseMode) {
 
 val webAppOutputFile = File(currentFolder, "ToPutInWebApp!!!!!.kt")
 webAppOutputFile.writeText(
-    webAppPartsFileContent
+    webAppPartsFileContent,
 )
 
 val extensionsPartsString = extensionsParts.joinToString("\n")
@@ -163,9 +166,8 @@ if (verboseMode) {
 
 val extensionsPartsOutputFile = File(currentFolder, "Extensions.kt")
 extensionsPartsOutputFile.writeText(
-    extensionsPartsFileContent
+    extensionsPartsFileContent,
 )
-
 
 currentFolder.listFiles() ?.toList() ?.forEach { generatedFolder: File ->
     if (generatedFolder.isDirectory) {

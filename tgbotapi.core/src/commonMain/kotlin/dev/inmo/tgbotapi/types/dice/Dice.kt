@@ -9,5 +9,5 @@ data class Dice(
     @SerialName(valueField)
     val value: DiceResult,
     @SerialName(emojiField)
-    val animationType: DiceAnimationType
+    val animationType: DiceAnimationType,
 ) : ReplyInfo.External.ContentVariant

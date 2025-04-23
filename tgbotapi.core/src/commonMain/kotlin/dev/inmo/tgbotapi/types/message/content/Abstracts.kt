@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -12,11 +11,12 @@ import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.*
 
 @Serializable
-sealed interface MessageContent: ResendableContent {
+sealed interface MessageContent : ResendableContent {
     companion object {
         @RiskFeature("This serialization module can be changed in near releases")
         fun serializationModule(
@@ -28,10 +28,9 @@ sealed interface MessageContent: ResendableContent {
             mediaContentAdditionalBuilder: PolymorphicModuleBuilder<MediaContent>.() -> Unit = {},
             spoilerableMediaContentAdditionalBuilder: PolymorphicModuleBuilder<SpoilerableMediaContent>.() -> Unit = {},
             mediaCollectionContentAdditionalBuilder: PolymorphicModuleBuilder<MediaCollectionContent<*>>.() -> Unit = {},
-            additionalBuilder: PolymorphicModuleBuilder<MessageContent>.() -> Unit = {}
+            additionalBuilder: PolymorphicModuleBuilder<MessageContent>.() -> Unit = {},
         ) = SerializersModule {
             polymorphic(MessageContent::class) {
-
                 subclass(ContactContent::class)
                 subclass(VenueContent::class)
                 subclass(PollContent::class)
@@ -128,7 +127,7 @@ sealed interface MessageContent: ResendableContent {
     }
 }
 
-sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, MediaContent {
+sealed interface MediaCollectionContent<T : TelegramMediaFile> : MessageContent, MediaContent {
     val mediaCollection: List<T>
 }
 
@@ -137,12 +136,14 @@ sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, M
  */
 sealed interface TextedContent : MessageContent, TextedInput
 
-sealed interface MediaContent: MessageContent {
+sealed interface MediaContent : MessageContent {
     val media: TelegramMediaFile
+
     fun asTelegramMedia(): TelegramFreeMedia
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData
+
 sealed interface WithCustomizedCaptionMediaContent : MediaContent, TextedContent, WithCustomizableCaption
 
 @ClassCastsIncluded
@@ -156,7 +157,7 @@ sealed interface ResendableContent {
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ): Request<out AccessibleMessage>
 
     fun createResend(
@@ -169,7 +170,7 @@ sealed interface ResendableContent {
         effectId: EffectId? = null,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
-        replyMarkup: KeyboardMarkup? = null
+        replyMarkup: KeyboardMarkup? = null,
     ): Request<out AccessibleMessage> = createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
@@ -182,9 +183,9 @@ sealed interface ResendableContent {
             ReplyParameters(
                 chatId,
                 replyToMessageId,
-                allowSendingWithoutReply = allowSendingWithoutReply
+                allowSendingWithoutReply = allowSendingWithoutReply,
             )
         },
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

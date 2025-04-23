@@ -5,7 +5,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 
 const val inlineQueryResultVideoType = "video"
 
-interface InlineQueryResultVideoCommon : InlineQueryResult,
+interface InlineQueryResultVideoCommon :
+    InlineQueryResult,
     TitledInlineQueryResult,
     DescribedInlineQueryResult,
     TextedOutput,

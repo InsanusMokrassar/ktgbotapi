@@ -18,7 +18,6 @@ import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
-import dev.inmo.tgbotapi.types.message.content.LocationContent
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
@@ -38,7 +37,7 @@ public data class EditLiveLocationInfo(
     override val horizontalAccuracy: Meters? = null,
     override val heading: Degrees? = null,
     override val proximityAlertRadius: Meters? = null,
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : Locationed, HorizontallyAccured, ProximityAlertable, Headed, WithReplyMarkup
 
 /**
@@ -56,7 +55,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null,
 ) {
     var currentLiveLocationMessage: ContentMessage<LiveLocationContent>? = null
     val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
@@ -75,29 +74,30 @@ public suspend fun TelegramBot.handleLiveLocation(
         val capturedLiveLocationMessage = currentLiveLocationMessage
         if (capturedLiveLocationMessage == null) {
             updateMessageJob ?.start()
-            currentLiveLocationMessage = send(
-                chatId,
-                it.latitude,
-                it.longitude,
-                if (liveTimeMillis == indefiniteLivePeriodDelayMillis) {
-                    LiveLocation.INDEFINITE_LIVE_PERIOD
-                } else {
-                    ceil(liveTimeMillis.toDouble() / 1000).toInt()
-                },
-                it.horizontalAccuracy,
-                it.heading,
-                it.proximityAlertRadius,
-                threadId,
-                businessConnectionId,
-                disableNotification,
-                protectContent,
-                allowPaidBroadcast,
-                effectId,
-                replyParameters,
-                it.replyMarkup
-            ).also {
-                sentMessageFlow ?.emit(it)
-            }
+            currentLiveLocationMessage =
+                send(
+                    chatId,
+                    it.latitude,
+                    it.longitude,
+                    if (liveTimeMillis == indefiniteLivePeriodDelayMillis) {
+                        LiveLocation.INDEFINITE_LIVE_PERIOD
+                    } else {
+                        ceil(liveTimeMillis.toDouble() / 1000).toInt()
+                    },
+                    it.horizontalAccuracy,
+                    it.heading,
+                    it.proximityAlertRadius,
+                    threadId,
+                    businessConnectionId,
+                    disableNotification,
+                    protectContent,
+                    allowPaidBroadcast,
+                    effectId,
+                    replyParameters,
+                    it.replyMarkup,
+                ).also {
+                    sentMessageFlow ?.emit(it)
+                }
         } else {
             edit(
                 message = capturedLiveLocationMessage,
@@ -106,7 +106,7 @@ public suspend fun TelegramBot.handleLiveLocation(
                 horizontalAccuracy = it.horizontalAccuracy,
                 heading = it.heading,
                 proximityAlertRadius = it.proximityAlertRadius,
-                replyMarkup = it.replyMarkup
+                replyMarkup = it.replyMarkup,
             ).also {
                 sentMessageFlow ?.emit(it)
             }
@@ -131,7 +131,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null,
 ) {
     handleLiveLocation(
         chatId = chatId,
@@ -142,7 +142,7 @@ public suspend fun TelegramBot.handleLiveLocation(
                 it.horizontalAccuracy,
                 (it as? LiveLocation) ?.heading,
                 (it as? LiveLocation) ?.proximityAlertRadius,
-                (it as? WithReplyMarkup) ?.replyMarkup as? InlineKeyboardMarkup
+                (it as? WithReplyMarkup) ?.replyMarkup as? InlineKeyboardMarkup,
             )
         },
         liveTimeMillis = liveTimeMillis,
@@ -153,7 +153,7 @@ public suspend fun TelegramBot.handleLiveLocation(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        sentMessageFlow = sentMessageFlow
+        sentMessageFlow = sentMessageFlow,
     )
 }
 
@@ -174,14 +174,14 @@ public suspend fun TelegramBot.handleLiveLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null,
 ) {
     handleLiveLocation(
         chatId = chatId,
         locationsFlow = locationsFlow.map { (lat, long) ->
             EditLiveLocationInfo(
                 lat,
-                long
+                long,
             )
         },
         liveTimeMillis = liveTimeMillis,
@@ -192,6 +192,6 @@ public suspend fun TelegramBot.handleLiveLocation(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        sentMessageFlow = sentMessageFlow
+        sentMessageFlow = sentMessageFlow,
     )
 }

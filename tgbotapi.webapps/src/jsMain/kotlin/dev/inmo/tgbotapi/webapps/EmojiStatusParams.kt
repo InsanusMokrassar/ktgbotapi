@@ -6,8 +6,7 @@ import kotlin.js.json
 external interface EmojiStatusParams {
     val duration: Seconds?
 }
-fun EmojiStatusParams(
-    duration: Seconds
-): EmojiStatusParams = json(
-    "duration" to duration
+
+fun EmojiStatusParams(duration: Seconds): EmojiStatusParams = json(
+    "duration" to duration,
 ).unsafeCast<EmojiStatusParams>()

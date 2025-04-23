@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.whenMentionTextSource
-import dev.inmo.tgbotapi.extensions.utils.whenTextMentionTextSource
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.Username
@@ -49,10 +47,10 @@ fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filt
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+suspend fun BehaviourContext.waitContentMessageWithMentions(
     username: Username,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitContentMessage(initRequest, errorFactory).mapWithContent<TextedContent>().filterMentionsMessages(username)
 
 /**
@@ -62,10 +60,10 @@ suspend fun BehaviourContext.waitContentMessageWithMentions (
  * @see filterMentions
  * @see dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
  */
-suspend fun BehaviourContext.waitContentMessageWithTextMentions (
+suspend fun BehaviourContext.waitContentMessageWithTextMentions(
     userId: UserId,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContentMessage(initRequest, errorFactory).filterTextMentionsMessages(userId)
 
 /**
@@ -75,8 +73,8 @@ suspend fun BehaviourContext.waitContentMessageWithTextMentions (
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+suspend fun BehaviourContext.waitContentMessageWithMentions(
     user: User,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitTextedContentMessage(initRequest, errorFactory).filterMentionsMessages(user)

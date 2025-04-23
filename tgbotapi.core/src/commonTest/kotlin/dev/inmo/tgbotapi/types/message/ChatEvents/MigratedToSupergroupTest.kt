@@ -7,8 +7,6 @@ import dev.inmo.tgbotapi.types.RawChatId
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.fail
-
 
 class MigratedToSupergroupTest {
     @Test

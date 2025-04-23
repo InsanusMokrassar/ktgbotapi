@@ -7,7 +7,6 @@ import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -101,6 +100,7 @@ sealed interface KeyboardButtonRequestUsers {
             @SerialName(requestPhotoField)
             val requestPhoto: Boolean? = null,
         )
+
         private val realSerializer = Surrogate.serializer()
 
         override val descriptor: SerialDescriptor = realSerializer.descriptor
@@ -109,33 +109,39 @@ sealed interface KeyboardButtonRequestUsers {
             val surrogate = realSerializer.deserialize(decoder)
 
             return when (surrogate.userIsBot) {
-                true -> Bot(
-                    requestId = surrogate.requestId,
-                    maxCount = surrogate.maxCount,
-                    requestName = surrogate.requestName,
-                    requestUsername = surrogate.requestUsername,
-                    requestPhoto = surrogate.requestPhoto
-                )
-                false -> Common(
-                    requestId = surrogate.requestId,
-                    isPremium = surrogate.userIsPremium,
-                    maxCount = surrogate.maxCount,
-                    requestName = surrogate.requestName,
-                    requestUsername = surrogate.requestUsername,
-                    requestPhoto = surrogate.requestPhoto
-                )
-                null -> Any(
-                    requestId = surrogate.requestId,
-                    isPremium = surrogate.userIsPremium,
-                    maxCount = surrogate.maxCount,
-                    requestName = surrogate.requestName,
-                    requestUsername = surrogate.requestUsername,
-                    requestPhoto = surrogate.requestPhoto
-                )
+                true ->
+                    Bot(
+                        requestId = surrogate.requestId,
+                        maxCount = surrogate.maxCount,
+                        requestName = surrogate.requestName,
+                        requestUsername = surrogate.requestUsername,
+                        requestPhoto = surrogate.requestPhoto,
+                    )
+                false ->
+                    Common(
+                        requestId = surrogate.requestId,
+                        isPremium = surrogate.userIsPremium,
+                        maxCount = surrogate.maxCount,
+                        requestName = surrogate.requestName,
+                        requestUsername = surrogate.requestUsername,
+                        requestPhoto = surrogate.requestPhoto,
+                    )
+                null ->
+                    Any(
+                        requestId = surrogate.requestId,
+                        isPremium = surrogate.userIsPremium,
+                        maxCount = surrogate.maxCount,
+                        requestName = surrogate.requestName,
+                        requestUsername = surrogate.requestUsername,
+                        requestPhoto = surrogate.requestPhoto,
+                    )
             }
         }
 
-        override fun serialize(encoder: Encoder, value: KeyboardButtonRequestUsers) {
+        override fun serialize(
+            encoder: Encoder,
+            value: KeyboardButtonRequestUsers,
+        ) {
             realSerializer.serialize(
                 encoder,
                 Surrogate(
@@ -145,8 +151,8 @@ sealed interface KeyboardButtonRequestUsers {
                     maxCount = value.maxCount,
                     requestName = value.requestName,
                     requestUsername = value.requestUsername,
-                    requestPhoto = value.requestPhoto
-                )
+                    requestPhoto = value.requestPhoto,
+                ),
             )
         }
     }

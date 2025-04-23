@@ -26,7 +26,7 @@ public suspend fun TelegramBot.edit(
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editLiveLocation(messageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
 
 /**
@@ -36,9 +36,11 @@ public suspend fun TelegramBot.edit(
 public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     location: LiveLocation,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editLiveLocation(
-    messageId, location, replyMarkup
+    messageId,
+    location,
+    replyMarkup,
 )
 
 /**
@@ -48,7 +50,7 @@ public suspend fun TelegramBot.edit(
 public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     media: TelegramFreeMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editMessageMedia(messageId, media, replyMarkup)
 
 /**
@@ -57,7 +59,7 @@ public suspend fun TelegramBot.edit(
  */
 public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editMessageReplyMarkup(messageId, replyMarkup)
 
 /**
@@ -70,7 +72,7 @@ public suspend fun TelegramBot.edit(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editMessageText(messageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
@@ -82,7 +84,7 @@ public suspend fun TelegramBot.edit(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = editMessageText(messageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
@@ -95,7 +97,7 @@ public suspend fun TelegramBot.edit(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): Boolean = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
@@ -108,5 +110,5 @@ public suspend fun TelegramBot.edit(
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): Boolean = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)

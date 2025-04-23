@@ -3,11 +3,6 @@ package dev.inmo.tgbotapi.extensions.utils.extensions
 import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.extensions.utils.asUser
-import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
-import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
-import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
-import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
-import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 import dev.inmo.tgbotapi.types.chat.User
@@ -50,7 +45,7 @@ fun Update.sourceChatWithConverters(
     editBusinessMessageUpdateConverter: (EditBusinessMessageUpdate) -> Chat? = { it.data.chat },
     deleteBusinessMessageUpdateConverter: (DeletedBusinessMessageUpdate) -> Chat? = { it.data.chat },
     paidMediaPurchasedUpdatesFlowConverter: (PaidMediaPurchasedUpdate) -> Chat? = { it.data.user },
-    commonChatMemberUpdatedUpdateConverter: (CommonChatMemberUpdatedUpdate) -> Chat? = { it.data.chat }
+    commonChatMemberUpdatedUpdateConverter: (CommonChatMemberUpdatedUpdate) -> Chat? = { it.data.chat },
 ): Chat? = when (this) {
     is BaseMessageUpdate -> baseMessageUpdateConverter(this)
     is ChatJoinRequestUpdate -> chatJoinRequestUpdateConverter(this)

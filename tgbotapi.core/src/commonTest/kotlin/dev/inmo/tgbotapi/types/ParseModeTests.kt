@@ -10,7 +10,7 @@ class ParseModeTests {
     @Serializable
     data class Example(
         @Serializable(ParseModeSerializer::class)
-        val mode: ParseMode
+        val mode: ParseMode,
     )
 
     @Test

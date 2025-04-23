@@ -11,26 +11,18 @@ import dev.inmo.tgbotapi.utils.ByteReadChannelAllocator
 
 suspend fun multipartFile(
     downloadStreamAllocator: ByteReadChannelAllocator,
-    pathedFile: PathedFile
+    pathedFile: PathedFile,
 ): MultipartFile {
     return downloadStreamAllocator.asMultipartFile(pathedFile.fileName)
 }
 
-suspend fun TelegramBot.multipartFile(
-    pathedFile: PathedFile
-): MultipartFile = multipartFile(
+suspend fun TelegramBot.multipartFile(pathedFile: PathedFile): MultipartFile = multipartFile(
     execute(DownloadFileStream(pathedFile.filePath)),
-    pathedFile
+    pathedFile,
 )
 
-suspend fun TelegramBot.multipartFile(
-    fileId: FileId
-): MultipartFile = multipartFile(execute(GetFile(fileId)))
+suspend fun TelegramBot.multipartFile(fileId: FileId): MultipartFile = multipartFile(execute(GetFile(fileId)))
 
-suspend fun TelegramBot.multipartFile(
-    file: TelegramMediaFile
-): MultipartFile = multipartFile(file.fileId)
+suspend fun TelegramBot.multipartFile(file: TelegramMediaFile): MultipartFile = multipartFile(file.fileId)
 
-suspend fun TelegramBot.multipartFile(
-    content: MediaContent
-): MultipartFile = multipartFile(content.media)
+suspend fun TelegramBot.multipartFile(content: MediaContent): MultipartFile = multipartFile(content.media)

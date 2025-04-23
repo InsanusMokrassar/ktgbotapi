@@ -10,6 +10,6 @@ public suspend fun TelegramBot.getStarTransactions(
 ): StarTransactions = execute(
     GetStarTransactions(
         offset = offset,
-        limit = limit
-    )
+        limit = limit,
+    ),
 )

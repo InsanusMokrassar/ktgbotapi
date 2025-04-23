@@ -9,8 +9,14 @@ import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import kotlin.Boolean
 import kotlin.collections.List
 
-public suspend fun TelegramBot.deleteBusinessMessages(businessConnectionId: BusinessConnectionId,
-    messages: List<AccessibleMessage>): Boolean = deleteBusinessMessages(
-    businessConnectionId = businessConnectionId, messageIds = with(messages) {messages.map {
-    it.messageId }}
+public suspend fun TelegramBot.deleteBusinessMessages(
+    businessConnectionId: BusinessConnectionId,
+    messages: List<AccessibleMessage>,
+): Boolean = deleteBusinessMessages(
+    businessConnectionId = businessConnectionId,
+    messageIds = with(messages) {
+        messages.map {
+            it.messageId
+        }
+    },
 )

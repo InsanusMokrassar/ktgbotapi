@@ -6,4 +6,4 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
-interface EditChatMessage<MT: MessageContent> : SimpleRequest<ContentMessage<MT>>, MessageAction, OptionallyBusinessConnectionRequest
+interface EditChatMessage<MT : MessageContent> : SimpleRequest<ContentMessage<MT>>, MessageAction, OptionallyBusinessConnectionRequest

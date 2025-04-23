@@ -42,13 +42,14 @@ fun TelegramBot.longPollingFlow(
     val contextToWork = if (contextSafelyExceptionHandler == null || !autoSkipTimeoutExceptions) {
         coroutineContext
     } else {
-        coroutineContext + ContextSafelyExceptionHandler { e ->
-            if (e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)) {
-                return@ContextSafelyExceptionHandler
-            } else {
-                contextSafelyExceptionHandler.handler(e)
+        coroutineContext +
+            ContextSafelyExceptionHandler { e ->
+                if (e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)) {
+                    return@ContextSafelyExceptionHandler
+                } else {
+                    contextSafelyExceptionHandler.handler(e)
+                }
             }
-        }
     }
 
     var lastUpdateIdentifier: UpdateId? = null
@@ -61,8 +62,9 @@ fun TelegramBot.longPollingFlow(
                     send(it)
                 }
             },
-            mediaGroupsDebounceTimeMillis
-        );
+            mediaGroupsDebounceTimeMillis,
+        )
+        ;
         { originalUpdates: List<Update> ->
             originalUpdates.forEach {
                 updatesReceiver(it)
@@ -72,6 +74,7 @@ fun TelegramBot.longPollingFlow(
     } else {
         { originalUpdates: List<Update> ->
             val converted = originalUpdates.convertWithMediaGroupUpdates()
+
             /**
              * Dirty hack for cases when the media group was retrieved not fully:
              *
@@ -79,8 +82,8 @@ fun TelegramBot.longPollingFlow(
              * and it will guarantee that it is full
              */
             val updates = if (
-                originalUpdates.size == getUpdatesLimit.last
-                && ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
+                originalUpdates.size == getUpdatesLimit.last &&
+                ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
             ) {
                 converted - converted.last()
             } else {
@@ -113,14 +116,14 @@ fun TelegramBot.longPollingFlow(
                     if (e is RequestException) {
                         delay(1000L)
                     }
-                }
+                },
             ) {
                 execute(
                     GetUpdates(
-                        offset = lastUpdateIdentifier?.plus(1),
+                        offset = lastUpdateIdentifier ?.plus(1),
                         timeout = timeoutSeconds,
-                        allowed_updates = allowedUpdates
-                    )
+                        allowed_updates = allowedUpdates,
+                    ),
                 ).let { originalUpdates ->
                     updatesHandler(originalUpdates)
                 }
@@ -142,18 +145,18 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    updatesReceiver: UpdateReceiver<Update>
+    updatesReceiver: UpdateReceiver<Update>,
 ): Job = longPollingFlow(
     timeoutSeconds = timeoutSeconds,
     exceptionsHandler = exceptionsHandler,
     allowedUpdates = allowedUpdates,
     autoDisableWebhooks = autoDisableWebhooks,
     autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
+    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
 ).subscribeSafely(
     scope,
     exceptionsHandler ?: defaultSafelyExceptionHandler,
-    updatesReceiver
+    updatesReceiver,
 )
 
 /**
@@ -176,14 +179,16 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     exceptionsHandler = {
         when {
             it is HttpRequestTimeoutException ||
-            (it is CommonBotException && it.cause is HttpRequestTimeoutException) -> throw CancellationException("Cancel due to absence of new updates")
+                (it is CommonBotException && it.cause is HttpRequestTimeoutException) -> throw CancellationException(
+                "Cancel due to absence of new updates",
+            )
             else -> exceptionsHandler ?.invoke(it)
         }
     },
     allowedUpdates = allowedUpdates,
     autoDisableWebhooks = autoDisableWebhooks,
     autoSkipTimeoutExceptions = false,
-    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
+    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
 ).filter {
     !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
 }
@@ -201,16 +206,16 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    updatesReceiver: UpdateReceiver<Update>
+    updatesReceiver: UpdateReceiver<Update>,
 ): Job = createAccumulatedUpdatesRetrieverFlow(
     avoidInlineQueries,
     avoidCallbackQueries,
     exceptionsHandler,
     allowedUpdates,
     autoDisableWebhooks,
-    mediaGroupsDebounceTimeMillis
+    mediaGroupsDebounceTimeMillis,
 ).subscribeSafelyWithoutExceptions(
-    scope.LinkedSupervisorScope()
+    scope.LinkedSupervisorScope(),
 ) {
     updatesReceiver(it)
 }
@@ -227,7 +232,7 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    exceptionsHandler: ExceptionHandler<Unit>? = null
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
 ) = retrieveAccumulatedUpdates(
     avoidInlineQueries,
     avoidCallbackQueries,
@@ -236,7 +241,7 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     flowsUpdatesFilter.allowedUpdates,
     autoDisableWebhooks,
     mediaGroupsDebounceTimeMillis,
-    flowsUpdatesFilter.asUpdateReceiver
+    flowsUpdatesFilter.asUpdateReceiver,
 )
 
 /**
@@ -252,7 +257,7 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     autoDisableWebhooks: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    updatesReceiver: UpdateReceiver<Update> = {}
+    updatesReceiver: UpdateReceiver<Update> = {},
 ) = retrieveAccumulatedUpdates(
     avoidInlineQueries,
     avoidCallbackQueries,
@@ -261,7 +266,7 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
     allowedUpdates,
     autoDisableWebhooks,
     mediaGroupsDebounceTimeMillis,
-    updatesReceiver
+    updatesReceiver,
 ).join()
 
 /**
@@ -279,7 +284,7 @@ fun TelegramBot.longPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    exceptionsHandler: ExceptionHandler<Unit>? = null
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
 ): Job = updatesFilter.run {
     startGettingOfUpdatesByLongPolling(
         timeoutSeconds = timeoutSeconds,
@@ -289,7 +294,7 @@ fun TelegramBot.longPolling(
         autoDisableWebhooks = autoDisableWebhooks,
         autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
         mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
-        updatesReceiver = asUpdateReceiver
+        updatesReceiver = asUpdateReceiver,
     )
 }
 
@@ -311,8 +316,16 @@ fun TelegramBot.longPolling(
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
-    flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit
-): Job = longPolling(FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset), timeoutSeconds, scope, autoDisableWebhooks, autoSkipTimeoutExceptions, mediaGroupsDebounceTimeMillis, exceptionsHandler)
+    flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit,
+): Job = longPolling(
+    FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset),
+    timeoutSeconds,
+    scope,
+    autoDisableWebhooks,
+    autoSkipTimeoutExceptions,
+    mediaGroupsDebounceTimeMillis,
+    exceptionsHandler,
+)
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
@@ -335,5 +348,5 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     autoDisableWebhooks,
     autoSkipTimeoutExceptions,
     mediaGroupsDebounceTimeMillis,
-    updatesFilter.asUpdateReceiver
+    updatesFilter.asUpdateReceiver,
 )

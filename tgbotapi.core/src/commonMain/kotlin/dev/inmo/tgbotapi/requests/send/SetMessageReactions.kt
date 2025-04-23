@@ -19,7 +19,7 @@ data class SetMessageReactions(
     @SerialName(reactionField)
     val reactions: List<Reaction>,
     @SerialName(isBigField)
-    val big: Boolean = false
+    val big: Boolean = false,
 ) : SimpleRequest<Boolean>, ChatRequest {
     override fun method(): String = "setMessageReaction"
 

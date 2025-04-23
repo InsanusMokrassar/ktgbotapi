@@ -21,7 +21,9 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(InputPollOption.Companion::class)
-data class InputPollOption @Warning("This constructor is not recommended to use") constructor(
+data class InputPollOption
+@Warning("This constructor is not recommended to use")
+constructor(
     @SerialName(textField)
     override val text: String,
     @SerialName(textParseModeField)
@@ -43,6 +45,7 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
             @SerialName(textEntitiesField)
             val textSources: List<RawMessageEntity> = emptyList(),
         )
+
         override val descriptor: SerialDescriptor
             get() = RawPollInputOption.serializer().descriptor
 
@@ -51,18 +54,21 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
             return InputPollOption(
                 raw.text,
                 raw.parseMode,
-                raw.textSources.asTextSources(raw.text)
+                raw.textSources.asTextSources(raw.text),
             )
         }
 
-        override fun serialize(encoder: Encoder, value: InputPollOption) {
+        override fun serialize(
+            encoder: Encoder,
+            value: InputPollOption,
+        ) {
             RawPollInputOption.serializer().serialize(
                 encoder,
                 RawPollInputOption(
                     value.text,
                     value.parseMode,
-                    value.textSources.toRawMessageEntities()
-                )
+                    value.textSources.toRawMessageEntities(),
+                ),
             )
         }
     }

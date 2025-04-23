@@ -9,10 +9,10 @@ import dev.inmo.tgbotapi.types.commands.BotCommandScopeDefault
 
 public suspend fun TelegramBot.getMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: IetfLang? = null
+    languageCode: IetfLang? = null,
 ): List<BotCommand> = execute(GetMyCommands(scope, languageCode))
 
 public suspend fun TelegramBot.getMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: String?
+    languageCode: String?,
 ): List<BotCommand> = getMyCommands(scope, languageCode ?.let(::IetfLang))

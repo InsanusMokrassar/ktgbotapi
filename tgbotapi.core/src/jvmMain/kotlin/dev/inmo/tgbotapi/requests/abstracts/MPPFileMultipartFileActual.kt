@@ -7,7 +7,7 @@ import dev.inmo.micro_utils.ktor.common.input
 actual fun MPPFile.asMultipartFile(): MultipartFile = if (exists()) {
     MultipartFile(
         filename.string,
-        ::input
+        ::input,
     )
 } else {
     error("Specified file $absolutePath does not exists")

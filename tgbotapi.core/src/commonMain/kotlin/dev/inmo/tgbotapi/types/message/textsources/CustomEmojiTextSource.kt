@@ -10,10 +10,12 @@ import kotlinx.serialization.Serializable
  * @see customEmojiTextSource
  */
 @Serializable
-data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
+data class CustomEmojiTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
     override val source: String,
     val customEmojiId: CustomEmojiId,
-    override val subsources: TextSourcesList
+    override val subsources: TextSourcesList,
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.customEmojiMarkdown() }
     override val markdownV2: String by lazy { source.customEmojiMarkdownV2(customEmojiId) }
@@ -21,9 +23,20 @@ data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmojiTextSource(emojiId, parts.toList())
+inline fun customEmojiTextSource(
+    emojiId: CustomEmojiId,
+    parts: TextSourcesList,
+) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
+
+inline fun customEmojiTextSource(
+    emojiId: CustomEmojiId,
+    vararg parts: TextSource,
+) = customEmojiTextSource(emojiId, parts.toList())
+
 /**
  * Without sharp (#)
  */
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, text: String) = customEmojiTextSource(emojiId, regularTextSource(text))
+inline fun customEmojiTextSource(
+    emojiId: CustomEmojiId,
+    text: String,
+) = customEmojiTextSource(emojiId, regularTextSource(text))

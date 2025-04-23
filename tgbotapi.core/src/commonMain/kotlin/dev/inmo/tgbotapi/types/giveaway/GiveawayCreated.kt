@@ -13,17 +13,18 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable(GiveawayCreated.Serializer::class)
 sealed interface GiveawayCreated : ChatEvent, PublicChatEvent {
     val prizeStarCount: Int?
+
     @Serializable
     data class Stars(
         @SerialName(prizeStarCountField)
-        override val prizeStarCount: Int
+        override val prizeStarCount: Int,
     ) : GiveawayCreated
 
     object Serializer : KSerializer<GiveawayCreated> {
         @Serializable
         private data class Surrogate(
             @SerialName(prizeStarCountField)
-            val prizeStarCount: Int? = null
+            val prizeStarCount: Int? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -37,15 +38,17 @@ sealed interface GiveawayCreated : ChatEvent, PublicChatEvent {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: GiveawayCreated) {
+        override fun serialize(
+            encoder: Encoder,
+            value: GiveawayCreated,
+        ) {
             Surrogate.serializer().serialize(
                 encoder,
                 Surrogate(
-                    value.prizeStarCount
-                )
+                    value.prizeStarCount,
+                ),
             )
         }
-
     }
 
     companion object : GiveawayCreated {

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 fun <T> aggregateFlows(
     withScope: CoroutineScope,
     vararg flows: Flow<T>,
-    internalBufferSize: Int = 64
+    internalBufferSize: Int = 64,
 ): Flow<T> {
     val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
     flows.forEach {

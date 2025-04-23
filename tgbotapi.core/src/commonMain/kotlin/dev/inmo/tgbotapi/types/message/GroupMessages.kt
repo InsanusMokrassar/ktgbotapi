@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.message
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
@@ -8,6 +7,7 @@ import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 
 data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
@@ -28,7 +28,6 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
 ) : ConnectedFromChannelGroupContentMessage<T> {
-
     constructor(
         chat: PreviewGroupChat,
         channel: PreviewChannelChat,
@@ -64,7 +63,7 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     )
 }
 
-data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
+data class UnconnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val chat: PreviewGroupChat,
     override val channel: PreviewChannelChat,
     override val messageId: MessageId,
@@ -220,7 +219,7 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     )
 }
 
-data class FromChannelForumContentMessageImpl<T: MessageContent>(
+data class FromChannelForumContentMessageImpl<T : MessageContent>(
     override val chat: PreviewForumChat,
     override val channel: PreviewChannelChat,
     override val messageId: MessageId,

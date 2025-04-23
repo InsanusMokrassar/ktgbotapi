@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.requests.send.games
 
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -11,11 +10,10 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.GameContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
-data class SendGame (
+data class SendGame(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(gameShortNameField)
@@ -35,10 +33,11 @@ data class SendGame (
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : SendContentMessageRequest<ContentMessage<GameContent>>,
     WithReplyMarkup {
     override fun method(): String = "sendGame"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

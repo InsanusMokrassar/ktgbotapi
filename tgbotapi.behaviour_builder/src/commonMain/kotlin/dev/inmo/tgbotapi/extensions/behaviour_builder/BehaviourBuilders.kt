@@ -31,7 +31,7 @@ suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>,
 ): BehaviourContext = BehaviourContext(
     bot = this,
     scope = scope.let {
@@ -42,7 +42,7 @@ suspend fun TelegramBot.buildBehaviour(
         }
     },
     flowsUpdatesFilter = flowUpdatesFilter,
-    subcontextInitialAction = subcontextInitialAction
+    subcontextInitialAction = subcontextInitialAction,
 ).apply {
     block()
 }
@@ -67,13 +67,13 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
-    block: BehaviourContextReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>,
 ): Job {
     val behaviourContext = buildBehaviour(
         scope = scope,
         defaultExceptionsHandler = defaultExceptionsHandler,
         subcontextInitialAction = subcontextInitialAction,
-        block = block
+        block = block,
     )
     return longPolling(
         behaviourContext,
@@ -81,6 +81,6 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         timeoutSeconds = timeoutSeconds,
         autoDisableWebhooks = autoDisableWebhooks,
         autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
     )
 }

@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.location
 
 import dev.inmo.tgbotapi.abstracts.*
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -29,7 +29,7 @@ data class StaticLocation(
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(horizontalAccuracyField)
-    override val horizontalAccuracy: Meters? = null
+    override val horizontalAccuracy: Meters? = null,
 ) : Location
 
 @Serializable
@@ -45,7 +45,7 @@ data class LiveLocation(
     @SerialName(headingField)
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
-    override val proximityAlertRadius: Meters? = null
+    override val proximityAlertRadius: Meters? = null,
 ) : Location, Livable, ProximityAlertable, Headed {
     companion object {
         const val INDEFINITE_LIVE_PERIOD: Seconds = 0x7FFFFFFF
@@ -55,6 +55,7 @@ data class LiveLocation(
 object LocationSerializer : KSerializer<Location> {
     private val internalSerializer = JsonObject.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
+
     override fun deserialize(decoder: Decoder): Location = internalSerializer.deserialize(decoder).let {
         if (it.containsKey(livePeriodField) && it[livePeriodField] != JsonNull) {
             nonstrictJsonFormat.decodeFromJsonElement(LiveLocation.serializer(), it)
@@ -63,7 +64,10 @@ object LocationSerializer : KSerializer<Location> {
         }
     }
 
-    override fun serialize(encoder: Encoder, value: Location) {
+    override fun serialize(
+        encoder: Encoder,
+        value: Location,
+    ) {
         when (value) {
             is StaticLocation -> StaticLocation.serializer().serialize(encoder, value)
             is LiveLocation -> LiveLocation.serializer().serialize(encoder, value)

@@ -4,8 +4,10 @@ import dev.inmo.micro_utils.common.Warning
 import kotlinx.serialization.Serializable
 
 @Serializable
-value class HapticFeedbackType @Warning("Do not use this constructor if available objects from companion cover your needs") constructor(
-    val name: String
+value class HapticFeedbackType
+@Warning("Do not use this constructor if available objects from companion cover your needs")
+constructor(
+    val name: String,
 ) {
     companion object {
         val Error = HapticFeedbackType("error")

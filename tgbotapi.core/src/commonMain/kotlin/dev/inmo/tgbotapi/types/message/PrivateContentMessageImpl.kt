@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.message
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
@@ -9,9 +8,10 @@ import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 
-data class PrivateContentMessageImpl<T: MessageContent>(
+data class PrivateContentMessageImpl<T : MessageContent>(
     override val messageId: MessageId,
     override val from: User,
     override val chat: PreviewPrivateChat,
@@ -27,7 +27,7 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val fromOffline: Boolean,
     override val effectId: EffectId?,
     @SerialName(paidStarCountField)
-    override val cost: Int? = null
+    override val cost: Int? = null,
 ) : PrivateContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -45,6 +45,10 @@ data class PrivateContentMessageImpl<T: MessageContent>(
         fromOffline: Boolean,
         effectId: EffectId,
     ) : this(
-        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId, fromOffline, effectId
+        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(),
+        replyTo ?.let {
+            ReplyInfo.Internal(it)
+        },
+        replyMarkup, senderBot, mediaGroupId, fromOffline, effectId,
     )
 }

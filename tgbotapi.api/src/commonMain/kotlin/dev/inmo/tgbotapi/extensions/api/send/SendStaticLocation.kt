@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
 /**
@@ -26,7 +25,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = execute(
     SendStaticLocation(
         chatId = chatId,
@@ -39,8 +38,8 @@ public suspend fun TelegramBot.sendLocation(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -57,7 +56,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = location.latitude,
@@ -69,7 +68,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -87,7 +86,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = latitude,
@@ -99,7 +98,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -116,7 +115,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = location.latitude,
@@ -128,7 +127,7 @@ public suspend fun TelegramBot.sendLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -146,7 +145,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = latitude,
@@ -158,7 +157,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -175,7 +174,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = location.latitude,
@@ -187,7 +186,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -205,7 +204,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = latitude,
@@ -217,7 +216,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -234,7 +233,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = location.latitude,
@@ -246,5 +245,5 @@ public suspend fun TelegramBot.sendStaticLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

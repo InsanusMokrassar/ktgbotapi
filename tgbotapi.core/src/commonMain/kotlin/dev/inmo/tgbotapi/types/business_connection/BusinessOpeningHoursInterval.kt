@@ -10,5 +10,5 @@ data class BusinessOpeningHoursInterval(
     @SerialName(openingMinuteField)
     val opening: MinutesInterval,
     @SerialName(closingMinuteField)
-    val closing: MinutesInterval
+    val closing: MinutesInterval,
 )

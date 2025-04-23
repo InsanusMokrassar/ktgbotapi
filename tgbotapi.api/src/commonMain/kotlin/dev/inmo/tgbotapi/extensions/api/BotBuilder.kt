@@ -5,7 +5,9 @@ import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.*
+import io.ktor.client.engine.HttpClientEngineConfig
+import io.ktor.client.engine.HttpClientEngineFactory
+import io.ktor.client.engine.ProxyConfig
 
 /**
  * @param proxy Standard ktor [ProxyConfig]
@@ -15,13 +17,13 @@ import io.ktor.client.engine.*
 public data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
     var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,
-    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null
+    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit)? = null,
 ) {
     internal fun createHttpClient(): HttpClient = ktorClientEngineFactory ?.let {
         HttpClient(
             it.create {
                 this@create.proxy = this@BotBuilder.proxy ?: this@create.proxy
-            }
+            },
         ) {
             ktorClientConfig ?.let { it() }
         }
@@ -41,8 +43,8 @@ public fun buildBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    block: BotBuilder.() -> Unit
+    block: BotBuilder.() -> Unit,
 ): TelegramBot = telegramBot(
     TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-    BotBuilder().apply(block).createHttpClient()
+    BotBuilder().apply(block).createHttpClient(),
 )

@@ -19,5 +19,5 @@ data class RefundedPayment(
     @SerialName(telegramPaymentChargeIdField)
     val telegramPaymentChargeId: TelegramPaymentChargeId,
     @SerialName(providerPaymentChargeIdField)
-    val providerPaymentChargeId: String? = null
-): Amounted, Currencied
+    val providerPaymentChargeId: String? = null,
+) : Amounted, Currencied

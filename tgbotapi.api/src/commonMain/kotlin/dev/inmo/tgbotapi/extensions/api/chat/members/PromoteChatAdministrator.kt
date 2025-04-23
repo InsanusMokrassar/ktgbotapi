@@ -2,8 +2,8 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
-import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
@@ -33,8 +33,8 @@ public suspend fun TelegramBot.promoteChatAdministrator(
         canRestrictMembers,
         canPromoteMembers,
         canManageVideoChats,
-        canManageChat
-    )
+        canManageChat,
+    ),
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -60,7 +60,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canRestrictMembers,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -86,7 +86,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canRestrictMembers,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -112,5 +112,5 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canRestrictMembers,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
 )

@@ -22,10 +22,11 @@ sealed interface Reaction {
     @Serializable(Reaction.Companion::class)
     @JvmInline
     value class Emoji(
-        val emoji: String
+        val emoji: String,
     ) : Reaction {
         override val type: String
             get() = Companion.type
+
         companion object {
             const val type: String = "emoji"
         }
@@ -34,10 +35,11 @@ sealed interface Reaction {
     @Serializable(Reaction.Companion::class)
     @JvmInline
     value class CustomEmoji(
-        val customEmojiId: CustomEmojiId
+        val customEmojiId: CustomEmojiId,
     ) : Reaction {
         override val type: String
             get() = Companion.type
+
         companion object {
             const val type: String = "custom_emoji"
         }
@@ -52,7 +54,7 @@ sealed interface Reaction {
     @Serializable(Reaction.Companion::class)
     data class Unknown(
         override val type: String,
-        val sourceJson: JsonElement?
+        val sourceJson: JsonElement?,
     ) : Reaction
 
     @Serializable
@@ -61,7 +63,7 @@ sealed interface Reaction {
         @SerialName(emojiField)
         val emoji: String? = null,
         @SerialName(customEmojiIdField)
-        val customEmojiId: CustomEmojiId? = null
+        val customEmojiId: CustomEmojiId? = null,
     )
 
     companion object : KSerializer<Reaction> {
@@ -84,7 +86,10 @@ sealed interface Reaction {
             }
         }
 
-        override fun serialize(encoder: Encoder, value: Reaction) {
+        override fun serialize(
+            encoder: Encoder,
+            value: Reaction,
+        ) {
             if (value is Unknown && value.sourceJson != null) {
                 JsonElement.serializer().serialize(encoder, value.sourceJson)
             } else {
@@ -94,10 +99,9 @@ sealed interface Reaction {
                         type = value.type,
                         emoji = (value as? Emoji) ?.emoji,
                         customEmojiId = (value as? CustomEmoji) ?.customEmojiId,
-                    )
+                    ),
                 )
             }
         }
-
     }
 }

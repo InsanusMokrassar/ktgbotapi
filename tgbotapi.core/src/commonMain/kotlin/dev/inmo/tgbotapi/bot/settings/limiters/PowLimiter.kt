@@ -10,9 +10,11 @@ import kotlin.coroutines.*
 import kotlin.math.pow
 
 private sealed class RequestEvent
+
 private class AddRequest(
-    val continuation: Continuation<MilliSeconds>
+    val continuation: Continuation<MilliSeconds>,
 ) : RequestEvent()
+
 private object CompleteRequest : RequestEvent()
 
 @Serializable
@@ -22,10 +24,11 @@ data class PowLimiter(
     private val powValue: Double = 4.0,
     private val powK: Double = 1.6,
     @Transient
-    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
+    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
 ) : RequestLimiter {
     @Transient
-    private val awaitTimeRange = minAwaitTime .. maxAwaitTime
+    private val awaitTimeRange = minAwaitTime..maxAwaitTime
+
     @Transient
     private val eventsChannel = let {
         var requestsInWork = 0.0
@@ -40,7 +43,7 @@ data class PowLimiter(
                             awaitTime in awaitTimeRange -> awaitTime
                             awaitTime < awaitTimeRange.first -> awaitTimeRange.first
                             else -> awaitTimeRange.last
-                        }
+                        },
                     )
                 }
                 is CompleteRequest -> requestsInWork--
@@ -48,9 +51,7 @@ data class PowLimiter(
         }
     }
 
-    private suspend inline fun <T> withDelay(
-        crossinline block: suspend () -> T
-    ): T {
+    private suspend inline fun <T> withDelay(crossinline block: suspend () -> T): T {
         val delayMillis = suspendCoroutine<Long> {
             scope.launch { eventsChannel.send(AddRequest(it)) }
         }
@@ -62,9 +63,7 @@ data class PowLimiter(
         }
     }
 
-    override suspend fun <T> limit(
-        block: suspend () -> T
-    ): T {
+    override suspend fun <T> limit(block: suspend () -> T): T {
         return withDelay(block)
     }
 }

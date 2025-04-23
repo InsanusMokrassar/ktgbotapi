@@ -28,7 +28,7 @@ suspend fun <BC : BehaviourContext> BC.onChatJoinRequest(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatJoinRequest, Update>? = null,
     markerFactory: MarkerFactory<in ChatJoinRequest, Any>? = ByChatChatJoinRequestMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatJoinRequest>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatJoinRequest>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatJoinRequest>,
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.chatJoinRequestUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

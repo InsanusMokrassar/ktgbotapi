@@ -16,6 +16,7 @@ private val mimesCache = mutableMapOf<String, MimeType>()
 fun String.asMimeType() = buildMimeType(this)
 
 internal expect fun createMimeType(raw: String): MimeType
+
 fun buildMimeType(raw: String): MimeType = mimesCache.getOrPut(raw) {
     createMimeType(raw)
 }
@@ -31,7 +32,10 @@ object MimeTypeSerializer : KSerializer<MimeType> {
         }
     }
 
-    override fun serialize(encoder: Encoder, value: MimeType) {
+    override fun serialize(
+        encoder: Encoder,
+        value: MimeType,
+    ) {
         encoder.encodeString(value.raw)
     }
 }

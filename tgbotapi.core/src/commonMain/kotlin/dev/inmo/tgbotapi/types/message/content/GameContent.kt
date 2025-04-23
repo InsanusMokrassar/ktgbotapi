@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GameContent(
-    val game: Game
+    val game: Game,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -22,7 +22,7 @@ data class GameContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<GameContent>> = SendGame(
         chatId = chatId,
         gameShortName = game.title,
@@ -33,6 +33,6 @@ data class GameContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

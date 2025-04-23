@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.*
 /**
  * Simple factory to convert [ContentMessage] to a [CommonMessage]
  */
-fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.onlyCommonMessages() = filterIsInstance<CommonMessage<C>>()
+fun <C : MessageContent, T : ContentMessage<C>> Flow<T>.onlyCommonMessages() = filterIsInstance<CommonMessage<C>>()
 
 /**
  * Shortcut for [onlyCommonMessages]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.commonMessages() = onlyCommonMessages()
+inline fun <C : MessageContent, T : ContentMessage<C>> Flow<T>.commonMessages() = onlyCommonMessages()
 
 /**
  * Filter the messages and checking that incoming [CommonMessage] is [PossiblySentViaBotCommonMessage] and its

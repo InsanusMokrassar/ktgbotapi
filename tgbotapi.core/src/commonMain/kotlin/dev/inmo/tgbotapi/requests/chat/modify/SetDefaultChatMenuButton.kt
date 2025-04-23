@@ -9,7 +9,7 @@ import kotlinx.serialization.builtins.serializer
 data class SetDefaultChatMenuButton(
     @Serializable(MenuButtonSerializer::class)
     @SerialName(menuButtonField)
-    val menuButton: MenuButton
+    val menuButton: MenuButton,
 ) : SimpleRequest<Boolean> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

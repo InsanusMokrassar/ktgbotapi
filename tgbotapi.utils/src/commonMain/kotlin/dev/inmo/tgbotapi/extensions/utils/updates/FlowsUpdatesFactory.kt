@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  */
 inline fun flowsUpdatesFilter(
     internalChannelsSizes: Int = 100,
-    block: FlowsUpdatesFilter.() -> Unit
+    block: FlowsUpdatesFilter.() -> Unit,
 ): FlowsUpdatesFilter {
     val filter = FlowsUpdatesFilter(internalChannelsSizes)
     filter.block()

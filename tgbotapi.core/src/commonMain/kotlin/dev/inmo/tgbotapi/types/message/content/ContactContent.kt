@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ContactContent(
-    val contact: Contact
+    val contact: Contact,
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -21,7 +21,7 @@ data class ContactContent(
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
-        replyMarkup: KeyboardMarkup?
+        replyMarkup: KeyboardMarkup?,
     ): Request<ContentMessage<ContactContent>> = SendContact(
         chatId = chatId,
         contact = contact,
@@ -32,6 +32,6 @@ data class ContactContent(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

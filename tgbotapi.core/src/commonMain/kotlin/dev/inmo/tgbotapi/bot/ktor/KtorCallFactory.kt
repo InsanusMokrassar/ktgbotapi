@@ -6,10 +6,10 @@ import io.ktor.client.HttpClient
 import kotlinx.serialization.json.Json
 
 interface KtorCallFactory {
-    suspend fun <T: Any> makeCall(
+    suspend fun <T : Any> makeCall(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
         request: Request<T>,
-        jsonFormatter: Json
+        jsonFormatter: Json,
     ): T?
 }

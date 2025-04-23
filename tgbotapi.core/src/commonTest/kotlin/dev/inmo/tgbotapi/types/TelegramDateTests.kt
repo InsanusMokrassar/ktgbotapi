@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.TestsJsonFormat
+import korlibs.time.DateTime
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -14,8 +14,9 @@ class TelegramDateTests {
     @Serializable
     data class Example(
         @Serializable(TelegramDateSerializer::class)
-        val dateTime: TelegramDate
+        val dateTime: TelegramDate,
     )
+
     @Test
     fun `Serializtion_of_TelegramDate_is_working_correctly`() {
         val example = Example(TelegramDate(dateTimeUnix))

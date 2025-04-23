@@ -32,7 +32,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = execute(
     SendVenue(
         chatId = chatId,
@@ -51,8 +51,8 @@ public suspend fun TelegramBot.sendVenue(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -76,7 +76,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     latitude = latitude,
@@ -94,7 +94,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -117,7 +117,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     latitude = location.latitude,
@@ -135,7 +135,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -158,7 +158,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     latitude = location.latitude,
@@ -176,7 +176,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
@@ -193,7 +193,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = execute(
     SendVenue(
         chatId = chatId,
@@ -205,8 +205,8 @@ public suspend fun TelegramBot.sendVenue(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
+        replyMarkup = replyMarkup,
+    ),
 )
 
 /**
@@ -223,7 +223,7 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     venue = venue,
@@ -234,5 +234,5 @@ public suspend fun TelegramBot.sendVenue(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )

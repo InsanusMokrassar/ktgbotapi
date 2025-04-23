@@ -6,15 +6,15 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
@@ -34,7 +34,7 @@ fun SendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId = chatId,
@@ -51,12 +51,12 @@ fun SendPhoto(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
     return if (photo is MultipartFile) {
         CommonMultipartFileRequest(
             data,
-            listOf(photo).associateBy { it.fileId }
+            listOf(photo).associateBy { it.fileId },
         )
     } else {
         data
@@ -76,7 +76,7 @@ fun SendPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId = chatId,
@@ -93,21 +93,20 @@ fun SendPhoto(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 
     return if (photo is MultipartFile) {
         CommonMultipartFileRequest(
             data,
-            listOf(photo).associateBy { it.fileId }
+            listOf(photo).associateBy { it.fileId },
         )
     } else {
         data
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendPhotoData internal constructor(
@@ -140,14 +139,13 @@ data class SendPhotoData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
 ) : DataRequest<ContentMessage<PhotoContent>>,
     SendContentMessageRequest<ContentMessage<PhotoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>,
     WithCustomizableCaptionRequest<ContentMessage<PhotoContent>>,
-    OptionallyWithSpoilerRequest
-{
+    OptionallyWithSpoilerRequest {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -161,6 +159,7 @@ data class SendPhotoData internal constructor(
     }
 
     override fun method(): String = "sendPhoto"
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
@@ -168,7 +167,7 @@ data class SendPhotoData internal constructor(
 }
 
 data class SendPhotoFiles internal constructor(
-    val photo: MultipartFile
+    val photo: MultipartFile,
 ) : Files by mapOf(
-    photoField to photo
+    photoField to photo,
 )

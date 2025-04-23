@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByC
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.*
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
@@ -19,18 +18,24 @@ import io.ktor.http.decodeURLQueryComponent
 import kotlinx.coroutines.Job
 
 private val startRegex = Regex("start")
+
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = {
+            (message, _),
+            update,
+        ->
+        MessageFilterByChat(this, message, update)
+    },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
 ): Job = on(
     markerFactory,
     SimpleFilter<Pair<TextMessage, String>> { (message, _) ->
-        message.content.textSources.size == 2
-            && message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start"
-            && message.content.textSources.getOrNull(1) is RegularTextSource
+        message.content.textSources.size == 2 &&
+            message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start" &&
+            message.content.textSources.getOrNull(1) is RegularTextSource
     } * initialFilter,
     subcontextUpdatesFilter,
     additionalSubcontextInitialAction,
@@ -54,15 +59,28 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     regex: Regex,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = {
+            (message, _),
+            update,
+        ->
+        MessageFilterByChat(this, message, update)
+    },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
 ): Job {
     val internalFilter = SimpleFilter<Pair<TextMessage, String>> {
         regex.matches(it.second)
     }
-    return onDeepLink(initialFilter ?.let { internalFilter * it } ?: internalFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    return onDeepLink(
+        initialFilter ?.let {
+            internalFilter * it
+        } ?: internalFilter,
+        subcontextUpdatesFilter,
+        markerFactory,
+        additionalSubcontextInitialAction,
+        scenarioReceiver,
+    )
 }
 
 /**
@@ -73,8 +91,20 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     deepLink: String,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = {
+            (message, _),
+            update,
+        ->
+        MessageFilterByChat(this, message, update)
+    },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
-): Job = onDeepLink(Regex("^$deepLink$"), initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>,
+): Job = onDeepLink(
+    Regex("^$deepLink$"),
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver,
+)

@@ -9,5 +9,5 @@ external interface AccelerometerStartParams {
 }
 
 fun AccelerometerStartParams(refreshRate: MilliSeconds = 1000): AccelerometerStartParams = json(
-    "refresh_rate" to refreshRate
+    "refresh_rate" to refreshRate,
 ).unsafeCast<AccelerometerStartParams>()

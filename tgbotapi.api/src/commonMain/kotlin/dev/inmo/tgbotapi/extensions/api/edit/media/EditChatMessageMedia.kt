@@ -3,16 +3,15 @@ package dev.inmo.tgbotapi.extensions.api.edit.media
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.media.EditChatMessageMedia
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.businessConnectionId
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MediaContent
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import kotlin.jvm.JvmName
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -23,9 +22,9 @@ public suspend fun TelegramBot.editMessageMedia(
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = execute(
-    EditChatMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup)
+    EditChatMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup),
 )
 
 /**
@@ -37,7 +36,7 @@ public suspend fun TelegramBot.editMessageMedia(
     messageId: MessageId,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(chat.id, messageId, media, businessConnectionId, replyMarkup)
 
 /**
@@ -48,7 +47,7 @@ public suspend fun TelegramBot.editMessageMedia(
     message: ContentMessage<out MediaContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(message.chat.id, message.messageId, media, businessConnectionId, replyMarkup)
 
 /**
@@ -59,5 +58,5 @@ public suspend fun TelegramBot.addMessageMedia(
     message: ContentMessage<TextContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): ContentMessage<MediaContent> = editMessageMedia(message.chat.id, message.messageId, media, businessConnectionId, replyMarkup)

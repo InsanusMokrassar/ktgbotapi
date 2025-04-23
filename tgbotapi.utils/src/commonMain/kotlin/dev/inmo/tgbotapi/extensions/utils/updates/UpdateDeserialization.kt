@@ -9,6 +9,7 @@ import kotlinx.serialization.json.JsonElement
  * @return Deserialize [source] as [dev.inmo.tgbotapi.types.update.abstracts.Update]
  */
 fun Json.toTelegramUpdate(source: String) = decodeFromString(UpdateDeserializationStrategy, source)
+
 /**
  * @return Deserialize [source] as [dev.inmo.tgbotapi.types.update.abstracts.Update]
  */
@@ -21,11 +22,10 @@ fun Json.toTelegramUpdate(source: JsonElement) = decodeFromJsonElement(UpdateDes
  * @see Json.toTelegramUpdate
  */
 fun String.toTelegramUpdate() = nonstrictJsonFormat.toTelegramUpdate(this)
+
 /**
  * @return Deserialize [this] as [dev.inmo.tgbotapi.types.update.abstracts.Update]
  *
  * @see Json.toTelegramUpdate
  */
 fun JsonElement.toTelegramUpdate() = nonstrictJsonFormat.toTelegramUpdate(this)
-
-

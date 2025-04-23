@@ -15,11 +15,11 @@ fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) = l
     MultipartRequestCallFactory(logger),
     SimpleRequestCallFactory(logger),
     DownloadFileRequestCallFactory,
-    DownloadFileChannelRequestCallFactory
+    DownloadFileChannelRequestCallFactory,
 )
 
 class KtorRequestsExecutorBuilder(
-    var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
+    var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
 ) {
     var client: HttpClient = HttpClient()
     var callsFactories: List<KtorCallFactory> = emptyList()
@@ -41,13 +41,13 @@ class KtorRequestsExecutorBuilder(
         requestsLimiter = requestsLimiter,
         jsonFormatter = jsonFormatter,
         pipelineStepsHolder = pipelineStepsHolder,
-        logger = logger
+        logger = logger,
     )
 }
 
 inline fun telegramBot(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
 ): TelegramBot = KtorRequestsExecutorBuilder(telegramAPIUrlsKeeper).apply(builder).build()
 
 /**
@@ -58,6 +58,5 @@ inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl), builder)
-

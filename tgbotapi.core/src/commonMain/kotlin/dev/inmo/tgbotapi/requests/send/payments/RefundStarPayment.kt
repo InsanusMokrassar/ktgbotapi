@@ -11,9 +11,10 @@ data class RefundStarPayment(
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(telegramPaymentChargeIdField)
-    val telegramPaymentChargeId: TelegramPaymentChargeId
+    val telegramPaymentChargeId: TelegramPaymentChargeId,
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "refundStarPayment"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

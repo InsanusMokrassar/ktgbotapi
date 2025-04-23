@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * Makes an OR (||) operation between [this] and [other]
  */
 operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).plus(
-    other: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>
+    other: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>,
 ) = BehaviourContextAndTwoTypesReceiver<Boolean, T, Update> { t, update ->
     this@plus(t, update) || other(t, update)
 }
@@ -16,7 +16,7 @@ operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).plus(
  * Makes an AND (&&) operation between [this] and [other]
  */
 operator fun <T> (BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>).times(
-    other: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>
+    other: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>,
 ) = BehaviourContextAndTwoTypesReceiver<Boolean, T, Update> { t, update ->
     this@times(t, update) && other(t, update)
 }

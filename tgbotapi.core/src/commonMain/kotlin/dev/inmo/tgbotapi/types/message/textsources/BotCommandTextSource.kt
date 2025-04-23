@@ -11,11 +11,13 @@ import kotlinx.serialization.Serializable
  * @see botCommandTextSource
  */
 @Serializable
-data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String
+data class BotCommandTextSource
+@RiskFeature(DirectInvocationOfTextSourceConstructor)
+constructor(
+    override val source: String,
 ) : TextSource {
     val command: String by lazy {
-        CommandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
+        CommandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1) // skip first symbol like "/" or "!"
     }
     val username: Username? by lazy {
         Username(usernameRegex.find(source) ?.value ?: return@lazy null)

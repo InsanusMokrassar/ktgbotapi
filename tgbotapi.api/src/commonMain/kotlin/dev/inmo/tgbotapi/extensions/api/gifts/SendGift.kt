@@ -18,26 +18,26 @@ public suspend fun TelegramBot.sendGift(
     @GenerationVariant(
         User::class,
         "id",
-        "user"
+        "user",
     )
     userId: UserId,
     @GenerationVariant(
         Gift.Regular::class,
         "id",
-        "gift"
+        "gift",
     )
     giftId: GiftId,
     text: String,
     parseMode: ParseMode?,
-    upgradableToUnique: Boolean = false
+    upgradableToUnique: Boolean = false,
 ): Boolean = execute(
     SendGift.toUser(
         userId = userId,
         giftId = giftId,
         text = text,
         parseMode = parseMode,
-        upgradableToUnique = upgradableToUnique
-    )
+        upgradableToUnique = upgradableToUnique,
+    ),
 )
 
 @GenerateVariations
@@ -45,26 +45,26 @@ public suspend fun TelegramBot.sendGiftToChat(
     @GenerationVariant(
         PublicChat::class,
         "id",
-        "chat"
+        "chat",
     )
     chatId: ChatIdentifier,
     @GenerationVariant(
         Gift.Regular::class,
         "id",
-        "gift"
+        "gift",
     )
     giftId: GiftId,
     text: String,
     parseMode: ParseMode?,
-    upgradableToUnique: Boolean = false
+    upgradableToUnique: Boolean = false,
 ): Boolean = execute(
     SendGift.toChat(
         chatId = chatId,
         giftId = giftId,
         text = text,
         parseMode = parseMode,
-        upgradableToUnique = upgradableToUnique
-    )
+        upgradableToUnique = upgradableToUnique,
+    ),
 )
 
 @GenerateVariations
@@ -72,13 +72,13 @@ public suspend fun TelegramBot.sendGift(
     @GenerationVariant(
         User::class,
         "id",
-        "user"
+        "user",
     )
     userId: UserId,
     @GenerationVariant(
         Gift.Regular::class,
         "id",
-        "gift"
+        "gift",
     )
     giftId: GiftId,
     textSources: TextSourcesList,
@@ -88,8 +88,8 @@ public suspend fun TelegramBot.sendGift(
         userId = userId,
         giftId = giftId,
         textSources = textSources,
-        upgradableToUnique = upgradableToUnique
-    )
+        upgradableToUnique = upgradableToUnique,
+    ),
 )
 
 @GenerateVariations
@@ -97,13 +97,13 @@ public suspend fun TelegramBot.sendGiftToChat(
     @GenerationVariant(
         PublicChat::class,
         "id",
-        "chat"
+        "chat",
     )
     chatId: ChatIdentifier,
     @GenerationVariant(
         Gift.Regular::class,
         "id",
-        "gift"
+        "gift",
     )
     giftId: GiftId,
     textSources: TextSourcesList,
@@ -113,6 +113,6 @@ public suspend fun TelegramBot.sendGiftToChat(
         chatId = chatId,
         giftId = giftId,
         textSources = textSources,
-        upgradableToUnique = upgradableToUnique
-    )
+        upgradableToUnique = upgradableToUnique,
+    ),
 )

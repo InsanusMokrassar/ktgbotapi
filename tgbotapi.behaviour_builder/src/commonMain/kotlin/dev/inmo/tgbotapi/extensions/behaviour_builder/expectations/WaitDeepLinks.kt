@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.extensions.utils.regularTextSourceOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import kotlinx.coroutines.flow.*
 
 suspend fun BehaviourContext.waitDeepLinks(
@@ -14,7 +13,7 @@ suspend fun BehaviourContext.waitDeepLinks(
 ): Flow<Pair<CommonMessage<TextContent>, String>> = waitCommandMessage(
     "start",
     initRequest,
-    errorFactory
+    errorFactory,
 )
     .requireSingleCommand()
     .requireCommandAtStart()

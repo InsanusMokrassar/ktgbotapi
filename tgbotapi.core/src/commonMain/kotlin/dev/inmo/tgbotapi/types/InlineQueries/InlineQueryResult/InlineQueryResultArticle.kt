@@ -26,7 +26,7 @@ class InlineQueryResultArticle(
     @SerialName(thumbnailWidthField)
     override val thumbnailWidth: Int? = null,
     @SerialName(thumbnailHeightField)
-    override val thumbnailHeight: Int? = null
+    override val thumbnailHeight: Int? = null,
 ) : InlineQueryResult,
     ThumbSizedInlineQueryResult,
     TitledInlineQueryResult,
@@ -34,6 +34,7 @@ class InlineQueryResultArticle(
     WithInputMessageContentInlineQueryResult,
     UrlInlineQueryResult {
     override val type: String = "article"
+
     @Deprecated("Field hide_url has been deprecated in Bot API 8.2. Use empty url instead")
     val hideUrl: Boolean
         get() = url != null && url.isEmpty()
@@ -49,7 +50,7 @@ class InlineQueryResultArticle(
         description: String? = null,
         thumbnailUrl: String? = null,
         thumbnailWidth: Int? = null,
-        thumbnailHeight: Int? = null
+        thumbnailHeight: Int? = null,
     ) : this(
         id = id,
         title = title,
@@ -59,6 +60,6 @@ class InlineQueryResultArticle(
         description = description,
         thumbnailUrl = thumbnailUrl,
         thumbnailWidth = thumbnailWidth,
-        thumbnailHeight = thumbnailHeight
+        thumbnailHeight = thumbnailHeight,
     )
 }

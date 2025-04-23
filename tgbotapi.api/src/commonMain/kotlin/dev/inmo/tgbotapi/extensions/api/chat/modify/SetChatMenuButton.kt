@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.types.chat.PrivateChat
 
 public suspend fun TelegramBot.setChatMenuButton(
     chatId: IdChatIdentifier,
-    menuButton: MenuButton
+    menuButton: MenuButton,
 ): Boolean = execute(SetChatMenuButton(chatId, menuButton))
 
 public suspend fun TelegramBot.setChatMenuButton(
     chat: PrivateChat,
-    menuButton: MenuButton
+    menuButton: MenuButton,
 ): Boolean = setChatMenuButton(chat.id, menuButton)

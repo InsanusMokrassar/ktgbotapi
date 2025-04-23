@@ -1,4 +1,3 @@
 package dev.inmo.tgbotapi.webapps.args
 
-interface ArgBiometricAuthRequested : ArgBiometricTokenNullableObject, ArgIsAuthenticatedObject {
-}
+interface ArgBiometricAuthRequested : ArgBiometricTokenNullableObject, ArgIsAuthenticatedObject

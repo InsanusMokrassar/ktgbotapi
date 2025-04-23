@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.bot.ktor.middlewares
 import com.benasher44.uuid.uuid4
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
-import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
 @Warning("This API is experimental and subject of changes")
@@ -12,9 +11,17 @@ class TelegramBotMiddlewareBuilder {
     var onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null
     var onBeforeCallFactoryMakeCall: (suspend (request: Request<*>, potentialFactory: KtorCallFactory) -> Unit)? = null
     var onAfterCallFactoryMakeCall: (suspend (result: Any?, request: Request<*>, potentialFactory: KtorCallFactory) -> Any?)? = null
-    var onRequestResultPresented: (suspend (result: Any, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?)? = null
+    var onRequestResultPresented: (
+        suspend (result: Any, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?
+    )? = null
     var onRequestResultAbsent: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?)? = null
-    var onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null
+    var onRequestReturnResult: (
+        suspend (
+            result: Result<*>,
+            request: Request<*>,
+            callsFactories: List<KtorCallFactory>,
+        ) -> Result<Any?>?
+    )? = null
     var id: String = uuid4().toString()
 
     /**
@@ -23,40 +30,55 @@ class TelegramBotMiddlewareBuilder {
     fun doOnRequestException(block: suspend (request: Request<*>, t: Throwable?) -> Any?) {
         onRequestException = block
     }
+
     /**
      * Useful way to set [onBeforeSearchCallFactory]
      */
     fun doOnBeforeSearchCallFactory(block: suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit) {
         onBeforeSearchCallFactory = block
     }
+
     /**
      * Useful way to set [onBeforeCallFactoryMakeCall]
      */
     fun doOnBeforeCallFactoryMakeCall(block: suspend (request: Request<*>, potentialFactory: KtorCallFactory) -> Unit) {
         onBeforeCallFactoryMakeCall = block
     }
+
     /**
      * Useful way to set [onAfterCallFactoryMakeCall]
      */
     fun doOnAfterCallFactoryMakeCall(block: suspend (result: Any?, request: Request<*>, potentialFactory: KtorCallFactory) -> Any?) {
         onAfterCallFactoryMakeCall = block
     }
+
     /**
      * Useful way to set [onRequestResultPresented]
      */
-    fun doOnRequestResultPresented(block: suspend (result: Any, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?) {
+    fun doOnRequestResultPresented(
+        block: suspend (
+            result: Any,
+            request: Request<*>,
+            resultCallFactory: KtorCallFactory,
+            callsFactories: List<KtorCallFactory>,
+        ) -> Any?,
+    ) {
         onRequestResultPresented = block
     }
+
     /**
      * Useful way to set [onRequestResultAbsent]
      */
     fun doOnRequestResultAbsent(block: suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?) {
         onRequestResultAbsent = block
     }
+
     /**
      * Useful way to set [onRequestReturnResult]
      */
-    fun doOnRequestReturnResult(block: suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?) {
+    fun doOnRequestReturnResult(
+        block: suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?,
+    ) {
         onRequestReturnResult = block
     }
 
@@ -70,13 +92,16 @@ class TelegramBotMiddlewareBuilder {
             onRequestResultPresented = onRequestResultPresented,
             onRequestResultAbsent = onRequestResultAbsent,
             onRequestReturnResult = onRequestReturnResult,
-            id = id
+            id = id,
         )
     }
 
     companion object {
         @Warning("This API is experimental and subject of changes")
-        fun from(middleware: TelegramBotMiddleware, additionalSetup: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware {
+        fun from(
+            middleware: TelegramBotMiddleware,
+            additionalSetup: TelegramBotMiddlewareBuilder.() -> Unit,
+        ): TelegramBotMiddleware {
             return TelegramBotMiddlewareBuilder().apply {
                 onRequestException = middleware.onRequestException
                 onBeforeSearchCallFactory = middleware.onBeforeSearchCallFactory

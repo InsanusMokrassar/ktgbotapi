@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ChatBoostUpdatedUpdate(
     override val updateId: UpdateId,
-    override val data: ChatBoostUpdated
+    override val data: ChatBoostUpdated,
 ) : Update

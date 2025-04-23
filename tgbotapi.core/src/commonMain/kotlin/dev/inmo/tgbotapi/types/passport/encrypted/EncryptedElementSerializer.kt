@@ -27,12 +27,14 @@ val encryptedElementsClassesByTypes = mapOf(
     "passport_registration" to Encapsulator(PassportRegistration::class, PassportRegistration.serializer()),
     "temporary_registration" to Encapsulator(TemporaryRegistration::class, TemporaryRegistration.serializer()),
     "phone_number" to Encapsulator(PhoneNumber::class, PhoneNumber.serializer()),
-    "email" to Encapsulator(Email::class, Email.serializer())
+    "email" to Encapsulator(Email::class, Email.serializer()),
 )
 
 @RiskFeature("Remember that this method may return \"unknown\" in case if encrypted element was not defined in library")
 val EncryptedPassportElement.type: String
-    get() = encryptedElementsClassesByTypes.keys.firstOrNull { encryptedElementsClassesByTypes.getValue(it).klass.isInstance(this) } ?: "unknown"
+    get() = encryptedElementsClassesByTypes.keys.firstOrNull {
+        encryptedElementsClassesByTypes.getValue(it).klass.isInstance(this)
+    } ?: "unknown"
 
 @RiskFeature
 object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
@@ -48,7 +50,10 @@ object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
         } ?: UnknownEncryptedPassportElement(json, json[hashField] ?.jsonPrimitive ?.content ?.decodeBase64() ?: byteArrayOf())
     }
 
-    override fun serialize(encoder: Encoder, value: EncryptedPassportElement) {
+    override fun serialize(
+        encoder: Encoder,
+        value: EncryptedPassportElement,
+    ) {
         val json = value.let {
             encryptedElementsClassesByTypes.forEach { (key, encapsulator) ->
                 val json = encapsulator.encapsulate(value) { data ->

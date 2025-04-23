@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.types.payments
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.PreviewBot
 import dev.inmo.tgbotapi.types.chat.PreviewChat
-import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.payments.abstracts.Amounted
 import kotlinx.serialization.SerialName

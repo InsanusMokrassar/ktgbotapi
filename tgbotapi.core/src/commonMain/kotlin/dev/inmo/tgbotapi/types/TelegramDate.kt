@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types
 
-import korlibs.time.DateTime
 import dev.inmo.tgbotapi.utils.RiskFeature
+import korlibs.time.DateTime
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -13,15 +13,15 @@ data class TelegramDate(
     /**
      * Contains UNIX time (seconds)
      */
-    internal val date: Long
+    internal val date: Long,
 ) {
     constructor(dateTime: DateTime) : this(
-        dateTime.unixMillisLong / 1000
+        dateTime.unixMillisLong / 1000,
     )
 
     @Transient
     val asDate: DateTime = DateTime(
-        date * 1000
+        date * 1000,
     )
 }
 
@@ -31,15 +31,18 @@ fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)
 object TelegramDateSerializer : KSerializer<TelegramDate> {
     override val descriptor: SerialDescriptor = Long.serializer().descriptor
 
-    override fun serialize(encoder: Encoder, value: TelegramDate) {
+    override fun serialize(
+        encoder: Encoder,
+        value: TelegramDate,
+    ) {
         encoder.encodeLong(
-            value.date
+            value.date,
         )
     }
 
     override fun deserialize(decoder: Decoder): TelegramDate {
         return TelegramDate(
-            decoder.decodeLong()
+            decoder.decodeLong(),
         )
     }
 }

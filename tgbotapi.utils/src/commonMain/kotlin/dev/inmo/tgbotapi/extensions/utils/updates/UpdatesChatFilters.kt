@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.filter
  * [Flow.filter] incoming [BaseMessageUpdate]s by their [IdChatIdentifier]
  */
 fun <T : BaseMessageUpdate> Flow<T>.filterBaseMessageUpdatesByChatId(chatId: IdChatIdentifier): Flow<T> = filter { it.data.chat.id == chatId }
+
 /**
  * [Flow.filter] incoming [BaseMessageUpdate]s by their [IdChatIdentifier] using [Chat.id] of [chat]
  */

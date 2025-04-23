@@ -5,14 +5,14 @@ import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializ
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.types.message.parseModeField
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
@@ -26,7 +26,7 @@ fun EditChatMessageCaption(
     parseMode: ParseMode? = null,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ) = EditChatMessageCaption(
     chatId = chatId,
     messageId = messageId,
@@ -35,7 +35,7 @@ fun EditChatMessageCaption(
     rawEntities = null,
     businessConnectionId = businessConnectionId,
     showCaptionAboveMedia = showCaptionAboveMedia,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 fun EditChatMessageCaption(
@@ -44,7 +44,7 @@ fun EditChatMessageCaption(
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ) = EditChatMessageCaption(
     chatId = chatId,
     messageId = messageId,
@@ -53,7 +53,7 @@ fun EditChatMessageCaption(
     rawEntities = entities.toRawMessageEntities(),
     businessConnectionId = businessConnectionId,
     showCaptionAboveMedia = showCaptionAboveMedia,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 @Serializable
@@ -73,13 +73,14 @@ data class EditChatMessageCaption internal constructor(
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
 ) : EditChatMessage<MediaContent>, WithCustomizableCaptionRequest<ContentMessage<MediaContent>>, EditTextChatMessage, EditReplyMessage {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageCaptionMethod
+
     override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>
         get() = MediaContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

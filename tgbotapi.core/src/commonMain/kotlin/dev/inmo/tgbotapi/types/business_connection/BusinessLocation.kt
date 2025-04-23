@@ -11,5 +11,5 @@ data class BusinessLocation(
     @SerialName(addressField)
     val address: String,
     @SerialName(locationField)
-    val location: StaticLocation
+    val location: StaticLocation,
 )

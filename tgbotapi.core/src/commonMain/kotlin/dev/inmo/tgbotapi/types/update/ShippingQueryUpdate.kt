@@ -6,5 +6,5 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 data class ShippingQueryUpdate(
     override val updateId: UpdateId,
-    override val data: ShippingQuery
+    override val data: ShippingQuery,
 ) : Update

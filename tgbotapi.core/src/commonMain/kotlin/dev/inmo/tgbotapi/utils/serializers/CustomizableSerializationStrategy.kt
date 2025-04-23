@@ -5,14 +5,16 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy.deserialize
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonElement
 
 interface CustomizableSerializationStrategy<T> : SerializationStrategy<T> {
     fun interface CustomSerializerStrategy<T> {
-        fun optionallySerialize(encoder: Encoder, value: T): Boolean
+        fun optionallySerialize(
+            encoder: Encoder,
+            value: T,
+        ): Boolean
     }
+
     /**
      * Contains [CustomSerializerStrategy] which will be used in [Serialize] method when standard
      * [RawUpdate] serializer will be unable to create [RawUpdate] (and [Update] as well)
@@ -22,16 +24,12 @@ interface CustomizableSerializationStrategy<T> : SerializationStrategy<T> {
     /**
      * Adding [deserializationStrategy] into [customSerializationStrategies] for using in case of unknown update
      */
-    fun addUpdateSerializationStrategy(
-        deserializationStrategy: CustomSerializerStrategy<T>
-    ): Boolean
+    fun addUpdateSerializationStrategy(deserializationStrategy: CustomSerializerStrategy<T>): Boolean
 
     /**
      * Removing [deserializationStrategy] from [customSerializationStrategies]
      */
-    fun removeUpdateSerializationStrategy(
-        deserializationStrategy: CustomSerializerStrategy<T>
-    ): Boolean
+    fun removeUpdateSerializationStrategy(deserializationStrategy: CustomSerializerStrategy<T>): Boolean
 }
 
 /**
@@ -42,7 +40,11 @@ interface CustomizableSerializationStrategy<T> : SerializationStrategy<T> {
 open class CallbackCustomizableSerializationStrategy<T>(
     override val descriptor: SerialDescriptor,
     private val defaultSerializeCallback: (encoder: Encoder, value: T) -> Unit,
-    private val fallbackSerialization: (initialException: Throwable, encoder: Encoder, value: T) -> T = { initialException, _, _ -> throw initialException }
+    private val fallbackSerialization: (
+        initialException: Throwable,
+        encoder: Encoder,
+        value: T,
+    ) -> T = { initialException, _, _ -> throw initialException },
 ) : CustomizableSerializationStrategy<T> {
     protected val _customSerializationStrategies = LinkedHashSet<CustomizableSerializationStrategy.CustomSerializerStrategy<T>>()
 
@@ -59,7 +61,10 @@ open class CallbackCustomizableSerializationStrategy<T>(
      * are no any strategy success serialization and [defaultSerializeCallback] thrown exception will be used
      * [fallbackSerialization] callback
      */
-    override fun serialize(encoder: Encoder, value: T) {
+    override fun serialize(
+        encoder: Encoder,
+        value: T,
+    ) {
         runCatching {
             defaultSerializeCallback(encoder, value)
         }.getOrElse {
@@ -77,13 +82,13 @@ open class CallbackCustomizableSerializationStrategy<T>(
      * Adding [deserializationStrategy] into [customSerializationStrategies] for using in case of unknown update
      */
     override fun addUpdateSerializationStrategy(
-        deserializationStrategy: CustomizableSerializationStrategy.CustomSerializerStrategy<T>
+        deserializationStrategy: CustomizableSerializationStrategy.CustomSerializerStrategy<T>,
     ): Boolean = _customSerializationStrategies.add(deserializationStrategy)
 
     /**
      * Removing [deserializationStrategy] from [customSerializationStrategies]
      */
     override fun removeUpdateSerializationStrategy(
-        deserializationStrategy: CustomizableSerializationStrategy.CustomSerializerStrategy<T>
+        deserializationStrategy: CustomizableSerializationStrategy.CustomSerializerStrategy<T>,
     ): Boolean = _customSerializationStrategies.remove(deserializationStrategy)
 }

@@ -26,7 +26,7 @@ sealed interface MenuButton {
     data class WebApp(
         val text: String,
         @SerialName(webAppField)
-        val webApp: WebAppInfo
+        val webApp: WebAppInfo,
     ) : MenuButton {
         @Required
         @EncodeDefault
@@ -49,9 +49,9 @@ sealed interface MenuButton {
 
     @Serializable
     @RiskFeature
-    data class Unknown (
+    data class Unknown(
         override val type: String,
-        val rawJson: JsonElement
+        val rawJson: JsonElement,
     ) : MenuButton
 }
 
@@ -61,7 +61,7 @@ internal data class MenuButtonSurrogate(
     val text: String? = null,
     @SerialName(webAppField)
     val webApp: WebAppInfo? = null,
-    val srcJsonElement: JsonElement? = null
+    val srcJsonElement: JsonElement? = null,
 )
 
 @Serializer(MenuButton::class)
@@ -77,10 +77,10 @@ object MenuButtonSerializer : KSerializer<MenuButton> {
             }.onFailure {
                 return MenuButton.Unknown(
                     runCatching { json.jsonObject[typeField] ?.jsonPrimitive ?.content }.getOrNull() ?: "",
-                    json
+                    json,
                 )
             }.getOrThrow().copy(
-                srcJsonElement = json
+                srcJsonElement = json,
             )
         } else {
             MenuButtonSurrogate.serializer().deserialize(decoder)
@@ -89,34 +89,38 @@ object MenuButtonSerializer : KSerializer<MenuButton> {
         return when (surrogate.type) {
             MenuButton.Commands.type -> MenuButton.Commands
             MenuButton.Default.type -> MenuButton.Default
-            MenuButton.WebApp.type -> if (surrogate.text != null && surrogate.webApp != null) {
-                MenuButton.WebApp(surrogate.text, surrogate.webApp)
-            } else {
-                null
-            }
+            MenuButton.WebApp.type ->
+                if (surrogate.text != null && surrogate.webApp != null) {
+                    MenuButton.WebApp(surrogate.text, surrogate.webApp)
+                } else {
+                    null
+                }
             else -> null
         } ?: MenuButton.Unknown(
             surrogate.type,
-            surrogate.srcJsonElement ?: buildJsonObject { }
+            surrogate.srcJsonElement ?: buildJsonObject { },
         )
     }
 
-    override fun serialize(encoder: Encoder, value: MenuButton) {
+    override fun serialize(
+        encoder: Encoder,
+        value: MenuButton,
+    ) {
         encoder.encodeSerializableValue(
             MenuButtonSurrogate.serializer(),
             when (value) {
                 MenuButton.Default,
-                MenuButton.Commands -> MenuButtonSurrogate(value.type)
+                MenuButton.Commands,
+                -> MenuButtonSurrogate(value.type)
                 is MenuButton.WebApp -> MenuButtonSurrogate(value.type, value.text, value.webApp)
                 is MenuButton.Unknown -> {
                     encoder.encodeSerializableValue(
                         JsonElement.serializer(),
-                        value.rawJson
+                        value.rawJson,
                     )
                     return
                 }
-            }
+            },
         )
     }
-
 }

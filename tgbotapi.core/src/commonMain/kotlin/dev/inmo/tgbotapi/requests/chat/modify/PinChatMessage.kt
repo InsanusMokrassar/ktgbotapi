@@ -13,7 +13,7 @@ import kotlinx.serialization.builtins.serializer
  * supergroup or 'can_edit_messages' admin right in a channel.
  */
 @Serializable
-data class PinChatMessage (
+data class PinChatMessage(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
@@ -21,9 +21,10 @@ data class PinChatMessage (
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = null,
     @SerialName(disableNotificationField)
-    override val disableNotification: Boolean = false
-): ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification, OptionallyBusinessConnectionRequest {
+    override val disableNotification: Boolean = false,
+) : ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification, OptionallyBusinessConnectionRequest {
     override fun method(): String = "pinChatMessage"
+
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>

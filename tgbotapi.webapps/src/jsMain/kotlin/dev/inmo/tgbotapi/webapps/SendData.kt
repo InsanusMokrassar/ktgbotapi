@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.WebAppQueryId
  */
 inline fun sendDataOrWorkWithQueryId(
     onSendData: () -> String?,
-    onAnswerWebAppQuery: (WebAppQueryId) -> Unit
+    onAnswerWebAppQuery: (WebAppQueryId) -> Unit,
 ) {
     val queryId = webApp.initDataUnsafe.queryId
 
@@ -29,5 +29,5 @@ inline fun sendDataOrWorkWithQueryId(
  */
 inline fun handleResult(
     onSendData: () -> String?,
-    onAnswerWebAppQuery: (WebAppQueryId) -> Unit
+    onAnswerWebAppQuery: (WebAppQueryId) -> Unit,
 ) = sendDataOrWorkWithQueryId(onSendData, onAnswerWebAppQuery)

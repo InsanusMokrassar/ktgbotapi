@@ -6,10 +6,10 @@ import dev.inmo.tgbotapi.utils.ByteReadChannelAllocatorDeserializationStrategy
 import kotlinx.serialization.DeserializationStrategy
 
 class DownloadFileStream(
-    val filePath: String
+    val filePath: String,
 ) : Request<ByteReadChannelAllocator> {
     override fun method(): String = filePath
+
     override val resultDeserializer: DeserializationStrategy<ByteReadChannelAllocator>
         get() = ByteReadChannelAllocatorDeserializationStrategy
-
 }

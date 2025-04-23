@@ -4,10 +4,10 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditInlineMessageText
 import dev.inmo.tgbotapi.types.InlineMessageId
 import dev.inmo.tgbotapi.types.LinkPreviewOptions
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
 
@@ -21,7 +21,7 @@ public suspend fun TelegramBot.editMessageText(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = execute(EditInlineMessageText(inlineMessageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
 
 /**
@@ -33,7 +33,7 @@ public suspend fun TelegramBot.editMessageText(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
+    replyMarkup: InlineKeyboardMarkup? = null,
 ): Boolean = execute(EditInlineMessageText(inlineMessageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup))
 
 /**
@@ -46,7 +46,7 @@ public suspend fun TelegramBot.editMessageText(
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): Boolean = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
@@ -59,5 +59,5 @@ public suspend fun TelegramBot.editMessageText(
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
-    builderBody: EntitiesBuilderBody
+    builderBody: EntitiesBuilderBody,
 ): Boolean = editMessageText(inlineMessageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
