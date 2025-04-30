@@ -8,14 +8,37 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable(with = TransactionTypeSerializer::class)
-enum class TransactionType {
-    INVOICE_PAYMENT,
-    PAID_MEDIA_PAYMENT,
-    GIFT_PURCHASE,
-    PREMIUM_PURCHASE,
-    BUSINESS_ACCOUNT_TRANSFER,
-    UNKNOWN
+@Serializable(TransactionTypeSerializer::class)
+sealed interface TransactionType {
+    val name: String
+
+    @Serializable
+    data object InvoicePayment : TransactionType {
+        override val name = "invoice_payment"
+    }
+
+    @Serializable
+    data object PaidMediaPayment : TransactionType {
+        override val name = "paid_media_payment"
+    }
+
+    @Serializable
+    data object GiftPurchase : TransactionType {
+        override val name = "gift_purchase"
+    }
+
+    @Serializable
+    data object PremiumPurchase : TransactionType {
+        override val name = "premium_purchase"
+    }
+
+    @Serializable
+    data object BusinessAccountTransfer : TransactionType {
+        override val name = "business_account_transfer"
+    }
+
+    @Serializable
+    value class Unknown(override val name: String) : TransactionType
 }
 
 private object TransactionTypeSerializer : KSerializer<TransactionType> {
@@ -25,10 +48,14 @@ private object TransactionTypeSerializer : KSerializer<TransactionType> {
     )
 
     override fun deserialize(decoder: Decoder): TransactionType {
-        return try {
-            TransactionType.valueOf(decoder.decodeString())
-        } catch (e: IllegalArgumentException) {
-            TransactionType.UNKNOWN
+        val value = decoder.decodeString()
+        return when (value) {
+            TransactionType.InvoicePayment.name -> TransactionType.InvoicePayment
+            TransactionType.PaidMediaPayment.name -> TransactionType.PaidMediaPayment
+            TransactionType.GiftPurchase.name -> TransactionType.GiftPurchase
+            TransactionType.PremiumPurchase.name -> TransactionType.PremiumPurchase
+            TransactionType.BusinessAccountTransfer.name -> TransactionType.BusinessAccountTransfer
+            else -> TransactionType.Unknown(value)
         }
     }
 
