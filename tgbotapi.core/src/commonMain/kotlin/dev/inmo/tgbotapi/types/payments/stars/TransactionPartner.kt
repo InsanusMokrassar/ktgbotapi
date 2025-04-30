@@ -48,6 +48,8 @@ sealed interface TransactionPartner {
     data class User(
         @SerialName(userField)
         val user: PreviewUser,
+        @SerialName(transactionTypeField)
+        val transactionType: TransactionType,
         @SerialName(affiliateField)
         val affiliate: AffiliateInfo? = null,
         @SerialName(invoicePayloadField)
@@ -59,8 +61,10 @@ sealed interface TransactionPartner {
         val paidMedia: List<PaidMedia>? = null,
         @SerialName(paidMediaPayloadField)
         val paidMediaPayload: PaidMediaPayload? = null,
+        @SerialName(premiumSubscriptionDurationField)
+        val premiumSubscriptionDuration: Int? = null,
         @SerialName(giftField)
-        val gift: Gift.Regular? = null
+        val gift: Gift.Regular? = null,
     ) : TransactionPartner, SubscriptionPeriodInfo {
         @EncodeDefault
         override val type: String = Companion.type
@@ -150,6 +154,8 @@ sealed interface TransactionPartner {
             val subscription_period: TimeSpan? = null,
             val paid_media: List<PaidMedia>? = null,
             val paid_media_payload: PaidMediaPayload? = null,
+            val premium_subscription_duration: Int? = null,
+            val transaction_type: TransactionType? = null,
             val gift: Gift.Regular? = null,
             val request_count: Int? = null,
             val sponsor_user: PreviewBot? = null,
@@ -180,7 +186,9 @@ sealed interface TransactionPartner {
                         subscriptionPeriod = subscription_period,
                         paidMedia = paid_media,
                         paidMediaPayload = paid_media_payload,
-                        gift = gift
+                        gift = gift,
+                        premiumSubscriptionDuration = premium_subscription_duration,
+                        transactionType = transaction_type ?: return unknown,
                     )
                     TelegramAPI.type -> TelegramAPI(
                         data.request_count ?: return unknown,
@@ -216,7 +224,9 @@ sealed interface TransactionPartner {
                         subscription_period = subscriptionPeriod,
                         paid_media = paidMedia,
                         paid_media_payload = paidMediaPayload,
-                        gift = gift
+                        gift = gift,
+                        premium_subscription_duration = premiumSubscriptionDuration,
+                        transaction_type = transactionType
                     )
                     is TelegramAPI -> Surrogate(type = value.type, request_count = requestCount)
                     is Fragment -> Surrogate(
