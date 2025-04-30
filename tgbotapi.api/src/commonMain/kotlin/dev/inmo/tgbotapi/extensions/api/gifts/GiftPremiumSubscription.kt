@@ -11,7 +11,7 @@ public suspend fun TelegramBot.giftPremiumSubscription(
     monthCount: Int,
     starCount: Int,
     text: String,
-    parseMode: ParseMode?
+    parseMode: ParseMode? = null
 ): Boolean = execute(
     GiftPremiumSubscription(
         userId, monthCount, starCount, text, parseMode
