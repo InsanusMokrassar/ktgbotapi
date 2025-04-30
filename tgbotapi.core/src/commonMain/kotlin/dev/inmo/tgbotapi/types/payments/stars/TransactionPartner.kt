@@ -181,6 +181,7 @@ sealed interface TransactionPartner {
                     )
                     User.type -> User(
                         user = user ?: return unknown,
+                        transactionType = transaction_type ?: return unknown,
                         affiliate = affiliate,
                         invoicePayload = invoice_payload,
                         subscriptionPeriod = subscription_period,
@@ -188,7 +189,6 @@ sealed interface TransactionPartner {
                         paidMediaPayload = paid_media_payload,
                         gift = gift,
                         premiumSubscriptionDuration = premium_subscription_duration,
-                        transactionType = transaction_type ?: return unknown,
                     )
                     TelegramAPI.type -> TelegramAPI(
                         data.request_count ?: return unknown,
