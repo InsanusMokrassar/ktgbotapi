@@ -2365,6 +2365,13 @@ public final class dev/inmo/tgbotapi/extensions/api/stickers/UploadStickerFileKt
 	public static final fun uploadStickerFile-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/types/StickerFormat;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/stories/DeleteStoryKt {
+	public static final fun deleteStory (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;Ldev/inmo/tgbotapi/types/stories/Story;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun deleteStory-8HGAsC4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun deleteStory-CF6AVbg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun deleteStory-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/Story;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetCustomEmojiStickerSetThumbKt {
 	public static final fun setCustomEmojiStickerSetThumbnail-FMh0B1w (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setCustomEmojiStickerSetThumbnail-KofBPHw (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
