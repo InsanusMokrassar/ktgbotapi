@@ -338,6 +338,13 @@ public final class dev/inmo/tgbotapi/extensions/api/business/DeleteBusinessMessa
 	public static final fun deleteBusinessMessages-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountGiftsKt {
+	public static final fun getBusinessAccountGifts-LATcL_E (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getBusinessAccountGifts-LATcL_E$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun getBusinessAccountGiftsFlow-LATcL_E (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getBusinessAccountGiftsFlow-LATcL_E$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountStarBalanceKt {
 	public static final fun getBusinessAccountStarBalance-spp27rg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }

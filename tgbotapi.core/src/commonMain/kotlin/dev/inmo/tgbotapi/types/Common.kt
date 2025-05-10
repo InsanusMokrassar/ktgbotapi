@@ -723,6 +723,13 @@ const val limitedGiftsField = "limited_gifts"
 const val uniqueGiftsField = "unique_gifts"
 const val premiumSubscriptionField = "premium_subscription"
 
+const val excludeUnsavedField = "exclude_unsaved"
+const val excludeSavedField = "exclude_saved"
+const val excludeUnlimitedField = "exclude_unlimited"
+const val excludeLimitedField = "exclude_limited"
+const val excludeUniqueField = "exclude_unique"
+const val sortByPriceField = "sort_by_price"
+
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
