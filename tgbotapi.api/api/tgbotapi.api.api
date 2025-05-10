@@ -398,6 +398,13 @@ public final class dev/inmo/tgbotapi/extensions/api/business/TransferBusinessAcc
 	public static final fun transferBusinessAccountStarBalance-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/business/TransferGiftKt {
+	public static final fun transferGift-cB4Rf94 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun transferGift-cB4Rf94$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun transferGift-gMFmPss (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;JLjava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun transferGift-gMFmPss$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;JLjava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/business/UpgradeGiftKt {
 	public static final fun convertGiftToStars-XzFA9qU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun convertGiftToStars-XzFA9qU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;

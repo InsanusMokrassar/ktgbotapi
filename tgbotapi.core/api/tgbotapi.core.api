@@ -2345,6 +2345,43 @@ public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusine
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/requests/business_connection/TransferGift : dev/inmo/tgbotapi/requests/abstracts/BusinessRequest$Simple {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/business_connection/TransferGift$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-T-_HSQI ()Ljava/lang/String;
+	public final fun component2-OyCYJok ()Ljava/lang/String;
+	public final fun component3-tHkBKVM ()J
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun copy-Ptl3q3s (Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;)Ldev/inmo/tgbotapi/requests/business_connection/TransferGift;
+	public static synthetic fun copy-Ptl3q3s$default (Ldev/inmo/tgbotapi/requests/business_connection/TransferGift;Ljava/lang/String;Ljava/lang/String;JLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/business_connection/TransferGift;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public final fun getNewOwnerChatId-tHkBKVM ()J
+	public final fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getTransferPaymentStarCount ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/requests/business_connection/TransferGift$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/business_connection/TransferGift$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/business_connection/TransferGift;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/business_connection/TransferGift;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/requests/business_connection/TransferGift$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/business_connection/UpgradeGift : dev/inmo/tgbotapi/requests/abstracts/BusinessRequest$Simple {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/business_connection/UpgradeGift$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -9743,6 +9780,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field nanostarAmountField Ljava/lang/String;
 	public static final field needsRepaintingField Ljava/lang/String;
 	public static final field newChatMemberField Ljava/lang/String;
+	public static final field newOwnerChatIdField Ljava/lang/String;
 	public static final field newReactionField Ljava/lang/String;
 	public static final field nextOffsetField Ljava/lang/String;
 	public static final field nonceField Ljava/lang/String;

@@ -524,6 +524,7 @@ const val prepaidUpgradeStarCountField = "prepaid_upgrade_star_count"
 const val canBeUpgradedField = "can_be_upgraded"
 const val isPrivateField = "is_private"
 const val transferStarCountField = "transfer_star_count"
+const val newOwnerChatIdField = "new_owner_chat_id"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
