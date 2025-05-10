@@ -330,6 +330,11 @@ public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyShortDescriptionKt 
 	public static synthetic fun setMyShortDescription$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/business/ConvertGiftToStarsKt {
+	public static final fun convertGiftToStars-D7eidZo (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun convertGiftToStars-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/business/DeleteBusinessMessagesGeneratedVariationKt {
 	public static final fun deleteBusinessMessages-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
@@ -391,6 +396,13 @@ public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountU
 
 public final class dev/inmo/tgbotapi/extensions/api/business/TransferBusinessAccountStarBalanceKt {
 	public static final fun transferBusinessAccountStarBalance-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/business/UpgradeGiftKt {
+	public static final fun convertGiftToStars-XzFA9qU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun convertGiftToStars-XzFA9qU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun convertGiftToStars-fJJ4zuA (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun convertGiftToStars-fJJ4zuA$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/ExportChatInviteLinkKt {
