@@ -9380,6 +9380,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field authorSignatureField Ljava/lang/String;
 	public static final field availableReactionsField Ljava/lang/String;
 	public static final field backdropField Ljava/lang/String;
+	public static final field backgroundColorField Ljava/lang/String;
 	public static final field backgroundCustomEmojiIdField Ljava/lang/String;
 	public static final field bankStatementField Ljava/lang/String;
 	public static final field baseNameField Ljava/lang/String;
@@ -9602,9 +9603,11 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field isBotField Ljava/lang/String;
 	public static final field isCanceledField Ljava/lang/String;
 	public static final field isClosedField Ljava/lang/String;
+	public static final field isDarkField Ljava/lang/String;
 	public static final field isDisabledField Ljava/lang/String;
 	public static final field isEnabledField Ljava/lang/String;
 	public static final field isFirstRecurringField Ljava/lang/String;
+	public static final field isFlippedField Ljava/lang/String;
 	public static final field isForumField Ljava/lang/String;
 	public static final field isInvertedField Ljava/lang/String;
 	public static final field isManualField Ljava/lang/String;
@@ -9747,7 +9750,9 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field quoteParseModeField Ljava/lang/String;
 	public static final field quotePositionField Ljava/lang/String;
 	public static final field rarityPerMilleField Ljava/lang/String;
+	public static final field rawField Ljava/lang/String;
 	public static final field reactionField Ljava/lang/String;
+	public static final field reactionTypeField Ljava/lang/String;
 	public static final field reactionsField Ljava/lang/String;
 	public static final field receiverField Ljava/lang/String;
 	public static final field regularPollType Ljava/lang/String;
@@ -9842,6 +9847,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field symbolColorField Ljava/lang/String;
 	public static final field symbolField Ljava/lang/String;
 	public static final field telegramPaymentChargeIdField Ljava/lang/String;
+	public static final field temperatureField Ljava/lang/String;
 	public static final field temporaryRegistrationField Ljava/lang/String;
 	public static final field textColorField Ljava/lang/String;
 	public static final field textEntitiesField Ljava/lang/String;
@@ -27349,6 +27355,193 @@ public final class dev/inmo/tgbotapi/types/reactions/Reaction$Unknown$Companion 
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/reactions/ReactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion;
+	public abstract fun getType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType$Type;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustomEmojiId ()Ljava/lang/String;
+	public final fun getEmoji ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Companion$Surrogate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji : dev/inmo/tgbotapi/types/reactions/ReactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustomEmojiId ()Ljava/lang/String;
+	public fun getType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$CustomEmoji$Companion : dev/inmo/tgbotapi/types/reactions/ReactionType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Emoji : dev/inmo/tgbotapi/types/reactions/ReactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmoji ()Ljava/lang/String;
+	public fun getType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$Emoji$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType$Emoji;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Emoji$Companion : dev/inmo/tgbotapi/types/reactions/ReactionType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Paid : dev/inmo/tgbotapi/types/reactions/ReactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Paid$Companion;
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType$Type;
+	public fun hashCode ()I
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$Paid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$Paid$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Paid;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType$Paid;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Paid$Companion : dev/inmo/tgbotapi/types/reactions/ReactionType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/reactions/ReactionType$Type {
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown : dev/inmo/tgbotapi/types/reactions/ReactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-n-eu424 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy-IzM-JfY (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown;
+	public static synthetic fun copy-IzM-JfY$default (Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
+	public synthetic fun getType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType$Type;
+	public fun getType-n-eu424 ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom : dev/inmo/tgbotapi/types/reactions/ReactionType$Type {
+	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize--6CkvsI (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-ddj4YtI (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+}
+
+public final class dev/inmo/tgbotapi/types/reactions/ReactionType$Unknown$Custom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/reactions/ReactionsCount {
 	public static final field Companion Ldev/inmo/tgbotapi/types/reactions/ReactionsCount$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/reactions/Reaction;I)V
@@ -27866,6 +28059,34 @@ public final class dev/inmo/tgbotapi/types/stories/Story$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/stories/StoryArea {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryArea$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;Ldev/inmo/tgbotapi/types/stories/StoryAreaType;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType;
+	public final fun copy (Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;Ldev/inmo/tgbotapi/types/stories/StoryAreaType;)Ldev/inmo/tgbotapi/types/stories/StoryArea;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/StoryArea;Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;Ldev/inmo/tgbotapi/types/stories/StoryAreaType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryArea;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPosition ()Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;
+	public final fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryArea$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryArea$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryArea;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryArea;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryArea$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/stories/StoryAreaPosition {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition$Companion;
 	public synthetic fun <init> (DDDDDDLkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -27899,6 +28120,286 @@ public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaPosition$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/stories/StoryAreaPosition$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion;
+	public abstract fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;Ldev/inmo/tgbotapi/types/location/LocationAddress;Ldev/inmo/tgbotapi/types/reactions/ReactionType;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ldev/inmo/micro_utils/colors/common/HEXAColor;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;Ldev/inmo/tgbotapi/types/location/LocationAddress;Ldev/inmo/tgbotapi/types/reactions/ReactionType;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ldev/inmo/micro_utils/colors/common/HEXAColor;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11-EK5xmqU ()Ldev/inmo/micro_utils/colors/common/HEXAColor;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun component3 ()Ljava/lang/Double;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/reactions/ReactionType;
+	public final fun component6 ()Ljava/lang/Boolean;
+	public final fun component7 ()Ljava/lang/Boolean;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/Double;
+	public final fun copy-bdGGNV0 (Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;Ldev/inmo/tgbotapi/types/location/LocationAddress;Ldev/inmo/tgbotapi/types/reactions/ReactionType;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ldev/inmo/micro_utils/colors/common/HEXAColor;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate;
+	public static synthetic fun copy-bdGGNV0$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Double;Ldev/inmo/tgbotapi/types/location/LocationAddress;Ldev/inmo/tgbotapi/types/reactions/ReactionType;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ldev/inmo/micro_utils/colors/common/HEXAColor;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public final fun getBackgroundColor-EK5xmqU ()Ldev/inmo/micro_utils/colors/common/HEXAColor;
+	public final fun getEmoji ()Ljava/lang/String;
+	public final fun getLatitude ()Ljava/lang/Double;
+	public final fun getLongitude ()Ljava/lang/Double;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getReactionType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType;
+	public final fun getTemperature ()Ljava/lang/Double;
+	public final fun getType ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isDark ()Ljava/lang/Boolean;
+	public final fun isFlipped ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Companion$Surrogate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Link : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Link$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Link;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Link$Companion : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Location : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location$Companion;
+	public fun <init> (DDLdev/inmo/tgbotapi/types/location/LocationAddress;)V
+	public synthetic fun <init> (DDLdev/inmo/tgbotapi/types/location/LocationAddress;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public final fun copy (DDLdev/inmo/tgbotapi/types/location/LocationAddress;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location;DDLdev/inmo/tgbotapi/types/location/LocationAddress;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public final fun getLatitude ()D
+	public final fun getLongitude ()D
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Location$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Location;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Location$Companion : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/reactions/ReactionType;ZZ)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/reactions/ReactionType;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/reactions/ReactionType;
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun copy (Ldev/inmo/tgbotapi/types/reactions/ReactionType;ZZ)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction;Ldev/inmo/tgbotapi/types/reactions/ReactionType;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReactionType ()Ldev/inmo/tgbotapi/types/reactions/ReactionType;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public fun hashCode ()I
+	public final fun isDark ()Z
+	public final fun isFlipped ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$SuggestedReaction$Companion : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$UniqueGift$Companion : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-Z5LZ5xk ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy-GMJk1YA (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown;
+	public static synthetic fun copy-GMJk1YA$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
+	public synthetic fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public fun getType-Z5LZ5xk ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-3Ojxprk (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-GfMZkS4 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Unknown$Custom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Weather : dev/inmo/tgbotapi/types/stories/StoryAreaType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather$Companion;
+	public synthetic fun <init> (DLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3-Tlb_HZc ()I
+	public final fun copy-ySsuw9g (DLjava/lang/String;I)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather;
+	public static synthetic fun copy-ySsuw9g$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather;DLjava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBackgroundColor-Tlb_HZc ()I
+	public final fun getEmoji ()Ljava/lang/String;
+	public final fun getTemperature ()D
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaType$Weather$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaType$Weather;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Weather$Companion : dev/inmo/tgbotapi/types/stories/StoryAreaType$Type {
+	public fun getName ()Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -28834,6 +29335,15 @@ public final class dev/inmo/tgbotapi/utils/JSONKt {
 	public static final fun toJsonWithoutNulls (Ljava/lang/Object;Lkotlinx/serialization/SerializationStrategy;)Lkotlinx/serialization/json/JsonObject;
 	public static final fun withoutNulls (Lkotlinx/serialization/json/JsonArray;)Lkotlinx/serialization/json/JsonArray;
 	public static final fun withoutNulls (Lkotlinx/serialization/json/JsonObject;)Lkotlinx/serialization/json/JsonObject;
+}
+
+public final class dev/inmo/tgbotapi/utils/LongRGBAFromHEXAColorSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/LongRGBAFromHEXAColorSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-o_k0-HU (Lkotlinx/serialization/encoding/Decoder;)I
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-Em2Gv2Q (Lkotlinx/serialization/encoding/Encoder;I)V
 }
 
 public final class dev/inmo/tgbotapi/utils/MapKt {

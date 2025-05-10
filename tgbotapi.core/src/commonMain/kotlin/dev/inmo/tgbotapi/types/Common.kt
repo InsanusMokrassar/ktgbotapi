@@ -755,3 +755,12 @@ const val themeNameField = "theme_name"
 const val dayField = "day"
 const val monthField = "month"
 const val yearField = "year"
+
+const val rawField = "raw"
+
+const val reactionTypeField = "reaction_type"
+
+const val isDarkField = "is_dark"
+const val isFlippedField = "is_flipped"
+const val temperatureField = "temperature"
+const val backgroundColorField = "background_color"
