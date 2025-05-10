@@ -728,6 +728,8 @@ const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
 const val businessOpeningHoursField = "business_opening_hours"
 
+const val storyIdField = "story_id"
+
 const val colorField = "color"
 const val colorsField = "colors"
 const val topColorField = "top_color"

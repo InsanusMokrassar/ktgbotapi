@@ -7,6 +7,7 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlin.jvm.JvmInline
 
 @Serializable(TransactionTypeSerializer::class)
 sealed interface TransactionType {
@@ -38,6 +39,7 @@ sealed interface TransactionType {
     }
 
     @Serializable
+    @JvmInline
     value class Unknown(override val name: String) : TransactionType
 }
 

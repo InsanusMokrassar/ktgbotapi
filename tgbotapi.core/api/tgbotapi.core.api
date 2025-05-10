@@ -4978,6 +4978,48 @@ public final class dev/inmo/tgbotapi/requests/gifts/GetAvailableGifts : dev/inmo
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription$Companion;
+	public synthetic fun <init> (JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JIILjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JIILjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun copy-hWD7qso (JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;
+	public static synthetic fun copy-hWD7qso$default (Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getEntities ()Ljava/util/List;
+	public final fun getMonthCount ()I
+	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getStarCount ()I
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/gifts/SendGift$Companion;
 	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -9320,10 +9362,12 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field containsMasksField Ljava/lang/String;
 	public static final field convertStarCountField Ljava/lang/String;
 	public static final field copyTextField Ljava/lang/String;
+	public static final field cornerRadiusPercentageField Ljava/lang/String;
 	public static final field correctOptionIdField Ljava/lang/String;
 	public static final field countryCodeField Ljava/lang/String;
 	public static final field countryCodesField Ljava/lang/String;
 	public static final field coverField Ljava/lang/String;
+	public static final field coverFrameTimeStampField Ljava/lang/String;
 	public static final field createsJoinRequestField Ljava/lang/String;
 	public static final field creatorField Ljava/lang/String;
 	public static final field credentialsField Ljava/lang/String;
@@ -9414,6 +9458,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field hashField Ljava/lang/String;
 	public static final field headingField Ljava/lang/String;
 	public static final field heightField Ljava/lang/String;
+	public static final field heightPercentageField Ljava/lang/String;
 	public static final field hideUrlField Ljava/lang/String;
 	public static final field horizontalAccuracyField Ljava/lang/String;
 	public static final field iconColorField Ljava/lang/String;
@@ -9431,6 +9476,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field invoicePayloadField Ljava/lang/String;
 	public static final field ipAddressField Ljava/lang/String;
 	public static final field isAnimatedField Ljava/lang/String;
+	public static final field isAnimationField Ljava/lang/String;
 	public static final field isAnonymousField Ljava/lang/String;
 	public static final field isBigField Ljava/lang/String;
 	public static final field isBlurredField Ljava/lang/String;
@@ -9494,6 +9540,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field messageThreadIdField Ljava/lang/String;
 	public static final field mimeTypeField Ljava/lang/String;
 	public static final field modelField Ljava/lang/String;
+	public static final field monthCountField Ljava/lang/String;
 	public static final field monthField Ljava/lang/String;
 	public static final field mpeg4GifDurationField Ljava/lang/String;
 	public static final field mpeg4GifFileIdField Ljava/lang/String;
@@ -9556,6 +9603,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field preferLargeMediaField Ljava/lang/String;
 	public static final field preferSmallMediaField Ljava/lang/String;
 	public static final field premiumAnimationField Ljava/lang/String;
+	public static final field premiumSubscriptionDurationField Ljava/lang/String;
 	public static final field premiumSubscriptionField Ljava/lang/String;
 	public static final field premiumSubscriptionMonthCountField Ljava/lang/String;
 	public static final field prepaidUpgradeStarCountField Ljava/lang/String;
@@ -9656,6 +9704,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field stickerSetNameFullField Ljava/lang/String;
 	public static final field stickerTypeField Ljava/lang/String;
 	public static final field stickersField Ljava/lang/String;
+	public static final field streetField Ljava/lang/String;
 	public static final field subscriptionExpirationDateField Ljava/lang/String;
 	public static final field subscriptionPeriodField Ljava/lang/String;
 	public static final field subscriptionPriceField Ljava/lang/String;
@@ -9690,6 +9739,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field totalAmountField Ljava/lang/String;
 	public static final field totalCountField Ljava/lang/String;
 	public static final field totalVoterCountField Ljava/lang/String;
+	public static final field transactionTypeField Ljava/lang/String;
 	public static final field transactionsField Ljava/lang/String;
 	public static final field transferStarCountField Ljava/lang/String;
 	public static final field translationField Ljava/lang/String;
@@ -9740,11 +9790,14 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field webAppQueryIdField Ljava/lang/String;
 	public static final field webmStickerField Ljava/lang/String;
 	public static final field widthField Ljava/lang/String;
+	public static final field widthPercentageField Ljava/lang/String;
 	public static final field winnersCountField Ljava/lang/String;
 	public static final field winnersField Ljava/lang/String;
 	public static final field winnersSelectionDateField Ljava/lang/String;
 	public static final field withdrawalStateField Ljava/lang/String;
+	public static final field xPercentageField Ljava/lang/String;
 	public static final field xShiftField Ljava/lang/String;
+	public static final field yPercentageField Ljava/lang/String;
 	public static final field yShiftField Ljava/lang/String;
 	public static final field yearField Ljava/lang/String;
 	public static final fun getAllowedConnectionsLength ()Lkotlin/ranges/IntRange;
@@ -19593,6 +19646,38 @@ public final class dev/inmo/tgbotapi/types/location/Location$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/location/LocationAddress {
+	public static final field Companion Ldev/inmo/tgbotapi/types/location/LocationAddress$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/location/LocationAddress;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCity ()Ljava/lang/String;
+	public final fun getCountryCode ()Ljava/lang/String;
+	public final fun getState ()Ljava/lang/String;
+	public final fun getStreet ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/location/LocationAddress$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/location/LocationAddress$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/location/LocationAddress;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/location/LocationAddress;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/location/LocationAddress$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/location/LocationSerializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/location/LocationSerializer;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/location/Location;
@@ -26320,24 +26405,28 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Unk
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User : dev/inmo/tgbotapi/abstracts/types/SubscriptionPeriodInfo, dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User$Companion;
 	public static final field type Ljava/lang/String;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4-FghU774 ()Lkotlin/time/Duration;
-	public final fun component5 ()Ljava/util/List;
-	public final fun component6-Y25QJn4 ()Ljava/lang/String;
-	public final fun component7 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
-	public final fun copy-13OOIVY (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
-	public static synthetic fun copy-13OOIVY$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5-FghU774 ()Lkotlin/time/Duration;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7-Y25QJn4 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/Integer;
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public final fun copy-YxBg8jQ (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public static synthetic fun copy-YxBg8jQ$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Ljava/lang/String;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAffiliate ()Ldev/inmo/tgbotapi/types/payments/AffiliateInfo;
 	public final fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
 	public final fun getInvoicePayload ()Ljava/lang/String;
 	public final fun getPaidMedia ()Ljava/util/List;
 	public final fun getPaidMediaPayload-Y25QJn4 ()Ljava/lang/String;
+	public final fun getPremiumSubscriptionDuration ()Ljava/lang/Integer;
 	public fun getSubscriptionPeriod-FghU774 ()Lkotlin/time/Duration;
+	public final fun getTransactionType ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionType;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
 	public fun hashCode ()I
@@ -26345,6 +26434,89 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Use
 }
 
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$BusinessAccountTransfer : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$BusinessAccountTransfer;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$GiftPurchase : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$GiftPurchase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$InvoicePayment : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$InvoicePayment;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$PaidMediaPayment : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$PaidMediaPayment;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$PremiumPurchase : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$PremiumPurchase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown : dev/inmo/tgbotapi/types/payments/stars/TransactionType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-zwThlOA (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-lAEU4Gs (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+}
+
+public final class dev/inmo/tgbotapi/types/payments/stars/TransactionType$Unknown$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -27428,6 +27600,90 @@ public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet$Companion 
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/stories/InputStoryContent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Companion;
+	public abstract fun getMedia ()Lkotlin/Pair;
+	public abstract fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo : dev/inmo/tgbotapi/types/stories/InputStoryContent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getMedia ()Lkotlin/Pair;
+	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Companion : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video : dev/inmo/tgbotapi/types/stories/InputStoryContent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ljava/lang/Double;Ljava/lang/Double;Z)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ljava/lang/Double;Ljava/lang/Double;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
+	public final fun component2 ()Ljava/lang/Double;
+	public final fun component3 ()Ljava/lang/Double;
+	public final fun component4 ()Z
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ljava/lang/Double;Ljava/lang/Double;Z)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ljava/lang/Double;Ljava/lang/Double;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCoverFrameTimeStamp ()Ljava/lang/Double;
+	public final fun getDuration ()Ljava/lang/Double;
+	public fun getMedia ()Lkotlin/Pair;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public final fun getVideo ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
+	public fun hashCode ()I
+	public final fun isAnimation ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Companion : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public fun getName ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/stories/Story : dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stories/Story$Companion;
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/PreviewChat;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -27453,6 +27709,42 @@ public synthetic class dev/inmo/tgbotapi/types/stories/Story$$serializer : kotli
 }
 
 public final class dev/inmo/tgbotapi/types/stories/Story$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaPosition {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition$Companion;
+	public synthetic fun <init> (DDDDDDLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-1Wau4v0 ()D
+	public final fun component2-1Wau4v0 ()D
+	public final fun component3-1Wau4v0 ()D
+	public final fun component4-1Wau4v0 ()D
+	public final fun component5 ()D
+	public final fun component6-1Wau4v0 ()D
+	public final fun copy-jo_Hmo8 (DDDDDD)Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;
+	public static synthetic fun copy-jo_Hmo8$default (Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;DDDDDDILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCornerRadius-1Wau4v0 ()D
+	public final fun getHeight-1Wau4v0 ()D
+	public final fun getRotationAngle ()D
+	public final fun getWidth-1Wau4v0 ()D
+	public final fun getX-1Wau4v0 ()D
+	public final fun getY-1Wau4v0 ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/StoryAreaPosition$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/StoryAreaPosition;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/StoryAreaPosition$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -28444,6 +28736,15 @@ public final class dev/inmo/tgbotapi/utils/MimeTypeSerializer : kotlinx/serializ
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
+public final class dev/inmo/tgbotapi/utils/Percentage0_100Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/Percentage0_100Serializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-prK6XWc (Lkotlinx/serialization/encoding/Decoder;)D
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-hey4pQk (Lkotlinx/serialization/encoding/Encoder;D)V
+}
+
 public abstract interface annotation class dev/inmo/tgbotapi/utils/PreviewFeature : java/lang/annotation/Annotation {
 }
 
@@ -28582,6 +28883,9 @@ public abstract interface annotation class dev/inmo/tgbotapi/utils/internal/Clas
 public abstract interface annotation class dev/inmo/tgbotapi/utils/internal/ClassCastsIncluded : java/lang/annotation/Annotation {
 	public abstract fun excludeRegex ()Ljava/lang/String;
 	public abstract fun typesRegex ()Ljava/lang/String;
+}
+
+public abstract interface annotation class dev/inmo/tgbotapi/utils/internal/ClassCastsIncluded$ExcludeSubName : java/lang/annotation/Annotation {
 }
 
 public final class dev/inmo/tgbotapi/utils/internal/StringFormattingKt {

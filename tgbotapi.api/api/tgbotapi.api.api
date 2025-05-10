@@ -1139,6 +1139,13 @@ public final class dev/inmo/tgbotapi/extensions/api/gifts/GetAvailableGiftsKt {
 	public static final fun getAvailableGifts (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/gifts/GiftPremiumSubscriptionKt {
+	public static final fun giftPremiumSubscription-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun giftPremiumSubscription-VjR9mJc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun giftPremiumSubscription-ySMgKnk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun giftPremiumSubscription-ySMgKnk$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/gifts/SendGiftGeneratedVariationKt {
 	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun sendGift (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
