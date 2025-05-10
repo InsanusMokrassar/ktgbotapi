@@ -2403,6 +2403,24 @@ public final class dev/inmo/tgbotapi/extensions/api/stories/DeleteStoryKt {
 	public static final fun deleteStory-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/Story;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/stories/EditStoryKt {
+	public static final fun editStory--jptdio (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editStory--jptdio$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editStory-51PWt9w (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editStory-51PWt9w$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editStory-RIEWIQk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editStory-RIEWIQk$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/stories/PostStoryKt {
+	public static final fun postStory-5wJhEVU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun postStory-5wJhEVU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun postStory-TVoEmL0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun postStory-TVoEmL0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;Ljava/util/List;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun postStory-rseRIdU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun postStory-rseRIdU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetCustomEmojiStickerSetThumbKt {
 	public static final fun setCustomEmojiStickerSetThumbnail-FMh0B1w (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setCustomEmojiStickerSetThumbnail-KofBPHw (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

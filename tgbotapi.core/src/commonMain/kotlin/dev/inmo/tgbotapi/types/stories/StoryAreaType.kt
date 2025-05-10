@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.utils.IntRGB24HEXAColorSerializer
 import dev.inmo.tgbotapi.utils.LongRGBAFromHEXAColorSerializer
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.*
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -18,6 +19,7 @@ import kotlin.jvm.JvmInline
 sealed interface StoryAreaType {
     val type: Type
 
+    @Serializable(TypeSerializer::class)
     sealed interface Type {
         val name: String
     }
@@ -113,6 +115,26 @@ sealed interface StoryAreaType {
     }
 
     companion object : KSerializer<StoryAreaType> {
+        private object TypeSerializer : KSerializer<Type> {
+            override val descriptor: SerialDescriptor
+                get() = String.serializer().descriptor
+
+            override fun deserialize(decoder: Decoder): Type {
+                val raw = decoder.decodeString()
+                return when (raw) {
+                    Location.name -> Location
+                    SuggestedReaction.name -> SuggestedReaction
+                    Link.name -> Link
+                    Weather.name -> Weather
+                    UniqueGift.name -> UniqueGift
+                    else -> Unknown.Custom(raw)
+                }
+            }
+
+            override fun serialize(encoder: Encoder, value: Type) {
+                encoder.encodeString(value.name)
+            }
+        }
         @Serializable
         data class Surrogate(
             @SerialName(typeField)
