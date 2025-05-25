@@ -18,7 +18,7 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
         val potentialUsername = source.dropWhile { it != '@' }
         if (potentialUsername.isEmpty()) return@lazy null
 
-        Username(potentialUsername)
+        Username.prepare(potentialUsername)
     }
 
     override val markdown: String by lazy { source.hashTagMarkdown() }

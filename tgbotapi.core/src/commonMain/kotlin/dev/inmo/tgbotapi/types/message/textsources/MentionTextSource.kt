@@ -24,7 +24,7 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val markdown: String by lazy { source.mentionMarkdown() }
     override val markdownV2: String by lazy { mentionMarkdownV2() }
     override val html: String by lazy { mentionHTML() }
-    val username: Username = Username(source)
+    val username: Username = Username.prepare(source)
 
     init {
         if (!source.startsWith("@")) {

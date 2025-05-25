@@ -12,5 +12,5 @@ import kotlin.String
 public suspend
     fun TelegramBot.setBusinessAccountUsername(businessConnectionId: BusinessConnectionId,
     username: String): Boolean = setBusinessAccountUsername(
-    businessConnectionId = businessConnectionId, username = with(username) { Username(username) }
+    businessConnectionId = businessConnectionId, username = with(username) { Username.prepare(username) }
 )

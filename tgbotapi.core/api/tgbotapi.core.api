@@ -13436,6 +13436,7 @@ public final class dev/inmo/tgbotapi/types/Username : dev/inmo/tgbotapi/types/Ch
 }
 
 public final class dev/inmo/tgbotapi/types/Username$Companion {
+	public final fun prepare-BnpbnlE (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

@@ -18,7 +18,7 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
         CommandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
     val username: Username? by lazy {
-        Username(usernameRegex.find(source) ?.value ?: return@lazy null)
+        Username.prepare(usernameRegex.find(source) ?.value ?: return@lazy null)
     }
 
     override val markdown: String by lazy { source.commandMarkdown() }

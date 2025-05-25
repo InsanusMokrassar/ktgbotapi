@@ -34,14 +34,14 @@ fun WebAppUser.asUser() = if (isBot == true) {
         id = UserId(id),
         firstName = firstName,
         lastName = lastName ?: "",
-        username = username ?.let(::Username)
+        username = username ?.let(Username::prepare)
     )
 } else {
     CommonUser(
         id = UserId(id),
         firstName = firstName,
         lastName = lastName ?: "",
-        username = username ?.let(::Username),
+        username = username ?.let(Username::prepare),
         ietfLanguageCode = languageCode ?.let(::IetfLang),
         isPremium = isPremium
     )
