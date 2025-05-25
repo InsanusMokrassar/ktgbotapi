@@ -27,7 +27,7 @@ external class SecureStorage {
      *  The first argument is an error object, if any, and the second argument is a boolean
      *  indicating whether the operation was successful.
      */
-    fun setItem(key: String, value: String, callback: (error: Throwable?, isSuccessful: Boolean) -> Unit)
+    fun setItem(key: String, value: String, callback: (error: SecureStorageErrorMessage?, isSuccessful: Boolean) -> Unit)
 
     /**
      * Retrieves the value associated with a key from secure storage.
@@ -38,7 +38,7 @@ external class SecureStorage {
      *  associated with the key, or null if the key is not found, and the third argument
      *  indicates whether the value can be restored.
      */
-    fun getItem(key: String, callback: (error: Throwable?, value: String?, canBeRestored: Boolean?) -> Unit)
+    fun getItem(key: String, callback: (error: SecureStorageErrorMessage?, value: String?, canBeRestored: Boolean?) -> Unit)
 
     /**
      * Restores the value associated with a key in secure storage. This is useful if the
@@ -51,7 +51,7 @@ external class SecureStorage {
      *  The first argument is an error object, if any, and the second argument is the restored
      *  value, or null if the key is not found or cannot be restored.
      */
-    fun restoreItem(key: String, callback: (error: Throwable?, value: String?) -> Unit)
+    fun restoreItem(key: String, callback: (error: SecureStorageErrorMessage?, value: String?) -> Unit)
 
     /**
      * Removes the key-value pair associated with a key from secure storage.
@@ -61,7 +61,7 @@ external class SecureStorage {
      *  The first argument is an error object, if any, and the second argument is a boolean
      *  indicating whether the operation was successful.
      */
-    fun removeItem(key: String, callback: (error: Throwable?, isSuccessful: Boolean) -> Unit)
+    fun removeItem(key: String, callback: (error: SecureStorageErrorMessage?, isSuccessful: Boolean) -> Unit)
 
     /**
      * Clears all key-value pairs from the secure storage.
@@ -70,8 +70,22 @@ external class SecureStorage {
      *  The first argument is an error object, if any, and the second argument is a boolean
      *  indicating whether the operation was successful.
      */
-    fun clear(callback: (error: Throwable?, isSuccessful: Boolean) -> Unit)
+    fun clear(callback: (error: SecureStorageErrorMessage?, isSuccessful: Boolean) -> Unit)
 }
+
+/**
+ * This value class represent strongly-typed errors of [DeviceStorage] operations and required to separate it with string
+ * args
+ */
+value class SecureStorageErrorMessage(val text: String) {
+    internal fun secureStorageError() = SecureStorageError(text)
+}
+
+/**
+ * This class will be used in [setWithResult] and other extensions for [DeviceStorage] to represent special error happen
+ * in operations of [DeviceStorage]
+ */
+class SecureStorageError(message: String) : IllegalStateException(message)
 
 /**
  * Stores a key-value pair in secure storage using a [CompletableDeferred] and returns a [Result].
@@ -86,7 +100,7 @@ suspend fun SecureStorage.setWithResult(key: String, value: String): Result<Bool
         if (error == null) {
             deferred.complete(Result.success(isSuccessful))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.secureStorageError()))
         }
     }
     return deferred.await()
@@ -100,13 +114,13 @@ suspend fun SecureStorage.setWithResult(key: String, value: String): Result<Bool
  *
  * @param key The key to retrieve the value for.
  * @return A [Result] object containing the retrieved value (which can be null if the key is not found)
- *  or a [Throwable] representing the error that occurred.
+ *  or a [SecureStorageError] representing the error that occurred.
  */
 suspend fun SecureStorage.getWithResult(key: String): Result<Either<String?, Boolean>> {
     val deferred = CompletableDeferred<Result<Either<String?, Boolean>>>()
     getItem(key) { error, value, canBeRestored ->
         when {
-            error != null -> deferred.complete(Result.failure(error))
+            error != null -> deferred.complete(Result.failure(error.secureStorageError()))
             value != null -> deferred.complete(Result.success(value.either()))
             else -> deferred.complete(Result.success((canBeRestored == true).either()))
         }
@@ -126,7 +140,7 @@ suspend fun SecureStorage.restoreWithResult(key: String): Result<String?> {
         if (error == null) {
             deferred.complete(Result.success(value))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.secureStorageError()))
         }
     }
     return deferred.await()
@@ -144,7 +158,7 @@ suspend fun SecureStorage.removeWithResult(key: String): Result<Boolean> {
         if (error == null) {
             deferred.complete(Result.success(isSuccessful))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.secureStorageError()))
         }
     }
     return deferred.await()
@@ -161,7 +175,7 @@ suspend fun SecureStorage.clearWithResult(): Result<Boolean> {
         if (error == null) {
             deferred.complete(Result.success(isSuccessful))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.secureStorageError()))
         }
     }
     return deferred.await()
@@ -174,7 +188,7 @@ suspend fun SecureStorage.clearWithResult(): Result<Boolean> {
  * @param key The key to store the value under.
  * @param value The value to store.
  * @return True if the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws SecureStorageError If an error occurs during the operation.
  */
 suspend fun SecureStorage.setItem(key: String, value: String): Boolean {
     return setWithResult(key, value).getOrThrow()
@@ -185,7 +199,7 @@ suspend fun SecureStorage.setItem(key: String, value: String): Boolean {
  *
  * @param key The key to retrieve the value for.
  * @param callback A callback function that is called when the operation is complete.
- *  The first argument is an error object (a [Throwable] if an error occurred, or null otherwise),
+ *  The first argument is an error object (a [SecureStorageError] if an error occurred, or null otherwise),
  *  the second argument is the retrieved value (a [String] or null if the key is not found),
  *  and the third argument is a boolean indicating whether the value can be restored
  *  (useful if the value was previously removed and might be restorable).
@@ -201,7 +215,7 @@ suspend fun SecureStorage.getItem(key: String): Either<String?, Boolean> {
  *
  * @param key The key to restore the value for.
  * @return The restored value, or null if the key is not found or cannot be restored.
- * @throws Throwable If an error occurs during the operation.
+ * @throws SecureStorageError If an error occurs during the operation.
  */
 suspend fun SecureStorage.restoreItem(key: String): String? {
     return restoreWithResult(key).getOrThrow()
@@ -213,7 +227,7 @@ suspend fun SecureStorage.restoreItem(key: String): String? {
  *
  * @param key The key to remove.
  * @return True if the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws SecureStorageError If an error occurs during the operation.
  */
 suspend fun SecureStorage.removeItem(key: String): Boolean {
     return removeWithResult(key).getOrThrow()
@@ -224,7 +238,7 @@ suspend fun SecureStorage.removeItem(key: String): Boolean {
  * directly and throws an exception if an error occurs.
  *
  * @return True if the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws SecureStorageError If an error occurs during the operation.
  */
 suspend fun SecureStorage.clear(): Boolean {
     return clearWithResult().getOrThrow()

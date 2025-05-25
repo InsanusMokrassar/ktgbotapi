@@ -16,7 +16,7 @@ external interface DeviceStorage {
      * @param value The value to store.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun setItem(key: String, value: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
+    fun setItem(key: String, value: String, callback: (DeviceStorageErrorMessage?, Boolean?) -> Unit): DeviceStorage
 
     /**
      * Retrieves the value associated with a key.
@@ -24,7 +24,7 @@ external interface DeviceStorage {
      * @param key The key to retrieve the value for.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is the value associated with the key, or null if the key is not found.
      */
-    fun getItem(key: String, callback: (Throwable?, String?) -> Unit): DeviceStorage
+    fun getItem(key: String, callback: (DeviceStorageErrorMessage?, String?) -> Unit): DeviceStorage
 
     /**
      * Removes the key-value pair associated with a key.
@@ -32,15 +32,29 @@ external interface DeviceStorage {
      * @param key The key to remove.
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun removeItem(key: String, callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
+    fun removeItem(key: String, callback: (DeviceStorageErrorMessage?, Boolean?) -> Unit): DeviceStorage
 
     /**
      * Clears all key-value pairs from the storage.
      *
      * @param callback A callback function that is called when the operation is complete. The first argument is an error object, if any, and the second argument is a boolean indicating whether the operation was successful.
      */
-    fun clear(callback: (Throwable?, Boolean?) -> Unit): DeviceStorage
+    fun clear(callback: (DeviceStorageErrorMessage?, Boolean?) -> Unit): DeviceStorage
 }
+
+/**
+ * This value class represent strongly-typed errors of [DeviceStorage] operations and required to separate it with string
+ * args
+ */
+value class DeviceStorageErrorMessage(val text: String) {
+    internal fun deviceStorageError() = DeviceStorageError(text)
+}
+
+/**
+ * This class will be used in [setWithResult] and other extensions for [DeviceStorage] to represent special error happen
+ * in operations of [DeviceStorage]
+ */
+class DeviceStorageError(message: String) : IllegalStateException(message)
 
 /**
  * Stores a key-value pair. This function uses a [CompletableDeferred] to handle the asynchronous callback and returns a [Result] object.
@@ -56,7 +70,7 @@ suspend fun DeviceStorage.setWithResult(key: String, value: String): Result<Bool
         if (error == null) {
             deferred.complete(Result.success(result ?: false))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.deviceStorageError()))
         }
     }
 
@@ -76,7 +90,7 @@ suspend fun DeviceStorage.getWithResult(key: String): Result<String?> {
         if (error == null) {
             deferred.complete(Result.success(result))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.deviceStorageError()))
         }
     }
 
@@ -96,7 +110,7 @@ suspend fun DeviceStorage.removeWithResult(key: String): Result<Boolean> {
         if (error == null) {
             deferred.complete(Result.success(result ?: false))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.deviceStorageError()))
         }
     }
 
@@ -115,7 +129,7 @@ suspend fun DeviceStorage.clearWithResult(): Result<Boolean> {
         if (error == null) {
             deferred.complete(Result.success(result ?: false))
         } else {
-            deferred.complete(Result.failure(error))
+            deferred.complete(Result.failure(error.deviceStorageError()))
         }
     }
 
@@ -128,7 +142,7 @@ suspend fun DeviceStorage.clearWithResult(): Result<Boolean> {
  * @param key The key to store the value under.
  * @param value The value to store.
  * @return Boolean indicating whether the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws DeviceStorageError If an error occurs during the operation.
  */
 suspend fun DeviceStorage.setItem(key: String, value: String): Boolean {
     return setWithResult(key, value).getOrThrow()
@@ -139,7 +153,7 @@ suspend fun DeviceStorage.setItem(key: String, value: String): Boolean {
  *
  * @param key The key to retrieve the value for.
  * @return The value associated with the key, or null if the key is not found.
- * @throws Throwable If an error occurs during the operation.
+ * @throws IllegalStateException If an error occurs during the operation.
  */
 suspend fun DeviceStorage.getItem(key: String): String? {
     return getWithResult(key).getOrThrow()
@@ -150,7 +164,7 @@ suspend fun DeviceStorage.getItem(key: String): String? {
  *
  * @param key The key to remove.
  * @return Boolean indicating whether the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws DeviceStorageError If an error occurs during the operation.
  */
 suspend fun DeviceStorage.removeItem(key: String): Boolean {
     return removeWithResult(key).getOrThrow()
@@ -160,7 +174,7 @@ suspend fun DeviceStorage.removeItem(key: String): Boolean {
  * Clears all key-value pairs from the storage. This function suspends until the result is available and returns the result directly or throws an exception if an error occurred.
  *
  * @return Boolean indicating whether the operation was successful.
- * @throws Throwable If an error occurs during the operation.
+ * @throws DeviceStorageError If an error occurs during the operation.
  */
 suspend fun DeviceStorage.clear(): Boolean {
     return clearWithResult().getOrThrow()

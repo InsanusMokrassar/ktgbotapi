@@ -39,7 +39,7 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
                             .build()
                     def uploadResponse = client.send(uploadRequest, HttpResponse.BodyHandlers.ofString())
                     if (uploadResponse.statusCode() != 200) {
-                        throw IllegalStateException("Faced error of uploading for repo with key $it. Response: $uploadResponse")
+                        throw new IllegalStateException("Faced error of uploading for repo with key $it. Response: $uploadResponse")
                     }
                 }
             }
