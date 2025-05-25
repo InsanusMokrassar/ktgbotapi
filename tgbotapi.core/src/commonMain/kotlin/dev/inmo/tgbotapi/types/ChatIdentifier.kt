@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -148,6 +149,11 @@ value class Username (
     }
 
     companion object {
+        object WithoutAtSerializer : KSerializer<Username> {
+            override val descriptor: SerialDescriptor = String.serializer().descriptor
+            override fun deserialize(decoder: Decoder): Username = Username.prepare(decoder.decodeString())
+            override fun serialize(encoder: Encoder, value: Username) = encoder.encodeString(value.withoutAt)
+        }
         /**
          * Prepares a valid instance of [Username] by ensuring the given string starts with "@".
          *

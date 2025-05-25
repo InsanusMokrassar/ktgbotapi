@@ -13440,6 +13440,15 @@ public final class dev/inmo/tgbotapi/types/Username$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/Username$Companion$WithoutAtSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/Username$Companion$WithoutAtSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-BnpbnlE (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-eC7Nk8U (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+}
+
 public final class dev/inmo/tgbotapi/types/WebAppQueryId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/WebAppQueryId$Companion;
 	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/WebAppQueryId;
