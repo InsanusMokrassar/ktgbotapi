@@ -6,14 +6,17 @@ import java.net.http.HttpResponse
 apply plugin: 'maven-publish'
 // This script work based on https://ossrh-staging-api.central.sonatype.com/swagger-ui/#/default/manual_upload_repository
 // and getting available open repos and just uploading them
+def uploadTaskName = "uploadSonatypePublication"
+String getBearer() {
+    def username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
+    def password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
+    return Base64.getEncoder().encodeToString("$username:$password".getBytes(StandardCharsets.UTF_8))
+}
 if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
-    def taskName = "uploadSonatypePublication"
-    if (rootProject.tasks.names.contains(taskName) == false) {
-        rootProject.tasks.register(taskName) {
+    if (rootProject.tasks.names.contains(uploadTaskName) == false) {
+        rootProject.tasks.register(uploadTaskName) {
             doLast {
-                def username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
-                def password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
-                def bearer = Base64.getEncoder().encodeToString("$username:$password".getBytes(StandardCharsets.UTF_8))
+                def bearer = getBearer()
     
                 def client = HttpClient.newHttpClient()
                 def request = HttpRequest.newBuilder()
@@ -39,7 +42,7 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
                             .build()
                     def uploadResponse = client.send(uploadRequest, HttpResponse.BodyHandlers.ofString())
                     if (uploadResponse.statusCode() != 200) {
-                        throw new IllegalStateException("Faced error of uploading for repo with key $it. Response: $uploadResponse")
+                        println("Faced error of uploading for repo with key $it. Response: $uploadResponse. Check https://central.sonatype.com/publishing/deployments for info or repo with key $it. Response: $uploadResponse")
                     }
                 }
             }

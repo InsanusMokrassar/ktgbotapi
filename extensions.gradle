@@ -15,3 +15,13 @@ allprojects {
         }
     }
 }
+
+tasks.register("getPublishableModules") {
+    doLast {
+        rootProject.subprojects.each { project ->
+            if (project.plugins.hasPlugin('maven-publish')) {
+                println(":${project.name}")
+            }
+        }
+    }
+}

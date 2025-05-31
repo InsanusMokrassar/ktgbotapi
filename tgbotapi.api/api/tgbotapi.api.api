@@ -364,7 +364,8 @@ public final class dev/inmo/tgbotapi/extensions/api/business/ReadBusinessMessage
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/RemoveBusinessAccountProfilePhotoKt {
-	public static final fun removeBusinessAccountProfilePhoto-spp27rg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun removeBusinessAccountProfilePhoto-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun removeBusinessAccountProfilePhoto-wC12z2M$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountBioKt {
