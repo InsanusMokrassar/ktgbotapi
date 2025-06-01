@@ -6,6 +6,7 @@ dev.inmo.tgbotapi.extensions.api
 dev.inmo.tgbotapi.extensions.api.answers
 dev.inmo.tgbotapi.extensions.api.answers.payments
 dev.inmo.tgbotapi.extensions.api.bot
+dev.inmo.tgbotapi.extensions.api.business
 dev.inmo.tgbotapi.extensions.api.chat
 dev.inmo.tgbotapi.extensions.api.chat.forum
 dev.inmo.tgbotapi.extensions.api.chat.get
@@ -33,6 +34,7 @@ dev.inmo.tgbotapi.extensions.api.send.payments
 dev.inmo.tgbotapi.extensions.api.send.polls
 dev.inmo.tgbotapi.extensions.api.set
 dev.inmo.tgbotapi.extensions.api.stickers
+dev.inmo.tgbotapi.extensions.api.stories
 dev.inmo.tgbotapi.extensions.api.thumbs
 dev.inmo.tgbotapi.extensions.api.utils
 dev.inmo.tgbotapi.extensions.api.verifications
@@ -66,6 +68,7 @@ dev.inmo.tgbotapi.requests.answers
 dev.inmo.tgbotapi.requests.answers.payments
 dev.inmo.tgbotapi.requests.answers.payments.abstracts
 dev.inmo.tgbotapi.requests.bot
+dev.inmo.tgbotapi.requests.business_connection
 dev.inmo.tgbotapi.requests.chat
 dev.inmo.tgbotapi.requests.chat.abstracts
 dev.inmo.tgbotapi.requests.chat.forum
@@ -97,6 +100,7 @@ dev.inmo.tgbotapi.requests.send.polls
 dev.inmo.tgbotapi.requests.set
 dev.inmo.tgbotapi.requests.stickers
 dev.inmo.tgbotapi.requests.stickers.abstracts
+dev.inmo.tgbotapi.requests.stories
 dev.inmo.tgbotapi.requests.verifications
 dev.inmo.tgbotapi.requests.webhook
 dev.inmo.tgbotapi.types
@@ -131,6 +135,7 @@ dev.inmo.tgbotapi.types.dice
 dev.inmo.tgbotapi.types.files
 dev.inmo.tgbotapi.types.games
 dev.inmo.tgbotapi.types.gifts
+dev.inmo.tgbotapi.types.gifts.unique
 dev.inmo.tgbotapi.types.giveaway
 dev.inmo.tgbotapi.types.location
 dev.inmo.tgbotapi.types.media
@@ -197,4 +202,5 @@ dev.inmo.tgbotapi.webapps.invoice
 dev.inmo.tgbotapi.webapps.location
 dev.inmo.tgbotapi.webapps.orientation
 dev.inmo.tgbotapi.webapps.popup
+dev.inmo.tgbotapi.webapps.storage
 dev.inmo.tgbotapi.webapps.stories
