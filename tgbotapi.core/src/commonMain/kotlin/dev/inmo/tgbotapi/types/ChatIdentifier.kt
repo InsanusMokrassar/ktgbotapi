@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -106,13 +107,34 @@ fun Long.toChatId(): ChatId = ChatId(RawChatId(this))
 fun Int.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
 fun Byte.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
 
+/**
+ * A value class representing a username that always starts with the "@" symbol.
+ *
+ * This class is used to encapsulate the concept of a username, enforce its format,
+ * and ensure consistency when dealing with usernames throughout the application.
+ *
+ * @property full The full username string, guaranteed to start with "@".
+ * @throws IllegalArgumentException if the provided [full] value doesn't start with "@" during initialization.
+ */
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
-value class Username(
+value class Username (
     val full: String
 ) : ChatIdentifier {
+    /**
+     * Retrieves the full username as a string.
+     *
+     * This property provides the complete username, which is guaranteed to start with the "@" symbol.
+     * It represents the raw value of the username, ensuring consistency and adherence to the required format.
+     */
     val username: String
         get() = full
+    /**
+     * A property that returns the username string without the leading "@" symbol.
+     *
+     * This property removes any consecutive "@" symbols at the beginning of the `full` property
+     * and provides the rest of the username as a plain string.
+     */
     val withoutAt
         get() = full.dropWhile { it == '@' }
 
@@ -125,9 +147,29 @@ value class Username(
     override fun toString(): String {
         return full
     }
+
+    companion object {
+        object WithoutAtSerializer : KSerializer<Username> {
+            override val descriptor: SerialDescriptor = String.serializer().descriptor
+            override fun deserialize(decoder: Decoder): Username = Username.prepare(decoder.decodeString())
+            override fun serialize(encoder: Encoder, value: Username) = encoder.encodeString(value.withoutAt)
+        }
+        /**
+         * Prepares a valid instance of [Username] by ensuring the given string starts with "@".
+         *
+         * @param full The input string representing the username. If the string does not start with "@",
+         * it will be prefixed with "@".
+         * @return A [Username] instance constructed using the provided or modified input string.
+         */
+        fun prepare(full: String): Username = if (full.startsWith("@")) {
+            Username(full)
+        } else {
+            Username("@$full")
+        }
+    }
 }
 
-fun String.toUsername(): Username = Username(this)
+fun String.toUsername(): Username = Username.prepare(this)
 
 @RiskFeature
 object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
@@ -139,11 +181,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         return id.longOrNull ?.let {
             ChatId(RawChatId(it))
         } ?: id.content.let {
-            if (!it.startsWith("@")) {
-                Username("@$it")
-            } else {
-                Username(it)
-            }
+            Username.prepare(it)
         }
     }
 
@@ -184,11 +222,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
                 else -> null
             }
         } ?: id.content.let {
-            if (!it.startsWith("@")) {
-                Username("@$it")
-            } else {
-                Username(it)
-            }
+            Username.prepare(it)
         }
     }
 

@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import kotlinx.serialization.SerialName
 
 data class PrivateContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
@@ -24,7 +25,9 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
-    override val effectId: EffectId?
+    override val effectId: EffectId?,
+    @SerialName(paidStarCountField)
+    override val cost: Int? = null
 ) : PrivateContentMessage<T> {
     constructor(
         messageId: MessageId,

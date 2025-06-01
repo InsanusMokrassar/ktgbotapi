@@ -18,7 +18,7 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
         val potentialUsername = source.dropWhile { it != '@' }
         if (potentialUsername.isEmpty()) return@lazy null
 
-        Username(potentialUsername)
+        Username.prepare(potentialUsername)
     }
     override val markdown: String by lazy { source.cashTagMarkdown() }
     override val markdownV2: String by lazy { cashTagMarkdownV2() }

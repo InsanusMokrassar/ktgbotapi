@@ -80,6 +80,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessa
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
 import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
@@ -215,6 +216,7 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
@@ -308,6 +310,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
@@ -825,6 +828,15 @@ public inline fun <T>
     OptionallyWithUser.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
     T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
+public inline fun OptionallyWithUser.forwardInfoByUserOrNull(): ForwardInfo.ByUser? = this as?
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByUser
+
+public inline fun OptionallyWithUser.forwardInfoByUserOrThrow(): ForwardInfo.ByUser = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByUser
+
+public inline fun <T> OptionallyWithUser.ifForwardInfoByUser(block: (ForwardInfo.ByUser) -> T): T? =
+    forwardInfoByUserOrNull() ?.let(block)
+
 public inline fun OptionallyWithUser.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
 
@@ -972,6 +984,24 @@ public inline fun OptionallyWithUser.pollAnswerOrThrow(): PollAnswer = this as
 
 public inline fun <T> OptionallyWithUser.ifPollAnswer(block: (PollAnswer) -> T): T? =
     pollAnswerOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.pollAnswerPublicOrNull(): PollAnswer.Public? = this as?
+    dev.inmo.tgbotapi.types.polls.PollAnswer.Public
+
+public inline fun OptionallyWithUser.pollAnswerPublicOrThrow(): PollAnswer.Public = this as
+    dev.inmo.tgbotapi.types.polls.PollAnswer.Public
+
+public inline fun <T> OptionallyWithUser.ifPollAnswerPublic(block: (PollAnswer.Public) -> T): T? =
+    pollAnswerPublicOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.pollAnswerAnonymousOrNull(): PollAnswer.Anonymous? = this as?
+    dev.inmo.tgbotapi.types.polls.PollAnswer.Anonymous
+
+public inline fun OptionallyWithUser.pollAnswerAnonymousOrThrow(): PollAnswer.Anonymous = this as
+    dev.inmo.tgbotapi.types.polls.PollAnswer.Anonymous
+
+public inline fun <T> OptionallyWithUser.ifPollAnswerAnonymous(block: (PollAnswer.Anonymous) -> T):
+    T? = pollAnswerAnonymousOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.abstractMessageCallbackQueryOrNull():
     AbstractMessageCallbackQuery? = this as?
@@ -1126,6 +1156,16 @@ public inline fun <T>
     OptionallyWithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
     T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
 
+public inline fun InlineQueryResultsButton.webAppOrNull(): InlineQueryResultsButton.WebApp? = this
+    as? dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
+
+public inline fun InlineQueryResultsButton.webAppOrThrow(): InlineQueryResultsButton.WebApp = this
+    as dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
+
+public inline fun <T>
+    InlineQueryResultsButton.ifWebApp(block: (InlineQueryResultsButton.WebApp) -> T): T? =
+    webAppOrNull() ?.let(block)
+
 public inline fun InlineQueryResultsButton.startOrNull(): InlineQueryResultsButton.Start? = this as?
     dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.Start
 
@@ -1146,16 +1186,6 @@ public inline fun <T>
     InlineQueryResultsButton.ifUnknown(block: (InlineQueryResultsButton.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
 
-public inline fun InlineQueryResultsButton.webAppOrNull(): InlineQueryResultsButton.WebApp? = this
-    as? dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
-
-public inline fun InlineQueryResultsButton.webAppOrThrow(): InlineQueryResultsButton.WebApp = this
-    as dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
-
-public inline fun <T>
-    InlineQueryResultsButton.ifWebApp(block: (InlineQueryResultsButton.WebApp) -> T): T? =
-    webAppOrNull() ?.let(block)
-
 public inline fun InputSticker.maskOrNull(): InputSticker.Mask? = this as?
     dev.inmo.tgbotapi.requests.stickers.InputSticker.Mask
 
@@ -1174,24 +1204,45 @@ public inline fun InputSticker.withKeywordsOrThrow(): InputSticker.WithKeywords 
 public inline fun <T> InputSticker.ifWithKeywords(block: (InputSticker.WithKeywords) -> T): T? =
     withKeywordsOrNull() ?.let(block)
 
-public inline fun InputSticker.customEmojiOrNull(): InputSticker.WithKeywords.CustomEmoji? = this
-    as? dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.CustomEmoji
+public inline fun InputSticker.withKeywordsRegularOrNull(): InputSticker.WithKeywords.Regular? =
+    this as? dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
 
-public inline fun InputSticker.customEmojiOrThrow(): InputSticker.WithKeywords.CustomEmoji = this as
+public inline fun InputSticker.withKeywordsRegularOrThrow(): InputSticker.WithKeywords.Regular =
+    this as dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
+
+public inline fun <T>
+    InputSticker.ifWithKeywordsRegular(block: (InputSticker.WithKeywords.Regular) -> T): T? =
+    withKeywordsRegularOrNull() ?.let(block)
+
+public inline fun InputSticker.withKeywordsCustomEmojiOrNull():
+    InputSticker.WithKeywords.CustomEmoji? = this as?
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.CustomEmoji
+
+public inline fun InputSticker.withKeywordsCustomEmojiOrThrow():
+    InputSticker.WithKeywords.CustomEmoji = this as
     dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.CustomEmoji
 
 public inline fun <T>
-    InputSticker.ifCustomEmoji(block: (InputSticker.WithKeywords.CustomEmoji) -> T): T? =
-    customEmojiOrNull() ?.let(block)
+    InputSticker.ifWithKeywordsCustomEmoji(block: (InputSticker.WithKeywords.CustomEmoji) -> T): T?
+    = withKeywordsCustomEmojiOrNull() ?.let(block)
 
-public inline fun InputSticker.regularOrNull(): InputSticker.WithKeywords.Regular? = this as?
-    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
+public inline fun BackgroundFill.solidOrNull(): BackgroundFill.Solid? = this as?
+    dev.inmo.tgbotapi.types.BackgroundFill.Solid
 
-public inline fun InputSticker.regularOrThrow(): InputSticker.WithKeywords.Regular = this as
-    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
+public inline fun BackgroundFill.solidOrThrow(): BackgroundFill.Solid = this as
+    dev.inmo.tgbotapi.types.BackgroundFill.Solid
 
-public inline fun <T> InputSticker.ifRegular(block: (InputSticker.WithKeywords.Regular) -> T): T? =
-    regularOrNull() ?.let(block)
+public inline fun <T> BackgroundFill.ifSolid(block: (BackgroundFill.Solid) -> T): T? = solidOrNull()
+    ?.let(block)
+
+public inline fun BackgroundFill.gradientOrNull(): BackgroundFill.Gradient? = this as?
+    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
+
+public inline fun BackgroundFill.gradientOrThrow(): BackgroundFill.Gradient = this as
+    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
+
+public inline fun <T> BackgroundFill.ifGradient(block: (BackgroundFill.Gradient) -> T): T? =
+    gradientOrNull() ?.let(block)
 
 public inline fun BackgroundFill.freeformGradientOrNull(): BackgroundFill.FreeformGradient? = this
     as? dev.inmo.tgbotapi.types.BackgroundFill.FreeformGradient
@@ -1203,24 +1254,6 @@ public inline fun <T>
     BackgroundFill.ifFreeformGradient(block: (BackgroundFill.FreeformGradient) -> T): T? =
     freeformGradientOrNull() ?.let(block)
 
-public inline fun BackgroundFill.gradientOrNull(): BackgroundFill.Gradient? = this as?
-    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
-
-public inline fun BackgroundFill.gradientOrThrow(): BackgroundFill.Gradient = this as
-    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
-
-public inline fun <T> BackgroundFill.ifGradient(block: (BackgroundFill.Gradient) -> T): T? =
-    gradientOrNull() ?.let(block)
-
-public inline fun BackgroundFill.solidOrNull(): BackgroundFill.Solid? = this as?
-    dev.inmo.tgbotapi.types.BackgroundFill.Solid
-
-public inline fun BackgroundFill.solidOrThrow(): BackgroundFill.Solid = this as
-    dev.inmo.tgbotapi.types.BackgroundFill.Solid
-
-public inline fun <T> BackgroundFill.ifSolid(block: (BackgroundFill.Solid) -> T): T? = solidOrNull()
-    ?.let(block)
-
 public inline fun BackgroundFill.unknownOrNull(): BackgroundFill.Unknown? = this as?
     dev.inmo.tgbotapi.types.BackgroundFill.Unknown
 
@@ -1230,14 +1263,14 @@ public inline fun BackgroundFill.unknownOrThrow(): BackgroundFill.Unknown = this
 public inline fun <T> BackgroundFill.ifUnknown(block: (BackgroundFill.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
 
-public inline fun BackgroundType.chatThemeOrNull(): BackgroundType.ChatTheme? = this as?
-    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
+public inline fun BackgroundType.movableOrNull(): BackgroundType.Movable? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Movable
 
-public inline fun BackgroundType.chatThemeOrThrow(): BackgroundType.ChatTheme = this as
-    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
+public inline fun BackgroundType.movableOrThrow(): BackgroundType.Movable = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Movable
 
-public inline fun <T> BackgroundType.ifChatTheme(block: (BackgroundType.ChatTheme) -> T): T? =
-    chatThemeOrNull() ?.let(block)
+public inline fun <T> BackgroundType.ifMovable(block: (BackgroundType.Movable) -> T): T? =
+    movableOrNull() ?.let(block)
 
 public inline fun BackgroundType.dimmableOrNull(): BackgroundType.Dimmable? = this as?
     dev.inmo.tgbotapi.types.BackgroundType.Dimmable
@@ -1247,6 +1280,24 @@ public inline fun BackgroundType.dimmableOrThrow(): BackgroundType.Dimmable = th
 
 public inline fun <T> BackgroundType.ifDimmable(block: (BackgroundType.Dimmable) -> T): T? =
     dimmableOrNull() ?.let(block)
+
+public inline fun BackgroundType.fillableOrNull(): BackgroundType.Fillable? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Fillable
+
+public inline fun BackgroundType.fillableOrThrow(): BackgroundType.Fillable = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Fillable
+
+public inline fun <T> BackgroundType.ifFillable(block: (BackgroundType.Fillable) -> T): T? =
+    fillableOrNull() ?.let(block)
+
+public inline fun BackgroundType.withDocumentOrNull(): BackgroundType.WithDocument? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
+
+public inline fun BackgroundType.withDocumentOrThrow(): BackgroundType.WithDocument = this as
+    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
+
+public inline fun <T> BackgroundType.ifWithDocument(block: (BackgroundType.WithDocument) -> T): T? =
+    withDocumentOrNull() ?.let(block)
 
 public inline fun BackgroundType.fillOrNull(): BackgroundType.Fill? = this as?
     dev.inmo.tgbotapi.types.BackgroundType.Fill
@@ -1266,15 +1317,6 @@ public inline fun BackgroundType.wallpaperOrThrow(): BackgroundType.Wallpaper = 
 public inline fun <T> BackgroundType.ifWallpaper(block: (BackgroundType.Wallpaper) -> T): T? =
     wallpaperOrNull() ?.let(block)
 
-public inline fun BackgroundType.fillableOrNull(): BackgroundType.Fillable? = this as?
-    dev.inmo.tgbotapi.types.BackgroundType.Fillable
-
-public inline fun BackgroundType.fillableOrThrow(): BackgroundType.Fillable = this as
-    dev.inmo.tgbotapi.types.BackgroundType.Fillable
-
-public inline fun <T> BackgroundType.ifFillable(block: (BackgroundType.Fillable) -> T): T? =
-    fillableOrNull() ?.let(block)
-
 public inline fun BackgroundType.patternOrNull(): BackgroundType.Pattern? = this as?
     dev.inmo.tgbotapi.types.BackgroundType.Pattern
 
@@ -1284,14 +1326,14 @@ public inline fun BackgroundType.patternOrThrow(): BackgroundType.Pattern = this
 public inline fun <T> BackgroundType.ifPattern(block: (BackgroundType.Pattern) -> T): T? =
     patternOrNull() ?.let(block)
 
-public inline fun BackgroundType.movableOrNull(): BackgroundType.Movable? = this as?
-    dev.inmo.tgbotapi.types.BackgroundType.Movable
+public inline fun BackgroundType.chatThemeOrNull(): BackgroundType.ChatTheme? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
 
-public inline fun BackgroundType.movableOrThrow(): BackgroundType.Movable = this as
-    dev.inmo.tgbotapi.types.BackgroundType.Movable
+public inline fun BackgroundType.chatThemeOrThrow(): BackgroundType.ChatTheme = this as
+    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
 
-public inline fun <T> BackgroundType.ifMovable(block: (BackgroundType.Movable) -> T): T? =
-    movableOrNull() ?.let(block)
+public inline fun <T> BackgroundType.ifChatTheme(block: (BackgroundType.ChatTheme) -> T): T? =
+    chatThemeOrNull() ?.let(block)
 
 public inline fun BackgroundType.unknownOrNull(): BackgroundType.Unknown? = this as?
     dev.inmo.tgbotapi.types.BackgroundType.Unknown
@@ -1301,15 +1343,6 @@ public inline fun BackgroundType.unknownOrThrow(): BackgroundType.Unknown = this
 
 public inline fun <T> BackgroundType.ifUnknown(block: (BackgroundType.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
-
-public inline fun BackgroundType.withDocumentOrNull(): BackgroundType.WithDocument? = this as?
-    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
-
-public inline fun BackgroundType.withDocumentOrThrow(): BackgroundType.WithDocument = this as
-    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
-
-public inline fun <T> BackgroundType.ifWithDocument(block: (BackgroundType.WithDocument) -> T): T? =
-    withDocumentOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.idChatIdentifierOrNull(): IdChatIdentifier? = this as?
     dev.inmo.tgbotapi.types.IdChatIdentifier
@@ -1844,51 +1877,6 @@ public inline fun <T>
     InputMessageContent.ifInputVenueMessageContent(block: (InputVenueMessageContent) -> T): T? =
     inputVenueMessageContentOrNull() ?.let(block)
 
-public inline fun ReplyInfo.externalOrNull(): ReplyInfo.External? = this as?
-    dev.inmo.tgbotapi.types.ReplyInfo.External
-
-public inline fun ReplyInfo.externalOrThrow(): ReplyInfo.External = this as
-    dev.inmo.tgbotapi.types.ReplyInfo.External
-
-public inline fun <T> ReplyInfo.ifExternal(block: (ReplyInfo.External) -> T): T? = externalOrNull()
-    ?.let(block)
-
-public inline fun ReplyInfo.contentOrNull(): ReplyInfo.External.Content? = this as?
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
-
-public inline fun ReplyInfo.contentOrThrow(): ReplyInfo.External.Content = this as
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
-
-public inline fun <T> ReplyInfo.ifContent(block: (ReplyInfo.External.Content) -> T): T? =
-    contentOrNull() ?.let(block)
-
-public inline fun ReplyInfo.mediaOrNull(): ReplyInfo.External.Content.Media? = this as?
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
-
-public inline fun ReplyInfo.mediaOrThrow(): ReplyInfo.External.Content.Media = this as
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
-
-public inline fun <T> ReplyInfo.ifMedia(block: (ReplyInfo.External.Content.Media) -> T): T? =
-    mediaOrNull() ?.let(block)
-
-public inline fun ReplyInfo.simpleOrNull(): ReplyInfo.External.Content.Simple? = this as?
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
-
-public inline fun ReplyInfo.simpleOrThrow(): ReplyInfo.External.Content.Simple = this as
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
-
-public inline fun <T> ReplyInfo.ifSimple(block: (ReplyInfo.External.Content.Simple) -> T): T? =
-    simpleOrNull() ?.let(block)
-
-public inline fun ReplyInfo.textOrNull(): ReplyInfo.External.Text? = this as?
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
-
-public inline fun ReplyInfo.textOrThrow(): ReplyInfo.External.Text = this as
-    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
-
-public inline fun <T> ReplyInfo.ifText(block: (ReplyInfo.External.Text) -> T): T? = textOrNull()
-    ?.let(block)
-
 public inline fun ReplyInfo.internalOrNull(): ReplyInfo.Internal? = this as?
     dev.inmo.tgbotapi.types.ReplyInfo.Internal
 
@@ -1906,6 +1894,53 @@ public inline fun ReplyInfo.toStoryOrThrow(): ReplyInfo.ToStory = this as
 
 public inline fun <T> ReplyInfo.ifToStory(block: (ReplyInfo.ToStory) -> T): T? = toStoryOrNull()
     ?.let(block)
+
+public inline fun ReplyInfo.externalOrNull(): ReplyInfo.External? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External
+
+public inline fun ReplyInfo.externalOrThrow(): ReplyInfo.External = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External
+
+public inline fun <T> ReplyInfo.ifExternal(block: (ReplyInfo.External) -> T): T? = externalOrNull()
+    ?.let(block)
+
+public inline fun ReplyInfo.externalTextOrNull(): ReplyInfo.External.Text? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
+
+public inline fun ReplyInfo.externalTextOrThrow(): ReplyInfo.External.Text = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
+
+public inline fun <T> ReplyInfo.ifExternalText(block: (ReplyInfo.External.Text) -> T): T? =
+    externalTextOrNull() ?.let(block)
+
+public inline fun ReplyInfo.externalContentOrNull(): ReplyInfo.External.Content? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
+
+public inline fun ReplyInfo.externalContentOrThrow(): ReplyInfo.External.Content = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
+
+public inline fun <T> ReplyInfo.ifExternalContent(block: (ReplyInfo.External.Content) -> T): T? =
+    externalContentOrNull() ?.let(block)
+
+public inline fun ReplyInfo.externalContentSimpleOrNull(): ReplyInfo.External.Content.Simple? = this
+    as? dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
+
+public inline fun ReplyInfo.externalContentSimpleOrThrow(): ReplyInfo.External.Content.Simple = this
+    as dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
+
+public inline fun <T>
+    ReplyInfo.ifExternalContentSimple(block: (ReplyInfo.External.Content.Simple) -> T): T? =
+    externalContentSimpleOrNull() ?.let(block)
+
+public inline fun ReplyInfo.externalContentMediaOrNull(): ReplyInfo.External.Content.Media? = this
+    as? dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
+
+public inline fun ReplyInfo.externalContentMediaOrThrow(): ReplyInfo.External.Content.Media = this
+    as dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
+
+public inline fun <T>
+    ReplyInfo.ifExternalContentMedia(block: (ReplyInfo.External.Content.Media) -> T): T? =
+    externalContentMediaOrNull() ?.let(block)
 
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as?
     dev.inmo.tgbotapi.types.actions.TypingAction
@@ -2024,24 +2059,6 @@ public inline fun ChatBoostSource.byUserOrThrow(): ChatBoostSource.ByUser = this
 public inline fun <T> ChatBoostSource.ifByUser(block: (ChatBoostSource.ByUser) -> T): T? =
     byUserOrNull() ?.let(block)
 
-public inline fun ChatBoostSource.giftCodeOrNull(): ChatBoostSource.GiftCode? = this as?
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
-
-public inline fun ChatBoostSource.giftCodeOrThrow(): ChatBoostSource.GiftCode = this as
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
-
-public inline fun <T> ChatBoostSource.ifGiftCode(block: (ChatBoostSource.GiftCode) -> T): T? =
-    giftCodeOrNull() ?.let(block)
-
-public inline fun ChatBoostSource.claimedOrNull(): ChatBoostSource.Giveaway.Claimed? = this as?
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
-
-public inline fun ChatBoostSource.claimedOrThrow(): ChatBoostSource.Giveaway.Claimed = this as
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
-
-public inline fun <T> ChatBoostSource.ifClaimed(block: (ChatBoostSource.Giveaway.Claimed) -> T): T?
-    = claimedOrNull() ?.let(block)
-
 public inline fun ChatBoostSource.premiumOrNull(): ChatBoostSource.Premium? = this as?
     dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Premium
 
@@ -2050,6 +2067,15 @@ public inline fun ChatBoostSource.premiumOrThrow(): ChatBoostSource.Premium = th
 
 public inline fun <T> ChatBoostSource.ifPremium(block: (ChatBoostSource.Premium) -> T): T? =
     premiumOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.giftCodeOrNull(): ChatBoostSource.GiftCode? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
+
+public inline fun ChatBoostSource.giftCodeOrThrow(): ChatBoostSource.GiftCode = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
+
+public inline fun <T> ChatBoostSource.ifGiftCode(block: (ChatBoostSource.GiftCode) -> T): T? =
+    giftCodeOrNull() ?.let(block)
 
 public inline fun ChatBoostSource.giveawayOrNull(): ChatBoostSource.Giveaway? = this as?
     dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway
@@ -2060,24 +2086,6 @@ public inline fun ChatBoostSource.giveawayOrThrow(): ChatBoostSource.Giveaway = 
 public inline fun <T> ChatBoostSource.ifGiveaway(block: (ChatBoostSource.Giveaway) -> T): T? =
     giveawayOrNull() ?.let(block)
 
-public inline fun ChatBoostSource.createdOrNull(): ChatBoostSource.Giveaway.Created? = this as?
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
-
-public inline fun ChatBoostSource.createdOrThrow(): ChatBoostSource.Giveaway.Created = this as
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
-
-public inline fun <T> ChatBoostSource.ifCreated(block: (ChatBoostSource.Giveaway.Created) -> T): T?
-    = createdOrNull() ?.let(block)
-
-public inline fun ChatBoostSource.unclaimedOrNull(): ChatBoostSource.Giveaway.Unclaimed? = this as?
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
-
-public inline fun ChatBoostSource.unclaimedOrThrow(): ChatBoostSource.Giveaway.Unclaimed = this as
-    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
-
-public inline fun <T> ChatBoostSource.ifUnclaimed(block: (ChatBoostSource.Giveaway.Unclaimed) -> T):
-    T? = unclaimedOrNull() ?.let(block)
-
 public inline fun ChatBoostSource.unknownOrNull(): ChatBoostSource.Unknown? = this as?
     dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Unknown
 
@@ -2087,14 +2095,35 @@ public inline fun ChatBoostSource.unknownOrThrow(): ChatBoostSource.Unknown = th
 public inline fun <T> ChatBoostSource.ifUnknown(block: (ChatBoostSource.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
 
-public inline fun BusinessConnection.disabledOrNull(): BusinessConnection.Disabled? = this as?
-    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+public inline fun ChatBoostSource.giveawayCreatedOrNull(): ChatBoostSource.Giveaway.Created? = this
+    as? dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
 
-public inline fun BusinessConnection.disabledOrThrow(): BusinessConnection.Disabled = this as
-    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+public inline fun ChatBoostSource.giveawayCreatedOrThrow(): ChatBoostSource.Giveaway.Created = this
+    as dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Created
 
-public inline fun <T> BusinessConnection.ifDisabled(block: (BusinessConnection.Disabled) -> T): T? =
-    disabledOrNull() ?.let(block)
+public inline fun <T>
+    ChatBoostSource.ifGiveawayCreated(block: (ChatBoostSource.Giveaway.Created) -> T): T? =
+    giveawayCreatedOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.giveawayClaimedOrNull(): ChatBoostSource.Giveaway.Claimed? = this
+    as? dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
+
+public inline fun ChatBoostSource.giveawayClaimedOrThrow(): ChatBoostSource.Giveaway.Claimed = this
+    as dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
+
+public inline fun <T>
+    ChatBoostSource.ifGiveawayClaimed(block: (ChatBoostSource.Giveaway.Claimed) -> T): T? =
+    giveawayClaimedOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.giveawayUnclaimedOrNull(): ChatBoostSource.Giveaway.Unclaimed? =
+    this as? dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
+
+public inline fun ChatBoostSource.giveawayUnclaimedOrThrow(): ChatBoostSource.Giveaway.Unclaimed =
+    this as dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
+
+public inline fun <T>
+    ChatBoostSource.ifGiveawayUnclaimed(block: (ChatBoostSource.Giveaway.Unclaimed) -> T): T? =
+    giveawayUnclaimedOrNull() ?.let(block)
 
 public inline fun BusinessConnection.enabledOrNull(): BusinessConnection.Enabled? = this as?
     dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Enabled
@@ -2104,6 +2133,15 @@ public inline fun BusinessConnection.enabledOrThrow(): BusinessConnection.Enable
 
 public inline fun <T> BusinessConnection.ifEnabled(block: (BusinessConnection.Enabled) -> T): T? =
     enabledOrNull() ?.let(block)
+
+public inline fun BusinessConnection.disabledOrNull(): BusinessConnection.Disabled? = this as?
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun BusinessConnection.disabledOrThrow(): BusinessConnection.Disabled = this as
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun <T> BusinessConnection.ifDisabled(block: (BusinessConnection.Disabled) -> T): T? =
+    disabledOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull():
     UnknownInlineKeyboardButton? = this as?
@@ -2240,16 +2278,6 @@ public inline fun <T>
     KeyboardButtonRequestUsers.ifAny(block: (KeyboardButtonRequestUsers.Any) -> T): T? = anyOrNull()
     ?.let(block)
 
-public inline fun KeyboardButtonRequestUsers.botOrNull(): KeyboardButtonRequestUsers.Bot? = this as?
-    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
-
-public inline fun KeyboardButtonRequestUsers.botOrThrow(): KeyboardButtonRequestUsers.Bot = this as
-    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
-
-public inline fun <T>
-    KeyboardButtonRequestUsers.ifBot(block: (KeyboardButtonRequestUsers.Bot) -> T): T? = botOrNull()
-    ?.let(block)
-
 public inline fun KeyboardButtonRequestUsers.commonOrNull(): KeyboardButtonRequestUsers.Common? =
     this as? dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Common
 
@@ -2259,6 +2287,16 @@ public inline fun KeyboardButtonRequestUsers.commonOrThrow(): KeyboardButtonRequ
 public inline fun <T>
     KeyboardButtonRequestUsers.ifCommon(block: (KeyboardButtonRequestUsers.Common) -> T): T? =
     commonOrNull() ?.let(block)
+
+public inline fun KeyboardButtonRequestUsers.botOrNull(): KeyboardButtonRequestUsers.Bot? = this as?
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
+
+public inline fun KeyboardButtonRequestUsers.botOrThrow(): KeyboardButtonRequestUsers.Bot = this as
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
+
+public inline fun <T>
+    KeyboardButtonRequestUsers.ifBot(block: (KeyboardButtonRequestUsers.Bot) -> T): T? = botOrNull()
+    ?.let(block)
 
 public inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as?
     dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -2648,16 +2686,6 @@ public inline fun Chat.unknownChatTypeOrThrow(): UnknownChatType = this as
 public inline fun <T> Chat.ifUnknownChatType(block: (UnknownChatType) -> T): T? =
     unknownChatTypeOrNull() ?.let(block)
 
-public inline fun ChatMessageReactionUpdated.byChatOrNull(): ChatMessageReactionUpdated.ByChat? =
-    this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
-
-public inline fun ChatMessageReactionUpdated.byChatOrThrow(): ChatMessageReactionUpdated.ByChat =
-    this as dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
-
-public inline fun <T>
-    ChatMessageReactionUpdated.ifByChat(block: (ChatMessageReactionUpdated.ByChat) -> T): T? =
-    byChatOrNull() ?.let(block)
-
 public inline fun ChatMessageReactionUpdated.byUserOrNull(): ChatMessageReactionUpdated.ByUser? =
     this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByUser
 
@@ -2667,6 +2695,16 @@ public inline fun ChatMessageReactionUpdated.byUserOrThrow(): ChatMessageReactio
 public inline fun <T>
     ChatMessageReactionUpdated.ifByUser(block: (ChatMessageReactionUpdated.ByUser) -> T): T? =
     byUserOrNull() ?.let(block)
+
+public inline fun ChatMessageReactionUpdated.byChatOrNull(): ChatMessageReactionUpdated.ByChat? =
+    this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
+
+public inline fun ChatMessageReactionUpdated.byChatOrThrow(): ChatMessageReactionUpdated.ByChat =
+    this as dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
+
+public inline fun <T>
+    ChatMessageReactionUpdated.ifByChat(block: (ChatMessageReactionUpdated.ByChat) -> T): T? =
+    byChatOrNull() ?.let(block)
 
 public inline fun ChatMessageReactionUpdated.unknownOrNull(): ChatMessageReactionUpdated.Unknown? =
     this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.Unknown
@@ -3292,6 +3330,15 @@ public inline fun <T>
     TelegramMedia.ifWithCustomizableCaptionTelegramMedia(block: (WithCustomizableCaptionTelegramMedia) -> T):
     T? = withCustomizableCaptionTelegramMediaOrNull() ?.let(block)
 
+public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceChanged? = this as?
+    dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+
+public inline fun ChatEvent.paidMessagePriceChangedOrThrow(): PaidMessagePriceChanged = this as
+    dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+
+public inline fun <T> ChatEvent.ifPaidMessagePriceChanged(block: (PaidMessagePriceChanged) -> T): T?
+    = paidMessagePriceChangedOrNull() ?.let(block)
+
 public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as?
     dev.inmo.tgbotapi.types.chat.ChatBackground
 
@@ -3301,6 +3348,94 @@ public inline fun ChatEvent.chatBackgroundOrThrow(): ChatBackground = this as
 public inline fun <T> ChatEvent.ifChatBackground(block: (ChatBackground) -> T): T? =
     chatBackgroundOrNull() ?.let(block)
 
+public inline fun ChatEvent.giftSentOrReceivedOrNull(): GiftSentOrReceived? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+
+public inline fun ChatEvent.giftSentOrReceivedOrThrow(): GiftSentOrReceived = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+
+public inline fun <T> ChatEvent.ifGiftSentOrReceived(block: (GiftSentOrReceived) -> T): T? =
+    giftSentOrReceivedOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrNull():
+    GiftSentOrReceived.ReceivedInBusinessAccount? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
+
+public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrThrow():
+    GiftSentOrReceived.ReceivedInBusinessAccount = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedReceivedInBusinessAccount(block: (GiftSentOrReceived.ReceivedInBusinessAccount) -> T):
+    T? = giftSentOrReceivedReceivedInBusinessAccountOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedRegularOrNull(): GiftSentOrReceived.Regular? = this
+    as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
+
+public inline fun ChatEvent.giftSentOrReceivedRegularOrThrow(): GiftSentOrReceived.Regular = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedRegular(block: (GiftSentOrReceived.Regular) -> T): T? =
+    giftSentOrReceivedRegularOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueOrNull(): GiftSentOrReceived.Unique? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueOrThrow(): GiftSentOrReceived.Unique = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
+
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedUnique(block: (GiftSentOrReceived.Unique) -> T):
+    T? = giftSentOrReceivedUniqueOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrNull():
+    GiftSentOrReceived.Regular.Common? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
+
+public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrThrow():
+    GiftSentOrReceived.Regular.Common = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedRegularCommon(block: (GiftSentOrReceived.Regular.Common) -> T): T?
+    = giftSentOrReceivedRegularCommonOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrNull():
+    GiftSentOrReceived.Regular.ReceivedInBusinessAccount? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
+
+public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrThrow():
+    GiftSentOrReceived.Regular.ReceivedInBusinessAccount = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedRegularReceivedInBusinessAccount(block: (GiftSentOrReceived.Regular.ReceivedInBusinessAccount) -> T):
+    T? = giftSentOrReceivedRegularReceivedInBusinessAccountOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrNull():
+    GiftSentOrReceived.Unique.Common? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrThrow():
+    GiftSentOrReceived.Unique.Common = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedUniqueCommon(block: (GiftSentOrReceived.Unique.Common) -> T): T? =
+    giftSentOrReceivedUniqueCommonOrNull() ?.let(block)
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull():
+    GiftSentOrReceived.Unique.ReceivedInBusinessAccount? = this as?
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
+
+public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrThrow():
+    GiftSentOrReceived.Unique.ReceivedInBusinessAccount = this as
+    dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
+
+public inline fun <T>
+    ChatEvent.ifGiftSentOrReceivedUniqueReceivedInBusinessAccount(block: (GiftSentOrReceived.Unique.ReceivedInBusinessAccount) -> T):
+    T? = giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull() ?.let(block)
+
 public inline fun ChatEvent.giveawayCreatedOrNull(): GiveawayCreated? = this as?
     dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 
@@ -3309,6 +3444,24 @@ public inline fun ChatEvent.giveawayCreatedOrThrow(): GiveawayCreated = this as
 
 public inline fun <T> ChatEvent.ifGiveawayCreated(block: (GiveawayCreated) -> T): T? =
     giveawayCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayCreatedStarsOrNull(): GiveawayCreated.Stars? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Stars
+
+public inline fun ChatEvent.giveawayCreatedStarsOrThrow(): GiveawayCreated.Stars = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Stars
+
+public inline fun <T> ChatEvent.ifGiveawayCreatedStars(block: (GiveawayCreated.Stars) -> T): T? =
+    giveawayCreatedStarsOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayCreatedCompanionOrNull(): GiveawayCreated.Companion? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Companion
+
+public inline fun ChatEvent.giveawayCreatedCompanionOrThrow(): GiveawayCreated.Companion = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Companion
+
+public inline fun <T> ChatEvent.ifGiveawayCreatedCompanion(block: (GiveawayCreated.Companion) -> T):
+    T? = giveawayCreatedCompanionOrNull() ?.let(block)
 
 public inline fun ChatEvent.giveawayPrivateResultsOrNull(): GiveawayPrivateResults? = this as?
     dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
@@ -3591,6 +3744,49 @@ public inline fun ChatEvent.writeAccessAllowedOrThrow(): WriteAccessAllowed = th
 public inline fun <T> ChatEvent.ifWriteAccessAllowed(block: (WriteAccessAllowed) -> T): T? =
     writeAccessAllowedOrNull() ?.let(block)
 
+public inline fun ChatEvent.writeAccessAllowedOtherOrNull(): WriteAccessAllowed.Other? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.Other
+
+public inline fun ChatEvent.writeAccessAllowedOtherOrThrow(): WriteAccessAllowed.Other = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.Other
+
+public inline fun <T> ChatEvent.ifWriteAccessAllowedOther(block: (WriteAccessAllowed.Other) -> T):
+    T? = writeAccessAllowedOtherOrNull() ?.let(block)
+
+public inline fun ChatEvent.writeAccessAllowedFromWebAppLinkOrNull():
+    WriteAccessAllowed.FromWebAppLink? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromWebAppLink
+
+public inline fun ChatEvent.writeAccessAllowedFromWebAppLinkOrThrow():
+    WriteAccessAllowed.FromWebAppLink = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromWebAppLink
+
+public inline fun <T>
+    ChatEvent.ifWriteAccessAllowedFromWebAppLink(block: (WriteAccessAllowed.FromWebAppLink) -> T):
+    T? = writeAccessAllowedFromWebAppLinkOrNull() ?.let(block)
+
+public inline fun ChatEvent.writeAccessAllowedFromRequestOrNull(): WriteAccessAllowed.FromRequest? =
+    this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromRequest
+
+public inline fun ChatEvent.writeAccessAllowedFromRequestOrThrow(): WriteAccessAllowed.FromRequest =
+    this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromRequest
+
+public inline fun <T>
+    ChatEvent.ifWriteAccessAllowedFromRequest(block: (WriteAccessAllowed.FromRequest) -> T): T? =
+    writeAccessAllowedFromRequestOrNull() ?.let(block)
+
+public inline fun ChatEvent.writeAccessAllowedFromAttachmentMenuOrNull():
+    WriteAccessAllowed.FromAttachmentMenu? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromAttachmentMenu
+
+public inline fun ChatEvent.writeAccessAllowedFromAttachmentMenuOrThrow():
+    WriteAccessAllowed.FromAttachmentMenu = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromAttachmentMenu
+
+public inline fun <T>
+    ChatEvent.ifWriteAccessAllowedFromAttachmentMenu(block: (WriteAccessAllowed.FromAttachmentMenu) -> T):
+    T? = writeAccessAllowedFromAttachmentMenuOrNull() ?.let(block)
+
 public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 
@@ -3691,14 +3887,24 @@ public inline fun ForwardInfo.byUserOrThrow(): ForwardInfo.ByUser = this as
 public inline fun <T> ForwardInfo.ifByUser(block: (ForwardInfo.ByUser) -> T): T? = byUserOrNull()
     ?.let(block)
 
-public inline fun ForwardInfo.publicChatOrNull(): ForwardInfo.PublicChat? = this as?
+public inline fun ForwardInfo.OrNull(): ForwardInfo.PublicChat? = this as?
     dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat
 
-public inline fun ForwardInfo.publicChatOrThrow(): ForwardInfo.PublicChat = this as
+public inline fun ForwardInfo.OrThrow(): ForwardInfo.PublicChat = this as
     dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat
 
-public inline fun <T> ForwardInfo.ifPublicChat(block: (ForwardInfo.PublicChat) -> T): T? =
-    publicChatOrNull() ?.let(block)
+public inline fun <T> ForwardInfo.`if`(block: (ForwardInfo.PublicChat) -> T): T? = OrNull()
+    ?.let(block)
+
+public inline fun ForwardInfo.sentByChannelOrNull(): ForwardInfo.PublicChat.SentByChannel? = this
+    as? dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
+
+public inline fun ForwardInfo.sentByChannelOrThrow(): ForwardInfo.PublicChat.SentByChannel = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
+
+public inline fun <T>
+    ForwardInfo.ifSentByChannel(block: (ForwardInfo.PublicChat.SentByChannel) -> T): T? =
+    sentByChannelOrNull() ?.let(block)
 
 public inline fun ForwardInfo.fromChannelOrNull(): ForwardInfo.PublicChat.FromChannel? = this as?
     dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromChannel
@@ -3718,16 +3924,6 @@ public inline fun ForwardInfo.fromSupergroupOrThrow(): ForwardInfo.PublicChat.Fr
 public inline fun <T>
     ForwardInfo.ifFromSupergroup(block: (ForwardInfo.PublicChat.FromSupergroup) -> T): T? =
     fromSupergroupOrNull() ?.let(block)
-
-public inline fun ForwardInfo.sentByChannelOrNull(): ForwardInfo.PublicChat.SentByChannel? = this
-    as? dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
-
-public inline fun ForwardInfo.sentByChannelOrThrow(): ForwardInfo.PublicChat.SentByChannel = this as
-    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
-
-public inline fun <T>
-    ForwardInfo.ifSentByChannel(block: (ForwardInfo.PublicChat.SentByChannel) -> T): T? =
-    sentByChannelOrNull() ?.let(block)
 
 public inline fun Message.channelEventMessageOrNull(): ChannelEventMessage<ChannelEvent>? = this as?
     dev.inmo.tgbotapi.types.message.ChannelEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent>
@@ -4057,6 +4253,15 @@ public inline fun Message.possiblyOfflineMessageOrThrow(): PossiblyOfflineMessag
 
 public inline fun <T> Message.ifPossiblyOfflineMessage(block: (PossiblyOfflineMessage) -> T): T? =
     possiblyOfflineMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyPaidMessageOrNull(): PossiblyPaidMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
+
+public inline fun Message.possiblyPaidMessageOrThrow(): PossiblyPaidMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaidMessage
+
+public inline fun <T> Message.ifPossiblyPaidMessage(block: (PossiblyPaidMessage) -> T): T? =
+    possiblyPaidMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
@@ -5286,15 +5491,6 @@ public inline fun <T>
     EncryptedPassportElement.ifEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T):
     T? = encryptedPassportElementWithSelfieOrNull() ?.let(block)
 
-public inline fun RevenueWithdrawalState.failedOrNull(): RevenueWithdrawalState.Failed? = this as?
-    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
-
-public inline fun RevenueWithdrawalState.failedOrThrow(): RevenueWithdrawalState.Failed = this as
-    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
-
-public inline fun <T> RevenueWithdrawalState.ifFailed(block: (RevenueWithdrawalState.Failed) -> T):
-    T? = failedOrNull() ?.let(block)
-
 public inline fun RevenueWithdrawalState.pendingOrNull(): RevenueWithdrawalState.Pending? = this as?
     dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Pending
 
@@ -5314,6 +5510,15 @@ public inline fun RevenueWithdrawalState.succeededOrThrow(): RevenueWithdrawalSt
 public inline fun <T>
     RevenueWithdrawalState.ifSucceeded(block: (RevenueWithdrawalState.Succeeded) -> T): T? =
     succeededOrNull() ?.let(block)
+
+public inline fun RevenueWithdrawalState.failedOrNull(): RevenueWithdrawalState.Failed? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
+
+public inline fun RevenueWithdrawalState.failedOrThrow(): RevenueWithdrawalState.Failed = this as
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
+
+public inline fun <T> RevenueWithdrawalState.ifFailed(block: (RevenueWithdrawalState.Failed) -> T):
+    T? = failedOrNull() ?.let(block)
 
 public inline fun RevenueWithdrawalState.unknownOrNull(): RevenueWithdrawalState.Unknown? = this as?
     dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Unknown
@@ -5352,34 +5557,6 @@ public inline fun StarTransaction.unknownOrThrow(): StarTransaction.Unknown = th
 public inline fun <T> StarTransaction.ifUnknown(block: (StarTransaction.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
 
-public inline fun TransactionPartner.adsOrNull(): TransactionPartner.Ads? = this as?
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
-
-public inline fun TransactionPartner.adsOrThrow(): TransactionPartner.Ads = this as
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
-
-public inline fun <T> TransactionPartner.ifAds(block: (TransactionPartner.Ads) -> T): T? =
-    adsOrNull() ?.let(block)
-
-public inline fun TransactionPartner.affiliateProgramOrNull(): TransactionPartner.AffiliateProgram?
-    = this as? dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
-
-public inline fun TransactionPartner.affiliateProgramOrThrow(): TransactionPartner.AffiliateProgram
-    = this as dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
-
-public inline fun <T>
-    TransactionPartner.ifAffiliateProgram(block: (TransactionPartner.AffiliateProgram) -> T): T? =
-    affiliateProgramOrNull() ?.let(block)
-
-public inline fun TransactionPartner.chatOrNull(): TransactionPartner.Chat? = this as?
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
-
-public inline fun TransactionPartner.chatOrThrow(): TransactionPartner.Chat = this as
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
-
-public inline fun <T> TransactionPartner.ifChat(block: (TransactionPartner.Chat) -> T): T? =
-    chatOrNull() ?.let(block)
-
 public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment
 
@@ -5389,14 +5566,23 @@ public inline fun TransactionPartner.fragmentOrThrow(): TransactionPartner.Fragm
 public inline fun <T> TransactionPartner.ifFragment(block: (TransactionPartner.Fragment) -> T): T? =
     fragmentOrNull() ?.let(block)
 
-public inline fun TransactionPartner.otherOrNull(): TransactionPartner.Other? = this as?
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+public inline fun TransactionPartner.userOrNull(): TransactionPartner.User? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
 
-public inline fun TransactionPartner.otherOrThrow(): TransactionPartner.Other = this as
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+public inline fun TransactionPartner.userOrThrow(): TransactionPartner.User = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
 
-public inline fun <T> TransactionPartner.ifOther(block: (TransactionPartner.Other) -> T): T? =
-    otherOrNull() ?.let(block)
+public inline fun <T> TransactionPartner.ifUser(block: (TransactionPartner.User) -> T): T? =
+    userOrNull() ?.let(block)
+
+public inline fun TransactionPartner.chatOrNull(): TransactionPartner.Chat? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun TransactionPartner.chatOrThrow(): TransactionPartner.Chat = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Chat
+
+public inline fun <T> TransactionPartner.ifChat(block: (TransactionPartner.Chat) -> T): T? =
+    chatOrNull() ?.let(block)
 
 public inline fun TransactionPartner.telegramAPIOrNull(): TransactionPartner.TelegramAPI? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.TelegramAPI
@@ -5408,6 +5594,34 @@ public inline fun <T>
     TransactionPartner.ifTelegramAPI(block: (TransactionPartner.TelegramAPI) -> T): T? =
     telegramAPIOrNull() ?.let(block)
 
+public inline fun TransactionPartner.affiliateProgramOrNull(): TransactionPartner.AffiliateProgram?
+    = this as? dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
+
+public inline fun TransactionPartner.affiliateProgramOrThrow(): TransactionPartner.AffiliateProgram
+    = this as dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.AffiliateProgram
+
+public inline fun <T>
+    TransactionPartner.ifAffiliateProgram(block: (TransactionPartner.AffiliateProgram) -> T): T? =
+    affiliateProgramOrNull() ?.let(block)
+
+public inline fun TransactionPartner.adsOrNull(): TransactionPartner.Ads? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
+
+public inline fun TransactionPartner.adsOrThrow(): TransactionPartner.Ads = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
+
+public inline fun <T> TransactionPartner.ifAds(block: (TransactionPartner.Ads) -> T): T? =
+    adsOrNull() ?.let(block)
+
+public inline fun TransactionPartner.otherOrNull(): TransactionPartner.Other? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+
+public inline fun TransactionPartner.otherOrThrow(): TransactionPartner.Other = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+
+public inline fun <T> TransactionPartner.ifOther(block: (TransactionPartner.Other) -> T): T? =
+    otherOrNull() ?.let(block)
+
 public inline fun TransactionPartner.unknownOrNull(): TransactionPartner.Unknown? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Unknown
 
@@ -5416,15 +5630,6 @@ public inline fun TransactionPartner.unknownOrThrow(): TransactionPartner.Unknow
 
 public inline fun <T> TransactionPartner.ifUnknown(block: (TransactionPartner.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
-
-public inline fun TransactionPartner.userOrNull(): TransactionPartner.User? = this as?
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
-
-public inline fun TransactionPartner.userOrThrow(): TransactionPartner.User = this as
-    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
-
-public inline fun <T> TransactionPartner.ifUser(block: (TransactionPartner.User) -> T): T? =
-    userOrNull() ?.let(block)
 
 public inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrNull(): ExactScheduledCloseInfo? =
     this as? dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
@@ -5481,15 +5686,6 @@ public inline fun Poll.quizPollOrThrow(): QuizPoll = this as dev.inmo.tgbotapi.t
 
 public inline fun <T> Poll.ifQuizPoll(block: (QuizPoll) -> T): T? = quizPollOrNull() ?.let(block)
 
-public inline fun Reaction.customEmojiOrNull(): Reaction.CustomEmoji? = this as?
-    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
-
-public inline fun Reaction.customEmojiOrThrow(): Reaction.CustomEmoji = this as
-    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
-
-public inline fun <T> Reaction.ifCustomEmoji(block: (Reaction.CustomEmoji) -> T): T? =
-    customEmojiOrNull() ?.let(block)
-
 public inline fun Reaction.emojiOrNull(): Reaction.Emoji? = this as?
     dev.inmo.tgbotapi.types.reactions.Reaction.Emoji
 
@@ -5498,6 +5694,15 @@ public inline fun Reaction.emojiOrThrow(): Reaction.Emoji = this as
 
 public inline fun <T> Reaction.ifEmoji(block: (Reaction.Emoji) -> T): T? = emojiOrNull()
     ?.let(block)
+
+public inline fun Reaction.customEmojiOrNull(): Reaction.CustomEmoji? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
+
+public inline fun Reaction.customEmojiOrThrow(): Reaction.CustomEmoji = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
+
+public inline fun <T> Reaction.ifCustomEmoji(block: (Reaction.CustomEmoji) -> T): T? =
+    customEmojiOrNull() ?.let(block)
 
 public inline fun Reaction.paidOrNull(): Reaction.Paid? = this as?
     dev.inmo.tgbotapi.types.reactions.Reaction.Paid

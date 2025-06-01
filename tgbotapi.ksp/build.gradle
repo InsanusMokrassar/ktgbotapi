@@ -9,5 +9,6 @@ repositories {
 dependencies {
     implementation libs.kotlin.poet
     implementation libs.ksp
+    implementation libs.microutils.ksp.generator
     implementation project(":tgbotapi.core")
 }

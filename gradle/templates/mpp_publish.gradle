@@ -1,4 +1,54 @@
+import java.nio.charset.StandardCharsets
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+
 apply plugin: 'maven-publish'
+// This script work based on https://ossrh-staging-api.central.sonatype.com/swagger-ui/#/default/manual_upload_repository
+// and getting available open repos and just uploading them
+def uploadTaskName = "uploadSonatypePublication"
+String getBearer() {
+    def username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
+    def password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
+    return Base64.getEncoder().encodeToString("$username:$password".getBytes(StandardCharsets.UTF_8))
+}
+if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
+    if (rootProject.tasks.names.contains(uploadTaskName) == false) {
+        rootProject.tasks.register(uploadTaskName) {
+            doLast {
+                def bearer = getBearer()
+    
+                def client = HttpClient.newHttpClient()
+                def request = HttpRequest.newBuilder()
+                        .uri(URI.create("https://ossrh-staging-api.central.sonatype.com/manual/search/repositories?state=open"))
+                        .GET()
+                        .header("Content-Type", "application/json")
+                        .header("Authorization", "Bearer $bearer")
+                        .build()
+    
+                def response = client.send(request, HttpResponse.BodyHandlers.ofString())
+                def keys = new ArrayList<String>()
+                response.body().findAll("\"key\"[\\s]*:[\\s]*\"[^\"]+\"").forEach {
+                    def key = it.find("[^\"]+\"\$").find("[^\"]+")
+                    keys.add(key)
+                }
+                keys.forEach {
+                    println("Start uploading $it")
+                    def uploadRequest = HttpRequest.newBuilder()
+                            .uri(URI.create("https://ossrh-staging-api.central.sonatype.com/manual/upload/repository/$it?publishing_type=user_managed"))
+                            .POST(HttpRequest.BodyPublishers.ofString(""))
+                            .header("Content-Type", "application/json")
+                            .header("Authorization", "Bearer $bearer")
+                            .build()
+                    def uploadResponse = client.send(uploadRequest, HttpResponse.BodyHandlers.ofString())
+                    if (uploadResponse.statusCode() != 200) {
+                        println("Faced error of uploading for repo with key $it. Response: $uploadResponse. Check https://central.sonatype.com/publishing/deployments for info or repo with key $it. Response: $uploadResponse")
+                    }
+                }
+            }
+        }
+    }
+}
 
 task javadocsJar(type: Jar) {
     archiveClassifier = 'javadoc'
@@ -19,59 +69,52 @@ publishing {
             }
 
             developers {
-                
-                    developer {
-                        id = "InsanusMokrassar"
-                        name = "Ovsiannikov Aleksei"
-                        email = "ovsyannikov.alexey95@gmail.com"
-                    }
-                
+                developer {
+                    id = "InsanusMokrassar"
+                    name = "Ovsiannikov Aleksei"
+                    email = "ovsyannikov.alexey95@gmail.com"
+                }
             }
 
             licenses {
-                
-                    license {
-                        name = "Apache Software License 2.0"
-                        url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
-                    }
-                
+                license {
+                    name = "Apache Software License 2.0"
+                    url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
+                }
             }
         }
-        repositories {
-            if ((project.hasProperty('GITHUB_USER') || System.getenv('GITHUB_USER') != null) && (project.hasProperty('GITHUB_TOKEN') || System.getenv('GITHUB_TOKEN') != null)) {
-                maven {
-                    name = "GithubPackages"
-                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/ktgbotapi")
-            
-                    credentials {
-                        username = project.hasProperty('GITHUB_USER') ? project.property('GITHUB_USER') : System.getenv('GITHUB_USER')
-                        password = project.hasProperty('GITHUB_TOKEN') ? project.property('GITHUB_TOKEN') : System.getenv('GITHUB_TOKEN')
-                    }
-            
+    }
+    repositories {
+        if ((project.hasProperty('GITHUB_USER') || System.getenv('GITHUB_USER') != null) && (project.hasProperty('GITHUB_TOKEN') || System.getenv('GITHUB_TOKEN') != null)) {
+            maven {
+                name = "GithubPackages"
+                url = uri("https://maven.pkg.github.com/InsanusMokrassar/ktgbotapi")
+        
+                credentials {
+                    username = project.hasProperty('GITHUB_USER') ? project.property('GITHUB_USER') : System.getenv('GITHUB_USER')
+                    password = project.hasProperty('GITHUB_TOKEN') ? project.property('GITHUB_TOKEN') : System.getenv('GITHUB_TOKEN')
                 }
             }
-            if ((project.hasProperty('INMONEXUS_USER') || System.getenv('INMONEXUS_USER') != null) && (project.hasProperty('INMONEXUS_PASSWORD') || System.getenv('INMONEXUS_PASSWORD') != null)) {
-                maven {
-                    name = "InmoNexus"
-                    url = uri("https://nexus.inmo.dev/repository/maven-releases/")
-            
-                    credentials {
-                        username = project.hasProperty('INMONEXUS_USER') ? project.property('INMONEXUS_USER') : System.getenv('INMONEXUS_USER')
-                        password = project.hasProperty('INMONEXUS_PASSWORD') ? project.property('INMONEXUS_PASSWORD') : System.getenv('INMONEXUS_PASSWORD')
-                    }
-            
+        }
+        if ((project.hasProperty('INMONEXUS_USER') || System.getenv('INMONEXUS_USER') != null) && (project.hasProperty('INMONEXUS_PASSWORD') || System.getenv('INMONEXUS_PASSWORD') != null)) {
+            maven {
+                name = "InmoNexus"
+                url = uri("https://nexus.inmo.dev/repository/maven-releases/")
+        
+                credentials {
+                    username = project.hasProperty('INMONEXUS_USER') ? project.property('INMONEXUS_USER') : System.getenv('INMONEXUS_USER')
+                    password = project.hasProperty('INMONEXUS_PASSWORD') ? project.property('INMONEXUS_PASSWORD') : System.getenv('INMONEXUS_PASSWORD')
                 }
             }
-            if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
-                maven {
-                    name = "sonatype"
-                    url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            
-                    credentials {
-                        username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
-                        password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
-                    }
-            
+        }
+        if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
+            maven {
+                name = "sonatype"
+                url = uri("https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/")
+        
+                credentials {
+                    username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
+                    password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
                 }
             }
         }
@@ -80,13 +123,13 @@ publishing {
     
 if (project.hasProperty("signing.gnupg.keyName")) {
     apply plugin: 'signing'
-    
+
     signing {
         useGpgCmd()
-    
+
         sign publishing.publications
     }
-    
+
     task signAll {
         tasks.withType(Sign).forEach {
             dependsOn(it)

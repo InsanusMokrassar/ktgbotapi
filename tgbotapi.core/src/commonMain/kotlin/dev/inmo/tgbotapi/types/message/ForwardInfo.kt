@@ -20,6 +20,7 @@ sealed interface ForwardInfo {
         override val from: User
     ) : ForwardInfo, FromUser
 
+    @ClassCastsIncluded.ExcludeSubName
     sealed interface PublicChat : ForwardInfo {
         val chat: dev.inmo.tgbotapi.types.chat.PublicChat
 

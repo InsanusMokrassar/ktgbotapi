@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import kotlinx.serialization.SerialName
 
 data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val chat: PreviewGroupChat,
@@ -24,6 +25,8 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : ConnectedFromChannelGroupContentMessage<T> {
 
     constructor(
@@ -41,8 +44,23 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
+        chat = chat,
+        channel = channel,
+        messageId = messageId,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -61,6 +79,8 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : UnconnectedFromChannelGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -77,8 +97,23 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
+        chat = chat,
+        channel = channel,
+        messageId = messageId,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -96,6 +131,8 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : AnonymousGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -111,8 +148,22 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
+        chat = chat,
+        messageId = messageId,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -131,6 +182,8 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val mediaGroupId: MediaGroupId?,
     override val senderBoostsCount: Int?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : CommonGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -147,8 +200,23 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
         mediaGroupId: MediaGroupId?,
         senderBoostsCount: Int?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount, fromOffline
+        chat = chat,
+        messageId = messageId,
+        from = from,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        mediaGroupId = mediaGroupId,
+        senderBoostsCount = senderBoostsCount,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -168,6 +236,8 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : FromChannelForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -185,8 +255,24 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
+        chat = chat,
+        channel = channel,
+        messageId = messageId,
+        threadId = threadId,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -205,6 +291,8 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : AnonymousForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -221,8 +309,23 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
+        chat = chat,
+        messageId = messageId,
+        threadId = threadId,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }
 
@@ -242,6 +345,8 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val mediaGroupId: MediaGroupId?,
     override val senderBoostsCount: Int?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : CommonForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -259,7 +364,23 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
         mediaGroupId: MediaGroupId?,
         senderBoostsCount: Int?,
         fromOffline: Boolean,
+        cost: Int? = null,
     ) : this(
-        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount, fromOffline
+        chat = chat,
+        messageId = messageId,
+        threadId = threadId,
+        from = from,
+        date = date,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        mediaGroupId = mediaGroupId,
+        senderBoostsCount = senderBoostsCount,
+        fromOffline = fromOffline,
+        cost = cost,
     )
 }

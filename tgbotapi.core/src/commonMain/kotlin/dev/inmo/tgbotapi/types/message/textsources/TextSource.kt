@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.message.textsources
 
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.captionLength
+import dev.inmo.tgbotapi.types.storyCaptionLength
 import dev.inmo.tgbotapi.types.textLength
 import kotlinx.serialization.Serializable
 
@@ -90,12 +91,19 @@ fun List<TextSource>.splitForMessage(limit: IntRange, numberOfParts: Int? = null
 }
 
 /**
- * This method will prepare [TextSource]s list for messages. Remember, that first part will be separated with
+ * This method will prepare [TextSource]s list for captions. Remember, that first part will be separated with
  * [captionLength] and all others with
  */
 fun List<TextSource>.splitForCaption(): List<List<TextSource>> {
     val captionPart = splitForMessage(captionLength, 1).first()
     return listOf(captionPart) + minus(captionPart).splitForMessage(textLength)
+}
+
+/**
+ * This method will prepare [TextSource]s list for stories
+ */
+fun List<TextSource>.splitForStoryCaption(): List<List<TextSource>> {
+    return splitForMessage(storyCaptionLength)
 }
 
 /**

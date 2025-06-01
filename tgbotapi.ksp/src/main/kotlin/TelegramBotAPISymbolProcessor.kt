@@ -1,22 +1,21 @@
 package dev.inmo.tgbotapi.ksp.processor
 
-import com.google.devtools.ksp.KspExperimental
-import com.google.devtools.ksp.getAllSuperTypes
-import com.google.devtools.ksp.getAnnotationsByType
-import com.google.devtools.ksp.isAnnotationPresent
+import com.google.devtools.ksp.*
 import com.google.devtools.ksp.processing.*
-import com.google.devtools.ksp.symbol.KSAnnotated
-import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.AnnotationSpec
-import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.asClassName
-import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
+import dev.inmo.micro_ksp.generator.resolveSubclasses
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.ClassCastsExcluded
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import java.io.File
+import java.io.InputStream
+import java.io.OutputStreamWriter
+import java.io.StringWriter
 
 class TelegramBotAPISymbolProcessor(
     private val codeGenerator: CodeGenerator,
@@ -37,24 +36,37 @@ class TelegramBotAPISymbolProcessor(
         val classesSubtypes = mutableMapOf<KSClassDeclaration, MutableSet<KSClassDeclaration>>()
 
         resolver.getAllFiles().forEach {
-            it.declarations.forEach { potentialSubtype ->
-                if (
-                    potentialSubtype is KSClassDeclaration
-                    && potentialSubtype.isAnnotationPresent(ClassCastsExcluded::class).not()
-                ) {
-                    val allSupertypes = potentialSubtype.getAllSuperTypes().map { it.declaration }
+            val declarationsToAnalyze = mutableSetOf<KSDeclaration>()
+            declarationsToAnalyze.addAll(it.declarations)
+            val analyzed = mutableSetOf<KSDeclaration>()
 
-                    for (currentClass in classes) {
-                        val regexes = classesRegexes[currentClass]
-                        val simpleName = potentialSubtype.simpleName.getShortName()
-                        when {
-                            currentClass !in allSupertypes
-                            || regexes ?.first ?.matches(simpleName) == false
-                            || regexes ?.second ?.matches(simpleName) == true -> continue
-                            else -> {
-                                classesSubtypes.getOrPut(currentClass) { mutableSetOf() }.add(potentialSubtype)
+            while (declarationsToAnalyze.isNotEmpty()) {
+                val potentialSubtype = declarationsToAnalyze.first()
+                declarationsToAnalyze.remove(potentialSubtype)
+                if (analyzed.add(potentialSubtype)) {
+                    if (
+                        potentialSubtype is KSClassDeclaration
+                        && potentialSubtype.isAnnotationPresent(ClassCastsExcluded::class).not()
+                    ) {
+                        val allSupertypes = potentialSubtype.getAllSuperTypes().map { it.declaration }
+
+                        for (currentClass in classes) {
+                            val regexes = classesRegexes[currentClass]
+                            val simpleName = potentialSubtype.simpleName.getShortName()
+                            when {
+                                currentClass !in allSupertypes
+                                        || regexes ?.first ?.matches(simpleName) == false
+                                        || regexes ?.second ?.matches(simpleName) == true -> continue
+                                else -> {
+                                    classesSubtypes.getOrPut(currentClass) { mutableSetOf() }.add(potentialSubtype)
+                                }
                             }
                         }
+                    }
+                    when (potentialSubtype) {
+                        is KSFile -> declarationsToAnalyze.addAll(potentialSubtype.declarations)
+                        is KSClassDeclaration ->declarationsToAnalyze.addAll(potentialSubtype.declarations)
+                        is KSFunctionDeclaration -> declarationsToAnalyze.addAll(potentialSubtype.declarations)
                     }
                 }
             }
@@ -98,15 +110,21 @@ class TelegramBotAPISymbolProcessor(
                 )
             }
         }.build()
-        runCatching {
-            outputFolder ?.also {
-                File(it).apply {
-                    delete()
-                    runCatching { mkdirs() }
-                    fileSpec.writeTo(this)
+
+        outputFolder ?.also {
+            File(it, outputFile).apply {
+                val text = StringWriter().use {
+                    fileSpec.writeTo(it)
+                    it.toString()
                 }
-            } ?: fileSpec.writeTo(codeGenerator, false)
-        }
+                if (exists() == false || readText() != text) {
+                    delete()
+                    runCatching { parentFile.mkdirs() }
+                    createNewFile()
+                    writeText(text)
+                }
+            }
+        } ?: fileSpec.writeTo(codeGenerator, false)
 
         return emptyList()
     }

@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
 import dev.inmo.tgbotapi.types.giveaway.*
 import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
@@ -109,6 +110,9 @@ internal data class RawMessage(
 
     private val is_from_offline: Boolean = false,
 
+    private val paid_star_count: Int? = null,
+    private val paid_message_price_changed: PaidMessagePriceChanged? = null,
+
     // Voice Chat Service Messages
     private val video_chat_scheduled: VideoChatScheduled? = null,
     private val video_chat_started: VideoChatStarted? = null,
@@ -160,6 +164,10 @@ internal data class RawMessage(
     private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayPublicResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
+
+    // Gifts
+    private val gift: GiftSentOrReceived.Regular? = null,
+    private val unique_gift: GiftSentOrReceived.Unique? = null,
 ) {
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
     private val content: MessageContent? by lazy {
@@ -282,6 +290,9 @@ internal data class RawMessage(
             giveaway_completed != null -> giveaway_completed
             boost_added != null -> boost_added
             chat_background_set != null -> chat_background_set
+            paid_message_price_changed != null -> paid_message_price_changed
+            gift != null -> gift
+            unique_gift != null -> unique_gift
             else -> null
         }
     }
@@ -295,7 +306,7 @@ internal data class RawMessage(
         }
 
         try {
-            chatEvent?.let { chatEvent ->
+            chatEvent ?.let { chatEvent ->
                 when (chat) {
                     is PreviewSupergroupChat -> CommonSupergroupEventMessage(
                         messageId,
@@ -350,7 +361,8 @@ internal data class RawMessage(
                             senderBot = via_bot,
                             authorSignature = author_signature,
                             mediaGroupId = media_group_id,
-                            fromOffline = is_from_offline
+                            fromOffline = is_from_offline,
+                            cost = paid_star_count,
                         )
                         is PreviewForumChat -> if (messageThreadId != null) {
                             val chatId = ChatIdWithThreadId(
@@ -376,7 +388,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     authorSignature = author_signature,
                                     mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                                 is PreviewGroupChat -> AnonymousForumContentMessageImpl(
                                     chat = actualForumChat,
@@ -392,7 +405,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     authorSignature = author_signature,
                                     mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                                 null -> CommonForumContentMessageImpl(
                                     chat = actualForumChat,
@@ -409,7 +423,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     mediaGroupId = media_group_id,
                                     senderBoostsCount = sender_boost_count,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                             }
                         } else {
@@ -429,7 +444,8 @@ internal data class RawMessage(
                                         senderBot = via_bot,
                                         authorSignature = author_signature,
                                         mediaGroupId = media_group_id,
-                                        fromOffline = is_from_offline
+                                        fromOffline = is_from_offline,
+                                        cost = paid_star_count,
                                     )
                                 } else {
                                     UnconnectedFromChannelGroupContentMessageImpl(
@@ -446,7 +462,8 @@ internal data class RawMessage(
                                         senderBot = via_bot,
                                         authorSignature = author_signature,
                                         mediaGroupId = media_group_id,
-                                        fromOffline = is_from_offline
+                                        fromOffline = is_from_offline,
+                                        cost = paid_star_count,
                                     )
                                 }
                                 is GroupChat -> AnonymousGroupContentMessageImpl(
@@ -462,7 +479,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     authorSignature = author_signature,
                                     mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                                 null -> CommonGroupContentMessageImpl(
                                     chat = chat,
@@ -478,7 +496,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     mediaGroupId = media_group_id,
                                     senderBoostsCount = sender_boost_count,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                             }
                         }
@@ -498,7 +517,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     authorSignature = author_signature,
                                     mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                             } else {
                                 UnconnectedFromChannelGroupContentMessageImpl(
@@ -515,7 +535,8 @@ internal data class RawMessage(
                                     senderBot = via_bot,
                                     authorSignature = author_signature,
                                     mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline
+                                    fromOffline = is_from_offline,
+                                    cost = paid_star_count,
                                 )
                             }
                             is PreviewGroupChat -> AnonymousGroupContentMessageImpl(
@@ -531,7 +552,8 @@ internal data class RawMessage(
                                 senderBot = via_bot,
                                 authorSignature = author_signature,
                                 mediaGroupId = media_group_id,
-                                fromOffline = is_from_offline
+                                fromOffline = is_from_offline,
+                                cost = paid_star_count,
                             )
                             null -> CommonGroupContentMessageImpl(
                                 chat = chat,
@@ -547,7 +569,8 @@ internal data class RawMessage(
                                 senderBot = via_bot,
                                 mediaGroupId = media_group_id,
                                 senderBoostsCount = sender_boost_count,
-                                fromOffline = is_from_offline
+                                fromOffline = is_from_offline,
+                                cost = paid_star_count,
                             )
                         }
                     }
@@ -566,7 +589,8 @@ internal data class RawMessage(
                             senderBot = via_bot,
                             mediaGroupId = media_group_id,
                             fromOffline = is_from_offline,
-                            effectId = effect_id
+                            effectId = effect_id,
+                            cost = paid_star_count,
                         )
                     } else {
                         BusinessContentMessageImpl(
@@ -587,18 +611,19 @@ internal data class RawMessage(
                             senderBot = via_bot,
                             mediaGroupId = media_group_id,
                             senderBusinessBot = sender_business_bot,
-                            fromOffline = is_from_offline
+                            fromOffline = is_from_offline,
+                            cost = paid_star_count,
                         )
                     }
                     else -> error("Unknown type of chat: $chat")
                 }
             } ?: passport_data ?.let{
                 PassportMessage(
-                    messageId,
-                    chat,
-                    checkedFrom ?: from ?: error("For passport must be provided user, but got null"),
-                    date.asDate,
-                    passport_data
+                    messageId = messageId,
+                    chat = chat,
+                    from = checkedFrom ?: from ?: error("For passport must be provided user, but got null"),
+                    date = date.asDate,
+                    passportData = passport_data,
                 )
             } ?: error("Was not found supported type of data")
         } catch (e: Exception) {

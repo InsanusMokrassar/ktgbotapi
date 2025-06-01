@@ -16,7 +16,9 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
     val user: PreviewUser
     val userChatId: ChatId
     val date: TelegramDate
+    val rights: BusinessBotRights
     val canReply: Boolean
+        get() = rights.canReply
     val isEnabled: Boolean
 
     override val businessConnectionId: BusinessConnectionId
@@ -32,8 +34,8 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
         override val userChatId: ChatId,
         @SerialName(dateField)
         override val date: TelegramDate,
-        @SerialName(canReplyField)
-        override val canReply: Boolean,
+        @SerialName(rightsField)
+        override val rights: BusinessBotRights = BusinessBotRights(),
     ) : BusinessConnection {
         @EncodeDefault
         override val isEnabled: Boolean = true
@@ -49,8 +51,8 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
         override val userChatId: ChatId,
         @SerialName(dateField)
         override val date: TelegramDate,
-        @SerialName(canReplyField)
-        override val canReply: Boolean,
+        @SerialName(rightsField)
+        override val rights: BusinessBotRights = BusinessBotRights(),
     ) : BusinessConnection {
         @EncodeDefault
         override val isEnabled: Boolean = false

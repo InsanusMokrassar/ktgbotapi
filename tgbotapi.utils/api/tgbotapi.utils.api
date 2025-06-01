@@ -1057,6 +1057,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewAnyKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
+	public static final fun OrNull (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$PublicChat;
+	public static final fun OrThrow (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$PublicChat;
 	public static final fun ableToAddInAttachmentMenuChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat;
 	public static final fun ableToAddInAttachmentMenuChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat;
 	public static final fun abstractMessageCallbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/AbstractMessageCallbackQuery;
@@ -1221,8 +1223,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun chosenInlineResultOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;
 	public static final fun chosenInlineResultUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
 	public static final fun chosenInlineResultUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
-	public static final fun claimedOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Claimed;
-	public static final fun claimedOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Claimed;
 	public static final fun codeTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
 	public static final fun codeTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
 	public static final fun commonBotOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/CommonBot;
@@ -1263,8 +1263,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun contactContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/ContactContent;
 	public static final fun contentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public static final fun contentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
-	public static final fun contentOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
-	public static final fun contentOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
 	public static final fun copyTextButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun copyTextButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun coveredMediaFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CoveredMediaFile;
@@ -1273,8 +1271,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun coveredTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/CoveredTelegramMedia;
 	public static final fun createInvoiceLinkOrNull (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
 	public static final fun createInvoiceLinkOrThrow (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;)Ldev/inmo/tgbotapi/requests/send/payments/CreateInvoiceLink;
-	public static final fun createdOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
-	public static final fun createdOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
 	public static final fun cubeDiceAnimationTypeOrNull (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/CubeDiceAnimationType;
 	public static final fun cubeDiceAnimationTypeOrThrow (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/CubeDiceAnimationType;
 	public static final fun customBotActionOrNull (Ldev/inmo/tgbotapi/types/actions/BotAction;)Ldev/inmo/tgbotapi/types/actions/CustomBotAction;
@@ -1283,9 +1279,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun customDiceAnimationTypeOrThrow (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/CustomDiceAnimationType;
 	public static final fun customEmojiAnimatedStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CustomEmojiAnimatedSticker;
 	public static final fun customEmojiAnimatedStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CustomEmojiAnimatedSticker;
-	public static final fun customEmojiOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
 	public static final fun customEmojiOrNull (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ljava/lang/String;
-	public static final fun customEmojiOrThrow (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
 	public static final fun customEmojiOrThrow (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ljava/lang/String;
 	public static final fun customEmojiSimpleStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CustomEmojiSimpleSticker;
 	public static final fun customEmojiSimpleStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CustomEmojiSimpleSticker;
@@ -1389,8 +1383,16 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun extendedPublicChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedPublicChat;
 	public static final fun extendedSupergroupChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat;
 	public static final fun extendedSupergroupChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat;
+	public static final fun externalContentMediaOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public static final fun externalContentMediaOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public static final fun externalContentOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
+	public static final fun externalContentOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content;
+	public static final fun externalContentSimpleOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
+	public static final fun externalContentSimpleOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
 	public static final fun externalOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External;
 	public static final fun externalOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External;
+	public static final fun externalTextOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
+	public static final fun externalTextOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
 	public static final fun failedOrNull (Ldev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState;)Ldev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState$Failed;
 	public static final fun failedOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState;)Ldev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState$Failed;
 	public static final fun fileInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/FileInlineQueryResult;
@@ -1419,6 +1421,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun forumTopicEditedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicEdited;
 	public static final fun forumTopicReopenedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicReopened;
 	public static final fun forumTopicReopenedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicReopened;
+	public static final fun forwardInfoByUserOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$ByUser;
+	public static final fun forwardInfoByUserOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$ByUser;
 	public static final fun fragmentOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Fragment;
 	public static final fun fragmentOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Fragment;
 	public static final fun freeformGradientOrNull (Ldev/inmo/tgbotapi/types/BackgroundFill;)Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;
@@ -1447,16 +1451,42 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun generalForumTopicUnhiddenOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/GeneralForumTopicUnhidden;
 	public static final fun giftCodeOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$GiftCode;
 	public static final fun giftCodeOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$GiftCode;
+	public static final fun giftSentOrReceivedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived;
+	public static final fun giftSentOrReceivedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived;
+	public static final fun giftSentOrReceivedReceivedInBusinessAccountOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$ReceivedInBusinessAccount;
+	public static final fun giftSentOrReceivedReceivedInBusinessAccountOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$ReceivedInBusinessAccount;
+	public static final fun giftSentOrReceivedRegularCommonOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
+	public static final fun giftSentOrReceivedRegularCommonOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
+	public static final fun giftSentOrReceivedRegularOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular;
+	public static final fun giftSentOrReceivedRegularOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular;
+	public static final fun giftSentOrReceivedRegularReceivedInBusinessAccountOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
+	public static final fun giftSentOrReceivedRegularReceivedInBusinessAccountOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
+	public static final fun giftSentOrReceivedUniqueCommonOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
+	public static final fun giftSentOrReceivedUniqueCommonOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
+	public static final fun giftSentOrReceivedUniqueOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique;
+	public static final fun giftSentOrReceivedUniqueOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique;
+	public static final fun giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
+	public static final fun giftSentOrReceivedUniqueReceivedInBusinessAccountOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
+	public static final fun giveawayClaimedOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Claimed;
+	public static final fun giveawayClaimedOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Claimed;
 	public static final fun giveawayContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayContent;
 	public static final fun giveawayContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayContent;
+	public static final fun giveawayCreatedCompanionOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated$Companion;
+	public static final fun giveawayCreatedCompanionOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated$Companion;
+	public static final fun giveawayCreatedOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
 	public static final fun giveawayCreatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated;
+	public static final fun giveawayCreatedOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Created;
 	public static final fun giveawayCreatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated;
+	public static final fun giveawayCreatedStarsOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated$Stars;
+	public static final fun giveawayCreatedStarsOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayCreated$Stars;
 	public static final fun giveawayOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway;
 	public static final fun giveawayOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway;
 	public static final fun giveawayPrivateResultsOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
 	public static final fun giveawayPrivateResultsOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/giveaway/GiveawayPrivateResults;
 	public static final fun giveawayPublicResultsContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayPublicResultsContent;
 	public static final fun giveawayPublicResultsContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/GiveawayPublicResultsContent;
+	public static final fun giveawayUnclaimedOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Unclaimed;
+	public static final fun giveawayUnclaimedOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Unclaimed;
 	public static final fun gradientOrNull (Ldev/inmo/tgbotapi/types/BackgroundFill;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
 	public static final fun gradientOrThrow (Ldev/inmo/tgbotapi/types/BackgroundFill;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
 	public static final fun groupChatCreatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/GroupChatCreated;
@@ -1481,6 +1511,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun identityCardSecureValueOrThrow (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/IdentityCardSecureValue;
 	public static final fun identityWithReverseSideSecureValueOrNull (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/IdentityWithReverseSideSecureValue;
 	public static final fun identityWithReverseSideSecureValueOrThrow (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;)Ldev/inmo/tgbotapi/types/passport/decrypted/IdentityWithReverseSideSecureValue;
+	public static final fun if (Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAbleToAddInAttachmentMenuChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAbstractMessageCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAccessibleMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1563,7 +1594,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifChooseStickerAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChosenInlineResult (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChosenInlineResultUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifClaimed (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCodeTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommon (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommonBot (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1583,17 +1613,14 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifCommonUser (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifConnectedFromChannelGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContactContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifContent (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCopyTextButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCoveredMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCoveredTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCreateInvoiceLink (Ldev/inmo/tgbotapi/abstracts/CommonSendInvoiceData;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifCreated (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCubeDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomBotAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifCustomEmoji (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomEmoji (Ldev/inmo/tgbotapi/types/reactions/Reaction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomEmojiAnimatedSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCustomEmojiSimpleSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1648,6 +1675,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifExtendedPublicChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedSupergroupChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExternal (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifExternalContent (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifExternalContentMedia (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifExternalContentSimple (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifExternalText (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFailed (Ldev/inmo/tgbotapi/types/payments/stars/RevenueWithdrawalState;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFileInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1662,6 +1693,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifForumTopicCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifForumTopicEdited (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifForumTopicReopened (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifForwardInfoByUser (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFragment (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFreeformGradient (Ldev/inmo/tgbotapi/types/BackgroundFill;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifFromChannel (Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1676,11 +1708,24 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifGeneralForumTopicHidden (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGeneralForumTopicUnhidden (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiftCode (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceived (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedReceivedInBusinessAccount (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedRegular (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedRegularCommon (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedRegularReceivedInBusinessAccount (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedUnique (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedUniqueCommon (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiftSentOrReceivedUniqueReceivedInBusinessAccount (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveaway (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayClaimed (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayCreated (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayCreatedCompanion (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayCreatedStars (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayPrivateResults (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGiveawayPublicResultsContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGiveawayUnclaimed (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGradient (Ldev/inmo/tgbotapi/types/BackgroundFill;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupChatCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1757,7 +1802,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifMaskSimpleSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskVideoSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifMedia (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMediaCollectionContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMediaContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMediaContentVariant (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1794,6 +1838,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPaidMediaInfoContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPaidMediaPurchased (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPaidMediaPurchasedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPaidMessagePriceChanged (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPassport (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPassportElementErrorDataField (Ldev/inmo/tgbotapi/types/passport/PassportElementError;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPassportElementErrorFile (Ldev/inmo/tgbotapi/types/passport/PassportElementError;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1827,6 +1872,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPinnedMessage (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPlayableMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollAnswer (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPollAnswerAnonymous (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPollAnswerPublic (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollAnswerUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1834,6 +1881,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPossiblyForwardedMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyMediaGroupMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyOfflineMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPossiblyPaidMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyPaymentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyPremiumChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblySentViaBotCommonMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1864,7 +1912,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPrivateEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifProximityAlertTriggered (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPublicChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifPublicChat (Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPublicChatEvent (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPublicContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifQuizPoll (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1872,7 +1919,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifRecordVideoNoteAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRecordVoiceAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRefundedPaymentEvent (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifRegular (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRegularAnimatedSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRegularPoll (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRegularSimpleSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1897,7 +1943,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifShippingQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifShippingQueryUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSignedMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifSimple (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSizedInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSizedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSizedTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1938,7 +1983,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifTelegramPaidMediaVideo (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTemporalRegistrationSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTemporaryRegistration (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifText (Ldev/inmo/tgbotapi/types/ReplyInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTextContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTextLinkTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTextMentionTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1955,7 +1999,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifTypingAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifURLInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifURLTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifUnclaimed (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUnconnectedFromChannelGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUnderlineTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUnknown (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2020,8 +2063,14 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifWithDocument (Ldev/inmo/tgbotapi/types/BackgroundType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithInputMessageContentInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithKeywords (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWithKeywordsCustomEmoji (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWithKeywordsRegular (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithUser (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWriteAccessAllowed (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWriteAccessAllowedFromAttachmentMenu (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWriteAccessAllowedFromRequest (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWriteAccessAllowedFromWebAppLink (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWriteAccessAllowedOther (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun inaccessibleMessageCallbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery;
 	public static final fun inaccessibleMessageCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery;
 	public static final fun inaccessibleMessageDataCallbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;
@@ -2164,8 +2213,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun mediaGroupMemberTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/MediaGroupMemberTelegramMedia;
 	public static final fun mediaGroupPartContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupPartContent;
 	public static final fun mediaGroupPartContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupPartContent;
-	public static final fun mediaOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
-	public static final fun mediaOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
 	public static final fun memberChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/MemberChatMember;
 	public static final fun memberChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/MemberChatMember;
 	public static final fun mentionTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MentionTextSource;
@@ -2222,6 +2269,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun paidMediaPurchasedOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/payments/PaidMediaPurchased;
 	public static final fun paidMediaPurchasedUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/PaidMediaPurchasedUpdate;
 	public static final fun paidMediaPurchasedUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/PaidMediaPurchasedUpdate;
+	public static final fun paidMessagePriceChangedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/PaidMessagePriceChanged;
+	public static final fun paidMessagePriceChangedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/PaidMessagePriceChanged;
 	public static final fun paidOrNull (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid;
 	public static final fun paidOrThrow (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ldev/inmo/tgbotapi/types/reactions/Reaction$Paid;
 	public static final fun passportElementErrorDataFieldOrNull (Ldev/inmo/tgbotapi/types/passport/PassportElementError;)Ldev/inmo/tgbotapi/types/passport/PassportElementErrorDataField;
@@ -2288,8 +2337,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun pinnedMessageOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/PinnedMessage;
 	public static final fun playableMediaFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PlayableMediaFile;
 	public static final fun playableMediaFileOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PlayableMediaFile;
+	public static final fun pollAnswerAnonymousOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer$Anonymous;
+	public static final fun pollAnswerAnonymousOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer$Anonymous;
 	public static final fun pollAnswerOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer;
 	public static final fun pollAnswerOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer;
+	public static final fun pollAnswerPublicOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer$Public;
+	public static final fun pollAnswerPublicOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/polls/PollAnswer$Public;
 	public static final fun pollAnswerUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
 	public static final fun pollAnswerUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
 	public static final fun pollContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/PollContent;
@@ -2304,6 +2357,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun possiblyMediaGroupMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyMediaGroupMessage;
 	public static final fun possiblyOfflineMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage;
 	public static final fun possiblyOfflineMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage;
+	public static final fun possiblyPaidMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaidMessage;
+	public static final fun possiblyPaidMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaidMessage;
 	public static final fun possiblyPaymentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaymentMessage;
 	public static final fun possiblyPaymentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaymentMessage;
 	public static final fun possiblyPremiumChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PossiblyPremiumChat;
@@ -2365,9 +2420,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun publicChatEventOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent;
 	public static final fun publicChatEventOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent;
 	public static final fun publicChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PublicChat;
-	public static final fun publicChatOrNull (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$PublicChat;
 	public static final fun publicChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PublicChat;
-	public static final fun publicChatOrThrow (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$PublicChat;
 	public static final fun publicContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PublicContentMessage;
 	public static final fun publicContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PublicContentMessage;
 	public static final fun quizPollOrNull (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
@@ -2382,8 +2435,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun refundedPaymentEventOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/payments/RefundedPaymentEvent;
 	public static final fun regularAnimatedStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/RegularAnimatedSticker;
 	public static final fun regularAnimatedStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/RegularAnimatedSticker;
-	public static final fun regularOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
-	public static final fun regularOrThrow (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
 	public static final fun regularPollOrNull (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
 	public static final fun regularPollOrThrow (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
 	public static final fun regularSimpleStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/RegularSimpleSticker;
@@ -2430,8 +2481,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun shippingQueryUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;
 	public static final fun signedMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/SignedMessage;
 	public static final fun signedMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/SignedMessage;
-	public static final fun simpleOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
-	public static final fun simpleOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
 	public static final fun sizedInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/SizedInlineQueryResult;
 	public static final fun sizedInlineQueryResultOrThrow (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/SizedInlineQueryResult;
 	public static final fun sizedMediaFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/SizedMediaFile;
@@ -2518,8 +2567,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun textLinkTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
 	public static final fun textMentionTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun textMentionTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun textOrNull (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
-	public static final fun textOrThrow (Ldev/inmo/tgbotapi/types/ReplyInfo;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
 	public static final fun textedContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/TextedContent;
 	public static final fun textedContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/TextedContent;
 	public static final fun textedMediaContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/TextedMediaContent;
@@ -2546,8 +2593,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun uRLInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
 	public static final fun uRLTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/URLTextSource;
 	public static final fun uRLTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/URLTextSource;
-	public static final fun unclaimedOrNull (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Unclaimed;
-	public static final fun unclaimedOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Giveaway$Unclaimed;
 	public static final fun unconnectedFromChannelGroupContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/UnconnectedFromChannelGroupContentMessage;
 	public static final fun unconnectedFromChannelGroupContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/UnconnectedFromChannelGroupContentMessage;
 	public static final fun underlineTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/UnderlineTextSource;
@@ -2674,12 +2719,24 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun withDocumentOrThrow (Ldev/inmo/tgbotapi/types/BackgroundType;)Ldev/inmo/tgbotapi/types/BackgroundType$WithDocument;
 	public static final fun withInputMessageContentInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithInputMessageContentInlineQueryResult;
 	public static final fun withInputMessageContentInlineQueryResultOrThrow (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithInputMessageContentInlineQueryResult;
+	public static final fun withKeywordsCustomEmojiOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
+	public static final fun withKeywordsCustomEmojiOrThrow (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
 	public static final fun withKeywordsOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords;
 	public static final fun withKeywordsOrThrow (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords;
+	public static final fun withKeywordsRegularOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
+	public static final fun withKeywordsRegularOrThrow (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
 	public static final fun withUserOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/abstracts/WithUser;
 	public static final fun withUserOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/abstracts/WithUser;
+	public static final fun writeAccessAllowedFromAttachmentMenuOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromAttachmentMenu;
+	public static final fun writeAccessAllowedFromAttachmentMenuOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromAttachmentMenu;
+	public static final fun writeAccessAllowedFromRequestOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromRequest;
+	public static final fun writeAccessAllowedFromRequestOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromRequest;
+	public static final fun writeAccessAllowedFromWebAppLinkOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromWebAppLink;
+	public static final fun writeAccessAllowedFromWebAppLinkOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$FromWebAppLink;
 	public static final fun writeAccessAllowedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed;
 	public static final fun writeAccessAllowedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed;
+	public static final fun writeAccessAllowedOtherOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$Other;
+	public static final fun writeAccessAllowedOtherOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessAllowed$Other;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/CommonMessageConversationsKt {

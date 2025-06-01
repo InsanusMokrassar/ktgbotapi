@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Gifts(
     @SerialName(giftsField)
-    val gifts: List<Gift>
+    val gifts: List<Gift.Regular>
 )

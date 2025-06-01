@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -20,10 +20,18 @@ sealed interface ExtendedChat : Chat {
     val profileBackgroundCustomEmojiId: CustomEmojiId?
     val maxReactionsCount: Int
 
-    /**
-     * Represent `can_send_gifts` field
-     */
+    val acceptedGiftTypes: AcceptedGiftTypes
+
+    @Deprecated(
+        message = "Telegram Bot API v9.0 introduced the new field, `acceptedGiftTypes`, to allow granular" +
+                " control over which types of gifts user, bot, or chat can accept.",
+        replaceWith = ReplaceWith("acceptedGiftTypes.uniqueGifts || acceptedGiftTypes.unlimitedGifts || acceptedGiftTypes.limitedGifts || acceptedGiftTypes.premiumSubscription")
+    )
     val canReceiveGifts: Boolean
+        get() = acceptedGiftTypes.uniqueGifts ||
+                acceptedGiftTypes.unlimitedGifts ||
+                acceptedGiftTypes.limitedGifts ||
+                acceptedGiftTypes.premiumSubscription
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)
@@ -63,6 +71,7 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
 sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotChat {
     val description: String
     val inviteLink: String?
+
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val pinnedMessage: Message?
     val membersHidden: Boolean

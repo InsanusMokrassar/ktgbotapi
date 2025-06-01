@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
 
+
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
@@ -19,6 +20,7 @@ typealias GooglePlaceType = String
 typealias MembersLimit = Int
 
 typealias Seconds = Int
+typealias DoubleSeconds = Double
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
 typealias UnixTimeStamp = LongSeconds
@@ -54,6 +56,7 @@ val horizontalAccuracyLimit = 0F .. 1500F
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 .. 1024
+val storyCaptionLength = 0 .. 2048
 val textLength = 1 .. 4096
 val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
@@ -186,6 +189,19 @@ const val hasMainWebAppField = "has_main_web_app"
 const val canJoinGroupsField = "can_join_groups"
 const val canReadAllGroupMessagesField = "can_read_all_group_messages"
 const val canReplyField = "can_reply"
+const val canReadMessagesField = "can_read_messages"
+const val canDeleteOutgoingMessagesField = "can_delete_outgoing_messages"
+const val canDeleteAllMessagesField = "can_delete_all_messages"
+const val canEditNameField = "can_edit_name"
+const val canEditBioField = "can_edit_bio"
+const val canEditProfilePhotoField = "can_edit_profile_photo"
+const val canEditUsernameField = "can_edit_username"
+const val canChangeGiftSettingsField = "can_change_gift_settings"
+const val canViewGiftsAndStarsField = "can_view_gifts_and_stars"
+const val canConvertGiftsToStarsField = "can_convert_gifts_to_stars"
+const val canTransferAndUpgradeGiftsField = "can_transfer_and_upgrade_gifts"
+const val canTransferStarsField = "can_transfer_stars"
+const val canManageStoriesField = "can_manage_stories"
 const val supportInlineQueriesField = "supports_inline_queries"
 const val canConnectToBusinessField = "can_connect_to_business"
 const val textEntitiesField = "text_entities"
@@ -262,7 +278,9 @@ const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
 const val switchInlineQueryChosenChatField = "switch_inline_query_chosen_chat"
 const val switchInlineQueryField = "switch_inline_query"
 const val isAnimatedField = "is_animated"
+const val isAnimationField = "is_animation"
 const val isVideoField = "is_video"
+const val coverFrameTimeStampField = "cover_frame_timestamp"
 const val inviteLinkField = "invite_link"
 const val viaChatFolderInviteLinkField = "via_chat_folder_invite_link"
 const val viaJoinRequestField = "via_join_request"
@@ -486,19 +504,39 @@ const val questionParseModeField = "question_parse_mode"
 const val optionsField = "options"
 const val payField = "pay"
 const val permissionsField = "permissions"
+const val premiumSubscriptionDurationField = "premium_subscription_duration"
+const val transactionTypeField = "transaction_type"
 const val typeField = "type"
 const val valueField = "value"
 const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+
+const val isPublicField = "is_public"
+
 const val giftField = "gift"
 const val giftsField = "gifts"
+const val rarityPerMilleField = "rarity_per_mille"
+const val acceptedGiftTypesField = "accepted_gift_types"
+const val ownedGiftIdField = "owned_gift_id"
+const val convertStarCountField = "convert_star_count"
+const val prepaidUpgradeStarCountField = "prepaid_upgrade_star_count"
+const val canBeUpgradedField = "can_be_upgraded"
+const val isPrivateField = "is_private"
+const val transferStarCountField = "transfer_star_count"
+const val newOwnerChatIdField = "new_owner_chat_id"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
+
+const val xPercentageField = "x_percentage"
+const val yPercentageField = "y_percentage"
+const val widthPercentageField = "width_percentage"
+const val heightPercentageField = "height_percentage"
+const val cornerRadiusPercentageField = "corner_radius_percentage"
 
 const val maxTipAmountField = "max_tip_amount"
 const val suggestedTipAmountsField = "suggested_tip_amounts"
@@ -542,6 +580,7 @@ const val totalCountField = "total_count"
 const val remainingCountField = "remaining_count"
 const val stateField = "state"
 const val cityField = "city"
+const val streetField = "street"
 const val firstStreetLineField = "street_line1"
 const val secondStreetLineField = "street_line2"
 const val postCodeField = "post_code"
@@ -586,6 +625,11 @@ const val animationField = "animation"
 const val voiceField = "voice"
 const val videoNoteField = "video_note"
 const val mediaField = "media"
+
+const val mainFrameTimestampField = "main_frame_timestamp"
+
+const val paidMessageStarCountField = "paid_message_star_count"
+const val paidStarCountField = "paid_star_count"
 
 const val disableEditMessageField = "disable_edit_message"
 const val scoreField = "score"
@@ -652,6 +696,7 @@ const val onlyNewMembersField = "only_new_members"
 const val hasPublicWinnersField = "has_public_winners"
 const val prizeDescriptionField = "prize_description"
 const val premiumSubscriptionMonthCountField = "premium_subscription_month_count"
+const val monthCountField = "month_count"
 const val winnersField = "winners"
 const val additionalChatCountField = "additional_chat_count"
 const val unclaimedPrizeCountField = "unclaimed_prize_count"
@@ -664,16 +709,46 @@ const val upgradeStarCountField = "upgrade_star_count"
 const val payToUpgradeField = "pay_for_upgrade"
 const val paidMediaField = "paid_media"
 
+const val centerColorField = "center_color"
+const val edgeColorField = "edge_color"
+const val symbolColorField = "symbol_color"
+const val textColorField = "text_color"
+
+const val baseNameField = "base_name"
+const val numberField = "number"
+const val modelField = "model"
+const val symbolField = "symbol"
+const val backdropField = "backdrop"
+
+const val unlimitedGiftsField = "unlimited_gifts"
+const val limitedGiftsField = "limited_gifts"
+const val uniqueGiftsField = "unique_gifts"
+const val premiumSubscriptionField = "premium_subscription"
+
+const val excludeUnsavedField = "exclude_unsaved"
+const val excludeSavedField = "exclude_saved"
+const val excludeUnlimitedField = "exclude_unlimited"
+const val excludeLimitedField = "exclude_limited"
+const val excludeUniqueField = "exclude_unique"
+const val sortByPriceField = "sort_by_price"
+
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
 const val businessOpeningHoursField = "business_opening_hours"
+
+const val storyIdField = "story_id"
+const val showGiftButtonField = "show_gift_button"
 
 const val colorField = "color"
 const val colorsField = "colors"
 const val topColorField = "top_color"
 const val bottomColorField = "bottom_color"
 const val rotationAngleField = "rotation_angle"
+const val contentField = "content"
+const val activePeriodField = "active_period"
+const val areasField = "areas"
+const val postToChatPageField = "post_to_chat_page"
 
 const val fillField = "fill"
 const val darkThemeDimmingField = "dark_theme_dimming"
@@ -686,3 +761,13 @@ const val themeNameField = "theme_name"
 const val dayField = "day"
 const val monthField = "month"
 const val yearField = "year"
+
+const val rawField = "raw"
+
+const val reactionTypeField = "reaction_type"
+
+const val isDarkField = "is_dark"
+const val isFlippedField = "is_flipped"
+const val temperatureField = "temperature"
+const val backgroundColorField = "background_color"
+const val keepOriginalDetailsField = "keep_original_details"

@@ -48,12 +48,20 @@ private String getCurrentVersionChangelog() {
     return changelogDataOS.toString().trim()
 }
 
-if (new File(projectDir, "secret.gradle").exists()) {
-    apply from: './secret.gradle'
+
+def githubTokenVariableName = "GITHUB_RELEASE_TOKEN"
+def githubTokenVariableFromEnv = System.getenv(githubTokenVariableName)
+
+def secretFile = new File(projectDir, "secret.gradle")
+if (secretFile.exists() || project.hasProperty(githubTokenVariableName) || (githubTokenVariableFromEnv != "" && githubTokenVariableFromEnv != null)) {
+    if (secretFile.exists()) {
+        apply from: './secret.gradle'
+    }
     apply plugin: "com.github.breadmoirai.github-release"
+    def githubReleaseToken = project.hasProperty(githubTokenVariableName) ? project.property(githubTokenVariableName).toString() : githubTokenVariableFromEnv
 
     githubRelease {
-        token "${project.property('GITHUB_RELEASE_TOKEN')}"
+        token githubReleaseToken
 
         owner = "InsanusMokrassar"
         repo = "TelegramBotAPI"

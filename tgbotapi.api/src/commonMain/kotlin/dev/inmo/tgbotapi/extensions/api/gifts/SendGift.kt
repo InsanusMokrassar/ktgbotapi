@@ -22,7 +22,7 @@ public suspend fun TelegramBot.sendGift(
     )
     userId: UserId,
     @GenerationVariant(
-        Gift::class,
+        Gift.Regular::class,
         "id",
         "gift"
     )
@@ -49,7 +49,7 @@ public suspend fun TelegramBot.sendGiftToChat(
     )
     chatId: ChatIdentifier,
     @GenerationVariant(
-        Gift::class,
+        Gift.Regular::class,
         "id",
         "gift"
     )
@@ -76,7 +76,7 @@ public suspend fun TelegramBot.sendGift(
     )
     userId: UserId,
     @GenerationVariant(
-        Gift::class,
+        Gift.Regular::class,
         "id",
         "gift"
     )
@@ -101,7 +101,7 @@ public suspend fun TelegramBot.sendGiftToChat(
     )
     chatId: ChatIdentifier,
     @GenerationVariant(
-        Gift::class,
+        Gift.Regular::class,
         "id",
         "gift"
     )

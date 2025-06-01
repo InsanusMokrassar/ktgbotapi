@@ -15,8 +15,8 @@ internal data class RawBusinessConnection(
     val userChatId: ChatId,
     @SerialName(dateField)
     val date: TelegramDate,
-    @SerialName(canReplyField)
-    val canReply: Boolean,
+    @SerialName(rightsField)
+    val rights: BusinessBotRights = BusinessBotRights(),
     @SerialName(isEnabledField)
     val isEnabled: Boolean
 ) {
@@ -27,14 +27,14 @@ internal data class RawBusinessConnection(
                 user = user,
                 userChatId = userChatId,
                 date = date,
-                canReply = canReply
+                rights = rights
             )
             false -> BusinessConnection.Disabled(
                 id = id,
                 user = user,
                 userChatId = userChatId,
                 date = date,
-                canReply = canReply
+                rights = rights
             )
         }
 
@@ -43,7 +43,7 @@ internal data class RawBusinessConnection(
         user = businessConnection.user,
         userChatId = businessConnection.userChatId,
         date = businessConnection.date,
-        canReply = businessConnection.canReply,
+        rights = businessConnection.rights,
         isEnabled = businessConnection.isEnabled,
     )
 }

@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import kotlinx.serialization.SerialName
 
 data class BusinessContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
@@ -28,6 +29,8 @@ data class BusinessContentMessageImpl<T: MessageContent>(
     override val mediaGroupId: MediaGroupId?,
     override val senderBusinessBot: PreviewBot?,
     override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
 ) : BusinessContentMessage<T> {
     constructor(
         messageId: MessageId,
