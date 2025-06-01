@@ -2,6 +2,15 @@
 
 ## 25.0.0
 
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.0](https://core.telegram.org/bots/api-changelog#april-11-2025)**
+
+* `Core`:
+  * Previously named `Gift` now presented by `Gift.Regular`
+  * Fixes in `MultipartRequestCallFactory` for correct handling of all `MultipartRequest.Common` inheritors
+  * `Username` now can be safely created with `Username.prepare`
+  * Add extensions `String.splitFor(Text|Caption|StoryCaption)` for preparing several texts for several
+    messages/captions/story captions
+
 ## 24.0.2
 
 * `Version`:
