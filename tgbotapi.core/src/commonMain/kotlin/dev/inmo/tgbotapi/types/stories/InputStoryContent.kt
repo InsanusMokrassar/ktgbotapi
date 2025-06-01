@@ -12,11 +12,31 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonObject
+import kotlin.jvm.JvmInline
 
-@Serializable
+@Serializable(InputStoryContent.Companion::class)
 sealed interface InputStoryContent {
+    @Serializable(Type.Companion::class)
     sealed interface Type {
         val name: String
+        companion object : KSerializer<Type> {
+            @Serializable
+            @JvmInline
+            value class Unknown(override val name: String) : Type
+            override val descriptor: SerialDescriptor
+                get() = String.serializer().descriptor
+
+            override fun serialize(encoder: Encoder, value: Type) { encoder.encodeString(value.name) }
+
+            override fun deserialize(decoder: Decoder): Type {
+                val name = decoder.decodeString()
+                return when (name) {
+                    Photo.Type.name -> Photo.Type
+                    Video.Type.name -> Video.Type
+                    else -> Unknown(name)
+                }
+            }
+        }
     }
     val type : Type
     val media: Pair<String, MultipartFile>
@@ -27,13 +47,14 @@ sealed interface InputStoryContent {
         val photo: MultipartFile
     ) : InputStoryContent {
         @EncodeDefault
-        override val type: Type = Companion
+        override val type: Type = Type
         override val media: Pair<String, MultipartFile>
             get() = photo.fileId to photo
 
-        companion object : Type {
-            override val name: String
-                get() = "photo"
+        @Serializable(InputStoryContent.Type.Companion::class)
+        object Type : InputStoryContent.Type {
+            @EncodeDefault
+            override val name: String = "photo"
         }
     }
     @Serializable
@@ -48,14 +69,16 @@ sealed interface InputStoryContent {
         val isAnimation: Boolean = false
     ) : InputStoryContent {
         @EncodeDefault
-        override val type: Type = Companion
+        override val type: Type = Type
         override val media: Pair<String, MultipartFile>
             get() = video.fileId to video
 
-        companion object : Type {
-            override val name: String
-                get() = "video"
+        @Serializable(InputStoryContent.Type.Companion::class)
+        object Type : InputStoryContent.Type {
+            @EncodeDefault
+            override val name: String = "video"
         }
+
     }
 
     companion object : KSerializer<InputStoryContent> {

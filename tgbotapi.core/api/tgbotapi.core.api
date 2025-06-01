@@ -28201,7 +28201,8 @@ public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo : dev
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getMedia ()Lkotlin/Pair;
 	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
-	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Type;
+	public synthetic fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -28216,13 +28217,57 @@ public synthetic class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$$
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Companion : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Type : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Photo$Type;
 	public fun getName ()Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion;
 	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-Nkg-lXw (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-QzjOhRc (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Type$Companion$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video : dev/inmo/tgbotapi/types/stories/InputStoryContent {
@@ -28239,7 +28284,8 @@ public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video : dev
 	public final fun getCoverFrameTimeStamp ()Ljava/lang/Double;
 	public final fun getDuration ()Ljava/lang/Double;
 	public fun getMedia ()Lkotlin/Pair;
-	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public synthetic fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Type;
+	public fun getType ()Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Type;
 	public final fun getVideo ()Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
 	public fun hashCode ()I
 	public final fun isAnimation ()Z
@@ -28256,7 +28302,12 @@ public synthetic class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$$
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Companion : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Type : dev/inmo/tgbotapi/types/stories/InputStoryContent$Type {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stories/InputStoryContent$Video$Type;
 	public fun getName ()Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }

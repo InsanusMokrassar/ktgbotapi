@@ -2419,7 +2419,9 @@ public final class dev/inmo/tgbotapi/extensions/api/stories/PostStoryKt {
 	public static final fun postStory-TVoEmL0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun postStory-TVoEmL0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;Ljava/util/List;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun postStory-rseRIdU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun postStory-rseRIdU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;ZZLdev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun postStory-rseRIdU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun postStory-rseRIdU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;ZZLdev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetCustomEmojiStickerSetThumbKt {

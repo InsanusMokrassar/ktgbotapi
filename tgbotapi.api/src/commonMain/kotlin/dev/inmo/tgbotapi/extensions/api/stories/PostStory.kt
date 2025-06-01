@@ -9,6 +9,8 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.stories.InputStoryContent
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.stories.StoryArea
+import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
+import dev.inmo.tgbotapi.utils.buildEntities
 
 public suspend fun TelegramBot.postStory(
     businessConnectionId: BusinessConnectionId,
@@ -24,6 +26,27 @@ public suspend fun TelegramBot.postStory(
         content = content,
         activePeriod = activePeriod,
         textSources = textSources,
+        areas = areas,
+        postToChatPage = postToChatPage,
+        protectContent = protectContent
+    )
+)
+
+public suspend fun TelegramBot.postStory(
+    businessConnectionId: BusinessConnectionId,
+    content: InputStoryContent,
+    activePeriod: Seconds,
+    areas: List<StoryArea> = emptyList(),
+    postToChatPage: Boolean = false,
+    protectContent: Boolean = false,
+    separator: TextSource? = null,
+    textBuilder: EntitiesBuilderBody
+): Story = execute(
+    PostStory(
+        businessConnectionId = businessConnectionId,
+        content = content,
+        activePeriod = activePeriod,
+        textSources = buildEntities(separator, textBuilder),
         areas = areas,
         postToChatPage = postToChatPage,
         protectContent = protectContent
