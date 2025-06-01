@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.stories.InputStoryContent
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.stories.StoryArea
+import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
+import dev.inmo.tgbotapi.utils.buildEntities
 
 public suspend fun TelegramBot.editStory(
     businessConnectionId: BusinessConnectionId,
@@ -23,6 +25,23 @@ public suspend fun TelegramBot.editStory(
         storyId = storyId,
         content = content,
         textSources = textSources,
+        areas = areas,
+    )
+)
+
+public suspend fun TelegramBot.editStory(
+    businessConnectionId: BusinessConnectionId,
+    storyId: StoryId,
+    content: InputStoryContent,
+    areas: List<StoryArea> = emptyList(),
+    separator: TextSource? = null,
+    textBuilder: EntitiesBuilderBody
+): Story = execute(
+    EditStory(
+        businessConnectionId = businessConnectionId,
+        storyId = storyId,
+        content = content,
+        textSources = buildEntities(separator, textBuilder),
         areas = areas,
     )
 )
