@@ -10187,9 +10187,9 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final fun getPollOptionTextLength ()Lkotlin/ranges/IntRange;
 	public static final fun getPollOptionsLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getPollQuestionTextLength ()Lkotlin/ranges/IntRange;
-	public static final fun getPostCaptionLength ()Lkotlin/ranges/IntRange;
 	public static final fun getSlotMachineDiceResultLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getStickerKeywordLengthLimit ()Lkotlin/ranges/IntRange;
+	public static final fun getStoryCaptionLength ()Lkotlin/ranges/IntRange;
 	public static final fun getSuggestedTipAmountsLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getTelegramInlineModeGifPermittedMimeTypes ()Ljava/util/List;
 	public static final fun getTextLength ()Lkotlin/ranges/IntRange;
@@ -24372,6 +24372,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/TextSourceKt {
 	public static final fun splitForCaption (Ljava/util/List;)Ljava/util/List;
 	public static final fun splitForMessage (Ljava/util/List;Lkotlin/ranges/IntRange;Ljava/lang/Integer;)Ljava/util/List;
 	public static synthetic fun splitForMessage$default (Ljava/util/List;Lkotlin/ranges/IntRange;Ljava/lang/Integer;ILjava/lang/Object;)Ljava/util/List;
+	public static final fun splitForStoryCaption (Ljava/util/List;)Ljava/util/List;
 	public static final fun splitForText (Ljava/util/List;)Ljava/util/List;
 }
 
@@ -29810,6 +29811,7 @@ public final class dev/inmo/tgbotapi/utils/extensions/StringKt {
 	public static final fun escapeMarkdownV2Link (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun escapeMarkdownV2PreAndCode (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun splitForCaption (Ljava/lang/String;)Ljava/util/List;
+	public static final fun splitForStoryCaption (Ljava/lang/String;)Ljava/util/List;
 	public static final fun splitForText (Ljava/lang/String;)Ljava/util/List;
 	public static final fun toHtml (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun toMarkdown (Ljava/lang/String;)Ljava/lang/String;
