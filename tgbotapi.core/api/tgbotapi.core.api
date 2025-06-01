@@ -10187,6 +10187,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final fun getPollOptionTextLength ()Lkotlin/ranges/IntRange;
 	public static final fun getPollOptionsLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getPollQuestionTextLength ()Lkotlin/ranges/IntRange;
+	public static final fun getPostCaptionLength ()Lkotlin/ranges/IntRange;
 	public static final fun getSlotMachineDiceResultLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getStickerKeywordLengthLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getSuggestedTipAmountsLimit ()Lkotlin/ranges/IntRange;
