@@ -2313,13 +2313,13 @@ public final class dev/inmo/tgbotapi/requests/business_connection/SetBusinessAcc
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance : dev/inmo/tgbotapi/requests/abstracts/BusinessRequest$Simple {
-	public static final field Companion Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance$Companion;
+public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars : dev/inmo/tgbotapi/requests/abstracts/BusinessRequest$Simple {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars$Companion;
 	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-T-_HSQI ()Ljava/lang/String;
 	public final fun component2 ()I
-	public final fun copy-8asU4bo (Ljava/lang/String;I)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance;
-	public static synthetic fun copy-8asU4bo$default (Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance;Ljava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance;
+	public final fun copy-8asU4bo (Ljava/lang/String;I)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars;
+	public static synthetic fun copy-8asU4bo$default (Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars;Ljava/lang/String;IILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
@@ -2331,17 +2331,17 @@ public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusine
 	public fun toString ()Ljava/lang/String;
 }
 
-public synthetic class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance$$serializer;
+public synthetic class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStarBalance$Companion {
+public final class dev/inmo/tgbotapi/requests/business_connection/TransferBusinessAccountStars$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

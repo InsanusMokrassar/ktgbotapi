@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.payments.stars
 
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -15,26 +16,31 @@ sealed interface TransactionType {
 
     @Serializable
     data object InvoicePayment : TransactionType {
+        @EncodeDefault
         override val name = "invoice_payment"
     }
 
     @Serializable
     data object PaidMediaPayment : TransactionType {
+        @EncodeDefault
         override val name = "paid_media_payment"
     }
 
     @Serializable
     data object GiftPurchase : TransactionType {
+        @EncodeDefault
         override val name = "gift_purchase"
     }
 
     @Serializable
     data object PremiumPurchase : TransactionType {
+        @EncodeDefault
         override val name = "premium_purchase"
     }
 
     @Serializable
     data object BusinessAccountTransfer : TransactionType {
+        @EncodeDefault
         override val name = "business_account_transfer"
     }
 

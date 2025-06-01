@@ -396,7 +396,7 @@ public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountU
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/TransferBusinessAccountStarBalanceKt {
-	public static final fun transferBusinessAccountStarBalance-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun transferBusinessAccountStars-wC12z2M (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/TransferGiftKt {
@@ -1172,7 +1172,9 @@ public final class dev/inmo/tgbotapi/extensions/api/gifts/GetAvailableGiftsKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/gifts/GiftPremiumSubscriptionKt {
+	public static final fun giftPremiumSubscription-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILdev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun giftPremiumSubscription-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun giftPremiumSubscription-VjR9mJc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILdev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun giftPremiumSubscription-VjR9mJc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun giftPremiumSubscription-ySMgKnk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun giftPremiumSubscription-ySMgKnk$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JIILjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
