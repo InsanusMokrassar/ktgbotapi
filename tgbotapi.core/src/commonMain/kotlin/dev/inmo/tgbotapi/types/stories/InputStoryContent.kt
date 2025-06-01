@@ -29,7 +29,7 @@ sealed interface InputStoryContent {
         @EncodeDefault
         override val type: Type = Companion
         override val media: Pair<String, MultipartFile>
-            get() = photoField to photo
+            get() = photo.fileId to photo
 
         companion object : Type {
             override val name: String
@@ -50,7 +50,7 @@ sealed interface InputStoryContent {
         @EncodeDefault
         override val type: Type = Companion
         override val media: Pair<String, MultipartFile>
-            get() = videoField to video
+            get() = video.fileId to video
 
         companion object : Type {
             override val name: String

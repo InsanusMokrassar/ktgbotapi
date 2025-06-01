@@ -21,7 +21,11 @@ class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFa
     ): T? {
         return when (request) {
             !is MultipartRequest -> null
-            is MultipartRequest.Common -> localSimpleRequestCallFactory.makeCall(client, urlsKeeper, request.data, jsonFormatter)
+            is MultipartRequest.Common -> if (request.mediaMap.isEmpty()) {
+                localSimpleRequestCallFactory.makeCall(client, urlsKeeper, request.data, jsonFormatter)
+            } else {
+                super.makeCall(client, urlsKeeper, request, jsonFormatter)
+            }
             else -> super.makeCall(client, urlsKeeper, request, jsonFormatter)
         }
     }

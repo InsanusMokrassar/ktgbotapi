@@ -17,7 +17,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonObject
 
-@Serializable
+@Serializable(InputProfilePhoto.Companion::class)
 sealed interface InputProfilePhoto {
     val type: String
     val mediaPair: Pair<String, MultipartFile>
@@ -27,7 +27,7 @@ sealed interface InputProfilePhoto {
         val photo: MultipartFile
     ) : InputProfilePhoto {
         override val mediaPair: Pair<String, MultipartFile>
-            get() = photoField to photo
+            get() = photo.fileId to photo
         @EncodeDefault
         override val type: String = "static"
     }
@@ -39,7 +39,7 @@ sealed interface InputProfilePhoto {
         val mainFrameTimestamp: DoubleSeconds? = null
     ) : InputProfilePhoto {
         override val mediaPair: Pair<String, MultipartFile>
-            get() = animationField to animation
+            get() = animation.fileId to animation
         @EncodeDefault
         override val type: String = "animated"
     }
