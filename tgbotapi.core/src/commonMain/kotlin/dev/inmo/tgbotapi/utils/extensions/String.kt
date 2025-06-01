@@ -1,5 +1,8 @@
 package dev.inmo.tgbotapi.utils.extensions
 
+import dev.inmo.tgbotapi.types.captionLength
+import dev.inmo.tgbotapi.types.textLength
+
 fun String.toMarkdown(): String {
     return replace(
         "*",
@@ -53,3 +56,6 @@ fun String.toHtml(): String = replace(
     "&",
     "&amp;"
 )
+
+fun String.splitForText() = chunked(textLength.last)
+fun String.splitForCaption() = chunked(captionLength.last)

@@ -29808,6 +29808,8 @@ public final class dev/inmo/tgbotapi/utils/extensions/StringKt {
 	public static final fun escapeMarkdownV2Common (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun escapeMarkdownV2Link (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun escapeMarkdownV2PreAndCode (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun splitForCaption (Ljava/lang/String;)Ljava/util/List;
+	public static final fun splitForText (Ljava/lang/String;)Ljava/util/List;
 	public static final fun toHtml (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun toMarkdown (Ljava/lang/String;)Ljava/lang/String;
 }

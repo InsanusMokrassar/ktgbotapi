@@ -55,7 +55,7 @@ val horizontalAccuracyLimit = 0F .. 1500F
 
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
-val captionLength = 0 .. 1024
+val captionLength = 0 .. 2048
 val textLength = 1 .. 4096
 val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
