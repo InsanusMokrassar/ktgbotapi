@@ -1,8 +1,8 @@
 buildscript {
     repositories {
-        mavenLocal()
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
+        mavenLocal()
     }
 
     dependencies {
@@ -23,10 +23,10 @@ plugins {
 // temporal crutch until legacy tests will be stabled or legacy target will be removed
 allprojects {
     repositories {
-        mavenLocal()
         maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
         mavenCentral()
         google()
+        mavenLocal()
     }
     if (it != rootProject.findProject("docs")) {
         tasks.whenTaskAdded { task ->
