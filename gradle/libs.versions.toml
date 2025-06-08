@@ -22,6 +22,7 @@ github-release-plugin = "2.5.2"
 dokka = "2.0.0"
 
 validator = "0.17.0"
+nmcp = "0.1.5"
 
 [libraries]
 
@@ -86,3 +87,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "validator" }
+nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
