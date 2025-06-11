@@ -2,6 +2,12 @@
 
 ## 25.0.2
 
+* `Version`:
+  * `Serialization`: `1.8.0` -> `1.8.1`
+  * `Coroutines`: `1.10.1` -> `1.10.2`
+  * `Ktor`: `3.1.1` -> `3.1.3`
+  * `MicroUtils`: `0.25.3` -> `0.25.7`
+
 ## 25.0.1
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.0](https://core.telegram.org/bots/api-changelog#april-11-2025)**
