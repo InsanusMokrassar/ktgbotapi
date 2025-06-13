@@ -23,6 +23,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 	public static fun getEditedChannelPostMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getEditedMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getFlowsUpdatesFilter (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public static fun getLog (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Ldev/inmo/kslog/common/KSLog;
 	public static fun getMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getScope (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;)Lkotlinx/coroutines/CoroutineScope;
 }

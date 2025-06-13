@@ -24,6 +24,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 	public static fun getEditedChannelPostMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getEditedMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getFlowsUpdatesFilter (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public static fun getLog (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ldev/inmo/kslog/common/KSLog;
 	public static fun getMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getScope (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/CoroutineScope;
 	public static fun launchStateHandling (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

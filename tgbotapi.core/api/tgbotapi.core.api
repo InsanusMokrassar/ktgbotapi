@@ -241,12 +241,17 @@ public final class dev/inmo/tgbotapi/abstracts/types/WithReplyParameters$Default
 
 public abstract class dev/inmo/tgbotapi/bot/BaseRequestsExecutor : dev/inmo/tgbotapi/bot/RequestsExecutor {
 	public fun <init> (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;)V
+	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 	protected final fun getTelegramAPIUrlsKeeper ()Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;
 }
 
 public abstract interface class dev/inmo/tgbotapi/bot/RequestsExecutor : java/io/Closeable {
 	public abstract fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getLog ()Ldev/inmo/kslog/common/KSLog;
+}
+
+public final class dev/inmo/tgbotapi/bot/RequestsExecutor$DefaultImpls {
+	public static fun getLog (Ldev/inmo/tgbotapi/bot/RequestsExecutor;)Ldev/inmo/kslog/common/KSLog;
 }
 
 public abstract class dev/inmo/tgbotapi/bot/exceptions/BotException : java/io/IOException, kotlinx/coroutines/CopyableThrowable {
