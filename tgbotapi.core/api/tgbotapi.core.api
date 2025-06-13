@@ -246,6 +246,7 @@ public abstract class dev/inmo/tgbotapi/bot/BaseRequestsExecutor : dev/inmo/tgbo
 
 public abstract interface class dev/inmo/tgbotapi/bot/RequestsExecutor : java/io/Closeable {
 	public abstract fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getLog ()Ldev/inmo/kslog/common/KSLog;
 }
 
 public abstract class dev/inmo/tgbotapi/bot/exceptions/BotException : java/io/IOException, kotlinx/coroutines/CopyableThrowable {
@@ -416,6 +417,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/AbstractRequestCallFactoryKt 
 public final class dev/inmo/tgbotapi/bot/ktor/base/DefaultKtorRequestsExecutor : dev/inmo/tgbotapi/bot/BaseRequestsExecutor {
 	public fun close ()V
 	public fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/base/DownloadFileChannelRequestCallFactory : dev/inmo/tgbotapi/bot/ktor/KtorCallFactory {
@@ -439,6 +441,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/MultipleClientKtorRequestsExe
 	public fun <init> (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Ljava/util/List;ZLdev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter;Lkotlinx/serialization/json/Json;Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;ILdev/inmo/kslog/common/KSLog;Lkotlin/jvm/functions/Function0;)V
 	public fun close ()V
 	public fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/base/SimpleRequestCallFactory : dev/inmo/tgbotapi/bot/ktor/base/AbstractRequestCallFactory {
@@ -541,6 +544,7 @@ public final class dev/inmo/tgbotapi/bot/multiserver/SimpleMultiServerRequestsEx
 	public synthetic fun <init> (Ljava/util/List;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun close ()V
 	public fun execute (Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 }
 
 public final class dev/inmo/tgbotapi/bot/multiserver/SimpleMultiServerRequestsExecutor$Companion {

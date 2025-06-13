@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.multiserver
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.RequestsExecutor
@@ -29,6 +30,8 @@ class SimpleMultiServerRequestsExecutor(
         bots.forEach(TelegramBot::close)
     }
 ) : RequestsExecutor {
+    override val Log: KSLog?
+        get() = bots.firstNotNullOfOrNull { it.Log }
     override suspend fun <T : Any> execute(request: Request<T>): T {
         var currentBot = bots.botSelector(-1, null)
         while (currentCoroutineContext().isActive) {

@@ -33,7 +33,7 @@ fun TelegramBot.longPollingFlow(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
 ): Flow<Update> = channelFlow {
     if (autoDisableWebhooks) {
-        runCatchingSafely {
+        runCatching {
             execute(DeleteWebhook())
         }
     }
@@ -72,6 +72,13 @@ fun TelegramBot.longPollingFlow(
     } else {
         { originalUpdates: List<Update> ->
             val converted = originalUpdates.convertWithMediaGroupUpdates()
+
+            /**
+             * Dirty hack for cases when the media group was retrieved not fully:
+             *
+             * We are throw out the last media group and will reretrieve it again in the next get updates
+             * and it will guarantee that it is full
+             */
             /**
              * Dirty hack for cases when the media group was retrieved not fully:
              *
@@ -80,14 +87,14 @@ fun TelegramBot.longPollingFlow(
              */
             val updates = if (
                 originalUpdates.size == getUpdatesLimit.last
-                && ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
+                && ((converted.last() as? BaseSentMessageUpdate)?.data as? CommonMessage<*>)?.content is MediaGroupContent<*>
             ) {
                 converted - converted.last()
             } else {
                 converted
             }
 
-            safelyWithResult {
+            runCatching {
                 for (update in updates) {
                     send(update)
 
@@ -96,25 +103,16 @@ fun TelegramBot.longPollingFlow(
                     }
                 }
             }.onFailure {
-                cancel(it as? CancellationException ?: return@onFailure)
+                if (it is CancellationException) {
+                    cancel(it)
+                }
             }
         }
     }
 
     withContext(contextToWork) {
         while (isActive) {
-            safely(
-                { e ->
-                    val isHttpRequestTimeoutException = e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
-                    if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
-                        return@safely
-                    }
-                    exceptionsHandler ?.invoke(e)
-                    if (e is RequestException) {
-                        delay(1000L)
-                    }
-                }
-            ) {
+            runCatching {
                 execute(
                     GetUpdates(
                         offset = lastUpdateIdentifier?.plus(1),
@@ -123,6 +121,16 @@ fun TelegramBot.longPollingFlow(
                     )
                 ).let { originalUpdates ->
                     updatesHandler(originalUpdates)
+                }
+            }.onFailure { e ->
+                val isHttpRequestTimeoutException =
+                    e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
+                if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
+                    return@onFailure
+                }
+                exceptionsHandler?.invoke(e)
+                if (e is RequestException) {
+                    delay(1000L)
                 }
             }
         }

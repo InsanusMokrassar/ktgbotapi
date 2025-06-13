@@ -46,7 +46,7 @@ class MultipleClientKtorRequestsExecutor(
     jsonFormatter: Json,
     pipelineStepsHolder: TelegramBotPipelinesHandler,
     requestExecutorsCount: Int,
-    logger: KSLog,
+    override val Log: KSLog,
     clientFactory: () -> HttpClient,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val requestExecutors = (0 until requestExecutorsCount).map {
@@ -58,7 +58,7 @@ class MultipleClientKtorRequestsExecutor(
             requestsLimiter,
             jsonFormatter,
             pipelineStepsHolder,
-            logger,
+            Log,
             Unit
         )
     }.toSet()

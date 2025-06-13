@@ -116,6 +116,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehavio
 	public fun getCoroutineContext ()Lkotlin/coroutines/CoroutineContext;
 	public fun getData ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;
 	public fun getFlowsUpdatesFilter ()Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 	public fun getScope ()Lkotlinx/coroutines/CoroutineScope;
 	public fun getSubcontextInitialAction ()Lkotlin/jvm/functions/Function3;
 	public fun getTriggersHolder ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;

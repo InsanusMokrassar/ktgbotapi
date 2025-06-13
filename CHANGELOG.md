@@ -7,6 +7,8 @@
   * `Coroutines`: `1.10.1` -> `1.10.2`
   * `Ktor`: `3.1.1` -> `3.1.3`
   * `MicroUtils`: `0.25.3` -> `0.25.7`
+* `Core`:
+  * `RequestsExecutor` got property `RequestsExecutor.Log: KSLog?`
 
 ## 25.0.1
 
