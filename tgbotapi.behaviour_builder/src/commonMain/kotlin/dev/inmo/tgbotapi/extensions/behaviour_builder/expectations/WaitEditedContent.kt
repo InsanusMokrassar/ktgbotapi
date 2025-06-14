@@ -12,91 +12,119 @@ import kotlinx.coroutines.flow.map
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified O : MessageContent> BehaviourContext.waitEditedContent(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<O> = waitEditedContentMessage<O>(errorFactory).map { it.content }
+): Flow<O> = waitEditedContentMessage<O>(initRequest, errorFactory).map { it.content }
 
 fun BehaviourContext.waitEditedMessageContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<MessageContent>(errorFactory)
+) = waitEditedContent<MessageContent>(initRequest, errorFactory)
 
 fun BehaviourContext.waitEditedContentMessage(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<MessageContent>(errorFactory)
+) = waitEditedContent<MessageContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedContact(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<ContactContent>(errorFactory)
+) = waitEditedContent<ContactContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedDice(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<DiceContent>(errorFactory)
+) = waitEditedContent<DiceContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedGame(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GameContent>(errorFactory)
+) = waitEditedContent<GameContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedLocation(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<LocationContent>(errorFactory)
+) = waitEditedContent<LocationContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedLiveLocation(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<LiveLocationContent>(errorFactory)
+) = waitEditedContent<LiveLocationContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedStaticLocation(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<StaticLocationContent>(errorFactory)
+) = waitEditedContent<StaticLocationContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedText(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<TextContent>(errorFactory)
+) = waitEditedContent<TextContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVenue(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VenueContent>(errorFactory)
+) = waitEditedContent<VenueContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedAudioMediaGroupContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<AudioMediaGroupPartContent>(errorFactory)
+) = waitEditedContent<AudioMediaGroupPartContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedDocumentMediaGroupContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<DocumentMediaGroupPartContent>(errorFactory)
+) = waitEditedContent<DocumentMediaGroupPartContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedMedia(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<MediaContent>(errorFactory)
+) = waitEditedContent<MediaContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedAnyMediaGroupContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<MediaGroupPartContent>(errorFactory)
+) = waitEditedContent<MediaGroupPartContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVisualMediaGroupContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<VisualMediaGroupPartContent>(errorFactory)
+) = waitEditedContent<VisualMediaGroupPartContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedTextedMediaContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<TextedMediaContent>(errorFactory)
+) = waitEditedContent<TextedMediaContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedAnimation(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<AnimationContent>(errorFactory)
+) = waitEditedContent<AnimationContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedAudio(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<AudioContent>(errorFactory)
+) = waitEditedContent<AudioContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedDocument(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<DocumentContent>(errorFactory)
+) = waitEditedContent<DocumentContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedPhoto(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<PhotoContent>(errorFactory)
+) = waitEditedContent<PhotoContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedSticker(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<StickerContent>(errorFactory)
+) = waitEditedContent<StickerContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVideo(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitEditedContent<VideoContent>(errorFactory)
+) = waitEditedContent<VideoContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVideoNote(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VideoNoteContent>(errorFactory)
+) = waitEditedContent<VideoNoteContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVoice(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VoiceContent>(errorFactory)
+) = waitEditedContent<VoiceContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedInvoice(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<InvoiceContent>(errorFactory)
+) = waitEditedContent<InvoiceContent>(initRequest, errorFactory)
 
 fun BehaviourContext.waitEditedGiveawayContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GiveawayContent>(errorFactory)
+) = waitEditedContent<GiveawayContent>(initRequest, errorFactory)
 
 fun BehaviourContext.waitEditedGiveawayPublicResultsContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GiveawayPublicResultsContent>(errorFactory)
+) = waitEditedContent<GiveawayPublicResultsContent>(initRequest, errorFactory)
 

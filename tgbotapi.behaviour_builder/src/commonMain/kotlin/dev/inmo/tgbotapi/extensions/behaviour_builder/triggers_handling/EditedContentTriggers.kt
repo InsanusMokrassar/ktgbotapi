@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onEditedContent(
+internal inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onEditedContent(
     initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any>? = ByChatMessageMarkerFactory,
@@ -38,7 +38,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> 
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedContentMessage(
+fun <BC : BehaviourContext> BC.onEditedContentMessage(
     initialFilter: CommonMessageFilter<MessageContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MessageContent>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<MessageContent>, Any>? = ByChatMessageMarkerFactory,
@@ -65,7 +65,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedContentMessage(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedContact(
+fun <BC : BehaviourContext> BC.onEditedContact(
     initialFilter: CommonMessageFilter<ContactContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ContactMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ContactMessage, Any>? = ByChatMessageMarkerFactory,
@@ -92,7 +92,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedContact(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedDice(
+fun <BC : BehaviourContext> BC.onEditedDice(
     initialFilter: CommonMessageFilter<DiceContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DiceMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in DiceMessage, Any>? = ByChatMessageMarkerFactory,
@@ -119,7 +119,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedDice(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedGame(
+fun <BC : BehaviourContext> BC.onEditedGame(
     initialFilter: CommonMessageFilter<GameContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, GameMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in GameMessage, Any>? = ByChatMessageMarkerFactory,
@@ -146,7 +146,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedGame(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedLocation(
+fun <BC : BehaviourContext> BC.onEditedLocation(
     initialFilter: CommonMessageFilter<LocationContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in LocationMessage, Any>? = ByChatMessageMarkerFactory,
@@ -173,7 +173,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedLocation(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedText(
+fun <BC : BehaviourContext> BC.onEditedText(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
@@ -200,7 +200,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedText(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedVenue(
+fun <BC : BehaviourContext> BC.onEditedVenue(
     initialFilter: CommonMessageFilter<VenueContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, VenueMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in VenueMessage, Any>? = ByChatMessageMarkerFactory,
@@ -227,7 +227,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedVenue(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
+fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
     initialFilter: CommonMessageFilter<AudioMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMediaGroupMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in AudioMediaGroupMessage, Any>? = ByChatMessageMarkerFactory,
@@ -254,7 +254,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onEditedDocumentMediaGroupContent(
+fun <BC : BehaviourContext> BC.onEditedDocumentMediaGroupContent(
     initialFilter: CommonMessageFilter<DocumentMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMediaGroupMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in DocumentMediaGroupMessage, Any>? = ByChatMessageMarkerFactory,

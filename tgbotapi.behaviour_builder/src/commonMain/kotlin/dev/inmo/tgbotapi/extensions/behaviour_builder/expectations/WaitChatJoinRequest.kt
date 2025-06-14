@@ -12,8 +12,10 @@ typealias ChatJoinRequestsMapper = suspend ChatJoinRequest.() -> ChatJoinRequest
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.chatJoinRequestUpdateOrNull() ?.data as? O).let(::listOfNotNull)
@@ -21,7 +23,9 @@ inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
 
 
 fun BehaviourContext.waitChatJoinRequests(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) : Flow<ChatJoinRequest> = internalWaitChatJoinRequests(
+    initRequest,
     errorFactory
 )

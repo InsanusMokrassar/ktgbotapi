@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.utils.chosenInlineResultUpdateOrNull
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResult> BC.onChosenInlineResultBase(
+internal inline fun <BC : BehaviourContext, reified T : ChosenInlineResult> BC.onChosenInlineResultBase(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByUserIdChosenInlineResultMarkerFactory,
@@ -33,7 +33,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResu
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
+fun <BC : BehaviourContext> BC.onChosenInlineResult(
     initialFilter: SimpleFilter<ChosenInlineResult>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in ChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,
@@ -60,7 +60,7 @@ suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
+fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
     initialFilter: SimpleFilter<LocationChosenInlineResult>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in LocationChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,
@@ -87,7 +87,7 @@ suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBaseChosenInlineResult(
+fun <BC : BehaviourContext> BC.onBaseChosenInlineResult(
     initialFilter: SimpleFilter<BaseChosenInlineResult>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in BaseChosenInlineResult, Any>? = ByUserIdChosenInlineResultMarkerFactory,

@@ -20,7 +20,7 @@ import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.Job
 
-internal suspend fun <BC : BehaviourContext> BC.commandUncounted(
+internal fun <BC : BehaviourContext> BC.commandUncounted(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -57,7 +57,7 @@ suspend fun <BC : BehaviourContext> BC.command(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = runCatchingSafely {
+): Job = runCatching {
     commandUncounted(
         commandRegex,
         requireOnlyCommandInMessage,

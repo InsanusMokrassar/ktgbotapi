@@ -7,8 +7,10 @@ import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
 import kotlinx.coroutines.flow.Flow
 
 fun BehaviourContext.waitChatBoostRemoved(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatBoostRemoved> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     it.chatBoostRemovedUpdateOrNull() ?.data.let(::listOfNotNull)

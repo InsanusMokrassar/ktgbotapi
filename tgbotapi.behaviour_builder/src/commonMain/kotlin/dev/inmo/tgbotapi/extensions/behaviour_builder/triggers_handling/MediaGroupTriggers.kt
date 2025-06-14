@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> BC.buildMediaGroupTrigger(
+internal inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> BC.buildMediaGroupTrigger(
     initialFilter: SimpleFilter<MediaGroupContent<T>>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<T>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<T>, Any>? = AnyMarkerFactory(),
@@ -44,7 +44,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartCo
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMediaGroup(
+fun <BC : BehaviourContext> BC.onMediaGroup(
     initialFilter: SimpleFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<MediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<MediaGroupPartContent>, Any>? = AnyMarkerFactory(),
@@ -65,7 +65,7 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPlaylist(
+fun <BC : BehaviourContext> BC.onPlaylist(
     initialFilter: SimpleFilter<MediaGroupContent<AudioMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<AudioMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<AudioMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
@@ -86,7 +86,7 @@ suspend fun <BC : BehaviourContext> BC.onPlaylist(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
+fun <BC : BehaviourContext> BC.onDocumentsGroup(
     initialFilter: SimpleFilter<MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<DocumentMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<DocumentMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
@@ -107,7 +107,7 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVisualGallery(
+fun <BC : BehaviourContext> BC.onVisualGallery(
     initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
@@ -128,7 +128,7 @@ suspend fun <BC : BehaviourContext> BC.onVisualGallery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
+fun <BC : BehaviourContext> BC.onVisualMediaGroup(
     initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any>? = AnyMarkerFactory(),
@@ -149,7 +149,7 @@ suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
+fun <BC : BehaviourContext> BC.onPhotoGallery(
     initialFilter: SimpleFilter<MediaGroupContent<PhotoContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<PhotoContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<PhotoContent>, Any>? = AnyMarkerFactory(),
@@ -170,7 +170,7 @@ suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVideoGallery(
+fun <BC : BehaviourContext> BC.onVideoGallery(
     initialFilter: SimpleFilter<MediaGroupContent<VideoContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VideoContent>, Update>? = null,
     markerFactory: MarkerFactory<in MediaGroupContent<VideoContent>, Any>? = AnyMarkerFactory(),

@@ -76,8 +76,9 @@ fun Flow<TextedContent>.filterMentions(user: User) = filter {
  */
 fun BehaviourContext.waitContentWithMentions (
     username: Username,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(errorFactory).mapContent<TextedContent>().filterMentions(username)
+) = waitContent(initRequest, errorFactory).mapContent<TextedContent>().filterMentions(username)
 
 /**
  * Creates cold [Flow] with the messages with [TextedContent] where [userId] has been mentioned with text
@@ -88,8 +89,9 @@ fun BehaviourContext.waitContentWithMentions (
  */
 fun BehaviourContext.waitContentWithTextMentions (
     userId: UserId,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitTextedContent(errorFactory).filterTextMentions(userId)
+) = waitTextedContent(initRequest, errorFactory).filterTextMentions(userId)
 
 /**
  * Creates cold [Flow] with the messages with [TextedContent] where [user] has been mentioned as text or mentioned
@@ -100,5 +102,6 @@ fun BehaviourContext.waitContentWithTextMentions (
  */
 fun BehaviourContext.waitContentWithMentions (
     user: User,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitTextedContent(errorFactory).filterMentions(user)
+) = waitTextedContent(initRequest, errorFactory).filterMentions(user)

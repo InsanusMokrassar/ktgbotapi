@@ -25,7 +25,7 @@ import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onMention(
+internal inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onMention(
     username: Username,
     initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
@@ -42,7 +42,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     scenarioReceiver
 )
 
-internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onTextMention(
+internal inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onTextMention(
     userId: UserId,
     initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
@@ -59,7 +59,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
     scenarioReceiver
 )
 
-internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onMention(
+internal inline fun <BC : BehaviourContext, reified T : TextedContent> BC.onMention(
     user: User,
     initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = null,
@@ -82,7 +82,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
+fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     username: Username,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
@@ -96,7 +96,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
+fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
@@ -110,7 +110,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
+fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     user: User,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedContent>, Update>? = null,
@@ -126,7 +126,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
+fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     username: Username,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
@@ -140,7 +140,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
+fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
@@ -154,7 +154,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
+fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     user: User,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update>? = null,
@@ -170,7 +170,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
+fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
@@ -184,7 +184,7 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
+fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,
@@ -198,7 +198,7 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
+fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     user: User,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaGroupContent<MediaGroupPartContent>>, Update>? = null,

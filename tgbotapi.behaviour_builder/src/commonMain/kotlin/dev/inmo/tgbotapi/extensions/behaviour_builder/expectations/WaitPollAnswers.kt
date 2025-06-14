@@ -9,8 +9,10 @@ import kotlinx.coroutines.flow.Flow
 typealias PollAnswerMapper = suspend PollAnswer.() -> PollAnswer?
 
 fun BehaviourContext.waitPollAnswers(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<PollAnswer> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     it.pollAnswerUpdateOrNull() ?.data.let(::listOfNotNull)

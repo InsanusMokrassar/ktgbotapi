@@ -24,12 +24,13 @@ import kotlinx.coroutines.flow.*
  */
 fun BehaviourContext.waitCommandMessage(
     commandRegex: Regex,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = channelFlow {
     triggersHolder.handleableCommandsHolder.doWithRegistration(
         commandRegex
     ) {
-        waitTextMessage(errorFactory).filter {
+        waitTextMessage(initRequest, errorFactory).filter {
             it.content.textSources.any { it.botCommandTextSourceOrNull() ?.command ?.matches(commandRegex) == true }
         }.collect {
             send(it)
@@ -39,13 +40,15 @@ fun BehaviourContext.waitCommandMessage(
 
 fun BehaviourContext.waitCommandMessage(
     command: String,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(Regex(command), errorFactory)
+) = waitCommandMessage(Regex(command), initRequest, errorFactory)
 
 fun BehaviourContext.waitCommandMessage(
     botCommand: BotCommand,
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(botCommand.command, errorFactory)
+) = waitCommandMessage(botCommand.command, initRequest, errorFactory)
 
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
     it.content.textSources.firstOrNull() is BotCommandTextSource

@@ -14,8 +14,10 @@ typealias CallbackQueryMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified O> BehaviourContext.waitCallbackQueries(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.callbackQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
@@ -23,29 +25,38 @@ inline fun <reified O> BehaviourContext.waitCallbackQueries(
 
 
 fun BehaviourContext.waitDataCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<DataCallbackQuery>(errorFactory)
+) = waitCallbackQueries<DataCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitGameShortNameCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<GameShortNameCallbackQuery>(errorFactory)
+) = waitCallbackQueries<GameShortNameCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitInlineMessageIdCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdCallbackQuery>(errorFactory)
+) = waitCallbackQueries<InlineMessageIdCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitInlineMessageIdDataCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdDataCallbackQuery>(errorFactory)
+) = waitCallbackQueries<InlineMessageIdDataCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitInlineMessageIdGameShortNameCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdGameShortNameCallbackQuery>(errorFactory)
+) = waitCallbackQueries<InlineMessageIdGameShortNameCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitMessageCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageCallbackQuery>(errorFactory)
+) = waitCallbackQueries<MessageCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitMessageDataCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageDataCallbackQuery>(errorFactory)
+) = waitCallbackQueries<MessageDataCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitMessageGameShortNameCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageGameShortNameCallbackQuery>(errorFactory)
+) = waitCallbackQueries<MessageGameShortNameCallbackQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitUnknownCallbackQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<UnknownCallbackQueryType>(errorFactory)
+) = waitCallbackQueries<UnknownCallbackQueryType>(initRequest, errorFactory)

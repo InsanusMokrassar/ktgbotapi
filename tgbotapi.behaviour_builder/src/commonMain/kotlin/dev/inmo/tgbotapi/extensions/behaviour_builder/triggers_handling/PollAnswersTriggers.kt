@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.utils.pollAnswerUpdateOrNull
 import dev.inmo.tgbotapi.types.polls.PollAnswer
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
+internal inline fun <BC : BehaviourContext> BC.onPollAnswered(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
@@ -33,7 +33,7 @@ internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPollAnswer(
+fun <BC : BehaviourContext> BC.onPollAnswer(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,

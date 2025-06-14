@@ -11,8 +11,10 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
 inline fun BehaviourContext.waitChatMessageReactionsCountUpdated(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatMessageReactionsCountUpdated> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.chatMessageReactionsCountUpdatedUpdateOrNull() ?.data).let(::listOfNotNull)

@@ -12,20 +12,25 @@ typealias InlineQueryMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 fun BehaviourContext.waitAnyInlineQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<InlineQuery>(errorFactory)
+) = waitInlineQueries<InlineQuery>(initRequest, errorFactory)
 
 fun BehaviourContext.waitBaseInlineQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<BaseInlineQuery>(errorFactory)
+) = waitInlineQueries<BaseInlineQuery>(initRequest, errorFactory)
 fun BehaviourContext.waitLocationInlineQuery(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<LocationInlineQuery>(errorFactory)
+) = waitInlineQueries<LocationInlineQuery>(initRequest, errorFactory)

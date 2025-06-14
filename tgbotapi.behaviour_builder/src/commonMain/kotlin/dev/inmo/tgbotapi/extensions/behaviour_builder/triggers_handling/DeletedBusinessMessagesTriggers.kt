@@ -28,7 +28,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBusinessMessagesDeleted(
+fun <BC : BehaviourContext> BC.onBusinessMessagesDeleted(
     initialFilter: SimpleFilter<BusinessMessagesDeleted>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessMessagesDeleted, Update>? = null,
     markerFactory: MarkerFactory<in BusinessMessagesDeleted, Any>? = ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory,

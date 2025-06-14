@@ -12,21 +12,26 @@ typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified O> BehaviourContext.waitChosenInlineResults(
+    initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.chosenInlineResultUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 fun BehaviourContext.waitChosenInlineResult(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<ChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<ChosenInlineResult>(initRequest, errorFactory)
 
 fun BehaviourContext.waitLocationChosenInlineResult(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<LocationChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<LocationChosenInlineResult>(initRequest, errorFactory)
 
 fun BehaviourContext.waitBaseChosenInlineResult(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<BaseChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<BaseChosenInlineResult>(initRequest, errorFactory)

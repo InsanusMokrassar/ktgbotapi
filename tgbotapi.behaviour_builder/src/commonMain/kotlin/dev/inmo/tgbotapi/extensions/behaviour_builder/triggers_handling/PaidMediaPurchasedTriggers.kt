@@ -30,7 +30,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
+fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
     markerFactory: MarkerFactory<in PaidMediaPurchased, Any>? = ByUserPaidMediaPurchasedMarkerFactory,
@@ -54,7 +54,7 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
+fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     paidMediaPayloadRegex: Regex,
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
@@ -83,7 +83,7 @@ suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
+fun <BC : BehaviourContext> BC.onPaidMediaPurchased(
     paidMediaPayload: PaidMediaPayload,
     initialFilter: SimpleFilter<PaidMediaPurchased>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PaidMediaPurchased, Update>? = null,
