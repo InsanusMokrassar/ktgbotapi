@@ -10,8 +10,6 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-typealias CallbackQueryMapper<T> = suspend T.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
     initRequest: Request<*>,

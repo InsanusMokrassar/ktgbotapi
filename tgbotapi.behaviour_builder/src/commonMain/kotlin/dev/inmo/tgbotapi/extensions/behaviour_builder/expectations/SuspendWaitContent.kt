@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 
-typealias CommonMessageToContentMapper<T> = suspend CommonMessage<T>.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun BehaviourContext.waitContent(
     initRequest: Request<*>,

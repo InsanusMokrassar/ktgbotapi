@@ -18,8 +18,6 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 
-typealias ChatMemberUpdatedMapper<T> = suspend T.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     initRequest: Request<*>,

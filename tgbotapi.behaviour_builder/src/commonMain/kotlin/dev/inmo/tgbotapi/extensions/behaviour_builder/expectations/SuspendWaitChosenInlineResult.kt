@@ -8,8 +8,6 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
     initRequest: Request<*>,

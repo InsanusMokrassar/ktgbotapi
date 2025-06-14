@@ -8,8 +8,6 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-typealias ChatJoinRequestsMapper = suspend ChatJoinRequest.() -> ChatJoinRequest?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
     initRequest: Request<*>,
