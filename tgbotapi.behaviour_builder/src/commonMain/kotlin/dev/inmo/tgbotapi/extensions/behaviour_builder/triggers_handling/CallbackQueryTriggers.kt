@@ -46,24 +46,25 @@ internal inline fun <BC : BehaviourContext, reified T : DataCallbackQuery> BC.on
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ): Job = launchInNewSubContext {
     val newInitialFilter = SimpleFilter<DataCallbackQuery> {
-        it is T && initialFilter?.invoke(it) ?: true
-    }::invoke
+        it is T && (initialFilter ?.invoke(it) ?: true)
+    }
+    val newInitialFilterInvoke = newInitialFilter::invoke
     runCatching {
-        onCallbackQuery(
-            initialFilter,
+        this@launchInNewSubContext.onCallbackQuery(
+            newInitialFilter,
             subcontextUpdatesFilter,
             markerFactory,
             additionalSubcontextInitialAction,
             scenarioReceiver
         )
     }.onFailure {
-        triggersHolder.handleableCallbackQueriesDataHolder.unregisterHandleable(newInitialFilter)
+        this@launchInNewSubContext.triggersHolder.handleableCallbackQueriesDataHolder.unregisterHandleable(newInitialFilterInvoke)
     }.onSuccess {
-        triggersHolder.handleableCallbackQueriesDataHolder.registerHandleable(newInitialFilter)
+        this@launchInNewSubContext.triggersHolder.handleableCallbackQueriesDataHolder.registerHandleable(newInitialFilterInvoke)
         it.invokeOnCompletion {
             runCatching {
                 launchSafelyWithoutExceptions {
-                    triggersHolder.handleableCallbackQueriesDataHolder.unregisterHandleable(newInitialFilter)
+                    this@launchInNewSubContext.triggersHolder.handleableCallbackQueriesDataHolder.unregisterHandleable(newInitialFilterInvoke)
                 }
             }
         }
@@ -89,7 +90,7 @@ fun <BC : BehaviourContext> BC.onDataCallbackQuery(
     markerFactory: MarkerFactory<in DataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, DataCallbackQuery>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DataCallbackQuery>
-) = onDataCallbackQueryCounted(
+): Job = onDataCallbackQueryCounted(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
