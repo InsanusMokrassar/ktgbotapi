@@ -16,146 +16,112 @@ import kotlinx.coroutines.flow.mapNotNull
 typealias CommonMessageToContentMapper<T> = suspend CommonMessage<T>.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun BehaviourContext.waitContent(
-    initRequest: Request<*>? = null,
+inline fun BehaviourContext.waitContent(
     noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<MessageContent> = waitContentMessage(initRequest, errorFactory).map { it.content }
+): Flow<MessageContent> = waitContentMessage(errorFactory).map { it.content }
 
 inline fun <reified T : MessageContent> Flow<MessageContent>.mapContent() = mapNotNull { it as? T }
 
-suspend fun BehaviourContext.waitAnyContent(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitAnyContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory)
-suspend fun BehaviourContext.waitTextedContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory)
+fun BehaviourContext.waitTextedContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<TextedContent>()
-suspend fun BehaviourContext.waitContact(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<TextedContent>()
+fun BehaviourContext.waitContact(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<ContactContent>()
-suspend fun BehaviourContext.waitDice(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<ContactContent>()
+fun BehaviourContext.waitDice(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<DiceContent>()
-suspend fun BehaviourContext.waitGame(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<DiceContent>()
+fun BehaviourContext.waitGame(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<GameContent>()
-suspend fun BehaviourContext.waitLocation(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<GameContent>()
+fun BehaviourContext.waitLocation(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<LocationContent>()
-suspend fun BehaviourContext.waitLiveLocation(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<LocationContent>()
+fun BehaviourContext.waitLiveLocation(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<LiveLocationContent>()
-suspend fun BehaviourContext.waitStaticLocation(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<LiveLocationContent>()
+fun BehaviourContext.waitStaticLocation(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<StaticLocationContent>()
-suspend fun BehaviourContext.waitPoll(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<StaticLocationContent>()
+fun BehaviourContext.waitPoll(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<PollContent>()
-suspend fun BehaviourContext.waitText(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<PollContent>()
+fun BehaviourContext.waitText(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<TextContent>()
-suspend fun BehaviourContext.waitStory(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<TextContent>()
+fun BehaviourContext.waitStory(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<StoryContent>()
-suspend fun BehaviourContext.waitVenue(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<StoryContent>()
+fun BehaviourContext.waitVenue(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<VenueContent>()
-suspend fun BehaviourContext.waitAudioMediaGroupContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VenueContent>()
+fun BehaviourContext.waitAudioMediaGroupContent(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<AudioMediaGroupPartContent>()
-suspend fun BehaviourContext.waitDocumentMediaGroupContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<AudioMediaGroupPartContent>()
+fun BehaviourContext.waitDocumentMediaGroupContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<DocumentMediaGroupPartContent>()
-suspend fun BehaviourContext.waitMedia(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<DocumentMediaGroupPartContent>()
+fun BehaviourContext.waitMedia(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<MediaContent>()
-suspend fun BehaviourContext.waitAnyMediaGroupContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<MediaContent>()
+fun BehaviourContext.waitAnyMediaGroupContent(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<MediaGroupPartContent>()
-suspend fun BehaviourContext.waitVisualMediaGroupContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<MediaGroupPartContent>()
+fun BehaviourContext.waitVisualMediaGroupContent(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<VisualMediaGroupPartContent>()
-suspend fun BehaviourContext.waitTextedMediaContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VisualMediaGroupPartContent>()
+fun BehaviourContext.waitTextedMediaContent(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<TextedMediaContent>()
-suspend fun BehaviourContext.waitAnimation(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<TextedMediaContent>()
+fun BehaviourContext.waitAnimation(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<AnimationContent>()
-suspend fun BehaviourContext.waitAudio(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<AnimationContent>()
+fun BehaviourContext.waitAudio(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<AudioContent>()
-suspend fun BehaviourContext.waitDocument(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<AudioContent>()
+fun BehaviourContext.waitDocument(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<DocumentContent>()
-suspend fun BehaviourContext.waitPhoto(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<DocumentContent>()
+fun BehaviourContext.waitPhoto(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitContent(initRequest, errorFactory).mapContent<PhotoContent>()
-suspend fun BehaviourContext.waitSticker(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<PhotoContent>()
+fun BehaviourContext.waitSticker(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<StickerContent>()
-suspend fun BehaviourContext.waitVideo(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<StickerContent>()
+fun BehaviourContext.waitVideo(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<VideoContent>()
-suspend fun BehaviourContext.waitVideoNote(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VideoContent>()
+fun BehaviourContext.waitVideoNote(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<VideoNoteContent>()
-suspend fun BehaviourContext.waitVoice(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VideoNoteContent>()
+fun BehaviourContext.waitVoice(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<VoiceContent>()
-suspend fun BehaviourContext.waitInvoice(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VoiceContent>()
+fun BehaviourContext.waitInvoice(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<InvoiceContent>()
-suspend fun BehaviourContext.waitVisualContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<InvoiceContent>()
+fun BehaviourContext.waitVisualContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<VisualMediaGroupPartContent>()
-suspend fun BehaviourContext.waitMediaContent(
-    initRequest: Request<*>? = null,
+) = waitContent(errorFactory).mapContent<VisualMediaGroupPartContent>()
+fun BehaviourContext.waitMediaContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<MediaContent>()
+) = waitContent(errorFactory).mapContent<MediaContent>()
 
-suspend fun BehaviourContext.waitGiveawayContent(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<GiveawayContent>()
+) = waitContent(errorFactory).mapContent<GiveawayContent>()
 
-suspend fun BehaviourContext.waitGiveawayPublicResultsContent(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayPublicResultsContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<GiveawayPublicResultsContent>()
+) = waitContent(errorFactory).mapContent<GiveawayPublicResultsContent>()
 
-suspend fun BehaviourContext.waitGiveawayWinners(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayWinners(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitGiveawayPublicResultsContent(initRequest, errorFactory)
+) = waitGiveawayPublicResultsContent(errorFactory)
 
-suspend fun BehaviourContext.waitPaidMediaInfoContent(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitPaidMediaInfoContent(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContent(initRequest, errorFactory).mapContent<PaidMediaInfoContent>()
+) = waitContent(errorFactory).mapContent<PaidMediaInfoContent>()

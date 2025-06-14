@@ -34,233 +34,182 @@ import kotlinx.coroutines.flow.filter
 typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEvents(
-    initRequest: Request<*>? = null,
+inline fun <reified O : ChatEvent> BehaviourContext.waitEvents(
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
-    initRequest,
     errorFactory
 ) {
     it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>() ?.chatEvent.let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitChannelEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChannelEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChannelEvent>(initRequest, errorFactory)
+) = waitEvents<ChannelEvent>(errorFactory)
 
-suspend fun BehaviourContext.waitPrivateEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitPrivateEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<PrivateEvent>(initRequest, errorFactory)
+) = waitEvents<PrivateEvent>(errorFactory)
 
-suspend fun BehaviourContext.waitChatEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChatEvent>(initRequest, errorFactory)
+) = waitEvents<ChatEvent>(errorFactory)
 
 
-suspend fun BehaviourContext.waitVideoChatEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitVideoChatEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<VideoChatEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitVideoChatStartedEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<VideoChatEvent>(errorFactory)
+fun BehaviourContext.waitVideoChatStartedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<VideoChatStarted>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitVideoChatEndedEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<VideoChatStarted>(errorFactory)
+fun BehaviourContext.waitVideoChatEndedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<VideoChatEnded>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitVideoChatParticipantsInvitedEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<VideoChatEnded>(errorFactory)
+fun BehaviourContext.waitVideoChatParticipantsInvitedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<VideoChatParticipantsInvited>(initRequest, errorFactory)
+) = waitEvents<VideoChatParticipantsInvited>(errorFactory)
 
-suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<MessageAutoDeleteTimerChanged>(initRequest, errorFactory)
+) = waitEvents<MessageAutoDeleteTimerChanged>(errorFactory)
 
 
-suspend fun BehaviourContext.waitPublicChatEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitPublicChatEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<PublicChatEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitCommonEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<PublicChatEvent>(errorFactory)
+fun BehaviourContext.waitCommonEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<CommonEvent>(initRequest, errorFactory)
+) = waitEvents<CommonEvent>(errorFactory)
 
-suspend fun BehaviourContext.waitGroupEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGroupEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GroupEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitSupergroupEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<GroupEvent>(errorFactory)
+fun BehaviourContext.waitSupergroupEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<SupergroupEvent>(initRequest, errorFactory)
+) = waitEvents<SupergroupEvent>(errorFactory)
 
-suspend fun BehaviourContext.waitChannelChatCreatedEvents(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChannelChatCreatedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChannelChatCreated>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitDeleteChatPhotoEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<ChannelChatCreated>(errorFactory)
+fun BehaviourContext.waitDeleteChatPhotoEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<DeleteChatPhoto>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitGroupChatCreatedEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<DeleteChatPhoto>(errorFactory)
+fun BehaviourContext.waitGroupChatCreatedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GroupChatCreated>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitLeftChatMemberEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<GroupChatCreated>(errorFactory)
+fun BehaviourContext.waitLeftChatMemberEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<LeftChatMemberEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitNewChatPhotoEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<LeftChatMemberEvent>(errorFactory)
+fun BehaviourContext.waitNewChatPhotoEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<NewChatPhoto>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitNewChatMembersEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<NewChatPhoto>(errorFactory)
+fun BehaviourContext.waitNewChatMembersEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<NewChatMembers>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitNewChatTitleEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<NewChatMembers>(errorFactory)
+fun BehaviourContext.waitNewChatTitleEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<NewChatTitle>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitPinnedMessageEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<NewChatTitle>(errorFactory)
+fun BehaviourContext.waitPinnedMessageEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<PinnedMessage>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitProximityAlertTriggeredEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<PinnedMessage>(errorFactory)
+fun BehaviourContext.waitProximityAlertTriggeredEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ProximityAlertTriggered>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitSupergroupChatCreatedEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<ProximityAlertTriggered>(errorFactory)
+fun BehaviourContext.waitSupergroupChatCreatedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<SupergroupChatCreated>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitSuccessfulPaymentEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<SupergroupChatCreated>(errorFactory)
+fun BehaviourContext.waitSuccessfulPaymentEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<SuccessfulPaymentEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitRefundedPaymentEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<SuccessfulPaymentEvent>(errorFactory)
+fun BehaviourContext.waitRefundedPaymentEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<RefundedPaymentEvent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitUserLoggedInEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<RefundedPaymentEvent>(errorFactory)
+fun BehaviourContext.waitUserLoggedInEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<UserLoggedIn>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitWebAppDataEvents(
-    initRequest: Request<*>? = null,
+) = waitEvents<UserLoggedIn>(errorFactory)
+fun BehaviourContext.waitWebAppDataEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WebAppData>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitForumTopicClosed(
-    initRequest: Request<*>? = null,
+) = waitEvents<WebAppData>(errorFactory)
+fun BehaviourContext.waitForumTopicClosed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ForumTopicClosed>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitForumTopicCreated(
-    initRequest: Request<*>? = null,
+) = waitEvents<ForumTopicClosed>(errorFactory)
+fun BehaviourContext.waitForumTopicCreated(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ForumTopicCreated>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitForumTopicReopened(
-    initRequest: Request<*>? = null,
+) = waitEvents<ForumTopicCreated>(errorFactory)
+fun BehaviourContext.waitForumTopicReopened(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ForumTopicReopened>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitForumTopicEdited(
-    initRequest: Request<*>? = null,
+) = waitEvents<ForumTopicReopened>(errorFactory)
+fun BehaviourContext.waitForumTopicEdited(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ForumTopicEdited>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitGeneralForumTopicHidden(
-    initRequest: Request<*>? = null,
+) = waitEvents<ForumTopicEdited>(errorFactory)
+fun BehaviourContext.waitGeneralForumTopicHidden(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GeneralForumTopicHidden>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitGeneralForumTopicUnhidden(
-    initRequest: Request<*>? = null,
+) = waitEvents<GeneralForumTopicHidden>(errorFactory)
+fun BehaviourContext.waitGeneralForumTopicUnhidden(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GeneralForumTopicUnhidden>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitWriteAccessAllowed(
-    initRequest: Request<*>? = null,
+) = waitEvents<GeneralForumTopicUnhidden>(errorFactory)
+fun BehaviourContext.waitWriteAccessAllowed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WriteAccessAllowed>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitWriteAccessAllowedFromRequest(
-    initRequest: Request<*>? = null,
+) = waitEvents<WriteAccessAllowed>(errorFactory)
+fun BehaviourContext.waitWriteAccessAllowedFromRequest(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WriteAccessAllowed.FromRequest>(initRequest, errorFactory)
+) = waitEvents<WriteAccessAllowed.FromRequest>(errorFactory)
 
-suspend fun BehaviourContext.waitWriteAccessAllowedFromAttachmentMenu(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitWriteAccessAllowedFromAttachmentMenu(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WriteAccessAllowed.FromAttachmentMenu>(initRequest, errorFactory)
+) = waitEvents<WriteAccessAllowed.FromAttachmentMenu>(errorFactory)
 
-suspend fun BehaviourContext.waitWriteAccessAllowedFromWebAppLink(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitWriteAccessAllowedFromWebAppLink(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WriteAccessAllowed.FromWebAppLink>(initRequest, errorFactory)
+) = waitEvents<WriteAccessAllowed.FromWebAppLink>(errorFactory)
 
-suspend fun BehaviourContext.waitWriteAccessAllowedOther(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitWriteAccessAllowedOther(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<WriteAccessAllowed.Other>(initRequest, errorFactory)
+) = waitEvents<WriteAccessAllowed.Other>(errorFactory)
 
-suspend fun BehaviourContext.waitChatSharedRequest(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatSharedRequest(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChatSharedRequest>(initRequest, errorFactory)
+) = waitEvents<ChatSharedRequest>(errorFactory)
 
-suspend fun BehaviourContext.waitUsersShared(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitUsersShared(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<UsersShared>(initRequest, errorFactory)
+) = waitEvents<UsersShared>(errorFactory)
 
-suspend fun BehaviourContext.waitUserShared(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitUserShared(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitUsersShared(initRequest, errorFactory).filter { it.userIds.size == 1 }
+) = waitUsersShared(errorFactory).filter { it.userIds.size == 1 }
 
-suspend fun BehaviourContext.waitChatShared(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatShared(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChatShared>(initRequest, errorFactory)
+) = waitEvents<ChatShared>(errorFactory)
 
-suspend fun BehaviourContext.waitChatBoostAdded(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatBoostAdded(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChatBoostAdded>(initRequest, errorFactory)
+) = waitEvents<ChatBoostAdded>(errorFactory)
 
-suspend fun BehaviourContext.waitChatBackgroundSet(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatBackgroundSet(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChatBackground>(initRequest, errorFactory)
+) = waitEvents<ChatBackground>(errorFactory)
 
-suspend fun BehaviourContext.waitGiveawayCreated(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayCreated(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiveawayCreated>(initRequest, errorFactory)
+) = waitEvents<GiveawayCreated>(errorFactory)
 
-suspend fun BehaviourContext.waitGiveawayCompleted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayCompleted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiveawayPrivateResults>(initRequest, errorFactory)
+) = waitEvents<GiveawayPrivateResults>(errorFactory)
 
-suspend fun BehaviourContext.waitGiveawayCompletedWithPrivateWinners(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitGiveawayCompletedWithPrivateWinners(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitGiveawayCompleted(initRequest, errorFactory)
+) = waitGiveawayCompleted(errorFactory)
 
-suspend fun BehaviourContext.waitPaidMessagePriceChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitPaidMessagePriceChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<PaidMessagePriceChanged>(initRequest, errorFactory)
+) = waitEvents<PaidMessagePriceChanged>(errorFactory)
 
-suspend fun BehaviourContext.waitRegularGiftSentOrReceived(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitRegularGiftSentOrReceived(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiftSentOrReceived.Regular>(initRequest, errorFactory)
+) = waitEvents<GiftSentOrReceived.Regular>(errorFactory)
 
-suspend fun BehaviourContext.waitUniqueGiftSentOrReceived(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitUniqueGiftSentOrReceived(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiftSentOrReceived.Unique>(initRequest, errorFactory)
+) = waitEvents<GiftSentOrReceived.Unique>(errorFactory)

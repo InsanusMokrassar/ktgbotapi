@@ -6,11 +6,11 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import kotlinx.coroutines.flow.Flow
 
-typealias PreCheckoutQueryMapper = suspend PreCheckoutQuery.() -> PreCheckoutQuery?
-
-fun BehaviourContext.waitPreCheckoutQueries(
+suspend fun BehaviourContext.waitPreCheckoutQueries(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<PreCheckoutQuery> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     it.preCheckoutQueryUpdateOrNull() ?.data.let(::listOfNotNull)

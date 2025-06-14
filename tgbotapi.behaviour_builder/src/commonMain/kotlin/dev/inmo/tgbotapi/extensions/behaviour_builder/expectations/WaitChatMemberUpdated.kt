@@ -21,237 +21,190 @@ import kotlinx.coroutines.flow.filter
 typealias ChatMemberUpdatedMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
-    initRequest: Request<*>? = null,
+inline fun <reified O : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatMemberUpdated> = expectFlow(
-    initRequest,
     errorFactory
 ) {
     (it as? O) ?.data.let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitChatMemberUpdated(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberUpdated(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(initRequest, errorFactory)
+) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(errorFactory)
 
-suspend fun BehaviourContext.waitCommonChatMemberUpdated(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberUpdated(
     errorFactory: NullableRequestBuilder<*> = { null },
-) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(initRequest, errorFactory)
+) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(errorFactory)
 
-suspend fun BehaviourContext.waitMyChatMemberUpdated(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberUpdated(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(initRequest, errorFactory)
+) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(errorFactory)
 
-suspend fun BehaviourContext.waitChatMemberJoined(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberJoined(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberJoinedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberJoinedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberLeft(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberLeft(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberLeftFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberLeftFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberSubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberSubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscribedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberSubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberSubscriptionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberSubscriptionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberUnsubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberUnsubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberUnsubscribedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberUnsubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotPromoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotPromoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotPromotedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotPromotionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotPromotionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotDemoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotDemoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotDemotedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotDemotedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberBecameOwner(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberBecameOwner(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberBecameOwnerFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberBecameOwnerFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberCeasedOwnership(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberCeasedOwnership(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotRestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotRestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotRestrictionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotRestrictionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberGotUnrestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberGotUnrestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitChatMemberKicked(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitChatMemberKicked(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChatMemberUpdated(initRequest, errorFactory).filter { chatMemberKickedFilter(it) };
+) = waitChatMemberUpdated(errorFactory).filter { chatMemberKickedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberJoined(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberJoined(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberJoinedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberJoinedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberLeft(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberLeft(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberLeftFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberLeftFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberSubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberSubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscribedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberSubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberSubscriptionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberSubscriptionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberUnsubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberUnsubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberUnsubscribedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberUnsubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotPromoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotPromoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotPromotedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotPromotionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotPromotionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotDemoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotDemoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotDemotedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotDemotedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberBecameOwner(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberBecameOwner(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberBecameOwnerFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberBecameOwnerFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberCeasedOwnership(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberCeasedOwnership(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotRestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotRestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotRestrictionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotRestrictionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberGotUnrestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberGotUnrestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitCommonChatMemberKicked(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitCommonChatMemberKicked(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommonChatMemberUpdated(initRequest, errorFactory).filter { chatMemberKickedFilter(it) };
+) = waitCommonChatMemberUpdated(errorFactory).filter { chatMemberKickedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberJoined(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberJoined(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberJoinedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberJoinedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberLeft(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberLeft(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberLeftFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberLeftFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberSubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberSubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscribedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberSubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberSubscriptionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberSubscriptionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberSubscriptionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberUnsubscribed(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberUnsubscribed(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberUnsubscribedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberUnsubscribedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotPromoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotPromoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotPromotedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotPromotionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotPromotionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotPromotionChangedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotDemoted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotDemoted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotDemotedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotDemotedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberBecameOwner(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberBecameOwner(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberBecameOwnerFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberBecameOwnerFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberCeasedOwnership(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberCeasedOwnership(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberCeasedOwnershipFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotRestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotRestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotRestrictionChanged(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotRestrictionChanged(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotRestrictionsChangedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberGotUnrestricted(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberGotUnrestricted(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberGotUnrestrictedFilter(it) };
 
-suspend fun BehaviourContext.waitMyChatMemberKicked(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitMyChatMemberKicked(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitMyChatMemberUpdated(initRequest, errorFactory).filter { chatMemberKickedFilter(it) };
+) = waitMyChatMemberUpdated(errorFactory).filter { chatMemberKickedFilter(it) };

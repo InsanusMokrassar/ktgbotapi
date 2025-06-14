@@ -6,11 +6,11 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import kotlinx.coroutines.flow.Flow
 
-typealias ShippingQueryMapper = suspend ShippingQuery.() -> ShippingQuery?
-
-fun BehaviourContext.waitShippingQueries(
+suspend fun BehaviourContext.waitShippingQueries(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ShippingQuery> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.shippingQueryUpdateOrNull() ?.data).let(::listOfNotNull)

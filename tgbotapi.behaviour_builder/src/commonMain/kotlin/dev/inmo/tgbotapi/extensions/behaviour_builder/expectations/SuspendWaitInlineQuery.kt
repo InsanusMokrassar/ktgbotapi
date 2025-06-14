@@ -8,24 +8,27 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-typealias InlineQueryMapper<T> = suspend T.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
+suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
+    initRequest: Request<*>,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
-fun BehaviourContext.waitAnyInlineQuery(
+suspend fun BehaviourContext.waitAnyInlineQuery(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<InlineQuery>(errorFactory)
+) = waitInlineQueries<InlineQuery>(initRequest, errorFactory)
 
-fun BehaviourContext.waitBaseInlineQuery(
+suspend fun BehaviourContext.waitBaseInlineQuery(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<BaseInlineQuery>(errorFactory)
-fun BehaviourContext.waitLocationInlineQuery(
+) = waitInlineQueries<BaseInlineQuery>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitLocationInlineQuery(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitInlineQueries<LocationInlineQuery>(errorFactory)
+) = waitInlineQueries<LocationInlineQuery>(initRequest, errorFactory)

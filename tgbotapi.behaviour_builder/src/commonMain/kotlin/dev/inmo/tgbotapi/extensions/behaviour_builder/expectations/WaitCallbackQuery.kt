@@ -13,50 +13,39 @@ import kotlinx.coroutines.flow.Flow
 typealias CallbackQueryMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
-    initRequest: Request<*>? = null,
+inline fun <reified O> BehaviourContext.waitCallbackQueries(
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
-    initRequest,
     errorFactory
 ) {
     (it.callbackQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 
-suspend fun BehaviourContext.waitDataCallbackQuery(
-    initRequest: Request<*>? = null,
+fun BehaviourContext.waitDataCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<DataCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitGameShortNameCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<DataCallbackQuery>(errorFactory)
+fun BehaviourContext.waitGameShortNameCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<GameShortNameCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitInlineMessageIdCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<GameShortNameCallbackQuery>(errorFactory)
+fun BehaviourContext.waitInlineMessageIdCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitInlineMessageIdDataCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<InlineMessageIdCallbackQuery>(errorFactory)
+fun BehaviourContext.waitInlineMessageIdDataCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdDataCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitInlineMessageIdGameShortNameCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<InlineMessageIdDataCallbackQuery>(errorFactory)
+fun BehaviourContext.waitInlineMessageIdGameShortNameCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<InlineMessageIdGameShortNameCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitMessageCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<InlineMessageIdGameShortNameCallbackQuery>(errorFactory)
+fun BehaviourContext.waitMessageCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitMessageDataCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<MessageCallbackQuery>(errorFactory)
+fun BehaviourContext.waitMessageDataCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageDataCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitMessageGameShortNameCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<MessageDataCallbackQuery>(errorFactory)
+fun BehaviourContext.waitMessageGameShortNameCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<MessageGameShortNameCallbackQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitUnknownCallbackQuery(
-    initRequest: Request<*>? = null,
+) = waitCallbackQueries<MessageGameShortNameCallbackQuery>(errorFactory)
+fun BehaviourContext.waitUnknownCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCallbackQueries<UnknownCallbackQueryType>(initRequest, errorFactory)
+) = waitCallbackQueries<UnknownCallbackQueryType>(errorFactory)

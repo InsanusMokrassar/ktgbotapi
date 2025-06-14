@@ -8,10 +8,12 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import kotlinx.coroutines.flow.*
 
-fun BehaviourContext.waitDeepLinks(
+suspend fun BehaviourContext.waitDeepLinks(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<Pair<CommonMessage<TextContent>, String>> = waitCommandMessage(
     "start",
+    initRequest,
     errorFactory
 )
     .requireSingleCommand()
@@ -20,14 +22,16 @@ fun BehaviourContext.waitDeepLinks(
         it.first to (it.second.second.singleOrNull() ?.regularTextSourceOrNull() ?.source ?.removePrefix(" ") ?: return@mapNotNull null)
     }
 
-fun BehaviourContext.waitDeepLinks(
+suspend fun BehaviourContext.waitDeepLinks(
     regex: Regex,
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(errorFactory).filter {
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(initRequest, errorFactory).filter {
     regex.matches(it.second)
 }
 
-fun BehaviourContext.waitDeepLinks(
+suspend fun BehaviourContext.waitDeepLinks(
     deepLink: String,
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(Regex("^$deepLink$"), errorFactory)
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(Regex("^$deepLink$"), initRequest, errorFactory)

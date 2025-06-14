@@ -8,12 +8,12 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-typealias PollMapper<T> = suspend T.() -> T?
-
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun <reified O : Poll> BehaviourContext.waitPolls(
+suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
+    initRequest: Request<*>,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
@@ -22,20 +22,23 @@ inline fun <reified O : Poll> BehaviourContext.waitPolls(
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-fun BehaviourContext.waitPollUpdates(
+suspend fun BehaviourContext.waitPollUpdates(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitPolls<Poll>(errorFactory)
+) = waitPolls<Poll>(initRequest, errorFactory)
 
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-fun BehaviourContext.waitQuizPollUpdates(
+suspend fun BehaviourContext.waitQuizPollUpdates(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitPolls<QuizPoll>(errorFactory)
+) = waitPolls<QuizPoll>(initRequest, errorFactory)
 
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-fun BehaviourContext.waitRegularPollUpdates(
+suspend fun BehaviourContext.waitRegularPollUpdates(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitPolls<RegularPoll>(errorFactory)
+) = waitPolls<RegularPoll>(initRequest, errorFactory)

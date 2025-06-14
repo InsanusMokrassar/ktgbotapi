@@ -11,17 +11,21 @@ import kotlinx.coroutines.flow.Flow
 typealias ChatJoinRequestsMapper = suspend ChatJoinRequest.() -> ChatJoinRequest?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
+suspend inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
+    initRequest: Request<*>,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.chatJoinRequestUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 
-fun BehaviourContext.waitChatJoinRequests(
+suspend fun BehaviourContext.waitChatJoinRequests(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) : Flow<ChatJoinRequest> = internalWaitChatJoinRequests(
+    initRequest,
     errorFactory
 )

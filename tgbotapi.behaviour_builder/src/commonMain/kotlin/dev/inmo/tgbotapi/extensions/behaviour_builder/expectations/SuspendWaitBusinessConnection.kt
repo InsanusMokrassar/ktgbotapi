@@ -10,25 +10,31 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import kotlinx.coroutines.flow.Flow
 
-fun BehaviourContext.waitBusinessConnection(
+suspend fun BehaviourContext.waitBusinessConnection(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<BusinessConnection> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.businessConnectionUpdateOrNull() ?.data).let(::listOfNotNull)
 }
 
-fun BehaviourContext.waitBusinessConnectionEnabled(
+suspend fun BehaviourContext.waitBusinessConnectionEnabled(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<BusinessConnection> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.businessConnectionUpdateOrNull() ?.data ?.enabledOrNull()).let(::listOfNotNull)
 }
 
-fun BehaviourContext.waitBusinessConnectionDisabled(
+suspend fun BehaviourContext.waitBusinessConnectionDisabled(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<BusinessConnection> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.businessConnectionUpdateOrNull() ?.data ?.disabledOrNull()).let(::listOfNotNull)

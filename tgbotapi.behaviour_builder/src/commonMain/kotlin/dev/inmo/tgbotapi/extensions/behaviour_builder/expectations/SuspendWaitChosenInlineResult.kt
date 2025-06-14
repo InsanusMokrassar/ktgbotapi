@@ -11,22 +11,27 @@ import kotlinx.coroutines.flow.Flow
 typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun <reified O> BehaviourContext.waitChosenInlineResults(
+suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
+    initRequest: Request<*>,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
+    initRequest,
     errorFactory
 ) {
     (it.chosenInlineResultUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
-fun BehaviourContext.waitChosenInlineResult(
+suspend fun BehaviourContext.waitChosenInlineResult(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<ChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<ChosenInlineResult>(initRequest, errorFactory)
 
-fun BehaviourContext.waitLocationChosenInlineResult(
+suspend fun BehaviourContext.waitLocationChosenInlineResult(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<LocationChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<LocationChosenInlineResult>(initRequest, errorFactory)
 
-fun BehaviourContext.waitBaseChosenInlineResult(
+suspend fun BehaviourContext.waitBaseChosenInlineResult(
+    initRequest: Request<*>,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitChosenInlineResults<BaseChosenInlineResult>(errorFactory)
+) = waitChosenInlineResults<BaseChosenInlineResult>(initRequest, errorFactory)

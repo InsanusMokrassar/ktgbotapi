@@ -22,15 +22,14 @@ import kotlinx.coroutines.flow.*
  * * In case you wish to exclude messages with more than one command, you may use [requireSingleCommand]
  * * In case you wish to exclude messages with commands params, you may use [requireCommandsWithoutParams]
  */
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     commandRegex: Regex,
-    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = channelFlow {
     triggersHolder.handleableCommandsHolder.doWithRegistration(
         commandRegex
     ) {
-        waitTextMessage(initRequest, errorFactory).filter {
+        waitTextMessage(errorFactory).filter {
             it.content.textSources.any { it.botCommandTextSourceOrNull() ?.command ?.matches(commandRegex) == true }
         }.collect {
             send(it)
@@ -38,17 +37,15 @@ suspend fun BehaviourContext.waitCommandMessage(
     }
 }
 
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     command: String,
-    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(Regex(command), initRequest, errorFactory)
+) = waitCommandMessage(Regex(command), errorFactory)
 
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     botCommand: BotCommand,
-    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(botCommand.command, initRequest, errorFactory)
+) = waitCommandMessage(botCommand.command, errorFactory)
 
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
     it.content.textSources.firstOrNull() is BotCommandTextSource
