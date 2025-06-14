@@ -2,6 +2,8 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
+import dev.inmo.kslog.common.KSLog
+import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
@@ -19,6 +21,7 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.job
 
 internal fun <BC : BehaviourContext> BC.commandUncounted(
     commandRegex: Regex,
@@ -49,7 +52,7 @@ internal fun <BC : BehaviourContext> BC.commandUncounted(
     scenarioReceiver
 )
 
-suspend fun <BC : BehaviourContext> BC.command(
+fun <BC : BehaviourContext> BC.command(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -57,35 +60,37 @@ suspend fun <BC : BehaviourContext> BC.command(
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, TextMessage>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
-): Job = runCatching {
-    commandUncounted(
-        commandRegex,
-        requireOnlyCommandInMessage,
-        initialFilter,
-        subcontextUpdatesFilter,
-        markerFactory,
-        additionalSubcontextInitialAction,
-        scenarioReceiver
-    )
-}.onFailure {
-    triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
-}.onSuccess {
-    triggersHolder.handleableCommandsHolder.registerHandleable(commandRegex)
-    it.invokeOnCompletion {
-        runCatching {
-            launchSafelyWithoutExceptions {
-                triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
+): Job = launchInNewSubContext {
+    runCatching {
+       this@launchInNewSubContext.commandUncounted(
+            commandRegex,
+            requireOnlyCommandInMessage,
+            initialFilter,
+            subcontextUpdatesFilter,
+            markerFactory,
+            additionalSubcontextInitialAction,
+            scenarioReceiver
+        )
+    }.onFailure {
+        triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
+    }.onSuccess {
+        triggersHolder.handleableCommandsHolder.registerHandleable(commandRegex)
+        it.invokeOnCompletion {
+            runCatching {
+                launchSafelyWithoutExceptions {
+                    triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
+                }
             }
         }
-    }
-}.getOrThrow()
+    }.getOrThrow()
+}
 
 /**
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.command(
+fun <BC : BehaviourContext> BC.command(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -100,7 +105,7 @@ suspend fun <BC : BehaviourContext> BC.command(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.command(
+fun <BC : BehaviourContext> BC.command(
     botCommand: BotCommand,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -115,7 +120,7 @@ suspend fun <BC : BehaviourContext> BC.command(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommand(
+fun <BC : BehaviourContext> BC.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -130,7 +135,7 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommand(
+fun <BC : BehaviourContext> BC.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -145,7 +150,7 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommand(
+fun <BC : BehaviourContext> BC.onCommand(
     botCommand: BotCommand,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -160,7 +165,7 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithArgs(
+fun <BC : BehaviourContext> BC.commandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -187,7 +192,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithArgs(
+fun <BC : BehaviourContext> BC.commandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -209,7 +214,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithArgs(
+fun <BC : BehaviourContext> BC.commandWithArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -231,7 +236,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
+fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -259,7 +264,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
+fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -283,7 +288,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
+fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -307,7 +312,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
+fun <BC : BehaviourContext> BC.onCommandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -329,7 +334,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
+fun <BC : BehaviourContext> BC.onCommandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -351,7 +356,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
+fun <BC : BehaviourContext> BC.onCommandWithArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -373,7 +378,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
+fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -397,7 +402,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
+fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -421,7 +426,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
+fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,

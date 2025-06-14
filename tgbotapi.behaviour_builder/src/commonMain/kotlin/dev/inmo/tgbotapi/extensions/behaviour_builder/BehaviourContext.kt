@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
@@ -153,12 +154,14 @@ fun <BC : BehaviourContext> BC.createSubContext(
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = this.subcontextInitialAction,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BC, Unit, Update> = this.subcontextInitialAction,
 ) = copy(
     scope = scope,
     upstreamUpdatesFlow = updatesUpstreamFlow,
     triggersHolder = triggersHolder,
-    subcontextInitialAction = subcontextInitialAction
+    subcontextInitialAction = {
+        (this as BC).subcontextInitialAction(it)
+    }
 ) as BC
 
 /**
@@ -172,6 +175,52 @@ suspend fun <T, BC : BehaviourContext> BC.doInContext(
     return withContext(coroutineContext) {
         behaviourContextReceiver()
     }
+}
+
+/**
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ *
+ * [this] [BehaviourContext] will **NOT** be closed automatically
+ */
+suspend fun <T, BC : BehaviourContext> BC.doInNewSubContext(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BC, Unit, Update> = this.subcontextInitialAction,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T {
+    return createSubContext(
+        scope = scope,
+        triggersHolder = triggersHolder,
+        updatesUpstreamFlow = updatesUpstreamFlow,
+        subcontextInitialAction = subcontextInitialAction
+    ).run {
+        behaviourContextReceiver()
+    }
+}
+
+/**
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ *
+ * [this] [BehaviourContext] will **NOT** be closed automatically
+ */
+fun <T, BC : BehaviourContext> BC.launchInNewSubContext(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BC, Unit, Update> = this.subcontextInitialAction,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): Job {
+    return createSubContext(
+        scope = scope,
+        triggersHolder = triggersHolder,
+        updatesUpstreamFlow = updatesUpstreamFlow,
+        subcontextInitialAction = subcontextInitialAction
+    ).apply {
+        launchLoggingDropExceptions(logger = Log ?: KSLog) {
+            behaviourContextReceiver()
+        }
+    }.coroutineContext.job
 }
 
 /**

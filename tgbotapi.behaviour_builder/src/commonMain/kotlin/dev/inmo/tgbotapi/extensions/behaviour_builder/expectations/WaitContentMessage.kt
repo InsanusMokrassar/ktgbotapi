@@ -16,9 +16,9 @@ import kotlinx.coroutines.flow.mapNotNull
 typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() -> CommonMessage<T>?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun BehaviourContext.waitContentMessage(
+fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<CommonMessage<MessageContent>> = expectFlow(
     initRequest,
     errorFactory

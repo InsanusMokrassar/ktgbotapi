@@ -38,18 +38,18 @@ internal inline fun <BC : BehaviourContext, reified T : CallbackQuery> BC.onCall
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-internal suspend inline fun <BC : BehaviourContext, reified T : DataCallbackQuery> BC.onDataCallbackQueryCounted(
+internal inline fun <BC : BehaviourContext, reified T : DataCallbackQuery> BC.onDataCallbackQueryCounted(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any>? = ByUserCallbackQueryMarkerFactory,
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, T>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
-): Job {
+): Job = launchInNewSubContext {
     val newInitialFilter = SimpleFilter<DataCallbackQuery> {
-        it is T && initialFilter ?.invoke(it) ?: true
+        it is T && initialFilter?.invoke(it) ?: true
     }::invoke
-    return runCatching {
-        onCallbackQuery (
+    runCatching {
+        onCallbackQuery(
             initialFilter,
             subcontextUpdatesFilter,
             markerFactory,
@@ -83,7 +83,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : DataCallbackQuer
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onDataCallbackQuery(
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in DataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
@@ -112,7 +112,7 @@ suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onDataCallbackQuery(
     dataRegex: Regex,
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -143,7 +143,7 @@ suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onDataCallbackQuery(
     data: String,
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -226,7 +226,7 @@ fun <BC : BehaviourContext> BC.onInlineMessageIdCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
@@ -255,7 +255,7 @@ suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
     dataRegex: Regex,
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -286,7 +286,7 @@ suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
     data: String,
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -369,7 +369,7 @@ fun <BC : BehaviourContext> BC.onMessageCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
@@ -398,7 +398,7 @@ suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
     dataRegex: Regex,
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -429,7 +429,7 @@ suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
     data: String,
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
@@ -485,7 +485,7 @@ fun <BC : BehaviourContext> BC.onMessageGameShortNameCallbackQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onUnknownCallbackQueryType(
+fun <BC : BehaviourContext> BC.onUnknownCallbackQueryType(
     initialFilter: SimpleFilter<UnknownCallbackQueryType>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, UnknownCallbackQueryType, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in UnknownCallbackQueryType, Any>? = ByUserCallbackQueryMarkerFactory,

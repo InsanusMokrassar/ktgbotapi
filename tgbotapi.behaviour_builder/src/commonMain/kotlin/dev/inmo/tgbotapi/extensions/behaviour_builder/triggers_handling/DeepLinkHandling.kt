@@ -19,30 +19,32 @@ import io.ktor.http.decodeURLQueryComponent
 import kotlinx.coroutines.Job
 
 private val startRegex = Regex("start")
-suspend fun <BC : BehaviourContext> BC.onDeepLink(
+fun <BC : BehaviourContext> BC.onDeepLink(
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, Pair<TextMessage, String>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
-): Job = on(
-    markerFactory,
-    SimpleFilter<Pair<TextMessage, String>> { (message, _) ->
-        message.content.textSources.size == 2
-            && message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start"
-            && message.content.textSources.getOrNull(1) is RegularTextSource
-    } * initialFilter,
-    subcontextUpdatesFilter,
-    additionalSubcontextInitialAction,
-    scenarioReceiver,
-) {
-    (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
-        message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
-    } ?.let(::listOfNotNull)
-}.also {
-    triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
-    it.invokeOnCompletion {
-        this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
+): Job = launchInNewSubContext {
+    on(
+        markerFactory,
+        SimpleFilter<Pair<TextMessage, String>> { (message, _) ->
+            message.content.textSources.size == 2
+                    && message.content.textSources.firstOrNull() ?.asBotCommandTextSource() ?.command == "start"
+                    && message.content.textSources.getOrNull(1) is RegularTextSource
+        } * initialFilter,
+        subcontextUpdatesFilter,
+        additionalSubcontextInitialAction,
+        scenarioReceiver,
+    ) {
+        (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
+            message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
+        } ?.let(::listOfNotNull)
+    }.also {
+        triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
+        it.invokeOnCompletion {
+            this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
+        }
     }
 }
 
@@ -51,7 +53,7 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onDeepLink(
+fun <BC : BehaviourContext> BC.onDeepLink(
     regex: Regex,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
@@ -70,7 +72,7 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
-suspend fun <BC : BehaviourContext> BC.onDeepLink(
+fun <BC : BehaviourContext> BC.onDeepLink(
     deepLink: String,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
