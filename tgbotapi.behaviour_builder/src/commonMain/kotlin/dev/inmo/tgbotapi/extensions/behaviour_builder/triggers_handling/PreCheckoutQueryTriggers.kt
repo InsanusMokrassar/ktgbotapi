@@ -26,7 +26,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPreCheckoutQuery(
+fun <BC : BehaviourContext> BC.onPreCheckoutQuery(
     initialFilter: SimpleFilter<PreCheckoutQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PreCheckoutQuery, Update>? = PreCheckoutQueryFilterByUser,
     markerFactory: MarkerFactory<in PreCheckoutQuery, Any>? = ByUserPreCheckoutQueryMarkerFactory,

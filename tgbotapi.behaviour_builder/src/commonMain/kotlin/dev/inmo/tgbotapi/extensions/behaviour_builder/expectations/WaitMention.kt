@@ -74,7 +74,7 @@ fun Flow<TextedContent>.filterMentions(user: User) = filter {
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentWithMentions (
+fun BehaviourContext.waitContentWithMentions (
     username: Username,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -87,7 +87,7 @@ suspend fun BehaviourContext.waitContentWithMentions (
  * @see filterMentions
  * @see dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
  */
-suspend fun BehaviourContext.waitContentWithTextMentions (
+fun BehaviourContext.waitContentWithTextMentions (
     userId: UserId,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -100,7 +100,7 @@ suspend fun BehaviourContext.waitContentWithTextMentions (
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentWithMentions (
+fun BehaviourContext.waitContentWithMentions (
     user: User,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

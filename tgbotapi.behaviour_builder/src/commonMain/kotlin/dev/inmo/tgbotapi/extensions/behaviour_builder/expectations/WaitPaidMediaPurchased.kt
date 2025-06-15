@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import kotlinx.coroutines.flow.Flow
 
-suspend fun BehaviourContext.waitPaidMediaPurchased(
+fun BehaviourContext.waitPaidMediaPurchased(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<PaidMediaPurchased> = expectFlow(
@@ -21,7 +21,7 @@ suspend fun BehaviourContext.waitPaidMediaPurchased(
     (it.paidMediaPurchasedUpdateOrNull() ?.data).let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitPaidMediaPurchased(
+fun BehaviourContext.waitPaidMediaPurchased(
     paidMediaPayloadRegex: Regex,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -32,7 +32,7 @@ suspend fun BehaviourContext.waitPaidMediaPurchased(
     (it.paidMediaPurchasedUpdateOrNull() ?.data ?.takeIf { paidMediaPayloadRegex.matches(it.payload.string) }).let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitPaidMediaPurchased(
+fun BehaviourContext.waitPaidMediaPurchased(
     paidMediaPayload: PaidMediaPayload,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

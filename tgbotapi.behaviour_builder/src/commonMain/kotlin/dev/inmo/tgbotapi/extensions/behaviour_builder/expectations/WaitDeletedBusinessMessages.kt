@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessMessagesDeleted
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import kotlinx.coroutines.flow.Flow
 
-suspend fun BehaviourContext.waitDeletedBusinessMessages(
+fun BehaviourContext.waitDeletedBusinessMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<BusinessMessagesDeleted> = expectFlow(

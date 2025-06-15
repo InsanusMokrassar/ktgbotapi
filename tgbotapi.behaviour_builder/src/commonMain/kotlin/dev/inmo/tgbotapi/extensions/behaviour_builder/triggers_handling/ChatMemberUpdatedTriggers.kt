@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdatedUpdate> BC.onChatMemberUpdatedInternal(
+internal inline fun <BC : BehaviourContext, reified U : ChatMemberUpdatedUpdate> BC.onChatMemberUpdatedInternal(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -37,7 +37,7 @@ internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdate
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
+fun <BC : BehaviourContext> BC.onChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -64,7 +64,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
+fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -91,7 +91,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
+fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -118,7 +118,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberJoined(
+fun <BC : BehaviourContext> BC.onChatMemberJoined(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -145,7 +145,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberJoined(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberLeft(
+fun <BC : BehaviourContext> BC.onChatMemberLeft(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -172,7 +172,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberLeft(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberSubscribed(
+fun <BC : BehaviourContext> BC.onChatMemberSubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -199,7 +199,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberSubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberSubscriptionChanged(
+fun <BC : BehaviourContext> BC.onChatMemberSubscriptionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -226,7 +226,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberSubscriptionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberUnsubscribed(
+fun <BC : BehaviourContext> BC.onChatMemberUnsubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -253,7 +253,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberUnsubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromoted(
+fun <BC : BehaviourContext> BC.onChatMemberGotPromoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -280,7 +280,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromotionChanged(
+fun <BC : BehaviourContext> BC.onChatMemberGotPromotionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -307,7 +307,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotPromotionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotDemoted(
+fun <BC : BehaviourContext> BC.onChatMemberGotDemoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -334,7 +334,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotDemoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberBecameOwner(
+fun <BC : BehaviourContext> BC.onChatMemberBecameOwner(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -361,7 +361,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberBecameOwner(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberCeasedOwnership(
+fun <BC : BehaviourContext> BC.onChatMemberCeasedOwnership(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -388,7 +388,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberCeasedOwnership(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestricted(
+fun <BC : BehaviourContext> BC.onChatMemberGotRestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -415,7 +415,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestrictionChanged(
+fun <BC : BehaviourContext> BC.onChatMemberGotRestrictionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -442,7 +442,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotRestrictionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberGotUnrestricted(
+fun <BC : BehaviourContext> BC.onChatMemberGotUnrestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -469,7 +469,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberGotUnrestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMemberKicked(
+fun <BC : BehaviourContext> BC.onChatMemberKicked(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -496,7 +496,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberKicked(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberJoined(
+fun <BC : BehaviourContext> BC.onCommonChatMemberJoined(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -523,7 +523,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberJoined(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberLeft(
+fun <BC : BehaviourContext> BC.onCommonChatMemberLeft(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -550,7 +550,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberLeft(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscribed(
+fun <BC : BehaviourContext> BC.onCommonChatMemberSubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -577,7 +577,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscriptionChanged(
+fun <BC : BehaviourContext> BC.onCommonChatMemberSubscriptionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -604,7 +604,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberSubscriptionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUnsubscribed(
+fun <BC : BehaviourContext> BC.onCommonChatMemberUnsubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -631,7 +631,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUnsubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromoted(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -658,7 +658,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromotionChanged(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromotionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -685,7 +685,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotPromotionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotDemoted(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotDemoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -712,7 +712,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotDemoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberBecameOwner(
+fun <BC : BehaviourContext> BC.onCommonChatMemberBecameOwner(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -739,7 +739,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberBecameOwner(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberCeasedOwnership(
+fun <BC : BehaviourContext> BC.onCommonChatMemberCeasedOwnership(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -766,7 +766,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberCeasedOwnership(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestricted(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -793,7 +793,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestrictionChanged(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestrictionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -820,7 +820,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotRestrictionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotUnrestricted(
+fun <BC : BehaviourContext> BC.onCommonChatMemberGotUnrestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -847,7 +847,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberGotUnrestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onCommonChatMemberKicked(
+fun <BC : BehaviourContext> BC.onCommonChatMemberKicked(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -874,7 +874,7 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberKicked(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberJoined(
+fun <BC : BehaviourContext> BC.onMyChatMemberJoined(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -901,7 +901,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberJoined(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberLeft(
+fun <BC : BehaviourContext> BC.onMyChatMemberLeft(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -928,7 +928,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberLeft(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscribed(
+fun <BC : BehaviourContext> BC.onMyChatMemberSubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -955,7 +955,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscriptionChanged(
+fun <BC : BehaviourContext> BC.onMyChatMemberSubscriptionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -982,7 +982,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberSubscriptionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberUnsubscribed(
+fun <BC : BehaviourContext> BC.onMyChatMemberUnsubscribed(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1009,7 +1009,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberUnsubscribed(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromoted(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotPromoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1036,7 +1036,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromotionChanged(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotPromotionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1063,7 +1063,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotPromotionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotDemoted(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotDemoted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1090,7 +1090,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotDemoted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberBecameOwner(
+fun <BC : BehaviourContext> BC.onMyChatMemberBecameOwner(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1117,7 +1117,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberBecameOwner(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberCeasedOwnership(
+fun <BC : BehaviourContext> BC.onMyChatMemberCeasedOwnership(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1144,7 +1144,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberCeasedOwnership(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestricted(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotRestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1171,7 +1171,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestrictionChanged(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotRestrictionChanged(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1198,7 +1198,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotRestrictionChanged(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotUnrestricted(
+fun <BC : BehaviourContext> BC.onMyChatMemberGotUnrestricted(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
@@ -1225,7 +1225,7 @@ suspend fun <BC : BehaviourContext> BC.onMyChatMemberGotUnrestricted(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMyChatMemberKicked(
+fun <BC : BehaviourContext> BC.onMyChatMemberKicked(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,

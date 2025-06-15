@@ -29,7 +29,7 @@ typealias NullableRequestBuilder<T> = suspend (Update) -> Request<T>?
  * will be called too), [errorFactory] and then will be returned null
  */
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend fun <T> FlowsUpdatesFilter.expectFlow(
+fun <T> FlowsUpdatesFilter.expectFlow(
     bot: TelegramBot,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -58,12 +58,17 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
             result.getOrThrow()
         }
     }.flatten()
-    initRequest ?.also {
-        runCatching {
-            bot.execute(initRequest)
+
+    return if (initRequest == null) {
+        flow
+    } else {
+        flow {
+            runCatching {
+                bot.execute(initRequest)
+            }
+            flow.collect(this)
         }
     }
-    return flow
 }
 
 /**
@@ -77,7 +82,7 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
  * will be called too), [errorFactory] and then will be returned null
  */
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend fun <T> BehaviourContext.expectFlow(
+fun <T> BehaviourContext.expectFlow(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },

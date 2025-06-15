@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-suspend inline fun BehaviourContext.waitChatMessageReactionsCountUpdated(
+inline fun BehaviourContext.waitChatMessageReactionsCountUpdated(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatMessageReactionsCountUpdated> = expectFlow(

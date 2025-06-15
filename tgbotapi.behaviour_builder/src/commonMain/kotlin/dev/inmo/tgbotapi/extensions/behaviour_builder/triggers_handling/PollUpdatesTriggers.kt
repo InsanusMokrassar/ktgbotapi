@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.utils.pollUpdateOrNull
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollUpdatedBase(
+internal inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollUpdatedBase(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByIdPollMarkerFactory,
@@ -33,7 +33,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollU
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPollUpdates(
+fun <BC : BehaviourContext> BC.onPollUpdates(
     initialFilter: SimpleFilter<Poll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Poll, Update>? = null,
     markerFactory: MarkerFactory<in Poll, Any>? = ByIdPollMarkerFactory,
@@ -60,7 +60,7 @@ suspend fun <BC : BehaviourContext> BC.onPollUpdates(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
+fun <BC : BehaviourContext> BC.onRegularPollUpdates(
     initialFilter: SimpleFilter<RegularPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RegularPoll, Update>? = null,
     markerFactory: MarkerFactory<in RegularPoll, Any>? = ByIdPollMarkerFactory,
@@ -87,7 +87,7 @@ suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onQuizPollUpdates(
+fun <BC : BehaviourContext> BC.onQuizPollUpdates(
     initialFilter: SimpleFilter<QuizPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, QuizPoll, Update>? = null,
     markerFactory: MarkerFactory<in QuizPoll, Any>? = ByIdPollMarkerFactory,

@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPassportElement> BC.onPassportMessageWith(
+internal inline fun <BC : BehaviourContext, reified T : EncryptedPassportElement> BC.onPassportMessageWith(
     initialFilter: SimpleFilter<PassportMessage>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,
@@ -35,7 +35,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPasspor
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPassportMessage(
+fun <BC : BehaviourContext> BC.onPassportMessage(
     initialFilter: SimpleFilter<PassportMessage>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,

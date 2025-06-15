@@ -25,7 +25,7 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
  * data
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in DataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
@@ -53,7 +53,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
  * data
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQuery(
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
@@ -81,7 +81,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQue
  * data
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.onUnhandledMessageDataCallbackQuery(
+fun <BC : BehaviourContext> BC.onUnhandledMessageDataCallbackQuery(
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,

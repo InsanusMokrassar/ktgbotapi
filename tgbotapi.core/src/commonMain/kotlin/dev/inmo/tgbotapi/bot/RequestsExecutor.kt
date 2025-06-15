@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.bot
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import io.ktor.utils.io.core.Closeable
 
 /**
@@ -11,6 +13,8 @@ import io.ktor.utils.io.core.Closeable
  * @see dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutor
  */
 interface RequestsExecutor : Closeable {
+    val Log: KSLog
+        get() = DefaultKTgBotAPIKSLog
     /**
      * Unsafe execution of incoming [request]. Can throw almost any exception. So, it is better to use
      * something like [dev.inmo.tgbotapi.extensions.utils.shortcuts.executeAsync] or

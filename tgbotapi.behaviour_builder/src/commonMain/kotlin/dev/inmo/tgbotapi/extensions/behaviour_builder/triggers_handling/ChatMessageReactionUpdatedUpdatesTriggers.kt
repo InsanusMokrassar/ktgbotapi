@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : ChatMessageReactionUpdated> BC.onChatMessageReactionUpdated(
+internal inline fun <BC : BehaviourContext, reified T : ChatMessageReactionUpdated> BC.onChatMessageReactionUpdated(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
@@ -35,7 +35,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatMessageReact
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByUser(
+fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByUser(
     initialFilter: SimpleFilter<ChatMessageReactionUpdated.ByUser>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.ByUser, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.ByUser, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
@@ -62,7 +62,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByUser(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByChat(
+fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByChat(
     initialFilter: SimpleFilter<ChatMessageReactionUpdated.ByChat>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.ByChat, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.ByChat, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,
@@ -89,7 +89,7 @@ suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedByChat(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedUnknown(
+fun <BC : BehaviourContext> BC.onChatMessageReactionUpdatedUnknown(
     initialFilter: SimpleFilter<ChatMessageReactionUpdated.Unknown>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionUpdated.Unknown, Update>? = null,
     markerFactory: MarkerFactory<in ChatMessageReactionUpdated.Unknown, Any>? = ByChatIdChatMessageReactionUpdatedMarkerFactory,

@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.boosts.ChatBoostUpdated
 import kotlinx.coroutines.flow.Flow
 
-suspend fun BehaviourContext.waitChatBoostUpdated(
+fun BehaviourContext.waitChatBoostUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatBoostUpdated> = expectFlow(

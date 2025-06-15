@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias ShippingQueryMapper = suspend ShippingQuery.() -> ShippingQuery?
 
-suspend fun BehaviourContext.waitShippingQueries(
+fun BehaviourContext.waitShippingQueries(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ShippingQuery> = expectFlow(

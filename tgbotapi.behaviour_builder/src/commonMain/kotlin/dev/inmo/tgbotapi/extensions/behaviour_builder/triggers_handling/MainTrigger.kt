@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 
-internal suspend fun <BC : BehaviourContext, T> BC.on(
+internal fun <BC : BehaviourContext, T> BC.on(
     markerFactory: MarkerFactory<in T, Any>?,
     initialFilter: SimpleFilter<T>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,

@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.*
  * * In case you wish to exclude messages with more than one command, you may use [requireSingleCommand]
  * * In case you wish to exclude messages with commands params, you may use [requireCommandsWithoutParams]
  */
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     commandRegex: Regex,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -38,13 +38,13 @@ suspend fun BehaviourContext.waitCommandMessage(
     }
 }
 
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     command: String,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitCommandMessage(Regex(command), initRequest, errorFactory)
 
-suspend fun BehaviourContext.waitCommandMessage(
+fun BehaviourContext.waitCommandMessage(
     botCommand: BotCommand,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

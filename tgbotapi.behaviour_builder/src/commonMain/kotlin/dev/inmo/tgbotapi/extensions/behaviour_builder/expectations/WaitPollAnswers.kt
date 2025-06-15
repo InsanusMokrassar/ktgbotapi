@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias PollAnswerMapper = suspend PollAnswer.() -> PollAnswer?
 
-suspend fun BehaviourContext.waitPollAnswers(
+fun BehaviourContext.waitPollAnswers(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<PollAnswer> = expectFlow(

@@ -1,5 +1,23 @@
 # TelegramBotAPI changelog
 
+## 26.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES IN BEHAVIOUR BUILDER AND CORE. BE CAREFUL ON UPDATE**
+
+* `Version`:
+  * `Serialization`: `1.8.0` -> `1.8.1`
+  * `Coroutines`: `1.10.1` -> `1.10.2`
+  * `Ktor`: `3.1.1` -> `3.1.3`
+  * `MicroUtils`: `0.25.3` -> `0.25.7`
+* `Core`:
+  * **POTENTIALLY BREAKING CHANGE** Long polling has been reworked a bit
+  * **BREAKING CHANGE** `RequestsExecutor` got property `RequestsExecutor.Log: KSLog`
+* `BehaviourContext`:
+  * **BREAKING CHANGE** All triggers and waiters become non-suspend functions
+  * **BREAKING CHANGE** Behaviour of counted extensions (commands, data callback queries, etc.) has been changed a bit: now each one will
+  create subcontext and work in it
+  * New extension `BehaviourContext.launchInNewSubContext` which will launch some job in subcontext of receiver
+
 ## 25.0.1
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.0](https://core.telegram.org/bots/api-changelog#april-11-2025)**

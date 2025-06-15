@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 typealias InlineQueryMapper<T> = suspend T.() -> T?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
+inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
@@ -21,16 +21,16 @@ suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
     (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitAnyInlineQuery(
+fun BehaviourContext.waitAnyInlineQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitInlineQueries<InlineQuery>(initRequest, errorFactory)
 
-suspend fun BehaviourContext.waitBaseInlineQuery(
+fun BehaviourContext.waitBaseInlineQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitInlineQueries<BaseInlineQuery>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitLocationInlineQuery(
+fun BehaviourContext.waitLocationInlineQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitInlineQueries<LocationInlineQuery>(initRequest, errorFactory)

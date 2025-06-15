@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.extensions.utils.inlineQueryUpdateOrNull
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.onInlineQuery(
+internal inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.onInlineQuery(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any>? = ByUserInlineQueryMarkerFactory,
@@ -32,7 +32,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
+fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
@@ -54,7 +54,7 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
+fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in BaseInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
@@ -76,7 +76,7 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
+fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in LocationInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,

@@ -49,7 +49,7 @@ fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filt
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+fun BehaviourContext.waitContentMessageWithMentions (
     username: Username,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -62,7 +62,7 @@ suspend fun BehaviourContext.waitContentMessageWithMentions (
  * @see filterMentions
  * @see dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
  */
-suspend fun BehaviourContext.waitContentMessageWithTextMentions (
+fun BehaviourContext.waitContentMessageWithTextMentions (
     userId: UserId,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
@@ -75,7 +75,7 @@ suspend fun BehaviourContext.waitContentMessageWithTextMentions (
  * @see filterMentions
  * @see filterTextMentions
  */
-suspend fun BehaviourContext.waitContentMessageWithMentions (
+fun BehaviourContext.waitContentMessageWithMentions (
     user: User,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

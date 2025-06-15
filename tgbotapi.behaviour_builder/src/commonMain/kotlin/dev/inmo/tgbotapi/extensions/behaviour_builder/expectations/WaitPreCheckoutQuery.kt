@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias PreCheckoutQueryMapper = suspend PreCheckoutQuery.() -> PreCheckoutQuery?
 
-suspend fun BehaviourContext.waitPreCheckoutQueries(
+fun BehaviourContext.waitPreCheckoutQueries(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<PreCheckoutQuery> = expectFlow(

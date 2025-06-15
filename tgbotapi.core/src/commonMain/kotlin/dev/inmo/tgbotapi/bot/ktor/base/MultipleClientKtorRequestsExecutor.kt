@@ -49,6 +49,7 @@ class MultipleClientKtorRequestsExecutor(
     logger: KSLog,
     clientFactory: () -> HttpClient,
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
+    override val Log: KSLog = logger
     private val requestExecutors = (0 until requestExecutorsCount).map {
         DefaultKtorRequestsExecutor(
             telegramAPIUrlsKeeper,

@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import kotlinx.coroutines.flow.*
 
-suspend fun BehaviourContext.waitDeepLinks(
+fun BehaviourContext.waitDeepLinks(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<Pair<CommonMessage<TextContent>, String>> = waitCommandMessage(
@@ -22,7 +22,7 @@ suspend fun BehaviourContext.waitDeepLinks(
         it.first to (it.second.second.singleOrNull() ?.regularTextSourceOrNull() ?.source ?.removePrefix(" ") ?: return@mapNotNull null)
     }
 
-suspend fun BehaviourContext.waitDeepLinks(
+fun BehaviourContext.waitDeepLinks(
     regex: Regex,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -30,7 +30,7 @@ suspend fun BehaviourContext.waitDeepLinks(
     regex.matches(it.second)
 }
 
-suspend fun BehaviourContext.waitDeepLinks(
+fun BehaviourContext.waitDeepLinks(
     deepLink: String,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },

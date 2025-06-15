@@ -25,7 +25,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBusinessConnection(
+fun <BC : BehaviourContext> BC.onBusinessConnection(
     initialFilter: SimpleFilter<BusinessConnection>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,
@@ -48,7 +48,7 @@ suspend fun <BC : BehaviourContext> BC.onBusinessConnection(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBusinessConnectionEnabled(
+fun <BC : BehaviourContext> BC.onBusinessConnectionEnabled(
     initialFilter: SimpleFilter<BusinessConnection.Enabled>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection.Enabled, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection.Enabled, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,
@@ -70,7 +70,7 @@ suspend fun <BC : BehaviourContext> BC.onBusinessConnectionEnabled(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBusinessConnectionDisabled(
+fun <BC : BehaviourContext> BC.onBusinessConnectionDisabled(
     initialFilter: SimpleFilter<BusinessConnection.Disabled>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessConnection.Disabled, Update>? = null,
     markerFactory: MarkerFactory<in BusinessConnection.Disabled, Any>? = ByUserBusinessConnectionUpdatedMarkerFactory,

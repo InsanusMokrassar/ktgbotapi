@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : ChatMessageReactionUpdated> BehaviourContext.waitChatMessageReactionUpdated(
+inline fun <reified O : ChatMessageReactionUpdated> BehaviourContext.waitChatMessageReactionUpdated(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
@@ -19,13 +19,13 @@ suspend inline fun <reified O : ChatMessageReactionUpdated> BehaviourContext.wai
     (it.chatMessageReactionUpdatedUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
-suspend fun BehaviourContext.waitChatMessageReactionUpdatedByUser(
+fun BehaviourContext.waitChatMessageReactionUpdatedByUser(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitChatMessageReactionUpdated<ChatMessageReactionUpdated.ByUser>(initRequest, errorFactory)
 
 
-suspend fun BehaviourContext.waitChatMessageReactionUpdatedByChat(
+fun BehaviourContext.waitChatMessageReactionUpdatedByChat(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitChatMessageReactionUpdated<ChatMessageReactionUpdated.ByChat>(initRequest, errorFactory)

@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupMessagesWaiter(
+inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupMessagesWaiter(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<MediaGroupMessage<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
@@ -25,27 +25,27 @@ suspend inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMed
     } ?: emptyList()
 }
 
-suspend fun BehaviourContext.waitMediaGroupMessages(
+fun BehaviourContext.waitMediaGroupMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<MediaGroupPartContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitPlaylistMessages(
+fun BehaviourContext.waitPlaylistMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<AudioMediaGroupPartContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitDocumentsGroupMessages(
+fun BehaviourContext.waitDocumentsGroupMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<DocumentMediaGroupPartContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitVisualGalleryMessages(
+fun BehaviourContext.waitVisualGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<VisualMediaGroupPartContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitPhotoGalleryMessages(
+fun BehaviourContext.waitPhotoGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<PhotoContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitVideoGalleryMessages(
+fun BehaviourContext.waitVideoGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<VideoContent>(initRequest, errorFactory)

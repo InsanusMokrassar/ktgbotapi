@@ -22,7 +22,7 @@ import kotlinx.coroutines.Job
  * "stream"
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.unhandledCommand(
+fun <BC : BehaviourContext> BC.unhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -57,7 +57,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
  * "stream"
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
+fun <BC : BehaviourContext> BC.onUnhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
@@ -72,7 +72,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
  * "stream"
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
+fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,
@@ -96,7 +96,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
  * "stream"
  */
 @PreviewFeature
-suspend fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
+fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in TextMessage, Any>? = ByChatMessageMarkerFactory,

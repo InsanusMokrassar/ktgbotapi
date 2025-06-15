@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 typealias PassportMessageMapper = suspend PassportMessage.() -> PassportData
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
+inline fun <reified O : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = expectFlow(
@@ -24,7 +24,7 @@ suspend inline fun <reified O : EncryptedPassportElement> BehaviourContext.waitP
     it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.passportData ?.data ?.filterIsInstance<O>() ?: emptyList()
 }
 
-suspend fun BehaviourContext.waitAnyPassportMessages(
+fun BehaviourContext.waitAnyPassportMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitPassportMessagesWith<EncryptedPassportElement>(initRequest, errorFactory)

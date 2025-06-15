@@ -30,6 +30,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     private val logger: KSLog,
     diff: Unit
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
+    override val Log: KSLog = logger
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
             this@DefaultKtorRequestsExecutor.logger.v { "Installing default factories" }

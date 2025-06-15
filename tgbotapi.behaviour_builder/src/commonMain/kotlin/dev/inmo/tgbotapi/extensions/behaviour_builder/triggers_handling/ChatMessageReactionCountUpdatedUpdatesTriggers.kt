@@ -29,7 +29,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChatMessageReactionsCountUpdated(
+fun <BC : BehaviourContext> BC.onChatMessageReactionsCountUpdated(
     initialFilter: SimpleFilter<ChatMessageReactionsCountUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionsCountUpdated, Update>? = null,
     markerFactory: MarkerFactory<ChatMessageReactionsCountUpdated, Any>? = ByChatIdChatMessageReactionsCountUpdatedMarkerFactory,
