@@ -38,9 +38,9 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
 // temporal crutch until legacy tests will be stabled or legacy target will be removed
 allprojects {
     repositories {
-        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
         mavenCentral()
         google()
+//        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
         mavenLocal()
     }
     if (it != rootProject.findProject("docs")) {

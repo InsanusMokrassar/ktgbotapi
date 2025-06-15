@@ -217,7 +217,7 @@ fun <T, BC : BehaviourContext> BC.launchInNewSubContext(
         updatesUpstreamFlow = updatesUpstreamFlow,
         subcontextInitialAction = subcontextInitialAction
     ).apply {
-        this@apply.launchLoggingDropExceptions(logger = Log ?: KSLog) {
+        this@apply.launchLoggingDropExceptions(logger = Log) {
             behaviourContextReceiver()
         }
     }.coroutineContext.job

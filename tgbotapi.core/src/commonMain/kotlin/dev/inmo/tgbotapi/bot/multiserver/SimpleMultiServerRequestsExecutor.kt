@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import kotlinx.coroutines.*
 import kotlin.js.JsName
@@ -30,8 +31,8 @@ class SimpleMultiServerRequestsExecutor(
         bots.forEach(TelegramBot::close)
     }
 ) : RequestsExecutor {
-    override val Log: KSLog?
-        get() = bots.firstNotNullOfOrNull { it.Log }
+    override val Log: KSLog
+        get() = bots.firstNotNullOfOrNull { it.Log } ?: DefaultKTgBotAPIKSLog
     override suspend fun <T : Any> execute(request: Request<T>): T {
         var currentBot = bots.botSelector(-1, null)
         while (currentCoroutineContext().isActive) {

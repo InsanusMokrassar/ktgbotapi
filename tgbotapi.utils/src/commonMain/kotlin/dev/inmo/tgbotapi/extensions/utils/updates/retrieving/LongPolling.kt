@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.utils.io.CancellationException
 import kotlinx.coroutines.*
@@ -33,20 +34,20 @@ fun TelegramBot.longPollingFlow(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
 ): Flow<Update> = channelFlow {
     if (autoDisableWebhooks) {
-        runCatching {
+        runCatchingLogging(logger = Log) {
             execute(DeleteWebhook())
         }
     }
 
-    val contextSafelyExceptionHandler = coroutineContext[ContextSafelyExceptionHandlerKey]
-    val contextToWork = if (contextSafelyExceptionHandler == null || !autoSkipTimeoutExceptions) {
+    val contextSafelyExceptionHandler = coroutineContext[ContextSafelyExceptionHandlerKey] ?.handler ?: defaultSafelyExceptionHandler
+    val contextToWork = if (!autoSkipTimeoutExceptions) {
         coroutineContext
     } else {
         coroutineContext + ContextSafelyExceptionHandler { e ->
             if (e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)) {
                 return@ContextSafelyExceptionHandler
             } else {
-                contextSafelyExceptionHandler.handler(e)
+                contextSafelyExceptionHandler(e)
             }
         }
     }
@@ -61,7 +62,8 @@ fun TelegramBot.longPollingFlow(
                     send(it)
                 }
             },
-            mediaGroupsDebounceTimeMillis
+            mediaGroupsDebounceTimeMillis,
+            logger = Log
         );
         { originalUpdates: List<Update> ->
             originalUpdates.forEach {

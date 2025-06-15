@@ -1,11 +1,14 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.kslog.common.KSLog
+import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.extensions.accumulateByKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
@@ -19,7 +22,8 @@ import kotlinx.coroutines.launch
  */
 fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     output: UpdateReceiver<Update>,
-    debounceTimeMillis: Long = 1000L
+    debounceTimeMillis: Long = 1000L,
+    logger: KSLog = DefaultKTgBotAPIKSLog
 ): UpdateReceiver<Update> {
     val updatesChannel = Channel<Update>(Channel.UNLIMITED)
     val mediaGroupChannel = Channel<Pair<String, BaseMessageUpdate>>(Channel.UNLIMITED)
@@ -29,7 +33,7 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     )
 
     launch {
-        launchSafelyWithoutExceptions {
+        launchLoggingDropExceptions(logger = logger) {
             for (update in updatesChannel) {
                 val data = update.data
                 when {
@@ -40,7 +44,7 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
                 }
             }
         }
-        launchSafelyWithoutExceptions {
+        launchLoggingDropExceptions(logger = logger) {
             for ((_, mediaGroup) in mediaGroupAccumulatedChannel) {
                 mediaGroup.convertWithMediaGroupUpdates().forEach {
                     output(it)
@@ -59,5 +63,6 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
  * @see UpdateReceiver
  */
 fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
+    logger: KSLog = DefaultKTgBotAPIKSLog,
     output: UpdateReceiver<Update>
-) = updateHandlerWithMediaGroupsAdaptation(output, 1000L)
+) = updateHandlerWithMediaGroupsAdaptation(output, 1000L, logger = logger)

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
@@ -12,6 +13,7 @@ import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
 import dev.inmo.tgbotapi.updateshandlers.UpdatesFilter
 import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import io.ktor.http.*
 import io.ktor.server.engine.*
 import io.ktor.server.request.*
@@ -40,9 +42,10 @@ fun Route.includeWebhookHandlingInRoute(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     mediaGroupsDebounceTimeMillis: Long = 1000L,
+    logger: KSLog = DefaultKTgBotAPIKSLog,
     block: UpdateReceiver<Update>,
 ) {
-    val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis)
+    val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis, logger = logger)
     post {
         try {
             runCatchingSafely {
@@ -71,11 +74,13 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     mediaGroupsDebounceTimeMillis: Long = 1000L,
+    logger: KSLog = DefaultKTgBotAPIKSLog,
     block: FlowsUpdatesFilter.() -> Unit,
 ) = includeWebhookHandlingInRoute(
     scope,
     exceptionsHandler,
     mediaGroupsDebounceTimeMillis,
+    logger,
     flowsUpdatesFilter(block = block).asUpdateReceiver
 )
 
@@ -105,6 +110,7 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
     mediaGroupsDebounceTimeMillis: Long = 1000L,
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
+    logger: KSLog = DefaultKTgBotAPIKSLog,
     block: UpdateReceiver<Update>,
 ): EmbeddedServer<TEngine, TConfiguration> =
     embeddedServer(
@@ -134,12 +140,19 @@ fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Configurati
             routing {
                 listenRoute?.also {
                     createRouteFromPath(it).includeWebhookHandlingInRoute(
-                        scope,
-                        exceptionsHandler,
-                        mediaGroupsDebounceTimeMillis,
-                        block
+                        scope = scope,
+                        exceptionsHandler = exceptionsHandler,
+                        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+                        logger = logger,
+                        block = block
                     )
-                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
+                } ?: includeWebhookHandlingInRoute(
+                    scope = scope,
+                    exceptionsHandler = exceptionsHandler,
+                    mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+                    logger = logger,
+                    block = block
+                )
             }
         }
     ).also {
@@ -173,21 +186,23 @@ suspend fun <TEngine : ApplicationEngine, TConfiguration : ApplicationEngine.Con
     mediaGroupsDebounceTimeMillis: Long = 1000L,
     additionalApplicationEnvironmentConfigurator: ApplicationEnvironmentBuilder.() -> Unit = {},
     additionalEngineConfigurator: TConfiguration.() -> Unit = {},
+    logger: KSLog = Log,
     block: UpdateReceiver<Update>,
 ): EmbeddedServer<TEngine, TConfiguration> = try {
     execute(setWebhookRequest)
     startListenWebhooks(
-        listenPort,
-        engineFactory,
-        exceptionsHandler,
-        listenHost,
-        listenRoute,
-        privateKeyConfig,
-        scope,
-        mediaGroupsDebounceTimeMillis,
-        additionalApplicationEnvironmentConfigurator,
-        additionalEngineConfigurator,
-        block
+        listenPort = listenPort,
+        engineFactory = engineFactory,
+        exceptionsHandler = exceptionsHandler,
+        listenHost = listenHost,
+        listenRoute = listenRoute,
+        privateKeyConfig = privateKeyConfig,
+        scope = scope,
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+        additionalApplicationEnvironmentConfigurator = additionalApplicationEnvironmentConfigurator,
+        additionalEngineConfigurator = additionalEngineConfigurator,
+        logger = logger,
+        block = block
     )
 } catch (e: Exception) {
     throw e

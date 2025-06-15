@@ -29,7 +29,7 @@ expect class KtorRequestsExecutor internal constructor(
     logger: KSLog,
     diff: Unit // just a diff property to know where constructor and where calling function with defaults
 ) : BaseRequestsExecutor {
-    override val Log: KSLog?
+    override val Log: KSLog
     override suspend fun <T : Any> execute(request: Request<T>): T
     override fun close()
 }

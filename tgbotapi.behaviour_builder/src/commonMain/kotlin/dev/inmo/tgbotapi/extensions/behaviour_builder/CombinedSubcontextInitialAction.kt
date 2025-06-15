@@ -40,7 +40,7 @@ class CombinedSubcontextInitialAction(
                     runCatching {
                         invoke(update)
                     }.onFailure {
-                        (Log ?: logger).error(it) {
+                        Log.error(it) {
                             "Unable to execute $subaction for update $update. Will try on next round"
                         }
                     }.onSuccess {
@@ -50,7 +50,7 @@ class CombinedSubcontextInitialAction(
             }
             leftSubActions.removeAll(successSubActions)
             if (successSubActions.isEmpty()) {
-                (Log ?: logger).error {
+                Log.error {
                     "Some SubActions have been unable to complete successfully:${leftSubActions.joinToString("\n") { it.toString() }}"
                 }
                 break

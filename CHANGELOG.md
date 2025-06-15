@@ -10,7 +10,8 @@
   * `Ktor`: `3.1.1` -> `3.1.3`
   * `MicroUtils`: `0.25.3` -> `0.25.7`
 * `Core`:
-  * **BREAKING CHANGE** `RequestsExecutor` got property `RequestsExecutor.Log: KSLog?`
+  * **POTENTIALLY BREAKING CHANGE** Long polling has been reworked a bit
+  * **BREAKING CHANGE** `RequestsExecutor` got property `RequestsExecutor.Log: KSLog`
 * `BehaviourContext`:
   * **BREAKING CHANGE** All triggers and waiters become non-suspend functions
   * **BREAKING CHANGE** Behaviour of counted extensions (commands, data callback queries, etc.) has been changed a bit: now each one will
