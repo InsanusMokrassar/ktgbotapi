@@ -58,13 +58,16 @@ fun <T> FlowsUpdatesFilter.expectFlow(
             result.getOrThrow()
         }
     }.flatten()
-    return flow {
-        initRequest ?.also {
+
+    return if (initRequest == null) {
+        flow
+    } else {
+        flow {
             runCatching {
                 bot.execute(initRequest)
             }
+            flow.collect(this)
         }
-        emitAll(flow)
     }
 }
 
