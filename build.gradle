@@ -40,7 +40,7 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-//        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
+        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
         mavenLocal()
     }
     if (it != rootProject.findProject("docs")) {
