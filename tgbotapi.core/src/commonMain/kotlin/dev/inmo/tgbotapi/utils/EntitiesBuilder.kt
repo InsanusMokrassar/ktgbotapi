@@ -12,7 +12,56 @@ import dev.inmo.tgbotapi.types.message.textsources.*
 typealias EntitiesBuilderBody = EntitiesBuilder.() -> Unit
 val newLine = regularTextSource("\n")
 
+/**
+ * Documentation: [DSL text](https://docs.inmo.dev/tgbotapi/dsls/text.html)
+ *
+ * Example: [PollsBot](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/blob/master/PollsBot/src/main/kotlin/PollsBot.kt)
+ *
+ * @see dev.inmo.tgbotapi.utils.bold
+ * @see dev.inmo.tgbotapi.utils.blockquote
+ * @see dev.inmo.tgbotapi.utils.expandableBlockquote
+ * @see dev.inmo.tgbotapi.utils.spoiler
+ * @see dev.inmo.tgbotapi.utils.botCommand
+ * @see dev.inmo.tgbotapi.utils.cashTag
+ * @see dev.inmo.tgbotapi.utils.code
+ * @see dev.inmo.tgbotapi.utils.email
+ * @see dev.inmo.tgbotapi.utils.hashtag
+ * @see dev.inmo.tgbotapi.utils.italic
+ * @see dev.inmo.tgbotapi.utils.mention
+ * @see dev.inmo.tgbotapi.utils.phone
+ * @see dev.inmo.tgbotapi.utils.pre
+ * @see dev.inmo.tgbotapi.utils.regular
+ * @see dev.inmo.tgbotapi.utils.strikethrough
+ * @see dev.inmo.tgbotapi.utils.link
+ * @see dev.inmo.tgbotapi.utils.underline
+ * @see dev.inmo.tgbotapi.utils.customEmoji
+ */
 inline fun buildEntities(separator: TextSource? = null, init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder(separator).apply(init).build()
+
+/**
+ * Documentation: [DSL text](https://docs.inmo.dev/tgbotapi/dsls/text.html)
+ *
+ * Example: [PollsBot](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/blob/master/PollsBot/src/main/kotlin/PollsBot.kt)
+ *
+ * @see dev.inmo.tgbotapi.utils.bold
+ * @see dev.inmo.tgbotapi.utils.blockquote
+ * @see dev.inmo.tgbotapi.utils.expandableBlockquote
+ * @see dev.inmo.tgbotapi.utils.spoiler
+ * @see dev.inmo.tgbotapi.utils.botCommand
+ * @see dev.inmo.tgbotapi.utils.cashTag
+ * @see dev.inmo.tgbotapi.utils.code
+ * @see dev.inmo.tgbotapi.utils.email
+ * @see dev.inmo.tgbotapi.utils.hashtag
+ * @see dev.inmo.tgbotapi.utils.italic
+ * @see dev.inmo.tgbotapi.utils.mention
+ * @see dev.inmo.tgbotapi.utils.phone
+ * @see dev.inmo.tgbotapi.utils.pre
+ * @see dev.inmo.tgbotapi.utils.regular
+ * @see dev.inmo.tgbotapi.utils.strikethrough
+ * @see dev.inmo.tgbotapi.utils.link
+ * @see dev.inmo.tgbotapi.utils.underline
+ * @see dev.inmo.tgbotapi.utils.customEmoji
+ */
 inline fun buildEntities(separator: String, init: EntitiesBuilderBody) = buildEntities(regularTextSource(separator), init)
 
 /**
