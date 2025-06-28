@@ -43,7 +43,29 @@ typealias ReplyKeyboardRowBuilder = RowBuilder<KeyboardButton>
  * Factory-function for [ReplyKeyboardBuilder]. It will [apply] [block] to internally created [ReplyKeyboardMarkup]
  * and [ReplyKeyboardBuilder.build] [ReplyKeyboardMarkup] then
  *
+ * ```kotlin
+ *  replyKeyboard {
+ *      row {
+ *          simpleButton("simple button")
+ *          simpleButton("simple button2")
+ *      }
+ *      row {
+ *          simpleButton("simple button2")
+ *      }
+ *  }
+ * ```
+ *
  * @see ReplyKeyboardBuilder.row
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.simpleButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestContactButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestLocationButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestPollButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.webAppButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestUserButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestUserOrBotButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestChannelButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestGroupButton
  */
 inline fun replyKeyboard(
     resizeKeyboard: Boolean? = null,
@@ -57,6 +79,25 @@ inline fun replyKeyboard(
 /**
  * Factory-function for [ReplyKeyboardBuilder], but in difference with [replyKeyboard] this method will create single-row
  * keyboard
+ *
+ * ```kotlin
+ * flatReplyKeyboard {
+ *      simpleButton("simple button")
+ *      simpleButton("simple button2")
+ * }
+ * ```
+ *
+ * @see ReplyKeyboardBuilder.row
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.simpleButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestContactButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestLocationButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestPollButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.webAppButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestUserButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestUserOrBotButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestChannelButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.requestGroupButton
  */
 inline fun flatReplyKeyboard(
     resizeKeyboard: Boolean? = null,
