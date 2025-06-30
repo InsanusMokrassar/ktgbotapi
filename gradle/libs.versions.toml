@@ -14,7 +14,7 @@ ksp = "2.1.20-1.0.31"
 kotlin-poet = "1.18.1"
 
 microutils = "0.25.7"
-kslog = "1.4.1"
+kslog = "1.5.0"
 
 versions = "0.51.0"
 
