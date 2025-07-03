@@ -308,6 +308,8 @@ const val pendingJoinRequestCountField = "pending_join_request_count"
 const val memberLimitField = "member_limit"
 const val iconColorField = "icon_color"
 const val emojiListField = "emoji_list"
+const val completedByUserField = "completed_by_user"
+const val completionDateField = "completion_date"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
