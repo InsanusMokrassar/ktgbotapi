@@ -1737,6 +1737,14 @@ public final class dev/inmo/tgbotapi/requests/bot/GetMyShortDescription$Companio
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/requests/bot/GetMyStarBalance : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/bot/GetMyStarBalance;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public fun method ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/requests/bot/MyCommandsRequest : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest, dev/inmo/tgbotapi/types/abstracts/WithOptionalLanguageCode {
 	public abstract fun getScope ()Ldev/inmo/tgbotapi/types/commands/BotCommandScope;
 }
@@ -9375,6 +9383,62 @@ public synthetic class dev/inmo/tgbotapi/types/CallbackQueryId$$serializer : kot
 }
 
 public final class dev/inmo/tgbotapi/types/CallbackQueryId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Companion;
+	public abstract fun getCost ()Ljava/lang/Integer;
+	public abstract fun getEnabled ()Z
+}
+
+public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Disabled : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Disabled;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getEnabled ()Z
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Free : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Free;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getEnabled ()Z
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$Companion;
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getEnabled ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

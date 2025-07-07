@@ -71,7 +71,7 @@ val invoicePayloadBytesLimit = 1 until 128
 
 val pollOptionTextLength = 1 .. 100
 val pollQuestionTextLength = 1 .. 300
-val pollOptionsLimit = 2 .. 10
+val pollOptionsLimit = 2 .. 12
 
 val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
 

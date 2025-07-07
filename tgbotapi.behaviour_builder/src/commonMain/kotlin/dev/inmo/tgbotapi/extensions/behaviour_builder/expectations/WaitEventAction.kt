@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
@@ -276,3 +277,8 @@ fun BehaviourContext.waitChecklistTasksAdded(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChecklistTasksAdded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitChannelDirectMessagesConfigurationChanged(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChannelDirectMessagesConfigurationChanged>(initRequest, errorFactory)

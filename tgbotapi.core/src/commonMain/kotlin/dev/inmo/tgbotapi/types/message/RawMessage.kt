@@ -171,6 +171,9 @@ internal data class RawMessage(
     private val checklist_tasks_done: ChecklistTasksDone? = null,
     private val checklist_tasks_added: ChecklistTasksAdded? = null,
 
+    // Channel direct messages
+    private val direct_message_price_changed: ChannelDirectMessagesConfigurationChanged? = null,
+
     // Gifts
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
@@ -301,6 +304,7 @@ internal data class RawMessage(
             unique_gift != null -> unique_gift
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
+            direct_message_price_changed != null -> direct_message_price_changed
             else -> null
         }
     }

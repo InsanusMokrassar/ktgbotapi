@@ -144,6 +144,8 @@ external class WebApp {
     fun requestWriteAccess(callback: ((Boolean) -> Unit)? = definedExternally)
     fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)
 
+    fun hideKeyboard()
+
     // Start of generated part
 
     @JsName("onEvent")

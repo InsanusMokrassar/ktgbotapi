@@ -294,6 +294,10 @@ public final class dev/inmo/tgbotapi/extensions/api/bot/GetMyShortDescriptionKt 
 	public static synthetic fun getMyShortDescription$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/bot/GetMyStarBalanceKt {
+	public static final fun getMyStarBalance (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyCommandsKt {
 	public static final fun setMyCommands (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/util/List;Ldev/inmo/tgbotapi/types/commands/BotCommandScope;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setMyCommands (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/util/List;Ldev/inmo/tgbotapi/types/commands/BotCommandScope;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
