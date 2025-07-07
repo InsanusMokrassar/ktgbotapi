@@ -7,6 +7,8 @@ import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
@@ -264,3 +266,13 @@ fun BehaviourContext.waitUniqueGiftSentOrReceived(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<GiftSentOrReceived.Unique>(initRequest, errorFactory)
+
+fun BehaviourContext.waitChecklistTasksDone(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChecklistTasksDone>(initRequest, errorFactory)
+
+fun BehaviourContext.waitChecklistTasksAdded(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChecklistTasksAdded>(initRequest, errorFactory)

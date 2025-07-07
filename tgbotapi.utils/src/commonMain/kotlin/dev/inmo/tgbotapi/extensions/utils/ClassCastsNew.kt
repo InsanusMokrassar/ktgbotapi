@@ -173,6 +173,8 @@ import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -3348,6 +3350,24 @@ public inline fun ChatEvent.chatBackgroundOrThrow(): ChatBackground = this as
 
 public inline fun <T> ChatEvent.ifChatBackground(block: (ChatBackground) -> T): T? =
     chatBackgroundOrNull() ?.let(block)
+
+public inline fun ChatEvent.checklistTasksAddedOrNull(): ChecklistTasksAdded? = this as?
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+
+public inline fun ChatEvent.checklistTasksAddedOrThrow(): ChecklistTasksAdded = this as
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+
+public inline fun <T> ChatEvent.ifChecklistTasksAdded(block: (ChecklistTasksAdded) -> T): T? =
+    checklistTasksAddedOrNull() ?.let(block)
+
+public inline fun ChatEvent.checklistTasksDoneOrNull(): ChecklistTasksDone? = this as?
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+
+public inline fun ChatEvent.checklistTasksDoneOrThrow(): ChecklistTasksDone = this as
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+
+public inline fun <T> ChatEvent.ifChecklistTasksDone(block: (ChecklistTasksDone) -> T): T? =
+    checklistTasksDoneOrNull() ?.let(block)
 
 public inline fun ChatEvent.giftSentOrReceivedOrNull(): GiftSentOrReceived? = this as?
     dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
