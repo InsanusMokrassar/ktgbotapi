@@ -134,6 +134,18 @@ public abstract interface class dev/inmo/tgbotapi/abstracts/Titled {
 	public abstract fun getTitle ()Ljava/lang/String;
 }
 
+public abstract interface class dev/inmo/tgbotapi/abstracts/TitledInput : dev/inmo/tgbotapi/abstracts/TextedInput {
+	public abstract fun getText ()Ljava/lang/String;
+	public abstract fun getTextSources ()Ljava/util/List;
+	public abstract fun getTitle ()Ljava/lang/String;
+	public abstract fun getTitleTextSources ()Ljava/util/List;
+}
+
+public final class dev/inmo/tgbotapi/abstracts/TitledInput$DefaultImpls {
+	public static fun getText (Ldev/inmo/tgbotapi/abstracts/TitledInput;)Ljava/lang/String;
+	public static fun getTextSources (Ldev/inmo/tgbotapi/abstracts/TitledInput;)Ljava/util/List;
+}
+
 public abstract interface class dev/inmo/tgbotapi/abstracts/WithCustomStartMediaData {
 	public abstract fun getStartTimestamp ()Ljava/lang/Integer;
 }
@@ -5474,6 +5486,55 @@ public final class dev/inmo/tgbotapi/requests/send/SendAction$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/requests/send/SendChecklist : dev/inmo/tgbotapi/abstracts/types/DisableNotification, dev/inmo/tgbotapi/abstracts/types/OptionallyWithEffectId, dev/inmo/tgbotapi/abstracts/types/ProtectContent, dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/abstracts/types/WithReplyMarkup, dev/inmo/tgbotapi/abstracts/types/WithReplyParameters, dev/inmo/tgbotapi/requests/send/abstracts/SendChatMessageRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendChecklist$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Pair;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Pair;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public final fun component3-T-_HSQI ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun component6-Ts0V7ak ()Ljava/lang/String;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun copy-4oVOAy8 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendChecklist;
+	public static synthetic fun copy-4oVOAy8$default (Ldev/inmo/tgbotapi/requests/send/SendChecklist;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendChecklist;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
+	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public final fun getChecklist ()Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public fun getDisableNotification ()Z
+	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getProtectContent ()Z
+	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/requests/send/SendChecklist$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/send/SendChecklist$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/send/SendChecklist;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/send/SendChecklist;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/requests/send/SendChecklist$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/send/SendContact : dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendContact$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -9693,12 +9754,15 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field chatIsForumField Ljava/lang/String;
 	public static final field chatTypeField Ljava/lang/String;
 	public static final field chatsField Ljava/lang/String;
+	public static final field checklistField Ljava/lang/String;
 	public static final field cityField Ljava/lang/String;
 	public static final field closeDateField Ljava/lang/String;
 	public static final field closingMinuteField Ljava/lang/String;
 	public static final field colorField Ljava/lang/String;
 	public static final field colorsField Ljava/lang/String;
 	public static final field commissionPerMilleField Ljava/lang/String;
+	public static final field completedByUserField Ljava/lang/String;
+	public static final field completionDateField Ljava/lang/String;
 	public static final field containsMasksField Ljava/lang/String;
 	public static final field contentField Ljava/lang/String;
 	public static final field convertStarCountField Ljava/lang/String;
@@ -9920,6 +9984,8 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field optionsField Ljava/lang/String;
 	public static final field orderInfoField Ljava/lang/String;
 	public static final field originField Ljava/lang/String;
+	public static final field othersCanAddTasksField Ljava/lang/String;
+	public static final field othersCanMarkTasksAsDoneField Ljava/lang/String;
 	public static final field ownedGiftIdField Ljava/lang/String;
 	public static final field paidMediaField Ljava/lang/String;
 	public static final field paidMediaPayloadField Ljava/lang/String;
@@ -10075,6 +10141,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field switchPmTextField Ljava/lang/String;
 	public static final field symbolColorField Ljava/lang/String;
 	public static final field symbolField Ljava/lang/String;
+	public static final field tasksField Ljava/lang/String;
 	public static final field telegramPaymentChargeIdField Ljava/lang/String;
 	public static final field temperatureField Ljava/lang/String;
 	public static final field temporaryRegistrationField Ljava/lang/String;
@@ -10091,6 +10158,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field thumbnailUrlField Ljava/lang/String;
 	public static final field thumbnailWidthField Ljava/lang/String;
 	public static final field timeZoneNameField Ljava/lang/String;
+	public static final field titleEntitiesField Ljava/lang/String;
 	public static final field titleField Ljava/lang/String;
 	public static final field topColorField Ljava/lang/String;
 	public static final field totalAmountField Ljava/lang/String;
@@ -17590,6 +17658,246 @@ public final class dev/inmo/tgbotapi/types/chat/member/SubscriptionMemberChatMem
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/checklists/Checklist : dev/inmo/tgbotapi/abstracts/TitledInput {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/Checklist$Companion;
+	public abstract fun getOthersCanAddTasks ()Z
+	public abstract fun getOthersCanCompleteTasks ()Z
+	public abstract fun getTasks ()Ljava/util/List;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$Created : dev/inmo/tgbotapi/types/checklists/Checklist {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/Checklist$Created$Companion;
+	public fun <init> (Ljava/util/List;Ljava/util/List;ZZ)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun copy (Ljava/util/List;Ljava/util/List;ZZ)Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;Ljava/util/List;Ljava/util/List;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOthersCanAddTasks ()Z
+	public fun getOthersCanCompleteTasks ()Z
+	public fun getTasks ()Ljava/util/List;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun getTitle ()Ljava/lang/String;
+	public fun getTitleTextSources ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$Created$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$DefaultImpls {
+	public static fun getText (Ldev/inmo/tgbotapi/types/checklists/Checklist;)Ljava/lang/String;
+	public static fun getTextSources (Ldev/inmo/tgbotapi/types/checklists/Checklist;)Ljava/util/List;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$Input : dev/inmo/tgbotapi/types/checklists/Checklist {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/Checklist$Input$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZ)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZ)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/util/List;Ljava/util/List;ZZ)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/util/List;ZZLkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Ljava/util/List;ZZLkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZ)Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getOthersCanAddTasks ()Z
+	public fun getOthersCanCompleteTasks ()Z
+	public final fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public fun getTasks ()Ljava/util/List;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun getTitle ()Ljava/lang/String;
+	public fun getTitleTextSources ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/checklists/Checklist$Input$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/checklists/Checklist$Input$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/Checklist$Input$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/checklists/ChecklistTask : dev/inmo/tgbotapi/abstracts/TextedInput {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Companion;
+	public abstract fun getId-9XrXEx4 ()I
+	public abstract fun getText ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created : dev/inmo/tgbotapi/types/checklists/ChecklistTask {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created$Companion;
+	public abstract fun getCompletedByUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public abstract fun getCompletionDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created$DefaultImpls {
+	public static fun getCompletedByUser (Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created;)Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public static fun getCompletionDate (Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created;)Ldev/inmo/tgbotapi/types/TelegramDate;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Created;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Done : dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Done$Companion;
+	public synthetic fun <init> (ILdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-9XrXEx4 ()I
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-egrVBYk (ILdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Done;
+	public static synthetic fun copy-egrVBYk$default (Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Done;ILdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Done;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCompletedByUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getCompletionDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getId-9XrXEx4 ()I
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Done$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Input : dev/inmo/tgbotapi/types/checklists/ChecklistTask {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILkotlin/jvm/functions/Function1;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-9XrXEx4 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-egrVBYk (ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input;
+	public static synthetic fun copy-egrVBYk$default (Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getId-9XrXEx4 ()I
+	public final fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Input$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Input;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone : dev/inmo/tgbotapi/types/checklists/ChecklistTask$Created {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-9XrXEx4 ()I
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy--FO1ySU (ILjava/util/List;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone;
+	public static synthetic fun copy--FO1ySU$default (Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone;ILjava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCompletedByUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getCompletionDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getId-9XrXEx4 ()I
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTask$Undone$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTaskId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId$Companion;
+	public static final synthetic fun box-impl (I)Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public final fun getInt-pVg5ArA ()I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public synthetic class dev/inmo/tgbotapi/types/checklists/ChecklistTaskId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-YVfj6vI (Lkotlinx/serialization/encoding/Decoder;)I
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-sSeF6h8 (Lkotlinx/serialization/encoding/Encoder;I)V
+}
+
+public final class dev/inmo/tgbotapi/types/checklists/ChecklistTaskId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/colors/ColorId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/colors/ColorId$Companion;
 	public static final synthetic fun box-impl (I)Ldev/inmo/tgbotapi/types/colors/ColorId;
@@ -22642,6 +22950,34 @@ public abstract interface class dev/inmo/tgbotapi/types/message/content/AudioMed
 
 public final class dev/inmo/tgbotapi/types/message/content/AudioMediaGroupPartContent$DefaultImpls {
 	public static fun createResend-f_HYr08 (Ldev/inmo/tgbotapi/types/message/content/AudioMediaGroupPartContent;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+}
+
+public final class dev/inmo/tgbotapi/types/message/content/ChecklistContent : dev/inmo/tgbotapi/types/message/content/MessageContent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/content/ChecklistContent$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;
+	public final fun copy (Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;)Ldev/inmo/tgbotapi/types/message/content/ChecklistContent;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/content/ChecklistContent;Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/content/ChecklistContent;
+	public fun createResend-f_HYr08 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public fun createResend-rXDJoI8 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChecklist ()Ldev/inmo/tgbotapi/types/checklists/Checklist$Created;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class dev/inmo/tgbotapi/types/message/content/ChecklistContent$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/content/ChecklistContent$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/content/ChecklistContent;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/content/ChecklistContent;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/message/content/ChecklistContent$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/message/content/ContactContent : dev/inmo/tgbotapi/types/message/content/MessageContent {

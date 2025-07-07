@@ -18,6 +18,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
@@ -165,6 +166,61 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
+
+
+// Checklist
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.replyWithChecklist(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    replyInBusinessConnectionId: BusinessConnectionId,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = toChatId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    replyInBusinessConnectionId: BusinessConnectionId,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = toChatId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 

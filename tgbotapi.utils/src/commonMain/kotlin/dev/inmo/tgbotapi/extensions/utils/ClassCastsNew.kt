@@ -325,6 +325,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
 import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
+import dev.inmo.tgbotapi.types.message.content.ChecklistContent
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
@@ -4490,6 +4491,15 @@ public inline fun ResendableContent.audioContentOrThrow(): AudioContent = this a
 
 public inline fun <T> ResendableContent.ifAudioContent(block: (AudioContent) -> T): T? =
     audioContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.checklistContentOrNull(): ChecklistContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.ChecklistContent
+
+public inline fun ResendableContent.checklistContentOrThrow(): ChecklistContent = this as
+    dev.inmo.tgbotapi.types.message.content.ChecklistContent
+
+public inline fun <T> ResendableContent.ifChecklistContent(block: (ChecklistContent) -> T): T? =
+    checklistContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.contactContentOrNull(): ContactContent? = this as?
     dev.inmo.tgbotapi.types.message.content.ContactContent
