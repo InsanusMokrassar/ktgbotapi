@@ -8,6 +8,8 @@ import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.types.othersCanAddTasksField
+import dev.inmo.tgbotapi.types.othersCanMarkTasksAsDoneField
 import dev.inmo.tgbotapi.types.tasksField
 import dev.inmo.tgbotapi.types.titleEntitiesField
 import dev.inmo.tgbotapi.types.titleField
@@ -34,7 +36,9 @@ sealed interface Checklist : TitledInput {
         val parseMode: ParseMode? = null,
         @SerialName(titleEntitiesField)
         override val titleTextSources: List<TextSource> = emptyList(),
+        @SerialName(othersCanAddTasksField)
         override val othersCanAddTasks: Boolean = false,
+        @SerialName(othersCanMarkTasksAsDoneField)
         override val othersCanCompleteTasks: Boolean = false,
     ) : Checklist {
         companion object : KSerializer<Input> {
@@ -83,8 +87,11 @@ sealed interface Checklist : TitledInput {
     @Serializable(Created.Companion::class)
     data class Created(
         override val titleTextSources: List<TextSource>,
+        @SerialName(tasksField)
         override val tasks: List<ChecklistTask.Created>,
+        @SerialName(othersCanAddTasksField)
         override val othersCanAddTasks: Boolean = false,
+        @SerialName(othersCanMarkTasksAsDoneField)
         override val othersCanCompleteTasks: Boolean = false,
     ): Checklist {
         override val title: String by lazy {

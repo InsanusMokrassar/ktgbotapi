@@ -38,18 +38,6 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface ChecklistTask : TextedInput {
     val id: ChecklistTaskId
     override val text: String
-    @Serializable
-    data class InputChecklist @Warning("It is low level API. Do not use it without need") constructor(
-        @SerialName(titleField)
-        override val title: String,
-        @SerialName(tasksField)
-        val tasks: List<InputChecklistTask>,
-        @SerialName(parseModeField)
-        val parseMode: ParseMode? = null,
-        @SerialName(titleEntitiesField)
-        override val titleTextSources: List<TextSource> = emptyList(),
-
-        ) : TitledInput
 
     @Serializable(Input.Companion::class)
     data class Input @Warning("It is low level API. Do not use it without need") constructor(
