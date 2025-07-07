@@ -165,6 +165,10 @@ internal data class RawMessage(
     private val giveaway_winners: GiveawayPublicResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 
+    // Checklists
+    private val checklist_tasks_done: Nothing,
+    private val checklist_tasks_added: Nothing,
+
     // Gifts
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,

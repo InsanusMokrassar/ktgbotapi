@@ -314,6 +314,7 @@ const val titleEntitiesField = "title_entities"
 const val tasksField = "tasks"
 const val othersCanAddTasksField = "others_can_add_tasks"
 const val othersCanMarkTasksAsDoneField = "others_can_mark_tasks_as_done"
+const val checklistField = "checklist"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
