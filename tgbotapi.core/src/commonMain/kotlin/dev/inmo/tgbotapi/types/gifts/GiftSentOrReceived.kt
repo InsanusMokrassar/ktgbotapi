@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.gifts
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 import dev.inmo.tgbotapi.types.message.RawMessageEntities
 import dev.inmo.tgbotapi.types.message.asTextSources
@@ -9,17 +10,21 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlin.jvm.JvmInline
 import kotlin.jvm.JvmName
 
 
 /**
- * Represent Telegram Bots API abstraction [GiftInfo](https://core.telegram.org/bots/api#giftinfo) and
+ * Represent Telegram Bots API abstraction [OwnedGiftUnique](https://core.telegram.org/bots/api#giftinfo) and
  * [UniqueGiftInfo](https://core.telegram.org/bots/api#uniquegiftinfo)
  *
  * @see ReceivedInBusinessAccount
@@ -32,6 +37,7 @@ import kotlin.jvm.JvmName
 sealed interface GiftSentOrReceived : CommonEvent {
     val ownedGiftId: GiftId?
     val gift: Gift
+    val nextTransferDate: TelegramDate?
 
     @Serializable
     sealed interface ReceivedInBusinessAccount : GiftSentOrReceived {
@@ -61,7 +67,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(entitiesField)
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false
+            override val isPrivate: Boolean = false,
+            @SerialName(nextTransferDateField)
+            override val nextTransferDate: TelegramDate? = null
         ) : Regular {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
@@ -87,7 +95,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(entitiesField)
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false
+            override val isPrivate: Boolean = false,
+            @SerialName(nextTransferDateField)
+            override val nextTransferDate: TelegramDate? = null
         ) : Regular, GiftSentOrReceived.ReceivedInBusinessAccount {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
@@ -112,7 +122,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 @SerialName(entitiesField)
                 val entities: RawMessageEntities? = null,
                 @SerialName(isPrivateField)
-                val isPrivate: Boolean = false
+                val isPrivate: Boolean = false,
+                @SerialName(nextTransferDateField)
+                val nextTransferDate: TelegramDate? = null
             )
 
             override val descriptor: SerialDescriptor
@@ -137,7 +149,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             canBeUpgraded = surrogate.canBeUpgraded,
                             text = surrogate.text,
                             entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate
+                            isPrivate = surrogate.isPrivate,
+                            nextTransferDate = surrogate.nextTransferDate
                         )
                     }
                     else -> {
@@ -149,7 +162,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             canBeUpgraded = surrogate.canBeUpgraded,
                             text = surrogate.text,
                             entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate
+                            isPrivate = surrogate.isPrivate,
+                            nextTransferDate = surrogate.nextTransferDate
                         )
                     }
                 }
@@ -192,19 +206,80 @@ sealed interface GiftSentOrReceived : CommonEvent {
     sealed interface Unique : GiftSentOrReceived {
         override val gift: Gift.Unique
         val origin: String?
+        val originTyped: Origin?
+        val lastResaleStarCount: Int?
         val transferStarCount: Int?
+
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+        @Serializable(Origin.Companion::class)
+        sealed interface Origin {
+            val string: String
+            @Serializable(Origin.Companion::class)
+            object Upgrade : Origin { override val string: String = "upgrade" }
+            @Serializable(Origin.Companion::class)
+            object Transfer : Origin { override val string: String = "transfer" }
+            @Serializable(Origin.Companion::class)
+            object Resale : Origin { override val string: String = "resale" }
+            @Serializable(Origin.Companion::class)
+            @JvmInline
+            value class Unknown(override val string: String) : Origin
+
+            companion object : KSerializer<Origin> {
+                override val descriptor: SerialDescriptor = String.serializer().descriptor
+
+                fun fromString(value: String): Origin = when (value) {
+                    Upgrade.string -> Upgrade
+                    Transfer.string -> Transfer
+                    Resale.string -> Resale
+                    else -> Unknown(value)
+                }
+
+                override fun deserialize(decoder: Decoder): Origin {
+                    val value = decoder.decodeString()
+                    return fromString(value)
+                }
+
+                override fun serialize(
+                    encoder: Encoder,
+                    value: Origin
+                ) {
+                    encoder.encodeString(value.string)
+                }
+            }
+        }
 
         @Serializable
         data class Common(
             @SerialName(giftField)
             override val gift: Gift.Unique,
             @SerialName(originField)
-            override val origin: String? = null,
+            override val originTyped: Origin? = null,
+            @SerialName(lastResaleStarCountField)
+            override val lastResaleStarCount: Int? = null,
             @SerialName(transferStarCountField)
-            override val transferStarCount: Int? = null
+            override val transferStarCount: Int? = null,
+            @SerialName(nextTransferDateField)
+            override val nextTransferDate: TelegramDate? = null
         ) : Unique {
             override val ownedGiftId: GiftId?
                 get() = null
+
+            @Transient
+            override val origin: String? = originTyped ?.string
+
+            constructor(
+                gift: Gift.Unique,
+                origin: String?,
+                lastResaleStarCount: Int? = null,
+                transferStarCount: Int? = null,
+                nextTransferDate: TelegramDate? = null
+            ) : this(
+                gift,
+                origin ?.let { Origin.fromString(it) },
+                lastResaleStarCount,
+                transferStarCount,
+                nextTransferDate
+            )
         }
 
         @Serializable
@@ -214,10 +289,33 @@ sealed interface GiftSentOrReceived : CommonEvent {
             @SerialName(ownedGiftIdField)
             override val ownedGiftId: GiftId,
             @SerialName(originField)
-            override val origin: String? = null,
+            override val originTyped: Origin? = null,
+            @SerialName(lastResaleStarCountField)
+            override val lastResaleStarCount: Int? = null,
             @SerialName(transferStarCountField)
-            override val transferStarCount: Int? = null
-        ) : Unique, GiftSentOrReceived.ReceivedInBusinessAccount
+            override val transferStarCount: Int? = null,
+            @SerialName(nextTransferDateField)
+            override val nextTransferDate: TelegramDate? = null
+        ) : Unique, GiftSentOrReceived.ReceivedInBusinessAccount {
+            @Transient
+            override val origin: String? = originTyped ?.string
+
+            constructor(
+                gift: Gift.Unique,
+                ownedGiftId: GiftId,
+                origin: String? = null,
+                lastResaleStarCount: Int? = null,
+                transferStarCount: Int? = null,
+                nextTransferDate: TelegramDate? = null
+            ) : this(
+                gift = gift,
+                ownedGiftId = ownedGiftId,
+                originTyped = origin ?.let { Origin.fromString(it) },
+                lastResaleStarCount = lastResaleStarCount,
+                transferStarCount = transferStarCount,
+                nextTransferDate = nextTransferDate
+            )
+        }
 
         companion object : KSerializer<GiftSentOrReceived.Unique> {
             @Serializable
@@ -227,9 +325,13 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 @SerialName(ownedGiftIdField)
                 val ownedGiftId: GiftId? = null,
                 @SerialName(originField)
-                val origin: String? = null,
+                val origin: Origin? = null,
+                @SerialName(lastResaleStarCountField)
+                val lastResaleStarCount: Int? = null,
                 @SerialName(transferStarCountField)
-                val transferStarCount: Int? = null
+                val transferStarCount: Int? = null,
+                @SerialName(nextTransferDateField)
+                val nextTransferDate: TelegramDate? = null
             )
 
             override val descriptor: SerialDescriptor
@@ -249,16 +351,20 @@ sealed interface GiftSentOrReceived : CommonEvent {
                     surrogate.ownedGiftId == null -> {
                         Common(
                             gift = surrogate.gift,
-                            origin = surrogate.origin,
-                            transferStarCount = surrogate.transferStarCount
+                            originTyped = surrogate.origin,
+                            lastResaleStarCount = surrogate.lastResaleStarCount,
+                            transferStarCount = surrogate.transferStarCount,
+                            nextTransferDate = surrogate.nextTransferDate
                         )
                     }
                     else -> {
                         ReceivedInBusinessAccount(
                             gift = surrogate.gift,
                             ownedGiftId = surrogate.ownedGiftId,
-                            origin = surrogate.origin,
-                            transferStarCount = surrogate.transferStarCount
+                            originTyped = surrogate.origin,
+                            lastResaleStarCount = surrogate.lastResaleStarCount,
+                            transferStarCount = surrogate.transferStarCount,
+                            nextTransferDate = surrogate.nextTransferDate
                         )
                     }
                 }

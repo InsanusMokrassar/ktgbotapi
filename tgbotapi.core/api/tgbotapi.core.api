@@ -10032,6 +10032,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field lastErrorDateField Ljava/lang/String;
 	public static final field lastErrorMessageField Ljava/lang/String;
 	public static final field lastNameField Ljava/lang/String;
+	public static final field lastResaleStarCountField Ljava/lang/String;
 	public static final field lastSynchronizationErrorDateField Ljava/lang/String;
 	public static final field latitudeField Ljava/lang/String;
 	public static final field lengthField Ljava/lang/String;
@@ -10078,6 +10079,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field newOwnerChatIdField Ljava/lang/String;
 	public static final field newReactionField Ljava/lang/String;
 	public static final field nextOffsetField Ljava/lang/String;
+	public static final field nextTransferDateField Ljava/lang/String;
 	public static final field nonceField Ljava/lang/String;
 	public static final field numberField Ljava/lang/String;
 	public static final field offsetField Ljava/lang/String;
@@ -19862,6 +19864,7 @@ public final class dev/inmo/tgbotapi/types/gifts/Gift$Unique$Companion {
 public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Companion;
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public abstract fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public abstract fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 }
 
@@ -19889,21 +19892,23 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived
 
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;Z)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
 	public final fun component2 ()Ljava/lang/Integer;
 	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Z
 	public final fun component5 ()Ljava/lang/String;
 	public final fun component7 ()Z
-	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Common;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getCanBeUpgraded ()Z
 	public fun getConvertStarCount ()Ljava/lang/Integer;
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
 	public fun getText ()Ljava/lang/String;
@@ -19940,8 +19945,8 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Comp
 
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$ReceivedInBusinessAccount, dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
 	public final fun component2-OyCYJok ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/Integer;
@@ -19949,13 +19954,15 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Rece
 	public final fun component5 ()Z
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component8 ()Z
-	public final fun copy-xVLKMpc (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
-	public static synthetic fun copy-xVLKMpc$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy-3gWu8WQ (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
+	public static synthetic fun copy-3gWu8WQ$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/util/List;ZLdev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$ReceivedInBusinessAccount;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getCanBeUpgraded ()Z
 	public fun getConvertStarCount ()Ljava/lang/Integer;
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
 	public fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
@@ -19983,23 +19990,32 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Regular$Rece
 public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Companion;
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public abstract fun getLastResaleStarCount ()Ljava/lang/Integer;
 	public abstract fun getOrigin ()Ljava/lang/String;
+	public abstract fun getOriginTyped ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
 	public abstract fun getTransferStarCount ()Ljava/lang/Integer;
 }
 
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
-	public final fun component2 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
 	public final fun component3 ()Ljava/lang/Integer;
-	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Common;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getLastResaleStarCount ()Ljava/lang/Integer;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getOrigin ()Ljava/lang/String;
+	public fun getOriginTyped ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
 	public fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public fun getTransferStarCount ()Ljava/lang/Integer;
 	public fun hashCode ()I
@@ -20031,20 +20047,79 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Compa
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Companion;
+	public abstract fun getString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun fromString (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Resale : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Resale;
+	public fun getString ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Transfer : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Transfer;
+	public fun getString ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Unknown : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Unknown$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Unknown;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Upgrade : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin$Upgrade;
+	public fun getString ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$ReceivedInBusinessAccount, dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
 	public final fun component2-OyCYJok ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
 	public final fun component4 ()Ljava/lang/Integer;
-	public final fun copy-A6CMM0Q (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
-	public static synthetic fun copy-A6CMM0Q$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy-gWCrhmI (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
+	public static synthetic fun copy-gWCrhmI$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$ReceivedInBusinessAccount;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getLastResaleStarCount ()Ljava/lang/Integer;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getOrigin ()Ljava/lang/String;
+	public fun getOriginTyped ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceived$Unique$Origin;
 	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
 	public fun getTransferStarCount ()Ljava/lang/Integer;
