@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.checklists
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.TitledInput
+import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.checklists.ChecklistTask.Input
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -135,7 +136,7 @@ sealed interface Checklist : TitledInput {
         override val othersCanAddTasks: Boolean = false,
         @SerialName(othersCanMarkTasksAsDoneField)
         override val othersCanCompleteTasks: Boolean = false,
-    ): Checklist {
+    ): Checklist, ReplyInfo.External.ContentVariant {
         override val title: String by lazy {
             titleTextSources.makeSourceString()
         }

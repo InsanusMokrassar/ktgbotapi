@@ -928,6 +928,13 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/caption/EditInlineMessa
 	public static synthetic fun editMessageCaption-KUlcsOA$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/edit/checklist/EditMessageChecklistKt {
+	public static final fun editMessageChecklist (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageChecklist$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageChecklist-rhNz7xc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageChecklist-rhNz7xc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/EditChatMessageLiveLocationKt {
 	public static final fun editLiveLocation-K1rWLlE (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;JDDLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun editLiveLocation-K1rWLlE (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;JDDLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

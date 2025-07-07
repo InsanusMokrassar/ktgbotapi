@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
+import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
@@ -105,6 +106,7 @@ sealed interface ReplyInfo {
             private val invoice: Invoice? = null,
             private val dice: Dice? = null,
             private val giveaway: Giveaway? = null,
+            private val checklist: Checklist.Created? = null,
             private val giveaway_winners: GiveawayPublicResults? = null,
         ) {
             val asExternalReplyInfo: External
@@ -137,6 +139,7 @@ sealed interface ReplyInfo {
                         invoice != null -> invoice
                         giveaway != null -> giveaway
                         giveaway_winners != null -> giveaway_winners
+                        checklist != null -> checklist
                         else -> null
                     }
 
