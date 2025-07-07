@@ -1,62 +1,132 @@
 package dev.inmo.tgbotapi.types.checklists
 
+import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.abstracts.TitledInput
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
+import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.types.tasksField
+import dev.inmo.tgbotapi.types.titleEntitiesField
+import dev.inmo.tgbotapi.types.titleField
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable(Checklist.Companion::class)
-data class Checklist(
-    val titleTextSources: List<TextSource>,
-    val tasks: List<ChecklistTask>,
-    val othersCanAddTasks: Boolean = false,
-    val othersCanCompleteTasks: Boolean = false,
-) {
-    val title: String by lazy {
-        titleTextSources.makeSourceString()
+@Serializable
+sealed interface Checklist : TitledInput {
+    val tasks: List<ChecklistTask>
+    val othersCanAddTasks: Boolean
+    val othersCanCompleteTasks: Boolean
+    @Serializable
+    data class Input @Warning("It is low level API. Do not use it without need") constructor(
+        @SerialName(titleField)
+        override val title: String,
+        @SerialName(tasksField)
+        override val tasks: List<ChecklistTask.Input>,
+        @SerialName(parseModeField)
+        val parseMode: ParseMode? = null,
+        @SerialName(titleEntitiesField)
+        override val titleTextSources: List<TextSource> = emptyList(),
+        override val othersCanAddTasks: Boolean = false,
+        override val othersCanCompleteTasks: Boolean = false,
+    ) : Checklist {
+        companion object : KSerializer<Input> {
+            @Serializable
+            private class RawChecklist(
+                val title: String,
+                val parseMode: ParseMode? = null,
+                val title_entities: List<RawMessageEntity> = emptyList(),
+                val tasks: List<ChecklistTask.Input>,
+                val others_can_add_tasks: Boolean = false,
+                val others_can_mark_tasks_as_done: Boolean = false,
+            )
+            override val descriptor: SerialDescriptor = RawChecklist.serializer().descriptor
+
+            override fun serialize(
+                encoder: Encoder,
+                value: Input
+            ) {
+                RawChecklist.serializer().serialize(
+                    encoder,
+                    RawChecklist(
+                        title = value.title,
+                        title_entities = value.titleTextSources.toRawMessageEntities(),
+                        tasks = value.tasks,
+                        parseMode = value.parseMode,
+                        others_can_add_tasks = value.othersCanAddTasks,
+                        others_can_mark_tasks_as_done = value.othersCanCompleteTasks,
+                    )
+                )
+            }
+
+            override fun deserialize(decoder: Decoder): Input {
+                val raw = RawChecklist.serializer().deserialize(decoder)
+                return Input(
+                    title = raw.title,
+                    titleTextSources = raw.title_entities.asTextSources(raw.title),
+                    tasks = raw.tasks,
+                    parseMode = raw.parseMode,
+                    othersCanAddTasks = raw.others_can_add_tasks,
+                    othersCanCompleteTasks = raw.others_can_mark_tasks_as_done
+                )
+            }
+        }
     }
 
-    companion object : KSerializer<Checklist> {
-        @Serializable
-        private class RawChecklist(
-            val title: String,
-            val title_entities: List<RawMessageEntity> = emptyList(),
-            val tasks: List<ChecklistTask>,
-            val others_can_add_tasks: Boolean = false,
-            val others_can_mark_tasks_as_done: Boolean = false,
-        )
-        override val descriptor: SerialDescriptor = RawChecklist.serializer().descriptor
-
-        override fun serialize(
-            encoder: Encoder,
-            value: Checklist
-        ) {
-            RawChecklist.serializer().serialize(
-                encoder,
-                RawChecklist(
-                    title = value.title,
-                    title_entities = value.titleTextSources.toRawMessageEntities(),
-                    tasks = value.tasks,
-                    others_can_add_tasks = value.othersCanAddTasks,
-                    others_can_mark_tasks_as_done = value.othersCanCompleteTasks,
-                )
-            )
+    @Serializable(Created.Companion::class)
+    data class Created(
+        override val titleTextSources: List<TextSource>,
+        override val tasks: List<ChecklistTask.Created>,
+        override val othersCanAddTasks: Boolean = false,
+        override val othersCanCompleteTasks: Boolean = false,
+    ): Checklist {
+        override val title: String by lazy {
+            titleTextSources.makeSourceString()
         }
 
-        override fun deserialize(decoder: Decoder): Checklist {
-            val raw = RawChecklist.serializer().deserialize(decoder)
-            return Checklist(
-                titleTextSources = raw.title_entities.asTextSources(raw.title),
-                tasks = raw.tasks,
-                othersCanAddTasks = raw.others_can_add_tasks,
-                othersCanCompleteTasks = raw.others_can_mark_tasks_as_done
+        companion object : KSerializer<Created> {
+            @Serializable
+            private class RawChecklist(
+                val title: String,
+                val title_entities: List<RawMessageEntity> = emptyList(),
+                val tasks: List<ChecklistTask.Created>,
+                val others_can_add_tasks: Boolean = false,
+                val others_can_mark_tasks_as_done: Boolean = false,
             )
+            override val descriptor: SerialDescriptor = RawChecklist.serializer().descriptor
+
+            override fun serialize(
+                encoder: Encoder,
+                value: Created
+            ) {
+                RawChecklist.serializer().serialize(
+                    encoder,
+                    RawChecklist(
+                        title = value.title,
+                        title_entities = value.titleTextSources.toRawMessageEntities(),
+                        tasks = value.tasks,
+                        others_can_add_tasks = value.othersCanAddTasks,
+                        others_can_mark_tasks_as_done = value.othersCanCompleteTasks,
+                    )
+                )
+            }
+
+            override fun deserialize(decoder: Decoder): Created {
+                val raw = RawChecklist.serializer().deserialize(decoder)
+                return Created(
+                    titleTextSources = raw.title_entities.asTextSources(raw.title),
+                    tasks = raw.tasks,
+                    othersCanAddTasks = raw.others_can_add_tasks,
+                    othersCanCompleteTasks = raw.others_can_mark_tasks_as_done
+                )
+            }
         }
     }
 }

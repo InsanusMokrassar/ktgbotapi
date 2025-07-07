@@ -311,6 +311,7 @@ const val emojiListField = "emoji_list"
 const val completedByUserField = "completed_by_user"
 const val completionDateField = "completion_date"
 const val titleEntitiesField = "title_entities"
+const val tasksField = "tasks"
 const val othersCanAddTasksField = "others_can_add_tasks"
 const val othersCanMarkTasksAsDoneField = "others_can_mark_tasks_as_done"
 

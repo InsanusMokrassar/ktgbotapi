@@ -6,5 +6,5 @@ import kotlin.jvm.JvmInline
 @Serializable
 @JvmInline
 value class ChecklistTaskId(
-    val int: Int
+    val int: UInt
 )
