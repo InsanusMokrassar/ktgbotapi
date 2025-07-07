@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.checklists
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.TitledInput
+import dev.inmo.tgbotapi.types.checklists.ChecklistTask.Input
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
@@ -13,6 +14,8 @@ import dev.inmo.tgbotapi.types.othersCanMarkTasksAsDoneField
 import dev.inmo.tgbotapi.types.tasksField
 import dev.inmo.tgbotapi.types.titleEntitiesField
 import dev.inmo.tgbotapi.types.titleField
+import dev.inmo.tgbotapi.utils.EntitiesBuilder
+import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -41,6 +44,45 @@ sealed interface Checklist : TitledInput {
         @SerialName(othersCanMarkTasksAsDoneField)
         override val othersCanCompleteTasks: Boolean = false,
     ) : Checklist {
+        constructor(
+            text: String,
+            tasks: List<ChecklistTask.Input>,
+            parseMode: ParseMode? = null,
+            othersCanAddTasks: Boolean = false,
+            othersCanCompleteTasks: Boolean = false,
+        ) : this(
+            title = text,
+            parseMode = parseMode,
+            titleTextSources = emptyList(),
+            tasks = tasks,
+            othersCanAddTasks = othersCanAddTasks,
+            othersCanCompleteTasks = othersCanCompleteTasks
+        )
+        constructor(
+            titleTextSources: List<TextSource>,
+            tasks: List<ChecklistTask.Input>,
+            othersCanAddTasks: Boolean = false,
+            othersCanCompleteTasks: Boolean = false,
+        ) : this(
+            title = titleTextSources.makeSourceString(),
+            parseMode = null,
+            titleTextSources = titleTextSources,
+            tasks = tasks,
+            othersCanAddTasks = othersCanAddTasks,
+            othersCanCompleteTasks = othersCanCompleteTasks
+        )
+        constructor(
+            tasks: List<ChecklistTask.Input>,
+            othersCanAddTasks: Boolean = false,
+            othersCanCompleteTasks: Boolean = false,
+            builderBody: EntitiesBuilderBody
+        ) : this(
+            titleTextSources = EntitiesBuilder().apply(builderBody).build(),
+            tasks = tasks,
+            othersCanAddTasks = othersCanAddTasks,
+            othersCanCompleteTasks = othersCanCompleteTasks
+        )
+
         companion object : KSerializer<Input> {
             @Serializable
             private class RawChecklist(
