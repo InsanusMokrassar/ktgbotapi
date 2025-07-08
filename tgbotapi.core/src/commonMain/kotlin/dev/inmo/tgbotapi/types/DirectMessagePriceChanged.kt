@@ -7,25 +7,26 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
 sealed interface ChannelDirectMessagesConfigurationChanged : ChannelEvent {
     val enabled: Boolean
     val cost: Int?
-    @Serializable
-    object Disabled : ChannelDirectMessagesConfigurationChanged {
+    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
+    data object Disabled : ChannelDirectMessagesConfigurationChanged {
         override val enabled: Boolean
             get() = false
         override val cost: Int?
             get() = null
     }
-    @Serializable
-    object Free : ChannelDirectMessagesConfigurationChanged {
+    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
+    data object Free : ChannelDirectMessagesConfigurationChanged {
         override val enabled: Boolean
             get() = true
         override val cost: Int
             get() = 0
     }
-    @Serializable
+    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
     data class Paid(
         override val cost: Int
     ) : ChannelDirectMessagesConfigurationChanged {

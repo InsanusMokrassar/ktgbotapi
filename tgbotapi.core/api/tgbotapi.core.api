@@ -9403,16 +9403,22 @@ public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationCha
 
 public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Disabled : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Disabled;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getCost ()Ljava/lang/Integer;
 	public fun getEnabled ()Z
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Free : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Free;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getCost ()Ljava/lang/Integer;
 	public fun getEnabled ()Z
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid : dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged {
@@ -9426,16 +9432,6 @@ public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationCha
 	public fun getEnabled ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
-}
-
-public synthetic class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/ChannelDirectMessagesConfigurationChanged$Paid$Companion {
@@ -17847,16 +17843,6 @@ public final class dev/inmo/tgbotapi/types/checklists/Checklist$Input : dev/inmo
 	public fun getTitleTextSources ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
-}
-
-public synthetic class dev/inmo/tgbotapi/types/checklists/Checklist$Input$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/checklists/Checklist$Input$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/checklists/Checklist$Input;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/checklists/Checklist$Input$Companion : kotlinx/serialization/KSerializer {

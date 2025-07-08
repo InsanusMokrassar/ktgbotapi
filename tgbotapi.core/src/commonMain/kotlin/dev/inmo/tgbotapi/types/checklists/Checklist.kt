@@ -30,7 +30,7 @@ sealed interface Checklist : TitledInput {
     val tasks: List<ChecklistTask>
     val othersCanAddTasks: Boolean
     val othersCanCompleteTasks: Boolean
-    @Serializable
+    @Serializable(Input.Companion::class)
     data class Input @Warning("It is low level API. Do not use it without need") constructor(
         @SerialName(titleField)
         override val title: String,
