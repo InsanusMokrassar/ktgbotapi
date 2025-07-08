@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.Dice
@@ -168,6 +169,7 @@ internal data class RawMessage(
     private val giveaway_completed: GiveawayPrivateResults? = null,
 
     // Checklists
+    private val checklist: Checklist.Created? = null,
     private val checklist_tasks_done: ChecklistTasksDone? = null,
     private val checklist_tasks_added: ChecklistTasksAdded? = null,
 
@@ -249,6 +251,7 @@ internal data class RawMessage(
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
+            checklist != null -> ChecklistContent(checklist)
             giveaway != null -> GiveawayContent(chat, messageId, giveaway)
             giveaway_winners is GiveawayPublicResults -> GiveawayPublicResultsContent(giveaway_winners)
             else -> null
