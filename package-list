@@ -16,6 +16,7 @@ dev.inmo.tgbotapi.extensions.api.chat.modify
 dev.inmo.tgbotapi.extensions.api.chat.stickers
 dev.inmo.tgbotapi.extensions.api.edit
 dev.inmo.tgbotapi.extensions.api.edit.caption
+dev.inmo.tgbotapi.extensions.api.edit.checklist
 dev.inmo.tgbotapi.extensions.api.edit.location.live
 dev.inmo.tgbotapi.extensions.api.edit.media
 dev.inmo.tgbotapi.extensions.api.edit.payments
@@ -79,6 +80,7 @@ dev.inmo.tgbotapi.requests.chat.modify
 dev.inmo.tgbotapi.requests.chat.stickers
 dev.inmo.tgbotapi.requests.edit.abstracts
 dev.inmo.tgbotapi.requests.edit.caption
+dev.inmo.tgbotapi.requests.edit.checklist
 dev.inmo.tgbotapi.requests.edit.location.live
 dev.inmo.tgbotapi.requests.edit.media
 dev.inmo.tgbotapi.requests.edit.payments
@@ -129,6 +131,7 @@ dev.inmo.tgbotapi.types.buttons.inline
 dev.inmo.tgbotapi.types.buttons.reply
 dev.inmo.tgbotapi.types.chat
 dev.inmo.tgbotapi.types.chat.member
+dev.inmo.tgbotapi.types.checklists
 dev.inmo.tgbotapi.types.colors
 dev.inmo.tgbotapi.types.commands
 dev.inmo.tgbotapi.types.dice

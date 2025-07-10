@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>onChecklistContent</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../index.html">
+                    ktgbotapi
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filter=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    ktgbotapi
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="tgbotapi.behaviour_builder::dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling//onChecklistContent/TypeParam(bounds=[dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext])#dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter[dev.inmo.tgbotapi.types.message.abstracts.CommonMessage[dev.inmo.tgbotapi.types.message.content.ChecklistContent]]?#kotlin.coroutines.SuspendFunction3[TypeParam(bounds=[dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext]),dev.inmo.tgbotapi.types.message.abstracts.CommonMessage[dev.inmo.tgbotapi.types.message.content.ChecklistContent],dev.inmo.tgbotapi.types.update.abstracts.Update,kotlin.Boolean]?#dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory[dev.inmo.tgbotapi.types.message.abstracts.CommonMessage[dev.inmo.tgbotapi.types.message.content.ChecklistContent],kotlin.Any]?#kotlin.coroutines.SuspendFunction3[TypeParam(bounds=[dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext]),dev.inmo.tgbotapi.types.update.abstracts.Update,dev.inmo.tgbotapi.types.message.abstracts.CommonMessage[dev.inmo.tgbotapi.types.message.content.ChecklistContent],kotlin.Unit]?#kotlin.coroutines.SuspendFunction2[TypeParam(bounds=[dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext]),dev.inmo.tgbotapi.types.message.abstracts.CommonMessage[dev.inmo.tgbotapi.types.message.content.ChecklistContent],kotlin.Unit]/PointingToDeclaration//148860642">
+  <div class="breadcrumbs"><a href="../index.html">tgbotapi.behaviour_builder</a><span class="delimiter">/</span><a href="index.html">dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling</a><span class="delimiter">/</span><span class="current">onChecklistContent</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>on</span><wbr><span>Checklist</span><wbr><span><span>Content</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="on-checklist-content.html">BC</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context/index.html">BehaviourContext</a><span class="token operator">&gt; </span><a href="on-checklist-content.html">BC</a><span class="token punctuation">.</span><a href="on-checklist-content.html"><span class="token function">onChecklistContent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialFilter<span class="token operator">: </span><a href="-common-message-filter/index.html">CommonMessageFilter</a><span class="token operator">&lt;</span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.message.content/-checklist-content/index.html">ChecklistContent</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">subcontextUpdatesFilter<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-and-two-types-receiver/index.html">CustomBehaviourContextAndTwoTypesReceiver</a><span class="token operator">&lt;</span><a href="on-checklist-content.html">BC</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.message.content/-checklist-message/index.html">ChecklistMessage</a><span class="token punctuation">, </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>MessageFilterByChat<span class="token punctuation">, </span></span><span class="parameter ">markerFactory<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories/-marker-factory/index.html">MarkerFactory</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.message.content/-checklist-message/index.html">ChecklistMessage</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>ByChatMessageMarkerFactory<span class="token punctuation">, </span></span><span class="parameter ">additionalSubcontextInitialAction<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-and-two-types-receiver/index.html">CustomBehaviourContextAndTwoTypesReceiver</a><span class="token operator">&lt;</span><a href="on-checklist-content.html">BC</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token punctuation">, </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.message.content/-checklist-message/index.html">ChecklistMessage</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">scenarioReceiver<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-and-type-receiver/index.html">CustomBehaviourContextAndTypeReceiver</a><span class="token operator">&lt;</span><a href="on-checklist-content.html">BC</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.message.content/-checklist-message/index.html">ChecklistMessage</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr><span><span>Filter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This filter will be called to remove unnecessary data BEFORE <a href="on-checklist-content.html">scenarioReceiver</a> call</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>subcontext</span><wbr><span>Updates</span><wbr><span><span>Filter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This filter will be applied to each update inside of <a href="on-checklist-content.html">scenarioReceiver</a>. For example, this filter will be used if you will call <a href="../dev.inmo.tgbotapi.extensions.behaviour_builder.expectations/wait-content-message.html">dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage</a>. Use <a href="../dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context-and-two-types-receiver/index.html">dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver</a> function to create your own. Use <a href="../dev.inmo.tgbotapi.extensions.behaviour_builder.utils/plus.html">dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus</a> or <a href="../dev.inmo.tgbotapi.extensions.behaviour_builder.utils/times.html">dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times</a> to combinate several filters</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>marker</span><wbr><span><span>Factory</span></span></u></div></span></div><div><div class="title"><p class="paragraph"><strong>Pass null to handle requests fully parallel</strong>. Will be used to identify different "stream". <a href="on-checklist-content.html">scenarioReceiver</a> will be called synchronously in one "stream". Output of <a href="on-checklist-content.html">markerFactory</a> will be used as a key for "stream"</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>scenario</span><wbr><span><span>Receiver</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Main callback which will be used to handle incoming data if <a href="on-checklist-content.html">initialFilter</a> will pass that data</p></div></div></div></div></div></div></div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
