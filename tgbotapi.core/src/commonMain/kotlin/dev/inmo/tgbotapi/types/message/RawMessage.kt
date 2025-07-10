@@ -6,6 +6,9 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
@@ -165,6 +168,14 @@ internal data class RawMessage(
     private val giveaway_winners: GiveawayPublicResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 
+    // Checklists
+    private val checklist: Checklist.Created? = null,
+    private val checklist_tasks_done: ChecklistTasksDone? = null,
+    private val checklist_tasks_added: ChecklistTasksAdded? = null,
+
+    // Channel direct messages
+    private val direct_message_price_changed: ChannelDirectMessagesConfigurationChanged? = null,
+
     // Gifts
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
@@ -240,6 +251,7 @@ internal data class RawMessage(
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
+            checklist != null -> ChecklistContent(checklist)
             giveaway != null -> GiveawayContent(chat, messageId, giveaway)
             giveaway_winners is GiveawayPublicResults -> GiveawayPublicResultsContent(giveaway_winners)
             else -> null
@@ -293,6 +305,9 @@ internal data class RawMessage(
             paid_message_price_changed != null -> paid_message_price_changed
             gift != null -> gift
             unique_gift != null -> unique_gift
+            checklist_tasks_done != null -> checklist_tasks_done
+            checklist_tasks_added != null -> checklist_tasks_added
+            direct_message_price_changed != null -> direct_message_price_changed
             else -> null
         }
     }

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.extensions.api.send.media.*
 import dev.inmo.tgbotapi.extensions.api.send.payments.sendInvoice
 import dev.inmo.tgbotapi.extensions.api.send.polls.sendQuizPoll
 import dev.inmo.tgbotapi.extensions.api.send.polls.sendRegularPoll
+import dev.inmo.tgbotapi.requests.send.SendChecklist
 import dev.inmo.tgbotapi.requests.send.media.rawSendingMediaGroupsWarning
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.actions.BotAction
@@ -14,6 +15,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.Game
@@ -532,6 +534,50 @@ public suspend fun TelegramBot.send(
     effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
+)
+
+
+public suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    checklist: Checklist.Input,
+    businessConnectionId: BusinessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendChecklist(
+        chatId = chatId,
+        checklist = checklist,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+)
+
+public suspend fun TelegramBot.send(
+    chatId: BusinessChatId,
+    checklist: Checklist.Input,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendChecklist(
+        chatId = chatId,
+        checklist = checklist,
+        businessConnectionId = chatId.businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
 )
 
 /**

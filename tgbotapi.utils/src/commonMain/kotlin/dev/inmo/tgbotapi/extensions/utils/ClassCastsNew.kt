@@ -21,6 +21,7 @@ import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.BackgroundFill
 import dev.inmo.tgbotapi.types.BackgroundType
 import dev.inmo.tgbotapi.types.BusinessChatId
+import dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -173,6 +174,8 @@ import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -325,6 +328,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
 import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
+import dev.inmo.tgbotapi.types.message.content.ChecklistContent
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
@@ -3330,6 +3334,54 @@ public inline fun <T>
     TelegramMedia.ifWithCustomizableCaptionTelegramMedia(block: (WithCustomizableCaptionTelegramMedia) -> T):
     T? = withCustomizableCaptionTelegramMediaOrNull() ?.let(block)
 
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedOrNull():
+    ChannelDirectMessagesConfigurationChanged? = this as?
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedOrThrow():
+    ChannelDirectMessagesConfigurationChanged = this as
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
+
+public inline fun <T>
+    ChatEvent.ifChannelDirectMessagesConfigurationChanged(block: (ChannelDirectMessagesConfigurationChanged) -> T):
+    T? = channelDirectMessagesConfigurationChangedOrNull() ?.let(block)
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedDisabledOrNull():
+    ChannelDirectMessagesConfigurationChanged.Disabled? = this as?
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Disabled
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedDisabledOrThrow():
+    ChannelDirectMessagesConfigurationChanged.Disabled = this as
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Disabled
+
+public inline fun <T>
+    ChatEvent.ifChannelDirectMessagesConfigurationChangedDisabled(block: (ChannelDirectMessagesConfigurationChanged.Disabled) -> T):
+    T? = channelDirectMessagesConfigurationChangedDisabledOrNull() ?.let(block)
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedFreeOrNull():
+    ChannelDirectMessagesConfigurationChanged.Free? = this as?
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Free
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedFreeOrThrow():
+    ChannelDirectMessagesConfigurationChanged.Free = this as
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Free
+
+public inline fun <T>
+    ChatEvent.ifChannelDirectMessagesConfigurationChangedFree(block: (ChannelDirectMessagesConfigurationChanged.Free) -> T):
+    T? = channelDirectMessagesConfigurationChangedFreeOrNull() ?.let(block)
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedPaidOrNull():
+    ChannelDirectMessagesConfigurationChanged.Paid? = this as?
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Paid
+
+public inline fun ChatEvent.channelDirectMessagesConfigurationChangedPaidOrThrow():
+    ChannelDirectMessagesConfigurationChanged.Paid = this as
+    dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged.Paid
+
+public inline fun <T>
+    ChatEvent.ifChannelDirectMessagesConfigurationChangedPaid(block: (ChannelDirectMessagesConfigurationChanged.Paid) -> T):
+    T? = channelDirectMessagesConfigurationChangedPaidOrNull() ?.let(block)
+
 public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceChanged? = this as?
     dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 
@@ -3347,6 +3399,24 @@ public inline fun ChatEvent.chatBackgroundOrThrow(): ChatBackground = this as
 
 public inline fun <T> ChatEvent.ifChatBackground(block: (ChatBackground) -> T): T? =
     chatBackgroundOrNull() ?.let(block)
+
+public inline fun ChatEvent.checklistTasksAddedOrNull(): ChecklistTasksAdded? = this as?
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+
+public inline fun ChatEvent.checklistTasksAddedOrThrow(): ChecklistTasksAdded = this as
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
+
+public inline fun <T> ChatEvent.ifChecklistTasksAdded(block: (ChecklistTasksAdded) -> T): T? =
+    checklistTasksAddedOrNull() ?.let(block)
+
+public inline fun ChatEvent.checklistTasksDoneOrNull(): ChecklistTasksDone? = this as?
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+
+public inline fun ChatEvent.checklistTasksDoneOrThrow(): ChecklistTasksDone = this as
+    dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+
+public inline fun <T> ChatEvent.ifChecklistTasksDone(block: (ChecklistTasksDone) -> T): T? =
+    checklistTasksDoneOrNull() ?.let(block)
 
 public inline fun ChatEvent.giftSentOrReceivedOrNull(): GiftSentOrReceived? = this as?
     dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
@@ -4490,6 +4560,15 @@ public inline fun ResendableContent.audioContentOrThrow(): AudioContent = this a
 
 public inline fun <T> ResendableContent.ifAudioContent(block: (AudioContent) -> T): T? =
     audioContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.checklistContentOrNull(): ChecklistContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.ChecklistContent
+
+public inline fun ResendableContent.checklistContentOrThrow(): ChecklistContent = this as
+    dev.inmo.tgbotapi.types.message.content.ChecklistContent
+
+public inline fun <T> ResendableContent.ifChecklistContent(block: (ChecklistContent) -> T): T? =
+    checklistContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.contactContentOrNull(): ContactContent? = this as?
     dev.inmo.tgbotapi.types.message.content.ContactContent

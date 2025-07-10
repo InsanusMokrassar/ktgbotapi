@@ -17,6 +17,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
@@ -24,6 +25,7 @@ import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
@@ -160,6 +162,91 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
+
+
+// Checklist
+
+public suspend inline fun TelegramBot.replyWithChecklist(
+    to: AccessibleMessage,
+    replyInBusinessConnectionId: BusinessConnectionId,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.replyWithChecklist(
+    to: BusinessContentMessage<*>,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = to.businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.reply(
+    to: AccessibleMessage,
+    replyInBusinessConnectionId: BusinessConnectionId,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.reply(
+    to: BusinessContentMessage<*>,
+    checklist: Checklist.Input,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<ChecklistContent> = sendChecklist(
+    chatId = replyInChatId,
+    checklist = checklist,
+    businessConnectionId = to.businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 

@@ -128,3 +128,8 @@ fun BehaviourContext.waitEditedGiveawayPublicResultsContent(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEditedContent<GiveawayPublicResultsContent>(initRequest, errorFactory)
 
+fun BehaviourContext.waitEditedChecklistContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<ChecklistContent>(initRequest, errorFactory)
+

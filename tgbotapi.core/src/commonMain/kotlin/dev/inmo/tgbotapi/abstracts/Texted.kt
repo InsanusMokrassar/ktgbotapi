@@ -27,3 +27,12 @@ interface TextedOutput : ParsableOutput, EntitiesOutput
 interface TextedInput : TextedWithTextSources {
     override val textSources: List<TextSource>
 }
+
+interface TitledInput : TextedInput {
+    val title: String
+    val titleTextSources: List<TextSource>
+    override val text: String
+        get() = title
+    override val textSources: List<TextSource>
+        get() = titleTextSources
+}
