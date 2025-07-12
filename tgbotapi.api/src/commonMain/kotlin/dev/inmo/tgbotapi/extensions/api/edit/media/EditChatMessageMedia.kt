@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.edit.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -45,7 +47,7 @@ public suspend fun TelegramBot.editMessageMedia(
  * as a builder for that
  */
 public suspend fun TelegramBot.editMessageMedia(
-    message: ContentMessage<out MediaContent>,
+    message: ContentMessage<MediaContent>,
     media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null

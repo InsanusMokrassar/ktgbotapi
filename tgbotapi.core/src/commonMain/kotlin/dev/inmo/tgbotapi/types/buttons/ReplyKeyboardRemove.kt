@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.buttons
 
 import kotlinx.serialization.*

@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
@@ -145,12 +147,14 @@ fun SendPaidMedia(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>>
         = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendPaidMediaData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(starCountField)
     val starCount: Int,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(mediaField)
     val media: List<TelegramPaidMedia>,
     @SerialName(captionField)
@@ -204,6 +208,8 @@ data class SendPaidMediaData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendPaidMediaFiles internal constructor(
     val photo: MultipartFile
 ) : Files by mapOf(

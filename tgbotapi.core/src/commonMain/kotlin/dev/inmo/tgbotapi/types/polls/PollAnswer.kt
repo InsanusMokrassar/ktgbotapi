@@ -33,6 +33,7 @@ sealed interface PollAnswer: FromUser {
     data class Anonymous(
         @SerialName(pollIdField)
         override val pollId: PollId,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(voterChatField)
         val voterChat: ChannelChat,
         @SerialName(optionIdsField)
@@ -60,6 +61,7 @@ sealed interface PollAnswer: FromUser {
             val chosen: List<Int>,
             @SerialName(userField)
             val user: User = Anonymous.defaultUser,
+            @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             @SerialName(voterChatField)
             val voterChat: ChannelChat? = null
         )

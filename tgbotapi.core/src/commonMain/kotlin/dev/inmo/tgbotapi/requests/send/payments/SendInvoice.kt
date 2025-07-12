@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyWithEffectRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -24,6 +23,7 @@ private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<Inv
  */
 @Serializable
 data class SendInvoice(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatIdField)
     override val chatId: IdChatIdentifier,
     @SerialName(titleField)

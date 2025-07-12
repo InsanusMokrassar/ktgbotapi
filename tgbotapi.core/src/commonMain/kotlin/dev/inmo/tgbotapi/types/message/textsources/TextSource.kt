@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.message.textsources
 
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -55,6 +57,7 @@ operator fun TextSource.plus(other: List<TextSource>) = other.fold(listOf(this))
     newList
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(TextSourceSerializer::class)
 sealed interface MultilevelTextSource : TextSource {
     val subsources: List<TextSource>
@@ -109,7 +112,7 @@ fun List<TextSource>.splitForStoryCaption(): List<List<TextSource>> {
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]
  */
-inline fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMessage(textLength)
+fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMessage(textLength)
 
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> = splitForMessage(limit, numberOfParts)
 
@@ -122,4 +125,4 @@ fun List<TextSource>.separateForCaption(): List<List<TextSource>> = splitForCapt
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]
  */
-inline fun List<TextSource>.separateForText(): List<List<TextSource>> = splitForText()
+fun List<TextSource>.separateForText(): List<List<TextSource>> = splitForText()

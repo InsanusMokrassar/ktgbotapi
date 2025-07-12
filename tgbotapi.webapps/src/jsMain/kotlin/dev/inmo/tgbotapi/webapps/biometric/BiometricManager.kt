@@ -1,7 +1,10 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.webapps.biometric
 
 import kotlinx.coroutines.CompletableDeferred
 
+@Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING")
 external interface BiometricManager {
     val isInited: Boolean
     val isBiometricAvailable: Boolean

@@ -2,10 +2,6 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.kslog.common.KSLog
-import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CommonMessageFilterExcludeMediaGroups
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
@@ -20,6 +16,7 @@ import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.job
 
@@ -77,7 +74,7 @@ fun <BC : BehaviourContext> BC.command(
         triggersHolder.handleableCommandsHolder.registerHandleable(commandRegex)
         it.invokeOnCompletion {
             runCatching {
-                launchSafelyWithoutExceptions {
+                launchWithBotLogger {
                     triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
                 }
             }

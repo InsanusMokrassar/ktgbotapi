@@ -25,6 +25,6 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { cashTagHTML() }
 }
 
-inline fun cashTagTextSource(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
-inline fun cashTagTextSource(vararg parts: TextSource) = cashTagTextSource(parts.toList())
-inline fun cashTagTextSource(tag: String) = cashTagTextSource(regularTextSource(tag))
+fun cashTagTextSource(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
+fun cashTagTextSource(vararg parts: TextSource) = cashTagTextSource(parts.toList())
+fun cashTagTextSource(tag: String) = cashTagTextSource(regularTextSource(tag))

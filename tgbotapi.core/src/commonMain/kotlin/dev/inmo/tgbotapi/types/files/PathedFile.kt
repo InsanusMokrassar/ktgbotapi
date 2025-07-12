@@ -7,6 +7,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class PathedFile(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -16,6 +17,7 @@ data class PathedFile(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
 ): TelegramMediaFile {
+    @Suppress("TRANSIENT_IS_REDUNDANT")
     @Transient
     val fileName: FileName by lazy(LazyThreadSafetyMode.PUBLICATION) {
         filePath.filenameFromUrl

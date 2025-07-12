@@ -34,23 +34,27 @@ sealed interface ExtendedChat : Chat {
                 acceptedGiftTypes.premiumSubscription
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedNonBotChat : ExtendedChat {
     val statusEmojiId: CustomEmojiId?
     val statusEmojiExpiration: TelegramDate?
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
     val linkedGroupChatId: IdChatIdentifier?
     val canSendPaidMedia: Boolean
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
     val permissions: ChatPermissions
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, ExtendedNonBotChat {
     val bio: String
@@ -79,6 +83,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val newMembersSeeHistory: Boolean
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, ExtendedChatWithUsername {
     val slowModeDelay: Long?
@@ -105,14 +110,17 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
     val isAggressiveAntiSpamEnabled: Boolean
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {
     val activeUsernames: List<Username>
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedBusinessChat : BusinessChat, ExtendedChat {
     override val original: ExtendedPrivateChat

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
@@ -16,6 +18,7 @@ import dev.inmo.tgbotapi.webapps.storage.DeviceStorage
 import dev.inmo.tgbotapi.webapps.storage.SecureStorage
 import dev.inmo.tgbotapi.webapps.stories.StoryShareParams
 
+@Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING")
 external class WebApp {
     val version: String
 
@@ -177,7 +180,7 @@ external class WebApp {
     @JsName("onEvent")
     internal fun onAccelerometerStopped(type: String, callback: () -> Unit)
     @JsName("onEvent")
-    internal fun onPopupClosed(type: String, callback: (dev.inmo.tgbotapi.webapps.popup.PopupClosedEventArg) -> Unit)
+    internal fun onPopupClosed(type: String, callback: (PopupClosedEventArg) -> Unit)
     @JsName("onEvent")
     internal fun onGyroscopeStopped(type: String, callback: () -> Unit)
     @JsName("onEvent")

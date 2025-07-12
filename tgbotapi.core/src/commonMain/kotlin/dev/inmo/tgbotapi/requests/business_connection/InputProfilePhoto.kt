@@ -1,14 +1,14 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.requests.business_connection
 
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.types.DoubleSeconds
-import dev.inmo.tgbotapi.types.Seconds
-import dev.inmo.tgbotapi.types.StickerFormat
 import dev.inmo.tgbotapi.types.animationField
 import dev.inmo.tgbotapi.types.mainFrameTimestampField
 import dev.inmo.tgbotapi.types.photoField
-import dev.inmo.tgbotapi.utils.deserializeWithRaw
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -23,6 +23,7 @@ sealed interface InputProfilePhoto {
     val mediaPair: Pair<String, MultipartFile>
     @Serializable
     data class Static(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(photoField)
         val photo: MultipartFile
     ) : InputProfilePhoto {
@@ -33,6 +34,7 @@ sealed interface InputProfilePhoto {
     }
     @Serializable
     data class Animated(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(animationField)
         val animation: MultipartFile,
         @SerialName(mainFrameTimestampField)

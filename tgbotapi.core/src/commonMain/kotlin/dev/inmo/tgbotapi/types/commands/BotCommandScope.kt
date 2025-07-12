@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.commands
 
 import dev.inmo.tgbotapi.types.*
@@ -13,6 +16,7 @@ private class SurrogateBotCommandScope(
     val type: String,
     @SerialName(chatIdField)
     val chatId: ChatIdentifier? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId? = null
 ) {
@@ -63,6 +67,7 @@ sealed interface BotCommandScope {
     }
 }
 
+@ConsistentCopyVisibility
 @Serializable
 data class UnknownBotCommandScope internal constructor(
     override val type: String
@@ -128,6 +133,7 @@ data class BotCommandScopeChat(
 @Serializable
 data class BotCommandScopeChatMember(
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     val userId: UserId
 ) : ChatBotCommandScope {
     @Required

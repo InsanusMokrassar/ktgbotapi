@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.types.*
@@ -49,6 +51,7 @@ sealed interface MessageOrigin {
         }
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(MessageOrigin.Companion::class)
     sealed interface Public : MessageOrigin {
         val chat: PublicChat
@@ -75,6 +78,7 @@ sealed interface MessageOrigin {
 
         @Serializable
         data class Channel(
+            @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             @SerialName(chatField)
             override val chat: ChannelChat,
             @SerialName(messageIdField)
@@ -95,6 +99,7 @@ sealed interface MessageOrigin {
         }
     }
 
+    @ConsistentCopyVisibility
     @Serializable
     data class Unknown internal constructor(
         override val type: String,
@@ -120,6 +125,7 @@ sealed interface MessageOrigin {
         val messageId: MessageId? = null,
         @SerialName(senderUserNameField)
         val name: String? = null,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(senderUserField)
         val user: PreviewUser? = null
     )

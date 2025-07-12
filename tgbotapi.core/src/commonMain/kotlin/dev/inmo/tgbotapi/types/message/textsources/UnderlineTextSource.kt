@@ -18,6 +18,6 @@ data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstruc
     override val html: String by lazy { underlineHTML() }
 }
 
-inline fun underlineTextSource(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
-inline fun underlineTextSource(vararg parts: TextSource) = underlineTextSource(parts.toList())
-inline fun underlineTextSource(text: String) = underlineTextSource(regularTextSource(text))
+fun underlineTextSource(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
+fun underlineTextSource(vararg parts: TextSource) = underlineTextSource(parts.toList())
+fun underlineTextSource(text: String) = underlineTextSource(regularTextSource(text))

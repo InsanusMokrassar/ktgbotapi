@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("unused", "KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*
@@ -30,6 +33,7 @@ data class SimpleKeyboardButton(
     override val text: String
 ) : KeyboardButton
 
+@ConsistentCopyVisibility
 @Serializable
 data class UnknownKeyboardButton internal constructor(
     override val text: String,

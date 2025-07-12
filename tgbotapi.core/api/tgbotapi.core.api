@@ -1315,8 +1315,6 @@ public final class dev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$S
 public final class dev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$Unknown : dev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$Unknown$Companion;
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$Unknown;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$Unknown;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$Unknown;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -4341,8 +4339,6 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaptio
 	public final fun component6-nXr5wdE ()Ljava/lang/String;
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-cEjrTps (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaption;
-	public static synthetic fun copy-cEjrTps$default (Ldev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaption;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaption;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
@@ -4391,8 +4387,6 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCapt
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-qSk9tD0 (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
-	public static synthetic fun copy-qSk9tD0$default (Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
@@ -4852,8 +4846,6 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditChatMessageText : de
 	public final fun component6-nXr5wdE ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-cEjrTps (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
-	public static synthetic fun copy-cEjrTps$default (Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
@@ -4905,8 +4897,6 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText : 
 	public final fun component5 ()Z
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-bH2Jftc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
-	public static synthetic fun copy-bH2Jftc$default (Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
 	public fun getEntities ()Ljava/util/List;
@@ -5373,8 +5363,6 @@ public final class dev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription : de
 	public final fun component3 ()I
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun copy-hWD7qso (JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;
-	public static synthetic fun copy-hWD7qso$default (Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;JIILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/GiftPremiumSubscription;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public final fun getMonthCount ()I
@@ -5418,8 +5406,6 @@ public final class dev/inmo/tgbotapi/requests/gifts/SendGift : dev/inmo/tgbotapi
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Z
-	public final fun copy-xmxulwY (Ldev/inmo/tgbotapi/types/ChatId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Z)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
-	public static synthetic fun copy-xmxulwY$default (Ldev/inmo/tgbotapi/requests/gifts/SendGift;Ldev/inmo/tgbotapi/types/ChatId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/gifts/SendGift;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getEntities ()Ljava/util/List;
@@ -5532,8 +5518,6 @@ public final class dev/inmo/tgbotapi/requests/send/CopyMessage : dev/inmo/tgbota
 	public final fun component7 ()Z
 	public final fun component8-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy-iAqBLco (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/Integer;ZZZLdev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/CopyMessage;
-	public static synthetic fun copy-iAqBLco$default (Ldev/inmo/tgbotapi/requests/send/CopyMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/Integer;ZZZLdev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/CopyMessage;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -5999,8 +5983,6 @@ public final class dev/inmo/tgbotapi/requests/send/SendTextMessage : dev/inmo/tg
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-NChqpRY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
-	public static synthetic fun copy-NChqpRY$default (Ldev/inmo/tgbotapi/requests/send/SendTextMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6325,8 +6307,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationData : dev
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Ljava/lang/Long;
-	public final fun copy-k4bYsrE (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendAnimationData;
-	public static synthetic fun copy-k4bYsrE$default (Ldev/inmo/tgbotapi/requests/send/media/SendAnimationData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendAnimationData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6387,8 +6367,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationFiles : ja
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendAnimationFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendAnimationFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendAnimationFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -6449,8 +6427,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAudioData : dev/inm
 	public final fun component7 ()Ljava/lang/Long;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-fnMCT1Y (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendAudioData;
-	public static synthetic fun copy-fnMCT1Y$default (Ldev/inmo/tgbotapi/requests/send/media/SendAudioData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendAudioData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6509,8 +6485,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAudioFiles : java/u
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendAudioFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendAudioFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendAudioFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -6569,8 +6543,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentData : dev/
 	public final fun component7-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component8-nXr5wdE ()Ljava/lang/String;
 	public final fun component9 ()Z
-	public final fun copy-CoeeeEM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/send/media/SendDocumentData;
-	public static synthetic fun copy-CoeeeEM$default (Ldev/inmo/tgbotapi/requests/send/media/SendDocumentData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendDocumentData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6627,8 +6599,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentFiles : jav
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendDocumentFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendDocumentFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendDocumentFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -6682,8 +6652,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendMediaGroupData : de
 	public final fun component7 ()Z
 	public final fun component8-Ts0V7ak ()Ljava/lang/String;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun copy-aWUkcs0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;)Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupData;
-	public static synthetic fun copy-aWUkcs0$default (Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6731,8 +6699,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendMediaGroupFiles : j
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ljava/util/List;)Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupFiles;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendMediaGroupFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -6795,8 +6761,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPaidMediaData : dev
 	public final fun component7-Y25QJn4 ()Ljava/lang/String;
 	public final fun component8 ()Z
 	public final fun component9-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
-	public final fun copy-vxIIXgw (Ldev/inmo/tgbotapi/types/ChatIdentifier;ILjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLdev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaData;
-	public static synthetic fun copy-vxIIXgw$default (Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaData;Ldev/inmo/tgbotapi/types/ChatIdentifier;ILjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLdev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6852,8 +6816,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPaidMediaFiles : ja
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendPaidMediaFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -6911,8 +6873,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoData : dev/inm
 	public final fun component7 ()Z
 	public final fun component8-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component9-nXr5wdE ()Ljava/lang/String;
-	public final fun copy-274AP-Q (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendPhotoData;
-	public static synthetic fun copy-274AP-Q$default (Ldev/inmo/tgbotapi/requests/send/media/SendPhotoData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendPhotoData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -6967,8 +6927,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoFiles : java/u
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendPhotoFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendPhotoFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendPhotoFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -7023,8 +6981,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendStickerByFileId : d
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9-Ts0V7ak ()Ljava/lang/String;
-	public final fun copy-S2mil8w (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendStickerByFileId;
-	public static synthetic fun copy-S2mil8w$default (Ldev/inmo/tgbotapi/requests/send/media/SendStickerByFileId;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendStickerByFileId;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -7090,8 +7046,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inm
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component9 ()Z
-	public final fun copy-2N3v4LM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
-	public static synthetic fun copy-2N3v4LM$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -7155,8 +7109,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoFiles : java/u
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -7214,8 +7166,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteData : dev
 	public final fun component7-nXr5wdE ()Ljava/lang/String;
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-e6jUd8c (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteData;
-	public static synthetic fun copy-e6jUd8c$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -7270,8 +7220,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteFiles : ja
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -7327,8 +7275,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceData : dev/inm
 	public final fun component7-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component8-nXr5wdE ()Ljava/lang/String;
 	public final fun component9 ()Z
-	public final fun copy-5jCUU4o (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/media/SendVoiceData;
-	public static synthetic fun copy-5jCUU4o$default (Ldev/inmo/tgbotapi/requests/send/media/SendVoiceData;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVoiceData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -7384,8 +7330,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceFiles : java/u
 	public fun containsKey (Ljava/lang/String;)Z
 	public fun containsValue (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Z
 	public final fun containsValue (Ljava/lang/Object;)Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/send/media/SendVoiceFiles;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/send/media/SendVoiceFiles;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/media/SendVoiceFiles;
 	public final fun entrySet ()Ljava/util/Set;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun get (Ljava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;
@@ -7812,8 +7756,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/AddStickerToSetData : dev
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
-	public final fun copy-FKW6xZo (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;
-	public static synthetic fun copy-FKW6xZo$default (Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public fun getNewSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
@@ -7990,8 +7932,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Surro
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/StickerType;
 	public final fun component6 ()Ljava/lang/Boolean;
-	public final fun copy-zj6nCqY (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
-	public static synthetic fun copy-zj6nCqY$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public final fun getNeedsRepainting ()Ljava/lang/Boolean;
@@ -8224,8 +8164,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$Su
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getEmojisList ()Ljava/util/List;
 	public final fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
@@ -8257,8 +8195,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData :
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component4 ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
-	public final fun copy-ekB4Uzg (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;
-	public static synthetic fun copy-ekB4Uzg$default (Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public fun getNewSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
@@ -8652,8 +8588,6 @@ public final class dev/inmo/tgbotapi/requests/stories/EditStory : dev/inmo/tgbot
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ljava/util/List;
-	public final fun copy-isQzPXY (Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stories/EditStory;
-	public static synthetic fun copy-isQzPXY$default (Ldev/inmo/tgbotapi/requests/stories/EditStory;Ljava/lang/String;JLdev/inmo/tgbotapi/types/stories/InputStoryContent;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stories/EditStory;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAreas ()Ljava/util/List;
 	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
@@ -8709,8 +8643,6 @@ public final class dev/inmo/tgbotapi/requests/stories/PostStory : dev/inmo/tgbot
 	public final fun component7 ()Ljava/util/List;
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-beo5bKg (Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/util/List;ZZ)Ldev/inmo/tgbotapi/requests/stories/PostStory;
-	public static synthetic fun copy-beo5bKg$default (Ldev/inmo/tgbotapi/requests/stories/PostStory;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/util/List;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stories/PostStory;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getActivePeriod ()I
 	public final fun getAreas ()Ljava/util/List;
@@ -8938,8 +8870,6 @@ public final class dev/inmo/tgbotapi/requests/webhook/SetWebhook : dev/inmo/tgbo
 	public final fun component5 ()Ljava/util/List;
 	public final fun component6 ()Ljava/lang/Boolean;
 	public final fun component7 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/webhook/SetWebhook;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/webhook/SetWebhook;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/webhook/SetWebhook;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAllowedUpdates ()Ljava/util/List;
 	public final fun getCertificateFile ()Ljava/lang/String;
@@ -10940,8 +10870,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
-	public static synthetic fun copy-bK9-QN0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
@@ -10990,8 +10918,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-mRbB0zs (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
-	public static synthetic fun copy-mRbB0zs$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
@@ -11089,8 +11015,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
-	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
@@ -11144,8 +11068,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
-	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
@@ -11224,8 +11146,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
-	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
@@ -11280,8 +11200,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-Vi6B_GQ (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun copy-Vi6B_GQ$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
@@ -11393,8 +11311,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
-	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
@@ -11449,8 +11365,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-Vi6B_GQ (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
-	public static synthetic fun copy-Vi6B_GQ$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
@@ -11506,8 +11420,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-mRbB0zs (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
-	public static synthetic fun copy-mRbB0zs$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
@@ -11562,8 +11474,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun copy-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
-	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
@@ -11708,8 +11618,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-mRbB0zs (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
-	public static synthetic fun copy-mRbB0zs$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
@@ -11766,8 +11674,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-qXbAnbE (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
-	public static synthetic fun copy-qXbAnbE$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getDuration ()Ljava/lang/Integer;
@@ -11822,8 +11728,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
-	public static synthetic fun copy-3XIVVSw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
@@ -11872,8 +11776,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-L6b5ui0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
-	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
@@ -12289,8 +12191,6 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/Inp
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;)Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputTextMessageContent;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputTextMessageContent;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputTextMessageContent;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
 	public fun getEntities ()Ljava/util/List;
@@ -13274,8 +13174,6 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/a
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ljava/lang/Integer;
-	public final fun copy-JOF9uy8 (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public static synthetic fun copy-JOF9uy8$default (Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getChatIdentifier ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
@@ -13716,8 +13614,6 @@ public final class dev/inmo/tgbotapi/types/TextQuote : dev/inmo/tgbotapi/abstrac
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()I
 	public final fun component4 ()Z
-	public final fun copy (Ljava/lang/String;ILjava/util/List;Z)Ldev/inmo/tgbotapi/types/TextQuote;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/TextQuote;Ljava/lang/String;ILjava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/TextQuote;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getPosition ()I
 	public fun getText ()Ljava/lang/String;
@@ -15765,8 +15661,6 @@ public final class dev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton : dev/i
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton$Companion;
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getRaw ()Ljava/lang/String;
 	public fun getText ()Ljava/lang/String;
@@ -16142,8 +16036,6 @@ public final class dev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated$Surro
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component6 ()Ljava/util/List;
 	public final fun component7 ()Ljava/util/List;
-	public final fun copy-JOF9uy8 (Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated$Surrogate;
-	public static synthetic fun copy-JOF9uy8$default (Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated$Surrogate;Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLdev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated$Surrogate;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public final fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
@@ -16414,8 +16306,11 @@ public abstract class dev/inmo/tgbotapi/types/chat/ChatType {
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Channel : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatType$Channel;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Companion {
@@ -16424,32 +16319,50 @@ public final class dev/inmo/tgbotapi/types/chat/ChatType$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Group : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatType$Group;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Private : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatType$Private;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Sender : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatType$Sender;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Supergroup : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatType$Supergroup;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Unknown : dev/inmo/tgbotapi/types/chat/ChatType {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChatType$Unknown$Companion;
 	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/chat/ChatType$Unknown;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/ChatType$Unknown;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ChatType$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun getStringified ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatType$Unknown$Companion {
@@ -18588,8 +18501,6 @@ public abstract interface class dev/inmo/tgbotapi/types/commands/ChatBotCommandS
 public final class dev/inmo/tgbotapi/types/commands/UnknownBotCommandScope : dev/inmo/tgbotapi/types/commands/BotCommandScope {
 	public static final field Companion Ldev/inmo/tgbotapi/types/commands/UnknownBotCommandScope$Companion;
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/commands/UnknownBotCommandScope;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/commands/UnknownBotCommandScope;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/commands/UnknownBotCommandScope;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -21155,8 +21066,6 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaAnimation : dev/in
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ljava/lang/Long;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEntities ()Ljava/util/List;
@@ -21206,8 +21115,6 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaAudio : dev/inmo/t
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEntities ()Ljava/util/List;
@@ -21258,8 +21165,6 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaDocument : dev/inm
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component6 ()Ljava/lang/Boolean;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDisableContentTypeDetection ()Ljava/lang/Boolean;
 	public fun getEntities ()Ljava/util/List;
@@ -21308,8 +21213,6 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaPhoto : dev/inmo/t
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5 ()Z
 	public final fun component6 ()Z
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZ)Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFile ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -21373,8 +21276,6 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideo : dev/inmo/t
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Z
 	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;ZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;ZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getCover ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getDuration ()Ljava/lang/Long;
@@ -22757,8 +22658,6 @@ public final class dev/inmo/tgbotapi/types/message/MessageOrigin$Unknown : dev/i
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component3 ()Lkotlinx/serialization/json/JsonElement;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/message/MessageOrigin$Unknown;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/MessageOrigin$Unknown;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/MessageOrigin$Unknown;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun getSource ()Lkotlinx/serialization/json/JsonElement;
@@ -28365,8 +28264,6 @@ public final class dev/inmo/tgbotapi/types/polls/UnknownPollType : dev/inmo/tgbo
 	public final fun component6 ()Z
 	public final fun component7 ()Z
 	public final fun component8 ()Lkotlinx/serialization/json/JsonElement;
-	public final fun copy-KILYFNk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
-	public static synthetic fun copy-KILYFNk$default (Ldev/inmo/tgbotapi/types/polls/UnknownPollType;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getId-S5FO_mE ()Ljava/lang/String;
 	public fun getOptions ()Ljava/util/List;
@@ -30792,6 +30689,13 @@ public final class dev/inmo/tgbotapi/utils/JSONKt {
 	public static final fun toJsonWithoutNulls (Ljava/lang/Object;Lkotlinx/serialization/SerializationStrategy;)Lkotlinx/serialization/json/JsonObject;
 	public static final fun withoutNulls (Lkotlinx/serialization/json/JsonArray;)Lkotlinx/serialization/json/JsonArray;
 	public static final fun withoutNulls (Lkotlinx/serialization/json/JsonObject;)Lkotlinx/serialization/json/JsonObject;
+}
+
+public final class dev/inmo/tgbotapi/utils/LaunchWithBotLoggerKt {
+	public static final fun launchWithBotLogger (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Job;
+	public static synthetic fun launchWithBotLogger$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
+	public static final fun subscribeWithBotLogger (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Job;
+	public static synthetic fun subscribeWithBotLogger$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
 }
 
 public final class dev/inmo/tgbotapi/utils/LongRGBAFromHEXAColorSerializer : kotlinx/serialization/KSerializer {

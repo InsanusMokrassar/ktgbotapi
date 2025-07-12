@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
+import dev.inmo.micro_utils.coroutines.replaceIfFailure
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -10,9 +12,9 @@ fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     scope: CoroutineScope
 ): Deferred<T> = scope.async {
-    safely {
+    runCatchingLogging(logger = Log) {
         execute(request)
-    }
+    }.getOrThrow()
 }
 
 suspend fun <T: Any> RequestsExecutor.executeAsync(
@@ -28,16 +30,14 @@ suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     var leftRetries = retries
     val exceptions = onAllFailed ?.let { mutableListOf<Throwable>() }
     do {
-        return safely (
-            {
-                leftRetries--
-                delay(retriesDelay)
-                exceptions ?.add(it)
-                null
-            }
-        ) {
+        return runCatching {
             execute(request)
-        } ?: continue
+        }.replaceIfFailure {
+            leftRetries--
+            delay(retriesDelay)
+            exceptions?.add(it)
+            null
+        }.getOrThrow() ?: continue
     } while(leftRetries >= 0)
     onAllFailed ?.invoke(exceptions ?.toTypedArray() ?: emptyArray())
     return null

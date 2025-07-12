@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("KDocUnresolvedReference", "unused")
+
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded

@@ -6,6 +6,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class GetUserProfilePhotos(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(offsetField)

@@ -35,6 +35,7 @@ open class TelegramBotMiddleware(
 ) : TelegramBotPipelinesHandler {
     object ResultAbsence : Throwable()
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
+        @Suppress("UNCHECKED_CAST")
         return onRequestException ?.invoke(request, t) as? T
     }
 
@@ -51,6 +52,7 @@ open class TelegramBotMiddleware(
         request: Request<T>,
         potentialFactory: KtorCallFactory
     ): T? {
+        @Suppress("UNCHECKED_CAST")
         return onAfterCallFactoryMakeCall ?.invoke(result, request, potentialFactory) as? T
     }
 
@@ -60,6 +62,7 @@ open class TelegramBotMiddleware(
         resultCallFactory: KtorCallFactory,
         callsFactories: List<KtorCallFactory>
     ): T? {
+        @Suppress("UNCHECKED_CAST")
         return onRequestResultPresented ?.invoke(result, request, resultCallFactory, callsFactories) as? T
     }
 
@@ -67,6 +70,7 @@ open class TelegramBotMiddleware(
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
     ): T? {
+        @Suppress("UNCHECKED_CAST")
         return onRequestResultAbsent ?.invoke(request, callsFactories) as? T
     }
 
@@ -75,6 +79,7 @@ open class TelegramBotMiddleware(
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
     ): Result<T> {
+        @Suppress("UNCHECKED_CAST")
         return onRequestReturnResult ?.invoke(result, request, callsFactories) as? Result<T> ?: Result.failure(ResultAbsence)
     }
 

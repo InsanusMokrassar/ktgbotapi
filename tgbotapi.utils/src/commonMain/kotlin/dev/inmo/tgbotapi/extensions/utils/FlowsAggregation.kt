@@ -15,7 +15,7 @@ fun <T> aggregateFlows(
     val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
     flows.forEach {
         it.onEach {
-            safely { sharedFlow.emit(it) }
+            runCatching { sharedFlow.emit(it) }
         }.launchIn(withScope)
     }
     return sharedFlow

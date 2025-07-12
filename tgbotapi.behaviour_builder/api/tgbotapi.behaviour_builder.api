@@ -146,7 +146,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/VariantsKt {
 	public static final fun oneOf (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;[Lkotlinx/coroutines/Deferred;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun oneOfActions (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/Iterable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun oneOfActions (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;[Ldev/inmo/micro_utils/coroutines/DeferredAction;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun parallel (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun parallel (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Deferred;
 	public static final fun withAction (Lkotlinx/coroutines/Deferred;Lkotlin/jvm/functions/Function2;)Ldev/inmo/micro_utils/coroutines/DeferredAction;
 }
 

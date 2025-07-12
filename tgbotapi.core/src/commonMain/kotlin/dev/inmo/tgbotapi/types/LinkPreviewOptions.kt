@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("RemoveRedundantQualifierName")
+
 package dev.inmo.tgbotapi.types
 
 import kotlinx.serialization.*
@@ -13,6 +16,7 @@ sealed interface LinkPreviewOptions {
     val preferLargeMedia: Boolean
     val showAboveText: Boolean
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(LinkPreviewOptions.Companion::class)
     data object Disabled : LinkPreviewOptions {
         @Required
@@ -29,6 +33,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(LinkPreviewOptions.Companion::class)
     data class Large(
         @SerialName(urlField)
@@ -48,6 +53,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(LinkPreviewOptions.Companion::class)
     data class Small(
         @SerialName(urlField)
@@ -67,6 +73,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(LinkPreviewOptions.Companion::class)
     data class Default(
         @SerialName(urlField)

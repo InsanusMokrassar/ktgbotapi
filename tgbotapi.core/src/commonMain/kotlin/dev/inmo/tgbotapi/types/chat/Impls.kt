@@ -11,6 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use GroupChat due")
 data class GroupChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
@@ -20,8 +21,10 @@ data class GroupChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
 data class PrivateChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: UserId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(firstNameField)
@@ -33,8 +36,10 @@ data class PrivateChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
 data class BusinessChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: BusinessChatId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(originField)
     override val original: PreviewPrivateChat
 ) : PreviewBusinessChat
@@ -42,10 +47,12 @@ data class BusinessChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use SupergroupChat due")
 data class SupergroupChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null
 ) : PreviewSupergroupChat
@@ -53,10 +60,12 @@ data class SupergroupChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ForumChat due")
 data class ForumChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null
 ) : PreviewForumChat
@@ -64,10 +73,12 @@ data class ForumChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ChannelChat due")
 data class ChannelChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null
 ) : PreviewChannelChat
@@ -75,22 +86,28 @@ data class ChannelChatImpl(
 @Serializable(UserSerializer::class)
 sealed class User : PrivateChat
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(UserSerializer::class)
 sealed class PreviewUser : PreviewPrivateChat, User()
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(UserSerializer::class)
 sealed class Bot : User()
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(UserSerializer::class)
 sealed class PreviewBot : PreviewUser()
 
 @Serializable
 data class CommonBot(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
     override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String = "",
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
 ) : PreviewBot() {
@@ -100,11 +117,14 @@ data class CommonBot(
 
 @Serializable
 data class CommonUser(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
     override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String = "",
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(languageCodeField)

@@ -17,4 +17,4 @@ data class TextLinkTextSource @RiskFeature(DirectInvocationOfTextSourceConstruct
     override val html: String by lazy { source.linkHTML(url) }
 }
 
-inline fun linkTextSource(text: String, url: String) = TextLinkTextSource(text, url)
+fun linkTextSource(text: String, url: String) = TextLinkTextSource(text, url)

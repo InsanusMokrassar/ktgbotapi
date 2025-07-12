@@ -17,14 +17,17 @@ import kotlinx.serialization.json.JsonObject
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedChannelChat due")
 data class ExtendedChannelChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(activeUsernamesField)
     override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
@@ -38,6 +41,7 @@ data class ExtendedChannelChatImpl(
     override val pinnedMessage: Message? = null,
     @SerialName(canSendPaidMediaField)
     override val canSendPaidMedia: Boolean = false,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(linkedChatIdField)
     override val linkedGroupChatId: IdChatIdentifier? = null,
     @SerialName(hasHiddenMembersField)
@@ -65,6 +69,7 @@ data class ExtendedChannelChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedGroupChat due")
 data class ExtendedGroupChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
@@ -107,12 +112,15 @@ data class ExtendedGroupChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedPrivateChat due")
 data class ExtendedPrivateChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: UserId,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(activeUsernamesField)
     override val activeUsernames: List<Username> = emptyList(),
     @SerialName(firstNameField)
@@ -145,6 +153,7 @@ data class ExtendedPrivateChatImpl(
     override val businessOpeningHours: BusinessOpeningHours? = null,
     @SerialName(birthdateField)
     override val birthdate: Birthdate? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(personalChatField)
     @Serializable(PreviewChatSerializer::class)
     override val personalChat: PreviewChannelChat? = null,
@@ -159,12 +168,15 @@ typealias ExtendedUser = ExtendedPrivateChatImpl
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedSupergroupChat due")
 data class ExtendedSupergroupChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(activeUsernamesField)
     override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
@@ -184,6 +196,7 @@ data class ExtendedSupergroupChatImpl(
     override val slowModeDelay: Long? = null,
     @SerialName(canSetStickerSetField)
     override val canSetStickerSet: Boolean = false,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(linkedChatIdField)
     override val linkedChannelChatId: IdChatIdentifier? = null,
     @SerialName(locationField)
@@ -225,12 +238,15 @@ data class ExtendedSupergroupChatImpl(
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedForumChat due")
 data class ExtendedForumChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(activeUsernamesField)
     override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
@@ -250,6 +266,7 @@ data class ExtendedForumChatImpl(
     override val slowModeDelay: Long? = null,
     @SerialName(canSetStickerSetField)
     override val canSetStickerSet: Boolean = false,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(linkedChatIdField)
     override val linkedChannelChatId: IdChatIdentifier? = null,
     @SerialName(locationField)
@@ -290,12 +307,14 @@ data class ExtendedForumChatImpl(
 
 @Serializable
 data class ExtendedBot(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String = "",
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(canJoinGroupsField)
@@ -329,8 +348,10 @@ data class ExtendedBot(
 
 @Serializable
 data class ExtendedBusinessChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
     override val id: BusinessChatId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(originField)
     override val original: ExtendedPrivateChat
 ) : ExtendedBusinessChat, ExtendedChat by original

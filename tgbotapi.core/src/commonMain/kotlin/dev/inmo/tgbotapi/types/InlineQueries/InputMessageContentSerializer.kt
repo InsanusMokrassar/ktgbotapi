@@ -1,7 +1,10 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.InlineQueries
 
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
@@ -19,7 +22,6 @@ object InputMessageContentSerializer : KSerializer<InputMessageContent> {
             is InputTextMessageContent -> InputTextMessageContent.serializer().serialize(encoder, value)
             is InputVenueMessageContent -> InputVenueMessageContent.serializer().serialize(encoder, value)
             is InputInvoiceMessageContent -> InputInvoiceMessageContent.serializer().serialize(encoder, value)
-            else -> throw IllegalArgumentException("Unknown for serializing InputContactMessageContent")
         }
     }
 

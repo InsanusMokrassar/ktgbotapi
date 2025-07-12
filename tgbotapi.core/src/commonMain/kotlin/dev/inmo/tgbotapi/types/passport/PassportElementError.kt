@@ -1,4 +1,5 @@
-@file:Suppress("unused", "EXPERIMENTAL_API_USAGE")
+@file:Suppress("unused", "EXPERIMENTAL_API_USAGE", "DuplicatedCode")
+@file:OptIn(ExperimentalSerializationApi::class)
 
 package dev.inmo.tgbotapi.types.passport
 
@@ -55,6 +56,7 @@ object PassportElementErrorSerializer : KSerializer<PassportElementError> {
         }
     }
     override fun serialize(encoder: Encoder, value: PassportElementError) {
+        @Suppress("UnusedVariable")
         val neverMindAboutThisVariable = when (value) {
             is PassportElementErrorFrontSide -> PassportElementErrorFrontSide.serializer().serialize(encoder, value)
             is PassportElementErrorReverseSide -> PassportElementErrorReverseSide.serializer().serialize(encoder, value)
@@ -102,6 +104,29 @@ data class PassportElementErrorDataField(
     @Required
     @EncodeDefault
     override val source: String = dataField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorDataField
+
+        if (type != other.type) return false
+        if (fieldName != other.fieldName) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + fieldName.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementWithData.createDataError(field: String, message: String) = PassportElementErrorDataField(
     type,
@@ -124,6 +149,27 @@ data class PassportElementErrorFrontSide(
     @Required
     @EncodeDefault
     override val source: String = frontSideField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorFrontSide
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementWithFrontSide.createFrontSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFrontSide(
     type,
@@ -145,6 +191,27 @@ data class PassportElementErrorReverseSide(
     @Required
     @EncodeDefault
     override val source: String = reverseSideField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorReverseSide
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementWithReverseSide.createReverseSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorReverseSide(
     type,
@@ -165,6 +232,27 @@ data class PassportElementErrorSelfie(
     @Required
     @EncodeDefault
     override val source: String = selfieField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorSelfie
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementWithSelfie.createSelfieError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorSelfie(
     type,
@@ -187,6 +275,27 @@ data class PassportElementErrorFile(
     @Required
     @EncodeDefault
     override val source: String = fileField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorFile
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementWithFilesCollection.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFile(
     type,
@@ -229,6 +338,27 @@ data class PassportElementErrorTranslationFile(
     @Required
     @EncodeDefault
     override val source: String = translationFileField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorTranslationFile
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElementTranslatable.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorTranslationFile(
     type,
@@ -269,6 +399,27 @@ data class PassportElementErrorUnspecified(
     @Required
     @EncodeDefault
     override val source: String = unspecifiedField
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as PassportElementErrorUnspecified
+
+        if (type != other.type) return false
+        if (!elementHash.contentEquals(other.elementHash)) return false
+        if (message != other.message) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + elementHash.contentHashCode()
+        result = 31 * result + message.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
 }
 fun EncryptedPassportElement.createUnspecifiedError(message: String, elementHash: PassportElementHash) = PassportElementErrorUnspecified(
     type,

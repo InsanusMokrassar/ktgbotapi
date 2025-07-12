@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
@@ -17,18 +19,24 @@ private val formatter
 @Serializable(ChatTypeSerializer::class)
 sealed class ChatType {
     abstract val stringified: String
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    object Sender : ChatType() { override val stringified = "sender" }
+    data object Sender : ChatType() { override val stringified = "sender" }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    object Private : ChatType() { override val stringified = "private" }
+    data object Private : ChatType() { override val stringified = "private" }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    object Group : ChatType() { override val stringified = "group" }
+    data object Group : ChatType() { override val stringified = "group" }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    object Supergroup : ChatType() { override val stringified = "supergroup" }
+    data object Supergroup : ChatType() { override val stringified = "supergroup" }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    object Channel : ChatType() { override val stringified = "channel" }
+    data object Channel : ChatType() { override val stringified = "channel" }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatTypeSerializer::class)
-    class Unknown(override val stringified: String) : ChatType()
+    data class Unknown(override val stringified: String) : ChatType()
 
     override fun toString(): String {
         return stringified
@@ -66,7 +74,7 @@ object ChatSerializer : KSerializer<Chat> {
 
         return try {
             formatter.decodeFromJsonElement(ExtendedChatSerializer, decodedJson)
-        } catch (e: SerializationException) {
+        } catch (_: SerializationException) {
             val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
             val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
             val original = decodedJson[originField]

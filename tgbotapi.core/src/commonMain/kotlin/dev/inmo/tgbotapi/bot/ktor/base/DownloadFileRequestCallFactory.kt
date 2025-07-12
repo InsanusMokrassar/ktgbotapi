@@ -21,9 +21,7 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
     ): T? = (request as? DownloadFile)?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-        safely {
-            @Suppress("UNCHECKED_CAST")
-            client.get(fullUrl).readRawBytes() as T // always ByteArray
-        }
+        @Suppress("UNCHECKED_CAST")
+        client.get(fullUrl).readRawBytes() as T // always ByteArray
     }
 }

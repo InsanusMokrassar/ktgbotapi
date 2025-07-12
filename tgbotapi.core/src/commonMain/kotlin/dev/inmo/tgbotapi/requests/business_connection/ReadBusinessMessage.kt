@@ -19,6 +19,7 @@ import kotlinx.serialization.builtins.serializer
 data class ReadBusinessMessage(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatIdField)
     val chatId: ChatId,
     @SerialName(messageIdField)

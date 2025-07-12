@@ -1,3 +1,5 @@
+@file:Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.utils.RiskFeature

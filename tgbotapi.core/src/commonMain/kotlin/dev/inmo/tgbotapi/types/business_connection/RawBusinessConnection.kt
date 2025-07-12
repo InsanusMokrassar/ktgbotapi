@@ -9,8 +9,10 @@ import kotlinx.serialization.Serializable
 internal data class RawBusinessConnection(
     @SerialName(idField)
     val id: BusinessConnectionId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userField)
     val user: PreviewUser,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userChatIdField)
     val userChatId: ChatId,
     @SerialName(dateField)

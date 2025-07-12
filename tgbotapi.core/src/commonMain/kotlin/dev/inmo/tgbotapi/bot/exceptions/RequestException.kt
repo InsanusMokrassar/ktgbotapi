@@ -1,10 +1,13 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package dev.inmo.tgbotapi.bot.exceptions
 
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.types.RetryAfterError
-import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.CopyableThrowable
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.io.IOException
 
 fun newRequestException(
     response: Response,
@@ -42,7 +45,7 @@ class CommonBotException(message: String = "Something went wrong", cause: Throwa
     override fun createCopy(): BotException = CommonBotException(message!!, cause)
 }
 
-sealed class RequestException constructor(
+sealed class RequestException (
     val response: Response,
     val plainAnswer: String,
     message: String? = null,

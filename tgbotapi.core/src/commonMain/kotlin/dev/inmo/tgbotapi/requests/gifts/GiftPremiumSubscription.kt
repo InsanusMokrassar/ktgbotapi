@@ -21,8 +21,10 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.builtins.serializer
 
+@ConsistentCopyVisibility
 @Serializable
 data class GiftPremiumSubscription internal constructor(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(monthCountField)

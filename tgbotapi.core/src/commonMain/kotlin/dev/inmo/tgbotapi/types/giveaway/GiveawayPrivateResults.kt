@@ -16,6 +16,7 @@ data class GiveawayPrivateResults(
     val count: Int,
     @SerialName(unclaimedPrizeCountField)
     override val unclaimedCount: Int,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(giveawayMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val message: AccessibleMessage? = null,

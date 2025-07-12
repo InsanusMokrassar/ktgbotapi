@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api
 
 import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.abstracts.Headed
 import dev.inmo.tgbotapi.abstracts.HorizontallyAccured
 import dev.inmo.tgbotapi.abstracts.Locationed
@@ -19,6 +18,7 @@ import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
@@ -63,7 +63,7 @@ public suspend fun TelegramBot.handleLiveLocation(
         null
     } else {
         val scope = currentCoroutineContext().LinkedSupervisorScope()
-        scope.launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
+        scope.launchWithBotLogger(start = CoroutineStart.LAZY) {
             while (scope.isActive) {
                 delay(liveTimeMillis)
                 // Remove previous location message info to resend live location message

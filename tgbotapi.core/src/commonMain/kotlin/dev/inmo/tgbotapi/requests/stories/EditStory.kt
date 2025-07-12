@@ -3,10 +3,7 @@ package dev.inmo.tgbotapi.requests.stories
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.abstracts.BusinessRequest
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
-import dev.inmo.tgbotapi.requests.stories.PostStory
-import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.StoryId
-import dev.inmo.tgbotapi.types.activePeriodField
 import dev.inmo.tgbotapi.types.areasField
 import dev.inmo.tgbotapi.types.businessConnectionIdField
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -31,6 +28,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 
+@ConsistentCopyVisibility
 @Serializable
 data class EditStory private constructor(
     @SerialName(businessConnectionIdField)

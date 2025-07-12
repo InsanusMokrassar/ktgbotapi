@@ -1,3 +1,5 @@
+@file:Suppress("RemoveRedundantQualifierName")
+
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
@@ -52,11 +54,13 @@ sealed interface ReplyInfo {
         @Serializable
         data class Text(
             override val origin: MessageOrigin,
+            @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             override val chat: SuperPublicChat?,
             override val messageMeta: Message.MetaInfo?,
             val linkPreviewOptions: LinkPreviewOptions?
         ) : External
 
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @Serializable(External.Companion::class)
         sealed interface Content : External {
             val content: ContentVariant
@@ -65,6 +69,7 @@ sealed interface ReplyInfo {
             @Serializable
             data class Simple(
                 override val origin: MessageOrigin,
+                @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
                 override val content: ContentVariant
@@ -73,6 +78,7 @@ sealed interface ReplyInfo {
             @Serializable
             data class Media(
                 override val origin: MessageOrigin,
+                @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
                 override val spoilered: Boolean,
@@ -83,6 +89,7 @@ sealed interface ReplyInfo {
         @Serializable
         private data class Surrogate(
             val origin: MessageOrigin,
+            @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             val chat: SuperPublicChat? = null,
             val message_id: MessageId? = null,
             val link_preview_options: LinkPreviewOptions? = null,

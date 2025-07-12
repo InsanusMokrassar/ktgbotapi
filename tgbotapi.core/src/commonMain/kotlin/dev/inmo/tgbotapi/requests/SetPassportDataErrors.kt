@@ -8,6 +8,7 @@ import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetPassportDataErrors(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val user: UserId,
     @SerialName(errorsField)

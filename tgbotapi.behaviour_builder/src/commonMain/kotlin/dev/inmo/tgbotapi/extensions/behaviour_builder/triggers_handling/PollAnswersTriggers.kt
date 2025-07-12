@@ -10,12 +10,12 @@ import dev.inmo.tgbotapi.extensions.utils.pollAnswerUpdateOrNull
 import dev.inmo.tgbotapi.types.polls.PollAnswer
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal inline fun <BC : BehaviourContext> BC.onPollAnswered(
+internal fun <BC : BehaviourContext> BC.onPollAnswered(
     initialFilter: SimpleFilter<PollAnswer>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
-    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PollAnswer>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, PollAnswer>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.pollAnswerUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

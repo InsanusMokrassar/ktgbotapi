@@ -16,4 +16,4 @@ data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
     override val html: String by lazy { source.codeHTML() }
 }
 
-inline fun codeTextSource(code: String) = CodeTextSource(code)
+fun codeTextSource(code: String) = CodeTextSource(code)

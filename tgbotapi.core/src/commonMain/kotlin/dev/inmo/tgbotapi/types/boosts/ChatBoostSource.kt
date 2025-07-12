@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("RemoveRedundantQualifierName", "unused", "SimplifyBooleanWithConstants")
+
 package dev.inmo.tgbotapi.types.boosts
 
 import dev.inmo.tgbotapi.abstracts.WithMessageId
@@ -10,7 +13,6 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.decodeFromJsonElement
 
 @Serializable(ChatBoostSource.Companion::class)
 @ClassCastsIncluded
@@ -22,6 +24,7 @@ sealed interface ChatBoostSource {
         override val user: PreviewUser
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatBoostSource.Companion::class)
     data class Premium(
         @SerialName(userField)
@@ -37,6 +40,7 @@ sealed interface ChatBoostSource {
         }
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatBoostSource.Companion::class)
     data class GiftCode(
         @SerialName(userField)
@@ -52,6 +56,7 @@ sealed interface ChatBoostSource {
         }
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatBoostSource.Companion::class)
     sealed interface Giveaway : ChatBoostSource, WithMessageId {
         val unclaimed: Boolean
@@ -123,6 +128,7 @@ sealed interface ChatBoostSource {
         }
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(ChatBoostSource.Companion::class)
     data class Unknown(
         override val sourceName: String,
@@ -136,6 +142,7 @@ sealed interface ChatBoostSource {
         @EncodeDefault
         @SerialName(sourceField)
         val sourceName: String,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userField)
         val user: PreviewUser? = null,
         @SerialName(giveawayMessageIdField)

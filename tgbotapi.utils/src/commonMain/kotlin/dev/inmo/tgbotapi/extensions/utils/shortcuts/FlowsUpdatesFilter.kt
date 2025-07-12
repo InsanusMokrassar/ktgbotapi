@@ -39,13 +39,10 @@ inline fun <reified T: MessageContent> Flow<BaseSentMessageUpdate>.filterContent
 inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ): Flow<ContentMessage<T>> {
-    return (scopeToIncludeChannels ?.let { scope ->
-        aggregateFlows(
-            scope,
-            messagesFlow,
-            channelPostsFlow
-        )
-    } ?: messagesFlow).filterContentMessages()
+    return merge(
+        messagesFlow,
+        channelPostsFlow
+    ).filterContentMessages()
 }
 
 fun FlowsUpdatesFilter.sentMessages(

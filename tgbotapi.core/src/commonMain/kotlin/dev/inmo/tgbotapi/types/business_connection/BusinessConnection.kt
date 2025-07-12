@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.business_connection
 
 import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
@@ -28,8 +31,10 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
     data class Enabled(
         @SerialName(idField)
         override val id: BusinessConnectionId,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userField)
         override val user: PreviewUser,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userChatIdField)
         override val userChatId: ChatId,
         @SerialName(dateField)
@@ -45,8 +50,10 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
     data class Disabled(
         @SerialName(idField)
         override val id: BusinessConnectionId,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userField)
         override val user: PreviewUser,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userChatIdField)
         override val userChatId: ChatId,
         @SerialName(dateField)
