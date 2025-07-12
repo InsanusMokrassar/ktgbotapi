@@ -9,6 +9,8 @@ import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.ChecklistContent
 
 public suspend fun TelegramBot.sendChecklist(
     chatId: ChatIdentifier,
@@ -19,7 +21,7 @@ public suspend fun TelegramBot.sendChecklist(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,
@@ -40,7 +42,7 @@ public suspend fun TelegramBot.sendChecklist(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,

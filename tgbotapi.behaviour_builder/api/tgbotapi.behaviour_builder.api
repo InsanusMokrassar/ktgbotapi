@@ -7,10 +7,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourBuild
 
 public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext : dev/inmo/tgbotapi/bot/RequestsExecutor, dev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter, kotlinx/coroutines/CoroutineScope {
 	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
-	public abstract fun getBot ()Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
+	public fun getBot ()Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public abstract fun getData ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;
-	public abstract fun getFlowsUpdatesFilter ()Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
-	public abstract fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public fun getFlowsUpdatesFilter ()Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;
+	public fun getScope ()Lkotlinx/coroutines/CoroutineScope;
 	public abstract fun getSubcontextInitialAction ()Lkotlin/jvm/functions/Function3;
 	public abstract fun getTriggersHolder ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;
 }

@@ -6,6 +6,8 @@ public final class dev/inmo/tgbotapi/ksp/processor/ClassCastsFillerKt {
 public final class dev/inmo/tgbotapi/ksp/processor/TelegramBotAPISymbolProcessor : com/google/devtools/ksp/processing/SymbolProcessor {
 	public fun <init> (Lcom/google/devtools/ksp/processing/CodeGenerator;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public synthetic fun <init> (Lcom/google/devtools/ksp/processing/CodeGenerator;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun finish ()V
+	public fun onError ()V
 	public fun process (Lcom/google/devtools/ksp/processing/Resolver;)Ljava/util/List;
 }
 

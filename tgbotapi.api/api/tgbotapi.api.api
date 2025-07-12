@@ -88,7 +88,7 @@ public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo : dev/i
 	public fun toString ()Ljava/lang/String;
 }
 
-public synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public final synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;
@@ -96,6 +96,7 @@ public synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$Companion {
