@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.abstracts.WithMessageId
@@ -62,7 +64,7 @@ data class UnknownMessageType(
 ) : AccessibleMessage
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
-    @OptIn(InternalSerializationApi::class)
+    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor("TelegramBotAPIMessageSerializer", PolymorphicKind.OPEN)
 
     @Suppress("UNCHECKED_CAST")

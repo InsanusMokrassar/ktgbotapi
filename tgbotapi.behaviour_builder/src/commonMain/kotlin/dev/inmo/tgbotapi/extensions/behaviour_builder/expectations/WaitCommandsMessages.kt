@@ -1,3 +1,5 @@
+@file:Suppress("OPT_IN_USAGE")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext

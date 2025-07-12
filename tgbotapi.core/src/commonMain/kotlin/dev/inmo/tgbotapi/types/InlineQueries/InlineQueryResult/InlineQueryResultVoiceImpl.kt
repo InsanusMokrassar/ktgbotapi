@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
 import dev.inmo.tgbotapi.types.*
@@ -56,6 +58,7 @@ fun InlineQueryResultVoiceImpl(
     inputMessageContent
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class InlineQueryResultVoiceImpl internal constructor(
     @SerialName(idField)

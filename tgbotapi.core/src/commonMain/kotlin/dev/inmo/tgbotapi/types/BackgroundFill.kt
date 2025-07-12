@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.colors.common.HEXAColor

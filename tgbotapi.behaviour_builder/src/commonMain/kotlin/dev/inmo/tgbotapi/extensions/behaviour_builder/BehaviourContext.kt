@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.T
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
@@ -150,6 +151,7 @@ inline fun <T> BehaviourContext(
  *
  * @param updatesFilter This param will not be used anymore
  */
+@Suppress("UNCHECKED_CAST")
 fun <BC : BehaviourContext> BC.createSubContext(
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
@@ -217,7 +219,7 @@ fun <T, BC : BehaviourContext> BC.launchInNewSubContext(
         updatesUpstreamFlow = updatesUpstreamFlow,
         subcontextInitialAction = subcontextInitialAction
     ).apply {
-        this@apply.launchLoggingDropExceptions(logger = Log) {
+        this@apply.launchWithBotLogger {
             behaviourContextReceiver()
         }
     }.coroutineContext.job

@@ -27,7 +27,7 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
         centralPortal {
             username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
             password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
-            verificationTimeout = Duration.ofSeconds(0)
+            validationTimeout = Duration.ofSeconds(0)
             publishingType = "USER_MANAGED"
         }
 

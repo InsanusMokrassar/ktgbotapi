@@ -21,9 +21,9 @@ data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmojiTextSource(emojiId, parts.toList())
+fun customEmojiTextSource(emojiId: CustomEmojiId, parts: TextSourcesList) = CustomEmojiTextSource(parts.makeString(), emojiId, parts)
+fun customEmojiTextSource(emojiId: CustomEmojiId, vararg parts: TextSource) = customEmojiTextSource(emojiId, parts.toList())
 /**
  * Without sharp (#)
  */
-inline fun customEmojiTextSource(emojiId: CustomEmojiId, text: String) = customEmojiTextSource(emojiId, regularTextSource(text))
+fun customEmojiTextSource(emojiId: CustomEmojiId, text: String) = customEmojiTextSource(emojiId, regularTextSource(text))

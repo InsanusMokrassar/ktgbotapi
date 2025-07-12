@@ -33,6 +33,6 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
 /**
  * @param command Without leading "/"
  */
-inline fun botCommandTextSource(command: String) = BotCommandTextSource("/$command")
+fun botCommandTextSource(command: String) = BotCommandTextSource("/$command")
 
-inline fun botCommandTextSource(botCommand: BotCommand) = botCommandTextSource(botCommand.command)
+fun botCommandTextSource(botCommand: BotCommand) = botCommandTextSource(botCommand.command)

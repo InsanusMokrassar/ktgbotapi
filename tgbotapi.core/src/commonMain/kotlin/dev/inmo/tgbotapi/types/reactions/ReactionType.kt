@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.reactions
 
 import dev.inmo.tgbotapi.types.*

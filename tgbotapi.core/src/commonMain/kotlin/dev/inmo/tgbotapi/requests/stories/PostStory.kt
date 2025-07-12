@@ -28,6 +28,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 
+@ConsistentCopyVisibility
 @Serializable
 data class PostStory private constructor(
     @SerialName(businessConnectionIdField)
@@ -120,6 +121,7 @@ data class PostStory private constructor(
 
     override fun method(): String = "postStory"
 
+    @Suppress("unused")
     companion object {
         const val ACTIVE_PERIOD_6_HOURS: Seconds = 6 * 3600
         const val ACTIVE_PERIOD_12_HOURS: Seconds = 12 * 3600

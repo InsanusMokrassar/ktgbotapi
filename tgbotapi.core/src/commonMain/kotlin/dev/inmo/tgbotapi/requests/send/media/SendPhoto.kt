@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
@@ -109,6 +111,7 @@ fun SendPhoto(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendPhotoData internal constructor(
     @SerialName(chatIdField)
@@ -167,6 +170,8 @@ data class SendPhotoData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendPhotoFiles internal constructor(
     val photo: MultipartFile
 ) : Files by mapOf(

@@ -8,6 +8,7 @@ import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class RefundStarPayment(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(telegramPaymentChargeIdField)

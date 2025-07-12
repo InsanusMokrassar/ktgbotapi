@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.tgbotapi.requests.abstracts.*
@@ -18,6 +20,7 @@ fun SetStickerSetThumbnail(
     )
 }
 
+@Suppress("unused")
 fun SetStickerSetThumbnail(
     userId: UserId,
     stickerSetName: String,
@@ -32,12 +35,14 @@ fun SetStickerSetThumbnail(
 
 @Serializable
 data class SetStickerSetThumbnail (
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
     override val name: StickerSetName,
     @SerialName(formatField)
     val format: StickerFormat,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(thumbnailField)
     val thumbnail: FileId? = null
 ) : OwnerStickerSetAction {

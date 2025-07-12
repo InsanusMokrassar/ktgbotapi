@@ -1,3 +1,5 @@
+@file:Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+
 package dev.inmo.tgbotapi.types.polls
 
 import korlibs.time.DateTime
@@ -104,6 +106,7 @@ private class RawPoll(
         = closeDate ?.asExactScheduledCloseInfo ?: openPeriod ?.asApproximateScheduledCloseInfo
 }
 
+@ConsistentCopyVisibility
 @Serializable
 data class UnknownPollType internal constructor(
     @SerialName(idField)

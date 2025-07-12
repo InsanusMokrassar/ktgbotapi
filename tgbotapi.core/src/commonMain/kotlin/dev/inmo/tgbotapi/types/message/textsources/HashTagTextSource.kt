@@ -33,9 +33,9 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 }
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-inline fun hashtagTextSource(parts: TextSourcesList) = (regularTextSource("#") + parts).let { HashTagTextSource(it.makeString(), it) }
-inline fun hashtagTextSource(vararg parts: TextSource) = hashtagTextSource(parts.toList())
+fun hashtagTextSource(parts: TextSourcesList) = (regularTextSource("#") + parts).let { HashTagTextSource(it.makeString(), it) }
+fun hashtagTextSource(vararg parts: TextSource) = hashtagTextSource(parts.toList())
 /**
  * Without sharp (#)
  */
-inline fun hashtagTextSource(hashtag: String) = hashtagTextSource(regularTextSource(hashtag))
+fun hashtagTextSource(hashtag: String) = hashtagTextSource(regularTextSource(hashtag))

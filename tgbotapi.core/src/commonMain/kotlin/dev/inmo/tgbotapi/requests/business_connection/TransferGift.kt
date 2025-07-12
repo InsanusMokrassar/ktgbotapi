@@ -20,6 +20,7 @@ data class TransferGift(
     override val businessConnectionId: BusinessConnectionId,
     @SerialName(ownedGiftIdField)
     val ownedGiftId: GiftId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(newOwnerChatIdField)
     val newOwnerChatId: ChatId,
     @SerialName(starCountField)

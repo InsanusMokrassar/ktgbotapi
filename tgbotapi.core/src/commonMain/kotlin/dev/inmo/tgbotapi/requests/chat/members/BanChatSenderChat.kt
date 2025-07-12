@@ -12,6 +12,7 @@ import kotlinx.serialization.builtins.serializer
 data class BanChatSenderChat(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(senderChatIdField)
     override val senderChatId: IdChatIdentifier
 ) : ChatSenderRequest {

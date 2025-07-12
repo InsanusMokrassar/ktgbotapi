@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.StickerContent
 import kotlinx.serialization.*
 
+@Suppress("FunctionName")
 fun SendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
@@ -50,6 +51,7 @@ fun SendSticker(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendStickerByFileId internal constructor(
     @SerialName(chatIdField)

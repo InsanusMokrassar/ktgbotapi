@@ -18,12 +18,13 @@ sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
 
 /**
  * Represent [approve](https://core.telegram.org/bots/api#approvechatjoinrequest) [ChatJoinRequestAnswer]. You may approve
- * the requests retrieved in with [ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
+ * the requests retrieved in with [dev.inmo.tgbotapi.types.chat.ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
  */
 @Serializable
 data class ApproveChatJoinRequest(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId
 ) : ChatJoinRequestAnswer {
@@ -35,12 +36,13 @@ data class ApproveChatJoinRequest(
 
 /**
  * Represent [decline](https://core.telegram.org/bots/api#declinechatjoinrequest) [ChatJoinRequestAnswer]. You may approve
- * the requests retrieved in with [ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
+ * the requests retrieved in with [dev.inmo.tgbotapi.types.chat.ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
  */
 @Serializable
 data class DeclineChatJoinRequest(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId
 ) : ChatJoinRequestAnswer {

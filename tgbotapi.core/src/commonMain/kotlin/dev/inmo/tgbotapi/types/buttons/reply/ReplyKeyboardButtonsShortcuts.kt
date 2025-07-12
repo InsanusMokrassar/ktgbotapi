@@ -1,42 +1,39 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.buttons.reply
 
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
 import dev.inmo.tgbotapi.types.request.RequestId
-import dev.inmo.tgbotapi.types.requestNameField
-import dev.inmo.tgbotapi.types.requestPhotoField
-import dev.inmo.tgbotapi.types.requestUsernameField
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import kotlinx.serialization.SerialName
-import kotlin.math.max
 
 
 /**
  * Creates [SimpleKeyboardButton]
  */
-inline fun simpleReplyButton(
+fun simpleReplyButton(
     text: String
 ) = SimpleKeyboardButton(text)
 
 /**
  * Creates [RequestContactKeyboardButton]
  */
-inline fun requestContactReplyButton(
+fun requestContactReplyButton(
     text: String
 ) = RequestContactKeyboardButton(text)
 
 /**
  * Creates [RequestLocationKeyboardButton]
  */
-inline fun requestLocationReplyButton(
+fun requestLocationReplyButton(
     text: String
 ) = RequestLocationKeyboardButton(text)
 
 /**
  * Creates [RequestPollKeyboardButton]
  */
-inline fun requestPollReplyButton(
+fun requestPollReplyButton(
     text: String,
     pollType: KeyboardButtonPollType
 ) = RequestPollKeyboardButton(text, pollType)
@@ -44,7 +41,7 @@ inline fun requestPollReplyButton(
 /**
  * Creates [WebAppKeyboardButton]
  */
-inline fun webAppReplyButton(
+fun webAppReplyButton(
     text: String,
     webApp: WebAppInfo
 ) = WebAppKeyboardButton(text, webApp)
@@ -52,7 +49,7 @@ inline fun webAppReplyButton(
 /**
  * Creates [WebAppKeyboardButton]
  */
-inline fun webAppReplyButton(
+fun webAppReplyButton(
     text: String,
     url: String
 ) = webAppReplyButton(text, WebAppInfo(url))
@@ -61,7 +58,7 @@ inline fun webAppReplyButton(
 /**
  * Creates [RequestUserKeyboardButton]
  */
-inline fun requestUsersReplyButton(
+fun requestUsersReplyButton(
     text: String,
     requestUser: KeyboardButtonRequestUsers
 ) = RequestUserKeyboardButton(
@@ -72,7 +69,7 @@ inline fun requestUsersReplyButton(
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
  */
-inline fun requestBotsReplyButton(
+fun requestBotsReplyButton(
     text: String,
     requestId: RequestId,
     maxCount: Int = keyboardButtonRequestUserLimit.first,
@@ -93,7 +90,7 @@ inline fun requestBotsReplyButton(
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
  */
-inline fun requestUsersReplyButton(
+fun requestUsersReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -116,7 +113,7 @@ inline fun requestUsersReplyButton(
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
  */
-inline fun requestUserReplyButton(
+fun requestUserReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -137,7 +134,7 @@ inline fun requestUserReplyButton(
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
  */
-inline fun requestUsersOrBotsReplyButton(
+fun requestUsersOrBotsReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -160,7 +157,7 @@ inline fun requestUsersOrBotsReplyButton(
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
  */
-inline fun requestUserOrBotReplyButton(
+fun requestUserOrBotReplyButton(
     text: String,
     requestId: RequestId,
     requestName: Boolean? = null,
@@ -180,7 +177,7 @@ inline fun requestUserOrBotReplyButton(
 /**
  * Creates [RequestChatKeyboardButton]
  */
-inline fun requestChatReplyButton(
+fun requestChatReplyButton(
     text: String,
     requestChat: KeyboardButtonRequestChat
 ) = RequestChatKeyboardButton(
@@ -191,7 +188,7 @@ inline fun requestChatReplyButton(
 /**
  * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat]
  */
-inline fun requestChatReplyButton(
+fun requestChatReplyButton(
     text: String,
     requestId: RequestId,
     isChannel: Boolean? = null,
@@ -224,7 +221,7 @@ inline fun requestChatReplyButton(
 /**
  * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Channel]
  */
-inline fun requestChannelReplyButton(
+fun requestChannelReplyButton(
     text: String,
     requestId: RequestId,
     isPublic: Boolean? = null,
@@ -254,7 +251,7 @@ inline fun requestChannelReplyButton(
 /**
  * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
  */
-inline fun requestChannelReplyButton(
+fun requestChannelReplyButton(
     text: String,
     requestId: RequestId,
     isForum: Boolean? = null,

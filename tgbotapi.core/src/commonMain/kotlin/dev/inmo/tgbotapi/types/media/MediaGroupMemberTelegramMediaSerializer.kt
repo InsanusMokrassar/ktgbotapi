@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.media
 import dev.inmo.tgbotapi.types.typeField
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
@@ -12,7 +13,7 @@ import kotlinx.serialization.json.*
 
 @RiskFeature
 object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTelegramMedia> {
-    @OptIn(InternalSerializationApi::class)
+    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(MediaGroupMemberTelegramMedia::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: MediaGroupMemberTelegramMedia) {
         when (value) {

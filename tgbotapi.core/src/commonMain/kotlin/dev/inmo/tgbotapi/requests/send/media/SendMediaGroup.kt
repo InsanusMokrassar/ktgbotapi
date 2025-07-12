@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName", "DuplicatedCode")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
@@ -72,6 +74,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
         replyParameters = replyParameters
     )
 
+    @Suppress("UNCHECKED_CAST")
     return (if (files.isEmpty()) {
         data
     } else {
@@ -182,6 +185,7 @@ private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessa
 
 }
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
@@ -203,6 +207,7 @@ data class SendMediaGroupData internal constructor(
     override val replyParameters: ReplyParameters? = null,
 ) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
     SendContentMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
+    @Suppress("unused")
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = buildJsonArray {
@@ -219,6 +224,8 @@ data class SendMediaGroupData internal constructor(
         get() = MessagesListSerializer
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendMediaGroupFiles internal constructor(
     val files: List<MultipartFile>
-) : Files by (files.map { it.fileId to it }.toMap())
+) : Files by (files.associateBy { it.fileId })

@@ -14,6 +14,7 @@ import kotlinx.serialization.Serializable
 data class ChatMemberUpdated(
     @SerialName(chatField)
     override val chat: PreviewChat,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fromField)
     override val user: PreviewUser,
     @SerialName(dateField)

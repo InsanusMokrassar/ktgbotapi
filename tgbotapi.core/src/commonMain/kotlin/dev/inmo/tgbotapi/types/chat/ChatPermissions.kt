@@ -1,3 +1,5 @@
+@file:Suppress("TRANSIENT_IS_REDUNDANT", "unused")
+
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
@@ -152,6 +154,7 @@ interface ChatPermissions {
         )
 
         private val realSerializer = Granular.serializer()
+        @Suppress("unused")
         private val commonSerializer = Common.serializer()
         override val descriptor: SerialDescriptor
             get() = realSerializer.descriptor

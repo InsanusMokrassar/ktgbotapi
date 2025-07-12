@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
@@ -44,10 +46,12 @@ fun InlineQueryResultVoiceCachedImpl(
     inputMessageContent
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class InlineQueryResultVoiceCachedImpl internal constructor(
     @SerialName(idField)
     override val id: InlineQueryId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(voiceFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

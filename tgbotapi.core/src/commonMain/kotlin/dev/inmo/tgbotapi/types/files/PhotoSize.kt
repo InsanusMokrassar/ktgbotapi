@@ -38,6 +38,7 @@ object PhotoSerializer : KSerializer<PhotoFile> by PhotoFile.serializer()
 
 @Serializable
 data class PhotoSize(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)

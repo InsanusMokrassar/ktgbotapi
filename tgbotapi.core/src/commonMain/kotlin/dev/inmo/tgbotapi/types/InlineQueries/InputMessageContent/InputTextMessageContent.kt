@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
@@ -30,6 +32,7 @@ fun InputTextMessageContent(
     linkPreviewOptions: LinkPreviewOptions? = null
 ) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), linkPreviewOptions)
 
+@ConsistentCopyVisibility
 @Serializable
 data class InputTextMessageContent internal constructor(
     @SerialName(messageTextField)

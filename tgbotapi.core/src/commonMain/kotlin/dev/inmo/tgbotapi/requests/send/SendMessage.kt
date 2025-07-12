@@ -78,6 +78,7 @@ fun SendTextMessage(
     replyMarkup = replyMarkup
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendTextMessage internal constructor(
     @SerialName(chatIdField)

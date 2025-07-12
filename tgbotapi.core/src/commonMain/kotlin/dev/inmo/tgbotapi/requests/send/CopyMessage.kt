@@ -1,8 +1,9 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
-import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
@@ -10,7 +11,6 @@ import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
@@ -143,6 +143,7 @@ fun CopyMessage(
     replyMarkup = replyMarkup
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class CopyMessage internal constructor(
     @SerialName(chatIdField)

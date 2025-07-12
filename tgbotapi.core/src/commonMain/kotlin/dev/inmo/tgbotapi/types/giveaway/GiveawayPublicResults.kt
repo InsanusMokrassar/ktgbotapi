@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.giveaway
 
 import dev.inmo.tgbotapi.abstracts.WithPreviewChat
@@ -5,7 +7,6 @@ import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -35,6 +36,7 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         @SerialName(winnersCountField)
         override val count: Int = 0
         @SerialName(winnersField)
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         override val winners: List<PreviewUser> = emptyList()
         @SerialName(additionalChatCountField)
         override val additionalChats: Int = 0
@@ -62,6 +64,7 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         override val selectionDate: TelegramDate,
         @SerialName(winnersCountField)
         override val count: Int,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(winnersField)
         override val winners: List<PreviewUser>,
         @SerialName(additionalChatCountField)
@@ -93,6 +96,7 @@ sealed interface GiveawayPublicResults : GiveawayInfo, GiveawayResults, WithPrev
         val selectionDate: TelegramDate,
         @SerialName(winnersCountField)
         val count: Int,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(winnersField)
         val winners: List<PreviewUser>,
         @SerialName(additionalChatCountField)

@@ -44,7 +44,7 @@ fun <T> FlowsUpdatesFilter.expectFlow(
         if (result.isFailure || result.getOrThrow().isEmpty()) {
             if (cancelTrigger(it)) {
                 cancelRequestFactory(it) ?.also {
-                    safelyWithResult { bot.execute(it) }
+                    runCatching { bot.execute(it) }
                     throw cancelledByFilterException
                 }
             }

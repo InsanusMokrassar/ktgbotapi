@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.checklists
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.TextedInput
-import dev.inmo.tgbotapi.abstracts.TitledInput
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.completedByUserField
@@ -11,16 +10,12 @@ import dev.inmo.tgbotapi.types.idField
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
-import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
-import dev.inmo.tgbotapi.types.tasksField
 import dev.inmo.tgbotapi.types.textEntitiesField
 import dev.inmo.tgbotapi.types.textField
 import dev.inmo.tgbotapi.types.textParseModeField
-import dev.inmo.tgbotapi.types.titleEntitiesField
-import dev.inmo.tgbotapi.types.titleField
 import dev.inmo.tgbotapi.utils.EntitiesBuilder
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -106,6 +101,7 @@ sealed interface ChecklistTask : TextedInput {
         }
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Created.Serializer::class)
     data class Undone(
         @SerialName(idField)
@@ -127,6 +123,7 @@ sealed interface ChecklistTask : TextedInput {
         )
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Created.Serializer::class)
     data class Done(
         @SerialName(idField)
@@ -176,6 +173,7 @@ sealed interface ChecklistTask : TextedInput {
                 val text: String,
                 @SerialName(textEntitiesField)
                 val textSources: List<RawMessageEntity> = emptyList(),
+                @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
                 @SerialName(completedByUserField)
                 val completedByUser: PreviewUser? = null,
                 @SerialName(completionDateField)

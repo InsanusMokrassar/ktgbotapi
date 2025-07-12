@@ -43,6 +43,7 @@ sealed class PollOption : TextedInput {
     }
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PollOptionSerializer::class)
 data class SimplePollOption (
     @SerialName(textField)

@@ -11,10 +11,12 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class ChatJoinRequest(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatField)
     val chat: PublicChat,
     @SerialName(fromField)
     override val from: User,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userChatIdField)
     val userChatId: UserId,
     @SerialName(dateField)
@@ -24,6 +26,7 @@ data class ChatJoinRequest(
     @SerialName(bioField)
     val bio: String? = null
 ) : FromUser {
+    @Suppress("unused")
     val dateTime: DateTime
         get() = date.asDate
 }

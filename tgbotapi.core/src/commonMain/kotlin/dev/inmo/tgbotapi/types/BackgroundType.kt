@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.common.Progress
@@ -6,6 +8,7 @@ import dev.inmo.tgbotapi.utils.IntProgress100Serializer
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

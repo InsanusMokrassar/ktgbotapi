@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.utils
 
 import dev.inmo.micro_utils.common.withReplaced
@@ -23,7 +25,7 @@ inline fun <T> MatrixBuilder<T>.row(block: RowBuilder<T>.() -> Unit) {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder
  */
-inline fun <T> MatrixBuilder<T>.row(vararg elements: T) {
+fun <T> MatrixBuilder<T>.row(vararg elements: T) {
     add(elements.toList())
 }
 
@@ -49,7 +51,7 @@ inline fun <T> flatMatrix(block: RowBuilder<T>.() -> Unit): Matrix<T> {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardBuilder
  */
-inline fun <T> flatMatrix(vararg elements: T): Matrix<T> {
+fun <T> flatMatrix(vararg elements: T): Matrix<T> {
     return MatrixBuilder<T>().apply {
         row { elements.forEach { +it } }
     }.matrix

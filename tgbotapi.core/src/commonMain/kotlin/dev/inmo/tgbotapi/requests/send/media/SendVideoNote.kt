@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.utils.mapOfNotNull
 import kotlinx.serialization.*
 
+@Suppress("FunctionName")
 fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
@@ -60,6 +61,7 @@ fun SendVideoNote(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendVideoNoteData internal constructor(
     @SerialName(chatIdField)
@@ -105,6 +107,8 @@ data class SendVideoNoteData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendVideoNoteFiles internal constructor(
     val videoNote: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

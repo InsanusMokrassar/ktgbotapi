@@ -37,6 +37,7 @@ fun EditInlineMessageCaption(
     replyMarkup
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class EditInlineMessageCaption internal constructor(
     @SerialName(inlineMessageIdField)

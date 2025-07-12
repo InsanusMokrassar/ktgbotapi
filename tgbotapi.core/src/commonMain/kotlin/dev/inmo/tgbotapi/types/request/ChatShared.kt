@@ -9,10 +9,12 @@ import kotlinx.serialization.Serializable
 data class ChatShared(
     @SerialName(requestIdField)
     override val requestId: RequestId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatIdField)
     override val chatId: ChatId,
     @SerialName(titleField)
     val title: String? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     val username: Username? = null,
     @SerialName(photoField)

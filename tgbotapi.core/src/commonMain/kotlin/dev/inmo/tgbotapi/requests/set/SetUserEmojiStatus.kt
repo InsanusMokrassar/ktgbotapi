@@ -10,6 +10,7 @@ import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetUserEmojiStatus(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(emojiStatusCustomEmojiIdField)

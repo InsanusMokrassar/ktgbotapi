@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@ConsistentCopyVisibility
 @Serializable
 data class ReplyParameters internal constructor(
     @SerialName(chatIdField)

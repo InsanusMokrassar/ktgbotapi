@@ -10,6 +10,7 @@ import kotlinx.serialization.json.JsonObject
 
 @Serializable
 data class UploadStickerFile(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @Transient
@@ -17,10 +18,7 @@ data class UploadStickerFile(
     @SerialName(stickerFormatField)
     val stickerFormat: StickerFormat
 ): MultipartRequest<File> {
-    init {
-        // TODO:: add check of width/height of image and type of file - it must be png with max side length is 512px
-    }
-
+    // TODO:: add check of width/height of image and type of file - it must be png with max side length is 512px
     override fun method(): String = "uploadStickerFile"
     @Transient
     override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)

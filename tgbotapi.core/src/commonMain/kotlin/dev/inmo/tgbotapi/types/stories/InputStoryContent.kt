@@ -1,9 +1,12 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+
 package dev.inmo.tgbotapi.types.stories
 
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

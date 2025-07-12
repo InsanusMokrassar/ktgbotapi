@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
@@ -15,6 +17,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 @RiskFeature("This class is used for serialization/deserialization of Sticker interface")
 data class StickerSurrogate(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     val file_id: FileId,
     val file_unique_id: TgFileUniqueId,
     val type: StickerType,
@@ -246,6 +249,7 @@ sealed interface RegularSticker : Sticker {
 
 @Serializable
 data class RegularSimpleSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -277,6 +281,7 @@ data class RegularSimpleSticker(
 
 @Serializable
 data class RegularAnimatedSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -304,6 +309,7 @@ data class RegularAnimatedSticker(
 }
 @Serializable
 data class RegularVideoSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -347,6 +353,7 @@ sealed interface MaskSticker : Sticker {
 }
 @Serializable
 data class MaskSimpleSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -378,6 +385,7 @@ data class MaskSimpleSticker(
 }
 @Serializable
 data class MaskAnimatedSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -405,6 +413,7 @@ data class MaskAnimatedSticker(
 }
 @Serializable
 data class MaskVideoSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -449,6 +458,7 @@ sealed interface CustomEmojiSticker : Sticker {
 
 @Serializable
 data class CustomEmojiSimpleSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -482,6 +492,7 @@ data class CustomEmojiSimpleSticker(
 }
 @Serializable
 data class CustomEmojiAnimatedSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -511,6 +522,7 @@ data class CustomEmojiAnimatedSticker(
 }
 @Serializable
 data class CustomEmojiVideoSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
@@ -541,6 +553,7 @@ data class CustomEmojiVideoSticker(
 
 @Serializable
 data class UnknownSticker(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)

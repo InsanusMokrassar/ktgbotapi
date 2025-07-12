@@ -1,12 +1,15 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
 data class OwnerChatMember(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(userField)
     override val user: PreviewUser,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,

@@ -10,6 +10,7 @@ import kotlinx.serialization.builtins.serializer
 data class BanChatMember(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)

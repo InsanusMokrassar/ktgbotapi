@@ -117,6 +117,7 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
         }
     },
 ) {
+    @ConsistentCopyVisibility
     @Serializable
     data class SurrogateInputSticker internal constructor(
         @SerialName(stickerField)

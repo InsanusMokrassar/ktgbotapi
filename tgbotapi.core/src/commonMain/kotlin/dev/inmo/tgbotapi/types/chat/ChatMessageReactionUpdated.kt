@@ -22,6 +22,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
     val old: List<Reaction>
     val new: List<Reaction>
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Companion::class)
     data class ByUser(
         @SerialName(chatField)
@@ -42,6 +43,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
             get() = null
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Companion::class)
     data class ByChat(
         @SerialName(chatField)
@@ -62,6 +64,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
             get() = null
     }
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Companion::class)
     data class Unknown(
         @SerialName(chatField)
@@ -82,12 +85,14 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         val source: JsonElement?
     ) : ChatMessageReactionUpdated
 
+    @ConsistentCopyVisibility
     @Serializable
     data class Surrogate internal constructor(
         @SerialName(chatField)
         val chat: PreviewChat,
         @SerialName(messageIdField)
         val messageId: MessageId,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userField)
         val reactedUser: PreviewUser? = null,
         @SerialName(actorChatField)

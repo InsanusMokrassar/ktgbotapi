@@ -1,3 +1,5 @@
+@file:Suppress("unused", "RemoveExplicitTypeArguments")
+
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
@@ -75,7 +77,7 @@ inline fun flatReplyKeyboard(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.simpleButton(
+fun ReplyKeyboardRowBuilder.simpleButton(
     text: String
 ) = add(SimpleKeyboardButton(text))
 
@@ -85,7 +87,7 @@ inline fun ReplyKeyboardRowBuilder.simpleButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestContactButton(
+fun ReplyKeyboardRowBuilder.requestContactButton(
     text: String
 ) = add(RequestContactKeyboardButton(text))
 
@@ -95,7 +97,7 @@ inline fun ReplyKeyboardRowBuilder.requestContactButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestLocationButton(
+fun ReplyKeyboardRowBuilder.requestLocationButton(
     text: String
 ) = add(RequestLocationKeyboardButton(text))
 
@@ -105,7 +107,7 @@ inline fun ReplyKeyboardRowBuilder.requestLocationButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestPollButton(
+fun ReplyKeyboardRowBuilder.requestPollButton(
     text: String,
     pollType: KeyboardButtonPollType
 ) = add(RequestPollKeyboardButton(text, pollType))
@@ -116,7 +118,7 @@ inline fun ReplyKeyboardRowBuilder.requestPollButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.webAppButton(
+fun ReplyKeyboardRowBuilder.webAppButton(
     text: String,
     webApp: WebAppInfo
 ) = add(WebAppKeyboardButton(text, webApp))
@@ -127,7 +129,7 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.webAppButton(
+fun ReplyKeyboardRowBuilder.webAppButton(
     text: String,
     url: String
 ) = webAppButton(text, WebAppInfo(url))
@@ -139,7 +141,7 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestUsersButton(
+fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
     requestUser: KeyboardButtonRequestUsers
 ) = add(
@@ -155,7 +157,7 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestBotsButton(
+fun ReplyKeyboardRowBuilder.requestBotsButton(
     text: String,
     requestId: RequestId,
     maxCount: Int = keyboardButtonRequestUserLimit.first,
@@ -179,7 +181,7 @@ inline fun ReplyKeyboardRowBuilder.requestBotsButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestBotButton(
+fun ReplyKeyboardRowBuilder.requestBotButton(
     text: String,
     requestId: RequestId,
     requestName: Boolean? = null,
@@ -200,7 +202,7 @@ inline fun ReplyKeyboardRowBuilder.requestBotButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestUsersButton(
+fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -226,7 +228,7 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestUserButton(
+fun ReplyKeyboardRowBuilder.requestUserButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -249,7 +251,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
+fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
@@ -275,7 +277,7 @@ inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
+fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
     text: String,
     requestId: RequestId,
     requestName: Boolean? = null,
@@ -297,7 +299,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestChatButton(
+fun ReplyKeyboardRowBuilder.requestChatButton(
     text: String,
     requestChat: KeyboardButtonRequestChat
 ) = add(
@@ -313,7 +315,7 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestChatButton(
+fun ReplyKeyboardRowBuilder.requestChatButton(
     text: String,
     requestId: RequestId,
     isChannel: Boolean? = null,
@@ -349,7 +351,7 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestChannelButton(
+fun ReplyKeyboardRowBuilder.requestChannelButton(
     text: String,
     requestId: RequestId,
     isPublic: Boolean? = null,
@@ -381,7 +383,7 @@ inline fun ReplyKeyboardRowBuilder.requestChannelButton(
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-inline fun ReplyKeyboardRowBuilder.requestGroupButton(
+fun ReplyKeyboardRowBuilder.requestGroupButton(
     text: String,
     requestId: RequestId,
     isForum: Boolean? = null,

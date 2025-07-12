@@ -47,10 +47,12 @@ fun InlineQueryResultDocumentCachedImpl(
     inputMessageContent
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class InlineQueryResultDocumentCachedImpl internal constructor(
     @SerialName(idField)
     override val id: InlineQueryId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(documentFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

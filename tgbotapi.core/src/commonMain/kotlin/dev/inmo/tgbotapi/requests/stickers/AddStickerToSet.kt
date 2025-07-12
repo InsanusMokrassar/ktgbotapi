@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.stickers.abstracts.StandardStickerSetAction
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
+@Suppress("FunctionName")
 fun AddStickerToSet(
     userId: UserId,
     stickerSetName: StickerSetName,
@@ -31,8 +32,10 @@ fun AddStickerToSet(
     inputSticker = inputSticker
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class AddStickerToSetData internal constructor(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)

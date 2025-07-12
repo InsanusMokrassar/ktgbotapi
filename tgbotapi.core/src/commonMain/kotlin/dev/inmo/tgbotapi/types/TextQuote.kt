@@ -9,6 +9,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmName
 
+@ConsistentCopyVisibility
 @Serializable
 data class TextQuote private constructor(
     @SerialName(textField)

@@ -14,6 +14,7 @@ import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class EditUserStarSubscription(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @SerialName(telegramPaymentChargeIdField)

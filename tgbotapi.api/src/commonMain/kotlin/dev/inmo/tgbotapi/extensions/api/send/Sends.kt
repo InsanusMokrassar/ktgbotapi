@@ -546,7 +546,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,
@@ -567,7 +567,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
+): ContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,

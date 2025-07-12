@@ -1,7 +1,8 @@
+@file:Suppress("unused", "RemoveExplicitTypeArguments")
+
 package dev.inmo.tgbotapi.bot.settings.limiters
 
 import dev.inmo.micro_utils.coroutines.actor
-import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
 import kotlinx.serialization.Serializable
@@ -56,7 +57,7 @@ data class PowLimiter(
         }
         delay(delayMillis)
         return try {
-            safely { block() }
+            block()
         } finally {
             eventsChannel.send(CompleteRequest)
         }

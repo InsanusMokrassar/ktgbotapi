@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.webapps
 
+@Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING", "unused")
 external interface ThemeParams {
     @JsName("bg_color")
     val backgroundColor: HEXColor?

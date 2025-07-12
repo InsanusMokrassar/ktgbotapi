@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.*
@@ -8,6 +10,8 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextWithFSM.Companion.DATA_FSM_KEY
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
+import dev.inmo.tgbotapi.utils.subscribeWithBotLogger
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
@@ -72,6 +76,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
     ): BehaviourContextWithFSM<T>
 
     companion object {
+        @Suppress("RemoveExplicitTypeArguments")
         operator fun <T : State> invoke(
             behaviourContext: BehaviourContext,
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
@@ -88,7 +93,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
 
 /**
  * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
- * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
+ * for input [State] will be used [KClass.isInstance] and any inheritor of I::class will pass this requirement
  *
  * @see BehaviourWithFSMStateHandlerHolder
  * @see BehaviourContextWithFSM.add
@@ -98,7 +103,7 @@ inline fun <reified I : O, O: State> BehaviourContextWithFSM<O>.onStateOrSubstat
 
 /**
  * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
- * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
+ * for input [State] will be used [State]::class == I::class and any [State] with exactly the same type will pass
  * requirements
  *
  * @see BehaviourWithFSMStateHandlerHolder
@@ -157,7 +162,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
         actualHandlersList = additionalHandlers + handlers
     }
 
-    override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
+    override fun start(scope: CoroutineScope): Job = scope.launchWithBotLogger {
         val statePerformer: suspend (T) -> Unit = { state: T ->
             val newState = getSubContext(state.context).launchStateHandling(state, actualHandlersList)
             if (newState != null) {
@@ -169,7 +174,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
 
         fun Job.enableRemoveOnCompletion(state: T) {
             invokeOnCompletion {
-                launchSafelyWithoutExceptions {
+                launchWithBotLogger {
                     statesJobsMutex.withLock {
                         if (this@enableRemoveOnCompletion === statesJobs[state]) {
                             statesJobs.remove(state)
@@ -179,23 +184,23 @@ class DefaultBehaviourContextWithFSM<T : State>(
             }
         }
 
-        statesManager.onStartChain.subscribeSafelyWithoutExceptions(this) {
+        statesManager.onStartChain.subscribeWithBotLogger(this) {
             statesJobsMutex.withLock {
-                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+                runCatching { statesJobs.remove(it) ?.cancel() }
 
                 statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
             }
         }
-        statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
+        statesManager.onEndChain.subscribeWithBotLogger(this) {
             statesJobsMutex.withLock {
-                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+                runCatching { statesJobs.remove(it) ?.cancel() }
             }
             updatesFlows.remove(it.context) ?.cancel()
         }
-        statesManager.onChainStateUpdated.subscribeSafelyWithoutExceptions(this) { (old, new) ->
+        statesManager.onChainStateUpdated.subscribeWithBotLogger(this) { (old, new) ->
             statesJobsMutex.withLock {
-                runCatchingSafely { statesJobs.remove(old) ?.cancel() }
-                runCatchingSafely { statesJobs.remove(new) ?.cancel() }
+                runCatching { statesJobs.remove(old) ?.cancel() }
+                runCatching { statesJobs.remove(new) ?.cancel() }
                 statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(new) }
             }
             if (old.context != new.context) {
@@ -205,7 +210,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
 
         statesManager.getActiveStates().forEach {
             statesJobsMutex.withLock {
-                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+                runCatching { statesJobs.remove(it) ?.cancel() }
 
                 statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
             }
@@ -213,7 +218,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
     }
     /**
      * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
-     * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
+     * for input [State] will be used [KClass.isInstance] and any inheritor of I::class will pass this requirement
      *
      * @see BehaviourWithFSMStateHandlerHolder
      * @see BehaviourContextWithFSM.add
@@ -223,7 +228,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
 
     /**
      * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
-     * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
+     * for input [State] will be used [State]::class == I::class and any [State] with exactly the same type will pass
      * requirements
      *
      * @see BehaviourWithFSMStateHandlerHolder
@@ -295,6 +300,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
  * Extracting from [BehaviourContext.data] exists [StatesMachine] by key [DATA_FSM_KEY], which usually some [BehaviourContextWithFSM].
  * In case if value absent in [BehaviourContext.data] will return null
  */
+@Suppress("UNCHECKED_CAST")
 fun <T : State> BehaviourContext.fsmOrNull(): StatesMachine<T>? = data[DATA_FSM_KEY] as? StatesMachine<T>
 
 /**
@@ -303,4 +309,5 @@ fun <T : State> BehaviourContext.fsmOrNull(): StatesMachine<T>? = data[DATA_FSM_
  *
  * @throws NullPointerException
  */
+@Suppress("RemoveExplicitTypeArguments")
 fun <T : State> BehaviourContext.fsmOrThrow(): StatesMachine<T> = fsmOrNull<T>()!!

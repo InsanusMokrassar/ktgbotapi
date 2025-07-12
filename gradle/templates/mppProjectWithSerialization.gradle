@@ -2,6 +2,9 @@ project.version = "$library_version"
 project.group = "$library_group"
 
 kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xcontext-parameters")
+    }
     jvm {
         compilations.main {
             kotlinOptions {

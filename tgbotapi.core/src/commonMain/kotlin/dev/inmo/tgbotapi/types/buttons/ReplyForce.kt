@@ -1,3 +1,6 @@
+@file:Suppress("unused")
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*

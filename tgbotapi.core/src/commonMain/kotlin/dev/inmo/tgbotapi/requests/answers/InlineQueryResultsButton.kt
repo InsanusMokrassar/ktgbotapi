@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.requests.answers
 
-import dev.inmo.micro_utils.common.Warning
-import dev.inmo.tgbotapi.types.StartParameter
 import dev.inmo.tgbotapi.types.startParameterField
 import dev.inmo.tgbotapi.types.textField
 import dev.inmo.tgbotapi.types.webAppField
@@ -29,6 +27,7 @@ sealed interface InlineQueryResultsButton {
         val deepLinkParameter: String? = null
     )
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(InlineQueryResultsButtonSerializer::class)
     data class WebApp(
         @SerialName(textField)
@@ -37,6 +36,7 @@ sealed interface InlineQueryResultsButton {
         val webAppInfo: WebAppInfo
     ) : InlineQueryResultsButton
 
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(InlineQueryResultsButtonSerializer::class)
     data class Start(
         @SerialName(textField)
@@ -45,6 +45,8 @@ sealed interface InlineQueryResultsButton {
         val deepLinkParameter: String
     ) : InlineQueryResultsButton
 
+    @ConsistentCopyVisibility
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(InlineQueryResultsButtonSerializer::class)
     data class Unknown internal constructor (
         @SerialName(textField)

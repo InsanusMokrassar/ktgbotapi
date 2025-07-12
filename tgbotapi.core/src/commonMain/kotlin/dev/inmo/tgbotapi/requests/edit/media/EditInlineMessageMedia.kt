@@ -11,6 +11,7 @@ import kotlinx.serialization.*
 data class EditInlineMessageMedia(
     @SerialName(inlineMessageIdField)
     override val inlineMessageId: InlineMessageId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(mediaField)
     override val media: TelegramFreeMedia,
     @SerialName(replyMarkupField)

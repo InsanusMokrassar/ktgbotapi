@@ -18,7 +18,7 @@ data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor
     override val html: String by lazy { italicHTML() }
 }
 
-inline fun italicTextSource(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
-inline fun italicTextSource(vararg parts: TextSource) = italicTextSource(parts.toList())
-inline fun italicTextSource(text: String) = italicTextSource(regularTextSource(text))
+fun italicTextSource(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
+fun italicTextSource(vararg parts: TextSource) = italicTextSource(parts.toList())
+fun italicTextSource(text: String) = italicTextSource(regularTextSource(text))
 

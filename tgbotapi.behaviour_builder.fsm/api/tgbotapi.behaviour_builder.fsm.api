@@ -1,11 +1,13 @@
 public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM : dev/inmo/micro_utils/fsm/common/StatesMachine, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext {
 	public static final field Companion Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$Companion;
 	public abstract fun add (Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
-	public abstract fun addStrict (Lkotlin/reflect/KClass;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
+	public static synthetic fun add$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Lkotlin/reflect/KClass;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;ILjava/lang/Object;)V
+	public fun addStrict (Lkotlin/reflect/KClass;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler;)V
 	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
 	public abstract fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;
 	public abstract fun getStateInitialAction ()Lkotlin/jvm/functions/Function3;
-	public abstract fun start (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun start (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM$Companion {
@@ -49,7 +51,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 }
 
 public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourWithFSMStateHandler : dev/inmo/micro_utils/fsm/common/StatesHandler {
-	public abstract fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun handleState (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

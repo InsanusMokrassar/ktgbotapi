@@ -4,6 +4,9 @@ project.group = "$group"
 apply from: "$mpp_publish"
 
 kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xcontext-parameters")
+    }
     js (IR) {
         browser()
         nodejs()

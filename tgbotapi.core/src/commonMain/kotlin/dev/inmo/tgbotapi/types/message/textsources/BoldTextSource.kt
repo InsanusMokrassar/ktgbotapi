@@ -18,6 +18,6 @@ data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
     override val html: String by lazy { boldHTML() }
 }
 
-inline fun boldTextSource(parts: TextSourcesList) = BoldTextSource(parts.makeString(), parts)
-inline fun boldTextSource(vararg parts: TextSource) = boldTextSource(parts.toList())
-inline fun boldTextSource(text: String) = boldTextSource(regularTextSource(text))
+fun boldTextSource(parts: TextSourcesList) = BoldTextSource(parts.makeString(), parts)
+fun boldTextSource(vararg parts: TextSource) = boldTextSource(parts.toList())
+fun boldTextSource(text: String) = boldTextSource(regularTextSource(text))

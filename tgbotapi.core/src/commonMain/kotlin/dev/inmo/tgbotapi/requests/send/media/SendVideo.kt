@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
@@ -148,6 +150,7 @@ fun SendVideo(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendVideoData internal constructor(
     @SerialName(chatIdField)
@@ -225,6 +228,8 @@ data class SendVideoData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendVideoFiles internal constructor(
     val video: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

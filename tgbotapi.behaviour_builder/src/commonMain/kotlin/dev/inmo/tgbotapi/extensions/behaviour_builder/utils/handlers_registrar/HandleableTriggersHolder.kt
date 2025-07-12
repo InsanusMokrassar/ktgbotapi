@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar
 
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -40,7 +39,7 @@ suspend fun <T, R> HandleableTriggersHolder<T>.doWithRegistration(
     block: suspend () -> R
 ): R {
     registerHandleable(data)
-    val result = runCatchingSafely {
+    val result = runCatching {
         block()
     }
     unregisterHandleable(data)

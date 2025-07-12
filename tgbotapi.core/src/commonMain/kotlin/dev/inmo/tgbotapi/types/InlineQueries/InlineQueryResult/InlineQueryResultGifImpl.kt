@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
@@ -136,6 +138,7 @@ fun InlineQueryResultGifImpl(
     inputMessageContent = inputMessageContent
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class InlineQueryResultGifImpl internal constructor(
     @SerialName(idField)

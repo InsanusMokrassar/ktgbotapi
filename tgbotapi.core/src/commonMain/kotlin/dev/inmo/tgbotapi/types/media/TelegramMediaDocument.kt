@@ -46,6 +46,7 @@ fun TelegramMediaDocument(
  * @see MultipartFile
  * @see FileId
  */
+@ConsistentCopyVisibility
 @Serializable
 data class TelegramMediaDocument internal constructor(
     override val file: InputFile,

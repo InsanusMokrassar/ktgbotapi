@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
 import io.ktor.http.decodeURLQueryComponent
 import kotlinx.coroutines.Job
 
@@ -43,7 +44,7 @@ fun <BC : BehaviourContext> BC.onDeepLink(
     }.also {
         triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
         it.invokeOnCompletion {
-            this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
+            this@onDeepLink.launchWithBotLogger { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
         }
     }
 }

@@ -69,6 +69,7 @@ fun TelegramMediaVideo(
     thumb = thumb
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class TelegramMediaVideo internal constructor (
     override val file: InputFile,

@@ -48,6 +48,7 @@ fun TelegramMediaAnimation(
     thumb
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class TelegramMediaAnimation internal constructor(
     override val file: InputFile,

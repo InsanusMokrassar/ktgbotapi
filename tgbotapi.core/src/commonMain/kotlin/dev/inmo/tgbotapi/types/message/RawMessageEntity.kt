@@ -88,7 +88,7 @@ fun RawMessageEntity.asTextSource(
     }
 }
 
-private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: ClosedRange<T>): Boolean {
+private operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: ClosedRange<T>): Boolean {
     return start <= other.start && endInclusive >= other.endInclusive
 }
 
@@ -215,6 +215,7 @@ fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEnt
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
+            @Suppress("AssignedValueIsNeverRead") // it is used in line above :)
             i += it.maxByOrNull { it.length }?.length ?: textSource.source.length
         }
     }

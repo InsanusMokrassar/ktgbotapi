@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.DeferredAction
@@ -5,15 +7,15 @@ import dev.inmo.micro_utils.coroutines.invokeFirstOf
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
-suspend fun <T> BehaviourContext.parallel(
+fun <T> BehaviourContext.parallel(
     action: BehaviourContextReceiver<T>
 ) = async {
     action()
 }
 
-inline infix fun <T, O> Deferred<T>.withAction(noinline callback: suspend (T) -> O) = DeferredAction(this, callback)
+infix fun <T, O> Deferred<T>.withAction(callback: suspend (T) -> O) = DeferredAction(this, callback)
 
-inline fun <T> Deferred<T>.asAction() = DeferredAction(this) { it }
+fun <T> Deferred<T>.asAction() = DeferredAction(this) { it }
 
 suspend fun <O> BehaviourContext.oneOfActions(
     deferredActions: Iterable<DeferredAction<*, O>>

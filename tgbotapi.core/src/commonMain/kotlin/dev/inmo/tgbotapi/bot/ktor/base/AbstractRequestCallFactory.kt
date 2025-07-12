@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.bot.ktor.base
 import dev.inmo.kslog.common.KSLog
 import dev.inmo.kslog.common.v
 import dev.inmo.kslog.common.w
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdatesRequest
@@ -73,7 +72,7 @@ abstract class AbstractRequestCallFactory(
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
             logger.v { "Answer as json for $request: $responseObject" }
 
-            return runCatchingSafely {
+            return runCatching {
                 (responseObject.result?.let {
                     jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
                 } ?: response.let {

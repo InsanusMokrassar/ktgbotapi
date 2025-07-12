@@ -1,12 +1,14 @@
 package dev.inmo.tgbotapi.types.media
 
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
+@OptIn(ExperimentalSerializationApi::class)
 @RiskFeature
 object TelegramMediaSerializer : KSerializer<TelegramMedia> {
     @OptIn(InternalSerializationApi::class)

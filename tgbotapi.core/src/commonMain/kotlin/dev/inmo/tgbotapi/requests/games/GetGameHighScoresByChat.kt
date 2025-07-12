@@ -7,8 +7,10 @@ import kotlinx.serialization.*
 
 @Serializable
 data class GetGameHighScoresByChat (
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatIdField)
     override val chatId: IdChatIdentifier,
     @SerialName(messageIdField)

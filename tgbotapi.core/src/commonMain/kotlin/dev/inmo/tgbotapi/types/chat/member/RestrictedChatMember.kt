@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.Serializable
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatMemberSerializer::class)
 sealed interface RestrictedChatMember : ChatMember, UntilDate {
     companion object {

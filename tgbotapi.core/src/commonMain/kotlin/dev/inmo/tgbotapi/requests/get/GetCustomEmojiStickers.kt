@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.files.StickerSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
+@Suppress("UNCHECKED_CAST")
 internal val getCustomEmojiStickersResultSerializer = ListSerializer(StickerSerializer) as DeserializationStrategy<List<CustomEmojiSticker>>
 
 @Serializable

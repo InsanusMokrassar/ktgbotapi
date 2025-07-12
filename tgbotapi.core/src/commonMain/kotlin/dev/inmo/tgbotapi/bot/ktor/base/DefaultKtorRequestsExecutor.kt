@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
 import dev.inmo.kslog.common.*
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.BotException
 import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
@@ -83,7 +82,7 @@ class DefaultKtorRequestsExecutor internal constructor(
 
                 when (e) {
                     is ClientRequestException -> {
-                        val exceptionResult = runCatchingSafely {
+                        val exceptionResult = runCatching {
                             val content = e.response.bodyAsText()
                             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                             newRequestException(

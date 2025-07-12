@@ -15,42 +15,49 @@ sealed interface DiceAnimationType {
     val emoji: String
     val valueLimits: IntRange
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object CubeDiceAnimationType : DiceAnimationType {
     override val emoji: String = "\uD83C\uDFB2"
     override val valueLimits: IntRange
         get() = dartsCubeAndBowlingDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object DartsDiceAnimationType : DiceAnimationType {
     override val emoji: String = "\uD83C\uDFAF"
     override val valueLimits: IntRange
         get() = dartsCubeAndBowlingDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object BasketballDiceAnimationType : DiceAnimationType {
     override val emoji: String = "\uD83C\uDFC0"
     override val valueLimits: IntRange
         get() = basketballAndFootballDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object FootballDiceAnimationType : DiceAnimationType {
     override val emoji: String = "⚽"
     override val valueLimits: IntRange
         get() = basketballAndFootballDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object BowlingDiceAnimationType : DiceAnimationType {
     override val emoji: String = "\uD83C\uDFB3"
     override val valueLimits: IntRange
         get() = dartsCubeAndBowlingDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 object SlotMachineDiceAnimationType : DiceAnimationType {
     override val emoji: String = "\uD83C\uDFB0"
     override val valueLimits: IntRange
         get() = slotMachineDiceResultLimit
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(DiceAnimationTypeSerializer::class)
 data class CustomDiceAnimationType(
     override val emoji: String

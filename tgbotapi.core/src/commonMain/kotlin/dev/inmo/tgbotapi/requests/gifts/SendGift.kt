@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
@@ -16,8 +15,10 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.builtins.serializer
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendGift internal constructor(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId? = null,
     @SerialName(chatIdField)

@@ -1,16 +1,15 @@
 package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.tgbotapi.requests.abstracts.*
-import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
-import dev.inmo.tgbotapi.requests.stickers.abstracts.OwnerStickerSetAction
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
-import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerSetAction
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
+@Suppress("unused")
 @Serializable
 data class SetStickerEmojiList (
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(stickerField)
     override val sticker: FileId,
     @SerialName(emojiListField)

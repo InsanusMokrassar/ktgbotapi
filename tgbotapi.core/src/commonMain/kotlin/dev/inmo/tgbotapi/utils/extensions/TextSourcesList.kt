@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.message.*
 
 val eachLineRegex = Regex("^[^\n]")
 
-inline fun TextSourcesList.makeString(
+fun TextSourcesList.makeString(
     parseMode: ParseMode? = null
 ) = when (parseMode) {
     MarkdownParseMode -> makeMarkdownString()
@@ -15,15 +15,15 @@ inline fun TextSourcesList.makeString(
 }
 
 
-inline fun TextSourcesList.makeSourceString() = joinToString("") {
+fun TextSourcesList.makeSourceString() = joinToString("") {
     it.source
 }
 
-inline fun TextSourcesList.makeHtmlString() = joinToString("") {
+fun TextSourcesList.makeHtmlString() = joinToString("") {
     it.html
 }
 
-inline fun TextSourcesList.makeMarkdownV2String(eachLineSeparator: String? = null) = joinToString("") {
+fun TextSourcesList.makeMarkdownV2String(eachLineSeparator: String? = null) = joinToString("") {
     it.markdownV2
 }.let {
     if (eachLineSeparator == null) {
@@ -42,6 +42,6 @@ inline fun TextSourcesList.makeMarkdownV2String(eachLineSeparator: String? = nul
     }
 }
 
-inline fun TextSourcesList.makeMarkdownString() = joinToString("") {
+fun TextSourcesList.makeMarkdownString() = joinToString("") {
     it.markdown
 }

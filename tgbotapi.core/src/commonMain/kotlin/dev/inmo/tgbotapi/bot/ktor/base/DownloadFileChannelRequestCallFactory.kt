@@ -24,11 +24,12 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
     ): T? = (request as? DownloadFileStream) ?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
+        @Suppress("UNCHECKED_CAST")
         ByteReadChannelAllocator {
             val scope = CoroutineScope(currentCoroutineContext() + SupervisorJob())
             val outChannel = ByteChannel()
             scope.launch {
-                runCatchingSafely {
+                runCatching {
                     val response = client.get(fullUrl)
                     val channel: ByteReadChannel = response.bodyAsChannel()
                     channel.copyAndClose(outChannel)

@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
@@ -133,6 +135,7 @@ fun SendAnimation(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendAnimationData internal constructor(
     @SerialName(chatIdField)
@@ -202,6 +205,8 @@ data class SendAnimationData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendAnimationFiles internal constructor(
     val animation: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

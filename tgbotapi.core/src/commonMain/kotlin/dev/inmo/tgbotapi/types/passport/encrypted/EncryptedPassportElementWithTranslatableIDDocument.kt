@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(EncryptedElementSerializer::class)
 sealed class EncryptedPassportElementWithTranslatableIDDocument : EncryptedPassportElementWithData, EncryptedPassportElementWithFrontSide, EncryptedPassportElementWithReverseSide, EncryptedPassportElementWithSelfie, EncryptedPassportElementTranslatable
 
@@ -27,7 +28,33 @@ data class DriverLicense(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : EncryptedPassportElementWithTranslatableIDDocument()
+) : EncryptedPassportElementWithTranslatableIDDocument() {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as DriverLicense
+
+        if (!data.contentEquals(other.data)) return false
+        if (frontSide != other.frontSide) return false
+        if (reverseSide != other.reverseSide) return false
+        if (selfie != other.selfie) return false
+        if (translations != other.translations) return false
+        if (!hash.contentEquals(other.hash)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = data.contentHashCode()
+        result = 31 * result + (frontSide?.hashCode() ?: 0)
+        result = 31 * result + (reverseSide?.hashCode() ?: 0)
+        result = 31 * result + (selfie?.hashCode() ?: 0)
+        result = 31 * result + translations.hashCode()
+        result = 31 * result + hash.contentHashCode()
+        return result
+    }
+}
 
 @Serializable
 data class IdentityCard(

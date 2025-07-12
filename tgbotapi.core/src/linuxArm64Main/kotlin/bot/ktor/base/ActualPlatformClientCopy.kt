@@ -11,9 +11,11 @@ import io.ktor.client.engine.cio.*
  *
  * @throws IllegalArgumentException When pass non Curl-based [HttpClient] on LinuxX64
  */
+@Suppress("NOTHING_TO_INLINE")
 internal actual inline fun platformClientCopy(client: HttpClient): HttpClient = (client.engineConfig as? CIOEngineConfig) ?.let {
     lateinit var config: HttpClientConfig<out CIOEngineConfig>
     client.config {
+        @Suppress("UNCHECKED_CAST")
         config = this as HttpClientConfig<out CIOEngineConfig>
     }.close()
     HttpClient(CIO) {

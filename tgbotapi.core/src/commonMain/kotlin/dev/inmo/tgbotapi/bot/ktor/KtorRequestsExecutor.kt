@@ -18,6 +18,7 @@ import kotlinx.serialization.json.Json
  * * On JS, JVM and MingwX64 platforms it is [dev.inmo.tgbotapi.bot.ktor.base.DefaultKtorRequestsExecutor]
  * * On LinuxX64 it is [dev.inmo.tgbotapi.bot.ktor.base.MultipleClientKtorRequestsExecutor]
  */
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 expect class KtorRequestsExecutor internal constructor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient,
@@ -52,5 +53,5 @@ fun KtorRequestsExecutor(
     jsonFormatter = jsonFormatter,
     pipelineStepsHolder = pipelineStepsHolder,
     logger = logger,
-    diff = kotlin.Unit,
+    diff = Unit,
 )

@@ -12,6 +12,7 @@ import kotlinx.serialization.SerializationStrategy
 
 @Serializable
 data class SavePreparedInlineMessage(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
     @Serializable(InlineQueryResultSerializer::class)

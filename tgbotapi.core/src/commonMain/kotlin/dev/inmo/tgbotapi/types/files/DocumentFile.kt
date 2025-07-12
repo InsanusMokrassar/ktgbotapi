@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DocumentFile(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)

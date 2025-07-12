@@ -18,7 +18,7 @@ data class SpoilerTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { spoilerHTML() }
 }
 
-inline fun spoilerTextSource(parts: TextSourcesList) = SpoilerTextSource(parts.makeString(), parts)
-inline fun spoilerTextSource(vararg parts: TextSource) = spoilerTextSource(parts.toList())
-inline fun spoilerTextSource(text: String) = spoilerTextSource(regularTextSource(text))
+fun spoilerTextSource(parts: TextSourcesList) = SpoilerTextSource(parts.makeString(), parts)
+fun spoilerTextSource(vararg parts: TextSource) = spoilerTextSource(parts.toList())
+fun spoilerTextSource(text: String) = spoilerTextSource(regularTextSource(text))
 

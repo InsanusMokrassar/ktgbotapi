@@ -1,7 +1,9 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
-import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.chat.abstracts.*
 import dev.inmo.tgbotapi.types.*

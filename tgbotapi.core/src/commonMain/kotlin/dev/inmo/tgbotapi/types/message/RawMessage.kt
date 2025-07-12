@@ -55,7 +55,9 @@ internal data class RawMessage(
     private val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     private val messageThreadId: MessageThreadId? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val from: PreviewUser? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
     private val is_topic_message: Boolean? = null,
@@ -99,7 +101,9 @@ internal data class RawMessage(
     private val group_chat_created: Boolean = false,
     private val supergroup_chat_created: Boolean = false,
     private val channel_chat_created: Boolean = false,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val migrate_to_chat_id: IdChatIdentifier? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val migrate_from_chat_id: IdChatIdentifier? = null,
     private val pinned_message: RawMessage? = null,
     private val invoice: Invoice? = null,
@@ -160,6 +164,7 @@ internal data class RawMessage(
 
     // Business
     private val business_connection_id: BusinessConnectionId? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_business_bot: PreviewBot? = null,
 
     // Giveaways
@@ -180,6 +185,7 @@ internal data class RawMessage(
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
 ) {
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {

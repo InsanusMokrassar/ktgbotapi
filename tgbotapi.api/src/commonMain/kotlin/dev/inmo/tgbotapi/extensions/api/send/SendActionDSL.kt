@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
-import dev.inmo.micro_utils.coroutines.safelyWithResult
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendAction
 import dev.inmo.tgbotapi.types.*
@@ -21,6 +19,7 @@ public suspend fun <T> TelegramBot.withAction(
     actionRequest: SendAction,
     block: TelegramBotActionCallback<T>
 ): T {
+    @Suppress("WRONG_INVOCATION_KIND")
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
@@ -33,7 +32,7 @@ public suspend fun <T> TelegramBot.withAction(
             delay(refreshTime)
         }
     }
-    val result = runCatchingSafely { block() }
+    val result = runCatchingLogging(logger = Log) { block() }
     actionScope.coroutineContext.job.cancel()
     return result.getOrThrow()
 }
