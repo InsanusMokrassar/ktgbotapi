@@ -30491,6 +30491,11 @@ public final class dev/inmo/tgbotapi/utils/ByteReadChannelAllocatorDeserializati
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 }
 
+public final class dev/inmo/tgbotapi/utils/CausedByCancellationKt {
+	public static final fun causedCancellationException (Ljava/lang/Throwable;)Ljava/util/concurrent/CancellationException;
+	public static final fun isCausedByCancellation (Ljava/lang/Throwable;)Z
+}
+
 public final class dev/inmo/tgbotapi/utils/DefaultKSLogKt {
 	public static final fun SetDefaultKTgBotAPIKSLog (ZLkotlin/jvm/functions/Function1;)V
 	public static synthetic fun SetDefaultKTgBotAPIKSLog$default (ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V

@@ -15,6 +15,8 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
+import dev.inmo.tgbotapi.utils.causedCancellationException
+import dev.inmo.tgbotapi.utils.isCausedByCancellation
 import dev.inmo.tgbotapi.utils.subscribeWithBotLogger
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.utils.io.CancellationException
@@ -106,7 +108,7 @@ fun TelegramBot.longPollingFlow(
                     }
                 }
             }.onFailure {
-                if (it is CancellationException) {
+                it.causedCancellationException() ?.let {
                     cancel(it)
                 }
             }
