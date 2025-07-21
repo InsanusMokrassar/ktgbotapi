@@ -3,6 +3,8 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.micro_utils.coroutines.SpecialMutableStateFlow
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
+import dev.inmo.micro_utils.coroutines.subscribeAsync
 import dev.inmo.micro_utils.coroutines.subscribeLoggingDropExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
@@ -69,12 +71,16 @@ internal fun <BC : BehaviourContext, T> BC.on(
         createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
     }
     markerFactory ?.let {
-        subscribeSafelyWithoutExceptionsAsync(
+        subscribeAsync(
             scope,
             { markerFactory(it.second) },
-            block = handler
-        )
-    } ?: subscribeLoggingDropExceptions(scope) {
+            logger = Log
+        ) {
+            runCatchingLogging(logger = Log) {
+                handler(it)
+            }
+        }
+    } ?: subscribeLoggingDropExceptions(scope, logger = Log) {
         scope.launchWithBotLogger {
             handler(it)
         }
