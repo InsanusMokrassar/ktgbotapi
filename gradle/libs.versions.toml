@@ -11,7 +11,7 @@ uuid = "0.8.4"
 ktor = "3.2.2"
 
 ksp = "2.2.0-2.0.2"
-kotlin-poet = "2.0.0"
+kotlin-poet = "2.2.0"
 
 microutils = "0.26.1"
 kslog = "1.5.0"
