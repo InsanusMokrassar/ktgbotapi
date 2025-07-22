@@ -39,6 +39,7 @@ fun TelegramMediaAudio(
     file, text, parseMode, null, duration, performer, title, thumb
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class TelegramMediaAudio internal constructor(
     override val file: InputFile,

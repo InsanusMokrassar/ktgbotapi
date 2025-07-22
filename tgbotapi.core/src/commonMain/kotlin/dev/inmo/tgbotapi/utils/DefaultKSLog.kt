@@ -19,7 +19,7 @@ private inline fun CreateDefaultKSLogger(
 ): KSLog {
     val filter: MessageFilter? = if (dropCancellationExceptions) {
         { ll, message, e ->
-            e !is CancellationException
+            e ?.isCausedByCancellation() != true
         }
     } else {
         null

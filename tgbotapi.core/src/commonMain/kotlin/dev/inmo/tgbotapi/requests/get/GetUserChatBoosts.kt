@@ -13,6 +13,7 @@ import kotlinx.serialization.SerializationStrategy
 data class GetUserChatBoosts(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId
 ) : SimpleRequest<UserChatBoosts>, ChatRequest {

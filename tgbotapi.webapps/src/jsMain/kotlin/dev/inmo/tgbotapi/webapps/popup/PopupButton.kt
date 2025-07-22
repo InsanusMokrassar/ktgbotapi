@@ -1,3 +1,5 @@
+@file:Suppress("unused", "INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING")
+
 package dev.inmo.tgbotapi.webapps.popup
 
 import kotlin.js.json

@@ -1,17 +1,19 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.micro_utils.coroutines.SpecialMutableStateFlow
-import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
+import dev.inmo.micro_utils.coroutines.subscribeAsync
 import dev.inmo.micro_utils.coroutines.subscribeLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.flatMap
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.utils.launchWithBotLogger
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
@@ -69,13 +71,17 @@ internal fun <BC : BehaviourContext, T> BC.on(
         createSubContextAndDoSynchronouslyWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
     }
     markerFactory ?.let {
-        subscribeSafelyWithoutExceptionsAsync(
+        subscribeAsync(
             scope,
             { markerFactory(it.second) },
-            block = handler
-        )
-    } ?: subscribeLoggingDropExceptions(scope) {
-        scope.launchLoggingDropExceptions {
+            logger = Log
+        ) {
+            runCatchingLogging(logger = Log) {
+                handler(it)
+            }
+        }
+    } ?: subscribeLoggingDropExceptions(scope, logger = Log) {
+        scope.launchWithBotLogger {
             handler(it)
         }
     }

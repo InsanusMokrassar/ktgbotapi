@@ -56,6 +56,7 @@ fun EditChatMessageCaption(
     replyMarkup = replyMarkup
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class EditChatMessageCaption internal constructor(
     @SerialName(chatIdField)

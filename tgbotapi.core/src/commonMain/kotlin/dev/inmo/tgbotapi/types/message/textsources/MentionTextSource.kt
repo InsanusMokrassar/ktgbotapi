@@ -24,6 +24,7 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val markdown: String by lazy { source.mentionMarkdown() }
     override val markdownV2: String by lazy { mentionMarkdownV2() }
     override val html: String by lazy { mentionHTML() }
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     val username: Username = Username.prepare(source)
 
     init {
@@ -33,13 +34,13 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     }
 }
 
-inline fun mentionTextSource(parts: TextSourcesList) = (regularTextSource("@") + parts).let { MentionTextSource(it.makeString(), it) }
-inline fun mentionTextSource(vararg parts: TextSource) = mentionTextSource(parts.toList())
+fun mentionTextSource(parts: TextSourcesList) = (regularTextSource("@") + parts).let { MentionTextSource(it.makeString(), it) }
+fun mentionTextSource(vararg parts: TextSource) = mentionTextSource(parts.toList())
 
 /**
  * Without leading "@"
  */
-inline fun mentionTextSource(whoToMention: String) = mentionTextSource(regularTextSource(whoToMention))
+fun mentionTextSource(whoToMention: String) = mentionTextSource(regularTextSource(whoToMention))
 
-inline fun mentionTextSource(whoToMention: Username) = mentionTextSource(whoToMention.full.dropWhile { it == '@' })
+fun mentionTextSource(whoToMention: Username) = mentionTextSource(whoToMention.full.dropWhile { it == '@' })
 

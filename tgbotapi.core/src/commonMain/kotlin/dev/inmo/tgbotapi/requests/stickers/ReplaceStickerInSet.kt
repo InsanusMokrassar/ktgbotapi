@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
@@ -6,7 +8,6 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StandardStickerSetAction
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.files.File
 import kotlinx.serialization.*
 
 fun ReplaceStickerInSet(
@@ -30,6 +31,7 @@ fun ReplaceStickerInSet(
     }
 }
 
+@Suppress("unused")
 fun ReplaceStickerInSet(
     userId: UserId,
     stickerSetName: String,
@@ -42,12 +44,15 @@ fun ReplaceStickerInSet(
     newSticker = newSticker
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class ReplaceStickerInSetData internal constructor(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
     override val name: StickerSetName,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(oldStickerField)
     val oldSticker: FileId,
     @SerialName(stickerField)

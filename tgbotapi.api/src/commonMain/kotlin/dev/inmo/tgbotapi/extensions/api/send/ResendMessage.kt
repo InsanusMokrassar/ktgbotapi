@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 /**
  * This method will send [content] to the [chatId] as is
  */
+@Suppress("UNCHECKED_CAST")
 public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
     content: T,

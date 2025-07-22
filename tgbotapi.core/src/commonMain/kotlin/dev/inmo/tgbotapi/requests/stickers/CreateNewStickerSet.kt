@@ -5,11 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.CreateStickerSetAction
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import kotlinx.serialization.*
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 
 /**
  * Will create one of [CreateNewStickerSet] types based on the first element of [stickers]
@@ -84,6 +80,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
 
     @Serializable
     data class Regular(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
@@ -99,6 +96,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
     }
     @Serializable
     data class Mask(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
@@ -114,6 +112,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
     }
     @Serializable
     data class CustomEmoji(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
@@ -130,8 +129,10 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
             get() = StickerType.CustomEmoji
     }
 
+    @ConsistentCopyVisibility
     @Serializable
     data class SurrogateCreateNewSticker internal constructor(
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)

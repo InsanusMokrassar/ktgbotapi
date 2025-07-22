@@ -14,6 +14,7 @@ import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
 import kotlin.jvm.JvmInline
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(Reaction.Companion::class)
 @ClassCastsIncluded
 sealed interface Reaction {

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
@@ -144,6 +146,7 @@ private val commonResultDeserializer: DeserializationStrategy<ContentMessage<Doc
  * @see ContentMessage
  * @see DocumentContent
  */
+@ConsistentCopyVisibility
 @Serializable
 data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
@@ -201,6 +204,7 @@ data class SendDocumentData internal constructor(
         get() = serializer()
 }
 
+@ConsistentCopyVisibility
 data class SendDocumentFiles internal constructor(
     val document: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

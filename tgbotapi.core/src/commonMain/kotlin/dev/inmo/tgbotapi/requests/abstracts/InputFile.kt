@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+@file:Suppress("DEPRECATION") // for io.ktor.utils.io.core.ByteReadPacket
+
 package dev.inmo.tgbotapi.requests.abstracts
 
 import com.benasher44.uuid.uuid4
@@ -70,6 +73,7 @@ internal inline val InputFile.fileIdToSend
 /**
  * Contains file id or file url
  */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(InputFileSerializer::class)
 data class FileId(
     override val fileId: String
@@ -92,6 +96,7 @@ object InputFileSerializer : KSerializer<InputFile> {
  *
  * @see asMultipartFile
  */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(InputFileSerializer::class)
 data class MultipartFile (
     val filename: String,
@@ -126,5 +131,5 @@ suspend inline fun ByteReadChannelAllocator.asMultipartFile(
 ) = this.invoke().asMultipartFile(fileName)
 
 expect fun MPPFile.asMultipartFile(): MultipartFile
-@Suppress("NOTHING_TO_INLINE")
+@Suppress("NOTHING_TO_INLINE", "unused")
 inline fun MPPFile.multipartFile() = asMultipartFile()

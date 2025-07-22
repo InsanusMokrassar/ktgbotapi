@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
 import dev.inmo.kslog.common.KSLog
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.TelegramBotPipelinesHandler
@@ -107,7 +106,7 @@ class MultipleClientKtorRequestsExecutor(
 
     private suspend fun <T> withRequestExecutor(block: suspend (DefaultKtorRequestsExecutor) -> T): T {
         val requestsExecutor = prepareRequestsExecutor()
-        val result = runCatchingSafely {
+        val result = runCatching {
             block(requestsExecutor)
         }
         freeRequestsExecutor(requestsExecutor)

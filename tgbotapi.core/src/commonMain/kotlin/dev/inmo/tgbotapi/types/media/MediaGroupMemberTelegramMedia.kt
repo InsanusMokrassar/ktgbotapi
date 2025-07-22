@@ -12,5 +12,6 @@ sealed interface MediaGroupMemberTelegramMedia : TelegramMedia, TextedOutput {
 sealed interface AudioMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
 sealed interface DocumentMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(MediaGroupMemberTelegramMediaSerializer::class)
 sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia

@@ -1,3 +1,5 @@
+@file:Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING")
+
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.types.*

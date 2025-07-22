@@ -12,6 +12,7 @@ data class Contact(
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId? = null,
     @SerialName(vcardField)

@@ -23,6 +23,7 @@ data class EditChatMessageMedia(
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(mediaField)
     override val media: TelegramFreeMedia,
     @SerialName(businessConnectionIdField)

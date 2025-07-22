@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
 import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
@@ -48,7 +48,7 @@ fun Route.includeWebhookHandlingInRoute(
     val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis, logger = logger)
     post {
         try {
-            runCatchingSafely {
+            runCatchingLogging(logger = logger) {
                 val update = nonstrictJsonFormat.decodeFromString(
                     UpdateDeserializationStrategy,
                     call.receiveText()

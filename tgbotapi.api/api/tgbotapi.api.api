@@ -3,8 +3,6 @@ public final class dev/inmo/tgbotapi/extensions/api/BotBuilder {
 	public final fun component1 ()Ljava/net/Proxy;
 	public final fun component2 ()Lio/ktor/client/engine/HttpClientEngineFactory;
 	public final fun component3 ()Lkotlin/jvm/functions/Function1;
-	public final fun copy (Ljava/net/Proxy;Lio/ktor/client/engine/HttpClientEngineFactory;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/extensions/api/BotBuilder;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/extensions/api/BotBuilder;Ljava/net/Proxy;Lio/ktor/client/engine/HttpClientEngineFactory;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/api/BotBuilder;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getKtorClientConfig ()Lkotlin/jvm/functions/Function1;
 	public final fun getKtorClientEngineFactory ()Lio/ktor/client/engine/HttpClientEngineFactory;
@@ -40,7 +38,7 @@ public final class dev/inmo/tgbotapi/extensions/api/BotExtensionsKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/CloseKt {
-	public static final fun close (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun executeClose (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/DeleteMessageKt {
@@ -88,7 +86,7 @@ public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo : dev/i
 	public fun toString ()Ljava/lang/String;
 }
 
-public synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+public final synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;
@@ -96,6 +94,7 @@ public synthetic class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/EditLiveLocationInfo$Companion {
@@ -2479,8 +2478,16 @@ public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetStickerSetThumbnai
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/utils/UpdatesHandlingKt {
-	public static final fun updateHandlerWithMediaGroupsAdaptation (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;J)Lkotlin/jvm/functions/Function2;
-	public static synthetic fun updateHandlerWithMediaGroupsAdaptation$default (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;JILjava/lang/Object;)Lkotlin/jvm/functions/Function2;
+	public static final fun updateHandlerWithMediaGroupsAdaptation (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;JLdev/inmo/kslog/common/KSLog;)Lkotlin/jvm/functions/Function2;
+	public static synthetic fun updateHandlerWithMediaGroupsAdaptation$default (Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;JLdev/inmo/kslog/common/KSLog;ILjava/lang/Object;)Lkotlin/jvm/functions/Function2;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/verifications/RemoveChatVerificationKt {
+	public static final fun removeChatVerification (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/verifications/RemoveUserVerificationKt {
+	public static final fun removeUserVerification-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/verifications/VerifyChatKt {

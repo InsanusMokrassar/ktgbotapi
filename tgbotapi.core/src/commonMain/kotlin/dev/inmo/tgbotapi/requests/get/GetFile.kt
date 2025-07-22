@@ -8,6 +8,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class GetFile(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     val fileId: FileId
 ): SimpleRequest<PathedFile> {

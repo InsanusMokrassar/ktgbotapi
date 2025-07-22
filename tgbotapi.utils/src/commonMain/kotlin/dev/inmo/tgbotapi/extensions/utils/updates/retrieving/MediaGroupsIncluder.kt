@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
 import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.launchLoggingDropExceptions
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate

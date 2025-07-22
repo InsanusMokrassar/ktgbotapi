@@ -17,6 +17,7 @@ internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     for (update in this) {
         val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.let {
             if (it.content is MediaGroupPartContent) {
+                @Suppress("UNCHECKED_CAST")
                 it as PossiblySentViaBotCommonMessage<MediaGroupPartContent>
             } else {
                 null
@@ -48,10 +49,4 @@ internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     return resultUpdates
 }
 
-/**
- * @return [EditMessageMediaGroupUpdate] in case if [this] is [EditMessageUpdate]. When [this] object is
- * [EditChannelPostUpdate] instance - will return [EditChannelPostMediaGroupUpdate]
- *
- * @throws IllegalStateException
- */
-internal fun BaseEditMessageUpdate.toEditMediaGroupUpdate() = this
+internal fun BaseEditMessageUpdate.toEditMediaGroupUpdate(): BaseEditMessageUpdate = this

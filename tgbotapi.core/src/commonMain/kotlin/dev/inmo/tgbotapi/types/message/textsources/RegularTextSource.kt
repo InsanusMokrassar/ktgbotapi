@@ -16,6 +16,6 @@ data class RegularTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val html: String by lazy { source.regularHtml() }
 }
 
-inline fun regularTextSource(text: String) = RegularTextSource(text)
+fun regularTextSource(text: String) = RegularTextSource(text)
 
-inline fun regularTextSourceLn(text: String) = regularTextSource("$text\n")
+fun regularTextSourceLn(text: String) = regularTextSource("$text\n")

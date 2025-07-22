@@ -1,6 +1,6 @@
-package dev.inmo.tgbotapi.webapps.cloud
+@file:Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING", "unused")
 
-import kotlin.js.Json
+package dev.inmo.tgbotapi.webapps.cloud
 
 external interface CloudStorage {
     fun setItem(

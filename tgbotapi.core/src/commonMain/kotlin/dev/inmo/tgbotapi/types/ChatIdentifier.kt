@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.common.Warning
@@ -26,9 +28,10 @@ sealed interface ChatIdentifier
 /**
  * Also used as User Identifier
  */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 sealed interface IdChatIdentifier : ChatIdentifier {
-    abstract val chatId: RawChatId
+    val chatId: RawChatId
     val threadId: MessageThreadId?
         get() = null
     val businessConnectionId: BusinessConnectionId?
@@ -45,10 +48,12 @@ sealed interface IdChatIdentifier : ChatIdentifier {
     }
 }
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class ChatId(override val chatId: RawChatId) : IdChatIdentifier
 
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageThreadId>) : IdChatIdentifier {
@@ -59,6 +64,7 @@ value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageTh
 
     constructor(chatId: RawChatId, threadId: MessageThreadId): this(chatId to threadId)
 }
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, BusinessConnectionId>) : IdChatIdentifier {
@@ -116,6 +122,7 @@ fun Byte.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
  * @property full The full username string, guaranteed to start with "@".
  * @throws IllegalArgumentException if the provided [full] value doesn't start with "@" during initialization.
  */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE", "RemoveRedundantQualifierName")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class Username (
@@ -193,6 +200,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     }
 }
 
+@Suppress("unused")
 @RiskFeature
 object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     private val internalSerializer = JsonPrimitive.serializer()
@@ -216,7 +224,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
                     val (chatId, _, businessConnectionId) = splitted
                     BusinessChatId(
                         chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
-                        businessConnectionId.let(::BusinessConnectionId) ?: return@let null
+                        businessConnectionId.let(::BusinessConnectionId)
                     )
                 }
                 else -> null

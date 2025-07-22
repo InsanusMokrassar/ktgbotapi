@@ -9,6 +9,7 @@ settings.xml
 .gradle/
 build/
 out/
+bin/
 
 local.properties
 kotlin-js-store/

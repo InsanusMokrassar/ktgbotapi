@@ -69,7 +69,7 @@ inline fun InlineKeyboardMarkup.modified(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.payButton(
+fun InlineKeyboardRowBuilder.payButton(
     text: String
 ) = add(PayInlineKeyboardButton(text))
 
@@ -79,7 +79,7 @@ inline fun InlineKeyboardRowBuilder.payButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.dataButton(
+fun InlineKeyboardRowBuilder.dataButton(
     text: String,
     data: String
 ) = add(CallbackDataInlineKeyboardButton(text, data))
@@ -90,7 +90,7 @@ inline fun InlineKeyboardRowBuilder.dataButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.gameButton(
+fun InlineKeyboardRowBuilder.gameButton(
     text: String
 ) = add(CallbackGameInlineKeyboardButton(text))
 
@@ -100,7 +100,7 @@ inline fun InlineKeyboardRowBuilder.gameButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.loginButton(
+fun InlineKeyboardRowBuilder.loginButton(
     text: String,
     loginUrl: LoginURL
 ) = add(LoginURLInlineKeyboardButton(text, loginUrl))
@@ -111,7 +111,7 @@ inline fun InlineKeyboardRowBuilder.loginButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.copyTextButton(
+fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
     data: CopyTextButtonData
 ) = add(CopyTextButton(text, data))
@@ -122,7 +122,7 @@ inline fun InlineKeyboardRowBuilder.copyTextButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.copyTextButton(
+fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
     data: String
 ) = copyTextButton(text, CopyTextButtonData(data))
@@ -133,7 +133,7 @@ inline fun InlineKeyboardRowBuilder.copyTextButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
+fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
     text: String,
     data: String
 ) = add(SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data))
@@ -144,7 +144,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
+fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     text: String,
     parameters: SwitchInlineQueryChosenChat
 ) = add(SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters))
@@ -155,7 +155,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
+fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     text: String,
     query: String? = null,
     allowUsers: Boolean = false,
@@ -172,7 +172,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
         allowChannels = allowChannels
     )
 )
-inline fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
+fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
     text: String,
     query: String? = null,
 ) = inlineQueryInChosenChatButton(text, query, allowUsers = true, allowBots = true, allowGroups = true, allowChannels = true)
@@ -183,7 +183,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.inlineQueryButton(
+fun InlineKeyboardRowBuilder.inlineQueryButton(
     text: String,
     data: String
 ) = add(SwitchInlineQueryInlineKeyboardButton(text, data))
@@ -194,7 +194,7 @@ inline fun InlineKeyboardRowBuilder.inlineQueryButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.urlButton(
+fun InlineKeyboardRowBuilder.urlButton(
     text: String,
     url: String
 ) = add(URLInlineKeyboardButton(text, url))
@@ -205,7 +205,7 @@ inline fun InlineKeyboardRowBuilder.urlButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.webAppButton(
+fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
     webApp: WebAppInfo
 ) = add(WebAppInlineKeyboardButton(text, webApp))
@@ -216,7 +216,7 @@ inline fun InlineKeyboardRowBuilder.webAppButton(
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-inline fun InlineKeyboardRowBuilder.webAppButton(
+fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
     url: String
 ) = webAppButton(text, WebAppInfo(url))

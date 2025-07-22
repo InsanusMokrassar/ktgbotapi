@@ -28,12 +28,16 @@ import kotlinx.serialization.json.jsonObject
 internal data class RawUpdate constructor(
     @SerialName(updateIdField)
     val updateId: UpdateId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_message: CommonMessage<*>? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val message: AccessibleMessage? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_channel_post: CommonMessage<*>? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val channel_post: AccessibleMessage? = null,
     private val inline_query: RawInlineQuery? = null,
@@ -52,8 +56,10 @@ internal data class RawUpdate constructor(
     private val removed_chat_boost: ChatBoostRemoved? = null,
     @Serializable(BusinessConnection.Companion::class)
     private val business_connection: BusinessConnection? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val business_message: BusinessContentMessage<*>? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_business_message: BusinessContentMessage<*>? = null,
     private val deleted_business_messages: BusinessMessagesDeleted? = null,

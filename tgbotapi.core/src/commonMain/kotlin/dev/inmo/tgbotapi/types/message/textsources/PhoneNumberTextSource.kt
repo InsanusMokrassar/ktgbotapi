@@ -18,7 +18,7 @@ data class PhoneNumberTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val html: String by lazy { phoneHTML() }
 }
 
-inline fun phoneTextSource(parts: TextSourcesList) = PhoneNumberTextSource(parts.makeString(), parts)
-inline fun phoneTextSource(vararg parts: TextSource) = phoneTextSource(parts.toList())
-inline fun phoneTextSource(number: String) = phoneTextSource(regularTextSource(number))
+fun phoneTextSource(parts: TextSourcesList) = PhoneNumberTextSource(parts.makeString(), parts)
+fun phoneTextSource(vararg parts: TextSource) = phoneTextSource(parts.toList())
+fun phoneTextSource(number: String) = phoneTextSource(regularTextSource(number))
 

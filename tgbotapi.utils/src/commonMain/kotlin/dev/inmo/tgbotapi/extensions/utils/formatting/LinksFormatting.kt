@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
@@ -25,20 +27,20 @@ inline val Username.usernameLink
 val IdChatIdentifier.chatLink: String
     get() = makeChatLink(chatId, threadId)
 fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
-inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(withoutAt, threadId)
+fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(withoutAt, threadId)
 inline val Username.deepLinkPrefix
     get() = makeUsernameDeepLinkPrefix(withoutAt)
 inline val Username.startattachPrefix
     get() = makeUsernameStartattachPrefix(withoutAt)
-inline fun makeLink(username: Username, threadId: MessageThreadId? = null) = username.link(threadId)
-inline fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
-inline fun makeInternalTgDeepLink(username: String, startParameter: String) = "${makeInternalTgUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
-inline fun makeInternalTgDeepLink(username: Username, startParameter: String) =
+fun makeLink(username: Username, threadId: MessageThreadId? = null) = username.link(threadId)
+fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
+fun makeInternalTgDeepLink(username: String, startParameter: String) = "${makeInternalTgUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
+fun makeInternalTgDeepLink(username: Username, startParameter: String) =
     makeInternalTgDeepLink(username.withoutAt, startParameter)
-inline fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
-inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.withoutAt, startParameter)
-inline fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)
-inline fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.withoutAt, data)
+fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
+fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.withoutAt, startParameter)
+fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)
+fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.withoutAt, data)
 
 private val linkIdRedundantPartRegex = Regex("^-100")
 private val usernameBeginSymbolRegex = Regex("^@")

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
@@ -57,10 +59,12 @@ fun InlineQueryResultGifCachedImpl(
     inputMessageContent = inputMessageContent
 )
 
+@ConsistentCopyVisibility
 @Serializable
 data class InlineQueryResultGifCachedImpl internal constructor(
     @SerialName(idField)
     override val id: InlineQueryId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(gifFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

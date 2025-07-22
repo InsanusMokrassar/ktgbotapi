@@ -111,6 +111,7 @@ fun SendVoice(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendVoiceData internal constructor(
     @SerialName(chatIdField)
@@ -166,6 +167,8 @@ data class SendVoiceData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendVoiceFiles internal constructor(
     val voice: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

@@ -1,5 +1,20 @@
 # TelegramBotAPI changelog
 
+## 27.0.0
+
+**THIS UPDATE MAY CONTAIN BREAKING CHANGES. IN CASE OF ANY MIGRATION PROBLEMS FEEL FREE TO ASK IN [OUR CHAT](https://t.me/ktgbotapi_chat)**
+
+* `Version`:
+  * `Kotlin`: `2.1.20` -> `2.2.0`
+  * `Serialization`: `1.8.1` -> `1.9.0`
+  * `Ktor`: `3.1.3` -> `3.2.2`
+  * `MicroUtils`: `0.25.7` -> `0.26.1`
+  * `KSLog`: `1.4.1` -> `1.5.0`
+* `Common`:
+  * In most `data` classes with non-public constructors has been added `ConsistentCopyVisibility` annotation, preventing
+  public nature in difference with constructor
+  * Absence of several API methods for requests has been fixed
+
 ## 26.1.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.1](https://core.telegram.org/bots/api-changelog#july-3-2025)**

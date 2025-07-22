@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
 import dev.inmo.kslog.common.*
-import dev.inmo.micro_utils.coroutines.runCatchingSafely
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.BotException
 import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
@@ -17,6 +17,7 @@ import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.statement.*
+import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 
 class DefaultKtorRequestsExecutor internal constructor(
@@ -48,7 +49,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return runCatching {
+        return runCatchingLogging(logger = logger) {
             logger.v { "Start request $request" }
             pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
             requestsLimiter.limit(request) {
@@ -83,7 +84,7 @@ class DefaultKtorRequestsExecutor internal constructor(
 
                 when (e) {
                     is ClientRequestException -> {
-                        val exceptionResult = runCatchingSafely {
+                        val exceptionResult = runCatching {
                             val content = e.response.bodyAsText()
                             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                             newRequestException(
@@ -96,6 +97,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                             CommonBotException(cause = e)
                         } ?: exceptionResult.getOrThrow()
                     }
+                    is CancellationException,
                     is BotException -> e
                     else -> CommonBotException(cause = e)
                 }.also { newException ->

@@ -1,3 +1,5 @@
+@file:Suppress("SERIALIZER_TYPE_INCOMPATIBLE", "unused")
+
 package dev.inmo.tgbotapi.types.actions
 
 import dev.inmo.micro_utils.common.Warning
@@ -53,7 +55,7 @@ object TypingAction : BotAction {
 }
 inline val typing
     get() = TypingAction
-inline fun BotAction.asTyping() = this as? TypingAction
+fun BotAction.asTyping() = this as? TypingAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -64,7 +66,7 @@ object UploadPhotoAction : BotAction {
 }
 inline val uploadPhoto
     get() = UploadPhotoAction
-inline fun BotAction.asUploadPhoto() = this as? UploadPhotoAction
+fun BotAction.asUploadPhoto() = this as? UploadPhotoAction
 
 /**
  * Will notify user that bot is recording some video
@@ -75,7 +77,7 @@ object RecordVideoAction : BotAction {
 }
 inline val recordVideo
     get() = RecordVideoAction
-inline fun BotAction.asRecordVideo() = this as? RecordVideoAction
+fun BotAction.asRecordVideo() = this as? RecordVideoAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -86,7 +88,7 @@ object UploadVideoAction : BotAction {
 }
 inline val uploadVideo
     get() = UploadVideoAction
-inline fun BotAction.asUploadVideo() = this as? UploadVideoAction
+fun BotAction.asUploadVideo() = this as? UploadVideoAction
 
 /**
  * Will notify user that bot is recording some audio
@@ -97,7 +99,7 @@ object RecordVoiceAction : BotAction {
 }
 inline val recordVoice
     get() = RecordVoiceAction
-inline fun BotAction.asRecordVoice() = this as? RecordVoiceAction
+fun BotAction.asRecordVoice() = this as? RecordVoiceAction
 
 /**
  * Will notify user that bot is uploading some audio
@@ -108,7 +110,7 @@ object UploadVoiceAction : BotAction {
 }
 inline val uploadVoice
     get() = UploadVoiceAction
-inline fun BotAction.asUploadVoice() = this as? UploadVoiceAction
+fun BotAction.asUploadVoice() = this as? UploadVoiceAction
 
 /**
  * Will notify user that bot is uploading some document
@@ -119,7 +121,7 @@ object UploadDocumentAction : BotAction {
 }
 inline val uploadDocument
     get() = UploadDocumentAction
-inline fun BotAction.asUploadDocument() = this as? UploadDocumentAction
+fun BotAction.asUploadDocument() = this as? UploadDocumentAction
 
 /**
  * Will notify user that bot is trying to find location
@@ -130,7 +132,7 @@ object FindLocationAction : BotAction {
 }
 inline val findLocation
     get() = FindLocationAction
-inline fun BotAction.asFindLocation() = this as? FindLocationAction
+fun BotAction.asFindLocation() = this as? FindLocationAction
 
 /**
  * Will notify user that bot is recording video note
@@ -141,7 +143,7 @@ object RecordVideoNoteAction : BotAction {
 }
 inline val recordVideoNote
     get() = RecordVideoNoteAction
-inline fun BotAction.asRecordVideoNote() = this as? RecordVideoNoteAction
+fun BotAction.asRecordVideoNote() = this as? RecordVideoNoteAction
 
 /**
  * Will notify user that bot is uploading video note
@@ -152,7 +154,7 @@ object UploadVideoNoteAction : BotAction {
 }
 inline val uploadVideoNote
     get() = UploadVideoNoteAction
-inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
+fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
 
 /**
  * Will notify user that bot is uploading video note
@@ -163,7 +165,7 @@ object ChooseStickerAction : BotAction {
 }
 inline val chooseSticker
     get() = ChooseStickerAction
-inline fun BotAction.asChooseStickerAction() = this as? ChooseStickerAction
+fun BotAction.asChooseStickerAction() = this as? ChooseStickerAction
 
 @Serializable(BotActionSerializer::class)
 @Warning("Use this action only in case you are pretty sure that there are no other action for your needs")

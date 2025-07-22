@@ -12,6 +12,7 @@ import kotlinx.serialization.builtins.serializer
 data class PromoteChatMember(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)

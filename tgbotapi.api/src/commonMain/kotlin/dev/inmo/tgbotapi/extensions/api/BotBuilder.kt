@@ -12,6 +12,7 @@ import io.ktor.client.engine.*
  * @param ktorClientEngine Engine like [io.ktor.client.engine.cio.CIO]
  * @param ktorClientConfig Config block for preconfiguring of bot [HttpClient]
  */
+@ConsistentCopyVisibility
 public data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
     var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,

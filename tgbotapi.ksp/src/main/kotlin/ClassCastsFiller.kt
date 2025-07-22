@@ -1,7 +1,8 @@
+@file:Suppress("OPT_IN_USAGE")
+
 package dev.inmo.tgbotapi.ksp.processor
 
 import com.google.devtools.ksp.KspExperimental
-import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.isAnnotationPresent
 import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.*

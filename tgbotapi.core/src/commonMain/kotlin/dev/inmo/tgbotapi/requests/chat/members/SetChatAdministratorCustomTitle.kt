@@ -9,6 +9,7 @@ import kotlinx.serialization.builtins.serializer
 data class SetChatAdministratorCustomTitle(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(customTitleField)

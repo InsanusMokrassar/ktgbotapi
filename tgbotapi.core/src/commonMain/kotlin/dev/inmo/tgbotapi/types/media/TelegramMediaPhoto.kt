@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.types.media
 
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
@@ -30,6 +32,7 @@ fun TelegramMediaPhoto(
     showCaptionAboveMedia: Boolean = false
 ) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities(), spoilered, showCaptionAboveMedia)
 
+@ConsistentCopyVisibility
 @Serializable
 data class TelegramMediaPhoto internal constructor(
     override val file: InputFile,

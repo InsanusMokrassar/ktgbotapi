@@ -24,6 +24,7 @@ internal inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> B
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     it.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
         if (it.content.group.all { it.content is T }) {
+            @Suppress("UNCHECKED_CAST")
             listOf(it.content as MediaGroupContent<T>)
         } else {
             null

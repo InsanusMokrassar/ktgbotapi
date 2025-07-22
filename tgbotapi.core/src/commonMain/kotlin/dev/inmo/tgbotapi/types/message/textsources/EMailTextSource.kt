@@ -18,6 +18,6 @@ data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor)
     override val html: String by lazy { emailHTML(source) }
 }
 
-inline fun emailTextSource(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
-inline fun emailTextSource(vararg parts: TextSource) = emailTextSource(parts.toList())
-inline fun emailTextSource(emailAddress: String) = emailTextSource(regularTextSource(emailAddress))
+fun emailTextSource(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
+fun emailTextSource(vararg parts: TextSource) = emailTextSource(parts.toList())
+fun emailTextSource(emailAddress: String) = emailTextSource(regularTextSource(emailAddress))

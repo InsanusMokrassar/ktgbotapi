@@ -17,7 +17,8 @@ inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupM
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<MediaGroupMessage<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
     update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
-        if (message.content.group.all { it is T }) {
+        if (message.content.group.all { it.content is T }) {
+            @Suppress("UNCHECKED_CAST")
             listOf(message as MediaGroupMessage<T>)
         } else {
             null

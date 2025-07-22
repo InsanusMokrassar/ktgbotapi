@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
@@ -17,7 +19,8 @@ inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupW
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<MediaGroupContent<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
     update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
-        if (message.content.group.all { it is T }) {
+        if (message.content.group.all { it.content is T }) {
+            @Suppress("UNCHECKED_CAST")
             listOf(message.content as MediaGroupContent<T>)
         } else {
             null

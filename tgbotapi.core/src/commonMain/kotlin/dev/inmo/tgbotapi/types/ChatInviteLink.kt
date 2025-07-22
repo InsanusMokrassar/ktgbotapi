@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.abstracts.types.SubscriptionInfo
-import dev.inmo.tgbotapi.abstracts.types.SubscriptionPeriodInfo
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.TimeSpanAsSecondsSerializer
@@ -67,6 +66,7 @@ sealed interface ChatInviteLink : WithUser {
 /**
  * Base interface for all [ChatInviteLink]s which are NOT [PrimaryInviteLink]
  */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatInviteLinkSerializer::class)
 sealed interface SecondaryChatInviteLink : ChatInviteLink, SubscriptionInfo {
     override val isPrimary: Boolean
@@ -96,7 +96,7 @@ data class PrimaryInviteLink(
 /**
  * Represent [SecondaryChatInviteLink] which will require an aprovement from one of the administrators
  *
- * @see ChatJoinRequest
+ * @see dev.inmo.tgbotapi.types.chat.ChatJoinRequest
  * @see dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
  */
 @Serializable

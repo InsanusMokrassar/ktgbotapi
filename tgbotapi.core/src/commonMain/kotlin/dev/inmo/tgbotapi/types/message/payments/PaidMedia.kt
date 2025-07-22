@@ -1,3 +1,6 @@
+@file:Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package dev.inmo.tgbotapi.types.message.payments
 
 import dev.inmo.tgbotapi.types.*
@@ -6,6 +9,7 @@ import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

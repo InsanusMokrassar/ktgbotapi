@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
@@ -10,9 +12,9 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
-inline fun BehaviourContext.waitChatMessageReactionsCountUpdated(
+fun BehaviourContext.waitChatMessageReactionsCountUpdated(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null }
+    errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<ChatMessageReactionsCountUpdated> = expectFlow(
     initRequest,
     errorFactory

@@ -64,7 +64,6 @@ internal data class MenuButtonSurrogate(
     val srcJsonElement: JsonElement? = null
 )
 
-@Serializer(MenuButton::class)
 object MenuButtonSerializer : KSerializer<MenuButton> {
     override val descriptor: SerialDescriptor
         get() = MenuButtonSurrogate.serializer().descriptor

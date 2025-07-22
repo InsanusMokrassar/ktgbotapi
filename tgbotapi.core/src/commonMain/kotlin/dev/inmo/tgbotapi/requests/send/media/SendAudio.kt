@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.abstracts.Performerable
@@ -126,6 +128,7 @@ fun SendAudio(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+@ConsistentCopyVisibility
 @Serializable
 data class SendAudioData internal constructor(
     @SerialName(chatIdField)
@@ -190,6 +193,8 @@ data class SendAudioData internal constructor(
         get() = serializer()
 }
 
+@Suppress("unused")
+@ConsistentCopyVisibility
 data class SendAudioFiles internal constructor(
     val audio: MultipartFile? = null,
     val thumbnail: MultipartFile? = null

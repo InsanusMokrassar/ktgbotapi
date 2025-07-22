@@ -7,6 +7,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class GetGameHighScoresByInlineMessageId (
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(inlineMessageIdField)

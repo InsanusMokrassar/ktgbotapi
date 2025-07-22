@@ -7,12 +7,12 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.types.message.content.ChecklistContent
-import dev.inmo.tgbotapi.types.userField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ChecklistTasksDone(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(checklistMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializerClass::class)
     val checklistMessage: CommonMessage<ChecklistContent>,
