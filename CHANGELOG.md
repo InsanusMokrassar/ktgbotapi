@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 27.1.0
+
 ## 27.0.0
 
 **THIS UPDATE MAY CONTAIN BREAKING CHANGES. IN CASE OF ANY MIGRATION PROBLEMS FEEL FREE TO ASK IN [OUR CHAT](https://t.me/ktgbotapi_chat)**
