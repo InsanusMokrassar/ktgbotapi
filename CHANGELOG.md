@@ -2,6 +2,11 @@
 
 ## 27.1.0
 
+* `Core`:
+  * Improve support of local bot api servers files. Next call factories will try to resolve file locally before real call:
+    * [DownloadFileRequestCallFactory.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/bot/ktor/base/DownloadFileRequestCallFactory.kt) (for [DownloadFile.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/requests/DownloadFile.kt) as well)
+    * [DownloadFileChannelRequestCallFactory.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/bot/ktor/base/DownloadFileChannelRequestCallFactory.kt) (for [DownloadFileStream.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/requests/DownloadFileStream.kt) as well)
+
 ## 27.0.0
 
 **THIS UPDATE MAY CONTAIN BREAKING CHANGES. IN CASE OF ANY MIGRATION PROBLEMS FEEL FREE TO ASK IN [OUR CHAT](https://t.me/ktgbotapi_chat)**

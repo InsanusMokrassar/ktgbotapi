@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
-import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.DownloadFileStream
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -22,7 +21,17 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
         request: Request<T>,
         jsonFormatter: Json
     ): T? = (request as? DownloadFileStream) ?.let {
-        val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
+        val bodyChannelAllocator: suspend () -> ByteReadChannel = resolveFile(it.filePath) ?.let {
+            {
+                byteReadChannel(it)
+            }
+        } ?: let { _ ->
+            val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
+            return@let {
+                val response = client.get(fullUrl)
+                response.bodyAsChannel()
+            }
+        }
 
         @Suppress("UNCHECKED_CAST")
         ByteReadChannelAllocator {
@@ -30,8 +39,7 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
             val outChannel = ByteChannel()
             scope.launch {
                 runCatching {
-                    val response = client.get(fullUrl)
-                    val channel: ByteReadChannel = response.bodyAsChannel()
+                    val channel: ByteReadChannel = bodyChannelAllocator()
                     channel.copyAndClose(outChannel)
                 }
                 scope.cancel()

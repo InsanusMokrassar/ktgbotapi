@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.micro_utils.common.bytes
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.DownloadFile
@@ -19,6 +20,10 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
         request: Request<T>,
         jsonFormatter: Json,
     ): T? = (request as? DownloadFile)?.let {
+        resolveFile(it.filePath) ?.let {
+            return@makeCall it.bytes() as T // Always ByteArray
+        }
+
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
         @Suppress("UNCHECKED_CAST")
