@@ -21,7 +21,8 @@ private inline val String.withoutLastSlash: String
 class TelegramAPIUrlsKeeper(
     token: String,
     hostUrl: String = telegramBotAPIDefaultUrl,
-    urlsSuffixes: String = ""
+    urlsSuffixes: String = "",
+    private val fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" }
 ) {
     val webAppDataSecretKeyHash by lazy {
         HMAC.hmacSHA256("WebAppData".toByteArray(), token.toByteArray())
@@ -44,7 +45,7 @@ class TelegramAPIUrlsKeeper(
         fileBaseUrl = "$correctedHost/file/bot$token$urlsSuffixes"
     }
 
-    fun createFileLinkUrl(filePath: String) = "${fileBaseUrl}/$filePath"
+    fun createFileLinkUrl(filePath: String) = fileLinkUrlMapper(filePath)
 
     /**
      * @param rawData Data from [dev.inmo.tgbotapi.webapps.WebApp.initData]

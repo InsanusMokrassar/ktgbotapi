@@ -120,3 +120,20 @@ suspend fun main() {
 You may find examples in [this project](https://github.com/InsanusMokrassar/TelegramBotAPI-examples). Besides, you are
 always welcome in our [docs](https://docs.inmo.dev/tgbotapi/index.html) and
 [chat](https://t.me/InMoTelegramBotAPIChat).
+
+### Bot API Server Notice
+
+Under the hood, default bots realizations will try to use links
+([PathedFile](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/files/PathedFile.kt)#filePath) as files each
+time you are trying to download file from telegram in any way - via saving to file, use stream or download as byte array.
+To let bot correctly download files from bot api server, you must:
+
+* Run bot api server locally
+to proxy requests for files to the server where bot api server has been hosted
+  * In case of local bot api server (shared one host machine) you must ensure that access to bot api server has been
+  granted for your bot. For example, [aiogram/telegram-bot-api](https://hub.docker.com/r/aiogram/telegram-bot-api) image
+  use `101` UID/GID in linux for user and group as owners. So, your bot must run under user included in `101` group
+  (like `systemd-journal`) or be `101` UID user (like `systemd-resolve`)
+* **OR** Use some reverse proxy (like nginx). It will allow you to broadcast your bots files without linux rights problems
+  * Set [TelegramAPIUrlsKeeper](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper.kt)#fileLinkUrlMapper
+  to map urls to let bot execute requests to your nginx proxy
