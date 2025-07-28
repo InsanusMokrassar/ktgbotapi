@@ -53,11 +53,19 @@ inline fun telegramBot(
 /**
  * Shortcut for [telegramBot]
  */
-@Suppress("NOTHING_TO_INLINE")
-inline fun telegramBot(
+fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     builder: KtorRequestsExecutorBuilder.() -> Unit = {}
-): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl), builder)
+): TelegramBot = telegramBot(
+    telegramAPIUrlsKeeper = TelegramAPIUrlsKeeper(
+        token = token,
+        testServer = testServer,
+        hostUrl = apiUrl,
+        fileLinkUrlMapper = fileLinkUrlMapper
+    ),
+    builder = builder
+)
 

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
@@ -9,6 +11,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMe
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.*
 import kotlin.coroutines.coroutineContext
@@ -35,11 +38,13 @@ suspend fun telegramBotWithBehaviour(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     testServer: Boolean = false,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
     testServer,
+    fileLinkUrlMapper,
     builder
 ).apply {
     buildBehaviour(
@@ -80,12 +85,14 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
         testServer,
+        fileLinkUrlMapper,
         builder
     ).let {
         it to it.buildBehaviourWithLongPolling(

@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMe
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -56,11 +57,13 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
     testServer,
+    fileLinkUrlMapper,
     builder
 ).apply {
     buildBehaviourWithFSMAndStartLongPolling(
@@ -113,12 +116,14 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
         testServer,
+        fileLinkUrlMapper,
         builder
     ).let {
         it to it.buildBehaviourWithFSMAndStartLongPolling (

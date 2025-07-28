@@ -63,22 +63,24 @@ public inline fun telegramBot(
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
  */
 @Suppress("NOTHING_TO_INLINE")
-public inline fun telegramBot(
+public fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     client: HttpClient = HttpClient()
-): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl), client)
+): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl, fileLinkUrlMapper), client)
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun <T: HttpClientEngineConfig> telegramBot(
+public fun <T: HttpClientEngineConfig> telegramBot(
     token: String,
     clientFactory: HttpClientEngineFactory<T>,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    noinline clientConfig: HttpClientConfig<T>.() -> Unit = {}
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    clientConfig: HttpClientConfig<T>.() -> Unit = {}
 ): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl, fileLinkUrlMapper),
     clientFactory,
     clientConfig
 )
@@ -87,15 +89,15 @@ public inline fun <T: HttpClientEngineConfig> telegramBot(
  * Allows to create bot using bot [token] and specify [HttpClientEngine] by passing [clientEngine] param and optionally
  * configure [HttpClient] using [clientConfig]
  */
-@Suppress("NOTHING_TO_INLINE")
-public inline fun telegramBot(
+public fun telegramBot(
     token: String,
     clientEngine: HttpClientEngine,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    noinline clientConfig: HttpClientConfig<*>.() -> Unit = {}
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    clientConfig: HttpClientConfig<*>.() -> Unit = {}
 ): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl, fileLinkUrlMapper),
     clientEngine,
     clientConfig
 )
@@ -104,13 +106,13 @@ public inline fun telegramBot(
  * Allows to create bot using bot [token] and [apiUrl] and specify [HttpClientEngine] by configuring [HttpClient] using
  * [clientConfig]
  */
-@Suppress("NOTHING_TO_INLINE")
-public inline fun telegramBot(
+public fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
-    noinline clientConfig: HttpClientConfig<*>.() -> Unit
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    clientConfig: HttpClientConfig<*>.() -> Unit
 ): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl, fileLinkUrlMapper),
     clientConfig
 )

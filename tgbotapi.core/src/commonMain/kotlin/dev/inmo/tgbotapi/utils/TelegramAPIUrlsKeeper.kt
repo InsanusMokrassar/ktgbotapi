@@ -4,8 +4,6 @@ import korlibs.crypto.*
 import io.ktor.http.decodeURLQueryComponent
 import io.ktor.utils.io.core.toByteArray
 
-const val telegramBotAPIDefaultUrl = "https://api.telegram.org"
-
 private inline val String.withoutLastSlash: String
     get() {
         var correctedUrl = this
@@ -33,10 +31,16 @@ class TelegramAPIUrlsKeeper(
     val commonAPIUrl: String
     val fileBaseUrl: String
 
-    constructor(token: String, testServer: Boolean, hostUrl: String = telegramBotAPIDefaultUrl) : this(
-        token,
-        hostUrl,
-        "/test".takeIf { testServer } ?: ""
+    constructor(
+        token: String,
+        testServer: Boolean,
+        hostUrl: String = telegramBotAPIDefaultUrl,
+        fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" }
+    ) : this(
+        token = token,
+        hostUrl = hostUrl,
+        urlsSuffixes = "/test".takeIf { testServer } ?: "",
+        fileLinkUrlMapper = fileLinkUrlMapper
     )
 
     init {
@@ -61,4 +65,10 @@ class TelegramAPIUrlsKeeper(
 
         return HMAC.hmacSHA256(webAppDataSecretKeyHash.bytes, preparedData.toByteArray()).hexLower == hash.lowercase()
     }
+
+    companion object {
+        const val DEFAULT_URL = "https://api.telegram.org"
+    }
 }
+
+const val telegramBotAPIDefaultUrl = TelegramAPIUrlsKeeper.DEFAULT_URL
