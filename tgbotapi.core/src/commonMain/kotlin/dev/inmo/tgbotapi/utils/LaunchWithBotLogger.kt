@@ -13,7 +13,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 context(bot: TelegramBot)
 fun CoroutineScope.launchWithBotLogger(
-    errorMessageBuilder: CoroutineScope.(Throwable) -> Any = { "Something web wrong" },
+    errorMessageBuilder: CoroutineScope.(Throwable) -> Any = { "Something went wrong" },
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit
@@ -28,7 +28,7 @@ fun CoroutineScope.launchWithBotLogger(
 context(bot: TelegramBot)
 fun <T> Flow<T>.subscribeWithBotLogger(
     scope: CoroutineScope,
-    errorMessageBuilder: T.(Throwable) -> Any = { "Something web wrong" },
+    errorMessageBuilder: T.(Throwable) -> Any = { "Something went wrong" },
     block: suspend (T) -> Unit
 ) = subscribeLoggingDropExceptions (
     scope,
