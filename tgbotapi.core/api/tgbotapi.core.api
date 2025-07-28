@@ -377,9 +377,9 @@ public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorFactoriesKt {
 	public static final fun createTelegramBotDefaultKtorCallRequestsFactories (Ldev/inmo/kslog/common/KSLog;)Ljava/util/List;
 	public static synthetic fun createTelegramBotDefaultKtorCallRequestsFactories$default (Ldev/inmo/kslog/common/KSLog;ILjava/lang/Object;)Ljava/util/List;
 	public static final fun telegramBot (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static synthetic fun telegramBot$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 }
 
 public final class dev/inmo/tgbotapi/bot/ktor/KtorRequestsExecutorKt {
@@ -30832,16 +30832,21 @@ public final class dev/inmo/tgbotapi/utils/StringFileExtensionKt {
 }
 
 public final class dev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;ZLjava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final field Companion Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper$Companion;
+	public static final field DEFAULT_URL Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function2;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;ZLjava/lang/String;Lkotlin/jvm/functions/Function2;)V
+	public synthetic fun <init> (Ljava/lang/String;ZLjava/lang/String;Lkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun checkWebAppData (Ljava/lang/String;Ljava/lang/String;)Z
 	public final fun createFileLinkUrl (Ljava/lang/String;)Ljava/lang/String;
 	public final fun getCommonAPIUrl ()Ljava/lang/String;
 	public final fun getFileBaseUrl ()Ljava/lang/String;
 	public final fun getWebAppDataSecretKey ()Ljava/lang/String;
 	public final fun getWebAppDataSecretKeyHash ()Lkorlibs/crypto/Hash;
+}
+
+public final class dev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper$Companion {
 }
 
 public final class dev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeperKt {

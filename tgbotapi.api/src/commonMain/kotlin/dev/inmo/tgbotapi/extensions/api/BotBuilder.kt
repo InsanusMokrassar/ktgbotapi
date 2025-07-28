@@ -16,7 +16,7 @@ import io.ktor.client.engine.*
 public data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
     var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,
-    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null
+    var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null,
 ) {
     internal fun createHttpClient(): HttpClient = ktorClientEngineFactory ?.let {
         HttpClient(
@@ -42,8 +42,14 @@ public fun buildBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
+    fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
     block: BotBuilder.() -> Unit
 ): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
-    BotBuilder().apply(block).createHttpClient()
+    urlsKeeper = TelegramAPIUrlsKeeper(
+        token = token,
+        testServer = testServer,
+        hostUrl = apiUrl,
+        fileLinkUrlMapper = fileLinkUrlMapper
+    ),
+    client = BotBuilder().apply(block).createHttpClient()
 )

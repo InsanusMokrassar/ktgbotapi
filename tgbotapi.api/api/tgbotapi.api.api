@@ -15,8 +15,8 @@ public final class dev/inmo/tgbotapi/extensions/api/BotBuilder {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/BotBuilderKt {
-	public static final fun buildBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun buildBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun buildBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun buildBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/BotExtensionsKt {
@@ -24,17 +24,17 @@ public final class dev/inmo/tgbotapi/extensions/api/BotExtensionsKt {
 	public static final fun telegramBot (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/engine/HttpClientEngine;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static final fun telegramBot (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/engine/HttpClientEngineFactory;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static final fun telegramBot (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static final fun telegramBot (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngine;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static final fun telegramBot (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngineFactory;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLio/ktor/client/HttpClient;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun telegramBot (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngine;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun telegramBot (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngineFactory;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lio/ktor/client/HttpClient;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static final fun telegramBot (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static synthetic fun telegramBot$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/HttpClient;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static synthetic fun telegramBot$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/engine/HttpClientEngine;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 	public static synthetic fun telegramBot$default (Ldev/inmo/tgbotapi/utils/TelegramAPIUrlsKeeper;Lio/ktor/client/engine/HttpClientEngineFactory;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun telegramBot$default (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngine;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun telegramBot$default (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngineFactory;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLio/ktor/client/HttpClient;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
-	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun telegramBot$default (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngine;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun telegramBot$default (Ljava/lang/String;Lio/ktor/client/engine/HttpClientEngineFactory;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lio/ktor/client/HttpClient;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public static synthetic fun telegramBot$default (Ljava/lang/String;Ljava/lang/String;ZLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/RequestsExecutor;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/CloseKt {
