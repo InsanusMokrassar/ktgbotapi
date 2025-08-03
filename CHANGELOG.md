@@ -2,6 +2,9 @@
 
 ## 27.1.1
 
+* `Core`:
+  * Make `BusinessLocation#location` optional (fix of [#990](https://github.com/InsanusMokrassar/ktgbotapi/issues/990))
+
 ## 27.1.0
 
 * `Core`:
