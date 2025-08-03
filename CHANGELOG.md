@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 27.1.1
+
+* `Version`:
+  * `MicroUtils`: `0.26.1` -> `0.26.2`
+* `Core`:
+  * Make `BusinessLocation#location` optional (fix of [#990](https://github.com/InsanusMokrassar/ktgbotapi/issues/990))
+
 ## 27.1.0
 
 * `Core`:
