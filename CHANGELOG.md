@@ -2,6 +2,9 @@
 
 ## 27.1.2
 
+* `Core`:
+  * Try to fix cancelling on timeout for long polling
+
 ## 27.1.1
 
 * `Version`:
