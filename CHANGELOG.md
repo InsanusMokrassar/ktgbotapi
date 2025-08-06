@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 27.1.2
+
+* `Core`:
+  * Try to fix cancelling on timeout for long polling
+  * Since this update phrase `Something web wrong` will not happen from this library 😭
+
 ## 27.1.1
 
 * `Version`:

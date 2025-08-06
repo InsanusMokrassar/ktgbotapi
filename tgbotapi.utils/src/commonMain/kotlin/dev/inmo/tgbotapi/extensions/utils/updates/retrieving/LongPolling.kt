@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.kslog.common.logger
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -107,17 +108,13 @@ fun TelegramBot.longPollingFlow(
                         lastUpdateIdentifier = update.updateId
                     }
                 }
-            }.onFailure {
-                it.causedCancellationException() ?.let {
-                    cancel(it)
-                }
             }
         }
     }
 
     withContext(contextToWork) {
         while (isActive) {
-            runCatching {
+            runCatchingLogging(logger = Log) {
                 execute(
                     GetUpdates(
                         offset = lastUpdateIdentifier?.plus(1),
@@ -128,14 +125,16 @@ fun TelegramBot.longPollingFlow(
                     updatesHandler(originalUpdates)
                 }
             }.onFailure { e ->
-                val isHttpRequestTimeoutException =
-                    e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
-                if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
-                    return@onFailure
-                }
-                exceptionsHandler?.invoke(e)
-                if (e is RequestException) {
-                    delay(1000L)
+                runCatchingLogging(logger = Log) {
+                    val isHttpRequestTimeoutException =
+                        e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
+                    if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
+                        return@onFailure
+                    }
+                    exceptionsHandler?.invoke(e)
+                    if (e is RequestException) {
+                        delay(1000L)
+                    }
                 }
             }
         }
