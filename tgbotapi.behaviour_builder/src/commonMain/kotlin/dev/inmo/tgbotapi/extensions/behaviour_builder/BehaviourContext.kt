@@ -123,6 +123,7 @@ class DefaultBehaviourContext(
         onBufferOverflow = onBufferOverflow,
         upstreamUpdatesFlow = upstreamUpdatesFlow,
         triggersHolder = triggersHolder,
+        data = BehaviourContextData().apply { include(this@DefaultBehaviourContext.data) },
         subcontextInitialAction = subcontextInitialAction
     ).apply {
         data.include(this@DefaultBehaviourContext.data)
