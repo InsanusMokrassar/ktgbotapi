@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CommonMessageFilterExcludeMediaGroups
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.botInfo
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.containsCommand
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
@@ -46,19 +47,9 @@ internal fun <BC : BehaviourContext> BC.commandUncounted(
     }.let {
         if (excludeCommandsToOtherBots) {
             it * lambda@{
-                it.content.textSources.forEach {
-                    val command = it.botCommandTextSourceOrNull() ?.takeIf {
-                        commandRegex.matches(it.command)
-                    } ?: return@forEach
-                    if (command.username == null) {
-                        return@lambda true
-                    }
-                    val botInfo = botInfo()
-                    if (botInfo == null || command.username == botInfo.username) {
-                        return@lambda true
-                    }
+                with(it.content.textSources) {
+                    containsCommand(commandRegex)
                 }
-                false
             }
         } else {
             it

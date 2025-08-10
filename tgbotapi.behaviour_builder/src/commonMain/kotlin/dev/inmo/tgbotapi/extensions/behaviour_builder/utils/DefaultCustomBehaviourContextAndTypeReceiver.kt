@@ -5,8 +5,11 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextData
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.DefaultCustomBehaviourContextAndTypeReceiver.Companion.BOT_INFO_RECEIVER
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.botInfo
+import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
 import dev.inmo.tgbotapi.requests.bot.GetMe
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -26,6 +29,21 @@ suspend fun BehaviourContext.botInfo(): ExtendedBot? {
     return (data[BOT_INFO_RECEIVER] as? DefaultCustomBehaviourContextAndTypeReceiver.IReceiver) ?.run {
         invoke()
     }
+}
+
+context(textSources: TextSourcesList, bc: BehaviourContext)
+suspend fun containsCommand(commandRegex: Regex) = textSources.any {
+    val command = it.botCommandTextSourceOrNull() ?.takeIf {
+        commandRegex.matches(it.command)
+    } ?: return@any false
+    if (command.username == null) {
+        return@any true
+    }
+    val botInfo = bc.botInfo()
+    if (botInfo == null || command.username == botInfo.username) {
+        return@any true
+    }
+    false
 }
 
 @Warning("It is internal API and can be changed without notes")

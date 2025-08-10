@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.containsCommand
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.doWithRegistration
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.TelegramBotCommandsDefaults
@@ -27,6 +28,7 @@ import kotlinx.coroutines.flow.*
 fun BehaviourContext.waitCommandMessage(
     commandRegex: Regex,
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = channelFlow {
     triggersHolder.handleableCommandsHolder.doWithRegistration(
@@ -34,6 +36,16 @@ fun BehaviourContext.waitCommandMessage(
     ) {
         waitTextMessage(initRequest, errorFactory).filter {
             it.content.textSources.any { it.botCommandTextSourceOrNull() ?.command ?.matches(commandRegex) == true }
+        }.let {
+            if (excludeCommandsToOtherBots) {
+                it.filter {
+                    with(it.content.textSources) {
+                        containsCommand(commandRegex)
+                    }
+                }
+            } else {
+                it
+            }
         }.collect {
             send(it)
         }
@@ -43,14 +55,16 @@ fun BehaviourContext.waitCommandMessage(
 fun BehaviourContext.waitCommandMessage(
     command: String,
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(Regex(command), initRequest, errorFactory)
+) = waitCommandMessage(Regex(command), initRequest, excludeCommandsToOtherBots, errorFactory)
 
 fun BehaviourContext.waitCommandMessage(
     botCommand: BotCommand,
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitCommandMessage(botCommand.command, initRequest, errorFactory)
+) = waitCommandMessage(botCommand.command, initRequest, excludeCommandsToOtherBots, errorFactory)
 
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
     it.content.textSources.firstOrNull() is BotCommandTextSource

@@ -339,12 +339,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 	public static final fun requireCommandAtStart (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun requireCommandsWithoutParams (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun requireSingleCommand (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/BotCommand;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/BotCommand;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/BotCommand;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitCommandMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/BotCommand;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitCommandMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitContentKt {
@@ -490,12 +490,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitDeepLinksKt {
-	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun waitDeepLinks (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;ZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitDeletedBusinessMessagesKt {
@@ -1610,6 +1610,7 @@ public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/u
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiverKt {
 	public static final fun botInfo (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun containsCommand (Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun optionallyWithDefaultReceiver (Lkotlin/jvm/functions/Function3;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Lkotlin/jvm/functions/Function3;
 	public static final fun withDefaultReceiver (Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver;
 }
