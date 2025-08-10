@@ -66,8 +66,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextKt {
 	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;ZLkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
+	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Z)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
 	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;ZLkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
+	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
 	public static final fun BehaviourContextAndTwoTypesReceiver (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
 	public static final fun BehaviourContextAndTypeReceiver (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
 	public static final fun BehaviourContextReceiver (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
@@ -111,8 +115,8 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/CombinedSubcon
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext : dev/inmo/tgbotapi/updateshandlers/AbstractFlowsUpdatesFilter, dev/inmo/tgbotapi/bot/RequestsExecutor, dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext, kotlinx/coroutines/CoroutineScope {
-	public fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun close ()V
 	public synthetic fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
 	public fun copy (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;ILkotlinx/coroutines/channels/BufferOverflow;Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
@@ -1593,6 +1597,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultC
 	public static final field Companion Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver$Companion;
 	public fun <init> (Lkotlin/jvm/functions/Function3;)V
 	public fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)V
 	public synthetic fun invoke (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 }
 
@@ -1605,8 +1610,8 @@ public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/u
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiverKt {
 	public static final fun botInfo (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun optionallyWithDefaultReceiver (Lkotlin/jvm/functions/Function3;Z)Lkotlin/jvm/functions/Function3;
-	public static final fun withDefaultReceiver (Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver;
+	public static final fun optionallyWithDefaultReceiver (Lkotlin/jvm/functions/Function3;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Lkotlin/jvm/functions/Function3;
+	public static final fun withDefaultReceiver (Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/LiveLocationKt {

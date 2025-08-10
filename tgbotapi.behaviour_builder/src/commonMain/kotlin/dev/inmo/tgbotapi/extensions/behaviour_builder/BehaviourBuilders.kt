@@ -4,6 +4,7 @@ import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.DefaultCustomBehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.optionallyWithDefaultReceiver
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
@@ -44,11 +45,8 @@ suspend fun TelegramBot.buildBehaviour(
         }
     },
     flowsUpdatesFilter = flowUpdatesFilter,
-    subcontextInitialAction = if (useDefaultSubcontextInitialAction) {
-        DefaultCustomBehaviourContextAndTypeReceiver(subcontextInitialAction)
-    } else {
-        subcontextInitialAction
-    }
+    useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
+    subcontextInitialAction = subcontextInitialAction
 ).apply {
     block()
 }

@@ -7,7 +7,6 @@ import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
 import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.optionallyWithDefaultReceiver
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
@@ -15,6 +14,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 /**
  * Creates [BehaviourContextWithFSM] via creating of [DefaultBehaviourContext] with [this] as [TelegramBot],
@@ -39,11 +39,12 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-    behaviourContext = DefaultBehaviourContext(
+    behaviourContext = BehaviourContext(
         bot = this,
         scope = defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = upstreamUpdatesFlow,
-        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction)
+        upstreamUpdatesFlow = upstreamUpdatesFlow ?: emptyFlow(),
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
+        subcontextInitialAction = subcontextInitialAction
     ),
     handlers = presetHandlers,
     statesManager = statesManager,
@@ -127,11 +128,12 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-    DefaultBehaviourContext(
+    BehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
         upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow,
-        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction)
+        subcontextInitialAction = subcontextInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction
     ),
     presetHandlers,
     statesManager,

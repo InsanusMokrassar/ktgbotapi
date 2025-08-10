@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextData
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.DefaultCustomBehaviourContextAndTypeReceiver.Companion.BOT_INFO_RECEIVER
 import dev.inmo.tgbotapi.requests.bot.GetMe
@@ -28,12 +29,17 @@ suspend fun BehaviourContext.botInfo(): ExtendedBot? {
 }
 
 @Warning("It is internal API and can be changed without notes")
-fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver<BC, R, U>.withDefaultReceiver() = DefaultCustomBehaviourContextAndTypeReceiver(this)
+fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver<BC, R, U>.withDefaultReceiver(
+    data: BehaviourContextData
+) = DefaultCustomBehaviourContextAndTypeReceiver(this).also {
+    it(data)
+}
 @Warning("It is internal API and can be changed without notes")
 fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver<BC, R, U>.optionallyWithDefaultReceiver(
-    include: Boolean
+    include: Boolean,
+    data: BehaviourContextData
 ) = if (include) {
-    withDefaultReceiver()
+    withDefaultReceiver(data)
 } else {
     this
 }
@@ -81,6 +87,10 @@ class DefaultCustomBehaviourContextAndTypeReceiver<BC : BehaviourContext, R, U :
         }
     }
 
+    operator fun invoke(data: BehaviourContextData) {
+        data[BOT_INFO_RECEIVER] = internalReceiver
+    }
+
     /**
      * Registers the internal bot info provider in [BehaviourContext.data] and then delegates to [wrapperReceiver].
      *
@@ -88,7 +98,7 @@ class DefaultCustomBehaviourContextAndTypeReceiver<BC : BehaviourContext, R, U :
      * the wrapped behaviour.
      */
     override suspend fun invoke(p1: BC, p2: U): R {
-        p1.data[BOT_INFO_RECEIVER] = internalReceiver
+        invoke(p1.data)
 
         return wrapperReceiver(p1, p2)
     }
