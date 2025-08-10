@@ -50,6 +50,9 @@ internal fun <BC : BehaviourContext> BC.commandUncounted(
                     val command = it.botCommandTextSourceOrNull() ?.takeIf {
                         commandRegex.matches(it.command)
                     } ?: return@forEach
+                    if (command.username == null) {
+                        return@lambda true
+                    }
                     val botInfo = botInfo()
                     if (botInfo == null || command.username == botInfo.username) {
                         return@lambda true
