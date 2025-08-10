@@ -46,6 +46,9 @@ suspend fun containsCommand(commandRegex: Regex) = textSources.any {
     false
 }
 
+context(textSources: TextSourcesList, bc: BehaviourContext)
+suspend fun containsCommand(command: String) = containsCommand(Regex(command))
+
 @Warning("It is internal API and can be changed without notes")
 fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver<BC, R, U>.withDefaultReceiver(
     data: BehaviourContextData

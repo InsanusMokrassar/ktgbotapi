@@ -1610,6 +1610,7 @@ public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/u
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiverKt {
 	public static final fun botInfo (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun containsCommand (Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun containsCommand (Ljava/util/List;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun optionallyWithDefaultReceiver (Lkotlin/jvm/functions/Function3;ZLdev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Lkotlin/jvm/functions/Function3;
 	public static final fun withDefaultReceiver (Lkotlin/jvm/functions/Function3;Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextData;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver;
