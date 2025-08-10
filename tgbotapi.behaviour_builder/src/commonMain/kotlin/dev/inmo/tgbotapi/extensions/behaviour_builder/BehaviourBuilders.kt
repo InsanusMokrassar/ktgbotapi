@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.DefaultCustomBehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
@@ -31,6 +32,7 @@ suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): BehaviourContext = BehaviourContext(
     bot = this,
@@ -42,7 +44,11 @@ suspend fun TelegramBot.buildBehaviour(
         }
     },
     flowsUpdatesFilter = flowUpdatesFilter,
-    subcontextInitialAction = subcontextInitialAction
+    subcontextInitialAction = if (useDefaultSubcontextInitialAction) {
+        DefaultCustomBehaviourContextAndTypeReceiver(subcontextInitialAction)
+    } else {
+        subcontextInitialAction
+    }
 ).apply {
     block()
 }
@@ -67,12 +73,14 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     autoSkipTimeoutExceptions: Boolean = true,
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): Job {
     val behaviourContext = buildBehaviour(
         scope = scope,
         defaultExceptionsHandler = defaultExceptionsHandler,
         subcontextInitialAction = subcontextInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
         block = block
     )
     return longPolling(

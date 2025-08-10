@@ -1,8 +1,8 @@
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourBuildersKt {
-	public static final fun buildBehaviour (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun buildBehaviour$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun buildBehaviourWithLongPolling (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun buildBehaviourWithLongPolling$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun buildBehaviour (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviour$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun buildBehaviourWithLongPolling (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun buildBehaviourWithLongPolling$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function2;IZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext : dev/inmo/tgbotapi/bot/RequestsExecutor, dev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter, kotlinx/coroutines/CoroutineScope {
@@ -64,13 +64,14 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextKt {
-	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
-	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
-	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun BehaviourContext (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;ZLkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
+	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlin/jvm/functions/Function3;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun BehaviourContext$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;ZLkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehaviourContext;
 	public static final fun BehaviourContextAndTwoTypesReceiver (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
 	public static final fun BehaviourContextAndTypeReceiver (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
 	public static final fun BehaviourContextReceiver (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+	public static final fun CustomBehaviourContextAndTypeReceiver (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
 	public static final fun CustomBehaviourContextReceiver (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
 	public static final fun createSubContext (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
 	public static synthetic fun createSubContext$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;
@@ -134,10 +135,10 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultCorouti
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/TelegramBotKt {
-	public static final fun telegramBotWithBehaviour (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun telegramBotWithBehaviour$default (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun telegramBotWithBehaviourAndLongPolling (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZIZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun telegramBotWithBehaviourAndLongPolling$default (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZIZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun telegramBotWithBehaviour (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun telegramBotWithBehaviour$default (Ljava/lang/String;Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun telegramBotWithBehaviourAndLongPolling (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZIZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun telegramBotWithBehaviourAndLongPolling$default (Ljava/lang/String;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;ZIZZLjava/lang/Long;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;ZLkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/VariantsKt {
@@ -1585,6 +1586,27 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handl
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/ShippingQueryTriggersKt {
 	public static final fun onShippingQuery (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;)Lkotlinx/coroutines/Job;
 	public static synthetic fun onShippingQuery$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver : kotlin/coroutines/jvm/internal/SuspendFunction, kotlin/jvm/functions/Function3 {
+	public static final field BOT_INFO_RECEIVER Ljava/lang/String;
+	public static final field Companion Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver$Companion;
+	public fun <init> (Lkotlin/jvm/functions/Function3;)V
+	public fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public synthetic fun invoke (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver$Companion {
+}
+
+public abstract interface class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver$IReceiver {
+	public abstract fun invoke (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiverKt {
+	public static final fun botInfo (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun optionallyWithDefaultReceiver (Lkotlin/jvm/functions/Function3;Z)Lkotlin/jvm/functions/Function3;
+	public static final fun withDefaultReceiver (Lkotlin/jvm/functions/Function3;)Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/DefaultCustomBehaviourContextAndTypeReceiver;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/LiveLocationKt {

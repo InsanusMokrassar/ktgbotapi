@@ -58,6 +58,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -80,6 +81,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
         subcontextInitialAction = subcontextInitialAction,
         stateInitialAction = stateInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
         block = block
     )
 }
@@ -117,6 +119,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
     fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -139,6 +142,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
             mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
             subcontextInitialAction = subcontextInitialAction,
             stateInitialAction = stateInitialAction,
+            useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
             block = block
         )
     }
