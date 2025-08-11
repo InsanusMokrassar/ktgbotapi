@@ -2,6 +2,8 @@
 
 ## 28.0.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
 * `Core`:
   * Add `firstOf` extension
 * `BehaviourBuilder`:
