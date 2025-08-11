@@ -31,15 +31,14 @@ suspend fun BehaviourContext.botInfo(): ExtendedBot? {
     }
 }
 
-context(textSources: TextSourcesList, bc: BehaviourContext)
-suspend fun containsCommand(commandRegex: Regex) = textSources.any {
+suspend fun BehaviourContext.containsCommand(commandRegex: Regex, textSources: TextSourcesList) = textSources.any {
     val command = it.botCommandTextSourceOrNull() ?.takeIf {
         commandRegex.matches(it.command)
     } ?: return@any false
     if (command.username == null) {
         return@any true
     }
-    val botInfo = bc.botInfo()
+    val botInfo = botInfo()
     if (botInfo == null || command.username == botInfo.username) {
         return@any true
     }
@@ -47,7 +46,12 @@ suspend fun containsCommand(commandRegex: Regex) = textSources.any {
 }
 
 context(textSources: TextSourcesList, bc: BehaviourContext)
+suspend fun containsCommand(commandRegex: Regex) = bc.containsCommand(commandRegex, textSources)
+
+context(textSources: TextSourcesList, bc: BehaviourContext)
 suspend fun containsCommand(command: String) = containsCommand(Regex(command))
+
+suspend fun BehaviourContext.containsCommand(command: String, textSources: TextSourcesList) = containsCommand(Regex(command), textSources)
 
 @Warning("It is internal API and can be changed without notes")
 fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver<BC, R, U>.withDefaultReceiver(
