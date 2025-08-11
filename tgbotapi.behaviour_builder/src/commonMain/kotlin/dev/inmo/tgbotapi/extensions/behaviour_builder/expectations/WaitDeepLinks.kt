@@ -10,11 +10,13 @@ import kotlinx.coroutines.flow.*
 
 fun BehaviourContext.waitDeepLinks(
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null },
 ): Flow<Pair<CommonMessage<TextContent>, String>> = waitCommandMessage(
-    "start",
-    initRequest,
-    errorFactory
+    command = "start",
+    initRequest = initRequest,
+    excludeCommandsToOtherBots = excludeCommandsToOtherBots,
+    errorFactory = errorFactory
 )
     .requireSingleCommand()
     .requireCommandAtStart()
@@ -25,13 +27,24 @@ fun BehaviourContext.waitDeepLinks(
 fun BehaviourContext.waitDeepLinks(
     regex: Regex,
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(initRequest, errorFactory).filter {
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(
+    initRequest = initRequest,
+    excludeCommandsToOtherBots = excludeCommandsToOtherBots,
+    errorFactory = errorFactory
+).filter {
     regex.matches(it.second)
 }
 
 fun BehaviourContext.waitDeepLinks(
     deepLink: String,
     initRequest: Request<*>? = null,
+    excludeCommandsToOtherBots: Boolean = true,
     errorFactory: NullableRequestBuilder<*> = { null },
-): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(Regex("^$deepLink$"), initRequest, errorFactory)
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(
+    regex = Regex(pattern = "^$deepLink$"),
+    initRequest = initRequest,
+    excludeCommandsToOtherBots = excludeCommandsToOtherBots,
+    errorFactory = errorFactory
+)

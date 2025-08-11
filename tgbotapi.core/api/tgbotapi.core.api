@@ -30671,6 +30671,10 @@ public final class dev/inmo/tgbotapi/utils/ExtractDataAndJsonFromDecoderKt {
 	public static final fun decodeDataAndJson (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/DeserializationStrategy;)Lkotlin/Pair;
 }
 
+public final class dev/inmo/tgbotapi/utils/FirstOfKt {
+	public static final fun firstOf (Lkotlinx/coroutines/CoroutineScope;[Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/utils/IntProgress100Serializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/IntProgress100Serializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;

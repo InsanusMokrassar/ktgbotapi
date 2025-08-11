@@ -39,6 +39,7 @@ suspend fun telegramBotWithBehaviour(
     testServer: Boolean = false,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -52,6 +53,7 @@ suspend fun telegramBotWithBehaviour(
         scope = scope ?: CoroutineScope(coroutineContext),
         defaultExceptionsHandler = defaultExceptionsHandler,
         subcontextInitialAction = subcontextInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
         block = block
     )
 }
@@ -86,6 +88,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -103,6 +106,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
             autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
             mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
             subcontextInitialAction = subcontextInitialAction,
+            useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
             block = block
         )
     }

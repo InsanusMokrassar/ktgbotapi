@@ -2,10 +2,10 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
-import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.optionallyWithDefaultReceiver
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
@@ -24,6 +24,7 @@ typealias CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2> = suspend BC.
 typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = CustomBehaviourContextAndTwoTypesReceiver<BehaviourContext, T, I1, I2>
 inline fun <T> BehaviourContextReceiver(noinline block: BehaviourContextReceiver<T>) = block
 inline fun <BC, T> CustomBehaviourContextReceiver(noinline block: CustomBehaviourContextReceiver<BC, T>) = block
+inline fun <BC, T, I> CustomBehaviourContextAndTypeReceiver(noinline block: CustomBehaviourContextAndTypeReceiver<BC, T, I>) = block
 inline fun <T, I> BehaviourContextAndTypeReceiver(noinline block: BehaviourContextAndTypeReceiver<T, I>) = block
 inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver(noinline block: BehaviourContextAndTwoTypesReceiver<T, I1, I2>) = block
 internal inline fun <BC, T, I1, I2> CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2>.toOneType(
@@ -82,6 +83,7 @@ class DefaultBehaviourContext(
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     override val triggersHolder: TriggersHolder = TriggersHolder(),
+    override val data: BehaviourContextData = BehaviourContextData(),
     override val subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {}
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
 
@@ -106,8 +108,6 @@ class DefaultBehaviourContext(
     }.accumulatorFlow(WeakScope(scope))
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
-    override val data: BehaviourContextData = BehaviourContextData()
-
     override fun copy(
         bot: TelegramBot,
         scope: CoroutineScope,
@@ -123,6 +123,7 @@ class DefaultBehaviourContext(
         onBufferOverflow = onBufferOverflow,
         upstreamUpdatesFlow = upstreamUpdatesFlow,
         triggersHolder = triggersHolder,
+        data = BehaviourContextData().apply { include(this@DefaultBehaviourContext.data) },
         subcontextInitialAction = subcontextInitialAction
     ).apply {
         data.include(this@DefaultBehaviourContext.data)
@@ -134,8 +135,19 @@ fun BehaviourContext(
     scope: CoroutineScope,
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     triggersHolder: TriggersHolder = TriggersHolder(),
+    useDefaultSubcontextInitialAction: Boolean = true,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {}
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder, subcontextInitialAction = subcontextInitialAction)
+): DefaultBehaviourContext {
+    val data = BehaviourContextData()
+    return DefaultBehaviourContext(
+        bot = bot,
+        scope = scope,
+        upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+        triggersHolder = triggersHolder,
+        data = data,
+        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction, data)
+    )
+}
 
 inline fun <T> BehaviourContext(
     bot: TelegramBot,
@@ -143,8 +155,58 @@ inline fun <T> BehaviourContext(
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     triggersHolder: TriggersHolder = TriggersHolder(),
     noinline subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     crossinline block: BehaviourContext.() -> T
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder, subcontextInitialAction = subcontextInitialAction).run(block)
+): T {
+    val data = BehaviourContextData()
+    return DefaultBehaviourContext(
+        bot = bot,
+        scope = scope,
+        upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow,
+        triggersHolder = triggersHolder,
+        data = data,
+        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction, data)
+    ).run(block)
+}
+
+inline fun <T> BehaviourContext(
+    bot: TelegramBot,
+    scope: CoroutineScope,
+    upstreamUpdatesFlow: Flow<Update>,
+    triggersHolder: TriggersHolder = TriggersHolder(),
+    noinline subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
+    crossinline block: BehaviourContext.() -> T
+): T {
+    val data = BehaviourContextData()
+    return DefaultBehaviourContext(
+        bot = bot,
+        scope = scope,
+        upstreamUpdatesFlow = upstreamUpdatesFlow,
+        triggersHolder = triggersHolder,
+        data = data,
+        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction, data)
+    ).run(block)
+}
+
+fun BehaviourContext(
+    bot: TelegramBot,
+    scope: CoroutineScope,
+    upstreamUpdatesFlow: Flow<Update>,
+    subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update>,
+    triggersHolder: TriggersHolder = TriggersHolder(),
+    useDefaultSubcontextInitialAction: Boolean = true
+): DefaultBehaviourContext {
+    val data = BehaviourContextData()
+    return DefaultBehaviourContext(
+        bot = bot,
+        scope = scope,
+        upstreamUpdatesFlow = upstreamUpdatesFlow,
+        triggersHolder = triggersHolder,
+        data = data,
+        subcontextInitialAction = subcontextInitialAction.optionallyWithDefaultReceiver(useDefaultSubcontextInitialAction, data)
+    )
+}
 
 /**
  * Creates new [BehaviourContext] using its [BehaviourContext.copy] method
@@ -167,7 +229,7 @@ fun <BC : BehaviourContext> BC.createSubContext(
 ) as BC
 
 /**
- * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [CoroutineContext]
  *
  * [this] [BehaviourContext] will **NOT** be closed automatically
  */
@@ -180,7 +242,7 @@ suspend fun <T, BC : BehaviourContext> BC.doInContext(
 }
 
 /**
- * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [CoroutineContext]
  *
  * [this] [BehaviourContext] will **NOT** be closed automatically
  */
@@ -202,7 +264,7 @@ suspend fun <T, BC : BehaviourContext> BC.doInNewSubContext(
 }
 
 /**
- * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [CoroutineContext]
  *
  * [this] [BehaviourContext] will **NOT** be closed automatically
  */

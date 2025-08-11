@@ -21,6 +21,7 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
         jsonFormatter: Json,
     ): T? = (request as? DownloadFile)?.let {
         resolveFile(it.filePath) ?.let {
+            @Suppress("UNCHECKED_CAST")
             return@makeCall it.bytes() as T // Always ByteArray
         }
 

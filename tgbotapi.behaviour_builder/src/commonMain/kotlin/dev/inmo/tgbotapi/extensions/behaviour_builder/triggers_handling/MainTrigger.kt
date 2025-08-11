@@ -2,7 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.SpecialMutableStateFlow
+import dev.inmo.micro_utils.coroutines.MutableRedeliverStateFlow
 import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.micro_utils.coroutines.subscribeAsync
 import dev.inmo.micro_utils.coroutines.subscribeLoggingDropExceptions
@@ -49,7 +49,7 @@ internal fun <BC : BehaviourContext, T> BC.on(
     }
     val handler: suspend (Pair<Update, T>) -> Unit = subcontextUpdatesFilter ?.let {
         { (update, triggerData) ->
-            val contextStateFlow = SpecialMutableStateFlow<BC?>(null)
+            val contextStateFlow = MutableRedeliverStateFlow<BC?>(null)
             createSubContextAndDoSynchronouslyWithUpdatesFilter(
                 updatesUpstreamFlow = contextStateFlow.flatMapLatest { context ->
                     if (context == null) {

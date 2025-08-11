@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 /**
  * Creates [BehaviourContextWithFSM] via creating of [DefaultBehaviourContext] with [this] as [TelegramBot],
@@ -35,12 +36,14 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-    behaviourContext = DefaultBehaviourContext(
+    behaviourContext = BehaviourContext(
         bot = this,
         scope = defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = upstreamUpdatesFlow,
+        upstreamUpdatesFlow = upstreamUpdatesFlow ?: emptyFlow(),
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
         subcontextInitialAction = subcontextInitialAction
     ),
     handlers = presetHandlers,
@@ -73,6 +76,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow = upstreamUpdatesFlow,
@@ -84,6 +88,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     onStateHandlingErrorHandler = onStateHandlingErrorHandler,
     subcontextInitialAction = subcontextInitialAction,
     stateInitialAction = stateInitialAction,
+    useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
     block = block
 ).run {
     this to scope.launch {
@@ -120,13 +125,15 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-    DefaultBehaviourContext(
+    BehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
         upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow,
-        subcontextInitialAction = subcontextInitialAction
+        subcontextInitialAction = subcontextInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction
     ),
     presetHandlers,
     statesManager,
@@ -163,6 +170,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     mediaGroupsDebounceTimeMillis: Long? = 1000L,
     subcontextInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContext, Unit, Update> = {},
     stateInitialAction: CustomBehaviourContextAndTypeReceiver<BehaviourContextWithFSM<T>, Unit, T> = {},
+    useDefaultSubcontextInitialAction: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
@@ -175,6 +183,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
         onStateHandlingErrorHandler = onStateHandlingErrorHandler,
         subcontextInitialAction = subcontextInitialAction,
         stateInitialAction = stateInitialAction,
+        useDefaultSubcontextInitialAction = useDefaultSubcontextInitialAction,
         block = block
     ).run {
         start()
