@@ -2,6 +2,13 @@
 
 ## 28.0.0
 
+* `Core`:
+  * Add `firstOf` extension
+* `BehaviourBuilder`:
+  * All builders for behaviours got boolean `useDefaultSubcontextInitialAction`
+  * Add opportunity to pass `BehaviourContextData` in `DefaultBehaviourContext` constructor and `copy` method
+  * By default, commands to other bots will be ignored in triggers and waiters
+
 ## 27.1.2
 
 * `Core`:
