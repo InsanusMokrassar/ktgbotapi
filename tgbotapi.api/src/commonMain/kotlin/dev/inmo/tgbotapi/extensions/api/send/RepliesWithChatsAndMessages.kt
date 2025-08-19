@@ -19,6 +19,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
@@ -58,6 +59,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
     chatId = replyInChatId,
@@ -70,7 +72,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -90,6 +92,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
     chatId = replyInChatId,
@@ -100,7 +103,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -123,6 +126,7 @@ public suspend inline fun TelegramBot.replyWithDice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<DiceContent> = sendDice(
     chatId = replyInChatId,
@@ -133,7 +137,7 @@ public suspend inline fun TelegramBot.replyWithDice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -153,6 +157,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<DiceContent> = replyWithDice(
     toChatId = toChatId,
@@ -166,6 +171,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -186,6 +192,7 @@ public suspend inline fun TelegramBot.replyWithChecklist(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ChecklistContent> = sendChecklist(
     chatId = replyInChatId,
@@ -194,7 +201,7 @@ public suspend inline fun TelegramBot.replyWithChecklist(
     disableNotification = disableNotification,
     protectContent = protectContent,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -212,6 +219,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ChecklistContent> = sendChecklist(
     chatId = replyInChatId,
@@ -220,7 +228,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification = disableNotification,
     protectContent = protectContent,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -244,6 +252,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = replyInChatId,
@@ -255,7 +264,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -275,6 +284,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendLocation(
     chatId = replyInChatId,
@@ -285,7 +295,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -310,6 +320,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
@@ -322,7 +333,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -343,6 +354,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
@@ -354,7 +366,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -375,6 +387,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
@@ -390,6 +403,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -410,6 +424,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
@@ -425,6 +440,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -454,6 +470,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
@@ -471,7 +488,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -493,6 +510,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
@@ -510,7 +528,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -526,6 +544,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
@@ -536,7 +555,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -555,6 +574,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
     chatId = replyInChatId,
@@ -565,7 +585,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -581,6 +601,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
     chatId = replyInChatId,
@@ -591,7 +612,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -607,6 +628,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = replyWithGame(
     toChatId = toChatId,
@@ -620,6 +642,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -646,6 +669,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
@@ -664,7 +688,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -687,6 +711,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
@@ -704,7 +729,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -727,6 +752,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
@@ -744,7 +770,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -766,6 +792,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
@@ -782,7 +809,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -807,6 +834,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
@@ -823,7 +851,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -842,6 +870,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
@@ -855,7 +884,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -876,6 +905,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
@@ -891,7 +921,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -909,6 +939,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
@@ -921,7 +952,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -943,6 +974,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): ContentMessage<DocumentContent> = sendDocument(
@@ -957,7 +989,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
 )
@@ -976,6 +1008,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): ContentMessage<DocumentContent> = sendDocument(
@@ -989,7 +1022,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
 )
@@ -1008,6 +1041,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): ContentMessage<DocumentContent> = sendDocument(
@@ -1021,7 +1055,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
 )
@@ -1039,6 +1073,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): ContentMessage<DocumentContent> = sendDocument(
@@ -1051,7 +1086,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
 )
@@ -1071,7 +1106,8 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = replyInChatId,
     media = media,
@@ -1081,7 +1117,7 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
 public suspend inline fun TelegramBot.replyWithPlaylist(
@@ -1095,7 +1131,8 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = replyInChatId,
     media = media,
@@ -1105,7 +1142,7 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
 public suspend inline fun TelegramBot.replyWithDocuments(
@@ -1119,7 +1156,8 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = replyInChatId,
     media = media,
@@ -1129,7 +1167,7 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
 public suspend inline fun TelegramBot.replyWithGallery(
@@ -1143,7 +1181,8 @@ public suspend inline fun TelegramBot.replyWithGallery(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = replyInChatId,
     media = media,
@@ -1153,7 +1192,7 @@ public suspend inline fun TelegramBot.replyWithGallery(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
 
@@ -1175,6 +1214,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1189,7 +1229,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1209,6 +1249,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1223,7 +1264,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1243,6 +1284,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1257,7 +1299,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1277,6 +1319,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1290,7 +1333,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1309,6 +1352,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1322,7 +1366,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1341,6 +1385,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
@@ -1354,7 +1399,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1374,6 +1419,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = replyInChatId,
@@ -1385,7 +1431,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1402,6 +1448,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = replyInChatId,
@@ -1413,7 +1460,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1440,6 +1487,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
@@ -1458,7 +1506,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1478,6 +1526,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
@@ -1492,7 +1541,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1515,6 +1564,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
@@ -1532,7 +1582,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1551,6 +1601,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
@@ -1564,7 +1615,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1586,6 +1637,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = replyInChatId,
@@ -1599,7 +1651,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1615,6 +1667,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = replyInChatId,
@@ -1625,7 +1678,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1647,6 +1700,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
@@ -1660,7 +1714,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1678,6 +1732,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
@@ -1690,7 +1745,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1709,6 +1764,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
@@ -1721,7 +1777,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1738,6 +1794,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
@@ -1749,7 +1806,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1787,6 +1844,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = sendInvoice(
     chatId = replyInChatId,
@@ -1812,7 +1870,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1837,6 +1895,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
@@ -1853,7 +1912,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1876,6 +1935,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
@@ -1892,7 +1952,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1914,6 +1974,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
@@ -1929,7 +1990,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1951,6 +2012,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
@@ -1966,7 +2028,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -1990,6 +2052,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2008,7 +2071,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2034,6 +2097,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2052,7 +2116,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2075,6 +2139,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2092,7 +2157,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2117,6 +2182,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2134,7 +2200,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2157,6 +2223,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2174,7 +2241,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2199,6 +2266,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2216,7 +2284,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2238,6 +2306,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2254,7 +2323,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2278,6 +2347,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
@@ -2294,7 +2364,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2316,6 +2386,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = when (poll) {
     is RegularPoll -> reply(
@@ -2336,6 +2407,7 @@ public suspend inline fun TelegramBot.reply(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
     )
     is UnknownPollType -> error("Unable to send poll with unknown type ($poll)")
@@ -2356,6 +2428,7 @@ public suspend inline fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
     )
 }
@@ -2376,6 +2449,7 @@ public suspend inline fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = when (poll) {
     is RegularPoll -> reply(
@@ -2396,6 +2470,7 @@ public suspend inline fun TelegramBot.reply(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
     )
     is UnknownPollType -> error("Unable to send poll with unknown type ($poll)")
@@ -2417,6 +2492,7 @@ public suspend inline fun TelegramBot.reply(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
     )
 }
@@ -2436,6 +2512,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): MessageId = copyMessage(
     fromChatId = fromChatId,
@@ -2448,7 +2525,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
 
@@ -2466,6 +2543,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): MessageId = reply(
     toChatId = toChatId,
@@ -2481,6 +2559,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -2497,6 +2576,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ): MessageId = reply(
     toChatId = toChatId,
@@ -2512,6 +2592,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
 )
 
@@ -2527,6 +2608,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     execute(
@@ -2538,7 +2620,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
-            replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply),
+            replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
             replyMarkup = replyMarkup
         )
     )
@@ -2561,7 +2643,8 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ): Unit = handleLiveLocation(
     chatId = replyInChatId,
     locationsFlow = locationsFlow,
@@ -2572,7 +2655,7 @@ public suspend fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
-    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
 /**
@@ -2594,7 +2677,8 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ) {
     handleLiveLocation(
         chatId = replyInChatId,
@@ -2606,7 +2690,7 @@ public suspend fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
-        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
     )
 }
 
@@ -2629,7 +2713,8 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
 ) {
     handleLiveLocation(
         chatId = replyInChatId,
@@ -2641,7 +2726,7 @@ public suspend fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
-        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply)
+        replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
     )
 }
 
@@ -2657,6 +2742,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     when (mediaFile) {
@@ -2672,6 +2758,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is AnimationFile -> reply(
@@ -2686,6 +2773,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is VoiceFile -> reply(
@@ -2700,6 +2788,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is VideoFile -> reply(
@@ -2714,6 +2803,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is VideoNoteFile -> reply(
@@ -2728,6 +2818,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is DocumentFile -> reply(
@@ -2742,6 +2833,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is Sticker -> reply(
@@ -2756,6 +2848,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is PhotoSize -> reply(
@@ -2770,6 +2863,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         else -> reply(
@@ -2784,6 +2878,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
     }
@@ -2803,6 +2898,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     when (content) {
@@ -2820,6 +2916,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is AudioMediaGroupPartContent -> reply(
@@ -2836,6 +2933,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is PhotoContent -> reply(
@@ -2852,6 +2950,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is VideoContent -> reply(
@@ -2868,6 +2967,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is AnimationContent -> reply(
@@ -2884,6 +2984,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         else -> reply(
@@ -2900,6 +3001,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
     }
@@ -2918,6 +3020,7 @@ public suspend fun TelegramBot.reply(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     when (content) {
@@ -2934,6 +3037,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is AudioMediaGroupPartContent -> reply(
@@ -2949,6 +3053,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is PhotoContent -> reply(
@@ -2963,6 +3068,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is VideoContent -> reply(
@@ -2978,6 +3084,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         is AnimationContent -> reply(
@@ -2993,6 +3100,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
         else -> reply(
@@ -3008,6 +3116,7 @@ public suspend fun TelegramBot.reply(
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
             allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
         )
     }
@@ -3027,6 +3136,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     sendPaidMedia(
@@ -3045,7 +3155,8 @@ public suspend fun TelegramBot.reply(
         replyParameters = ReplyParameters(
             messageId = toMessageId,
             chatIdentifier = toChatId,
-            allowSendingWithoutReply = allowSendingWithoutReply
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
         )
     )
 }
@@ -3065,6 +3176,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
     sendPaidMedia(
@@ -3084,7 +3196,8 @@ public suspend fun TelegramBot.reply(
         replyParameters = ReplyParameters(
             messageId = toMessageId,
             chatIdentifier = toChatId,
-            allowSendingWithoutReply = allowSendingWithoutReply
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
         )
     )
 }
