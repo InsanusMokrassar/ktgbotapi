@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
@@ -28,9 +29,11 @@ import kotlinx.serialization.encoding.Encoder
 @ClassCastsIncluded
 sealed interface ReplyInfo {
     val messageMeta: Message.MetaInfo?
+    val checklistTaskId: ChecklistTaskId?
 
     data class Internal(
-        val message: Message
+        val message: Message,
+        override val checklistTaskId: ChecklistTaskId? = null,
     ): ReplyInfo {
         override val messageMeta: Message.MetaInfo
             get() = message.metaInfo
@@ -41,6 +44,8 @@ sealed interface ReplyInfo {
         val story: Story
     ): ReplyInfo {
         override val messageMeta: Message.MetaInfo?
+            get() = null
+        override val checklistTaskId: ChecklistTaskId?
             get() = null
     }
 
@@ -57,7 +62,8 @@ sealed interface ReplyInfo {
             @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             override val chat: SuperPublicChat?,
             override val messageMeta: Message.MetaInfo?,
-            val linkPreviewOptions: LinkPreviewOptions?
+            val linkPreviewOptions: LinkPreviewOptions?,
+            override val checklistTaskId: ChecklistTaskId? = null,
         ) : External
 
         @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -72,7 +78,8 @@ sealed interface ReplyInfo {
                 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
-                override val content: ContentVariant
+                override val content: ContentVariant,
+                override val checklistTaskId: ChecklistTaskId? = null,
             ) : Content
 
             @Serializable
@@ -82,7 +89,8 @@ sealed interface ReplyInfo {
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
                 override val spoilered: Boolean,
-                override val content: MediaContentVariant
+                override val content: MediaContentVariant,
+                override val checklistTaskId: ChecklistTaskId? = null,
             ) : Content, SpoilerableData
         }
 

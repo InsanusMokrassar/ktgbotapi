@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.Dice
@@ -64,6 +65,7 @@ internal data class RawMessage(
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
     private val reply_to_story: Story? = null,
+    private val reply_to_checklist_task_id: ChecklistTaskId? = null,
     private val external_reply: ReplyInfo.External? = null,
     private val quote: TextQuote? = null,
     private val via_bot: CommonBot? = null,
@@ -360,7 +362,8 @@ internal data class RawMessage(
             } ?: content?.let { content ->
                 val replyInfo: ReplyInfo? = when {
                     reply_to_message != null -> ReplyInfo.Internal(
-                        reply_to_message.asMessage
+                        reply_to_message.asMessage,
+                        reply_to_checklist_task_id
                     )
                     reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
                     external_reply != null -> external_reply
