@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 29.0.0
+
 ## 28.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
