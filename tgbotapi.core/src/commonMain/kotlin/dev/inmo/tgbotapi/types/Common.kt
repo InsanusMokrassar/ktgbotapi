@@ -779,6 +779,13 @@ const val rawField = "raw"
 
 const val reactionTypeField = "reaction_type"
 
+const val suggestedPostMessageField = "suggested_post_message"
+const val priceField = "price"
+const val sendDateField = "send_date"
+const val commentField = "comment"
+const val reasonField = "reason"
+const val starAmountField = "star_amount"
+
 const val isDarkField = "is_dark"
 const val isFlippedField = "is_flipped"
 const val temperatureField = "temperature"
