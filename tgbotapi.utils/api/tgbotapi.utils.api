@@ -1335,6 +1335,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun diceContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DiceContent;
 	public static final fun dimmableOrNull (Ldev/inmo/tgbotapi/types/BackgroundType;)Ldev/inmo/tgbotapi/types/BackgroundType$Dimmable;
 	public static final fun dimmableOrThrow (Ldev/inmo/tgbotapi/types/BackgroundType;)Ldev/inmo/tgbotapi/types/BackgroundType$Dimmable;
+	public static final fun directMessagesTopicOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public static final fun directMessagesTopicOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
 	public static final fun disabledOrNull (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
 	public static final fun disabledOrThrow (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
 	public static final fun documentContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
@@ -1686,6 +1688,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifDescribedInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDiceContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDimmable (Ldev/inmo/tgbotapi/types/BackgroundType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDirectMessagesTopic (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDisabled (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

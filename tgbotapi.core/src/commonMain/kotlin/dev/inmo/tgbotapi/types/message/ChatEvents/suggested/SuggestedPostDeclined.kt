@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SuggestedPostDeclined(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,

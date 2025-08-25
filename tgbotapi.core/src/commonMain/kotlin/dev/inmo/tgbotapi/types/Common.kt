@@ -524,6 +524,7 @@ const val creatorField = "creator"
 const val subscriptionPeriodField = "subscription_period"
 const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
+const val topicIdField = "topic_id"
 
 const val isPublicField = "is_public"
 

@@ -13,6 +13,7 @@ import kotlinx.serialization.Serializable
 data class SuggestedPostApprovalFailed(
     @SerialName(priceField) // TODO::Test that this field will never be null
     val price: SuggestedPostPrice,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,

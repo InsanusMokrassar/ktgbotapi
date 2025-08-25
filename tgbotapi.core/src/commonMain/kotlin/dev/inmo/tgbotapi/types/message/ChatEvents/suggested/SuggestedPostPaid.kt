@@ -30,12 +30,14 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
     data class XTR(
         @SerialName(starAmountField)
         override val starAmount: StarAmount,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
         override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,
     ) : SuggestedPostPaid {
         override val amount: Long?
             get() = null
+        @Suppress("OPT_IN_USAGE")
         @EncodeDefault
         override val currency: Currency = Currency.XTR
     }
@@ -43,12 +45,14 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
     data class TON(
         @SerialName(amountField)
         override val amount: Long,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
         override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null
     ) : SuggestedPostPaid {
         override val starAmount: StarAmount?
             get() = null
+        @Suppress("OPT_IN_USAGE")
         @EncodeDefault
         override val currency: Currency = Currency.TON
     }
@@ -56,6 +60,7 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
     data class Other(
         @SerialName(currencyField)
         override val currency: Currency,
+        @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
         override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,

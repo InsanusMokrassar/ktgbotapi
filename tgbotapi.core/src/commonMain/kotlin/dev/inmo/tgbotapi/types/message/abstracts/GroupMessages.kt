@@ -24,6 +24,7 @@ sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T
 
 sealed interface ChannelDirectMessagesContentMessage<T : MessageContent> : ForumContentMessage<T>, PossiblyTopicMessage {
     override val chat: PreviewChannelDirectMessagesChat
+    val directMessageTopic: DirectMessagesTopic
 }
 
 sealed interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {

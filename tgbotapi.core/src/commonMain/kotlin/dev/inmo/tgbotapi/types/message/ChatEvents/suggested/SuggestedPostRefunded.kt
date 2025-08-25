@@ -12,6 +12,7 @@ import kotlinx.serialization.Serializable
 data class SuggestedPostRefunded(
     @SerialName(reasonField)
     val reason: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null

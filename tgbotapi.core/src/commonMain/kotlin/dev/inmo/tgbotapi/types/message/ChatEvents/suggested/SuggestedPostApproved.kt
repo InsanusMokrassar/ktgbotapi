@@ -15,6 +15,7 @@ import kotlinx.serialization.Serializable
 data class SuggestedPostApproved(
     @SerialName(sendDateField)
     val sendDate: TelegramDate,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,

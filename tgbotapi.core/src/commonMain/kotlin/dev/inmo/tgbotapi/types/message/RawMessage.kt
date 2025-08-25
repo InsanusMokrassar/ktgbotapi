@@ -62,6 +62,7 @@ internal data class RawMessage(
     private val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     private val messageThreadId: MessageThreadId? = null,
+    private val direct_messages_topic: DirectMessagesTopic? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val from: PreviewUser? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -417,6 +418,7 @@ internal data class RawMessage(
                         )
                         is PreviewForumChat -> when(chat) {
                             is PreviewChannelDirectMessagesChat -> {
+                                val messageThreadId = direct_messages_topic ?.threadId ?: messageThreadId
                                 if (messageThreadId != null) {
                                     val chatId = ChatIdWithThreadId(
                                         chat.id.chatId,
@@ -432,6 +434,7 @@ internal data class RawMessage(
                                             messageId = messageId,
                                             threadId = messageThreadId,
                                             date = date.asDate,
+                                            directMessageTopic = direct_messages_topic ?: error("direct_messages_topic must be presented for FromChannelChannelDirectMessagesContentMessage"),
                                             forwardOrigin = forward_origin,
                                             editDate = edit_date ?.asDate,
                                             hasProtectedContent = has_protected_content == true,
@@ -451,6 +454,7 @@ internal data class RawMessage(
                                             threadId = messageThreadId,
                                             from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
                                             date = date.asDate,
+                                            directMessageTopic = direct_messages_topic ?: error("direct_messages_topic must be presented for CommonChannelDirectMessagesContentMessage"),
                                             forwardOrigin = forward_origin,
                                             editDate = edit_date ?.asDate,
                                             hasProtectedContent = has_protected_content == true,

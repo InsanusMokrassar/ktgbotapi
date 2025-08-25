@@ -130,6 +130,7 @@ import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.chat.DirectMessagesTopic
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
@@ -640,6 +641,12 @@ public inline fun OptionallyWithUser.chatJoinRequestOrNull(): ChatJoinRequest? =
 public inline fun OptionallyWithUser.chatJoinRequestOrThrow(): ChatJoinRequest = this as dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 
 public inline fun <T> OptionallyWithUser.ifChatJoinRequest(block: (ChatJoinRequest) -> T): T? = chatJoinRequestOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.directMessagesTopicOrNull(): DirectMessagesTopic? = this as? dev.inmo.tgbotapi.types.chat.DirectMessagesTopic
+
+public inline fun OptionallyWithUser.directMessagesTopicOrThrow(): DirectMessagesTopic = this as dev.inmo.tgbotapi.types.chat.DirectMessagesTopic
+
+public inline fun <T> OptionallyWithUser.ifDirectMessagesTopic(block: (DirectMessagesTopic) -> T): T? = directMessagesTopicOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.administratorChatMemberOrNull(): AdministratorChatMember? = this as? dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
