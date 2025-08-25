@@ -418,7 +418,6 @@ internal data class RawMessage(
                         )
                         is PreviewForumChat -> when(chat) {
                             is PreviewChannelDirectMessagesChat -> {
-                                val messageThreadId = direct_messages_topic ?.threadId ?: messageThreadId
                                 if (messageThreadId != null) {
                                     val chatId = ChatIdWithThreadId(
                                         chat.id.chatId,
