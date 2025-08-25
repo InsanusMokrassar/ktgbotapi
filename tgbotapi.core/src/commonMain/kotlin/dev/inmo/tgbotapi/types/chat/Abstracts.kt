@@ -55,6 +55,13 @@ sealed interface ForumChat : SupergroupChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
+sealed interface ChannelDirectMessagesChat : ForumChat {
+    override val isDirectMessages: Boolean
+        get() = true
+}
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatSerializer::class)
 sealed interface PossiblyPremiumChat : Chat {
     val isPremium: Boolean
 }
@@ -69,4 +76,6 @@ sealed interface AbleToAddInAttachmentMenuChat : Chat {
 @ClassCastsIncluded(excludeRegex = ".*Impl")
 sealed interface Chat {
     val id: IdChatIdentifier
+    val isDirectMessages: Boolean
+        get() = false
 }

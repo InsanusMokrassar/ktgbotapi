@@ -1,9 +1,8 @@
-package dev.inmo.tgbotapi.types.message.ChatEvents
+package dev.inmo.tgbotapi.types.message.ChatEvents.suggested
 
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.payments.SuggestedPostPrice
 import dev.inmo.tgbotapi.types.suggestedPostMessageField
@@ -18,7 +17,7 @@ data class SuggestedPostApproved(
     val sendDate: TelegramDate,
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    val suggestedPostMessage: Message? = null,
+    val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,
     @SerialName(priceField)
     val price: SuggestedPostPrice? = null,
 ) : ChannelDirectMessagesEvent

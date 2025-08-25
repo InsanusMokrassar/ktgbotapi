@@ -115,6 +115,12 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
 sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(PreviewChatSerializer::class)
+sealed interface ExtendedChannelDirectMessagesChat : ExtendedForumChat, ChannelDirectMessagesChat {
+    val channelChat: PreviewChannelChat
+}
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {
     val activeUsernames: List<Username>

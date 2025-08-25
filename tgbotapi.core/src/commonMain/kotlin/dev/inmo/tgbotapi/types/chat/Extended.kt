@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -304,6 +305,83 @@ data class ExtendedForumChatImpl(
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedForumChat
+
+@Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedForumChat due")
+data class ExtendedChannelDirectMessagesChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
+    override val id: IdChatIdentifier,
+    @SerialName(titleField)
+    override val title: String,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(parentChatField)
+    override val channelChat: PreviewChannelChat,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(usernameField)
+    override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
+    @SerialName(photoField)
+    override val chatPhoto: ChatPhoto? = null,
+    @SerialName(permissionsField)
+    override val permissions: ChatPermissions,
+    @SerialName(descriptionField)
+    override val description: String = "",
+    @SerialName(inviteLinkField)
+    override val inviteLink: String? = null,
+    @SerialName(pinnedMessageField)
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    override val pinnedMessage: Message? = null,
+    @SerialName(stickerSetNameFullField)
+    override val stickerSetName: StickerSetName? = null,
+    @SerialName(slowModeDelayField)
+    override val slowModeDelay: Long? = null,
+    @SerialName(canSetStickerSetField)
+    override val canSetStickerSet: Boolean = false,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(linkedChatIdField)
+    override val linkedChannelChatId: IdChatIdentifier? = null,
+    @SerialName(locationField)
+    override val location: ChatLocation? = null,
+    @SerialName(joinToSendMessagesField)
+    override val requiresJoinForMessaging: Boolean = false,
+    @SerialName(joinByRequestField)
+    override val requireAdminApproveToJoin: Boolean = false,
+    @SerialName(hasAggressiveAntiSpamEnabledField)
+    override val isAggressiveAntiSpamEnabled: Boolean = false,
+    @SerialName(hasHiddenMembersField)
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
+    @SerialName(unrestrictBoostsCountField)
+    override val unrestrictBoostsCount: Int? = null,
+    @SerialName(customEmojiStickerSetNameField)
+    override val customEmojiStickerSetName: StickerSetName? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+) : ExtendedChannelDirectMessagesChat {
+    @SerialName(isDirectMessagesField)
+    @EncodeDefault
+    override val isDirectMessages: Boolean = true
+}
 
 @Serializable
 data class ExtendedBot(

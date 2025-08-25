@@ -22,6 +22,9 @@ sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T
         get() = (replyTo as? ChatEventMessage<*>) ?.chatEvent as? ForumTopicCreated
 }
 
+sealed interface ChannelDirectMessagesContentMessage<T : MessageContent> : ForumContentMessage<T>, PossiblyTopicMessage {
+    override val chat: PreviewChannelDirectMessagesChat
+}
 
 sealed interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {
     val channel: PreviewChannelChat
@@ -41,9 +44,13 @@ interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>
 
 interface FromChannelForumContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ForumContentMessage<T>
 
+interface FromChannelChannelDirectMessagesContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ChannelDirectMessagesContentMessage<T>
+
 interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage<T>, SignedMessage, WithSenderChatMessage {
     override val senderChat: PreviewGroupChat
         get() = chat
 }
 
 interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
+
+interface CommonChannelDirectMessagesContentMessage<T : MessageContent> : ChannelDirectMessagesContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage

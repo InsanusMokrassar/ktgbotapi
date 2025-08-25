@@ -1,12 +1,14 @@
-package dev.inmo.tgbotapi.types.message
+package dev.inmo.tgbotapi.types.message.ChatEvents.suggested
 
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
 import dev.inmo.tgbotapi.types.payments.SuggestedPostPrice
-import dev.inmo.tgbotapi.types.stateField
 import dev.inmo.tgbotapi.types.priceField
 import dev.inmo.tgbotapi.types.sendDateField
+import dev.inmo.tgbotapi.types.stateField
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -21,7 +23,7 @@ data class SuggestedPostInfo(
     val price: SuggestedPostPrice? = null,
     @SerialName(sendDateField)
     val sendDate: Int? = null
-) {
+) : ChannelDirectMessagesEvent {
     @Serializable(State.Companion::class)
     sealed interface State {
         val name: String
@@ -37,7 +39,7 @@ data class SuggestedPostInfo(
 
         companion object : KSerializer<State> {
             override val descriptor: SerialDescriptor =
-                PrimitiveSerialDescriptor("SuggestedPostInfo.State", kotlinx.serialization.descriptors.PrimitiveKind.STRING)
+                PrimitiveSerialDescriptor("SuggestedPostInfo.State", PrimitiveKind.STRING)
 
             override fun serialize(encoder: Encoder, value: State) {
                 encoder.encodeString(value.name)

@@ -1,8 +1,7 @@
-package dev.inmo.tgbotapi.types.message.ChatEvents
+package dev.inmo.tgbotapi.types.message.ChatEvents.suggested
 
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.suggestedPostMessageField
 import dev.inmo.tgbotapi.types.reasonField
@@ -15,5 +14,5 @@ data class SuggestedPostRefunded(
     val reason: String,
     @SerialName(suggestedPostMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    val suggestedPostMessage: Message? = null
+    val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null
 ) : ChannelDirectMessagesEvent

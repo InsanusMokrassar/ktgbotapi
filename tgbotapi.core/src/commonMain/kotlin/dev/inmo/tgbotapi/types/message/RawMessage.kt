@@ -27,6 +27,12 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
@@ -183,6 +189,13 @@ internal data class RawMessage(
     // Channel direct messages
     private val direct_message_price_changed: ChannelDirectMessagesConfigurationChanged? = null,
 
+    //
+    private val suggested_post_approved: SuggestedPostApproved? = null,
+    private val suggested_post_approval_failed: SuggestedPostApprovalFailed? = null,
+    private val suggested_post_declined: SuggestedPostDeclined? = null,
+    private val suggested_post_paid: SuggestedPostPaid? = null,
+    private val suggested_post_refunded: SuggestedPostRefunded? = null,
+    private val suggested_post_info: SuggestedPostInfo? = null,
     // Gifts
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
@@ -316,6 +329,12 @@ internal data class RawMessage(
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
             direct_message_price_changed != null -> direct_message_price_changed
+            suggested_post_info != null -> suggested_post_info
+            suggested_post_approved != null -> suggested_post_approved
+            suggested_post_approval_failed != null -> suggested_post_approval_failed
+            suggested_post_declined != null -> suggested_post_declined
+            suggested_post_paid != null -> suggested_post_paid
+            suggested_post_refunded != null -> suggested_post_refunded
             else -> null
         }
     }
@@ -343,6 +362,14 @@ internal data class RawMessage(
                         checkedFrom ?: from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
+                        date.asDate
+                    )
+                    is PreviewChannelDirectMessagesChat -> CommonChannelDirectMessagesEventMessage(
+                        messageId,
+                        //TODO:: Check that all channel direct messages events coming with "from" field
+                        checkedFrom ?: from ?: error("Channel direct messages events are expected to contain 'from' field"),
+                        chat,
+                        chatEvent as? ChannelDirectMessagesEvent ?: throwWrongChatEvent(PreviewChannelDirectMessagesChat::class, chatEvent),
                         date.asDate
                     )
                     is PreviewChannelChat -> ChannelEventMessage(
@@ -388,141 +415,268 @@ internal data class RawMessage(
                             fromOffline = is_from_offline,
                             cost = paid_star_count,
                         )
-                        is PreviewForumChat -> if (messageThreadId != null) {
-                            val chatId = ChatIdWithThreadId(
-                                chat.id.chatId,
-                                messageThreadId
-                            )
-                            val actualForumChat = when (chat) {
-                                is ForumChatImpl -> chat.copy(id = chatId)
-                            }
-                            when (sender_chat) {
-                                is PreviewChannelChat -> FromChannelForumContentMessageImpl(
-                                    chat = actualForumChat,
-                                    channel = sender_chat,
-                                    messageId = messageId,
-                                    threadId = messageThreadId,
-                                    date = date.asDate,
-                                    forwardOrigin = forward_origin,
-                                    editDate = edit_date ?.asDate,
-                                    hasProtectedContent = has_protected_content == true,
-                                    replyInfo = replyInfo,
-                                    replyMarkup = reply_markup,
-                                    content = content,
-                                    senderBot = via_bot,
-                                    authorSignature = author_signature,
-                                    mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline,
-                                    cost = paid_star_count,
-                                )
-                                is PreviewGroupChat -> AnonymousForumContentMessageImpl(
-                                    chat = actualForumChat,
-                                    messageId = messageId,
-                                    threadId = messageThreadId,
-                                    date = date.asDate,
-                                    forwardOrigin = forward_origin,
-                                    editDate = edit_date ?.asDate,
-                                    hasProtectedContent = has_protected_content == true,
-                                    replyInfo = replyInfo,
-                                    replyMarkup = reply_markup,
-                                    content = content,
-                                    senderBot = via_bot,
-                                    authorSignature = author_signature,
-                                    mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline,
-                                    cost = paid_star_count,
-                                )
-                                null -> CommonForumContentMessageImpl(
-                                    chat = actualForumChat,
-                                    messageId = messageId,
-                                    threadId = messageThreadId,
-                                    from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
-                                    date = date.asDate,
-                                    forwardOrigin = forward_origin,
-                                    editDate = edit_date ?.asDate,
-                                    hasProtectedContent = has_protected_content == true,
-                                    replyInfo = replyInfo,
-                                    replyMarkup = reply_markup,
-                                    content = content,
-                                    senderBot = via_bot,
-                                    mediaGroupId = media_group_id,
-                                    senderBoostsCount = sender_boost_count,
-                                    fromOffline = is_from_offline,
-                                    cost = paid_star_count,
-                                )
-                            }
-                        } else {
-                            when (sender_chat) {
-                                is PreviewChannelChat -> if (is_automatic_forward == true) {
-                                    ConnectedFromChannelGroupContentMessageImpl(
-                                        chat = chat,
-                                        channel = sender_chat,
-                                        messageId = messageId,
-                                        date = date.asDate,
-                                        forwardOrigin = forward_origin,
-                                        editDate = edit_date ?.asDate,
-                                        hasProtectedContent = has_protected_content == true,
-                                        replyInfo = replyInfo,
-                                        replyMarkup = reply_markup,
-                                        content = content,
-                                        senderBot = via_bot,
-                                        authorSignature = author_signature,
-                                        mediaGroupId = media_group_id,
-                                        fromOffline = is_from_offline,
-                                        cost = paid_star_count,
+                        is PreviewForumChat -> when(chat) {
+                            is PreviewChannelDirectMessagesChat -> {
+                                if (messageThreadId != null) {
+                                    val chatId = ChatIdWithThreadId(
+                                        chat.id.chatId,
+                                        messageThreadId
                                     )
+                                    val actualForumChat = when (chat) {
+                                        is ChannelDirectMessagesChatImpl -> chat.copy(id = chatId)
+                                    }
+                                    when (sender_chat) {
+                                        is PreviewChannelChat -> FromChannelChannelDirectMessagesContentMessageImpl(
+                                            chat = actualForumChat,
+                                            channel = sender_chat,
+                                            messageId = messageId,
+                                            threadId = messageThreadId,
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            authorSignature = author_signature,
+                                            mediaGroupId = media_group_id,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                        is PreviewGroupChat,
+                                        null -> CommonChannelDirectMessagesContentMessageImpl(
+                                            chat = actualForumChat,
+                                            messageId = messageId,
+                                            threadId = messageThreadId,
+                                            from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            mediaGroupId = media_group_id,
+                                            senderBoostsCount = sender_boost_count,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                    }
                                 } else {
-                                    UnconnectedFromChannelGroupContentMessageImpl(
-                                        chat = chat,
-                                        channel = sender_chat,
-                                        messageId = messageId,
-                                        date = date.asDate,
-                                        forwardOrigin = forward_origin,
-                                        editDate = edit_date ?.asDate,
-                                        hasProtectedContent = has_protected_content == true,
-                                        replyInfo = replyInfo,
-                                        replyMarkup = reply_markup,
-                                        content = content,
-                                        senderBot = via_bot,
-                                        authorSignature = author_signature,
-                                        mediaGroupId = media_group_id,
-                                        fromOffline = is_from_offline,
-                                        cost = paid_star_count,
-                                    )
+                                    when (sender_chat) {
+                                        is PreviewChannelChat -> if (is_automatic_forward == true) {
+                                            ConnectedFromChannelGroupContentMessageImpl(
+                                                chat = chat,
+                                                channel = sender_chat,
+                                                messageId = messageId,
+                                                date = date.asDate,
+                                                forwardOrigin = forward_origin,
+                                                editDate = edit_date ?.asDate,
+                                                hasProtectedContent = has_protected_content == true,
+                                                replyInfo = replyInfo,
+                                                replyMarkup = reply_markup,
+                                                content = content,
+                                                senderBot = via_bot,
+                                                authorSignature = author_signature,
+                                                mediaGroupId = media_group_id,
+                                                fromOffline = is_from_offline,
+                                                cost = paid_star_count,
+                                            )
+                                        } else {
+                                            UnconnectedFromChannelGroupContentMessageImpl(
+                                                chat = chat,
+                                                channel = sender_chat,
+                                                messageId = messageId,
+                                                date = date.asDate,
+                                                forwardOrigin = forward_origin,
+                                                editDate = edit_date ?.asDate,
+                                                hasProtectedContent = has_protected_content == true,
+                                                replyInfo = replyInfo,
+                                                replyMarkup = reply_markup,
+                                                content = content,
+                                                senderBot = via_bot,
+                                                authorSignature = author_signature,
+                                                mediaGroupId = media_group_id,
+                                                fromOffline = is_from_offline,
+                                                cost = paid_star_count,
+                                            )
+                                        }
+                                        is GroupChat -> AnonymousGroupContentMessageImpl(
+                                            chat = chat,
+                                            messageId = messageId,
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            authorSignature = author_signature,
+                                            mediaGroupId = media_group_id,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                        null -> CommonGroupContentMessageImpl(
+                                            chat = chat,
+                                            messageId = messageId,
+                                            from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            mediaGroupId = media_group_id,
+                                            senderBoostsCount = sender_boost_count,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                    }
                                 }
-                                is GroupChat -> AnonymousGroupContentMessageImpl(
-                                    chat = chat,
-                                    messageId = messageId,
-                                    date = date.asDate,
-                                    forwardOrigin = forward_origin,
-                                    editDate = edit_date ?.asDate,
-                                    hasProtectedContent = has_protected_content == true,
-                                    replyInfo = replyInfo,
-                                    replyMarkup = reply_markup,
-                                    content = content,
-                                    senderBot = via_bot,
-                                    authorSignature = author_signature,
-                                    mediaGroupId = media_group_id,
-                                    fromOffline = is_from_offline,
-                                    cost = paid_star_count,
-                                )
-                                null -> CommonGroupContentMessageImpl(
-                                    chat = chat,
-                                    messageId = messageId,
-                                    from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
-                                    date = date.asDate,
-                                    forwardOrigin = forward_origin,
-                                    editDate = edit_date ?.asDate,
-                                    hasProtectedContent = has_protected_content == true,
-                                    replyInfo = replyInfo,
-                                    replyMarkup = reply_markup,
-                                    content = content,
-                                    senderBot = via_bot,
-                                    mediaGroupId = media_group_id,
-                                    senderBoostsCount = sender_boost_count,
-                                    fromOffline = is_from_offline,
-                                    cost = paid_star_count,
-                                )
+                            }
+                            is ForumChatImpl -> {
+                                if (messageThreadId != null) {
+                                    val chatId = ChatIdWithThreadId(
+                                        chat.id.chatId,
+                                        messageThreadId
+                                    )
+                                    val actualForumChat = when (chat) {
+                                        is ForumChatImpl -> chat.copy(id = chatId)
+                                    }
+                                    when (sender_chat) {
+                                        is PreviewChannelChat -> FromChannelForumContentMessageImpl(
+                                            chat = actualForumChat,
+                                            channel = sender_chat,
+                                            messageId = messageId,
+                                            threadId = messageThreadId,
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            authorSignature = author_signature,
+                                            mediaGroupId = media_group_id,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                        is PreviewGroupChat -> AnonymousForumContentMessageImpl(
+                                            chat = actualForumChat,
+                                            messageId = messageId,
+                                            threadId = messageThreadId,
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            authorSignature = author_signature,
+                                            mediaGroupId = media_group_id,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                        null -> CommonForumContentMessageImpl(
+                                            chat = actualForumChat,
+                                            messageId = messageId,
+                                            threadId = messageThreadId,
+                                            from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            mediaGroupId = media_group_id,
+                                            senderBoostsCount = sender_boost_count,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                    }
+                                } else {
+                                    when (sender_chat) {
+                                        is PreviewChannelChat -> if (is_automatic_forward == true) {
+                                            ConnectedFromChannelGroupContentMessageImpl(
+                                                chat = chat,
+                                                channel = sender_chat,
+                                                messageId = messageId,
+                                                date = date.asDate,
+                                                forwardOrigin = forward_origin,
+                                                editDate = edit_date ?.asDate,
+                                                hasProtectedContent = has_protected_content == true,
+                                                replyInfo = replyInfo,
+                                                replyMarkup = reply_markup,
+                                                content = content,
+                                                senderBot = via_bot,
+                                                authorSignature = author_signature,
+                                                mediaGroupId = media_group_id,
+                                                fromOffline = is_from_offline,
+                                                cost = paid_star_count,
+                                            )
+                                        } else {
+                                            UnconnectedFromChannelGroupContentMessageImpl(
+                                                chat = chat,
+                                                channel = sender_chat,
+                                                messageId = messageId,
+                                                date = date.asDate,
+                                                forwardOrigin = forward_origin,
+                                                editDate = edit_date ?.asDate,
+                                                hasProtectedContent = has_protected_content == true,
+                                                replyInfo = replyInfo,
+                                                replyMarkup = reply_markup,
+                                                content = content,
+                                                senderBot = via_bot,
+                                                authorSignature = author_signature,
+                                                mediaGroupId = media_group_id,
+                                                fromOffline = is_from_offline,
+                                                cost = paid_star_count,
+                                            )
+                                        }
+                                        is GroupChat -> AnonymousGroupContentMessageImpl(
+                                            chat = chat,
+                                            messageId = messageId,
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            authorSignature = author_signature,
+                                            mediaGroupId = media_group_id,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                        null -> CommonGroupContentMessageImpl(
+                                            chat = chat,
+                                            messageId = messageId,
+                                            from = checkedFrom ?: from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                            date = date.asDate,
+                                            forwardOrigin = forward_origin,
+                                            editDate = edit_date ?.asDate,
+                                            hasProtectedContent = has_protected_content == true,
+                                            replyInfo = replyInfo,
+                                            replyMarkup = reply_markup,
+                                            content = content,
+                                            senderBot = via_bot,
+                                            mediaGroupId = media_group_id,
+                                            senderBoostsCount = sender_boost_count,
+                                            fromOffline = is_from_offline,
+                                            cost = paid_star_count,
+                                        )
+                                    }
+                                }
                             }
                         }
                         is PreviewGroupChat -> when (sender_chat) {

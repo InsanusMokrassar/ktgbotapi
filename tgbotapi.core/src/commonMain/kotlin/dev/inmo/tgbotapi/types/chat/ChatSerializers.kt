@@ -123,16 +123,20 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
 
         val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+        val isChannelDirectMessages = decodedJson[isDirectMessagesField] ?.jsonPrimitive ?.booleanOrNull == true
         val original = decodedJson[originField]
 
         return when (type) {
             ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
             ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-            ChatType.Supergroup -> if (isForum) {
-                formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
-            } else {
-                formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+            ChatType.Supergroup -> {
+                @Suppress("SimplifyBooleanWithConstants")
+                when {
+                    isForum == false -> formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+                    isChannelDirectMessages -> formatter.decodeFromJsonElement(ChannelDirectMessagesChatImpl.serializer(), decodedJson)
+                    else -> formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
+                }
             }
             ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
             is ChatType.Unknown -> UnknownChatType(
@@ -156,6 +160,7 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
             is GroupChatImpl -> GroupChatImpl.serializer().serialize(encoder, value)
             is SupergroupChatImpl -> SupergroupChatImpl.serializer().serialize(encoder, value)
             is ForumChatImpl -> ForumChatImpl.serializer().serialize(encoder, value)
+            is ChannelDirectMessagesChatImpl -> ChannelDirectMessagesChatImpl.serializer().serialize(encoder, value)
             is ChannelChatImpl -> ChannelChatImpl.serializer().serialize(encoder, value)
             is CommonBot -> CommonBot.serializer().serialize(encoder, value)
             is CommonUser -> CommonUser.serializer().serialize(encoder, value)
@@ -174,16 +179,20 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
 
         val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+        val isChannelDirectMessages = decodedJson[isDirectMessagesField] ?.jsonPrimitive ?.booleanOrNull == true
         val original = decodedJson[originField]
 
         return when (type) {
             ChatType.Sender -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
             ChatType.Private -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
-            ChatType.Supergroup -> if (isForum) {
-                formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
-            } else {
-                formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+            ChatType.Supergroup -> {
+                @Suppress("SimplifyBooleanWithConstants")
+                when {
+                    isForum == false -> formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+                    isChannelDirectMessages -> formatter.decodeFromJsonElement(ExtendedChannelDirectMessagesChatImpl.serializer(), decodedJson)
+                    else -> formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
+                }
             }
             ChatType.Channel -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
             is ChatType.Unknown -> UnknownExtendedChat(
@@ -207,6 +216,7 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
             is ExtendedGroupChatImpl -> ExtendedGroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedSupergroupChatImpl -> ExtendedSupergroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedForumChatImpl -> ExtendedForumChatImpl.serializer().serialize(encoder, value)
+            is ExtendedChannelDirectMessagesChatImpl -> ExtendedChannelDirectMessagesChatImpl.serializer().serialize(encoder, value)
             is ExtendedChannelChatImpl -> ExtendedChannelChatImpl.serializer().serialize(encoder, value)
             is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, value)
             is UnknownExtendedChat -> JsonObject.serializer().serialize(encoder, value.rawJson)

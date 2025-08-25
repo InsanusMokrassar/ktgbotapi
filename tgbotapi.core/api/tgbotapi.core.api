@@ -10138,6 +10138,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field isCanceledField Ljava/lang/String;
 	public static final field isClosedField Ljava/lang/String;
 	public static final field isDarkField Ljava/lang/String;
+	public static final field isDirectMessagesField Ljava/lang/String;
 	public static final field isDisabledField Ljava/lang/String;
 	public static final field isEnabledField Ljava/lang/String;
 	public static final field isFirstRecurringField Ljava/lang/String;
@@ -10239,6 +10240,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field paidMediaPayloadField Ljava/lang/String;
 	public static final field paidMessageStarCountField Ljava/lang/String;
 	public static final field paidStarCountField Ljava/lang/String;
+	public static final field parentChatField Ljava/lang/String;
 	public static final field passportField Ljava/lang/String;
 	public static final field passportRegistrationField Ljava/lang/String;
 	public static final field payField Ljava/lang/String;
@@ -12981,6 +12983,7 @@ public final class dev/inmo/tgbotapi/types/RawChatId$Companion {
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/ReplyInfo {
+	public abstract fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public abstract fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 }
 
@@ -13010,16 +13013,19 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Companion 
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media : dev/inmo/tgbotapi/abstracts/SpoilerableData, dev/inmo/tgbotapi/types/ReplyInfo$External$Content {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Z
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/files/MediaContentVariant;
-	public final fun copy-YkqRATo (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
-	public static synthetic fun copy-YkqRATo$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public final fun component6-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public final fun copy-6c5RyNQ (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public static synthetic fun copy-6c5RyNQ$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
+	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public synthetic fun getContent ()Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;
 	public fun getContent ()Ldev/inmo/tgbotapi/types/files/MediaContentVariant;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
@@ -13046,15 +13052,18 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media$Comp
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple : dev/inmo/tgbotapi/types/ReplyInfo$External$Content {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;
-	public final fun copy-HcFI3q4 (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
-	public static synthetic fun copy-HcFI3q4$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
+	public final fun component5-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public final fun copy-Nu6vRuA (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
+	public static synthetic fun copy-Nu6vRuA$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
+	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public fun getContent ()Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
@@ -13082,15 +13091,18 @@ public abstract interface class dev/inmo/tgbotapi/types/ReplyInfo$External$Conte
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Text : dev/inmo/tgbotapi/types/ReplyInfo$External {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
-	public final fun copy-HcFI3q4 (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
-	public static synthetic fun copy-HcFI3q4$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
+	public final fun component5-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public final fun copy-Nu6vRuA (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
+	public static synthetic fun copy-Nu6vRuA$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
+	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
@@ -13114,11 +13126,14 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Text$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$Internal : dev/inmo/tgbotapi/types/ReplyInfo {
-	public fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
+	public final fun component2-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public final fun copy-piqXRR4 (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
+	public static synthetic fun copy-piqXRR4$default (Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public synthetic fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getMessageMeta-fV8YnZ8 ()Lkotlin/Triple;
@@ -13133,6 +13148,7 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$ToStory : dev/inmo/tgbotapi
 	public final fun copy (Ldev/inmo/tgbotapi/types/stories/Story;)Ldev/inmo/tgbotapi/types/ReplyInfo$ToStory;
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/ReplyInfo$ToStory;Ldev/inmo/tgbotapi/types/stories/Story;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$ToStory;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public final fun getStory ()Ldev/inmo/tgbotapi/types/stories/Story;
 	public fun hashCode ()I
@@ -15797,6 +15813,10 @@ public final class dev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat$Co
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat;)Z
+}
+
 public abstract class dev/inmo/tgbotapi/types/chat/Bot : dev/inmo/tgbotapi/types/chat/User {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/Bot$Companion;
 }
@@ -15815,6 +15835,10 @@ public final class dev/inmo/tgbotapi/types/chat/BusinessChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/BusinessChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/BusinessChat;)Z
+}
+
 public final class dev/inmo/tgbotapi/types/chat/BusinessChatImpl : dev/inmo/tgbotapi/types/chat/PreviewBusinessChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/BusinessChatImpl$Companion;
 	public synthetic fun <init> (Lkotlin/Pair;Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -15828,6 +15852,7 @@ public final class dev/inmo/tgbotapi/types/chat/BusinessChatImpl : dev/inmo/tgbo
 	public fun getOriginal ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;
 	public synthetic fun getOriginal ()Ldev/inmo/tgbotapi/types/chat/PrivateChat;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -15855,6 +15880,10 @@ public final class dev/inmo/tgbotapi/types/chat/ChannelChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/ChannelChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ChannelChat;)Z
+}
+
 public final class dev/inmo/tgbotapi/types/chat/ChannelChatImpl : dev/inmo/tgbotapi/types/chat/PreviewChannelChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChannelChatImpl$Companion;
 	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -15870,6 +15899,7 @@ public final class dev/inmo/tgbotapi/types/chat/ChannelChatImpl : dev/inmo/tgbot
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -15888,13 +15918,64 @@ public final class dev/inmo/tgbotapi/types/chat/ChannelChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat$Companion;
+	public fun isDirectMessages ()Z
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat;)Z
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl : dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3-san03mo ()Ljava/lang/String;
+	public final fun copy-KFkP0sY (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl;
+	public static synthetic fun copy-KFkP0sY$default (Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getTitle ()Ljava/lang/String;
+	public fun getUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isDirectMessages ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChatImpl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/Chat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/Chat$Companion;
 	public abstract fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun isDirectMessages ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/Chat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/Chat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/Chat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ChatBackground : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
@@ -16538,6 +16619,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedBusinessChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedBusinessChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedBusinessChat, dev/inmo/tgbotapi/types/chat/ExtendedChat {
@@ -16561,6 +16643,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChatImpl : dev/i
 	public fun getProfileAccentColorId-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
 	public fun getProfileBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -16591,6 +16674,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedChannelChat {
@@ -16645,6 +16729,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl : dev/in
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -16660,6 +16745,110 @@ public final synthetic class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImp
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/ExtendedForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat$Companion;
+	public abstract fun getChannelChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat$DefaultImpls {
+	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat;)Z
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public final fun component11-eaLzeK0 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/Long;
+	public final fun component13 ()Z
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/ChatLocation;
+	public final fun component16 ()Z
+	public final fun component17 ()Z
+	public final fun component18 ()Z
+	public final fun component19 ()Z
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Ljava/util/List;
+	public final fun component21-GbmMWyQ ()Ljava/lang/String;
+	public final fun component22 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component23-f3WtEc0 ()I
+	public final fun component24-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
+	public final fun component25-GbmMWyQ ()Ljava/lang/String;
+	public final fun component26-GbmMWyQ ()Ljava/lang/String;
+	public final fun component27 ()Z
+	public final fun component28 ()Ljava/lang/Integer;
+	public final fun component29-eaLzeK0 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public final fun component30 ()I
+	public final fun component31 ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
+	public final fun component4-san03mo ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy-Ana-3lw (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl;
+	public static synthetic fun copy-Ana-3lw$default (Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/ChatPhoto;Ldev/inmo/tgbotapi/types/chat/ChatPermissions;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/Long;ZLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/ChatLocation;ZZZZLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Ljava/lang/String;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAccentColorId-f3WtEc0 ()I
+	public fun getAcceptedGiftTypes ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
+	public fun getActiveUsernames ()Ljava/util/List;
+	public fun getAvailableReactions ()Ljava/util/List;
+	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getCanReceiveGifts ()Z
+	public fun getCanSetStickerSet ()Z
+	public fun getChannelChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
+	public fun getCustomEmojiStickerSetName-eaLzeK0 ()Ljava/lang/String;
+	public fun getDescription ()Ljava/lang/String;
+	public fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getInviteLink ()Ljava/lang/String;
+	public fun getLinkedChannelChatId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getLocation ()Ldev/inmo/tgbotapi/types/ChatLocation;
+	public fun getMaxReactionsCount ()I
+	public fun getMembersHidden ()Z
+	public fun getNewMembersSeeHistory ()Z
+	public fun getPermissions ()Ldev/inmo/tgbotapi/types/chat/ChatPermissions;
+	public fun getPinnedMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun getProfileAccentColorId-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
+	public fun getProfileBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getRequireAdminApproveToJoin ()Z
+	public fun getRequiresJoinForMessaging ()Z
+	public fun getSlowModeDelay ()Ljava/lang/Long;
+	public fun getStatusEmojiExpiration ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getStatusEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStickerSetName-eaLzeK0 ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun getUnrestrictBoostsCount ()Ljava/lang/Integer;
+	public fun getUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isAggressiveAntiSpamEnabled ()Z
+	public fun isDirectMessages ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -16681,6 +16870,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedChat;)Z
 }
 
 public abstract class dev/inmo/tgbotapi/types/chat/ExtendedChatSerializer : kotlinx/serialization/KSerializer {
@@ -16718,6 +16908,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername$Compani
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedForumChat : dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat, dev/inmo/tgbotapi/types/chat/ForumChat {
@@ -16730,6 +16921,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedForumChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedForumChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedForumChat {
@@ -16801,6 +16993,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedForumChatImpl : dev/inmo
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun isAggressiveAntiSpamEnabled ()Z
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -16830,6 +17023,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedGroupChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedGroupChat {
@@ -16878,6 +17072,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedGroupChatImpl : dev/inmo
 	public fun getStatusEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -16908,6 +17103,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedNonBotChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedNonBotChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat : dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername, dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
@@ -16930,6 +17126,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$Companion {
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$DefaultImpls {
 	public static fun getAllowCreateUserIdLink (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat;)Z
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat {
@@ -16987,6 +17184,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public fun getStatusEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17016,6 +17214,7 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPublicChat 
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPublicChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedPublicChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedPublicChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat : dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername, dev/inmo/tgbotapi/types/chat/ExtendedGroupChat, dev/inmo/tgbotapi/types/chat/SupergroupChat {
@@ -17038,6 +17237,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat$Companion
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat$DefaultImpls {
 	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat {
@@ -17110,6 +17310,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl : dev
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun isAggressiveAntiSpamEnabled ()Z
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17136,6 +17337,10 @@ public final class dev/inmo/tgbotapi/types/chat/ForumChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/ForumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ForumChat;)Z
+}
+
 public final class dev/inmo/tgbotapi/types/chat/ForumChatImpl : dev/inmo/tgbotapi/types/chat/PreviewForumChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ForumChatImpl$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -17150,6 +17355,7 @@ public final class dev/inmo/tgbotapi/types/chat/ForumChatImpl : dev/inmo/tgbotap
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17176,6 +17382,10 @@ public final class dev/inmo/tgbotapi/types/chat/GroupChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/GroupChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/GroupChat;)Z
+}
+
 public final class dev/inmo/tgbotapi/types/chat/GroupChatImpl : dev/inmo/tgbotapi/types/chat/PreviewGroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/GroupChatImpl$Companion;
 	public synthetic fun <init> (JLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -17188,6 +17398,7 @@ public final class dev/inmo/tgbotapi/types/chat/GroupChatImpl : dev/inmo/tgbotap
 	public fun getId-tHkBKVM ()J
 	public fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17215,6 +17426,10 @@ public final class dev/inmo/tgbotapi/types/chat/PossiblyPremiumChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PossiblyPremiumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PossiblyPremiumChat;)Z
+}
+
 public abstract class dev/inmo/tgbotapi/types/chat/PreviewBot : dev/inmo/tgbotapi/types/chat/PreviewUser {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewBot$Companion;
 }
@@ -17231,6 +17446,10 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewBusinessChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewBusinessChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewChannelChat : dev/inmo/tgbotapi/types/chat/ChannelChat, dev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat$Companion;
 }
@@ -17239,12 +17458,32 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewChannelChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewChannelChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;)Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/PreviewForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewChat : dev/inmo/tgbotapi/types/chat/Chat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewChat$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewChatSerializer : kotlinx/serialization/KSerializer {
@@ -17264,12 +17503,20 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewForumChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewForumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewGroupChat : dev/inmo/tgbotapi/types/chat/GroupChat, dev/inmo/tgbotapi/types/chat/PreviewPublicChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewGroupChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewGroupChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat : dev/inmo/tgbotapi/types/chat/PreviewUsernameChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
@@ -17280,12 +17527,20 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPublicChat : dev/inmo/tgbotapi/types/chat/PreviewChat, dev/inmo/tgbotapi/types/chat/PublicChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewPublicChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewPublicChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat : dev/inmo/tgbotapi/types/chat/PreviewPublicChat, dev/inmo/tgbotapi/types/chat/PreviewUsernameChat, dev/inmo/tgbotapi/types/chat/SuperPublicChat {
@@ -17296,12 +17551,20 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat : dev/inmo/tgbotapi/types/chat/PreviewGroupChat, dev/inmo/tgbotapi/types/chat/PreviewSuperPublicChat, dev/inmo/tgbotapi/types/chat/SupergroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewSupergroupChat$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewSupergroupChat;)Z
 }
 
 public abstract class dev/inmo/tgbotapi/types/chat/PreviewUser : dev/inmo/tgbotapi/types/chat/User, dev/inmo/tgbotapi/types/chat/PreviewPrivateChat {
@@ -17320,6 +17583,10 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewUsernameChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PreviewUsernameChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewUsernameChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PrivateChat : dev/inmo/tgbotapi/types/chat/Chat, dev/inmo/tgbotapi/types/chat/UsernameChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PrivateChat$Companion;
 	public abstract fun getFirstName ()Ljava/lang/String;
@@ -17329,6 +17596,10 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/PrivateChat : dev/i
 
 public final class dev/inmo/tgbotapi/types/chat/PrivateChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PrivateChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/PrivateChatImpl : dev/inmo/tgbotapi/types/chat/PreviewPrivateChat {
@@ -17348,6 +17619,7 @@ public final class dev/inmo/tgbotapi/types/chat/PrivateChatImpl : dev/inmo/tgbot
 	public fun getLastName ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17375,6 +17647,10 @@ public final class dev/inmo/tgbotapi/types/chat/PublicChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/PublicChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PublicChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/SuperPublicChat : dev/inmo/tgbotapi/types/chat/PublicChat, dev/inmo/tgbotapi/types/chat/UsernameChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/SuperPublicChat$Companion;
 }
@@ -17383,12 +17659,20 @@ public final class dev/inmo/tgbotapi/types/chat/SuperPublicChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/chat/SuperPublicChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/SupergroupChat : dev/inmo/tgbotapi/types/chat/GroupChat, dev/inmo/tgbotapi/types/chat/SuperPublicChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/SupergroupChat$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/SupergroupChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/SupergroupChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/SupergroupChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/SupergroupChatImpl : dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat {
@@ -17406,6 +17690,7 @@ public final class dev/inmo/tgbotapi/types/chat/SupergroupChatImpl : dev/inmo/tg
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17436,6 +17721,7 @@ public final class dev/inmo/tgbotapi/types/chat/UnknownChatType : dev/inmo/tgbot
 	public final fun getRaw ()Ljava/lang/String;
 	public final fun getRawJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -17459,11 +17745,13 @@ public final class dev/inmo/tgbotapi/types/chat/UnknownExtendedChat : dev/inmo/t
 	public final fun getRaw ()Ljava/lang/String;
 	public final fun getRawJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun hashCode ()I
+	public fun isDirectMessages ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
 public abstract class dev/inmo/tgbotapi/types/chat/User : dev/inmo/tgbotapi/types/chat/PrivateChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/User$Companion;
+	public fun isDirectMessages ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/User$Companion {
@@ -17486,6 +17774,10 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/UsernameChat : dev/
 
 public final class dev/inmo/tgbotapi/types/chat/UsernameChat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/UsernameChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/UsernameChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMember : dev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights, dev/inmo/tgbotapi/types/chat/member/SpecialRightsChatMember {
@@ -21847,243 +22139,6 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/ProximityAlertTrig
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApprovalFailed$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun copy (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostApproved$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined$Companion;
-	public fun <init> ()V
-	public fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getComment ()Ljava/lang/String;
-	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostDeclined$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent, dev/inmo/tgbotapi/types/payments/abstracts/Currencied {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Companion;
-	public abstract fun getAmount ()Ljava/lang/Long;
-	public abstract fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public abstract fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Companion : kotlinx/serialization/KSerializer {
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other : dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;)V
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun component3 ()Ljava/lang/Long;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()Ljava/lang/Long;
-	public fun getCurrency ()Ljava/lang/String;
-	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$Other$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON : dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON$Companion;
-	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/Message;)V
-	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/Message;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()J
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON;JLdev/inmo/tgbotapi/types/message/abstracts/Message;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()Ljava/lang/Long;
-	public fun getCurrency ()Ljava/lang/String;
-	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$TON$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR : dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getAmount ()Ljava/lang/Long;
-	public fun getCurrency ()Ljava/lang/String;
-	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
-	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostPaid$XTR$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)V
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/Message;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getReason ()Ljava/lang/String;
-	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/SuggestedPostRefunded$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class dev/inmo/tgbotapi/types/message/ChatEvents/SupergroupChatCreated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/SupergroupEvent {
 	public fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)V
 	public final fun getMigratedFrom ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
@@ -22129,7 +22184,7 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/WebAppData$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/SupergroupEvent {
+public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent {
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent {
@@ -22317,6 +22372,346 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/WriteAccessA
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun copy (Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApprovalFailed$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun copy (Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostApproved$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined$Companion;
+	public fun <init> ()V
+	public fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComment ()Ljava/lang/String;
+	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostDeclined$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun copy (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
+	public final fun getSendDate ()Ljava/lang/Integer;
+	public final fun getState ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Approved : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Approved;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Declined : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Declined;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Pending : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Pending;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-57SlJoE (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-3OyYRwk (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent, dev/inmo/tgbotapi/types/payments/abstracts/Currencied {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Companion;
+	public abstract fun getAmount ()Ljava/lang/Long;
+	public abstract fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public abstract fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAmount ()Ljava/lang/Long;
+	public fun getCurrency ()Ljava/lang/String;
+	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$Other$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON$Companion;
+	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON;JLdev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAmount ()Ljava/lang/Long;
+	public fun getCurrency ()Ljava/lang/String;
+	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$TON$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR : dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun copy (Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR;Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAmount ()Ljava/lang/Long;
+	public fun getCurrency ()Ljava/lang/String;
+	public fun getStarAmount ()Ldev/inmo/tgbotapi/types/payments/stars/StarAmount;
+	public fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostPaid$XTR$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getSuggestedPostMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostRefunded$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/message/ChatEvents/voice/VideoChatEnded : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/VideoChatEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/voice/VideoChatEnded$Companion;
 	public fun <init> (I)V
@@ -22404,6 +22799,87 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/voice/VideoChatSch
 public final class dev/inmo/tgbotapi/types/message/ChatEvents/voice/VideoChatStarted : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/VideoChatEvent {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/voice/VideoChatStarted;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage {
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/Integer;
+	public final fun component15 ()Z
+	public final fun component16 ()Ljava/lang/Integer;
+	public final fun component2-APLFQys ()J
+	public final fun component3-hDmiKeI ()J
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component5-Wg0KzQs ()D
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public final fun component8 ()Z
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public final fun copy-_c83v58 (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesContentMessageImpl;
+	public static synthetic fun copy-_c83v58$default (Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesContentMessageImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
+	public fun getContent ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getDate-Wg0KzQs ()D
+	public fun getEditDate-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public fun getForwardInfo ()Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getForwardable ()Z
+	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun getFromOffline ()Z
+	public fun getHasProtectedContent ()Z
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public fun getReplyTo ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun getSenderBoostsCount ()Ljava/lang/Integer;
+	public fun getSenderBot ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public fun getThreadCreatingInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
+	public fun getThreadId-hDmiKeI ()J
+	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesEventMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage {
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent;DLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-APLFQys ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent;
+	public final fun component5-Wg0KzQs ()D
+	public final fun copy-Bh39gk8 (JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent;D)Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesEventMessage;
+	public static synthetic fun copy-Bh39gk8$default (Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesEventMessage;JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent;DILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonChannelDirectMessagesEventMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public fun getChatEvent ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent;
+	public synthetic fun getChatEvent ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;
+	public fun getDate-Wg0KzQs ()D
+	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage {
@@ -22699,6 +23175,63 @@ public final class dev/inmo/tgbotapi/types/message/ForwardInfo$PublicChat$SentBy
 public final class dev/inmo/tgbotapi/types/message/ForwardInfoKt {
 	public static final fun forwardInfo (Ldev/inmo/tgbotapi/types/message/MessageOrigin;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
 	public static final fun messageOrigin (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+}
+
+public final class dev/inmo/tgbotapi/types/message/FromChannelChannelDirectMessagesContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage {
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14-CsYhHCU ()Ljava/lang/String;
+	public final fun component15 ()Z
+	public final fun component16 ()Ljava/lang/Integer;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public final fun component3-APLFQys ()J
+	public final fun component4-hDmiKeI ()J
+	public final fun component5-Wg0KzQs ()D
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public final fun component8 ()Z
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public final fun copy-T1kMFck (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/FromChannelChannelDirectMessagesContentMessageImpl;
+	public static synthetic fun copy-T1kMFck$default (Ldev/inmo/tgbotapi/types/message/FromChannelChannelDirectMessagesContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/FromChannelChannelDirectMessagesContentMessageImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthorSignature ()Ljava/lang/String;
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChannel ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
+	public fun getContent ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getDate-Wg0KzQs ()D
+	public fun getEditDate-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public fun getForwardInfo ()Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getForwardable ()Z
+	public fun getFromOffline ()Z
+	public fun getHasProtectedContent ()Z
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public fun getReplyTo ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun getSenderBot ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public fun getSenderChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public synthetic fun getSenderChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public fun getThreadCreatingInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
+	public fun getThreadId-hDmiKeI ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/FromChannelForumContentMessage {
@@ -23127,109 +23660,6 @@ public final class dev/inmo/tgbotapi/types/message/RawMessageEntityKt {
 	public static synthetic fun toRawMessageEntities$default (Ljava/util/List;IILjava/lang/Object;)Ljava/util/List;
 }
 
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun component3 ()Ljava/lang/Integer;
-	public final fun copy (Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo;Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getPrice ()Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;
-	public final fun getSendDate ()Ljava/lang/Integer;
-	public final fun getState ()Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Companion;
-	public abstract fun getName ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Approved : dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Approved;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Companion : kotlinx/serialization/KSerializer {
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Declined : dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Declined;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Pending : dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Pending;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown : dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State {
-	public static final field Companion Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown$Companion;
-	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown;
-	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
-	public fun equals (Ljava/lang/Object;)Z
-	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
-	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
-	public fun getName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public static fun hashCode-impl (Ljava/lang/String;)I
-	public fun toString ()Ljava/lang/String;
-	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
-	public final synthetic fun unbox-impl ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize-FPA7VNI (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize-4zEyElE (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/message/SuggestedPostInfo$State$Unknown$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public final class dev/inmo/tgbotapi/types/message/SuggestedPostParameters {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters$Companion;
 	public fun <init> ()V
@@ -23380,6 +23810,29 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelContentMessa
 	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyTopicMessage {
+	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getThreadCreatingInfo (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage {
+	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage;)Ljava/lang/String;
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage;)Lkotlin/Triple;
+	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage;)Ldev/inmo/tgbotapi/types/chat/User;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage : dev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage {
 	public abstract fun getChatEvent ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;
 }
@@ -23387,6 +23840,19 @@ public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChatEv
 public final class dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage$DefaultImpls {
 	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage;)Ljava/lang/String;
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage;)Lkotlin/Triple;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getThreadCreatingInfo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
@@ -23462,6 +23928,19 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage;)Lkotlin/Triple;
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public static fun getThreadCreatingInfo (Ldev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage {
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getSenderChat (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public static fun getThreadCreatingInfo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromChannelForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage {

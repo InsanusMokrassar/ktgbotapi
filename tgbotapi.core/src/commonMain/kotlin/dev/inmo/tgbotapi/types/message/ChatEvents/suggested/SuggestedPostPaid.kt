@@ -1,13 +1,11 @@
-package dev.inmo.tgbotapi.types.message.ChatEvents
+package dev.inmo.tgbotapi.types.message.ChatEvents.suggested
 
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.payments.stars.StarAmount
 import dev.inmo.tgbotapi.types.suggestedPostMessageField
 import dev.inmo.tgbotapi.types.currencyField
 import dev.inmo.tgbotapi.types.amountField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
-import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currencied
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
@@ -26,7 +24,7 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
     val amount: Long?
     val starAmount: StarAmount?
-    val suggestedPostMessage: Message?
+    val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>?
 
     @Serializable
     data class XTR(
@@ -34,7 +32,7 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
         override val starAmount: StarAmount,
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-        override val suggestedPostMessage: Message? = null,
+        override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,
     ) : SuggestedPostPaid {
         override val amount: Long?
             get() = null
@@ -47,7 +45,7 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
         override val amount: Long,
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-        override val suggestedPostMessage: Message? = null
+        override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null
     ) : SuggestedPostPaid {
         override val starAmount: StarAmount?
             get() = null
@@ -60,7 +58,7 @@ sealed interface SuggestedPostPaid : Currencied, ChannelDirectMessagesEvent {
         override val currency: Currency,
         @SerialName(suggestedPostMessageField)
         @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-        override val suggestedPostMessage: Message? = null,
+        override val suggestedPostMessage: ChannelDirectMessagesContentMessage<*>? = null,
         @SerialName(amountField)
         override val amount: Long? = null,
         @SerialName(starAmountField)

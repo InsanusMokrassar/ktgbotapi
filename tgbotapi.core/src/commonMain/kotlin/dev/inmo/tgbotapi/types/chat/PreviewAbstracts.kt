@@ -40,3 +40,7 @@ sealed interface PreviewSupergroupChat : PreviewGroupChat, PreviewSuperPublicCha
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)
 sealed interface PreviewForumChat : PreviewSupergroupChat, ForumChat
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(PreviewChatSerializer::class)
+sealed interface PreviewChannelDirectMessagesChat : PreviewForumChat, ChannelDirectMessagesChat
