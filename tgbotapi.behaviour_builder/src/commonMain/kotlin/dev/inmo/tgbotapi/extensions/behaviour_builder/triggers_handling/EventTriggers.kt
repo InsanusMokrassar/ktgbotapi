@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
-import dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
+import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
@@ -41,7 +41,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
-import dev.inmo.tgbotapi.types.payments.SuggestedPostPrice
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.UsersShared
@@ -1184,11 +1183,11 @@ fun <BC : BehaviourContext> BC.onChecklistTasksAdded(
  * data
  */
 fun <BC : BehaviourContext> BC.onChannelDirectMessagesConfigurationChanged(
-    initialFilter: SimpleFilter<ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>
+    initialFilter: SimpleFilter<ChannelEventMessage<DirectMessagesConfigurationChanged>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelEventMessage<DirectMessagesConfigurationChanged>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelEventMessage<DirectMessagesConfigurationChanged>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelEventMessage<DirectMessagesConfigurationChanged>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelEventMessage<DirectMessagesConfigurationChanged>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 

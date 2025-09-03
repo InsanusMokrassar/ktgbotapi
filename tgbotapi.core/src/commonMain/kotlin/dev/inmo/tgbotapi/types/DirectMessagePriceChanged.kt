@@ -8,33 +8,33 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
-@Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
-sealed interface ChannelDirectMessagesConfigurationChanged : ChannelEvent {
+@Serializable(DirectMessagesConfigurationChanged.Companion::class)
+sealed interface DirectMessagesConfigurationChanged : ChannelEvent {
     val enabled: Boolean
     val cost: Int?
-    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
-    data object Disabled : ChannelDirectMessagesConfigurationChanged {
+    @Serializable(DirectMessagesConfigurationChanged.Companion::class)
+    data object Disabled : DirectMessagesConfigurationChanged {
         override val enabled: Boolean
             get() = false
         override val cost: Int?
             get() = null
     }
-    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
-    data object Free : ChannelDirectMessagesConfigurationChanged {
+    @Serializable(DirectMessagesConfigurationChanged.Companion::class)
+    data object Free : DirectMessagesConfigurationChanged {
         override val enabled: Boolean
             get() = true
         override val cost: Int
             get() = 0
     }
-    @Serializable(ChannelDirectMessagesConfigurationChanged.Companion::class)
+    @Serializable(DirectMessagesConfigurationChanged.Companion::class)
     data class Paid(
         override val cost: Int
-    ) : ChannelDirectMessagesConfigurationChanged {
+    ) : DirectMessagesConfigurationChanged {
         override val enabled: Boolean
             get() = true
     }
 
-    companion object : KSerializer<ChannelDirectMessagesConfigurationChanged> {
+    companion object : KSerializer<DirectMessagesConfigurationChanged> {
         @Serializable
         private data class RawDirectMessagePriceChanged(
             val are_direct_messages_enabled: Boolean = false,
@@ -45,7 +45,7 @@ sealed interface ChannelDirectMessagesConfigurationChanged : ChannelEvent {
 
         override fun serialize(
             encoder: Encoder,
-            value: ChannelDirectMessagesConfigurationChanged
+            value: DirectMessagesConfigurationChanged
         ) {
             RawDirectMessagePriceChanged.serializer().serialize(
                 encoder,
@@ -56,7 +56,7 @@ sealed interface ChannelDirectMessagesConfigurationChanged : ChannelEvent {
             )
         }
 
-        override fun deserialize(decoder: Decoder): ChannelDirectMessagesConfigurationChanged {
+        override fun deserialize(decoder: Decoder): DirectMessagesConfigurationChanged {
             val raw = RawDirectMessagePriceChanged.serializer().deserialize(decoder)
 
             return when {

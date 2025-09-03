@@ -188,7 +188,7 @@ internal data class RawMessage(
     private val checklist_tasks_added: ChecklistTasksAdded? = null,
 
     // Channel direct messages
-    private val direct_message_price_changed: ChannelDirectMessagesConfigurationChanged? = null,
+    private val direct_message_price_changed: DirectMessagesConfigurationChanged? = null,
 
     //
     private val suggested_post_approved: SuggestedPostApproved? = null,
