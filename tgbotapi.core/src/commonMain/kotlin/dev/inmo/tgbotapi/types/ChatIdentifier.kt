@@ -93,6 +93,9 @@ value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, B
 val ChatIdentifier.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
+val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
+    get() = (this as? IdChatIdentifier) ?.directMessageThreadId
+
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 

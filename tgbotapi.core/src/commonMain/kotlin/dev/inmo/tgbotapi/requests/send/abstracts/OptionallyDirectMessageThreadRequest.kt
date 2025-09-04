@@ -2,6 +2,6 @@ package dev.inmo.tgbotapi.requests.send.abstracts
 
 import dev.inmo.tgbotapi.types.DirectMessageThreadId
 
-interface OptionallyChannelDirectMessageThreadRequest {
+interface OptionallyDirectMessageThreadRequest {
     val directMessageThreadId: DirectMessageThreadId?
 }

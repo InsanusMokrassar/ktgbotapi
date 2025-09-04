@@ -8,4 +8,4 @@ interface SendMessageRequest<T: Any> : SendChatMessageRequest<T>,
     ProtectContent,
     AllowPaidBroadcast,
     OptionallyMessageThreadRequest,
-    OptionallyChannelDirectMessageThreadRequest
+    OptionallyDirectMessageThreadRequest

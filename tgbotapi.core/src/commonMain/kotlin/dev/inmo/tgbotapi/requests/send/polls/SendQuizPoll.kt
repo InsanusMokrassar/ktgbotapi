@@ -13,6 +13,8 @@ import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
@@ -46,8 +48,14 @@ class SendQuizPoll internal constructor(
     override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
     override val closeDate: LongSeconds? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)

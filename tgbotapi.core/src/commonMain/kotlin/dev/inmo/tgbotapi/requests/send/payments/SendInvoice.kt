@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.payments.abstracts.XTR
+import dev.inmo.tgbotapi.types.threadId
 import kotlinx.serialization.*
 
 private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
@@ -61,10 +62,14 @@ data class SendInvoice(
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

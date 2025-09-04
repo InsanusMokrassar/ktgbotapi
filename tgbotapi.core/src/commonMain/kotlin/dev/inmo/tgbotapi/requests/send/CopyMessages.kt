@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -40,8 +41,14 @@ data class CopyMessages (
     val fromChatId: ChatIdentifier,
     @SerialName(messageIdsField)
     override val messageIds: List<MessageId>,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -52,6 +59,7 @@ data class CopyMessages (
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,
+    OptionallyDirectMessageThreadRequest,
     DisableNotification {
     override val chatId: ChatIdentifier
         get() = fromChatId
