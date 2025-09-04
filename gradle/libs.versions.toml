@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 kotlin-serialization = "1.9.0"
 kotlin-coroutines = "1.10.2"
 
@@ -8,12 +8,12 @@ javax-activation = "1.1.1"
 
 korlibs = "5.4.0"
 uuid = "0.8.4"
-ktor = "3.2.2"
+ktor = "3.2.3"
 
-ksp = "2.2.0-2.0.2"
+ksp = "2.2.10-2.0.2"
 kotlin-poet = "2.2.0"
 
-microutils = "0.26.2"
+microutils = "0.26.3"
 kslog = "1.5.0"
 
 versions = "0.52.0"
@@ -22,7 +22,7 @@ github-release-plugin = "2.5.2"
 dokka = "2.0.0"
 
 validator = "0.18.1"
-nmcp = "1.0.2"
+nmcp = "1.1.0"
 
 [libraries]
 

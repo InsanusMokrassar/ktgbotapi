@@ -2,6 +2,15 @@
 
 ## 29.0.0
 
+## 28.0.1
+
+* `Version`:
+    * `Kotlin`: `2.2.0` -> `2.2.10`
+    * `MicroUtils`: `0.26.2` -> `0.26.3`
+    * `Ktor`: `3.2.2` -> `3.2.3`
+* `Core`:
+    * Let all `OptionallyMessageThreadRequest` inheritors to use `@EncodeDefault` annotation to fix default value passing
+
 ## 28.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
