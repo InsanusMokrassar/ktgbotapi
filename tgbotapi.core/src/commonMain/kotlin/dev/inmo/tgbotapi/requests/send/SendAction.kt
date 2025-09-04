@@ -18,7 +18,9 @@ data class SendAction(
     override val chatId: ChatIdentifier,
     @SerialName(actionField)
     val action: BotAction,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId

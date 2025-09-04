@@ -139,8 +139,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val heading: Degrees? = null,
         @SerialName(proximityAlertRadiusField)
         override val proximityAlertRadius: Meters? = null,
-        @SerialName(messageThreadIdField)
         @OptIn(ExperimentalSerializationApi::class)
+        @SerialName(messageThreadIdField)
         @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
         @SerialName(businessConnectionIdField)

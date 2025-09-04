@@ -20,7 +20,9 @@ data class ForwardMessage(
     val toChatId: ChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageId,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(videoStartTimestampField)
     override val startTimestamp: Seconds? = null,

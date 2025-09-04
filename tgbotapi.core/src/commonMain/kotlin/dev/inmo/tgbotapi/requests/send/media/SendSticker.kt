@@ -58,7 +58,9 @@ data class SendStickerByFileId internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(stickerField)
     val sticker: InputFile,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

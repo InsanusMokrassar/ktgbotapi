@@ -74,7 +74,9 @@ data class SendVideoNoteData internal constructor(
     override val duration: Long? = null,
     @SerialName(lengthField)
     override val width: Int? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

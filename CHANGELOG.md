@@ -2,6 +2,9 @@
 
 ## 28.0.1
 
+* `Core`:
+  * Let all `OptionallyMessageThreadRequest` inheritors to use `@EncodeDefault` annotation to fix default value passing
+
 ## 28.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**

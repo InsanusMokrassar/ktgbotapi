@@ -40,7 +40,9 @@ data class CopyMessages (
     val fromChatId: ChatIdentifier,
     @SerialName(messageIdsField)
     override val messageIds: List<MessageId>,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,

@@ -24,7 +24,9 @@ data class SendContact(
     val firstName: String,
     @SerialName(lastNameField)
     val lastName: String? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

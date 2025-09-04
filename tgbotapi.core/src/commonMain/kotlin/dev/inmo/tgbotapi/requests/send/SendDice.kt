@@ -23,7 +23,9 @@ data class SendDice(
     override val chatId: ChatIdentifier,
     @SerialName(emojiField)
     val animationType: DiceAnimationType? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

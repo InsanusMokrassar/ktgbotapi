@@ -191,7 +191,9 @@ data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

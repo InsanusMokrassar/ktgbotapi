@@ -160,7 +160,9 @@ data class SendAnimationData internal constructor(
     override val width: Int? = null,
     @SerialName(heightField)
     override val height: Int? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
