@@ -89,7 +89,9 @@ data class SendTextMessage internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

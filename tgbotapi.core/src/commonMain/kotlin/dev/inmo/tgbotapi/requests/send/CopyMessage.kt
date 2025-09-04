@@ -160,7 +160,9 @@ data class CopyMessage internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(videoStartTimestampField)
     override val startTimestamp: Seconds? = null,

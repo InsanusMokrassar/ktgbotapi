@@ -126,7 +126,9 @@ data class SendVoiceData internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

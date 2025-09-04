@@ -149,7 +149,9 @@ data class SendAudioData internal constructor(
     override val performer: String? = null,
     @SerialName(titleField)
     override val title: String? = null,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
+    @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
