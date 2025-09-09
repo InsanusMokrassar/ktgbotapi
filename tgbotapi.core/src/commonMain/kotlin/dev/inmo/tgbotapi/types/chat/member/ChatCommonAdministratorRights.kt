@@ -35,5 +35,7 @@ data class ChatCommonAdministratorRights(
     @SerialName(canEditStoriesField)
     override val canEditStories: Boolean = false,
     @SerialName(canDeleteStoriesField)
-    override val canDeleteStories: Boolean = false
+    override val canDeleteStories: Boolean = false,
+    @SerialName(canManageDirectMessagesField)
+    override val canManageDirectMessages: Boolean = false,
 ) : ChatAdministratorRights

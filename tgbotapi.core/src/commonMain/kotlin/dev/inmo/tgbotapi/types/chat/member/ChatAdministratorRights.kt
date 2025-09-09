@@ -19,6 +19,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
     val canPostStories: Boolean
     val canEditStories: Boolean
     val canDeleteStories: Boolean
+    val canManageDirectMessages: Boolean
 
     companion object {
         operator fun invoke(
