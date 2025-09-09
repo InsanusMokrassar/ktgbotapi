@@ -648,6 +648,7 @@ const val mainFrameTimestampField = "main_frame_timestamp"
 
 const val paidMessageStarCountField = "paid_message_star_count"
 const val paidStarCountField = "paid_star_count"
+const val isPaidPostField = "is_paid_post"
 
 const val disableEditMessageField = "disable_edit_message"
 const val scoreField = "score"

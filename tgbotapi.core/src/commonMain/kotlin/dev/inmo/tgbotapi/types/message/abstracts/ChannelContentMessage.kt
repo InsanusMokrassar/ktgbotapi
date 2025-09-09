@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 interface ChannelContentMessage<T: MessageContent> : PossiblySentViaBotCommonMessage<T>, SignedMessage, WithSenderChatMessage, OptionallyFromUserMessage {
     override val chat: PreviewChannelChat
+    val isPaidPost: Boolean
     override val from: User?
         get() = senderChat as? User
 }

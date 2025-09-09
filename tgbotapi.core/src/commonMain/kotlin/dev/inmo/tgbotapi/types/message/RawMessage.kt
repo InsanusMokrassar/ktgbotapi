@@ -189,6 +189,7 @@ internal data class RawMessage(
 
     // Channel direct messages
     private val direct_message_price_changed: DirectMessagesConfigurationChanged? = null,
+    private val is_paid_post: Boolean = false,
 
     //
     private val suggested_post_approved: SuggestedPostApproved? = null,
@@ -415,6 +416,7 @@ internal data class RawMessage(
                             mediaGroupId = media_group_id,
                             fromOffline = is_from_offline,
                             cost = paid_star_count,
+                            isPaidPost = is_paid_post,
                         )
                         is PreviewForumChat -> when(chat) {
                             is PreviewChannelDirectMessagesChat -> {
