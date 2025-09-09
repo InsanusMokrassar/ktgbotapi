@@ -727,6 +727,7 @@ const val starCountField = "star_count"
 const val upgradeStarCountField = "upgrade_star_count"
 const val payToUpgradeField = "pay_for_upgrade"
 const val paidMediaField = "paid_media"
+const val publisherChatField = "publisher_chat"
 
 const val centerColorField = "center_color"
 const val edgeColorField = "edge_color"
