@@ -400,24 +400,43 @@ internal data class RawMessage(
                 }
                 when (chat) {
                     is PreviewPublicChat -> when (chat) {
-                        is PreviewChannelChat -> ChannelContentMessageImpl(
-                            messageId = messageId,
-                            chat = chat,
-                            senderChat = checkedFrom ?: sender_chat ?: chat,
-                            content = content,
-                            date = date.asDate,
-                            editDate = edit_date?.asDate,
-                            hasProtectedContent = has_protected_content == true,
-                            forwardOrigin = forward_origin,
-                            replyInfo = replyInfo,
-                            replyMarkup = reply_markup,
-                            senderBot = via_bot,
-                            authorSignature = author_signature,
-                            mediaGroupId = media_group_id,
-                            fromOffline = is_from_offline,
-                            cost = paid_star_count,
-                            isPaidPost = is_paid_post,
-                        )
+                        is PreviewChannelChat -> if (is_paid_post) {
+                            ChannelContentMessageImpl(
+                                messageId = messageId,
+                                chat = chat,
+                                senderChat = checkedFrom ?: sender_chat ?: chat,
+                                content = content,
+                                date = date.asDate,
+                                editDate = edit_date?.asDate,
+                                hasProtectedContent = has_protected_content == true,
+                                forwardOrigin = forward_origin,
+                                replyInfo = replyInfo,
+                                replyMarkup = reply_markup,
+                                senderBot = via_bot,
+                                authorSignature = author_signature,
+                                mediaGroupId = media_group_id,
+                                fromOffline = is_from_offline,
+                                cost = paid_star_count,
+                            )
+                        } else {
+                            ChannelPaidPostImpl(
+                                messageId = messageId,
+                                chat = chat,
+                                senderChat = checkedFrom ?: sender_chat ?: chat,
+                                content = content,
+                                date = date.asDate,
+                                editDate = edit_date?.asDate,
+                                hasProtectedContent = has_protected_content == true,
+                                forwardOrigin = forward_origin,
+                                replyInfo = replyInfo,
+                                replyMarkup = reply_markup,
+                                senderBot = via_bot,
+                                authorSignature = author_signature,
+                                mediaGroupId = media_group_id,
+                                fromOffline = is_from_offline,
+                                cost = paid_star_count,
+                            )
+                        }
                         is PreviewForumChat -> when(chat) {
                             is PreviewChannelDirectMessagesChat -> {
                                 if (messageThreadId != null) {

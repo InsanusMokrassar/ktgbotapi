@@ -9,9 +9,10 @@ import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 
-data class ChannelContentMessageImpl<T: MessageContent>(
+data class ChannelPaidPostImpl<T: MessageContent>(
     override val messageId: MessageId,
     override val chat: PreviewChannelChat,
     override val senderChat: PreviewChat,
@@ -28,9 +29,10 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val fromOffline: Boolean,
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
-) : ChannelContentMessage<T> {
+) : ChannelPaidPost<T> {
     @SerialName(isPaidPostField)
-    override val isPaidPost: Boolean = false
+    @EncodeDefault
+    override val isPaidPost: Boolean = true
     constructor(
         messageId: MessageId,
         chat: PreviewChannelChat,
