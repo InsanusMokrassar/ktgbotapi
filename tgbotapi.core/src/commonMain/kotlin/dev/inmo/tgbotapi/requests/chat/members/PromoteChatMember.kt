@@ -106,7 +106,8 @@ fun PromoteChannelAdministrator(
     canManageChat: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
+    canManageDirectMessages: Boolean? = null,
 ) = PromoteChatMember(
     chatId = chatId,
     userId = userId,
@@ -125,7 +126,8 @@ fun PromoteChannelAdministrator(
     canManageTopics = null,
     canPostStories = canPostStories,
     canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
+    canDeleteStories = canDeleteStories,
+    canManageDirectMessages = canManageDirectMessages
 )
 
 fun PromoteSupergroupAdministrator(
