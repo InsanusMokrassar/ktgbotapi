@@ -87,6 +87,7 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         timeoutSeconds = timeoutSeconds,
         autoDisableWebhooks = autoDisableWebhooks,
         autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
-        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis,
+        exceptionsHandler = defaultExceptionsHandler
     )
 }
