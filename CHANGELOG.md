@@ -2,6 +2,9 @@
 
 ## 28.0.2
 
+* `Core`:
+  * Fix of [#1001](https://github.com/InsanusMokrassar/ktgbotapi/issues/1001)
+
 ## 28.0.1
 
 * `Version`:
