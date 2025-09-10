@@ -84,7 +84,7 @@ class DefaultKtorRequestsExecutor internal constructor(
 
                 when (e) {
                     is ClientRequestException -> {
-                        val exceptionResult = runCatching {
+                        val exceptionResult = runCatchingLogging(logger = Log) {
                             val content = e.response.bodyAsText()
                             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                             newRequestException(

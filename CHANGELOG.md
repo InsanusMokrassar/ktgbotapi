@@ -4,6 +4,7 @@
 
 * `Core`:
   * Fix of [#1001](https://github.com/InsanusMokrassar/ktgbotapi/issues/1001)
+  * Fix of [#1002](https://github.com/InsanusMokrassar/ktgbotapi/issues/1002)
 
 ## 28.0.1
 
