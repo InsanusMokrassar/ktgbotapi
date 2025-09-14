@@ -28,6 +28,7 @@ data class GameContent(
         chatId = chatId,
         gameShortName = game.title,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

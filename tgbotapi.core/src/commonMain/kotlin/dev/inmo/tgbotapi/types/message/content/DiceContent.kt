@@ -28,6 +28,7 @@ data class DiceContent(
         chatId = chatId,
         animationType = dice.animationType,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

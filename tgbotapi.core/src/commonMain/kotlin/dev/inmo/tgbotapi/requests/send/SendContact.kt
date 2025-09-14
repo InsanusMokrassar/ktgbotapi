@@ -66,6 +66,7 @@ data class SendContact(
         contact.firstName,
         contact.lastName,
         threadId,
+        null, // directMessageThreadId
         businessConnectionId,
         disableNotification,
         protectContent,

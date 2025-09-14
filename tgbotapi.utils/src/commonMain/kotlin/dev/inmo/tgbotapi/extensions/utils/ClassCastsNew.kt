@@ -21,14 +21,15 @@ import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.BackgroundFill
 import dev.inmo.tgbotapi.types.BackgroundType
 import dev.inmo.tgbotapi.types.BusinessChatId
-import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.ChatInviteLink
 import dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
+import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
@@ -308,6 +309,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
@@ -768,6 +770,12 @@ public inline fun OptionallyWithUser.channelDirectMessagesEventMessageOrThrow():
 
 public inline fun <T> OptionallyWithUser.ifChannelDirectMessagesEventMessage(block: (ChannelDirectMessagesEventMessage<ChannelDirectMessagesEvent>) -> T): T? = channelDirectMessagesEventMessageOrNull() ?.let(block)
 
+public inline fun OptionallyWithUser.channelPaidPostOrNull(): ChannelPaidPost<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.channelPaidPostOrThrow(): ChannelPaidPost<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifChannelPaidPost(block: (ChannelPaidPost<MessageContent>) -> T): T? = channelPaidPostOrNull() ?.let(block)
+
 public inline fun OptionallyWithUser.optionallyFromUserMessageOrNull(): OptionallyFromUserMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
 
 public inline fun OptionallyWithUser.optionallyFromUserMessageOrThrow(): OptionallyFromUserMessage = this as dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
@@ -1073,6 +1081,12 @@ public inline fun ChatIdentifier.chatIdWithThreadIdOrNull(): ChatIdWithThreadId?
 public inline fun ChatIdentifier.chatIdWithThreadIdOrThrow(): ChatIdWithThreadId = this as dev.inmo.tgbotapi.types.ChatIdWithThreadId
 
 public inline fun <T> ChatIdentifier.ifChatIdWithThreadId(block: (ChatIdWithThreadId) -> T): T? = chatIdWithThreadIdOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.chatIdWithChannelDirectMessageThreadIdOrNull(): ChatIdWithChannelDirectMessageThreadId? = this as? dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
+
+public inline fun ChatIdentifier.chatIdWithChannelDirectMessageThreadIdOrThrow(): ChatIdWithChannelDirectMessageThreadId = this as dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
+
+public inline fun <T> ChatIdentifier.ifChatIdWithChannelDirectMessageThreadId(block: (ChatIdWithChannelDirectMessageThreadId) -> T): T? = chatIdWithChannelDirectMessageThreadIdOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.businessChatIdOrNull(): BusinessChatId? = this as? dev.inmo.tgbotapi.types.BusinessChatId
 
@@ -2292,29 +2306,29 @@ public inline fun TelegramMedia.withCustomizableCaptionTelegramMediaOrThrow(): W
 
 public inline fun <T> TelegramMedia.ifWithCustomizableCaptionTelegramMedia(block: (WithCustomizableCaptionTelegramMedia) -> T): T? = withCustomizableCaptionTelegramMediaOrNull() ?.let(block)
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedOrNull(): DirectMessagesConfigurationChanged? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
+public inline fun ChatEvent.directMessagesConfigurationChangedOrNull(): DirectMessagesConfigurationChanged? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedOrThrow(): DirectMessagesConfigurationChanged = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
+public inline fun ChatEvent.directMessagesConfigurationChangedOrThrow(): DirectMessagesConfigurationChanged = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 
-public inline fun <T> ChatEvent.ifChannelDirectMessagesConfigurationChanged(block: (DirectMessagesConfigurationChanged) -> T): T? = channelDirectMessagesConfigurationChangedOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChanged(block: (DirectMessagesConfigurationChanged) -> T): T? = directMessagesConfigurationChangedOrNull() ?.let(block)
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedDisabledOrNull(): DirectMessagesConfigurationChanged.Disabled? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
+public inline fun ChatEvent.directMessagesConfigurationChangedDisabledOrNull(): DirectMessagesConfigurationChanged.Disabled? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedDisabledOrThrow(): DirectMessagesConfigurationChanged.Disabled = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
+public inline fun ChatEvent.directMessagesConfigurationChangedDisabledOrThrow(): DirectMessagesConfigurationChanged.Disabled = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
 
-public inline fun <T> ChatEvent.ifChannelDirectMessagesConfigurationChangedDisabled(block: (DirectMessagesConfigurationChanged.Disabled) -> T): T? = channelDirectMessagesConfigurationChangedDisabledOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedDisabled(block: (DirectMessagesConfigurationChanged.Disabled) -> T): T? = directMessagesConfigurationChangedDisabledOrNull() ?.let(block)
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedFreeOrNull(): DirectMessagesConfigurationChanged.Free? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
+public inline fun ChatEvent.directMessagesConfigurationChangedFreeOrNull(): DirectMessagesConfigurationChanged.Free? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedFreeOrThrow(): DirectMessagesConfigurationChanged.Free = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
+public inline fun ChatEvent.directMessagesConfigurationChangedFreeOrThrow(): DirectMessagesConfigurationChanged.Free = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
 
-public inline fun <T> ChatEvent.ifChannelDirectMessagesConfigurationChangedFree(block: (DirectMessagesConfigurationChanged.Free) -> T): T? = channelDirectMessagesConfigurationChangedFreeOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedFree(block: (DirectMessagesConfigurationChanged.Free) -> T): T? = directMessagesConfigurationChangedFreeOrNull() ?.let(block)
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedPaidOrNull(): DirectMessagesConfigurationChanged.Paid? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
+public inline fun ChatEvent.directMessagesConfigurationChangedPaidOrNull(): DirectMessagesConfigurationChanged.Paid? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
 
-public inline fun ChatEvent.channelDirectMessagesConfigurationChangedPaidOrThrow(): DirectMessagesConfigurationChanged.Paid = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
+public inline fun ChatEvent.directMessagesConfigurationChangedPaidOrThrow(): DirectMessagesConfigurationChanged.Paid = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
 
-public inline fun <T> ChatEvent.ifChannelDirectMessagesConfigurationChangedPaid(block: (DirectMessagesConfigurationChanged.Paid) -> T): T? = channelDirectMessagesConfigurationChangedPaidOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedPaid(block: (DirectMessagesConfigurationChanged.Paid) -> T): T? = directMessagesConfigurationChangedPaidOrNull() ?.let(block)
 
 public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceChanged? = this as? dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 
@@ -2819,6 +2833,12 @@ public inline fun Message.channelDirectMessagesEventMessageOrNull(): ChannelDire
 public inline fun Message.channelDirectMessagesEventMessageOrThrow(): ChannelDirectMessagesEventMessage<ChannelDirectMessagesEvent> = this as dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent>
 
 public inline fun <T> Message.ifChannelDirectMessagesEventMessage(block: (ChannelDirectMessagesEventMessage<ChannelDirectMessagesEvent>) -> T): T? = channelDirectMessagesEventMessageOrNull() ?.let(block)
+
+public inline fun Message.channelPaidPostOrNull(): ChannelPaidPost<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.channelPaidPostOrThrow(): ChannelPaidPost<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifChannelPaidPost(block: (ChannelPaidPost<MessageContent>) -> T): T? = channelPaidPostOrNull() ?.let(block)
 
 public inline fun Message.chatEventMessageOrNull(): ChatEventMessage<ChatEvent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent>
 

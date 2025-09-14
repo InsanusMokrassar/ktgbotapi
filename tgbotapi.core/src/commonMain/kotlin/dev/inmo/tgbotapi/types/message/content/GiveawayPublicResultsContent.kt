@@ -30,6 +30,7 @@ data class GiveawayPublicResultsContent(
             toChatId = chatId,
             messageId = giveaway.messageId,
             threadId = messageThreadId,
+            directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent
         )

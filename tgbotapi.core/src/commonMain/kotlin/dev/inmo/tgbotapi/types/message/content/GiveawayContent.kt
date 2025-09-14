@@ -33,6 +33,7 @@ data class GiveawayContent(
             toChatId = chatId,
             messageId = messageId,
             threadId = messageThreadId,
+            directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent
         )
