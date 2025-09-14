@@ -2619,7 +2619,7 @@ public suspend fun TelegramBot.reply(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 )
 

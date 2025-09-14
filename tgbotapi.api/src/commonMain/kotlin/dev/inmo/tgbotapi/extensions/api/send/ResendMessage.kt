@@ -30,7 +30,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 ) as ContentMessage<T>
 

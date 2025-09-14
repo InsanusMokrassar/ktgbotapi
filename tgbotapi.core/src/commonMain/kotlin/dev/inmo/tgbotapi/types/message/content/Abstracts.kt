@@ -150,6 +150,7 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
@@ -162,6 +163,7 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
@@ -173,6 +175,7 @@ sealed interface ResendableContent {
     ): Request<out AccessibleMessage> = createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -185,6 +188,6 @@ sealed interface ResendableContent {
                 allowSendingWithoutReply = allowSendingWithoutReply
             )
         },
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }
