@@ -20,6 +20,7 @@ fun CopyMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -28,6 +29,7 @@ fun CopyMessages(
     fromChatId = fromChatId,
     messageIds = messageIds.toList(),
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
