@@ -33,6 +33,7 @@ data class TextContent(
         entities = textSources,
         linkPreviewOptions = linkPreviewOptions,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
