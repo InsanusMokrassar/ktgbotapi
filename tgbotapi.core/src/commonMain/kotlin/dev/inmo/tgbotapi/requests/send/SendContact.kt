@@ -53,6 +53,7 @@ data class SendContact(
         chatId: ChatIdentifier,
         contact: Contact,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
@@ -66,7 +67,7 @@ data class SendContact(
         contact.firstName,
         contact.lastName,
         threadId,
-        null, // directMessageThreadId
+        directMessageThreadId,
         businessConnectionId,
         disableNotification,
         protectContent,
