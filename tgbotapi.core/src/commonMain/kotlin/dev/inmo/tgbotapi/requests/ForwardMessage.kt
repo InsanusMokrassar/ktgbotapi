@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
@@ -24,13 +25,17 @@ data class ForwardMessage(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
     @SerialName(videoStartTimestampField)
     override val startTimestamp: Seconds? = null,
     @SerialName(disableNotificationField)
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false
-): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent, OptionallyMessageThreadRequest, WithCustomStartMediaData {
+): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent, OptionallyMessageThreadRequest, OptionallyDirectMessageThreadRequest, WithCustomStartMediaData {
     override val chatId: ChatIdentifier
         get() = fromChatId
 
