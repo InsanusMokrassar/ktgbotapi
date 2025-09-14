@@ -2,6 +2,12 @@
 
 ## 29.0.0
 
+## 28.0.2
+
+* `Core`:
+  * [#1001](https://github.com/InsanusMokrassar/ktgbotapi/issues/1001) - `[Bug] Invalid detection of isCausedByCancellation()`
+  * [#1002](https://github.com/InsanusMokrassar/ktgbotapi/issues/1002) - `Unable to handle UnauthorizedException with buildBehaviourWithLongPolling`
+
 ## 28.0.1
 
 * `Version`:
