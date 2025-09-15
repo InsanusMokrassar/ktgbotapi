@@ -30,7 +30,7 @@ data class SendDice(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)

@@ -28,7 +28,7 @@ data class ForwardMessage(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     @SerialName(videoStartTimestampField)
     override val startTimestamp: Seconds? = null,
     @SerialName(disableNotificationField)

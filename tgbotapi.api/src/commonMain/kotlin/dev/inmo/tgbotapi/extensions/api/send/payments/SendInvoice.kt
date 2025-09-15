@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.send.payments
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -9,7 +11,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
-import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -35,7 +36,7 @@ public suspend fun TelegramBot.sendInvoice(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -145,7 +146,7 @@ public suspend fun TelegramBot.sendInvoice(
     startParameter: StartParameter? = null,
     providerData: String? = null,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,

@@ -40,7 +40,7 @@ data class SendVenue(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -64,7 +64,7 @@ data class SendVenue(
         chatId: ChatIdentifier,
         venue: Venue,
         threadId: MessageThreadId? = chatId.threadId,
-        directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
@@ -103,7 +103,7 @@ data class SendVenue(
 fun Venue.toRequest(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,

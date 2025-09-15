@@ -21,7 +21,7 @@ fun SendVideoNote(
     duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -83,7 +83,7 @@ data class SendVideoNoteData internal constructor(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)

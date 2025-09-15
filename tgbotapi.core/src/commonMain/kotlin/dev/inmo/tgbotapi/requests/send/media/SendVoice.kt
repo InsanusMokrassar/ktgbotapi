@@ -28,7 +28,7 @@ fun SendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -72,7 +72,7 @@ fun SendVoice(
     voice: InputFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     duration: Long? = null,
     disableNotification: Boolean = false,
@@ -137,7 +137,7 @@ data class SendVoiceData internal constructor(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)

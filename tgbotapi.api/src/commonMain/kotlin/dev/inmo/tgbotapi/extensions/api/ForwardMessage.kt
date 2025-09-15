@@ -18,7 +18,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChatId: ChatIdentifier,
     messageId: MessageId,
     threadId: MessageThreadId? = toChatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
@@ -31,7 +31,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChatId: ChatIdentifier,
     messageId: MessageId,
     threadId: MessageThreadId? = toChatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
@@ -42,7 +42,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChat: Chat,
     messageId: MessageId,
     threadId: MessageThreadId? = toChat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChat.id.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChat.id.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
@@ -53,7 +53,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChat: Chat,
     messageId: MessageId,
     threadId: MessageThreadId? = toChat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChat.id.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChat.id.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
@@ -63,7 +63,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChatId: ChatIdentifier,
     message: AccessibleMessage,
     threadId: MessageThreadId? = toChatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
@@ -73,7 +73,7 @@ public suspend fun TelegramBot.forwardMessage(
     toChat: Chat,
     message: AccessibleMessage,
     threadId: MessageThreadId? = toChat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChat.id.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChat.id.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false

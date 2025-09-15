@@ -20,7 +20,7 @@ fun CopyMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -50,7 +50,7 @@ data class CopyMessages (
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = toChatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

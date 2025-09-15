@@ -35,7 +35,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -97,7 +97,7 @@ inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -127,7 +127,7 @@ inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -158,7 +158,7 @@ inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -206,7 +206,7 @@ data class SendMediaGroupData internal constructor(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)

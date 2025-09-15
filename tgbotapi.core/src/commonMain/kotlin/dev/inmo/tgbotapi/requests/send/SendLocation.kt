@@ -30,7 +30,7 @@ fun SendLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -58,7 +58,7 @@ fun SendStaticLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -90,7 +90,7 @@ fun SendLiveLocation(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -152,7 +152,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         @SerialName(directMessagesTopicIdField)
-        override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+        override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         @SerialName(businessConnectionIdField)
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
@@ -200,7 +200,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         @SerialName(directMessagesTopicIdField)
-        override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+        override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         @SerialName(businessConnectionIdField)
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
@@ -252,7 +252,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             @SerialName(messageThreadIdField)
             val threadId: MessageThreadId? = chatId.threadId,
             @SerialName(directMessagesTopicIdField)
-            val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+            val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
             @SerialName(businessConnectionIdField)
             val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
             @SerialName(disableNotificationField)

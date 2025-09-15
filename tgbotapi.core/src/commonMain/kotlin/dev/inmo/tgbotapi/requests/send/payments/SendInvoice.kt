@@ -69,7 +69,7 @@ data class SendInvoice(
     @OptIn(ExperimentalSerializationApi::class)
     @EncodeDefault
     @SerialName(directMessagesTopicIdField)
-    override val directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -118,7 +118,7 @@ data class SendInvoice(
         startParameter: StartParameter? = null,
         providerData: String? = null,
         threadId: MessageThreadId? = chatId.threadId,
-        directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
