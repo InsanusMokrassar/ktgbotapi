@@ -42,6 +42,7 @@ data class PhotoContent(
         showCaptionAboveMedia = showCaptionAboveMedia,
         spoilered = spoilered,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

@@ -39,6 +39,7 @@ data class DocumentContent(
         thumbnail = media.thumbnail ?.fileId,
         entities = textSources,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

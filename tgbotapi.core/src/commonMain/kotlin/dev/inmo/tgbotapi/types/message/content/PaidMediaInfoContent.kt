@@ -50,6 +50,7 @@ data class PaidMediaInfoContent(
         entities = textSources,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

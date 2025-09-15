@@ -83,6 +83,7 @@ data class ChannelDirectMessagesChatImpl(
     @SerialName(usernameField)
     override val username: Username? = null
 ) : PreviewChannelDirectMessagesChat {
+    @Suppress("OPT_IN_USAGE")
     @SerialName(isDirectMessagesField)
     @EncodeDefault
     override val isDirectMessages: Boolean = true

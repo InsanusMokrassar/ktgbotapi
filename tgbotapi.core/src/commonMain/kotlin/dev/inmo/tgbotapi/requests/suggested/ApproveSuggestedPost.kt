@@ -17,6 +17,7 @@ import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class ApproveSuggestedPost(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(chatIdField)
     @Serializable(ChatIdentifierSerializer::class)
     override val chatId: IdChatIdentifier,

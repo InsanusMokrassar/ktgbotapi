@@ -29,6 +29,7 @@ data class StickerContent(
         chatId = chatId,
         sticker = media.fileId,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

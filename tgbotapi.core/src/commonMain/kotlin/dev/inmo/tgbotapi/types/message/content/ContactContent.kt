@@ -27,6 +27,7 @@ data class ContactContent(
         chatId = chatId,
         contact = contact,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

@@ -118,7 +118,7 @@ data class SendInvoice(
         startParameter: StartParameter? = null,
         providerData: String? = null,
         threadId: MessageThreadId? = chatId.threadId,
-        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,

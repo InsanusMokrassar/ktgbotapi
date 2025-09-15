@@ -28,6 +28,7 @@ data class VenueContent(
         chatId = chatId,
         venue = venue,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

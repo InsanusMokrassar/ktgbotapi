@@ -39,6 +39,7 @@ data class AudioContent(
         performer = media.performer,
         title = media.title,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

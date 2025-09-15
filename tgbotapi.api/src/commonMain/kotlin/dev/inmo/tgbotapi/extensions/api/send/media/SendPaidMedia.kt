@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -25,6 +27,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -41,6 +44,7 @@ public suspend fun TelegramBot.sendPaidMedia(
         payload = payload,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -63,6 +67,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chat.id.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -78,6 +83,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -99,6 +105,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -114,6 +121,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
         payload = payload,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -135,6 +143,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chat.id.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -149,6 +158,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,

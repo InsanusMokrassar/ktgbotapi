@@ -18,7 +18,7 @@ fun SendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    directMessageThreadId: DirectMessageThreadId?,// = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     emoji: String? = null,
     disableNotification: Boolean = false,

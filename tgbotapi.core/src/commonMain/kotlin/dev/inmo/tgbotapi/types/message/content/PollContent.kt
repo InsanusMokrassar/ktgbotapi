@@ -27,6 +27,7 @@ data class PollContent(
     ): Request<ContentMessage<PollContent>> = poll.createRequest(
         chatId = chatId,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

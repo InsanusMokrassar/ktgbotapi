@@ -44,6 +44,7 @@ data class AnimationContent(
         width = media.width,
         height = media.height,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

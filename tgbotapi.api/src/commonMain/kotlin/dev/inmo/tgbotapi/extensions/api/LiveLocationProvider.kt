@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api
 
 import korlibs.time.DateTime
@@ -16,6 +18,7 @@ import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.utils.extensions.directMessageThreadIdOrNull
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
 import korlibs.time.millisecondsLong
@@ -96,6 +99,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -115,6 +119,7 @@ public suspend fun TelegramBot.startLiveLocation(
             heading = initHeading,
             proximityAlertRadius = initProximityAlertRadius,
             threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
             businessConnectionId = businessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
@@ -147,6 +152,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chat.id.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -164,6 +170,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading = initHeading,
     initProximityAlertRadius = initProximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -186,6 +193,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chatId.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -203,6 +211,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading = initHeading,
     initProximityAlertRadius = initProximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -225,6 +234,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = chat.id.directMessageThreadId*/,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -242,6 +252,7 @@ public suspend fun TelegramBot.startLiveLocation(
     initHeading = initHeading,
     initProximityAlertRadius = initProximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -265,6 +276,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = to.threadIdOrNull,
+    directMessageThreadId: DirectMessageThreadId? = to.directMessageThreadIdOrNull,
     businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -282,6 +294,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading = initHeading,
     initProximityAlertRadius = initProximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -304,6 +317,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = to.threadIdOrNull,
+    directMessageThreadId: DirectMessageThreadId? = to.directMessageThreadIdOrNull,
     businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -320,6 +334,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading = initHeading,
     initProximityAlertRadius = initProximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,

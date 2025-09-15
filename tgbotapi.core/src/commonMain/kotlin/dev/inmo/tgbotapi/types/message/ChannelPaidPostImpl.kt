@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 
 data class ChannelPaidPostImpl<T: MessageContent>(
@@ -30,6 +31,7 @@ data class ChannelPaidPostImpl<T: MessageContent>(
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
 ) : ChannelPaidPost<T> {
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isPaidPostField)
     @EncodeDefault
     override val isPaidPost: Boolean = true

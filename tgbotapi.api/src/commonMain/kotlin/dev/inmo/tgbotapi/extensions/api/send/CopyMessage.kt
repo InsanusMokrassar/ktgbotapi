@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -21,6 +23,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -36,6 +39,7 @@ public suspend inline fun TelegramBot.copyMessage(
         parseMode = parseMode,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         startTimestamp = startTimestamp,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -57,6 +61,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -71,6 +76,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -91,6 +97,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -105,6 +112,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -125,6 +133,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -139,6 +148,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -159,6 +169,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -173,6 +184,7 @@ public suspend inline fun TelegramBot.copyMessage(
         entities = entities,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         startTimestamp = startTimestamp,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -193,6 +205,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -206,6 +219,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -225,6 +239,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -238,6 +253,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -257,6 +273,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -270,6 +287,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -289,6 +307,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -303,6 +322,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -322,6 +342,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -336,6 +357,7 @@ public suspend inline fun TelegramBot.copyMessage(
     parseMode = parseMode,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -354,6 +376,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChatId.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -367,6 +390,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -385,6 +409,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId?/* = toChat.id.directMessageThreadId*/,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -398,6 +423,7 @@ public suspend inline fun TelegramBot.copyMessage(
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -405,256 +431,3 @@ public suspend inline fun TelegramBot.copyMessage(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChatId: ChatIdentifier,
-//    fromChatId: ChatIdentifier,
-//    messageId: MessageId,
-//    text: String? = null,
-//    parseMode: ParseMode? = null,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChatId.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = execute(
-//    CopyMessage(
-//        fromChatId,
-//        messageId,
-//        toChatId,
-//        text,
-//        parseMode,
-//        showCaptionAboveMedia,
-//        threadId,
-//        disableNotification,
-//        protectContent,
-//        allowPaidBroadcast,
-//        replyParameters,
-//        replyMarkup
-//    )
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChatId: ChatIdentifier,
-//    fromChat: Chat,
-//    messageId: MessageId,
-//    text: String? = null,
-//    parseMode: ParseMode? = null,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChatId.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChatId,
-//    fromChat.id,
-//    messageId,
-//    text,
-//    parseMode,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChat: Chat,
-//    fromChatId: ChatIdentifier,
-//    messageId: MessageId,
-//    text: String? = null,
-//    parseMode: ParseMode? = null,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChat.id.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChat.id,
-//    fromChatId,
-//    messageId,
-//    text,
-//    parseMode,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChat: Chat,
-//    fromChat: Chat,
-//    messageId: MessageId,
-//    text: String? = null,
-//    parseMode: ParseMode? = null,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChat.id.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChat.id,
-//    fromChat.id,
-//    messageId,
-//    text,
-//    parseMode,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)
-//
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChatId: ChatIdentifier,
-//    fromChatId: ChatIdentifier,
-//    messageId: MessageId,
-//    entities: TextSourcesList,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChatId.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = execute(
-//    CopyMessage(
-//        fromChatId,
-//        messageId,
-//        toChatId,
-//        entities,
-//        showCaptionAboveMedia,
-//        threadId,
-//        disableNotification,
-//        protectContent,
-//        allowPaidBroadcast,
-//        replyParameters,
-//        replyMarkup
-//    )
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChatId: ChatIdentifier,
-//    fromChat: Chat,
-//    messageId: MessageId,
-//    entities: TextSourcesList,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChatId.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChatId,
-//    fromChat.id,
-//    messageId,
-//    entities,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChat: Chat,
-//    fromChatId: ChatIdentifier,
-//    messageId: MessageId,
-//    entities: TextSourcesList,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChat.id.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChat.id,
-//    fromChatId,
-//    messageId,
-//    entities,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)
-//
-///**
-// * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
-// * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
-// */
-//public suspend inline fun TelegramBot.copyMessage(
-//    toChat: Chat,
-//    fromChat: Chat,
-//    messageId: MessageId,
-//    entities: TextSourcesList,
-//    showCaptionAboveMedia: Boolean = false,
-//    threadId: MessageThreadId? = toChat.id.threadId,
-//    disableNotification: Boolean = false,
-//    protectContent: Boolean = false,
-//    allowPaidBroadcast: Boolean = false,
-//    replyParameters: ReplyParameters? = null,
-//    replyMarkup: KeyboardMarkup? = null
-//): MessageId = copyMessage(
-//    toChat.id,
-//    fromChat.id,
-//    messageId,
-//    entities,
-//    showCaptionAboveMedia,
-//    threadId,
-//    disableNotification,
-//    protectContent,
-//    allowPaidBroadcast,
-//    replyParameters,
-//    replyMarkup
-//)

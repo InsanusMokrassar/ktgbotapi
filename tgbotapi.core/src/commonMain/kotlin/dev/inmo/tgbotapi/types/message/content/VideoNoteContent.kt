@@ -32,6 +32,7 @@ data class VideoNoteContent(
         duration = media.duration,
         size = media.width,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

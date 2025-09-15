@@ -46,6 +46,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         chatId = chatId,
         media = group.map { it.content.toMediaGroupMemberTelegramMedia() },
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

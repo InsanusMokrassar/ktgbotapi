@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -378,6 +379,7 @@ data class ExtendedChannelDirectMessagesChatImpl(
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : ExtendedChannelDirectMessagesChat {
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)
     @EncodeDefault
     override val isDirectMessages: Boolean = true

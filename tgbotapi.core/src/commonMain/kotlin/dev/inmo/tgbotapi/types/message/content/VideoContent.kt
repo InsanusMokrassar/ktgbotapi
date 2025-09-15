@@ -46,6 +46,7 @@ data class VideoContent(
         height = media.height,
         supportStreaming = null,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,

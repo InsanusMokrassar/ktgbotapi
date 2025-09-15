@@ -34,6 +34,7 @@ data class VoiceContent(
         voice = media.fileId,
         entities = textSources,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         duration = media.duration,
         disableNotification = disableNotification,
