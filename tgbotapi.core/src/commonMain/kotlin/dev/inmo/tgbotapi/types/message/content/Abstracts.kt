@@ -157,7 +157,7 @@ sealed interface ResendableContent {
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
-        suggestedPostParameters: SuggestedPostParameters? = null,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out AccessibleMessage>
@@ -171,7 +171,7 @@ sealed interface ResendableContent {
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
-        suggestedPostParameters: SuggestedPostParameters? = null,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null

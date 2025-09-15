@@ -54,6 +54,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
     )
 }

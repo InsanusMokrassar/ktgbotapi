@@ -42,7 +42,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null
 ): Request<ContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
@@ -106,7 +106,7 @@ inline fun SendPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null
 ) = SendMediaGroup<AudioContent>(
     chatId = chatId,
@@ -138,7 +138,7 @@ inline fun SendDocumentsGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null
 ) = SendMediaGroup<DocumentContent>(
     chatId = chatId,
@@ -171,6 +171,7 @@ inline fun SendVisualMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
 ) = SendMediaGroup<VisualMediaGroupPartContent>(
     chatId = chatId,
@@ -182,6 +183,7 @@ inline fun SendVisualMediaGroup(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -225,7 +227,7 @@ data class SendMediaGroupData internal constructor(
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
 ) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,

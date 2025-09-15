@@ -41,6 +41,7 @@ data class TextContent(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

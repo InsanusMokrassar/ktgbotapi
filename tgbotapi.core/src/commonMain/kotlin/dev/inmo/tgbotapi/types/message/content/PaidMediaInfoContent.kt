@@ -57,6 +57,7 @@ data class PaidMediaInfoContent(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

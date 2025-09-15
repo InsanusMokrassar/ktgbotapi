@@ -95,7 +95,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -129,7 +129,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -185,7 +185,7 @@ data class CopyMessage internal constructor(
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

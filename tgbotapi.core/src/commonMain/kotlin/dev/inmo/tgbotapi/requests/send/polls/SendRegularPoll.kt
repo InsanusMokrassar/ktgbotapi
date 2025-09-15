@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 
 @Serializable
-class SendRegularPoll private constructor(
+class SendRegularPoll constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(questionField)
@@ -63,7 +63,7 @@ class SendRegularPoll private constructor(
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -88,7 +88,7 @@ class SendRegularPoll private constructor(
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
-        suggestedPostParameters: SuggestedPostParameters? = null,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -131,7 +131,7 @@ class SendRegularPoll private constructor(
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
-        suggestedPostParameters: SuggestedPostParameters? = null,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -183,6 +183,7 @@ fun SendRegularPoll(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
@@ -202,6 +203,7 @@ fun SendRegularPoll(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -221,6 +223,7 @@ fun SendRegularPoll(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
@@ -239,6 +242,7 @@ fun SendRegularPoll(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -257,6 +261,7 @@ fun SendRegularPoll(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builder: EntitiesBuilderBody
@@ -275,6 +280,7 @@ fun SendRegularPoll(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

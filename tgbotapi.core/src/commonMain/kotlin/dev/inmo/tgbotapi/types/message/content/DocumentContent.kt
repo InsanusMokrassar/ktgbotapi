@@ -47,6 +47,7 @@ data class DocumentContent(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

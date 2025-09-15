@@ -37,7 +37,7 @@ fun SendLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -67,7 +67,7 @@ fun SendStaticLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -101,7 +101,7 @@ fun SendLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Live(
@@ -173,7 +173,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(suggestedPostParametersField)
-        override val suggestedPostParameters: SuggestedPostParameters? = null,
+        override val suggestedPostParameters: SuggestedPostParameters?,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -223,7 +223,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(suggestedPostParametersField)
-        override val suggestedPostParameters: SuggestedPostParameters? = null,
+        override val suggestedPostParameters: SuggestedPostParameters?,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -275,7 +275,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             @SerialName(messageEffectIdField)
             val effectId: EffectId? = null,
             @SerialName(suggestedPostParametersField)
-            val suggestedPostParameters: SuggestedPostParameters? = null,
+            val suggestedPostParameters: SuggestedPostParameters?,
             @SerialName(replyParametersField)
             val replyParameters: ReplyParameters? = null,
             @SerialName(replyMarkupField)

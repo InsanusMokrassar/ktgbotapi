@@ -40,7 +40,7 @@ fun SendAudio(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AudioContent>> {
@@ -94,7 +94,7 @@ fun SendAudio(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AudioContent>> {
@@ -176,7 +176,7 @@ data class SendAudioData internal constructor(
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

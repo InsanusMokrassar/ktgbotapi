@@ -122,6 +122,7 @@ data class LiveLocationContent(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -158,6 +159,7 @@ data class StaticLocationContent(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

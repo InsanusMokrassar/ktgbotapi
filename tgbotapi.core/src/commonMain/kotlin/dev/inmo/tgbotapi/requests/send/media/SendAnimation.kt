@@ -41,7 +41,7 @@ fun SendAnimation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
@@ -99,7 +99,7 @@ fun SendAnimation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
@@ -187,7 +187,7 @@ data class SendAnimationData internal constructor(
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

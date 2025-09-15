@@ -43,7 +43,7 @@ data class SendDice(
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
-    override val suggestedPostParameters: SuggestedPostParameters? = null,
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

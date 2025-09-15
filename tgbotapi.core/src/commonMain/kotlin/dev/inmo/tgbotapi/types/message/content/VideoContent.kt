@@ -54,6 +54,7 @@ data class VideoContent(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
