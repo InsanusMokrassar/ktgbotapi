@@ -37,6 +37,7 @@ fun SendLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -50,6 +51,7 @@ fun SendLocation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -65,6 +67,7 @@ fun SendStaticLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -78,6 +81,7 @@ fun SendStaticLocation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -97,6 +101,7 @@ fun SendLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Live(
@@ -114,6 +119,7 @@ fun SendLiveLocation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -167,7 +173,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(suggestedPostParametersField)
-        override val suggestedPostParameters: SuggestedPostParameters?,
+        override val suggestedPostParameters: SuggestedPostParameters? = null,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -217,7 +223,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
         @SerialName(suggestedPostParametersField)
-        override val suggestedPostParameters: SuggestedPostParameters?,
+        override val suggestedPostParameters: SuggestedPostParameters? = null,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -268,6 +274,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val allowPaidBroadcast: Boolean = false,
             @SerialName(messageEffectIdField)
             val effectId: EffectId? = null,
+            @SerialName(suggestedPostParametersField)
+            val suggestedPostParameters: SuggestedPostParameters? = null,
             @SerialName(replyParametersField)
             val replyParameters: ReplyParameters? = null,
             @SerialName(replyMarkupField)
@@ -292,6 +300,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
+                    suggestedPostParameters = surrogate.suggestedPostParameters,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
                 )
@@ -310,6 +319,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
+                    suggestedPostParameters = surrogate.suggestedPostParameters,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
                 )
@@ -333,6 +343,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     protectContent = protectContent,
                     allowPaidBroadcast = allowPaidBroadcast,
                     effectId = effectId,
+                    suggestedPostParameters = suggestedPostParameters,
                     replyParameters = replyParameters,
                     replyMarkup = replyMarkup
                 )
