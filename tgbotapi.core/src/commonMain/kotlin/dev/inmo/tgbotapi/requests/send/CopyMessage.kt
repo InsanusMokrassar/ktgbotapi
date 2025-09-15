@@ -180,6 +180,8 @@ data class CopyMessage internal constructor(
     override val protectContent: Boolean = false,
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters?,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
