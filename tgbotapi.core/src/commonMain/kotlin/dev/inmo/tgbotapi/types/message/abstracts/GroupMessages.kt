@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
+import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
@@ -22,9 +23,11 @@ sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T
         get() = (replyTo as? ChatEventMessage<*>) ?.chatEvent as? ForumTopicCreated
 }
 
-sealed interface ChannelDirectMessagesContentMessage<T : MessageContent> : ForumContentMessage<T>, PossiblyTopicMessage {
+sealed interface ChannelDirectMessagesContentMessage<T : MessageContent> : GroupContentMessage<T> {
     override val chat: PreviewChannelDirectMessagesChat
     val directMessageTopic: DirectMessagesTopic
+    val directMessageThreadId: DirectMessageThreadId
+        get() = directMessageTopic.threadId
 }
 
 sealed interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {

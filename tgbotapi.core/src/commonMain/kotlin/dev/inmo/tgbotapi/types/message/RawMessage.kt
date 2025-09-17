@@ -452,7 +452,6 @@ internal data class RawMessage(
                                             chat = actualForumChat,
                                             channel = sender_chat,
                                             messageId = messageId,
-                                            threadId = messageThreadId,
                                             date = date.asDate,
                                             directMessageTopic = direct_messages_topic ?: error("direct_messages_topic must be presented for FromChannelChannelDirectMessagesContentMessage"),
                                             forwardOrigin = forward_origin,
@@ -471,7 +470,6 @@ internal data class RawMessage(
                                         null -> CommonChannelDirectMessagesContentMessageImpl(
                                             chat = actualForumChat,
                                             messageId = messageId,
-                                            threadId = messageThreadId,
                                             from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
                                             date = date.asDate,
                                             directMessageTopic = direct_messages_topic ?: error("direct_messages_topic must be presented for CommonChannelDirectMessagesContentMessage"),
@@ -490,8 +488,8 @@ internal data class RawMessage(
                                     }
                                 } else {
                                     when (sender_chat) {
-                                        is PreviewChannelChat -> if (is_automatic_forward == true) {
-                                            ConnectedFromChannelGroupContentMessageImpl(
+                                        is PreviewChannelChat -> when {
+                                            is_automatic_forward == true -> ConnectedFromChannelGroupContentMessageImpl(
                                                 chat = chat,
                                                 channel = sender_chat,
                                                 messageId = messageId,
@@ -508,8 +506,32 @@ internal data class RawMessage(
                                                 fromOffline = is_from_offline,
                                                 cost = paid_star_count,
                                             )
-                                        } else {
-                                            UnconnectedFromChannelGroupContentMessageImpl(
+                                            direct_messages_topic != null -> CommonChannelDirectMessagesContentMessageImpl(
+                                                chat = when (chat) {
+                                                    is ChannelDirectMessagesChatImpl -> chat.copy(
+                                                        id = ChatIdWithChannelDirectMessageThreadId(
+                                                            chat.id.chatId,
+                                                            direct_messages_topic.threadId
+                                                        )
+                                                    )
+                                                },
+                                                messageId = messageId,
+                                                from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
+                                                date = date.asDate,
+                                                directMessageTopic = direct_messages_topic ?: error("direct_messages_topic must be presented for CommonChannelDirectMessagesContentMessage"),
+                                                forwardOrigin = forward_origin,
+                                                editDate = edit_date ?.asDate,
+                                                hasProtectedContent = has_protected_content == true,
+                                                replyInfo = replyInfo,
+                                                replyMarkup = reply_markup,
+                                                content = content,
+                                                senderBot = via_bot,
+                                                mediaGroupId = media_group_id,
+                                                senderBoostsCount = sender_boost_count,
+                                                fromOffline = is_from_offline,
+                                                cost = paid_star_count,
+                                            )
+                                            else -> UnconnectedFromChannelGroupContentMessageImpl(
                                                 chat = chat,
                                                 channel = sender_chat,
                                                 messageId = messageId,

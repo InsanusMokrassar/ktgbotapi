@@ -280,7 +280,6 @@ data class FromChannelChannelDirectMessagesContentMessageImpl<T: MessageContent>
     override val chat: PreviewChannelDirectMessagesChat,
     override val channel: PreviewChannelChat,
     override val messageId: MessageId,
-    override val threadId: MessageThreadId,
     override val date: DateTime,
     override val directMessageTopic: DirectMessagesTopic,
     override val forwardOrigin: MessageOrigin?,
@@ -300,7 +299,6 @@ data class FromChannelChannelDirectMessagesContentMessageImpl<T: MessageContent>
         chat: PreviewChannelDirectMessagesChat,
         channel: PreviewChannelChat,
         messageId: MessageId,
-        threadId: MessageThreadId,
         date: DateTime,
         directMessageTopic: DirectMessagesTopic,
         forwardInfo: ForwardInfo,
@@ -318,7 +316,6 @@ data class FromChannelChannelDirectMessagesContentMessageImpl<T: MessageContent>
         chat = chat,
         channel = channel,
         messageId = messageId,
-        threadId = threadId,
         date = date,
         directMessageTopic = directMessageTopic,
         forwardOrigin = forwardInfo.messageOrigin(),
@@ -448,7 +445,6 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
 data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
     override val chat: PreviewChannelDirectMessagesChat,
     override val messageId: MessageId,
-    override val threadId: MessageThreadId,
     override val from: User,
     override val date: DateTime,
     override val directMessageTopic: DirectMessagesTopic,
@@ -468,7 +464,6 @@ data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
     constructor(
         chat: PreviewChannelDirectMessagesChat,
         messageId: MessageId,
-        threadId: MessageThreadId,
         from: User,
         date: DateTime,
         directMessageTopic: DirectMessagesTopic,
@@ -486,7 +481,6 @@ data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
     ) : this(
         chat = chat,
         messageId = messageId,
-        threadId = threadId,
         from = from,
         date = date,
         directMessageTopic = directMessageTopic,

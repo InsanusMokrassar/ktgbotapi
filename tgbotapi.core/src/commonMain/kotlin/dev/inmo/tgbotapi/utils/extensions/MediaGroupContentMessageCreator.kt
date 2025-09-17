@@ -172,7 +172,6 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
         is CommonChannelDirectMessagesContentMessage -> CommonChannelDirectMessagesContentMessageImpl(
             chat = sourceMessage.chat,
             messageId = sourceMessage.messageId,
-            threadId = sourceMessage.threadId,
             from = sourceMessage.user,
             date = sourceMessage.date,
             directMessageTopic = sourceMessage.directMessageTopic,
@@ -211,7 +210,6 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             chat = sourceMessage.chat,
             channel = sourceMessage.channel,
             messageId = sourceMessage.messageId,
-            threadId = sourceMessage.threadId,
             date = sourceMessage.date,
             directMessageTopic = sourceMessage.directMessageTopic,
             forwardOrigin = sourceMessage.forwardOrigin,
