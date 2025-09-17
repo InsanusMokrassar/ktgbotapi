@@ -106,7 +106,7 @@ public suspend fun TelegramBot.startLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider {
@@ -161,7 +161,7 @@ public suspend fun TelegramBot.startLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -204,7 +204,7 @@ public suspend fun TelegramBot.startLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -247,7 +247,7 @@ public suspend fun TelegramBot.startLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -291,6 +291,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -309,6 +310,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
@@ -332,6 +334,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -349,6 +352,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )

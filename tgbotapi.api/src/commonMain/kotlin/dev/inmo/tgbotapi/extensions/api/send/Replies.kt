@@ -62,6 +62,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -77,6 +78,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -96,6 +98,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -109,6 +112,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -131,6 +135,7 @@ public suspend inline fun TelegramBot.replyWithDice(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -144,6 +149,7 @@ public suspend inline fun TelegramBot.replyWithDice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -163,6 +169,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -177,6 +184,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
@@ -290,6 +298,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -304,6 +313,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -323,6 +333,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -336,6 +347,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -360,6 +372,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -375,6 +388,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -395,10 +409,10 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
     entities = entities,
@@ -431,10 +445,10 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
     to = to,
@@ -448,10 +462,10 @@ public suspend fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup,
-    suggestedPostParameters = suggestedPostParameters
 )
 
 /**
@@ -470,10 +484,10 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
-    suggestedPostParameters: SuggestedPostParameters?,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
     to = to,
@@ -487,10 +501,10 @@ public suspend fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup,
-    suggestedPostParameters = suggestedPostParameters
 )
 
 
@@ -518,10 +532,10 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
     latitude = latitude,
@@ -539,6 +553,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -560,6 +575,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -580,6 +596,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -595,6 +612,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -608,6 +626,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -626,6 +645,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -639,6 +659,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -654,6 +675,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -667,6 +689,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -682,6 +705,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -696,6 +720,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
@@ -723,6 +748,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -744,6 +770,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -766,6 +793,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -786,6 +814,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -808,6 +837,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -828,6 +858,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -849,6 +880,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -868,6 +900,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -892,6 +925,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -911,6 +945,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -929,6 +964,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -945,6 +981,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -965,6 +1002,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -983,6 +1021,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1000,6 +1039,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1015,6 +1055,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1036,6 +1077,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -1053,6 +1095,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -1071,6 +1114,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -1087,6 +1131,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -1105,6 +1150,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -1121,6 +1167,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -1138,6 +1185,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -1153,6 +1201,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -1173,6 +1222,7 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
@@ -1185,6 +1235,7 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
@@ -1199,6 +1250,7 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
@@ -1211,6 +1263,7 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
@@ -1225,6 +1278,7 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
@@ -1237,6 +1291,7 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
@@ -1251,6 +1306,7 @@ public suspend inline fun TelegramBot.replyWithGallery(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
@@ -1263,6 +1319,7 @@ public suspend inline fun TelegramBot.replyWithGallery(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId)
 )
 
@@ -1284,6 +1341,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1301,6 +1359,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1320,6 +1379,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1337,6 +1397,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1356,6 +1417,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1373,6 +1435,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1392,6 +1455,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1408,6 +1472,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1426,6 +1491,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1442,6 +1508,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1460,6 +1527,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1476,6 +1544,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1495,6 +1564,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1509,6 +1579,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1525,6 +1596,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1539,6 +1611,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1565,6 +1638,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1586,6 +1660,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1605,6 +1680,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1622,6 +1698,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1644,6 +1721,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1664,6 +1742,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1682,6 +1761,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1698,6 +1778,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1719,6 +1800,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1735,6 +1817,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1750,6 +1833,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1763,6 +1847,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1784,6 +1869,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1800,6 +1886,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1817,6 +1904,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1832,6 +1920,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1850,6 +1939,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1865,6 +1955,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1881,6 +1972,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -1895,6 +1987,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1932,6 +2025,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -1960,6 +2054,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -1984,6 +2079,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -2001,6 +2097,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2026,6 +2123,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2045,6 +2143,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2067,6 +2166,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2086,6 +2186,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2107,6 +2208,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2125,6 +2227,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2146,6 +2249,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2164,6 +2268,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2187,6 +2292,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2208,6 +2314,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2233,6 +2340,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2254,6 +2362,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2276,6 +2385,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2296,6 +2406,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2320,6 +2431,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2340,6 +2452,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2362,6 +2475,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2382,6 +2496,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2406,6 +2521,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2426,6 +2542,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2447,6 +2564,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2466,6 +2584,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2489,6 +2608,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2508,6 +2628,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.chat.id, to.messageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2529,6 +2650,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2551,6 +2673,7 @@ public suspend inline fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         allowSendingWithoutReply = allowSendingWithoutReply,
         checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
@@ -2574,6 +2697,7 @@ public suspend inline fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         allowSendingWithoutReply = allowSendingWithoutReply,
         checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
@@ -2595,6 +2719,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2617,6 +2742,7 @@ public suspend inline fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         allowSendingWithoutReply = allowSendingWithoutReply,
         checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
@@ -2640,6 +2766,7 @@ public suspend inline fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         allowSendingWithoutReply = allowSendingWithoutReply,
         checklistTaskId = checklistTaskId,
         replyMarkup = replyMarkup
@@ -2660,6 +2787,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2675,6 +2803,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -2692,6 +2821,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2708,6 +2838,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
@@ -2725,6 +2856,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2741,6 +2873,7 @@ public suspend inline fun TelegramBot.reply(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
     replyMarkup = replyMarkup
@@ -2757,10 +2890,10 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null
 ): AccessibleMessage = execute(
     content.createResend(
         chatId = replyInChatId,
@@ -2771,9 +2904,9 @@ public suspend fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
         replyMarkup = replyMarkup,
-        suggestedPostParameters = suggestedPostParameters,
     )
 )
 
@@ -2794,6 +2927,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ): Unit = handleLiveLocation(
@@ -2807,6 +2941,7 @@ public suspend fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId)
 )
 
@@ -2829,6 +2964,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ) {
@@ -2843,6 +2979,7 @@ public suspend fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId)
     )
 }
@@ -2866,6 +3003,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
 ) {
@@ -2880,6 +3018,7 @@ public suspend fun TelegramBot.reply(
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId)
     )
 }
@@ -2895,6 +3034,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -2911,6 +3051,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -2926,6 +3067,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -2941,6 +3083,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -2956,6 +3099,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -2971,6 +3115,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -2986,6 +3131,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3001,6 +3147,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3016,6 +3163,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3031,6 +3179,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3051,6 +3200,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -3069,6 +3219,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3086,6 +3237,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3103,6 +3255,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3120,6 +3273,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3137,6 +3291,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3154,6 +3309,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3173,6 +3329,7 @@ public suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -3190,6 +3347,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3206,6 +3364,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3222,6 +3381,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3238,6 +3398,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3254,6 +3415,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3270,6 +3432,7 @@ public suspend fun TelegramBot.reply(
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             allowSendingWithoutReply = allowSendingWithoutReply,
             checklistTaskId = checklistTaskId,
             replyMarkup = replyMarkup
@@ -3290,6 +3453,7 @@ public suspend fun TelegramBot.reply(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -3307,6 +3471,7 @@ public suspend fun TelegramBot.reply(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        suggestedPostParameters = suggestedPostParameters,
         replyMarkup = replyMarkup,
         replyParameters = ReplyParameters(
             messageId = to.messageId,
@@ -3331,6 +3496,7 @@ public suspend fun TelegramBot.reply(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -3349,6 +3515,7 @@ public suspend fun TelegramBot.reply(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        suggestedPostParameters = suggestedPostParameters,
         replyMarkup = replyMarkup,
         replyParameters = ReplyParameters(
             messageId = to.messageId,
