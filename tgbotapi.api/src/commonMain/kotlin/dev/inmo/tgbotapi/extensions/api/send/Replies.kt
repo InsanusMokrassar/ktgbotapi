@@ -28,6 +28,7 @@ import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
@@ -396,7 +397,8 @@ public suspend inline fun TelegramBot.reply(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
     entities = entities,
@@ -408,6 +410,7 @@ public suspend inline fun TelegramBot.reply(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId),
     replyMarkup = replyMarkup
 )
@@ -431,6 +434,7 @@ public suspend fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
     to = to,
@@ -446,7 +450,8 @@ public suspend fun TelegramBot.reply(
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
+    suggestedPostParameters = suggestedPostParameters
 )
 
 /**
@@ -468,6 +473,7 @@ public suspend fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     builderBody: EntitiesBuilderBody
 ): ContentMessage<TextContent> = reply(
     to = to,
@@ -483,7 +489,8 @@ public suspend fun TelegramBot.reply(
     effectId = effectId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     checklistTaskId = checklistTaskId,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
+    suggestedPostParameters = suggestedPostParameters
 )
 
 
@@ -513,7 +520,8 @@ public suspend inline fun TelegramBot.reply(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
     latitude = latitude,
@@ -2751,7 +2759,8 @@ public suspend fun TelegramBot.reply(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null
 ): AccessibleMessage = execute(
     content.createResend(
         chatId = replyInChatId,
@@ -2764,6 +2773,7 @@ public suspend fun TelegramBot.reply(
         effectId = effectId,
         replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true, checklistTaskId = checklistTaskId),
         replyMarkup = replyMarkup,
+        suggestedPostParameters = suggestedPostParameters,
     )
 )
 

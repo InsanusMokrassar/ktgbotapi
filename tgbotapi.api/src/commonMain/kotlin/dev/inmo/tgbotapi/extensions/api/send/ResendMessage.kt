@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 
 /**
  * This method will send [content] to the [chatId] as is
@@ -23,7 +24,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<T> = execute(
     content.createResend(
         chatId = chatId,
@@ -36,6 +38,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
         effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup,
+        suggestedPostParameters = suggestedPostParameters,
     )
 ) as ContentMessage<T>
 

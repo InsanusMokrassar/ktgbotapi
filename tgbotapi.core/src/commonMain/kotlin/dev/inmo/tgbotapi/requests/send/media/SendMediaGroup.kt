@@ -171,7 +171,7 @@ inline fun SendVisualMediaGroup(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
+    suggestedPostParameters: SuggestedPostParameters?,
     replyParameters: ReplyParameters? = null,
 ) = SendMediaGroup<VisualMediaGroupPartContent>(
     chatId = chatId,
