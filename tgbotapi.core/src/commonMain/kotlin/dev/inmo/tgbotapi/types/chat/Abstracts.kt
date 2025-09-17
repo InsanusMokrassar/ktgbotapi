@@ -55,7 +55,7 @@ sealed interface ForumChat : SupergroupChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
-sealed interface ChannelDirectMessagesChat : ForumChat {
+sealed interface ChannelDirectMessagesChat : SupergroupChat {
     override val isDirectMessages: Boolean
         get() = true
 }

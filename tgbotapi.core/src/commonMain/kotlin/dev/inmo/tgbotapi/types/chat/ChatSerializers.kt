@@ -77,16 +77,17 @@ object ChatSerializer : KSerializer<Chat> {
         } catch (_: SerializationException) {
             val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
             val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+            val isDirectMessages = decodedJson[isDirectMessagesField] ?.jsonPrimitive ?.booleanOrNull == true
             val original = decodedJson[originField]
 
             when (type) {
                 ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
                 ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
                 ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-                ChatType.Supergroup -> if (isForum) {
-                    formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
-                } else {
-                    formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+                ChatType.Supergroup -> when {
+                    isForum -> formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
+                    isDirectMessages -> formatter.decodeFromJsonElement(ChannelDirectMessagesChatImpl.serializer(), decodedJson)
+                    else -> formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
                 }
                 ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
                 is ChatType.Unknown -> UnknownChatType(
@@ -131,11 +132,10 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
             ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
             ChatType.Supergroup -> {
-                @Suppress("SimplifyBooleanWithConstants")
                 when {
-                    isForum == false -> formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+                    isForum -> formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
                     isChannelDirectMessages -> formatter.decodeFromJsonElement(ChannelDirectMessagesChatImpl.serializer(), decodedJson)
-                    else -> formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
+                    else -> formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
                 }
             }
             ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
@@ -187,11 +187,10 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
             ChatType.Private -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
             ChatType.Group -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
             ChatType.Supergroup -> {
-                @Suppress("SimplifyBooleanWithConstants")
                 when {
-                    isForum == false -> formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+                    isForum -> formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
                     isChannelDirectMessages -> formatter.decodeFromJsonElement(ExtendedChannelDirectMessagesChatImpl.serializer(), decodedJson)
-                    else -> formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
+                    else -> formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
                 }
             }
             ChatType.Channel -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)

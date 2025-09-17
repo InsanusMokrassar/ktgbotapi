@@ -16167,7 +16167,7 @@ public final class dev/inmo/tgbotapi/types/chat/ChannelChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ForumChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/SupergroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat$Companion;
 	public fun isDirectMessages ()Z
 }
@@ -17028,7 +17028,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChannelChatImpl$Companio
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/ExtendedForumChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedChannelDirectMessagesChat$Companion;
 	public abstract fun getChannelChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 }
@@ -17742,7 +17742,7 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewChannelChat$DefaultImpls 
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;)Z
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/PreviewForumChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat : dev/inmo/tgbotapi/types/chat/ChannelDirectMessagesChat, dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat$Companion;
 }
 

@@ -116,7 +116,7 @@ sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)
-sealed interface ExtendedChannelDirectMessagesChat : ExtendedForumChat, ChannelDirectMessagesChat {
+sealed interface ExtendedChannelDirectMessagesChat : ExtendedSupergroupChat, ChannelDirectMessagesChat {
     val channelChat: PreviewChannelChat
 }
 
