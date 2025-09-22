@@ -289,7 +289,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
@@ -315,12 +314,14 @@ import dev.inmo.tgbotapi.types.message.abstracts.CommonChannelDirectMessagesCont
 import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromChannelSuggestedChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
@@ -340,6 +341,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContent
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
@@ -811,6 +813,12 @@ public inline fun OptionallyWithUser.commonChannelDirectMessagesContentMessageOr
 public inline fun OptionallyWithUser.commonChannelDirectMessagesContentMessageOrThrow(): CommonChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> OptionallyWithUser.ifCommonChannelDirectMessagesContentMessage(block: (CommonChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContentMessageOrNull(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContentMessageOrThrow(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifCommonSuggestedChannelDirectMessagesContentMessage(block: (CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonSuggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
@@ -2654,12 +2662,6 @@ public inline fun ChatEvent.suggestedPostDeclinedOrThrow(): SuggestedPostDecline
 
 public inline fun <T> ChatEvent.ifSuggestedPostDeclined(block: (SuggestedPostDeclined) -> T): T? = suggestedPostDeclinedOrNull() ?.let(block)
 
-public inline fun ChatEvent.suggestedPostInfoOrNull(): SuggestedPostInfo? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
-
-public inline fun ChatEvent.suggestedPostInfoOrThrow(): SuggestedPostInfo = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
-
-public inline fun <T> ChatEvent.ifSuggestedPostInfo(block: (SuggestedPostInfo) -> T): T? = suggestedPostInfoOrNull() ?.let(block)
-
 public inline fun ChatEvent.suggestedPostPaidOrNull(): SuggestedPostPaid? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
 
 public inline fun ChatEvent.suggestedPostPaidOrThrow(): SuggestedPostPaid = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
@@ -2900,6 +2902,12 @@ public inline fun Message.channelDirectMessagesContentMessageOrThrow(): ChannelD
 
 public inline fun <T> Message.ifChannelDirectMessagesContentMessage(block: (ChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = channelDirectMessagesContentMessageOrNull() ?.let(block)
 
+public inline fun Message.suggestedChannelDirectMessagesContentMessageOrNull(): SuggestedChannelDirectMessagesContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.suggestedChannelDirectMessagesContentMessageOrThrow(): SuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifSuggestedChannelDirectMessagesContentMessage(block: (SuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = suggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
 public inline fun Message.fromChannelGroupContentMessageOrNull(): FromChannelGroupContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun Message.fromChannelGroupContentMessageOrThrow(): FromChannelGroupContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -2942,6 +2950,12 @@ public inline fun Message.fromChannelChannelDirectMessagesContentMessageOrThrow(
 
 public inline fun <T> Message.ifFromChannelChannelDirectMessagesContentMessage(block: (FromChannelChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = fromChannelChannelDirectMessagesContentMessageOrNull() ?.let(block)
 
+public inline fun Message.fromChannelSuggestedChannelDirectMessagesContentMessageOrNull(): FromChannelSuggestedChannelDirectMessagesContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.FromChannelSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.fromChannelSuggestedChannelDirectMessagesContentMessageOrThrow(): FromChannelSuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.FromChannelSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifFromChannelSuggestedChannelDirectMessagesContentMessage(block: (FromChannelSuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = fromChannelSuggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
 public inline fun Message.anonymousForumContentMessageOrNull(): AnonymousForumContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun Message.anonymousForumContentMessageOrThrow(): AnonymousForumContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -2959,6 +2973,12 @@ public inline fun Message.commonChannelDirectMessagesContentMessageOrNull(): Com
 public inline fun Message.commonChannelDirectMessagesContentMessageOrThrow(): CommonChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> Message.ifCommonChannelDirectMessagesContentMessage(block: (CommonChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
+public inline fun Message.commonSuggestedChannelDirectMessagesContentMessageOrNull(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.commonSuggestedChannelDirectMessagesContentMessageOrThrow(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifCommonSuggestedChannelDirectMessagesContentMessage(block: (CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonSuggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
 
 public inline fun Message.accessibleMessageOrNull(): AccessibleMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 

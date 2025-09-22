@@ -224,5 +224,44 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
         )
+
+        is CommonSuggestedChannelDirectMessagesContentMessage<*> -> CommonSuggestedChannelDirectMessagesContentMessageImpl(
+            chat = sourceMessage.chat,
+            messageId = sourceMessage.messageId,
+            from = sourceMessage.user,
+            date = sourceMessage.date,
+            directMessageTopic = sourceMessage.directMessageTopic,
+            forwardOrigin = sourceMessage.forwardOrigin,
+            editDate = sourceMessage.editDate,
+            hasProtectedContent = sourceMessage.hasProtectedContent,
+            replyInfo = sourceMessage.replyInfo,
+            replyMarkup = sourceMessage.replyMarkup,
+            content = content,
+            senderBot = sourceMessage.senderBot,
+            mediaGroupId = sourceMessage.mediaGroupId,
+            senderBoostsCount = sourceMessage.senderBoostsCount,
+            fromOffline = sourceMessage.fromOffline,
+            suggestedPostInfo = sourceMessage.suggestedPostInfo,
+            cost = sourceMessage.cost,
+        )
+        is FromChannelSuggestedChannelDirectMessagesContentMessage<*> -> FromChannelSuggestedChannelDirectMessagesContentMessageImpl(
+            chat = sourceMessage.chat,
+            channel = sourceMessage.channel,
+            messageId = sourceMessage.messageId,
+            date = sourceMessage.date,
+            directMessageTopic = sourceMessage.directMessageTopic,
+            forwardOrigin = sourceMessage.forwardOrigin,
+            editDate = sourceMessage.editDate,
+            hasProtectedContent = sourceMessage.hasProtectedContent,
+            replyInfo = sourceMessage.replyInfo,
+            replyMarkup = sourceMessage.replyMarkup,
+            content = content,
+            senderBot = sourceMessage.senderBot,
+            authorSignature = sourceMessage.authorSignature,
+            mediaGroupId = sourceMessage.mediaGroupId,
+            fromOffline = sourceMessage.fromOffline,
+            suggestedPostInfo = sourceMessage.suggestedPostInfo,
+            cost = sourceMessage.cost,
+        )
     }
 }

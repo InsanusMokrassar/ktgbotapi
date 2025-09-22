@@ -22810,7 +22810,7 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/Suggeste
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent {
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo$State;Ldev/inmo/tgbotapi/types/payments/SuggestedPostPrice;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -23354,6 +23354,62 @@ public final class dev/inmo/tgbotapi/types/message/CommonGroupEventMessage : dev
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/message/CommonSuggestedChannelDirectMessagesContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage {
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/Integer;
+	public final fun component15 ()Z
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public final fun component17 ()Ljava/lang/Integer;
+	public final fun component2-APLFQys ()J
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component4-Wg0KzQs ()D
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public final fun component8 ()Z
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public final fun copy-Yt8lx4I (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonSuggestedChannelDirectMessagesContentMessageImpl;
+	public static synthetic fun copy-Yt8lx4I$default (Ldev/inmo/tgbotapi/types/message/CommonSuggestedChannelDirectMessagesContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonSuggestedChannelDirectMessagesContentMessageImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
+	public fun getContent ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getDate-Wg0KzQs ()D
+	public fun getDirectMessageThreadId-_JBF_Q4 ()J
+	public fun getDirectMessageTopic ()Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public fun getEditDate-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public fun getForwardInfo ()Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getForwardable ()Z
+	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun getFromOffline ()Z
+	public fun getHasProtectedContent ()Z
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public fun getReplyTo ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun getSenderBoostsCount ()Ljava/lang/Integer;
+	public fun getSenderBot ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public fun getSuggestedPostInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class dev/inmo/tgbotapi/types/message/CommonSupergroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/SupergroupEventMessage {
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewSupergroupChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/SupergroupEvent;DLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-APLFQys ()J
@@ -23627,6 +23683,63 @@ public final class dev/inmo/tgbotapi/types/message/FromChannelForumContentMessag
 	public fun getThreadCreatingInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
 	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun getThreadId-hDmiKeI ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/message/FromChannelSuggestedChannelDirectMessagesContentMessageImpl : dev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage {
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14-CsYhHCU ()Ljava/lang/String;
+	public final fun component15 ()Z
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+	public final fun component17 ()Ljava/lang/Integer;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public final fun component3-APLFQys ()J
+	public final fun component4-Wg0KzQs ()D
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public final fun component8 ()Z
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public final fun copy-KbSKbt8 (Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/FromChannelSuggestedChannelDirectMessagesContentMessageImpl;
+	public static synthetic fun copy-KbSKbt8$default (Ldev/inmo/tgbotapi/types/message/FromChannelSuggestedChannelDirectMessagesContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/chat/DirectMessagesTopic;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ZLdev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/FromChannelSuggestedChannelDirectMessagesContentMessageImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthorSignature ()Ljava/lang/String;
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public fun getChannel ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
+	public fun getContent ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
+	public fun getCost ()Ljava/lang/Integer;
+	public fun getDate-Wg0KzQs ()D
+	public fun getDirectMessageThreadId-_JBF_Q4 ()J
+	public fun getDirectMessageTopic ()Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public fun getEditDate-Ivn3T5g ()Lkorlibs/time/DateTime;
+	public fun getForwardInfo ()Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getForwardable ()Z
+	public fun getFromOffline ()Z
+	public fun getHasProtectedContent ()Z
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
+	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public fun getReplyTo ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun getSenderBot ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
+	public fun getSenderChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public synthetic fun getSenderChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public fun getSuggestedPostInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -24250,6 +24363,19 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/CommonMessage$Defau
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage {
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getDirectMessageThreadId-_JBF_Q4 (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)J
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ConnectedFromChannelGroupContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage {
 }
 
@@ -24328,6 +24454,19 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupCon
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage;)Lkotlin/Triple;
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public static fun getSenderChat (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromChannelGroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage {
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getDirectMessageThreadId-_JBF_Q4 (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)J
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getSenderChat (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage : dev/inmo/tgbotapi/abstracts/FromUser, dev/inmo/tgbotapi/types/message/abstracts/OptionallyFromUserMessage {
@@ -24607,6 +24746,19 @@ public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/Signed
 public final class dev/inmo/tgbotapi/types/message/abstracts/SignedMessage$DefaultImpls {
 	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/SignedMessage;)Ljava/lang/String;
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/SignedMessage;)Lkotlin/Triple;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage {
+	public abstract fun getSuggestedPostInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/suggested/SuggestedPostInfo;
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)Ljava/lang/String;
+	public static fun getDirectMessageThreadId-_JBF_Q4 (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)J
+	public static fun getForwardInfo (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/ForwardInfo;
+	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)Z
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)Lkotlin/Triple;
+	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/SupergroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage {

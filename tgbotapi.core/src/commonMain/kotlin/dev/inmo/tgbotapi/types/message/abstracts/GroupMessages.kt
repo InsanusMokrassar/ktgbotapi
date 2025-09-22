@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<T> {
@@ -29,6 +30,9 @@ sealed interface ChannelDirectMessagesContentMessage<T : MessageContent> : Group
     val directMessageThreadId: DirectMessageThreadId
         get() = directMessageTopic.threadId
 }
+sealed interface SuggestedChannelDirectMessagesContentMessage<T : MessageContent> : ChannelDirectMessagesContentMessage<T> {
+    val suggestedPostInfo: SuggestedPostInfo
+}
 
 sealed interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {
     val channel: PreviewChannelChat
@@ -50,6 +54,8 @@ interface FromChannelForumContentMessage<T: MessageContent> : FromChannelGroupCo
 
 interface FromChannelChannelDirectMessagesContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ChannelDirectMessagesContentMessage<T>
 
+interface FromChannelSuggestedChannelDirectMessagesContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, SuggestedChannelDirectMessagesContentMessage<T>
+
 interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage<T>, SignedMessage, WithSenderChatMessage {
     override val senderChat: PreviewGroupChat
         get() = chat
@@ -58,3 +64,5 @@ interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage
 interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
 
 interface CommonChannelDirectMessagesContentMessage<T : MessageContent> : ChannelDirectMessagesContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
+
+interface CommonSuggestedChannelDirectMessagesContentMessage<T : MessageContent> : SuggestedChannelDirectMessagesContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage

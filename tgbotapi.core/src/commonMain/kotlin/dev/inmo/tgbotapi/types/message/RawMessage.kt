@@ -331,7 +331,6 @@ internal data class RawMessage(
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
             direct_message_price_changed != null -> direct_message_price_changed
-            suggested_post_info != null -> suggested_post_info
             suggested_post_approved != null -> suggested_post_approved
             suggested_post_approval_failed != null -> suggested_post_approval_failed
             suggested_post_declined != null -> suggested_post_declined
@@ -408,44 +407,91 @@ internal data class RawMessage(
                         val actualForumChat = when (chat) {
                             is ChannelDirectMessagesChatImpl -> chat.copy(id = chatId)
                         }
-                        when (sender_chat) {
-                            is PreviewChannelChat -> FromChannelChannelDirectMessagesContentMessageImpl(
-                                chat = actualForumChat,
-                                channel = sender_chat,
-                                messageId = messageId,
-                                date = date.asDate,
-                                directMessageTopic = direct_messages_topic,
-                                forwardOrigin = forward_origin,
-                                editDate = edit_date ?.asDate,
-                                hasProtectedContent = has_protected_content == true,
-                                replyInfo = replyInfo,
-                                replyMarkup = reply_markup,
-                                content = content,
-                                senderBot = via_bot,
-                                authorSignature = author_signature,
-                                mediaGroupId = media_group_id,
-                                fromOffline = is_from_offline,
-                                cost = paid_star_count,
-                            )
-                            is PreviewGroupChat,
-                            null -> CommonChannelDirectMessagesContentMessageImpl(
-                                chat = actualForumChat,
-                                messageId = messageId,
-                                from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
-                                date = date.asDate,
-                                directMessageTopic = direct_messages_topic,
-                                forwardOrigin = forward_origin,
-                                editDate = edit_date ?.asDate,
-                                hasProtectedContent = has_protected_content == true,
-                                replyInfo = replyInfo,
-                                replyMarkup = reply_markup,
-                                content = content,
-                                senderBot = via_bot,
-                                mediaGroupId = media_group_id,
-                                senderBoostsCount = sender_boost_count,
-                                fromOffline = is_from_offline,
-                                cost = paid_star_count,
-                            )
+                        when (suggested_post_info) {
+                            null -> {
+                                when (sender_chat) {
+                                    is PreviewChannelChat -> FromChannelChannelDirectMessagesContentMessageImpl(
+                                        chat = actualForumChat,
+                                        channel = sender_chat,
+                                        messageId = messageId,
+                                        date = date.asDate,
+                                        directMessageTopic = direct_messages_topic,
+                                        forwardOrigin = forward_origin,
+                                        editDate = edit_date ?.asDate,
+                                        hasProtectedContent = has_protected_content == true,
+                                        replyInfo = replyInfo,
+                                        replyMarkup = reply_markup,
+                                        content = content,
+                                        senderBot = via_bot,
+                                        authorSignature = author_signature,
+                                        mediaGroupId = media_group_id,
+                                        fromOffline = is_from_offline,
+                                        cost = paid_star_count,
+                                    )
+                                    is PreviewGroupChat,
+                                    null -> CommonChannelDirectMessagesContentMessageImpl(
+                                        chat = actualForumChat,
+                                        messageId = messageId,
+                                        from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
+                                        date = date.asDate,
+                                        directMessageTopic = direct_messages_topic,
+                                        forwardOrigin = forward_origin,
+                                        editDate = edit_date ?.asDate,
+                                        hasProtectedContent = has_protected_content == true,
+                                        replyInfo = replyInfo,
+                                        replyMarkup = reply_markup,
+                                        content = content,
+                                        senderBot = via_bot,
+                                        mediaGroupId = media_group_id,
+                                        senderBoostsCount = sender_boost_count,
+                                        fromOffline = is_from_offline,
+                                        cost = paid_star_count,
+                                    )
+                                }
+                            }
+                            else -> {
+                                when (sender_chat) {
+                                    is PreviewChannelChat -> FromChannelSuggestedChannelDirectMessagesContentMessageImpl(
+                                        chat = actualForumChat,
+                                        channel = sender_chat,
+                                        messageId = messageId,
+                                        date = date.asDate,
+                                        directMessageTopic = direct_messages_topic,
+                                        forwardOrigin = forward_origin,
+                                        editDate = edit_date ?.asDate,
+                                        hasProtectedContent = has_protected_content == true,
+                                        replyInfo = replyInfo,
+                                        replyMarkup = reply_markup,
+                                        content = content,
+                                        senderBot = via_bot,
+                                        authorSignature = author_signature,
+                                        mediaGroupId = media_group_id,
+                                        fromOffline = is_from_offline,
+                                        suggestedPostInfo = suggested_post_info,
+                                        cost = paid_star_count,
+                                    )
+                                    is PreviewGroupChat,
+                                    null -> CommonSuggestedChannelDirectMessagesContentMessageImpl(
+                                        chat = actualForumChat,
+                                        messageId = messageId,
+                                        from = checkedFrom ?: from ?: error("It is expected that in direct channel messages from non anonymous channels user must be specified"),
+                                        date = date.asDate,
+                                        directMessageTopic = direct_messages_topic,
+                                        forwardOrigin = forward_origin,
+                                        editDate = edit_date ?.asDate,
+                                        hasProtectedContent = has_protected_content == true,
+                                        replyInfo = replyInfo,
+                                        replyMarkup = reply_markup,
+                                        content = content,
+                                        senderBot = via_bot,
+                                        mediaGroupId = media_group_id,
+                                        senderBoostsCount = sender_boost_count,
+                                        fromOffline = is_from_offline,
+                                        suggestedPostInfo = suggested_post_info,
+                                        cost = paid_star_count,
+                                    )
+                                }
+                            }
                         }
                     }
                     is PreviewPublicChat -> when (chat) {

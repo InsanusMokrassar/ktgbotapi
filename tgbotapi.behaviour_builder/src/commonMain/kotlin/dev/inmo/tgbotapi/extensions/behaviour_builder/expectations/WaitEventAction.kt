@@ -313,8 +313,3 @@ fun BehaviourContext.waitSuggestedPostApproved(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<SuggestedPostApproved>(initRequest, errorFactory)
-
-fun BehaviourContext.waitSuggestedPostInfo(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<SuggestedPostInfo>(initRequest, errorFactory)
