@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.utils.defaultKtorEngine
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import io.ktor.client.*
 import kotlinx.serialization.json.Json
@@ -37,7 +38,7 @@ expect class KtorRequestsExecutor internal constructor(
 
 fun KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient(),
+    client: HttpClient = HttpClient(defaultKtorEngine),
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
     requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,

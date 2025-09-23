@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 28.0.3
+
+* `Core`:
+  * Add passing of default engines in `HttpClient` constructors
+
 ## 28.0.2
 
 * `Core`:

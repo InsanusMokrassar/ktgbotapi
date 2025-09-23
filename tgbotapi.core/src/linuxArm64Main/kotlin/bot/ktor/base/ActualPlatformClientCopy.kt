@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.tgbotapi.utils.defaultKtorEngine
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 
@@ -21,4 +22,8 @@ internal actual inline fun platformClientCopy(client: HttpClient): HttpClient = 
     HttpClient(CIO) {
         this.plusAssign(config)
     }
-} ?: throw IllegalArgumentException("On LinuxX64 TelegramBotAPI currently support only Curl Ktor HttpClient engine")
+} ?: HttpClient(
+    defaultKtorEngine
+) {
+    install(client)
+}

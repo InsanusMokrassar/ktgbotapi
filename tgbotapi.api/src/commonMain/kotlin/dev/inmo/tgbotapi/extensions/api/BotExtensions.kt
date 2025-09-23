@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.utils.defaultKtorEngine
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
@@ -13,7 +14,7 @@ import io.ktor.client.engine.*
  */
 public fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient()
+    client: HttpClient = HttpClient(defaultKtorEngine)
 ): TelegramBot = telegramBot(urlsKeeper) {
     this.client = client
 }
@@ -68,7 +69,7 @@ public fun telegramBot(
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
     fileLinkUrlMapper: TelegramAPIUrlsKeeper.(String) -> String = { "${fileBaseUrl}/$it" },
-    client: HttpClient = HttpClient()
+    client: HttpClient = HttpClient(defaultKtorEngine)
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl, fileLinkUrlMapper), client)
 
 @Suppress("NOTHING_TO_INLINE")

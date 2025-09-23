@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.utils.defaultKtorEngine
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.readBytes
@@ -19,5 +20,5 @@ suspend fun HttpClient.loadFile(
 
 suspend fun PathedFile.download(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient()
+    client: HttpClient = HttpClient(defaultKtorEngine)
 ) = client.loadFile(telegramAPIUrlsKeeper, this)

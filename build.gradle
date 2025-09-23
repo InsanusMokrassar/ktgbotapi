@@ -28,7 +28,7 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
             username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
             password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
             validationTimeout = Duration.ofSeconds(0)
-            publishingType = "USER_MANAGED"
+            publishingType = System.getenv('PUBLISHING_TYPE') != "" ? System.getenv('PUBLISHING_TYPE') : "USER_MANAGED"
         }
 
         publishAllProjectsProbablyBreakingProjectIsolation()
