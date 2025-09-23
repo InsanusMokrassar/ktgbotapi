@@ -31910,6 +31910,10 @@ public final class dev/inmo/tgbotapi/utils/DefaultKSLogKt {
 	public static final fun setDefaultKTgBotAPIKSLogSystemTag (Ljava/lang/String;)V
 }
 
+public final class dev/inmo/tgbotapi/utils/DefaultKtorEngine_jvmKt {
+	public static final fun getDefaultKtorEngine ()Lio/ktor/client/engine/HttpClientEngineFactory;
+}
+
 public final class dev/inmo/tgbotapi/utils/DeserializeWithUnknownKt {
 	public static final fun deserializeEitherWithRaw (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/KSerializer;)Ldev/inmo/micro_utils/common/Either;
 	public static final fun deserializeWithRaw (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/KSerializer;)Lkotlin/Pair;

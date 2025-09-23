@@ -47,12 +47,19 @@ kotlin {
                 api libs.ktor.server.host.common
 
                 api libs.ktor.client.cio
+                api libs.ktor.client.java
 
                 api libs.javax.activation
             }
         }
 
-        linuxX64Main {
+        jsMain {
+            dependencies {
+                api libs.ktor.client.js
+            }
+        }
+
+        linuxMain {
             dependencies {
                 api libs.ktor.client.curl
             }
@@ -64,7 +71,7 @@ kotlin {
             }
         }
 
-        mingwX64Main {
+        mingwMain {
             dependencies {
                 api libs.ktor.client.winhttp
             }
