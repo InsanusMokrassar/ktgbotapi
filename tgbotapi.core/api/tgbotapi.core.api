@@ -22529,7 +22529,7 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/WebAppData$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent {
+public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelDirectMessagesEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/SupergroupEvent {
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent {
