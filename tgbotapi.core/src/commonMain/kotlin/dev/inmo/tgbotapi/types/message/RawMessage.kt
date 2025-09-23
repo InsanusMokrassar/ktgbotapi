@@ -351,6 +351,13 @@ internal data class RawMessage(
         try {
             chatEvent ?.let { chatEvent ->
                 when (chat) {
+                    is PreviewChannelDirectMessagesChat -> CommonChannelDirectMessagesEventMessage(
+                        messageId,
+                        checkedFrom ?: from ?: error("Channel direct messages events are expected to contain 'from' field"),
+                        chat,
+                        chatEvent as? ChannelDirectMessagesEvent ?: throwWrongChatEvent(PreviewChannelDirectMessagesChat::class, chatEvent),
+                        date.asDate
+                    )
                     is PreviewSupergroupChat -> CommonSupergroupEventMessage(
                         messageId,
                         checkedFrom ?: from ?: error("Supergroup events are expected to contain 'from' field"),
@@ -363,14 +370,6 @@ internal data class RawMessage(
                         checkedFrom ?: from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
-                        date.asDate
-                    )
-                    is PreviewChannelDirectMessagesChat -> CommonChannelDirectMessagesEventMessage(
-                        messageId,
-                        //TODO:: Check that all channel direct messages events coming with "from" field
-                        checkedFrom ?: from ?: error("Channel direct messages events are expected to contain 'from' field"),
-                        chat,
-                        chatEvent as? ChannelDirectMessagesEvent ?: throwWrongChatEvent(PreviewChannelDirectMessagesChat::class, chatEvent),
                         date.asDate
                     )
                     is PreviewChannelChat -> ChannelEventMessage(
