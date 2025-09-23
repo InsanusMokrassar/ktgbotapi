@@ -495,7 +495,7 @@ internal data class RawMessage(
                     }
                     is PreviewPublicChat -> when (chat) {
                         is PreviewChannelChat -> if (is_paid_post) {
-                            ChannelContentMessageImpl(
+                            ChannelPaidPostImpl(
                                 messageId = messageId,
                                 chat = chat,
                                 senderChat = checkedFrom ?: sender_chat ?: chat,
@@ -513,7 +513,7 @@ internal data class RawMessage(
                                 cost = paid_star_count,
                             )
                         } else {
-                            ChannelPaidPostImpl(
+                            ChannelContentMessageImpl(
                                 messageId = messageId,
                                 chat = chat,
                                 senderChat = checkedFrom ?: sender_chat ?: chat,
