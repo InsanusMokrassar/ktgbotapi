@@ -21,7 +21,7 @@ fun createTelegramBotDefaultKtorCallRequestsFactories(logger: KSLog? = null) = l
 class KtorRequestsExecutorBuilder(
     var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
 ) {
-    var client: HttpClient = HttpClient()
+    var client: HttpClient = HttpClient(defaultKtorEngine)
     var callsFactories: List<KtorCallFactory> = emptyList()
     var excludeDefaultFactories: Boolean = false
     var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter
