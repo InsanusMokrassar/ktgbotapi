@@ -36,6 +36,7 @@ dev.inmo.tgbotapi.extensions.api.send.polls
 dev.inmo.tgbotapi.extensions.api.set
 dev.inmo.tgbotapi.extensions.api.stickers
 dev.inmo.tgbotapi.extensions.api.stories
+dev.inmo.tgbotapi.extensions.api.suggested
 dev.inmo.tgbotapi.extensions.api.thumbs
 dev.inmo.tgbotapi.extensions.api.utils
 dev.inmo.tgbotapi.extensions.api.verifications
@@ -103,6 +104,7 @@ dev.inmo.tgbotapi.requests.set
 dev.inmo.tgbotapi.requests.stickers
 dev.inmo.tgbotapi.requests.stickers.abstracts
 dev.inmo.tgbotapi.requests.stories
+dev.inmo.tgbotapi.requests.suggested
 dev.inmo.tgbotapi.requests.verifications
 dev.inmo.tgbotapi.requests.webhook
 dev.inmo.tgbotapi.types
@@ -146,6 +148,7 @@ dev.inmo.tgbotapi.types.message
 dev.inmo.tgbotapi.types.message.ChatEvents
 dev.inmo.tgbotapi.types.message.ChatEvents.abstracts
 dev.inmo.tgbotapi.types.message.ChatEvents.forum
+dev.inmo.tgbotapi.types.message.ChatEvents.suggested
 dev.inmo.tgbotapi.types.message.ChatEvents.voice
 dev.inmo.tgbotapi.types.message.abstracts
 dev.inmo.tgbotapi.types.message.content
