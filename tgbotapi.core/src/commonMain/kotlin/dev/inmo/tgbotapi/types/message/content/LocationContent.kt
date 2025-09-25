@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -97,11 +98,13 @@ data class LiveLocationContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        directMessageThreadId: DirectMessageThreadId?,
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<LiveLocationContent>> = SendLiveLocation(
@@ -113,11 +116,13 @@ data class LiveLocationContent(
         heading = location.heading,
         proximityAlertRadius = location.proximityAlertRadius,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -134,11 +139,13 @@ data class StaticLocationContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        directMessageThreadId: DirectMessageThreadId?,
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<StaticLocationContent>> = SendStaticLocation(
@@ -146,11 +153,13 @@ data class StaticLocationContent(
         latitude = location.latitude,
         longitude = location.longitude,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

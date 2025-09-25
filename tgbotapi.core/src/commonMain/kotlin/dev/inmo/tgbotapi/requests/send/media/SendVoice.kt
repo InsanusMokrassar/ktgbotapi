@@ -28,11 +28,13 @@ fun SendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
@@ -46,11 +48,13 @@ fun SendVoice(
         rawEntities = null,
         duration = duration,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -70,12 +74,14 @@ fun SendVoice(
     voice: InputFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     duration: Long? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
@@ -89,11 +95,13 @@ fun SendVoice(
         rawEntities = entities.toRawMessageEntities(),
         duration = duration,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -130,6 +138,10 @@ data class SendVoiceData internal constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -140,6 +152,8 @@ data class SendVoiceData internal constructor(
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.DiceContent
@@ -27,6 +28,10 @@ data class SendDice(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -37,6 +42,8 @@ data class SendDice(
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

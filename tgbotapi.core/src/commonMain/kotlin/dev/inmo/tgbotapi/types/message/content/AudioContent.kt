@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.media.toTelegramMediaAudio
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
@@ -22,11 +23,13 @@ data class AudioContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        directMessageThreadId: DirectMessageThreadId?,
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AudioContent>> = SendAudio(
@@ -38,11 +41,13 @@ data class AudioContent(
         performer = media.performer,
         title = media.title,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

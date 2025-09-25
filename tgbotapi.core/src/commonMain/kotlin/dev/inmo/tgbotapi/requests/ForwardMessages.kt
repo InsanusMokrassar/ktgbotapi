@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.DisableNotification
 import dev.inmo.tgbotapi.abstracts.types.MessagesAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
@@ -14,6 +15,7 @@ fun ForwardMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -22,6 +24,7 @@ fun ForwardMessages(
     fromChatId = fromChatId,
     messageIds = messageIds.toList(),
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -39,6 +42,10 @@ data class ForwardMessages (
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -49,6 +56,7 @@ data class ForwardMessages (
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,
+    OptionallyDirectMessageThreadRequest,
     DisableNotification {
     override val chatId: ChatIdentifier
         get() = fromChatId

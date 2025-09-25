@@ -36,6 +36,8 @@ sealed interface IdChatIdentifier : ChatIdentifier {
         get() = null
     val businessConnectionId: BusinessConnectionId?
         get() = null
+    val directMessageThreadId: DirectMessageThreadId?
+        get() = null
 
     companion object {
         operator fun invoke(chatId: RawChatId, threadId: MessageThreadId? = null, businessConnectionId: BusinessConnectionId? = null) = threadId ?.let {
@@ -64,6 +66,18 @@ value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageTh
 
     constructor(chatId: RawChatId, threadId: MessageThreadId): this(chatId to threadId)
 }
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatIdentifierSerializer::class)
+@JvmInline
+value class ChatIdWithChannelDirectMessageThreadId(val chatIdWithThreadId: Pair<RawChatId, DirectMessageThreadId>) : IdChatIdentifier {
+    override val chatId: RawChatId
+        get() = chatIdWithThreadId.first
+    override val directMessageThreadId: DirectMessageThreadId
+        get() = chatIdWithThreadId.second
+
+    constructor(chatId: RawChatId, threadId: DirectMessageThreadId): this(chatId to threadId)
+}
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
@@ -79,16 +93,21 @@ value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, B
 val ChatIdentifier.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
+val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
+    get() = (this as? IdChatIdentifier) ?.directMessageThreadId
+
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 
 fun IdChatIdentifier.toChatId() = when (this) {
     is ChatId -> this
     is ChatIdWithThreadId -> ChatId(chatId)
+    is ChatIdWithChannelDirectMessageThreadId -> ChatId(chatId)
     is BusinessChatId -> ChatId(chatId)
 }
 
 fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdentifier(chatId, threadId)
+fun IdChatIdentifier.toChatIdWithChannelDirectMessageThreadId(threadId: DirectMessageThreadId) = ChatIdWithChannelDirectMessageThreadId(chatId, threadId)
 fun IdChatIdentifier.toBusinessChatId(businessConnectionId: BusinessConnectionId) = IdChatIdentifier(chatId, businessConnectionId)
 
 /**
@@ -221,11 +240,20 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
                     )
                 }
                 3 -> {
-                    val (chatId, _, businessConnectionId) = splitted
-                    BusinessChatId(
-                        chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
-                        businessConnectionId.let(::BusinessConnectionId)
-                    )
+                    val (chatId, intermediateDelimiter, additionalId) = splitted
+                    val additionalIdAsLong by lazy {
+                        additionalId.toLongOrNull()
+                    }
+                    when {
+                        intermediateDelimiter == "cdm" && additionalIdAsLong != null -> ChatIdWithChannelDirectMessageThreadId(
+                            chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
+                            additionalIdAsLong ?.let(::DirectMessageThreadId) ?: return@let null
+                        )
+                        else -> BusinessChatId(
+                            chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
+                            additionalId.let(::BusinessConnectionId)
+                        )
+                    }
                 }
                 else -> null
             }
@@ -239,6 +267,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
             is ChatId -> encoder.encodeLong(value.chatId.long)
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
             is BusinessChatId -> encoder.encodeString("${value.chatId}//${value.businessConnectionId}")
+            is ChatIdWithChannelDirectMessageThreadId -> encoder.encodeString("${value.chatId}/cdm/${value.directMessageThreadId}")
             is Username -> encoder.encodeString(value.full)
         }
     }

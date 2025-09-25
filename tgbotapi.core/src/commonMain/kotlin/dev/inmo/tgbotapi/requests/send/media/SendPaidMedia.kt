@@ -34,10 +34,12 @@ fun SendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PaidMediaInfoContent>> {
@@ -51,10 +53,12 @@ fun SendPaidMedia(
         rawEntities = null,
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -93,10 +97,12 @@ fun SendPaidMedia(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PaidMediaInfoContent>> {
@@ -110,10 +116,12 @@ fun SendPaidMedia(
         rawEntities = entities.toRawMessageEntities(),
         showCaptionAboveMedia = showCaptionAboveMedia,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -171,6 +179,10 @@ data class SendPaidMediaData internal constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -179,6 +191,8 @@ data class SendPaidMediaData internal constructor(
     override val protectContent: Boolean = false,
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
@@ -22,7 +23,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationStrategy
 
 @Serializable
-class SendRegularPoll private constructor(
+class SendRegularPoll constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(questionField)
@@ -47,6 +48,10 @@ class SendRegularPoll private constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -57,6 +62,8 @@ class SendRegularPoll private constructor(
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -75,11 +82,13 @@ class SendRegularPoll private constructor(
         openPeriod: LongSeconds?= null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -94,11 +103,13 @@ class SendRegularPoll private constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -114,11 +125,13 @@ class SendRegularPoll private constructor(
         openPeriod: LongSeconds?= null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -133,11 +146,13 @@ class SendRegularPoll private constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -162,11 +177,13 @@ fun SendRegularPoll(
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
@@ -180,11 +197,13 @@ fun SendRegularPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -198,11 +217,13 @@ fun SendRegularPoll(
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
@@ -215,11 +236,13 @@ fun SendRegularPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -232,11 +255,13 @@ fun SendRegularPoll(
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builder: EntitiesBuilderBody
@@ -249,11 +274,13 @@ fun SendRegularPoll(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

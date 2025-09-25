@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.ParseMode
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -49,24 +50,30 @@ fun SendPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId,
     question,
     options,
+    null,
     questionParseMode,
     isAnonymous,
     isClosed,
+    false,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     disableNotification = disableNotification,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -78,23 +85,30 @@ fun SendPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId = chatId,
-    questionEntities = textSources,
+    questionTextSources = textSources,
     options = options,
+    closeInfo = null,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    allowMultipleAnswers = false,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
-    disableNotification = disableNotification,
+    effectId = null,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -106,11 +120,13 @@ fun SendPoll(
 fun Poll.createRequest(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = when (this) {
@@ -123,11 +139,13 @@ fun Poll.createRequest(
         isClosed = isClosed,
         allowMultipleAnswers = allowMultipleAnswers,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -142,11 +160,13 @@ fun Poll.createRequest(
             isAnonymous = isAnonymous,
             isClosed = isClosed,
             threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
             businessConnectionId = businessConnectionId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
             effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
             replyParameters = replyParameters,
             replyMarkup = replyMarkup
         )
@@ -159,11 +179,13 @@ fun Poll.createRequest(
         isClosed = isClosed,
         allowMultipleAnswers = false,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -176,11 +198,13 @@ fun Poll.createRequest(
         isClosed = isClosed,
         allowMultipleAnswers = false,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

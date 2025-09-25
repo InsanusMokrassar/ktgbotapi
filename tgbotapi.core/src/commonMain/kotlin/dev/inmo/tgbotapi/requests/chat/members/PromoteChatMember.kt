@@ -46,7 +46,9 @@ data class PromoteChatMember(
     @SerialName(canEditStoriesField)
     private val canEditStories: Boolean? = null,
     @SerialName(canDeleteStoriesField)
-    private val canDeleteStories: Boolean? = null
+    private val canDeleteStories: Boolean? = null,
+    @SerialName(canManageDirectMessagesField)
+    private val canManageDirectMessages: Boolean? = null,
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "promoteChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
@@ -104,7 +106,8 @@ fun PromoteChannelAdministrator(
     canManageChat: Boolean? = null,
     canPostStories: Boolean? = null,
     canEditStories: Boolean? = null,
-    canDeleteStories: Boolean? = null
+    canDeleteStories: Boolean? = null,
+    canManageDirectMessages: Boolean? = null,
 ) = PromoteChatMember(
     chatId = chatId,
     userId = userId,
@@ -123,7 +126,8 @@ fun PromoteChannelAdministrator(
     canManageTopics = null,
     canPostStories = canPostStories,
     canEditStories = canEditStories,
-    canDeleteStories = canDeleteStories
+    canDeleteStories = canDeleteStories,
+    canManageDirectMessages = canManageDirectMessages
 )
 
 fun PromoteSupergroupAdministrator(

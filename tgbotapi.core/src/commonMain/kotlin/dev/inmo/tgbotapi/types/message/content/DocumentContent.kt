@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
@@ -25,11 +26,13 @@ data class DocumentContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        directMessageThreadId: DirectMessageThreadId?,
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
@@ -38,11 +41,13 @@ data class DocumentContent(
         thumbnail = media.thumbnail ?.fileId,
         entities = textSources,
         threadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

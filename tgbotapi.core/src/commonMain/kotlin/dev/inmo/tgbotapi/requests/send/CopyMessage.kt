@@ -90,10 +90,12 @@ fun CopyMessage(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -105,10 +107,12 @@ fun CopyMessage(
     rawEntities = null,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -120,10 +124,12 @@ fun CopyMessage(
     entities: List<TextSource>,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     startTimestamp: Seconds? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -135,10 +141,12 @@ fun CopyMessage(
     rawEntities = entities.toRawMessageEntities(),
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     startTimestamp = startTimestamp,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -164,6 +172,10 @@ data class CopyMessage internal constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     @SerialName(videoStartTimestampField)
     override val startTimestamp: Seconds? = null,
     @SerialName(disableNotificationField)
@@ -172,6 +184,8 @@ data class CopyMessage internal constructor(
     override val protectContent: Boolean = false,
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

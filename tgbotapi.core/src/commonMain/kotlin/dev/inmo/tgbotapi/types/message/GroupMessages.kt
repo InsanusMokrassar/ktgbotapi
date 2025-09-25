@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import kotlinx.serialization.SerialName
@@ -276,6 +277,121 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
     )
 }
 
+data class FromChannelChannelDirectMessagesContentMessageImpl<T: MessageContent>(
+    override val chat: PreviewChannelDirectMessagesChat,
+    override val channel: PreviewChannelChat,
+    override val messageId: MessageId,
+    override val date: DateTime,
+    override val directMessageTopic: DirectMessagesTopic,
+    override val forwardOrigin: MessageOrigin?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyInfo: ReplyInfo?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val authorSignature: AuthorSignature?,
+    override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
+) : FromChannelChannelDirectMessagesContentMessage<T> {
+    constructor(
+        chat: PreviewChannelDirectMessagesChat,
+        channel: PreviewChannelChat,
+        messageId: MessageId,
+        date: DateTime,
+        directMessageTopic: DirectMessagesTopic,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
+        cost: Int? = null,
+    ) : this(
+        chat = chat,
+        channel = channel,
+        messageId = messageId,
+        date = date,
+        directMessageTopic = directMessageTopic,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        cost = cost,
+    )
+}
+
+data class FromChannelSuggestedChannelDirectMessagesContentMessageImpl<T: MessageContent>(
+    override val chat: PreviewChannelDirectMessagesChat,
+    override val channel: PreviewChannelChat,
+    override val messageId: MessageId,
+    override val date: DateTime,
+    override val directMessageTopic: DirectMessagesTopic,
+    override val forwardOrigin: MessageOrigin?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyInfo: ReplyInfo?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val authorSignature: AuthorSignature?,
+    override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
+    override val suggestedPostInfo: SuggestedPostInfo,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
+) : FromChannelSuggestedChannelDirectMessagesContentMessage<T> {
+    constructor(
+        chat: PreviewChannelDirectMessagesChat,
+        channel: PreviewChannelChat,
+        messageId: MessageId,
+        date: DateTime,
+        directMessageTopic: DirectMessagesTopic,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
+        suggestedPostInfo: SuggestedPostInfo,
+        cost: Int? = null,
+    ) : this(
+        chat = chat,
+        channel = channel,
+        messageId = messageId,
+        date = date,
+        directMessageTopic = directMessageTopic,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        authorSignature = authorSignature,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        suggestedPostInfo = suggestedPostInfo,
+        cost = cost,
+    )
+}
+
 data class AnonymousForumContentMessageImpl<T : MessageContent>(
     override val chat: PreviewForumChat,
     override val messageId: MessageId,
@@ -381,6 +497,123 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
         mediaGroupId = mediaGroupId,
         senderBoostsCount = senderBoostsCount,
         fromOffline = fromOffline,
+        cost = cost,
+    )
+}
+
+
+data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
+    override val chat: PreviewChannelDirectMessagesChat,
+    override val messageId: MessageId,
+    override val from: User,
+    override val date: DateTime,
+    override val directMessageTopic: DirectMessagesTopic,
+    override val forwardOrigin: MessageOrigin?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyInfo: ReplyInfo?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val mediaGroupId: MediaGroupId?,
+    override val senderBoostsCount: Int?,
+    override val fromOffline: Boolean,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null,
+) : CommonChannelDirectMessagesContentMessage<T> {
+    constructor(
+        chat: PreviewChannelDirectMessagesChat,
+        messageId: MessageId,
+        from: User,
+        date: DateTime,
+        directMessageTopic: DirectMessagesTopic,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupId?,
+        senderBoostsCount: Int?,
+        fromOffline: Boolean,
+        cost: Int? = null,
+    ) : this(
+        chat = chat,
+        messageId = messageId,
+        from = from,
+        date = date,
+        directMessageTopic = directMessageTopic,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        mediaGroupId = mediaGroupId,
+        senderBoostsCount = senderBoostsCount,
+        fromOffline = fromOffline,
+        cost = cost,
+    )
+}
+
+
+data class CommonSuggestedChannelDirectMessagesContentMessageImpl<T : MessageContent>(
+    override val chat: PreviewChannelDirectMessagesChat,
+    override val messageId: MessageId,
+    override val from: User,
+    override val date: DateTime,
+    override val directMessageTopic: DirectMessagesTopic,
+    override val forwardOrigin: MessageOrigin?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyInfo: ReplyInfo?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val mediaGroupId: MediaGroupId?,
+    override val senderBoostsCount: Int?,
+    override val fromOffline: Boolean,
+    override val suggestedPostInfo: SuggestedPostInfo,
+    @SerialName(paidMessageStarCountField)
+    override val cost: Int? = null
+) : CommonSuggestedChannelDirectMessagesContentMessage<T> {
+    constructor(
+        chat: PreviewChannelDirectMessagesChat,
+        messageId: MessageId,
+        from: User,
+        date: DateTime,
+        directMessageTopic: DirectMessagesTopic,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupId?,
+        senderBoostsCount: Int?,
+        fromOffline: Boolean,
+        suggestedPostInfo: SuggestedPostInfo,
+        cost: Int? = null,
+    ) : this(
+        chat = chat,
+        messageId = messageId,
+        from = from,
+        date = date,
+        directMessageTopic = directMessageTopic,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        content = content,
+        senderBot = senderBot,
+        mediaGroupId = mediaGroupId,
+        senderBoostsCount = senderBoostsCount,
+        fromOffline = fromOffline,
+        suggestedPostInfo = suggestedPostInfo,
         cost = cost,
     )
 }

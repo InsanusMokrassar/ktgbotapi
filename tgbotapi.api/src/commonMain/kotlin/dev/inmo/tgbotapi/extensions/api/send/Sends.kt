@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -16,6 +18,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.Game
@@ -66,11 +69,13 @@ public suspend fun TelegramBot.send(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
@@ -84,11 +89,13 @@ public suspend fun TelegramBot.send(
     width = width,
     height = height,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -109,11 +116,13 @@ public suspend fun TelegramBot.send(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
@@ -127,11 +136,13 @@ public suspend fun TelegramBot.send(
     width = width,
     height = height,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -151,11 +162,13 @@ public suspend fun TelegramBot.send(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
@@ -168,11 +181,13 @@ public suspend fun TelegramBot.send(
     width = width,
     height = height,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -192,11 +207,13 @@ public suspend fun TelegramBot.send(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AnimationContent> = sendAnimation(
@@ -209,11 +226,13 @@ public suspend fun TelegramBot.send(
     width = width,
     height = height,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -230,11 +249,13 @@ public suspend fun TelegramBot.send(
     parseMode: ParseMode? = null,
     title: String? = audio.title,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
@@ -244,11 +265,13 @@ public suspend fun TelegramBot.send(
     parseMode = parseMode,
     title = title,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -265,11 +288,13 @@ public suspend fun TelegramBot.send(
     parseMode: ParseMode? = null,
     title: String? = audio.title,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
@@ -279,11 +304,13 @@ public suspend fun TelegramBot.send(
     parseMode = parseMode,
     title = title,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -299,11 +326,13 @@ public suspend inline fun TelegramBot.send(
     entities: TextSourcesList,
     title: String? = audio.title,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
@@ -312,11 +341,13 @@ public suspend inline fun TelegramBot.send(
     entities = entities,
     title = title,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -332,11 +363,13 @@ public suspend inline fun TelegramBot.send(
     entities: TextSourcesList,
     title: String? = audio.title,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<AudioContent> = sendAudio(
@@ -345,11 +378,13 @@ public suspend inline fun TelegramBot.send(
     entities = entities,
     title = title,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -365,11 +400,13 @@ public suspend fun TelegramBot.send(
     firstName: String,
     lastName: String? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
@@ -378,11 +415,13 @@ public suspend fun TelegramBot.send(
     firstName = firstName,
     lastName = lastName,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -396,22 +435,26 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     contact: Contact,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
     chatId = chatId,
     contact = contact,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -427,11 +470,13 @@ public suspend fun TelegramBot.send(
     firstName: String,
     lastName: String? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
@@ -440,11 +485,13 @@ public suspend fun TelegramBot.send(
     firstName = firstName,
     lastName = lastName,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -458,22 +505,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     contact: Contact,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<ContactContent> = sendContact(
     chat = chat,
     contact = contact,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -487,22 +538,26 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     animationType: DiceAnimationType,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<DiceContent> = sendDice(
     chatId = chatId,
     animationType = animationType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -516,22 +571,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     animationType: DiceAnimationType,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<DiceContent> = sendDice(
     chat = chat,
     animationType = animationType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -591,11 +650,13 @@ public suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -605,11 +666,13 @@ public suspend fun TelegramBot.send(
     text = text,
     parseMode = parseMode,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -626,11 +689,13 @@ public suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -640,11 +705,13 @@ public suspend fun TelegramBot.send(
     text = text,
     parseMode = parseMode,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -660,11 +727,13 @@ public suspend inline fun TelegramBot.send(
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -673,11 +742,13 @@ public suspend inline fun TelegramBot.send(
     document = document,
     entities = entities,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -693,11 +764,13 @@ public suspend inline fun TelegramBot.send(
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -711,6 +784,8 @@ public suspend inline fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    directMessageThreadId = directMessageThreadId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection
@@ -725,22 +800,26 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     game: Game,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
     chatId = chatId,
     game = game,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -754,22 +833,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     game: Game,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<GameContent> = sendGame(
     chat = chat,
     game = game,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -799,10 +882,12 @@ public suspend fun TelegramBot.send(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = sendInvoice(
@@ -825,10 +910,12 @@ public suspend fun TelegramBot.send(
     shouldSendEmailToProvider = shouldSendEmailToProvider,
     priceDependOnShipAddress = priceDependOnShipAddress,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -861,6 +948,7 @@ public suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = sendInvoice(
@@ -886,6 +974,7 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -900,11 +989,13 @@ public suspend fun TelegramBot.send(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
@@ -912,11 +1003,13 @@ public suspend fun TelegramBot.send(
     latitude = latitude,
     longitude = longitude,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -930,22 +1023,26 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     location: StaticLocation,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chatId = chatId,
     location = location,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -960,11 +1057,13 @@ public suspend fun TelegramBot.send(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
@@ -972,11 +1071,13 @@ public suspend fun TelegramBot.send(
     latitude = latitude,
     longitude = longitude,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -990,22 +1091,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     location: StaticLocation,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StaticLocationContent> = sendStaticLocation(
     chat = chat,
     location = location,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1021,11 +1126,13 @@ public suspend fun TelegramBot.send(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
@@ -1034,11 +1141,13 @@ public suspend fun TelegramBot.send(
     parseMode = parseMode,
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1054,11 +1163,13 @@ public suspend fun TelegramBot.send(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
@@ -1067,11 +1178,13 @@ public suspend fun TelegramBot.send(
     parseMode = parseMode,
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1086,11 +1199,13 @@ public suspend fun TelegramBot.send(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
@@ -1098,11 +1213,13 @@ public suspend fun TelegramBot.send(
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1116,11 +1233,13 @@ public suspend fun TelegramBot.send(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
@@ -1129,11 +1248,13 @@ public suspend fun TelegramBot.send(
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1148,11 +1269,13 @@ public suspend fun TelegramBot.send(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
@@ -1161,11 +1284,13 @@ public suspend fun TelegramBot.send(
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1181,11 +1306,13 @@ public suspend fun TelegramBot.send(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<TextContent> = sendTextMessage(
@@ -1193,11 +1320,13 @@ public suspend fun TelegramBot.send(
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1211,11 +1340,13 @@ public suspend fun TelegramBot.send(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
@@ -1224,11 +1355,13 @@ public suspend fun TelegramBot.send(
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1243,11 +1376,13 @@ public suspend fun TelegramBot.send(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
@@ -1256,11 +1391,13 @@ public suspend fun TelegramBot.send(
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1278,11 +1415,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1293,11 +1432,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1316,10 +1457,12 @@ public suspend fun TelegramBot.send(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -1331,10 +1474,12 @@ public suspend fun TelegramBot.send(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1353,10 +1498,12 @@ public suspend fun TelegramBot.send(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -1368,10 +1515,12 @@ public suspend fun TelegramBot.send(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1389,10 +1538,12 @@ public suspend fun TelegramBot.send(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -1403,10 +1554,12 @@ public suspend fun TelegramBot.send(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1424,10 +1577,12 @@ public suspend fun TelegramBot.send(
     payload: PaidMediaPayload? = null,
     showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
@@ -1438,10 +1593,12 @@ public suspend fun TelegramBot.send(
     payload = payload,
     showCaptionAboveMedia = showCaptionAboveMedia,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1459,11 +1616,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1474,11 +1633,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1496,11 +1657,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1511,11 +1674,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1533,11 +1698,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1548,11 +1715,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1569,11 +1738,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1583,11 +1754,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1604,11 +1777,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1618,11 +1793,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1639,11 +1816,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1653,11 +1832,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1674,11 +1855,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PhotoContent> = sendPhoto(
@@ -1688,11 +1871,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1712,11 +1897,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1729,11 +1916,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1752,11 +1941,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1768,11 +1959,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1793,11 +1986,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1810,11 +2005,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1834,11 +2031,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1850,11 +2049,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1874,11 +2075,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1891,11 +2094,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1916,11 +2121,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1933,11 +2140,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1957,11 +2166,13 @@ public suspend fun TelegramBot.send(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendRegularPoll(
@@ -1973,11 +2184,13 @@ public suspend fun TelegramBot.send(
     isClosed = isClosed,
     allowMultipleAnswers = allowMultipleAnswers,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -1999,11 +2212,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2018,11 +2233,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2044,11 +2261,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2063,11 +2282,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2090,11 +2311,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2109,11 +2332,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2136,11 +2361,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2155,11 +2382,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2180,11 +2409,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2198,11 +2429,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2223,11 +2456,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2241,11 +2476,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2267,11 +2504,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2285,11 +2524,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2311,11 +2552,13 @@ public suspend fun TelegramBot.send(
     explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2329,11 +2572,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2354,11 +2599,13 @@ public suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2372,11 +2619,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2397,11 +2646,13 @@ public suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2415,11 +2666,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2441,11 +2694,13 @@ public suspend fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2459,11 +2714,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2485,11 +2742,13 @@ public suspend fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2503,11 +2762,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2527,11 +2788,13 @@ public suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2544,11 +2807,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2568,11 +2833,13 @@ public suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2585,11 +2852,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2610,11 +2879,13 @@ public suspend fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2627,11 +2898,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2652,11 +2925,13 @@ public suspend fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<PollContent> = sendQuizPoll(
@@ -2669,11 +2944,13 @@ public suspend fun TelegramBot.send(
     isAnonymous = isAnonymous,
     isClosed = isClosed,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2687,24 +2964,28 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
     sticker = sticker,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2718,24 +2999,28 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     sticker: Sticker,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<StickerContent> = sendSticker(
     chat = chat,
     sticker = sticker,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2755,11 +3040,13 @@ public suspend fun TelegramBot.send(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
@@ -2771,11 +3058,13 @@ public suspend fun TelegramBot.send(
     heading = heading,
     proximityAlertRadius = proximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2793,11 +3082,13 @@ public suspend fun TelegramBot.send(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
@@ -2808,11 +3099,13 @@ public suspend fun TelegramBot.send(
     heading = heading,
     proximityAlertRadius = proximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2831,11 +3124,13 @@ public suspend fun TelegramBot.send(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
@@ -2847,11 +3142,13 @@ public suspend fun TelegramBot.send(
     heading = heading,
     proximityAlertRadius = proximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2869,11 +3166,13 @@ public suspend fun TelegramBot.send(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<LiveLocationContent> = sendLiveLocation(
@@ -2884,11 +3183,13 @@ public suspend fun TelegramBot.send(
     heading = heading,
     proximityAlertRadius = proximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2909,11 +3210,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
@@ -2927,11 +3230,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2952,11 +3257,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
@@ -2970,11 +3277,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -2994,11 +3303,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
@@ -3011,11 +3322,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3035,11 +3348,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
@@ -3052,11 +3367,13 @@ public suspend fun TelegramBot.send(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3070,22 +3387,26 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     venue = venue,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3099,22 +3420,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     venue: Venue,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VenueContent> = sendVenue(
     chat = chat,
     venue = venue,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3132,11 +3457,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
@@ -3147,11 +3474,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3169,11 +3498,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
@@ -3184,11 +3515,13 @@ public suspend fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3205,11 +3538,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
@@ -3219,11 +3554,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3240,11 +3577,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoContent> = sendVideo(
@@ -3254,11 +3593,13 @@ public suspend inline fun TelegramBot.send(
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3272,11 +3613,13 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
@@ -3288,6 +3631,8 @@ public suspend fun TelegramBot.send(
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    directMessageThreadId = directMessageThreadId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3301,22 +3646,26 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VideoNoteContent> = sendVideoNote(
     chat = chat,
     videoNote = videoNote,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3332,11 +3681,13 @@ public suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
@@ -3345,11 +3696,13 @@ public suspend fun TelegramBot.send(
     text = text,
     parseMode = parseMode,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3365,11 +3718,13 @@ public suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
@@ -3378,11 +3733,13 @@ public suspend fun TelegramBot.send(
     text = text,
     parseMode = parseMode,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3397,11 +3754,13 @@ public suspend inline fun TelegramBot.send(
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
@@ -3409,11 +3768,13 @@ public suspend inline fun TelegramBot.send(
     voice = voice,
     entities = entities,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3428,11 +3789,13 @@ public suspend inline fun TelegramBot.send(
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ContentMessage<VoiceContent> = sendVoice(
@@ -3440,11 +3803,13 @@ public suspend inline fun TelegramBot.send(
     voice = voice,
     entities = entities,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -3458,21 +3823,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3485,21 +3854,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3512,21 +3885,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<MediaGroupPartContent>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3539,21 +3916,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<MediaGroupPartContent>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3565,21 +3946,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3591,21 +3976,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3617,21 +4006,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<AudioContent>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3643,21 +4036,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<AudioContent>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3669,21 +4066,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3695,21 +4096,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3721,21 +4126,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<DocumentContent>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3747,21 +4156,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<DocumentContent>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3773,21 +4186,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3799,21 +4216,25 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3825,21 +4246,25 @@ public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupPartContent>,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )
 
@@ -3851,20 +4276,24 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     media: List<VisualMediaGroupPartContent>,
     threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
 ): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters
 )

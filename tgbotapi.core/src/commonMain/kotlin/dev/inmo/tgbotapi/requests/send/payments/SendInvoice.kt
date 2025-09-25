@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyWithEffectRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
@@ -66,6 +67,10 @@ data class SendInvoice(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -74,6 +79,8 @@ data class SendInvoice(
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -114,10 +121,12 @@ data class SendInvoice(
         startParameter: StartParameter? = null,
         providerData: String? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: InlineKeyboardMarkup? = null
     ) : this(
@@ -131,10 +140,12 @@ data class SendInvoice(
         startParameter = startParameter,
         providerData = providerData,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

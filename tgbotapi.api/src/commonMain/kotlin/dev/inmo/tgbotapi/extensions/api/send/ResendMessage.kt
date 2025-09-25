@@ -2,10 +2,12 @@ package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 
 /**
  * This method will send [content] to the [chatId] as is
@@ -15,22 +17,28 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
     content: T,
     messageThreadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null
 ): ContentMessage<T> = execute(
     content.createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
         replyParameters = replyParameters,
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
+        suggestedPostParameters = suggestedPostParameters,
     )
 ) as ContentMessage<T>
 
@@ -41,6 +49,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,
     content: T,
     messageThreadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -51,6 +61,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId = chat.id,
     content = content,
     messageThreadId = messageThreadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -68,6 +80,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
     message: ContentMessage<T>,
     messageThreadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -78,6 +92,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId = chatId,
     content = message.content,
     messageThreadId = messageThreadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -95,6 +111,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,
     message: ContentMessage<T>,
     messageThreadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -105,6 +123,8 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId = chat.id,
     message = message,
     messageThreadId = messageThreadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

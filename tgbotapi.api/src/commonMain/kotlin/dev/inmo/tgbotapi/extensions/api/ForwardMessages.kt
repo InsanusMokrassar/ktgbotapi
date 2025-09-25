@@ -13,6 +13,7 @@ public suspend fun TelegramBot.forwardMessages(
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -23,6 +24,7 @@ public suspend fun TelegramBot.forwardMessages(
             fromChatId = fromChatId,
             messageIds = it,
             threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             removeCaption = removeCaption
@@ -35,6 +37,7 @@ public suspend fun TelegramBot.forwardMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -43,6 +46,7 @@ public suspend fun TelegramBot.forwardMessages(
     fromChatId = fromChatId,
     messageIds = messageIds.toList(),
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -52,6 +56,7 @@ public suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -61,6 +66,7 @@ public suspend fun TelegramBot.forwardMessages(
         fromChatId = chatId,
         messageIds = messages.map { it.messageId },
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         removeCaption = removeCaption
@@ -72,6 +78,7 @@ public suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -79,6 +86,7 @@ public suspend fun TelegramBot.forwardMessages(
     toChatId = toChatId,
     messagesMetas = messages.map { it.metaInfo },
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -89,6 +97,7 @@ public suspend fun TelegramBot.forward(
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -97,6 +106,7 @@ public suspend fun TelegramBot.forward(
     fromChatId = fromChatId,
     messageIds = messageIds,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -107,6 +117,7 @@ public suspend fun TelegramBot.forward(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -115,6 +126,7 @@ public suspend fun TelegramBot.forward(
     fromChatId = fromChatId,
     messageIds = messageIds,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -124,6 +136,7 @@ public suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -131,6 +144,7 @@ public suspend fun TelegramBot.forward(
     toChatId = toChatId,
     messagesMetas = messagesMetas,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -141,6 +155,7 @@ public suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -148,6 +163,7 @@ public suspend fun TelegramBot.forward(
     toChatId = toChatId,
     messages = messages,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption

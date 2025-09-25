@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 29.0.0
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.2](https://core.telegram.org/bots/api-changelog#august-15-2025)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Core`:
+  * Add function `firstOfOrNull(vararg suspend () -> T): T?`
+  * Change logic of `firstOf` - now it works based on merged flows and __do not require__ `CoroutineScope` as receiver
+
 ## 28.0.3
 
 * `Core`:
@@ -18,7 +28,7 @@
     * `MicroUtils`: `0.26.2` -> `0.26.3`
     * `Ktor`: `3.2.2` -> `3.2.3`
 * `Core`:
-  * Let all `OptionallyMessageThreadRequest` inheritors to use `@EncodeDefault` annotation to fix default value passing
+    * Let all `OptionallyMessageThreadRequest` inheritors to use `@EncodeDefault` annotation to fix default value passing
 
 ## 28.0.0
 

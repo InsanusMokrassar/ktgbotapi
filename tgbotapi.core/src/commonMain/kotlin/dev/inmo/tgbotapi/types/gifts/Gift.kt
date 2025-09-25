@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.gifts
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftBackdrop
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftModel
@@ -14,6 +15,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable(Gift.Companion::class)
 sealed interface Gift {
+    val publisherChat: PreviewChat?
     @Serializable(Regular.Companion::class)
     sealed interface Regular : Gift {
         val id: GiftId
@@ -32,7 +34,9 @@ sealed interface Gift {
             @SerialName(starCountField)
             override val starCount: Int,
             @SerialName(upgradeStarCountField)
-            override val upgradeStarCount: Int? = null
+            override val upgradeStarCount: Int? = null,
+            @SerialName(publisherChatField)
+            override val publisherChat: PreviewChat? = null,
         ) : Regular {
             override val totalCount: Int?
                 get() = null
@@ -54,6 +58,8 @@ sealed interface Gift {
             override val remainingCount: Int,
             @SerialName(upgradeStarCountField)
             override val upgradeStarCount: Int? = null,
+            @SerialName(publisherChatField)
+            override val publisherChat: PreviewChat? = null,
         ) : Regular
 
         companion object : KSerializer<Regular> {
@@ -66,6 +72,7 @@ sealed interface Gift {
                 val total_count: Int? = null,
                 val remaining_count: Int? = null,
                 val upgrade_star_count: Int? = null,
+                val publisher_chat: PreviewChat? = null,
             )
 
             override val descriptor: SerialDescriptor
@@ -82,6 +89,7 @@ sealed interface Gift {
                         totalCount = surrogate.total_count,
                         remainingCount = surrogate.remaining_count,
                         upgradeStarCount = surrogate.upgrade_star_count,
+                        publisherChat = surrogate.publisher_chat
                     )
                 } else {
                     Unlimited(
@@ -89,6 +97,7 @@ sealed interface Gift {
                         sticker = surrogate.sticker,
                         starCount = surrogate.star_count,
                         upgradeStarCount = surrogate.upgrade_star_count,
+                        publisherChat = surrogate.publisher_chat,
                     )
                 }
             }
@@ -100,7 +109,8 @@ sealed interface Gift {
                     star_count = value.starCount,
                     total_count = value.totalCount,
                     remaining_count = value.remainingCount,
-                    upgrade_star_count = value.upgradeStarCount
+                    upgrade_star_count = value.upgradeStarCount,
+                    publisher_chat = value.publisherChat
                 )
                 RegularGiftSurrogate.serializer().serialize(encoder, surrogate)
             }
@@ -120,7 +130,9 @@ sealed interface Gift {
         @SerialName(symbolField)
         val symbol: UniqueGiftSymbol,
         @SerialName(backdropField)
-        val backdrop: UniqueGiftBackdrop
+        val backdrop: UniqueGiftBackdrop,
+        @SerialName(publisherChatField)
+        override val publisherChat: PreviewChat? = null
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -141,6 +153,7 @@ sealed interface Gift {
             val model: UniqueGiftModel? = null,
             val symbol: UniqueGiftSymbol? = null,
             val backdrop: UniqueGiftBackdrop? = null,
+            val publisher_chat: PreviewChat? = null,
         )
 
         override val descriptor: SerialDescriptor
@@ -157,6 +170,7 @@ sealed interface Gift {
                     model = surrogate.model,
                     symbol = surrogate.symbol,
                     backdrop = surrogate.backdrop,
+                    publisherChat = surrogate.publisher_chat
                 )
             } else {
                 decoder.decodeSerializableValue(Regular.serializer())
@@ -180,6 +194,7 @@ sealed interface Gift {
                 model = (value as? Unique)?.model,
                 symbol = (value as? Unique)?.symbol,
                 backdrop = (value as? Unique)?.backdrop,
+                publisher_chat = value.publisherChat,
             )
             GiftSurrogate.serializer().serialize(encoder, surrogate)
         }

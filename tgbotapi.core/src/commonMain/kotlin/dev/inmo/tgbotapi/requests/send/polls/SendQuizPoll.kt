@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
@@ -52,6 +53,10 @@ class SendQuizPoll internal constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId,
+    @OptIn(ExperimentalSerializationApi::class)
+    @EncodeDefault
+    @SerialName(directMessagesTopicIdField)
+    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
@@ -62,6 +67,8 @@ class SendQuizPoll internal constructor(
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
     override val effectId: EffectId? = null,
+    @SerialName(suggestedPostParametersField)
+    override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -89,11 +96,13 @@ class SendQuizPoll internal constructor(
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -111,11 +120,13 @@ class SendQuizPoll internal constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -132,11 +143,13 @@ class SendQuizPoll internal constructor(
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -154,11 +167,13 @@ class SendQuizPoll internal constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -175,11 +190,13 @@ class SendQuizPoll internal constructor(
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -197,11 +214,13 @@ class SendQuizPoll internal constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -217,11 +236,13 @@ class SendQuizPoll internal constructor(
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -239,11 +260,13 @@ class SendQuizPoll internal constructor(
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -275,11 +298,13 @@ fun SendQuizPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
@@ -295,11 +320,13 @@ fun SendQuizPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -315,11 +342,13 @@ fun SendQuizPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
@@ -334,11 +363,13 @@ fun SendQuizPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -354,11 +385,13 @@ fun SendQuizPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
@@ -373,11 +406,13 @@ fun SendQuizPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -392,11 +427,13 @@ fun SendQuizPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
@@ -410,11 +447,13 @@ fun SendQuizPoll(
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

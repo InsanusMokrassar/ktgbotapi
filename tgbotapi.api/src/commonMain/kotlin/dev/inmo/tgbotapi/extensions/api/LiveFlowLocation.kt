@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
@@ -50,11 +51,13 @@ public suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<EditLiveLocationInfo>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
@@ -76,25 +79,27 @@ public suspend fun TelegramBot.handleLiveLocation(
         if (capturedLiveLocationMessage == null) {
             updateMessageJob ?.start()
             currentLiveLocationMessage = send(
-                chatId,
-                it.latitude,
-                it.longitude,
-                if (liveTimeMillis == indefiniteLivePeriodDelayMillis) {
+                chatId = chatId,
+                latitude = it.latitude,
+                longitude = it.longitude,
+                livePeriod = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) {
                     LiveLocation.INDEFINITE_LIVE_PERIOD
                 } else {
                     ceil(liveTimeMillis.toDouble() / 1000).toInt()
                 },
-                it.horizontalAccuracy,
-                it.heading,
-                it.proximityAlertRadius,
-                threadId,
-                businessConnectionId,
-                disableNotification,
-                protectContent,
-                allowPaidBroadcast,
-                effectId,
-                replyParameters,
-                it.replyMarkup
+                horizontalAccuracy = it.horizontalAccuracy,
+                heading = it.heading,
+                proximityAlertRadius = it.proximityAlertRadius,
+                threadId = threadId,
+                directMessageThreadId = directMessageThreadId,
+                businessConnectionId = businessConnectionId,
+                disableNotification = disableNotification,
+                protectContent = protectContent,
+                allowPaidBroadcast = allowPaidBroadcast,
+                effectId = effectId,
+                suggestedPostParameters = suggestedPostParameters,
+                replyParameters = replyParameters,
+                replyMarkup = it.replyMarkup
             ).also {
                 sentMessageFlow ?.emit(it)
             }
@@ -125,11 +130,13 @@ public suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<Location>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
@@ -147,11 +154,13 @@ public suspend fun TelegramBot.handleLiveLocation(
         },
         liveTimeMillis = liveTimeMillis,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         sentMessageFlow = sentMessageFlow
     )
@@ -168,11 +177,13 @@ public suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<Pair<Double, Double>>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
@@ -186,11 +197,13 @@ public suspend fun TelegramBot.handleLiveLocation(
         },
         liveTimeMillis = liveTimeMillis,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         sentMessageFlow = sentMessageFlow
     )

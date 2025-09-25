@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import kotlinx.serialization.Serializable
 
@@ -16,11 +17,13 @@ data class GiveawayPublicResultsContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        directMessageThreadId: DirectMessageThreadId?,
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         allowPaidBroadcast: Boolean,
         effectId: EffectId?,
+        suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<out AccessibleMessage> {
@@ -29,6 +32,7 @@ data class GiveawayPublicResultsContent(
             toChatId = chatId,
             messageId = giveaway.messageId,
             threadId = messageThreadId,
+            directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent
         )

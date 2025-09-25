@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.Serializable
@@ -150,11 +151,13 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out AccessibleMessage>
@@ -162,22 +165,26 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
         effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out AccessibleMessage> = createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
+        directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyToMessageId ?.let {
             ReplyParameters(
                 chatId,
@@ -185,6 +192,6 @@ sealed interface ResendableContent {
                 allowSendingWithoutReply = allowSendingWithoutReply
             )
         },
-        replyMarkup = replyMarkup
+        replyMarkup = replyMarkup,
     )
 }

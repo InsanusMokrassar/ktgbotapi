@@ -20,6 +20,9 @@ inline fun <reified T : MessageContent> PossiblySentViaBotCommonMessage<*>.requi
 inline fun <reified T : MessageContent> ChannelContentMessage<*>.withContent() = if (content is T) { this as ChannelContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> ChannelContentMessage<*>.requireWithContent() = withContent<T>()!!
 
+inline fun <reified T : MessageContent> ChannelPaidPost<*>.withContent() = if (content is T) { this as ChannelPaidPost<T> } else { null }
+inline fun <reified T : MessageContent> ChannelPaidPost<*>.requireWithContent() = withContent<T>()!!
+
 inline fun <reified T : MessageContent> PrivateContentMessage<*>.withContent() = if (content is T) { this as PrivateContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> PrivateContentMessage<*>.requireWithContent() = withContent<T>()!!
 

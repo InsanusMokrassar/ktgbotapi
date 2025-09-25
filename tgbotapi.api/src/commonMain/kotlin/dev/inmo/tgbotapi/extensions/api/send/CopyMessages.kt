@@ -12,6 +12,7 @@ public suspend fun TelegramBot.copyMessages(
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -22,6 +23,7 @@ public suspend fun TelegramBot.copyMessages(
             fromChatId = fromChatId,
             messageIds = it,
             threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             removeCaption = removeCaption
@@ -34,6 +36,7 @@ public suspend fun TelegramBot.copyMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -42,6 +45,7 @@ public suspend fun TelegramBot.copyMessages(
     fromChatId = fromChatId,
     messageIds = messageIds.toList(),
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -51,6 +55,7 @@ public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -60,6 +65,7 @@ public suspend fun TelegramBot.copyMessages(
         fromChatId = chatId,
         messageIds = messages.map { it.messageId },
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         removeCaption = removeCaption
@@ -71,6 +77,7 @@ public suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -78,6 +85,7 @@ public suspend fun TelegramBot.copyMessages(
     toChatId = toChatId,
     messagesMetas = messages.map { it.metaInfo },
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -88,6 +96,7 @@ public suspend fun TelegramBot.copy(
     fromChatId: ChatIdentifier,
     messageIds: List<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -96,6 +105,7 @@ public suspend fun TelegramBot.copy(
     fromChatId = fromChatId,
     messageIds = messageIds,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -106,6 +116,7 @@ public suspend fun TelegramBot.copy(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -114,6 +125,7 @@ public suspend fun TelegramBot.copy(
     fromChatId = fromChatId,
     messageIds = messageIds,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -123,6 +135,7 @@ public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -130,6 +143,7 @@ public suspend fun TelegramBot.copy(
     toChatId = toChatId,
     messagesMetas = messagesMetas,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption
@@ -140,6 +154,7 @@ public suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = toChatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -147,6 +162,7 @@ public suspend fun TelegramBot.copy(
     toChatId = toChatId,
     messages = messages,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     removeCaption = removeCaption

@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.abstracts.WithMessageId
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -29,7 +30,9 @@ data class ReplyParameters internal constructor(
     @SerialName(quoteEntitiesField)
     private val quoteEntities: List<RawMessageEntity>? = null,
     @SerialName(quotePositionField)
-    val quotePosition: Int?
+    val quotePosition: Int? = null,
+    @SerialName(checklistTaskIdField)
+    val checklistTaskId: ChecklistTaskId? = null
 ) : WithMessageId, TextedInput {
     override val text: String?
         get() = quote
@@ -42,7 +45,8 @@ data class ReplyParameters internal constructor(
         messageId: MessageId,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -50,30 +54,35 @@ data class ReplyParameters internal constructor(
         entities.makeSourceString(),
         null,
         entities.toRawMessageEntities(),
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         metaInfo: Message.MetaInfo,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         entities,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         message: Message,
         entities: TextSourcesList,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         message.metaInfo,
         entities,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         chatIdentifier: ChatIdentifier,
@@ -81,7 +90,8 @@ data class ReplyParameters internal constructor(
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -89,40 +99,46 @@ data class ReplyParameters internal constructor(
         quote,
         quoteParseMode,
         null,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         metaInfo: Message.MetaInfo,
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         quote,
         quoteParseMode,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         message: Message,
         quote: String,
         quoteParseMode: ParseMode,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         message.metaInfo,
         quote,
         quoteParseMode,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -130,25 +146,30 @@ data class ReplyParameters internal constructor(
         null,
         null,
         null,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         metaInfo: Message.MetaInfo,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
     constructor(
         message: Message,
         allowSendingWithoutReply: Boolean? = null,
-        quotePosition: Int? = null
+        quotePosition: Int? = null,
+        checklistTaskId: ChecklistTaskId? = null,
     ) : this(
         message.metaInfo,
         allowSendingWithoutReply,
-        quotePosition
+        quotePosition,
+        checklistTaskId
     )
 }

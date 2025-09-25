@@ -29,6 +29,8 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
 ) : ChannelContentMessage<T> {
+    @SerialName(isPaidPostField)
+    override val isPaidPost: Boolean = false
     constructor(
         messageId: MessageId,
         chat: PreviewChannelChat,

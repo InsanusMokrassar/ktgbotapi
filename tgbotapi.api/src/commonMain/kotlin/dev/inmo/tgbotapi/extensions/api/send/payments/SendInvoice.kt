@@ -1,3 +1,5 @@
+@file:Suppress("KDocUnresolvedReference")
+
 package dev.inmo.tgbotapi.extensions.api.send.payments
 
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -5,11 +7,11 @@ import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
-import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -35,10 +37,12 @@ public suspend fun TelegramBot.sendInvoice(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = execute(
@@ -62,10 +66,12 @@ public suspend fun TelegramBot.sendInvoice(
         shouldSendEmailToProvider = shouldSendEmailToProvider,
         priceDependOnShipAddress = priceDependOnShipAddress,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -98,6 +104,7 @@ public suspend fun TelegramBot.sendInvoice(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = sendInvoice(
@@ -120,10 +127,12 @@ public suspend fun TelegramBot.sendInvoice(
     shouldSendEmailToProvider = shouldSendEmailToProvider,
     priceDependOnShipAddress = priceDependOnShipAddress,
     threadId = null,
+    directMessageThreadId = null,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -142,10 +151,12 @@ public suspend fun TelegramBot.sendInvoice(
     startParameter: StartParameter? = null,
     providerData: String? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = execute(
@@ -158,10 +169,12 @@ public suspend fun TelegramBot.sendInvoice(
         startParameter = startParameter,
         providerData = providerData,
         threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
         effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -183,6 +196,7 @@ public suspend fun TelegramBot.sendInvoice(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<InvoiceContent> = sendInvoice(
@@ -194,10 +208,12 @@ public suspend fun TelegramBot.sendInvoice(
     startParameter = startParameter,
     providerData = providerData,
     threadId = null,
+    directMessageThreadId = null,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

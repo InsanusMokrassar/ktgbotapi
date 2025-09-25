@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.*
@@ -30,11 +31,13 @@ fun SendLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -42,11 +45,13 @@ fun SendLocation(
     latitude = latitude,
     longitude = longitude,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -56,11 +61,13 @@ fun SendStaticLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Static(
@@ -68,11 +75,13 @@ fun SendStaticLocation(
     latitude = latitude,
     longitude = longitude,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -86,11 +95,13 @@ fun SendLiveLocation(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation.Live(
@@ -102,11 +113,13 @@ fun SendLiveLocation(
     heading = heading,
     proximityAlertRadius = proximityAlertRadius,
     threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -143,6 +156,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(messageThreadIdField)
         @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
+        @OptIn(ExperimentalSerializationApi::class)
+        @EncodeDefault
+        @SerialName(directMessagesTopicIdField)
+        override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         @SerialName(businessConnectionIdField)
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
@@ -155,6 +172,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val allowPaidBroadcast: Boolean = false,
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
+        @SerialName(suggestedPostParametersField)
+        override val suggestedPostParameters: SuggestedPostParameters? = null,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -187,6 +206,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
+        @OptIn(ExperimentalSerializationApi::class)
+        @EncodeDefault
+        @SerialName(directMessagesTopicIdField)
+        override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         @SerialName(businessConnectionIdField)
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
@@ -199,6 +222,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val allowPaidBroadcast: Boolean = false,
         @SerialName(messageEffectIdField)
         override val effectId: EffectId? = null,
+        @SerialName(suggestedPostParametersField)
+        override val suggestedPostParameters: SuggestedPostParameters? = null,
         @SerialName(replyParametersField)
         override val replyParameters: ReplyParameters? = null,
         @SerialName(replyMarkupField)
@@ -237,6 +262,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val proximityAlertRadius: Meters? = null,
             @SerialName(messageThreadIdField)
             val threadId: MessageThreadId? = chatId.threadId,
+            @SerialName(directMessagesTopicIdField)
+            val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
             @SerialName(businessConnectionIdField)
             val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
             @SerialName(disableNotificationField)
@@ -247,6 +274,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val allowPaidBroadcast: Boolean = false,
             @SerialName(messageEffectIdField)
             val effectId: EffectId? = null,
+            @SerialName(suggestedPostParametersField)
+            val suggestedPostParameters: SuggestedPostParameters? = null,
             @SerialName(replyParametersField)
             val replyParameters: ReplyParameters? = null,
             @SerialName(replyMarkupField)
@@ -265,11 +294,13 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     latitude = surrogate.latitude,
                     longitude = surrogate.longitude,
                     threadId = surrogate.threadId,
+                    directMessageThreadId = surrogate.directMessageThreadId,
                     businessConnectionId = surrogate.businessConnectionId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
+                    suggestedPostParameters = surrogate.suggestedPostParameters,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
                 )
@@ -282,11 +313,13 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     heading = surrogate.heading,
                     proximityAlertRadius = surrogate.proximityAlertRadius,
                     threadId = surrogate.threadId,
+                    directMessageThreadId = surrogate.directMessageThreadId,
                     businessConnectionId = surrogate.businessConnectionId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
                     effectId = surrogate.effectId,
+                    suggestedPostParameters = surrogate.suggestedPostParameters,
                     replyParameters = surrogate.replyParameters,
                     replyMarkup = surrogate.replyMarkup
                 )
@@ -304,11 +337,13 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     heading = heading,
                     proximityAlertRadius = proximityAlertRadius,
                     threadId = threadId,
+                    directMessageThreadId = directMessageThreadId,
                     businessConnectionId = businessConnectionId,
                     disableNotification = disableNotification,
                     protectContent = protectContent,
                     allowPaidBroadcast = allowPaidBroadcast,
                     effectId = effectId,
+                    suggestedPostParameters = suggestedPostParameters,
                     replyParameters = replyParameters,
                     replyMarkup = replyMarkup
                 )

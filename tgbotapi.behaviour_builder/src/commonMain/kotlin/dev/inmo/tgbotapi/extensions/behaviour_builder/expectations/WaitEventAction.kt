@@ -5,7 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
+import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
@@ -22,6 +22,12 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
@@ -281,4 +287,29 @@ fun BehaviourContext.waitChecklistTasksAdded(
 fun BehaviourContext.waitChannelDirectMessagesConfigurationChanged(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ChannelDirectMessagesConfigurationChanged>(initRequest, errorFactory)
+) = waitEvents<DirectMessagesConfigurationChanged>(initRequest, errorFactory)
+
+fun BehaviourContext.waitSuggestedPostApprovalFailed(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuggestedPostApprovalFailed>(initRequest, errorFactory)
+
+fun BehaviourContext.waitSuggestedPostRefunded(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuggestedPostRefunded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitSuggestedPostDeclined(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuggestedPostDeclined>(initRequest, errorFactory)
+
+fun BehaviourContext.waitSuggestedPostPaid(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuggestedPostPaid>(initRequest, errorFactory)
+
+fun BehaviourContext.waitSuggestedPostApproved(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuggestedPostApproved>(initRequest, errorFactory)

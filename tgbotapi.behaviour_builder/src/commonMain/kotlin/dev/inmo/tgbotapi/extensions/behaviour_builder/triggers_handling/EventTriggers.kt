@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
-import dev.inmo.tgbotapi.types.ChannelDirectMessagesConfigurationChanged
+import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
@@ -28,8 +28,15 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
+import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
@@ -1176,9 +1183,119 @@ fun <BC : BehaviourContext> BC.onChecklistTasksAdded(
  * data
  */
 fun <BC : BehaviourContext> BC.onChannelDirectMessagesConfigurationChanged(
-    initialFilter: SimpleFilter<ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelEventMessage<ChannelDirectMessagesConfigurationChanged>>
+    initialFilter: SimpleFilter<ChannelEventMessage<DirectMessagesConfigurationChanged>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelEventMessage<DirectMessagesConfigurationChanged>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelEventMessage<DirectMessagesConfigurationChanged>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelEventMessage<DirectMessagesConfigurationChanged>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelEventMessage<DirectMessagesConfigurationChanged>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+fun <BC : BehaviourContext> BC.onSuggestedPostApproved(
+    initialFilter: SimpleFilter<ChannelDirectMessagesEventMessage<SuggestedPostApproved>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelDirectMessagesEventMessage<SuggestedPostApproved>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelDirectMessagesEventMessage<SuggestedPostApproved>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelDirectMessagesEventMessage<SuggestedPostApproved>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelDirectMessagesEventMessage<SuggestedPostApproved>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+fun <BC : BehaviourContext> BC.onSuggestedPostApprovalFailed(
+    initialFilter: SimpleFilter<ChannelDirectMessagesEventMessage<SuggestedPostApprovalFailed>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelDirectMessagesEventMessage<SuggestedPostApprovalFailed>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelDirectMessagesEventMessage<SuggestedPostApprovalFailed>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelDirectMessagesEventMessage<SuggestedPostApprovalFailed>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelDirectMessagesEventMessage<SuggestedPostApprovalFailed>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+fun <BC : BehaviourContext> BC.onSuggestedPostDeclined(
+    initialFilter: SimpleFilter<ChannelDirectMessagesEventMessage<SuggestedPostDeclined>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelDirectMessagesEventMessage<SuggestedPostDeclined>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelDirectMessagesEventMessage<SuggestedPostDeclined>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelDirectMessagesEventMessage<SuggestedPostDeclined>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelDirectMessagesEventMessage<SuggestedPostDeclined>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+fun <BC : BehaviourContext> BC.onSuggestedPostPaid(
+    initialFilter: SimpleFilter<ChannelDirectMessagesEventMessage<SuggestedPostPaid>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelDirectMessagesEventMessage<SuggestedPostPaid>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelDirectMessagesEventMessage<SuggestedPostPaid>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelDirectMessagesEventMessage<SuggestedPostPaid>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelDirectMessagesEventMessage<SuggestedPostPaid>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+fun <BC : BehaviourContext> BC.onSuggestedPostRefunded(
+    initialFilter: SimpleFilter<ChannelDirectMessagesEventMessage<SuggestedPostRefunded>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChannelDirectMessagesEventMessage<SuggestedPostRefunded>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChannelDirectMessagesEventMessage<SuggestedPostRefunded>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChannelDirectMessagesEventMessage<SuggestedPostRefunded>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChannelDirectMessagesEventMessage<SuggestedPostRefunded>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
