@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.utils
 
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.merge
@@ -53,5 +54,16 @@ suspend fun <T> firstOfOrNull(
 suspend fun <T> firstOf(
     vararg deferreds: suspend () -> T
 ): T {
-    return firstOfOrNull(*deferreds) ?: error("Unable to get result of deferreds")
+    val resultFlow = deferreds.map {
+        flow {
+            runCatching {
+                it()
+            }.onSuccess {
+                emit(it)
+            }.onFailure {
+                if (it is CancellationException) throw it
+            }
+        }
+    }.merge()
+    return resultFlow.first()
 }
