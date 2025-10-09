@@ -16,7 +16,7 @@ kotlin-poet = "2.2.0"
 microutils = "0.26.3"
 kslog = "1.5.0"
 
-versions = "0.52.0"
+versions = "0.53.0"
 
 github-release-plugin = "2.5.2"
 dokka = "2.0.0"
