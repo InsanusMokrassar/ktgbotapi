@@ -9,4 +9,5 @@ internal val nonstrictJsonFormat = Json {
     allowSpecialFloatingPointValues = true
     useArrayPolymorphism = true
     encodeDefaults = true
+    explicitNulls = false
 }
