@@ -14,11 +14,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class OrderInfo(
     @SerialName(nameField)
-    val name: String?,
+    val name: String? = null,
     @SerialName(phoneNumberField)
-    val phoneNumber: String?,
+    val phoneNumber: String? = null,
     @SerialName(emailField)
-    val email: String?,
+    val email: String? = null,
     @SerialName(shippingAddressField)
-    val shippingAddress: ShippingAddress?
+    val shippingAddress: ShippingAddress? = null
 )
