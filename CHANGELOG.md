@@ -1,9 +1,6 @@
 # TelegramBotAPI changelog
 
-## 29.1.0
-
-* `Version`:
-    * `Gradle Versions Plugin`: `0.52.0` -> `0.53.0`
+## 30.0.0
 
 ## 29.0.1
 
