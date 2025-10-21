@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 
 @Warning("This API is experimental and subject of changes")
 class TelegramBotMiddlewareBuilder {
+    var onRequestExceptionInLimiter: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null
     var onRequestException: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null
     var onBeforeSearchCallFactory: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Unit)? = null
     var onBeforeCallFactoryMakeCall: (suspend (request: Request<*>, potentialFactory: KtorCallFactory) -> Unit)? = null
@@ -17,6 +18,12 @@ class TelegramBotMiddlewareBuilder {
     var onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null
     var id: String = uuid4().toString()
 
+    /**
+     * Useful way to set [onRequestException]
+     */
+    fun doOnRequestExceptionInLimiter(block: suspend (request: Request<*>, t: Throwable?) -> Any?) {
+        onRequestExceptionInLimiter = block
+    }
     /**
      * Useful way to set [onRequestException]
      */
@@ -63,6 +70,7 @@ class TelegramBotMiddlewareBuilder {
     @Warning("This API is experimental and subject of changes")
     fun build(): TelegramBotMiddleware {
         return TelegramBotMiddleware(
+            onRequestExceptionInLimiter = onRequestExceptionInLimiter,
             onRequestException = onRequestException,
             onBeforeSearchCallFactory = onBeforeSearchCallFactory,
             onBeforeCallFactoryMakeCall = onBeforeCallFactoryMakeCall,
@@ -78,6 +86,7 @@ class TelegramBotMiddlewareBuilder {
         @Warning("This API is experimental and subject of changes")
         fun from(middleware: TelegramBotMiddleware, additionalSetup: TelegramBotMiddlewareBuilder.() -> Unit): TelegramBotMiddleware {
             return TelegramBotMiddlewareBuilder().apply {
+                onRequestExceptionInLimiter = middleware.onRequestExceptionInLimiter
                 onRequestException = middleware.onRequestException
                 onBeforeSearchCallFactory = middleware.onBeforeSearchCallFactory
                 onBeforeCallFactoryMakeCall = middleware.onBeforeCallFactoryMakeCall

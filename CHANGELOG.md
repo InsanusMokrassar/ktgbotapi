@@ -2,6 +2,12 @@
 
 ## 30.0.1
 
+* `Core`:
+  * Potential fix of [#989](https://github.com/InsanusMokrassar/ktgbotapi/issues/989) by:
+    * In long polling have been added check for causing by unresolved address exception
+    * Add `TelegramBotPipelinesHandler.onRequestExceptionInLimiter` which will be triggered in ANY exception during
+    request execution
+
 ## 30.0.0
 
 **THIS UPDATE MAY CONTAINS BREAKING CHANGES**

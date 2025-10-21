@@ -31,9 +31,16 @@ open class TelegramBotMiddleware(
     internal val onRequestResultPresented: (suspend (result: Any, request: Request<*>, resultCallFactory: KtorCallFactory, callsFactories: List<KtorCallFactory>) -> Any?)? = null,
     internal val onRequestResultAbsent: (suspend (request: Request<*>, callsFactories: List<KtorCallFactory>) -> Any?)? = null,
     internal val onRequestReturnResult: (suspend (result: Result<*>, request: Request<*>, callsFactories: List<KtorCallFactory>) -> Result<Any?>?)? = null,
+    internal val onRequestExceptionInLimiter: (suspend (request: Request<*>, t: Throwable?) -> Any?)? = null,
     val id: String = uuid4().toString()
 ) : TelegramBotPipelinesHandler {
     object ResultAbsence : Throwable()
+
+    override suspend fun <T : Any> onRequestExceptionInLimiter(request: Request<T>, t: Throwable): T? {
+        @Suppress("UNCHECKED_CAST")
+        return onRequestExceptionInLimiter ?.invoke(request, t) as? T
+    }
+
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
         @Suppress("UNCHECKED_CAST")
         return onRequestException ?.invoke(request, t) as? T
