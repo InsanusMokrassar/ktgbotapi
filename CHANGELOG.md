@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 30.0.0
+
+**THIS UPDATE MAY CONTAINS BREAKING CHANGES**
+
+* `Version`:
+    * `Kotlin`: `2.2.10` -> `2.2.20`
+    * `Ktor`: `3.2.3` -> `3.3.1`
+    * `MicroUtils`: `0.26.3` -> `0.26.6`
+    * `KSLog`: `1.5.0` -> `1.5.1`
+* `BehaviourBuilder`:
+    * `DefaultCustomBehaviourContextAndTypeReceiver` now extends `suspend (BC, U) -> R` instead of `CustomBehaviourContextAndTypeReceiver<BC, R, U>` (no changes in api in fact)
+
 ## 29.0.1
 
 * `Core`:

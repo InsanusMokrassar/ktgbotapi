@@ -83,7 +83,7 @@ fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver
  */
 class DefaultCustomBehaviourContextAndTypeReceiver<BC : BehaviourContext, R, U : Update>(
     private val wrapperReceiver: CustomBehaviourContextAndTypeReceiver<BC, R, U>
-) : CustomBehaviourContextAndTypeReceiver<BC, R, U> {
+) : suspend (BC, U) -> R {
     private var botInfo: ExtendedBot? = null
     private val mutex = Mutex()
 
