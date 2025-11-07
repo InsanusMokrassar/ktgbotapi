@@ -397,6 +397,7 @@ public abstract interface class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesH
 	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestExceptionInLimiter (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -407,6 +408,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler$Compan
 	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestExceptionInLimiter (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -417,6 +419,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler$Defaul
 	public static fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun onRequestException (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequestExceptionInLimiter (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun onRequestResultAbsent (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun onRequestResultPresented (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun onRequestReturnResult-3t6e044 (Ldev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler;Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -475,13 +478,14 @@ public final class dev/inmo/tgbotapi/bot/ktor/base/SimpleRequestCallFactory : de
 public class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware : dev/inmo/tgbotapi/bot/ktor/TelegramBotPipelinesHandler {
 	public static final field Companion Ldev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddleware$Companion;
 	public fun <init> ()V
-	public fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Ljava/lang/String;)V
-	public synthetic fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;Ljava/lang/String;)V
+	public synthetic fun <init> (Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function5;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getId ()Ljava/lang/String;
 	public fun onAfterCallFactoryMakeCall (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestExceptionInLimiter (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -503,6 +507,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareB
 	public final fun doOnBeforeCallFactoryMakeCall (Lkotlin/jvm/functions/Function3;)V
 	public final fun doOnBeforeSearchCallFactory (Lkotlin/jvm/functions/Function3;)V
 	public final fun doOnRequestException (Lkotlin/jvm/functions/Function3;)V
+	public final fun doOnRequestExceptionInLimiter (Lkotlin/jvm/functions/Function3;)V
 	public final fun doOnRequestResultAbsent (Lkotlin/jvm/functions/Function3;)V
 	public final fun doOnRequestResultPresented (Lkotlin/jvm/functions/Function5;)V
 	public final fun doOnRequestReturnResult (Lkotlin/jvm/functions/Function4;)V
@@ -511,6 +516,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareB
 	public final fun getOnBeforeCallFactoryMakeCall ()Lkotlin/jvm/functions/Function3;
 	public final fun getOnBeforeSearchCallFactory ()Lkotlin/jvm/functions/Function3;
 	public final fun getOnRequestException ()Lkotlin/jvm/functions/Function3;
+	public final fun getOnRequestExceptionInLimiter ()Lkotlin/jvm/functions/Function3;
 	public final fun getOnRequestResultAbsent ()Lkotlin/jvm/functions/Function3;
 	public final fun getOnRequestResultPresented ()Lkotlin/jvm/functions/Function5;
 	public final fun getOnRequestReturnResult ()Lkotlin/jvm/functions/Function4;
@@ -519,6 +525,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewareB
 	public final fun setOnBeforeCallFactoryMakeCall (Lkotlin/jvm/functions/Function3;)V
 	public final fun setOnBeforeSearchCallFactory (Lkotlin/jvm/functions/Function3;)V
 	public final fun setOnRequestException (Lkotlin/jvm/functions/Function3;)V
+	public final fun setOnRequestExceptionInLimiter (Lkotlin/jvm/functions/Function3;)V
 	public final fun setOnRequestResultAbsent (Lkotlin/jvm/functions/Function3;)V
 	public final fun setOnRequestResultPresented (Lkotlin/jvm/functions/Function5;)V
 	public final fun setOnRequestReturnResult (Lkotlin/jvm/functions/Function4;)V
@@ -537,6 +544,7 @@ public final class dev/inmo/tgbotapi/bot/ktor/middlewares/TelegramBotMiddlewares
 	public fun onBeforeCallFactoryMakeCall (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onBeforeSearchCallFactory (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestException (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun onRequestExceptionInLimiter (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultAbsent (Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestResultPresented (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ldev/inmo/tgbotapi/bot/ktor/KtorCallFactory;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun onRequestReturnResult-3t6e044 (Ljava/lang/Object;Ldev/inmo/tgbotapi/requests/abstracts/Request;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -31901,6 +31909,16 @@ public final class dev/inmo/tgbotapi/utils/ByteReadChannelAllocatorDeserializati
 public final class dev/inmo/tgbotapi/utils/CausedByCancellationKt {
 	public static final fun causedCancellationException (Ljava/lang/Throwable;)Ljava/util/concurrent/CancellationException;
 	public static final fun isCausedByCancellation (Ljava/lang/Throwable;)Z
+}
+
+public final class dev/inmo/tgbotapi/utils/CausedByKt {
+	public static final fun causedBy (Ljava/lang/Throwable;Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Ljava/lang/Throwable;
+	public static synthetic fun causedBy$default (Ljava/lang/Throwable;Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Throwable;
+}
+
+public final class dev/inmo/tgbotapi/utils/CausedByUnresolvedAddressExceptionKt {
+	public static final fun causedUnresolvedAddressException (Ljava/lang/Throwable;)Ljava/nio/channels/UnresolvedAddressException;
+	public static final fun isCausedUnresolvedAddressException (Ljava/lang/Throwable;)Z
 }
 
 public final class dev/inmo/tgbotapi/utils/DefaultKSLogKt {

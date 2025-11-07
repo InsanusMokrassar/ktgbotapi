@@ -4,8 +4,23 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 
 interface TelegramBotPipelinesHandler {
     /**
+     * Will be called when any exception will happen due to the [request] handling inside of limiter block. This method
+     * will be called for each exception happened during call factory call
+     */
+    suspend fun <T: Any> onRequestExceptionInLimiter(
+        request: Request<T>,
+        t: Throwable
+    ): T? = null
+
+    /**
      * Will be called when any exception will happen due to the [request] handling. If returns value - that value
-     * will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
+     * will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead. In difference with
+     * [onRequestExceptionInLimiter], this method will be called only AFTER
+     * [dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter] will pass result of call factory execution outside of
+     * its [dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter.limit] function
+     *
+     * @see dev.inmo.tgbotapi.bot.ktor.base.DefaultKtorRequestsExecutor
+     * @see dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
      */
     suspend fun <T: Any> onRequestException(
         request: Request<T>,

@@ -14,16 +14,9 @@ import kotlinx.coroutines.CancellationException
  * @return the first [CancellationException] found in the cause chain, or `null` if none present
  */
 fun Throwable.causedCancellationException(): CancellationException? {
-    var current = this
-    while (current !is CancellationException) {
-        when {
-            // It is possible, that API will be changed and cancellation will be caused by something else
-            current is CancellationException && current.cause == null -> return current
-            else -> current = current.cause ?: return null
-        }
+    return causedBy(CancellationException::class) {
+        it.takeIf { it.cause == null }
     }
-
-    return current
 }
 
 /**

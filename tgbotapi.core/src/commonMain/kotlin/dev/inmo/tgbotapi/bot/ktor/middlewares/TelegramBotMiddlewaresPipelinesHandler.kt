@@ -10,6 +10,12 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 class TelegramBotMiddlewaresPipelinesHandler(
     private val middlewares: List<TelegramBotMiddleware> = emptyList()
 ) : TelegramBotPipelinesHandler {
+    override suspend fun <T : Any> onRequestExceptionInLimiter(request: Request<T>, t: Throwable): T? {
+        return middlewares.firstNotNullOfOrNull {
+            it.onRequestExceptionInLimiter(request, t)
+        } ?: super.onRequestExceptionInLimiter(request, t)
+    }
+
     override suspend fun <T : Any> onRequestException(request: Request<T>, t: Throwable): T? {
         return middlewares.firstNotNullOfOrNull {
             it.onRequestException(request, t)

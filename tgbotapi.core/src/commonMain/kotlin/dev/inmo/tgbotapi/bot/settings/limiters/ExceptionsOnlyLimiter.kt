@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
 import dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
+import dev.inmo.tgbotapi.utils.isCausedUnresolvedAddressException
+import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.delay
 
 /**
@@ -13,10 +15,10 @@ object ExceptionsOnlyLimiter : RequestLimiter {
             result = runCatching {
                 block()
             }.onFailure {
-                if (it is TooMuchRequestsException) {
-                    delay(it.retryAfter.leftToRetry)
-                } else {
-                    throw it
+                when {
+                    it.isCausedUnresolvedAddressException() -> delay(1000L)
+                    it is TooMuchRequestsException -> delay(it.retryAfter.leftToRetry)
+                    else -> throw it
                 }
             }
         }

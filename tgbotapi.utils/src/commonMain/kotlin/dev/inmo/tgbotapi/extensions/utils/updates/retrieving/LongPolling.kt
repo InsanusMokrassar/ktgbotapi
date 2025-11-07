@@ -18,8 +18,11 @@ import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.causedCancellationException
 import dev.inmo.tgbotapi.utils.isCausedByCancellation
+import dev.inmo.tgbotapi.utils.isCausedUnresolvedAddressException
 import dev.inmo.tgbotapi.utils.subscribeWithBotLogger
+import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.util.network.UnresolvedAddressException
 import io.ktor.utils.io.CancellationException
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -127,12 +130,16 @@ fun TelegramBot.longPollingFlow(
             }.onFailure { e ->
                 runCatchingLogging(logger = Log) {
                     val isHttpRequestTimeoutException =
-                        e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
+                        e is ConnectTimeoutException || e is HttpRequestTimeoutException || (e is CommonBotException && e.cause is HttpRequestTimeoutException)
                     if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
                         return@onFailure
                     }
+
                     exceptionsHandler?.invoke(e)
-                    if (e is RequestException) {
+
+                    // It seems some problems with internet connection. See https://github.com/InsanusMokrassar/ktgbotapi/issues/989
+                    val isUnresolvedAddressException = e.isCausedUnresolvedAddressException()
+                    if (e is RequestException || isUnresolvedAddressException) {
                         delay(1000L)
                     }
                 }

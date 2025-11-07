@@ -53,29 +53,33 @@ class DefaultKtorRequestsExecutor internal constructor(
             logger.v { "Start request $request" }
             pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
             requestsLimiter.limit(request) {
-                var result: T? = null
-                lateinit var factoryHandledRequest: KtorCallFactory
-                for (potentialFactory in callsFactories) {
-                    pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
-                    logger.v { "Trying factory $potentialFactory for $request" }
-                    val resultFromFactory = potentialFactory.makeCall(
-                        client,
-                        telegramAPIUrlsKeeper,
-                        request,
-                        jsonFormatter
-                    )
-                    logger.v { "Result of factory $potentialFactory handling $request: $resultFromFactory" }
-                    result = pipelineStepsHolder.onAfterCallFactoryMakeCall(resultFromFactory, request, potentialFactory)
-                    logger.v { "Result of pipeline $pipelineStepsHolder handling $resultFromFactory: $result" }
-                    if (result != null) {
-                        factoryHandledRequest = potentialFactory
-                        break
+                runCatching {
+                    var result: T? = null
+                    lateinit var factoryHandledRequest: KtorCallFactory
+                    for (potentialFactory in callsFactories) {
+                        pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
+                        logger.v { "Trying factory $potentialFactory for $request" }
+                        val resultFromFactory = potentialFactory.makeCall(
+                            client,
+                            telegramAPIUrlsKeeper,
+                            request,
+                            jsonFormatter
+                        )
+                        logger.v { "Result of factory $potentialFactory handling $request: $resultFromFactory" }
+                        result = pipelineStepsHolder.onAfterCallFactoryMakeCall(resultFromFactory, request, potentialFactory)
+                        logger.v { "Result of pipeline $pipelineStepsHolder handling $resultFromFactory: $result" }
+                        if (result != null) {
+                            factoryHandledRequest = potentialFactory
+                            break
+                        }
                     }
-                }
 
-                result ?.let {
-                    pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
-                } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
+                    result ?.let {
+                        pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
+                    } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
+                }.onFailure { e ->
+                    pipelineStepsHolder.onRequestExceptionInLimiter(request, e) ?.let { return@let it } ?: throw e
+                }.getOrThrow()
             }
         }.let {
             val result = it.exceptionOrNull() ?.let { e ->
