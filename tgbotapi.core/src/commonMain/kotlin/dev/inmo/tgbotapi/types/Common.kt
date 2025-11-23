@@ -64,6 +64,7 @@ val threadNameLength = 1 until 128
 val chatDescriptionLength = 0 until 256
 val inlineResultQueryIdLingth = 1 until 64
 val allowedConnectionsLength = 1 .. 100
+val allowedConnectionsWithLocalServerLength = 1 .. 100000
 
 val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256

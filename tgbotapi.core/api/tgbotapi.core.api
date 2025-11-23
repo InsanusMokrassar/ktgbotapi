@@ -10654,6 +10654,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field yShiftField Ljava/lang/String;
 	public static final field yearField Ljava/lang/String;
 	public static final fun getAllowedConnectionsLength ()Lkotlin/ranges/IntRange;
+	public static final fun getAllowedConnectionsWithLocalServerLength ()Lkotlin/ranges/IntRange;
 	public static final fun getBasketballAndFootballDiceResultLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getBotCommandDescriptionLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getBotCommandLengthLimit ()Lkotlin/ranges/IntRange;

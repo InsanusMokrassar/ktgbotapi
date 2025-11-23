@@ -1,5 +1,22 @@
 # TelegramBotAPI changelog
 
+## 30.0.2
+
+* `Version`:
+    * `Kotlin`: `2.2.20` -> `2.2.21`
+    * `Ktor`: `3.3.1` -> `3.3.2`
+    * `KSP`: `2.2.20-2.0.4` -> `2.3.2`
+    * `MicroUtils`: `0.26.6` -> `0.26.8`
+    * `KSLog`: `1.5.1` -> `1.5.2`
+* `Core`:
+    * Allow to use `SetWebhook` with `maxAllowedConnections` up to `100000` (fix of [#1019](https://github.com/InsanusMokrassar/ktgbotapi/issues/1019))
+* `KSP`:
+    * Fixed annotation property access for KSP2 compatibility using `withNoSuchElementWorkaround`
+    * Removed `ksp.useKSP2=false` workaround from `gradle.properties` (KSP2 is now properly supported)
+* `Utils`:
+    * Regenerated class casts extensions
+    * Allow to use custom `GetUpdates` in `longPollingFlow`
+
 ## 30.0.1
 
 * `Core`:
