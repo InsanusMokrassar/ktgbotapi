@@ -8,6 +8,7 @@ import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.ksp.writeTo
 import dev.inmo.micro_ksp.generator.resolveSubclasses
+import dev.inmo.micro_ksp.generator.withNoSuchElementWorkaround
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.ClassCastsExcluded
@@ -30,7 +31,9 @@ class TelegramBotAPISymbolProcessor(
         val classes = resolver.getSymbolsWithAnnotation(classCastsIncludedClassName.canonicalName).filterIsInstance<KSClassDeclaration>()
         val classesRegexes: Map<KSClassDeclaration, Pair<Regex?, Regex?>> = classes.mapNotNull {
             it to (it.getAnnotationsByType(ClassCastsIncluded::class).firstNotNullOfOrNull {
-                it.typesRegex.takeIf { it.isNotEmpty() } ?.let(::Regex) to it.excludeRegex.takeIf { it.isNotEmpty() } ?.let(::Regex)
+                val typesRegex = withNoSuchElementWorkaround("") { it.typesRegex }
+                val excludeRegex = withNoSuchElementWorkaround("") { it.excludeRegex }
+                typesRegex.takeIf { it.isNotEmpty() } ?.let(::Regex) to excludeRegex.takeIf { it.isNotEmpty() } ?.let(::Regex)
             } ?: return@mapNotNull null)
         }.toMap()
         val classesSubtypes = mutableMapOf<KSClassDeclaration, MutableSet<KSClassDeclaration>>()
