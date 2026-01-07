@@ -56,7 +56,7 @@ sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, ExtendedNonBotChat {
+sealed interface ExtendedPrivateChat : PrivateUserChat, ExtendedChatWithUsername, ExtendedNonBotChat {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
@@ -71,6 +71,10 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
 }
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ExtendedChatSerializer.Companion::class)
+sealed interface ExtendedPrivateForumChat : ExtendedPrivateChat, PrivateForumChat
 
 sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotChat {
     val description: String
@@ -112,7 +116,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
+sealed interface ExtendedForumChat : ExtendedSupergroupChat, SupergroupForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)

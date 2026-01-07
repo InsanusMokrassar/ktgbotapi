@@ -17200,7 +17200,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername$Default
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername;)Z
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedForumChat : dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat, dev/inmo/tgbotapi/types/chat/ForumChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedForumChat : dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChat, dev/inmo/tgbotapi/types/chat/SupergroupForumChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedForumChat$Companion;
 }
 
@@ -17395,7 +17395,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat$DefaultImpls 
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedNonBotChat;)Z
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat : dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername, dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat : dev/inmo/tgbotapi/types/chat/ExtendedChatWithUsername, dev/inmo/tgbotapi/types/chat/ExtendedNonBotChat, dev/inmo/tgbotapi/types/chat/PrivateUserChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$Companion;
 	public fun getAllowCreateUserIdLink ()Z
 	public abstract fun getBio ()Ljava/lang/String;
@@ -17489,6 +17489,94 @@ public final synthetic class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImp
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat : dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat, dev/inmo/tgbotapi/types/chat/PrivateForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat$DefaultImpls {
+	public static fun getAllowCreateUserIdLink (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat;)Z
+	public static fun getCanReceiveGifts (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat;)Z
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat;)Z
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl$Companion;
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component10-GbmMWyQ ()Ljava/lang/String;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component12-f3WtEc0 ()I
+	public final fun component13-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
+	public final fun component14-GbmMWyQ ()Ljava/lang/String;
+	public final fun component15-GbmMWyQ ()Ljava/lang/String;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
+	public final fun component19 ()Ldev/inmo/tgbotapi/types/Birthdate;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
+	public final fun component20 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public final fun component21 ()I
+	public final fun component22 ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
+	public final fun component3-san03mo ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public final fun copy-5RSODus (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl;
+	public static synthetic fun copy-5RSODus$default (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl;JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAccentColorId-f3WtEc0 ()I
+	public fun getAcceptedGiftTypes ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
+	public fun getActiveUsernames ()Ljava/util/List;
+	public fun getAllowCreateUserIdLink ()Z
+	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getBio ()Ljava/lang/String;
+	public fun getBirthdate ()Ldev/inmo/tgbotapi/types/Birthdate;
+	public fun getBusinessIntro ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
+	public fun getBusinessLocation ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
+	public fun getBusinessOpeningHours ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
+	public fun getCanReceiveGifts ()Z
+	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
+	public fun getFirstName ()Ljava/lang/String;
+	public fun getHasPrivateForwards ()Z
+	public fun getHasRestrictedVoiceAndVideoMessages ()Z
+	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getId-tHkBKVM ()J
+	public fun getLastName ()Ljava/lang/String;
+	public fun getMaxReactionsCount ()I
+	public fun getPersonalChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public fun getProfileAccentColorId-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
+	public fun getProfileBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStatusEmojiExpiration ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getStatusEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isDirectMessages ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateForumChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -17618,7 +17706,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedSupergroupChatImpl$Compa
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/ForumChat : dev/inmo/tgbotapi/types/chat/SupergroupChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/ForumChat : dev/inmo/tgbotapi/types/chat/Chat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ForumChat$Companion;
 }
 
@@ -17719,7 +17807,7 @@ public final class dev/inmo/tgbotapi/types/chat/PossiblyPremiumChat$DefaultImpls
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PossiblyPremiumChat;)Z
 }
 
-public abstract class dev/inmo/tgbotapi/types/chat/PreviewBot : dev/inmo/tgbotapi/types/chat/PreviewUser {
+public abstract class dev/inmo/tgbotapi/types/chat/PreviewBot : dev/inmo/tgbotapi/types/chat/User, dev/inmo/tgbotapi/types/chat/PreviewChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewBot$Companion;
 }
 
@@ -17784,7 +17872,7 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewChatSerializer : kotlinx/
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewForumChat : dev/inmo/tgbotapi/types/chat/ForumChat, dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewForumChat : dev/inmo/tgbotapi/types/chat/PreviewSupergroupChat, dev/inmo/tgbotapi/types/chat/SupergroupForumChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewForumChat$Companion;
 }
 
@@ -17808,7 +17896,7 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewGroupChat$DefaultImpls {
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;)Z
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat : dev/inmo/tgbotapi/types/chat/PreviewUsernameChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
+public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat : dev/inmo/tgbotapi/types/chat/PreviewUsernameChat, dev/inmo/tgbotapi/types/chat/PrivateUserChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat$Companion;
 }
 
@@ -17818,6 +17906,18 @@ public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateChat$DefaultImpls {
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;)Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat : dev/inmo/tgbotapi/types/chat/PreviewPrivateChat, dev/inmo/tgbotapi/types/chat/PrivateForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;)Z
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/PreviewPublicChat : dev/inmo/tgbotapi/types/chat/PreviewChat, dev/inmo/tgbotapi/types/chat/PublicChat {
@@ -17927,6 +18027,66 @@ public final class dev/inmo/tgbotapi/types/chat/PrivateChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/chat/PrivateForumChat : dev/inmo/tgbotapi/types/chat/ForumChat, dev/inmo/tgbotapi/types/chat/PrivateUserChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PrivateForumChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateForumChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateForumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PrivateForumChat;)Z
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateForumChatImpl : dev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl$Companion;
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2-san03mo ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy-55YrAcc (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;
+	public static synthetic fun copy-55YrAcc$default (Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFirstName ()Ljava/lang/String;
+	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getId-tHkBKVM ()J
+	public fun getLastName ()Ljava/lang/String;
+	public fun getUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isDirectMessages ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/chat/PrivateForumChatImpl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateForumChatImpl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/PrivateUserChat : dev/inmo/tgbotapi/types/chat/PrivateChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PrivateUserChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateUserChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/PrivateUserChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PrivateUserChat;)Z
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/chat/PublicChat : dev/inmo/tgbotapi/types/chat/Chat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PublicChat$Companion;
 	public abstract fun getTitle ()Ljava/lang/String;
@@ -17996,6 +18156,18 @@ public final synthetic class dev/inmo/tgbotapi/types/chat/SupergroupChatImpl$$se
 
 public final class dev/inmo/tgbotapi/types/chat/SupergroupChatImpl$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/chat/SupergroupForumChat : dev/inmo/tgbotapi/types/chat/ForumChat, dev/inmo/tgbotapi/types/chat/SupergroupChat {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/SupergroupForumChat$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/SupergroupForumChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/SupergroupForumChat$DefaultImpls {
+	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/SupergroupForumChat;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/UnknownChatType : dev/inmo/tgbotapi/types/chat/Chat, dev/inmo/tgbotapi/types/chat/PreviewChat {

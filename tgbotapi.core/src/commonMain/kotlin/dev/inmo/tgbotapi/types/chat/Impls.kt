@@ -33,6 +33,20 @@ data class PrivateChatImpl(
     @SerialName(lastNameField)
     override val lastName: String = ""
 ) : PreviewPrivateChat
+@Serializable
+@RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
+data class PrivateForumChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
+    override val id: UserId,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(usernameField)
+    override val username: Username? = null,
+    @SerialName(firstNameField)
+    override val firstName: String = "",
+    @SerialName(lastNameField)
+    override val lastName: String = ""
+) : PreviewPrivateForumChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
@@ -115,7 +129,7 @@ sealed class Bot : User()
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(UserSerializer::class)
-sealed class PreviewBot : PreviewUser()
+sealed class PreviewBot : PrivateChat, PreviewChat, User()
 
 @Serializable
 data class CommonBot(

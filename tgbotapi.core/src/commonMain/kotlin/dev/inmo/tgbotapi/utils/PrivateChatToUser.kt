@@ -13,9 +13,11 @@ import dev.inmo.tgbotapi.types.chat.*
  * language)
  */
 fun PrivateChat.toUser(): User = when (this) {
-    is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
     is CommonUser -> this
     is CommonBot -> this
-    is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
     is ExtendedBot -> this
+    is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+    is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+    is ExtendedPrivateForumChatImpl -> CommonUser(id, firstName, lastName, username)
+    is PrivateForumChatImpl -> CommonUser(id, firstName, lastName, username)
 }

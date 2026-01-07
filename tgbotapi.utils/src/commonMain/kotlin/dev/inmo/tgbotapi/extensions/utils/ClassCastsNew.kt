@@ -142,6 +142,7 @@ import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
 import dev.inmo.tgbotapi.types.chat.ExtendedNonBotChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 import dev.inmo.tgbotapi.types.chat.ForumChat
@@ -155,15 +156,19 @@ import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewForumChat
 import dev.inmo.tgbotapi.types.chat.PreviewGroupChat
 import dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
+import dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
 import dev.inmo.tgbotapi.types.chat.PreviewPublicChat
 import dev.inmo.tgbotapi.types.chat.PreviewSuperPublicChat
 import dev.inmo.tgbotapi.types.chat.PreviewSupergroupChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.PreviewUsernameChat
 import dev.inmo.tgbotapi.types.chat.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PrivateForumChat
+import dev.inmo.tgbotapi.types.chat.PrivateUserChat
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.chat.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.SupergroupForumChat
 import dev.inmo.tgbotapi.types.chat.UnknownChatType
 import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.User
@@ -1330,6 +1335,12 @@ public inline fun Chat.extendedPrivateChatOrThrow(): ExtendedPrivateChat = this 
 
 public inline fun <T> Chat.ifExtendedPrivateChat(block: (ExtendedPrivateChat) -> T): T? = extendedPrivateChatOrNull() ?.let(block)
 
+public inline fun Chat.extendedPrivateForumChatOrNull(): ExtendedPrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
+
+public inline fun Chat.extendedPrivateForumChatOrThrow(): ExtendedPrivateForumChat = this as dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
+
+public inline fun <T> Chat.ifExtendedPrivateForumChat(block: (ExtendedPrivateForumChat) -> T): T? = extendedPrivateForumChatOrNull() ?.let(block)
+
 public inline fun Chat.extendedPublicChatOrNull(): ExtendedPublicChat? = this as? dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 
 public inline fun Chat.extendedPublicChatOrThrow(): ExtendedPublicChat = this as dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
@@ -1420,6 +1431,18 @@ public inline fun Chat.privateChatOrThrow(): PrivateChat = this as dev.inmo.tgbo
 
 public inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T): T? = privateChatOrNull() ?.let(block)
 
+public inline fun Chat.privateUserChatOrNull(): PrivateUserChat? = this as? dev.inmo.tgbotapi.types.chat.PrivateUserChat
+
+public inline fun Chat.privateUserChatOrThrow(): PrivateUserChat = this as dev.inmo.tgbotapi.types.chat.PrivateUserChat
+
+public inline fun <T> Chat.ifPrivateUserChat(block: (PrivateUserChat) -> T): T? = privateUserChatOrNull() ?.let(block)
+
+public inline fun Chat.privateForumChatOrNull(): PrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.PrivateForumChat
+
+public inline fun Chat.privateForumChatOrThrow(): PrivateForumChat = this as dev.inmo.tgbotapi.types.chat.PrivateForumChat
+
+public inline fun <T> Chat.ifPrivateForumChat(block: (PrivateForumChat) -> T): T? = privateForumChatOrNull() ?.let(block)
+
 public inline fun Chat.businessChatOrNull(): BusinessChat? = this as? dev.inmo.tgbotapi.types.chat.BusinessChat
 
 public inline fun Chat.businessChatOrThrow(): BusinessChat = this as dev.inmo.tgbotapi.types.chat.BusinessChat
@@ -1461,6 +1484,12 @@ public inline fun Chat.forumChatOrNull(): ForumChat? = this as? dev.inmo.tgbotap
 public inline fun Chat.forumChatOrThrow(): ForumChat = this as dev.inmo.tgbotapi.types.chat.ForumChat
 
 public inline fun <T> Chat.ifForumChat(block: (ForumChat) -> T): T? = forumChatOrNull() ?.let(block)
+
+public inline fun Chat.supergroupForumChatOrNull(): SupergroupForumChat? = this as? dev.inmo.tgbotapi.types.chat.SupergroupForumChat
+
+public inline fun Chat.supergroupForumChatOrThrow(): SupergroupForumChat = this as dev.inmo.tgbotapi.types.chat.SupergroupForumChat
+
+public inline fun <T> Chat.ifSupergroupForumChat(block: (SupergroupForumChat) -> T): T? = supergroupForumChatOrNull() ?.let(block)
 
 public inline fun Chat.channelDirectMessagesChatOrNull(): ChannelDirectMessagesChat? = this as? dev.inmo.tgbotapi.types.chat.ChannelDirectMessagesChat
 
@@ -1509,6 +1538,12 @@ public inline fun Chat.previewPrivateChatOrNull(): PreviewPrivateChat? = this as
 public inline fun Chat.previewPrivateChatOrThrow(): PreviewPrivateChat = this as dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
 
 public inline fun <T> Chat.ifPreviewPrivateChat(block: (PreviewPrivateChat) -> T): T? = previewPrivateChatOrNull() ?.let(block)
+
+public inline fun Chat.previewPrivateForumChatOrNull(): PreviewPrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
+
+public inline fun Chat.previewPrivateForumChatOrThrow(): PreviewPrivateForumChat = this as dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
+
+public inline fun <T> Chat.ifPreviewPrivateForumChat(block: (PreviewPrivateForumChat) -> T): T? = previewPrivateForumChatOrNull() ?.let(block)
 
 public inline fun Chat.previewBusinessChatOrNull(): PreviewBusinessChat? = this as? dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
 

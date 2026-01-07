@@ -513,6 +513,7 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/get/GetChatKt {
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/GroupChatImpl;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PrivateChat;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PrivateChatImpl;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PrivateForumChatImpl;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/PublicChat;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/SupergroupChat;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getChat (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/SupergroupChatImpl;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

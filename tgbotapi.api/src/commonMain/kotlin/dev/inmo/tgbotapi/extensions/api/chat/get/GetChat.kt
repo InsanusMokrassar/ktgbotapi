@@ -119,6 +119,17 @@ public suspend fun TelegramBot.getChat(
 
 /**
  * Will cast incoming [dev.inmo.tgbotapi.types.chat.ExtendedChat] to a
+ * [ExtendedPrivateForumChatImpl] with unsafe operator "as"
+ *
+ * @throws ClassCastException
+ */
+@PreviewFeature
+public suspend fun TelegramBot.getChat(
+    chat: PrivateForumChatImpl
+): ExtendedPrivateForumChatImpl = getChat(chat.id) as ExtendedPrivateForumChatImpl
+
+/**
+ * Will cast incoming [dev.inmo.tgbotapi.types.chat.ExtendedChat] to a
  * [ExtendedUser] with unsafe operator "as"
  *
  * @throws ClassCastException

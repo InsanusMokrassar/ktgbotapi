@@ -20,6 +20,15 @@ sealed interface PrivateChat : Chat, UsernameChat {
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
+sealed interface PrivateUserChat : PrivateChat
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatSerializer::class)
+sealed interface PrivateForumChat : PrivateUserChat, ForumChat {
+}
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatSerializer::class)
 sealed interface BusinessChat : Chat {
     override val id: BusinessChatId
     val original: PrivateChat
@@ -51,7 +60,11 @@ sealed interface SupergroupChat : GroupChat, SuperPublicChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
-sealed interface ForumChat : SupergroupChat
+sealed interface ForumChat : Chat
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatSerializer::class)
+sealed interface SupergroupForumChat : SupergroupChat, ForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
