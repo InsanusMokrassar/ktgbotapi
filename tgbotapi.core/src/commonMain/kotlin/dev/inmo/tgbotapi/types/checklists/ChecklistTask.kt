@@ -3,8 +3,10 @@ package dev.inmo.tgbotapi.types.checklists
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.TelegramDate
+import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.completedByUserField
+import dev.inmo.tgbotapi.types.completedByChatField
 import dev.inmo.tgbotapi.types.completionDateField
 import dev.inmo.tgbotapi.types.idField
 import dev.inmo.tgbotapi.types.message.ParseMode
@@ -130,6 +132,8 @@ sealed interface ChecklistTask : TextedInput {
         override val id: ChecklistTaskId,
         @SerialName(completedByUserField)
         override val completedByUser: PreviewUser,
+        @SerialName(completedByChatField)
+        val completedByChat: PreviewChat? = null,
         @SerialName(completionDateField)
         override val completionDate: TelegramDate,
         @SerialName(textEntitiesField)
@@ -145,10 +149,12 @@ sealed interface ChecklistTask : TextedInput {
             id: ChecklistTaskId,
             text: String,
             completedByUser: PreviewUser,
+            completedByChat: PreviewChat? = null,
             completionDate: TelegramDate,
         ): this(
             id,
             completedByUser,
+            completedByChat,
             completionDate,
             listOf(
                 RegularTextSource(text)
@@ -176,6 +182,8 @@ sealed interface ChecklistTask : TextedInput {
                 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
                 @SerialName(completedByUserField)
                 val completedByUser: PreviewUser? = null,
+                @SerialName(completedByChatField)
+                val completedByChat: PreviewChat? = null,
                 @SerialName(completionDateField)
                 val completionDate: TelegramDate = TelegramDate(0), // TelegramDate(0) is the default according to https://core.telegram.org/bots/api#checklisttask
             )
@@ -190,6 +198,7 @@ sealed interface ChecklistTask : TextedInput {
                     raw.completedByUser != null -> Done(
                         id = raw.id,
                         completedByUser = raw.completedByUser,
+                        completedByChat = raw.completedByChat,
                         completionDate = raw.completionDate,
                         textSources = raw.textSources.asTextSources(raw.text),
                     )
@@ -207,6 +216,7 @@ sealed interface ChecklistTask : TextedInput {
                         id = value.id,
                         text = value.text,
                         completedByUser = value.completedByUser,
+                        completedByChat = (value as? Done)?.completedByChat,
                         completionDate = value.completionDate ?: TelegramDate(0),
                         textSources = value.textSources.toRawMessageEntities()
                     )

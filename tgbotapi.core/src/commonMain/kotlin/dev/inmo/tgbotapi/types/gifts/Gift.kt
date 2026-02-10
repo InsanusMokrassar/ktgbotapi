@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftBackdrop
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftModel
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftSymbol
 import kotlinx.serialization.KSerializer
@@ -24,6 +25,12 @@ sealed interface Gift {
         val totalCount: Int?
         val upgradeStarCount: Int?
         val remainingCount: Int?
+        val personalTotalCount: Int?
+        val personalRemainingCount: Int?
+        val isPremium: Boolean
+        val hasColors: Boolean
+        val background: dev.inmo.tgbotapi.types.gifts.GiftBackground?
+        val uniqueGiftVariantCount: Int?
 
         @Serializable
         data class Unlimited(
@@ -37,6 +44,18 @@ sealed interface Gift {
             override val upgradeStarCount: Int? = null,
             @SerialName(publisherChatField)
             override val publisherChat: PreviewChat? = null,
+            @SerialName(personalTotalCountField)
+            override val personalTotalCount: Int? = null,
+            @SerialName(personalRemainingCountField)
+            override val personalRemainingCount: Int? = null,
+            @SerialName(isPremiumField2)
+            override val isPremium: Boolean = false,
+            @SerialName(hasColorsField)
+            override val hasColors: Boolean = false,
+            @SerialName(backgroundField)
+            override val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            @SerialName(uniqueGiftVariantCountField)
+            override val uniqueGiftVariantCount: Int? = null,
         ) : Regular {
             override val totalCount: Int?
                 get() = null
@@ -60,6 +79,18 @@ sealed interface Gift {
             override val upgradeStarCount: Int? = null,
             @SerialName(publisherChatField)
             override val publisherChat: PreviewChat? = null,
+            @SerialName(personalTotalCountField)
+            override val personalTotalCount: Int? = null,
+            @SerialName(personalRemainingCountField)
+            override val personalRemainingCount: Int? = null,
+            @SerialName(isPremiumField2)
+            override val isPremium: Boolean = false,
+            @SerialName(hasColorsField)
+            override val hasColors: Boolean = false,
+            @SerialName(backgroundField)
+            override val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            @SerialName(uniqueGiftVariantCountField)
+            override val uniqueGiftVariantCount: Int? = null,
         ) : Regular
 
         companion object : KSerializer<Regular> {
@@ -73,6 +104,12 @@ sealed interface Gift {
                 val remaining_count: Int? = null,
                 val upgrade_star_count: Int? = null,
                 val publisher_chat: PreviewChat? = null,
+                val personal_total_count: Int? = null,
+                val personal_remaining_count: Int? = null,
+                val is_premium: Boolean = false,
+                val has_colors: Boolean = false,
+                val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+                val unique_gift_variant_count: Int? = null,
             )
 
             override val descriptor: SerialDescriptor
@@ -89,7 +126,13 @@ sealed interface Gift {
                         totalCount = surrogate.total_count,
                         remainingCount = surrogate.remaining_count,
                         upgradeStarCount = surrogate.upgrade_star_count,
-                        publisherChat = surrogate.publisher_chat
+                        publisherChat = surrogate.publisher_chat,
+                        personalTotalCount = surrogate.personal_total_count,
+                        personalRemainingCount = surrogate.personal_remaining_count,
+                        isPremium = surrogate.is_premium,
+                        hasColors = surrogate.has_colors,
+                        background = surrogate.background,
+                        uniqueGiftVariantCount = surrogate.unique_gift_variant_count
                     )
                 } else {
                     Unlimited(
@@ -98,6 +141,12 @@ sealed interface Gift {
                         starCount = surrogate.star_count,
                         upgradeStarCount = surrogate.upgrade_star_count,
                         publisherChat = surrogate.publisher_chat,
+                        personalTotalCount = surrogate.personal_total_count,
+                        personalRemainingCount = surrogate.personal_remaining_count,
+                        isPremium = surrogate.is_premium,
+                        hasColors = surrogate.has_colors,
+                        background = surrogate.background,
+                        uniqueGiftVariantCount = surrogate.unique_gift_variant_count
                     )
                 }
             }
@@ -110,7 +159,13 @@ sealed interface Gift {
                     total_count = value.totalCount,
                     remaining_count = value.remainingCount,
                     upgrade_star_count = value.upgradeStarCount,
-                    publisher_chat = value.publisherChat
+                    publisher_chat = value.publisherChat,
+                    personal_total_count = value.personalTotalCount,
+                    personal_remaining_count = value.personalRemainingCount,
+                    is_premium = value.isPremium,
+                    has_colors = value.hasColors,
+                    background = value.background,
+                    unique_gift_variant_count = value.uniqueGiftVariantCount
                 )
                 RegularGiftSurrogate.serializer().serialize(encoder, surrogate)
             }
@@ -119,6 +174,8 @@ sealed interface Gift {
 
     @Serializable
     data class Unique(
+        @SerialName(giftIdField)
+        val id: GiftId? = null,
         @SerialName(baseNameField)
         val baseName: String,
         @SerialName(nameField)
@@ -132,7 +189,13 @@ sealed interface Gift {
         @SerialName(backdropField)
         val backdrop: UniqueGiftBackdrop,
         @SerialName(publisherChatField)
-        override val publisherChat: PreviewChat? = null
+        override val publisherChat: PreviewChat? = null,
+        @SerialName(isFromBlockchainField)
+        val isFromBlockchain: Boolean = false,
+        @SerialName(isPremiumField2)
+        val isPremium: Boolean = false,
+        @SerialName(colorsField)
+        val colors: UniqueGiftColors = null
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -146,6 +209,12 @@ sealed interface Gift {
             val total_count: Int? = null,
             val remaining_count: Int? = null,
             val upgrade_star_count: Int? = null,
+            val personal_total_count: Int? = null,
+            val personal_remaining_count: Int? = null,
+            val is_premium: Boolean = false,
+            val has_colors: Boolean = false,
+            val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            val unique_gift_variant_count: Int? = null,
             // unique gift fields
             val base_name: String? = null,
             val name: String? = null,
@@ -153,6 +222,8 @@ sealed interface Gift {
             val model: UniqueGiftModel? = null,
             val symbol: UniqueGiftSymbol? = null,
             val backdrop: UniqueGiftBackdrop? = null,
+            val is_from_blockchain: Boolean = false,
+            val colors: dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors? = null,
             val publisher_chat: PreviewChat? = null,
         )
 
@@ -164,13 +235,17 @@ sealed interface Gift {
 
             return if (surrogate.base_name != null && surrogate.name != null && surrogate.number != null && surrogate.model != null && surrogate.symbol != null && surrogate.backdrop != null) {
                 Unique(
+                    id = surrogate.id,
                     baseName = surrogate.base_name,
                     name = surrogate.name,
                     number = surrogate.number,
                     model = surrogate.model,
                     symbol = surrogate.symbol,
                     backdrop = surrogate.backdrop,
-                    publisherChat = surrogate.publisher_chat
+                    publisherChat = surrogate.publisher_chat,
+                    isFromBlockchain = surrogate.is_from_blockchain,
+                    isPremium = surrogate.is_premium,
+                    colors = surrogate.colors
                 )
             } else {
                 decoder.decodeSerializableValue(Regular.serializer())
@@ -188,12 +263,21 @@ sealed interface Gift {
                 total_count = (value as? Regular.Limited)?.totalCount,
                 remaining_count = (value as? Regular.Limited)?.remainingCount,
                 upgrade_star_count = (value as? Regular)?.upgradeStarCount,
+                personal_total_count = (value as? Regular)?.personalTotalCount,
+                personal_remaining_count = (value as? Regular)?.personalRemainingCount,
+                is_premium = (value as? Regular)?.isPremium ?: (value as? Unique)?.isPremium ?: false,
+                has_colors = (value as? Regular)?.hasColors ?: false,
+                background = (value as? Regular)?.background,
+                unique_gift_variant_count = (value as? Regular)?.uniqueGiftVariantCount,
                 base_name = (value as? Unique)?.baseName,
                 name = (value as? Unique)?.name,
                 number = (value as? Unique)?.number,
                 model = (value as? Unique)?.model,
                 symbol = (value as? Unique)?.symbol,
                 backdrop = (value as? Unique)?.backdrop,
+                gift_id = (value as? Unique)?.id,
+                is_from_blockchain = (value as? Unique)?.isFromBlockchain ?: false,
+                colors = (value as? Unique)?.colors,
                 publisher_chat = value.publisherChat,
             )
             GiftSurrogate.serializer().serialize(encoder, surrogate)

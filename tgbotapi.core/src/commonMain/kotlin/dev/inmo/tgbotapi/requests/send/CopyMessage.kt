@@ -95,6 +95,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -112,6 +113,7 @@ fun CopyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -129,6 +131,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -146,6 +149,7 @@ fun CopyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -184,6 +188,8 @@ data class CopyMessage internal constructor(
     override val protectContent: Boolean = false,
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
+    @SerialName(messageEffectIdField)
+    val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
     override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)

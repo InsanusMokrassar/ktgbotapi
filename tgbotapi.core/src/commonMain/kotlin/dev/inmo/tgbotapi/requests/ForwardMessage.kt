@@ -37,6 +37,8 @@ data class ForwardMessage(
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
     override val suggestedPostParameters: SuggestedPostParameters? = null
 ): SimpleRequest<PossiblyForwardedMessage>,

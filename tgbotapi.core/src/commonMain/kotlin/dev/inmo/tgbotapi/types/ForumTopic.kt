@@ -13,7 +13,9 @@ data class ForumTopic(
     @SerialName(iconColorField)
     val color: RGBColor,
     @SerialName(iconCustomEmojiIdField)
-    val iconEmojiId: CustomEmojiId? = null
+    val iconEmojiId: CustomEmojiId? = null,
+    @SerialName(isNameImplicitField)
+    val isNameImplicit: Boolean = false
 ) {
     companion object {
         val CYAN = RGBColor(0x6FB9F0)

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -85,6 +86,9 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val membersHidden: Boolean
     val availableReactions: List<Reaction>?
     val newMembersSeeHistory: Boolean
+    val rating: UserRating?
+    val paidMessageStarCount: Int?
+    val uniqueGiftColors: UniqueGiftColors?
 }
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")

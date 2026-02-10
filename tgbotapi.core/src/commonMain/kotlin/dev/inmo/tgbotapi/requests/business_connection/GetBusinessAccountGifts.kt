@@ -9,7 +9,10 @@ import dev.inmo.tgbotapi.types.excludeUnsavedField
 import dev.inmo.tgbotapi.types.excludeSavedField
 import dev.inmo.tgbotapi.types.excludeUnlimitedField
 import dev.inmo.tgbotapi.types.excludeLimitedField
+import dev.inmo.tgbotapi.types.excludeLimitedUpgradableField
+import dev.inmo.tgbotapi.types.excludeLimitedNonUpgradableField
 import dev.inmo.tgbotapi.types.excludeUniqueField
+import dev.inmo.tgbotapi.types.excludeFromBlockchainField
 import dev.inmo.tgbotapi.types.sortByPriceField
 import dev.inmo.tgbotapi.types.offsetField
 import dev.inmo.tgbotapi.types.limitField
@@ -29,10 +32,17 @@ data class GetBusinessAccountGifts(
     val excludeSaved: Boolean = false,
     @SerialName(excludeUnlimitedField)
     val excludeUnlimited: Boolean = false,
+    @Deprecated("Use excludeLimitedUpgradable and excludeLimitedNonUpgradable instead")
     @SerialName(excludeLimitedField)
     val excludeLimited: Boolean = false,
+    @SerialName(excludeLimitedUpgradableField)
+    val excludeLimitedUpgradable: Boolean = false,
+    @SerialName(excludeLimitedNonUpgradableField)
+    val excludeLimitedNonUpgradable: Boolean = false,
     @SerialName(excludeUniqueField)
     val excludeUnique: Boolean = false,
+    @SerialName(excludeFromBlockchainField)
+    val excludeFromBlockchain: Boolean = false,
     @SerialName(sortByPriceField)
     val sortByPrice: Boolean = false,
     @SerialName(offsetField)

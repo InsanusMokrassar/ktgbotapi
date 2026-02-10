@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
@@ -51,6 +52,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
         val prepaidUpgradeStarCount: Int?
         val canBeUpgraded: Boolean
         val isPrivate: Boolean
+        val isUpgradeSeparate: Boolean
+        val uniqueGiftNumber: Int?
 
         @Serializable
         data class Common(
@@ -68,6 +71,10 @@ sealed interface GiftSentOrReceived : CommonEvent {
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
             override val isPrivate: Boolean = false,
+            @SerialName(isUpgradeSeparateField)
+            override val isUpgradeSeparate: Boolean = false,
+            @SerialName(uniqueGiftNumberField)
+            override val uniqueGiftNumber: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
         ) : Regular {
@@ -96,6 +103,10 @@ sealed interface GiftSentOrReceived : CommonEvent {
             private val entities: RawMessageEntities? = null,
             @SerialName(isPrivateField)
             override val isPrivate: Boolean = false,
+            @SerialName(isUpgradeSeparateField)
+            override val isUpgradeSeparate: Boolean = false,
+            @SerialName(uniqueGiftNumberField)
+            override val uniqueGiftNumber: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
         ) : Regular, GiftSentOrReceived.ReceivedInBusinessAccount {
@@ -123,6 +134,10 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 val entities: RawMessageEntities? = null,
                 @SerialName(isPrivateField)
                 val isPrivate: Boolean = false,
+                @SerialName(isUpgradeSeparateField)
+                val isUpgradeSeparate: Boolean = false,
+                @SerialName(uniqueGiftNumberField)
+                val uniqueGiftNumber: Int? = null,
                 @SerialName(nextTransferDateField)
                 val nextTransferDate: TelegramDate? = null
             )
@@ -150,6 +165,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             text = surrogate.text,
                             entities = surrogate.entities,
                             isPrivate = surrogate.isPrivate,
+                            isUpgradeSeparate = surrogate.isUpgradeSeparate,
+                            uniqueGiftNumber = surrogate.uniqueGiftNumber,
                             nextTransferDate = surrogate.nextTransferDate
                         )
                     }
@@ -163,6 +180,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             text = surrogate.text,
                             entities = surrogate.entities,
                             isPrivate = surrogate.isPrivate,
+                            isUpgradeSeparate = surrogate.isUpgradeSeparate,
+                            uniqueGiftNumber = surrogate.uniqueGiftNumber,
                             nextTransferDate = surrogate.nextTransferDate
                         )
                     }
@@ -178,7 +197,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 text: String? = null,
                 textSources: TextSourcesList = emptyList(),
                 position: Int,
-                isPrivate: Boolean = false
+                isPrivate: Boolean = false,
+                isUpgradeSeparate: Boolean = false,
+                uniqueGiftNumber: Int? = null
             ) = ownedGiftId ?.let {
                 ReceivedInBusinessAccount(
                     gift,
@@ -188,7 +209,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
                     canBeUpgraded,
                     text,
                     textSources.toRawMessageEntities(position),
-                    isPrivate
+                    isPrivate,
+                    isUpgradeSeparate,
+                    uniqueGiftNumber
                 )
             } ?: Common(
                 gift,
@@ -197,7 +220,9 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 canBeUpgraded,
                 text,
                 textSources.toRawMessageEntities(position),
-                isPrivate
+                isPrivate,
+                isUpgradeSeparate,
+                uniqueGiftNumber
             )
         }
     }
@@ -207,7 +232,10 @@ sealed interface GiftSentOrReceived : CommonEvent {
         override val gift: Gift.Unique
         val origin: String?
         val originTyped: Origin?
+        @Deprecated("Use lastResaleCurrency and lastResaleAmount instead")
         val lastResaleStarCount: Int?
+        val lastResaleCurrency: String?
+        val lastResaleAmount: Long?
         val transferStarCount: Int?
 
         @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -215,11 +243,15 @@ sealed interface GiftSentOrReceived : CommonEvent {
         sealed interface Origin {
             val string: String
             @Serializable(Origin.Companion::class)
-            object Upgrade : Origin { override val string: String = "upgrade" }
+            data object Upgrade : Origin { override val string: String = "upgrade" }
             @Serializable(Origin.Companion::class)
-            object Transfer : Origin { override val string: String = "transfer" }
+            data object Transfer : Origin { override val string: String = "transfer" }
             @Serializable(Origin.Companion::class)
-            object Resale : Origin { override val string: String = "resale" }
+            data object Resale : Origin { override val string: String = "resale" }
+            @Serializable(Origin.Companion::class)
+            data object GiftedUpgrade : Origin { override val string: String = "gifted_upgrade" }
+            @Serializable(Origin.Companion::class)
+            data object Offer : Origin { override val string: String = "offer" }
             @Serializable(Origin.Companion::class)
             @JvmInline
             value class Unknown(override val string: String) : Origin
@@ -231,6 +263,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                     Upgrade.string -> Upgrade
                     Transfer.string -> Transfer
                     Resale.string -> Resale
+                    GiftedUpgrade.string -> GiftedUpgrade
+                    Offer.string -> Offer
                     else -> Unknown(value)
                 }
 
@@ -254,8 +288,13 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val gift: Gift.Unique,
             @SerialName(originField)
             override val originTyped: Origin? = null,
+            @Deprecated("Use lastResaleCurrency and lastResaleAmount instead")
             @SerialName(lastResaleStarCountField)
             override val lastResaleStarCount: Int? = null,
+            @SerialName(lastResaleCurrencyField)
+            override val lastResaleCurrency: Currency? = null,
+            @SerialName(lastResaleAmountField)
+            override val lastResaleAmount: Long? = null,
             @SerialName(transferStarCountField)
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
@@ -271,12 +310,16 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 gift: Gift.Unique,
                 origin: String?,
                 lastResaleStarCount: Int? = null,
+                lastResaleCurrency: Currency? = null,
+                lastResaleAmount: Long? = null,
                 transferStarCount: Int? = null,
                 nextTransferDate: TelegramDate? = null
             ) : this(
                 gift,
                 origin ?.let { Origin.fromString(it) },
                 lastResaleStarCount,
+                lastResaleCurrency,
+                lastResaleAmount,
                 transferStarCount,
                 nextTransferDate
             )
@@ -290,8 +333,13 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val ownedGiftId: GiftId,
             @SerialName(originField)
             override val originTyped: Origin? = null,
+            @Deprecated("Use lastResaleCurrency and lastResaleAmount instead")
             @SerialName(lastResaleStarCountField)
             override val lastResaleStarCount: Int? = null,
+            @SerialName(lastResaleCurrencyField)
+            override val lastResaleCurrency: Currency? = null,
+            @SerialName(lastResaleAmountField)
+            override val lastResaleAmount: Long? = null,
             @SerialName(transferStarCountField)
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
@@ -305,6 +353,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 ownedGiftId: GiftId,
                 origin: String? = null,
                 lastResaleStarCount: Int? = null,
+                lastResaleCurrency: Currency? = null,
+                lastResaleAmount: Long? = null,
                 transferStarCount: Int? = null,
                 nextTransferDate: TelegramDate? = null
             ) : this(
@@ -312,6 +362,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 ownedGiftId = ownedGiftId,
                 originTyped = origin ?.let { Origin.fromString(it) },
                 lastResaleStarCount = lastResaleStarCount,
+                lastResaleCurrency = lastResaleCurrency,
+                lastResaleAmount = lastResaleAmount,
                 transferStarCount = transferStarCount,
                 nextTransferDate = nextTransferDate
             )
@@ -328,6 +380,10 @@ sealed interface GiftSentOrReceived : CommonEvent {
                 val origin: Origin? = null,
                 @SerialName(lastResaleStarCountField)
                 val lastResaleStarCount: Int? = null,
+                @SerialName(lastResaleCurrencyField)
+                val lastResaleCurrency: Currency? = null,
+                @SerialName(lastResaleAmountField)
+                val lastResaleAmount: Long? = null,
                 @SerialName(transferStarCountField)
                 val transferStarCount: Int? = null,
                 @SerialName(nextTransferDateField)
@@ -353,6 +409,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             gift = surrogate.gift,
                             originTyped = surrogate.origin,
                             lastResaleStarCount = surrogate.lastResaleStarCount,
+                            lastResaleCurrency = surrogate.lastResaleCurrency,
+                            lastResaleAmount = surrogate.lastResaleAmount,
                             transferStarCount = surrogate.transferStarCount,
                             nextTransferDate = surrogate.nextTransferDate
                         )
@@ -363,6 +421,8 @@ sealed interface GiftSentOrReceived : CommonEvent {
                             ownedGiftId = surrogate.ownedGiftId,
                             originTyped = surrogate.origin,
                             lastResaleStarCount = surrogate.lastResaleStarCount,
+                            lastResaleCurrency = surrogate.lastResaleCurrency,
+                            lastResaleAmount = surrogate.lastResaleAmount,
                             transferStarCount = surrogate.transferStarCount,
                             nextTransferDate = surrogate.nextTransferDate
                         )

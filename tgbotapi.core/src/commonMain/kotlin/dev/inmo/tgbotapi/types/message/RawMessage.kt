@@ -201,6 +201,7 @@ internal data class RawMessage(
     // Gifts
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
+    private val gift_upgrade_sent: GiftSentOrReceived? = null,
 ) {
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
@@ -328,6 +329,7 @@ internal data class RawMessage(
             paid_message_price_changed != null -> paid_message_price_changed
             gift != null -> gift
             unique_gift != null -> unique_gift
+            gift_upgrade_sent != null -> gift_upgrade_sent
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
             direct_message_price_changed != null -> direct_message_price_changed

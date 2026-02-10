@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.gifts
 
+import dev.inmo.tgbotapi.types.giftsFromChannelsField
 import dev.inmo.tgbotapi.types.limitedGiftsField
 import dev.inmo.tgbotapi.types.premiumSubscriptionField
 import dev.inmo.tgbotapi.types.uniqueGiftsField
@@ -17,5 +18,7 @@ data class AcceptedGiftTypes(
     @SerialName(uniqueGiftsField)
     val uniqueGifts: Boolean = false,
     @SerialName(premiumSubscriptionField)
-    val premiumSubscription: Boolean = false
+    val premiumSubscription: Boolean = false,
+    @SerialName(giftsFromChannelsField)
+    val giftsFromChannels: Boolean = false
 )

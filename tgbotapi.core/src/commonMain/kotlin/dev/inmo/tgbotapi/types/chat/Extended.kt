@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -65,7 +66,13 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
-    override val maxReactionsCount: Int = 3
+    override val maxReactionsCount: Int = 3,
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -109,6 +116,12 @@ data class ExtendedGroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -289,6 +302,12 @@ data class ExtendedSupergroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -359,6 +378,12 @@ data class ExtendedForumChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedForumChat
 
 @Serializable
@@ -432,6 +457,12 @@ data class ExtendedChannelDirectMessagesChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedChannelDirectMessagesChat {
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)
@@ -473,6 +504,8 @@ data class ExtendedBot(
     override val maxReactionsCount: Int = 3,
     @SerialName(hasMainWebAppField)
     val hasMainWebApp: Boolean = false,
+    @SerialName(hasTopicsEnabledField)
+    val hasTopicsEnabled: Boolean = false,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : Bot(), ExtendedChat {
