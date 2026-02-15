@@ -18060,7 +18060,7 @@ public final class dev/inmo/tgbotapi/types/chat/PossiblyPremiumChat$DefaultImpls
 	public static fun isDirectMessages (Ldev/inmo/tgbotapi/types/chat/PossiblyPremiumChat;)Z
 }
 
-public abstract class dev/inmo/tgbotapi/types/chat/PreviewBot : dev/inmo/tgbotapi/types/chat/User, dev/inmo/tgbotapi/types/chat/PreviewChat, dev/inmo/tgbotapi/types/chat/PrivateChat {
+public abstract class dev/inmo/tgbotapi/types/chat/PreviewBot : dev/inmo/tgbotapi/types/chat/PreviewUser {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/PreviewBot$Companion;
 }
 

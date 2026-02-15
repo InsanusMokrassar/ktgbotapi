@@ -129,7 +129,7 @@ sealed class Bot : User()
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(UserSerializer::class)
-sealed class PreviewBot : PrivateChat, PreviewChat, User()
+sealed class PreviewBot : PreviewUser()
 
 @Serializable
 data class CommonBot(
