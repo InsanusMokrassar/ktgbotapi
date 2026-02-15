@@ -750,14 +750,22 @@ internal data class RawMessage(
                     is PreviewPrivateChat -> if (business_connection_id == null) {
                         when {
                             is_topic_message == true -> {
+                                val chatId = ChatIdWithThreadId(
+                                    chat.id.chatId,
+                                    messageThreadId ?: error("Was detected forum private message, but message thread id was not found")
+                                )
+                                val actualForumChat = when (chat) {
+                                    is PrivateForumChatImpl -> chat.copy(id = chatId)
+                                    is CommonUser -> chat
+                                    is CommonBot -> chat
+                                    is PrivateChatImpl -> chat
+                                }
                                 PrivateForumContentMessageImpl(
                                     messageId = messageId,
-                                    from = checkedFrom ?: from
-                                    ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                                    threadId = messageThreadId
-                                        ?: error("Was detected forum private message, but message thread id was not found"),
+                                    from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                                    threadId = messageThreadId,
                                     threadCreatingInfo = forum_topic_created,
-                                    chat = chat,
+                                    chat = actualForumChat,
                                     content = content,
                                     date = date.asDate,
                                     editDate = edit_date?.asDate,

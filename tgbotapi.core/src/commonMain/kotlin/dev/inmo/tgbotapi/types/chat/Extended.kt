@@ -183,7 +183,7 @@ data class ExtendedPrivateChatImpl(
 data class ExtendedPrivateForumChatImpl(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
-    override val id: UserId,
+    override val id: IdChatIdentifier,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")

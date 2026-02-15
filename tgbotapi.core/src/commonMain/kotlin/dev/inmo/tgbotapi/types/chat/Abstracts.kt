@@ -13,7 +13,7 @@ sealed interface UsernameChat : Chat {
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
 sealed interface PrivateChat : Chat, UsernameChat {
-    override val id: UserId
+    override val id: IdChatIdentifier
     val firstName: String
     val lastName: String
 }
@@ -25,6 +25,7 @@ sealed interface PrivateUserChat : PrivateChat
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatSerializer::class)
 sealed interface PrivateForumChat : PrivateUserChat, ForumChat {
+    override val id: IdChatIdentifier
 }
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")

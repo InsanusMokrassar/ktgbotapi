@@ -123,7 +123,7 @@ val RawChatId.userLink: String
 val UserId.userLink: String
     get() = chatId.userLink
 val User.userLink: String
-    get() = id.userLink
+    get() = id.toChatId().userLink
 
 typealias UserId = ChatId
 

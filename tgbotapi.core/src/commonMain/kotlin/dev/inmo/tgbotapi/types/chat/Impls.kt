@@ -38,7 +38,7 @@ data class PrivateChatImpl(
 data class PrivateForumChatImpl(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
-    override val id: UserId,
+    override val id: IdChatIdentifier,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
