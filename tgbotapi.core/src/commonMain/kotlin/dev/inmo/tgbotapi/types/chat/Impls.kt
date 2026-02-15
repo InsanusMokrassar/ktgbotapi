@@ -143,8 +143,6 @@ data class CommonBot(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(usernameField)
     override val username: Username? = null,
-    @SerialName(hasTopicsEnabledField)
-    val hasTopicsEnabled: Boolean = false,
 ) : PreviewBot() {
     @SerialName(isBotField)
     private val isBot = true

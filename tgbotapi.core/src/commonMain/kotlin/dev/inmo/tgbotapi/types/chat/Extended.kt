@@ -506,6 +506,8 @@ data class ExtendedBot(
     val hasMainWebApp: Boolean = false,
     @SerialName(hasTopicsEnabledField)
     val hasTopicsEnabled: Boolean = false,
+    @SerialName(allowUsersToCreateTopicsField)
+    val allowUsersToCreateTopics: Boolean = false,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
 ) : Bot(), ExtendedChat {
