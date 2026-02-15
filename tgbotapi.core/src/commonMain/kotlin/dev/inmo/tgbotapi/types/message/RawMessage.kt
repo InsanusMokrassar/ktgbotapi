@@ -748,23 +748,51 @@ internal data class RawMessage(
                         }
                     }
                     is PreviewPrivateChat -> if (business_connection_id == null) {
-                        PrivateContentMessageImpl(
-                            messageId = messageId,
-                            from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                            chat = chat,
-                            content = content,
-                            date = date.asDate,
-                            editDate = edit_date?.asDate,
-                            hasProtectedContent = has_protected_content == true,
-                            forwardOrigin = forward_origin,
-                            replyInfo = replyInfo,
-                            replyMarkup = reply_markup,
-                            senderBot = via_bot,
-                            mediaGroupId = media_group_id,
-                            fromOffline = is_from_offline,
-                            effectId = effect_id,
-                            cost = paid_star_count,
-                        )
+                        when {
+                            is_topic_message == true -> {
+                                PrivateForumContentMessageImpl(
+                                    messageId = messageId,
+                                    from = checkedFrom ?: from
+                                    ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                                    threadId = messageThreadId
+                                        ?: error("Was detected forum private message, but message thread id was not found"),
+                                    threadCreatingInfo = forum_topic_created,
+                                    chat = chat,
+                                    content = content,
+                                    date = date.asDate,
+                                    editDate = edit_date?.asDate,
+                                    hasProtectedContent = has_protected_content == true,
+                                    forwardOrigin = forward_origin,
+                                    replyInfo = replyInfo,
+                                    replyMarkup = reply_markup,
+                                    senderBot = via_bot,
+                                    mediaGroupId = media_group_id,
+                                    fromOffline = is_from_offline,
+                                    effectId = effect_id,
+                                    cost = paid_star_count,
+                                )
+                            }
+                            else -> {
+                                PrivateContentMessageImpl(
+                                    messageId = messageId,
+                                    from = checkedFrom ?: from
+                                    ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                                    chat = chat,
+                                    content = content,
+                                    date = date.asDate,
+                                    editDate = edit_date?.asDate,
+                                    hasProtectedContent = has_protected_content == true,
+                                    forwardOrigin = forward_origin,
+                                    replyInfo = replyInfo,
+                                    replyMarkup = reply_markup,
+                                    senderBot = via_bot,
+                                    mediaGroupId = media_group_id,
+                                    fromOffline = is_from_offline,
+                                    effectId = effect_id,
+                                    cost = paid_star_count,
+                                )
+                            }
+                        }
                     } else {
                         BusinessContentMessageImpl(
                             messageId = messageId,
