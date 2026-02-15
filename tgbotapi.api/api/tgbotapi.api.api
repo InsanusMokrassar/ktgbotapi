@@ -347,10 +347,10 @@ public final class dev/inmo/tgbotapi/extensions/api/business/DeleteBusinessMessa
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountGiftsKt {
-	public static final fun getBusinessAccountGifts-LATcL_E (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getBusinessAccountGifts-LATcL_E$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun getBusinessAccountGiftsFlow-LATcL_E (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun getBusinessAccountGiftsFlow-LATcL_E$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun getBusinessAccountGifts-ncRJlhg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getBusinessAccountGifts-ncRJlhg$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun getBusinessAccountGiftsFlow-ncRJlhg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getBusinessAccountGiftsFlow-ncRJlhg$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;ZZZZZZZZLjava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountStarBalanceKt {

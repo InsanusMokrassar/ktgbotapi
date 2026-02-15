@@ -16,10 +16,11 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable(Gift.Companion::class)
 sealed interface Gift {
+    val id: GiftId?
     val publisherChat: PreviewChat?
     @Serializable(Regular.Companion::class)
     sealed interface Regular : Gift {
-        val id: GiftId
+        override val id: GiftId
         val sticker: Sticker
         val starCount: Int
         val totalCount: Int?
@@ -175,7 +176,7 @@ sealed interface Gift {
     @Serializable
     data class Unique(
         @SerialName(giftIdField)
-        val id: GiftId? = null,
+        override val id: GiftId? = null,
         @SerialName(baseNameField)
         val baseName: String,
         @SerialName(nameField)
@@ -195,7 +196,7 @@ sealed interface Gift {
         @SerialName(isPremiumField2)
         val isPremium: Boolean = false,
         @SerialName(colorsField)
-        val colors: UniqueGiftColors = null
+        val colors: UniqueGiftColors? = null
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -257,7 +258,7 @@ sealed interface Gift {
             value: Gift
         ) {
             val surrogate = GiftSurrogate(
-                id = (value as? Regular)?.id,
+                id = value.id,
                 sticker = (value as? Regular)?.sticker,
                 star_count = (value as? Regular)?.starCount,
                 total_count = (value as? Regular.Limited)?.totalCount,
@@ -275,7 +276,6 @@ sealed interface Gift {
                 model = (value as? Unique)?.model,
                 symbol = (value as? Unique)?.symbol,
                 backdrop = (value as? Unique)?.backdrop,
-                gift_id = (value as? Unique)?.id,
                 is_from_blockchain = (value as? Unique)?.isFromBlockchain ?: false,
                 colors = (value as? Unique)?.colors,
                 publisher_chat = value.publisherChat,

@@ -344,6 +344,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage
@@ -800,6 +801,12 @@ public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContent
 public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContentMessageOrThrow(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> OptionallyWithUser.ifCommonSuggestedChannelDirectMessagesContentMessage(block: (CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonSuggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.privateForumContentMessageOrNull(): PrivateForumContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.privateForumContentMessageOrThrow(): PrivateForumContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifPrivateForumContentMessage(block: (PrivateForumContentMessage<MessageContent>) -> T): T? = privateForumContentMessageOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
@@ -2138,6 +2145,12 @@ public inline fun Message.chatEventMessageOrNull(): ChatEventMessage<ChatEvent>?
 public inline fun Message.chatEventMessageOrThrow(): ChatEventMessage<ChatEvent> = this as dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent>
 
 public inline fun <T> Message.ifChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T): T? = chatEventMessageOrNull() ?.let(block)
+
+public inline fun Message.privateForumContentMessageOrNull(): PrivateForumContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.privateForumContentMessageOrThrow(): PrivateForumContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifPrivateForumContentMessage(block: (PrivateForumContentMessage<MessageContent>) -> T): T? = privateForumContentMessageOrNull() ?.let(block)
 
 public inline fun Message.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 

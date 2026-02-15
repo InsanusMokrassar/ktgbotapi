@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.excludeUnsavedField
 import dev.inmo.tgbotapi.types.excludeSavedField
 import dev.inmo.tgbotapi.types.excludeUnlimitedField
-import dev.inmo.tgbotapi.types.excludeLimitedField
 import dev.inmo.tgbotapi.types.excludeLimitedUpgradableField
 import dev.inmo.tgbotapi.types.excludeLimitedNonUpgradableField
 import dev.inmo.tgbotapi.types.excludeUniqueField
@@ -32,9 +31,6 @@ data class GetBusinessAccountGifts(
     val excludeSaved: Boolean = false,
     @SerialName(excludeUnlimitedField)
     val excludeUnlimited: Boolean = false,
-    @Deprecated("Use excludeLimitedUpgradable and excludeLimitedNonUpgradable instead")
-    @SerialName(excludeLimitedField)
-    val excludeLimited: Boolean = false,
     @SerialName(excludeLimitedUpgradableField)
     val excludeLimitedUpgradable: Boolean = false,
     @SerialName(excludeLimitedNonUpgradableField)

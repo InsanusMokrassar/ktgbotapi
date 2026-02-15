@@ -14,8 +14,10 @@ public suspend fun TelegramBot.getBusinessAccountGifts(
     excludeUnsaved: Boolean = false,
     excludeSaved: Boolean = false,
     excludeUnlimited: Boolean = false,
-    excludeLimited: Boolean = false,
+    excludeLimitedUpgradable: Boolean = false,
+    excludeLimitedNonUpgradable: Boolean = false,
     excludeUnique: Boolean = false,
+    excludeFromBlockchain: Boolean = false,
     sortByPrice: Boolean = false,
     offset: String? = null,
     limit: Int? = null
@@ -25,8 +27,10 @@ public suspend fun TelegramBot.getBusinessAccountGifts(
         excludeUnsaved,
         excludeSaved,
         excludeUnlimited,
-        excludeLimited,
+        excludeLimitedUpgradable,
+        excludeLimitedNonUpgradable,
         excludeUnique,
+        excludeFromBlockchain,
         sortByPrice,
         offset,
         limit
@@ -43,8 +47,10 @@ public suspend fun TelegramBot.getBusinessAccountGifts(
  * @param excludeUnsaved Whether to exclude unsaved gifts
  * @param excludeSaved Whether to exclude saved gifts
  * @param excludeUnlimited Whether to exclude unlimited gifts
- * @param excludeLimited Whether to exclude limited gifts
+ * @param excludeLimitedUpgradable Whether to exclude limited upgradable gifts
+ * @param excludeLimitedNonUpgradable Whether to exclude limited non-upgradable gifts
  * @param excludeUnique Whether to exclude unique gifts
+ * @param excludeFromBlockchain Whether to exclude gifts from blockchain
  * @param sortByPrice Whether to sort gifts by price
  * @param initialOffset The initial offset to start fetching from. If null, starts from the beginning
  * @param limit The maximum number of gifts to fetch per request
@@ -57,8 +63,10 @@ public fun TelegramBot.getBusinessAccountGiftsFlow(
     excludeUnsaved: Boolean = false,
     excludeSaved: Boolean = false,
     excludeUnlimited: Boolean = false,
-    excludeLimited: Boolean = false,
+    excludeLimitedUpgradable: Boolean = false,
+    excludeLimitedNonUpgradable: Boolean = false,
     excludeUnique: Boolean = false,
+    excludeFromBlockchain: Boolean = false,
     sortByPrice: Boolean = false,
     initialOffset: String? = null,
     limit: Int? = null,
@@ -72,8 +80,10 @@ public fun TelegramBot.getBusinessAccountGiftsFlow(
                 excludeUnsaved,
                 excludeSaved,
                 excludeUnlimited,
-                excludeLimited,
+                excludeLimitedUpgradable,
+                excludeLimitedNonUpgradable,
                 excludeUnique,
+                excludeFromBlockchain,
                 sortByPrice,
                 currentOffset,
                 limit
