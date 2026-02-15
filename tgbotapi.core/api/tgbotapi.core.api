@@ -10375,6 +10375,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field creatorField Ljava/lang/String;
 	public static final field credentialsField Ljava/lang/String;
 	public static final field currencyField Ljava/lang/String;
+	public static final field currentLevelRatingField Ljava/lang/String;
 	public static final field customDescriptionField Ljava/lang/String;
 	public static final field customEmojiField Ljava/lang/String;
 	public static final field customEmojiIdField Ljava/lang/String;
@@ -10544,6 +10545,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field lastSynchronizationErrorDateField Ljava/lang/String;
 	public static final field latitudeField Ljava/lang/String;
 	public static final field lengthField Ljava/lang/String;
+	public static final field levelField Ljava/lang/String;
 	public static final field lightThemeMainColorField Ljava/lang/String;
 	public static final field lightThemeOtherColorsField Ljava/lang/String;
 	public static final field limitField Ljava/lang/String;
@@ -10591,6 +10593,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field newChatMemberField Ljava/lang/String;
 	public static final field newOwnerChatIdField Ljava/lang/String;
 	public static final field newReactionField Ljava/lang/String;
+	public static final field nextLevelRatingField Ljava/lang/String;
 	public static final field nextOffsetField Ljava/lang/String;
 	public static final field nextTransferDateField Ljava/lang/String;
 	public static final field nonceField Ljava/lang/String;
@@ -12877,6 +12880,36 @@ public final class dev/inmo/tgbotapi/types/InlineQueryId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/Level {
+	public static final field Companion Ldev/inmo/tgbotapi/types/Level$Companion;
+	public static final synthetic fun box-impl (I)Ldev/inmo/tgbotapi/types/Level;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public final fun getInt ()I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/Level$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/Level$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-o8Fmc-8 (Lkotlinx/serialization/encoding/Decoder;)I
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-eycgCq4 (Lkotlinx/serialization/encoding/Encoder;I)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/Level$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/LinkPreviewOptions {
 	public static final field Companion Ldev/inmo/tgbotapi/types/LinkPreviewOptions$Companion;
 	public abstract fun getPreferLargeMedia ()Z
@@ -13421,6 +13454,36 @@ public final synthetic class dev/inmo/tgbotapi/types/PrimaryInviteLink$$serializ
 }
 
 public final class dev/inmo/tgbotapi/types/PrimaryInviteLink$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/Rating {
+	public static final field Companion Ldev/inmo/tgbotapi/types/Rating$Companion;
+	public static final synthetic fun box-impl (I)Ldev/inmo/tgbotapi/types/Rating;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public final fun getInt ()I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/Rating$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/Rating$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-xp7shNk (Lkotlinx/serialization/encoding/Decoder;)I
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-2KgQcVw (Lkotlinx/serialization/encoding/Encoder;I)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/Rating$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -18474,14 +18537,19 @@ public final class dev/inmo/tgbotapi/types/chat/User$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/UserRating {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/UserRating$Companion;
-	public fun <init> (ID)V
-	public final fun component1 ()I
-	public final fun component2 ()D
-	public final fun copy (ID)Ldev/inmo/tgbotapi/types/chat/UserRating;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/UserRating;IDILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/UserRating;
+	public synthetic fun <init> (IIILdev/inmo/tgbotapi/types/Rating;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IIILdev/inmo/tgbotapi/types/Rating;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-iWTbqtI ()I
+	public final fun component2-0utb6f4 ()I
+	public final fun component3-0utb6f4 ()I
+	public final fun component4-zA4OaN0 ()Ldev/inmo/tgbotapi/types/Rating;
+	public final fun copy-1VHiyAg (IIILdev/inmo/tgbotapi/types/Rating;)Ldev/inmo/tgbotapi/types/chat/UserRating;
+	public static synthetic fun copy-1VHiyAg$default (Ldev/inmo/tgbotapi/types/chat/UserRating;IIILdev/inmo/tgbotapi/types/Rating;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/UserRating;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCount ()I
-	public final fun getRating ()D
+	public final fun getCurrentLevelRating-0utb6f4 ()I
+	public final fun getLevel-iWTbqtI ()I
+	public final fun getNextLevelRating-zA4OaN0 ()Ldev/inmo/tgbotapi/types/Rating;
+	public final fun getRating-0utb6f4 ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }

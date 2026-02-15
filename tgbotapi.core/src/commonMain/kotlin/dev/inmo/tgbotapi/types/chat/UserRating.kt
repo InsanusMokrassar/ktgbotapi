@@ -1,14 +1,17 @@
 package dev.inmo.tgbotapi.types.chat
 
-import dev.inmo.tgbotapi.types.countField
-import dev.inmo.tgbotapi.types.ratingField
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserRating(
-    @SerialName(countField)
-    val count: Int,
+    @SerialName(levelField)
+    val level: Level,
     @SerialName(ratingField)
-    val rating: Double
+    val rating: Rating,
+    @SerialName(currentLevelRatingField)
+    val currentLevelRating: Rating,
+    @SerialName(nextLevelRatingField)
+    val nextLevelRating: Rating? = null
 )
