@@ -21,4 +21,4 @@ data class ForumTopicCreated(
     val iconEmojiId: CustomEmojiId? = null,
     @SerialName(isNameImplicitField)
     val isNameImplicit: Boolean = false
-) : PrivateForumEvent
+) : ForumEvent, PrivateForumEvent

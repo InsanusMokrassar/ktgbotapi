@@ -1,3 +1,3 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents.abstracts
 
-interface PrivateForumEvent : ForumEvent, PrivateEvent
+interface PrivateForumEvent : PrivateEvent

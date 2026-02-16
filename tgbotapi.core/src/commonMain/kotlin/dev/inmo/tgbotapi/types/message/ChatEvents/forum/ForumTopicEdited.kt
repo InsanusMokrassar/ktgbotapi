@@ -16,4 +16,4 @@ data class ForumTopicEdited(
     val name: String,
     @SerialName(iconCustomEmojiIdField)
     val iconEmojiId: CustomEmojiId? = null
-) : PrivateForumEvent
+) : ForumEvent, PrivateForumEvent
