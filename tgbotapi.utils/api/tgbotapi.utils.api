@@ -3027,8 +3027,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/FilesDownloadin
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/FlowsSameKt {
 	public static final fun fromChat (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/ChatIdentifier;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun fromChat (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/chat/Chat;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun fromUser (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun fromUser (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/chat/User;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun fromUser-WiG6Fm4 (Lkotlinx/coroutines/flow/Flow;J)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/SameKt {
@@ -3299,7 +3299,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static synthetic fun makeTelegramStartattach$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeTelegramStartattach-26ZnLnw (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static synthetic fun makeTelegramStartattach-26ZnLnw$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
-	public static final fun makeUserLink-HZVsHAI (J)Ljava/lang/String;
+	public static final fun makeUserLink (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
 	public static final fun makeUsernameDeepLinkPrefix (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeUsernameLink-zFai7VQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
 	public static synthetic fun makeUsernameLink-zFai7VQ$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
@@ -3406,9 +3406,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/StringFormattin
 	public static final fun strikethroughHTML (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun strikethroughMarkdown (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun strikethroughMarkdownV2 (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun textMentionHTML-WiG6Fm4 (Ljava/lang/String;J)Ljava/lang/String;
-	public static final fun textMentionMarkdown-WiG6Fm4 (Ljava/lang/String;J)Ljava/lang/String;
-	public static final fun textMentionMarkdownV2-WiG6Fm4 (Ljava/lang/String;J)Ljava/lang/String;
+	public static final fun textMentionHTML (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
+	public static final fun textMentionMarkdown (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
+	public static final fun textMentionMarkdownV2 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
 	public static final fun underline (Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;)Ljava/lang/String;
 	public static final fun underlineHTML (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun underlineMarkdown (Ljava/lang/String;)Ljava/lang/String;

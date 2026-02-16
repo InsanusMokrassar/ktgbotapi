@@ -6,10 +6,11 @@ fun <T : Throwable> Throwable.causedBy(kclass: KClass<T>, additionalFilterOnHapp
     var current = this
     while (kclass.isInstance(current) == false) {
         when {
-            kclass.isInstance(current) -> return additionalFilterOnHappened(current as T)
+            kclass.isInstance(current) -> @Suppress("UNCHECKED_CAST") return additionalFilterOnHappened(current as T)
             else -> current = current.cause ?: return null
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     return current as T
 }

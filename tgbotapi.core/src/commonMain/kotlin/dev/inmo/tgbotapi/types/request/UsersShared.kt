@@ -23,7 +23,7 @@ data class UsersShared(
     ) : this(requestId, listOf(user))
 
     override val chatId: ChatId
-        get() = userId
+        get() = userId.toChatId()
 
     companion object {
         operator fun invoke(

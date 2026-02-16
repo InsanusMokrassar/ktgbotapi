@@ -52,6 +52,7 @@ object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
         val json = value.let {
             encryptedElementsClassesByTypes.forEach { (key, encapsulator) ->
                 val json = encapsulator.encapsulate(value) { data ->
+                    @Suppress("UNCHECKED_CAST")
                     nonstrictJsonFormat.encodeToJsonElement(this as KSerializer<EncryptedPassportElement>, data).jsonObject
                 } ?: return@forEach
                 return@let JsonObject(json + (typeField to JsonPrimitive(key)))

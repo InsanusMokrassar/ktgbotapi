@@ -758,7 +758,12 @@ internal data class RawMessage(
                                     is PrivateForumChatImpl -> chat.copy(id = chatId)
                                     is CommonUser -> chat
                                     is CommonBot -> chat
-                                    is PrivateChatImpl -> chat
+                                    is PrivateChatImpl -> PrivateForumChatImpl(
+                                        id = chatId,
+                                        username = chat.username,
+                                        firstName = chat.firstName,
+                                        lastName = chat.lastName
+                                    )
                                 }
                                 PrivateForumContentMessageImpl(
                                     messageId = messageId,
