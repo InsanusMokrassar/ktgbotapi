@@ -281,6 +281,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
@@ -2505,6 +2506,12 @@ public inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as? dev.inmo.
 public inline fun ChatEvent.groupEventOrThrow(): GroupEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 
 public inline fun <T> ChatEvent.ifGroupEvent(block: (GroupEvent) -> T): T? = groupEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.privateForumEventOrNull(): PrivateForumEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
+
+public inline fun ChatEvent.privateForumEventOrThrow(): PrivateForumEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
+
+public inline fun <T> ChatEvent.ifPrivateForumEvent(block: (PrivateForumEvent) -> T): T? = privateForumEventOrNull() ?.let(block)
 
 public inline fun ChatEvent.channelEventOrNull(): ChannelEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 

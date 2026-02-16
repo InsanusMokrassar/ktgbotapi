@@ -23235,6 +23235,9 @@ public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstr
 public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent {
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateEvent {
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChannelEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/GroupEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/SupergroupEvent {
 }
 
@@ -23249,7 +23252,7 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCl
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent {
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated$Companion;
 	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -23283,7 +23286,7 @@ public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCr
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicEdited : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent {
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicEdited : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ForumEvent, dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicEdited$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
