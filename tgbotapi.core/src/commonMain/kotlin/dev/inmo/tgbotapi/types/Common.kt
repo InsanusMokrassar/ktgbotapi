@@ -329,6 +329,8 @@ const val checklistMessageField = "checklist_message"
 const val markedAsDoneTaskIdsField = "marked_as_done_task_ids"
 const val markedAsNotDoneTaskIdsField = "marked_as_not_done_task_ids"
 
+const val styleField = "style"
+
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
 const val requestPollField = "request_poll"
