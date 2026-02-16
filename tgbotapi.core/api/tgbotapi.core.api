@@ -6080,42 +6080,22 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocationKt {
 	public static synthetic fun SendStaticLocation-CbXiHO4$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
 }
 
-public final class dev/inmo/tgbotapi/requests/send/SendMessageDraft : dev/inmo/tgbotapi/abstracts/types/LinkPreviewOptionsContainer, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest {
+public final class dev/inmo/tgbotapi/requests/send/SendMessageDraft : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyMessageThreadRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendChatMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendMessageDraft$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10 ()Z
-	public final fun component11 ()Z
-	public final fun component12-Ts0V7ak ()Ljava/lang/String;
-	public final fun component13 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component14 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun component5-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
-	public final fun component6-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
-	public final fun component7-nXr5wdE ()Ljava/lang/String;
-	public final fun component8 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
-	public final fun component9 ()Z
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component2-12UPeIw ()J
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun component6-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAllowPaidBroadcast ()Z
-	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
-	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
-	public fun getDisableNotification ()Z
-	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
-	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public synthetic fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public fun getChatId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun getDraftId-12UPeIw ()J
 	public fun getEntities ()Ljava/util/List;
-	public fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public fun getProtectContent ()Z
-	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
-	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
-	public fun getSuggestedPostParameters ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
@@ -6140,10 +6120,10 @@ public final class dev/inmo/tgbotapi/requests/send/SendMessageDraft$Companion {
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendMessageDraftKt {
-	public static final fun SendMessageDraft-8a9pvUw (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
-	public static synthetic fun SendMessageDraft-8a9pvUw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
-	public static final fun SendMessageDraft-CbXiHO4 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
-	public static synthetic fun SendMessageDraft-CbXiHO4$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
+	public static final fun SendMessageDraft-r0NzpGw (Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
+	public static synthetic fun SendMessageDraft-r0NzpGw$default (Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
+	public static final fun SendMessageDraft-u22-530 (Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
+	public static synthetic fun SendMessageDraft-u22-530$default (Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendMessageDraft;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendMessageKt {
@@ -10397,6 +10377,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field documentField Ljava/lang/String;
 	public static final field documentFileIdField Ljava/lang/String;
 	public static final field documentUrlField Ljava/lang/String;
+	public static final field draftIdField Ljava/lang/String;
 	public static final field driverLicenseField Ljava/lang/String;
 	public static final field dropPendingUpdatesField Ljava/lang/String;
 	public static final field durationField Ljava/lang/String;
@@ -11066,6 +11047,36 @@ public final class dev/inmo/tgbotapi/types/DirectMessagesConfigurationChanged$Pa
 }
 
 public final class dev/inmo/tgbotapi/types/DirectMessagesConfigurationChanged$Paid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/DraftId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/DraftId$Companion;
+	public static final synthetic fun box-impl (J)Ldev/inmo/tgbotapi/types/DraftId;
+	public static fun constructor-impl (J)J
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (JLjava/lang/Object;)Z
+	public static final fun equals-impl0 (JJ)Z
+	public final fun getLong ()J
+	public fun hashCode ()I
+	public static fun hashCode-impl (J)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (J)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()J
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/DraftId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/DraftId$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-2sDQ-Rg (Lkotlinx/serialization/encoding/Decoder;)J
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-hUXZVL4 (Lkotlinx/serialization/encoding/Encoder;J)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/DraftId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

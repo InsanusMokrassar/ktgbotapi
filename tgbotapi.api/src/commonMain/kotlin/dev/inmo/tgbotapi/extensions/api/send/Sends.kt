@@ -1332,6 +1332,138 @@ public suspend fun TelegramBot.send(
 )
 
 /**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    text: String,
+    parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = chatId.threadId
+): Boolean = sendMessageDraft(
+    chatId = chatId,
+    draftId = draftId,
+    text = text,
+    parseMode = parseMode,
+    threadId = threadId
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    draftId: DraftId,
+    text: String,
+    parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = chat.id.threadId
+): Boolean = sendMessageDraft(
+    chat = chat,
+    draftId = draftId,
+    text = text,
+    parseMode = parseMode,
+    threadId = threadId
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    entities: TextSourcesList,
+    threadId: MessageThreadId? = chatId.threadId
+): Boolean = sendMessageDraft(
+    chatId = chatId,
+    draftId = draftId,
+    entities = entities,
+    threadId = threadId
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    draftId: DraftId,
+    entities: TextSourcesList,
+    threadId: MessageThreadId? = chat.id.threadId
+): Boolean = sendMessageDraft(
+    chat = chat,
+    draftId = draftId,
+    entities = entities,
+    threadId = threadId
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    separator: TextSource? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    builderBody: EntitiesBuilderBody
+): Boolean = sendMessageDraft(
+    chatId = chatId,
+    draftId = draftId,
+    separator = separator,
+    threadId = threadId,
+    builderBody = builderBody
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    separator: String,
+    threadId: MessageThreadId? = chatId.threadId,
+    builderBody: EntitiesBuilderBody
+): Boolean = sendMessageDraft(
+    chatId = chatId,
+    draftId = draftId,
+    separator = separator,
+    threadId = threadId,
+    builderBody = builderBody
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    draftId: DraftId,
+    separator: TextSource? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    builderBody: EntitiesBuilderBody
+): Boolean = sendMessageDraft(
+    chat = chat,
+    draftId = draftId,
+    separator = separator,
+    threadId = threadId,
+    builderBody = builderBody
+)
+
+/**
+ * Will execute [sendMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    draftId: DraftId,
+    separator: String,
+    threadId: MessageThreadId? = chat.id.threadId,
+    builderBody: EntitiesBuilderBody
+): Boolean = sendMessageDraft(
+    chat = chat,
+    draftId = draftId,
+    separator = separator,
+    threadId = threadId,
+    builderBody = builderBody
+)
+
+/**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
