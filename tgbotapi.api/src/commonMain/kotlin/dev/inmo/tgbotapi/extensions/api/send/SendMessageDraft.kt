@@ -9,20 +9,15 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.MarkdownV2
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.utils.DraftIdAllocator
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
 import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Common
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.takeWhile
-import kotlinx.coroutines.sync.Mutex
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 
@@ -76,9 +71,7 @@ public suspend fun TelegramBot.sendMessageDraftFlow(
     )
 }
 
-@JvmName("sendMessageDraftFlowWithTextAndParseMode")
-@JsName("sendMessageDraftFlowWithTextAndParseMode")
-public suspend fun TelegramBot.sendMessageDraftFlow(
+public suspend fun TelegramBot.sendMessageDraftFlowWithTextsAndParseMode(
     chatId: IdChatIdentifier,
     messagesFlow: Flow<Pair<String, ParseMode?>>,
     threadId: MessageThreadId? = chatId.threadId,
@@ -92,16 +85,14 @@ public suspend fun TelegramBot.sendMessageDraftFlow(
     )
 }
 
-@JvmName("sendMessageDraftFlowWithText")
-@JsName("sendMessageDraftFlowWithText")
-public suspend fun TelegramBot.sendMessageDraftFlow(
+public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
     chatId: IdChatIdentifier,
     messagesFlow: Flow<String>,
     threadId: MessageThreadId? = chatId.threadId,
     draftId: DraftId? = null,
 ): Boolean {
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
-    return sendMessageDraftFlow(
+    return sendMessageDraftFlowWithTextsAndParseMode(
         chatId = chatId,
         messagesFlow = messagesFlow.map {
             it.escapeMarkdownV2Common() to MarkdownV2
