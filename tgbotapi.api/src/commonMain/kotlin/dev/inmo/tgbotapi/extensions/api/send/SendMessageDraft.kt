@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
+import dev.inmo.kslog.common.logger
+import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendMessageDraft
 import dev.inmo.tgbotapi.types.*
@@ -11,6 +13,14 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.takeWhile
+import kotlin.js.JsName
+import kotlin.jvm.JvmName
 
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
@@ -27,6 +37,52 @@ public suspend fun TelegramBot.sendMessageDraft(
         threadId = threadId
     )
 )
+
+private suspend fun TelegramBot.sendMessageDraftFlow(
+    messagesFlow: Flow<SendMessageDraft>,
+): Boolean {
+    val done = messagesFlow
+        .filter { draft ->
+            val sent = runCatchingLogging(logger = logger) {
+                execute(draft)
+            }.getOrElse {
+                false
+            }
+
+            sent == false
+        }
+        .firstOrNull()
+
+    return done == null
+}
+
+public suspend fun TelegramBot.sendMessageDraftFlow(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    messagesFlow: Flow<TextSourcesList>,
+    threadId: MessageThreadId? = chatId.threadId
+): Boolean {
+    return sendMessageDraftFlow(
+        messagesFlow.map {
+            SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, threadId = threadId)
+        }
+    )
+}
+
+@JvmName("sendMessageDraftFlowWithTextAndParseMode")
+@JsName("sendMessageDraftFlowWithTextAndParseMode")
+public suspend fun TelegramBot.sendMessageDraftFlow(
+    chatId: IdChatIdentifier,
+    draftId: DraftId,
+    messagesFlow: Flow<Pair<String, ParseMode?>>,
+    threadId: MessageThreadId? = chatId.threadId
+): Boolean {
+    return sendMessageDraftFlow(
+        messagesFlow.map {
+            SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, threadId = threadId)
+        }
+    )
+}
 
 public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
