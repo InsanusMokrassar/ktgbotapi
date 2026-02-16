@@ -8917,16 +8917,23 @@ public final class dev/inmo/tgbotapi/requests/stories/PostStory$Companion {
 
 public final class dev/inmo/tgbotapi/requests/stories/RepostStory : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stories/RepostStory$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-T-_HSQI ()Ljava/lang/String;
-	public final fun component2-T-_HSQI ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-zjviAWM ()J
-	public final fun copy-5cm5qn4 (Ljava/lang/String;Ljava/lang/String;J)Ldev/inmo/tgbotapi/requests/stories/RepostStory;
-	public static synthetic fun copy-5cm5qn4$default (Ldev/inmo/tgbotapi/requests/stories/RepostStory;Ljava/lang/String;Ljava/lang/String;JILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stories/RepostStory;
+	public final fun component4 ()I
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun copy-oUZ5JEU (Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZ)Ldev/inmo/tgbotapi/requests/stories/RepostStory;
+	public static synthetic fun copy-oUZ5JEU$default (Ldev/inmo/tgbotapi/requests/stories/RepostStory;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stories/RepostStory;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActivePeriod ()I
 	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public final fun getFromBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public final fun getFromChatId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun getPostToChatPage ()Z
+	public final fun getProtectContent ()Z
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public final fun getStoryId-zjviAWM ()J
@@ -10428,6 +10435,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field fromBusinessConnectionIdField Ljava/lang/String;
 	public static final field fromChatIdField Ljava/lang/String;
 	public static final field fromField Ljava/lang/String;
+	public static final field fromStoryIdField Ljava/lang/String;
 	public static final field frontSideField Ljava/lang/String;
 	public static final field gameShortNameField Ljava/lang/String;
 	public static final field gifDurationField Ljava/lang/String;

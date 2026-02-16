@@ -2504,6 +2504,11 @@ public final class dev/inmo/tgbotapi/extensions/api/stories/PostStoryKt {
 	public static synthetic fun postStory-rseRIdU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/stories/InputStoryContent;ILjava/util/List;ZZLdev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/stories/RepostStoryKt {
+	public static final fun repostStory-u8fFITI (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun repostStory-u8fFITI$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JIZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/suggested/ApproveSuggestedPostKt {
 	public static final fun approveSuggestedPost (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun approveSuggestedPost$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
