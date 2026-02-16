@@ -8,17 +8,21 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.message.MarkdownV2
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.utils.DraftIdAllocator
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
+import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Common
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.takeWhile
+import kotlinx.coroutines.sync.Mutex
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
 
@@ -56,12 +60,15 @@ private suspend fun TelegramBot.sendMessageDraftFlow(
     return done == null
 }
 
+public val GlobalDraftIdAllocator: DraftIdAllocator by lazy { DraftIdAllocator() }
+
 public suspend fun TelegramBot.sendMessageDraftFlow(
     chatId: IdChatIdentifier,
-    draftId: DraftId,
     messagesFlow: Flow<TextSourcesList>,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    draftId: DraftId? = null,
 ): Boolean {
+    val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
             SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, threadId = threadId)
@@ -73,14 +80,34 @@ public suspend fun TelegramBot.sendMessageDraftFlow(
 @JsName("sendMessageDraftFlowWithTextAndParseMode")
 public suspend fun TelegramBot.sendMessageDraftFlow(
     chatId: IdChatIdentifier,
-    draftId: DraftId,
     messagesFlow: Flow<Pair<String, ParseMode?>>,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    draftId: DraftId? = null,
 ): Boolean {
+    val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
             SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, threadId = threadId)
         }
+    )
+}
+
+@JvmName("sendMessageDraftFlowWithText")
+@JsName("sendMessageDraftFlowWithText")
+public suspend fun TelegramBot.sendMessageDraftFlow(
+    chatId: IdChatIdentifier,
+    messagesFlow: Flow<String>,
+    threadId: MessageThreadId? = chatId.threadId,
+    draftId: DraftId? = null,
+): Boolean {
+    val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
+    return sendMessageDraftFlow(
+        chatId = chatId,
+        messagesFlow = messagesFlow.map {
+            it.escapeMarkdownV2Common() to MarkdownV2
+        },
+        threadId = threadId,
+        draftId = draftId
     )
 }
 

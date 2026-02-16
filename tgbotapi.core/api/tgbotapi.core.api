@@ -32718,6 +32718,14 @@ public final class dev/inmo/tgbotapi/utils/DeserializeWithUnknownKt {
 	public static final fun deserializeWithRaw (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/KSerializer;)Lkotlin/Pair;
 }
 
+public final class dev/inmo/tgbotapi/utils/DraftIdAllocator {
+	public fun <init> ()V
+	public final fun allocate-2sDQ-Rg (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun free-NZs9fbA (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAllocated ()Ljava/util/Set;
+	public final fun getMutex ()Lkotlinx/coroutines/sync/Mutex;
+}
+
 public final class dev/inmo/tgbotapi/utils/EntitiesBuilder {
 	public fun <init> ()V
 	public fun <init> (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)V
