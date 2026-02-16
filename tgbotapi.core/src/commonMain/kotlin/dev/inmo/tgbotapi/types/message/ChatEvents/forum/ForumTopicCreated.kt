@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.iconColorField
 import dev.inmo.tgbotapi.types.iconCustomEmojiIdField
 import dev.inmo.tgbotapi.types.isNameImplicitField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
 import dev.inmo.tgbotapi.types.nameField
 import dev.inmo.tgbotapi.utils.RGBColor
 import kotlinx.serialization.SerialName
@@ -20,4 +21,4 @@ data class ForumTopicCreated(
     val iconEmojiId: CustomEmojiId? = null,
     @SerialName(isNameImplicitField)
     val isNameImplicit: Boolean = false
-) : ForumEvent
+) : PrivateForumEvent
