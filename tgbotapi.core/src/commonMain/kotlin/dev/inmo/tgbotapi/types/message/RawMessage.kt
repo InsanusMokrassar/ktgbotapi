@@ -380,12 +380,37 @@ internal data class RawMessage(
                         chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
                         date.asDate
                     )
-                    is PreviewPrivateChat -> PrivateEventMessage(
-                        messageId,
-                        chat,
-                        chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
-                        date.asDate
-                    )
+                    is PreviewPrivateChat -> if (chat is PrivateForumChat || is_topic_message == true || messageThreadId != null) {
+                        PrivateEventMessage(
+                            messageId,
+                            if (chat is PrivateForumChat) {
+                                chat
+                            } else {
+                                PrivateForumChatImpl(
+                                    id = if (messageThreadId == null) {
+                                        chat.id
+                                    } else {
+                                        ChatIdWithThreadId(
+                                            chat.id.chatId,
+                                            chat.id.threadId ?: messageThreadId
+                                        )
+                                    },
+                                    username = chat.username,
+                                    firstName = chat.firstName,
+                                    lastName = chat.lastName
+                                )
+                            },
+                            chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
+                            date.asDate
+                        )
+                    } else {
+                        PrivateEventMessage(
+                            messageId,
+                            chat,
+                            chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
+                            date.asDate
+                        )
+                    }
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
             } ?: content?.let { content ->

@@ -24805,6 +24805,27 @@ public final class dev/inmo/tgbotapi/types/message/PrivateForumContentMessageImp
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/message/PrivateForumEventMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage {
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent;DLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-APLFQys ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent;
+	public final fun component4-Wg0KzQs ()D
+	public final fun copy-pLZ1Az8 (JLdev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent;D)Ldev/inmo/tgbotapi/types/message/PrivateForumEventMessage;
+	public static synthetic fun copy-pLZ1Az8$default (Ldev/inmo/tgbotapi/types/message/PrivateForumEventMessage;JLdev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent;DILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/PrivateForumEventMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateForumChat;
+	public synthetic fun getChatEvent ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;
+	public fun getChatEvent ()Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PrivateForumEvent;
+	public fun getDate-Wg0KzQs ()D
+	public fun getMessageId-APLFQys ()J
+	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class dev/inmo/tgbotapi/types/message/RawMessageEntity {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/RawMessageEntity$Companion;
 	public synthetic fun <init> (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V

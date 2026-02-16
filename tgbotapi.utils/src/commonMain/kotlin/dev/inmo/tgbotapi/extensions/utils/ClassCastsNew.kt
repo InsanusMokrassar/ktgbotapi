@@ -307,6 +307,7 @@ import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
+import dev.inmo.tgbotapi.types.message.PrivateForumEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
@@ -2260,6 +2261,12 @@ public inline fun Message.groupEventMessageOrNull(): GroupEventMessage<GroupEven
 public inline fun Message.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
 public inline fun <T> Message.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T? = groupEventMessageOrNull() ?.let(block)
+
+public inline fun Message.privateForumEventMessageOrNull(): PrivateForumEventMessage<PrivateForumEvent>? = this as? dev.inmo.tgbotapi.types.message.PrivateForumEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent>
+
+public inline fun Message.privateForumEventMessageOrThrow(): PrivateForumEventMessage<PrivateForumEvent> = this as dev.inmo.tgbotapi.types.message.PrivateForumEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent>
+
+public inline fun <T> Message.ifPrivateForumEventMessage(block: (PrivateForumEventMessage<PrivateForumEvent>) -> T): T? = privateForumEventMessageOrNull() ?.let(block)
 
 public inline fun Message.commonSupergroupEventMessageOrNull(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
