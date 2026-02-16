@@ -152,7 +152,7 @@ data class CommonBot(
 data class CommonUser(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
-    override val id: UserId,
+    override val id: IdChatIdentifier,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)

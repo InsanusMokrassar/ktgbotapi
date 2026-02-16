@@ -756,7 +756,7 @@ internal data class RawMessage(
                                 )
                                 val actualForumChat = when (chat) {
                                     is PrivateForumChatImpl -> chat.copy(id = chatId)
-                                    is CommonUser -> chat
+                                    is CommonUser -> chat.copy(id = chatId)
                                     is CommonBot -> chat
                                     is PrivateChatImpl -> PrivateForumChatImpl(
                                         id = chatId,
