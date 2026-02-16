@@ -10753,6 +10753,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field stickersField Ljava/lang/String;
 	public static final field storyIdField Ljava/lang/String;
 	public static final field streetField Ljava/lang/String;
+	public static final field styleField Ljava/lang/String;
 	public static final field subscriptionExpirationDateField Ljava/lang/String;
 	public static final field subscriptionPeriodField Ljava/lang/String;
 	public static final field subscriptionPriceField Ljava/lang/String;
@@ -15281,13 +15282,18 @@ public final class dev/inmo/tgbotapi/types/business_connection/MinutesInterval$C
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCallbackData ()Ljava/lang/String;
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15310,11 +15316,16 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Callbac
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
+	public final fun component2-GbmMWyQ ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
+	public static synthetic fun copy-A-saiJc$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15337,13 +15348,18 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Callbac
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getData ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15393,6 +15409,8 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTex
 
 public abstract interface class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton$Companion;
+	public abstract fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public abstract fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public abstract fun getText ()Ljava/lang/String;
 }
 
@@ -15411,13 +15429,18 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineK
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/LoginURL;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getLoginUrl ()Ldev/inmo/tgbotapi/types/LoginURL;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15440,11 +15463,16 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginUR
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
+	public final fun component2-GbmMWyQ ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
+	public static synthetic fun copy-A-saiJc$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15504,13 +15532,18 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchI
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getParameters ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15533,12 +15566,17 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchI
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public final fun getSwitchInlineQueryCurrentChat ()Ljava/lang/String;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -15562,12 +15600,17 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchI
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public final fun getSwitchInlineQuery ()Ljava/lang/String;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -15591,12 +15634,17 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchI
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -15625,7 +15673,9 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Unknown
 	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/UnknownInlineKeyboardButton;
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/UnknownInlineKeyboardButton;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/UnknownInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRawData ()Lkotlinx/serialization/json/JsonElement;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -15648,12 +15698,17 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/Unknown
 
 public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton : dev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public final fun getWebApp ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
 	public fun hashCode ()I
@@ -15706,6 +15761,8 @@ public final class dev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup$Companio
 
 public abstract interface class dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButton$Companion;
+	public abstract fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public abstract fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public abstract fun getText ()Ljava/lang/String;
 }
 
@@ -15928,6 +15985,69 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonSerializer : ko
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom : dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Custom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Danger : dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Danger;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Primary : dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Primary;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Success : dev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/buttons/KeyboardMarkup {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup$Companion;
 }
@@ -16070,13 +16190,18 @@ public final class dev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove$Companion
 
 public final class dev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRequestChat ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16099,12 +16224,17 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton$Com
 
 public final class dev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
+	public final fun component2-GbmMWyQ ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
+	public static synthetic fun copy-A-saiJc$default (Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRequestContact ()Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16127,12 +16257,17 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton$
 
 public final class dev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
+	public final fun component2-GbmMWyQ ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
+	public static synthetic fun copy-A-saiJc$default (Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRequestLocation ()Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16155,13 +16290,18 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton
 
 public final class dev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRequestPoll ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16184,13 +16324,18 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton$Com
 
 public final class dev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRequestUsers ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16213,11 +16358,16 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton$Com
 
 public final class dev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
+	public final fun component2-GbmMWyQ ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
+	public static synthetic fun copy-A-saiJc$default (Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16243,7 +16393,9 @@ public final class dev/inmo/tgbotapi/types/buttons/UnknownKeyboardButton : dev/i
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getRaw ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -16286,12 +16438,17 @@ public final class dev/inmo/tgbotapi/types/buttons/UnknownKeyboardButtonPollType
 
 public final class dev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
 	public fun getText ()Ljava/lang/String;
 	public final fun getWebApp ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
 	public fun hashCode ()I
@@ -16314,49 +16471,69 @@ public final class dev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton$Companio
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/inline/InlineKeyboardButtonsShortcutsKt {
-	public static final fun copyTextButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
-	public static final fun copyTextButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
-	public static final fun dataInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
-	public static final fun gameInlineButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
-	public static final fun inlineQueryInAnyCurrentChatInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static synthetic fun inlineQueryInAnyCurrentChatInlineButton$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static final fun inlineQueryInCurrentChatInlineButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static final fun inlineQueryInCurrentChatInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
-	public static final fun inlineQueryInCurrentChatInlineButton (Ljava/lang/String;Ljava/lang/String;ZZZZ)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static synthetic fun inlineQueryInCurrentChatInlineButton$default (Ljava/lang/String;Ljava/lang/String;ZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
-	public static final fun inlineQueryInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
-	public static final fun loginInlineButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
-	public static final fun payInlineButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
-	public static final fun urlInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
-	public static final fun webAppInlineButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
-	public static final fun webAppInlineButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public static final fun copyTextButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun copyTextButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static synthetic fun copyTextButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static synthetic fun copyTextButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun dataInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
+	public static synthetic fun dataInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
+	public static final fun gameInlineButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
+	public static synthetic fun gameInlineButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
+	public static final fun inlineQueryInAnyCurrentChatInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static synthetic fun inlineQueryInAnyCurrentChatInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static final fun inlineQueryInCurrentChatInlineButton-A1Pr82Y (Ljava/lang/String;Ljava/lang/String;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static synthetic fun inlineQueryInCurrentChatInlineButton-A1Pr82Y$default (Ljava/lang/String;Ljava/lang/String;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static final fun inlineQueryInCurrentChatInlineButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static final fun inlineQueryInCurrentChatInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
+	public static synthetic fun inlineQueryInCurrentChatInlineButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static synthetic fun inlineQueryInCurrentChatInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
+	public static final fun inlineQueryInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public static synthetic fun inlineQueryInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public static final fun loginInlineButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public static synthetic fun loginInlineButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public static final fun payInlineButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
+	public static synthetic fun payInlineButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/PayInlineKeyboardButton;
+	public static final fun urlInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
+	public static synthetic fun urlInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/URLInlineKeyboardButton;
+	public static final fun webAppInlineButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public static final fun webAppInlineButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public static synthetic fun webAppInlineButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
+	public static synthetic fun webAppInlineButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/reply/ReplyKeyboardButtonsShortcutsKt {
-	public static final fun requestBotsReplyButton-DMiTggw (Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun requestBotsReplyButton-DMiTggw$default (Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun requestChannelReplyButton-48zEUc8 (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static synthetic fun requestChannelReplyButton-48zEUc8$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static final fun requestChannelReplyButton-x7olw_Q (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static synthetic fun requestChannelReplyButton-x7olw_Q$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static final fun requestChatReplyButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static final fun requestChatReplyButton-Q8_HZNU (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static synthetic fun requestChatReplyButton-Q8_HZNU$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static final fun requestContactReplyButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
-	public static final fun requestLocationReplyButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
-	public static final fun requestPollReplyButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
-	public static final fun requestUserOrBotReplyButton-L4bH-_U (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun requestUserOrBotReplyButton-L4bH-_U$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun requestUserReplyButton-DwHZ6rQ (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun requestUserReplyButton-DwHZ6rQ$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun requestUsersOrBotsReplyButton-DwHZ6rQ (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun requestUsersOrBotsReplyButton-DwHZ6rQ$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun requestUsersReplyButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun requestUsersReplyButton-DwHZ6rQ (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static synthetic fun requestUsersReplyButton-DwHZ6rQ$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
-	public static final fun simpleReplyButton (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
-	public static final fun webAppReplyButton (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
-	public static final fun webAppReplyButton (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public static final fun requestBotsReplyButton-fwDdwSU (Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestBotsReplyButton-fwDdwSU$default (Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun requestChannelReplyButton-EhOUbjc (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun requestChannelReplyButton-EhOUbjc$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static final fun requestChannelReplyButton-ODUf-pc (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun requestChannelReplyButton-ODUf-pc$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static final fun requestChatReplyButton-TQHSzjY (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun requestChatReplyButton-TQHSzjY$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static final fun requestChatReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun requestChatReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static final fun requestContactReplyButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
+	public static synthetic fun requestContactReplyButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
+	public static final fun requestLocationReplyButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
+	public static synthetic fun requestLocationReplyButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
+	public static final fun requestPollReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
+	public static synthetic fun requestPollReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
+	public static final fun requestUserOrBotReplyButton-ITD0VF0 (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestUserOrBotReplyButton-ITD0VF0$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun requestUserReplyButton-UgoT3Nw (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestUserReplyButton-UgoT3Nw$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun requestUsersOrBotsReplyButton-UgoT3Nw (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestUsersOrBotsReplyButton-UgoT3Nw$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun requestUsersReplyButton-UgoT3Nw (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestUsersReplyButton-UgoT3Nw$default (Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun requestUsersReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static synthetic fun requestUsersReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
+	public static final fun simpleReplyButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
+	public static synthetic fun simpleReplyButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/SimpleKeyboardButton;
+	public static final fun webAppReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public static final fun webAppReplyButton-peVxY-Q (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public static synthetic fun webAppReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
+	public static synthetic fun webAppReplyButton-peVxY-Q$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/WebAppKeyboardButton;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/AbleToAddInAttachmentMenuChat : dev/inmo/tgbotapi/types/chat/Chat {

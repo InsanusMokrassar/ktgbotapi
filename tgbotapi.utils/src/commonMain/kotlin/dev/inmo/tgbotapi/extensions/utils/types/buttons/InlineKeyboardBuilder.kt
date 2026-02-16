@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
-import dev.inmo.tgbotapi.types.LoginURL
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.buttons.KeyboardButtonStyle
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
@@ -70,8 +71,10 @@ inline fun InlineKeyboardMarkup.modified(
  * @see InlineKeyboardBuilder.row
  */
 fun InlineKeyboardRowBuilder.payButton(
-    text: String
-) = add(PayInlineKeyboardButton(text))
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(PayInlineKeyboardButton(text, iconCustomEmojiId, style))
 
 /**
  * Creates and put [CallbackDataInlineKeyboardButton]
@@ -81,8 +84,10 @@ fun InlineKeyboardRowBuilder.payButton(
  */
 fun InlineKeyboardRowBuilder.dataButton(
     text: String,
-    data: String
-) = add(CallbackDataInlineKeyboardButton(text, data))
+    data: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(CallbackDataInlineKeyboardButton(text, data, iconCustomEmojiId, style))
 
 /**
  * Creates and put [CallbackGameInlineKeyboardButton]
@@ -91,8 +96,10 @@ fun InlineKeyboardRowBuilder.dataButton(
  * @see InlineKeyboardBuilder.row
  */
 fun InlineKeyboardRowBuilder.gameButton(
-    text: String
-) = add(CallbackGameInlineKeyboardButton(text))
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(CallbackGameInlineKeyboardButton(text, iconCustomEmojiId, style))
 
 /**
  * Creates and put [LoginURLInlineKeyboardButton]
@@ -102,8 +109,10 @@ fun InlineKeyboardRowBuilder.gameButton(
  */
 fun InlineKeyboardRowBuilder.loginButton(
     text: String,
-    loginUrl: LoginURL
-) = add(LoginURLInlineKeyboardButton(text, loginUrl))
+    loginUrl: LoginURL,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(LoginURLInlineKeyboardButton(text, loginUrl, iconCustomEmojiId, style))
 
 /**
  * Creates [CopyTextButton]
@@ -113,8 +122,10 @@ fun InlineKeyboardRowBuilder.loginButton(
  */
 fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
-    data: CopyTextButtonData
-) = add(CopyTextButton(text, data))
+    data: CopyTextButtonData,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(CopyTextButton(text, data, iconCustomEmojiId, style))
 
 /**
  * Creates [CopyTextButton]
@@ -124,8 +135,10 @@ fun InlineKeyboardRowBuilder.copyTextButton(
  */
 fun InlineKeyboardRowBuilder.copyTextButton(
     text: String,
-    data: String
-) = copyTextButton(text, CopyTextButtonData(data))
+    data: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = copyTextButton(text, CopyTextButtonData(data), iconCustomEmojiId, style)
 
 /**
  * Creates and put [SwitchInlineQueryCurrentChatInlineKeyboardButton]
@@ -135,8 +148,10 @@ fun InlineKeyboardRowBuilder.copyTextButton(
  */
 fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
     text: String,
-    data: String
-) = add(SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data))
+    data: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data, iconCustomEmojiId, style))
 
 /**
  * Creates and put [SwitchInlineQueryChosenChatInlineKeyboardButton]
@@ -146,8 +161,10 @@ fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
  */
 fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     text: String,
-    parameters: SwitchInlineQueryChosenChat
-) = add(SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters))
+    parameters: SwitchInlineQueryChosenChat,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters, iconCustomEmojiId, style))
 
 /**
  * Creates and put [SwitchInlineQueryChosenChatInlineKeyboardButton]
@@ -162,6 +179,8 @@ fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     allowBots: Boolean = false,
     allowGroups: Boolean = false,
     allowChannels: Boolean = false,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = inlineQueryInChosenChatButton(
     text,
     SwitchInlineQueryChosenChat(
@@ -170,12 +189,16 @@ fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
         allowBots = allowBots,
         allowGroups = allowGroups,
         allowChannels = allowChannels
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
     text: String,
     query: String? = null,
-) = inlineQueryInChosenChatButton(text, query, allowUsers = true, allowBots = true, allowGroups = true, allowChannels = true)
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = inlineQueryInChosenChatButton(text, query, allowUsers = true, allowBots = true, allowGroups = true, allowChannels = true, iconCustomEmojiId = iconCustomEmojiId, style = style)
 
 /**
  * Creates and put [SwitchInlineQueryInlineKeyboardButton]
@@ -185,8 +208,10 @@ fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
  */
 fun InlineKeyboardRowBuilder.inlineQueryButton(
     text: String,
-    data: String
-) = add(SwitchInlineQueryInlineKeyboardButton(text, data))
+    data: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(SwitchInlineQueryInlineKeyboardButton(text, data, iconCustomEmojiId, style))
 
 /**
  * Creates and put [URLInlineKeyboardButton]
@@ -196,8 +221,10 @@ fun InlineKeyboardRowBuilder.inlineQueryButton(
  */
 fun InlineKeyboardRowBuilder.urlButton(
     text: String,
-    url: String
-) = add(URLInlineKeyboardButton(text, url))
+    url: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(URLInlineKeyboardButton(text, url, iconCustomEmojiId, style))
 
 /**
  * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
@@ -207,8 +234,10 @@ fun InlineKeyboardRowBuilder.urlButton(
  */
 fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
-    webApp: WebAppInfo
-) = add(WebAppInlineKeyboardButton(text, webApp))
+    webApp: WebAppInfo,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(WebAppInlineKeyboardButton(text, webApp, iconCustomEmojiId, style))
 
 /**
  * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
@@ -218,5 +247,7 @@ fun InlineKeyboardRowBuilder.webAppButton(
  */
 fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
-    url: String
-) = webAppButton(text, WebAppInfo(url))
+    url: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = webAppButton(text, WebAppInfo(url), iconCustomEmojiId, style)
