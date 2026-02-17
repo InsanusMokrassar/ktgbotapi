@@ -10580,6 +10580,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field needsRepaintingField Ljava/lang/String;
 	public static final field newChatMemberField Ljava/lang/String;
 	public static final field newOwnerChatIdField Ljava/lang/String;
+	public static final field newOwnerField Ljava/lang/String;
 	public static final field newReactionField Ljava/lang/String;
 	public static final field nextLevelRatingField Ljava/lang/String;
 	public static final field nextOffsetField Ljava/lang/String;
@@ -23223,6 +23224,62 @@ public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/ChatBoos
 }
 
 public final class dev/inmo/tgbotapi/types/message/ChatEvents/ChatBoostAdded$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/CommonUser;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/CommonUser;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;Ldev/inmo/tgbotapi/types/chat/CommonUser;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNewOwner ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft$Companion;
+	public fun <init> ()V
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/CommonUser;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/CommonUser;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/CommonUser;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;Ldev/inmo/tgbotapi/types/chat/CommonUser;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNewOwner ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

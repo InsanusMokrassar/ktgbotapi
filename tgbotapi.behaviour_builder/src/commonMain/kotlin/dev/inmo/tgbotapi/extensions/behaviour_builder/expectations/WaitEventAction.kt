@@ -239,6 +239,16 @@ fun BehaviourContext.waitChatBoostAdded(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChatBoostAdded>(initRequest, errorFactory)
 
+fun BehaviourContext.waitChatOwnerLeft(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChatOwnerLeft>(initRequest, errorFactory)
+
+fun BehaviourContext.waitChatOwnerChanged(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChatOwnerChanged>(initRequest, errorFactory)
+
 fun BehaviourContext.waitChatBackgroundSet(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

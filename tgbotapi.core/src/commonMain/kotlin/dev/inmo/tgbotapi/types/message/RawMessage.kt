@@ -202,6 +202,8 @@ internal data class RawMessage(
     private val gift: GiftSentOrReceived.Regular? = null,
     private val unique_gift: GiftSentOrReceived.Unique? = null,
     private val gift_upgrade_sent: GiftSentOrReceived? = null,
+    private val chat_owner_left: ChatOwnerLeft? = null,
+    private val chat_owner_changed: ChatOwnerChanged? = null,
 ) {
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
@@ -300,6 +302,8 @@ internal data class RawMessage(
             forum_topic_reopened != null -> forum_topic_reopened
             video_chat_ended != null -> video_chat_ended
             video_chat_participants_invited != null -> video_chat_participants_invited
+            chat_owner_left != null -> chat_owner_left
+            chat_owner_changed != null -> chat_owner_changed
             delete_chat_photo -> DeleteChatPhoto()
             group_chat_created -> GroupChatCreated(
                 migrate_to_chat_id

@@ -261,6 +261,8 @@ import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
@@ -2544,6 +2546,12 @@ public inline fun ChatEvent.supergroupEventOrThrow(): SupergroupEvent = this as 
 
 public inline fun <T> ChatEvent.ifSupergroupEvent(block: (SupergroupEvent) -> T): T? = supergroupEventOrNull() ?.let(block)
 
+public inline fun ChatEvent.chatOwnerLeftOrNull(): ChatOwnerLeft? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
+
+public inline fun ChatEvent.chatOwnerLeftOrThrow(): ChatOwnerLeft = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
+
+public inline fun <T> ChatEvent.ifChatOwnerLeft(block: (ChatOwnerLeft) -> T): T? = chatOwnerLeftOrNull() ?.let(block)
+
 public inline fun ChatEvent.groupChatCreatedOrNull(): GroupChatCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 
 public inline fun ChatEvent.groupChatCreatedOrThrow(): GroupChatCreated = this as dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
@@ -2579,6 +2587,12 @@ public inline fun ChatEvent.migratedToSupergroupOrNull(): MigratedToSupergroup? 
 public inline fun ChatEvent.migratedToSupergroupOrThrow(): MigratedToSupergroup = this as dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
 
 public inline fun <T> ChatEvent.ifMigratedToSupergroup(block: (MigratedToSupergroup) -> T): T? = migratedToSupergroupOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatOwnerChangedOrNull(): ChatOwnerChanged? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+
+public inline fun ChatEvent.chatOwnerChangedOrThrow(): ChatOwnerChanged = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+
+public inline fun <T> ChatEvent.ifChatOwnerChanged(block: (ChatOwnerChanged) -> T): T? = chatOwnerChangedOrNull() ?.let(block)
 
 public inline fun ChatEvent.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 

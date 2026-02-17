@@ -48,6 +48,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asChatInviteLinkWithLimitedMembers (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/ChatInviteLinkWithLimitedMembers;
 	public static final fun asChatJoinRequestUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
 	public static final fun asChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/abstracts/ChatMemberUpdatedUpdate;
+	public static final fun asChatOwnerChanged (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public static final fun asChatOwnerLeft (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
 	public static final fun asChooseStickerAction (Ldev/inmo/tgbotapi/types/actions/BotAction;)Ldev/inmo/tgbotapi/types/actions/ChooseStickerAction;
 	public static final fun asChosenInlineResultUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
 	public static final fun asCodeTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
@@ -391,6 +393,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireChatInviteLinkWithLimitedMembers (Ldev/inmo/tgbotapi/types/ChatInviteLink;)Ldev/inmo/tgbotapi/types/ChatInviteLinkWithLimitedMembers;
 	public static final fun requireChatJoinRequestUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
 	public static final fun requireChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/abstracts/ChatMemberUpdatedUpdate;
+	public static final fun requireChatOwnerChanged (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public static final fun requireChatOwnerLeft (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
 	public static final fun requireChooseStickerAction (Ldev/inmo/tgbotapi/types/actions/BotAction;)Ldev/inmo/tgbotapi/types/actions/ChooseStickerAction;
 	public static final fun requireChosenInlineResultUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
 	public static final fun requireCodeTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/CodeTextSource;
@@ -734,6 +738,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun whenChatInviteLinkWithLimitedMembers (Ldev/inmo/tgbotapi/types/ChatInviteLink;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenChatJoinRequestUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun whenChatOwnerChanged (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun whenChatOwnerLeft (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenChooseStickerAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenChosenInlineResultUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenCodeTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1223,6 +1229,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun chatMessageReactionsCountUpdatedUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;
 	public static final fun chatOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat;
 	public static final fun chatOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Chat;
+	public static final fun chatOwnerChangedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public static final fun chatOwnerChangedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerChanged;
+	public static final fun chatOwnerLeftOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
+	public static final fun chatOwnerLeftOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/ChatOwnerLeft;
 	public static final fun chatSharedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/request/ChatShared;
 	public static final fun chatSharedOrNull (Ldev/inmo/tgbotapi/types/request/RequestResponse;)Ldev/inmo/tgbotapi/types/request/ChatShared;
 	public static final fun chatSharedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/request/ChatShared;
@@ -1646,6 +1656,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChatMessageReactionUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChatMessageReactionsCountUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifChatOwnerChanged (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifChatOwnerLeft (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChatShared (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChatShared (Ldev/inmo/tgbotapi/types/request/RequestResponse;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifChatSharedRequest (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

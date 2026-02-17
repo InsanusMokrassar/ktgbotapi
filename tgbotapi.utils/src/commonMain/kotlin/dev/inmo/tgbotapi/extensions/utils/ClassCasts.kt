@@ -3276,6 +3276,24 @@ inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
 inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
 
 @PreviewFeature
+inline fun <T> ChatEvent.whenChatOwnerLeft(block: (ChatOwnerLeft) -> T) = asChatOwnerLeft()?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asChatOwnerLeft(): ChatOwnerLeft? = this as? ChatOwnerLeft
+
+@PreviewFeature
+inline fun ChatEvent.requireChatOwnerLeft(): ChatOwnerLeft = this as ChatOwnerLeft
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenChatOwnerChanged(block: (ChatOwnerChanged) -> T) = asChatOwnerChanged()?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asChatOwnerChanged(): ChatOwnerChanged? = this as? ChatOwnerChanged
+
+@PreviewFeature
+inline fun ChatEvent.requireChatOwnerChanged(): ChatOwnerChanged = this as ChatOwnerChanged
+
+@PreviewFeature
 inline fun <T> ChatEvent.whenPublicChatEvent(block: (PublicChatEvent) -> T) = asPublicChatEvent()?.let(block)
 
 @PreviewFeature
