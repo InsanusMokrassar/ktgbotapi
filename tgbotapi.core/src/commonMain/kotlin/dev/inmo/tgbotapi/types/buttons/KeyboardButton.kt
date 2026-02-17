@@ -263,7 +263,11 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
             is WebAppKeyboardButton -> WebAppKeyboardButton.serializer().serialize(encoder, value)
             is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
-            is SimpleKeyboardButton -> SimpleKeyboardButton.serializer().serialize(encoder, value)
+            is SimpleKeyboardButton -> if (value.iconCustomEmojiId != null || value.style != null) {
+                SimpleKeyboardButton.serializer().serialize(encoder, value)
+            } else {
+                encoder.encodeString(value.text)
+            }
             is RequestUserKeyboardButton -> RequestUserKeyboardButton.serializer().serialize(encoder, value)
             is RequestChatKeyboardButton -> RequestChatKeyboardButton.serializer().serialize(encoder, value)
             is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))
