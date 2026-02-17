@@ -297,6 +297,10 @@ public final class dev/inmo/tgbotapi/extensions/api/bot/GetMyStarBalanceKt {
 	public static final fun getMyStarBalance (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/bot/RemoveMyProfilePhotoKt {
+	public static final fun removeMyProfilePhoto (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyCommandsKt {
 	public static final fun setMyCommands (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/util/List;Ldev/inmo/tgbotapi/types/commands/BotCommandScope;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setMyCommands (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/util/List;Ldev/inmo/tgbotapi/types/commands/BotCommandScope;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -325,6 +329,10 @@ public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyNameKt {
 	public static final fun setMyName (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setMyName (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun setMyName$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/micro_utils/language_codes/IetfLang;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyProfilePhotoKt {
+	public static final fun setMyProfilePhoto (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/bot/SetMyShortDescriptionKt {

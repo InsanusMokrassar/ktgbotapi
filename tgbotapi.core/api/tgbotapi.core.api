@@ -1799,6 +1799,14 @@ public final class dev/inmo/tgbotapi/requests/bot/MyCommandsRequest$DefaultImpls
 	public static fun getLanguageCode (Ldev/inmo/tgbotapi/requests/bot/MyCommandsRequest;)Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/requests/bot/RemoveMyProfilePhoto : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/bot/RemoveMyProfilePhoto;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public fun method ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/bot/SetMyCommands : dev/inmo/tgbotapi/requests/bot/MyCommandsRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/bot/SetMyCommands$Companion;
 	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/commands/BotCommandScope;Ldev/inmo/micro_utils/language_codes/IetfLang;)V
@@ -1908,6 +1916,39 @@ public final synthetic class dev/inmo/tgbotapi/requests/bot/SetMyName$$serialize
 }
 
 public final class dev/inmo/tgbotapi/requests/bot/SetMyName$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;)Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto;Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getData ()Ldev/inmo/tgbotapi/requests/abstracts/SimpleRequest;
+	public fun getMediaMap ()Ljava/util/Map;
+	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/business_connection/InputProfilePhoto;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/bot/SetMyProfilePhoto$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
