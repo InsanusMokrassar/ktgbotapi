@@ -14349,6 +14349,7 @@ public final class dev/inmo/tgbotapi/types/UpdateTypesKt {
 	public static final field UPDATE_POLL Ljava/lang/String;
 	public static final field UPDATE_POLL_ANSWER Ljava/lang/String;
 	public static final field UPDATE_PRE_CHECKOUT_QUERY Ljava/lang/String;
+	public static final field UPDATE_PURCHASED_PAID_MEDIA Ljava/lang/String;
 	public static final field UPDATE_REMOVE_CHAT_BOOST Ljava/lang/String;
 	public static final field UPDATE_SHIPPING_QUERY Ljava/lang/String;
 	public static final fun getALL_UPDATES_LIST ()Ljava/util/List;
