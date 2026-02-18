@@ -74,6 +74,7 @@ sealed interface ExtendedPrivateChat : PrivateUserChat,
     val birthdate: Birthdate?
     val personalChat: PreviewChannelChat?
     val firstProfileAudio: AudioFile?
+    val rating: UserRating?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
@@ -92,7 +93,6 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val membersHidden: Boolean
     val availableReactions: List<Reaction>?
     val newMembersSeeHistory: Boolean
-    val rating: UserRating?
     val uniqueGiftColors: UniqueGiftColors?
 }
 

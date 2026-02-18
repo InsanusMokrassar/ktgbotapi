@@ -68,8 +68,6 @@ data class ExtendedChannelChatImpl(
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
-    @SerialName(ratingField)
-    override val rating: UserRating? = null,
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedChannelChat
@@ -115,8 +113,6 @@ data class ExtendedGroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
-    @SerialName(ratingField)
-    override val rating: UserRating? = null,
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
@@ -179,6 +175,8 @@ data class ExtendedPrivateChatImpl(
     override val paidMessageStarCount: Int? = null,
     @SerialName(firstProfileAudioField)
     override val firstProfileAudio: AudioFile? = null,
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
 ) : ExtendedPrivateChat
 
 @Serializable
@@ -237,6 +235,8 @@ data class ExtendedPrivateForumChatImpl(
     override val paidMessageStarCount: Int? = null,
     @SerialName(firstProfileAudioField)
     override val firstProfileAudio: AudioFile? = null,
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
 ) : ExtendedPrivateForumChat
 
 typealias ExtendedUser = ExtendedPrivateChat
@@ -309,8 +309,6 @@ data class ExtendedSupergroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
-    @SerialName(ratingField)
-    override val rating: UserRating? = null,
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
@@ -385,8 +383,6 @@ data class ExtendedForumChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
-    @SerialName(ratingField)
-    override val rating: UserRating? = null,
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
@@ -464,8 +460,6 @@ data class ExtendedChannelDirectMessagesChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
-    @SerialName(ratingField)
-    override val rating: UserRating? = null,
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
