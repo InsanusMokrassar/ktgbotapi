@@ -2,6 +2,9 @@
 
 ## 31.0.0
 
+* `Core`:
+    * **THIS IS BREAKING CHANGE** All media files with sizes changed type of `fileSize` field from `Long` to `FileSize` (value class)
+
 ## 30.0.2
 
 * `Version`:
