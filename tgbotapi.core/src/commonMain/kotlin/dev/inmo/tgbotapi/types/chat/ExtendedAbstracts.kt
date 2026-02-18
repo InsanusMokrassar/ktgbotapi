@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalPaidMessageStarCount
 import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
@@ -51,13 +52,16 @@ sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, Extended
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
+sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat, WithOptionalPaidMessageStarCount {
     val permissions: ChatPermissions
 }
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedPrivateChat : PrivateUserChat, ExtendedChatWithUsername, ExtendedNonBotChat {
+sealed interface ExtendedPrivateChat : PrivateUserChat,
+    ExtendedChatWithUsername,
+    ExtendedNonBotChat,
+    WithOptionalPaidMessageStarCount {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
@@ -87,7 +91,6 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val availableReactions: List<Reaction>?
     val newMembersSeeHistory: Boolean
     val rating: UserRating?
-    val paidMessageStarCount: Int?
     val uniqueGiftColors: UniqueGiftColors?
 }
 
