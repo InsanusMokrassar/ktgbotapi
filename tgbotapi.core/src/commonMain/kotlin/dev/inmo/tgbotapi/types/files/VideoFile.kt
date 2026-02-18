@@ -29,14 +29,24 @@ data class VideoFile(
     override val cover: Photo? = null,
     @SerialName(startTimestampField)
     override val startTimestamp: Seconds? = null,
+    @SerialName(qualitiesField)
+    val qualities: List<VideoQuality>? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null
-) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, CoveredMediaFile, CustomStartMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
-    MediaContentVariant, UsefulAsPaidMediaFile
+    override val fileSize: FileSize? = null
+) : TelegramMediaFile,
+    CustomNamedMediaFile,
+    MimedMediaFile,
+    CoveredMediaFile,
+    CustomStartMediaFile,
+    ThumbedMediaFile,
+    PlayableMediaFile,
+    SizedMediaFile,
+    MediaContentVariant,
+    UsefulAsPaidMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(

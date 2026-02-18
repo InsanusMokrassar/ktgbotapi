@@ -2154,6 +2154,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifVideoFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifVideoNoteContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifVideoNoteFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifVideoQuality (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifVideoSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifVisualMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifVisualMediaGroupPartContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2831,6 +2832,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun videoNoteContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/VideoNoteContent;
 	public static final fun videoNoteFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoNoteFile;
 	public static final fun videoNoteFileOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoNoteFile;
+	public static final fun videoQualityOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoQuality;
+	public static final fun videoQualityOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoQuality;
 	public static final fun videoStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoSticker;
 	public static final fun videoStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/VideoSticker;
 	public static final fun visualMediaGroupMemberTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia;
@@ -3205,7 +3208,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/ShippingQue
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/StickerKt {
 	public static final fun getCustom_emoji_id (Ldev/inmo/tgbotapi/types/files/Sticker;)Ljava/lang/String;
 	public static final fun getFile_id (Ldev/inmo/tgbotapi/types/files/Sticker;)Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public static final fun getFile_size (Ldev/inmo/tgbotapi/types/files/Sticker;)Ljava/lang/Long;
+	public static final fun getFile_size (Ldev/inmo/tgbotapi/types/files/Sticker;)Ldev/inmo/tgbotapi/types/files/FileSize;
 	public static final fun getFile_unique_id (Ldev/inmo/tgbotapi/types/files/Sticker;)Ljava/lang/String;
 	public static final fun getMask_position (Ldev/inmo/tgbotapi/types/files/Sticker;)Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
 	public static final fun getPremium_animation (Ldev/inmo/tgbotapi/types/files/Sticker;)Ldev/inmo/tgbotapi/types/files/File;

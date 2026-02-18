@@ -11,5 +11,5 @@ import dev.inmo.tgbotapi.types.TgFileUniqueId
 sealed interface TelegramMediaFile {
     val fileId: FileId
     val fileUniqueId: TgFileUniqueId
-    val fileSize: Long?
+    val fileSize: FileSize?
 }

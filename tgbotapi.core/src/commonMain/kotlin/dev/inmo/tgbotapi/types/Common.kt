@@ -58,7 +58,8 @@ val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 .. 1024
 val storyCaptionLength = 0 .. 2048
 val textLength = 1 .. 4096
-val userProfilePhotosRequestLimit = 0 .. 100
+val userProfilePhotosRequestLimit = 1 .. 100
+val userProfileAudiosRequestLimit = 1 .. 100
 val chatTitleLength = 1 until 255
 val threadNameLength = 1 until 128
 val chatDescriptionLength = 0 until 256
@@ -364,6 +365,7 @@ const val fileIdField = "file_id"
 const val fileSizeField = "file_size"
 const val fileDateField = "file_date"
 const val filePathField = "file_path"
+const val qualitiesField = "qualities"
 
 
 const val requestWriteAccessField = "request_write_access"
@@ -608,6 +610,7 @@ const val shippingOptionsField = "shipping_options"
 const val countryCodeField = "country_code"
 const val countryCodesField = "country_codes"
 const val totalCountField = "total_count"
+const val audiosField = "audios"
 const val remainingCountField = "remaining_count"
 const val stateField = "state"
 const val cityField = "city"
@@ -659,6 +662,7 @@ const val mediaField = "media"
 
 const val mainFrameTimestampField = "main_frame_timestamp"
 
+const val firstProfileAudioField = "first_profile_audio"
 const val paidMessageStarCountField = "paid_message_star_count"
 const val countField = "count"
 const val ratingField = "rating"
@@ -842,3 +846,5 @@ const val isFlippedField = "is_flipped"
 const val temperatureField = "temperature"
 const val backgroundColorField = "background_color"
 const val keepOriginalDetailsField = "keep_original_details"
+
+const val codecField = "codec"

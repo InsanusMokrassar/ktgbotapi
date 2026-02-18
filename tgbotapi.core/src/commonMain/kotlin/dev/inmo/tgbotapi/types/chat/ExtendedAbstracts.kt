@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -72,6 +73,7 @@ sealed interface ExtendedPrivateChat : PrivateUserChat,
 
     val birthdate: Birthdate?
     val personalChat: PreviewChannelChat?
+    val firstProfileAudio: AudioFile?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards

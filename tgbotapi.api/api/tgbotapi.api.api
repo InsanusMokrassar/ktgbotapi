@@ -1179,6 +1179,13 @@ public final class dev/inmo/tgbotapi/extensions/api/get/GetUserChatBoostsKt {
 	public static final fun getUserChatBoosts (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/get/GetUserProfileAudiosKt {
+	public static final fun getUserProfileAudios (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getUserProfileAudios (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getUserProfileAudios$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getUserProfileAudios$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/get/GetUserProfilePhotosKt {
 	public static final fun getUserProfilePhotos (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getUserProfilePhotos (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

@@ -15,7 +15,7 @@ data class PathedFile(
     @SerialName(filePathField)
     val filePath: String,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null
+    override val fileSize: FileSize? = null
 ): TelegramMediaFile {
     @Suppress("TRANSIENT_IS_REDUNDANT")
     @Transient

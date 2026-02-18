@@ -6,19 +6,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VideoNoteFile(
+data class VideoQuality(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
     override val fileUniqueId: TgFileUniqueId,
-    @SerialName("length")
+    @SerialName(widthField)
     override val width: Int,
-    override val duration: Long? = null,
-    override val thumbnail: PhotoSize? = null,
+    @SerialName(heightField)
+    override val height: Int,
+    @SerialName(codecField)
+    val codec: VideoCodec,
     @SerialName(fileSizeField)
     override val fileSize: FileSize? = null
-) : TelegramMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile, MediaContentVariant {
-    override val height: Int
-        get() = width
+) : TelegramMediaFile, SizedMediaFile {
 }

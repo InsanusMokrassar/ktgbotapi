@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -176,6 +177,8 @@ data class ExtendedPrivateChatImpl(
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
+    @SerialName(firstProfileAudioField)
+    override val firstProfileAudio: AudioFile? = null,
 ) : ExtendedPrivateChat
 
 @Serializable
@@ -232,6 +235,8 @@ data class ExtendedPrivateForumChatImpl(
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
+    @SerialName(firstProfileAudioField)
+    override val firstProfileAudio: AudioFile? = null,
 ) : ExtendedPrivateForumChat
 
 typealias ExtendedUser = ExtendedPrivateChat

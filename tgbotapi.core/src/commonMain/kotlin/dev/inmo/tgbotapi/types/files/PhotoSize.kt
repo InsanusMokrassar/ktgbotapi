@@ -17,7 +17,7 @@ value class PhotoFile(
         get() = biggest.fileId
     override val fileUniqueId: TgFileUniqueId
         get() = biggest.fileUniqueId
-    override val fileSize: Long?
+    override val fileSize: FileSize?
         get() = biggest.fileSize
 
     init {
@@ -44,7 +44,7 @@ data class PhotoSize(
     @SerialName(fileUniqueIdField)
     override val fileUniqueId: TgFileUniqueId,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     override val width: Int,
     override val height: Int
 ) : SizedMediaFile {

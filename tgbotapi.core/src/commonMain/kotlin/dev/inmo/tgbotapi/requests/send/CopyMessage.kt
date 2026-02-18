@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.requests.send
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
+import dev.inmo.tgbotapi.abstracts.types.OptionallyWithEffectId
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
@@ -189,7 +190,7 @@ data class CopyMessage internal constructor(
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
     @SerialName(messageEffectIdField)
-    val effectId: EffectId? = null,
+    override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
     override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
@@ -203,7 +204,8 @@ data class CopyMessage internal constructor(
     TextedOutput,
     ProtectContent,
     OptionallyMessageThreadRequest,
-    WithCustomStartMediaData {
+    WithCustomStartMediaData,
+    OptionallyWithEffectId {
     override val chatId: ChatIdentifier
         get() = fromChatId
     override val textSources: List<TextSource>? by lazy {

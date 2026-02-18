@@ -14,7 +14,7 @@ data class DocumentFile(
     @SerialName(fileUniqueIdField)
     override val fileUniqueId: TgFileUniqueId,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     override val thumbnail: PhotoSize? = null,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
@@ -27,11 +27,11 @@ inline fun TelegramMediaFile.asDocumentFile() = if (this is DocumentFile) {
     this
 } else {
     DocumentFile(
-        fileId,
-        fileUniqueId,
-        fileSize,
-        (this as? ThumbedMediaFile) ?.thumbnail,
-        (this as? MimedMediaFile) ?.mimeType,
-        (this as? CustomNamedMediaFile) ?.fileName
+        fileId = fileId,
+        fileUniqueId = fileUniqueId,
+        fileSize = fileSize,
+        thumbnail = (this as? ThumbedMediaFile) ?.thumbnail,
+        mimeType = (this as? MimedMediaFile) ?.mimeType,
+        fileName = (this as? CustomNamedMediaFile) ?.fileName
     )
 }

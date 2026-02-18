@@ -227,6 +227,7 @@ import dev.inmo.tgbotapi.types.files.UnknownSticker
 import dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
+import dev.inmo.tgbotapi.types.files.VideoQuality
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
@@ -1867,6 +1868,12 @@ public inline fun TelegramMediaFile.pathedFileOrNull(): PathedFile? = this as? d
 public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as dev.inmo.tgbotapi.types.files.PathedFile
 
 public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? = pathedFileOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.videoQualityOrNull(): VideoQuality? = this as? dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun TelegramMediaFile.videoQualityOrThrow(): VideoQuality = this as dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun <T> TelegramMediaFile.ifVideoQuality(block: (VideoQuality) -> T): T? = videoQualityOrNull() ?.let(block)
 
 public inline fun TelegramMediaFile.passportFileOrNull(): PassportFile? = this as? dev.inmo.tgbotapi.types.files.PassportFile
 
