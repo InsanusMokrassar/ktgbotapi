@@ -29,6 +29,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -46,6 +47,7 @@ public suspend inline fun TelegramBot.copyMessage(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -69,6 +71,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -85,6 +88,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -107,6 +111,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -123,6 +128,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -145,6 +151,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -161,6 +168,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -183,6 +191,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -199,6 +208,7 @@ public suspend inline fun TelegramBot.copyMessage(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
@@ -221,6 +231,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -236,6 +247,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -257,6 +269,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -272,6 +285,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -293,6 +307,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -308,6 +323,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -329,6 +345,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -345,6 +362,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -366,6 +384,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -382,6 +401,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -402,6 +422,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -417,6 +438,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -437,6 +459,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -452,6 +475,7 @@ public suspend inline fun TelegramBot.copyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
