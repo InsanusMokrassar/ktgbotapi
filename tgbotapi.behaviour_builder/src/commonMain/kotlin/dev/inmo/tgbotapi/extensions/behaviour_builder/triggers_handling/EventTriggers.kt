@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
@@ -31,7 +31,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
@@ -1182,11 +1181,11 @@ fun <BC : BehaviourContext> BC.onPaidMessagePriceChanged(
  * data
  */
 fun <BC : BehaviourContext> BC.onRegularGiftSentOrReceived(
-    initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceived.Regular>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceived.Regular>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceived.Regular>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Regular>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceived.Regular>>
+    initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceivedEvent.RegularGift>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceivedEvent.RegularGift>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceivedEvent.RegularGift>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceivedEvent.RegularGift>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceivedEvent.RegularGift>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 
@@ -1204,11 +1203,11 @@ fun <BC : BehaviourContext> BC.onRegularGiftSentOrReceived(
  * data
  */
 fun <BC : BehaviourContext> BC.onUniqueGiftSentOrReceived(
-    initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceived.Unique>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceived.Unique>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceived.Unique>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceived.Unique>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceived.Unique>>
+    initialFilter: SimpleFilter<ChatEventMessage<GiftSentOrReceivedEvent.UniqueGift>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<GiftSentOrReceivedEvent.UniqueGift>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<GiftSentOrReceivedEvent.UniqueGift>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<GiftSentOrReceivedEvent.UniqueGift>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<GiftSentOrReceivedEvent.UniqueGift>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 

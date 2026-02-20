@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
@@ -25,7 +25,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
@@ -277,12 +276,12 @@ fun BehaviourContext.waitPaidMessagePriceChanged(
 fun BehaviourContext.waitRegularGiftSentOrReceived(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiftSentOrReceived.Regular>(initRequest, errorFactory)
+) = waitEvents<GiftSentOrReceivedEvent.RegularGift>(initRequest, errorFactory)
 
 fun BehaviourContext.waitUniqueGiftSentOrReceived(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<GiftSentOrReceived.Unique>(initRequest, errorFactory)
+) = waitEvents<GiftSentOrReceivedEvent.UniqueGift>(initRequest, errorFactory)
 
 fun BehaviourContext.waitChecklistTasksDone(
     initRequest: Request<*>? = null,

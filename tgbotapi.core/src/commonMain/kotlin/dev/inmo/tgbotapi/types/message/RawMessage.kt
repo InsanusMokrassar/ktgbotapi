@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.*
 import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
@@ -199,9 +199,9 @@ internal data class RawMessage(
     private val suggested_post_refunded: SuggestedPostRefunded? = null,
     private val suggested_post_info: SuggestedPostInfo? = null,
     // Gifts
-    private val gift: GiftSentOrReceived.Regular? = null,
-    private val unique_gift: GiftSentOrReceived.Unique? = null,
-    private val gift_upgrade_sent: GiftSentOrReceived? = null,
+    private val gift: GiftSentOrReceivedEvent.RegularGift? = null,
+    private val unique_gift: GiftSentOrReceivedEvent.UniqueGift? = null,
+    private val gift_upgrade_sent: GiftSentOrReceivedEvent.RegularGift? = null,
     private val chat_owner_left: ChatOwnerLeft? = null,
     private val chat_owner_changed: ChatOwnerChanged? = null,
 ) {

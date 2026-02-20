@@ -18,6 +18,7 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface Gift {
     val id: GiftId?
     val publisherChat: PreviewChat?
+    val isPremium: Boolean
     @Serializable(Regular.Companion::class)
     sealed interface Regular : Gift {
         override val id: GiftId
@@ -28,7 +29,6 @@ sealed interface Gift {
         val remainingCount: Int?
         val personalTotalCount: Int?
         val personalRemainingCount: Int?
-        val isPremium: Boolean
         val hasColors: Boolean
         val background: GiftBackground?
         val uniqueGiftVariantCount: Int?
@@ -199,7 +199,7 @@ sealed interface Gift {
         @SerialName(backdropField)
         val backdrop: UniqueGiftBackdrop,
         @SerialName(isPremiumField)
-        val isPremium: Boolean = false,
+        override val isPremium: Boolean = false,
         @SerialName(isBurnedField)
         val isBurned: Boolean = false,
         @SerialName(isFromBlockchainField)

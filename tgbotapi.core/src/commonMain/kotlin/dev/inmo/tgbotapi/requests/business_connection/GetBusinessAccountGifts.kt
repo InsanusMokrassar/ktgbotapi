@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.excludeFromBlockchainField
 import dev.inmo.tgbotapi.types.sortByPriceField
 import dev.inmo.tgbotapi.types.offsetField
 import dev.inmo.tgbotapi.types.limitField
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -45,16 +45,16 @@ data class GetBusinessAccountGifts(
     val offset: String? = null,
     @SerialName(limitField)
     val limit: Int? = null,
-) : BusinessRequest.Simple<OwnedGifts<GiftSentOrReceived.ReceivedInBusinessAccount>> {
+) : BusinessRequest.Simple<OwnedGifts<GiftSentOrReceivedEvent.ReceivedInBusinessAccount>> {
     override fun method(): String = "getBusinessAccountGifts"
 
-    override val resultDeserializer: DeserializationStrategy<OwnedGifts<GiftSentOrReceived.ReceivedInBusinessAccount>>
+    override val resultDeserializer: DeserializationStrategy<OwnedGifts<GiftSentOrReceivedEvent.ReceivedInBusinessAccount>>
         get() = Companion.resultSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     companion object {
         @Warning("This API can be changed without any warranties of backward compatibility")
-        val resultSerializer = OwnedGifts.serializer(GiftSentOrReceived.ReceivedInBusinessAccount.serializer())
+        val resultSerializer = OwnedGifts.serializer(GiftSentOrReceivedEvent.ReceivedInBusinessAccount.serializer())
     }
 }

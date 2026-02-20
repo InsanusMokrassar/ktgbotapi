@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.gifts
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 import dev.inmo.tgbotapi.types.message.RawMessageEntities
 import dev.inmo.tgbotapi.types.message.asTextSources
@@ -10,8 +9,6 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
-import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -25,28 +22,34 @@ import kotlin.jvm.JvmName
 
 
 /**
- * Represent Telegram Bots API abstraction [OwnedGiftUnique](https://core.telegram.org/bots/api#giftinfo) and
+ * Represent Telegram Bots API abstraction [GiftInfo](https://core.telegram.org/bots/api#giftinfo) and
  * [UniqueGiftInfo](https://core.telegram.org/bots/api#uniquegiftinfo)
  *
  * @see ReceivedInBusinessAccount
- * @see Regular.Common
- * @see Regular.ReceivedInBusinessAccount
- * @see Unique.Common
- * @see Unique.ReceivedInBusinessAccount
+ * @see RegularGift.Common
+ * @see RegularGift.ReceivedInBusinessAccount
+ * @see UniqueGift.Common
+ * @see UniqueGift.ReceivedInBusinessAccount
  */
 @Serializable
-sealed interface GiftSentOrReceived : CommonEvent {
+sealed interface GiftSentOrReceivedEvent : CommonEvent {
     val ownedGiftId: GiftId?
     val gift: Gift
     val nextTransferDate: TelegramDate?
 
     @Serializable
-    sealed interface ReceivedInBusinessAccount : GiftSentOrReceived {
+    sealed interface ReceivedInBusinessAccount : GiftSentOrReceivedEvent {
         override val ownedGiftId: GiftId
     }
 
-    @Serializable(Regular.Companion::class)
-    sealed interface Regular : GiftSentOrReceived, TextedInput {
+    /**
+     * Represent the hierarchy of [GiftInfo](https://core.telegram.org/bots/api#giftinfo).
+     *
+     * * For `GiftInfo` **with** `owned_gift_id` see [RegularGift.ReceivedInBusinessAccount]
+     * * For all other kinds see [RegularGift.Common]
+     */
+    @Serializable(RegularGift.Companion::class)
+    sealed interface RegularGift : GiftSentOrReceivedEvent, TextedInput {
         override val gift: Gift.Regular
         val convertStarCount: Int?
         val prepaidUpgradeStarCount: Int?
@@ -77,7 +80,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val uniqueGiftNumber: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
-        ) : Regular {
+        ) : RegularGift {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
             }
@@ -109,13 +112,13 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val uniqueGiftNumber: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
-        ) : Regular, GiftSentOrReceived.ReceivedInBusinessAccount {
+        ) : RegularGift, GiftSentOrReceivedEvent.ReceivedInBusinessAccount {
             override val textSources: List<TextSource> by lazy {
                 entities ?.asTextSources(text ?: return@lazy emptyList()) ?: emptyList()
             }
         }
 
-        companion object : KSerializer<GiftSentOrReceived.Regular> {
+        companion object : KSerializer<GiftSentOrReceivedEvent.RegularGift> {
             @Serializable
             private data class Surrogate(
                 @SerialName(giftField)
@@ -145,14 +148,14 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val descriptor: SerialDescriptor
                 get() = Surrogate.serializer().descriptor
 
-            override fun serialize(encoder: Encoder, value: Regular) {
+            override fun serialize(encoder: Encoder, value: RegularGift) {
                 when (value) {
                     is Common -> Common.serializer().serialize(encoder, value)
                     is ReceivedInBusinessAccount -> ReceivedInBusinessAccount.serializer().serialize(encoder, value)
                 }
             }
 
-            override fun deserialize(decoder: Decoder): Regular {
+            override fun deserialize(decoder: Decoder): RegularGift {
                 val surrogate = Surrogate.serializer().deserialize(decoder)
 
                return when {
@@ -227,8 +230,14 @@ sealed interface GiftSentOrReceived : CommonEvent {
         }
     }
 
-    @Serializable(Unique.Companion::class)
-    sealed interface Unique : GiftSentOrReceived {
+    /**
+     * Represent the hierarchy of [UniqueGiftInfo](https://core.telegram.org/bots/api#uniquegiftinfo).
+     *
+     * * For `UniqueGiftInfo` **with** `owned_gift_id` see [UniqueGift.ReceivedInBusinessAccount]
+     * * For all other kinds see [UniqueGift.Common]
+     */
+    @Serializable(UniqueGift.Companion::class)
+    sealed interface UniqueGift : GiftSentOrReceivedEvent {
         override val gift: Gift.Unique
         val origin: String?
         val originTyped: Origin?
@@ -299,7 +308,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
-        ) : Unique {
+        ) : UniqueGift {
             override val ownedGiftId: GiftId?
                 get() = null
 
@@ -344,7 +353,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
             override val nextTransferDate: TelegramDate? = null
-        ) : Unique, GiftSentOrReceived.ReceivedInBusinessAccount {
+        ) : UniqueGift, GiftSentOrReceivedEvent.ReceivedInBusinessAccount {
             @Transient
             override val origin: String? = originTyped ?.string
 
@@ -369,7 +378,7 @@ sealed interface GiftSentOrReceived : CommonEvent {
             )
         }
 
-        companion object : KSerializer<GiftSentOrReceived.Unique> {
+        companion object : KSerializer<GiftSentOrReceivedEvent.UniqueGift> {
             @Serializable
             private data class Surrogate(
                 @SerialName(giftField)
@@ -393,14 +402,14 @@ sealed interface GiftSentOrReceived : CommonEvent {
             override val descriptor: SerialDescriptor
                 get() = Surrogate.serializer().descriptor
 
-            override fun serialize(encoder: Encoder, value: Unique) {
+            override fun serialize(encoder: Encoder, value: UniqueGift) {
                 when (value) {
                     is Common -> Common.serializer().serialize(encoder, value)
                     is ReceivedInBusinessAccount -> ReceivedInBusinessAccount.serializer().serialize(encoder, value)
                 }
             }
 
-            override fun deserialize(decoder: Decoder): Unique {
+            override fun deserialize(decoder: Decoder): UniqueGift {
                 val surrogate = Surrogate.serializer().deserialize(decoder)
 
                 return when {
@@ -450,3 +459,6 @@ sealed interface GiftSentOrReceived : CommonEvent {
         }
     }
 }
+
+@Deprecated("Renamed to GiftSentOrReceivedEvent", ReplaceWith("GiftSentOrReceivedEvent", "dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent"))
+typealias GiftSentOrReceived = GiftSentOrReceivedEvent
