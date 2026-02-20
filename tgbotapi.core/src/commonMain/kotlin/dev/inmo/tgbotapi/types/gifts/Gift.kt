@@ -49,7 +49,7 @@ sealed interface Gift {
             override val personalTotalCount: Int? = null,
             @SerialName(personalRemainingCountField)
             override val personalRemainingCount: Int? = null,
-            @SerialName(isPremiumField2)
+            @SerialName(isPremiumField)
             override val isPremium: Boolean = false,
             @SerialName(hasColorsField)
             override val hasColors: Boolean = false,
@@ -84,7 +84,7 @@ sealed interface Gift {
             override val personalTotalCount: Int? = null,
             @SerialName(personalRemainingCountField)
             override val personalRemainingCount: Int? = null,
-            @SerialName(isPremiumField2)
+            @SerialName(isPremiumField)
             override val isPremium: Boolean = false,
             @SerialName(hasColorsField)
             override val hasColors: Boolean = false,
@@ -193,7 +193,7 @@ sealed interface Gift {
         override val publisherChat: PreviewChat? = null,
         @SerialName(isFromBlockchainField)
         val isFromBlockchain: Boolean = false,
-        @SerialName(isPremiumField2)
+        @SerialName(isPremiumField)
         val isPremium: Boolean = false,
         @SerialName(colorsField)
         val colors: UniqueGiftColors? = null

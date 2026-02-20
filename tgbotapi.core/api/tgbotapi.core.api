@@ -10747,6 +10747,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field quoteField Ljava/lang/String;
 	public static final field quoteParseModeField Ljava/lang/String;
 	public static final field quotePositionField Ljava/lang/String;
+	public static final field rarityField Ljava/lang/String;
 	public static final field rarityPerMilleField Ljava/lang/String;
 	public static final field ratingField Ljava/lang/String;
 	public static final field rawField Ljava/lang/String;
@@ -22230,6 +22231,73 @@ public final class dev/inmo/tgbotapi/types/gifts/Gifts$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/Rarity$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/Rarity;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun fromString (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/gifts/Rarity;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/Rarity;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Custom : dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/Rarity$Custom$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/gifts/Rarity$Custom;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/Rarity$Custom;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/Rarity$Custom;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Custom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Epic : dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/Rarity$Epic;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Legendary : dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/Rarity$Legendary;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Rare : dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/Rarity$Rare;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/Rarity$Uncommon : dev/inmo/tgbotapi/types/gifts/Rarity {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/Rarity$Uncommon;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class dev/inmo/tgbotapi/types/gifts/unique/UniqueGiftBackdrop {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftBackdrop$Companion;
 	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftBackdropColors;I)V
@@ -22333,14 +22401,16 @@ public final class dev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors$Compani
 
 public final class dev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;I)V
+	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILdev/inmo/tgbotapi/types/gifts/Rarity;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public final fun component3 ()I
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;I)Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/gifts/Rarity;
+	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILdev/inmo/tgbotapi/types/gifts/Rarity;)Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILdev/inmo/tgbotapi/types/gifts/Rarity;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getName ()Ljava/lang/String;
+	public final fun getRarity ()Ldev/inmo/tgbotapi/types/gifts/Rarity;
 	public final fun getRarityPerMille ()I
 	public final fun getSticker ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public fun hashCode ()I
