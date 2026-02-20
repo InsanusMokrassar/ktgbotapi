@@ -29,7 +29,6 @@ import dev.inmo.tgbotapi.types.ChatInviteLink
 import dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
-import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
@@ -82,7 +81,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessa
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
-import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
 import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
@@ -126,7 +124,6 @@ import dev.inmo.tgbotapi.types.chat.BusinessChat
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.ChannelDirectMessagesChat
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
@@ -184,8 +181,6 @@ import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedMemberChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
-import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
-import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -230,9 +225,6 @@ import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoQuality
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
-import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
-import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
@@ -260,50 +252,14 @@ import dev.inmo.tgbotapi.types.media.VisualTelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.WithCustomStartTelegramMedia
 import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
-import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
-import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
-import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
-import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
-import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
-import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
-import dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
-import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
-import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
-import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
-import dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
-import dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
-import dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
-import dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
-import dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
-import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
-import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
-import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
-import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
-import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
-import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
 import dev.inmo.tgbotapi.types.message.CommonChannelDirectMessagesEventMessage
 import dev.inmo.tgbotapi.types.message.CommonGroupEventMessage
 import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
@@ -394,8 +350,6 @@ import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
-import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
-import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
@@ -433,26 +387,6 @@ import dev.inmo.tgbotapi.types.passport.PassportElementFilesError
 import dev.inmo.tgbotapi.types.passport.PassportMultipleElementsError
 import dev.inmo.tgbotapi.types.passport.PassportSingleElementError
 import dev.inmo.tgbotapi.types.passport.UnknownPassportElementError
-import dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValue
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
 import dev.inmo.tgbotapi.types.passport.encrypted.BankStatement
 import dev.inmo.tgbotapi.types.passport.encrypted.CommonPassport
 import dev.inmo.tgbotapi.types.passport.encrypted.DriverLicense
@@ -2343,456 +2277,6 @@ public inline fun ForwardInfo.fromSupergroupOrThrow(): ForwardInfo.PublicChat.Fr
 
 public inline fun <T> ForwardInfo.ifFromSupergroup(block: (ForwardInfo.PublicChat.FromSupergroup) -> T): T? = fromSupergroupOrNull() ?.let(block)
 
-public inline fun ChatEvent.chatSharedOrNull(): ChatShared? = this as? dev.inmo.tgbotapi.types.request.ChatShared
-
-public inline fun ChatEvent.chatSharedOrThrow(): ChatShared = this as dev.inmo.tgbotapi.types.request.ChatShared
-
-public inline fun <T> ChatEvent.ifChatShared(block: (ChatShared) -> T): T? = chatSharedOrNull() ?.let(block)
-
-public inline fun ChatEvent.usersSharedOrNull(): UsersShared? = this as? dev.inmo.tgbotapi.types.request.UsersShared
-
-public inline fun ChatEvent.usersSharedOrThrow(): UsersShared = this as dev.inmo.tgbotapi.types.request.UsersShared
-
-public inline fun <T> ChatEvent.ifUsersShared(block: (UsersShared) -> T): T? = usersSharedOrNull() ?.let(block)
-
-public inline fun ChatEvent.chatSharedRequestOrNull(): ChatSharedRequest? = this as? dev.inmo.tgbotapi.types.request.ChatSharedRequest
-
-public inline fun ChatEvent.chatSharedRequestOrThrow(): ChatSharedRequest = this as dev.inmo.tgbotapi.types.request.ChatSharedRequest
-
-public inline fun <T> ChatEvent.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? = chatSharedRequestOrNull() ?.let(block)
-
-public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as? dev.inmo.tgbotapi.types.chat.ChatBackground
-
-public inline fun ChatEvent.chatBackgroundOrThrow(): ChatBackground = this as dev.inmo.tgbotapi.types.chat.ChatBackground
-
-public inline fun <T> ChatEvent.ifChatBackground(block: (ChatBackground) -> T): T? = chatBackgroundOrNull() ?.let(block)
-
-public inline fun ChatEvent.checklistTasksAddedOrNull(): ChecklistTasksAdded? = this as? dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
-
-public inline fun ChatEvent.checklistTasksAddedOrThrow(): ChecklistTasksAdded = this as dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
-
-public inline fun <T> ChatEvent.ifChecklistTasksAdded(block: (ChecklistTasksAdded) -> T): T? = checklistTasksAddedOrNull() ?.let(block)
-
-public inline fun ChatEvent.checklistTasksDoneOrNull(): ChecklistTasksDone? = this as? dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
-
-public inline fun ChatEvent.checklistTasksDoneOrThrow(): ChecklistTasksDone = this as dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
-
-public inline fun <T> ChatEvent.ifChecklistTasksDone(block: (ChecklistTasksDone) -> T): T? = checklistTasksDoneOrNull() ?.let(block)
-
-public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceChanged? = this as? dev.inmo.tgbotapi.types.PaidMessagePriceChanged
-
-public inline fun ChatEvent.paidMessagePriceChangedOrThrow(): PaidMessagePriceChanged = this as dev.inmo.tgbotapi.types.PaidMessagePriceChanged
-
-public inline fun <T> ChatEvent.ifPaidMessagePriceChanged(block: (PaidMessagePriceChanged) -> T): T? = paidMessagePriceChangedOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedOrNull(): GiftSentOrReceived? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
-
-public inline fun ChatEvent.giftSentOrReceivedOrThrow(): GiftSentOrReceived = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceived(block: (GiftSentOrReceived) -> T): T? = giftSentOrReceivedOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrNull(): GiftSentOrReceived.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
-
-public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedReceivedInBusinessAccount(block: (GiftSentOrReceived.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedReceivedInBusinessAccountOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedRegularOrNull(): GiftSentOrReceived.Regular? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
-
-public inline fun ChatEvent.giftSentOrReceivedRegularOrThrow(): GiftSentOrReceived.Regular = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegular(block: (GiftSentOrReceived.Regular) -> T): T? = giftSentOrReceivedRegularOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueOrNull(): GiftSentOrReceived.Unique? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueOrThrow(): GiftSentOrReceived.Unique = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUnique(block: (GiftSentOrReceived.Unique) -> T): T? = giftSentOrReceivedUniqueOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrNull(): GiftSentOrReceived.Regular.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
-
-public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrThrow(): GiftSentOrReceived.Regular.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegularCommon(block: (GiftSentOrReceived.Regular.Common) -> T): T? = giftSentOrReceivedRegularCommonOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrNull(): GiftSentOrReceived.Regular.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
-
-public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.Regular.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegularReceivedInBusinessAccount(block: (GiftSentOrReceived.Regular.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedRegularReceivedInBusinessAccountOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrNull(): GiftSentOrReceived.Unique.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrThrow(): GiftSentOrReceived.Unique.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUniqueCommon(block: (GiftSentOrReceived.Unique.Common) -> T): T? = giftSentOrReceivedUniqueCommonOrNull() ?.let(block)
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull(): GiftSentOrReceived.Unique.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
-
-public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.Unique.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
-
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUniqueReceivedInBusinessAccount(block: (GiftSentOrReceived.Unique.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull() ?.let(block)
-
-public inline fun ChatEvent.successfulPaymentEventOrNull(): SuccessfulPaymentEvent? = this as? dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
-
-public inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEvent = this as dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
-
-public inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T): T? = successfulPaymentEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.refundedPaymentEventOrNull(): RefundedPaymentEvent? = this as? dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
-
-public inline fun ChatEvent.refundedPaymentEventOrThrow(): RefundedPaymentEvent = this as dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
-
-public inline fun <T> ChatEvent.ifRefundedPaymentEvent(block: (RefundedPaymentEvent) -> T): T? = refundedPaymentEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostApprovedOrNull(): SuggestedPostApproved? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
-
-public inline fun ChatEvent.suggestedPostApprovedOrThrow(): SuggestedPostApproved = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApproved
-
-public inline fun <T> ChatEvent.ifSuggestedPostApproved(block: (SuggestedPostApproved) -> T): T? = suggestedPostApprovedOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostApprovalFailedOrNull(): SuggestedPostApprovalFailed? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
-
-public inline fun ChatEvent.suggestedPostApprovalFailedOrThrow(): SuggestedPostApprovalFailed = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostApprovalFailed
-
-public inline fun <T> ChatEvent.ifSuggestedPostApprovalFailed(block: (SuggestedPostApprovalFailed) -> T): T? = suggestedPostApprovalFailedOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostDeclinedOrNull(): SuggestedPostDeclined? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-
-public inline fun ChatEvent.suggestedPostDeclinedOrThrow(): SuggestedPostDeclined = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostDeclined
-
-public inline fun <T> ChatEvent.ifSuggestedPostDeclined(block: (SuggestedPostDeclined) -> T): T? = suggestedPostDeclinedOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostPaidOrNull(): SuggestedPostPaid? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
-
-public inline fun ChatEvent.suggestedPostPaidOrThrow(): SuggestedPostPaid = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid
-
-public inline fun <T> ChatEvent.ifSuggestedPostPaid(block: (SuggestedPostPaid) -> T): T? = suggestedPostPaidOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostPaidXTROrNull(): SuggestedPostPaid.XTR? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.XTR
-
-public inline fun ChatEvent.suggestedPostPaidXTROrThrow(): SuggestedPostPaid.XTR = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.XTR
-
-public inline fun <T> ChatEvent.ifSuggestedPostPaidXTR(block: (SuggestedPostPaid.XTR) -> T): T? = suggestedPostPaidXTROrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostPaidTONOrNull(): SuggestedPostPaid.TON? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.TON
-
-public inline fun ChatEvent.suggestedPostPaidTONOrThrow(): SuggestedPostPaid.TON = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.TON
-
-public inline fun <T> ChatEvent.ifSuggestedPostPaidTON(block: (SuggestedPostPaid.TON) -> T): T? = suggestedPostPaidTONOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostPaidOtherOrNull(): SuggestedPostPaid.Other? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.Other
-
-public inline fun ChatEvent.suggestedPostPaidOtherOrThrow(): SuggestedPostPaid.Other = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostPaid.Other
-
-public inline fun <T> ChatEvent.ifSuggestedPostPaidOther(block: (SuggestedPostPaid.Other) -> T): T? = suggestedPostPaidOtherOrNull() ?.let(block)
-
-public inline fun ChatEvent.suggestedPostRefundedOrNull(): SuggestedPostRefunded? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
-
-public inline fun ChatEvent.suggestedPostRefundedOrThrow(): SuggestedPostRefunded = this as dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostRefunded
-
-public inline fun <T> ChatEvent.ifSuggestedPostRefunded(block: (SuggestedPostRefunded) -> T): T? = suggestedPostRefundedOrNull() ?.let(block)
-
-public inline fun ChatEvent.forumEventOrNull(): ForumEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
-
-public inline fun ChatEvent.forumEventOrThrow(): ForumEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
-
-public inline fun <T> ChatEvent.ifForumEvent(block: (ForumEvent) -> T): T? = forumEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.privateEventOrNull(): PrivateEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
-
-public inline fun ChatEvent.privateEventOrThrow(): PrivateEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
-
-public inline fun <T> ChatEvent.ifPrivateEvent(block: (PrivateEvent) -> T): T? = privateEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.videoChatEventOrNull(): VideoChatEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
-
-public inline fun ChatEvent.videoChatEventOrThrow(): VideoChatEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
-
-public inline fun <T> ChatEvent.ifVideoChatEvent(block: (VideoChatEvent) -> T): T? = videoChatEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.publicChatEventOrNull(): PublicChatEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
-
-public inline fun ChatEvent.publicChatEventOrThrow(): PublicChatEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
-
-public inline fun <T> ChatEvent.ifPublicChatEvent(block: (PublicChatEvent) -> T): T? = publicChatEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
-
-public inline fun ChatEvent.groupEventOrThrow(): GroupEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
-
-public inline fun <T> ChatEvent.ifGroupEvent(block: (GroupEvent) -> T): T? = groupEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.privateForumEventOrNull(): PrivateForumEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
-
-public inline fun ChatEvent.privateForumEventOrThrow(): PrivateForumEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
-
-public inline fun <T> ChatEvent.ifPrivateForumEvent(block: (PrivateForumEvent) -> T): T? = privateForumEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.channelEventOrNull(): ChannelEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
-
-public inline fun ChatEvent.channelEventOrThrow(): ChannelEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
-
-public inline fun <T> ChatEvent.ifChannelEvent(block: (ChannelEvent) -> T): T? = channelEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.commonEventOrNull(): CommonEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-
-public inline fun ChatEvent.commonEventOrThrow(): CommonEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-
-public inline fun <T> ChatEvent.ifCommonEvent(block: (CommonEvent) -> T): T? = commonEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.channelDirectMessagesEventOrNull(): ChannelDirectMessagesEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
-
-public inline fun ChatEvent.channelDirectMessagesEventOrThrow(): ChannelDirectMessagesEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelDirectMessagesEvent
-
-public inline fun <T> ChatEvent.ifChannelDirectMessagesEvent(block: (ChannelDirectMessagesEvent) -> T): T? = channelDirectMessagesEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.supergroupEventOrNull(): SupergroupEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
-
-public inline fun ChatEvent.supergroupEventOrThrow(): SupergroupEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
-
-public inline fun <T> ChatEvent.ifSupergroupEvent(block: (SupergroupEvent) -> T): T? = supergroupEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.chatOwnerLeftOrNull(): ChatOwnerLeft? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
-
-public inline fun ChatEvent.chatOwnerLeftOrThrow(): ChatOwnerLeft = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
-
-public inline fun <T> ChatEvent.ifChatOwnerLeft(block: (ChatOwnerLeft) -> T): T? = chatOwnerLeftOrNull() ?.let(block)
-
-public inline fun ChatEvent.groupChatCreatedOrNull(): GroupChatCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
-
-public inline fun ChatEvent.groupChatCreatedOrThrow(): GroupChatCreated = this as dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
-
-public inline fun <T> ChatEvent.ifGroupChatCreated(block: (GroupChatCreated) -> T): T? = groupChatCreatedOrNull() ?.let(block)
-
-public inline fun ChatEvent.chatBoostAddedOrNull(): ChatBoostAdded? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
-
-public inline fun ChatEvent.chatBoostAddedOrThrow(): ChatBoostAdded = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
-
-public inline fun <T> ChatEvent.ifChatBoostAdded(block: (ChatBoostAdded) -> T): T? = chatBoostAddedOrNull() ?.let(block)
-
-public inline fun ChatEvent.proximityAlertTriggeredOrNull(): ProximityAlertTriggered? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
-
-public inline fun ChatEvent.proximityAlertTriggeredOrThrow(): ProximityAlertTriggered = this as dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
-
-public inline fun <T> ChatEvent.ifProximityAlertTriggered(block: (ProximityAlertTriggered) -> T): T? = proximityAlertTriggeredOrNull() ?.let(block)
-
-public inline fun ChatEvent.channelChatCreatedOrNull(): ChannelChatCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
-
-public inline fun ChatEvent.channelChatCreatedOrThrow(): ChannelChatCreated = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
-
-public inline fun <T> ChatEvent.ifChannelChatCreated(block: (ChannelChatCreated) -> T): T? = channelChatCreatedOrNull() ?.let(block)
-
-public inline fun ChatEvent.newChatMembersOrNull(): NewChatMembers? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
-
-public inline fun ChatEvent.newChatMembersOrThrow(): NewChatMembers = this as dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
-
-public inline fun <T> ChatEvent.ifNewChatMembers(block: (NewChatMembers) -> T): T? = newChatMembersOrNull() ?.let(block)
-
-public inline fun ChatEvent.migratedToSupergroupOrNull(): MigratedToSupergroup? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
-
-public inline fun ChatEvent.migratedToSupergroupOrThrow(): MigratedToSupergroup = this as dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
-
-public inline fun <T> ChatEvent.ifMigratedToSupergroup(block: (MigratedToSupergroup) -> T): T? = migratedToSupergroupOrNull() ?.let(block)
-
-public inline fun ChatEvent.chatOwnerChangedOrNull(): ChatOwnerChanged? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
-
-public inline fun ChatEvent.chatOwnerChangedOrThrow(): ChatOwnerChanged = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
-
-public inline fun <T> ChatEvent.ifChatOwnerChanged(block: (ChatOwnerChanged) -> T): T? = chatOwnerChangedOrNull() ?.let(block)
-
-public inline fun ChatEvent.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
-
-public inline fun ChatEvent.leftChatMemberEventOrThrow(): LeftChatMemberEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
-
-public inline fun <T> ChatEvent.ifLeftChatMemberEvent(block: (LeftChatMemberEvent) -> T): T? = leftChatMemberEventOrNull() ?.let(block)
-
-public inline fun ChatEvent.webAppDataOrNull(): WebAppData? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
-
-public inline fun ChatEvent.webAppDataOrThrow(): WebAppData = this as dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
-
-public inline fun <T> ChatEvent.ifWebAppData(block: (WebAppData) -> T): T? = webAppDataOrNull() ?.let(block)
-
-public inline fun ChatEvent.writeAccessAllowedOrNull(): WriteAccessAllowed? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
-
-public inline fun ChatEvent.writeAccessAllowedOrThrow(): WriteAccessAllowed = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
-
-public inline fun <T> ChatEvent.ifWriteAccessAllowed(block: (WriteAccessAllowed) -> T): T? = writeAccessAllowedOrNull() ?.let(block)
-
-public inline fun ChatEvent.writeAccessAllowedOtherOrNull(): WriteAccessAllowed.Other? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.Other
-
-public inline fun ChatEvent.writeAccessAllowedOtherOrThrow(): WriteAccessAllowed.Other = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.Other
-
-public inline fun <T> ChatEvent.ifWriteAccessAllowedOther(block: (WriteAccessAllowed.Other) -> T): T? = writeAccessAllowedOtherOrNull() ?.let(block)
-
-public inline fun ChatEvent.writeAccessAllowedFromWebAppLinkOrNull(): WriteAccessAllowed.FromWebAppLink? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromWebAppLink
-
-public inline fun ChatEvent.writeAccessAllowedFromWebAppLinkOrThrow(): WriteAccessAllowed.FromWebAppLink = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromWebAppLink
-
-public inline fun <T> ChatEvent.ifWriteAccessAllowedFromWebAppLink(block: (WriteAccessAllowed.FromWebAppLink) -> T): T? = writeAccessAllowedFromWebAppLinkOrNull() ?.let(block)
-
-public inline fun ChatEvent.writeAccessAllowedFromRequestOrNull(): WriteAccessAllowed.FromRequest? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromRequest
-
-public inline fun ChatEvent.writeAccessAllowedFromRequestOrThrow(): WriteAccessAllowed.FromRequest = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromRequest
-
-public inline fun <T> ChatEvent.ifWriteAccessAllowedFromRequest(block: (WriteAccessAllowed.FromRequest) -> T): T? = writeAccessAllowedFromRequestOrNull() ?.let(block)
-
-public inline fun ChatEvent.writeAccessAllowedFromAttachmentMenuOrNull(): WriteAccessAllowed.FromAttachmentMenu? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromAttachmentMenu
-
-public inline fun ChatEvent.writeAccessAllowedFromAttachmentMenuOrThrow(): WriteAccessAllowed.FromAttachmentMenu = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromAttachmentMenu
-
-public inline fun <T> ChatEvent.ifWriteAccessAllowedFromAttachmentMenu(block: (WriteAccessAllowed.FromAttachmentMenu) -> T): T? = writeAccessAllowedFromAttachmentMenuOrNull() ?.let(block)
-
-public inline fun ChatEvent.forumTopicCreatedOrNull(): ForumTopicCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
-
-public inline fun ChatEvent.forumTopicCreatedOrThrow(): ForumTopicCreated = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
-
-public inline fun <T> ChatEvent.ifForumTopicCreated(block: (ForumTopicCreated) -> T): T? = forumTopicCreatedOrNull() ?.let(block)
-
-public inline fun ChatEvent.forumTopicReopenedOrNull(): ForumTopicReopened? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
-
-public inline fun ChatEvent.forumTopicReopenedOrThrow(): ForumTopicReopened = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
-
-public inline fun <T> ChatEvent.ifForumTopicReopened(block: (ForumTopicReopened) -> T): T? = forumTopicReopenedOrNull() ?.let(block)
-
-public inline fun ChatEvent.forumTopicClosedOrNull(): ForumTopicClosed? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
-
-public inline fun ChatEvent.forumTopicClosedOrThrow(): ForumTopicClosed = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
-
-public inline fun <T> ChatEvent.ifForumTopicClosed(block: (ForumTopicClosed) -> T): T? = forumTopicClosedOrNull() ?.let(block)
-
-public inline fun ChatEvent.forumTopicEditedOrNull(): ForumTopicEdited? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
-
-public inline fun ChatEvent.forumTopicEditedOrThrow(): ForumTopicEdited = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
-
-public inline fun <T> ChatEvent.ifForumTopicEdited(block: (ForumTopicEdited) -> T): T? = forumTopicEditedOrNull() ?.let(block)
-
-public inline fun ChatEvent.generalForumTopicHiddenOrNull(): GeneralForumTopicHidden? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
-
-public inline fun ChatEvent.generalForumTopicHiddenOrThrow(): GeneralForumTopicHidden = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
-
-public inline fun <T> ChatEvent.ifGeneralForumTopicHidden(block: (GeneralForumTopicHidden) -> T): T? = generalForumTopicHiddenOrNull() ?.let(block)
-
-public inline fun ChatEvent.generalForumTopicUnhiddenOrNull(): GeneralForumTopicUnhidden? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
-
-public inline fun ChatEvent.generalForumTopicUnhiddenOrThrow(): GeneralForumTopicUnhidden = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
-
-public inline fun <T> ChatEvent.ifGeneralForumTopicUnhidden(block: (GeneralForumTopicUnhidden) -> T): T? = generalForumTopicUnhiddenOrNull() ?.let(block)
-
-public inline fun ChatEvent.messageAutoDeleteTimerChangedOrNull(): MessageAutoDeleteTimerChanged? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
-
-public inline fun ChatEvent.messageAutoDeleteTimerChangedOrThrow(): MessageAutoDeleteTimerChanged = this as dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
-
-public inline fun <T> ChatEvent.ifMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T): T? = messageAutoDeleteTimerChangedOrNull() ?.let(block)
-
-public inline fun ChatEvent.pinnedMessageOrNull(): PinnedMessage? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
-
-public inline fun ChatEvent.pinnedMessageOrThrow(): PinnedMessage = this as dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
-
-public inline fun <T> ChatEvent.ifPinnedMessage(block: (PinnedMessage) -> T): T? = pinnedMessageOrNull() ?.let(block)
-
-public inline fun ChatEvent.deleteChatPhotoOrNull(): DeleteChatPhoto? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
-
-public inline fun ChatEvent.deleteChatPhotoOrThrow(): DeleteChatPhoto = this as dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
-
-public inline fun <T> ChatEvent.ifDeleteChatPhoto(block: (DeleteChatPhoto) -> T): T? = deleteChatPhotoOrNull() ?.let(block)
-
-public inline fun ChatEvent.videoChatStartedOrNull(): VideoChatStarted? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
-
-public inline fun ChatEvent.videoChatStartedOrThrow(): VideoChatStarted = this as dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
-
-public inline fun <T> ChatEvent.ifVideoChatStarted(block: (VideoChatStarted) -> T): T? = videoChatStartedOrNull() ?.let(block)
-
-public inline fun ChatEvent.videoChatScheduledOrNull(): VideoChatScheduled? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
-
-public inline fun ChatEvent.videoChatScheduledOrThrow(): VideoChatScheduled = this as dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
-
-public inline fun <T> ChatEvent.ifVideoChatScheduled(block: (VideoChatScheduled) -> T): T? = videoChatScheduledOrNull() ?.let(block)
-
-public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
-
-public inline fun ChatEvent.videoChatEndedOrThrow(): VideoChatEnded = this as dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
-
-public inline fun <T> ChatEvent.ifVideoChatEnded(block: (VideoChatEnded) -> T): T? = videoChatEndedOrNull() ?.let(block)
-
-public inline fun ChatEvent.videoChatParticipantsInvitedOrNull(): VideoChatParticipantsInvited? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
-
-public inline fun ChatEvent.videoChatParticipantsInvitedOrThrow(): VideoChatParticipantsInvited = this as dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
-
-public inline fun <T> ChatEvent.ifVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T): T? = videoChatParticipantsInvitedOrNull() ?.let(block)
-
-public inline fun ChatEvent.newChatTitleOrNull(): NewChatTitle? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
-
-public inline fun ChatEvent.newChatTitleOrThrow(): NewChatTitle = this as dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
-
-public inline fun <T> ChatEvent.ifNewChatTitle(block: (NewChatTitle) -> T): T? = newChatTitleOrNull() ?.let(block)
-
-public inline fun ChatEvent.supergroupChatCreatedOrNull(): SupergroupChatCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
-
-public inline fun ChatEvent.supergroupChatCreatedOrThrow(): SupergroupChatCreated = this as dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
-
-public inline fun <T> ChatEvent.ifSupergroupChatCreated(block: (SupergroupChatCreated) -> T): T? = supergroupChatCreatedOrNull() ?.let(block)
-
-public inline fun ChatEvent.userLoggedInOrNull(): UserLoggedIn? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
-
-public inline fun ChatEvent.userLoggedInOrThrow(): UserLoggedIn = this as dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
-
-public inline fun <T> ChatEvent.ifUserLoggedIn(block: (UserLoggedIn) -> T): T? = userLoggedInOrNull() ?.let(block)
-
-public inline fun ChatEvent.newChatPhotoOrNull(): NewChatPhoto? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
-
-public inline fun ChatEvent.newChatPhotoOrThrow(): NewChatPhoto = this as dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
-
-public inline fun <T> ChatEvent.ifNewChatPhoto(block: (NewChatPhoto) -> T): T? = newChatPhotoOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayPrivateResultsOrNull(): GiveawayPrivateResults? = this as? dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
-
-public inline fun ChatEvent.giveawayPrivateResultsOrThrow(): GiveawayPrivateResults = this as dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
-
-public inline fun <T> ChatEvent.ifGiveawayPrivateResults(block: (GiveawayPrivateResults) -> T): T? = giveawayPrivateResultsOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayCreatedOrNull(): GiveawayCreated? = this as? dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
-
-public inline fun ChatEvent.giveawayCreatedOrThrow(): GiveawayCreated = this as dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
-
-public inline fun <T> ChatEvent.ifGiveawayCreated(block: (GiveawayCreated) -> T): T? = giveawayCreatedOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayCreatedStarsOrNull(): GiveawayCreated.Stars? = this as? dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Stars
-
-public inline fun ChatEvent.giveawayCreatedStarsOrThrow(): GiveawayCreated.Stars = this as dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Stars
-
-public inline fun <T> ChatEvent.ifGiveawayCreatedStars(block: (GiveawayCreated.Stars) -> T): T? = giveawayCreatedStarsOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayCreatedCompanionOrNull(): GiveawayCreated.Companion? = this as? dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Companion
-
-public inline fun ChatEvent.giveawayCreatedCompanionOrThrow(): GiveawayCreated.Companion = this as dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Companion
-
-public inline fun <T> ChatEvent.ifGiveawayCreatedCompanion(block: (GiveawayCreated.Companion) -> T): T? = giveawayCreatedCompanionOrNull() ?.let(block)
-
-public inline fun ChatEvent.directMessagesConfigurationChangedOrNull(): DirectMessagesConfigurationChanged? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
-
-public inline fun ChatEvent.directMessagesConfigurationChangedOrThrow(): DirectMessagesConfigurationChanged = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
-
-public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChanged(block: (DirectMessagesConfigurationChanged) -> T): T? = directMessagesConfigurationChangedOrNull() ?.let(block)
-
-public inline fun ChatEvent.directMessagesConfigurationChangedDisabledOrNull(): DirectMessagesConfigurationChanged.Disabled? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
-
-public inline fun ChatEvent.directMessagesConfigurationChangedDisabledOrThrow(): DirectMessagesConfigurationChanged.Disabled = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Disabled
-
-public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedDisabled(block: (DirectMessagesConfigurationChanged.Disabled) -> T): T? = directMessagesConfigurationChangedDisabledOrNull() ?.let(block)
-
-public inline fun ChatEvent.directMessagesConfigurationChangedFreeOrNull(): DirectMessagesConfigurationChanged.Free? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
-
-public inline fun ChatEvent.directMessagesConfigurationChangedFreeOrThrow(): DirectMessagesConfigurationChanged.Free = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Free
-
-public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedFree(block: (DirectMessagesConfigurationChanged.Free) -> T): T? = directMessagesConfigurationChangedFreeOrNull() ?.let(block)
-
-public inline fun ChatEvent.directMessagesConfigurationChangedPaidOrNull(): DirectMessagesConfigurationChanged.Paid? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
-
-public inline fun ChatEvent.directMessagesConfigurationChangedPaidOrThrow(): DirectMessagesConfigurationChanged.Paid = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged.Paid
-
-public inline fun <T> ChatEvent.ifDirectMessagesConfigurationChangedPaid(block: (DirectMessagesConfigurationChanged.Paid) -> T): T? = directMessagesConfigurationChangedPaidOrNull() ?.let(block)
-
 public inline fun TextSource.mentionTextSourceOrNull(): MentionTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
 
 public inline fun TextSource.mentionTextSourceOrThrow(): MentionTextSource = this as dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
@@ -3170,120 +2654,6 @@ public inline fun ChatIdentifier.usernameOrNull(): Username? = this as? dev.inmo
 public inline fun ChatIdentifier.usernameOrThrow(): Username = this as dev.inmo.tgbotapi.types.Username
 
 public inline fun <T> ChatIdentifier.ifUsername(block: (Username) -> T): T? = usernameOrNull() ?.let(block)
-
-public inline fun SecureValue.secureValueWithReverseSideOrNull(): SecureValueWithReverseSide? = this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
-
-public inline fun SecureValue.secureValueWithReverseSideOrThrow(): SecureValueWithReverseSide = this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
-
-public inline fun <T> SecureValue.ifSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T): T? = secureValueWithReverseSideOrNull() ?.let(block)
-
-public inline fun SecureValue.secureValueWithDataOrNull(): SecureValueWithData? = this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
-
-public inline fun SecureValue.secureValueWithDataOrThrow(): SecureValueWithData = this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
-
-public inline fun <T> SecureValue.ifSecureValueWithData(block: (SecureValueWithData) -> T): T? = secureValueWithDataOrNull() ?.let(block)
-
-public inline fun SecureValue.secureValueIdentityOrNull(): SecureValueIdentity? = this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
-
-public inline fun SecureValue.secureValueIdentityOrThrow(): SecureValueIdentity = this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
-
-public inline fun <T> SecureValue.ifSecureValueIdentity(block: (SecureValueIdentity) -> T): T? = secureValueIdentityOrNull() ?.let(block)
-
-public inline fun SecureValue.secureValueWithTranslationsOrNull(): SecureValueWithTranslations? = this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
-
-public inline fun SecureValue.secureValueWithTranslationsOrThrow(): SecureValueWithTranslations = this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
-
-public inline fun <T> SecureValue.ifSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T): T? = secureValueWithTranslationsOrNull() ?.let(block)
-
-public inline fun SecureValue.secureValueWithFilesOrNull(): SecureValueWithFiles? = this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
-
-public inline fun SecureValue.secureValueWithFilesOrThrow(): SecureValueWithFiles = this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
-
-public inline fun <T> SecureValue.ifSecureValueWithFiles(block: (SecureValueWithFiles) -> T): T? = secureValueWithFilesOrNull() ?.let(block)
-
-public inline fun SecureValue.personalDetailsSecureValueOrNull(): PersonalDetailsSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
-
-public inline fun SecureValue.personalDetailsSecureValueOrThrow(): PersonalDetailsSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
-
-public inline fun <T> SecureValue.ifPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T): T? = personalDetailsSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.passportSecureValueOrNull(): PassportSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
-
-public inline fun SecureValue.passportSecureValueOrThrow(): PassportSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
-
-public inline fun <T> SecureValue.ifPassportSecureValue(block: (PassportSecureValue) -> T): T? = passportSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.commonPassportSecureValueOrNull(): CommonPassportSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
-
-public inline fun SecureValue.commonPassportSecureValueOrThrow(): CommonPassportSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
-
-public inline fun <T> SecureValue.ifCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T): T? = commonPassportSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.internalPassportSecureValueOrNull(): InternalPassportSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
-
-public inline fun SecureValue.internalPassportSecureValueOrThrow(): InternalPassportSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
-
-public inline fun <T> SecureValue.ifInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T): T? = internalPassportSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.otherDocumentsSecureValueOrNull(): OtherDocumentsSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
-
-public inline fun SecureValue.otherDocumentsSecureValueOrThrow(): OtherDocumentsSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
-
-public inline fun <T> SecureValue.ifOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T): T? = otherDocumentsSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.utilityBillSecureValueOrNull(): UtilityBillSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
-
-public inline fun SecureValue.utilityBillSecureValueOrThrow(): UtilityBillSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
-
-public inline fun <T> SecureValue.ifUtilityBillSecureValue(block: (UtilityBillSecureValue) -> T): T? = utilityBillSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.bankStatementSecureValueOrNull(): BankStatementSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
-
-public inline fun SecureValue.bankStatementSecureValueOrThrow(): BankStatementSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
-
-public inline fun <T> SecureValue.ifBankStatementSecureValue(block: (BankStatementSecureValue) -> T): T? = bankStatementSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.rentalAgreementSecureValueOrNull(): RentalAgreementSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
-
-public inline fun SecureValue.rentalAgreementSecureValueOrThrow(): RentalAgreementSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
-
-public inline fun <T> SecureValue.ifRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T): T? = rentalAgreementSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.passportRegistrationSecureValueOrNull(): PassportRegistrationSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
-
-public inline fun SecureValue.passportRegistrationSecureValueOrThrow(): PassportRegistrationSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
-
-public inline fun <T> SecureValue.ifPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T): T? = passportRegistrationSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.temporalRegistrationSecureValueOrNull(): TemporalRegistrationSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
-
-public inline fun SecureValue.temporalRegistrationSecureValueOrThrow(): TemporalRegistrationSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
-
-public inline fun <T> SecureValue.ifTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T): T? = temporalRegistrationSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.addressSecureValueOrNull(): AddressSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
-
-public inline fun SecureValue.addressSecureValueOrThrow(): AddressSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
-
-public inline fun <T> SecureValue.ifAddressSecureValue(block: (AddressSecureValue) -> T): T? = addressSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.identityWithReverseSideSecureValueOrNull(): IdentityWithReverseSideSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
-
-public inline fun SecureValue.identityWithReverseSideSecureValueOrThrow(): IdentityWithReverseSideSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
-
-public inline fun <T> SecureValue.ifIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T): T? = identityWithReverseSideSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.driverLicenseSecureValueOrNull(): DriverLicenseSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
-
-public inline fun SecureValue.driverLicenseSecureValueOrThrow(): DriverLicenseSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
-
-public inline fun <T> SecureValue.ifDriverLicenseSecureValue(block: (DriverLicenseSecureValue) -> T): T? = driverLicenseSecureValueOrNull() ?.let(block)
-
-public inline fun SecureValue.identityCardSecureValueOrNull(): IdentityCardSecureValue? = this as? dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
-
-public inline fun SecureValue.identityCardSecureValueOrThrow(): IdentityCardSecureValue = this as dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
-
-public inline fun <T> SecureValue.ifIdentityCardSecureValue(block: (IdentityCardSecureValue) -> T): T? = identityCardSecureValueOrNull() ?.let(block)
 
 public inline fun PassportElementError.unknownPassportElementErrorOrNull(): UnknownPassportElementError? = this as? dev.inmo.tgbotapi.types.passport.UnknownPassportElementError
 

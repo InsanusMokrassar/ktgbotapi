@@ -30,7 +30,7 @@ sealed interface Gift {
         val personalRemainingCount: Int?
         val isPremium: Boolean
         val hasColors: Boolean
-        val background: dev.inmo.tgbotapi.types.gifts.GiftBackground?
+        val background: GiftBackground?
         val uniqueGiftVariantCount: Int?
 
         /**
@@ -57,7 +57,7 @@ sealed interface Gift {
             @SerialName(hasColorsField)
             override val hasColors: Boolean = false,
             @SerialName(backgroundField)
-            override val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            override val background: GiftBackground? = null,
             @SerialName(uniqueGiftVariantCountField)
             override val uniqueGiftVariantCount: Int? = null,
         ) : Regular {
@@ -95,7 +95,7 @@ sealed interface Gift {
             @SerialName(hasColorsField)
             override val hasColors: Boolean = false,
             @SerialName(backgroundField)
-            override val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            override val background: GiftBackground? = null,
             @SerialName(uniqueGiftVariantCountField)
             override val uniqueGiftVariantCount: Int? = null,
         ) : Regular
@@ -115,7 +115,7 @@ sealed interface Gift {
                 val personal_remaining_count: Int? = null,
                 val is_premium: Boolean = false,
                 val has_colors: Boolean = false,
-                val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+                val background: GiftBackground? = null,
                 val unique_gift_variant_count: Int? = null,
             )
 
@@ -225,7 +225,7 @@ sealed interface Gift {
             val personal_remaining_count: Int? = null,
             val is_premium: Boolean = false,
             val has_colors: Boolean = false,
-            val background: dev.inmo.tgbotapi.types.gifts.GiftBackground? = null,
+            val background: GiftBackground? = null,
             val unique_gift_variant_count: Int? = null,
             // unique gift fields
             val base_name: String? = null,
@@ -235,7 +235,7 @@ sealed interface Gift {
             val symbol: UniqueGiftSymbol? = null,
             val backdrop: UniqueGiftBackdrop? = null,
             val is_from_blockchain: Boolean = false,
-            val colors: dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors? = null,
+            val colors: UniqueGiftColors? = null,
             val publisher_chat: PreviewChat? = null,
         )
 
