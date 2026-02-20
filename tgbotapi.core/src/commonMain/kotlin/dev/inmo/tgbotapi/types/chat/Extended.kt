@@ -177,6 +177,8 @@ data class ExtendedPrivateChatImpl(
     override val firstProfileAudio: AudioFile? = null,
     @SerialName(ratingField)
     override val rating: UserRating? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
 ) : ExtendedPrivateChat
 
 @Serializable
@@ -237,6 +239,8 @@ data class ExtendedPrivateForumChatImpl(
     override val firstProfileAudio: AudioFile? = null,
     @SerialName(ratingField)
     override val rating: UserRating? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
 ) : ExtendedPrivateForumChat
 
 typealias ExtendedUser = ExtendedPrivateChat
@@ -511,6 +515,8 @@ data class ExtendedBot(
     val allowUsersToCreateTopics: Boolean = false,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -544,4 +550,6 @@ data class UnknownExtendedChat(
     override val maxReactionsCount: Int = 3
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes()
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 }

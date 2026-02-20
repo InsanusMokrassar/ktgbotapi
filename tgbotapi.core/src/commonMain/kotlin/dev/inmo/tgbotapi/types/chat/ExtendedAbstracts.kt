@@ -25,6 +25,8 @@ sealed interface ExtendedChat : Chat {
 
     val acceptedGiftTypes: AcceptedGiftTypes
 
+    val uniqueGiftColors: UniqueGiftColors?
+
     @Deprecated(
         message = "Telegram Bot API v9.0 introduced the new field, `acceptedGiftTypes`, to allow granular" +
                 " control over which types of gifts user, bot, or chat can accept.",
@@ -93,7 +95,6 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val membersHidden: Boolean
     val availableReactions: List<Reaction>?
     val newMembersSeeHistory: Boolean
-    val uniqueGiftColors: UniqueGiftColors?
 }
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
