@@ -33,6 +33,9 @@ sealed interface Gift {
         val background: dev.inmo.tgbotapi.types.gifts.GiftBackground?
         val uniqueGiftVariantCount: Int?
 
+        /**
+         * Represents a [Gift](https://core.telegram.org/bots/api#gift) for fields of unlimited gifts
+         */
         @Serializable
         data class Unlimited(
             @SerialName(idField)
@@ -64,6 +67,9 @@ sealed interface Gift {
                 get() = null
         }
 
+        /**
+         * Represents a [Gift](https://core.telegram.org/bots/api#gift) for fields of limited gifts
+         */
         @Serializable
         data class Limited(
             @SerialName(idField)
@@ -173,6 +179,9 @@ sealed interface Gift {
         }
     }
 
+    /**
+     * Represents a [UniqueGift](https://core.telegram.org/bots/api#uniquegift) from telegram bots api
+     */
     @Serializable
     data class Unique(
         @SerialName(giftIdField)
@@ -180,7 +189,7 @@ sealed interface Gift {
         @SerialName(baseNameField)
         val baseName: String,
         @SerialName(nameField)
-        val name: String,
+        val name: UniqueGiftName,
         @SerialName(numberField)
         val number: Int,
         @SerialName(modelField)
@@ -189,14 +198,16 @@ sealed interface Gift {
         val symbol: UniqueGiftSymbol,
         @SerialName(backdropField)
         val backdrop: UniqueGiftBackdrop,
-        @SerialName(publisherChatField)
-        override val publisherChat: PreviewChat? = null,
-        @SerialName(isFromBlockchainField)
-        val isFromBlockchain: Boolean = false,
         @SerialName(isPremiumField)
         val isPremium: Boolean = false,
+        @SerialName(isBurnedField)
+        val isBurned: Boolean = false,
+        @SerialName(isFromBlockchainField)
+        val isFromBlockchain: Boolean = false,
         @SerialName(colorsField)
-        val colors: UniqueGiftColors? = null
+        val colors: UniqueGiftColors? = null,
+        @SerialName(publisherChatField)
+        override val publisherChat: PreviewChat? = null,
     ) : Gift
 
     companion object : KSerializer<Gift> {
@@ -218,7 +229,7 @@ sealed interface Gift {
             val unique_gift_variant_count: Int? = null,
             // unique gift fields
             val base_name: String? = null,
-            val name: String? = null,
+            val name: UniqueGiftName? = null,
             val number: Int? = null,
             val model: UniqueGiftModel? = null,
             val symbol: UniqueGiftSymbol? = null,

@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.types.stories
 
 import dev.inmo.micro_utils.colors.common.HEXAColor
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.gifts.UniqueGiftName
 import dev.inmo.tgbotapi.types.location.LocationAddress
 import dev.inmo.tgbotapi.types.reactions.ReactionType
 import dev.inmo.tgbotapi.utils.IntRGB24HEXAColorSerializer
@@ -94,7 +95,7 @@ sealed interface StoryAreaType {
     @Serializable
     data class UniqueGift(
         @SerialName(nameField)
-        val name: String
+        val name: UniqueGiftName
     ) : StoryAreaType {
         @EncodeDefault
         override val type: Type = Companion
@@ -194,7 +195,7 @@ sealed interface StoryAreaType {
                 )
                 is UniqueGift -> Surrogate(
                     type = value.type.name,
-                    name = value.name
+                    name = value.name.value
                 )
                 is Unknown -> Surrogate(
                     type = value.type.name
@@ -227,7 +228,7 @@ sealed interface StoryAreaType {
                     backgroundColor = surrogate.backgroundColor ?: return unknown
                 )
                 UniqueGift.name -> UniqueGift(
-                    name = surrogate.name ?: return unknown
+                    name = surrogate.name ?.let(::UniqueGiftName) ?: return unknown
                 )
                 else -> unknown
             }
