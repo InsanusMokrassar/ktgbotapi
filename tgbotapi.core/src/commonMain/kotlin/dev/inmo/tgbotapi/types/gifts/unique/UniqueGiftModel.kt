@@ -19,5 +19,5 @@ data class UniqueGiftModel(
     @SerialName(rarityPerMilleField)
     val rarityPerMille: Int,
     @SerialName(rarityField)
-    val rarity: Rarity
+    val rarity: Rarity? = null
 )

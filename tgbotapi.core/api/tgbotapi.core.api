@@ -22737,6 +22737,7 @@ public final class dev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors$Compani
 public final class dev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftModel$Companion;
 	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILdev/inmo/tgbotapi/types/gifts/Rarity;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/files/Sticker;ILdev/inmo/tgbotapi/types/gifts/Rarity;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/files/Sticker;
 	public final fun component3 ()I
