@@ -2,6 +2,12 @@
 
 ## 31.0.0
 
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.3](https://core.telegram.org/bots/api-changelog#december-31-2025)**
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.4](https://core.telegram.org/bots/api-changelog#february-9-2026)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
 * `Core`:
     * **THIS IS BREAKING CHANGE** All media files with sizes changed type of `fileSize` field from `Long` to `FileSize` (value class)
     * **THIS IS BREAKING CHANGE** Class `GiftSentOrReceived` have been renamed to `GiftSentOrReceivedEvent` to clarify naming
