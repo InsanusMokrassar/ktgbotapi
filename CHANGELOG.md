@@ -5,6 +5,8 @@
 * `Core`:
     * **THIS IS BREAKING CHANGE** All media files with sizes changed type of `fileSize` field from `Long` to `FileSize` (value class)
     * **THIS IS BREAKING CHANGE** Class `GiftSentOrReceived` have been renamed to `GiftSentOrReceivedEvent` to clarify naming
+    * **THIS IS BREAKING CHANGE** New interface `OwnedGift` have been created
+      * **THIS IS BREAKING CHANGE** `OwnedGifts` have changed its generic type to `OwnedGift`
     * **THIS IS BREAKING CHANGE** For `CheclistTask` have been made several changes:
       * `ChecklistTask.Done` -> `ChecklistTask.Completed`
       * `ChecklistTask.Undone` -> `ChecklistTask.Uncompleted`
