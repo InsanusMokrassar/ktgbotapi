@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.*
 import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
@@ -199,8 +199,11 @@ internal data class RawMessage(
     private val suggested_post_refunded: SuggestedPostRefunded? = null,
     private val suggested_post_info: SuggestedPostInfo? = null,
     // Gifts
-    private val gift: GiftSentOrReceived.Regular? = null,
-    private val unique_gift: GiftSentOrReceived.Unique? = null,
+    private val gift: GiftSentOrReceivedEvent.RegularGift? = null,
+    private val unique_gift: GiftSentOrReceivedEvent.UniqueGift? = null,
+    private val gift_upgrade_sent: GiftSentOrReceivedEvent.RegularGift? = null,
+    private val chat_owner_left: ChatOwnerLeft? = null,
+    private val chat_owner_changed: ChatOwnerChanged? = null,
 ) {
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
@@ -299,6 +302,8 @@ internal data class RawMessage(
             forum_topic_reopened != null -> forum_topic_reopened
             video_chat_ended != null -> video_chat_ended
             video_chat_participants_invited != null -> video_chat_participants_invited
+            chat_owner_left != null -> chat_owner_left
+            chat_owner_changed != null -> chat_owner_changed
             delete_chat_photo -> DeleteChatPhoto()
             group_chat_created -> GroupChatCreated(
                 migrate_to_chat_id
@@ -328,6 +333,7 @@ internal data class RawMessage(
             paid_message_price_changed != null -> paid_message_price_changed
             gift != null -> gift
             unique_gift != null -> unique_gift
+            gift_upgrade_sent != null -> gift_upgrade_sent
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
             direct_message_price_changed != null -> direct_message_price_changed
@@ -378,12 +384,37 @@ internal data class RawMessage(
                         chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
                         date.asDate
                     )
-                    is PreviewPrivateChat -> PrivateEventMessage(
-                        messageId,
-                        chat,
-                        chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
-                        date.asDate
-                    )
+                    is PreviewPrivateChat -> if (chat is PrivateForumChat || is_topic_message == true || messageThreadId != null) {
+                        PrivateEventMessage(
+                            messageId,
+                            if (chat is PrivateForumChat) {
+                                chat
+                            } else {
+                                PrivateForumChatImpl(
+                                    id = if (messageThreadId == null) {
+                                        chat.id
+                                    } else {
+                                        ChatIdWithThreadId(
+                                            chat.id.chatId,
+                                            chat.id.threadId ?: messageThreadId
+                                        )
+                                    },
+                                    username = chat.username,
+                                    firstName = chat.firstName,
+                                    lastName = chat.lastName
+                                )
+                            },
+                            chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
+                            date.asDate
+                        )
+                    } else {
+                        PrivateEventMessage(
+                            messageId,
+                            chat,
+                            chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
+                            date.asDate
+                        )
+                    }
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
             } ?: content?.let { content ->
@@ -746,23 +777,64 @@ internal data class RawMessage(
                         }
                     }
                     is PreviewPrivateChat -> if (business_connection_id == null) {
-                        PrivateContentMessageImpl(
-                            messageId = messageId,
-                            from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                            chat = chat,
-                            content = content,
-                            date = date.asDate,
-                            editDate = edit_date?.asDate,
-                            hasProtectedContent = has_protected_content == true,
-                            forwardOrigin = forward_origin,
-                            replyInfo = replyInfo,
-                            replyMarkup = reply_markup,
-                            senderBot = via_bot,
-                            mediaGroupId = media_group_id,
-                            fromOffline = is_from_offline,
-                            effectId = effect_id,
-                            cost = paid_star_count,
-                        )
+                        when {
+                            is_topic_message == true -> {
+                                val chatId = ChatIdWithThreadId(
+                                    chat.id.chatId,
+                                    messageThreadId ?: error("Was detected forum private message, but message thread id was not found")
+                                )
+                                val actualForumChat = when (chat) {
+                                    is PrivateForumChatImpl -> chat.copy(id = chatId)
+                                    is CommonUser -> chat.copy(id = chatId)
+                                    is CommonBot -> chat
+                                    is PrivateChatImpl -> PrivateForumChatImpl(
+                                        id = chatId,
+                                        username = chat.username,
+                                        firstName = chat.firstName,
+                                        lastName = chat.lastName
+                                    )
+                                }
+                                PrivateForumContentMessageImpl(
+                                    messageId = messageId,
+                                    from = checkedFrom ?: from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                                    threadId = messageThreadId,
+                                    threadCreatingInfo = forum_topic_created,
+                                    chat = actualForumChat,
+                                    content = content,
+                                    date = date.asDate,
+                                    editDate = edit_date?.asDate,
+                                    hasProtectedContent = has_protected_content == true,
+                                    forwardOrigin = forward_origin,
+                                    replyInfo = replyInfo,
+                                    replyMarkup = reply_markup,
+                                    senderBot = via_bot,
+                                    mediaGroupId = media_group_id,
+                                    fromOffline = is_from_offline,
+                                    effectId = effect_id,
+                                    cost = paid_star_count,
+                                )
+                            }
+                            else -> {
+                                PrivateContentMessageImpl(
+                                    messageId = messageId,
+                                    from = checkedFrom ?: from
+                                    ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                                    chat = chat,
+                                    content = content,
+                                    date = date.asDate,
+                                    editDate = edit_date?.asDate,
+                                    hasProtectedContent = has_protected_content == true,
+                                    forwardOrigin = forward_origin,
+                                    replyInfo = replyInfo,
+                                    replyMarkup = reply_markup,
+                                    senderBot = via_bot,
+                                    mediaGroupId = media_group_id,
+                                    fromOffline = is_from_offline,
+                                    effectId = effect_id,
+                                    cost = paid_star_count,
+                                )
+                            }
+                        }
                     } else {
                         BusinessContentMessageImpl(
                             messageId = messageId,

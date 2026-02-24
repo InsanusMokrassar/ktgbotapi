@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi
 
 import dev.inmo.tgbotapi.requests.abstracts.toInputFile
 import dev.inmo.tgbotapi.types.TgFileUniqueId
+import dev.inmo.tgbotapi.types.files.FileSize
 import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMediaSerializer
 import dev.inmo.tgbotapi.types.files.PhotoSize
@@ -24,7 +25,7 @@ class SimpleInputFilesTest {
         val photoContent = PhotoContent(
             PhotoFile(
                 listOf(
-                    PhotoSize("example_file_id".toInputFile(), TgFileUniqueId("example_unique_file_id"), 100, 100, 100)
+                    PhotoSize("example_file_id".toInputFile(), TgFileUniqueId("example_unique_file_id"), FileSize(100u), 100, 100)
                 )
             )
         )

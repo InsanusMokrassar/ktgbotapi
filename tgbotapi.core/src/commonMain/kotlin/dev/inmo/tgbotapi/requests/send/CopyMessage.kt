@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.requests.send
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
+import dev.inmo.tgbotapi.abstracts.types.OptionallyWithEffectId
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
@@ -95,6 +96,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -112,6 +114,7 @@ fun CopyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -129,6 +132,7 @@ fun CopyMessage(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -146,6 +150,7 @@ fun CopyMessage(
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -184,6 +189,8 @@ data class CopyMessage internal constructor(
     override val protectContent: Boolean = false,
     @SerialName(allowPaidBroadcastField)
     override val allowPaidBroadcast: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
     override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
@@ -197,7 +204,8 @@ data class CopyMessage internal constructor(
     TextedOutput,
     ProtectContent,
     OptionallyMessageThreadRequest,
-    WithCustomStartMediaData {
+    WithCustomStartMediaData,
+    OptionallyWithEffectId {
     override val chatId: ChatIdentifier
         get() = fromChatId
     override val textSources: List<TextSource>? by lazy {

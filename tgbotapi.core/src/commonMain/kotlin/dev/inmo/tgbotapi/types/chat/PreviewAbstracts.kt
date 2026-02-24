@@ -11,7 +11,11 @@ sealed interface PreviewUsernameChat : PreviewChat, UsernameChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)
-sealed interface PreviewPrivateChat : PreviewUsernameChat, PrivateChat
+sealed interface PreviewPrivateChat : PreviewUsernameChat, PrivateUserChat
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(PreviewChatSerializer::class)
+sealed interface PreviewPrivateForumChat : PreviewPrivateChat, PrivateForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)
@@ -39,7 +43,7 @@ sealed interface PreviewSupergroupChat : PreviewGroupChat, PreviewSuperPublicCha
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)
-sealed interface PreviewForumChat : PreviewSupergroupChat, ForumChat
+sealed interface PreviewForumChat : PreviewSupergroupChat, SupergroupForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)

@@ -5,7 +5,9 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -65,7 +67,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
     @SerialName(maxReactionCountField)
-    override val maxReactionsCount: Int = 3
+    override val maxReactionsCount: Int = 3,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -109,6 +113,10 @@ data class ExtendedGroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -163,9 +171,79 @@ data class ExtendedPrivateChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(firstProfileAudioField)
+    override val firstProfileAudio: AudioFile? = null,
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
 ) : ExtendedPrivateChat
 
-typealias ExtendedUser = ExtendedPrivateChatImpl
+@Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedPrivateChat due")
+data class ExtendedPrivateForumChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
+    override val id: IdChatIdentifier,
+    @SerialName(photoField)
+    override val chatPhoto: ChatPhoto? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(usernameField)
+    override val username: Username? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
+    @SerialName(firstNameField)
+    override val firstName: String = "",
+    @SerialName(lastNameField)
+    override val lastName: String = "",
+    @SerialName(bioField)
+    override val bio: String = "",
+    @SerialName(hasPrivateForwardsField)
+    override val hasPrivateForwards: Boolean = false,
+    @SerialName(hasRestrictedVoiceAndVideoMessagesField)
+    override val hasRestrictedVoiceAndVideoMessages: Boolean = false,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(businessIntroField)
+    override val businessIntro: BusinessIntro? = null,
+    @SerialName(businessLocationField)
+    override val businessLocation: BusinessLocation? = null,
+    @SerialName(businessOpeningHoursField)
+    override val businessOpeningHours: BusinessOpeningHours? = null,
+    @SerialName(birthdateField)
+    override val birthdate: Birthdate? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(personalChatField)
+    @Serializable(PreviewChatSerializer::class)
+    override val personalChat: PreviewChannelChat? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
+    @SerialName(acceptedGiftTypesField)
+    override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(firstProfileAudioField)
+    override val firstProfileAudio: AudioFile? = null,
+    @SerialName(ratingField)
+    override val rating: UserRating? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+) : ExtendedPrivateForumChat
+
+typealias ExtendedUser = ExtendedPrivateChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ExtendedSupergroupChat due")
@@ -235,6 +313,10 @@ data class ExtendedSupergroupChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -305,6 +387,10 @@ data class ExtendedForumChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedForumChat
 
 @Serializable
@@ -378,6 +464,10 @@ data class ExtendedChannelDirectMessagesChatImpl(
     override val maxReactionsCount: Int = 3,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(paidMessageStarCountField)
+    override val paidMessageStarCount: Int? = null,
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 ) : ExtendedChannelDirectMessagesChat {
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)
@@ -419,8 +509,14 @@ data class ExtendedBot(
     override val maxReactionsCount: Int = 3,
     @SerialName(hasMainWebAppField)
     val hasMainWebApp: Boolean = false,
+    @SerialName(hasTopicsEnabledField)
+    val hasTopicsEnabled: Boolean = false,
+    @SerialName(allowUsersToCreateTopicsField)
+    val allowUsersToCreateTopics: Boolean = false,
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -454,4 +550,6 @@ data class UnknownExtendedChat(
     override val maxReactionsCount: Int = 3
     @SerialName(acceptedGiftTypesField)
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes()
+    @SerialName(uniqueGiftColorsField)
+    override val uniqueGiftColors: UniqueGiftColors? = null
 }

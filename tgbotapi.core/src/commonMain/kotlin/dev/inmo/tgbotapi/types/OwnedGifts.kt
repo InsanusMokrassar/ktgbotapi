@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.types
 
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.OwnedGift
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class OwnedGifts<GiftType: GiftSentOrReceived>(
+data class OwnedGifts<GiftType: OwnedGift>(
     @SerialName(totalCountField)
     val totalCount: Int,
     @SerialName(giftsField)

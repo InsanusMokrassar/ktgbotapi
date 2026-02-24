@@ -1,5 +1,64 @@
 # TelegramBotAPI changelog
 
+## 31.0.0
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.3](https://core.telegram.org/bots/api-changelog#december-31-2025)**
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.4](https://core.telegram.org/bots/api-changelog#february-9-2026)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Version`:
+    * `MicroUtils`: `0.26.8` -> `0.26.9`
+* `Core`:
+    * **THIS IS BREAKING CHANGE** All media files with sizes changed type of `fileSize` field from `Long` to `FileSize` (value class)
+    * **THIS IS BREAKING CHANGE** Class `GiftSentOrReceived` have been renamed to `GiftSentOrReceivedEvent` to clarify naming
+    * **THIS IS BREAKING CHANGE** New interface `OwnedGift` have been created
+      * **THIS IS BREAKING CHANGE** `OwnedGifts` have changed its generic type to `OwnedGift`
+    * **THIS IS BREAKING CHANGE** For `CheclistTask` have been made several changes:
+      * `ChecklistTask.Done` -> `ChecklistTask.Completed`
+      * `ChecklistTask.Undone` -> `ChecklistTask.Uncompleted`
+      * Added several inheritors of `ChecklistTask.Completed` - for completed by chat, by user or just completed tasks
+    * **THIS IS BREAKING CHANGE** `PrivateChat.id` type changed from `UserId` to `IdChatIdentifier`
+    * **THIS IS BREAKING CHANGE** `ForumChat` no longer extends `SupergroupChat`; new `SupergroupForumChat` interface created for supergroup forums
+    * **THIS IS BREAKING CHANGE** Added `PrivateForumChat` and `PrivateUserChat` interfaces to support private forums
+    * Added support of private forums (`ExtendedPrivateForumChatImpl`, `PrivateForumContentMessage`, `PrivateForumEventMessage`)
+    * Added `ChatOwnerChanged` and `ChatOwnerLeft` chat events
+    * Added `SetMyProfilePhoto` and `RemoveMyProfilePhoto` requests
+    * Added `GetUserProfileAudios` request and `UserProfileAudios` type
+    * Added `GetChatGifts` and `GetUserGifts` requests
+    * Added `RepostStory` request
+    * Added `SendMessageDraft` request with `DraftId` and `DraftIdAllocator`
+    * Added `KeyboardButtonStyle` support and `iconCustomEmojiId` field to keyboard buttons
+    * Added `style` and `iconCustomEmojiId` fields to `InlineKeyboardButton`
+    * Added `VideoCodec` and `VideoQuality` types
+    * Added `Rarity`, `GiftBackground`, `UniqueGiftName`, and `UniqueGiftColors` types for gifts
+    * Added new fields to `Gift.Regular`: `personalTotalCount`, `personalRemainingCount`, `isPremium`, `hasColors`, `background`, `uniqueGiftVariantCount`
+    * Added `isBurned` field support in `GiftSentOrReceivedEvent`
+    * Added `UserRating` type and `rating` field to `ExtendedPrivateChat`
+    * Added `Level` and `Rating` value classes
+    * Added `uniqueGiftColors` field to extended chats (channel, group, private)
+    * Added `paidMessageStarCount` field to `ExtendedGroupChat` and `ExtendedPrivateChat`
+    * Added `firstProfileAudio` field to `ExtendedPrivateChat`
+    * Added `purchased_paid_media` to updates list
+    * Added `effectId` support in `CopyMessage` and `ForwardMessage`
+    * Added `WithOptionalPaidMessageStarCount` interface
+    * Fixed serialization of `SimpleKeyboardButton`
+    * Fixed support of `paidMessageStarCount`
+* `API`:
+    * Added extensions for `SetMyProfilePhoto`, `RemoveMyProfilePhoto`, `GetUserProfileAudios`
+    * Added extensions for `GetChatGifts` and `GetUserGifts`
+    * Added extensions for `RepostStory`
+    * Added extensions for `SendMessageDraft`
+    * Added `effectId` parameter to `copyMessage` and `forwardMessage` extensions
+    * Added `GetBusinessAccountGifts` extensions improvements
+* `BehaviourBuilder`:
+    * Updated event triggers for new chat events (`ChatOwnerChanged`, `ChatOwnerLeft`, private forum events)
+    * Updated expectations for new event types
+* `Utils`:
+    * Regenerated class casts extensions
+    * Updated `InlineKeyboardBuilder` and `ReplyKeyboardBuilder` with `style` and `iconCustomEmojiId` support
+
 ## 30.0.2
 
 * `Version`:

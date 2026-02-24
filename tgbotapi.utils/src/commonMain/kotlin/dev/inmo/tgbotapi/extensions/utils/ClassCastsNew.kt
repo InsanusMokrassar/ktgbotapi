@@ -142,6 +142,7 @@ import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
 import dev.inmo.tgbotapi.types.chat.ExtendedNonBotChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 import dev.inmo.tgbotapi.types.chat.ForumChat
@@ -155,15 +156,19 @@ import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewForumChat
 import dev.inmo.tgbotapi.types.chat.PreviewGroupChat
 import dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
+import dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
 import dev.inmo.tgbotapi.types.chat.PreviewPublicChat
 import dev.inmo.tgbotapi.types.chat.PreviewSuperPublicChat
 import dev.inmo.tgbotapi.types.chat.PreviewSupergroupChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.PreviewUsernameChat
 import dev.inmo.tgbotapi.types.chat.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PrivateForumChat
+import dev.inmo.tgbotapi.types.chat.PrivateUserChat
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.chat.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.SupergroupForumChat
 import dev.inmo.tgbotapi.types.chat.UnknownChatType
 import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.User
@@ -222,9 +227,10 @@ import dev.inmo.tgbotapi.types.files.UnknownSticker
 import dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
+import dev.inmo.tgbotapi.types.files.VideoQuality
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
-import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
@@ -256,6 +262,8 @@ import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
@@ -276,6 +284,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
@@ -301,6 +310,7 @@ import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
+import dev.inmo.tgbotapi.types.message.PrivateForumEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
@@ -339,6 +349,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage
@@ -795,6 +806,12 @@ public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContent
 public inline fun OptionallyWithUser.commonSuggestedChannelDirectMessagesContentMessageOrThrow(): CommonSuggestedChannelDirectMessagesContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonSuggestedChannelDirectMessagesContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> OptionallyWithUser.ifCommonSuggestedChannelDirectMessagesContentMessage(block: (CommonSuggestedChannelDirectMessagesContentMessage<MessageContent>) -> T): T? = commonSuggestedChannelDirectMessagesContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.privateForumContentMessageOrNull(): PrivateForumContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.privateForumContentMessageOrThrow(): PrivateForumContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifPrivateForumContentMessage(block: (PrivateForumContentMessage<MessageContent>) -> T): T? = privateForumContentMessageOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
@@ -1330,6 +1347,12 @@ public inline fun Chat.extendedPrivateChatOrThrow(): ExtendedPrivateChat = this 
 
 public inline fun <T> Chat.ifExtendedPrivateChat(block: (ExtendedPrivateChat) -> T): T? = extendedPrivateChatOrNull() ?.let(block)
 
+public inline fun Chat.extendedPrivateForumChatOrNull(): ExtendedPrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
+
+public inline fun Chat.extendedPrivateForumChatOrThrow(): ExtendedPrivateForumChat = this as dev.inmo.tgbotapi.types.chat.ExtendedPrivateForumChat
+
+public inline fun <T> Chat.ifExtendedPrivateForumChat(block: (ExtendedPrivateForumChat) -> T): T? = extendedPrivateForumChatOrNull() ?.let(block)
+
 public inline fun Chat.extendedPublicChatOrNull(): ExtendedPublicChat? = this as? dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 
 public inline fun Chat.extendedPublicChatOrThrow(): ExtendedPublicChat = this as dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
@@ -1420,6 +1443,18 @@ public inline fun Chat.privateChatOrThrow(): PrivateChat = this as dev.inmo.tgbo
 
 public inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T): T? = privateChatOrNull() ?.let(block)
 
+public inline fun Chat.privateUserChatOrNull(): PrivateUserChat? = this as? dev.inmo.tgbotapi.types.chat.PrivateUserChat
+
+public inline fun Chat.privateUserChatOrThrow(): PrivateUserChat = this as dev.inmo.tgbotapi.types.chat.PrivateUserChat
+
+public inline fun <T> Chat.ifPrivateUserChat(block: (PrivateUserChat) -> T): T? = privateUserChatOrNull() ?.let(block)
+
+public inline fun Chat.privateForumChatOrNull(): PrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.PrivateForumChat
+
+public inline fun Chat.privateForumChatOrThrow(): PrivateForumChat = this as dev.inmo.tgbotapi.types.chat.PrivateForumChat
+
+public inline fun <T> Chat.ifPrivateForumChat(block: (PrivateForumChat) -> T): T? = privateForumChatOrNull() ?.let(block)
+
 public inline fun Chat.businessChatOrNull(): BusinessChat? = this as? dev.inmo.tgbotapi.types.chat.BusinessChat
 
 public inline fun Chat.businessChatOrThrow(): BusinessChat = this as dev.inmo.tgbotapi.types.chat.BusinessChat
@@ -1461,6 +1496,12 @@ public inline fun Chat.forumChatOrNull(): ForumChat? = this as? dev.inmo.tgbotap
 public inline fun Chat.forumChatOrThrow(): ForumChat = this as dev.inmo.tgbotapi.types.chat.ForumChat
 
 public inline fun <T> Chat.ifForumChat(block: (ForumChat) -> T): T? = forumChatOrNull() ?.let(block)
+
+public inline fun Chat.supergroupForumChatOrNull(): SupergroupForumChat? = this as? dev.inmo.tgbotapi.types.chat.SupergroupForumChat
+
+public inline fun Chat.supergroupForumChatOrThrow(): SupergroupForumChat = this as dev.inmo.tgbotapi.types.chat.SupergroupForumChat
+
+public inline fun <T> Chat.ifSupergroupForumChat(block: (SupergroupForumChat) -> T): T? = supergroupForumChatOrNull() ?.let(block)
 
 public inline fun Chat.channelDirectMessagesChatOrNull(): ChannelDirectMessagesChat? = this as? dev.inmo.tgbotapi.types.chat.ChannelDirectMessagesChat
 
@@ -1509,6 +1550,12 @@ public inline fun Chat.previewPrivateChatOrNull(): PreviewPrivateChat? = this as
 public inline fun Chat.previewPrivateChatOrThrow(): PreviewPrivateChat = this as dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
 
 public inline fun <T> Chat.ifPreviewPrivateChat(block: (PreviewPrivateChat) -> T): T? = previewPrivateChatOrNull() ?.let(block)
+
+public inline fun Chat.previewPrivateForumChatOrNull(): PreviewPrivateForumChat? = this as? dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
+
+public inline fun Chat.previewPrivateForumChatOrThrow(): PreviewPrivateForumChat = this as dev.inmo.tgbotapi.types.chat.PreviewPrivateForumChat
+
+public inline fun <T> Chat.ifPreviewPrivateForumChat(block: (PreviewPrivateForumChat) -> T): T? = previewPrivateForumChatOrNull() ?.let(block)
 
 public inline fun Chat.previewBusinessChatOrNull(): PreviewBusinessChat? = this as? dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
 
@@ -1822,6 +1869,12 @@ public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as de
 
 public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? = pathedFileOrNull() ?.let(block)
 
+public inline fun TelegramMediaFile.videoQualityOrNull(): VideoQuality? = this as? dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun TelegramMediaFile.videoQualityOrThrow(): VideoQuality = this as dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun <T> TelegramMediaFile.ifVideoQuality(block: (VideoQuality) -> T): T? = videoQualityOrNull() ?.let(block)
+
 public inline fun TelegramMediaFile.passportFileOrNull(): PassportFile? = this as? dev.inmo.tgbotapi.types.files.PassportFile
 
 public inline fun TelegramMediaFile.passportFileOrThrow(): PassportFile = this as dev.inmo.tgbotapi.types.files.PassportFile
@@ -2104,6 +2157,12 @@ public inline fun Message.chatEventMessageOrThrow(): ChatEventMessage<ChatEvent>
 
 public inline fun <T> Message.ifChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T): T? = chatEventMessageOrNull() ?.let(block)
 
+public inline fun Message.privateForumContentMessageOrNull(): PrivateForumContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.privateForumContentMessageOrThrow(): PrivateForumContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifPrivateForumContentMessage(block: (PrivateForumContentMessage<MessageContent>) -> T): T? = privateForumContentMessageOrNull() ?.let(block)
+
 public inline fun Message.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
 public inline fun Message.supergroupEventMessageOrThrow(): SupergroupEventMessage<SupergroupEvent> = this as dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
@@ -2211,6 +2270,12 @@ public inline fun Message.groupEventMessageOrNull(): GroupEventMessage<GroupEven
 public inline fun Message.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
 public inline fun <T> Message.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T? = groupEventMessageOrNull() ?.let(block)
+
+public inline fun Message.privateForumEventMessageOrNull(): PrivateForumEventMessage<PrivateForumEvent>? = this as? dev.inmo.tgbotapi.types.message.PrivateForumEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent>
+
+public inline fun Message.privateForumEventMessageOrThrow(): PrivateForumEventMessage<PrivateForumEvent> = this as dev.inmo.tgbotapi.types.message.PrivateForumEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent>
+
+public inline fun <T> Message.ifPrivateForumEventMessage(block: (PrivateForumEventMessage<PrivateForumEvent>) -> T): T? = privateForumEventMessageOrNull() ?.let(block)
 
 public inline fun Message.commonSupergroupEventMessageOrNull(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
@@ -2320,53 +2385,53 @@ public inline fun ChatEvent.paidMessagePriceChangedOrThrow(): PaidMessagePriceCh
 
 public inline fun <T> ChatEvent.ifPaidMessagePriceChanged(block: (PaidMessagePriceChanged) -> T): T? = paidMessagePriceChangedOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedOrNull(): GiftSentOrReceived? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+public inline fun ChatEvent.giftSentOrReceivedEventOrNull(): GiftSentOrReceivedEvent? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 
-public inline fun ChatEvent.giftSentOrReceivedOrThrow(): GiftSentOrReceived = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived
+public inline fun ChatEvent.giftSentOrReceivedEventOrThrow(): GiftSentOrReceivedEvent = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceived(block: (GiftSentOrReceived) -> T): T? = giftSentOrReceivedOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEvent(block: (GiftSentOrReceivedEvent) -> T): T? = giftSentOrReceivedEventOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrNull(): GiftSentOrReceived.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventReceivedInBusinessAccountOrNull(): GiftSentOrReceivedEvent.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.ReceivedInBusinessAccount
 
-public inline fun ChatEvent.giftSentOrReceivedReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventReceivedInBusinessAccountOrThrow(): GiftSentOrReceivedEvent.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.ReceivedInBusinessAccount
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedReceivedInBusinessAccount(block: (GiftSentOrReceived.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedReceivedInBusinessAccountOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventReceivedInBusinessAccount(block: (GiftSentOrReceivedEvent.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedEventReceivedInBusinessAccountOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedRegularOrNull(): GiftSentOrReceived.Regular? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftOrNull(): GiftSentOrReceivedEvent.RegularGift? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift
 
-public inline fun ChatEvent.giftSentOrReceivedRegularOrThrow(): GiftSentOrReceived.Regular = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftOrThrow(): GiftSentOrReceivedEvent.RegularGift = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegular(block: (GiftSentOrReceived.Regular) -> T): T? = giftSentOrReceivedRegularOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventRegularGift(block: (GiftSentOrReceivedEvent.RegularGift) -> T): T? = giftSentOrReceivedEventRegularGiftOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueOrNull(): GiftSentOrReceived.Unique? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftOrNull(): GiftSentOrReceivedEvent.UniqueGift? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueOrThrow(): GiftSentOrReceived.Unique = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftOrThrow(): GiftSentOrReceivedEvent.UniqueGift = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUnique(block: (GiftSentOrReceived.Unique) -> T): T? = giftSentOrReceivedUniqueOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventUniqueGift(block: (GiftSentOrReceivedEvent.UniqueGift) -> T): T? = giftSentOrReceivedEventUniqueGiftOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrNull(): GiftSentOrReceived.Regular.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftCommonOrNull(): GiftSentOrReceivedEvent.RegularGift.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift.Common
 
-public inline fun ChatEvent.giftSentOrReceivedRegularCommonOrThrow(): GiftSentOrReceived.Regular.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.Common
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftCommonOrThrow(): GiftSentOrReceivedEvent.RegularGift.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift.Common
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegularCommon(block: (GiftSentOrReceived.Regular.Common) -> T): T? = giftSentOrReceivedRegularCommonOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventRegularGiftCommon(block: (GiftSentOrReceivedEvent.RegularGift.Common) -> T): T? = giftSentOrReceivedEventRegularGiftCommonOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrNull(): GiftSentOrReceived.Regular.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftReceivedInBusinessAccountOrNull(): GiftSentOrReceivedEvent.RegularGift.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift.ReceivedInBusinessAccount
 
-public inline fun ChatEvent.giftSentOrReceivedRegularReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.Regular.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Regular.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventRegularGiftReceivedInBusinessAccountOrThrow(): GiftSentOrReceivedEvent.RegularGift.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.RegularGift.ReceivedInBusinessAccount
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedRegularReceivedInBusinessAccount(block: (GiftSentOrReceived.Regular.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedRegularReceivedInBusinessAccountOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventRegularGiftReceivedInBusinessAccount(block: (GiftSentOrReceivedEvent.RegularGift.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedEventRegularGiftReceivedInBusinessAccountOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrNull(): GiftSentOrReceived.Unique.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftCommonOrNull(): GiftSentOrReceivedEvent.UniqueGift.Common? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift.Common
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueCommonOrThrow(): GiftSentOrReceived.Unique.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.Common
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftCommonOrThrow(): GiftSentOrReceivedEvent.UniqueGift.Common = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift.Common
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUniqueCommon(block: (GiftSentOrReceived.Unique.Common) -> T): T? = giftSentOrReceivedUniqueCommonOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventUniqueGiftCommon(block: (GiftSentOrReceivedEvent.UniqueGift.Common) -> T): T? = giftSentOrReceivedEventUniqueGiftCommonOrNull() ?.let(block)
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull(): GiftSentOrReceived.Unique.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftReceivedInBusinessAccountOrNull(): GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount
 
-public inline fun ChatEvent.giftSentOrReceivedUniqueReceivedInBusinessAccountOrThrow(): GiftSentOrReceived.Unique.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceived.Unique.ReceivedInBusinessAccount
+public inline fun ChatEvent.giftSentOrReceivedEventUniqueGiftReceivedInBusinessAccountOrThrow(): GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount = this as dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount
 
-public inline fun <T> ChatEvent.ifGiftSentOrReceivedUniqueReceivedInBusinessAccount(block: (GiftSentOrReceived.Unique.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedUniqueReceivedInBusinessAccountOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGiftSentOrReceivedEventUniqueGiftReceivedInBusinessAccount(block: (GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount) -> T): T? = giftSentOrReceivedEventUniqueGiftReceivedInBusinessAccountOrNull() ?.let(block)
 
 public inline fun ChatEvent.successfulPaymentEventOrNull(): SuccessfulPaymentEvent? = this as? dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 
@@ -2458,6 +2523,12 @@ public inline fun ChatEvent.groupEventOrThrow(): GroupEvent = this as dev.inmo.t
 
 public inline fun <T> ChatEvent.ifGroupEvent(block: (GroupEvent) -> T): T? = groupEventOrNull() ?.let(block)
 
+public inline fun ChatEvent.privateForumEventOrNull(): PrivateForumEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
+
+public inline fun ChatEvent.privateForumEventOrThrow(): PrivateForumEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
+
+public inline fun <T> ChatEvent.ifPrivateForumEvent(block: (PrivateForumEvent) -> T): T? = privateForumEventOrNull() ?.let(block)
+
 public inline fun ChatEvent.channelEventOrNull(): ChannelEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 
 public inline fun ChatEvent.channelEventOrThrow(): ChannelEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
@@ -2481,6 +2552,12 @@ public inline fun ChatEvent.supergroupEventOrNull(): SupergroupEvent? = this as?
 public inline fun ChatEvent.supergroupEventOrThrow(): SupergroupEvent = this as dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 
 public inline fun <T> ChatEvent.ifSupergroupEvent(block: (SupergroupEvent) -> T): T? = supergroupEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatOwnerLeftOrNull(): ChatOwnerLeft? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
+
+public inline fun ChatEvent.chatOwnerLeftOrThrow(): ChatOwnerLeft = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerLeft
+
+public inline fun <T> ChatEvent.ifChatOwnerLeft(block: (ChatOwnerLeft) -> T): T? = chatOwnerLeftOrNull() ?.let(block)
 
 public inline fun ChatEvent.groupChatCreatedOrNull(): GroupChatCreated? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 
@@ -2517,6 +2594,12 @@ public inline fun ChatEvent.migratedToSupergroupOrNull(): MigratedToSupergroup? 
 public inline fun ChatEvent.migratedToSupergroupOrThrow(): MigratedToSupergroup = this as dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
 
 public inline fun <T> ChatEvent.ifMigratedToSupergroup(block: (MigratedToSupergroup) -> T): T? = migratedToSupergroupOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatOwnerChangedOrNull(): ChatOwnerChanged? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+
+public inline fun ChatEvent.chatOwnerChangedOrThrow(): ChatOwnerChanged = this as dev.inmo.tgbotapi.types.message.ChatEvents.ChatOwnerChanged
+
+public inline fun <T> ChatEvent.ifChatOwnerChanged(block: (ChatOwnerChanged) -> T): T? = chatOwnerChangedOrNull() ?.let(block)
 
 public inline fun ChatEvent.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 

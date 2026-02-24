@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests
 
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
+import dev.inmo.tgbotapi.abstracts.types.OptionallyWithEffectId
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
@@ -37,6 +38,8 @@ data class ForwardMessage(
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(suggestedPostParametersField)
     override val suggestedPostParameters: SuggestedPostParameters? = null
 ): SimpleRequest<PossiblyForwardedMessage>,
@@ -45,7 +48,8 @@ data class ForwardMessage(
     OptionallyMessageThreadRequest,
     OptionallyDirectMessageThreadRequest,
     OptionallySuggestedPostRequest,
-    WithCustomStartMediaData {
+    WithCustomStartMediaData,
+    OptionallyWithEffectId {
     override val chatId: ChatIdentifier
         get() = fromChatId
 

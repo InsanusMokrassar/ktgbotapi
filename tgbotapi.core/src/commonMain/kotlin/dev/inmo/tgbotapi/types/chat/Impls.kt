@@ -33,6 +33,20 @@ data class PrivateChatImpl(
     @SerialName(lastNameField)
     override val lastName: String = ""
 ) : PreviewPrivateChat
+@Serializable
+@RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
+data class PrivateForumChatImpl(
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(idField)
+    override val id: IdChatIdentifier,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(usernameField)
+    override val username: Username? = null,
+    @SerialName(firstNameField)
+    override val firstName: String = "",
+    @SerialName(lastNameField)
+    override val lastName: String = ""
+) : PreviewPrivateForumChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
@@ -138,7 +152,7 @@ data class CommonBot(
 data class CommonUser(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(idField)
-    override val id: UserId,
+    override val id: IdChatIdentifier,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)

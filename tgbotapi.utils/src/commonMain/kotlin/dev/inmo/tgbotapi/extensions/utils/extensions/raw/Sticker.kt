@@ -18,7 +18,7 @@ inline val Sticker.set_name: StickerSetName?
     get() = stickerSetName
 inline val Sticker.mask_position: MaskPosition?
     get() = maskStickerOrNull() ?.maskPosition
-inline val Sticker.file_size: Long?
+inline val Sticker.file_size: FileSize?
     get() = fileSize
 inline val Sticker.premium_animation: File?
     get() = regularStickerOrNull() ?.premiumAnimationFile

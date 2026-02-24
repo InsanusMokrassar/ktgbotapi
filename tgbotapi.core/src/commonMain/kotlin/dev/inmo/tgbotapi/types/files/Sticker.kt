@@ -31,7 +31,7 @@ data class StickerSurrogate(
     val premium_animation: File? = null,
     val mask_position: MaskPosition? = null,
     val custom_emoji_id: CustomEmojiId? = null,
-    val file_size: Long? = null,
+    val file_size: FileSize? = null,
     val needs_repainting: Boolean = false,
 )
 
@@ -267,7 +267,7 @@ data class RegularSimpleSticker(
     @SerialName(premiumAnimationField)
     override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : RegularSticker {
     @SerialName(stickerFormatField)
     @EncodeDefault
@@ -299,7 +299,7 @@ data class RegularAnimatedSticker(
     @SerialName(premiumAnimationField)
     override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : RegularSticker, AnimatedSticker {
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
@@ -327,7 +327,7 @@ data class RegularVideoSticker(
     @SerialName(premiumAnimationField)
     override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : RegularSticker, VideoSticker {
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
@@ -371,7 +371,7 @@ data class MaskSimpleSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : MaskSticker {
     @SerialName(stickerFormatField)
     @EncodeDefault
@@ -403,7 +403,7 @@ data class MaskAnimatedSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : MaskSticker, AnimatedSticker {
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
@@ -431,7 +431,7 @@ data class MaskVideoSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
 ) : MaskSticker, VideoSticker {
     @SerialName(stickerTypeField)
     @Serializable(StickerType.Serializer::class)
@@ -476,7 +476,7 @@ data class CustomEmojiSimpleSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     @SerialName(needsRepaintingField)
     override val needsRepainting: Boolean = false
 ) : CustomEmojiSticker {
@@ -510,7 +510,7 @@ data class CustomEmojiAnimatedSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     @SerialName(needsRepaintingField)
     override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, AnimatedSticker {
@@ -540,7 +540,7 @@ data class CustomEmojiVideoSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     @SerialName(needsRepaintingField)
     override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, VideoSticker {
@@ -569,7 +569,7 @@ data class UnknownSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
-    override val fileSize: Long? = null,
+    override val fileSize: FileSize? = null,
     @SerialName(stickerFormatField)
     override val stickerFormat: StickerFormat = StickerFormat.Static,
     @SerialName(stickerTypeField)

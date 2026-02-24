@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.utils
 
 import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.toChatId
 
 /**
  * Trying to convert current [PrivateChat] to [User]
@@ -13,9 +14,11 @@ import dev.inmo.tgbotapi.types.chat.*
  * language)
  */
 fun PrivateChat.toUser(): User = when (this) {
-    is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
     is CommonUser -> this
     is CommonBot -> this
-    is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
     is ExtendedBot -> this
+    is ExtendedPrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+    is PrivateChatImpl -> CommonUser(id, firstName, lastName, username)
+    is ExtendedPrivateForumChatImpl -> CommonUser(id.toChatId(), firstName, lastName, username)
+    is PrivateForumChatImpl -> CommonUser(id.toChatId(), firstName, lastName, username)
 }

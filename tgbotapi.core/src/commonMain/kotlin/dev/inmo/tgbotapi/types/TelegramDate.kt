@@ -23,6 +23,10 @@ data class TelegramDate(
     val asDate: DateTime = DateTime(
         date * 1000
     )
+
+    companion object {
+        val Start = TelegramDate(0)
+    }
 }
 
 fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)

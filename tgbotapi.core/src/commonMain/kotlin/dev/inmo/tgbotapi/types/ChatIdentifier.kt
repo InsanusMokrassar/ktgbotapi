@@ -123,9 +123,9 @@ val RawChatId.userLink: String
 val UserId.userLink: String
     get() = chatId.userLink
 val User.userLink: String
-    get() = id.userLink
+    get() = id.toChatId().userLink
 
-typealias UserId = ChatId
+typealias UserId = IdChatIdentifier
 
 fun RawChatId.toChatId(): ChatId = ChatId(this)
 fun Long.toChatId(): ChatId = ChatId(RawChatId(this))

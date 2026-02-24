@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.iconColorField
 import dev.inmo.tgbotapi.types.iconCustomEmojiIdField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateForumEvent
 import dev.inmo.tgbotapi.types.nameField
 import dev.inmo.tgbotapi.utils.RGBColor
 import kotlinx.serialization.SerialName
@@ -15,4 +16,4 @@ data class ForumTopicEdited(
     val name: String,
     @SerialName(iconCustomEmojiIdField)
     val iconEmojiId: CustomEmojiId? = null
-) : ForumEvent
+) : ForumEvent, PrivateForumEvent

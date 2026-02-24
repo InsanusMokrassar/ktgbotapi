@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.types.buttons.reply
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
@@ -13,46 +14,58 @@ import dev.inmo.tgbotapi.types.webapps.WebAppInfo
  * Creates [SimpleKeyboardButton]
  */
 fun simpleReplyButton(
-    text: String
-) = SimpleKeyboardButton(text)
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = SimpleKeyboardButton(text, iconCustomEmojiId, style)
 
 /**
  * Creates [RequestContactKeyboardButton]
  */
 fun requestContactReplyButton(
-    text: String
-) = RequestContactKeyboardButton(text)
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = RequestContactKeyboardButton(text, iconCustomEmojiId, style)
 
 /**
  * Creates [RequestLocationKeyboardButton]
  */
 fun requestLocationReplyButton(
-    text: String
-) = RequestLocationKeyboardButton(text)
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = RequestLocationKeyboardButton(text, iconCustomEmojiId, style)
 
 /**
  * Creates [RequestPollKeyboardButton]
  */
 fun requestPollReplyButton(
     text: String,
-    pollType: KeyboardButtonPollType
-) = RequestPollKeyboardButton(text, pollType)
+    pollType: KeyboardButtonPollType,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = RequestPollKeyboardButton(text, pollType, iconCustomEmojiId, style)
 
 /**
  * Creates [WebAppKeyboardButton]
  */
 fun webAppReplyButton(
     text: String,
-    webApp: WebAppInfo
-) = WebAppKeyboardButton(text, webApp)
+    webApp: WebAppInfo,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = WebAppKeyboardButton(text, webApp, iconCustomEmojiId, style)
 
 /**
  * Creates [WebAppKeyboardButton]
  */
 fun webAppReplyButton(
     text: String,
-    url: String
-) = webAppReplyButton(text, WebAppInfo(url))
+    url: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = webAppReplyButton(text, WebAppInfo(url), iconCustomEmojiId, style)
 
 
 /**
@@ -60,10 +73,14 @@ fun webAppReplyButton(
  */
 fun requestUsersReplyButton(
     text: String,
-    requestUser: KeyboardButtonRequestUsers
+    requestUser: KeyboardButtonRequestUsers,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = RequestUserKeyboardButton(
     text,
-    requestUser
+    requestUser,
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -76,6 +93,8 @@ fun requestBotsReplyButton(
     requestName: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Bot(
@@ -84,7 +103,9 @@ fun requestBotsReplyButton(
         requestName = requestName,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -98,6 +119,8 @@ fun requestUsersReplyButton(
     requestName: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Common(
@@ -107,7 +130,9 @@ fun requestUsersReplyButton(
         requestName = requestName,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -121,6 +146,8 @@ fun requestUserReplyButton(
     requestName: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestUsersReplyButton(
     text,
     requestId,
@@ -128,7 +155,9 @@ fun requestUserReplyButton(
     maxCount,
     requestName = requestName,
     requestUsername = requestUsername,
-    requestPhoto = requestPhoto
+    requestPhoto = requestPhoto,
+    iconCustomEmojiId = iconCustomEmojiId,
+    style = style
 )
 
 /**
@@ -142,6 +171,8 @@ fun requestUsersOrBotsReplyButton(
     requestName: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Any(
@@ -151,7 +182,9 @@ fun requestUsersOrBotsReplyButton(
         requestName = requestName,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -163,6 +196,8 @@ fun requestUserOrBotReplyButton(
     requestName: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Any(
@@ -170,7 +205,9 @@ fun requestUserOrBotReplyButton(
         requestName = requestName,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 
@@ -179,10 +216,14 @@ fun requestUserOrBotReplyButton(
  */
 fun requestChatReplyButton(
     text: String,
-    requestChat: KeyboardButtonRequestChat
+    requestChat: KeyboardButtonRequestChat,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = RequestChatKeyboardButton(
     text,
-    requestChat
+    requestChat,
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -201,6 +242,8 @@ fun requestChatReplyButton(
     requestTitle: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat(
@@ -215,7 +258,9 @@ fun requestChatReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 /**
@@ -232,6 +277,8 @@ fun requestChannelReplyButton(
     requestTitle: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat.Channel(
@@ -244,7 +291,9 @@ fun requestChannelReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )
 
 
@@ -263,6 +312,8 @@ fun requestChannelReplyButton(
     requestTitle: Boolean? = null,
     requestUsername: Boolean? = null,
     requestPhoto: Boolean? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat.Group(
@@ -276,5 +327,7 @@ fun requestChannelReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
-    )
+    ),
+    iconCustomEmojiId,
+    style
 )

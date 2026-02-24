@@ -81,8 +81,16 @@ object ChatSerializer : KSerializer<Chat> {
             val original = decodedJson[originField]
 
             when (type) {
-                ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
-                ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                ChatType.Sender -> if (isForum) {
+                    formatter.decodeFromJsonElement(PrivateForumChatImpl.serializer(), decodedJson)
+                } else {
+                    formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                }
+                ChatType.Private -> if (isForum) {
+                    formatter.decodeFromJsonElement(PrivateForumChatImpl.serializer(), decodedJson)
+                } else {
+                    formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                }
                 ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
                 ChatType.Supergroup -> when {
                     isForum -> formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
@@ -128,8 +136,16 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
         val original = decodedJson[originField]
 
         return when (type) {
-            ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
-            ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            ChatType.Sender -> if (isForum) {
+                formatter.decodeFromJsonElement(PrivateForumChatImpl.serializer(), decodedJson)
+            } else {
+                formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            }
+            ChatType.Private -> if (isForum) {
+                formatter.decodeFromJsonElement(PrivateForumChatImpl.serializer(), decodedJson)
+            } else {
+                formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            }
             ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
             ChatType.Supergroup -> {
                 when {
@@ -156,6 +172,7 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
     override fun serialize(encoder: Encoder, value: PreviewChat) {
         when (value) {
             is PrivateChatImpl -> PrivateChatImpl.serializer().serialize(encoder, value)
+            is PrivateForumChatImpl -> PrivateForumChatImpl.serializer().serialize(encoder, value)
             is BusinessChatImpl -> BusinessChatImpl.serializer().serialize(encoder, value)
             is GroupChatImpl -> GroupChatImpl.serializer().serialize(encoder, value)
             is SupergroupChatImpl -> SupergroupChatImpl.serializer().serialize(encoder, value)
@@ -183,8 +200,16 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
         val original = decodedJson[originField]
 
         return when (type) {
-            ChatType.Sender -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
-            ChatType.Private -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            ChatType.Sender -> if (isForum) {
+                formatter.decodeFromJsonElement(ExtendedPrivateForumChatImpl.serializer(), decodedJson)
+            } else {
+                formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            }
+            ChatType.Private -> if (isForum) {
+                formatter.decodeFromJsonElement(ExtendedPrivateForumChatImpl.serializer(), decodedJson)
+            } else {
+                formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            }
             ChatType.Group -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
             ChatType.Supergroup -> {
                 when {
@@ -212,6 +237,7 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
         when (value) {
             is ExtendedBusinessChatImpl -> ExtendedBusinessChatImpl.serializer().serialize(encoder, value)
             is ExtendedPrivateChatImpl -> ExtendedPrivateChatImpl.serializer().serialize(encoder, value)
+            is ExtendedPrivateForumChatImpl -> ExtendedPrivateForumChatImpl.serializer().serialize(encoder, value)
             is ExtendedGroupChatImpl -> ExtendedGroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedSupergroupChatImpl -> ExtendedSupergroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedForumChatImpl -> ExtendedForumChatImpl.serializer().serialize(encoder, value)
@@ -238,7 +264,7 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
     class BasedOnBusinessConnection(private val businessConnectionId: BusinessConnectionId) : ExtendedChatSerializer() {
         override fun deserialize(decoder: Decoder): ExtendedChat {
             return super.deserialize(decoder).let {
-                if (it is ExtendedPrivateChatImpl) {
+                if (it is ExtendedPrivateChatImpl || it is ExtendedPrivateForumChatImpl) {
                     ExtendedBusinessChatImpl(
                         BusinessChatId(it.id.chatId, businessConnectionId),
                         it

@@ -17,9 +17,9 @@ data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     val user: User,
     override val subsources: TextSourcesList
 ) : MultilevelTextSource {
-    override val markdown: String by lazy { source.textMentionMarkdown(user.id) }
-    override val markdownV2: String by lazy { textMentionMarkdownV2(user.id) }
-    override val html: String by lazy { textMentionHTML(user.id) }
+    override val markdown: String by lazy { source.textMentionMarkdown(user.id.toChatId()) }
+    override val markdownV2: String by lazy { textMentionMarkdownV2(user.id.toChatId()) }
+    override val html: String by lazy { textMentionHTML(user.id.toChatId()) }
 }
 
 fun mentionTextSource(parts: TextSourcesList, user: User) = TextMentionTextSource(parts.makeString(), user, parts)

@@ -1,11 +1,14 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalPaidMessageStarCount
 import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
+import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -21,6 +24,8 @@ sealed interface ExtendedChat : Chat {
     val maxReactionsCount: Int
 
     val acceptedGiftTypes: AcceptedGiftTypes
+
+    val uniqueGiftColors: UniqueGiftColors?
 
     @Deprecated(
         message = "Telegram Bot API v9.0 introduced the new field, `acceptedGiftTypes`, to allow granular" +
@@ -50,13 +55,16 @@ sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, Extended
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
+sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat, WithOptionalPaidMessageStarCount {
     val permissions: ChatPermissions
 }
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, ExtendedNonBotChat {
+sealed interface ExtendedPrivateChat : PrivateUserChat,
+    ExtendedChatWithUsername,
+    ExtendedNonBotChat,
+    WithOptionalPaidMessageStarCount {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
@@ -67,10 +75,16 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
 
     val birthdate: Birthdate?
     val personalChat: PreviewChannelChat?
+    val firstProfileAudio: AudioFile?
+    val rating: UserRating?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
 }
+
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ExtendedChatSerializer.Companion::class)
+sealed interface ExtendedPrivateForumChat : ExtendedPrivateChat, PrivateForumChat
 
 sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotChat {
     val description: String
@@ -112,7 +126,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
+sealed interface ExtendedForumChat : ExtendedSupergroupChat, SupergroupForumChat
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(PreviewChatSerializer::class)

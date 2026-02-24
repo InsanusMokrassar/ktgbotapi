@@ -19,6 +19,9 @@ import kotlinx.serialization.json.*
 @Serializable(KeyboardButtonSerializer::class)
 sealed interface KeyboardButton {
     val text: String
+
+    val style: KeyboardButtonStyle?
+    val iconCustomEmojiId: CustomEmojiId?
 }
 
 /**
@@ -30,7 +33,11 @@ sealed interface KeyboardButton {
 */
 @Serializable
 data class SimpleKeyboardButton(
-    override val text: String
+    override val text: String,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
 @ConsistentCopyVisibility
@@ -38,7 +45,12 @@ data class SimpleKeyboardButton(
 data class UnknownKeyboardButton internal constructor(
     override val text: String,
     val raw: String
-) : KeyboardButton
+) : KeyboardButton {
+    override val style: KeyboardButtonStyle?
+        get() = null
+    override val iconCustomEmojiId: CustomEmojiId?
+        get() = null
+}
 
 /**
  * Private chats only. When user will tap on this button, his contact (with his number and name) will be sent to the bot. You will be able
@@ -49,7 +61,11 @@ data class UnknownKeyboardButton internal constructor(
 */
 @Serializable
 data class RequestContactKeyboardButton(
-    override val text: String
+    override val text: String,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton {
     @SerialName(requestContactField)
     @EncodeDefault
@@ -65,7 +81,11 @@ data class RequestContactKeyboardButton(
  */
 @Serializable
 data class RequestLocationKeyboardButton(
-    override val text: String
+    override val text: String,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton {
     @SerialName(requestLocationField)
     @Required
@@ -82,7 +102,11 @@ data class RequestLocationKeyboardButton(
 data class WebAppKeyboardButton(
     override val text: String,
     @SerialName(webAppField)
-    val webApp: WebAppInfo
+    val webApp: WebAppInfo,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
 /**
@@ -96,7 +120,11 @@ data class WebAppKeyboardButton(
 data class RequestPollKeyboardButton(
     override val text: String,
     @SerialName(requestPollField)
-    val requestPoll: KeyboardButtonPollType
+    val requestPoll: KeyboardButtonPollType,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
 /**
@@ -114,7 +142,11 @@ data class RequestPollKeyboardButton(
 data class RequestUserKeyboardButton(
     override val text: String,
     @SerialName(requestUsersField)
-    val requestUsers: KeyboardButtonRequestUsers
+    val requestUsers: KeyboardButtonRequestUsers,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
 /**
@@ -132,7 +164,11 @@ data class RequestUserKeyboardButton(
 data class RequestChatKeyboardButton(
     override val text: String,
     @SerialName(requestChatField)
-    val requestChat: KeyboardButtonRequestChat
+    val requestChat: KeyboardButtonRequestChat,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
 @RiskFeature
@@ -142,42 +178,73 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
 
     override fun deserialize(decoder: Decoder): KeyboardButton {
         val asJson = internalSerializer.deserialize(decoder)
+        val styleData: KeyboardButtonStyle? by lazy {
+            (asJson as? JsonObject)
+                ?.get(styleField)
+                ?.jsonPrimitive
+                ?.let { nonstrictJsonFormat.decodeFromJsonElement(KeyboardButtonStyle.serializer(), it) }
+        }
+        val iconCustomEmojiIdData: CustomEmojiId? by lazy {
+            (asJson as? JsonObject)
+                ?.get(iconCustomEmojiIdField)
+                ?.jsonPrimitive
+                ?.let { nonstrictJsonFormat.decodeFromJsonElement(CustomEmojiId.serializer(), it) }
+        }
 
         return when {
-            asJson is JsonPrimitive -> SimpleKeyboardButton(asJson.content)
+            asJson is JsonPrimitive -> SimpleKeyboardButton(
+                asJson.content
+            )
             asJson is JsonObject && asJson[requestContactField] != null -> RequestContactKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content
+                asJson[textField]!!.jsonPrimitive.content,
+                iconCustomEmojiIdData,
+                styleData
             )
             asJson is JsonObject && asJson[requestLocationField] != null -> RequestLocationKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content
+                asJson[textField]!!.jsonPrimitive.content,
+                iconCustomEmojiIdData,
+                styleData
             )
             asJson is JsonObject && asJson[webAppField] != null -> WebAppKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
                     WebAppInfo.serializer(),
                     asJson[webAppField]!!
-                )
+                ),
+                iconCustomEmojiIdData,
+                styleData
             )
             asJson is JsonObject && asJson[requestPollField] != null -> RequestPollKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
                     KeyboardButtonPollTypeSerializer,
                     asJson[requestPollField] ?.jsonObject ?: buildJsonObject {  }
-                )
+                ),
+                iconCustomEmojiIdData,
+                styleData
             )
             asJson is JsonObject && asJson[requestUsersField] != null -> RequestUserKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
                     KeyboardButtonRequestUsers.serializer(),
                     asJson[requestUsersField] ?.jsonObject ?: buildJsonObject {  }
-                )
+                ),
+                iconCustomEmojiIdData,
+                styleData
             )
             asJson is JsonObject && asJson[requestChatField] != null -> RequestChatKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
                     KeyboardButtonRequestChat.serializer(),
                     asJson[requestChatField] ?.jsonObject ?: buildJsonObject {  }
-                )
+                ),
+                iconCustomEmojiIdData,
+                styleData
+            )
+            asJson is JsonObject && asJson[textField] != null -> SimpleKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content,
+                iconCustomEmojiIdData,
+                styleData
             )
             else -> UnknownKeyboardButton(
                 when (asJson) {
@@ -196,7 +263,11 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
             is WebAppKeyboardButton -> WebAppKeyboardButton.serializer().serialize(encoder, value)
             is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
-            is SimpleKeyboardButton -> encoder.encodeString(value.text)
+            is SimpleKeyboardButton -> if (value.iconCustomEmojiId != null || value.style != null) {
+                SimpleKeyboardButton.serializer().serialize(encoder, value)
+            } else {
+                encoder.encodeString(value.text)
+            }
             is RequestUserKeyboardButton -> RequestUserKeyboardButton.serializer().serialize(encoder, value)
             is RequestChatKeyboardButton -> RequestChatKeyboardButton.serializer().serialize(encoder, value)
             is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))
