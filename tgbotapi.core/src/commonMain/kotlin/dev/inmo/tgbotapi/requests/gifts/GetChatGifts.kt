@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.excludeFromBlockchainField
 import dev.inmo.tgbotapi.types.excludeUniqueField
 import dev.inmo.tgbotapi.types.sortByPriceField
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
+import dev.inmo.tgbotapi.types.gifts.OwnedGift
 import dev.inmo.tgbotapi.types.limitField
 import dev.inmo.tgbotapi.types.offsetField
 import kotlinx.serialization.DeserializationStrategy
@@ -46,16 +47,16 @@ data class GetChatGifts(
     val offset: String? = null,
     @SerialName(limitField)
     val limit: Int? = null,
-) : SimpleRequest<OwnedGifts<GiftSentOrReceivedEvent>>, ChatRequest {
+) : SimpleRequest<OwnedGifts<OwnedGift.Common>>, ChatRequest {
     override fun method(): String = "getChatGifts"
 
-    override val resultDeserializer: DeserializationStrategy<OwnedGifts<GiftSentOrReceivedEvent>>
+    override val resultDeserializer: DeserializationStrategy<OwnedGifts<OwnedGift.Common>>
         get() = Companion.resultSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     companion object {
         @Warning("This API can be changed without any warranties of backward compatibility")
-        val resultSerializer = OwnedGifts.serializer(GiftSentOrReceivedEvent.serializer())
+        val resultSerializer = OwnedGifts.serializer(OwnedGift.Common.serializer())
     }
 }

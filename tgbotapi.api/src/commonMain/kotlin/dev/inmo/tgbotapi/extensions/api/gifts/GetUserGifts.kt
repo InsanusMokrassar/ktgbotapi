@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.gifts.GetUserGifts
 import dev.inmo.tgbotapi.types.OwnedGifts
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
+import dev.inmo.tgbotapi.types.gifts.OwnedGift
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -18,7 +19,7 @@ public suspend fun TelegramBot.getUserGifts(
     sortByPrice: Boolean = false,
     offset: String? = null,
     limit: Int? = null
-): OwnedGifts<GiftSentOrReceivedEvent> = execute(
+): OwnedGifts<OwnedGift.Common> = execute(
     GetUserGifts(
         userId,
         excludeUnlimited,
@@ -43,7 +44,7 @@ public fun TelegramBot.getUserGiftsFlow(
     initialOffset: String? = null,
     limit: Int? = null,
     onErrorContinueChecker: suspend (Throwable?) -> Boolean = { false }
-): Flow<OwnedGifts<GiftSentOrReceivedEvent>> = flow {
+): Flow<OwnedGifts<OwnedGift.Common>> = flow {
     var currentOffset = initialOffset
     do {
         val response = runCatching {

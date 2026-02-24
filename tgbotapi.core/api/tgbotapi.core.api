@@ -10380,6 +10380,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field callbackQueryIdField Ljava/lang/String;
 	public static final field canAddWebPagePreviewsField Ljava/lang/String;
 	public static final field canBeEditedField Ljava/lang/String;
+	public static final field canBeTransferredField Ljava/lang/String;
 	public static final field canBeUpgradedField Ljava/lang/String;
 	public static final field canChangeGiftSettingsField Ljava/lang/String;
 	public static final field canChangeInfoField Ljava/lang/String;
@@ -10621,6 +10622,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field isPublicField Ljava/lang/String;
 	public static final field isRecurringField Ljava/lang/String;
 	public static final field isRevokedField Ljava/lang/String;
+	public static final field isSavedField Ljava/lang/String;
 	public static final field isStarGiveawayField Ljava/lang/String;
 	public static final field isUnclaimedField Ljava/lang/String;
 	public static final field isUpgradeSeparateField Ljava/lang/String;
@@ -22258,6 +22260,278 @@ public final synthetic class dev/inmo/tgbotapi/types/gifts/Gifts$$serializer : k
 }
 
 public final class dev/inmo/tgbotapi/types/gifts/Gifts$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Companion;
+	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public abstract fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+	public abstract fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public abstract fun getSenderUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public abstract fun isSaved ()Z
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$Common : dev/inmo/tgbotapi/types/gifts/OwnedGift {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Common$Companion;
+	public fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Common$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Common$DefaultImpls {
+	public static fun getOwnedGiftId-FhTg01o (Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Common;)Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount : dev/inmo/tgbotapi/types/gifts/OwnedGift {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount$Companion;
+	public abstract fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/gifts/OwnedGift {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Companion;
+	public abstract fun getCanBeUpgraded ()Z
+	public abstract fun getConvertStarCount ()Ljava/lang/Integer;
+	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public abstract fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
+	public abstract fun getUniqueGiftNumber ()Ljava/lang/Integer;
+	public abstract fun getWasRefunded ()Z
+	public abstract fun isPrivate ()Z
+	public abstract fun isUpgradeSeparate ()Z
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common : dev/inmo/tgbotapi/types/gifts/OwnedGift$Common, dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public final fun component10 ()Ljava/lang/Integer;
+	public final fun component11 ()Ljava/lang/Integer;
+	public final fun component12 ()Z
+	public final fun component13 ()Ljava/lang/Integer;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCanBeUpgraded ()Z
+	public fun getConvertStarCount ()Ljava/lang/Integer;
+	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+	public fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
+	public fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getSenderUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun getUniqueGiftNumber ()Ljava/lang/Integer;
+	public fun getWasRefunded ()Z
+	public fun hashCode ()I
+	public fun isPrivate ()Z
+	public fun isSaved ()Z
+	public fun isUpgradeSeparate ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Common$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount : dev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount, dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public final fun component10 ()Z
+	public final fun component11 ()Ljava/lang/Integer;
+	public final fun component12 ()Ljava/lang/Integer;
+	public final fun component13 ()Z
+	public final fun component14 ()Ljava/lang/Integer;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component3-OyCYJok ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component7 ()Z
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public final fun copy---bBB_Q (Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount;
+	public static synthetic fun copy---bBB_Q$default (Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;Ljava/util/List;ZZZZLjava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCanBeUpgraded ()Z
+	public fun getConvertStarCount ()Ljava/lang/Integer;
+	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+	public fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
+	public fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
+	public fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getSenderUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun getUniqueGiftNumber ()Ljava/lang/Integer;
+	public fun getWasRefunded ()Z
+	public fun hashCode ()I
+	public fun isPrivate ()Z
+	public fun isSaved ()Z
+	public fun isUpgradeSeparate ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular$OwnedByBusinessAccount$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique : dev/inmo/tgbotapi/types/gifts/OwnedGift {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Companion;
+	public abstract fun getCanBeTransferred ()Z
+	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public abstract fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public abstract fun getTransferStarCount ()Ljava/lang/Integer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common : dev/inmo/tgbotapi/types/gifts/OwnedGift$Common, dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun component6 ()Ljava/lang/Integer;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCanBeTransferred ()Z
+	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+	public fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getSenderUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getTransferStarCount ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun isSaved ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Common$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount : dev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount, dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique {
+	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component3-OyCYJok ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/lang/Integer;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun copy-o5IlDPI (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount;
+	public static synthetic fun copy-o5IlDPI$default (Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCanBeTransferred ()Z
+	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
+	public fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
+	public fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
+	public fun getSendDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public fun getSenderUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun getTransferStarCount ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun isSaved ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$OwnedByBusinessAccount$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

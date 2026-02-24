@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.business_connection.GetBusinessAccountGifts
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.OwnedGifts
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
+import dev.inmo.tgbotapi.types.gifts.OwnedGift
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlin.runCatching
@@ -21,7 +22,7 @@ public suspend fun TelegramBot.getBusinessAccountGifts(
     sortByPrice: Boolean = false,
     offset: String? = null,
     limit: Int? = null
-): OwnedGifts<GiftSentOrReceivedEvent.ReceivedInBusinessAccount> = execute(
+): OwnedGifts<OwnedGift.OwnedByBusinessAccount> = execute(
     GetBusinessAccountGifts(
         businessConnectionId,
         excludeUnsaved,
@@ -71,7 +72,7 @@ public fun TelegramBot.getBusinessAccountGiftsFlow(
     initialOffset: String? = null,
     limit: Int? = null,
     onErrorContinueChecker: suspend (Throwable?) -> Boolean = { false }
-): Flow<OwnedGifts<GiftSentOrReceivedEvent.ReceivedInBusinessAccount>> = flow {
+): Flow<OwnedGifts<OwnedGift.OwnedByBusinessAccount>> = flow {
     var currentOffset = initialOffset
     do {
         val response = runCatching {
