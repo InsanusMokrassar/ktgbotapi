@@ -30721,7 +30721,7 @@ public abstract interface class dev/inmo/tgbotapi/types/payments/stars/StarTrans
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Companion;
 	public abstract fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public abstract fun getId-xINTbLo ()Ljava/lang/String;
-	public abstract fun getNanostarAmount ()I
+	public abstract fun getNanostarAmount ()Ljava/lang/Integer;
 	public abstract fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public abstract fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public abstract fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -30742,20 +30742,20 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Defaul
 
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming$Companion;
-	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
 	public final fun component2 ()J
-	public final fun component3 ()I
+	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
-	public final fun copy-UiV6LeQ (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
-	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
+	public final fun copy-UiV6LeQ (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
+	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incoming;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdaptedMajorityTotalAmount ()D
 	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
-	public fun getNanostarAmount ()I
+	public fun getNanostarAmount ()Ljava/lang/Integer;
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -30769,20 +30769,20 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Incomi
 
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing$Companion;
-	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
 	public final fun component2 ()J
-	public final fun component3 ()I
+	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
-	public final fun copy-UiV6LeQ (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
-	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
+	public final fun copy-UiV6LeQ (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
+	public static synthetic fun copy-UiV6LeQ$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoing;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdaptedMajorityTotalAmount ()D
 	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
-	public fun getNanostarAmount ()I
+	public fun getNanostarAmount ()Ljava/lang/Integer;
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public fun getSource ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
@@ -30796,22 +30796,22 @@ public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Outgoi
 
 public final class dev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown : dev/inmo/tgbotapi/types/payments/stars/StarTransaction {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown$Companion;
-	public synthetic fun <init> (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-xINTbLo ()Ljava/lang/String;
 	public final fun component2 ()J
-	public final fun component3 ()I
+	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public final fun component7 ()Lkotlinx/serialization/json/JsonElement;
-	public final fun copy-58pZDbM (Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
-	public static synthetic fun copy-58pZDbM$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;Ljava/lang/String;JILdev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
+	public final fun copy-58pZDbM (Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
+	public static synthetic fun copy-58pZDbM$default (Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;Ljava/lang/String;JLjava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/StarTransaction$Unknown;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdaptedMajorityTotalAmount ()D
 	public fun getAmount ()J
 	public fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun getId-xINTbLo ()Ljava/lang/String;
-	public fun getNanostarAmount ()I
+	public fun getNanostarAmount ()Ljava/lang/Integer;
 	public fun getPartner ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;
 	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
 	public fun getReceiver ()Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;

@@ -19,7 +19,7 @@ import kotlinx.serialization.json.JsonElement
 @ClassCastsIncluded
 sealed interface StarTransaction : Amounted {
     val id: StarTransactionId
-    val nanostarAmount: Int
+    val nanostarAmount: Int?
     val date: TelegramDate
     val partner: TransactionPartner
     val source: TransactionPartner?
@@ -32,7 +32,7 @@ sealed interface StarTransaction : Amounted {
         @SerialName(amountField)
         override val amount: Long,
         @SerialName(nanostarAmountField)
-        override val nanostarAmount: Int,
+        override val nanostarAmount: Int?,
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(sourceField)
@@ -52,7 +52,7 @@ sealed interface StarTransaction : Amounted {
         @SerialName(amountField)
         override val amount: Long,
         @SerialName(nanostarAmountField)
-        override val nanostarAmount: Int,
+        override val nanostarAmount: Int?,
         @SerialName(dateField)
         override val date: TelegramDate,
         @SerialName(receiverField)
@@ -71,7 +71,7 @@ sealed interface StarTransaction : Amounted {
         override val id: StarTransactionId,
         override val amount: Long,
         @SerialName(nanostarAmountField)
-        override val nanostarAmount: Int,
+        override val nanostarAmount: Int?,
         override val date: TelegramDate,
         override val source: TransactionPartner?,
         override val receiver: TransactionPartner?,
@@ -86,9 +86,9 @@ sealed interface StarTransaction : Amounted {
         private data class Surrogate(
             val id: StarTransactionId,
             val amount: Long,
-            @SerialName(nanostarAmountField)
-            val nanostarAmount: Int,
             val date: TelegramDate,
+            @SerialName(nanostarAmountField)
+            val nanostarAmount: Int? = null,
             val source: TransactionPartner? = null,
             val receiver: TransactionPartner? = null,
         )
