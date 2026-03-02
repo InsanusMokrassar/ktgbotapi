@@ -48,6 +48,8 @@ data class OwnerChatMember(
     override val canDeleteStories: Boolean = true
     @Transient
     override val canManageDirectMessages: Boolean = true
+    @Transient
+    override val canManageTags: Boolean = true
 
     @SerialName(statusField)
     @Required

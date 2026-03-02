@@ -65,6 +65,7 @@ internal data class RawMessage(
     private val direct_messages_topic: DirectMessagesTopic? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val from: PreviewUser? = null,
+    private val sender_tag: UserTag? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
@@ -476,6 +477,7 @@ internal data class RawMessage(
                                         senderBoostsCount = sender_boost_count,
                                         fromOffline = is_from_offline,
                                         cost = paid_star_count,
+                                        senderTag = sender_tag,
                                     )
                                 }
                             }
@@ -519,6 +521,7 @@ internal data class RawMessage(
                                         fromOffline = is_from_offline,
                                         suggestedPostInfo = suggested_post_info,
                                         cost = paid_star_count,
+                                        senderTag = sender_tag,
                                     )
                                 }
                             }
@@ -625,6 +628,7 @@ internal data class RawMessage(
                                             senderBoostsCount = sender_boost_count,
                                             fromOffline = is_from_offline,
                                             cost = paid_star_count,
+                                            senderTag = sender_tag,
                                         )
                                     }
                                 } else {
@@ -698,6 +702,7 @@ internal data class RawMessage(
                                             senderBoostsCount = sender_boost_count,
                                             fromOffline = is_from_offline,
                                             cost = paid_star_count,
+                                            senderTag = sender_tag
                                         )
                                     }
                                 }
@@ -773,6 +778,7 @@ internal data class RawMessage(
                                 senderBoostsCount = sender_boost_count,
                                 fromOffline = is_from_offline,
                                 cost = paid_star_count,
+                                senderTag = sender_tag,
                             )
                         }
                     }

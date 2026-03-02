@@ -80,6 +80,7 @@ val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
+val memberTagLength = 0 .. 16
 
 val dartsCubeAndBowlingDiceResultLimit = 1 .. 6
 val basketballAndFootballDiceResultLimit = 1 .. 5
@@ -272,10 +273,12 @@ const val correctOptionIdField = "correct_option_id"
 const val allowsMultipleAnswersField = "allows_multiple_answers"
 const val isAnonymousField = "is_anonymous"
 const val canManageTopicsField = "can_manage_topics"
+const val canEditTagField = "can_edit_tag"
 const val canPostStoriesField = "can_post_stories"
 const val canEditStoriesField = "can_edit_stories"
 const val canDeleteStoriesField = "can_delete_stories"
 const val canManageDirectMessagesField = "can_manage_direct_messages"
+const val canManageTagsField = "can_manage_tags"
 const val captionEntitiesField = "caption_entities"
 const val hasSpoilerField = "has_spoiler"
 const val showCaptionAboveMediaField = "show_caption_above_media"
@@ -488,6 +491,7 @@ const val headingField = "heading"
 const val fromField = "from"
 const val userChatIdField = "user_chat_id"
 const val userField = "user"
+const val tagField = "tag"
 const val newOwnerField = "new_owner"
 const val dateField = "date"
 const val reactionsField = "reactions"
@@ -666,6 +670,7 @@ const val mainFrameTimestampField = "main_frame_timestamp"
 
 const val firstProfileAudioField = "first_profile_audio"
 const val paidMessageStarCountField = "paid_message_star_count"
+const val senderTagField = "sender_tag"
 const val countField = "count"
 const val ratingField = "rating"
 const val uniqueGiftColorsField = "unique_gift_colors"

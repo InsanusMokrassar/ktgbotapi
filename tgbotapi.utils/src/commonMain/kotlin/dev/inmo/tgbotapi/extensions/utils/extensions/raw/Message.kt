@@ -28,6 +28,9 @@ inline val Message.from: User?
 inline val Message.sender_chat: PreviewChat?
     get() = withSenderChatMessageOrNull() ?.senderChat
 @RiskFeature(RawFieldsUsageWarning)
+inline val Message.sender_tag: UserTag?
+    get() = potentiallyFromUserGroupContentMessageOrNull() ?.senderTag
+@RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_from: User?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asUserForwardInfo() ?.from
 @RiskFeature(RawFieldsUsageWarning)

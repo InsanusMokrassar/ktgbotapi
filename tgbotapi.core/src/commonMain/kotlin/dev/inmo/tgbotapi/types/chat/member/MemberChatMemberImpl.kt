@@ -10,7 +10,9 @@ import kotlinx.serialization.*
 data class MemberChatMemberImpl(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userField)
-    override val user: PreviewUser
+    override val user: PreviewUser,
+    @SerialName(tagField)
+    override val tag: UserTag? = null
 ) : MemberChatMember {
     @SerialName(statusField)
     @Required

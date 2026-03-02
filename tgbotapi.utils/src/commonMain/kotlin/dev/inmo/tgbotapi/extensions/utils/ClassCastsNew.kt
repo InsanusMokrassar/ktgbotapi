@@ -402,6 +402,7 @@ import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
+import dev.inmo.tgbotapi.types.message.textsources.DateTimeTextSource
 import dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 import dev.inmo.tgbotapi.types.message.textsources.ExpandableBlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
@@ -2804,6 +2805,12 @@ public inline fun TextSource.italicTextSourceOrNull(): ItalicTextSource? = this 
 public inline fun TextSource.italicTextSourceOrThrow(): ItalicTextSource = this as dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 
 public inline fun <T> TextSource.ifItalicTextSource(block: (ItalicTextSource) -> T): T? = italicTextSourceOrNull() ?.let(block)
+
+public inline fun TextSource.dateTimeTextSourceOrNull(): DateTimeTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.DateTimeTextSource
+
+public inline fun TextSource.dateTimeTextSourceOrThrow(): DateTimeTextSource = this as dev.inmo.tgbotapi.types.message.textsources.DateTimeTextSource
+
+public inline fun <T> TextSource.ifDateTimeTextSource(block: (DateTimeTextSource) -> T): T? = dateTimeTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.textMentionTextSourceOrNull(): TextMentionTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
 

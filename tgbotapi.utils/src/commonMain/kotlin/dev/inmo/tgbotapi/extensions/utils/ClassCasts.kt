@@ -3037,6 +3037,15 @@ inline fun TextSource.asTextMentionTextSource(): TextMentionTextSource? = this a
 inline fun TextSource.requireTextMentionTextSource(): TextMentionTextSource = this as TextMentionTextSource
 
 @PreviewFeature
+inline fun <T> TextSource.whenDateTimeTextSource(block: (DateTimeTextSource) -> T) = asDateTimeTextSource()?.let(block)
+
+@PreviewFeature
+inline fun TextSource.asDateTimeTextSource(): DateTimeTextSource? = this as? DateTimeTextSource
+
+@PreviewFeature
+inline fun TextSource.requireDateTimeTextSource(): DateTimeTextSource = this as DateTimeTextSource
+
+@PreviewFeature
 inline fun <T> TextSource.whenURLTextSource(block: (URLTextSource) -> T) = asURLTextSource()?.let(block)
 
 @PreviewFeature

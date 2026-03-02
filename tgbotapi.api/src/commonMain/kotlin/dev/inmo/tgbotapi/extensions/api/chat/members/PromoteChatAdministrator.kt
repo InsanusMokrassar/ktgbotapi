@@ -21,19 +21,21 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
+    canManageTags: Boolean? = null,
 ): Boolean = execute(
     PromoteChatMember(
-        chatId,
-        userId,
-        untilDate,
-        isAnonymous,
-        canChangeInfo,
-        canDeleteMessages,
-        canInviteUsers,
-        canRestrictMembers,
-        canPromoteMembers,
-        canManageVideoChats,
-        canManageChat
+        chatId = chatId,
+        userId = userId,
+        untilDate = untilDate,
+        isAnonymous = isAnonymous,
+        canChangeInfo = canChangeInfo,
+        canDeleteMessages = canDeleteMessages,
+        canInviteUsers = canInviteUsers,
+        canRestrictMembers = canRestrictMembers,
+        canPromoteMembers = canPromoteMembers,
+        canManageVideoChats = canManageVideoChats,
+        canManageChat = canManageChat,
+        canManageTags = canManageTags
     )
 )
 
@@ -49,18 +51,20 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
+    canManageTags: Boolean? = null,
 ): Boolean = promoteChatAdministrator(
-    chat.id,
-    userId,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
+    chatId = chat.id,
+    userId = userId,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTags = canManageTags
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -75,18 +79,20 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
+    canManageTags: Boolean? = null,
 ): Boolean = promoteChatAdministrator(
-    chatId,
-    user.id,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
+    chatId = chatId,
+    userId = user.id,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTags = canManageTags
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -101,16 +107,18 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
+    canManageTags: Boolean? = null,
 ): Boolean = promoteChatAdministrator(
-    chat.id,
-    user.id,
-    untilDate,
-    isAnonymous,
-    canChangeInfo,
-    canDeleteMessages,
-    canInviteUsers,
-    canRestrictMembers,
-    canPromoteMembers,
-    canManageVideoChats,
-    canManageChat
+    chatId = chat.id,
+    userId = user.id,
+    untilDate = untilDate,
+    isAnonymous = isAnonymous,
+    canChangeInfo = canChangeInfo,
+    canDeleteMessages = canDeleteMessages,
+    canInviteUsers = canInviteUsers,
+    canRestrictMembers = canRestrictMembers,
+    canPromoteMembers = canPromoteMembers,
+    canManageVideoChats = canManageVideoChats,
+    canManageChat = canManageChat,
+    canManageTags = canManageTags
 )

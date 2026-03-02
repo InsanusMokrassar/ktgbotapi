@@ -1,5 +1,24 @@
 # TelegramBotAPI changelog
 
+## 31.1.0
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.5](https://core.telegram.org/bots/api-changelog#march-1-2026)**
+
+* `Core`:
+    * Added `UserTag` value class and `senderTag` field to messages
+    * Added `SetChatMemberTag` request and `UserTag` support in `PromoteChatMember` and `ChatPermissions`
+    * Added `DateTimeTextSource` for `tg://time` links support
+    * Added `DateTimeFormatPart` and `TgDateTimeFormatBuilder` for building date-time format strings
+    * Added `UnitFromBooleanSerializer`
+* `API`:
+    * Added `setChatMemberTag` extensions
+* `Utils`:
+    * Added `dateTime` and `dateTimeln` extensions to `EntitiesBuilder`
+    * Added `dateTimeMarkdown`, `dateTimeMarkdownV2`, and `dateTimeHTML` string formatting extensions
+    * Regenerated class casts extensions
+* `WebApps`:
+    * Added `iconCustomEmojiId` support to `BottomButton` and `BottomButtonParams`
+
 ## 31.0.1
 
 * `Core`:

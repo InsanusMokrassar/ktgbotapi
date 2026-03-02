@@ -28,6 +28,7 @@ object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, emp
             "cashtag" to CashTagTextSource.serializer(),
             "spoiler" to SpoilerTextSource.serializer(),
             "custom_emoji" to CustomEmojiTextSource.serializer(),
+            "date_time" to DateTimeTextSource.serializer(),
             "blockquote" to BlockquoteTextSource.serializer(),
             "expandable_blockquote" to ExpandableBlockquoteTextSource.serializer(),
         ).also {

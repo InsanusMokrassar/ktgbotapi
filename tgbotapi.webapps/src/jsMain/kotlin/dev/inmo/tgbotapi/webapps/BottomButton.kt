@@ -1,10 +1,13 @@
 package dev.inmo.tgbotapi.webapps
 
+import dev.inmo.tgbotapi.types.CustomEmojiId
 import kotlin.js.Json
 import kotlin.js.json
 
 external class BottomButton {
+
     val text: String
+    val iconCustomEmojiId: CustomEmojiId?
     fun setText(text: String): BottomButton
 
     var color: String
@@ -32,6 +35,7 @@ external class BottomButton {
 }
 
 data class BottomButtonParams(
+    val iconCustomEmojiId: CustomEmojiId? = null,
     val text: String? = null,
     val color: String? = null,
     val textColor: String? = null,
@@ -42,6 +46,7 @@ data class BottomButtonParams(
 fun BottomButton.setParams(params: BottomButtonParams) = setParams(
     json(
         *listOfNotNull(
+            params.iconCustomEmojiId ?.let { "icon_custom_emoji_id" to params.iconCustomEmojiId },
             params.text ?.let { "text" to params.text },
             params.color ?.let { "color" to params.color },
             params.textColor ?.let { "text_color" to params.textColor },
