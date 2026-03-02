@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.UnixTimeStamp
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlinx.serialization.Serializable
@@ -15,7 +16,9 @@ data class RawMessageEntity(
     val url: String? = null,
     val user: User? = null,
     val language: String? = null,
-    val custom_emoji_id: CustomEmojiId? = null
+    val custom_emoji_id: CustomEmojiId? = null,
+    val unix_time: UnixTimeStamp? = null,
+    val date_time_format: String? = null
 ) {
     internal val range by lazy {
         offset until (offset + length)
@@ -43,6 +46,7 @@ data class RawMessageEntity(
             "code" -> 2
             "pre" -> 2
             "text_link" -> 2
+            "date_time" -> 2
             else -> 2
         }
     }
@@ -74,6 +78,11 @@ fun RawMessageEntity.asTextSource(
         "text_link" -> TextLinkTextSource(
             sourceSubstring,
             url ?: throw IllegalStateException("URL must not be null for text link")
+        )
+        "date_time" -> DateTimeTextSource(
+            sourceSubstring,
+            unix_time ?: throw IllegalStateException("Unix time must not be null for date_time"),
+            date_time_format
         )
         "text_mention" -> TextMentionTextSource(
             sourceSubstring,
@@ -200,6 +209,7 @@ fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
             is StrikethroughTextSource -> RawMessageEntity("strikethrough", offset, length)
             is SpoilerTextSource -> RawMessageEntity("spoiler", offset, length)
             is CustomEmojiTextSource -> RawMessageEntity("custom_emoji", offset, length, custom_emoji_id = customEmojiId)
+            is DateTimeTextSource -> RawMessageEntity("date_time", offset, length, unix_time = unixTimeStamp, date_time_format = dateTimeFormat)
             is RegularTextSource -> null
         }
     ) + if (this is MultilevelTextSource) {
