@@ -3165,6 +3165,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/MessageKt {
 	public static final fun getReply_markup (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun getReply_to_message (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public static final fun getSender_chat (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public static final fun getSender_tag (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/String;
 	public static final fun getSticker (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/files/Sticker;
 	public static final fun getSuccessful_payment (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/payments/SuccessfulPayment;
 	public static final fun getSupergroup_chat_created (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
