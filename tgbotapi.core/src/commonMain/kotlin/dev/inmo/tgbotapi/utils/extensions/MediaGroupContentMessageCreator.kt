@@ -99,6 +99,7 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBoostsCount = sourceMessage.senderBoostsCount,
             fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
+            senderTag = sourceMessage.senderTag,
         )
         is ConnectedFromChannelGroupContentMessage -> ConnectedFromChannelGroupContentMessageImpl(
             chat = sourceMessage.chat,
@@ -168,6 +169,7 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBoostsCount = sourceMessage.senderBoostsCount,
             fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
+            senderTag = sourceMessage.senderTag,
         )
         is CommonChannelDirectMessagesContentMessage -> CommonChannelDirectMessagesContentMessageImpl(
             chat = sourceMessage.chat,
@@ -186,6 +188,7 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             senderBoostsCount = sourceMessage.senderBoostsCount,
             fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
+            senderTag = sourceMessage.senderTag,
         )
         is FromChannelForumContentMessage -> FromChannelForumContentMessageImpl(
             chat = sourceMessage.chat,
@@ -243,6 +246,7 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             fromOffline = sourceMessage.fromOffline,
             suggestedPostInfo = sourceMessage.suggestedPostInfo,
             cost = sourceMessage.cost,
+            senderTag = sourceMessage.senderTag,
         )
         is FromChannelSuggestedChannelDirectMessagesContentMessage<*> -> FromChannelSuggestedChannelDirectMessagesContentMessageImpl(
             chat = sourceMessage.chat,

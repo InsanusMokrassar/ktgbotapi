@@ -185,6 +185,8 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val fromOffline: Boolean,
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
+    @SerialName(senderTagField)
+    override val senderTag: UserTag? = null,
 ) : CommonGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -463,6 +465,8 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val fromOffline: Boolean,
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
+    @SerialName(senderTagField)
+    override val senderTag: UserTag? = null,
 ) : CommonForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -520,6 +524,8 @@ data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
     override val fromOffline: Boolean,
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
+    @SerialName(senderTagField)
+    override val senderTag: UserTag? = null
 ) : CommonChannelDirectMessagesContentMessage<T> {
     constructor(
         chat: PreviewChannelDirectMessagesChat,
@@ -577,7 +583,9 @@ data class CommonSuggestedChannelDirectMessagesContentMessageImpl<T : MessageCon
     override val fromOffline: Boolean,
     override val suggestedPostInfo: SuggestedPostInfo,
     @SerialName(paidMessageStarCountField)
-    override val cost: Int? = null
+    override val cost: Int? = null,
+    @SerialName(senderTagField)
+    override val senderTag: UserTag? = null
 ) : CommonSuggestedChannelDirectMessagesContentMessage<T> {
     constructor(
         chat: PreviewChannelDirectMessagesChat,

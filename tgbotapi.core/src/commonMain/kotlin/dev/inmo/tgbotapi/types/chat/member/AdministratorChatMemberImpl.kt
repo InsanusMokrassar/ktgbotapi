@@ -48,6 +48,8 @@ data class AdministratorChatMemberImpl(
     override val canDeleteStories: Boolean = false,
     @SerialName(canManageDirectMessagesField)
     override val canManageDirectMessages: Boolean = false,
+    @SerialName(canManageTagsField)
+    override val canManageTags: Boolean = false,
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required

@@ -13,7 +13,9 @@ data class SubscriptionMemberChatMemberImpl(
     override val user: PreviewUser,
     @SerialName(untilDateField)
     @Serializable(TelegramDateSerializer::class)
-    override val untilDate: TelegramDate
+    override val untilDate: TelegramDate,
+    @SerialName(tagField)
+    override val tag: UserTag? = null
 ) : SubscriptionMemberChatMember {
     @SerialName(statusField)
     @Required

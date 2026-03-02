@@ -13,7 +13,9 @@ data class KickedChatMember(
     @SerialName(userField)
     override val user: PreviewUser,
     @SerialName(untilDateField)
-    override val untilDate: TelegramDate? = null
+    override val untilDate: TelegramDate? = null,
+    @SerialName(tagField)
+    override val tag: UserTag? = null,
 ) : RestrictedChatMember {
     @SerialName(statusField)
     @Required

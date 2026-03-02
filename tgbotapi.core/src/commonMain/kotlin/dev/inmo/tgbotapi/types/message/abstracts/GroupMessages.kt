@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
 import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.UserTag
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.suggested.SuggestedPostInfo
@@ -14,6 +14,7 @@ sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<
 
 sealed interface PotentiallyFromUserGroupContentMessage<T : MessageContent> : GroupContentMessage<T> {
     val senderBoostsCount: Int?
+    val senderTag: UserTag?
 }
 
 sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyTopicMessage {

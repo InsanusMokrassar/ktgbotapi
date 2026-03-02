@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.chat.member
 
+import dev.inmo.tgbotapi.abstracts.OptionallyTagged
 import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
@@ -8,7 +9,7 @@ import kotlinx.serialization.Serializable
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatMemberSerializer::class)
-sealed interface RestrictedChatMember : ChatMember, UntilDate {
+sealed interface RestrictedChatMember : ChatMember, UntilDate, OptionallyTagged {
     companion object {
         // backward compatibility fun
         @Deprecated(

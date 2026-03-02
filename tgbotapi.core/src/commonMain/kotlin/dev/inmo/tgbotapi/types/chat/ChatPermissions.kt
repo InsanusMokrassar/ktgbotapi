@@ -33,6 +33,7 @@ interface ChatPermissions {
     val canChangeInfo: Boolean?
     val canInviteUsers: Boolean?
     val canPinMessages: Boolean?
+    val canEditTag: Boolean?
     @Transient
     val isGranular
         get() = canSendAudios != null ||
@@ -73,7 +74,9 @@ interface ChatPermissions {
         @SerialName(canInviteUsersField)
         override val canInviteUsers: Boolean? = null,
         @SerialName(canPinMessagesField)
-        override val canPinMessages: Boolean? = null
+        override val canPinMessages: Boolean? = null,
+        @SerialName(canEditTagField)
+        override val canEditTag: Boolean = false,
     ) : ChatPermissions {
         @Transient
         override val isGranular: Boolean
@@ -93,7 +96,9 @@ interface ChatPermissions {
         @SerialName(canInviteUsersField)
         override val canInviteUsers: Boolean? = null,
         @SerialName(canPinMessagesField)
-        override val canPinMessages: Boolean? = null
+        override val canPinMessages: Boolean? = null,
+        @SerialName(canEditTagField)
+        override val canEditTag: Boolean = false,
     ) : ChatPermissions {
         @Transient
         override val isGranular: Boolean
