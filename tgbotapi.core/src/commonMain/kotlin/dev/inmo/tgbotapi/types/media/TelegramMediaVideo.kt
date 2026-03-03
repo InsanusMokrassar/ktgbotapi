@@ -90,13 +90,16 @@ data class TelegramMediaVideo internal constructor (
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,
-    override val thumb: InputFile? = null
+    override val thumb: InputFile? = null,
+    @SerialName(supportsStreamingField)
+    override val supportsStreaming: Boolean = false,
 ) : TelegramFreeMedia,
     SizedTelegramMedia,
     DuratedTelegramMedia,
     ThumbedTelegramMedia,
     CoveredTelegramMedia,
     WithCustomStartTelegramMedia,
+    OptionallyStreamable,
     VisualMediaGroupMemberTelegramMedia {
     override val type: String = videoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {

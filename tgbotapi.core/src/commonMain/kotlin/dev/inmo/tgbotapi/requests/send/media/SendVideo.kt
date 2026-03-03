@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.OptionallyStreamable
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -37,7 +38,7 @@ fun SendVideo(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    supportStreaming: Boolean? = null,
+    supportsStreaming: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -67,7 +68,7 @@ fun SendVideo(
         duration = duration,
         width = width,
         height = height,
-        supportStreaming = supportStreaming,
+        supportsStreaming = supportsStreaming,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -102,7 +103,7 @@ fun SendVideo(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    supportStreaming: Boolean? = null,
+    supportsStreaming: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -132,7 +133,7 @@ fun SendVideo(
         duration = duration,
         width = width,
         height = height,
-        supportStreaming = supportStreaming,
+        supportsStreaming = supportsStreaming,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -188,7 +189,7 @@ data class SendVideoData internal constructor(
     @SerialName(heightField)
     override val height: Int? = null,
     @SerialName(supportStreamingField)
-    val supportStreaming: Boolean? = null,
+    override val supportsStreaming: Boolean = false,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
     @EncodeDefault
@@ -223,7 +224,8 @@ data class SendVideoData internal constructor(
     WithCustomizableCaptionRequest<ContentMessage<VideoContent>>,
     CoveredSendMessageRequest<ContentMessage<VideoContent>>,
     WithCustomStartMediaData,
-    OptionallyWithSpoilerRequest
+    OptionallyWithSpoilerRequest,
+    OptionallyStreamable
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

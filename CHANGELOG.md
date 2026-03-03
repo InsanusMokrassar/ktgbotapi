@@ -2,6 +2,10 @@
 
 ## 31.2.0
 
+* `Core` + `API`:
+  * Add `supportsStreaming` in places it haven't been supported.
+    * **PARTIALLY BREAKING CHANGE** `supportStreaming` has been renamed to `supportsStreaming`
+
 ## 31.1.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.5](https://core.telegram.org/bots/api-changelog#march-1-2026)**

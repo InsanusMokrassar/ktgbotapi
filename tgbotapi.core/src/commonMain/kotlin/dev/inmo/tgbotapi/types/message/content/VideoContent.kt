@@ -46,7 +46,7 @@ data class VideoContent(
         duration = media.duration,
         width = media.width,
         height = media.height,
-        supportStreaming = null,
+        supportsStreaming = false,
         threadId = messageThreadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
