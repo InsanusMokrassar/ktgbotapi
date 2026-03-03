@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.kslog.common.e
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -122,7 +123,7 @@ fun TelegramBot.longPollingFlow(
 
     withContext(contextToWork) {
         while (isActive) {
-            runCatchingLogging(logger = Log) {
+            runCatching {
                 execute(
                     getUpdatesRequestCreator(lastUpdateIdentifier ?.plus(1))
                 ).let { originalUpdates ->
@@ -135,6 +136,8 @@ fun TelegramBot.longPollingFlow(
                     if (isHttpRequestTimeoutException && autoSkipTimeoutExceptions) {
                         return@onFailure
                     }
+
+                    Log.e(e) { "Error during getting and handling of updates happen" }
 
                     exceptionsHandler?.invoke(e)
 
