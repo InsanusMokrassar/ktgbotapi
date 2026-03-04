@@ -13,7 +13,7 @@ ktor = "3.3.2"
 ksp = "2.3.2"
 kotlin-poet = "2.2.0"
 
-microutils = "0.26.9"
+microutils = "0.29.0"
 kslog = "1.5.2"
 
 versions = "0.53.0"
