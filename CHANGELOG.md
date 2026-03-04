@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 31.2.0
+
+* `Core`:
+  * Potentially fix [#1027](https://github.com/InsanusMokrassar/ktgbotapi/issues/1027) - drop http request exceptions on getting updates
+* `Core` + `API`:
+  * Add `supportsStreaming` in places it haven't been supported (fix of [#1026](https://github.com/InsanusMokrassar/ktgbotapi/issues/1026))
+    * **PARTIALLY BREAKING CHANGE** `supportStreaming` has been renamed to `supportsStreaming`
+
 ## 31.1.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.5](https://core.telegram.org/bots/api-changelog#march-1-2026)**
