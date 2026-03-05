@@ -168,7 +168,7 @@ inline val Message.migrate_to_chat_id: IdChatIdentifier?
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.migrate_from_chat_id: IdChatIdentifier?
     get() = asChatEventMessage() ?.chatEvent ?.let {
-         it ?.asSupergroupChatCreated() ?.migratedFrom ?: it ?.asMigratedToSupergroup() ?.migratedFrom
+         it.asSupergroupChatCreated() ?.migratedFrom ?: it.asMigratedToSupergroup() ?.migratedFrom
     }
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.pinned_message: Message?

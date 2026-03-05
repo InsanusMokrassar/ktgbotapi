@@ -109,7 +109,7 @@ public suspend fun TelegramBot.sendMessageDraft(
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chat.id.threadId
 ): Boolean = sendMessageDraft(
-    chatId = chat.id as IdChatIdentifier,
+    chatId = chat.id,
     draftId = draftId,
     text = text,
     parseMode = parseMode,
@@ -136,7 +136,7 @@ public suspend fun TelegramBot.sendMessageDraft(
     entities: TextSourcesList,
     threadId: MessageThreadId? = chat.id.threadId
 ): Boolean = sendMessageDraft(
-    chatId = chat.id as IdChatIdentifier,
+    chatId = chat.id,
     draftId = draftId,
     entities = entities,
     threadId = threadId
@@ -175,7 +175,7 @@ public suspend fun TelegramBot.sendMessageDraft(
     threadId: MessageThreadId? = chat.id.threadId,
     builderBody: EntitiesBuilderBody
 ): Boolean = sendMessageDraft(
-    chatId = chat.id as IdChatIdentifier,
+    chatId = chat.id,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
@@ -189,7 +189,7 @@ public suspend fun TelegramBot.sendMessageDraft(
     threadId: MessageThreadId? = chat.id.threadId,
     builderBody: EntitiesBuilderBody
 ): Boolean = sendMessageDraft(
-    chatId = chat.id as IdChatIdentifier,
+    chatId = chat.id,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
