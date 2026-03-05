@@ -9,6 +9,6 @@ public suspend fun TelegramBot.setBusinessAccountProfilePhoto(
     businessConnectionId: BusinessConnectionId,
     photo: InputProfilePhoto,
     isPublic: Boolean = false
-): Boolean = execute(
+): Unit = execute(
     SetBusinessAccountProfilePhoto(businessConnectionId, photo, isPublic)
 ) 

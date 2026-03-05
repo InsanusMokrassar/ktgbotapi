@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.files.Sticker
 
 public suspend fun TelegramBot.deleteStickerFromSet(
     sticker: FileId
-): Boolean = execute(
+): Unit = execute(
     DeleteStickerFromSet(
         sticker
     )
@@ -15,6 +15,6 @@ public suspend fun TelegramBot.deleteStickerFromSet(
 
 public suspend fun TelegramBot.deleteStickerFromSet(
     sticker: Sticker
-): Boolean = deleteStickerFromSet(
+): Unit = deleteStickerFromSet(
     sticker.fileId
 )

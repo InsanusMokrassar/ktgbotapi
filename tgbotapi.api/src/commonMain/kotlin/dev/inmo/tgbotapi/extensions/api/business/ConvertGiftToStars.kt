@@ -11,14 +11,14 @@ import dev.inmo.tgbotapi.types.gifts.Gift
 public suspend fun TelegramBot.convertGiftToStars(
     businessConnectionId: BusinessConnectionId,
     ownedGiftId: GiftId
-): Boolean = execute(
+): Unit = execute(
     ConvertGiftToStars(businessConnectionId, ownedGiftId)
 )
 
 public suspend fun TelegramBot.convertGiftToStars(
     businessConnectionId: BusinessConnectionId,
     gift: Gift.Regular
-): Boolean = convertGiftToStars(
+): Unit = convertGiftToStars(
     businessConnectionId = businessConnectionId,
     ownedGiftId = with(gift) {id}
 )

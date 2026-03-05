@@ -2,6 +2,8 @@
 
 ## 32.0.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
 * `Version`:
   * `Kotlin`: `2.2.21` -> `2.3.10`
   * `Kotlin Serialization`: `1.9.0` -> `1.10.0`
@@ -9,6 +11,8 @@
   * `KSP`: `2.3.2` -> `2.3.6`
   * `MicroUtils`: `0.26.9` -> `0.29.1`
   * `KSLog`: `1.5.2` -> `1.6.0`
+* `Core` + `API`:
+  * **BREAKING CHANGES: ALL METHODS THAT PREVIOUSLY RETURNED BOOLEAN NOW RETURNS UNIT**
 
 ## 31.2.0
 

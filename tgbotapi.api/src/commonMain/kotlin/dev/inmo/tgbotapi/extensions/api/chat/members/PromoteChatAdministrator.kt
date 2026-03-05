@@ -22,7 +22,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
-): Boolean = execute(
+): Unit = execute(
     PromoteChatMember(
         chatId = chatId,
         userId = userId,
@@ -52,7 +52,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
-): Boolean = promoteChatAdministrator(
+): Unit = promoteChatAdministrator(
     chatId = chat.id,
     userId = userId,
     untilDate = untilDate,
@@ -80,7 +80,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
-): Boolean = promoteChatAdministrator(
+): Unit = promoteChatAdministrator(
     chatId = chatId,
     userId = user.id,
     untilDate = untilDate,
@@ -108,7 +108,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
-): Boolean = promoteChatAdministrator(
+): Unit = promoteChatAdministrator(
     chatId = chat.id,
     userId = user.id,
     untilDate = untilDate,

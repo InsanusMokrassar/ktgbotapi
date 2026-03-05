@@ -7,12 +7,12 @@ import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 public suspend fun TelegramBot.setMyDefaultAdministratorRights(
     rights: ChatCommonAdministratorRights,
     forChannels: Boolean? = null
-): Boolean = execute(SetMyDefaultAdministratorRights(rights, forChannels))
+): Unit = execute(SetMyDefaultAdministratorRights(rights, forChannels))
 
 public suspend fun TelegramBot.setMyDefaultAdministratorRightsForChannels(
     rights: ChatCommonAdministratorRights
-): Boolean = setMyDefaultAdministratorRights(rights, forChannels = true)
+): Unit = setMyDefaultAdministratorRights(rights, forChannels = true)
 
 public suspend fun TelegramBot.setMyDefaultAdministratorRightsForGroupsAndSupergroups(
     rights: ChatCommonAdministratorRights
-): Boolean = setMyDefaultAdministratorRights(rights, forChannels = false)
+): Unit = setMyDefaultAdministratorRights(rights, forChannels = false)

@@ -12,7 +12,7 @@ public suspend fun TelegramBot.approveSuggestedPost(
     chatId: IdChatIdentifier,
     messageId: MessageId,
     sendDate: TelegramDate? = null,
-): Boolean = execute(
+): Unit = execute(
     ApproveSuggestedPost(chatId, messageId, sendDate)
 )
 
@@ -20,9 +20,9 @@ public suspend fun TelegramBot.approveSuggestedPost(
     chat: Chat,
     messageId: MessageId,
     sendDate: TelegramDate? = null,
-): Boolean = approveSuggestedPost(chat.id, messageId, sendDate)
+): Unit = approveSuggestedPost(chat.id, messageId, sendDate)
 
 public suspend fun TelegramBot.approveSuggestedPost(
     message: Message,
     sendDate: TelegramDate? = null,
-): Boolean = approveSuggestedPost(message.chat, message.messageId, sendDate)
+): Unit = approveSuggestedPost(message.chat, message.messageId, sendDate)

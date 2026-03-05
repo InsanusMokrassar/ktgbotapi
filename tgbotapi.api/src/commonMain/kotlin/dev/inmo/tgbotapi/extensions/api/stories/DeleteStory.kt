@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.stories.Story
 public suspend fun TelegramBot.deleteStory(
     businessConnectionId: BusinessConnectionId,
     storyId: StoryId
-): Boolean = execute(
+): Unit = execute(
     DeleteStory(
         businessConnectionId = businessConnectionId,
         storyId = storyId
@@ -23,20 +23,20 @@ public suspend fun TelegramBot.deleteStory(
 public suspend fun TelegramBot.deleteStory(
     message: BusinessContentMessage<*>,
     storyId: StoryId
-): Boolean = deleteStory(
+): Unit = deleteStory(
     businessConnectionId = with(message) {message.businessConnectionId}, storyId = storyId
 )
 
 public suspend fun TelegramBot.deleteStory(
     businessConnectionId: BusinessConnectionId,
     story: Story
-): Boolean = deleteStory(
+): Unit = deleteStory(
     businessConnectionId = businessConnectionId, storyId = with(story) {story.id}
 )
 
 public suspend fun TelegramBot.deleteStory(
     message: BusinessContentMessage<*>,
     story: Story
-): Boolean = deleteStory(
+): Unit = deleteStory(
     message = message, storyId = with(story) {story.id}
 )

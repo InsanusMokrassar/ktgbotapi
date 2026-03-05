@@ -14,13 +14,13 @@ import dev.inmo.tgbotapi.types.stickers.StickerSet
 public suspend fun TelegramBot.setCustomEmojiStickerSetThumbnail(
     stickerSetName: StickerSetName,
     customEmojiId: CustomEmojiId
-): Boolean = execute(
+): Unit = execute(
     SetCustomEmojiStickerSetThumbnail(stickerSetName, customEmojiId)
 )
 
 public suspend fun TelegramBot.setCustomEmojiStickerSetThumbnail(
     stickerSet: StickerSet,
     customEmojiId: CustomEmojiId
-): Boolean = setCustomEmojiStickerSetThumbnail(
+): Unit = setCustomEmojiStickerSetThumbnail(
     stickerSet.name, customEmojiId
 )

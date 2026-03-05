@@ -7,8 +7,8 @@ import dev.inmo.tgbotapi.types.chat.SupergroupChat
 
 public suspend fun TelegramBot.deleteChatStickerSet(
     chatId: ChatIdentifier
-): Boolean = execute(DeleteChatStickerSet(chatId))
+): Unit = execute(DeleteChatStickerSet(chatId))
 
 public suspend fun TelegramBot.deleteChatStickerSet(
     chat: SupergroupChat
-): Boolean = deleteChatStickerSet(chat.id)
+): Unit = deleteChatStickerSet(chat.id)

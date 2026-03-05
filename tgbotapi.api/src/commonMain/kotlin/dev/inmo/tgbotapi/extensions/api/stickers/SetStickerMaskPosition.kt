@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.stickers.MaskPosition
 public suspend fun TelegramBot.setStickerMaskPosition(
     sticker: FileId,
     maskPosition: MaskPosition
-): Boolean = execute(
+): Unit = execute(
     SetStickerMaskPosition(
         sticker,
         maskPosition

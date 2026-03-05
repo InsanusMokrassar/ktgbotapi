@@ -19,7 +19,7 @@ public suspend fun TelegramBot.replaceStickerInSet(
     stickerSetName: StickerSetName,
     oldSticker: FileId,
     newSticker: InputSticker
-): Boolean = execute(
+): Unit = execute(
     ReplaceStickerInSet(userId, stickerSetName, oldSticker, newSticker)
 )
 
@@ -28,14 +28,14 @@ public suspend fun TelegramBot.replaceStickerInSet(
     stickerSetName: String,
     oldSticker: FileId,
     newSticker: InputSticker
-): Boolean = replaceStickerInSet(userId, StickerSetName(stickerSetName), oldSticker, newSticker)
+): Unit = replaceStickerInSet(userId, StickerSetName(stickerSetName), oldSticker, newSticker)
 
 public suspend fun TelegramBot.replaceStickerInSet(
     userId: UserId,
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     userId,
     stickerSet.name,
     oldSticker,
@@ -50,7 +50,7 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     userId,
     stickerSet,
     oldSticker,
@@ -84,7 +84,7 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     userId,
     stickerSet.name,
     oldSticker,
@@ -116,7 +116,7 @@ public suspend fun TelegramBot.replaceStickerInSet(
     stickerSet: StickerSet,
     oldSticker: FileId,
     newSticker: InputSticker
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     user.id,
     stickerSet.name,
     oldSticker,
@@ -131,7 +131,7 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     user.id, stickerSet, oldSticker, sticker, format, emojis, keywords
 )
 
@@ -143,6 +143,6 @@ public suspend fun TelegramBot.replaceStickerInSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-): Boolean = replaceStickerInSet(
+): Unit = replaceStickerInSet(
     user.id, stickerSet, oldSticker, sticker, format, emojis, maskPosition
 )

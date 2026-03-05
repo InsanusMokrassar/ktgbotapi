@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.bot
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.business_connection.InputProfilePhoto
 import dev.inmo.tgbotapi.types.photoField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.JsonObject
@@ -11,15 +12,15 @@ import kotlinx.serialization.json.JsonObject
 data class SetMyProfilePhoto(
     @SerialName(photoField)
     val photo: InputProfilePhoto
-) : MultipartRequest.Common<Boolean> {
+) : MultipartRequest.Common<Unit> {
     override fun method(): String = "setMyProfilePhoto"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override val data: SimpleRequest<Boolean>
+    override val data: SimpleRequest<Unit>
         get() = this
 
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")

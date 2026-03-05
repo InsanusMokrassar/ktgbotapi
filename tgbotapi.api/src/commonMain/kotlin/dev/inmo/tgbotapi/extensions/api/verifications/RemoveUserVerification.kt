@@ -6,6 +6,6 @@ import dev.inmo.tgbotapi.types.UserId
 
 public suspend fun TelegramBot.removeUserVerification(
     userId: UserId
-): Boolean = execute(
+): Unit = execute(
     RemoveUserVerification(userId)
 )

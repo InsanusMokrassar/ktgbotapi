@@ -7,8 +7,8 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 
 public suspend fun TelegramBot.leaveChat(
     chatId: ChatIdentifier
-): Boolean = execute(LeaveChat(chatId))
+): Unit = execute(LeaveChat(chatId))
 
 public suspend fun TelegramBot.leaveChat(
     chat: PublicChat
-): Boolean = leaveChat(chat.id)
+): Unit = leaveChat(chat.id)

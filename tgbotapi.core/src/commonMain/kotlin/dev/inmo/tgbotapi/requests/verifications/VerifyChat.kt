@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.customDescriptionField
 import dev.inmo.tgbotapi.types.descriptionField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -19,10 +20,10 @@ data class VerifyChat(
     override val chatId: ChatIdentifier,
     @SerialName(customDescriptionField)
     val description: String? = null
-): ChatRequest, SimpleRequest<Boolean> {
+): ChatRequest, SimpleRequest<Unit> {
     override fun method(): String = "verifyChat"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

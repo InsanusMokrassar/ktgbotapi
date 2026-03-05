@@ -12,31 +12,31 @@ import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatId: ChatIdentifier,
     userId: UserId
-): Boolean = execute(ApproveChatJoinRequest(chatId, userId))
+): Unit = execute(ApproveChatJoinRequest(chatId, userId))
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chat: PublicChat,
     userId: UserId
-): Boolean = approveChatJoinRequest(chat.id, userId)
+): Unit = approveChatJoinRequest(chat.id, userId)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatId: ChatIdentifier,
     user: User
-): Boolean = approveChatJoinRequest(chatId, user.id)
+): Unit = approveChatJoinRequest(chatId, user.id)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chat: PublicChat,
     user: User
-): Boolean = approveChatJoinRequest(chat.id, user.id)
+): Unit = approveChatJoinRequest(chat.id, user.id)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatJoinRequest: ChatJoinRequest
-): Boolean = approveChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
+): Unit = approveChatJoinRequest(chatJoinRequest.chat, chatJoinRequest.user)
 
 public suspend fun TelegramBot.approve(
     chatJoinRequest: ChatJoinRequest
-): Boolean = approveChatJoinRequest(chatJoinRequest)
+): Unit = approveChatJoinRequest(chatJoinRequest)
 
 public suspend fun TelegramBot.approveChatJoinRequest(
     chatJoinRequestUpdate: ChatJoinRequestUpdate
-): Boolean = approveChatJoinRequest(chatJoinRequestUpdate.data)
+): Unit = approveChatJoinRequest(chatJoinRequestUpdate.data)

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.media.base.DataRequest
 import dev.inmo.tgbotapi.requests.send.media.base.MultipartRequestImpl
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -15,7 +16,7 @@ private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")
     "https://$sourceUrl"
 }
 
-sealed class SetWebhookRequest : Request<Boolean>
+sealed class SetWebhookRequest : Request<Unit>
 class MultipartSetWebhookRequest(
     url: String,
     certificate: MultipartFile,
@@ -24,7 +25,7 @@ class MultipartSetWebhookRequest(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
-) : SetWebhookRequest(), MultipartRequest<Boolean> by MultipartRequestImpl(
+) : SetWebhookRequest(), MultipartRequest<Unit> by MultipartRequestImpl(
     SetWebhook(
         correctWebhookUrl(url),
         null as String?,
@@ -154,10 +155,10 @@ data class SetWebhook internal constructor(
     val dropPendingUpdates: Boolean? = null,
     @SerialName(secretTokenField)
     val secretToken: String? = null
-) : SetWebhookRequest(), DataRequest<Boolean> {
+) : SetWebhookRequest(), DataRequest<Unit> {
     override fun method(): String = "setWebhook"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

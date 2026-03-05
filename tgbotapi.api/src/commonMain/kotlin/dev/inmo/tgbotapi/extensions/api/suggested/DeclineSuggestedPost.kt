@@ -13,7 +13,7 @@ public suspend fun TelegramBot.declineSuggestedPost(
     chatId: IdChatIdentifier,
     messageId: MessageId,
     comment: String? = null,
-): Boolean = execute(
+): Unit = execute(
     DeclineSuggestedPost(chatId, messageId, comment)
 )
 
@@ -21,9 +21,9 @@ public suspend fun TelegramBot.declineSuggestedPost(
     chat: Chat,
     messageId: MessageId,
     comment: String? = null,
-): Boolean = declineSuggestedPost(chat.id, messageId, comment)
+): Unit = declineSuggestedPost(chat.id, messageId, comment)
 
 public suspend fun TelegramBot.declineSuggestedPost(
     message: Message,
     comment: String? = null,
-): Boolean = declineSuggestedPost(message.chat, message.messageId, comment)
+): Unit = declineSuggestedPost(message.chat, message.messageId, comment)

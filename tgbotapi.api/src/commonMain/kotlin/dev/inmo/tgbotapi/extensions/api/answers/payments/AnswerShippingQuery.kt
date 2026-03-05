@@ -10,19 +10,19 @@ import dev.inmo.tgbotapi.types.payments.ShippingQuery
 public suspend fun TelegramBot.answerShippingQueryOk(
     id: ShippingQueryId,
     shippingOptions: List<ShippingOption>
-): Boolean = execute(AnswerShippingQueryOk(id, shippingOptions))
+): Unit = execute(AnswerShippingQueryOk(id, shippingOptions))
 public suspend fun TelegramBot.answerShippingQueryOk(
     shippingQuery: ShippingQuery,
     shippingOptions: List<ShippingOption>
-): Boolean = answerShippingQueryOk(shippingQuery.id, shippingOptions)
+): Unit = answerShippingQueryOk(shippingQuery.id, shippingOptions)
 
 public suspend fun TelegramBot.answerShippingQueryError(
     id: ShippingQueryId,
     error: String
-): Boolean = execute(AnswerShippingQueryError(id, error))
+): Unit = execute(AnswerShippingQueryError(id, error))
 public suspend fun TelegramBot.answerShippingQueryError(
     shippingQuery: ShippingQuery,
     error: String
-): Boolean = answerShippingQueryError(shippingQuery.id, error)
+): Unit = answerShippingQueryError(shippingQuery.id, error)
 
 

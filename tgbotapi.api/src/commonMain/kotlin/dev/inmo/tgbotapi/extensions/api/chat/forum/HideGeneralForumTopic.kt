@@ -11,10 +11,10 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.hideGeneralForumTopic(
     chatId: ChatIdentifier
-): Boolean = execute(
+): Unit = execute(
     HideGeneralForumTopic(chatId)
 )
 
 public suspend fun TelegramBot.hideGeneralForumTopic(
     chat: Chat
-): Boolean = hideGeneralForumTopic(chat.id)
+): Unit = hideGeneralForumTopic(chat.id)

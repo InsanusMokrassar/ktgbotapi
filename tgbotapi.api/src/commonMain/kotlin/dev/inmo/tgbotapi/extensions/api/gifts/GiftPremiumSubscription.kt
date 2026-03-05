@@ -15,7 +15,7 @@ public suspend fun TelegramBot.giftPremiumSubscription(
     starCount: Int,
     text: String,
     parseMode: ParseMode? = null
-): Boolean = execute(
+): Unit = execute(
     GiftPremiumSubscription(
         userId = userId,
         monthCount = monthCount,
@@ -30,7 +30,7 @@ public suspend fun TelegramBot.giftPremiumSubscription(
     monthCount: Int,
     starCount: Int,
     textSources: TextSourcesList? = null,
-): Boolean = execute(
+): Unit = execute(
     GiftPremiumSubscription(
         userId = userId,
         monthCount = monthCount,
@@ -45,7 +45,7 @@ public suspend fun TelegramBot.giftPremiumSubscription(
     starCount: Int,
     separator: TextSource? = null,
     textBuilder: EntitiesBuilderBody
-): Boolean = execute(
+): Unit = execute(
     GiftPremiumSubscription(
         userId = userId,
         monthCount = monthCount,

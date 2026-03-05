@@ -30,7 +30,7 @@ public suspend fun TelegramBot.sendGift(
     text: String,
     parseMode: ParseMode?,
     upgradableToUnique: Boolean = false
-): Boolean = execute(
+): Unit = execute(
     SendGift.toUser(
         userId = userId,
         giftId = giftId,
@@ -57,7 +57,7 @@ public suspend fun TelegramBot.sendGiftToChat(
     text: String,
     parseMode: ParseMode?,
     upgradableToUnique: Boolean = false
-): Boolean = execute(
+): Unit = execute(
     SendGift.toChat(
         chatId = chatId,
         giftId = giftId,
@@ -83,7 +83,7 @@ public suspend fun TelegramBot.sendGift(
     giftId: GiftId,
     textSources: TextSourcesList,
     upgradableToUnique: Boolean = false,
-): Boolean = execute(
+): Unit = execute(
     SendGift.toUser(
         userId = userId,
         giftId = giftId,
@@ -108,7 +108,7 @@ public suspend fun TelegramBot.sendGiftToChat(
     giftId: GiftId,
     textSources: TextSourcesList,
     upgradableToUnique: Boolean = false,
-): Boolean = execute(
+): Unit = execute(
     SendGift.toChat(
         chatId = chatId,
         giftId = giftId,

@@ -17,7 +17,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   giftId: GiftId,
   text: String,
   parseMode: ParseMode?,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chatId = with(chat) {id}, giftId = giftId, text = text, parseMode = parseMode
 )
 
@@ -27,7 +27,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   text: String,
   parseMode: ParseMode?,
   upgradableToUnique: Boolean,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chatId = with(chat) {id}, giftId = giftId, text = text, parseMode = parseMode,
     upgradableToUnique = upgradableToUnique
 )
@@ -37,7 +37,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chatId = chatId, giftId = with(gift) {id}, text = text, parseMode = parseMode
 )
 
@@ -47,7 +47,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   text: String,
   parseMode: ParseMode?,
   upgradableToUnique: Boolean,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chatId = chatId, giftId = with(gift) {id}, text = text, parseMode = parseMode,
     upgradableToUnique = upgradableToUnique
 )
@@ -57,7 +57,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   gift: Gift.Regular,
   text: String,
   parseMode: ParseMode?,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chat = chat, giftId = with(gift) {id}, text = text, parseMode = parseMode
 )
 
@@ -67,7 +67,7 @@ public suspend fun TelegramBot.sendGiftToChat(
   text: String,
   parseMode: ParseMode?,
   upgradableToUnique: Boolean,
-): Boolean = sendGiftToChat(
+): Unit = sendGiftToChat(
     chat = chat, giftId = with(gift) {id}, text = text, parseMode = parseMode, upgradableToUnique =
     upgradableToUnique
 )

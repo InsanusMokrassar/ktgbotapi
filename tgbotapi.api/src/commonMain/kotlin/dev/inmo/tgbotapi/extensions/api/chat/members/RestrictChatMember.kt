@@ -16,7 +16,7 @@ public suspend fun TelegramBot.restrictChatMember(
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions(),
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = execute(RestrictChatMember(chatId, userId, untilDate, permissions, useIndependentChatPermissions))
+): Unit = execute(RestrictChatMember(chatId, userId, untilDate, permissions, useIndependentChatPermissions))
 
 public suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
@@ -24,7 +24,7 @@ public suspend fun TelegramBot.restrictChatMember(
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions(),
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = restrictChatMember(chat.id, userId, untilDate, permissions, useIndependentChatPermissions)
+): Unit = restrictChatMember(chat.id, userId, untilDate, permissions, useIndependentChatPermissions)
 
 public suspend fun TelegramBot.restrictChatMember(
     chatId: IdChatIdentifier,
@@ -32,7 +32,7 @@ public suspend fun TelegramBot.restrictChatMember(
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions(),
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = restrictChatMember(chatId, user.id, untilDate, permissions, useIndependentChatPermissions)
+): Unit = restrictChatMember(chatId, user.id, untilDate, permissions, useIndependentChatPermissions)
 
 public suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
@@ -40,5 +40,5 @@ public suspend fun TelegramBot.restrictChatMember(
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions(),
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = restrictChatMember(chat.id, user.id, untilDate, permissions, useIndependentChatPermissions)
+): Unit = restrictChatMember(chat.id, user.id, untilDate, permissions, useIndependentChatPermissions)
 

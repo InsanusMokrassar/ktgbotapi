@@ -10,10 +10,10 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.closeGeneralForumTopic(
     chatId: ChatIdentifier
-): Boolean = execute(
+): Unit = execute(
     CloseGeneralForumTopic(chatId)
 )
 
 public suspend fun TelegramBot.closeGeneralForumTopic(
     chat: Chat
-): Boolean = closeGeneralForumTopic(chat.id)
+): Unit = closeGeneralForumTopic(chat.id)

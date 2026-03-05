@@ -19,6 +19,7 @@ import dev.inmo.tgbotapi.types.messageIdsField
 import dev.inmo.tgbotapi.types.ownedGiftIdField
 import dev.inmo.tgbotapi.types.starCountField
 import dev.inmo.tgbotapi.types.usernameField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -35,11 +36,11 @@ data class UpgradeGift(
     val keepOriginalDetails: Boolean = false,
     @SerialName(starCountField)
     val starCount: Int? = null,
-) : BusinessRequest.Simple<Boolean> {
+) : BusinessRequest.Simple<Unit> {
     override fun method(): String = "upgradeGift"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

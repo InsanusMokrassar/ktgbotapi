@@ -8,6 +8,6 @@ public suspend fun TelegramBot.setBusinessAccountName(
     businessConnectionId: BusinessConnectionId,
     firstName: String,
     lastName: String? = null
-): Boolean = execute(
+): Unit = execute(
     SetBusinessAccountName(businessConnectionId, firstName, lastName)
 ) 

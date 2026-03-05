@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQ
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
@@ -25,7 +26,7 @@ data class AnswerInlineQuery(
     val nextOffset: String? = null,
     @SerialName(buttonField)
     val button: InlineQueryResultsButton? = null,
-) : SimpleRequest<Boolean> {
+) : SimpleRequest<Unit> {
     constructor(
         inlineQueryID: InlineQueryId,
         results: List<InlineQueryResult> = emptyList(),
@@ -48,8 +49,8 @@ data class AnswerInlineQuery(
     )
 
     override fun method(): String = "answerInlineQuery"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

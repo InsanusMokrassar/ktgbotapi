@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.stickers
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -14,7 +15,7 @@ data class SetStickerEmojiList (
     override val sticker: FileId,
     @SerialName(emojiListField)
     val emojis: List<String>
-) : StickerAction<Boolean> {
+) : StickerAction<Unit> {
     constructor(sticker: FileId, vararg emojis: String) : this(sticker, emojis.toList())
 
     init {
@@ -23,8 +24,8 @@ data class SetStickerEmojiList (
         }
     }
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

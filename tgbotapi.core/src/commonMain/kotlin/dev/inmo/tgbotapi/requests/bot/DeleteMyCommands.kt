@@ -6,6 +6,7 @@ import dev.inmo.micro_utils.language_codes.IetfLangSerializer
 import dev.inmo.tgbotapi.types.commands.*
 import dev.inmo.tgbotapi.types.languageCodeField
 import dev.inmo.tgbotapi.types.scopeField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -17,12 +18,12 @@ data class DeleteMyCommands(
     @SerialName(languageCodeField)
     @Serializable(IetfLangSerializer::class)
     override val ietfLanguageCode: IetfLang? = null
-) : MyCommandsRequest<Boolean> {
+) : MyCommandsRequest<Unit> {
     override fun method(): String  = "deleteMyCommands"
     override val requestSerializer: SerializationStrategy<DeleteMyCommands>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 
     constructor(
         scope: BotCommandScope = BotCommandScopeDefault,
@@ -32,5 +33,5 @@ data class DeleteMyCommands(
         languageCode ?.let(::IetfLang)
     )
 
-    companion object : MyCommandsRequest<Boolean> by DeleteMyCommands()
+    companion object : MyCommandsRequest<Unit> by DeleteMyCommands()
 }

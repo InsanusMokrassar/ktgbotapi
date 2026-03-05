@@ -4,6 +4,6 @@ import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.IdChatIdentifier
 
-interface ChatSenderRequest : ChatRequest, SimpleRequest<Boolean> {
+interface ChatSenderRequest : ChatRequest, SimpleRequest<Unit> {
     val senderChatId: IdChatIdentifier
 }

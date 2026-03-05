@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chatIdField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -19,10 +20,10 @@ import kotlinx.serialization.builtins.serializer
 data class UnpinAllChatMessages(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<Boolean> {
+): ChatRequest, SimpleRequest<Unit> {
     override fun method(): String = "unpinAllChatMessages"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

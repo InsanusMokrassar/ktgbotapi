@@ -13,22 +13,22 @@ import dev.inmo.tgbotapi.utils.passport.Decryptor
 public suspend fun TelegramBot.setPassportDataErrors(
     userId: UserId,
     errors: List<PassportElementError>
-): Boolean = execute(SetPassportDataErrors(userId, errors))
+): Unit = execute(SetPassportDataErrors(userId, errors))
 public suspend fun TelegramBot.setPassportDataErrors(
     user: User,
     errors: List<PassportElementError>
-): Boolean = setPassportDataErrors(user.id, errors)
+): Unit = setPassportDataErrors(user.id, errors)
 
 public suspend fun TelegramBot.setPassportDataErrors(
     userId: UserId,
     passportData: PassportData,
     decryptor: Decryptor,
     mapper: suspend Decryptor.(EncryptedPassportElement) -> PassportElementError
-): Boolean = setPassportDataErrors(
+): Unit = setPassportDataErrors(
     userId,
     passportData.data.map { decryptor.mapper(it) }.also {
         if (it.isEmpty()) {
-            return@setPassportDataErrors false
+            return@setPassportDataErrors
         }
     }
 )
@@ -37,10 +37,10 @@ public suspend fun TelegramBot.setPassportDataErrors(
     passportData: PassportData,
     decryptor: Decryptor,
     mapper: suspend Decryptor.(EncryptedPassportElement) -> PassportElementError
-): Boolean = setPassportDataErrors(user.id, passportData, decryptor, mapper)
+): Unit = setPassportDataErrors(user.id, passportData, decryptor, mapper)
 
 public suspend fun TelegramBot.setPassportDataErrors(
     passportMessage: PassportMessage,
     decryptor: Decryptor,
     mapper: suspend Decryptor.(EncryptedPassportElement) -> PassportElementError
-): Boolean = setPassportDataErrors(passportMessage.user, passportMessage.passportData, decryptor, mapper)
+): Unit = setPassportDataErrors(passportMessage.user, passportMessage.passportData, decryptor, mapper)

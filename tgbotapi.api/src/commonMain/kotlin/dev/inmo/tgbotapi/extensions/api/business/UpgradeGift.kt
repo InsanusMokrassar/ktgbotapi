@@ -19,7 +19,7 @@ public suspend fun TelegramBot.convertGiftToStars(
     ownedGiftId: GiftId,
     keepOriginalDetails: Boolean = false,
     starCount: Int? = null
-): Boolean = execute(
+): Unit = execute(
     UpgradeGift(
         businessConnectionId = businessConnectionId,
         ownedGiftId = ownedGiftId,
@@ -32,7 +32,7 @@ public suspend fun TelegramBot.convertGiftToStars(
     businessConnectionId: BusinessConnectionId,
     gift: Gift.Regular,
     keepOriginalDetails: Boolean = false,
-): Boolean = execute(
+): Unit = execute(
     UpgradeGift(
         businessConnectionId = businessConnectionId,
         ownedGiftId = gift.id,

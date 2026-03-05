@@ -7,8 +7,8 @@ import dev.inmo.tgbotapi.types.chat.Chat
 
 public suspend fun TelegramBot.unpinAllChatMessages(
     chatId: ChatIdentifier
-): Boolean = execute(UnpinAllChatMessages(chatId))
+): Unit = execute(UnpinAllChatMessages(chatId))
 
 public suspend fun TelegramBot.unpinAllChatMessages(
     chat: Chat
-): Boolean = unpinAllChatMessages(chat.id)
+): Unit = unpinAllChatMessages(chat.id)

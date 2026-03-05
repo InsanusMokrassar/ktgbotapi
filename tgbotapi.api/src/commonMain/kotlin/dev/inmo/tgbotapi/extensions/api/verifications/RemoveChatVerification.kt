@@ -6,6 +6,6 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 
 public suspend fun TelegramBot.removeChatVerification(
     chatId: ChatIdentifier
-): Boolean = execute(
+): Unit = execute(
     RemoveChatVerification(chatId)
 )

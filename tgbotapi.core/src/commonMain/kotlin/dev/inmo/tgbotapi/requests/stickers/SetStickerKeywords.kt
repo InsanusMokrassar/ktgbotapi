@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.stickers
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -14,7 +15,7 @@ data class SetStickerKeywords (
     override val sticker: FileId,
     @SerialName(keywordsField)
     val keywords: List<String>
-) : StickerAction<Boolean> {
+) : StickerAction<Unit> {
     constructor(sticker: FileId, vararg keywords: String) : this(sticker, keywords.toList())
 
     init {
@@ -28,8 +29,8 @@ data class SetStickerKeywords (
         }
     }
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

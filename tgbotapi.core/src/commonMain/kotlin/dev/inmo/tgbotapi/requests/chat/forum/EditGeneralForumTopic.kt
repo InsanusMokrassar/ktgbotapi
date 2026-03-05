@@ -9,7 +9,7 @@ data class EditGeneralForumTopic (
     override val chatId: ChatIdentifier,
     @SerialName(nameField)
     val name: String
-): ModifyForumRequest, GeneralForumRequest<Boolean> {
+): ModifyForumRequest, GeneralForumRequest<Unit> {
     init {
         if (name.length !in threadNameLength) {
             throw IllegalArgumentException("Thread name must be in $threadNameLength range")

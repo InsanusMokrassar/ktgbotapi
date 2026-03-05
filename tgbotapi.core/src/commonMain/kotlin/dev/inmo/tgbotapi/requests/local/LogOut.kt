@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.local
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -10,12 +11,12 @@ import kotlinx.serialization.builtins.serializer
  * call, you will not be able to log in again using the same token for 10 minutes
  */
 @Serializable
-object LogOut : SimpleRequest<Boolean> {
+object LogOut : SimpleRequest<Unit> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     override fun method(): String = "logOut"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

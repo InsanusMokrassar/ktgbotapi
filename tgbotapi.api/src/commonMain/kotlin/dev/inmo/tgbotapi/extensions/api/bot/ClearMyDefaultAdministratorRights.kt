@@ -5,8 +5,8 @@ import dev.inmo.tgbotapi.requests.bot.ClearMyDefaultAdministratorRights
 
 public suspend fun TelegramBot.clearMyDefaultAdministratorRights(
     forChannels: Boolean? = null
-): Boolean = execute(ClearMyDefaultAdministratorRights(forChannels))
+): Unit = execute(ClearMyDefaultAdministratorRights(forChannels))
 
-public suspend fun TelegramBot.clearMyDefaultAdministratorRightsForChannels(): Boolean = clearMyDefaultAdministratorRights(forChannels = true)
+public suspend fun TelegramBot.clearMyDefaultAdministratorRightsForChannels(): Unit = clearMyDefaultAdministratorRights(forChannels = true)
 
-public suspend fun TelegramBot.clearMyDefaultAdministratorRightsForGroupsAndSupergroups(): Boolean = clearMyDefaultAdministratorRights(forChannels = false)
+public suspend fun TelegramBot.clearMyDefaultAdministratorRightsForGroupsAndSupergroups(): Unit = clearMyDefaultAdministratorRights(forChannels = false)

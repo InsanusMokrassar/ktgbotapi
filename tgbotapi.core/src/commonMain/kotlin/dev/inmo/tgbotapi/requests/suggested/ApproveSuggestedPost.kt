@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.messageIdField
 import dev.inmo.tgbotapi.types.sendDateField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -25,12 +26,12 @@ data class ApproveSuggestedPost(
     val messageId: MessageId,
     @SerialName(sendDateField)
     val sendDate: TelegramDate? = null,
-) : SimpleRequest<Boolean>, ChatRequest {
+) : SimpleRequest<Unit>, ChatRequest {
     override val requestSerializer: SerializationStrategy<ApproveSuggestedPost>
         get() = serializer()
 
     override fun method(): String = "approveSuggestedPost"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

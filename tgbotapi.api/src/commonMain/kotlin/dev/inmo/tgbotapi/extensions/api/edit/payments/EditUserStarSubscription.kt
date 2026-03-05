@@ -10,7 +10,7 @@ public suspend fun TelegramBot.editUserStarSubscription(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId,
     isCanceled: Boolean
-): Boolean = execute(
+): Unit = execute(
     EditUserStarSubscription(
         userId = userId,
         telegramPaymentChargeId = telegramPaymentChargeId,
@@ -22,7 +22,7 @@ public suspend fun TelegramBot.editUserStarSubscription(
     user: User,
     telegramPaymentChargeId: TelegramPaymentChargeId,
     isCanceled: Boolean
-): Boolean = editUserStarSubscription(
+): Unit = editUserStarSubscription(
     userId = user.id,
     telegramPaymentChargeId = telegramPaymentChargeId,
     isCanceled = isCanceled
@@ -31,7 +31,7 @@ public suspend fun TelegramBot.editUserStarSubscription(
 public suspend fun TelegramBot.cancelUserStarSubscription(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-): Boolean = editUserStarSubscription(
+): Unit = editUserStarSubscription(
     userId = userId,
     telegramPaymentChargeId = telegramPaymentChargeId,
     isCanceled = true
@@ -40,7 +40,7 @@ public suspend fun TelegramBot.cancelUserStarSubscription(
 public suspend fun TelegramBot.cancelUserStarSubscription(
     user: User,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-): Boolean = editUserStarSubscription(
+): Unit = editUserStarSubscription(
     user = user,
     telegramPaymentChargeId = telegramPaymentChargeId,
     isCanceled = true
@@ -49,7 +49,7 @@ public suspend fun TelegramBot.cancelUserStarSubscription(
 public suspend fun TelegramBot.enableUserStarSubscription(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-): Boolean = editUserStarSubscription(
+): Unit = editUserStarSubscription(
     userId = userId,
     telegramPaymentChargeId = telegramPaymentChargeId,
     isCanceled = false
@@ -58,7 +58,7 @@ public suspend fun TelegramBot.enableUserStarSubscription(
 public suspend fun TelegramBot.enableUserStarSubscription(
     user: User,
     telegramPaymentChargeId: TelegramPaymentChargeId,
-): Boolean = editUserStarSubscription(
+): Unit = editUserStarSubscription(
     user = user,
     telegramPaymentChargeId = telegramPaymentChargeId,
     isCanceled = false

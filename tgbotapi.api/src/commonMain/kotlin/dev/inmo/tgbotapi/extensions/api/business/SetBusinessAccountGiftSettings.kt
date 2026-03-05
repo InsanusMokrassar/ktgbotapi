@@ -13,7 +13,7 @@ public suspend fun TelegramBot.setBusinessAccountGiftSettings(
     businessConnectionId: BusinessConnectionId,
     showGiftButton: Boolean,
     acceptedGiftTypes: AcceptedGiftTypes
-): Boolean = execute(
+): Unit = execute(
     SetBusinessAccountGiftSettings(
         businessConnectionId = businessConnectionId,
         showGiftButton = showGiftButton,
@@ -28,7 +28,7 @@ public suspend fun TelegramBot.setBusinessAccountGiftSettings(
     message: BusinessContentMessage<*>,
     showGiftButton: Boolean,
     acceptedGiftTypes: AcceptedGiftTypes
-): Boolean = setBusinessAccountGiftSettings(
+): Unit = setBusinessAccountGiftSettings(
     businessConnectionId = message.businessConnectionId,
     showGiftButton = showGiftButton,
     acceptedGiftTypes = acceptedGiftTypes

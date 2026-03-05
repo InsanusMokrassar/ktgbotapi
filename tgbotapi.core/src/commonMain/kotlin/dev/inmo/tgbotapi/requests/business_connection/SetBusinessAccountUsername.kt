@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.RawMessage
 import dev.inmo.tgbotapi.types.messageIdField
 import dev.inmo.tgbotapi.types.messageIdsField
 import dev.inmo.tgbotapi.types.usernameField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -27,11 +28,11 @@ data class SetBusinessAccountUsername(
     @SerialName(usernameField)
     @Serializable(Username.Companion.WithoutAtSerializer::class)
     val username: Username
-) : BusinessRequest.Simple<Boolean> {
+) : BusinessRequest.Simple<Unit> {
     override fun method(): String = "setBusinessAccountUsername"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

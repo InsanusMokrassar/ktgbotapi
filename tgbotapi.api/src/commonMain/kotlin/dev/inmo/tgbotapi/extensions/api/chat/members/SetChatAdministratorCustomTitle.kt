@@ -11,22 +11,22 @@ public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     userId: UserId,
     customTitle: String
-): Boolean = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
+): Unit = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     userId: UserId,
     customTitle: String
-): Boolean = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
+): Unit = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chatId: IdChatIdentifier,
     user: User,
     customTitle: String
-): Boolean = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
+): Unit = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
 
 public suspend fun TelegramBot.setChatAdministratorCustomTitle(
     chat: PublicChat,
     user: User,
     customTitle: String
-): Boolean = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)
+): Unit = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)

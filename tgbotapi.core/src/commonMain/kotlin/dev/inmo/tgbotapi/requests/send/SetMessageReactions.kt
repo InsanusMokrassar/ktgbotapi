@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.reactions.Reaction
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,12 +21,12 @@ data class SetMessageReactions(
     val reactions: List<Reaction>,
     @SerialName(isBigField)
     val big: Boolean = false
-) : SimpleRequest<Boolean>, ChatRequest {
+) : SimpleRequest<Unit>, ChatRequest {
     override fun method(): String = "setMessageReaction"
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

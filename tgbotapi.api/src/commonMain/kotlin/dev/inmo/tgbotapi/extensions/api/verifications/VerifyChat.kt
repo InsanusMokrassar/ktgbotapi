@@ -11,7 +11,7 @@ import kotlinx.serialization.SerialName
 public suspend fun TelegramBot.verifyChat(
     chatId: ChatIdentifier,
     description: String? = null
-): Boolean = execute(
+): Unit = execute(
     VerifyChat(
         chatId = chatId,
         description = description
@@ -24,7 +24,7 @@ public suspend fun TelegramBot.verifyChat(
 public suspend fun TelegramBot.verifyChat(
     chat: Chat,
     description: String? = null
-): Boolean = when (chat) {
+): Unit = when (chat) {
     is PrivateChat -> verifyUser(
         chat = chat,
         description = description

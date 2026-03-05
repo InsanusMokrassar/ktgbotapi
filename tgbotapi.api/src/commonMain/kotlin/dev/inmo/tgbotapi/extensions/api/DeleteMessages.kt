@@ -10,52 +10,52 @@ import kotlin.jvm.JvmName
 public suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
     messageIds: List<MessageId>
-): Boolean = messageIds.chunked(deleteMessagesLimit.last).map {
+): Unit = messageIds.chunked(deleteMessagesLimit.last).forEach {
     execute(
         DeleteMessages(
             chatId = chatId,
             messageIds = it
         )
     )
-}.all { it }
+}
 
 public suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
     messageIds: Array<MessageId>
-): Boolean = deleteMessages(
+): Unit = deleteMessages(
     chatId = chatId,
     messageIds = messageIds.toList()
 )
 
 public suspend fun TelegramBot.deleteMessages(
     messagesMetas: List<Message.MetaInfo>
-): Boolean = messagesMetas.groupBy { it.chatId }.map { (chatId, messages) ->
+): Unit = messagesMetas.groupBy { it.chatId }.forEach { (chatId, messages) ->
     deleteMessages(
         chatId = chatId,
         messageIds = messages.map { it.messageId }
     )
-}.all { it }
+}
 
 @JvmName("deleteMessagesWithMessages")
 public suspend fun TelegramBot.deleteMessages(
     messages: List<AccessibleMessage>
-): Boolean = deleteMessages(messages.map { it.metaInfo })
+): Unit = deleteMessages(messages.map { it.metaInfo })
 
 public suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageIds: List<MessageId>
-): Boolean = deleteMessages(chatId = chatId, messageIds = messageIds)
+): Unit = deleteMessages(chatId = chatId, messageIds = messageIds)
 
 public suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageIds: Array<MessageId>
-): Boolean = deleteMessages(chatId = chatId, messageIds = messageIds)
+): Unit = deleteMessages(chatId = chatId, messageIds = messageIds)
 
 public suspend fun TelegramBot.delete(
     messagesMetas: List<Message.MetaInfo>
-): Boolean = deleteMessages(messagesMetas)
+): Unit = deleteMessages(messagesMetas)
 
 @JvmName("deleteWithMessages")
 public suspend fun TelegramBot.delete(
     messages: List<AccessibleMessage>
-): Boolean = deleteMessages(messages)
+): Unit = deleteMessages(messages)
