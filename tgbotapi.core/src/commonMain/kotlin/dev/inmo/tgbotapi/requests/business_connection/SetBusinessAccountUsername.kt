@@ -27,7 +27,7 @@ data class SetBusinessAccountUsername(
     override val businessConnectionId: BusinessConnectionId,
     @SerialName(usernameField)
     @Serializable(Username.Companion.WithoutAtSerializer::class)
-    val username: Username
+    val username: Username? = null
 ) : BusinessRequest.Simple<Unit> {
     override fun method(): String = "setBusinessAccountUsername"
 

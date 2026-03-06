@@ -403,7 +403,8 @@ public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountU
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/SetBusinessAccountUsernameKt {
-	public static final fun setBusinessAccountUsername-_dB6Ko0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setBusinessAccountUsername-aYbkVkY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setBusinessAccountUsername-aYbkVkY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/business/TransferBusinessAccountStarBalanceKt {

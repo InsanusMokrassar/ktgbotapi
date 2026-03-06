@@ -2424,17 +2424,18 @@ public final class dev/inmo/tgbotapi/requests/business_connection/SetBusinessAcc
 
 public final class dev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername : dev/inmo/tgbotapi/requests/abstracts/BusinessRequest$Simple {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-T-_HSQI ()Ljava/lang/String;
-	public final fun component2-xonw-vc ()Ljava/lang/String;
-	public final fun copy-PzCSSl4 (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;
-	public static synthetic fun copy-PzCSSl4$default (Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;
+	public final fun component2-san03mo ()Ljava/lang/String;
+	public final fun copy-K73sskI (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;
+	public static synthetic fun copy-K73sskI$default (Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/business_connection/SetBusinessAccountUsername;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
-	public final fun getUsername-xonw-vc ()Ljava/lang/String;
+	public final fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun method ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
