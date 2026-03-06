@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.types.DisableNotification
 import dev.inmo.tgbotapi.abstracts.types.MessagesAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
@@ -7,6 +8,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -62,8 +64,8 @@ data class ForwardMessages (
         get() = fromChatId
 
     init {
-        require(messageIds.size in forwardMessagesLimit) {
-            "Messages count for forwardMessages must be in $forwardMessagesLimit range"
+        if (messageIds.size !in forwardMessagesLimit) {
+            DefaultKTgBotAPIKSLog.w("ForwardMessages", "Messages count for forwardMessages must be in $forwardMessagesLimit range")
         }
     }
 

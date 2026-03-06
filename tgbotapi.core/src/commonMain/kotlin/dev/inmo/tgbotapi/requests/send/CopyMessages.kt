@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyDirectMessageThreadRequest
@@ -11,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
@@ -67,8 +69,8 @@ data class CopyMessages (
         get() = fromChatId
 
     init {
-        require(messageIds.size in copyMessagesLimit) {
-            "Messages count for copyMessages must be in $copyMessagesLimit range"
+        if (messageIds.size !in copyMessagesLimit) {
+            DefaultKTgBotAPIKSLog.w("CopyMessages", "Messages count for copyMessages must be in $copyMessagesLimit range")
         }
     }
 
