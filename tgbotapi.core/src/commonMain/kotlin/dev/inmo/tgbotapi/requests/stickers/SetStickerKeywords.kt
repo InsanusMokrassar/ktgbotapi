@@ -1,8 +1,11 @@
 package dev.inmo.tgbotapi.requests.stickers
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -14,22 +17,22 @@ data class SetStickerKeywords (
     override val sticker: FileId,
     @SerialName(keywordsField)
     val keywords: List<String>
-) : StickerAction<Boolean> {
+) : StickerAction<Unit> {
     constructor(sticker: FileId, vararg keywords: String) : this(sticker, keywords.toList())
 
     init {
-        require(keywords.size !in keywordsInStickerLimit) {
-            "Keywords list size should be in range $keywordsInStickerLimit, but was ${keywords.size}"
+        if (keywords.size !in keywordsInStickerLimit) {
+            DefaultKTgBotAPIKSLog.w("SetStickerKeywords", "Keywords list size should be in range $keywordsInStickerLimit, but was ${keywords.size}")
         }
         keywords.forEach {
-            require(it.length in stickerKeywordLengthLimit) {
-                "Keyword length should be in range $stickerKeywordLengthLimit, but was ${it.length} (word \"$it\")"
+            if (it.length !in stickerKeywordLengthLimit) {
+                DefaultKTgBotAPIKSLog.w("SetStickerKeywords", "Keyword length should be in range $stickerKeywordLengthLimit, but was ${it.length} (word \"$it\")")
             }
         }
     }
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

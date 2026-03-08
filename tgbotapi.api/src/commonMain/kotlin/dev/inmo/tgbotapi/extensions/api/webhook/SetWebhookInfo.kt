@@ -16,7 +16,7 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
-): Boolean = execute(
+): Unit = execute(
     SetWebhook(
         url, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken
     )
@@ -33,7 +33,7 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
-): Boolean = execute(
+): Unit = execute(
     SetWebhook(
         url, certificate, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken
     )
@@ -50,7 +50,7 @@ public suspend fun TelegramBot.setWebhookInfo(
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
-): Boolean = execute(
+): Unit = execute(
     SetWebhook(
         url, certificate, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken
     )

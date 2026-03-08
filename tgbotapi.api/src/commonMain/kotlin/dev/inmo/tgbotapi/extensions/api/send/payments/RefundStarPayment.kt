@@ -9,9 +9,9 @@ import dev.inmo.tgbotapi.types.payments.abstracts.TelegramPaymentChargeId
 public suspend fun TelegramBot.refundStarPayment(
     userId: UserId,
     telegramPaymentChargeId: TelegramPaymentChargeId
-): Boolean = execute(RefundStarPayment(userId, telegramPaymentChargeId))
+): Unit = execute(RefundStarPayment(userId, telegramPaymentChargeId))
 
 public suspend fun TelegramBot.refundStarPayment(
     userId: UserId,
     successfulPayment: SuccessfulPayment
-): Boolean = refundStarPayment(userId, successfulPayment.telegramPaymentChargeId)
+): Unit = refundStarPayment(userId, successfulPayment.telegramPaymentChargeId)

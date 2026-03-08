@@ -11,7 +11,7 @@ public suspend fun TelegramBot.answerCallbackQuery(
     showAlert: Boolean? = null,
     url: String? = null,
     cachedTimeSeconds: Int? = null
-): Boolean = execute(AnswerCallbackQuery(callbackQueryId, text, showAlert, url, cachedTimeSeconds))
+): Unit = execute(AnswerCallbackQuery(callbackQueryId, text, showAlert, url, cachedTimeSeconds))
 
 public suspend fun TelegramBot.answerCallbackQuery(
     callbackQuery: CallbackQuery,
@@ -19,7 +19,7 @@ public suspend fun TelegramBot.answerCallbackQuery(
     showAlert: Boolean? = null,
     url: String? = null,
     cachedTimeSeconds: Int? = null
-): Boolean = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)
+): Unit = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)
 
 public suspend fun TelegramBot.answer(
     callbackQuery: CallbackQuery,
@@ -27,4 +27,4 @@ public suspend fun TelegramBot.answer(
     showAlert: Boolean? = null,
     url: String? = null,
     cachedTimeSeconds: Int? = null
-): Boolean = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)
+): Unit = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)

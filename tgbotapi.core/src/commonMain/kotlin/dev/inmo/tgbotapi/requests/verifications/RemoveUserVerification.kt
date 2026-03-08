@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.verifications
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -13,10 +14,10 @@ data class RemoveUserVerification(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(userIdField)
     val userId: UserId,
-): SimpleRequest<Boolean> {
+): SimpleRequest<Unit> {
     override fun method(): String = "removeUserVerification"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

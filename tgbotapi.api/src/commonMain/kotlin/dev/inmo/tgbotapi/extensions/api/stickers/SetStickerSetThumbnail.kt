@@ -15,7 +15,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: FileId
-): Boolean = execute(
+): Unit = execute(
     SetStickerSetThumbnail(userId, stickerSetName, format, thumbnail)
 )
 
@@ -24,7 +24,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Boolean = execute(
+): Unit = execute(
     SetStickerSetThumbnail(userId, stickerSetName, format, thumbnail)
 )
 
@@ -33,7 +33,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: FileId
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     user.id, stickerSetName, format, thumbnail
 )
 
@@ -42,7 +42,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     user.id, stickerSetName, format, thumbnail
 )
 
@@ -51,7 +51,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: FileId
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     userId, stickerSet.name, format, thumbnail
 )
 
@@ -60,7 +60,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     userId, stickerSet.name, format, thumbnail
 )
 
@@ -69,7 +69,7 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: FileId
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     user.id, stickerSet, format, thumbnail
 )
 
@@ -78,6 +78,6 @@ public suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Boolean = setStickerSetThumbnail(
+): Unit = setStickerSetThumbnail(
     user.id, stickerSet, format, thumbnail
 )

@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.chat.Chat
 public suspend fun TelegramBot.editGeneralForumTopic(
     chatId: ChatIdentifier,
     name: String
-): Boolean = execute(
+): Unit = execute(
     EditGeneralForumTopic(
         chatId,
         name
@@ -22,9 +22,9 @@ public suspend fun TelegramBot.editGeneralForumTopic(
 public suspend fun TelegramBot.editGeneralForumTopic(
     chat: Chat,
     name: String
-): Boolean = editGeneralForumTopic(chat.id, name)
+): Unit = editGeneralForumTopic(chat.id, name)
 
 public suspend fun TelegramBot.editGeneralForumTopic(
     chatIdentifier: ChatIdentifier,
     forumTopic: ForumTopic,
-): Boolean = editGeneralForumTopic(chatIdentifier, forumTopic.name)
+): Unit = editGeneralForumTopic(chatIdentifier, forumTopic.name)

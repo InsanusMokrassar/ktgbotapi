@@ -21,7 +21,7 @@ public suspend fun TelegramBot.transferGift(
     ownedGiftId: GiftId,
     newOwnerChatId: ChatId,
     transferPaymentStarCount: Int? = null,
-): Boolean = execute(
+): Unit = execute(
     TransferGift(
         businessConnectionId = businessConnectionId,
         ownedGiftId = ownedGiftId,
@@ -35,7 +35,7 @@ public suspend fun TelegramBot.transferGift(
     gift: Gift.Regular,
     newOwnerChatId: ChatId,
     transferPaymentStarCount: Int? = null,
-): Boolean = transferGift(
+): Unit = transferGift(
     businessConnectionId = businessConnectionId,
     ownedGiftId = gift.id,
     newOwnerChatId = newOwnerChatId,

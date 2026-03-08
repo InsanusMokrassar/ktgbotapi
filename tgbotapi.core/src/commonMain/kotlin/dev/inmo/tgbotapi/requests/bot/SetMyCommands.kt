@@ -5,6 +5,7 @@ import dev.inmo.micro_utils.language_codes.IetfLangSerializer
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.commands.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -18,10 +19,10 @@ class SetMyCommands(
     @SerialName(languageCodeField)
     @Serializable(IetfLangSerializer::class)
     override val ietfLanguageCode: IetfLang? = null
-) : MyCommandsRequest<Boolean> {
+) : MyCommandsRequest<Unit> {
     override fun method(): String = "setMyCommands"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

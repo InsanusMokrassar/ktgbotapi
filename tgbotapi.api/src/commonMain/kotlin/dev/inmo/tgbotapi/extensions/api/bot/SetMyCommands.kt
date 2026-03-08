@@ -11,22 +11,22 @@ public suspend fun TelegramBot.setMyCommands(
     commands: List<BotCommand>,
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: IetfLang?
-): Boolean = execute(SetMyCommands(commands, scope, languageCode))
+): Unit = execute(SetMyCommands(commands, scope, languageCode))
 
 public suspend fun TelegramBot.setMyCommands(
     vararg commands: BotCommand,
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: IetfLang?
-): Boolean = setMyCommands(commands.toList(), scope, languageCode)
+): Unit = setMyCommands(commands.toList(), scope, languageCode)
 
 public suspend fun TelegramBot.setMyCommands(
     commands: List<BotCommand>,
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: String? = null
-): Boolean = setMyCommands(commands, scope, languageCode ?.let(::IetfLang))
+): Unit = setMyCommands(commands, scope, languageCode ?.let(::IetfLang))
 
 public suspend fun TelegramBot.setMyCommands(
     vararg commands: BotCommand,
     scope: BotCommandScope = BotCommandScopeDefault,
     languageCode: String? = null
-): Boolean = setMyCommands(commands.toList(), scope, languageCode)
+): Unit = setMyCommands(commands.toList(), scope, languageCode)

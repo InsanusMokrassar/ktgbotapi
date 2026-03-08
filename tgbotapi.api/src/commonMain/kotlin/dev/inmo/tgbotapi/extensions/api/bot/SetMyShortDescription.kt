@@ -7,9 +7,9 @@ import dev.inmo.tgbotapi.requests.bot.SetMyShortDescription
 public suspend fun TelegramBot.setMyShortDescription(
     shortDescription: String? = null,
     languageCode: IetfLang? = null
-): Boolean = execute(SetMyShortDescription(shortDescription, languageCode))
+): Unit = execute(SetMyShortDescription(shortDescription, languageCode))
 
 public suspend fun TelegramBot.setMyShortDescription(
     shortDescription: String?,
     languageCode: String?
-): Boolean = setMyShortDescription(shortDescription, languageCode ?.let(::IetfLang))
+): Unit = setMyShortDescription(shortDescription, languageCode ?.let(::IetfLang))

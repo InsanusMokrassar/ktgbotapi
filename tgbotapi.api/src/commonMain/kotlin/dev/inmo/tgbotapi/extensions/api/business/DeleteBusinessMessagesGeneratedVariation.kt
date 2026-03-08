@@ -10,7 +10,7 @@ import kotlin.Boolean
 import kotlin.collections.List
 
 public suspend fun TelegramBot.deleteBusinessMessages(businessConnectionId: BusinessConnectionId,
-    messages: List<AccessibleMessage>): Boolean = deleteBusinessMessages(
+    messages: List<AccessibleMessage>): Unit = deleteBusinessMessages(
     businessConnectionId = businessConnectionId, messageIds = with(messages) {messages.map {
     it.messageId }}
 )

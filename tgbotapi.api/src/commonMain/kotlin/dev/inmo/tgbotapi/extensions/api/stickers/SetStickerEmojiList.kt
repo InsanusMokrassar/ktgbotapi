@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.files.Sticker
 public suspend fun TelegramBot.setStickerEmojiList(
     sticker: FileId,
     emojis: List<String>
-): Boolean = execute(
+): Unit = execute(
     SetStickerEmojiList(
         sticker,
         emojis
@@ -19,7 +19,7 @@ public suspend fun TelegramBot.setStickerEmojiList(
 public suspend fun TelegramBot.setStickerEmojiList(
     sticker: Sticker,
     vararg emojis: String
-): Boolean = setStickerEmojiList(
+): Unit = setStickerEmojiList(
     sticker.fileId,
     emojis.toList()
 )

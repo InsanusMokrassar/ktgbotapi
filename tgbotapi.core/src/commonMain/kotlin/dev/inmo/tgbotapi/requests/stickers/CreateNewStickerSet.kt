@@ -19,7 +19,7 @@ fun CreateNewStickerSet(
     title: String,
     stickers: List<InputSticker>,
     needsRepainting: Boolean? = null
-): Request<Boolean> {
+): Request<Unit> {
     val data  = when(stickers.first()) {
         is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickers.filterIsInstance<InputSticker.Mask>())
         is InputSticker.WithKeywords.CustomEmoji -> CreateNewStickerSet.CustomEmoji(userId, name, title, stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(), needsRepainting)

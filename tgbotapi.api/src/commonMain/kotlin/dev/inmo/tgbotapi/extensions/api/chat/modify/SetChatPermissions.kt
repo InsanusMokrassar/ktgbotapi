@@ -10,10 +10,10 @@ public suspend fun TelegramBot.setDefaultChatMembersPermissions(
     chatId: ChatIdentifier,
     permissions: ChatPermissions,
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = execute(SetChatPermissions(chatId, permissions, useIndependentChatPermissions))
+): Unit = execute(SetChatPermissions(chatId, permissions, useIndependentChatPermissions))
 
 public suspend fun TelegramBot.setDefaultChatMembersPermissions(
     chat: PublicChat,
     permissions: ChatPermissions,
     useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-): Boolean = setDefaultChatMembersPermissions(chat.id, permissions, useIndependentChatPermissions)
+): Unit = setDefaultChatMembersPermissions(chat.id, permissions, useIndependentChatPermissions)

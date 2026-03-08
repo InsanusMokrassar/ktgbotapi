@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
@@ -63,7 +64,7 @@ data class SendMessageDraft internal constructor(
     @SerialName(messageThreadIdField)
     @EncodeDefault
     override val threadId: MessageThreadId? = chatId.threadId
-) : SendChatMessageRequest<Boolean>,
+) : SendChatMessageRequest<Unit>,
     TextedOutput,
     OptionallyMessageThreadRequest
 {
@@ -78,8 +79,8 @@ data class SendMessageDraft internal constructor(
     }
 
     override fun method(): String = "sendMessageDraft"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

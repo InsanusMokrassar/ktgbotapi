@@ -63,7 +63,7 @@ data class EditInlineMessageText internal constructor(
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditInlineMessage, WithCustomizableCaptionRequest<Boolean>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
+) : EditInlineMessage, WithCustomizableCaptionRequest<Unit>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }

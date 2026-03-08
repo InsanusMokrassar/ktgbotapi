@@ -10,7 +10,7 @@ public suspend fun TelegramBot.setUserEmojiStatus(
     userId: UserId,
     customEmojiId: CustomEmojiId,
     expirationDate: TelegramDate? = null
-): Boolean = execute(
+): Unit = execute(
     SetUserEmojiStatus(
         userId = userId,
         customEmojiId = customEmojiId,
@@ -22,7 +22,7 @@ public suspend fun TelegramBot.setUserEmojiStatus(
     user: User,
     customEmojiId: CustomEmojiId,
     expirationDate: TelegramDate? = null
-): Boolean = setUserEmojiStatus(
+): Unit = setUserEmojiStatus(
     user.id,
     customEmojiId,
     expirationDate
@@ -33,7 +33,7 @@ public suspend fun TelegramBot.setUserEmojiStatus(
     userId: UserId,
     customEmojiId: CustomEmojiId,
     expirationDate: DateTime
-): Boolean = setUserEmojiStatus(
+): Unit = setUserEmojiStatus(
     userId,
     customEmojiId,
     expirationDate.toTelegramDate()
@@ -43,7 +43,7 @@ public suspend fun TelegramBot.setUserEmojiStatus(
     user: User,
     customEmojiId: CustomEmojiId,
     expirationDate: DateTime
-): Boolean = setUserEmojiStatus(
+): Unit = setUserEmojiStatus(
     user.id,
     customEmojiId,
     expirationDate

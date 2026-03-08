@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.commands.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -16,10 +17,10 @@ class SetMyName(
     @SerialName(languageCodeField)
     @Serializable(IetfLangSerializer::class)
     override val ietfLanguageCode: IetfLang? = null
-) : SimpleRequest<Boolean>, WithOptionalLanguageCode {
+) : SimpleRequest<Unit>, WithOptionalLanguageCode {
     override fun method(): String = "setMyName"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

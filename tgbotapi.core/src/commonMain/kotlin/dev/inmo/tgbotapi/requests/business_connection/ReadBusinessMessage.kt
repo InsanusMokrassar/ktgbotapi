@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.message.RawMessage
 import dev.inmo.tgbotapi.types.messageIdField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,11 +25,11 @@ data class ReadBusinessMessage(
     val chatId: ChatId,
     @SerialName(messageIdField)
     val messageId: MessageId
-) : BusinessRequest.Simple<Boolean> {
+) : BusinessRequest.Simple<Unit> {
     override fun method(): String = "readBusinessMessage"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -2,18 +2,19 @@ package dev.inmo.tgbotapi.requests.chat.invite_links
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 /**
  * Represent a join request answer. See inheritors for more info
  */
-sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
+sealed interface ChatJoinRequestAnswer : SimpleRequest<Unit> {
     val chatId: ChatIdentifier
     val userId: UserId
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }
 
 /**

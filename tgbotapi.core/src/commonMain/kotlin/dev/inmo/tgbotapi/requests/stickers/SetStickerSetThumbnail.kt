@@ -13,7 +13,7 @@ fun SetStickerSetThumbnail(
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Request<Boolean> {
+): Request<Unit> {
     return CommonMultipartFileRequest(
         SetStickerSetThumbnail(userId, stickerSetName, format),
         mapOf(thumbnailField to thumbnail)
@@ -26,7 +26,7 @@ fun SetStickerSetThumbnail(
     stickerSetName: String,
     format: StickerFormat,
     thumbnail: MultipartFile
-): Request<Boolean> = SetStickerSetThumbnail(
+): Request<Unit> = SetStickerSetThumbnail(
     userId = userId,
     stickerSetName = StickerSetName(stickerSetName, ),
     format = format,

@@ -1,10 +1,12 @@
 package dev.inmo.tgbotapi.requests.chat.modify
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetChatTitle (
@@ -12,16 +14,16 @@ data class SetChatTitle (
     override val chatId: ChatIdentifier,
     @SerialName(titleField)
     val title: String
-): ChatRequest, SimpleRequest<Boolean> {
+): ChatRequest, SimpleRequest<Unit> {
     init {
         if (title.length !in chatTitleLength) {
-            throw IllegalArgumentException("Chat title must be in $chatTitleLength range")
+            DefaultKTgBotAPIKSLog.w("SetChatTitle", "Chat title must be in $chatTitleLength range")
         }
     }
 
     override fun method(): String = "setChatTitle"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

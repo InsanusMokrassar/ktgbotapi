@@ -29,7 +29,7 @@ inline fun <reified O : MessageContent> BehaviourContext.waitEditedContentMessag
         else -> return@expectFlow emptyList()
     }
     messages.mapNotNull { message ->
-        (message as CommonMessage<*>).withContent<O>()
+        message.withContent<O>()
     }
 }
 

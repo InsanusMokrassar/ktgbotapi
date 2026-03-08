@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.local
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -12,12 +13,12 @@ import kotlinx.serialization.builtins.serializer
  * @see io.ktor.client.features.ClientRequestException
  */
 @Serializable
-object Close : SimpleRequest<Boolean> {
+object Close : SimpleRequest<Unit> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     override fun method(): String = "close"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import dev.inmo.tgbotapi.utils.toJson
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
@@ -15,10 +16,10 @@ data class SetChatPhoto (
     override val chatId: ChatIdentifier,
     @Transient
     val photo: MultipartFile = throw IllegalArgumentException("Unfortunately, this type of objects can't be parsed automatically")
-): ChatRequest, MultipartRequest<Boolean> {
+): ChatRequest, MultipartRequest<Unit> {
     override fun method(): String = "setChatPhoto"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     @Transient
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
     @Transient

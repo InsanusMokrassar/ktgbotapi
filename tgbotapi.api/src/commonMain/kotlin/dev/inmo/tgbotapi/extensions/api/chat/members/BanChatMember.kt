@@ -14,25 +14,25 @@ public suspend fun TelegramBot.banChatMember(
     userId: UserId,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-): Boolean = execute(BanChatMember(chatId, userId, untilDate, revokeMessages))
+): Unit = execute(BanChatMember(chatId, userId, untilDate, revokeMessages))
 
 public suspend fun TelegramBot.banChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-): Boolean = banChatMember(chat.id, userId, untilDate, revokeMessages)
+): Unit = banChatMember(chat.id, userId, untilDate, revokeMessages)
 
 public suspend fun TelegramBot.banChatMember(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-): Boolean = banChatMember(chatId, user.id, untilDate, revokeMessages)
+): Unit = banChatMember(chatId, user.id, untilDate, revokeMessages)
 
 public suspend fun TelegramBot.banChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
-): Boolean = banChatMember(chat.id, user.id, untilDate, revokeMessages)
+): Unit = banChatMember(chat.id, user.id, untilDate, revokeMessages)

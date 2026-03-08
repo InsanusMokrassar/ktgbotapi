@@ -27,7 +27,7 @@ public suspend fun TelegramBot.edit(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editLiveLocation(messageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
+): Unit = editLiveLocation(messageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -37,7 +37,7 @@ public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editLiveLocation(
+): Unit = editLiveLocation(
     messageId, location, replyMarkup
 )
 
@@ -49,7 +49,7 @@ public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editMessageMedia(messageId, media, replyMarkup)
+): Unit = editMessageMedia(messageId, media, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -58,7 +58,7 @@ public suspend fun TelegramBot.edit(
 public suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editMessageReplyMarkup(messageId, replyMarkup)
+): Unit = editMessageReplyMarkup(messageId, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -71,7 +71,7 @@ public suspend fun TelegramBot.edit(
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editMessageText(messageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Unit = editMessageText(messageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -83,7 +83,7 @@ public suspend fun TelegramBot.edit(
     showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = editMessageText(messageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Unit = editMessageText(messageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -96,7 +96,7 @@ public suspend fun TelegramBot.edit(
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): Boolean = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Unit = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -109,4 +109,4 @@ public suspend fun TelegramBot.edit(
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): Boolean = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
+): Unit = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)

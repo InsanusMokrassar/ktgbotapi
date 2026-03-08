@@ -10,7 +10,7 @@ import kotlinx.serialization.SerialName
 public suspend fun TelegramBot.verifyUser(
     userId: UserId,
     description: String? = null
-): Boolean = execute(
+): Unit = execute(
     VerifyUser(
         userId = userId,
         description = description
@@ -20,7 +20,7 @@ public suspend fun TelegramBot.verifyUser(
 public suspend fun TelegramBot.verifyUser(
     chat: Chat,
     description: String? = null
-): Boolean = verifyUser(
+): Unit = verifyUser(
     userId = chat.id.toChatId(),
     description = description
 )

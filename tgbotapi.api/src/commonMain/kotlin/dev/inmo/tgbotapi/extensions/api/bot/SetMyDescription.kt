@@ -11,9 +11,9 @@ import dev.inmo.tgbotapi.types.commands.BotCommandScopeDefault
 public suspend fun TelegramBot.setMyDescription(
     description: String? = null,
     languageCode: IetfLang? = null
-): Boolean = execute(SetMyDescription(description, languageCode))
+): Unit = execute(SetMyDescription(description, languageCode))
 
 public suspend fun TelegramBot.setMyDescription(
     description: String?,
     languageCode: String?
-): Boolean = setMyDescription(description, languageCode ?.let(::IetfLang))
+): Unit = setMyDescription(description, languageCode ?.let(::IetfLang))

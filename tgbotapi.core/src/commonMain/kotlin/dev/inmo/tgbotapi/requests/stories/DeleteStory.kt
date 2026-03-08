@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.businessConnectionIdField
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.messageIdField
 import dev.inmo.tgbotapi.types.storyIdField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -19,11 +20,11 @@ data class DeleteStory(
     override val businessConnectionId: BusinessConnectionId,
     @SerialName(storyIdField)
     val storyId: StoryId,
-) : SimpleRequest<Boolean>, WithBusinessConnectionId {
+) : SimpleRequest<Unit>, WithBusinessConnectionId {
     override fun method(): String = "deleteStory"
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

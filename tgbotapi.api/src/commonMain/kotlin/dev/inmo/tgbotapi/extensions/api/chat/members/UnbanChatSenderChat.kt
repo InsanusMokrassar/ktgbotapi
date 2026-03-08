@@ -9,19 +9,19 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 public suspend fun TelegramBot.unbanChatSenderChat(
     chatId: ChatIdentifier,
     senderChatId: IdChatIdentifier
-): Boolean = execute(UnbanChatSenderChat(chatId, senderChatId))
+): Unit = execute(UnbanChatSenderChat(chatId, senderChatId))
 
 public suspend fun TelegramBot.unbanChatSenderChat(
     chat: PublicChat,
     senderChatId: IdChatIdentifier
-): Boolean = unbanChatSenderChat(chat.id, senderChatId)
+): Unit = unbanChatSenderChat(chat.id, senderChatId)
 
 public suspend fun TelegramBot.unbanChatSenderChat(
     chatId: IdChatIdentifier,
     senderChat: PublicChat
-): Boolean = unbanChatSenderChat(chatId, senderChat.id)
+): Unit = unbanChatSenderChat(chatId, senderChat.id)
 
 public suspend fun TelegramBot.unbanChatSenderChat(
     chat: PublicChat,
     senderChat: PublicChat,
-): Boolean = unbanChatSenderChat(chat.id, senderChat)
+): Unit = unbanChatSenderChat(chat.id, senderChat)

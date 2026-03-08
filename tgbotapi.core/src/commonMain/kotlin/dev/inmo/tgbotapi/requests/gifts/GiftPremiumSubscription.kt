@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.textField
 import dev.inmo.tgbotapi.types.textParseModeField
 import dev.inmo.tgbotapi.types.userIdField
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -37,7 +38,7 @@ data class GiftPremiumSubscription internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(textEntitiesField)
     private val rawEntities: RawMessageEntities? = null,
-) : SimpleRequest<Boolean>, TextedOutput {
+) : SimpleRequest<Unit>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
         rawEntities?.let {
             text?.let { _ ->
@@ -51,8 +52,8 @@ data class GiftPremiumSubscription internal constructor(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 
     constructor(
         userId: UserId,

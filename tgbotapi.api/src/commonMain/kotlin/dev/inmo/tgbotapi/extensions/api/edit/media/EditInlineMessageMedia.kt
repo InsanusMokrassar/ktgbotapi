@@ -14,4 +14,4 @@ public suspend fun TelegramBot.editMessageMedia(
     inlineMessageId: InlineMessageId,
     media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
-): Boolean = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))
+): Unit = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))

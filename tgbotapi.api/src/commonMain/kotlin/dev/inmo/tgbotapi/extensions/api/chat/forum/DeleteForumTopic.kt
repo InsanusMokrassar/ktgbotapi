@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.chat.Chat
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId
-): Boolean = execute(
+): Unit = execute(
     DeleteForumTopic(
         chatId,
         messageThreadId
@@ -20,14 +20,14 @@ public suspend fun TelegramBot.deleteForumTopic(
 public suspend fun TelegramBot.deleteForumTopic(
     chatId: ChatIdentifier,
     forumTopic: ForumTopic
-): Boolean = deleteForumTopic(chatId, forumTopic.messageThreadId)
+): Unit = deleteForumTopic(chatId, forumTopic.messageThreadId)
 
 public suspend fun TelegramBot.deleteForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId
-): Boolean = deleteForumTopic(chat.id, messageThreadId)
+): Unit = deleteForumTopic(chat.id, messageThreadId)
 
 public suspend fun TelegramBot.deleteForumTopic(
     chat: Chat,
     forumTopic: ForumTopic
-): Boolean = deleteForumTopic(chat.id, forumTopic.messageThreadId)
+): Unit = deleteForumTopic(chat.id, forumTopic.messageThreadId)

@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.PassportElementError
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -13,9 +14,9 @@ data class SetPassportDataErrors(
     val user: UserId,
     @SerialName(errorsField)
     val errors: List<PassportElementError>
-) : SimpleRequest<Boolean> {
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+) : SimpleRequest<Unit> {
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override fun method(): String = "setPassportDataErrors"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

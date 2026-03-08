@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.chat.modify
 import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -12,7 +13,7 @@ data class SetChatDescription (
     override val chatId: ChatIdentifier,
     @SerialName(descriptionField)
     val description: String
-): ChatRequest, SimpleRequest<Boolean> {
+): ChatRequest, SimpleRequest<Unit> {
     init {
         if (description.length !in chatDescriptionLength) {
             throw IllegalArgumentException("Chat description must be in $chatDescriptionLength range")
@@ -20,8 +21,8 @@ data class SetChatDescription (
     }
 
     override fun method(): String = "setChatDescription"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

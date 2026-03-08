@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.send.payments
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.abstracts.TelegramPaymentChargeId
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -13,10 +14,10 @@ data class RefundStarPayment(
     val userId: UserId,
     @SerialName(telegramPaymentChargeIdField)
     val telegramPaymentChargeId: TelegramPaymentChargeId
-) : SimpleRequest<Boolean> {
+) : SimpleRequest<Unit> {
     override fun method(): String = "refundStarPayment"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

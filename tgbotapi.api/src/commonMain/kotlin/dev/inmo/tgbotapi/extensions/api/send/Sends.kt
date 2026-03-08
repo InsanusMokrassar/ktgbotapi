@@ -43,7 +43,7 @@ import kotlin.jvm.JvmName
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     action: BotAction
-): Boolean = sendBotAction(chatId, action)
+): Unit = sendBotAction(chatId, action)
 
 /**
  * Will execute [sendBotAction] request
@@ -51,7 +51,7 @@ public suspend fun TelegramBot.send(
 public suspend fun TelegramBot.send(
     chat: Chat,
     action: BotAction
-): Boolean = sendBotAction(chat, action)
+): Unit = sendBotAction(chat, action)
 
 /**
  * Will execute [sendAnimation] request
@@ -1340,7 +1340,7 @@ public suspend fun TelegramBot.send(
     text: String,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     text = text,
@@ -1357,7 +1357,7 @@ public suspend fun TelegramBot.send(
     text: String,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chat.id.threadId
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     text = text,
@@ -1373,7 +1373,7 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = entities,
@@ -1388,7 +1388,7 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chat.id.threadId
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     entities = entities,
@@ -1404,7 +1404,7 @@ public suspend fun TelegramBot.send(
     separator: TextSource? = null,
     threadId: MessageThreadId? = chatId.threadId,
     builderBody: EntitiesBuilderBody
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     separator = separator,
@@ -1421,7 +1421,7 @@ public suspend fun TelegramBot.send(
     separator: String,
     threadId: MessageThreadId? = chatId.threadId,
     builderBody: EntitiesBuilderBody
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     separator = separator,
@@ -1438,7 +1438,7 @@ public suspend fun TelegramBot.send(
     separator: TextSource? = null,
     threadId: MessageThreadId? = chat.id.threadId,
     builderBody: EntitiesBuilderBody
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     separator = separator,
@@ -1455,7 +1455,7 @@ public suspend fun TelegramBot.send(
     separator: String,
     threadId: MessageThreadId? = chat.id.threadId,
     builderBody: EntitiesBuilderBody
-): Boolean = sendMessageDraft(
+): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     separator = separator,

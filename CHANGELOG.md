@@ -1,5 +1,27 @@
 # TelegramBotAPI changelog
 
+## 32.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Version`:
+  * `Kotlin`: `2.2.21` -> `2.3.10`
+  * `Kotlin Serialization`: `1.9.0` -> `1.10.0`
+  * `Ktor`: `3.3.2` -> `3.4.1`
+  * `KSP`: `2.3.2` -> `2.3.6`
+  * `MicroUtils`: `0.26.9` -> `0.29.1`
+  * `KSLog`: `1.5.2` -> `1.6.0`
+* `Core` + `API`:
+  * **BREAKING CHANGES: ALL METHODS THAT PREVIOUSLY RETURNED BOOLEAN NOW RETURNS UNIT**
+* `Core`:
+  * **BREAKING CHANGE** `SetChatTitle` init do not throw error in case when `title.length` is outside of `chatTitleLength`
+  * **BREAKING CHANGE** `SetStickerEmojiList` init do not throw error in case when `emojis.size` is outside of `emojisInStickerLimit`
+  * **BREAKING CHANGE** `DeleteMessages` init do not throw error in case when title is `messageIds.size` of `deleteMessagesLimit`
+  * **BREAKING CHANGE** `ForwardMessages` init do not throw error in case when `messageIds.size` is outside of `forwardMessagesLimit`
+  * **BREAKING CHANGE** `CopyMessages` init do not throw error in case when `messageIds.size` is outside of `copyMessagesLimit`
+  * **BREAKING CHANGE** `SwitchInlineQueryChosenChat` init do not throw error in case when `messageIds.size` is outside of `copyMessagesLimit`
+  * **BREAKING CHANGE** `SetStickerKeywords` init do not throw error in case when there are errors in `keywords`
+
 ## 31.2.0
 
 * `Core`:

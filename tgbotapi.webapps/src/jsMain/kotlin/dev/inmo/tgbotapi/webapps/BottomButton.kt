@@ -7,6 +7,7 @@ import kotlin.js.json
 external class BottomButton {
 
     val text: String
+    @Suppress("INLINE_CLASS_IN_EXTERNAL_DECLARATION_WARNING")
     val iconCustomEmojiId: CustomEmojiId?
     fun setText(text: String): BottomButton
 

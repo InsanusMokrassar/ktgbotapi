@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.chat.stickers
 import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -12,10 +13,10 @@ data class SetChatStickerSet(
     override val chatId: ChatIdentifier,
     @SerialName(stickerSetNameField)
     val stickerSetName: StickerSetName
-): ChatRequest, SimpleRequest<Boolean> {
+): ChatRequest, SimpleRequest<Unit> {
     override fun method(): String = "setChatStickerSet"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

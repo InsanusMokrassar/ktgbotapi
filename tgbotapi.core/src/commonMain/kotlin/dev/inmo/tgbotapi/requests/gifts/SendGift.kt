@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,7 +34,7 @@ data class SendGift internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(payToUpgradeField)
     val upgradableToUnique: Boolean = false
-) : SimpleRequest<Boolean>, TextedOutput {
+) : SimpleRequest<Unit>, TextedOutput {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.let {
             text ?.let { _ ->
@@ -48,8 +49,8 @@ data class SendGift internal constructor(
         get() = serializer()
 
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 
     @Deprecated("Use factory function `toUser` instead", ReplaceWith("toUser(userId, giftId, text, parseMode, upgradableToUnique)"))
     constructor(

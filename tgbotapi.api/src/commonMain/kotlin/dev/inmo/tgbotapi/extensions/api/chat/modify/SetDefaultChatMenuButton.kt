@@ -6,4 +6,4 @@ import dev.inmo.tgbotapi.types.MenuButton
 
 public suspend fun TelegramBot.setDefaultChatMenuButton(
     menuButton: MenuButton
-): Boolean = execute(SetDefaultChatMenuButton(menuButton))
+): Unit = execute(SetDefaultChatMenuButton(menuButton))

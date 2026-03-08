@@ -8,16 +8,16 @@ import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
 public suspend fun TelegramBot.answerPreCheckoutQueryOk(
     id: PreCheckoutQueryId
-): Boolean = execute(AnswerPreCheckoutQueryOk(id))
+): Unit = execute(AnswerPreCheckoutQueryOk(id))
 public suspend fun TelegramBot.answerPreCheckoutQueryOk(
     preCheckoutQuery: PreCheckoutQuery
-): Boolean = answerPreCheckoutQueryOk(preCheckoutQuery.id)
+): Unit = answerPreCheckoutQueryOk(preCheckoutQuery.id)
 
 public suspend fun TelegramBot.answerPreCheckoutQueryError(
     id: PreCheckoutQueryId,
     error: String
-): Boolean = execute(AnswerPreCheckoutQueryError(id, error))
+): Unit = execute(AnswerPreCheckoutQueryError(id, error))
 public suspend fun TelegramBot.answerPreCheckoutQueryError(
     preCheckoutQuery: PreCheckoutQuery,
     error: String
-): Boolean = answerPreCheckoutQueryError(preCheckoutQuery.id, error)
+): Unit = answerPreCheckoutQueryError(preCheckoutQuery.id, error)

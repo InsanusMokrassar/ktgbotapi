@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.chat.members
 
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -14,10 +15,10 @@ data class SetChatAdministratorCustomTitle(
     override val userId: UserId,
     @SerialName(customTitleField)
     val customTitle: String
-) : ChatMemberRequest<Boolean> {
+) : ChatMemberRequest<Unit> {
     override fun method(): String = "setChatAdministratorCustomTitle"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

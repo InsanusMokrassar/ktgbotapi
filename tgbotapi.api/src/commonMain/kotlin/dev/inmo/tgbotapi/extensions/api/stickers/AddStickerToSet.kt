@@ -16,7 +16,7 @@ public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSetName: StickerSetName,
     inputSticker: InputSticker
-): Boolean = execute(
+): Unit = execute(
     AddStickerToSet(userId, stickerSetName, inputSticker)
 )
 
@@ -24,13 +24,13 @@ public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSetName: String,
     inputSticker: InputSticker
-): Boolean = addStickerToSet(userId, StickerSetName(stickerSetName), inputSticker)
+): Unit = addStickerToSet(userId, StickerSetName(stickerSetName), inputSticker)
 
 public suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: InputSticker
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     userId,
     stickerSet.name,
     sticker
@@ -43,7 +43,7 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     userId,
     stickerSet,
     when (stickerSet.stickerType) {
@@ -75,7 +75,7 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     userId,
     stickerSet.name,
     when (stickerSet.stickerType) {
@@ -105,7 +105,7 @@ public suspend fun TelegramBot.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: InputSticker
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     user.id,
     stickerSet.name,
     sticker
@@ -118,7 +118,7 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     keywords: List<String> = emptyList()
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     user.id, stickerSet, sticker, format, emojis, keywords
 )
 
@@ -129,6 +129,6 @@ public suspend fun TelegramBot.addStickerToSet(
     format: StickerFormat,
     emojis: List<String>,
     maskPosition: MaskPosition? = null
-): Boolean = addStickerToSet(
+): Unit = addStickerToSet(
     user.id, stickerSet, sticker, format, emojis, maskPosition
 )

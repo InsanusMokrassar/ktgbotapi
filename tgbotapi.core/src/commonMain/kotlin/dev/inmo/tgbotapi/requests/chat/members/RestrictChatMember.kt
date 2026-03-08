@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.ChatPermissions
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -20,10 +21,10 @@ data class RestrictChatMember(
     val permissions: ChatPermissions = ChatPermissions(),
     @SerialName(useIndependentChatPermissionsField)
     val useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
-) : ChatMemberRequest<Boolean>, UntilDate {
+) : ChatMemberRequest<Unit>, UntilDate {
     override fun method(): String = "restrictChatMember"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

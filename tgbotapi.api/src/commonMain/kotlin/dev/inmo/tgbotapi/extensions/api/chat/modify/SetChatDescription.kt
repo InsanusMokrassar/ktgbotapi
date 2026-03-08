@@ -8,9 +8,9 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 public suspend fun TelegramBot.setChatDescription(
     chatId: ChatIdentifier,
     description: String
-): Boolean = execute(SetChatDescription(chatId, description))
+): Unit = execute(SetChatDescription(chatId, description))
 
 public suspend fun TelegramBot.setChatDescription(
     chat: PublicChat,
     description: String
-): Boolean = setChatDescription(chat.id, description)
+): Unit = setChatDescription(chat.id, description)

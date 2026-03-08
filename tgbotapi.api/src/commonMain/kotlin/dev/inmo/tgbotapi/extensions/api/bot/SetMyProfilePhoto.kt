@@ -6,4 +6,4 @@ import dev.inmo.tgbotapi.requests.business_connection.InputProfilePhoto
 
 public suspend fun TelegramBot.setMyProfilePhoto(
     photo: InputProfilePhoto
-): Boolean = execute(SetMyProfilePhoto(photo))
+): Unit = execute(SetMyProfilePhoto(photo))

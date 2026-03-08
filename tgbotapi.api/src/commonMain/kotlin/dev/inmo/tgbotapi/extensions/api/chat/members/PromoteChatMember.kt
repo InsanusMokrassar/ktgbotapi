@@ -29,7 +29,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
     canManageTags: Boolean? = null
-): Boolean = execute(
+): Unit = execute(
     PromoteChatMember(
         chatId = chatId,
         userId = userId,
@@ -76,7 +76,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
     canManageTags: Boolean? = null
-): Boolean = promoteChatMember(
+): Unit = promoteChatMember(
     chat.id,
     userId,
     untilDate = untilDate,
@@ -121,7 +121,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
     canManageTags: Boolean? = null
-): Boolean = promoteChatMember(
+): Unit = promoteChatMember(
     chatId,
     user.id,
     untilDate = untilDate,
@@ -166,7 +166,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
     canManageTags: Boolean? = null
-): Boolean = promoteChatMember(
+): Unit = promoteChatMember(
     chat.id,
     user.id,
     untilDate = untilDate,

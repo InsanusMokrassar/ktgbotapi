@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.commentField
 import dev.inmo.tgbotapi.types.messageIdField
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,12 +25,12 @@ data class DeclineSuggestedPost(
     val messageId: MessageId,
     @SerialName(commentField)
     val comment: String? = null,
-) : SimpleRequest<Boolean>, ChatRequest {
+) : SimpleRequest<Unit>, ChatRequest {
     override val requestSerializer: SerializationStrategy<DeclineSuggestedPost>
         get() = serializer()
 
     override fun method(): String = "declineSuggestedPost"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

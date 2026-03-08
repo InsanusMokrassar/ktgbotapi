@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
@@ -25,8 +27,8 @@ data class SwitchInlineQueryChosenChat (
     val allowChannels: Boolean = false,
 ) {
     init {
-        require(allowUsers || allowBots || allowGroups || allowChannels) {
-            "Bot must allow to choose at least one of available variants in choosing of inline query recipient"
+        if (allowUsers == false && allowBots == false && allowGroups == false && allowChannels == false) {
+            DefaultKTgBotAPIKSLog.w("SwitchInlineQueryChosenChat", "Bot must allow to choose at least one of available variants in choosing of inline query recipient")
         }
     }
 }

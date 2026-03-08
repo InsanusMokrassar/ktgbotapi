@@ -12,42 +12,42 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 public suspend fun TelegramBot.deleteMessage(
     chatId: ChatIdentifier,
     messageId: MessageId
-): Boolean = execute(
+): Unit = execute(
     DeleteMessage(chatId, messageId)
 )
 
 public suspend fun TelegramBot.deleteMessage(
     chat: Chat,
     messageId: MessageId
-): Boolean = deleteMessage(chat.id, messageId)
+): Unit = deleteMessage(chat.id, messageId)
 
 public suspend fun TelegramBot.deleteMessage(
     message: AccessibleMessage
-): Boolean {
+): Unit {
     val mediaGroupContent = ((message as? ContentMessage<*>) ?.content as? MediaGroupCollectionContent<*>)
     if (mediaGroupContent == null) {
-        return deleteMessage(message.chat, message.messageId)
+        deleteMessage(message.chat, message.messageId)
     } else {
-        return mediaGroupContent.group.map {
+        mediaGroupContent.group.forEach {
             deleteMessage(it.sourceMessage)
-        }.all { it }
+        }
     }
 }
 
 public suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageId: MessageId
-): Boolean = deleteMessage(chatId, messageId)
+): Unit = deleteMessage(chatId, messageId)
 
 public suspend fun TelegramBot.delete(
     chat: Chat,
     messageId: MessageId
-): Boolean = deleteMessage(chat, messageId)
+): Unit = deleteMessage(chat, messageId)
 
 public suspend fun TelegramBot.delete(
     message: AccessibleMessage
-): Boolean = deleteMessage(message)
+): Unit = deleteMessage(message)
 
 public suspend fun AccessibleMessage.delete(
     requestsExecutor: TelegramBot
-): Boolean = requestsExecutor.deleteMessage(this)
+): Unit = requestsExecutor.deleteMessage(this)

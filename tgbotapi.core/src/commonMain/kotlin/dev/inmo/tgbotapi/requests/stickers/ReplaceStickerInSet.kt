@@ -15,7 +15,7 @@ fun ReplaceStickerInSet(
     stickerSetName: StickerSetName,
     oldSticker: FileId,
     newSticker: InputSticker
-): Request<Boolean> {
+): Request<Unit> {
     val data = ReplaceStickerInSetData(
         userId = userId,
         name = stickerSetName,
@@ -37,7 +37,7 @@ fun ReplaceStickerInSet(
     stickerSetName: String,
     oldSticker: FileId,
     newSticker: InputSticker
-): Request<Boolean> = ReplaceStickerInSetData(
+): Request<Unit> = ReplaceStickerInSetData(
     userId = userId,
     name = StickerSetName(stickerSetName),
     oldSticker = oldSticker,

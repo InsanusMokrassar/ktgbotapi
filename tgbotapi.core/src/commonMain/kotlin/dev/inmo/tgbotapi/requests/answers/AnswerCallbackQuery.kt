@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.answers
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -18,10 +19,10 @@ data class AnswerCallbackQuery(
     val url: String? = null,
     @SerialName(cacheTimeField)
     val cachedTimeSeconds: Int? = null
-) : SimpleRequest<Boolean> {
+) : SimpleRequest<Unit> {
     override fun method(): String = "answerCallbackQuery"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

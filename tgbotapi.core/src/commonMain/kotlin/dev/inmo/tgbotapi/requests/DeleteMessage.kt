@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -12,11 +13,11 @@ data class DeleteMessage(
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageId
-) : SimpleRequest<Boolean>, MessageAction {
+) : SimpleRequest<Unit>, MessageAction {
     override fun method(): String = "deleteMessage"
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -7,11 +7,9 @@ import dev.inmo.tgbotapi.requests.business_connection.SetBusinessAccountUsername
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.Username
 
-@GenerateVariations
 public suspend fun TelegramBot.setBusinessAccountUsername(
     businessConnectionId: BusinessConnectionId,
-    @GenerationVariant(String::class, "Username(username)", "username")
-    username: Username
-): Boolean = execute(
+    username: Username? = null
+): Unit = execute(
     SetBusinessAccountUsername(businessConnectionId, username)
 ) 

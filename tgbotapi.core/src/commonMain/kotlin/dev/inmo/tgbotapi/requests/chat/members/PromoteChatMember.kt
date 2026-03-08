@@ -4,6 +4,7 @@ import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -51,10 +52,10 @@ data class PromoteChatMember(
     private val canManageDirectMessages: Boolean? = null,
     @SerialName(canManageTagsField)
     private val canManageTags: Boolean? = null,
-) : ChatMemberRequest<Boolean>, UntilDate {
+) : ChatMemberRequest<Unit>, UntilDate {
     override fun method(): String = "promoteChatMember"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -11,7 +11,7 @@ fun AddStickerToSet(
     userId: UserId,
     stickerSetName: StickerSetName,
     inputSticker: InputSticker
-): Request<Boolean> {
+): Request<Unit> {
     val data = AddStickerToSetData(userId, stickerSetName, inputSticker)
     return when (val sticker = inputSticker.sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
@@ -26,7 +26,7 @@ fun AddStickerToSet(
     userId: UserId,
     stickerSetName: String,
     inputSticker: InputSticker
-): Request<Boolean> = AddStickerToSet(
+): Request<Unit> = AddStickerToSet(
     userId = userId,
     stickerSetName = StickerSetName(stickerSetName),
     inputSticker = inputSticker

@@ -12,23 +12,23 @@ public suspend fun TelegramBot.unbanChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     onlyIfBanned: Boolean? = null
-): Boolean = execute(UnbanChatMember(chatId, userId, onlyIfBanned))
+): Unit = execute(UnbanChatMember(chatId, userId, onlyIfBanned))
 
 public suspend fun TelegramBot.unbanChatMember(
     chat: PublicChat,
     userId: UserId,
     onlyIfBanned: Boolean? = null
-): Boolean = unbanChatMember(chat.id, userId, onlyIfBanned)
+): Unit = unbanChatMember(chat.id, userId, onlyIfBanned)
 
 public suspend fun TelegramBot.unbanChatMember(
     chatId: IdChatIdentifier,
     user: User,
     onlyIfBanned: Boolean? = null
-): Boolean = unbanChatMember(chatId, user.id, onlyIfBanned)
+): Unit = unbanChatMember(chatId, user.id, onlyIfBanned)
 
 public suspend fun TelegramBot.unbanChatMember(
     chat: PublicChat,
     user: User,
     onlyIfBanned: Boolean? = null
-): Boolean = unbanChatMember(chat.id, user.id, onlyIfBanned)
+): Unit = unbanChatMember(chat.id, user.id, onlyIfBanned)
 

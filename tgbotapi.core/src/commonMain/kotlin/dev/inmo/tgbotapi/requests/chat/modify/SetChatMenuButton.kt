@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.chat.modify
 import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -13,12 +14,12 @@ data class SetChatMenuButton(
     @Serializable(MenuButtonSerializer::class)
     @SerialName(menuButtonField)
     val menuButton: MenuButton
-) : ChatRequest, SimpleRequest<Boolean> {
+) : ChatRequest, SimpleRequest<Unit> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     override fun method(): String = SetDefaultChatMenuButton.method()
 
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
 }

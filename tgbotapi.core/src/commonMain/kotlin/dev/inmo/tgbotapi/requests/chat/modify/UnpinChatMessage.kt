@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.abstracts.types.OptionallyBusinessConnectionRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -16,10 +17,10 @@ data class UnpinChatMessage(
     val messageId: MessageId? = null,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = null
-): ChatRequest, SimpleRequest<Boolean>, OptionallyBusinessConnectionRequest {
+): ChatRequest, SimpleRequest<Unit>, OptionallyBusinessConnectionRequest {
     override fun method(): String = "unpinChatMessage"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

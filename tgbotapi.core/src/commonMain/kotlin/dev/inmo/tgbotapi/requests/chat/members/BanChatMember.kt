@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.chat.members
 import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
@@ -17,10 +18,10 @@ data class BanChatMember(
     override val untilDate: TelegramDate? = null,
     @SerialName(revokeMessagesField)
     val revokeMessages: Boolean? = null
-) : ChatMemberRequest<Boolean>, UntilDate {
+) : ChatMemberRequest<Unit>, UntilDate {
     override fun method(): String = "banChatMember"
-    override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Unit>
+        get() = UnitFromBooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

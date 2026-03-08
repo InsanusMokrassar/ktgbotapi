@@ -11,7 +11,7 @@ import kotlinx.serialization.builtins.serializer
 data class UnhideGeneralForumTopic (
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier
-): ModifyForumRequest, GeneralForumRequest<Boolean> {
+): ModifyForumRequest, GeneralForumRequest<Unit> {
     override fun method(): String = "unhideGeneralForumTopic"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
