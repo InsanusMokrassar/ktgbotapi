@@ -1,6 +1,6 @@
 #!/usr/bin/env kotlin
 // This script will read Event
-@file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+@file:DependsOn("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
 
 import kotlinx.serialization.json.*
 import java.io.File
