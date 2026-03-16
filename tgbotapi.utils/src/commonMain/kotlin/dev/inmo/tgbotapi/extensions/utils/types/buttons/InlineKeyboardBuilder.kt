@@ -34,7 +34,32 @@ typealias InlineKeyboardRowBuilder = RowBuilder<InlineKeyboardButton>
  * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
  * and [InlineKeyboardBuilder.build] [InlineKeyboardMarkup] then
  *
+ * Example:
+ *
+ * ```kotlin
+ * inlineKeyboard {
+ *      row {
+ *          dataButton("my button", "my data")
+ *          dataButton("my button2", "my data2")
+ *      }
+ *      row {
+ *          urlButton("example.com", "https://example.com")
+ *      }
+ * }
+ * ```
+ *
  * @see InlineKeyboardBuilder.row
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.payButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.dataButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.gameButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.loginButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.copyTextButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInCurrentChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInChosenChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInAnyChosenChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.urlButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.webAppButton
  */
 inline fun inlineKeyboard(
     block: InlineKeyboardBuilder.() -> Unit
@@ -44,7 +69,27 @@ inline fun inlineKeyboard(
  * Factory-function for [InlineKeyboardBuilder], but in difference with [inlineKeyboard] this function will create single-row
  * inline keyboard
  *
+ * Example:
+ *
+ * ```kotlin
+ * flatInlineKeyboard {
+ *      dataButton("some button", "some data")
+ *      urlButton("example.com", "https://example.com")
+ * }
+ * ```
+ *
  * @see InlineKeyboardBuilder.row
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.payButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.dataButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.gameButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.loginButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.copyTextButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInCurrentChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInChosenChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryInAnyChosenChatButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineQueryButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.urlButton
+ * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.webAppButton
  */
 inline fun flatInlineKeyboard(
     block: InlineKeyboardRowBuilder.() -> Unit
