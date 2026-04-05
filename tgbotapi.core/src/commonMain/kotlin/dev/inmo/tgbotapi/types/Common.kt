@@ -677,6 +677,8 @@ const val uniqueGiftColorsField = "unique_gift_colors"
 const val paidStarCountField = "paid_star_count"
 const val isPaidPostField = "is_paid_post"
 
+const val canManageBotsField = "can_manage_bots"
+
 const val levelField = "level"
 const val currentLevelRatingField = "current_level_rating"
 const val nextLevelRatingField = "next_level_rating"
