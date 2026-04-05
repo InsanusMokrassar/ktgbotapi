@@ -18,6 +18,7 @@ import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.*
 import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -205,6 +206,7 @@ internal data class RawMessage(
     private val gift_upgrade_sent: GiftSentOrReceivedEvent.RegularGift? = null,
     private val chat_owner_left: ChatOwnerLeft? = null,
     private val chat_owner_changed: ChatOwnerChanged? = null,
+    private val managed_bot_updated: ManagedBotUpdated? = null
 ) {
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
@@ -343,6 +345,7 @@ internal data class RawMessage(
             suggested_post_declined != null -> suggested_post_declined
             suggested_post_paid != null -> suggested_post_paid
             suggested_post_refunded != null -> suggested_post_refunded
+            managed_bot_updated != null -> managed_bot_updated
             else -> null
         }
     }

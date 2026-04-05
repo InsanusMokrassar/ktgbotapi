@@ -10439,6 +10439,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field canEditUsernameField Ljava/lang/String;
 	public static final field canInviteUsersField Ljava/lang/String;
 	public static final field canJoinGroupsField Ljava/lang/String;
+	public static final field canManageBotsField Ljava/lang/String;
 	public static final field canManageChatField Ljava/lang/String;
 	public static final field canManageDirectMessagesField Ljava/lang/String;
 	public static final field canManageStoriesField Ljava/lang/String;
@@ -10841,6 +10842,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field requestCountField Ljava/lang/String;
 	public static final field requestIdField Ljava/lang/String;
 	public static final field requestLocationField Ljava/lang/String;
+	public static final field requestManagedBotField Ljava/lang/String;
 	public static final field requestNameField Ljava/lang/String;
 	public static final field requestPhotoField Ljava/lang/String;
 	public static final field requestPollField Ljava/lang/String;
@@ -10912,9 +10914,11 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field subscriptionExpirationDateField Ljava/lang/String;
 	public static final field subscriptionPeriodField Ljava/lang/String;
 	public static final field subscriptionPriceField Ljava/lang/String;
+	public static final field suggestedNameField Ljava/lang/String;
 	public static final field suggestedPostMessageField Ljava/lang/String;
 	public static final field suggestedPostParametersField Ljava/lang/String;
 	public static final field suggestedTipAmountsField Ljava/lang/String;
+	public static final field suggestedUsernameField Ljava/lang/String;
 	public static final field supportInlineQueriesField Ljava/lang/String;
 	public static final field supportStreamingField Ljava/lang/String;
 	public static final field supportsStreamingField Ljava/lang/String;
@@ -16157,6 +16161,38 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat$Com
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot$Companion;
+	public synthetic fun <init> (SLjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-2_3u2Cg ()S
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3-san03mo ()Ljava/lang/String;
+	public final fun copy-6Jge8D0 (SLjava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;
+	public static synthetic fun copy-6Jge8D0$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;SLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRequestId-2_3u2Cg ()S
+	public final fun getSuggestedName ()Ljava/lang/String;
+	public final fun getSuggestedUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Companion;
 	public abstract fun getMaxCount ()I
@@ -16605,6 +16641,40 @@ public final class dev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;
+	public final fun component3-GbmMWyQ ()Ljava/lang/String;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public final fun copy-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public static synthetic fun copy-peVxY-Q$default (Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIconCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
+	public final fun getRequestManagedBot ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;
+	public fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton : dev/inmo/tgbotapi/types/buttons/KeyboardButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -16823,16 +16893,20 @@ public final class dev/inmo/tgbotapi/types/buttons/reply/ReplyKeyboardButtonsSho
 	public static synthetic fun requestBotsReplyButton-fwDdwSU$default (Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
 	public static final fun requestChannelReplyButton-EhOUbjc (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static synthetic fun requestChannelReplyButton-EhOUbjc$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static final fun requestChannelReplyButton-ODUf-pc (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
-	public static synthetic fun requestChannelReplyButton-ODUf-pc$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static final fun requestChatReplyButton-TQHSzjY (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static synthetic fun requestChatReplyButton-TQHSzjY$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static final fun requestChatReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static synthetic fun requestChatReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static final fun requestContactReplyButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
 	public static synthetic fun requestContactReplyButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestContactKeyboardButton;
+	public static final fun requestGroupReplyButton-ODUf-pc (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
+	public static synthetic fun requestGroupReplyButton-ODUf-pc$default (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestChatKeyboardButton;
 	public static final fun requestLocationReplyButton-A-saiJc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
 	public static synthetic fun requestLocationReplyButton-A-saiJc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestLocationKeyboardButton;
+	public static final fun requestManagedBotReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public static synthetic fun requestManagedBotReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public static final fun requestManagedBotReplyButton-vrXU4kY (Ljava/lang/String;SLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
+	public static synthetic fun requestManagedBotReplyButton-vrXU4kY$default (Ljava/lang/String;SLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestManagedBotKeyboardButton;
 	public static final fun requestPollReplyButton-peVxY-Q (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
 	public static synthetic fun requestPollReplyButton-peVxY-Q$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/RequestPollKeyboardButton;
 	public static final fun requestUserOrBotReplyButton-ITD0VF0 (Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Ldev/inmo/tgbotapi/types/buttons/RequestUserKeyboardButton;
@@ -17633,8 +17707,8 @@ public final class dev/inmo/tgbotapi/types/chat/DirectMessagesTopic$Companion {
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/types/chat/Bot, dev/inmo/tgbotapi/types/chat/ExtendedChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedBot$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component10-f3WtEc0 ()I
 	public final fun component11-mg_h9nU ()Ldev/inmo/tgbotapi/types/colors/ColorId;
@@ -17647,6 +17721,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun component18 ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
 	public final fun component19 ()Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;
 	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Z
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4-san03mo ()Ljava/lang/String;
 	public final fun component5 ()Z
@@ -17654,8 +17729,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
-	public final fun copy-vPF16Gs (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
-	public static synthetic fun copy-vPF16Gs$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public final fun copy-vM2md78 (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;Z)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public static synthetic fun copy-vM2md78$default (Ldev/inmo/tgbotapi/types/chat/ExtendedBot;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLdev/inmo/tgbotapi/types/ChatPhoto;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;IZZZLdev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;Ldev/inmo/tgbotapi/types/gifts/unique/UniqueGiftColors;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getAcceptedGiftTypes ()Ldev/inmo/tgbotapi/types/gifts/AcceptedGiftTypes;
@@ -17663,6 +17738,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot : dev/inmo/tgbotapi/
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public final fun getCanConnectToBusiness ()Z
 	public final fun getCanJoinGroups ()Z
+	public final fun getCanManageBots ()Z
 	public final fun getCanReadAllGroupMessages ()Z
 	public fun getCanReceiveGifts ()Z
 	public fun getChatPhoto ()Ldev/inmo/tgbotapi/types/ChatPhoto;
@@ -23378,6 +23454,62 @@ public final synthetic class dev/inmo/tgbotapi/types/location/StaticLocation$$se
 }
 
 public final class dev/inmo/tgbotapi/types/location/StaticLocation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewBot;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewBot;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;Ldev/inmo/tgbotapi/types/chat/PreviewBot;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewBot;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewBot;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewBot;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

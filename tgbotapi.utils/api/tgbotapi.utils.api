@@ -1893,6 +1893,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifLocationContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLocationInlineQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLoginURLInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifManagedBotCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifManagedBotUpdated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMask (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskAnimatedSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskSimpleSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2304,6 +2306,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun locationInlineQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
 	public static final fun loginURLInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
 	public static final fun loginURLInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public static final fun managedBotCreatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
+	public static final fun managedBotCreatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
+	public static final fun managedBotUpdatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public static final fun managedBotUpdatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
 	public static final fun maskAnimatedStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MaskAnimatedSticker;
 	public static final fun maskAnimatedStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MaskAnimatedSticker;
 	public static final fun maskOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;
@@ -3662,6 +3668,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboar
 	public static synthetic fun requestGroupButton-07i2Weo$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun requestLocationButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun requestLocationButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
+	public static final fun requestManagedBotButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
+	public static synthetic fun requestManagedBotButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestManagedBot;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
+	public static final fun requestManagedBotButton-zSvPe90 (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
+	public static synthetic fun requestManagedBotButton-zSvPe90$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun requestPollButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun requestPollButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun requestUserButton-gB4qrME (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z

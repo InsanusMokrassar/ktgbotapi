@@ -13,6 +13,8 @@ import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -247,6 +249,16 @@ fun BehaviourContext.waitChatOwnerChanged(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChatOwnerChanged>(initRequest, errorFactory)
+
+fun BehaviourContext.waitManagedBotCreatedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ManagedBotCreated>(initRequest, errorFactory)
+
+fun BehaviourContext.waitManagedBotUpdatedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ManagedBotUpdated>(initRequest, errorFactory)
 
 fun BehaviourContext.waitChatBackgroundSet(
     initRequest: Request<*>? = null,
