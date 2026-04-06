@@ -973,6 +973,38 @@ public final class dev/inmo/tgbotapi/requests/GetUpdatesRequest$DefaultImpls {
 	public static fun method (Ldev/inmo/tgbotapi/requests/GetUpdatesRequest;)Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/requests/SavePreparedKeyboardButton : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton$Companion;
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/buttons/KeyboardButton;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;
+	public final fun copy-zv9neSE (JLdev/inmo/tgbotapi/types/buttons/KeyboardButton;)Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton;
+	public static synthetic fun copy-zv9neSE$default (Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton;JLdev/inmo/tgbotapi/types/buttons/KeyboardButton;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getButton ()Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/SavePreparedKeyboardButton$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/SavePreparedKeyboardButton$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/SetPassportDataErrors : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/SetPassportDataErrors$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/util/List;)V
@@ -11111,6 +11143,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field yearField Ljava/lang/String;
 	public static final fun getAllowedConnectionsLength ()Lkotlin/ranges/IntRange;
 	public static final fun getAllowedConnectionsWithLocalServerLength ()Lkotlin/ranges/IntRange;
+	public static final fun getAllowedToSavePreparedKeyboardButtons ()Ljava/util/Set;
 	public static final fun getBasketballAndFootballDiceResultLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getBotCommandDescriptionLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getBotCommandLengthLimit ()Lkotlin/ranges/IntRange;
@@ -16507,6 +16540,63 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardMarkupSerializer : ko
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-WMoZTbI ()Ljava/lang/String;
+	public final fun copy-zz-h5ko (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton;
+	public static synthetic fun copy-zz-h5ko$default (Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId-WMoZTbI ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardButton$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/buttons/PreparedKeyboardId$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-KQHJBJs (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-JKX4Qt8 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/buttons/PreparedKeyboardId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/QuizKeyboardButtonPollType : dev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType {

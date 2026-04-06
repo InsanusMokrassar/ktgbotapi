@@ -189,6 +189,11 @@ public final class dev/inmo/tgbotapi/extensions/api/LogOutKt {
 	public static final fun logOut (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/SavePreparedKeyboardButtonKt {
+	public static final fun savePreparedKeyboardButton (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun savePreparedKeyboardButton-nc95W0g (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/buttons/KeyboardButton;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/StopPollKt {
 	public static final fun stopPoll-qvzigsQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun stopPoll-qvzigsQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

@@ -1,9 +1,14 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.buttons.KeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestChatKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestManagedBotKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestUserKeyboardButton
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
+import kotlin.reflect.KClass
 
 
 typealias ForwardSignature = String
@@ -121,6 +126,12 @@ val cloudStorageKeyLimit = 1 .. 128
 val cloudStorageValueLimit = 0 .. 4096
 val cloudStorageKeyRegex = Regex("[A-Za-z0-9_-]{${cloudStorageKeyLimit.first},${cloudStorageKeyLimit.last}}")
 val cloudStorageValueRegex = Regex(".{${cloudStorageValueLimit.first},${cloudStorageValueLimit.last}}")
+
+val allowedToSavePreparedKeyboardButtons: Set<KClass<out KeyboardButton>> = setOf(
+    RequestUserKeyboardButton::class,
+    RequestChatKeyboardButton::class,
+    RequestManagedBotKeyboardButton::class,
+)
 
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
