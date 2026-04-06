@@ -39,12 +39,22 @@ class SendQuizPoll internal constructor(
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
+    @SerialName(shuffleOptionsField)
+    val shuffleOptions: Boolean = false,
+    @SerialName(hideResultsUntilClosesField)
+    val hideResultsUntilCloses: Boolean = false,
     @SerialName(explanationField)
     val explanation: String? = null,
     @SerialName(explanationParseModeField)
     val explanationParseMode: ParseMode? = null,
     @SerialName(explanationEntitiesField)
     private val rawExplanationEntities: List<RawMessageEntity>? = null,
+    @SerialName(descriptionField)
+    val description: String? = null,
+    @SerialName(descriptionParseModeField)
+    val descriptionParseMode: ParseMode? = null,
+    @SerialName(descriptionEntitiesField)
+    private val rawDescriptionEntities: List<RawMessageEntity>? = null,
     @SerialName(openPeriodField)
     override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
@@ -80,7 +90,10 @@ class SendQuizPoll internal constructor(
     override val textSources: List<TextSource>
         get() = rawQuestionEntities.asTextSources(question)
     val explanationTextEntities: List<TextSource>? by lazy {
-        rawExplanationEntities ?.asTextSources(text ?: return@lazy null)
+        rawExplanationEntities?.asTextSources(text ?: return@lazy null)
+    }
+    val descriptionTextSources: List<TextSource>? by lazy {
+        rawDescriptionEntities?.asTextSources(description ?: return@lazy null)
     }
 
     constructor(
@@ -93,6 +106,10 @@ class SendQuizPoll internal constructor(
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        shuffleOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -114,9 +131,14 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
         explanation = explanation,
         explanationParseMode = explanationParseMode,
         rawExplanationEntities = emptyList(),
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -140,6 +162,10 @@ class SendQuizPoll internal constructor(
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        shuffleOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -161,9 +187,14 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
         explanation = explanation,
         explanationParseMode = explanationParseMode,
         rawExplanationEntities = emptyList(),
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -187,6 +218,9 @@ class SendQuizPoll internal constructor(
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        shuffleOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -208,9 +242,14 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        explanation = explanationTextSources ?.makeSourceString(),
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        explanation = explanationTextSources?.makeSourceString(),
         explanationParseMode = null,
-        rawExplanationEntities = explanationTextSources ?.toRawMessageEntities(),
+        rawExplanationEntities = explanationTextSources?.toRawMessageEntities(),
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -233,6 +272,9 @@ class SendQuizPoll internal constructor(
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        shuffleOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -254,9 +296,14 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        explanation = explanationTextSources ?.makeSourceString(),
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        explanation = explanationTextSources?.makeSourceString(),
         explanationParseMode = null,
-        rawExplanationEntities = explanationTextSources ?.toRawMessageEntities(),
+        rawExplanationEntities = explanationTextSources?.toRawMessageEntities(),
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -273,7 +320,7 @@ class SendQuizPoll internal constructor(
 
     init {
         checkPollInfo(question, options)
-        closeInfo ?.checkSendData()
+        closeInfo?.checkSendData()
         val correctOptionIdsRange = 0 until options.size
         correctOptionIds?.forEach { id ->
             if (id !in correctOptionIdsRange) {
@@ -299,6 +346,10 @@ fun SendQuizPoll(
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -319,6 +370,10 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -343,6 +398,10 @@ fun SendQuizPoll(
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -362,6 +421,10 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -386,6 +449,9 @@ fun SendQuizPoll(
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    descriptionTextSources: List<TextSource>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -405,6 +471,9 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    descriptionTextSources = descriptionTextSources,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -428,6 +497,9 @@ fun SendQuizPoll(
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    descriptionTextSources: List<TextSource>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -446,6 +518,9 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    descriptionTextSources = descriptionTextSources,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,

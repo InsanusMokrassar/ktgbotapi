@@ -100,7 +100,7 @@ val mediaCountInMediaGroup: IntRange = 2 .. 10
 
 val explanationLimit = 0 .. 200
 
-val openPeriodPollSecondsLimit = 5 .. 600
+val openPeriodPollSecondsLimit = 5 .. 2628000
 
 val membersLimit = 1 .. 99999
 
@@ -278,11 +278,19 @@ const val lastErrorDateField = "last_error_date"
 const val lastSynchronizationErrorDateField = "last_synchronization_error_date"
 const val lastErrorMessageField = "last_error_message"
 const val votesCountField = "voter_count"
+const val addedByUserField = "added_by_user"
+const val addedByChatField = "added_by_chat"
+const val additionDateField = "addition_date"
+const val persistentIdField = "persistent_id"
 const val isClosedField = "is_closed"
 const val totalVoterCountField = "total_voter_count"
 const val correctOptionIdField = "correct_option_id"
 const val correctOptionIdsField = "correct_option_ids"
 const val allowsMultipleAnswersField = "allows_multiple_answers"
+const val allowsRevotingField = "allows_revoting"
+const val shuffleOptionsField = "shuffle_options"
+const val allowAddingOptionsField = "allow_adding_options"
+const val hideResultsUntilClosesField = "hide_results_until_closes"
 const val isAnonymousField = "is_anonymous"
 const val canManageTopicsField = "can_manage_topics"
 const val canEditTagField = "can_edit_tag"
@@ -598,6 +606,8 @@ const val chatTypeField = "chat_type"
 
 const val explanationEntitiesField = "explanation_entities"
 const val explanationParseModeField = "explanation_parse_mode"
+const val descriptionParseModeField = "description_parse_mode"
+const val descriptionEntitiesField = "description_entities"
 const val openPeriodField = "open_period"
 const val closeDateField = "close_date"
 const val openingMinuteField = "opening_minute"
