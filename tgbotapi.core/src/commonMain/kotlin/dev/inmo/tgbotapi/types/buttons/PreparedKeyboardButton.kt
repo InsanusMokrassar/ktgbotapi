@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PreparedKeyboardButton(
     @SerialName(idField)
-    val id: PreparedKeyboardId
+    val id: PreparedKeyboardButtonId
 )

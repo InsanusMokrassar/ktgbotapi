@@ -5,6 +5,6 @@ import kotlin.jvm.JvmInline
 
 @Serializable
 @JvmInline
-value class PreparedKeyboardId(
+value class PreparedKeyboardButtonId(
     val string: String
 )
