@@ -852,6 +852,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 	public static synthetic fun waitLocationInlineQuery$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitManagedBotUpdateKt {
+	public static final fun waitManagedBotUpdated (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun waitManagedBotUpdated$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitMediaGroupKt {
 	public static final fun waitDocumentsGroup (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun waitDocumentsGroup$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
@@ -981,6 +986,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/Messag
 	public static final fun getChatJoinRequestFilterByChat ()Lkotlin/jvm/functions/Function4;
 	public static final fun getChatMemberUpdatedFilterByChat ()Lkotlin/jvm/functions/Function4;
 	public static final fun getInlineQueryFilterByUser ()Lkotlin/jvm/functions/Function4;
+	public static final fun getManagedBotUpdatedFilterByUser ()Lkotlin/jvm/functions/Function4;
 	public static final fun getMessageFilterByChat ()Lkotlin/jvm/functions/Function4;
 	public static final fun getMessagesFilterByChat ()Lkotlin/jvm/functions/Function4;
 	public static final fun getPreCheckoutQueryFilterByUser ()Lkotlin/jvm/functions/Function4;
@@ -1495,6 +1501,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handl
 	public static synthetic fun onLocationInlineQuery$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/ManagedBotUpdateTriggersKt {
+	public static final fun onManagedBotUpdate (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;)Lkotlinx/coroutines/Job;
+	public static synthetic fun onManagedBotUpdate$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/MediaGroupMessagesTriggersKt {
 	public static final fun onDocumentsGroupMessages (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;)Lkotlinx/coroutines/Job;
 	public static synthetic fun onDocumentsGroupMessages$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
@@ -1834,6 +1845,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserInlineQueryMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserInlineQueryMarkerFactory;
 	public fun invoke (Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserManagedBotUpdatedMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserManagedBotUpdatedMarkerFactory;
+	public fun invoke (Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

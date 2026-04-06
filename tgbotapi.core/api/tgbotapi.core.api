@@ -5741,6 +5741,66 @@ public final class dev/inmo/tgbotapi/requests/local/LogOut : dev/inmo/tgbotapi/r
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken$Companion;
+	public synthetic fun <init> (JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun copy-HZVsHAI (J)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken;
+	public static synthetic fun copy-HZVsHAI$default (Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken;JILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken$Companion;
+	public synthetic fun <init> (JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun copy-HZVsHAI (J)Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken;
+	public static synthetic fun copy-HZVsHAI$default (Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken;JILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/send/CopyMessage : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/abstracts/WithCustomStartMediaData, dev/inmo/tgbotapi/abstracts/types/MessageAction, dev/inmo/tgbotapi/abstracts/types/OptionallyWithEffectId, dev/inmo/tgbotapi/abstracts/types/ProtectContent, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyMessageThreadRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/CopyMessage$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/Integer;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -9951,6 +10011,36 @@ public final synthetic class dev/inmo/tgbotapi/types/BotShortDescription$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/BotShortDescription$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BotToken {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BotToken$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/BotToken;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/BotToken$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BotToken$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-Xc4KczI (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-Y8d-Zco (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BotToken$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -14557,6 +14647,7 @@ public final class dev/inmo/tgbotapi/types/UpdateTypesKt {
 	public static final field UPDATE_EDITED_CHANNEL_POST Ljava/lang/String;
 	public static final field UPDATE_EDITED_MESSAGE Ljava/lang/String;
 	public static final field UPDATE_INLINE_QUERY Ljava/lang/String;
+	public static final field UPDATE_MANAGED_BOT Ljava/lang/String;
 	public static final field UPDATE_MESSAGE Ljava/lang/String;
 	public static final field UPDATE_MESSAGE_REACTION Ljava/lang/String;
 	public static final field UPDATE_MESSAGE_REACTION_COUNT Ljava/lang/String;
@@ -33604,6 +33695,36 @@ public final class dev/inmo/tgbotapi/types/update/InlineQueryUpdate : dev/inmo/t
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/update/ManagedBotUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
+	public static final field Companion Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate$Companion;
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;JLdev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getData ()Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
+	public synthetic fun getData ()Ljava/lang/Object;
+	public fun getUpdateId-4k5XoGU ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/update/ManagedBotUpdate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/update/ManagedBotUpdate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/update/MessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate {
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-4k5XoGU ()J
@@ -33891,6 +34012,7 @@ public abstract class dev/inmo/tgbotapi/updateshandlers/AbstractFlowsUpdatesFilt
 	public fun getEditedMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getEditedMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getInlineQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getManagedBotUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMyChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
@@ -33932,6 +34054,7 @@ public abstract interface class dev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFi
 	public fun getEditedMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getEditedMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getInlineQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getManagedBotUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getMyChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;

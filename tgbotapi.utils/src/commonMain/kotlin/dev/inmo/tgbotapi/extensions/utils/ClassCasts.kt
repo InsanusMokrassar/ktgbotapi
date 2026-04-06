@@ -2194,6 +2194,15 @@ inline fun Update.asInlineQueryUpdate(): InlineQueryUpdate? = this as? InlineQue
 inline fun Update.requireInlineQueryUpdate(): InlineQueryUpdate = this as InlineQueryUpdate
 
 @PreviewFeature
+inline fun <T> Update.whenManagedBotUpdate(block: (ManagedBotUpdate) -> T) = asManagedBotUpdate()?.let(block)
+
+@PreviewFeature
+inline fun Update.asManagedBotUpdate(): ManagedBotUpdate? = this as? ManagedBotUpdate
+
+@PreviewFeature
+inline fun Update.requireManagedBotUpdate(): ManagedBotUpdate = this as ManagedBotUpdate
+
+@PreviewFeature
 inline fun <T> Update.whenMessageUpdate(block: (MessageUpdate) -> T) = asMessageUpdate()?.let(block)
 
 @PreviewFeature

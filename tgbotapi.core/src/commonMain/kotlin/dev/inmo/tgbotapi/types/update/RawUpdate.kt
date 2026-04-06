@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
@@ -64,6 +65,7 @@ internal data class RawUpdate constructor(
     private val edited_business_message: BusinessContentMessage<*>? = null,
     private val deleted_business_messages: BusinessMessagesDeleted? = null,
     private val purchased_paid_media: PaidMediaPurchased? = null,
+    private val managed_bot: ManagedBotUpdated? = null,
 ) {
     @Transient
     private var initedUpdate: Update? = null
@@ -100,6 +102,7 @@ internal data class RawUpdate constructor(
                 edited_business_message != null -> EditBusinessMessageUpdate(updateId, edited_business_message)
                 deleted_business_messages != null -> DeletedBusinessMessageUpdate(updateId, deleted_business_messages)
                 purchased_paid_media != null -> PaidMediaPurchasedUpdate(updateId, purchased_paid_media)
+                managed_bot != null -> ManagedBotUpdate(updateId, managed_bot)
                 else -> UnknownUpdate(
                     updateId,
                     raw

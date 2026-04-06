@@ -531,6 +531,7 @@ import dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+import dev.inmo.tgbotapi.types.update.ManagedBotUpdate
 import dev.inmo.tgbotapi.types.update.MessageUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
@@ -4091,6 +4092,12 @@ public inline fun Update.chosenInlineResultUpdateOrNull(): ChosenInlineResultUpd
 public inline fun Update.chosenInlineResultUpdateOrThrow(): ChosenInlineResultUpdate = this as dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
 
 public inline fun <T> Update.ifChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T): T? = chosenInlineResultUpdateOrNull() ?.let(block)
+
+public inline fun Update.managedBotUpdateOrNull(): ManagedBotUpdate? = this as? dev.inmo.tgbotapi.types.update.ManagedBotUpdate
+
+public inline fun Update.managedBotUpdateOrThrow(): ManagedBotUpdate = this as dev.inmo.tgbotapi.types.update.ManagedBotUpdate
+
+public inline fun <T> Update.ifManagedBotUpdate(block: (ManagedBotUpdate) -> T): T? = managedBotUpdateOrNull() ?.let(block)
 
 public inline fun Update.shippingQueryUpdateOrNull(): ShippingQueryUpdate? = this as? dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
 

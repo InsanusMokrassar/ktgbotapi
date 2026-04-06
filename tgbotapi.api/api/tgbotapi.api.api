@@ -1268,6 +1268,14 @@ public final class dev/inmo/tgbotapi/extensions/api/inline/SavePreparedInlineMes
 	public static synthetic fun savePreparedInlineMessage$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;ZZZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/managed_bots/GetManagedBotTokenKt {
+	public static final fun getManagedBotToken-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/managed_bots/ReplaceManagedBotTokenKt {
+	public static final fun replaceManagedBotToken-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/passport/SetPassportDataErrorsKt {
 	public static final fun setPassportDataErrors (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/passport/PassportData;Ldev/inmo/tgbotapi/utils/passport/Decryptor;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setPassportDataErrors (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
