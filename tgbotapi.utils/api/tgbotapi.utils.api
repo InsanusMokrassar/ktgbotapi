@@ -3346,6 +3346,14 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static final fun makeUsernameStartattachLink (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static synthetic fun makeUsernameStartattachLink$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeUsernameStartattachPrefix (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun managedBotCreationLink (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun managedBotCreationLink$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun managedBotCreationLink-B8si7ts (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun managedBotCreationLink-B8si7ts$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun managedBotCreationLink-hj--HSE (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun managedBotCreationLink-hj--HSE$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun managedBotCreationLink-rmazcNg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun managedBotCreationLink-rmazcNg$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/formatting/ResendingTextFormattingKt {
