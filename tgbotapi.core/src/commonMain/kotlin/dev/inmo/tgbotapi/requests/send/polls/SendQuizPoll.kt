@@ -29,8 +29,8 @@ class SendQuizPoll internal constructor(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<InputPollOption>,
-    @SerialName(correctOptionIdField)
-    val correctOptionId: Int,
+    @SerialName(correctOptionIdsField)
+    val correctOptionIds: List<Int>,
     @SerialName(questionParseModeField)
     override val questionParseMode: ParseMode? = null,
     @SerialName(questionEntitiesField)
@@ -87,7 +87,7 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         question: String,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanation: String?,
         questionParseMode: ParseMode? = null,
         explanationParseMode: ParseMode? = null,
@@ -109,7 +109,7 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = question,
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = questionParseMode,
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
@@ -135,7 +135,7 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         questionEntities: List<TextSource>,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanation: String?,
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
@@ -156,7 +156,7 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = null,
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
@@ -182,7 +182,7 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         question: String,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         questionParseMode: ParseMode? = null,
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
@@ -203,7 +203,7 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = question,
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = questionParseMode,
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
@@ -229,7 +229,7 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         questionEntities: List<TextSource>,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
@@ -249,7 +249,7 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = null,
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
@@ -274,10 +274,12 @@ class SendQuizPoll internal constructor(
     init {
         checkPollInfo(question, options)
         closeInfo ?.checkSendData()
-        val correctOptionIdRange = 0 .. options.size
-        if (correctOptionId !in correctOptionIdRange) {
-            throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
-                    "value is $correctOptionId")
+        val correctOptionIdsRange = 0 until options.size
+        correctOptionIds?.forEach { id ->
+            if (id !in correctOptionIdsRange) {
+                throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdsRange, but actual " +
+                        "value is $id")
+            }
         }
         if (explanation != null && explanation.length !in explanationLimit) {
             error("Quiz poll explanation size must be in range $explanationLimit," +
@@ -290,7 +292,7 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanation: String?,
     questionParseMode: ParseMode? = null,
@@ -311,7 +313,7 @@ fun SendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanation = explanation,
     questionParseMode = questionParseMode,
     explanationParseMode = explanationParseMode,
@@ -335,7 +337,7 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanation: String?,
     explanationParseMode: ParseMode? = null,
@@ -355,7 +357,7 @@ fun SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanation = explanation,
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
@@ -378,7 +380,7 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     questionParseMode: ParseMode? = null,
     explanationTextSources: List<TextSource>? = null,
@@ -398,7 +400,7 @@ fun SendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     questionParseMode = questionParseMode,
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
@@ -421,7 +423,7 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
@@ -440,7 +442,7 @@ fun SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,

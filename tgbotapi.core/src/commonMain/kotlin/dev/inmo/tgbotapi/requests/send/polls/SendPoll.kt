@@ -115,7 +115,7 @@ fun SendPoll(
 
 /**
  * @return [SendPoll] in case when all is right. It can return [SendRegularPoll] for [QuizPoll] in case if
- * [QuizPoll.correctOptionId] equal to null
+ * [QuizPoll.correctOptionIds] is empty
  */
 fun Poll.createRequest(
     chatId: ChatIdentifier,
@@ -149,12 +149,12 @@ fun Poll.createRequest(
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
-    is QuizPoll -> correctOptionId ?.let { correctOptionId ->
+    is QuizPoll -> correctOptionIds ?.let { correctOptionIds ->
         SendQuizPoll(
             chatId = chatId,
             questionEntities = textSources,
             options = options.map { it.asInput() },
-            correctOptionId = correctOptionId,
+            correctOptionIds = correctOptionIds,
             closeInfo = scheduledCloseInfo,
             explanationTextSources = explanationTextSources,
             isAnonymous = isAnonymous,

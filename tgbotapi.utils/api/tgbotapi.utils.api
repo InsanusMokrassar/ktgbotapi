@@ -3202,7 +3202,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/PollAnswerK
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/PollKt {
 	public static final fun getAllows_multiple_answers (Ldev/inmo/tgbotapi/types/polls/Poll;)Z
 	public static final fun getClose_date (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/TelegramDate;
-	public static final fun getCorrect_option_id (Ldev/inmo/tgbotapi/types/polls/Poll;)Ljava/lang/Integer;
+	public static final fun getCorrect_option_id (Ldev/inmo/tgbotapi/types/polls/Poll;)Ljava/util/List;
 	public static final fun getExplanation (Ldev/inmo/tgbotapi/types/polls/Poll;)Ljava/lang/String;
 	public static final fun getExplanation_entities (Ldev/inmo/tgbotapi/types/polls/Poll;)Ljava/util/List;
 	public static final fun getOpen_period (Ldev/inmo/tgbotapi/types/polls/Poll;)Ljava/lang/Integer;

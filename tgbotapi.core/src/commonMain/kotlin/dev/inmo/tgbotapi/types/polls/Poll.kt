@@ -91,7 +91,7 @@ private class RawPoll(
     @SerialName(allowsMultipleAnswersField)
     val allowMultipleAnswers: Boolean = false,
     @SerialName(correctOptionIdField)
-    val correctOptionId: Int? = null,
+    val correctOptionIds: List<Int>? = null,
     @SerialName(explanationField)
     val explanation: String? = null,
     @SerialName(explanationEntitiesField)
@@ -155,10 +155,7 @@ data class QuizPoll(
     override val textSources: List<TextSource> = emptyList(),
     override val options: List<PollOption>,
     override val votesCount: Int,
-    /**
-     * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
-     */
-    val correctOptionId: Int? = null,
+    val correctOptionIds: List<Int>? = null,
     val explanation: String?,
     val explanationTextSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
@@ -181,7 +178,7 @@ object PollSerializer : KSerializer<Poll> {
                 rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
-                rawPoll.correctOptionId,
+                rawPoll.correctOptionIds,
                 rawPoll.explanation,
                 rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
                 rawPoll.isClosed,
@@ -237,7 +234,7 @@ object PollSerializer : KSerializer<Poll> {
                 value.isClosed,
                 value.isAnonymous,
                 regularPollType,
-                correctOptionId = value.correctOptionId,
+                correctOptionIds = value.correctOptionIds,
                 explanation = value.text,
                 explanationEntities = value.textSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),

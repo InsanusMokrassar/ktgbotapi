@@ -23,8 +23,8 @@ val Poll.type: String
 val Poll.allows_multiple_answers: Boolean
     get() = asMultipleAnswersPoll() ?.allowMultipleAnswers == true
 @RiskFeature(RawFieldsUsageWarning)
-val Poll.correct_option_id: Int?
-    get() = asQuizPoll() ?.correctOptionId
+val Poll.correct_option_id: List<Int>?
+    get() = asQuizPoll() ?.correctOptionIds
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.explanation: String?
     get() = asQuizPoll() ?.text
