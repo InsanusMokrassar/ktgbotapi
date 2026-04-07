@@ -233,10 +233,10 @@ object PollSerializer : KSerializer<Poll> {
                 value.textSources.toRawMessageEntities(),
                 value.isClosed,
                 value.isAnonymous,
-                regularPollType,
+                quizPollType,
                 correctOptionIds = value.correctOptionIds,
-                explanation = value.text,
-                explanationEntities = value.textSources.toRawMessageEntities(),
+                explanation = value.explanation,
+                explanationEntities = value.explanationTextSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )

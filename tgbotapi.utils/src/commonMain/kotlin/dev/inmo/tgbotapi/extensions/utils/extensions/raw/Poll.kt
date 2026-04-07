@@ -27,10 +27,10 @@ val Poll.correct_option_id: List<Int>?
     get() = asQuizPoll() ?.correctOptionIds
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.explanation: String?
-    get() = asQuizPoll() ?.text
+    get() = asQuizPoll() ?.explanation
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.explanation_entities: TextSourcesList?
-    get() = asQuizPoll() ?.textSources
+    get() = asQuizPoll() ?.explanationTextSources
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.open_period: Seconds?
     get() = scheduledCloseInfo ?.asApproximateScheduledCloseInfo() ?.openDuration ?.seconds ?.toInt()
