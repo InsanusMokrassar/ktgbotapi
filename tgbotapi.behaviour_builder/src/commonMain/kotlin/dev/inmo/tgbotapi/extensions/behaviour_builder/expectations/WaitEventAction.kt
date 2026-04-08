@@ -15,6 +15,8 @@ import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
+import dev.inmo.tgbotapi.types.polls.PollOptionAdded
+import dev.inmo.tgbotapi.types.polls.PollOptionDeleted
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -254,6 +256,16 @@ fun BehaviourContext.waitManagedBotCreatedEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ManagedBotCreated>(initRequest, errorFactory)
+
+fun BehaviourContext.waitPollOptionAddedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<PollOptionAdded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitPollOptionDeletedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<PollOptionDeleted>(initRequest, errorFactory)
 
 fun BehaviourContext.waitManagedBotUpdatedEvents(
     initRequest: Request<*>? = null,

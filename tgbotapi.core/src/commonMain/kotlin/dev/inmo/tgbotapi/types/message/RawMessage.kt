@@ -20,6 +20,8 @@ import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
+import dev.inmo.tgbotapi.types.polls.PollOptionAdded
+import dev.inmo.tgbotapi.types.polls.PollOptionDeleted
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -207,7 +209,9 @@ internal data class RawMessage(
     private val gift_upgrade_sent: GiftSentOrReceivedEvent.RegularGift? = null,
     private val chat_owner_left: ChatOwnerLeft? = null,
     private val chat_owner_changed: ChatOwnerChanged? = null,
-    private val managed_bot_created: ManagedBotCreated? = null
+    private val managed_bot_created: ManagedBotCreated? = null,
+    private val poll_option_added: PollOptionAdded? = null,
+    private val poll_option_deleted: PollOptionDeleted? = null,
 ) {
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val checkedFrom = from ?.takeIf { !it.isFakeTelegramUser() }
@@ -347,6 +351,8 @@ internal data class RawMessage(
             suggested_post_paid != null -> suggested_post_paid
             suggested_post_refunded != null -> suggested_post_refunded
             managed_bot_created != null -> managed_bot_created
+            poll_option_added != null -> poll_option_added
+            poll_option_deleted != null -> poll_option_deleted
             else -> null
         }
     }

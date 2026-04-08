@@ -60,7 +60,7 @@ sealed interface PollOption : TextedInput {
 
     @Serializable(PollOption.LatelyAdded.Companion::class)
     sealed interface LatelyAdded : PollOption {
-        val additionDate: TelegramDate?
+        val additionDate: TelegramDate
 
         @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @Serializable(PollOption.LatelyAdded.Companion::class)
@@ -77,7 +77,7 @@ sealed interface PollOption : TextedInput {
             val addedByUser: User,
             @Serializable(TelegramDateSerializer::class)
             @SerialName(additionDateField)
-            override val additionDate: TelegramDate? = null
+            override val additionDate: TelegramDate
         ) : LatelyAdded {
             override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
         }
@@ -97,7 +97,7 @@ sealed interface PollOption : TextedInput {
             val addedByChat: Chat,
             @Serializable(TelegramDateSerializer::class)
             @SerialName(additionDateField)
-            override val additionDate: TelegramDate? = null
+            override val additionDate: TelegramDate
         ) : LatelyAdded {
             override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
         }
@@ -110,13 +110,21 @@ sealed interface PollOption : TextedInput {
                 val surrogate = PollOptionSurrogate.serializer().deserialize(decoder)
                 val textSources = surrogate.textEntities.asTextSources(surrogate.text)
                 return when {
-                    surrogate.addedByUser != null -> AddedByUser(
-                        surrogate.id, surrogate.text, textSources, surrogate.votes,
-                        surrogate.addedByUser, surrogate.additionDate
+                    surrogate.addedByUser != null && surrogate.additionDate != null -> AddedByUser(
+                        id = surrogate.id,
+                        text = surrogate.text,
+                        textSources = textSources,
+                        votes = surrogate.votes,
+                        addedByUser = surrogate.addedByUser,
+                        additionDate = surrogate.additionDate
                     )
-                    surrogate.addedByChat != null -> AddedByChat(
-                        surrogate.id, surrogate.text, textSources, surrogate.votes,
-                        surrogate.addedByChat, surrogate.additionDate
+                    surrogate.addedByChat != null && surrogate.additionDate != null -> AddedByChat(
+                        id = surrogate.id,
+                        text = surrogate.text,
+                        textSources = textSources,
+                        votes = surrogate.votes,
+                        addedByChat = surrogate.addedByChat,
+                        additionDate = surrogate.additionDate
                     )
                     else -> error("LatelyAdded poll option must have either added_by_user or added_by_chat")
                 }
@@ -177,7 +185,7 @@ sealed interface PollOption : TextedInput {
             val surrogate = PollOptionSurrogate.serializer().deserialize(decoder)
             val textSources = surrogate.textEntities.asTextSources(surrogate.text)
             return when {
-                surrogate.addedByUser != null -> LatelyAdded.AddedByUser(
+                surrogate.addedByUser != null && surrogate.additionDate != null -> LatelyAdded.AddedByUser(
                     id = surrogate.id,
                     text = surrogate.text,
                     textSources = textSources,
@@ -185,7 +193,7 @@ sealed interface PollOption : TextedInput {
                     addedByUser = surrogate.addedByUser,
                     additionDate = surrogate.additionDate
                 )
-                surrogate.addedByChat != null -> LatelyAdded.AddedByChat(
+                surrogate.addedByChat != null && surrogate.additionDate != null -> LatelyAdded.AddedByChat(
                     id = surrogate.id,
                     text = surrogate.text,
                     textSources = textSources,

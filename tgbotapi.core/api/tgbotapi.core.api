@@ -10899,7 +10899,10 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field openingHoursField Ljava/lang/String;
 	public static final field openingMinuteField Ljava/lang/String;
 	public static final field optionIdsField Ljava/lang/String;
+	public static final field optionPersistentIdField Ljava/lang/String;
 	public static final field optionPersistentIdsField Ljava/lang/String;
+	public static final field optionTextEntitiesField Ljava/lang/String;
+	public static final field optionTextField Ljava/lang/String;
 	public static final field optionsField Ljava/lang/String;
 	public static final field orderInfoField Ljava/lang/String;
 	public static final field originField Ljava/lang/String;
@@ -10936,6 +10939,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field pngStickerField Ljava/lang/String;
 	public static final field pointField Ljava/lang/String;
 	public static final field pollIdField Ljava/lang/String;
+	public static final field pollMessageField Ljava/lang/String;
 	public static final field positionField Ljava/lang/String;
 	public static final field postCodeField Ljava/lang/String;
 	public static final field postToChatPageField Ljava/lang/String;
@@ -31995,6 +31999,62 @@ public final class dev/inmo/tgbotapi/types/polls/PollOption$Simple : dev/inmo/tg
 }
 
 public final class dev/inmo/tgbotapi/types/polls/PollOption$Simple$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/polls/PollOptionAdded : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/polls/PollOptionAdded$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public final fun component2--sSIB8c ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-W9ZM0iI (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/PollOptionAdded;
+	public static synthetic fun copy-W9ZM0iI$default (Ldev/inmo/tgbotapi/types/polls/PollOptionAdded;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/PollOptionAdded;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOptionPersistentId--sSIB8c ()Ljava/lang/String;
+	public final fun getOptionText ()Ljava/lang/String;
+	public final fun getOptionTextSources ()Ljava/util/List;
+	public final fun getPollMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/polls/PollOptionAdded$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/polls/PollOptionAdded;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/polls/PollOptionAdded;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/polls/PollOptionDeleted : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public final fun component2--sSIB8c ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-W9ZM0iI (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted;
+	public static synthetic fun copy-W9ZM0iI$default (Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOptionPersistentId--sSIB8c ()Ljava/lang/String;
+	public final fun getOptionText ()Ljava/lang/String;
+	public final fun getOptionTextSources ()Ljava/util/List;
+	public final fun getPollMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/polls/PollOptionDeleted$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/polls/PollOptionDeleted;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
