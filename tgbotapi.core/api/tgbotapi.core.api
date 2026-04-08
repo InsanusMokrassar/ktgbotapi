@@ -10940,6 +10940,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field pointField Ljava/lang/String;
 	public static final field pollIdField Ljava/lang/String;
 	public static final field pollMessageField Ljava/lang/String;
+	public static final field pollOptionIdField Ljava/lang/String;
 	public static final field positionField Ljava/lang/String;
 	public static final field postCodeField Ljava/lang/String;
 	public static final field postToChatPageField Ljava/lang/String;
@@ -13942,6 +13943,7 @@ public final class dev/inmo/tgbotapi/types/RawChatId$Companion {
 public abstract interface class dev/inmo/tgbotapi/types/ReplyInfo {
 	public abstract fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public abstract fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
+	public abstract fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/ReplyInfo$External : dev/inmo/tgbotapi/types/ReplyInfo {
@@ -13970,16 +13972,17 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Companion 
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media : dev/inmo/tgbotapi/abstracts/SpoilerableData, dev/inmo/tgbotapi/types/ReplyInfo$External$Content {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Z
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/files/MediaContentVariant;
 	public final fun component6-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
-	public final fun copy-6c5RyNQ (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
-	public static synthetic fun copy-6c5RyNQ$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public final fun component7-y3a_nt8 ()Ljava/lang/String;
+	public final fun copy-tm1VpJ0 (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
+	public static synthetic fun copy-tm1VpJ0$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;ZLdev/inmo/tgbotapi/types/files/MediaContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
@@ -13987,6 +13990,7 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media : de
 	public fun getContent ()Ldev/inmo/tgbotapi/types/files/MediaContentVariant;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public fun getSpoilered ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -14009,21 +14013,23 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Media$Comp
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple : dev/inmo/tgbotapi/types/ReplyInfo$External$Content {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;
 	public final fun component5-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
-	public final fun copy-Nu6vRuA (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
-	public static synthetic fun copy-Nu6vRuA$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
+	public final fun component6-y3a_nt8 ()Ljava/lang/String;
+	public final fun copy-19-cw74 (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
+	public static synthetic fun copy-19-cw74$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Content$Simple;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public fun getContent ()Ldev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -14048,21 +14054,23 @@ public abstract interface class dev/inmo/tgbotapi/types/ReplyInfo$External$Conte
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Text : dev/inmo/tgbotapi/types/ReplyInfo$External {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public final fun component3-0CjidFs ()Lkotlin/Triple;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component5-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
-	public final fun copy-Nu6vRuA (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
-	public static synthetic fun copy-Nu6vRuA$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
+	public final fun component6-y3a_nt8 ()Ljava/lang/String;
+	public final fun copy-19-cw74 (Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
+	public static synthetic fun copy-19-cw74$default (Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;Ldev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;Lkotlin/Triple;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$External$Text;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/SuperPublicChat;
 	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
+	public fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -14083,17 +14091,19 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$External$Text$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/ReplyInfo$Internal : dev/inmo/tgbotapi/types/ReplyInfo {
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public final fun component2-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
-	public final fun copy-piqXRR4 (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
-	public static synthetic fun copy-piqXRR4$default (Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
+	public final fun component3-y3a_nt8 ()Ljava/lang/String;
+	public final fun copy-s_KXmIQ (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
+	public static synthetic fun copy-s_KXmIQ$default (Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyInfo$Internal;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public synthetic fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
 	public fun getMessageMeta-fV8YnZ8 ()Lkotlin/Triple;
+	public fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -14107,6 +14117,7 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$ToStory : dev/inmo/tgbotapi
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public fun getMessageMeta-0CjidFs ()Lkotlin/Triple;
+	public fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public final fun getStory ()Ldev/inmo/tgbotapi/types/stories/Story;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -14129,25 +14140,25 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$ToStory$Companion {
 
 public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/abstracts/WithMessageId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2-APLFQys ()J
 	public final fun component3 ()Ljava/lang/Boolean;
@@ -14155,11 +14166,13 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/a
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
+	public final fun component9-y3a_nt8 ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getChatIdentifier ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public fun getMessageId-APLFQys ()J
+	public final fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public final fun getQuote ()Ljava/lang/String;
 	public final fun getQuoteParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun getQuotePosition ()Ljava/lang/Integer;

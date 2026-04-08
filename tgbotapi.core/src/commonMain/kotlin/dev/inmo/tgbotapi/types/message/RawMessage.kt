@@ -48,6 +48,7 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.RefundedPayment
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
+import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.stories.Story
@@ -78,6 +79,7 @@ internal data class RawMessage(
     private val reply_to_message: RawMessage? = null,
     private val reply_to_story: Story? = null,
     private val reply_to_checklist_task_id: ChecklistTaskId? = null,
+    private val reply_to_poll_option_id: PollOptionPersistentId? = null,
     private val external_reply: ReplyInfo.External? = null,
     private val quote: TextQuote? = null,
     private val via_bot: CommonBot? = null,
@@ -431,8 +433,9 @@ internal data class RawMessage(
             } ?: content?.let { content ->
                 val replyInfo: ReplyInfo? = when {
                     reply_to_message != null -> ReplyInfo.Internal(
-                        reply_to_message.asMessage,
-                        reply_to_checklist_task_id
+                        message = reply_to_message.asMessage,
+                        checklistTaskId = reply_to_checklist_task_id,
+                        pollOptionId = reply_to_poll_option_id
                     )
                     reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
                     external_reply != null -> external_reply
