@@ -489,7 +489,6 @@ import dev.inmo.tgbotapi.types.payments.stars.StarTransaction
 import dev.inmo.tgbotapi.types.payments.stars.TransactionPartner
 import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
-import dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollAnswer
 import dev.inmo.tgbotapi.types.polls.PollOptionAdded
@@ -2300,12 +2299,6 @@ public inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrNull(): Appr
 public inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrThrow(): ApproximateScheduledCloseInfo = this as dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 
 public inline fun <T> ScheduledCloseInfo.ifApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T): T? = approximateScheduledCloseInfoOrNull() ?.let(block)
-
-public inline fun Poll.multipleAnswersPollOrNull(): MultipleAnswersPoll? = this as? dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
-
-public inline fun Poll.multipleAnswersPollOrThrow(): MultipleAnswersPoll = this as dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
-
-public inline fun <T> Poll.ifMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T): T? = multipleAnswersPollOrNull() ?.let(block)
 
 public inline fun Poll.unknownPollTypeOrNull(): UnknownPollType? = this as? dev.inmo.tgbotapi.types.polls.UnknownPollType
 

@@ -2618,15 +2618,6 @@ inline fun InlineKeyboardButton.requireUnknownInlineKeyboardButton(): UnknownInl
     this as UnknownInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> Poll.whenMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T) = asMultipleAnswersPoll()?.let(block)
-
-@PreviewFeature
-inline fun Poll.asMultipleAnswersPoll(): MultipleAnswersPoll? = this as? MultipleAnswersPoll
-
-@PreviewFeature
-inline fun Poll.requireMultipleAnswersPoll(): MultipleAnswersPoll = this as MultipleAnswersPoll
-
-@PreviewFeature
 inline fun <T> Poll.whenQuizPoll(block: (QuizPoll) -> T) = asQuizPoll()?.let(block)
 
 @PreviewFeature
