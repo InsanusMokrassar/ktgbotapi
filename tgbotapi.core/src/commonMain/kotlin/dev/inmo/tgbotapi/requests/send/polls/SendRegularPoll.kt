@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -13,6 +14,7 @@ import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.EntitiesBuilder
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
@@ -316,6 +318,10 @@ class SendRegularPoll constructor(
     init {
         checkPollInfo(question, options)
         closeInfo?.checkSendData()
+
+        if (isAnonymous && allowAddingOptions) {
+            DefaultKTgBotAPIKSLog.w("SendRegularPoll", "It is prohibited to send anonymous poll with adding options")
+        }
     }
 }
 
