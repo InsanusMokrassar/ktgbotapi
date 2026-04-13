@@ -8073,16 +8073,18 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendPollKt {
 
 public final class dev/inmo/tgbotapi/requests/send/polls/SendQuizPoll : dev/inmo/tgbotapi/requests/send/polls/SendPoll {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAllowMultipleAnswers ()Z
 	public fun getAllowPaidBroadcast ()Z
+	public final fun getAllowsRevoting ()Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun getCorrectOptionIds ()Ljava/util/List;
@@ -8128,14 +8130,14 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendQuizPoll$Companion 
 }
 
 public final class dev/inmo/tgbotapi/requests/send/polls/SendQuizPollKt {
-	public static final fun SendQuizPoll-B9b6LbQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static synthetic fun SendQuizPoll-B9b6LbQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static final fun SendQuizPoll-FxSmuCo (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static synthetic fun SendQuizPoll-FxSmuCo$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static final fun SendQuizPoll-mcTOmrU (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static synthetic fun SendQuizPoll-mcTOmrU$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static final fun SendQuizPoll-y96ZyDY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
-	public static synthetic fun SendQuizPoll-y96ZyDY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static final fun SendQuizPoll-B9b6LbQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ZZZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static synthetic fun SendQuizPoll-B9b6LbQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ZZZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static final fun SendQuizPoll-RN_bhEo (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static synthetic fun SendQuizPoll-RN_bhEo$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static final fun SendQuizPoll-y96ZyDY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static synthetic fun SendQuizPoll-y96ZyDY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZZZZZLjava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static final fun SendQuizPoll-yP1vFRc (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
+	public static synthetic fun SendQuizPoll-yP1vFRc$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/polls/SendQuizPoll;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/polls/SendRegularPoll : dev/inmo/tgbotapi/requests/send/polls/SendPoll {
@@ -31761,22 +31763,11 @@ public final class dev/inmo/tgbotapi/types/polls/InputPollOption$Companion : kot
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/polls/MultipleAnswersPoll : dev/inmo/tgbotapi/types/polls/Poll {
-	public static final field Companion Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll$Companion;
-	public abstract fun getAllowMultipleAnswers ()Z
-}
-
-public final class dev/inmo/tgbotapi/types/polls/MultipleAnswersPoll$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/polls/MultipleAnswersPoll$DefaultImpls {
-	public static fun getQuestionTextSources (Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;)Ljava/util/List;
-	public static fun getText (Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;)Ljava/lang/String;
-}
-
 public abstract interface class dev/inmo/tgbotapi/types/polls/Poll : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/Poll$Companion;
+	public abstract fun getAllowMultipleAnswers ()Z
+	public abstract fun getAllowsRevoting ()Z
+	public abstract fun getDescriptionTextSources ()Ljava/util/List;
 	public abstract fun getId-S5FO_mE ()Ljava/lang/String;
 	public abstract fun getOptions ()Ljava/util/List;
 	public abstract fun getQuestion ()Ljava/lang/String;
@@ -32112,11 +32103,14 @@ public final class dev/inmo/tgbotapi/types/polls/PollSerializer : kotlinx/serial
 
 public final class dev/inmo/tgbotapi/types/polls/QuizPoll : dev/inmo/tgbotapi/types/polls/Poll {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/QuizPoll$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-S5FO_mE ()Ljava/lang/String;
 	public final fun component10 ()Z
-	public final fun component11 ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
+	public final fun component11 ()Z
+	public final fun component12 ()Z
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
+	public final fun component14 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/util/List;
@@ -32125,10 +32119,13 @@ public final class dev/inmo/tgbotapi/types/polls/QuizPoll : dev/inmo/tgbotapi/ty
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/util/List;
 	public final fun component9 ()Z
-	public final fun copy-dx2gcjE (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
-	public static synthetic fun copy-dx2gcjE$default (Ldev/inmo/tgbotapi/types/polls/QuizPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
+	public final fun copy-YPAypuI (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
+	public static synthetic fun copy-YPAypuI$default (Ldev/inmo/tgbotapi/types/polls/QuizPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsRevoting ()Z
 	public final fun getCorrectOptionIds ()Ljava/util/List;
+	public fun getDescriptionTextSources ()Ljava/util/List;
 	public final fun getExplanation ()Ljava/lang/String;
 	public final fun getExplanationTextSources ()Ljava/util/List;
 	public fun getId-S5FO_mE ()Ljava/lang/String;
@@ -32149,11 +32146,13 @@ public final class dev/inmo/tgbotapi/types/polls/QuizPoll$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/polls/RegularPoll : dev/inmo/tgbotapi/types/polls/MultipleAnswersPoll {
+public final class dev/inmo/tgbotapi/types/polls/RegularPoll : dev/inmo/tgbotapi/types/polls/Poll {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/RegularPoll$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-S5FO_mE ()Ljava/lang/String;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
+	public final fun component11 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/util/List;
@@ -32161,11 +32160,13 @@ public final class dev/inmo/tgbotapi/types/polls/RegularPoll : dev/inmo/tgbotapi
 	public final fun component6 ()Z
 	public final fun component7 ()Z
 	public final fun component8 ()Z
-	public final fun component9 ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
-	public final fun copy-MCR_Dn0 (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
-	public static synthetic fun copy-MCR_Dn0$default (Ldev/inmo/tgbotapi/types/polls/RegularPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
+	public final fun component9 ()Z
+	public final fun copy-dx2gcjE (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
+	public static synthetic fun copy-dx2gcjE$default (Ldev/inmo/tgbotapi/types/polls/RegularPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsRevoting ()Z
+	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getId-S5FO_mE ()Ljava/lang/String;
 	public fun getOptions ()Ljava/util/List;
 	public fun getQuestion ()Ljava/lang/String;
@@ -32190,16 +32191,22 @@ public abstract interface class dev/inmo/tgbotapi/types/polls/ScheduledCloseInfo
 
 public final class dev/inmo/tgbotapi/types/polls/UnknownPollType : dev/inmo/tgbotapi/types/polls/Poll {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/UnknownPollType$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZZZLjava/util/List;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-S5FO_mE ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component11 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()I
 	public final fun component5 ()Ljava/util/List;
 	public final fun component6 ()Z
 	public final fun component7 ()Z
-	public final fun component8 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component8 ()Z
+	public final fun component9 ()Z
 	public fun equals (Ljava/lang/Object;)Z
+	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsRevoting ()Z
+	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getId-S5FO_mE ()Ljava/lang/String;
 	public fun getOptions ()Ljava/util/List;
 	public fun getQuestion ()Ljava/lang/String;

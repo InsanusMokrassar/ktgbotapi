@@ -96,7 +96,7 @@ private class RawPoll(
     @SerialName(explanationEntitiesField)
     val explanationEntities: List<RawMessageEntity> = emptyList(),
     @SerialName(allowsRevotingField)
-    val allowsRevoting: Boolean = true,
+    val allowsRevoting: Boolean? = null,
     @SerialName(descriptionField)
     val description: String? = null,
     @SerialName(descriptionEntitiesField)
@@ -171,7 +171,7 @@ data class QuizPoll(
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val allowMultipleAnswers: Boolean = false,
-    override val allowsRevoting: Boolean = true,
+    override val allowsRevoting: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null,
     override val descriptionTextSources: List<TextSource> = emptyList()
 ) : Poll
@@ -197,7 +197,7 @@ object PollSerializer : KSerializer<Poll> {
                 isClosed = rawPoll.isClosed,
                 isAnonymous = rawPoll.isAnonymous,
                 allowMultipleAnswers = rawPoll.allowMultipleAnswers,
-                allowsRevoting = rawPoll.allowsRevoting,
+                allowsRevoting = rawPoll.allowsRevoting ?: false,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
                 descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
             )
@@ -210,7 +210,7 @@ object PollSerializer : KSerializer<Poll> {
                 isClosed = rawPoll.isClosed,
                 isAnonymous = rawPoll.isAnonymous,
                 allowMultipleAnswers = rawPoll.allowMultipleAnswers,
-                allowsRevoting = rawPoll.allowsRevoting,
+                allowsRevoting = rawPoll.allowsRevoting ?: true,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
                 descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
             )

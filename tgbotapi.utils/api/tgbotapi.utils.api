@@ -194,7 +194,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun asMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
 	public static final fun asMultilevelTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource;
-	public static final fun asMultipleAnswersPoll (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;
 	public static final fun asMyChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
 	public static final fun asNewChatMembers (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/NewChatMembers;
 	public static final fun asNewChatPhoto (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/NewChatPhoto;
@@ -541,7 +540,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun requireMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
 	public static final fun requireMultilevelTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource;
-	public static final fun requireMultipleAnswersPoll (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;
 	public static final fun requireMyChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
 	public static final fun requireNewChatMembers (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/NewChatMembers;
 	public static final fun requireNewChatPhoto (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/NewChatPhoto;
@@ -888,7 +886,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun whenMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMultilevelTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun whenMultipleAnswersPoll (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMyChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenNewChatMembers (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenNewChatPhoto (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1923,7 +1920,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMovable (Ldev/inmo/tgbotapi/types/BackgroundType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMultilevelTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifMultipleAnswersPoll (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMyChatMemberUpdatedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifNewChatMembers (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifNewChatPhoto (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2366,8 +2362,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun movableOrThrow (Ldev/inmo/tgbotapi/types/BackgroundType;)Ldev/inmo/tgbotapi/types/BackgroundType$Movable;
 	public static final fun multilevelTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource;
 	public static final fun multilevelTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource;
-	public static final fun multipleAnswersPollOrNull (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;
-	public static final fun multipleAnswersPollOrThrow (Ldev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/polls/MultipleAnswersPoll;
 	public static final fun myChatMemberUpdatedUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
 	public static final fun myChatMemberUpdatedUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
 	public static final fun newChatMembersOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/NewChatMembers;
