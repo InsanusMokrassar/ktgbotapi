@@ -3,11 +3,15 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserManagedBotUpdatedMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.managedBotUpdateOrNull
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
+import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.update.ManagedBotUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
@@ -23,7 +27,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-fun <BC : BehaviourContext> BC.onManagedBotUpdate(
+fun <BC : BehaviourContext> BC.onManagedBotUpdated(
     initialFilter: SimpleFilter<ManagedBotUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ManagedBotUpdated, Update>? = null,
     markerFactory: MarkerFactory<in ManagedBotUpdated, Any>? = ByUserManagedBotUpdatedMarkerFactory,
