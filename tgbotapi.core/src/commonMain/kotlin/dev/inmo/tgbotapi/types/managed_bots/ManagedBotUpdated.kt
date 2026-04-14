@@ -9,4 +9,4 @@ import kotlinx.serialization.Serializable
 data class ManagedBotUpdated(
     val user: PreviewUser,
     val bot: PreviewBot
-) : CommonEvent
+)

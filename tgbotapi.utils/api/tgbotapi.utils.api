@@ -1895,7 +1895,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifLoginURLInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifManagedBotCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifManagedBotUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifManagedBotUpdated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMask (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskAnimatedSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMaskSimpleSticker (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2312,8 +2311,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun managedBotCreatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
 	public static final fun managedBotUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
 	public static final fun managedBotUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
-	public static final fun managedBotUpdatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
-	public static final fun managedBotUpdatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated;
 	public static final fun maskAnimatedStickerOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MaskAnimatedSticker;
 	public static final fun maskAnimatedStickerOrThrow (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MaskAnimatedSticker;
 	public static final fun maskOrNull (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;

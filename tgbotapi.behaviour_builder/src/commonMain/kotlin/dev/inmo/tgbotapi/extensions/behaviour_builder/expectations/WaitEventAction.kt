@@ -267,11 +267,6 @@ fun BehaviourContext.waitPollOptionDeletedEvents(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<PollOptionDeleted>(initRequest, errorFactory)
 
-fun BehaviourContext.waitManagedBotUpdatedEvents(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<ManagedBotUpdated>(initRequest, errorFactory)
-
 fun BehaviourContext.waitChatBackgroundSet(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

@@ -237,7 +237,6 @@ import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
-import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
@@ -2347,12 +2346,6 @@ public inline fun ForwardInfo.fromSupergroupOrNull(): ForwardInfo.PublicChat.Fro
 public inline fun ForwardInfo.fromSupergroupOrThrow(): ForwardInfo.PublicChat.FromSupergroup = this as dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromSupergroup
 
 public inline fun <T> ForwardInfo.ifFromSupergroup(block: (ForwardInfo.PublicChat.FromSupergroup) -> T): T? = fromSupergroupOrNull() ?.let(block)
-
-public inline fun ChatEvent.managedBotUpdatedOrNull(): ManagedBotUpdated? = this as? dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
-
-public inline fun ChatEvent.managedBotUpdatedOrThrow(): ManagedBotUpdated = this as dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
-
-public inline fun <T> ChatEvent.ifManagedBotUpdated(block: (ManagedBotUpdated) -> T): T? = managedBotUpdatedOrNull() ?.let(block)
 
 public inline fun ChatEvent.managedBotCreatedOrNull(): ManagedBotCreated? = this as? dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 

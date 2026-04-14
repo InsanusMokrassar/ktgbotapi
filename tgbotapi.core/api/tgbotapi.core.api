@@ -23713,7 +23713,7 @@ public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated$Compan
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+public final class dev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated {
 	public static final field Companion Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotUpdated$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ldev/inmo/tgbotapi/types/chat/PreviewBot;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
