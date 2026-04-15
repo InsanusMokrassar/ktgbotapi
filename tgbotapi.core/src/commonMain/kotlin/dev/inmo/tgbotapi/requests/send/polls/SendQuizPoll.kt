@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -13,6 +14,7 @@ import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -342,15 +344,18 @@ class SendQuizPoll internal constructor(
         checkPollInfo(question, options)
         closeInfo?.checkSendData()
         val correctOptionIdsRange = 0 until options.size
-        correctOptionIds?.forEach { id ->
+        correctOptionIds.forEach { id ->
             if (id !in correctOptionIdsRange) {
-                throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdsRange, but actual " +
+                DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Correct option id must be in range of $correctOptionIdsRange, but actual " +
                         "value is $id")
             }
         }
         if (explanation != null && explanation.length !in explanationLimit) {
-            error("Quiz poll explanation size must be in range $explanationLimit," +
+            DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Quiz poll explanation size must be in range $explanationLimit," +
                     "but actual explanation contains ${text.length} symbols")
+        }
+        if (allowMultipleAnswers == false && correctOptionIds.size > 1) {
+            DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Multiple answers are disabled for current sendQuizPoll, but multiple correct options passed")
         }
     }
 }

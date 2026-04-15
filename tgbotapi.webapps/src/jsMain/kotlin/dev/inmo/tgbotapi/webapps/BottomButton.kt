@@ -47,7 +47,7 @@ data class BottomButtonParams(
 fun BottomButton.setParams(params: BottomButtonParams) = setParams(
     json(
         *listOfNotNull(
-            params.iconCustomEmojiId ?.let { "icon_custom_emoji_id" to params.iconCustomEmojiId },
+            params.iconCustomEmojiId ?.let { "icon_custom_emoji_id" to params.iconCustomEmojiId.string },
             params.text ?.let { "text" to params.text },
             params.color ?.let { "color" to params.color },
             params.textColor ?.let { "text_color" to params.textColor },
