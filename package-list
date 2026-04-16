@@ -27,6 +27,7 @@ dev.inmo.tgbotapi.extensions.api.games
 dev.inmo.tgbotapi.extensions.api.get
 dev.inmo.tgbotapi.extensions.api.gifts
 dev.inmo.tgbotapi.extensions.api.inline
+dev.inmo.tgbotapi.extensions.api.managed_bots
 dev.inmo.tgbotapi.extensions.api.passport
 dev.inmo.tgbotapi.extensions.api.send
 dev.inmo.tgbotapi.extensions.api.send.games
@@ -93,6 +94,7 @@ dev.inmo.tgbotapi.requests.get
 dev.inmo.tgbotapi.requests.gifts
 dev.inmo.tgbotapi.requests.inline
 dev.inmo.tgbotapi.requests.local
+dev.inmo.tgbotapi.requests.managed_bots
 dev.inmo.tgbotapi.requests.send
 dev.inmo.tgbotapi.requests.send.abstracts
 dev.inmo.tgbotapi.requests.send.games
@@ -143,6 +145,7 @@ dev.inmo.tgbotapi.types.gifts
 dev.inmo.tgbotapi.types.gifts.unique
 dev.inmo.tgbotapi.types.giveaway
 dev.inmo.tgbotapi.types.location
+dev.inmo.tgbotapi.types.managed_bots
 dev.inmo.tgbotapi.types.media
 dev.inmo.tgbotapi.types.message
 dev.inmo.tgbotapi.types.message.ChatEvents
