@@ -2,6 +2,55 @@
 
 ## 33.0.0
 
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.6](https://core.telegram.org/bots/api-changelog#april-3-2026)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Core`:
+    * **BREAKING CHANGE** `PollOption` reimplemented as a sealed interface hierarchy:
+      * `PollOption.Simple` replaces `SimplePollOption`
+      * `PollOption.LatelyAdded` sealed interface added with `AddedByUser` and `AddedByChat` variants
+      * `PollOption` now has `id: PollOptionPersistentId` field
+    * **BREAKING CHANGE** `QuizPoll.correctOptionId` replaced with `correctOptionIds: List<Int>` (multiple correct options support)
+    * **BREAKING CHANGE** `PollAnswer.Anonymous.voterChat` type changed from `ChannelChat` to `PreviewPublicChat`
+    * **BREAKING CHANGE** `SendPoll` and `SendRegularPoll` init checks no longer throw errors, warnings are logged instead
+    * **BREAKING CHANGE** `requestChannelReplyButton` for groups renamed to `requestGroupReplyButton`
+    * **BREAKING CHANGE** `openPeriodPollSecondsLimit` changed from `5 .. 600` to `5 .. 2628000`
+    * Added `PollOptionPersistentId` value class
+    * Added `PollOptionAdded` and `PollOptionDeleted` chat events
+    * Added `chosenPersistentIds` to `PollAnswer`
+    * Added `pollOptionId` support in `ReplyParameters` and `ReplyInfo` (`reply_to_poll_option_id`)
+    * Added `allowsRevoting`, `shuffleOptions`, `hideResultsUntilCloses` fields to `SendRegularPoll` and `SendQuizPoll`
+    * Added `allowAddingOptions` field to `SendRegularPoll`
+    * Added `description`, `descriptionParseMode`, `descriptionTextSources` fields to `SendQuizPoll` and `SendRegularPoll`
+    * Added `allowsMultipleAnswers` field to `SendQuizPoll`
+    * Added `openPeriod` and `closeDate` parameters to `SendPoll` function
+    * Added `ManagedBotCreated` and `ManagedBotUpdated` chat events
+    * Added `ManagedBotUpdate` update type and `UPDATE_MANAGED_BOT` constant
+    * Added `GetManagedBotToken` and `ReplaceManagedBotToken` requests
+    * Added `BotToken` value class
+    * Added `KeyboardButtonRequestManagedBot` and `RequestManagedBotKeyboardButton`
+    * Added `requestManagedBotReplyButton` shortcuts
+    * Added `SavePreparedKeyboardButton` request
+    * Added `PreparedKeyboardButton` and `PreparedKeyboardButtonId` types
+    * Added `canManageBots` field to `ExtendedBot`
+    * Added `managedBotNewBotUsername` constant
+* `API`:
+    * Added `savePreparedKeyboardButton` extensions
+    * Added `getManagedBotToken` and `replaceManagedBotToken` extensions
+* `BehaviourBuilder`:
+    * Added event triggers: `onManagedBotCreated`, `onManagedBotUpdated`, `onPollOptionAdded`, `onPollOptionDeleted`
+    * Added `onManagedBotUpdate` trigger for `ManagedBotUpdated` updates
+    * Added `waitManagedBotCreatedEvents`, `waitManagedBotUpdatedEvents`, `waitPollOptionAddedEvents`, `waitPollOptionDeletedEvents` expectations
+    * Added `waitManagedBotUpdated` expectation
+    * Added `ManagedBotUpdatedFilterByUser` and `ByUserManagedBotUpdatedMarkerFactory`
+* `Utils`:
+    * Added `managedBotCreationLink` functions for building managed bot creation links
+    * Added `requestManagedBotButton` extensions to `ReplyKeyboardRowBuilder`
+    * Regenerated class casts extensions
+* `WebApps`:
+    * Added `requestChat` method to `WebApp`
+
 ## 32.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
