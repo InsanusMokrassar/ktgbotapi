@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.reply.requestChatReplyButton
+import dev.inmo.tgbotapi.types.buttons.reply.requestManagedBotReplyButton
 import dev.inmo.tgbotapi.types.buttons.reply.requestUserReplyButton
 import dev.inmo.tgbotapi.types.buttons.reply.requestUsersReplyButton
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
@@ -463,6 +464,50 @@ fun ReplyKeyboardRowBuilder.requestGroupButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
+    ),
+    iconCustomEmojiId,
+    style
+)
+
+/**
+ * Creates and put [RequestManagedBotKeyboardButton]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+fun ReplyKeyboardRowBuilder.requestManagedBotButton(
+    text: String,
+    requestManagedBot: KeyboardButtonRequestManagedBot,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(
+    requestManagedBotReplyButton(
+        text,
+        requestManagedBot,
+        iconCustomEmojiId,
+        style
+    )
+)
+
+/**
+ * Creates and put [RequestManagedBotKeyboardButton] with [KeyboardButtonRequestManagedBot]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+fun ReplyKeyboardRowBuilder.requestManagedBotButton(
+    text: String,
+    requestId: RequestId,
+    suggestedName: String? = null,
+    suggestedUsername: Username? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = requestManagedBotButton(
+    text,
+    KeyboardButtonRequestManagedBot(
+        requestId = requestId,
+        suggestedName = suggestedName,
+        suggestedUsername = suggestedUsername,
     ),
     iconCustomEmojiId,
     style

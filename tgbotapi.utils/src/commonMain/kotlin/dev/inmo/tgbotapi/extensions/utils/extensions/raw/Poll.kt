@@ -21,16 +21,16 @@ val Poll.type: String
     }
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.allows_multiple_answers: Boolean
-    get() = asMultipleAnswersPoll() ?.allowMultipleAnswers == true
+    get() = allowsMultipleAnswers
 @RiskFeature(RawFieldsUsageWarning)
-val Poll.correct_option_id: Int?
-    get() = asQuizPoll() ?.correctOptionId
+val Poll.correct_option_id: List<Int>?
+    get() = asQuizPoll() ?.correctOptionIds
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.explanation: String?
-    get() = asQuizPoll() ?.text
+    get() = asQuizPoll() ?.explanation
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.explanation_entities: TextSourcesList?
-    get() = asQuizPoll() ?.textSources
+    get() = asQuizPoll() ?.explanationTextSources
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.open_period: Seconds?
     get() = scheduledCloseInfo ?.asApproximateScheduledCloseInfo() ?.openDuration ?.seconds ?.toInt()

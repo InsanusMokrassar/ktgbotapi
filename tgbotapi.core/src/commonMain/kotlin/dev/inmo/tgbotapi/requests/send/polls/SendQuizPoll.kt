@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -13,6 +14,7 @@ import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -29,8 +31,8 @@ class SendQuizPoll internal constructor(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<InputPollOption>,
-    @SerialName(correctOptionIdField)
-    val correctOptionId: Int,
+    @SerialName(correctOptionIdsField)
+    val correctOptionIds: List<Int>,
     @SerialName(questionParseModeField)
     override val questionParseMode: ParseMode? = null,
     @SerialName(questionEntitiesField)
@@ -39,12 +41,26 @@ class SendQuizPoll internal constructor(
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
+    @SerialName(allowsMultipleAnswersField)
+    override val allowsMultipleAnswers: Boolean = false,
+    @SerialName(allowsRevotingField)
+    override val allowsRevoting: Boolean = false,
+    @SerialName(shuffleOptionsField)
+    override val shuffleOptions: Boolean = false,
+    @SerialName(hideResultsUntilClosesField)
+    override val hideResultsUntilCloses: Boolean = false,
     @SerialName(explanationField)
     val explanation: String? = null,
     @SerialName(explanationParseModeField)
     val explanationParseMode: ParseMode? = null,
     @SerialName(explanationEntitiesField)
     private val rawExplanationEntities: List<RawMessageEntity>? = null,
+    @SerialName(descriptionField)
+    override val description: String? = null,
+    @SerialName(descriptionParseModeField)
+    val descriptionParseMode: ParseMode? = null,
+    @SerialName(descriptionEntitiesField)
+    private val rawDescriptionEntities: List<RawMessageEntity>? = null,
     @SerialName(openPeriodField)
     override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
@@ -80,19 +96,28 @@ class SendQuizPoll internal constructor(
     override val textSources: List<TextSource>
         get() = rawQuestionEntities.asTextSources(question)
     val explanationTextEntities: List<TextSource>? by lazy {
-        rawExplanationEntities ?.asTextSources(text ?: return@lazy null)
+        rawExplanationEntities?.asTextSources(text ?: return@lazy null)
+    }
+    override val descriptionTextSources: List<TextSource>? by lazy {
+        rawDescriptionEntities?.asTextSources(description ?: return@lazy null)
     }
 
     constructor(
         chatId: ChatIdentifier,
         question: String,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanation: String?,
         questionParseMode: ParseMode? = null,
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = false,
+        shuffleOptions: Boolean = false,
+            hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -109,14 +134,21 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = question,
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = questionParseMode,
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
         explanation = explanation,
         explanationParseMode = explanationParseMode,
         rawExplanationEntities = emptyList(),
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -135,11 +167,17 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         questionEntities: List<TextSource>,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanation: String?,
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = false,
+        shuffleOptions: Boolean = false,
+            hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -156,14 +194,21 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = null,
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
         explanation = explanation,
         explanationParseMode = explanationParseMode,
         rawExplanationEntities = emptyList(),
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -182,11 +227,16 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         question: String,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         questionParseMode: ParseMode? = null,
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = false,
+        shuffleOptions: Boolean = false,
+            hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -203,14 +253,21 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = question,
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = questionParseMode,
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        explanation = explanationTextSources ?.makeSourceString(),
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        explanation = explanationTextSources?.makeSourceString(),
         explanationParseMode = null,
-        rawExplanationEntities = explanationTextSources ?.toRawMessageEntities(),
+        rawExplanationEntities = explanationTextSources?.toRawMessageEntities(),
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -229,10 +286,15 @@ class SendQuizPoll internal constructor(
         chatId: ChatIdentifier,
         questionEntities: List<TextSource>,
         options: List<InputPollOption>,
-        correctOptionId: Int,
+        correctOptionIds: List<Int>,
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = false,
+        shuffleOptions: Boolean = false,
+            hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
@@ -249,14 +311,21 @@ class SendQuizPoll internal constructor(
         chatId = chatId,
         question = questionEntities.makeSourceString(),
         options = options,
-        correctOptionId = correctOptionId,
+        correctOptionIds = correctOptionIds,
         questionParseMode = null,
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        explanation = explanationTextSources ?.makeSourceString(),
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        explanation = explanationTextSources?.makeSourceString(),
         explanationParseMode = null,
-        rawExplanationEntities = explanationTextSources ?.toRawMessageEntities(),
+        rawExplanationEntities = explanationTextSources?.toRawMessageEntities(),
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -273,15 +342,20 @@ class SendQuizPoll internal constructor(
 
     init {
         checkPollInfo(question, options)
-        closeInfo ?.checkSendData()
-        val correctOptionIdRange = 0 .. options.size
-        if (correctOptionId !in correctOptionIdRange) {
-            throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
-                    "value is $correctOptionId")
+        closeInfo?.checkSendData()
+        val correctOptionIdsRange = 0 until options.size
+        correctOptionIds.forEach { id ->
+            if (id !in correctOptionIdsRange) {
+                DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Correct option id must be in range of $correctOptionIdsRange, but actual " +
+                        "value is $id")
+            }
         }
         if (explanation != null && explanation.length !in explanationLimit) {
-            error("Quiz poll explanation size must be in range $explanationLimit," +
+            DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Quiz poll explanation size must be in range $explanationLimit," +
                     "but actual explanation contains ${text.length} symbols")
+        }
+        if (allowsMultipleAnswers == false && correctOptionIds.size > 1) {
+            DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Multiple answers are disabled for current sendQuizPoll, but multiple correct options passed")
         }
     }
 }
@@ -290,13 +364,19 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanation: String?,
     questionParseMode: ParseMode? = null,
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -311,12 +391,18 @@ fun SendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanation = explanation,
     questionParseMode = questionParseMode,
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -335,12 +421,18 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanation: String?,
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -355,11 +447,17 @@ fun SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanation = explanation,
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -378,12 +476,17 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     questionParseMode: ParseMode? = null,
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    descriptionTextSources: List<TextSource>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -398,11 +501,16 @@ fun SendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     questionParseMode = questionParseMode,
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    descriptionTextSources = descriptionTextSources,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -421,11 +529,16 @@ fun SendQuizPoll(
     chatId: ChatIdentifier,
     questionEntities: List<TextSource>,
     options: List<InputPollOption>,
-    correctOptionId: Int,
+    correctOptionIds: List<Int>,
     closeInfo: ScheduledCloseInfo?,
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = false,
+    shuffleOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    descriptionTextSources: List<TextSource>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -440,10 +553,15 @@ fun SendQuizPoll(
     chatId = chatId,
     questionEntities = questionEntities,
     options = options,
-    correctOptionId = correctOptionId,
+    correctOptionIds = correctOptionIds,
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    descriptionTextSources = descriptionTextSources,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,

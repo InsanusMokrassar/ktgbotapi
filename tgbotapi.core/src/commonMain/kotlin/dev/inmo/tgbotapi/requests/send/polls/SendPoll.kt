@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
@@ -14,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.polls.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import korlibs.time.millisecondsLong
 import korlibs.time.seconds
 import kotlinx.serialization.*
@@ -30,15 +32,21 @@ internal fun checkPollInfo(
     options: List<InputPollOption>
 ) {
     if (question.length !in pollQuestionTextLength) {
-        throw IllegalArgumentException("The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}")
+        DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+            "The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}"
+        }
     }
     options.forEach {
         if (it.text.length !in pollOptionTextLength) {
-            throw IllegalArgumentException("The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}")
+            DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+                "The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}"
+            }
         }
     }
     if (options.size !in pollOptionsLimit) {
-        throw IllegalArgumentException("The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}")
+        DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+            "The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}"
+        }
     }
 }
 
@@ -49,6 +57,14 @@ fun SendPoll(
     questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsRevoting: Boolean = true,
+    shuffleOptions: Boolean = false,
+    allowAddingOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
+    openPeriod: LongSeconds? = null,
+    closeDate: LongSeconds? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -59,14 +75,20 @@ fun SendPoll(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
-    chatId,
-    question,
-    options,
-    null,
-    questionParseMode,
-    isAnonymous,
-    isClosed,
-    false,
+    chatId = chatId,
+    question = question,
+    options = options,
+    closeInfo = openPeriod?.asApproximateScheduledCloseInfo ?: closeDate?.asExactScheduledCloseInfo,
+    questionParseMode = questionParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowsMultipleAnswers = false,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    allowAddingOptions = allowAddingOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -84,6 +106,14 @@ fun SendPoll(
     options: List<InputPollOption>,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    allowsRevoting: Boolean = true,
+    shuffleOptions: Boolean = false,
+    allowAddingOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
+    openPeriod: LongSeconds? = null,
+    closeDate: LongSeconds? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -97,10 +127,16 @@ fun SendPoll(
     chatId = chatId,
     questionTextSources = textSources,
     options = options,
-    closeInfo = null,
+    closeInfo = openPeriod?.asApproximateScheduledCloseInfo ?: closeDate?.asExactScheduledCloseInfo,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = false,
+    allowsMultipleAnswers = false,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    allowAddingOptions = allowAddingOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -115,7 +151,7 @@ fun SendPoll(
 
 /**
  * @return [SendPoll] in case when all is right. It can return [SendRegularPoll] for [QuizPoll] in case if
- * [QuizPoll.correctOptionId] equal to null
+ * [QuizPoll.correctOptionIds] is empty
  */
 fun Poll.createRequest(
     chatId: ChatIdentifier,
@@ -137,7 +173,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -149,12 +185,12 @@ fun Poll.createRequest(
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
-    is QuizPoll -> correctOptionId ?.let { correctOptionId ->
+    is QuizPoll -> correctOptionIds?.let { correctOptionIds ->
         SendQuizPoll(
             chatId = chatId,
             questionEntities = textSources,
             options = options.map { it.asInput() },
-            correctOptionId = correctOptionId,
+            correctOptionIds = correctOptionIds,
             closeInfo = scheduledCloseInfo,
             explanationTextSources = explanationTextSources,
             isAnonymous = isAnonymous,
@@ -177,7 +213,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = false,
+        allowsMultipleAnswers = false,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -196,7 +232,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = false,
+        allowsMultipleAnswers = false,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -216,7 +252,9 @@ internal fun ScheduledCloseInfo.checkSendData() {
         is ApproximateScheduledCloseInfo -> openDuration.seconds
     }.toInt()
     if (span !in openPeriodPollSecondsLimit) {
-        error("Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span")
+        DefaultKTgBotAPIKSLog.w("checkSendData") {
+            "Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span"
+        }
     }
 }
 
@@ -230,6 +268,12 @@ sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
     abstract val isAnonymous: Boolean
     abstract val isClosed: Boolean
     abstract val type: String
+    abstract val allowsMultipleAnswers: Boolean
+    abstract val allowsRevoting: Boolean
+    abstract val shuffleOptions: Boolean
+    abstract val description: String?
+    abstract val hideResultsUntilCloses: Boolean
+    abstract val descriptionTextSources: TextSourcesList?
 
     internal abstract val openPeriod: LongSeconds?
     internal abstract val closeDate: LongSeconds?

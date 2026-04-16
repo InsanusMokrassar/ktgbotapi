@@ -236,6 +236,7 @@ import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
@@ -487,9 +488,10 @@ import dev.inmo.tgbotapi.types.payments.stars.StarTransaction
 import dev.inmo.tgbotapi.types.payments.stars.TransactionPartner
 import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
-import dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollAnswer
+import dev.inmo.tgbotapi.types.polls.PollOptionAdded
+import dev.inmo.tgbotapi.types.polls.PollOptionDeleted
 import dev.inmo.tgbotapi.types.polls.QuizPoll
 import dev.inmo.tgbotapi.types.polls.RegularPoll
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
@@ -529,6 +531,7 @@ import dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+import dev.inmo.tgbotapi.types.update.ManagedBotUpdate
 import dev.inmo.tgbotapi.types.update.MessageUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
@@ -2344,6 +2347,12 @@ public inline fun ForwardInfo.fromSupergroupOrThrow(): ForwardInfo.PublicChat.Fr
 
 public inline fun <T> ForwardInfo.ifFromSupergroup(block: (ForwardInfo.PublicChat.FromSupergroup) -> T): T? = fromSupergroupOrNull() ?.let(block)
 
+public inline fun ChatEvent.managedBotCreatedOrNull(): ManagedBotCreated? = this as? dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
+
+public inline fun ChatEvent.managedBotCreatedOrThrow(): ManagedBotCreated = this as dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
+
+public inline fun <T> ChatEvent.ifManagedBotCreated(block: (ManagedBotCreated) -> T): T? = managedBotCreatedOrNull() ?.let(block)
+
 public inline fun ChatEvent.chatSharedOrNull(): ChatShared? = this as? dev.inmo.tgbotapi.types.request.ChatShared
 
 public inline fun ChatEvent.chatSharedOrThrow(): ChatShared = this as dev.inmo.tgbotapi.types.request.ChatShared
@@ -2769,6 +2778,18 @@ public inline fun ChatEvent.giveawayCreatedCompanionOrNull(): GiveawayCreated.Co
 public inline fun ChatEvent.giveawayCreatedCompanionOrThrow(): GiveawayCreated.Companion = this as dev.inmo.tgbotapi.types.giveaway.GiveawayCreated.Companion
 
 public inline fun <T> ChatEvent.ifGiveawayCreatedCompanion(block: (GiveawayCreated.Companion) -> T): T? = giveawayCreatedCompanionOrNull() ?.let(block)
+
+public inline fun ChatEvent.pollOptionDeletedOrNull(): PollOptionDeleted? = this as? dev.inmo.tgbotapi.types.polls.PollOptionDeleted
+
+public inline fun ChatEvent.pollOptionDeletedOrThrow(): PollOptionDeleted = this as dev.inmo.tgbotapi.types.polls.PollOptionDeleted
+
+public inline fun <T> ChatEvent.ifPollOptionDeleted(block: (PollOptionDeleted) -> T): T? = pollOptionDeletedOrNull() ?.let(block)
+
+public inline fun ChatEvent.pollOptionAddedOrNull(): PollOptionAdded? = this as? dev.inmo.tgbotapi.types.polls.PollOptionAdded
+
+public inline fun ChatEvent.pollOptionAddedOrThrow(): PollOptionAdded = this as dev.inmo.tgbotapi.types.polls.PollOptionAdded
+
+public inline fun <T> ChatEvent.ifPollOptionAdded(block: (PollOptionAdded) -> T): T? = pollOptionAddedOrNull() ?.let(block)
 
 public inline fun ChatEvent.directMessagesConfigurationChangedOrNull(): DirectMessagesConfigurationChanged? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 
@@ -3562,12 +3583,6 @@ public inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrThrow(): App
 
 public inline fun <T> ScheduledCloseInfo.ifApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T): T? = approximateScheduledCloseInfoOrNull() ?.let(block)
 
-public inline fun Poll.multipleAnswersPollOrNull(): MultipleAnswersPoll? = this as? dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
-
-public inline fun Poll.multipleAnswersPollOrThrow(): MultipleAnswersPoll = this as dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
-
-public inline fun <T> Poll.ifMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T): T? = multipleAnswersPollOrNull() ?.let(block)
-
 public inline fun Poll.unknownPollTypeOrNull(): UnknownPollType? = this as? dev.inmo.tgbotapi.types.polls.UnknownPollType
 
 public inline fun Poll.unknownPollTypeOrThrow(): UnknownPollType = this as dev.inmo.tgbotapi.types.polls.UnknownPollType
@@ -4077,6 +4092,12 @@ public inline fun Update.chosenInlineResultUpdateOrNull(): ChosenInlineResultUpd
 public inline fun Update.chosenInlineResultUpdateOrThrow(): ChosenInlineResultUpdate = this as dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
 
 public inline fun <T> Update.ifChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T): T? = chosenInlineResultUpdateOrNull() ?.let(block)
+
+public inline fun Update.managedBotUpdateOrNull(): ManagedBotUpdate? = this as? dev.inmo.tgbotapi.types.update.ManagedBotUpdate
+
+public inline fun Update.managedBotUpdateOrThrow(): ManagedBotUpdate = this as dev.inmo.tgbotapi.types.update.ManagedBotUpdate
+
+public inline fun <T> Update.ifManagedBotUpdate(block: (ManagedBotUpdate) -> T): T? = managedBotUpdateOrNull() ?.let(block)
 
 public inline fun Update.shippingQueryUpdateOrNull(): ShippingQueryUpdate? = this as? dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
 

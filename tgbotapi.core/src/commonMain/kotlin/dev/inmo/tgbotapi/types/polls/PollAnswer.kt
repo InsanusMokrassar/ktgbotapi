@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.CommonBot
+import dev.inmo.tgbotapi.types.chat.PreviewPublicChat
 import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -15,6 +16,7 @@ sealed interface PollAnswer: FromUser {
     val pollId: PollId
     override val user: User
     val chosen: List<Int>
+    val chosenPersistentIds: List<PollOptionPersistentId>
     @Transient
     override val from: User
         get() = user
@@ -27,6 +29,8 @@ sealed interface PollAnswer: FromUser {
         override val user: User,
         @SerialName(optionIdsField)
         override val chosen: List<Int>,
+        @SerialName(optionPersistentIdsField)
+        override val chosenPersistentIds: List<PollOptionPersistentId> = emptyList(),
     ) : PollAnswer
 
     @Serializable
@@ -35,9 +39,11 @@ sealed interface PollAnswer: FromUser {
         override val pollId: PollId,
         @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
         @SerialName(voterChatField)
-        val voterChat: ChannelChat,
+        val voterChat: PreviewPublicChat,
         @SerialName(optionIdsField)
-        override val chosen: List<Int>
+        override val chosen: List<Int>,
+        @SerialName(optionPersistentIdsField)
+        override val chosenPersistentIds: List<PollOptionPersistentId> = emptyList(),
     ) : PollAnswer {
         @SerialName(userField)
         override val user: User = defaultUser
@@ -59,17 +65,20 @@ sealed interface PollAnswer: FromUser {
             val pollId: PollId,
             @SerialName(optionIdsField)
             val chosen: List<Int>,
+            @SerialName(optionPersistentIdsField)
+            val chosenPersistentIds: List<PollOptionPersistentId> = emptyList(),
             @SerialName(userField)
             val user: User = Anonymous.defaultUser,
             @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
             @SerialName(voterChatField)
-            val voterChat: ChannelChat? = null
+            val voterChat: PreviewPublicChat? = null
         )
         operator fun invoke(
             pollId: PollId,
             user: User,
             chosen: List<Int>,
-        ) = Public(pollId, user, chosen)
+            chosenPersistentIds: List<PollOptionPersistentId> = emptyList(),
+        ) = Public(pollId, user, chosen, chosenPersistentIds)
 
         override val descriptor: SerialDescriptor
             get() = PollAnswerSurrogate.serializer().descriptor
@@ -77,9 +86,9 @@ sealed interface PollAnswer: FromUser {
         override fun deserialize(decoder: Decoder): PollAnswer {
             val surrogate = PollAnswerSurrogate.serializer().deserialize(decoder)
             return if (surrogate.voterChat != null) {
-                Anonymous(surrogate.pollId, surrogate.voterChat, surrogate.chosen)
+                Anonymous(surrogate.pollId, surrogate.voterChat, surrogate.chosen, surrogate.chosenPersistentIds)
             } else {
-                Public(surrogate.pollId, surrogate.user, surrogate.chosen)
+                Public(surrogate.pollId, surrogate.user, surrogate.chosen, surrogate.chosenPersistentIds)
             }
         }
 
@@ -87,10 +96,11 @@ sealed interface PollAnswer: FromUser {
             PollAnswerSurrogate.serializer().serialize(
                 encoder,
                 PollAnswerSurrogate(
-                    value.pollId,
-                    value.chosen,
-                    value.user,
-                    (value as? Anonymous) ?.voterChat
+                    pollId = value.pollId,
+                    chosen = value.chosen,
+                    chosenPersistentIds = value.chosenPersistentIds,
+                    user = value.user,
+                    voterChat = (value as? Anonymous) ?.voterChat
                 )
             )
         }

@@ -1,9 +1,14 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.buttons.KeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestChatKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestManagedBotKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.RequestUserKeyboardButton
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
+import kotlin.reflect.KClass
 
 
 typealias ForwardSignature = String
@@ -95,7 +100,7 @@ val mediaCountInMediaGroup: IntRange = 2 .. 10
 
 val explanationLimit = 0 .. 200
 
-val openPeriodPollSecondsLimit = 5 .. 600
+val openPeriodPollSecondsLimit = 5 .. 2628000
 
 val membersLimit = 1 .. 99999
 
@@ -121,6 +126,12 @@ val cloudStorageKeyLimit = 1 .. 128
 val cloudStorageValueLimit = 0 .. 4096
 val cloudStorageKeyRegex = Regex("[A-Za-z0-9_-]{${cloudStorageKeyLimit.first},${cloudStorageKeyLimit.last}}")
 val cloudStorageValueRegex = Regex(".{${cloudStorageValueLimit.first},${cloudStorageValueLimit.last}}")
+
+val allowedToSavePreparedKeyboardButtons: Set<KClass<out KeyboardButton>> = setOf(
+    RequestUserKeyboardButton::class,
+    RequestChatKeyboardButton::class,
+    RequestManagedBotKeyboardButton::class,
+)
 
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
@@ -164,6 +175,7 @@ const val quoteParseModeField = "quote_parse_mode"
 const val quoteEntitiesField = "quote_entities"
 const val quotePositionField = "quote_position"
 const val checklistTaskIdField = "checklist_task_id"
+const val pollOptionIdField = "poll_option_id"
 const val replyMarkupField = "reply_markup"
 const val disableContentTypeDetectionField = "disable_content_type_detection"
 const val supportStreamingField = "support_streaming"
@@ -267,10 +279,19 @@ const val lastErrorDateField = "last_error_date"
 const val lastSynchronizationErrorDateField = "last_synchronization_error_date"
 const val lastErrorMessageField = "last_error_message"
 const val votesCountField = "voter_count"
+const val addedByUserField = "added_by_user"
+const val addedByChatField = "added_by_chat"
+const val additionDateField = "addition_date"
+const val persistentIdField = "persistent_id"
 const val isClosedField = "is_closed"
 const val totalVoterCountField = "total_voter_count"
 const val correctOptionIdField = "correct_option_id"
+const val correctOptionIdsField = "correct_option_ids"
 const val allowsMultipleAnswersField = "allows_multiple_answers"
+const val allowsRevotingField = "allows_revoting"
+const val shuffleOptionsField = "shuffle_options"
+const val allowAddingOptionsField = "allow_adding_options"
+const val hideResultsUntilClosesField = "hide_results_until_closes"
 const val isAnonymousField = "is_anonymous"
 const val canManageTopicsField = "can_manage_topics"
 const val canEditTagField = "can_edit_tag"
@@ -302,6 +323,11 @@ const val canSendPaidMediaField = "can_send_paid_media"
 const val activeUsernamesField = "active_usernames"
 const val customTitleField = "custom_title"
 const val optionIdsField = "option_ids"
+const val optionPersistentIdsField = "option_persistent_ids"
+const val optionPersistentIdField = "option_persistent_id"
+const val optionTextField = "option_text"
+const val optionTextEntitiesField = "option_text_entities"
+const val pollMessageField = "poll_message"
 const val parentChatField = "parent_chat"
 const val voterChatField = "voter_chat"
 const val ipAddressField = "ip_address"
@@ -342,11 +368,14 @@ const val requestPollField = "request_poll"
 const val requestUserField = "request_user"
 const val requestUsersField = "request_users"
 const val requestChatField = "request_chat"
+const val requestManagedBotField = "request_managed_bot"
 const val requestIdField = "request_id"
 const val requestTitleField = "request_title"
 const val requestUsernameField = "request_username"
 const val requestPhotoField = "request_photo"
 const val requestNameField = "request_name"
+const val suggestedNameField = "suggested_name"
+const val suggestedUsernameField = "suggested_username"
 const val maxQuantityField = "max_quantity"
 const val prizeStarCountField = "prize_star_count"
 
@@ -583,6 +612,8 @@ const val chatTypeField = "chat_type"
 
 const val explanationEntitiesField = "explanation_entities"
 const val explanationParseModeField = "explanation_parse_mode"
+const val descriptionParseModeField = "description_parse_mode"
+const val descriptionEntitiesField = "description_entities"
 const val openPeriodField = "open_period"
 const val closeDateField = "close_date"
 const val openingMinuteField = "opening_minute"
@@ -676,6 +707,8 @@ const val ratingField = "rating"
 const val uniqueGiftColorsField = "unique_gift_colors"
 const val paidStarCountField = "paid_star_count"
 const val isPaidPostField = "is_paid_post"
+
+const val canManageBotsField = "can_manage_bots"
 
 const val levelField = "level"
 const val currentLevelRatingField = "current_level_rating"

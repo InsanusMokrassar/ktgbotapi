@@ -20,6 +20,7 @@ import kotlin.jvm.JvmInline
 const val internalTgAppLinksBeginning = "tg://"
 const val internalLinkBeginning = "https://t.me"
 const val internalUserLinkBeginning = "${internalTgAppLinksBeginning}user?id="
+const val managedBotNewBotUsername = "newbot"
 
 @Serializable(ChatIdentifierSerializer::class)
 @ClassCastsIncluded

@@ -300,7 +300,7 @@ fun requestChannelReplyButton(
 /**
  * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
  */
-fun requestChannelReplyButton(
+fun requestGroupReplyButton(
     text: String,
     requestId: RequestId,
     isForum: Boolean? = null,
@@ -327,6 +327,42 @@ fun requestChannelReplyButton(
         requestTitle = requestTitle,
         requestUsername = requestUsername,
         requestPhoto = requestPhoto,
+    ),
+    iconCustomEmojiId,
+    style
+)
+
+/**
+ * Creates [RequestManagedBotKeyboardButton]
+ */
+fun requestManagedBotReplyButton(
+    text: String,
+    requestManagedBot: KeyboardButtonRequestManagedBot,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = RequestManagedBotKeyboardButton(
+    text,
+    requestManagedBot,
+    iconCustomEmojiId,
+    style
+)
+
+/**
+ * Creates [RequestManagedBotKeyboardButton] with [KeyboardButtonRequestManagedBot]
+ */
+fun requestManagedBotReplyButton(
+    text: String,
+    requestId: RequestId,
+    suggestedName: String? = null,
+    suggestedUsername: Username? = null,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = requestManagedBotReplyButton(
+    text,
+    KeyboardButtonRequestManagedBot(
+        requestId = requestId,
+        suggestedName = suggestedName,
+        suggestedUsername = suggestedUsername,
     ),
     iconCustomEmojiId,
     style

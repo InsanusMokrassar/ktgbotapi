@@ -517,6 +517,8 @@ data class ExtendedBot(
     override val acceptedGiftTypes: AcceptedGiftTypes = AcceptedGiftTypes(),
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(canManageBotsField)
+    val canManageBots: Boolean = false,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true

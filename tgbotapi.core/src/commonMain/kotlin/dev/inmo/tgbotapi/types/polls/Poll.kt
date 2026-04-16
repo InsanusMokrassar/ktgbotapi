@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import korlibs.time.seconds
 import kotlinx.serialization.*
@@ -62,12 +63,10 @@ sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val votesCount: Int
     val isClosed: Boolean
     val isAnonymous: Boolean
+    val allowsMultipleAnswers: Boolean
+    val allowsRevoting: Boolean
     val scheduledCloseInfo: ScheduledCloseInfo?
-}
-
-@Serializable(PollSerializer::class)
-sealed interface MultipleAnswersPoll : Poll {
-    val allowMultipleAnswers: Boolean
+    val descriptionTextSources: List<TextSource>
 }
 
 @Serializable
@@ -89,13 +88,19 @@ private class RawPoll(
     @SerialName(typeField)
     val type: String,
     @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false,
-    @SerialName(correctOptionIdField)
-    val correctOptionId: Int? = null,
+    val allowsMultipleAnswers: Boolean = false,
+    @SerialName(correctOptionIdsField)
+    val correctOptionIds: List<Int>? = null,
     @SerialName(explanationField)
     val explanation: String? = null,
     @SerialName(explanationEntitiesField)
     val explanationEntities: List<RawMessageEntity> = emptyList(),
+    @SerialName(allowsRevotingField)
+    val allowsRevoting: Boolean? = null,
+    @SerialName(descriptionField)
+    val description: String? = null,
+    @SerialName(descriptionEntitiesField)
+    val descriptionEntities: List<RawMessageEntity> = emptyList(),
     @SerialName(openPeriodField)
     val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
@@ -123,6 +128,9 @@ data class UnknownPollType internal constructor(
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
+    override val allowsRevoting: Boolean = true,
+    override val descriptionTextSources: List<TextSource> = emptyList(),
     @Serializable
     val raw: JsonElement? = null
 ) : Poll {
@@ -144,9 +152,11 @@ data class RegularPoll(
     override val votesCount: Int,
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
-    override val allowMultipleAnswers: Boolean = false,
-    override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : MultipleAnswersPoll
+    override val allowsMultipleAnswers: Boolean = false,
+    override val allowsRevoting: Boolean = true,
+    override val scheduledCloseInfo: ScheduledCloseInfo? = null,
+    override val descriptionTextSources: List<TextSource> = emptyList()
+) : Poll
 
 @Serializable(PollSerializer::class)
 data class QuizPoll(
@@ -155,15 +165,15 @@ data class QuizPoll(
     override val textSources: List<TextSource> = emptyList(),
     override val options: List<PollOption>,
     override val votesCount: Int,
-    /**
-     * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
-     */
-    val correctOptionId: Int? = null,
+    val correctOptionIds: List<Int>? = null,
     val explanation: String?,
     val explanationTextSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
-    override val scheduledCloseInfo: ScheduledCloseInfo? = null
+    override val allowsMultipleAnswers: Boolean = false,
+    override val allowsRevoting: Boolean = false,
+    override val scheduledCloseInfo: ScheduledCloseInfo? = null,
+    override val descriptionTextSources: List<TextSource> = emptyList()
 ) : Poll
 
 @RiskFeature
@@ -176,38 +186,43 @@ object PollSerializer : KSerializer<Poll> {
 
         return when (rawPoll.type) {
             quizPollType -> QuizPoll(
-                rawPoll.id,
-                rawPoll.question,
-                rawPoll.questionEntities.asTextSources(rawPoll.question),
-                rawPoll.options,
-                rawPoll.votesCount,
-                rawPoll.correctOptionId,
-                rawPoll.explanation,
-                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
-                rawPoll.isClosed,
-                rawPoll.isAnonymous,
-                rawPoll.scheduledCloseInfo
+                id = rawPoll.id,
+                question = rawPoll.question,
+                textSources = rawPoll.questionEntities.asTextSources(rawPoll.question),
+                options = rawPoll.options,
+                votesCount = rawPoll.votesCount,
+                correctOptionIds = rawPoll.correctOptionIds,
+                explanation = rawPoll.explanation,
+                explanationTextSources = rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
+                isClosed = rawPoll.isClosed,
+                isAnonymous = rawPoll.isAnonymous,
+                allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
+                allowsRevoting = rawPoll.allowsRevoting ?: false,
+                scheduledCloseInfo = rawPoll.scheduledCloseInfo,
+                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
             )
             regularPollType -> RegularPoll(
-                rawPoll.id,
-                rawPoll.question,
-                rawPoll.questionEntities.asTextSources(rawPoll.question),
-                rawPoll.options,
-                rawPoll.votesCount,
-                rawPoll.isClosed,
-                rawPoll.isAnonymous,
-                rawPoll.allowMultipleAnswers,
-                rawPoll.scheduledCloseInfo
+                id = rawPoll.id,
+                question = rawPoll.question,
+                textSources = rawPoll.questionEntities.asTextSources(rawPoll.question),
+                options = rawPoll.options,
+                votesCount = rawPoll.votesCount,
+                isClosed = rawPoll.isClosed,
+                isAnonymous = rawPoll.isAnonymous,
+                allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
+                allowsRevoting = rawPoll.allowsRevoting ?: true,
+                scheduledCloseInfo = rawPoll.scheduledCloseInfo,
+                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
             )
             else -> UnknownPollType(
-                rawPoll.id,
-                rawPoll.question,
-                rawPoll.options,
-                rawPoll.votesCount,
-                rawPoll.questionEntities.asTextSources(rawPoll.question),
-                rawPoll.isClosed,
-                rawPoll.isAnonymous,
-                asJson
+                id = rawPoll.id,
+                question = rawPoll.question,
+                options = rawPoll.options,
+                votesCount = rawPoll.votesCount,
+                textSources = rawPoll.questionEntities.asTextSources(rawPoll.question),
+                isClosed = rawPoll.isClosed,
+                isAnonymous = rawPoll.isAnonymous,
+                raw = asJson
             )
         }
     }
@@ -216,30 +231,37 @@ object PollSerializer : KSerializer<Poll> {
         val closeInfo = value.scheduledCloseInfo
         val rawPoll = when (value) {
             is RegularPoll -> RawPoll(
-                value.id,
-                value.question,
-                value.options,
-                value.votesCount,
-                value.textSources.toRawMessageEntities(),
-                value.isClosed,
-                value.isAnonymous,
-                regularPollType,
-                value.allowMultipleAnswers,
+                id = value.id,
+                question = value.question,
+                options = value.options,
+                votesCount = value.votesCount,
+                questionEntities = value.textSources.toRawMessageEntities(),
+                isClosed = value.isClosed,
+                isAnonymous = value.isAnonymous,
+                type = regularPollType,
+                allowsMultipleAnswers = value.allowsMultipleAnswers,
+                allowsRevoting = value.allowsRevoting,
+                description = value.descriptionTextSources.makeSourceString().takeIf { it.isNotEmpty() },
+                descriptionEntities = value.descriptionTextSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
             is QuizPoll -> RawPoll(
-                value.id,
-                value.question,
-                value.options,
-                value.votesCount,
-                value.textSources.toRawMessageEntities(),
-                value.isClosed,
-                value.isAnonymous,
-                regularPollType,
-                correctOptionId = value.correctOptionId,
-                explanation = value.text,
-                explanationEntities = value.textSources.toRawMessageEntities(),
+                id = value.id,
+                question = value.question,
+                options = value.options,
+                votesCount = value.votesCount,
+                questionEntities = value.textSources.toRawMessageEntities(),
+                isClosed = value.isClosed,
+                isAnonymous = value.isAnonymous,
+                type = quizPollType,
+                allowsMultipleAnswers = value.allowsMultipleAnswers,
+                correctOptionIds = value.correctOptionIds,
+                allowsRevoting = value.allowsRevoting,
+                explanation = value.explanation,
+                explanationEntities = value.explanationTextSources.toRawMessageEntities(),
+                description = value.descriptionTextSources.makeSourceString().takeIf { it.isNotEmpty() },
+                descriptionEntities = value.descriptionTextSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )

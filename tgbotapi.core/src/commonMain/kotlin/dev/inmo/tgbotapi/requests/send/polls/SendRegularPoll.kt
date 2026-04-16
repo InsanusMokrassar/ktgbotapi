@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -13,6 +14,7 @@ import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.InputPollOption
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.EntitiesBuilder
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
@@ -39,9 +41,23 @@ class SendRegularPoll constructor(
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
+    @SerialName(allowsRevotingField)
+    override val allowsRevoting: Boolean = true,
+    @SerialName(shuffleOptionsField)
+    override val shuffleOptions: Boolean = false,
+    @SerialName(allowAddingOptionsField)
+    val allowAddingOptions: Boolean = false,
+    @SerialName(hideResultsUntilClosesField)
+    override val hideResultsUntilCloses: Boolean = false,
+    @SerialName(descriptionField)
+    override val description: String? = null,
+    @SerialName(descriptionParseModeField)
+    val descriptionParseMode: ParseMode? = null,
+    @SerialName(descriptionEntitiesField)
+    private val rawDescriptionEntities: List<RawMessageEntity>? = null,
     @SerialName(openPeriodField)
-    override val openPeriod: LongSeconds?= null,
+    override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
     override val closeDate: LongSeconds? = null,
     @OptIn(ExperimentalSerializationApi::class)
@@ -71,6 +87,9 @@ class SendRegularPoll constructor(
 ) : SendPoll() {
     override val textSources: List<TextSource>
         get() = rawQuestionEntities.asTextSources(text)
+    override val descriptionTextSources: List<TextSource>? by lazy {
+        rawDescriptionEntities?.asTextSources(description ?: return@lazy null)
+    }
 
     constructor(
         chatId: ChatIdentifier,
@@ -78,8 +97,14 @@ class SendRegularPoll constructor(
         options: List<InputPollOption>,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
-        openPeriod: LongSeconds?= null,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = true,
+        shuffleOptions: Boolean = false,
+        allowAddingOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
+        openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -99,7 +124,14 @@ class SendRegularPoll constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        allowAddingOptions = allowAddingOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -121,8 +153,14 @@ class SendRegularPoll constructor(
         questionParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
-        openPeriod: LongSeconds?= null,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = true,
+        shuffleOptions: Boolean = false,
+        allowAddingOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        description: String? = null,
+        descriptionParseMode: ParseMode? = null,
+        openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -142,7 +180,123 @@ class SendRegularPoll constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        allowAddingOptions = allowAddingOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        description = description,
+        descriptionParseMode = descriptionParseMode,
+        rawDescriptionEntities = null,
+        openPeriod = openPeriod,
+        closeDate = closeDate,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    constructor(
+        chatId: ChatIdentifier,
+        question: String,
+        options: List<InputPollOption>,
+        questionParseMode: ParseMode? = null,
+        isAnonymous: Boolean = true,
+        isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = true,
+        shuffleOptions: Boolean = false,
+        allowAddingOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
+        openPeriod: LongSeconds? = null,
+        closeDate: LongSeconds? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        question = question,
+        options = options,
+        questionParseMode = questionParseMode,
+        rawQuestionEntities = emptyList(),
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        allowAddingOptions = allowAddingOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
+        openPeriod = openPeriod,
+        closeDate = closeDate,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    constructor(
+        chatId: ChatIdentifier,
+        questionEntities: List<TextSource>,
+        options: List<InputPollOption>,
+        isAnonymous: Boolean = true,
+        isClosed: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
+        allowsRevoting: Boolean = true,
+        shuffleOptions: Boolean = false,
+        allowAddingOptions: Boolean = false,
+        hideResultsUntilCloses: Boolean = false,
+        descriptionTextSources: List<TextSource>? = null,
+        openPeriod: LongSeconds? = null,
+        closeDate: LongSeconds? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        question = questionEntities.makeSourceString(),
+        options = options,
+        questionParseMode = null,
+        rawQuestionEntities = questionEntities.toRawMessageEntities(),
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowsMultipleAnswers = allowsMultipleAnswers,
+        allowsRevoting = allowsRevoting,
+        shuffleOptions = shuffleOptions,
+        allowAddingOptions = allowAddingOptions,
+        hideResultsUntilCloses = hideResultsUntilCloses,
+        description = descriptionTextSources?.makeSourceString(),
+        descriptionParseMode = null,
+        rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -163,7 +317,11 @@ class SendRegularPoll constructor(
 
     init {
         checkPollInfo(question, options)
-        closeInfo ?.checkSendData()
+        closeInfo?.checkSendData()
+
+        if (isAnonymous && allowAddingOptions) {
+            DefaultKTgBotAPIKSLog.w("SendRegularPoll", "It is prohibited to send anonymous poll with adding options")
+        }
     }
 }
 
@@ -175,7 +333,13 @@ fun SendRegularPoll(
     questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = true,
+    shuffleOptions: Boolean = false,
+    allowAddingOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -193,9 +357,15 @@ fun SendRegularPoll(
     questionParseMode = questionParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    allowAddingOptions = allowAddingOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -215,7 +385,13 @@ fun SendRegularPoll(
     closeInfo: ScheduledCloseInfo?,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = true,
+    shuffleOptions: Boolean = false,
+    allowAddingOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -232,9 +408,15 @@ fun SendRegularPoll(
     options = options,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
-    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
-    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    allowAddingOptions = allowAddingOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -253,7 +435,13 @@ fun SendRegularPoll(
     closeInfo: ScheduledCloseInfo?,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
+    allowsRevoting: Boolean = true,
+    shuffleOptions: Boolean = false,
+    allowAddingOptions: Boolean = false,
+    hideResultsUntilCloses: Boolean = false,
+    description: String? = null,
+    descriptionParseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -272,7 +460,13 @@ fun SendRegularPoll(
     closeInfo = closeInfo,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
+    allowsRevoting = allowsRevoting,
+    shuffleOptions = shuffleOptions,
+    allowAddingOptions = allowAddingOptions,
+    hideResultsUntilCloses = hideResultsUntilCloses,
+    description = description,
+    descriptionParseMode = descriptionParseMode,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,

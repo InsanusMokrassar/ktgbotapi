@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.message.MessageOrigin
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.polls.Poll
+import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -30,10 +31,12 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface ReplyInfo {
     val messageMeta: Message.MetaInfo?
     val checklistTaskId: ChecklistTaskId?
+    val pollOptionId: PollOptionPersistentId?
 
     data class Internal(
         val message: Message,
         override val checklistTaskId: ChecklistTaskId? = null,
+        override val pollOptionId: PollOptionPersistentId? = null,
     ): ReplyInfo {
         override val messageMeta: Message.MetaInfo
             get() = message.metaInfo
@@ -46,6 +49,8 @@ sealed interface ReplyInfo {
         override val messageMeta: Message.MetaInfo?
             get() = null
         override val checklistTaskId: ChecklistTaskId?
+            get() = null
+        override val pollOptionId: PollOptionPersistentId?
             get() = null
     }
 
@@ -64,6 +69,7 @@ sealed interface ReplyInfo {
             override val messageMeta: Message.MetaInfo?,
             val linkPreviewOptions: LinkPreviewOptions?,
             override val checklistTaskId: ChecklistTaskId? = null,
+            override val pollOptionId: PollOptionPersistentId? = null,
         ) : External
 
         @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -80,6 +86,7 @@ sealed interface ReplyInfo {
                 override val messageMeta: Message.MetaInfo?,
                 override val content: ContentVariant,
                 override val checklistTaskId: ChecklistTaskId? = null,
+                override val pollOptionId: PollOptionPersistentId? = null,
             ) : Content
 
             @Serializable
@@ -91,6 +98,7 @@ sealed interface ReplyInfo {
                 override val spoilered: Boolean,
                 override val content: MediaContentVariant,
                 override val checklistTaskId: ChecklistTaskId? = null,
+                override val pollOptionId: PollOptionPersistentId? = null,
             ) : Content, SpoilerableData
         }
 

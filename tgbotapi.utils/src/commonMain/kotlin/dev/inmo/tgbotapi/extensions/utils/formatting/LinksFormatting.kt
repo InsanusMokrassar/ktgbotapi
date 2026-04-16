@@ -114,6 +114,22 @@ val Chat.chatLink: String?
         return null
     }
 
+fun managedBotCreationLink(managerBotUsername: String, suggestedUsername: String, suggestedName: String? = null): String {
+    return "${makeUsernameLink(managedBotNewBotUsername)}/$managerBotUsername/$suggestedUsername${suggestedName ?.let { "?$nameField=${it.encodeURLQueryComponent()}" } ?: ""}"
+}
+
+fun managedBotCreationLink(managerBotUsername: String, suggestedUsername: Username, suggestedName: String? = null): String {
+    return managedBotCreationLink(managerBotUsername, suggestedUsername.withoutAt, suggestedName)
+}
+
+fun managedBotCreationLink(managerBotUsername: Username, suggestedUsername: String, suggestedName: String? = null): String {
+    return managedBotCreationLink(managerBotUsername.withoutAt, suggestedUsername, suggestedName)
+}
+
+fun managedBotCreationLink(managerBotUsername: Username, suggestedUsername: Username, suggestedName: String? = null): String {
+    return managedBotCreationLink(managerBotUsername.withoutAt, suggestedUsername.withoutAt, suggestedName)
+}
+
 private const val stickerSetAddingLinkPrefix = "$internalLinkBeginning/addstickers"
 
 val StickerSetName.stickerSetLink

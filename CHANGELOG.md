@@ -1,5 +1,58 @@
 # TelegramBotAPI changelog
 
+## 33.0.0
+
+**THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.6](https://core.telegram.org/bots/api-changelog#april-3-2026)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Core`:
+    * **THIS IS BREAKING CHANGE** `MultipleAnswersPoll` removed; `RegularPoll` now directly implements `Poll`
+    * **THIS IS BREAKING CHANGE** `allowMultipleAnswers` renamed to `allowsMultipleAnswers` across poll types and requests
+    * **THIS IS BREAKING CHANGE** `QuizPoll.correctOptionId: Int?` changed to `correctOptionIds: List<Int>?`
+    * **THIS IS BREAKING CHANGE** `PollOption` is now a sealed interface with `PollOption.Simple` and `PollOption.LatelyAdded` subtypes; `SimplePollOption` removed
+    * **THIS IS BREAKING CHANGE** `PollAnswer.Anonymous.voterChat` type changed from `ChannelChat` to `PreviewPublicChat`
+    * **THIS IS BREAKING CHANGE** `requestChannelReplyButton` (group variant) renamed to `requestGroupReplyButton`
+    * Added `BotToken` value class
+    * Added `SavePreparedKeyboardButton` request with `PreparedKeyboardButton` and `PreparedKeyboardButtonId` types
+    * Added `GetManagedBotToken` and `ReplaceManagedBotToken` requests
+    * Added `KeyboardButtonRequestManagedBot` and `RequestManagedBotKeyboardButton`
+    * Added `ManagedBotCreated` chat event and `ManagedBotUpdated` type with `ManagedBotUpdate`
+    * Added `PollOptionPersistentId` value class
+    * Added `PollOptionAdded` and `PollOptionDeleted` chat events
+    * Added `pollOptionId` support in `ReplyParameters` (`reply_to_poll_option_id`)
+    * Added `canManageBots` to `ExtendedBot`
+    * Added `allowsRevoting`, `shuffleOptions`, `allowAddingOptions`, `hideResultsUntilCloses`, `description`/`descriptionTextSources` to poll types and send requests
+    * Added `chosenPersistentIds` to `PollAnswer`
+    * Added `UsernameAtLessSerializer`
+    * Extended `openPeriodPollSecondsLimit` from `5..600` to `5..2628000`
+    * Fixed quiz poll serialization type (was incorrectly using `regularPollType` in quiz branch)
+    * Fixed quiz poll explanation serialization (now correctly uses `explanation`/`explanationTextSources`)
+    * Fixed `SendQuizPoll` correct option index range validation (off-by-one)
+    * Several poll validation checks changed from throwing exceptions to logging warnings
+* `API`:
+    * Added `savePreparedKeyboardButton` extensions
+    * Added `getManagedBotToken` and `replaceManagedBotToken` extensions
+    * Added optional `pollOptionId` parameter to `reply`/`replyWith*` extensions
+    * Updated `sendQuizPoll` extensions with `correctOptionIds`, `allowsMultipleAnswers`, `allowsRevoting`, `shuffleOptions`, `hideResultsUntilCloses`, `description` parameters
+    * Updated `sendRegularPoll` extensions with `allowsRevoting`, `shuffleOptions`, `allowAddingOptions`, `hideResultsUntilCloses`, `description` parameters
+* `BehaviourBuilder`:
+    * Added `onManagedBotCreated` and `onManagedBotUpdated` triggers
+    * Added `onPollOptionAdded` and `onPollOptionDeleted` triggers
+    * Added `waitManagedBotCreatedEvents` and `waitManagedBotUpdated` expectations
+    * Added `waitPollOptionAddedEvents` and `waitPollOptionDeletedEvents` expectations
+    * Added `ManagedBotUpdatedFilterByUser` and `ByUserManagedBotUpdatedMarkerFactory`
+* `Utils`:
+    * Added `managedBotCreationLink` formatting extensions
+    * Added `requestManagedBotButton` to `ReplyKeyboardBuilder`
+    * Added class casts for `ManagedBotUpdate`, `ManagedBotCreated`, `PollOptionAdded`, `PollOptionDeleted`
+    * Removed `MultipleAnswersPoll` class casts
+    * Updated raw poll accessors to match new model (`allowsMultipleAnswers`, `correctOptionIds`, `explanation`)
+    * Regenerated class casts extensions
+* `WebApps`:
+    * Added `requestChat` support for `PreparedKeyboardButtonId`
+    * Fixed `iconCustomEmojiId` passing in `BottomButton`
+
 ## 32.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**

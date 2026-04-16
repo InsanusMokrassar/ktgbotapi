@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.PreparedMessageId
+import dev.inmo.tgbotapi.types.buttons.PreparedKeyboardButtonId
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.webapps.accelerometer.Accelerometer
 import dev.inmo.tgbotapi.webapps.biometric.BiometricManager
@@ -148,6 +149,8 @@ external class WebApp {
     fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)
 
     fun hideKeyboard()
+
+    fun requestChat(id: PreparedKeyboardButtonId, callback: ((Boolean) -> Unit)? = definedExternally)
 
     // Start of generated part
 

@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.abstracts.WithMessageId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
+import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -32,7 +33,9 @@ data class ReplyParameters internal constructor(
     @SerialName(quotePositionField)
     val quotePosition: Int? = null,
     @SerialName(checklistTaskIdField)
-    val checklistTaskId: ChecklistTaskId? = null
+    val checklistTaskId: ChecklistTaskId? = null,
+    @SerialName(pollOptionIdField)
+    val pollOptionId: PollOptionPersistentId? = null,
 ) : WithMessageId, TextedInput {
     override val text: String?
         get() = quote
@@ -47,6 +50,7 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -55,7 +59,8 @@ data class ReplyParameters internal constructor(
         null,
         entities.toRawMessageEntities(),
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         metaInfo: Message.MetaInfo,
@@ -63,13 +68,15 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         entities,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         message: Message,
@@ -77,12 +84,14 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         message.metaInfo,
         entities,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         chatIdentifier: ChatIdentifier,
@@ -92,6 +101,7 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -100,7 +110,8 @@ data class ReplyParameters internal constructor(
         quoteParseMode,
         null,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         metaInfo: Message.MetaInfo,
@@ -109,6 +120,7 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
@@ -116,7 +128,8 @@ data class ReplyParameters internal constructor(
         quoteParseMode,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         message: Message,
@@ -125,13 +138,15 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         message.metaInfo,
         quote,
         quoteParseMode,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         chatIdentifier: ChatIdentifier,
@@ -139,6 +154,7 @@ data class ReplyParameters internal constructor(
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         chatIdentifier,
         messageId,
@@ -147,29 +163,34 @@ data class ReplyParameters internal constructor(
         null,
         null,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         metaInfo: Message.MetaInfo,
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
     constructor(
         message: Message,
         allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null,
         checklistTaskId: ChecklistTaskId? = null,
+        pollOptionId: PollOptionPersistentId? = null,
     ) : this(
         message.metaInfo,
         allowSendingWithoutReply,
         quotePosition,
-        checklistTaskId
+        checklistTaskId,
+        pollOptionId
     )
 }

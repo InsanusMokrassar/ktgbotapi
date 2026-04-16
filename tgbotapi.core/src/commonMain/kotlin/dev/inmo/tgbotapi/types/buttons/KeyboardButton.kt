@@ -171,6 +171,18 @@ data class RequestChatKeyboardButton(
     override val style: KeyboardButtonStyle? = null
 ) : KeyboardButton
 
+@Serializable
+data class RequestManagedBotKeyboardButton(
+    override val text: String,
+    @SerialName(requestManagedBotField)
+    val requestManagedBot: KeyboardButtonRequestManagedBot,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
+
+) : KeyboardButton
+
 @RiskFeature
 object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
     private val internalSerializer = JsonElement.serializer()
@@ -241,6 +253,15 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
                 iconCustomEmojiIdData,
                 styleData
             )
+            asJson is JsonObject && asJson[requestManagedBotField] != null -> RequestManagedBotKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content,
+                nonstrictJsonFormat.decodeFromJsonElement(
+                    KeyboardButtonRequestManagedBot.serializer(),
+                    asJson[requestManagedBotField] ?.jsonObject ?: buildJsonObject {  }
+                ),
+                iconCustomEmojiIdData,
+                styleData
+            )
             asJson is JsonObject && asJson[textField] != null -> SimpleKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 iconCustomEmojiIdData,
@@ -270,6 +291,7 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             }
             is RequestUserKeyboardButton -> RequestUserKeyboardButton.serializer().serialize(encoder, value)
             is RequestChatKeyboardButton -> RequestChatKeyboardButton.serializer().serialize(encoder, value)
+            is RequestManagedBotKeyboardButton -> RequestManagedBotKeyboardButton.serializer().serialize(encoder, value)
             is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))
         }
     }

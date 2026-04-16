@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceUser
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
@@ -58,6 +59,14 @@ val PreCheckoutQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, P
 val InlineQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, InlineQuery, Update> = { query, update ->
     update.sourceUser() ?.let {
         it.id == query.user.id
+    } != false
+}
+/**
+ * Allow only updates from the same user as base [ManagedBotUpdated.user]
+ */
+val ManagedBotUpdatedFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, ManagedBotUpdated, Update> = { managedBotUpdated, update ->
+    update.sourceUser() ?.let {
+        it.id == managedBotUpdated.user.id
     } != false
 }
 /**
