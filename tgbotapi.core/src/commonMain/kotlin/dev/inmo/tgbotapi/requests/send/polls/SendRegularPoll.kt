@@ -41,17 +41,17 @@ class SendRegularPoll constructor(
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
     @SerialName(allowsRevotingField)
-    val allowsRevoting: Boolean = true,
+    override val allowsRevoting: Boolean = true,
     @SerialName(shuffleOptionsField)
-    val shuffleOptions: Boolean = false,
+    override val shuffleOptions: Boolean = false,
     @SerialName(allowAddingOptionsField)
     val allowAddingOptions: Boolean = false,
     @SerialName(hideResultsUntilClosesField)
-    val hideResultsUntilCloses: Boolean = false,
+    override val hideResultsUntilCloses: Boolean = false,
     @SerialName(descriptionField)
-    val description: String? = null,
+    override val description: String? = null,
     @SerialName(descriptionParseModeField)
     val descriptionParseMode: ParseMode? = null,
     @SerialName(descriptionEntitiesField)
@@ -87,7 +87,7 @@ class SendRegularPoll constructor(
 ) : SendPoll() {
     override val textSources: List<TextSource>
         get() = rawQuestionEntities.asTextSources(text)
-    val descriptionTextSources: List<TextSource>? by lazy {
+    override val descriptionTextSources: List<TextSource>? by lazy {
         rawDescriptionEntities?.asTextSources(description ?: return@lazy null)
     }
 
@@ -97,7 +97,7 @@ class SendRegularPoll constructor(
         options: List<InputPollOption>,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = true,
         shuffleOptions: Boolean = false,
         allowAddingOptions: Boolean = false,
@@ -124,7 +124,7 @@ class SendRegularPoll constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         allowAddingOptions = allowAddingOptions,
@@ -153,7 +153,7 @@ class SendRegularPoll constructor(
         questionParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = true,
         shuffleOptions: Boolean = false,
         allowAddingOptions: Boolean = false,
@@ -180,7 +180,7 @@ class SendRegularPoll constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         allowAddingOptions = allowAddingOptions,
@@ -209,7 +209,7 @@ class SendRegularPoll constructor(
         questionParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = true,
         shuffleOptions: Boolean = false,
         allowAddingOptions: Boolean = false,
@@ -235,7 +235,7 @@ class SendRegularPoll constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         allowAddingOptions = allowAddingOptions,
@@ -263,7 +263,7 @@ class SendRegularPoll constructor(
         options: List<InputPollOption>,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = true,
         shuffleOptions: Boolean = false,
         allowAddingOptions: Boolean = false,
@@ -289,7 +289,7 @@ class SendRegularPoll constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         allowAddingOptions = allowAddingOptions,
@@ -333,7 +333,7 @@ fun SendRegularPoll(
     questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = true,
     shuffleOptions: Boolean = false,
     allowAddingOptions: Boolean = false,
@@ -357,7 +357,7 @@ fun SendRegularPoll(
     questionParseMode = questionParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
@@ -385,7 +385,7 @@ fun SendRegularPoll(
     closeInfo: ScheduledCloseInfo?,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = true,
     shuffleOptions: Boolean = false,
     allowAddingOptions: Boolean = false,
@@ -408,7 +408,7 @@ fun SendRegularPoll(
     options = options,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
@@ -435,7 +435,7 @@ fun SendRegularPoll(
     closeInfo: ScheduledCloseInfo?,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = true,
     shuffleOptions: Boolean = false,
     allowAddingOptions: Boolean = false,
@@ -460,7 +460,7 @@ fun SendRegularPoll(
     closeInfo = closeInfo,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,

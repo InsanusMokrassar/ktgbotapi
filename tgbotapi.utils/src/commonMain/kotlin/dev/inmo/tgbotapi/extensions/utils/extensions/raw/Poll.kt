@@ -21,7 +21,7 @@ val Poll.type: String
     }
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.allows_multiple_answers: Boolean
-    get() = allowMultipleAnswers
+    get() = allowsMultipleAnswers
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.correct_option_id: List<Int>?
     get() = asQuizPoll() ?.correctOptionIds

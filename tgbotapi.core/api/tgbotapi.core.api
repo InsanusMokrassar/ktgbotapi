@@ -8048,13 +8048,19 @@ public final class dev/inmo/tgbotapi/requests/send/payments/SendInvoice$Companio
 
 public abstract class dev/inmo/tgbotapi/requests/send/polls/SendPoll : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
+	public abstract fun getAllowsMultipleAnswers ()Z
+	public abstract fun getAllowsRevoting ()Z
 	public fun getCloseInfo ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
 	protected final fun getCreationDate-Wg0KzQs ()D
+	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getDescriptionTextSources ()Ljava/util/List;
+	public abstract fun getHideResultsUntilCloses ()Z
 	public abstract fun getOptions ()Ljava/util/List;
 	public abstract fun getQuestion ()Ljava/lang/String;
 	public abstract fun getQuestionParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public abstract fun getShuffleOptions ()Z
 	public fun getText ()Ljava/lang/String;
 	public abstract fun getType ()Ljava/lang/String;
 	public abstract fun isAnonymous ()Z
@@ -8082,22 +8088,22 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendQuizPoll : dev/inmo
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZZZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getAllowMultipleAnswers ()Z
 	public fun getAllowPaidBroadcast ()Z
-	public final fun getAllowsRevoting ()Z
+	public fun getAllowsMultipleAnswers ()Z
+	public fun getAllowsRevoting ()Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun getCorrectOptionIds ()Ljava/util/List;
-	public final fun getDescription ()Ljava/lang/String;
+	public fun getDescription ()Ljava/lang/String;
 	public final fun getDescriptionParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun getDescriptionTextSources ()Ljava/util/List;
+	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public final fun getExplanation ()Ljava/lang/String;
 	public final fun getExplanationParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun getExplanationTextEntities ()Ljava/util/List;
-	public final fun getHideResultsUntilCloses ()Z
+	public fun getHideResultsUntilCloses ()Z
 	public fun getOptions ()Ljava/util/List;
 	public fun getProtectContent ()Z
 	public fun getQuestion ()Ljava/lang/String;
@@ -8105,7 +8111,7 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendQuizPoll : dev/inmo
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
-	public final fun getShuffleOptions ()Z
+	public fun getShuffleOptions ()Z
 	public fun getSuggestedPostParameters ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
 	public fun getTextSources ()Ljava/util/List;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
@@ -8153,18 +8159,18 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendRegularPoll : dev/i
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;ZZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ljava/util/List;ZZZZZZZLjava/util/List;Ljava/lang/Long;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getAllowAddingOptions ()Z
-	public final fun getAllowMultipleAnswers ()Z
 	public fun getAllowPaidBroadcast ()Z
-	public final fun getAllowsRevoting ()Z
+	public fun getAllowsMultipleAnswers ()Z
+	public fun getAllowsRevoting ()Z
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun getDescription ()Ljava/lang/String;
+	public fun getDescription ()Ljava/lang/String;
 	public final fun getDescriptionParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun getDescriptionTextSources ()Ljava/util/List;
+	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
-	public final fun getHideResultsUntilCloses ()Z
+	public fun getHideResultsUntilCloses ()Z
 	public fun getOptions ()Ljava/util/List;
 	public fun getProtectContent ()Z
 	public fun getQuestion ()Ljava/lang/String;
@@ -8172,7 +8178,7 @@ public final class dev/inmo/tgbotapi/requests/send/polls/SendRegularPoll : dev/i
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
-	public final fun getShuffleOptions ()Z
+	public fun getShuffleOptions ()Z
 	public fun getSuggestedPostParameters ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
 	public fun getTextSources ()Ljava/util/List;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
@@ -31765,7 +31771,7 @@ public final class dev/inmo/tgbotapi/types/polls/InputPollOption$Companion : kot
 
 public abstract interface class dev/inmo/tgbotapi/types/polls/Poll : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/Poll$Companion;
-	public abstract fun getAllowMultipleAnswers ()Z
+	public abstract fun getAllowsMultipleAnswers ()Z
 	public abstract fun getAllowsRevoting ()Z
 	public abstract fun getDescriptionTextSources ()Ljava/util/List;
 	public abstract fun getId-S5FO_mE ()Ljava/lang/String;
@@ -32122,7 +32128,7 @@ public final class dev/inmo/tgbotapi/types/polls/QuizPoll : dev/inmo/tgbotapi/ty
 	public final fun copy-YPAypuI (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
 	public static synthetic fun copy-YPAypuI$default (Ldev/inmo/tgbotapi/types/polls/QuizPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/util/List;Ljava/lang/String;Ljava/util/List;ZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/QuizPoll;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsMultipleAnswers ()Z
 	public fun getAllowsRevoting ()Z
 	public final fun getCorrectOptionIds ()Ljava/util/List;
 	public fun getDescriptionTextSources ()Ljava/util/List;
@@ -32164,7 +32170,7 @@ public final class dev/inmo/tgbotapi/types/polls/RegularPoll : dev/inmo/tgbotapi
 	public final fun copy-dx2gcjE (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
 	public static synthetic fun copy-dx2gcjE$default (Ldev/inmo/tgbotapi/types/polls/RegularPoll;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZZZLdev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/RegularPoll;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsMultipleAnswers ()Z
 	public fun getAllowsRevoting ()Z
 	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getId-S5FO_mE ()Ljava/lang/String;
@@ -32204,7 +32210,7 @@ public final class dev/inmo/tgbotapi/types/polls/UnknownPollType : dev/inmo/tgbo
 	public final fun component8 ()Z
 	public final fun component9 ()Z
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAllowMultipleAnswers ()Z
+	public fun getAllowsMultipleAnswers ()Z
 	public fun getAllowsRevoting ()Z
 	public fun getDescriptionTextSources ()Ljava/util/List;
 	public fun getId-S5FO_mE ()Ljava/lang/String;

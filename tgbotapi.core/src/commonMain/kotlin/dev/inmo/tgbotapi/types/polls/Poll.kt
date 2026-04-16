@@ -63,7 +63,7 @@ sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val votesCount: Int
     val isClosed: Boolean
     val isAnonymous: Boolean
-    val allowMultipleAnswers: Boolean
+    val allowsMultipleAnswers: Boolean
     val allowsRevoting: Boolean
     val scheduledCloseInfo: ScheduledCloseInfo?
     val descriptionTextSources: List<TextSource>
@@ -88,7 +88,7 @@ private class RawPoll(
     @SerialName(typeField)
     val type: String,
     @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false,
+    val allowsMultipleAnswers: Boolean = false,
     @SerialName(correctOptionIdsField)
     val correctOptionIds: List<Int>? = null,
     @SerialName(explanationField)
@@ -128,7 +128,7 @@ data class UnknownPollType internal constructor(
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
-    override val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = true,
     override val descriptionTextSources: List<TextSource> = emptyList(),
     @Serializable
@@ -152,7 +152,7 @@ data class RegularPoll(
     override val votesCount: Int,
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
-    override val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = true,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null,
     override val descriptionTextSources: List<TextSource> = emptyList()
@@ -170,7 +170,7 @@ data class QuizPoll(
     val explanationTextSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
-    override val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null,
     override val descriptionTextSources: List<TextSource> = emptyList()
@@ -196,7 +196,7 @@ object PollSerializer : KSerializer<Poll> {
                 explanationTextSources = rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
                 isClosed = rawPoll.isClosed,
                 isAnonymous = rawPoll.isAnonymous,
-                allowMultipleAnswers = rawPoll.allowMultipleAnswers,
+                allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
                 allowsRevoting = rawPoll.allowsRevoting ?: false,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
                 descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
@@ -209,7 +209,7 @@ object PollSerializer : KSerializer<Poll> {
                 votesCount = rawPoll.votesCount,
                 isClosed = rawPoll.isClosed,
                 isAnonymous = rawPoll.isAnonymous,
-                allowMultipleAnswers = rawPoll.allowMultipleAnswers,
+                allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
                 allowsRevoting = rawPoll.allowsRevoting ?: true,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
                 descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
@@ -239,7 +239,7 @@ object PollSerializer : KSerializer<Poll> {
                 isClosed = value.isClosed,
                 isAnonymous = value.isAnonymous,
                 type = regularPollType,
-                allowMultipleAnswers = value.allowMultipleAnswers,
+                allowsMultipleAnswers = value.allowsMultipleAnswers,
                 allowsRevoting = value.allowsRevoting,
                 description = value.descriptionTextSources.makeSourceString().takeIf { it.isNotEmpty() },
                 descriptionEntities = value.descriptionTextSources.toRawMessageEntities(),
@@ -255,7 +255,7 @@ object PollSerializer : KSerializer<Poll> {
                 isClosed = value.isClosed,
                 isAnonymous = value.isAnonymous,
                 type = quizPollType,
-                allowMultipleAnswers = value.allowMultipleAnswers,
+                allowsMultipleAnswers = value.allowsMultipleAnswers,
                 correctOptionIds = value.correctOptionIds,
                 allowsRevoting = value.allowsRevoting,
                 explanation = value.explanation,

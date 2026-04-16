@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
@@ -31,15 +32,21 @@ internal fun checkPollInfo(
     options: List<InputPollOption>
 ) {
     if (question.length !in pollQuestionTextLength) {
-        throw IllegalArgumentException("The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}")
+        DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+            "The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}"
+        }
     }
     options.forEach {
         if (it.text.length !in pollOptionTextLength) {
-            throw IllegalArgumentException("The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}")
+            DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+                "The length of question option text for polls must be in $pollOptionTextLength range, but was ${it.text.length}"
+            }
         }
     }
     if (options.size !in pollOptionsLimit) {
-        throw IllegalArgumentException("The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}")
+        DefaultKTgBotAPIKSLog.w("checkPollInfo") {
+            "The amount of question options for polls must be in $pollOptionsLimit range, but was ${options.size}"
+        }
     }
 }
 
@@ -75,7 +82,7 @@ fun SendPoll(
     questionParseMode = questionParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = false,
+    allowsMultipleAnswers = false,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
@@ -123,7 +130,7 @@ fun SendPoll(
     closeInfo = openPeriod?.asApproximateScheduledCloseInfo ?: closeDate?.asExactScheduledCloseInfo,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = false,
+    allowsMultipleAnswers = false,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
@@ -166,7 +173,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -206,7 +213,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = false,
+        allowsMultipleAnswers = false,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -225,7 +232,7 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = false,
+        allowsMultipleAnswers = false,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -261,6 +268,12 @@ sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
     abstract val isAnonymous: Boolean
     abstract val isClosed: Boolean
     abstract val type: String
+    abstract val allowsMultipleAnswers: Boolean
+    abstract val allowsRevoting: Boolean
+    abstract val shuffleOptions: Boolean
+    abstract val description: String?
+    abstract val hideResultsUntilCloses: Boolean
+    abstract val descriptionTextSources: TextSourcesList?
 
     internal abstract val openPeriod: LongSeconds?
     internal abstract val closeDate: LongSeconds?

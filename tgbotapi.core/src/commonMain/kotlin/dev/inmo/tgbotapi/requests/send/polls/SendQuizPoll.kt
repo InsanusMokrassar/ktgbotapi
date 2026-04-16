@@ -42,13 +42,13 @@ class SendQuizPoll internal constructor(
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false,
+    override val allowsMultipleAnswers: Boolean = false,
     @SerialName(allowsRevotingField)
-    val allowsRevoting: Boolean = false,
+    override val allowsRevoting: Boolean = false,
     @SerialName(shuffleOptionsField)
-    val shuffleOptions: Boolean = false,
+    override val shuffleOptions: Boolean = false,
     @SerialName(hideResultsUntilClosesField)
-    val hideResultsUntilCloses: Boolean = false,
+    override val hideResultsUntilCloses: Boolean = false,
     @SerialName(explanationField)
     val explanation: String? = null,
     @SerialName(explanationParseModeField)
@@ -56,7 +56,7 @@ class SendQuizPoll internal constructor(
     @SerialName(explanationEntitiesField)
     private val rawExplanationEntities: List<RawMessageEntity>? = null,
     @SerialName(descriptionField)
-    val description: String? = null,
+    override val description: String? = null,
     @SerialName(descriptionParseModeField)
     val descriptionParseMode: ParseMode? = null,
     @SerialName(descriptionEntitiesField)
@@ -98,7 +98,7 @@ class SendQuizPoll internal constructor(
     val explanationTextEntities: List<TextSource>? by lazy {
         rawExplanationEntities?.asTextSources(text ?: return@lazy null)
     }
-    val descriptionTextSources: List<TextSource>? by lazy {
+    override val descriptionTextSources: List<TextSource>? by lazy {
         rawDescriptionEntities?.asTextSources(description ?: return@lazy null)
     }
 
@@ -112,7 +112,7 @@ class SendQuizPoll internal constructor(
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = false,
         shuffleOptions: Boolean = false,
             hideResultsUntilCloses: Boolean = false,
@@ -139,7 +139,7 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
@@ -172,7 +172,7 @@ class SendQuizPoll internal constructor(
         explanationParseMode: ParseMode? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = false,
         shuffleOptions: Boolean = false,
             hideResultsUntilCloses: Boolean = false,
@@ -199,7 +199,7 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
@@ -232,7 +232,7 @@ class SendQuizPoll internal constructor(
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = false,
         shuffleOptions: Boolean = false,
             hideResultsUntilCloses: Boolean = false,
@@ -258,7 +258,7 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = emptyList(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
@@ -290,7 +290,7 @@ class SendQuizPoll internal constructor(
         explanationTextSources: List<TextSource>? = null,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
-        allowMultipleAnswers: Boolean = false,
+        allowsMultipleAnswers: Boolean = false,
         allowsRevoting: Boolean = false,
         shuffleOptions: Boolean = false,
             hideResultsUntilCloses: Boolean = false,
@@ -316,7 +316,7 @@ class SendQuizPoll internal constructor(
         rawQuestionEntities = questionEntities.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowMultipleAnswers = allowMultipleAnswers,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         allowsRevoting = allowsRevoting,
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
@@ -354,7 +354,7 @@ class SendQuizPoll internal constructor(
             DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Quiz poll explanation size must be in range $explanationLimit," +
                     "but actual explanation contains ${text.length} symbols")
         }
-        if (allowMultipleAnswers == false && correctOptionIds.size > 1) {
+        if (allowsMultipleAnswers == false && correctOptionIds.size > 1) {
             DefaultKTgBotAPIKSLog.w("SendQuizPoll", "Multiple answers are disabled for current sendQuizPoll, but multiple correct options passed")
         }
     }
@@ -371,7 +371,7 @@ fun SendQuizPoll(
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = false,
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
@@ -397,7 +397,7 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
@@ -427,7 +427,7 @@ fun SendQuizPoll(
     explanationParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = false,
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
@@ -452,7 +452,7 @@ fun SendQuizPoll(
     explanationParseMode = explanationParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
@@ -482,7 +482,7 @@ fun SendQuizPoll(
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = false,
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
@@ -506,7 +506,7 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
@@ -534,7 +534,7 @@ fun SendQuizPoll(
     explanationTextSources: List<TextSource>? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    allowMultipleAnswers: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     allowsRevoting: Boolean = false,
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
@@ -557,7 +557,7 @@ fun SendQuizPoll(
     explanationTextSources = explanationTextSources,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowMultipleAnswers = allowMultipleAnswers,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
