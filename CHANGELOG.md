@@ -7,49 +7,51 @@
 **THIS UPDATE CONTAINS BREAKING CHANGES**
 
 * `Core`:
-    * **BREAKING CHANGE** `PollOption` reimplemented as a sealed interface hierarchy:
-      * `PollOption.Simple` replaces `SimplePollOption`
-      * `PollOption.LatelyAdded` sealed interface added with `AddedByUser` and `AddedByChat` variants
-      * `PollOption` now has `id: PollOptionPersistentId` field
-    * **BREAKING CHANGE** `QuizPoll.correctOptionId` replaced with `correctOptionIds: List<Int>` (multiple correct options support)
-    * **BREAKING CHANGE** `PollAnswer.Anonymous.voterChat` type changed from `ChannelChat` to `PreviewPublicChat`
-    * **BREAKING CHANGE** `SendPoll` and `SendRegularPoll` init checks no longer throw errors, warnings are logged instead
-    * **BREAKING CHANGE** `requestChannelReplyButton` for groups renamed to `requestGroupReplyButton`
-    * **BREAKING CHANGE** `openPeriodPollSecondsLimit` changed from `5 .. 600` to `5 .. 2628000`
+    * **THIS IS BREAKING CHANGE** `MultipleAnswersPoll` removed; `RegularPoll` now directly implements `Poll`
+    * **THIS IS BREAKING CHANGE** `allowMultipleAnswers` renamed to `allowsMultipleAnswers` across poll types and requests
+    * **THIS IS BREAKING CHANGE** `QuizPoll.correctOptionId: Int?` changed to `correctOptionIds: List<Int>?`
+    * **THIS IS BREAKING CHANGE** `PollOption` is now a sealed interface with `PollOption.Simple` and `PollOption.LatelyAdded` subtypes; `SimplePollOption` removed
+    * **THIS IS BREAKING CHANGE** `PollAnswer.Anonymous.voterChat` type changed from `ChannelChat` to `PreviewPublicChat`
+    * **THIS IS BREAKING CHANGE** `requestChannelReplyButton` (group variant) renamed to `requestGroupReplyButton`
+    * Added `BotToken` value class
+    * Added `SavePreparedKeyboardButton` request with `PreparedKeyboardButton` and `PreparedKeyboardButtonId` types
+    * Added `GetManagedBotToken` and `ReplaceManagedBotToken` requests
+    * Added `KeyboardButtonRequestManagedBot` and `RequestManagedBotKeyboardButton`
+    * Added `ManagedBotCreated` chat event and `ManagedBotUpdated` type with `ManagedBotUpdate`
     * Added `PollOptionPersistentId` value class
     * Added `PollOptionAdded` and `PollOptionDeleted` chat events
+    * Added `pollOptionId` support in `ReplyParameters` (`reply_to_poll_option_id`)
+    * Added `canManageBots` to `ExtendedBot`
+    * Added `allowsRevoting`, `shuffleOptions`, `allowAddingOptions`, `hideResultsUntilCloses`, `description`/`descriptionTextSources` to poll types and send requests
     * Added `chosenPersistentIds` to `PollAnswer`
-    * Added `pollOptionId` support in `ReplyParameters` and `ReplyInfo` (`reply_to_poll_option_id`)
-    * Added `allowsRevoting`, `shuffleOptions`, `hideResultsUntilCloses` fields to `SendRegularPoll` and `SendQuizPoll`
-    * Added `allowAddingOptions` field to `SendRegularPoll`
-    * Added `description`, `descriptionParseMode`, `descriptionTextSources` fields to `SendQuizPoll` and `SendRegularPoll`
-    * Added `allowsMultipleAnswers` field to `SendQuizPoll`
-    * Added `openPeriod` and `closeDate` parameters to `SendPoll` function
-    * Added `ManagedBotCreated` and `ManagedBotUpdated` chat events
-    * Added `ManagedBotUpdate` update type and `UPDATE_MANAGED_BOT` constant
-    * Added `GetManagedBotToken` and `ReplaceManagedBotToken` requests
-    * Added `BotToken` value class
-    * Added `KeyboardButtonRequestManagedBot` and `RequestManagedBotKeyboardButton`
-    * Added `requestManagedBotReplyButton` shortcuts
-    * Added `SavePreparedKeyboardButton` request
-    * Added `PreparedKeyboardButton` and `PreparedKeyboardButtonId` types
-    * Added `canManageBots` field to `ExtendedBot`
-    * Added `managedBotNewBotUsername` constant
+    * Added `UsernameAtLessSerializer`
+    * Extended `openPeriodPollSecondsLimit` from `5..600` to `5..2628000`
+    * Fixed quiz poll serialization type (was incorrectly using `regularPollType` in quiz branch)
+    * Fixed quiz poll explanation serialization (now correctly uses `explanation`/`explanationTextSources`)
+    * Fixed `SendQuizPoll` correct option index range validation (off-by-one)
+    * Several poll validation checks changed from throwing exceptions to logging warnings
 * `API`:
     * Added `savePreparedKeyboardButton` extensions
     * Added `getManagedBotToken` and `replaceManagedBotToken` extensions
+    * Added optional `pollOptionId` parameter to `reply`/`replyWith*` extensions
+    * Updated `sendQuizPoll` extensions with `correctOptionIds`, `allowsMultipleAnswers`, `allowsRevoting`, `shuffleOptions`, `hideResultsUntilCloses`, `description` parameters
+    * Updated `sendRegularPoll` extensions with `allowsRevoting`, `shuffleOptions`, `allowAddingOptions`, `hideResultsUntilCloses`, `description` parameters
 * `BehaviourBuilder`:
-    * Added event triggers: `onManagedBotCreated`, `onManagedBotUpdated`, `onPollOptionAdded`, `onPollOptionDeleted`
-    * Added `onManagedBotUpdate` trigger for `ManagedBotUpdated` updates
-    * Added `waitManagedBotCreatedEvents`, `waitManagedBotUpdatedEvents`, `waitPollOptionAddedEvents`, `waitPollOptionDeletedEvents` expectations
-    * Added `waitManagedBotUpdated` expectation
+    * Added `onManagedBotCreated` and `onManagedBotUpdated` triggers
+    * Added `onPollOptionAdded` and `onPollOptionDeleted` triggers
+    * Added `waitManagedBotCreatedEvents` and `waitManagedBotUpdated` expectations
+    * Added `waitPollOptionAddedEvents` and `waitPollOptionDeletedEvents` expectations
     * Added `ManagedBotUpdatedFilterByUser` and `ByUserManagedBotUpdatedMarkerFactory`
 * `Utils`:
-    * Added `managedBotCreationLink` functions for building managed bot creation links
-    * Added `requestManagedBotButton` extensions to `ReplyKeyboardRowBuilder`
+    * Added `managedBotCreationLink` formatting extensions
+    * Added `requestManagedBotButton` to `ReplyKeyboardBuilder`
+    * Added class casts for `ManagedBotUpdate`, `ManagedBotCreated`, `PollOptionAdded`, `PollOptionDeleted`
+    * Removed `MultipleAnswersPoll` class casts
+    * Updated raw poll accessors to match new model (`allowsMultipleAnswers`, `correctOptionIds`, `explanation`)
     * Regenerated class casts extensions
 * `WebApps`:
-    * Added `requestChat` method to `WebApp`
+    * Added `requestChat` support for `PreparedKeyboardButtonId`
+    * Fixed `iconCustomEmojiId` passing in `BottomButton`
 
 ## 32.0.0
 
