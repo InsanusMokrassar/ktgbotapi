@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 33.1.0
+
+* `Versions`:
+    * `Kotlin`: `2.3.10` -> `2.3.20`
+    * `Serialization`: `1.10.0` -> `1.11.0`
+    * `Ktor`: `3.4.1` -> `3.4.2`
+    * `MicroUtils`: `0.29.1` -> `0.29.2`
+    * `KSLog`: `1.6.0` -> `1.6.1`
+
 ## 33.0.0
 
 **THIS UPDATE CONTAINS ADDING SUPPORT OF [Telegram Bots API 9.6](https://core.telegram.org/bots/api-changelog#april-3-2026)**
