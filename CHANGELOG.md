@@ -2,12 +2,13 @@
 
 ## 33.1.0
 
-* `Dependencies`: Update `dev.inmo:micro_utils` from `0.29.1` to `0.29.2`
-* `Dependencies`: Update `dev.inmo:kslog` from `1.6.0` to `1.6.1`
-* `Dependencies`: Update `com.squareup:kotlinpoet-ksp` from `2.2.0` to `2.3.0`
-* `Dependencies`: Update `io.ktor:ktor-*` from `3.4.1` to `3.4.2`
-* `Dependencies`: Update `org.jetbrains.kotlinx:kotlinx-serialization-*` from `1.10.0` to `1.11.0`
-* `Dependencies`: Update `org.jetbrains.kotlin:kotlin-*` from `2.3.10` to `2.3.20`
+* `Versions`:
+    * `Kotlin`: `2.3.10` -> `2.3.20`
+    * `Serialization`: `1.10.0` -> `1.11.0`
+    * `Ktor`: `3.4.1` -> `3.4.2`
+    * `KotlinPoet`: `2.2.0` -> `2.3.0`
+    * `MicroUtils`: `0.29.1` -> `0.29.2`
+    * `KSLog`: `1.6.0` -> `1.6.1`
 
 ## 33.0.0
 
