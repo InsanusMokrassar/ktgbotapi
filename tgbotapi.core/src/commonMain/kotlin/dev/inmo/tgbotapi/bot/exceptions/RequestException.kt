@@ -22,7 +22,7 @@ fun newRequestException(
         description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
         description.contains("PHOTO_INVALID_DIMENSIONS") -> InvalidPhotoDimensionsException(response, plainAnswer, message, cause)
         description.contains("wrong file identifier") -> WrongFileIdentifierException(response, plainAnswer, message, cause)
-        description.contains("Too Many Requests") -> TooMuchRequestsException(
+        description.contains("Too Many Requests", ignoreCase = true) -> TooMuchRequestsException(
             (response.parameters ?.error as? RetryAfterError) ?: RetryAfterError(60, DateTime.now().unixMillisLong),
             response,
             plainAnswer,
