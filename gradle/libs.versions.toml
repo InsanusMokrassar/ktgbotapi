@@ -1,20 +1,20 @@
 [versions]
 
-kotlin = "2.3.10"
-kotlin-serialization = "1.10.0"
+kotlin = "2.3.20"
+kotlin-serialization = "1.11.0"
 kotlin-coroutines = "1.10.2"
 
 javax-activation = "1.1.1"
 
 korlibs = "5.4.0"
 uuid = "0.8.4"
-ktor = "3.4.1"
+ktor = "3.4.2"
 
 ksp = "2.3.6"
-kotlin-poet = "2.2.0"
+kotlin-poet = "2.3.0"
 
-microutils = "0.29.1"
-kslog = "1.6.0"
+microutils = "0.29.2"
+kslog = "1.6.1"
 
 versions = "0.53.0"
 
