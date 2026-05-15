@@ -2,6 +2,17 @@
 
 ## 34.0.0
 
+* `Core`:
+    * Added `canReactToMessages` field to `ChatPermissions` (interface, `Granular` and `Common`) and `RestrictedMemberChatMember`
+    * Added optional `retrieveOtherBots` parameter to `GetChatAdministrators` request
+    * Added `DeleteMessageReaction` request with `@Warning` on primary constructor; added `DeleteUserMessageReaction` and `DeleteActorChatMessageReaction` factory functions
+    * Added `DeleteAllMessageReactions` request with `@Warning` on primary constructor; added `DeleteAllUserMessageReactions` and `DeleteAllActorChatMessageReactions` factory functions
+* `API`:
+    * Added optional `retrieveOtherBots` parameter to `getChatAdministrators` extensions
+    * Added `deleteUserMessageReaction` and `deleteActorChatMessageReaction` extensions
+    * Added `deleteAllUserMessageReactions` and `deleteAllActorChatMessageReactions` extensions
+    * Added `@Warning`-marked catch-all `deleteMessageReaction` and `deleteAllMessageReactions` extensions
+
 ## 33.1.0
 
 * `Versions`:

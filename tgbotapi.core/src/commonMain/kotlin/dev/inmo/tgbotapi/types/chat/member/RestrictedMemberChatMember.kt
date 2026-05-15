@@ -48,6 +48,8 @@ data class RestrictedMemberChatMember(
     override val canPinMessages: Boolean = false,
     @SerialName(canManageTopicsField)
     override val canManageTopics: Boolean = false,
+    @SerialName(canReactToMessagesField)
+    override val canReactToMessages: Boolean = false,
     @SerialName(canEditTagField)
     override val canEditTag: Boolean = false,
     @SerialName(tagField)

@@ -15,7 +15,7 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate, OptionallyTagged 
         @Deprecated(
             "Renamed",
             ReplaceWith(
-                "RestrictedChatMemberImpl(user, untilDate, isMember, canSendMessages, canSendAudios, canSendDocuments, canSendPhotos, canSendVideos, canSendVideoNotes, canSendVoiceNotes, canSendPolls, canSendOtherMessages, canAddWebPagePreviews, canChangeInfo, canInviteUsers, canPinMessages, canManageTopics)",
+                "RestrictedChatMemberImpl(user, untilDate, isMember, canSendMessages, canSendAudios, canSendDocuments, canSendPhotos, canSendVideos, canSendVideoNotes, canSendVoiceNotes, canSendPolls, canSendOtherMessages, canAddWebPagePreviews, canChangeInfo, canInviteUsers, canPinMessages, canManageTopics, canReactToMessages)",
                 "dev.inmo.tgbotapi.types.chat.members.RestrictedChatMemberImpl",
             )
         )
@@ -36,7 +36,8 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate, OptionallyTagged 
             canChangeInfo: Boolean = false,
             canInviteUsers: Boolean = false,
             canPinMessages: Boolean = false,
-            canManageTopics: Boolean = false
+            canManageTopics: Boolean = false,
+            canReactToMessages: Boolean = false
         ) = RestrictedMemberChatMember(
             user = user,
             untilDate = untilDate,
@@ -54,7 +55,8 @@ sealed interface RestrictedChatMember : ChatMember, UntilDate, OptionallyTagged 
             canChangeInfo = canChangeInfo,
             canInviteUsers = canInviteUsers,
             canPinMessages = canPinMessages,
-            canManageTopics = canManageTopics
+            canManageTopics = canManageTopics,
+            canReactToMessages = canReactToMessages
         )
     }
 }
