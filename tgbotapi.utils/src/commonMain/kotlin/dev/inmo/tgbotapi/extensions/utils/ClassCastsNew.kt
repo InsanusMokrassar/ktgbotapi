@@ -241,6 +241,11 @@ import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramMediaLocation
+import dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+import dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+import dev.inmo.tgbotapi.types.media.InputPollMedia
+import dev.inmo.tgbotapi.types.media.InputPollOptionMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 import dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
@@ -979,6 +984,12 @@ public inline fun TelegramMedia.spoilerableTelegramMediaOrThrow(): SpoilerableTe
 
 public inline fun <T> TelegramMedia.ifSpoilerableTelegramMedia(block: (SpoilerableTelegramMedia) -> T): T? = spoilerableTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.inputMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun TelegramMedia.inputMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun <T> TelegramMedia.ifInputMediaSticker(block: (TelegramMediaSticker) -> T): T? = inputMediaStickerOrNull() ?.let(block)
+
 public inline fun TelegramMedia.coveredTelegramMediaOrNull(): CoveredTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 
 public inline fun TelegramMedia.coveredTelegramMediaOrThrow(): CoveredTelegramMedia = this as dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
@@ -1104,6 +1115,84 @@ public inline fun TelegramMedia.thumbedTelegramMediaOrNull(): ThumbedTelegramMed
 public inline fun TelegramMedia.thumbedTelegramMediaOrThrow(): ThumbedTelegramMedia = this as dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 
 public inline fun <T> TelegramMedia.ifThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T): T? = thumbedTelegramMediaOrNull() ?.let(block)
+
+public inline fun InputPollMedia.inputMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
+
+public inline fun InputPollMedia.inputMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
+
+public inline fun <T> InputPollMedia.ifInputMediaLocation(block: (TelegramMediaLocation) -> T): T? = inputMediaLocationOrNull() ?.let(block)
+
+public inline fun InputPollMedia.telegramMediaAudioOrNull(): TelegramMediaAudio? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+
+public inline fun InputPollMedia.telegramMediaAudioOrThrow(): TelegramMediaAudio = this as dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+
+public inline fun <T> InputPollMedia.ifTelegramMediaAudio(block: (TelegramMediaAudio) -> T): T? = telegramMediaAudioOrNull() ?.let(block)
+
+public inline fun InputPollMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+
+public inline fun InputPollMedia.telegramMediaVideoOrThrow(): TelegramMediaVideo = this as dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+
+public inline fun <T> InputPollMedia.ifTelegramMediaVideo(block: (TelegramMediaVideo) -> T): T? = telegramMediaVideoOrNull() ?.let(block)
+
+public inline fun InputPollMedia.telegramMediaPhotoOrNull(): TelegramMediaPhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+
+public inline fun InputPollMedia.telegramMediaPhotoOrThrow(): TelegramMediaPhoto = this as dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+
+public inline fun <T> InputPollMedia.ifTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T): T? = telegramMediaPhotoOrNull() ?.let(block)
+
+public inline fun InputPollMedia.telegramMediaDocumentOrNull(): TelegramMediaDocument? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+
+public inline fun InputPollMedia.telegramMediaDocumentOrThrow(): TelegramMediaDocument = this as dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+
+public inline fun <T> InputPollMedia.ifTelegramMediaDocument(block: (TelegramMediaDocument) -> T): T? = telegramMediaDocumentOrNull() ?.let(block)
+
+public inline fun InputPollMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
+
+public inline fun InputPollMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
+
+public inline fun <T> InputPollMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T): T? = telegramMediaAnimationOrNull() ?.let(block)
+
+public inline fun InputPollMedia.inputMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun InputPollMedia.inputMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun <T> InputPollMedia.ifInputMediaVenue(block: (TelegramMediaVenue) -> T): T? = inputMediaVenueOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.inputMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun InputPollOptionMedia.inputMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun <T> InputPollOptionMedia.ifInputMediaSticker(block: (TelegramMediaSticker) -> T): T? = inputMediaStickerOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.inputMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
+
+public inline fun InputPollOptionMedia.inputMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
+
+public inline fun <T> InputPollOptionMedia.ifInputMediaLocation(block: (TelegramMediaLocation) -> T): T? = inputMediaLocationOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+
+public inline fun InputPollOptionMedia.telegramMediaVideoOrThrow(): TelegramMediaVideo = this as dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaVideo(block: (TelegramMediaVideo) -> T): T? = telegramMediaVideoOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.telegramMediaPhotoOrNull(): TelegramMediaPhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+
+public inline fun InputPollOptionMedia.telegramMediaPhotoOrThrow(): TelegramMediaPhoto = this as dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T): T? = telegramMediaPhotoOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
+
+public inline fun InputPollOptionMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
+
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T): T? = telegramMediaAnimationOrNull() ?.let(block)
+
+public inline fun InputPollOptionMedia.inputMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun InputPollOptionMedia.inputMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun <T> InputPollOptionMedia.ifInputMediaVenue(block: (TelegramMediaVenue) -> T): T? = inputMediaVenueOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull(): UnknownInlineKeyboardButton? = this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 

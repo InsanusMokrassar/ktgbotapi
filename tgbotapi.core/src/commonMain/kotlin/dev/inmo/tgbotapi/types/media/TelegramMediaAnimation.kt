@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -66,8 +67,9 @@ data class TelegramMediaAnimation internal constructor(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : TelegramFreeMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia {
-    override val type: String = "animation"
+) : TelegramFreeMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia, InputPollMedia, InputPollOptionMedia {
+    @EncodeDefault
+    override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -75,4 +77,8 @@ data class TelegramMediaAnimation internal constructor(
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "animation"
+    }
 }

@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.location
 import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -30,7 +31,7 @@ data class StaticLocation(
     override val latitude: Double,
     @SerialName(horizontalAccuracyField)
     override val horizontalAccuracy: Meters? = null
-) : Location
+) : PollMedia, Location
 
 @Serializable
 data class LiveLocation(

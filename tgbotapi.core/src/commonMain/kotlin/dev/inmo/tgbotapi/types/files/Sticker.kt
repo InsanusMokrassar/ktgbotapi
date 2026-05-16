@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.types.files
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
@@ -37,7 +38,7 @@ data class StickerSurrogate(
 
 // TODO:: Serializer
 @Serializable(StickerSerializer::class)
-sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile, MediaContentVariant {
+sealed interface Sticker : TelegramMediaFile, PollMedia, SizedMediaFile, ThumbedMediaFile, MediaContentVariant {
     val emoji: String?
     val stickerSetName: StickerSetName?
     val stickerFormat: StickerFormat

@@ -28,10 +28,10 @@ object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTel
         val json = JsonObject.serializer().deserialize(decoder)
 
         return when (json[typeField] ?.jsonPrimitive ?.contentOrNull) {
-            photoTelegramMediaType -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaPhoto.serializer(), json)
-            videoTelegramMediaType -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaVideo.serializer(), json)
-            audioTelegramMediaType -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaAudio.serializer(), json)
-            documentTelegramMediaType -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaDocument.serializer(), json)
+            TelegramMediaPhoto.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaPhoto.serializer(), json)
+            TelegramMediaVideo.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaVideo.serializer(), json)
+            TelegramMediaAudio.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaAudio.serializer(), json)
+            TelegramMediaDocument.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaDocument.serializer(), json)
             else -> error("Illegal type of incoming MediaGroupMemberTelegramMedia")
         }
     }

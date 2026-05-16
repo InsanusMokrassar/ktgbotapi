@@ -78,7 +78,7 @@ val invoicePayloadBytesLimit = 1 until 128
 
 val pollOptionTextLength = 1 .. 100
 val pollQuestionTextLength = 1 .. 300
-val pollOptionsLimit = 2 .. 12
+val pollOptionsLimit = 1 .. 12
 
 val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
 
@@ -292,6 +292,8 @@ const val allowsRevotingField = "allows_revoting"
 const val shuffleOptionsField = "shuffle_options"
 const val allowAddingOptionsField = "allow_adding_options"
 const val hideResultsUntilClosesField = "hide_results_until_closes"
+const val membersOnlyField = "members_only"
+const val explanationMediaField = "explanation_media"
 const val isAnonymousField = "is_anonymous"
 const val canManageTopicsField = "can_manage_topics"
 const val canReactToMessagesField = "can_react_to_messages"
@@ -696,6 +698,7 @@ const val photoField = "photo"
 const val audioField = "audio"
 const val videoField = "video"
 const val animationField = "animation"
+const val venueField = "venue"
 const val voiceField = "voice"
 const val videoNoteField = "video_note"
 const val mediaField = "media"

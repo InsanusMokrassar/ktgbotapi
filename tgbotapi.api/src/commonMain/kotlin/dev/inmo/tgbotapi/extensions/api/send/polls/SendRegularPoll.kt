@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.polls.SendRegularPoll
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -30,6 +31,9 @@ public suspend fun TelegramBot.sendRegularPoll(
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -39,7 +43,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
@@ -57,6 +61,9 @@ public suspend fun TelegramBot.sendRegularPoll(
         descriptionParseMode = descriptionParseMode,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -85,6 +92,9 @@ public suspend fun TelegramBot.sendRegularPoll(
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -98,7 +108,7 @@ public suspend fun TelegramBot.sendRegularPoll(
 ): ContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
-        questionEntities = questionEntities,
+        questionTextSources = questionEntities,
         options = options,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
@@ -111,6 +121,9 @@ public suspend fun TelegramBot.sendRegularPoll(
         descriptionParseMode = descriptionParseMode,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -139,6 +152,9 @@ public suspend fun TelegramBot.sendRegularPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -165,6 +181,9 @@ public suspend fun TelegramBot.sendRegularPoll(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = description,
         descriptionParseMode = descriptionParseMode,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -192,6 +211,9 @@ public suspend fun TelegramBot.sendRegularPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -217,6 +239,9 @@ public suspend fun TelegramBot.sendRegularPoll(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = description,
         descriptionParseMode = descriptionParseMode,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,

@@ -12,6 +12,20 @@
     * Added `deleteUserMessageReaction` and `deleteActorChatMessageReaction` extensions
     * Added `deleteAllUserMessageReactions` and `deleteAllActorChatMessageReactions` extensions
     * Added `@Warning`-marked catch-all `deleteMessageReaction` and `deleteAllMessageReactions` extensions
+* `Core` (Bots API support):
+    * Added `InputMediaSticker`, `InputMediaLocation` and `InputMediaVenue` classes
+    * Added `InputPollMedia` and `InputPollOptionMedia` sealed interfaces representing input media variants accepted by `sendPoll`
+    * Added `PollMedia` class representing media attached to polls in incoming updates
+    * Added `media` field to `Poll`, `PollOption` and `InputPollOption`
+    * Added `explanationMedia` field to `QuizPoll`
+    * Added `membersOnly` field to `Poll`
+    * Added `countryCodes` field to `Poll`
+    * Added `media`, `membersOnly`, `countryCodes` parameters to `SendRegularPoll` and `SendPoll` factory functions
+    * Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `SendQuizPoll` factory functions
+    * Decreased minimum allowed poll options count from 2 to 1 (`pollOptionsLimit` is now `1..12`)
+* `API` (Bots API support):
+    * Added `media`, `membersOnly`, `countryCodes` parameters to `sendRegularPoll` extension
+    * Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `sendQuizPoll` extension
 
 ## 33.1.0
 

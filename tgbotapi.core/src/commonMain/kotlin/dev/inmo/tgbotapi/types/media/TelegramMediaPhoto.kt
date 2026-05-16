@@ -15,8 +15,6 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
-internal const val photoTelegramMediaType = "photo"
-
 fun TelegramMediaPhoto(
     file: InputFile,
     text: String? = null,
@@ -46,8 +44,9 @@ data class TelegramMediaPhoto internal constructor(
     override val spoilered: Boolean = false,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
-) : TelegramFreeMedia, VisualMediaGroupMemberTelegramMedia {
-    override val type: String = photoTelegramMediaType
+) : TelegramFreeMedia, VisualMediaGroupMemberTelegramMedia, InputPollMedia, InputPollOptionMedia {
+    @EncodeDefault
+    override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -57,6 +56,10 @@ data class TelegramMediaPhoto internal constructor(
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "photo"
+    }
 }
 
 fun PhotoSize.toTelegramMediaPhoto(

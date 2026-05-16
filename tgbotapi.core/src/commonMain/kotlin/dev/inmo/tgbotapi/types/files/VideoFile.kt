@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -38,6 +39,7 @@ data class VideoFile(
     @SerialName(fileSizeField)
     override val fileSize: FileSize? = null
 ) : TelegramMediaFile,
+    PollMedia,
     CustomNamedMediaFile,
     MimedMediaFile,
     CoveredMediaFile,

@@ -4,6 +4,7 @@ import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
@@ -60,6 +61,12 @@ class SendRegularPoll constructor(
     override val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
     override val closeDate: LongSeconds? = null,
+    @SerialName(mediaField)
+    val media: InputPollMedia? = null,
+    @SerialName(membersOnlyField)
+    val membersOnly: Boolean = false,
+    @SerialName(countryCodesField)
+    val countryCodes: List<String>? = null,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
     @EncodeDefault
@@ -93,7 +100,7 @@ class SendRegularPoll constructor(
 
     constructor(
         chatId: ChatIdentifier,
-        questionEntities: List<TextSource>,
+        questionTextSources: List<TextSource>,
         options: List<InputPollOption>,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
@@ -106,6 +113,9 @@ class SendRegularPoll constructor(
         descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
+        media: InputPollMedia? = null,
+        membersOnly: Boolean = false,
+        countryCodes: List<String>? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -118,10 +128,10 @@ class SendRegularPoll constructor(
         replyMarkup: KeyboardMarkup? = null
     ) : this(
         chatId = chatId,
-        question = questionEntities.makeSourceString(),
+        question = questionTextSources.makeSourceString(),
         options = options,
         questionParseMode = null,
-        rawQuestionEntities = questionEntities.toRawMessageEntities(),
+        rawQuestionEntities = questionTextSources.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
         allowsMultipleAnswers = allowsMultipleAnswers,
@@ -134,6 +144,9 @@ class SendRegularPoll constructor(
         rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -162,6 +175,9 @@ class SendRegularPoll constructor(
         descriptionParseMode: ParseMode? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
+        media: InputPollMedia? = null,
+        membersOnly: Boolean = false,
+        countryCodes: List<String>? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -187,6 +203,9 @@ class SendRegularPoll constructor(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = description,
         descriptionParseMode = descriptionParseMode,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         rawDescriptionEntities = null,
         openPeriod = openPeriod,
         closeDate = closeDate,
@@ -217,6 +236,9 @@ class SendRegularPoll constructor(
         descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
+        media: InputPollMedia? = null,
+        membersOnly: Boolean = false,
+        countryCodes: List<String>? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -242,6 +264,9 @@ class SendRegularPoll constructor(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = descriptionTextSources?.makeSourceString(),
         descriptionParseMode = null,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
@@ -259,7 +284,7 @@ class SendRegularPoll constructor(
 
     constructor(
         chatId: ChatIdentifier,
-        questionEntities: List<TextSource>,
+        questionTextSources: List<TextSource>,
         options: List<InputPollOption>,
         isAnonymous: Boolean = true,
         isClosed: Boolean = false,
@@ -271,6 +296,9 @@ class SendRegularPoll constructor(
         descriptionTextSources: List<TextSource>? = null,
         openPeriod: LongSeconds? = null,
         closeDate: LongSeconds? = null,
+        media: InputPollMedia? = null,
+        membersOnly: Boolean = false,
+        countryCodes: List<String>? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -283,10 +311,10 @@ class SendRegularPoll constructor(
         replyMarkup: KeyboardMarkup? = null
     ) : this(
         chatId = chatId,
-        question = questionEntities.makeSourceString(),
+        question = questionTextSources.makeSourceString(),
         options = options,
         questionParseMode = null,
-        rawQuestionEntities = questionEntities.toRawMessageEntities(),
+        rawQuestionEntities = questionTextSources.toRawMessageEntities(),
         isAnonymous = isAnonymous,
         isClosed = isClosed,
         allowsMultipleAnswers = allowsMultipleAnswers,
@@ -296,6 +324,9 @@ class SendRegularPoll constructor(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = descriptionTextSources?.makeSourceString(),
         descriptionParseMode = null,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         rawDescriptionEntities = descriptionTextSources?.toRawMessageEntities(),
         openPeriod = openPeriod,
         closeDate = closeDate,
@@ -340,6 +371,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -364,6 +398,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses = hideResultsUntilCloses,
     description = description,
     descriptionParseMode = descriptionParseMode,
+    media = media,
+    membersOnly = membersOnly,
+    countryCodes = countryCodes,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -392,6 +429,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -404,7 +444,7 @@ fun SendRegularPoll(
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId = chatId,
-    questionEntities = questionTextSources,
+    questionTextSources = questionTextSources,
     options = options,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
@@ -415,6 +455,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses = hideResultsUntilCloses,
     description = description,
     descriptionParseMode = descriptionParseMode,
+    media = media,
+    membersOnly = membersOnly,
+    countryCodes = countryCodes,
     openPeriod = (closeInfo as? ApproximateScheduledCloseInfo)?.openPeriod,
     closeDate = (closeInfo as? ExactScheduledCloseInfo)?.closeDate,
     threadId = threadId,
@@ -442,6 +485,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -467,6 +513,9 @@ fun SendRegularPoll(
     hideResultsUntilCloses = hideResultsUntilCloses,
     description = description,
     descriptionParseMode = descriptionParseMode,
+    media = media,
+    membersOnly = membersOnly,
+    countryCodes = countryCodes,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
