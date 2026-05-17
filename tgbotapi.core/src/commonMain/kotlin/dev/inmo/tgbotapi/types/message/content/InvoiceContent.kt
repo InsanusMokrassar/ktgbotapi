@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.payments.Invoice
 import kotlinx.serialization.Serializable
 
@@ -25,7 +25,7 @@ data class InvoiceContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<InvoiceContent>> {
+    ): Request<ChatContentMessage<InvoiceContent>> {
         error("Unfortunately, currently InvoiceOfPayment can not be resend due to requirement of additional parameters," +
             " which can't be provided during the call of this method")
     }

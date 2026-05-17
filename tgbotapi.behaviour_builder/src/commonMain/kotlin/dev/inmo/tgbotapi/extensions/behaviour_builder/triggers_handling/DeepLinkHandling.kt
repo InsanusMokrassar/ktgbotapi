@@ -2,7 +2,6 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
@@ -10,7 +9,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByC
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.*
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
@@ -38,7 +36,7 @@ fun <BC : BehaviourContext> BC.onDeepLink(
         additionalSubcontextInitialAction,
         scenarioReceiver,
     ) {
-        (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
+        (it.messageUpdateOrNull()) ?.data ?.chatContentMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
             message to (message.content.textSources.getOrNull(1) ?.source ?.removePrefix(" ") ?.decodeURLQueryComponent() ?: return@let null)
         } ?.let(::listOfNotNull)
     }.also {

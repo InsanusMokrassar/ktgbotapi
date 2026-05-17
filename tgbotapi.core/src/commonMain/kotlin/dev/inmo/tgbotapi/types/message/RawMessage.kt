@@ -184,6 +184,13 @@ internal data class RawMessage(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_business_bot: PreviewBot? = null,
 
+    // Guest mode
+    private val guest_query_id: GuestQueryId? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    private val guest_bot_caller_user: PreviewUser? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    private val guest_bot_caller_chat: PreviewChat? = null,
+
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
     private val giveaway: Giveaway? = null,
@@ -450,7 +457,27 @@ internal data class RawMessage(
                     external_reply != null -> external_reply
                     else -> null
                 }
-                when (chat) {
+                if (guest_query_id != null) {
+                    GuestContentMessageImpl(
+                        messageId = messageId,
+                        from = checkedFrom ?: from ?: error("Was detected guest message, but owner (sender) of the message was not found"),
+                        chat = chat,
+                        guestQueryId = guest_query_id,
+                        content = content,
+                        date = date.asDate,
+                        editDate = edit_date?.asDate,
+                        hasProtectedContent = has_protected_content == true,
+                        forwardOrigin = forward_origin,
+                        replyInfo = replyInfo,
+                        replyMarkup = reply_markup,
+                        senderBot = via_bot,
+                        mediaGroupId = media_group_id,
+                        guestBotCallerUser = guest_bot_caller_user ?: error("For guest content message it is required to have user which called the bot"),
+                        guestBotCallerChat = guest_bot_caller_chat ?: error("For guest content message it is required to have chat in that called the bot"),
+                        fromOffline = is_from_offline,
+                        cost = paid_star_count,
+                    )
+                } else when (chat) {
                     is PreviewChannelDirectMessagesChat -> {
                         if (direct_messages_topic == null) error("direct_messages_topic must be presented for ChannelDirectMessagesChat messages")
                         val chatId = ChatIdWithChannelDirectMessageThreadId(

@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.location.StaticLocation
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.venue.Venue
 
@@ -38,7 +38,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = execute(
+): ChatContentMessage<VenueContent> = execute(
     SendVenue(
         chatId = chatId,
         latitude = latitude,
@@ -86,7 +86,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     latitude = latitude,
     longitude = longitude,
@@ -131,7 +131,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -176,7 +176,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -215,7 +215,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = execute(
+): ChatContentMessage<VenueContent> = execute(
     SendVenue(
         chatId = chatId,
         venue = venue,
@@ -249,7 +249,7 @@ public suspend fun TelegramBot.sendVenue(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chat.id,
     venue = venue,
     threadId = threadId,

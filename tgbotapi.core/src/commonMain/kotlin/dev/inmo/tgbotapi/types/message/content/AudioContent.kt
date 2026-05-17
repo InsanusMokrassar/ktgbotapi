@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -32,7 +32,7 @@ data class AudioContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<AudioContent>> = SendAudio(
+    ): Request<ChatContentMessage<AudioContent>> = SendAudio(
         chatId = chatId,
         audio = media.fileId,
         thumbnail = media.thumbnail ?.fileId,

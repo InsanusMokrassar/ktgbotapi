@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.LivePhotoFile
 import dev.inmo.tgbotapi.types.files.toTelegramMediaLivePhoto
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -34,7 +34,7 @@ data class LivePhotoContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<LivePhotoContent>> = SendLivePhoto(
+    ): Request<ChatContentMessage<LivePhotoContent>> = SendLivePhoto(
         chatId = chatId,
         livePhoto = media.fileId,
         photo = media.photo ?.fileId ?: media.fileId,

@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.games.Game
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.GameContent
 
 /**
@@ -28,7 +28,7 @@ public suspend fun TelegramBot.sendGame(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = execute(
+): ChatContentMessage<GameContent> = execute(
     SendGame(
         chatId = chatId,
         gameShortName = gameShortName,
@@ -62,7 +62,7 @@ public suspend fun TelegramBot.sendGame(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = chat.id,
     gameShortName = gameShortName,
     threadId = threadId,
@@ -94,7 +94,7 @@ public suspend fun TelegramBot.sendGame(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = chatId,
     gameShortName = game.title,
     threadId = threadId,
@@ -126,7 +126,7 @@ public suspend fun TelegramBot.sendGame(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = chat.id,
     gameShortName = game.title,
     threadId = threadId,

@@ -1130,13 +1130,13 @@ inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage
     this as CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
+inline fun <T> Message.whenCommonMessage(block: (ChatContentMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
+inline fun Message.asCommonMessage(): ChatContentMessage<MessageContent>? = this as? ChatContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireCommonMessage(): CommonMessage<MessageContent> = this as CommonMessage<MessageContent>
+inline fun Message.requireCommonMessage(): ChatContentMessage<MessageContent> = this as ChatContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenContentMessage(block: (ContentMessage<MessageContent>) -> T) = asContentMessage()?.let(block)

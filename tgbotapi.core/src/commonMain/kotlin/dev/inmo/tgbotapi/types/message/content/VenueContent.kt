@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.Serializable
 
@@ -26,7 +26,7 @@ data class VenueContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VenueContent>> = SendVenue(
+    ): Request<ChatContentMessage<VenueContent>> = SendVenue(
         chatId = chatId,
         venue = venue,
         threadId = messageThreadId,

@@ -7,8 +7,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
-import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextedContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
@@ -43,7 +42,7 @@ fun TextedContent.isWithTextMention(userId: UserId) = textSources.any {
 
 /**
  * Uses [isWithMention] with [user] [Username] (is presented) or [isWithTextMention] with [user] [UserId] to determine
- * user mentioning in [this] [CommonMessage]
+ * user mentioning in [this] [ChatContentMessage]
  */
 fun TextedContent.isWithMention(user: User): Boolean = user.username ?.let { username -> isWithMention(username) } == true || isWithTextMention(user.id)
 

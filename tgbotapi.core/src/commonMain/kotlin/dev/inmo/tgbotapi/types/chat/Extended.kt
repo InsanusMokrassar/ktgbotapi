@@ -493,6 +493,8 @@ data class ExtendedBot(
     val canReadAllGroupMessages: Boolean = false,
     @SerialName(supportInlineQueriesField)
     val supportsInlineQueries: Boolean = false,
+    @SerialName(supportsGuestQueriesField)
+    val supportsGuestQueries: Boolean = false,
     @SerialName(canConnectToBusinessField)
     val canConnectToBusiness: Boolean = false,
     @SerialName(photoField)

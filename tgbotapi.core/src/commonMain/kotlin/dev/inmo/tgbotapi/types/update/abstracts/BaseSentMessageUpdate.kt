@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.update.abstracts
 
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 
 interface BaseSentMessageUpdate : BaseMessageUpdate {
     /**
@@ -9,5 +8,5 @@ interface BaseSentMessageUpdate : BaseMessageUpdate {
      *
      * **THERE IS NO ANY GUARANTEE THAT THIS METHOD WILL NOT THROW ANY EXCEPTION**
      */
-    fun copy(newData: ContentMessage<*>): BaseSentMessageUpdate
+    fun copy(newData: AccessibleMessage): BaseSentMessageUpdate
 }

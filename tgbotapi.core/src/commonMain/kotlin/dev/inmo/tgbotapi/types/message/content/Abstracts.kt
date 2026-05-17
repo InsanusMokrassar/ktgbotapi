@@ -165,7 +165,7 @@ sealed interface ResendableContent {
         suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<out AccessibleMessage>
+    ): Request<out ChatMessage>
 
     fun createResend(
         chatId: ChatIdentifier,
@@ -180,7 +180,7 @@ sealed interface ResendableContent {
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<out AccessibleMessage> = createResend(
+    ): Request<out ChatMessage> = createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
         directMessageThreadId = directMessageThreadId,

@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 
 /**
@@ -28,7 +28,7 @@ public suspend fun TelegramBot.sendDice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = execute(
+): ChatContentMessage<DiceContent> = execute(
     SendDice(
         chatId = chatId,
         animationType = animationType,
@@ -62,7 +62,7 @@ public suspend fun TelegramBot.sendDice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = sendDice(
+): ChatContentMessage<DiceContent> = sendDice(
     chatId = chat.id,
     animationType = animationType,
     threadId = threadId,

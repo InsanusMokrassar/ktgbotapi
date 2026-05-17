@@ -7,12 +7,13 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<ContactContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
@@ -49,8 +50,8 @@ data class SendContact(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<ContactContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<ContactContent>>
+) : SendContentMessageRequest<ChatContentMessage<ContactContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<ContactContent>>
 {
     constructor(
         chatId: ChatIdentifier,
@@ -83,7 +84,7 @@ data class SendContact(
     )
 
     override fun method(): String = "sendContact"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<ContactContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<ContactContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

@@ -31,13 +31,13 @@ internal data class RawUpdate constructor(
     val updateId: UpdateId,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val edited_message: CommonMessage<*>? = null,
+    private val edited_message: ChatContentMessage<*>? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val message: AccessibleMessage? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val edited_channel_post: CommonMessage<*>? = null,
+    private val edited_channel_post: ChatContentMessage<*>? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val channel_post: AccessibleMessage? = null,
@@ -64,6 +64,9 @@ internal data class RawUpdate constructor(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_business_message: BusinessContentMessage<*>? = null,
     private val deleted_business_messages: BusinessMessagesDeleted? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    private val guest_message: GuestContentMessage<*>? = null,
     private val purchased_paid_media: PaidMediaPurchased? = null,
     private val managed_bot: ManagedBotUpdated? = null,
 ) {
@@ -101,6 +104,7 @@ internal data class RawUpdate constructor(
                 business_message != null -> BusinessMessageUpdate(updateId, business_message)
                 edited_business_message != null -> EditBusinessMessageUpdate(updateId, edited_business_message)
                 deleted_business_messages != null -> DeletedBusinessMessageUpdate(updateId, deleted_business_messages)
+                guest_message != null -> GuestMessageUpdate(updateId, guest_message)
                 purchased_paid_media != null -> PaidMediaPurchasedUpdate(updateId, purchased_paid_media)
                 managed_bot != null -> ManagedBotUpdate(updateId, managed_bot)
                 else -> UnknownUpdate(

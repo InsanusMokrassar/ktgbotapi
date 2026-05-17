@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -28,7 +28,7 @@ public suspend fun TelegramBot.sendMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = execute(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = execute(
     SendMediaGroup<MediaGroupPartContent>(
         chatId = chatId,
         media = media,
@@ -60,7 +60,7 @@ public suspend fun TelegramBot.sendMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -91,7 +91,7 @@ public suspend fun TelegramBot.sendMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media.map { it.toMediaGroupMemberTelegramMedia() },
     threadId = threadId,
@@ -122,7 +122,7 @@ public suspend fun TelegramBot.sendMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -151,7 +151,7 @@ public suspend fun TelegramBot.sendPlaylist(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = execute(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = execute(
     SendPlaylist(
         chatId = chatId,
         media = media,
@@ -182,7 +182,7 @@ public suspend fun TelegramBot.sendPlaylist(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -212,7 +212,7 @@ public suspend fun TelegramBot.sendPlaylist(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media.map { it.toMediaGroupMemberTelegramMedia() },
     threadId = threadId,
@@ -242,7 +242,7 @@ public suspend fun TelegramBot.sendPlaylist(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -271,7 +271,7 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = execute(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = execute(
     SendDocumentsGroup(
         chatId = chatId,
         media = media,
@@ -302,7 +302,7 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -332,7 +332,7 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media.map { it.toMediaGroupMemberTelegramMedia() },
     threadId = threadId,
@@ -362,7 +362,7 @@ public suspend fun TelegramBot.sendDocumentsGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -391,7 +391,7 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = execute(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = execute(
     SendVisualMediaGroup(
         chatId = chatId,
         media = media,
@@ -422,7 +422,7 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,
@@ -452,7 +452,7 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media.map { it.toMediaGroupMemberTelegramMedia() },
     threadId = threadId,
@@ -482,7 +482,7 @@ public suspend fun TelegramBot.sendVisualMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chat.id,
     media = media,
     threadId = threadId,

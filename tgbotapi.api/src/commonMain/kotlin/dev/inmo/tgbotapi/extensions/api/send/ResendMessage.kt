@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 
@@ -26,7 +26,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     suggestedPostParameters: SuggestedPostParameters? = null
-): ContentMessage<T> = execute(
+): ChatContentMessage<T> = execute(
     content.createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
@@ -40,7 +40,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
         replyMarkup = replyMarkup,
         suggestedPostParameters = suggestedPostParameters,
     )
-) as ContentMessage<T>
+) as ChatContentMessage<T>
 
 /**
  * This method will send [content] to the [chat] as is
@@ -57,7 +57,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<T> = resend(
+): ChatContentMessage<T> = resend(
     chatId = chat.id,
     content = content,
     messageThreadId = messageThreadId,
@@ -78,7 +78,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
  */
 public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chatId: ChatIdentifier,
-    message: ContentMessage<T>,
+    message: ChatContentMessage<T>,
     messageThreadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -88,7 +88,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<T> = resend(
+): ChatContentMessage<T> = resend(
     chatId = chatId,
     content = message.content,
     messageThreadId = messageThreadId,
@@ -109,7 +109,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
  */
 public suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,
-    message: ContentMessage<T>,
+    message: ChatContentMessage<T>,
     messageThreadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -119,7 +119,7 @@ public suspend inline fun <T : MessageContent> TelegramBot.resend(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<T> = resend(
+): ChatContentMessage<T> = resend(
     chatId = chat.id,
     message = message,
     messageThreadId = messageThreadId,

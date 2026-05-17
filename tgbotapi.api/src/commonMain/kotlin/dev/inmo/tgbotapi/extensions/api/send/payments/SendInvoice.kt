@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
@@ -45,7 +45,7 @@ public suspend fun TelegramBot.sendInvoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = execute(
+): ChatContentMessage<InvoiceContent> = execute(
     SendInvoice(
         chatId = chatId,
         title = title,
@@ -107,7 +107,7 @@ public suspend fun TelegramBot.sendInvoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(
+): ChatContentMessage<InvoiceContent> = sendInvoice(
     chatId = user.id,
     title = title,
     description = description,
@@ -159,7 +159,7 @@ public suspend fun TelegramBot.sendInvoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = execute(
+): ChatContentMessage<InvoiceContent> = execute(
     SendInvoice(
         chatId = chatId,
         title = title,
@@ -199,7 +199,7 @@ public suspend fun TelegramBot.sendInvoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(
+): ChatContentMessage<InvoiceContent> = sendInvoice(
     chatId = user.id,
     title = title,
     description = description,

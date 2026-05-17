@@ -24,6 +24,8 @@ const val UPDATE_BUSINESS_MESSAGE = "business_message"
 const val UPDATE_EDITED_BUSINESS_MESSAGE = "edited_business_message"
 const val UPDATE_DELETED_BUSINESS_MESSAGES = "deleted_business_messages"
 
+const val UPDATE_GUEST_MESSAGE = "guest_message"
+
 const val UPDATE_MANAGED_BOT = "managed_bot"
 
 val ALL_UPDATES_LIST_WITHOUT_REACTIONS = listOf(
@@ -38,6 +40,8 @@ val ALL_UPDATES_LIST_WITHOUT_REACTIONS = listOf(
 
     UPDATE_EDITED_BUSINESS_MESSAGE,
     UPDATE_DELETED_BUSINESS_MESSAGES,
+
+    UPDATE_GUEST_MESSAGE,
 
     UPDATE_INLINE_QUERY,
     UPDATE_CHOSEN_INLINE_RESULT,

@@ -920,9 +920,9 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 	public static final fun filterMentionsMessages (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/chat/User;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun filterMentionsMessages-eC7Nk8U (Lkotlinx/coroutines/flow/Flow;Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun filterTextMentionsMessages (Lkotlinx/coroutines/flow/Flow;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Lkotlinx/coroutines/flow/Flow;
-	public static final fun isWithMention (Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;Ldev/inmo/tgbotapi/types/chat/User;)Z
-	public static final fun isWithMention-eC7Nk8U (Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;Ljava/lang/String;)Z
-	public static final fun isWithTextMention (Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Z
+	public static final fun isWithMention (Ldev/inmo/tgbotapi/types/message/abstracts/ChatContentMessage;Ldev/inmo/tgbotapi/types/chat/User;)Z
+	public static final fun isWithMention-eC7Nk8U (Ldev/inmo/tgbotapi/types/message/abstracts/ChatContentMessage;Ljava/lang/String;)Z
+	public static final fun isWithTextMention (Ldev/inmo/tgbotapi/types/message/abstracts/ChatContentMessage;Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Z
 	public static final fun waitContentMessageWithMentions (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun waitContentMessageWithMentions$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun waitContentMessageWithMentions-QGcck-U (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/flow/Flow;
@@ -1510,6 +1510,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handl
 	public static synthetic fun onWriteAccessAllowedFromWebAppLink$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
 	public static final fun onWriteAccessAllowedOther (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;)Lkotlinx/coroutines/Job;
 	public static synthetic fun onWriteAccessAllowedOther$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/GuestMessageTriggersKt {
+	public static final fun onGuestMessage (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;)Lkotlinx/coroutines/Job;
+	public static synthetic fun onGuestMessage$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lkotlinx/coroutines/Job;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/InlineQueryTriggersKt {

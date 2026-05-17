@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
@@ -35,7 +36,7 @@ data class AnimationContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<AnimationContent>> = SendAnimation(
+    ): Request<ChatContentMessage<AnimationContent>> = SendAnimation(
         chatId = chatId,
         animation = media.fileId,
         thumbnail = media.thumbnail ?.fileId,

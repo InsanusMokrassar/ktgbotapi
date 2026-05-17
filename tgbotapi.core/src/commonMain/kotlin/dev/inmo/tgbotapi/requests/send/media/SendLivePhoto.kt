@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.LivePhotoContent
@@ -41,7 +42,7 @@ fun SendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<LivePhotoContent>> {
+): Request<ChatContentMessage<LivePhotoContent>> {
     val livePhotoAsFile = livePhoto as? MultipartFile
     val photoAsFile = photo as? MultipartFile
 
@@ -93,7 +94,7 @@ fun SendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<LivePhotoContent>> {
+): Request<ChatContentMessage<LivePhotoContent>> {
     val livePhotoAsFile = livePhoto as? MultipartFile
     val photoAsFile = photo as? MultipartFile
 
@@ -128,7 +129,7 @@ fun SendLivePhoto(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LivePhotoContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<LivePhotoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -174,11 +175,11 @@ data class SendLivePhotoData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<LivePhotoContent>>,
-    SendContentMessageRequest<ContentMessage<LivePhotoContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<LivePhotoContent>>,
-    TextableSendMessageRequest<ContentMessage<LivePhotoContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<LivePhotoContent>>,
+) : DataRequest<ChatContentMessage<LivePhotoContent>>,
+    SendContentMessageRequest<ChatContentMessage<LivePhotoContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<LivePhotoContent>>,
+    TextableSendMessageRequest<ChatContentMessage<LivePhotoContent>>,
+    WithCustomizableCaptionRequest<ChatContentMessage<LivePhotoContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {
@@ -194,7 +195,7 @@ data class SendLivePhotoData internal constructor(
     }
 
     override fun method(): String = "sendLivePhoto"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<LivePhotoContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<LivePhotoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.location.Location
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
@@ -32,7 +32,7 @@ public suspend fun TelegramBot.sendLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = execute(
+): ChatContentMessage<StaticLocationContent> = execute(
     SendStaticLocation(
         chatId = chatId,
         latitude = latitude,
@@ -67,7 +67,7 @@ public suspend fun TelegramBot.sendLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -101,7 +101,7 @@ public suspend fun TelegramBot.sendLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = latitude,
     longitude = longitude,
@@ -134,7 +134,7 @@ public suspend fun TelegramBot.sendLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -168,7 +168,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = latitude,
     longitude = longitude,
@@ -201,7 +201,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chatId,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -235,7 +235,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = latitude,
     longitude = longitude,
@@ -268,7 +268,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = chat.id,
     latitude = location.latitude,
     longitude = location.longitude,

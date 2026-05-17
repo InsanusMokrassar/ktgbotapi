@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PollContent
@@ -21,7 +22,7 @@ import korlibs.time.millisecondsLong
 import korlibs.time.seconds
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 internal inline val ApproximateScheduledCloseInfo.openPeriod
     get() = openDuration.millisecondsLong.div(1000)
@@ -289,8 +290,8 @@ internal fun ScheduledCloseInfo.checkSendData() {
     }
 }
 
-sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>>, TextedInput {
+sealed class SendPoll : SendContentMessageRequest<ChatContentMessage<PollContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<PollContent>>, TextedInput {
     abstract val question: String
     override val text: String
         get() = question
@@ -322,7 +323,7 @@ sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
         }
 
     override fun method(): String = "sendPoll"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<PollContent>>
         get() = commonResultDeserializer
 }
 

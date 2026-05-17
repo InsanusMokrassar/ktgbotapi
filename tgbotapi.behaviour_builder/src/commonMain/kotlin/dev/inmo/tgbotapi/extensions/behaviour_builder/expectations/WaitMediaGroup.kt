@@ -4,7 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
+import dev.inmo.tgbotapi.extensions.utils.chatContentMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -18,7 +18,7 @@ inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupW
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<MediaGroupContent<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
-    update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
+    update.baseSentMessageUpdateOrNull() ?.data ?.chatContentMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
         if (message.content.group.all { it.content is T }) {
             @Suppress("UNCHECKED_CAST")
             listOf(message.content as MediaGroupContent<T>)

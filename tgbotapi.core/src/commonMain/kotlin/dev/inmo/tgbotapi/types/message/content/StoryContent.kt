@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.stories.Story
 import kotlinx.serialization.Serializable
 
@@ -29,7 +29,8 @@ data class StoryContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<PossiblyForwardedMessage> {
+    ): Request<ChatContentMessage<StoryContent>> {
+        @Suppress("UNCHECKED_CAST")
         return ForwardMessage(
             chat.id,
             toChatId = chatId,
@@ -38,6 +39,6 @@ data class StoryContent(
             directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent
-        )
+        ) as Request<ChatContentMessage<StoryContent>>
     }
 }

@@ -2,6 +2,6 @@ package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 
-interface ChatEventMessage<T : ChatEvent> : AccessibleMessage {
+interface ChatEventMessage<T : ChatEvent> : ChatMessage {
     val chatEvent: T
 }

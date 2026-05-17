@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.AudioContent
@@ -43,7 +44,7 @@ fun SendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<AudioContent>> {
+): Request<ChatContentMessage<AudioContent>> {
     val audioAsFile = audio as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -97,7 +98,7 @@ fun SendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<AudioContent>> {
+): Request<ChatContentMessage<AudioContent>> {
     val audioAsFile = audio as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -133,7 +134,7 @@ fun SendAudio(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<AudioContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -181,13 +182,13 @@ data class SendAudioData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<AudioContent>>,
-    SendContentMessageRequest<ContentMessage<AudioContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<AudioContent>>,
-    TextableSendMessageRequest<ContentMessage<AudioContent>>,
-    ThumbedSendMessageRequest<ContentMessage<AudioContent>>,
-    TitledSendMessageRequest<ContentMessage<AudioContent>>,
-    DuratedSendMessageRequest<ContentMessage<AudioContent>>,
+) : DataRequest<ChatContentMessage<AudioContent>>,
+    SendContentMessageRequest<ChatContentMessage<AudioContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<AudioContent>>,
+    TextableSendMessageRequest<ChatContentMessage<AudioContent>>,
+    ThumbedSendMessageRequest<ChatContentMessage<AudioContent>>,
+    TitledSendMessageRequest<ChatContentMessage<AudioContent>>,
+    DuratedSendMessageRequest<ChatContentMessage<AudioContent>>,
     Performerable
 {
     override val textSources: List<TextSource>? by lazy {
@@ -203,7 +204,7 @@ data class SendAudioData internal constructor(
     }
 
     override fun method(): String = "sendAudio"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<AudioContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

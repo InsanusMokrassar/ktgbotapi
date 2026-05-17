@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.StickerContent
@@ -29,7 +30,7 @@ fun SendSticker(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
+): Request<ChatContentMessage<StickerContent>> = SendStickerByFileId(
     chatId = chatId,
     sticker = sticker,
     threadId = threadId,
@@ -53,7 +54,7 @@ fun SendSticker(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<StickerContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -89,9 +90,9 @@ data class SendStickerByFileId internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<StickerContent>> {
+) : SendContentMessageRequest<ChatContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<StickerContent>> {
     override fun method(): String = "sendSticker"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<StickerContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

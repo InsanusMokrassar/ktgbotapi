@@ -30,7 +30,7 @@ import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
@@ -67,7 +67,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = replyInChatId,
     phoneNumber = phoneNumber,
     firstName = firstName,
@@ -105,7 +105,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = replyInChatId,
     contact = contact,
     threadId = replyInThreadId,
@@ -144,7 +144,7 @@ public suspend inline fun TelegramBot.replyWithDice(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = sendDice(
+): ChatContentMessage<DiceContent> = sendDice(
     chatId = replyInChatId,
     animationType = animationType,
     threadId = replyInThreadId,
@@ -180,7 +180,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = replyWithDice(
+): ChatContentMessage<DiceContent> = replyWithDice(
     toChatId = toChatId,
     toMessageId = toMessageId,
     animationType = animationType,
@@ -219,7 +219,7 @@ public suspend inline fun TelegramBot.replyWithChecklist(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ChecklistContent> = sendChecklist(
+): ChatContentMessage<ChecklistContent> = sendChecklist(
     chatId = replyInChatId,
     checklist = checklist,
     businessConnectionId = replyInBusinessConnectionId,
@@ -247,7 +247,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ChecklistContent> = sendChecklist(
+): ChatContentMessage<ChecklistContent> = sendChecklist(
     chatId = replyInChatId,
     checklist = checklist,
     businessConnectionId = replyInBusinessConnectionId,
@@ -283,7 +283,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = replyInChatId,
     latitude = latitude,
     longitude = longitude,
@@ -320,7 +320,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendLocation(
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = replyInChatId,
     location = location,
     threadId = replyInThreadId,
@@ -361,7 +361,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
     text = text,
     parseMode = parseMode,
@@ -400,7 +400,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = replyInChatId,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -439,7 +439,7 @@ public suspend fun TelegramBot.reply(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = reply(
+): ChatContentMessage<TextContent> = reply(
     toChatId = toChatId,
     toMessageId = toMessageId,
     entities = buildEntities(separator, builderBody),
@@ -482,7 +482,7 @@ public suspend fun TelegramBot.reply(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = reply(
+): ChatContentMessage<TextContent> = reply(
     toChatId = toChatId,
     toMessageId = toMessageId,
     entities = buildEntities(separator, builderBody),
@@ -533,7 +533,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
     latitude = latitude,
     longitude = longitude,
@@ -578,7 +578,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
     latitude = location.latitude,
     longitude = location.longitude,
@@ -617,7 +617,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
     venue = venue,
     threadId = replyInThreadId,
@@ -652,7 +652,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = replyInChatId,
     gameShortName = gameShortName,
     threadId = replyInThreadId,
@@ -684,7 +684,7 @@ public suspend inline fun TelegramBot.replyWithGame(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = replyInChatId,
     gameShortName = game.title,
     threadId = replyInThreadId,
@@ -716,7 +716,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = replyWithGame(
+): ChatContentMessage<GameContent> = replyWithGame(
     toChatId = toChatId,
     toMessageId = toMessageId,
     game = game,
@@ -763,7 +763,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
     animation = animation,
     thumb = thumb,
@@ -810,7 +810,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
     animation = animation,
     text = text,
@@ -856,7 +856,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
     animation = animation,
     thumb = thumb,
@@ -901,7 +901,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
     animation = animation,
     entities = entities,
@@ -948,7 +948,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
     audio = audio,
     thumb = thumb,
@@ -989,7 +989,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
     audio = audio,
     text = text,
@@ -1029,7 +1029,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
     audio = audio,
     thumb = thumb,
@@ -1068,7 +1068,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = replyInChatId,
     audio = audio,
     entities = entities,
@@ -1109,7 +1109,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = replyInChatId,
     document = document,
     thumb = thumb,
@@ -1148,7 +1148,7 @@ public suspend inline fun TelegramBot.reply(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = replyInChatId,
     document = document,
     text = text,
@@ -1186,7 +1186,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = replyInChatId,
     document = document,
     thumb = thumb,
@@ -1223,7 +1223,7 @@ public suspend inline fun TelegramBot.reply(
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = replyInChatId,
     document = document,
     entities = entities,
@@ -1260,7 +1260,7 @@ public suspend inline fun TelegramBot.replyWithMediaGroup(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = replyInChatId,
     media = media,
     threadId = replyInThreadId,
@@ -1290,7 +1290,7 @@ public suspend inline fun TelegramBot.replyWithPlaylist(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = replyInChatId,
     media = media,
     threadId = replyInThreadId,
@@ -1320,7 +1320,7 @@ public suspend inline fun TelegramBot.replyWithDocuments(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = replyInChatId,
     media = media,
     threadId = replyInThreadId,
@@ -1350,7 +1350,7 @@ public suspend inline fun TelegramBot.replyWithGallery(
     allowSendingWithoutReply: Boolean? = null,
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = replyInChatId,
     media = media,
     threadId = replyInThreadId,
@@ -1388,7 +1388,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     fileId = fileId,
     text = text,
@@ -1428,7 +1428,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     photo = photo,
     text = text,
@@ -1468,7 +1468,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     photoSize = photoSize,
     text = text,
@@ -1508,7 +1508,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     fileId = fileId,
     entities = entities,
@@ -1546,7 +1546,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     photo = photo,
     entities = entities,
@@ -1584,7 +1584,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
     photoSize = photoSize,
     entities = entities,
@@ -1623,7 +1623,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chatId = replyInChatId,
     sticker = sticker,
     threadId = replyInThreadId,
@@ -1657,7 +1657,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chatId = replyInChatId,
     sticker = sticker,
     threadId = replyInThreadId,
@@ -1701,7 +1701,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
     video = video,
     thumb = thumb,
@@ -1745,7 +1745,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
     video = video,
     text = text,
@@ -1788,7 +1788,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
     video = video,
     thumb = thumb,
@@ -1830,7 +1830,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
     video = video,
     entities = entities,
@@ -1873,7 +1873,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = replyInChatId,
     livePhoto = livePhoto,
     photo = photo,
@@ -1914,7 +1914,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = replyInChatId,
     livePhoto = livePhoto,
     text = text,
@@ -1954,7 +1954,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = replyInChatId,
     livePhoto = livePhoto,
     photo = photo,
@@ -1993,7 +1993,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = replyInChatId,
     livePhoto = livePhoto,
     entities = entities,
@@ -2034,7 +2034,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = replyInChatId,
     videoNote = videoNote,
     thumb = thumb,
@@ -2069,7 +2069,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = replyInChatId,
     videoNote = videoNote,
     threadId = replyInThreadId,
@@ -2107,7 +2107,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
     voice = voice,
     text = text,
@@ -2144,7 +2144,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
     voice = voice,
     text = text,
@@ -2181,7 +2181,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
     voice = voice,
     entities = entities,
@@ -2216,7 +2216,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
     voice = voice,
     entities = entities,
@@ -2271,7 +2271,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(
+): ChatContentMessage<InvoiceContent> = sendInvoice(
     chatId = replyInChatId,
     title = title,
     description = description,
@@ -2327,7 +2327,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2372,7 +2372,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2416,7 +2416,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2459,7 +2459,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2506,7 +2506,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2560,7 +2560,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2611,7 +2611,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2663,7 +2663,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2713,7 +2713,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2765,7 +2765,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     question = question,
     options = options,
@@ -2814,7 +2814,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2864,7 +2864,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = replyInChatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2910,7 +2910,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = when (poll) {
+): ChatContentMessage<PollContent> = when (poll) {
     is RegularPoll -> reply(
         toChatId = toChatId,
         toMessageId = toMessageId,
@@ -2982,7 +2982,7 @@ public suspend inline fun TelegramBot.reply(
     checklistTaskId: ChecklistTaskId? = null,
     pollOptionId: PollOptionPersistentId? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = when (poll) {
+): ChatContentMessage<PollContent> = when (poll) {
     is RegularPoll -> reply(
         toChatId = toChatId,
         toMessageId = toMessageId,

@@ -1,45 +1,43 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.whenMentionTextSource
-import dev.inmo.tgbotapi.extensions.utils.whenTextMentionTextSource
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextedContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 
-fun CommonMessage<TextedContent>.isWithMention(username: Username) = content.isWithMention(username)
+fun ChatContentMessage<TextedContent>.isWithMention(username: Username) = content.isWithMention(username)
 
-fun CommonMessage<TextedContent>.isWithTextMention(userId: UserId) = content.isWithTextMention(userId)
+fun ChatContentMessage<TextedContent>.isWithTextMention(userId: UserId) = content.isWithTextMention(userId)
 
 /**
  * Uses [isWithMention] with [user] [Username] (is presented) or [isWithTextMention] with [user] [UserId] to determine
- * user mentioning in [this] [CommonMessage]
+ * user mentioning in [this] [ChatContentMessage]
  */
-fun CommonMessage<TextedContent>.isWithMention(user: User): Boolean = content.isWithMention(user)
+fun ChatContentMessage<TextedContent>.isWithMention(user: User): Boolean = content.isWithMention(user)
 
 /**
  * Uses [isWithMention] passing [username] as argument to take only messages with [username] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(username: Username) = filter {
+fun Flow<ChatContentMessage<TextedContent>>.filterMentionsMessages(username: Username) = filter {
     it.isWithMention(username)
 }
 
 /**
  * Uses [isWithTextMention] passing [userId] as argument to take only messages with [userId] text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) = filter {
+fun Flow<ChatContentMessage<TextedContent>>.filterTextMentionsMessages(userId: UserId) = filter {
     it.isWithTextMention(userId)
 }
 
 /**
  * Uses [isWithMention] passing [user] as argument to take only messages with [user] mentions or text mentions
  */
-fun Flow<CommonMessage<TextedContent>>.filterMentionsMessages(user: User) = filter {
+fun Flow<ChatContentMessage<TextedContent>>.filterMentionsMessages(user: User) = filter {
     it.isWithMention(user)
 }
 

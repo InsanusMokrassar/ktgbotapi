@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.Sticker
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.StickerContent
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 
@@ -32,7 +32,7 @@ public suspend fun TelegramBot.sendSticker(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = execute(
+): ChatContentMessage<StickerContent> = execute(
     SendSticker(
         chatId = chatId,
         sticker = sticker,
@@ -68,7 +68,7 @@ public suspend fun TelegramBot.sendSticker(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chatId = chat.id,
     sticker = sticker,
     threadId = threadId,
@@ -102,7 +102,7 @@ public suspend fun TelegramBot.sendSticker(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
     sticker = sticker.fileId,
     threadId = threadId,
@@ -136,7 +136,7 @@ public suspend fun TelegramBot.sendSticker(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chat = chat,
     sticker = sticker.fileId,
     threadId = threadId,

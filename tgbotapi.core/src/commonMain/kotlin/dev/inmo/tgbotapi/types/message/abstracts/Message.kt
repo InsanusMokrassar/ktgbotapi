@@ -47,6 +47,9 @@ interface Message : WithPreviewChatAndMessageId, PossiblyBusinessMessage {
 
 interface AccessibleMessage : Message
 
+interface ChatMessage : AccessibleMessage
+interface SpecialMessage : AccessibleMessage
+
 @Serializable
 data class InaccessibleMessage(
     override val chat: PreviewChat,
@@ -61,7 +64,7 @@ data class UnknownMessageType(
     override val chat: PreviewChat,
     override val date: DateTime,
     val insideException: Exception
-) : AccessibleMessage
+) : ChatMessage
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
     @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)

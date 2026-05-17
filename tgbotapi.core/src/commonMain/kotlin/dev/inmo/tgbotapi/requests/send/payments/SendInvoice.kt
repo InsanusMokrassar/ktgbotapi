@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
@@ -17,7 +18,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 import dev.inmo.tgbotapi.types.threadId
 import kotlinx.serialization.*
 
-private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
+private val invoiceMessageSerializer: DeserializationStrategy<ChatContentMessage<InvoiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
@@ -90,10 +91,10 @@ data class SendInvoice(
     DisableNotification,
     WithReplyParameters,
     WithReplyMarkup,
-    SendMessageRequest<ContentMessage<InvoiceContent>>,
-    OptionallyWithEffectRequest<ContentMessage<InvoiceContent>> {
+    SendMessageRequest<ChatContentMessage<InvoiceContent>>,
+    OptionallyWithEffectRequest<ChatContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<InvoiceContent>>
         get() = invoiceMessageSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

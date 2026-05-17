@@ -11,21 +11,19 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.extensions.utils.whenCommonMessage
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
-import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
-import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
+typealias CommonMessageFilter<T> = SimpleFilter<ChatContentMessage<T>>
 
 internal inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onContentMessageWithType(
     initialFilter: CommonMessageFilter<T>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<T>, Any>? = ByChatMessageMarkerFactory,
-    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<T>>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatContentMessage<T>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatContentMessage<T>, Any>? = ByChatMessageMarkerFactory,
+    noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatContentMessage<T>>? = null,
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatContentMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     when (it) {
         is BaseSentMessageUpdate -> it.data.whenCommonMessage(::listOfNotNull)
@@ -51,10 +49,10 @@ internal inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onCon
  */
 fun <BC : BehaviourContext> BC.onContentMessage(
     initialFilter: CommonMessageFilter<MessageContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MessageContent>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<MessageContent>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<MessageContent>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MessageContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatContentMessage<MessageContent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatContentMessage<MessageContent>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatContentMessage<MessageContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatContentMessage<MessageContent>>
 ) = onContentMessageWithType(
     initialFilter,
     subcontextUpdatesFilter,

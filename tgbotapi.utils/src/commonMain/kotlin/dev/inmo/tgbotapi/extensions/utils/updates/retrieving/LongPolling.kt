@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.requests.GetUpdates
 import dev.inmo.tgbotapi.requests.webhook.DeleteWebhook
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
@@ -102,7 +102,7 @@ fun TelegramBot.longPollingFlow(
              */
             val updates = if (
                 originalUpdates.size == getUpdatesLimit.last
-                && ((converted.last() as? BaseSentMessageUpdate)?.data as? CommonMessage<*>)?.content is MediaGroupContent<*>
+                && ((converted.last() as? BaseSentMessageUpdate)?.data as? ChatContentMessage<*>)?.content is MediaGroupContent<*>
             ) {
                 converted - converted.last()
             } else {

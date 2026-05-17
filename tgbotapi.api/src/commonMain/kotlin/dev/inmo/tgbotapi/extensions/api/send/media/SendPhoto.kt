@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.*
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 
 /**
@@ -37,7 +37,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = execute(
+): ChatContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
         photo = fileId,
@@ -79,7 +79,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
     text = text,
@@ -119,7 +119,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
     text = text,
@@ -159,7 +159,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
     text = text,
@@ -199,7 +199,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
     text = text,
@@ -239,7 +239,7 @@ public suspend fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
     text = text,
@@ -279,7 +279,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = execute(
+): ChatContentMessage<PhotoContent> = execute(
     SendPhoto(
         chatId = chatId,
         photo = fileId,
@@ -319,7 +319,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     fileId = fileId,
     entities = entities,
@@ -357,7 +357,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
     entities = entities,
@@ -395,7 +395,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photo = photo,
     entities = entities,
@@ -433,7 +433,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     fileId = photoSize.fileId,
     entities = entities,
@@ -471,7 +471,7 @@ public suspend inline fun TelegramBot.sendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chat.id,
     photoSize = photoSize,
     entities = entities,

@@ -3,10 +3,10 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
+import dev.inmo.tgbotapi.extensions.utils.chatContentMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -17,13 +17,13 @@ import kotlinx.coroutines.flow.Flow
 inline fun <reified O : MessageContent> BehaviourContext.waitEditedContentMessage(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<CommonMessage<O>> = expectFlow(
+): Flow<ChatContentMessage<O>> = expectFlow(
     initRequest,
     errorFactory
 ) {
     val messages = when (it) {
         is BaseEditMessageUpdate -> {
-            val commonMessage = it.data.commonMessageOrNull() ?: return@expectFlow emptyList()
+            val commonMessage = it.data.chatContentMessageOrNull() ?: return@expectFlow emptyList()
             listOf(commonMessage)
         }
         else -> return@expectFlow emptyList()

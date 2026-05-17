@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
@@ -107,7 +107,7 @@ data class LiveLocationContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<LiveLocationContent>> = SendLiveLocation(
+    ): Request<ChatContentMessage<LiveLocationContent>> = SendLiveLocation(
         chatId = chatId,
         latitude = location.latitude,
         longitude = location.longitude,
@@ -148,7 +148,7 @@ data class StaticLocationContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<StaticLocationContent>> = SendStaticLocation(
+    ): Request<ChatContentMessage<StaticLocationContent>> = SendStaticLocation(
         chatId = chatId,
         latitude = location.latitude,
         longitude = location.longitude,

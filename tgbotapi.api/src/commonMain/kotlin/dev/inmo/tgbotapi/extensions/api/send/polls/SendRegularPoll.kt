@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.polls.InputPollOption
@@ -44,7 +44,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
         question = question,
@@ -105,7 +105,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
         questionTextSources = questionEntities,
@@ -165,7 +165,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
         question = question,
@@ -224,7 +224,7 @@ public suspend fun TelegramBot.sendRegularPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendRegularPoll(
         chatId = chatId,
         questionTextSources = questionEntities,

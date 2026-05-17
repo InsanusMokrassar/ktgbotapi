@@ -5,7 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -13,23 +13,23 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 
-typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() -> CommonMessage<T>?
+typealias CommonMessageToCommonMessageMapper<T> = suspend ChatContentMessage<T>.() -> ChatContentMessage<T>?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
 fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<CommonMessage<MessageContent>> = expectFlow(
+): Flow<ChatContentMessage<MessageContent>> = expectFlow(
     initRequest,
     errorFactory
 ) {
     if (it !is BaseSentMessageUpdate) {
         return@expectFlow emptyList()
     }
-    listOfNotNull((it.data as? CommonMessage<*>))
+    listOfNotNull((it.data as? ChatContentMessage<*>))
 }
 
-inline fun <reified T : MessageContent> Flow<CommonMessage<MessageContent>>.mapWithContent() = mapNotNull { it.withContentOrNull<T>() }
+inline fun <reified T : MessageContent> Flow<ChatContentMessage<MessageContent>>.mapWithContent() = mapNotNull { it.withContentOrNull<T>() }
 
 fun BehaviourContext.waitAnyContentMessage(
     initRequest: Request<*>? = null,

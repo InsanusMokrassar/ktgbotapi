@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VideoFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.VideoContent
 
 /**
@@ -44,7 +44,7 @@ public suspend fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = execute(
+): ChatContentMessage<VideoContent> = execute(
     SendVideo(
         chatId = chatId,
         video = video,
@@ -94,7 +94,7 @@ public suspend fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video.fileId,
     thumb = video.thumbnail ?.fileId,
@@ -148,7 +148,7 @@ public suspend fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     thumb = thumb,
@@ -197,7 +197,7 @@ public suspend fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     text = text,
@@ -244,7 +244,7 @@ public suspend inline fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = execute(
+): ChatContentMessage<VideoContent> = execute(
     SendVideo(
         chatId = chatId,
         video = video,
@@ -292,7 +292,7 @@ public suspend inline fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video.fileId,
     thumb = video.thumbnail ?.fileId,
@@ -344,7 +344,7 @@ public suspend inline fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     thumb = thumb,
@@ -391,7 +391,7 @@ public suspend inline fun TelegramBot.sendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chat.id,
     video = video,
     entities = entities,

@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -26,7 +26,7 @@ data class GameContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<GameContent>> = SendGame(
+    ): Request<ChatContentMessage<GameContent>> = SendGame(
         chatId = chatId,
         gameShortName = game.title,
         threadId = messageThreadId,

@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.media.OptionallyStreamable
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VideoContent
@@ -49,7 +50,7 @@ fun SendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<VideoContent>> {
+): Request<ChatContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
@@ -114,7 +115,7 @@ fun SendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<VideoContent>> {
+): Request<ChatContentMessage<VideoContent>> {
     val videoAsFile = video as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
     val coverAsFile = cover as? MultipartFile
@@ -156,7 +157,7 @@ fun SendVideo(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VideoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -214,15 +215,15 @@ data class SendVideoData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<VideoContent>>,
-    SendContentMessageRequest<ContentMessage<VideoContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<VideoContent>>,
-    TextableSendMessageRequest<ContentMessage<VideoContent>>,
-    ThumbedSendMessageRequest<ContentMessage<VideoContent>>,
-    DuratedSendMessageRequest<ContentMessage<VideoContent>>,
-    SizedSendMessageRequest<ContentMessage<VideoContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<VideoContent>>,
-    CoveredSendMessageRequest<ContentMessage<VideoContent>>,
+) : DataRequest<ChatContentMessage<VideoContent>>,
+    SendContentMessageRequest<ChatContentMessage<VideoContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<VideoContent>>,
+    TextableSendMessageRequest<ChatContentMessage<VideoContent>>,
+    ThumbedSendMessageRequest<ChatContentMessage<VideoContent>>,
+    DuratedSendMessageRequest<ChatContentMessage<VideoContent>>,
+    SizedSendMessageRequest<ChatContentMessage<VideoContent>>,
+    WithCustomizableCaptionRequest<ChatContentMessage<VideoContent>>,
+    CoveredSendMessageRequest<ChatContentMessage<VideoContent>>,
     WithCustomStartMediaData,
     OptionallyWithSpoilerRequest,
     OptionallyStreamable
@@ -240,7 +241,7 @@ data class SendVideoData internal constructor(
     }
 
     override fun method(): String = "sendVideo"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<VideoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

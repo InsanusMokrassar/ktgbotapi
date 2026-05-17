@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VoiceFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 
 /**
@@ -34,7 +34,7 @@ public suspend fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = execute(
+): ChatContentMessage<VoiceContent> = execute(
     SendVoice(
         chatId = chatId,
         voice = voice,
@@ -74,7 +74,7 @@ public suspend fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chat.id,
     voice = voice,
     text = text,
@@ -111,7 +111,7 @@ public suspend fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice.fileId,
     text = text,
@@ -148,7 +148,7 @@ public suspend fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chat.id,
     voice = voice,
     text = text,
@@ -185,7 +185,7 @@ public suspend inline fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = execute(
+): ChatContentMessage<VoiceContent> = execute(
     SendVoice(
         chatId = chatId,
         voice = voice,
@@ -223,7 +223,7 @@ public suspend inline fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chat.id,
     voice = voice,
     entities = entities,
@@ -258,7 +258,7 @@ public suspend inline fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice.fileId,
     entities = entities,
@@ -292,7 +292,7 @@ public suspend inline fun TelegramBot.sendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chat.id,
     voice = voice,
     entities = entities,

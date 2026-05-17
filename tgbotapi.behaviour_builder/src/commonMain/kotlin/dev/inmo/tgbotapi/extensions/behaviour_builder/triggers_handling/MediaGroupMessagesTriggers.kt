@@ -7,9 +7,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
+import dev.inmo.tgbotapi.extensions.utils.chatContentMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
@@ -22,7 +21,7 @@ internal inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> B
     noinline additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, MediaGroupMessage<T>>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
-    it.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
+    it.baseSentMessageUpdateOrNull() ?.data ?.chatContentMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
         if (it.content.group.all { it.content is T }) {
             @Suppress("UNCHECKED_CAST")
             listOf(it as MediaGroupMessage<T>)

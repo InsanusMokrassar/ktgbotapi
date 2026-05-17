@@ -5,13 +5,14 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VenueContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
@@ -58,10 +59,10 @@ data class SendVenue(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<VenueContent>>,
-    PositionedSendMessageRequest<ContentMessage<VenueContent>>,
-    TitledSendMessageRequest<ContentMessage<VenueContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<VenueContent>>
+) : SendContentMessageRequest<ChatContentMessage<VenueContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<VenueContent>>,
+    TitledSendMessageRequest<ChatContentMessage<VenueContent>>,
+    PositionedSendMessageRequest<ChatContentMessage<VenueContent>>
 {
     constructor(
         chatId: ChatIdentifier,
@@ -99,7 +100,7 @@ data class SendVenue(
     )
 
     override fun method(): String = "sendVenue"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<VenueContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

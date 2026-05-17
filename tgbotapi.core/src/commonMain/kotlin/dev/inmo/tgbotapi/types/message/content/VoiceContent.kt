@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -31,7 +31,7 @@ data class VoiceContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VoiceContent>> = SendVoice(
+    ): Request<ChatContentMessage<VoiceContent>> = SendVoice(
         chatId = chatId,
         voice = media.fileId,
         entities = textSources,

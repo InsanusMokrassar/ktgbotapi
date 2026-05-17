@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature("This API is experimental and can be changed without any notice, use with caution")
-fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMediaGroupMessage(): PossiblySentViaBotCommonMessage<MediaGroupContent<T>> {
+fun <T : MediaGroupPartContent> List<CommonContentMessage<T>>.asMediaGroupMessage(): CommonContentMessage<MediaGroupContent<T>> {
     val sourceMessage = first()
     val content = MediaGroupContent(
         map { MediaGroupCollectionContent.PartWrapper(it.messageId, it.content, it) },
@@ -265,6 +265,25 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             mediaGroupId = sourceMessage.mediaGroupId,
             fromOffline = sourceMessage.fromOffline,
             suggestedPostInfo = sourceMessage.suggestedPostInfo,
+            cost = sourceMessage.cost,
+        )
+        is GuestContentMessage -> GuestContentMessageImpl(
+            messageId = sourceMessage.messageId,
+            from = sourceMessage.user,
+            chat = sourceMessage.chat,
+            guestQueryId = sourceMessage.guestQueryId,
+            content = content,
+            date = sourceMessage.date,
+            editDate = sourceMessage.editDate,
+            hasProtectedContent = sourceMessage.hasProtectedContent,
+            forwardOrigin = sourceMessage.forwardOrigin,
+            replyInfo = sourceMessage.replyInfo,
+            replyMarkup = sourceMessage.replyMarkup,
+            senderBot = sourceMessage.senderBot,
+            mediaGroupId = sourceMessage.mediaGroupId,
+            guestBotCallerUser = sourceMessage.guestBotCallerUser,
+            guestBotCallerChat = sourceMessage.guestBotCallerChat,
+            fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
         )
     }

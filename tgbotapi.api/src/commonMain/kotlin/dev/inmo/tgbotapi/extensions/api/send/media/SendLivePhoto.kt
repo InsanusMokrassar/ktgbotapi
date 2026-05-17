@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.LivePhotoFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.LivePhotoContent
 
 /**
@@ -38,7 +38,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = execute(
+): ChatContentMessage<LivePhotoContent> = execute(
     SendLivePhoto(
         chatId = chatId,
         livePhoto = livePhoto,
@@ -81,7 +81,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chatId,
     livePhoto = livePhoto.fileId,
     photo = livePhoto.photo ?.fileId ?: livePhoto.fileId,
@@ -123,7 +123,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chat.id,
     livePhoto = livePhoto,
     photo = photo,
@@ -164,7 +164,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chat.id,
     livePhoto = livePhoto,
     text = text,
@@ -204,7 +204,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = execute(
+): ChatContentMessage<LivePhotoContent> = execute(
     SendLivePhoto(
         chatId = chatId,
         livePhoto = livePhoto,
@@ -245,7 +245,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chatId,
     livePhoto = livePhoto.fileId,
     photo = livePhoto.photo ?.fileId ?: livePhoto.fileId,
@@ -285,7 +285,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chat.id,
     livePhoto = livePhoto,
     photo = photo,
@@ -324,7 +324,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LivePhotoContent> = sendLivePhoto(
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = chat.id,
     livePhoto = livePhoto,
     entities = entities,

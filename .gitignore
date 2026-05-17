@@ -13,6 +13,7 @@ out/
 bin/
 
 local.properties
+local.*
 kotlin-js-store/
 secret.gradle
 .aider*
