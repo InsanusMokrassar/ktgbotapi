@@ -238,15 +238,14 @@ import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.BaseTelegramMediaFile
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
-import dev.inmo.tgbotapi.types.media.TelegramMediaLocation
-import dev.inmo.tgbotapi.types.media.TelegramMediaSticker
-import dev.inmo.tgbotapi.types.media.TelegramMediaVenue
 import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.media.InputPollOptionMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 import dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
@@ -254,7 +253,10 @@ import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+import dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+import dev.inmo.tgbotapi.types.media.TelegramMediaVenue
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
@@ -550,6 +552,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.venue.Venue
 import kotlin.Suppress
 
 public inline fun CommonSendInvoiceData.inputInvoiceMessageContentOrNull(): InputInvoiceMessageContent? = this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
@@ -984,12 +987,6 @@ public inline fun TelegramMedia.spoilerableTelegramMediaOrThrow(): SpoilerableTe
 
 public inline fun <T> TelegramMedia.ifSpoilerableTelegramMedia(block: (SpoilerableTelegramMedia) -> T): T? = spoilerableTelegramMediaOrNull() ?.let(block)
 
-public inline fun TelegramMedia.inputMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
-
-public inline fun TelegramMedia.inputMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
-
-public inline fun <T> TelegramMedia.ifInputMediaSticker(block: (TelegramMediaSticker) -> T): T? = inputMediaStickerOrNull() ?.let(block)
-
 public inline fun TelegramMedia.coveredTelegramMediaOrNull(): CoveredTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 
 public inline fun TelegramMedia.coveredTelegramMediaOrThrow(): CoveredTelegramMedia = this as dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
@@ -1007,6 +1004,12 @@ public inline fun TelegramMedia.telegramPaidMediaVideoOrNull(): TelegramPaidMedi
 public inline fun TelegramMedia.telegramPaidMediaVideoOrThrow(): TelegramPaidMediaVideo = this as dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 
 public inline fun <T> TelegramMedia.ifTelegramPaidMediaVideo(block: (TelegramPaidMediaVideo) -> T): T? = telegramPaidMediaVideoOrNull() ?.let(block)
+
+public inline fun TelegramMedia.telegramMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun TelegramMedia.telegramMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+
+public inline fun <T> TelegramMedia.ifTelegramMediaSticker(block: (TelegramMediaSticker) -> T): T? = telegramMediaStickerOrNull() ?.let(block)
 
 public inline fun TelegramMedia.telegramMediaAudioOrNull(): TelegramMediaAudio? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 
@@ -1116,12 +1119,6 @@ public inline fun TelegramMedia.thumbedTelegramMediaOrThrow(): ThumbedTelegramMe
 
 public inline fun <T> TelegramMedia.ifThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T): T? = thumbedTelegramMediaOrNull() ?.let(block)
 
-public inline fun InputPollMedia.inputMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
-
-public inline fun InputPollMedia.inputMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
-
-public inline fun <T> InputPollMedia.ifInputMediaLocation(block: (TelegramMediaLocation) -> T): T? = inputMediaLocationOrNull() ?.let(block)
-
 public inline fun InputPollMedia.telegramMediaAudioOrNull(): TelegramMediaAudio? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 
 public inline fun InputPollMedia.telegramMediaAudioOrThrow(): TelegramMediaAudio = this as dev.inmo.tgbotapi.types.media.TelegramMediaAudio
@@ -1146,29 +1143,29 @@ public inline fun InputPollMedia.telegramMediaDocumentOrThrow(): TelegramMediaDo
 
 public inline fun <T> InputPollMedia.ifTelegramMediaDocument(block: (TelegramMediaDocument) -> T): T? = telegramMediaDocumentOrNull() ?.let(block)
 
+public inline fun InputPollMedia.telegramMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun InputPollMedia.telegramMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun <T> InputPollMedia.ifTelegramMediaVenue(block: (TelegramMediaVenue) -> T): T? = telegramMediaVenueOrNull() ?.let(block)
+
 public inline fun InputPollMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun InputPollMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun <T> InputPollMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T): T? = telegramMediaAnimationOrNull() ?.let(block)
 
-public inline fun InputPollMedia.inputMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+public inline fun InputPollMedia.telegramMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 
-public inline fun InputPollMedia.inputMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+public inline fun InputPollMedia.telegramMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 
-public inline fun <T> InputPollMedia.ifInputMediaVenue(block: (TelegramMediaVenue) -> T): T? = inputMediaVenueOrNull() ?.let(block)
+public inline fun <T> InputPollMedia.ifTelegramMediaLocation(block: (TelegramMediaLocation) -> T): T? = telegramMediaLocationOrNull() ?.let(block)
 
-public inline fun InputPollOptionMedia.inputMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+public inline fun InputPollOptionMedia.telegramMediaStickerOrNull(): TelegramMediaSticker? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaSticker
 
-public inline fun InputPollOptionMedia.inputMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
+public inline fun InputPollOptionMedia.telegramMediaStickerOrThrow(): TelegramMediaSticker = this as dev.inmo.tgbotapi.types.media.TelegramMediaSticker
 
-public inline fun <T> InputPollOptionMedia.ifInputMediaSticker(block: (TelegramMediaSticker) -> T): T? = inputMediaStickerOrNull() ?.let(block)
-
-public inline fun InputPollOptionMedia.inputMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
-
-public inline fun InputPollOptionMedia.inputMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
-
-public inline fun <T> InputPollOptionMedia.ifInputMediaLocation(block: (TelegramMediaLocation) -> T): T? = inputMediaLocationOrNull() ?.let(block)
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaSticker(block: (TelegramMediaSticker) -> T): T? = telegramMediaStickerOrNull() ?.let(block)
 
 public inline fun InputPollOptionMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 
@@ -1182,17 +1179,257 @@ public inline fun InputPollOptionMedia.telegramMediaPhotoOrThrow(): TelegramMedi
 
 public inline fun <T> InputPollOptionMedia.ifTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T): T? = telegramMediaPhotoOrNull() ?.let(block)
 
+public inline fun InputPollOptionMedia.telegramMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun InputPollOptionMedia.telegramMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaVenue(block: (TelegramMediaVenue) -> T): T? = telegramMediaVenueOrNull() ?.let(block)
+
 public inline fun InputPollOptionMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun InputPollOptionMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun <T> InputPollOptionMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T): T? = telegramMediaAnimationOrNull() ?.let(block)
 
-public inline fun InputPollOptionMedia.inputMediaVenueOrNull(): TelegramMediaVenue? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+public inline fun InputPollOptionMedia.telegramMediaLocationOrNull(): TelegramMediaLocation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 
-public inline fun InputPollOptionMedia.inputMediaVenueOrThrow(): TelegramMediaVenue = this as dev.inmo.tgbotapi.types.media.TelegramMediaVenue
+public inline fun InputPollOptionMedia.telegramMediaLocationOrThrow(): TelegramMediaLocation = this as dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 
-public inline fun <T> InputPollOptionMedia.ifInputMediaVenue(block: (TelegramMediaVenue) -> T): T? = inputMediaVenueOrNull() ?.let(block)
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaLocation(block: (TelegramMediaLocation) -> T): T? = telegramMediaLocationOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.pollMediaOrNull(): PollMedia? = this as? dev.inmo.tgbotapi.types.media.PollMedia
+
+public inline fun BaseTelegramMediaFile.pollMediaOrThrow(): PollMedia = this as dev.inmo.tgbotapi.types.media.PollMedia
+
+public inline fun <T> BaseTelegramMediaFile.ifPollMedia(block: (PollMedia) -> T): T? = pollMediaOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.sizedMediaFileOrNull(): SizedMediaFile? = this as? dev.inmo.tgbotapi.types.files.SizedMediaFile
+
+public inline fun BaseTelegramMediaFile.sizedMediaFileOrThrow(): SizedMediaFile = this as dev.inmo.tgbotapi.types.files.SizedMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifSizedMediaFile(block: (SizedMediaFile) -> T): T? = sizedMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.documentFileOrNull(): DocumentFile? = this as? dev.inmo.tgbotapi.types.files.DocumentFile
+
+public inline fun BaseTelegramMediaFile.documentFileOrThrow(): DocumentFile = this as dev.inmo.tgbotapi.types.files.DocumentFile
+
+public inline fun <T> BaseTelegramMediaFile.ifDocumentFile(block: (DocumentFile) -> T): T? = documentFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.thumbedMediaFileOrNull(): ThumbedMediaFile? = this as? dev.inmo.tgbotapi.types.files.ThumbedMediaFile
+
+public inline fun BaseTelegramMediaFile.thumbedMediaFileOrThrow(): ThumbedMediaFile = this as dev.inmo.tgbotapi.types.files.ThumbedMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifThumbedMediaFile(block: (ThumbedMediaFile) -> T): T? = thumbedMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.fileOrNull(): File? = this as? dev.inmo.tgbotapi.types.files.File
+
+public inline fun BaseTelegramMediaFile.fileOrThrow(): File = this as dev.inmo.tgbotapi.types.files.File
+
+public inline fun <T> BaseTelegramMediaFile.ifFile(block: (File) -> T): T? = fileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.videoFileOrNull(): VideoFile? = this as? dev.inmo.tgbotapi.types.files.VideoFile
+
+public inline fun BaseTelegramMediaFile.videoFileOrThrow(): VideoFile = this as dev.inmo.tgbotapi.types.files.VideoFile
+
+public inline fun <T> BaseTelegramMediaFile.ifVideoFile(block: (VideoFile) -> T): T? = videoFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.audioFileOrNull(): AudioFile? = this as? dev.inmo.tgbotapi.types.files.AudioFile
+
+public inline fun BaseTelegramMediaFile.audioFileOrThrow(): AudioFile = this as dev.inmo.tgbotapi.types.files.AudioFile
+
+public inline fun <T> BaseTelegramMediaFile.ifAudioFile(block: (AudioFile) -> T): T? = audioFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.usefulAsPaidMediaFileOrNull(): UsefulAsPaidMediaFile? = this as? dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
+
+public inline fun BaseTelegramMediaFile.usefulAsPaidMediaFileOrThrow(): UsefulAsPaidMediaFile = this as dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifUsefulAsPaidMediaFile(block: (UsefulAsPaidMediaFile) -> T): T? = usefulAsPaidMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.stickerOrNull(): Sticker? = this as? dev.inmo.tgbotapi.types.files.Sticker
+
+public inline fun BaseTelegramMediaFile.stickerOrThrow(): Sticker = this as dev.inmo.tgbotapi.types.files.Sticker
+
+public inline fun <T> BaseTelegramMediaFile.ifSticker(block: (Sticker) -> T): T? = stickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as? dev.inmo.tgbotapi.types.files.VideoSticker
+
+public inline fun BaseTelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as dev.inmo.tgbotapi.types.files.VideoSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T): T? = videoStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.animatedStickerOrNull(): AnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.AnimatedSticker
+
+public inline fun BaseTelegramMediaFile.animatedStickerOrThrow(): AnimatedSticker = this as dev.inmo.tgbotapi.types.files.AnimatedSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifAnimatedSticker(block: (AnimatedSticker) -> T): T? = animatedStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.regularStickerOrNull(): RegularSticker? = this as? dev.inmo.tgbotapi.types.files.RegularSticker
+
+public inline fun BaseTelegramMediaFile.regularStickerOrThrow(): RegularSticker = this as dev.inmo.tgbotapi.types.files.RegularSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifRegularSticker(block: (RegularSticker) -> T): T? = regularStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.regularSimpleStickerOrNull(): RegularSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.RegularSimpleSticker
+
+public inline fun BaseTelegramMediaFile.regularSimpleStickerOrThrow(): RegularSimpleSticker = this as dev.inmo.tgbotapi.types.files.RegularSimpleSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifRegularSimpleSticker(block: (RegularSimpleSticker) -> T): T? = regularSimpleStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.regularAnimatedStickerOrNull(): RegularAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
+
+public inline fun BaseTelegramMediaFile.regularAnimatedStickerOrThrow(): RegularAnimatedSticker = this as dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifRegularAnimatedSticker(block: (RegularAnimatedSticker) -> T): T? = regularAnimatedStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.regularVideoStickerOrNull(): RegularVideoSticker? = this as? dev.inmo.tgbotapi.types.files.RegularVideoSticker
+
+public inline fun BaseTelegramMediaFile.regularVideoStickerOrThrow(): RegularVideoSticker = this as dev.inmo.tgbotapi.types.files.RegularVideoSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifRegularVideoSticker(block: (RegularVideoSticker) -> T): T? = regularVideoStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.maskStickerOrNull(): MaskSticker? = this as? dev.inmo.tgbotapi.types.files.MaskSticker
+
+public inline fun BaseTelegramMediaFile.maskStickerOrThrow(): MaskSticker = this as dev.inmo.tgbotapi.types.files.MaskSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifMaskSticker(block: (MaskSticker) -> T): T? = maskStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.maskSimpleStickerOrNull(): MaskSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.MaskSimpleSticker
+
+public inline fun BaseTelegramMediaFile.maskSimpleStickerOrThrow(): MaskSimpleSticker = this as dev.inmo.tgbotapi.types.files.MaskSimpleSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifMaskSimpleSticker(block: (MaskSimpleSticker) -> T): T? = maskSimpleStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.maskAnimatedStickerOrNull(): MaskAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
+
+public inline fun BaseTelegramMediaFile.maskAnimatedStickerOrThrow(): MaskAnimatedSticker = this as dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifMaskAnimatedSticker(block: (MaskAnimatedSticker) -> T): T? = maskAnimatedStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.maskVideoStickerOrNull(): MaskVideoSticker? = this as? dev.inmo.tgbotapi.types.files.MaskVideoSticker
+
+public inline fun BaseTelegramMediaFile.maskVideoStickerOrThrow(): MaskVideoSticker = this as dev.inmo.tgbotapi.types.files.MaskVideoSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifMaskVideoSticker(block: (MaskVideoSticker) -> T): T? = maskVideoStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.customEmojiStickerOrNull(): CustomEmojiSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiSticker
+
+public inline fun BaseTelegramMediaFile.customEmojiStickerOrThrow(): CustomEmojiSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifCustomEmojiSticker(block: (CustomEmojiSticker) -> T): T? = customEmojiStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.customEmojiSimpleStickerOrNull(): CustomEmojiSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
+
+public inline fun BaseTelegramMediaFile.customEmojiSimpleStickerOrThrow(): CustomEmojiSimpleSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifCustomEmojiSimpleSticker(block: (CustomEmojiSimpleSticker) -> T): T? = customEmojiSimpleStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.customEmojiAnimatedStickerOrNull(): CustomEmojiAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
+
+public inline fun BaseTelegramMediaFile.customEmojiAnimatedStickerOrThrow(): CustomEmojiAnimatedSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifCustomEmojiAnimatedSticker(block: (CustomEmojiAnimatedSticker) -> T): T? = customEmojiAnimatedStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.customEmojiVideoStickerOrNull(): CustomEmojiVideoSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
+
+public inline fun BaseTelegramMediaFile.customEmojiVideoStickerOrThrow(): CustomEmojiVideoSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifCustomEmojiVideoSticker(block: (CustomEmojiVideoSticker) -> T): T? = customEmojiVideoStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.unknownStickerOrNull(): UnknownSticker? = this as? dev.inmo.tgbotapi.types.files.UnknownSticker
+
+public inline fun BaseTelegramMediaFile.unknownStickerOrThrow(): UnknownSticker = this as dev.inmo.tgbotapi.types.files.UnknownSticker
+
+public inline fun <T> BaseTelegramMediaFile.ifUnknownSticker(block: (UnknownSticker) -> T): T? = unknownStickerOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.videoNoteFileOrNull(): VideoNoteFile? = this as? dev.inmo.tgbotapi.types.files.VideoNoteFile
+
+public inline fun BaseTelegramMediaFile.videoNoteFileOrThrow(): VideoNoteFile = this as dev.inmo.tgbotapi.types.files.VideoNoteFile
+
+public inline fun <T> BaseTelegramMediaFile.ifVideoNoteFile(block: (VideoNoteFile) -> T): T? = videoNoteFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.telegramMediaFileOrNull(): TelegramMediaFile? = this as? dev.inmo.tgbotapi.types.files.TelegramMediaFile
+
+public inline fun BaseTelegramMediaFile.telegramMediaFileOrThrow(): TelegramMediaFile = this as dev.inmo.tgbotapi.types.files.TelegramMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifTelegramMediaFile(block: (TelegramMediaFile) -> T): T? = telegramMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.pathedFileOrNull(): PathedFile? = this as? dev.inmo.tgbotapi.types.files.PathedFile
+
+public inline fun BaseTelegramMediaFile.pathedFileOrThrow(): PathedFile = this as dev.inmo.tgbotapi.types.files.PathedFile
+
+public inline fun <T> BaseTelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? = pathedFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.videoQualityOrNull(): VideoQuality? = this as? dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun BaseTelegramMediaFile.videoQualityOrThrow(): VideoQuality = this as dev.inmo.tgbotapi.types.files.VideoQuality
+
+public inline fun <T> BaseTelegramMediaFile.ifVideoQuality(block: (VideoQuality) -> T): T? = videoQualityOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.passportFileOrNull(): PassportFile? = this as? dev.inmo.tgbotapi.types.files.PassportFile
+
+public inline fun BaseTelegramMediaFile.passportFileOrThrow(): PassportFile = this as dev.inmo.tgbotapi.types.files.PassportFile
+
+public inline fun <T> BaseTelegramMediaFile.ifPassportFile(block: (PassportFile) -> T): T? = passportFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.playableMediaFileOrNull(): PlayableMediaFile? = this as? dev.inmo.tgbotapi.types.files.PlayableMediaFile
+
+public inline fun BaseTelegramMediaFile.playableMediaFileOrThrow(): PlayableMediaFile = this as dev.inmo.tgbotapi.types.files.PlayableMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifPlayableMediaFile(block: (PlayableMediaFile) -> T): T? = playableMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.coveredMediaFileOrNull(): CoveredMediaFile? = this as? dev.inmo.tgbotapi.types.files.CoveredMediaFile
+
+public inline fun BaseTelegramMediaFile.coveredMediaFileOrThrow(): CoveredMediaFile = this as dev.inmo.tgbotapi.types.files.CoveredMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifCoveredMediaFile(block: (CoveredMediaFile) -> T): T? = coveredMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.mimedMediaFileOrNull(): MimedMediaFile? = this as? dev.inmo.tgbotapi.types.files.MimedMediaFile
+
+public inline fun BaseTelegramMediaFile.mimedMediaFileOrThrow(): MimedMediaFile = this as dev.inmo.tgbotapi.types.files.MimedMediaFile
+
+public inline fun <T> BaseTelegramMediaFile.ifMimedMediaFile(block: (MimedMediaFile) -> T): T? = mimedMediaFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.voiceFileOrNull(): VoiceFile? = this as? dev.inmo.tgbotapi.types.files.VoiceFile
+
+public inline fun BaseTelegramMediaFile.voiceFileOrThrow(): VoiceFile = this as dev.inmo.tgbotapi.types.files.VoiceFile
+
+public inline fun <T> BaseTelegramMediaFile.ifVoiceFile(block: (VoiceFile) -> T): T? = voiceFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.animationFileOrNull(): AnimationFile? = this as? dev.inmo.tgbotapi.types.files.AnimationFile
+
+public inline fun BaseTelegramMediaFile.animationFileOrThrow(): AnimationFile = this as dev.inmo.tgbotapi.types.files.AnimationFile
+
+public inline fun <T> BaseTelegramMediaFile.ifAnimationFile(block: (AnimationFile) -> T): T? = animationFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.photoFileOrNull(): PhotoFile? = this as? dev.inmo.tgbotapi.types.files.PhotoFile
+
+public inline fun BaseTelegramMediaFile.photoFileOrThrow(): PhotoFile = this as dev.inmo.tgbotapi.types.files.PhotoFile
+
+public inline fun <T> BaseTelegramMediaFile.ifPhotoFile(block: (PhotoFile) -> T): T? = photoFileOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as? dev.inmo.tgbotapi.types.files.PhotoSize
+
+public inline fun BaseTelegramMediaFile.photoSizeOrThrow(): PhotoSize = this as dev.inmo.tgbotapi.types.files.PhotoSize
+
+public inline fun <T> BaseTelegramMediaFile.ifPhotoSize(block: (PhotoSize) -> T): T? = photoSizeOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.mediaContentVariantOrNull(): MediaContentVariant? = this as? dev.inmo.tgbotapi.types.files.MediaContentVariant
+
+public inline fun BaseTelegramMediaFile.mediaContentVariantOrThrow(): MediaContentVariant = this as dev.inmo.tgbotapi.types.files.MediaContentVariant
+
+public inline fun <T> BaseTelegramMediaFile.ifMediaContentVariant(block: (MediaContentVariant) -> T): T? = mediaContentVariantOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.venueOrNull(): Venue? = this as? dev.inmo.tgbotapi.types.venue.Venue
+
+public inline fun BaseTelegramMediaFile.venueOrThrow(): Venue = this as dev.inmo.tgbotapi.types.venue.Venue
+
+public inline fun <T> BaseTelegramMediaFile.ifVenue(block: (Venue) -> T): T? = venueOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.staticLocationOrNull(): StaticLocation? = this as? dev.inmo.tgbotapi.types.location.StaticLocation
+
+public inline fun BaseTelegramMediaFile.staticLocationOrThrow(): StaticLocation = this as dev.inmo.tgbotapi.types.location.StaticLocation
+
+public inline fun <T> BaseTelegramMediaFile.ifStaticLocation(block: (StaticLocation) -> T): T? = staticLocationOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull(): UnknownInlineKeyboardButton? = this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 
@@ -1811,216 +2048,6 @@ public inline fun DiceAnimationType.customDiceAnimationTypeOrNull(): CustomDiceA
 public inline fun DiceAnimationType.customDiceAnimationTypeOrThrow(): CustomDiceAnimationType = this as dev.inmo.tgbotapi.types.dice.CustomDiceAnimationType
 
 public inline fun <T> DiceAnimationType.ifCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T): T? = customDiceAnimationTypeOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.sizedMediaFileOrNull(): SizedMediaFile? = this as? dev.inmo.tgbotapi.types.files.SizedMediaFile
-
-public inline fun TelegramMediaFile.sizedMediaFileOrThrow(): SizedMediaFile = this as dev.inmo.tgbotapi.types.files.SizedMediaFile
-
-public inline fun <T> TelegramMediaFile.ifSizedMediaFile(block: (SizedMediaFile) -> T): T? = sizedMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.documentFileOrNull(): DocumentFile? = this as? dev.inmo.tgbotapi.types.files.DocumentFile
-
-public inline fun TelegramMediaFile.documentFileOrThrow(): DocumentFile = this as dev.inmo.tgbotapi.types.files.DocumentFile
-
-public inline fun <T> TelegramMediaFile.ifDocumentFile(block: (DocumentFile) -> T): T? = documentFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.thumbedMediaFileOrNull(): ThumbedMediaFile? = this as? dev.inmo.tgbotapi.types.files.ThumbedMediaFile
-
-public inline fun TelegramMediaFile.thumbedMediaFileOrThrow(): ThumbedMediaFile = this as dev.inmo.tgbotapi.types.files.ThumbedMediaFile
-
-public inline fun <T> TelegramMediaFile.ifThumbedMediaFile(block: (ThumbedMediaFile) -> T): T? = thumbedMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.fileOrNull(): File? = this as? dev.inmo.tgbotapi.types.files.File
-
-public inline fun TelegramMediaFile.fileOrThrow(): File = this as dev.inmo.tgbotapi.types.files.File
-
-public inline fun <T> TelegramMediaFile.ifFile(block: (File) -> T): T? = fileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.videoFileOrNull(): VideoFile? = this as? dev.inmo.tgbotapi.types.files.VideoFile
-
-public inline fun TelegramMediaFile.videoFileOrThrow(): VideoFile = this as dev.inmo.tgbotapi.types.files.VideoFile
-
-public inline fun <T> TelegramMediaFile.ifVideoFile(block: (VideoFile) -> T): T? = videoFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.audioFileOrNull(): AudioFile? = this as? dev.inmo.tgbotapi.types.files.AudioFile
-
-public inline fun TelegramMediaFile.audioFileOrThrow(): AudioFile = this as dev.inmo.tgbotapi.types.files.AudioFile
-
-public inline fun <T> TelegramMediaFile.ifAudioFile(block: (AudioFile) -> T): T? = audioFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.usefulAsPaidMediaFileOrNull(): UsefulAsPaidMediaFile? = this as? dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
-
-public inline fun TelegramMediaFile.usefulAsPaidMediaFileOrThrow(): UsefulAsPaidMediaFile = this as dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
-
-public inline fun <T> TelegramMediaFile.ifUsefulAsPaidMediaFile(block: (UsefulAsPaidMediaFile) -> T): T? = usefulAsPaidMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.stickerOrNull(): Sticker? = this as? dev.inmo.tgbotapi.types.files.Sticker
-
-public inline fun TelegramMediaFile.stickerOrThrow(): Sticker = this as dev.inmo.tgbotapi.types.files.Sticker
-
-public inline fun <T> TelegramMediaFile.ifSticker(block: (Sticker) -> T): T? = stickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as? dev.inmo.tgbotapi.types.files.VideoSticker
-
-public inline fun TelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as dev.inmo.tgbotapi.types.files.VideoSticker
-
-public inline fun <T> TelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T): T? = videoStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.animatedStickerOrNull(): AnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.AnimatedSticker
-
-public inline fun TelegramMediaFile.animatedStickerOrThrow(): AnimatedSticker = this as dev.inmo.tgbotapi.types.files.AnimatedSticker
-
-public inline fun <T> TelegramMediaFile.ifAnimatedSticker(block: (AnimatedSticker) -> T): T? = animatedStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.regularStickerOrNull(): RegularSticker? = this as? dev.inmo.tgbotapi.types.files.RegularSticker
-
-public inline fun TelegramMediaFile.regularStickerOrThrow(): RegularSticker = this as dev.inmo.tgbotapi.types.files.RegularSticker
-
-public inline fun <T> TelegramMediaFile.ifRegularSticker(block: (RegularSticker) -> T): T? = regularStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.regularSimpleStickerOrNull(): RegularSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.RegularSimpleSticker
-
-public inline fun TelegramMediaFile.regularSimpleStickerOrThrow(): RegularSimpleSticker = this as dev.inmo.tgbotapi.types.files.RegularSimpleSticker
-
-public inline fun <T> TelegramMediaFile.ifRegularSimpleSticker(block: (RegularSimpleSticker) -> T): T? = regularSimpleStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.regularAnimatedStickerOrNull(): RegularAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
-
-public inline fun TelegramMediaFile.regularAnimatedStickerOrThrow(): RegularAnimatedSticker = this as dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
-
-public inline fun <T> TelegramMediaFile.ifRegularAnimatedSticker(block: (RegularAnimatedSticker) -> T): T? = regularAnimatedStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.regularVideoStickerOrNull(): RegularVideoSticker? = this as? dev.inmo.tgbotapi.types.files.RegularVideoSticker
-
-public inline fun TelegramMediaFile.regularVideoStickerOrThrow(): RegularVideoSticker = this as dev.inmo.tgbotapi.types.files.RegularVideoSticker
-
-public inline fun <T> TelegramMediaFile.ifRegularVideoSticker(block: (RegularVideoSticker) -> T): T? = regularVideoStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.maskStickerOrNull(): MaskSticker? = this as? dev.inmo.tgbotapi.types.files.MaskSticker
-
-public inline fun TelegramMediaFile.maskStickerOrThrow(): MaskSticker = this as dev.inmo.tgbotapi.types.files.MaskSticker
-
-public inline fun <T> TelegramMediaFile.ifMaskSticker(block: (MaskSticker) -> T): T? = maskStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.maskSimpleStickerOrNull(): MaskSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.MaskSimpleSticker
-
-public inline fun TelegramMediaFile.maskSimpleStickerOrThrow(): MaskSimpleSticker = this as dev.inmo.tgbotapi.types.files.MaskSimpleSticker
-
-public inline fun <T> TelegramMediaFile.ifMaskSimpleSticker(block: (MaskSimpleSticker) -> T): T? = maskSimpleStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.maskAnimatedStickerOrNull(): MaskAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
-
-public inline fun TelegramMediaFile.maskAnimatedStickerOrThrow(): MaskAnimatedSticker = this as dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
-
-public inline fun <T> TelegramMediaFile.ifMaskAnimatedSticker(block: (MaskAnimatedSticker) -> T): T? = maskAnimatedStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.maskVideoStickerOrNull(): MaskVideoSticker? = this as? dev.inmo.tgbotapi.types.files.MaskVideoSticker
-
-public inline fun TelegramMediaFile.maskVideoStickerOrThrow(): MaskVideoSticker = this as dev.inmo.tgbotapi.types.files.MaskVideoSticker
-
-public inline fun <T> TelegramMediaFile.ifMaskVideoSticker(block: (MaskVideoSticker) -> T): T? = maskVideoStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.customEmojiStickerOrNull(): CustomEmojiSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiSticker
-
-public inline fun TelegramMediaFile.customEmojiStickerOrThrow(): CustomEmojiSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiSticker
-
-public inline fun <T> TelegramMediaFile.ifCustomEmojiSticker(block: (CustomEmojiSticker) -> T): T? = customEmojiStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.customEmojiSimpleStickerOrNull(): CustomEmojiSimpleSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
-
-public inline fun TelegramMediaFile.customEmojiSimpleStickerOrThrow(): CustomEmojiSimpleSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
-
-public inline fun <T> TelegramMediaFile.ifCustomEmojiSimpleSticker(block: (CustomEmojiSimpleSticker) -> T): T? = customEmojiSimpleStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.customEmojiAnimatedStickerOrNull(): CustomEmojiAnimatedSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
-
-public inline fun TelegramMediaFile.customEmojiAnimatedStickerOrThrow(): CustomEmojiAnimatedSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
-
-public inline fun <T> TelegramMediaFile.ifCustomEmojiAnimatedSticker(block: (CustomEmojiAnimatedSticker) -> T): T? = customEmojiAnimatedStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.customEmojiVideoStickerOrNull(): CustomEmojiVideoSticker? = this as? dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
-
-public inline fun TelegramMediaFile.customEmojiVideoStickerOrThrow(): CustomEmojiVideoSticker = this as dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
-
-public inline fun <T> TelegramMediaFile.ifCustomEmojiVideoSticker(block: (CustomEmojiVideoSticker) -> T): T? = customEmojiVideoStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.unknownStickerOrNull(): UnknownSticker? = this as? dev.inmo.tgbotapi.types.files.UnknownSticker
-
-public inline fun TelegramMediaFile.unknownStickerOrThrow(): UnknownSticker = this as dev.inmo.tgbotapi.types.files.UnknownSticker
-
-public inline fun <T> TelegramMediaFile.ifUnknownSticker(block: (UnknownSticker) -> T): T? = unknownStickerOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.videoNoteFileOrNull(): VideoNoteFile? = this as? dev.inmo.tgbotapi.types.files.VideoNoteFile
-
-public inline fun TelegramMediaFile.videoNoteFileOrThrow(): VideoNoteFile = this as dev.inmo.tgbotapi.types.files.VideoNoteFile
-
-public inline fun <T> TelegramMediaFile.ifVideoNoteFile(block: (VideoNoteFile) -> T): T? = videoNoteFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.pathedFileOrNull(): PathedFile? = this as? dev.inmo.tgbotapi.types.files.PathedFile
-
-public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as dev.inmo.tgbotapi.types.files.PathedFile
-
-public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? = pathedFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.videoQualityOrNull(): VideoQuality? = this as? dev.inmo.tgbotapi.types.files.VideoQuality
-
-public inline fun TelegramMediaFile.videoQualityOrThrow(): VideoQuality = this as dev.inmo.tgbotapi.types.files.VideoQuality
-
-public inline fun <T> TelegramMediaFile.ifVideoQuality(block: (VideoQuality) -> T): T? = videoQualityOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.passportFileOrNull(): PassportFile? = this as? dev.inmo.tgbotapi.types.files.PassportFile
-
-public inline fun TelegramMediaFile.passportFileOrThrow(): PassportFile = this as dev.inmo.tgbotapi.types.files.PassportFile
-
-public inline fun <T> TelegramMediaFile.ifPassportFile(block: (PassportFile) -> T): T? = passportFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.playableMediaFileOrNull(): PlayableMediaFile? = this as? dev.inmo.tgbotapi.types.files.PlayableMediaFile
-
-public inline fun TelegramMediaFile.playableMediaFileOrThrow(): PlayableMediaFile = this as dev.inmo.tgbotapi.types.files.PlayableMediaFile
-
-public inline fun <T> TelegramMediaFile.ifPlayableMediaFile(block: (PlayableMediaFile) -> T): T? = playableMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.coveredMediaFileOrNull(): CoveredMediaFile? = this as? dev.inmo.tgbotapi.types.files.CoveredMediaFile
-
-public inline fun TelegramMediaFile.coveredMediaFileOrThrow(): CoveredMediaFile = this as dev.inmo.tgbotapi.types.files.CoveredMediaFile
-
-public inline fun <T> TelegramMediaFile.ifCoveredMediaFile(block: (CoveredMediaFile) -> T): T? = coveredMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.mimedMediaFileOrNull(): MimedMediaFile? = this as? dev.inmo.tgbotapi.types.files.MimedMediaFile
-
-public inline fun TelegramMediaFile.mimedMediaFileOrThrow(): MimedMediaFile = this as dev.inmo.tgbotapi.types.files.MimedMediaFile
-
-public inline fun <T> TelegramMediaFile.ifMimedMediaFile(block: (MimedMediaFile) -> T): T? = mimedMediaFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.voiceFileOrNull(): VoiceFile? = this as? dev.inmo.tgbotapi.types.files.VoiceFile
-
-public inline fun TelegramMediaFile.voiceFileOrThrow(): VoiceFile = this as dev.inmo.tgbotapi.types.files.VoiceFile
-
-public inline fun <T> TelegramMediaFile.ifVoiceFile(block: (VoiceFile) -> T): T? = voiceFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.animationFileOrNull(): AnimationFile? = this as? dev.inmo.tgbotapi.types.files.AnimationFile
-
-public inline fun TelegramMediaFile.animationFileOrThrow(): AnimationFile = this as dev.inmo.tgbotapi.types.files.AnimationFile
-
-public inline fun <T> TelegramMediaFile.ifAnimationFile(block: (AnimationFile) -> T): T? = animationFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.photoFileOrNull(): PhotoFile? = this as? dev.inmo.tgbotapi.types.files.PhotoFile
-
-public inline fun TelegramMediaFile.photoFileOrThrow(): PhotoFile = this as dev.inmo.tgbotapi.types.files.PhotoFile
-
-public inline fun <T> TelegramMediaFile.ifPhotoFile(block: (PhotoFile) -> T): T? = photoFileOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as? dev.inmo.tgbotapi.types.files.PhotoSize
-
-public inline fun TelegramMediaFile.photoSizeOrThrow(): PhotoSize = this as dev.inmo.tgbotapi.types.files.PhotoSize
-
-public inline fun <T> TelegramMediaFile.ifPhotoSize(block: (PhotoSize) -> T): T? = photoSizeOrNull() ?.let(block)
-
-public inline fun TelegramMediaFile.mediaContentVariantOrNull(): MediaContentVariant? = this as? dev.inmo.tgbotapi.types.files.MediaContentVariant
-
-public inline fun TelegramMediaFile.mediaContentVariantOrThrow(): MediaContentVariant = this as dev.inmo.tgbotapi.types.files.MediaContentVariant
-
-public inline fun <T> TelegramMediaFile.ifMediaContentVariant(block: (MediaContentVariant) -> T): T? = mediaContentVariantOrNull() ?.let(block)
 
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as? dev.inmo.tgbotapi.types.actions.TypingAction
 

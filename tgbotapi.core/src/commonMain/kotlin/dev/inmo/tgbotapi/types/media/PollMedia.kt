@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.PhotoFile
-import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.location.StaticLocation
@@ -17,7 +16,6 @@ import dev.inmo.tgbotapi.types.stickerField
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.types.venueField
 import dev.inmo.tgbotapi.types.videoField
-import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -25,9 +23,8 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@ClassCastsIncluded
 @Serializable(PollMedia.Serializer::class)
-interface PollMedia {
+interface PollMedia : BaseTelegramMediaFile {
     object Serializer : KSerializer<PollMedia> {
         @Serializable
         data class Surrogate(

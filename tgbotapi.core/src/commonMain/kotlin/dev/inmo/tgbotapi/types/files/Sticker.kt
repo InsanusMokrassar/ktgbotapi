@@ -8,6 +8,8 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.internal.ClassCastsExcluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
