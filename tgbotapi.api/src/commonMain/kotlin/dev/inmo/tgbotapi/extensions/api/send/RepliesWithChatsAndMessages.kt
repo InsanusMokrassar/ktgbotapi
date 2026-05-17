@@ -1849,6 +1849,169 @@ public suspend inline fun TelegramBot.reply(
 )
 
 
+// Live Photos
+
+public suspend inline fun TelegramBot.replyWithLivePhoto(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = replyInChatId,
+    livePhoto = livePhoto,
+    photo = photo,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId, pollOptionId = pollOptionId),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    livePhoto: LivePhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = replyInChatId,
+    livePhoto = livePhoto,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId, pollOptionId = pollOptionId),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.replyWithLivePhoto(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = replyInChatId,
+    livePhoto = livePhoto,
+    photo = photo,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId, pollOptionId = pollOptionId),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    livePhoto: LivePhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = replyInChatId,
+    livePhoto = livePhoto,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply, checklistTaskId = checklistTaskId, pollOptionId = pollOptionId),
+    replyMarkup = replyMarkup
+)
+
+
 // VideoNotes
 
 public suspend inline fun TelegramBot.replyWithVideoNote(
@@ -3238,6 +3401,24 @@ public suspend fun TelegramBot.reply(
     pollOptionId = pollOptionId,
             replyMarkup = replyMarkup
         )
+        is LivePhotoFile -> reply(
+            toChatId = toChatId,
+            toMessageId = toMessageId,
+            livePhoto = mediaFile,
+            replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
         is VideoNoteFile -> reply(
             toChatId = toChatId,
             toMessageId = toMessageId,
@@ -3432,6 +3613,26 @@ public suspend fun TelegramBot.reply(
     pollOptionId = pollOptionId,
             replyMarkup = replyMarkup
         )
+        is LivePhotoContent -> reply(
+            toChatId = toChatId,
+            toMessageId = toMessageId,
+            livePhoto = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
         is AnimationContent -> reply(
             toChatId = toChatId,
             toMessageId = toMessageId,
@@ -3555,6 +3756,25 @@ public suspend fun TelegramBot.reply(
             toChatId = toChatId,
             toMessageId = toMessageId,
             video = content.media,
+            entities = entities,
+            replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is LivePhotoContent -> reply(
+            toChatId = toChatId,
+            toMessageId = toMessageId,
+            livePhoto = content.media,
             entities = entities,
             replyInChatId = replyInChatId,
             replyInThreadId = replyInThreadId,

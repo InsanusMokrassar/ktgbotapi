@@ -204,6 +204,7 @@ import dev.inmo.tgbotapi.types.files.CustomEmojiSticker
 import dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.File
+import dev.inmo.tgbotapi.types.files.LivePhotoFile
 import dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
 import dev.inmo.tgbotapi.types.files.MaskSimpleSticker
 import dev.inmo.tgbotapi.types.files.MaskSticker
@@ -253,12 +254,14 @@ import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+import dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaLocation
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaSticker
 import dev.inmo.tgbotapi.types.media.TelegramMediaVenue
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
+import dev.inmo.tgbotapi.types.media.TelegramPaidMediaLivePhoto
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
@@ -377,6 +380,7 @@ import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
+import dev.inmo.tgbotapi.types.message.content.LivePhotoContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.types.message.content.MediaCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaContent
@@ -993,6 +997,12 @@ public inline fun TelegramMedia.coveredTelegramMediaOrThrow(): CoveredTelegramMe
 
 public inline fun <T> TelegramMedia.ifCoveredTelegramMedia(block: (CoveredTelegramMedia) -> T): T? = coveredTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.telegramPaidMediaLivePhotoOrNull(): TelegramPaidMediaLivePhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramPaidMediaLivePhoto
+
+public inline fun TelegramMedia.telegramPaidMediaLivePhotoOrThrow(): TelegramPaidMediaLivePhoto = this as dev.inmo.tgbotapi.types.media.TelegramPaidMediaLivePhoto
+
+public inline fun <T> TelegramMedia.ifTelegramPaidMediaLivePhoto(block: (TelegramPaidMediaLivePhoto) -> T): T? = telegramPaidMediaLivePhotoOrNull() ?.let(block)
+
 public inline fun TelegramMedia.titledTelegramMediaOrNull(): TitledTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 
 public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedia = this as dev.inmo.tgbotapi.types.media.TitledTelegramMedia
@@ -1058,6 +1068,12 @@ public inline fun TelegramMedia.duratedTelegramMediaOrNull(): DuratedTelegramMed
 public inline fun TelegramMedia.duratedTelegramMediaOrThrow(): DuratedTelegramMedia = this as dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 
 public inline fun <T> TelegramMedia.ifDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T): T? = duratedTelegramMediaOrNull() ?.let(block)
+
+public inline fun TelegramMedia.telegramMediaLivePhotoOrNull(): TelegramMediaLivePhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun TelegramMedia.telegramMediaLivePhotoOrThrow(): TelegramMediaLivePhoto = this as dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun <T> TelegramMedia.ifTelegramMediaLivePhoto(block: (TelegramMediaLivePhoto) -> T): T? = telegramMediaLivePhotoOrNull() ?.let(block)
 
 public inline fun TelegramMedia.withCustomStartTelegramMediaOrNull(): WithCustomStartTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.WithCustomStartTelegramMedia
 
@@ -1149,6 +1165,12 @@ public inline fun InputPollMedia.telegramMediaVenueOrThrow(): TelegramMediaVenue
 
 public inline fun <T> InputPollMedia.ifTelegramMediaVenue(block: (TelegramMediaVenue) -> T): T? = telegramMediaVenueOrNull() ?.let(block)
 
+public inline fun InputPollMedia.telegramMediaLivePhotoOrNull(): TelegramMediaLivePhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun InputPollMedia.telegramMediaLivePhotoOrThrow(): TelegramMediaLivePhoto = this as dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun <T> InputPollMedia.ifTelegramMediaLivePhoto(block: (TelegramMediaLivePhoto) -> T): T? = telegramMediaLivePhotoOrNull() ?.let(block)
+
 public inline fun InputPollMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun InputPollMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
@@ -1185,6 +1207,12 @@ public inline fun InputPollOptionMedia.telegramMediaVenueOrThrow(): TelegramMedi
 
 public inline fun <T> InputPollOptionMedia.ifTelegramMediaVenue(block: (TelegramMediaVenue) -> T): T? = telegramMediaVenueOrNull() ?.let(block)
 
+public inline fun InputPollOptionMedia.telegramMediaLivePhotoOrNull(): TelegramMediaLivePhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun InputPollOptionMedia.telegramMediaLivePhotoOrThrow(): TelegramMediaLivePhoto = this as dev.inmo.tgbotapi.types.media.TelegramMediaLivePhoto
+
+public inline fun <T> InputPollOptionMedia.ifTelegramMediaLivePhoto(block: (TelegramMediaLivePhoto) -> T): T? = telegramMediaLivePhotoOrNull() ?.let(block)
+
 public inline fun InputPollOptionMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun InputPollOptionMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
@@ -1202,6 +1230,12 @@ public inline fun BaseTelegramMediaFile.pollMediaOrNull(): PollMedia? = this as?
 public inline fun BaseTelegramMediaFile.pollMediaOrThrow(): PollMedia = this as dev.inmo.tgbotapi.types.media.PollMedia
 
 public inline fun <T> BaseTelegramMediaFile.ifPollMedia(block: (PollMedia) -> T): T? = pollMediaOrNull() ?.let(block)
+
+public inline fun BaseTelegramMediaFile.livePhotoFileOrNull(): LivePhotoFile? = this as? dev.inmo.tgbotapi.types.files.LivePhotoFile
+
+public inline fun BaseTelegramMediaFile.livePhotoFileOrThrow(): LivePhotoFile = this as dev.inmo.tgbotapi.types.files.LivePhotoFile
+
+public inline fun <T> BaseTelegramMediaFile.ifLivePhotoFile(block: (LivePhotoFile) -> T): T? = livePhotoFileOrNull() ?.let(block)
 
 public inline fun BaseTelegramMediaFile.sizedMediaFileOrNull(): SizedMediaFile? = this as? dev.inmo.tgbotapi.types.files.SizedMediaFile
 
@@ -3260,6 +3294,12 @@ public inline fun ResendableContent.diceContentOrNull(): DiceContent? = this as?
 public inline fun ResendableContent.diceContentOrThrow(): DiceContent = this as dev.inmo.tgbotapi.types.message.content.DiceContent
 
 public inline fun <T> ResendableContent.ifDiceContent(block: (DiceContent) -> T): T? = diceContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.livePhotoContentOrNull(): LivePhotoContent? = this as? dev.inmo.tgbotapi.types.message.content.LivePhotoContent
+
+public inline fun ResendableContent.livePhotoContentOrThrow(): LivePhotoContent = this as dev.inmo.tgbotapi.types.message.content.LivePhotoContent
+
+public inline fun <T> ResendableContent.ifLivePhotoContent(block: (LivePhotoContent) -> T): T? = livePhotoContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.textContentOrNull(): TextContent? = this as? dev.inmo.tgbotapi.types.message.content.TextContent
 

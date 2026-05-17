@@ -18,10 +18,12 @@ object TelegramMediaSerializer : KSerializer<TelegramMedia> {
             is TelegramMediaVideo -> TelegramMediaVideo.serializer().serialize(encoder, value)
             is TelegramMediaAudio -> TelegramMediaAudio.serializer().serialize(encoder, value)
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
+            is TelegramMediaLivePhoto -> TelegramMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaAnimation -> TelegramMediaAnimation.serializer().serialize(encoder, value)
             is TelegramMediaDocument -> TelegramMediaDocument.serializer().serialize(encoder, value)
             is TelegramPaidMediaVideo -> TelegramPaidMediaVideo.serializer().serialize(encoder, value)
             is TelegramPaidMediaPhoto -> TelegramPaidMediaPhoto.serializer().serialize(encoder, value)
+            is TelegramPaidMediaLivePhoto -> TelegramPaidMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaSticker -> TelegramMediaSticker.serializer().serialize(encoder, value)
         }
     }

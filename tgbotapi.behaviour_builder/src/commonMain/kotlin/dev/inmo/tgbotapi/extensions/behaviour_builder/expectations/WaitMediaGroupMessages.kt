@@ -50,3 +50,7 @@ fun BehaviourContext.waitVideoGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<VideoContent>(initRequest, errorFactory)
+fun BehaviourContext.waitLivePhotoGalleryMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = buildMediaGroupMessagesWaiter<LivePhotoContent>(initRequest, errorFactory)

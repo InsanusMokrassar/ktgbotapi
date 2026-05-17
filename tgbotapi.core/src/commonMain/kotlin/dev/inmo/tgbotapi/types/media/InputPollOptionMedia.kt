@@ -27,7 +27,7 @@ object InputPollOptionMediaSerializer : KSerializer<InputPollOptionMedia> {
     override fun serialize(encoder: Encoder, value: InputPollOptionMedia) {
         when (value) {
             is TelegramMediaAnimation -> TelegramMediaAnimation.serializer().serialize(encoder, value)
-            // TODO::Add TelegramMediaLivePhoto
+            is TelegramMediaLivePhoto -> TelegramMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaLocation -> TelegramMediaLocation.serializer().serialize(encoder, value)
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
             is TelegramMediaSticker -> TelegramMediaSticker.serializer().serialize(encoder, value)

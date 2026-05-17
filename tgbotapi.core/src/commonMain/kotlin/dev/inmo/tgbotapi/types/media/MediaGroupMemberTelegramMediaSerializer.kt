@@ -19,6 +19,7 @@ object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTel
         when (value) {
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
             is TelegramMediaVideo -> TelegramMediaVideo.serializer().serialize(encoder, value)
+            is TelegramMediaLivePhoto -> TelegramMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaAudio -> TelegramMediaAudio.serializer().serialize(encoder, value)
             is TelegramMediaDocument -> TelegramMediaDocument.serializer().serialize(encoder, value)
         }
@@ -30,6 +31,7 @@ object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTel
         return when (json[typeField] ?.jsonPrimitive ?.contentOrNull) {
             TelegramMediaPhoto.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaPhoto.serializer(), json)
             TelegramMediaVideo.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaVideo.serializer(), json)
+            TelegramMediaLivePhoto.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaLivePhoto.serializer(), json)
             TelegramMediaAudio.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaAudio.serializer(), json)
             TelegramMediaDocument.TYPE -> nonstrictJsonFormat.decodeFromJsonElement(TelegramMediaDocument.serializer(), json)
             else -> error("Illegal type of incoming MediaGroupMemberTelegramMedia")

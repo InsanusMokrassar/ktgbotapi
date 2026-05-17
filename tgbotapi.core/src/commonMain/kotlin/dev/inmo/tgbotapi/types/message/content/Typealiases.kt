@@ -30,6 +30,7 @@ typealias DocumentMediaGroupMessage = CommonMessage<DocumentMediaGroupPartConten
 typealias DocumentMessage = CommonMessage<DocumentContent>
 typealias VisualMediaGroupMessage = CommonMessage<VisualMediaGroupPartContent>
 typealias VideoMessage = CommonMessage<VideoContent>
+typealias LivePhotoMessage = CommonMessage<LivePhotoContent>
 typealias PhotoMessage = CommonMessage<PhotoContent>
 typealias AnimationMessage = CommonMessage<AnimationContent>
 typealias ScheduledGiveawayContentMessage = CommonMessage<GiveawayContent>

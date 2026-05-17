@@ -102,6 +102,7 @@ internal data class RawMessage(
     private val photo: PhotoFile? = null,
     private val sticker: Sticker? = null,
     private val video: VideoFile? = null,
+    private val live_photo: LivePhotoFile? = null,
     private val voice: VoiceFile? = null,
     private val video_note: VideoNoteFile? = null,
     private val contact: Contact? = null,
@@ -237,6 +238,14 @@ internal data class RawMessage(
             )
             video != null -> VideoContent(
                 video,
+                caption,
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false,
+                quote,
+                show_caption_above_media
+            )
+            live_photo != null -> LivePhotoContent(
+                live_photo,
                 caption,
                 adaptedCaptionEntities,
                 has_media_spoiler ?: false,

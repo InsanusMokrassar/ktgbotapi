@@ -29,7 +29,7 @@ object InputPollMediaSerializer : KSerializer<InputPollMedia> {
             is TelegramMediaAnimation -> TelegramMediaAnimation.serializer().serialize(encoder, value)
             is TelegramMediaAudio -> TelegramMediaAudio.serializer().serialize(encoder, value)
             is TelegramMediaDocument -> TelegramMediaDocument.serializer().serialize(encoder, value)
-            // TODO::ADD TelegramMediaLivePhoto
+            is TelegramMediaLivePhoto -> TelegramMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaLocation -> TelegramMediaLocation.serializer().serialize(encoder, value)
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
             is TelegramMediaVenue -> TelegramMediaVenue.serializer().serialize(encoder, value)

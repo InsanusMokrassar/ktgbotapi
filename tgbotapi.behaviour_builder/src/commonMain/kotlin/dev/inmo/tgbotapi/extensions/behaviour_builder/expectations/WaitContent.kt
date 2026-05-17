@@ -119,6 +119,10 @@ fun BehaviourContext.waitVideo(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContent(initRequest, errorFactory).mapContent<VideoContent>()
+fun BehaviourContext.waitLivePhoto(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContent(initRequest, errorFactory).mapContent<LivePhotoContent>()
 fun BehaviourContext.waitVideoNote(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

@@ -2,6 +2,23 @@
 
 ## 34.0.0
 
+* `Core` (Bots API support — Live Photos):
+    * Added `LivePhotoFile` class representing the incoming `LivePhoto` Telegram type (`PollMedia`, `MediaContentVariant`, `UsefulAsPaidMediaFile`)
+    * Added `LivePhotoContent` (`VisualMediaGroupPartContent`) representing live photo messages
+    * Added `TelegramMediaLivePhoto` (`TelegramFreeMedia`, `VisualMediaGroupMemberTelegramMedia`, `InputPollMedia`, `InputPollOptionMedia`) — usable in `sendMediaGroup`, `editMessageMedia`, and polls
+    * Added `TelegramPaidMediaLivePhoto` (`VisualTelegramPaidMedia`) for paid live photos
+    * Added `PaidMedia.LivePhoto` variant and `PaidMedia.LivePhoto.toTelegramPaidMediaLivePhoto()` conversion
+    * Added `livePhotoField` constant; added `live_photo` parsing to `RawMessage` and `ReplyInfo.External` surrogate
+    * Added `SendLivePhoto` request and `SendLivePhotoData`/`SendLivePhotoFiles`
+    * Added `LivePhotoMessage` typealias
+    * Added `LivePhotoFile.toTelegramMediaLivePhoto(...)` and `LivePhotoFile.toTelegramPaidMediaLivePhoto()` extensions
+* `API` (Bots API support — Live Photos):
+    * Added `sendLivePhoto` extensions (`ChatIdentifier`/`Chat` × `InputFile`/`LivePhotoFile` × text/textSources)
+* `Behaviour Builder` (Bots API support — Live Photos):
+    * Added `onLivePhoto`, `onEditedLivePhoto`, `onLivePhotoGalleryMessages`, `onLivePhotoGallery` triggers
+    * Added `onMentionWithLivePhotoContent`/`onTextMentionWithLivePhotoContent` triggers
+    * Added `waitLivePhoto`, `waitLivePhotoMessage`, `waitEditedLivePhoto`, `waitEditedLivePhotoMessage`, `waitLivePhotoGallery`, `waitLivePhotoGalleryMessages` expectations
+    * Added `onlyLivePhotoContentMessages` utility
 * `Core`:
     * Added `canReactToMessages` field to `ChatPermissions` (interface, `Granular` and `Common`) and `RestrictedMemberChatMember`
     * Added optional `retrieveOtherBots` parameter to `GetChatAdministrators` request

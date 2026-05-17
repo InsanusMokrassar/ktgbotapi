@@ -43,6 +43,7 @@ sealed interface MessageContent: ResendableContent {
 
                 subclass(PhotoContent::class)
                 subclass(VideoContent::class)
+                subclass(LivePhotoContent::class)
                 subclass(AudioContent::class)
                 subclass(DocumentContent::class)
 
@@ -65,6 +66,7 @@ sealed interface MessageContent: ResendableContent {
                 subclass(AudioContent::class)
                 subclass(DocumentContent::class)
                 subclass(VideoContent::class)
+                subclass(LivePhotoContent::class)
                 subclass(PhotoContent::class)
                 subclass(AnimationContent::class)
             }
@@ -77,6 +79,7 @@ sealed interface MessageContent: ResendableContent {
             polymorphic(MediaContent::class) {
                 subclass(VideoNoteContent::class)
                 subclass(VideoContent::class)
+                subclass(LivePhotoContent::class)
                 subclass(StickerContent::class)
                 subclass(PhotoContent::class)
                 subclass(VoiceContent::class)
@@ -88,6 +91,7 @@ sealed interface MessageContent: ResendableContent {
             }
             polymorphic(SpoilerableMediaContent::class) {
                 subclass(VideoContent::class)
+                subclass(LivePhotoContent::class)
                 subclass(PhotoContent::class)
                 subclass(AnimationContent::class)
 
@@ -122,6 +126,7 @@ sealed interface MessageContent: ResendableContent {
             polymorphic(VisualMediaGroupPartContent::class) {
                 subclass(PhotoContent::class)
                 subclass(VideoContent::class)
+                subclass(LivePhotoContent::class)
 
                 visualMediaGroupContentAdditionalBuilder()
             }

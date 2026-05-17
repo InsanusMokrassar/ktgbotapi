@@ -21,6 +21,7 @@ import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextedContent
 import dev.inmo.tgbotapi.types.message.content.VideoContent
+import dev.inmo.tgbotapi.types.message.content.LivePhotoContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -404,6 +405,20 @@ fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
+fun <BC : BehaviourContext> BC.onMentionWithLivePhotoContent(
+    username: Username,
+    initialFilter: CommonMessageFilter<LivePhotoContent>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LivePhotoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<LivePhotoContent>, Any>? = AnyMarkerFactory(),
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<LivePhotoContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LivePhotoContent>>
+) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 fun <BC : BehaviourContext> BC.onTextMentionWithVideoContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<VideoContent>? = null,
@@ -418,6 +433,20 @@ fun <BC : BehaviourContext> BC.onTextMentionWithVideoContent(
  * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
  * "stream"
  */
+fun <BC : BehaviourContext> BC.onTextMentionWithLivePhotoContent(
+    userId: UserId,
+    initialFilter: CommonMessageFilter<LivePhotoContent>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LivePhotoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<LivePhotoContent>, Any>? = AnyMarkerFactory(),
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<LivePhotoContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LivePhotoContent>>
+) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     user: User,
     initialFilter: CommonMessageFilter<VideoContent>? = null,
@@ -425,6 +454,20 @@ fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any>? = AnyMarkerFactory(),
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<VideoContent>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
+) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
+fun <BC : BehaviourContext> BC.onMentionWithLivePhotoContent(
+    user: User,
+    initialFilter: CommonMessageFilter<LivePhotoContent>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LivePhotoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<LivePhotoContent>, Any>? = AnyMarkerFactory(),
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, CommonMessage<LivePhotoContent>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LivePhotoContent>>
 ) = onMention(user, initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 
