@@ -149,6 +149,10 @@ public final class dev/inmo/tgbotapi/extensions/api/GetUpdatesRawKt {
 	public static synthetic fun getRawUpdates-Z6_7qMY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/GetUserPersonalChatMessagesKt {
+	public static final fun getUserPersonalChatMessages-nc95W0g (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/LiveFlowLocationKt {
 	public static final fun handleLiveLocation-Z2YO6e4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlinx/coroutines/flow/Flow;JLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun handleLiveLocation-Z2YO6e4$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlinx/coroutines/flow/Flow;JLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1280,12 +1284,21 @@ public final class dev/inmo/tgbotapi/extensions/api/inline/SavePreparedInlineMes
 	public static synthetic fun savePreparedInlineMessage$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;ZZZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/api/managed_bots/GetManagedBotAccessSettingsKt {
+	public static final fun getManagedBotAccessSettings-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/api/managed_bots/GetManagedBotTokenKt {
 	public static final fun getManagedBotToken-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/managed_bots/ReplaceManagedBotTokenKt {
 	public static final fun replaceManagedBotToken-dEpx-Zg (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/api/managed_bots/SetManagedBotAccessSettingsKt {
+	public static final fun setManagedBotAccessSettings-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JZLjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setManagedBotAccessSettings-4iNBclM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JZLjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/passport/SetPassportDataErrorsKt {

@@ -20,3 +20,31 @@ If you are adding `Send*` request - you also must add in `API` (`tgbotapi.api`) 
 * Bindings in [Sends.kt](../tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/Sends.kt)
 * Bindings in [Replies.kt](../tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/Replies.kt)
 * Bindings in [RepliesWithChatsAndMessages.kt](../tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/RepliesWithChatsAndMessages.kt)
+
+---
+
+When you need to fill a changelog, you must follow the common changelog style:
+
+```markdown
+## 34.0.0 // number of version
+* `Core`:
+    * // list of changes
+* `Utils`:
+    * // list of changes
+* `API`:
+    * // list of changes
+* `BehaviourBuilder`:
+    * // list of changes
+* `WebApps`:
+    * // list of changes
+* `BehaviourBuilderWithFSM`:
+    * // list of changes
+// etc...
+```
+
+Each section can be ommited if there are no any changes in the section. In case of filling some known telegram bots api changelog part - you may add previx with its title in point with change. For example:
+
+```markdown
+* `Core`:
+    * (`Guest mode`) // change data
+```

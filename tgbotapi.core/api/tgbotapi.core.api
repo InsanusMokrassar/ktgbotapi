@@ -977,6 +977,38 @@ public final class dev/inmo/tgbotapi/requests/GetUpdatesRequest$DefaultImpls {
 	public static fun method (Ldev/inmo/tgbotapi/requests/GetUpdatesRequest;)Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/requests/GetUserPersonalChatMessages : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages$Companion;
+	public synthetic fun <init> (JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2 ()I
+	public final fun copy-zv9neSE (JI)Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages;
+	public static synthetic fun copy-zv9neSE$default (Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages;JIILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLimit ()I
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/GetUserPersonalChatMessages$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/GetUserPersonalChatMessages;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/GetUserPersonalChatMessages$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/SavePreparedKeyboardButton : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/SavePreparedKeyboardButton$Companion;
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/buttons/KeyboardButton;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -5812,6 +5844,36 @@ public final class dev/inmo/tgbotapi/requests/local/LogOut : dev/inmo/tgbotapi/r
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings$Companion;
+	public synthetic fun <init> (JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun copy-HZVsHAI (J)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings;
+	public static synthetic fun copy-HZVsHAI$default (Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings;JILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotAccessSettings$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/managed_bots/GetManagedBotToken$Companion;
 	public synthetic fun <init> (JLkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -5869,6 +5931,41 @@ public final synthetic class dev/inmo/tgbotapi/requests/managed_bots/ReplaceMana
 }
 
 public final class dev/inmo/tgbotapi/requests/managed_bots/ReplaceManagedBotToken$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings$Companion;
+	public synthetic fun <init> (JZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JZLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy-pU7KfLc (JZLjava/util/List;)Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings;
+	public static synthetic fun copy-pU7KfLc$default (Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings;JZLjava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddedUserIds ()Ljava/util/List;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public final fun isAccessRestricted ()Z
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/managed_bots/SetManagedBotAccessSettings$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -10759,6 +10856,8 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field addedByChatField Ljava/lang/String;
 	public static final field addedByUserField Ljava/lang/String;
 	public static final field addedToAttachmentMenuField Ljava/lang/String;
+	public static final field addedUserIdsField Ljava/lang/String;
+	public static final field addedUsersField Ljava/lang/String;
 	public static final field additionDateField Ljava/lang/String;
 	public static final field additionalChatCountField Ljava/lang/String;
 	public static final field addressField Ljava/lang/String;
@@ -11042,6 +11141,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field inviteLinkField Ljava/lang/String;
 	public static final field invoicePayloadField Ljava/lang/String;
 	public static final field ipAddressField Ljava/lang/String;
+	public static final field isAccessRestrictedField Ljava/lang/String;
 	public static final field isAnimatedField Ljava/lang/String;
 	public static final field isAnimationField Ljava/lang/String;
 	public static final field isAnonymousField Ljava/lang/String;
@@ -24063,6 +24163,36 @@ public final synthetic class dev/inmo/tgbotapi/types/location/StaticLocation$$se
 }
 
 public final class dev/inmo/tgbotapi/types/location/StaticLocation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/BotAccessSettings {
+	public static final field Companion Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings$Companion;
+	public fun <init> (ZLjava/util/List;)V
+	public synthetic fun <init> (ZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (ZLjava/util/List;)Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings;ZLjava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddedUsers ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun isAccessRestricted ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/managed_bots/BotAccessSettings$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/managed_bots/BotAccessSettings;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/managed_bots/BotAccessSettings$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

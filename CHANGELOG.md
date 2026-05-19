@@ -2,47 +2,70 @@
 
 ## 34.0.0
 
-* `Core` (Bots API support — Live Photos):
-    * Added `LivePhotoFile` class representing the incoming `LivePhoto` Telegram type (`PollMedia`, `MediaContentVariant`, `UsefulAsPaidMediaFile`)
-    * Added `LivePhotoContent` (`VisualMediaGroupPartContent`) representing live photo messages
-    * Added `TelegramMediaLivePhoto` (`TelegramFreeMedia`, `VisualMediaGroupMemberTelegramMedia`, `InputPollMedia`, `InputPollOptionMedia`) — usable in `sendMediaGroup`, `editMessageMedia`, and polls
-    * Added `TelegramPaidMediaLivePhoto` (`VisualTelegramPaidMedia`) for paid live photos
-    * Added `PaidMedia.LivePhoto` variant and `PaidMedia.LivePhoto.toTelegramPaidMediaLivePhoto()` conversion
-    * Added `livePhotoField` constant; added `live_photo` parsing to `RawMessage` and `ReplyInfo.External` surrogate
-    * Added `SendLivePhoto` request and `SendLivePhotoData`/`SendLivePhotoFiles`
-    * Added `LivePhotoMessage` typealias
-    * Added `LivePhotoFile.toTelegramMediaLivePhoto(...)` and `LivePhotoFile.toTelegramPaidMediaLivePhoto()` extensions
-* `API` (Bots API support — Live Photos):
-    * Added `sendLivePhoto` extensions (`ChatIdentifier`/`Chat` × `InputFile`/`LivePhotoFile` × text/textSources)
-* `Behaviour Builder` (Bots API support — Live Photos):
-    * Added `onLivePhoto`, `onEditedLivePhoto`, `onLivePhotoGalleryMessages`, `onLivePhotoGallery` triggers
-    * Added `onMentionWithLivePhotoContent`/`onTextMentionWithLivePhotoContent` triggers
-    * Added `waitLivePhoto`, `waitLivePhotoMessage`, `waitEditedLivePhoto`, `waitEditedLivePhotoMessage`, `waitLivePhotoGallery`, `waitLivePhotoGalleryMessages` expectations
-    * Added `onlyLivePhotoContentMessages` utility
 * `Core`:
-    * Added `canReactToMessages` field to `ChatPermissions` (interface, `Granular` and `Common`) and `RestrictedMemberChatMember`
-    * Added optional `retrieveOtherBots` parameter to `GetChatAdministrators` request
-    * Added `DeleteMessageReaction` request with `@Warning` on primary constructor; added `DeleteUserMessageReaction` and `DeleteActorChatMessageReaction` factory functions
-    * Added `DeleteAllMessageReactions` request with `@Warning` on primary constructor; added `DeleteAllUserMessageReactions` and `DeleteAllActorChatMessageReactions` factory functions
+    * (`Guest Mode`) Added `GuestQueryId` value class and `WithOptionalGuestQueryId` interface in `dev.inmo.tgbotapi.abstracts.types`
+    * (`Guest Mode`) Added `GuestMessage` and `GuestContentMessage<T>` message abstractions (`SpecialMessage`, `CommonContentMessage`, `FromUserMessage`, `PossiblySentViaBot`) exposing `guestQueryId`, `guestBotCallerUser`, `guestBotCallerChat`
+    * (`Guest Mode`) Added `GuestContentMessageImpl` data class implementing `GuestContentMessage`
+    * (`Guest Mode`) Added `SentGuestMessage` carrying `InlineMessageId`
+    * (`Guest Mode`) Added `GuestMessageUpdate` (`BaseSentMessageUpdate`) and `guest_message` update type wiring in `RawUpdate`/`UpdateTypes`/`FlowsUpdatesFilter`
+    * (`Guest Mode`) Added `AnswerGuestQuery` request returning `SentGuestMessage`
+    * Introduced sealed `ChatContentMessage<T>` super-type extending `CommonContentMessage` and `ChatMessage`, used as the common return type of chat send/reply operations
+    * Reworked `ContentMessage`, `Message`, `FromUserMessage`, `PossiblyEditedMessage`, `PossiblyForwardedMessage`, `PossiblyPaymentMessage`, `PossiblySentViaBotCommonMessage`, `PossiblyTopicMessage`, `SignedMessage`, `ChatEventMessage`, `PassportMessage` and related typealiases to integrate guest messages and unify chat content messages
+    * Updated `RawMessage`, `MessageUpdate`, `ChannelPostUpdate`, `BusinessMessageUpdate`, `EditMessageUpdate`, `EditChannelPostUpdate`, `BaseMessageUpdate`, `BaseEditMessageUpdate`, `BaseSentMessageUpdate` to align with the new hierarchy
+    * (`Live Photos`) Added `LivePhotoFile` class representing the incoming `LivePhoto` Telegram type (`PollMedia`, `MediaContentVariant`, `UsefulAsPaidMediaFile`)
+    * (`Live Photos`) Added `LivePhotoContent` (`VisualMediaGroupPartContent`) representing live photo messages
+    * (`Live Photos`) Added `TelegramMediaLivePhoto` (`TelegramFreeMedia`, `VisualMediaGroupMemberTelegramMedia`, `InputPollMedia`, `InputPollOptionMedia`) — usable in `sendMediaGroup`, `editMessageMedia`, and polls
+    * (`Live Photos`) Added `TelegramPaidMediaLivePhoto` (`VisualTelegramPaidMedia`) for paid live photos
+    * (`Live Photos`) Added `PaidMedia.LivePhoto` variant and `PaidMedia.LivePhoto.toTelegramPaidMediaLivePhoto()` conversion
+    * (`Live Photos`) Added `livePhotoField` constant; added `live_photo` parsing to `RawMessage` and `ReplyInfo.External` surrogate
+    * (`Live Photos`) Added `SendLivePhoto` request and `SendLivePhotoData`/`SendLivePhotoFiles`
+    * (`Live Photos`) Added `LivePhotoMessage` typealias
+    * (`Live Photos`) Added `LivePhotoFile.toTelegramMediaLivePhoto(...)` and `LivePhotoFile.toTelegramPaidMediaLivePhoto()` extensions
+    * (`Chat Management`) Added `canReactToMessages` field to `ChatPermissions` (interface, `Granular` and `Common`) and `RestrictedMemberChatMember`
+    * (`Chat Management`) Added optional `retrieveOtherBots` parameter to `GetChatAdministrators` request
+    * (`Chat Management`) Added `DeleteMessageReaction` request with `@Warning` on primary constructor; added `DeleteUserMessageReaction` and `DeleteActorChatMessageReaction` factory functions
+    * (`Chat Management`) Added `DeleteAllMessageReactions` request with `@Warning` on primary constructor; added `DeleteAllUserMessageReactions` and `DeleteAllActorChatMessageReactions` factory functions
+    * (`Polls`) Added `InputMediaSticker`, `InputMediaLocation` and `InputMediaVenue` classes
+    * (`Polls`) Added `InputPollMedia` and `InputPollOptionMedia` sealed interfaces representing input media variants accepted by `sendPoll`
+    * (`Polls`) Added `PollMedia` class representing media attached to polls in incoming updates
+    * (`Polls`) Added `media` field to `Poll`, `PollOption` and `InputPollOption`
+    * (`Polls`) Added `explanationMedia` field to `QuizPoll`
+    * (`Polls`) Added `membersOnly` field to `Poll`
+    * (`Polls`) Added `countryCodes` field to `Poll`
+    * (`Polls`) Added `media`, `membersOnly`, `countryCodes` parameters to `SendRegularPoll` and `SendPoll` factory functions
+    * (`Polls`) Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `SendQuizPoll` factory functions
+    * (`Polls`) Decreased minimum allowed poll options count from 2 to 1 (`pollOptionsLimit` is now `1..12`)
+    * (`Managed Bots Access`) Added `BotAccessSettings` data class in `dev.inmo.tgbotapi.types.managed_bots` with `isAccessRestricted` and `addedUsers` fields
+    * (`Managed Bots Access`) Added `GetManagedBotAccessSettings` request returning `BotAccessSettings`
+    * (`Managed Bots Access`) Added `SetManagedBotAccessSettings` request with `isAccessRestricted` and optional `addedUserIds`
+    * (`Managed Bots Access`) Added `isAccessRestrictedField`, `addedUsersField`, `addedUserIdsField` constants
+    * (`Personal Chat`) Added `GetUserPersonalChatMessages` request returning `List<ContentMessage<*>>`
+    * (`Drafts`) `SendMessageDraft.text` and matching factory `text` parameter became nullable to allow empty/absent text (renders "Thinking…" placeholder)
 * `API`:
-    * Added optional `retrieveOtherBots` parameter to `getChatAdministrators` extensions
-    * Added `deleteUserMessageReaction` and `deleteActorChatMessageReaction` extensions
-    * Added `deleteAllUserMessageReactions` and `deleteAllActorChatMessageReactions` extensions
-    * Added `@Warning`-marked catch-all `deleteMessageReaction` and `deleteAllMessageReactions` extensions
-* `Core` (Bots API support):
-    * Added `InputMediaSticker`, `InputMediaLocation` and `InputMediaVenue` classes
-    * Added `InputPollMedia` and `InputPollOptionMedia` sealed interfaces representing input media variants accepted by `sendPoll`
-    * Added `PollMedia` class representing media attached to polls in incoming updates
-    * Added `media` field to `Poll`, `PollOption` and `InputPollOption`
-    * Added `explanationMedia` field to `QuizPoll`
-    * Added `membersOnly` field to `Poll`
-    * Added `countryCodes` field to `Poll`
-    * Added `media`, `membersOnly`, `countryCodes` parameters to `SendRegularPoll` and `SendPoll` factory functions
-    * Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `SendQuizPoll` factory functions
-    * Decreased minimum allowed poll options count from 2 to 1 (`pollOptionsLimit` is now `1..12`)
-* `API` (Bots API support):
-    * Added `media`, `membersOnly`, `countryCodes` parameters to `sendRegularPoll` extension
-    * Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `sendQuizPoll` extension
+    * (`Guest Mode`) Added `answerGuestQuery` extensions in `dev.inmo.tgbotapi.extensions.api.answers`
+    * (`Guest Mode`) Added `RepliesWithGuestQueryId.kt` reply extensions accepting `GuestQueryId`
+    * (`Guest Mode`) Updated reply/send extensions (`Replies`, `RepliesWithChatsAndMessages`, `Sends`, `ResendMessage`, `SendChecklist`, `SendContact`, `SendDice`, `SendLiveLocation`, `SendStaticLocation`, `SendVenue`, `SendMessage`, media `Send*`, `SendGame`, `SendInvoice`, `SendQuizPoll`, `SendRegularPoll`) to return `ChatContentMessage<*>` and align with the new hierarchy
+    * (`Live Photos`) Added `sendLivePhoto` extensions (`ChatIdentifier`/`Chat` × `InputFile`/`LivePhotoFile` × text/textSources)
+    * (`Chat Management`) Added optional `retrieveOtherBots` parameter to `getChatAdministrators` extensions
+    * (`Chat Management`) Added `deleteUserMessageReaction` and `deleteActorChatMessageReaction` extensions
+    * (`Chat Management`) Added `deleteAllUserMessageReactions` and `deleteAllActorChatMessageReactions` extensions
+    * (`Chat Management`) Added `@Warning`-marked catch-all `deleteMessageReaction` and `deleteAllMessageReactions` extensions
+    * (`Polls`) Added `media`, `membersOnly`, `countryCodes` parameters to `sendRegularPoll` extension
+    * (`Polls`) Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `sendQuizPoll` extension
+    * (`Managed Bots Access`) Added `getManagedBotAccessSettings` extension in `dev.inmo.tgbotapi.extensions.api.managed_bots`
+    * (`Managed Bots Access`) Added `setManagedBotAccessSettings` extension with `userId`, `isAccessRestricted`, optional `addedUserIds`
+    * (`Personal Chat`) Added `getUserPersonalChatMessages` extension returning `List<ChatContentMessage<*>>`
+    * (`Drafts`) `sendMessageDraft` and `send` overloads for drafts now accept nullable `text: String?`
+* `Behaviour Builder`:
+    * (`Guest Mode`) Added `GuestMessageTriggers` with `onGuestMessage` trigger
+    * (`Guest Mode`) Updated `WaitContent`, `WaitContentMessage`, `WaitEditedContentMessage`, `WaitMediaGroup`, `WaitMediaGroupMessages`, `WaitCommandsMessages`, `WaitDeepLinks`, `WaitMention`, `WaitMentionMessage`, `ContentTriggers`, `EditedContentTriggers`, `MediaGroupMessagesTriggers`, `MediaGroupTriggers`, `MentionTriggers`, `DeepLinkHandling`, `MessageFilterExcludingMediaGroups` for the unified `ChatContentMessage` hierarchy
+    * (`Live Photos`) Added `onLivePhoto`, `onEditedLivePhoto`, `onLivePhotoGalleryMessages`, `onLivePhotoGallery` triggers
+    * (`Live Photos`) Added `onMentionWithLivePhotoContent`/`onTextMentionWithLivePhotoContent` triggers
+    * (`Live Photos`) Added `waitLivePhoto`, `waitLivePhotoMessage`, `waitEditedLivePhoto`, `waitEditedLivePhotoMessage`, `waitLivePhotoGallery`, `waitLivePhotoGalleryMessages` expectations
+    * (`Live Photos`) Added `onlyLivePhotoContentMessages` utility
+* `Utils`:
+    * (`Guest Mode`) Added `guestMessageUpdateOrNull` and related casts in `ClassCastsNew`/`ClassCasts`/`ContentCastsNew`/`WithContent`/`CommonMessageConversations`
+    * (`Guest Mode`) Updated `MessageFilters`, `SentMessageUpdatesConversations`, `LongPolling`, `MediaGroupContentMessageCreator`, `FlowsUpdatesFilter` shortcuts to support guest messages
 
 ## 33.1.0
 
