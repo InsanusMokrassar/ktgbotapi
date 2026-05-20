@@ -1297,8 +1297,8 @@ public final class dev/inmo/tgbotapi/extensions/api/managed_bots/ReplaceManagedB
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/managed_bots/SetManagedBotAccessSettingsKt {
-	public static final fun setManagedBotAccessSettings-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JZLjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun setManagedBotAccessSettings-4iNBclM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JZLjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun setManagedBotAccessSettings-nc95W0g (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setManagedBotAccessSettings-nc95W0g$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/passport/SetPassportDataErrorsKt {
