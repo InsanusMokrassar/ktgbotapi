@@ -66,7 +66,7 @@ internal data class RawUpdate constructor(
     private val deleted_business_messages: BusinessMessagesDeleted? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val guest_message: GuestContentMessage<*>? = null,
+    private val guest_message: RequestGuestContentMessage<*>? = null,
     private val purchased_paid_media: PaidMediaPurchased? = null,
     private val managed_bot: ManagedBotUpdated? = null,
 ) {

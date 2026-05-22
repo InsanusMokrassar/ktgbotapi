@@ -267,11 +267,27 @@ fun <T : MediaGroupPartContent> List<CommonContentMessage<T>>.asMediaGroupMessag
             suggestedPostInfo = sourceMessage.suggestedPostInfo,
             cost = sourceMessage.cost,
         )
-        is GuestContentMessage -> GuestContentMessageImpl(
+        is RequestGuestContentMessage -> RequestGuestContentMessageImpl(
             messageId = sourceMessage.messageId,
             from = sourceMessage.user,
             chat = sourceMessage.chat,
             guestQueryId = sourceMessage.guestQueryId,
+            content = content,
+            date = sourceMessage.date,
+            editDate = sourceMessage.editDate,
+            hasProtectedContent = sourceMessage.hasProtectedContent,
+            forwardOrigin = sourceMessage.forwardOrigin,
+            replyInfo = sourceMessage.replyInfo,
+            replyMarkup = sourceMessage.replyMarkup,
+            senderBot = sourceMessage.senderBot,
+            mediaGroupId = sourceMessage.mediaGroupId,
+            fromOffline = sourceMessage.fromOffline,
+            cost = sourceMessage.cost,
+        )
+        is AnswerGuestContentMessage -> AnswerGuestContentMessageImpl(
+            messageId = sourceMessage.messageId,
+            from = sourceMessage.user,
+            chat = sourceMessage.chat,
             content = content,
             date = sourceMessage.date,
             editDate = sourceMessage.editDate,

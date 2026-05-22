@@ -1,12 +1,17 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.types.GuestQueryId
+import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
-interface GuestContentMessage<T: MessageContent> : SpecialMessage,
-    CommonContentMessage<T>,
+sealed interface GuestContentMessage<T: MessageContent> : CommonContentMessage<T>,
     GuestMessage,
     FromUserMessage,
     PossiblySentViaBot {
-    override val guestQueryId: GuestQueryId
 }
+
+interface AnswerGuestContentMessage<T : MessageContent> : GuestContentMessage<T>, AnswerGuestMessage, PossiblySentViaBot {
+    override val senderBot: CommonBot
+}
+
+interface RequestGuestContentMessage<T : MessageContent> : GuestContentMessage<T>, RequestGuestMessage, SpecialMessage

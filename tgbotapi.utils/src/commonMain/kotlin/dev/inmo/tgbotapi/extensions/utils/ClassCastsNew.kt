@@ -325,6 +325,8 @@ import dev.inmo.tgbotapi.types.message.PrivateForumEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestMessage
 import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelDirectMessagesContentMessage
@@ -349,6 +351,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
 import dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
@@ -365,6 +368,8 @@ import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContent
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SpecialMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SuggestedChannelDirectMessagesContentMessage
@@ -851,6 +856,18 @@ public inline fun OptionallyWithUser.guestContentMessageOrNull(): GuestContentMe
 public inline fun OptionallyWithUser.guestContentMessageOrThrow(): GuestContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> OptionallyWithUser.ifGuestContentMessage(block: (GuestContentMessage<MessageContent>) -> T): T? = guestContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.answerGuestContentMessageOrNull(): AnswerGuestContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.answerGuestContentMessageOrThrow(): AnswerGuestContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifAnswerGuestContentMessage(block: (AnswerGuestContentMessage<MessageContent>) -> T): T? = answerGuestContentMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.requestGuestContentMessageOrNull(): RequestGuestContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun OptionallyWithUser.requestGuestContentMessageOrThrow(): RequestGuestContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> OptionallyWithUser.ifRequestGuestContentMessage(block: (RequestGuestContentMessage<MessageContent>) -> T): T? = requestGuestContentMessageOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.optionallyFromUserMessageOrNull(): OptionallyFromUserMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
 
@@ -2202,6 +2219,12 @@ public inline fun Message.possiblyOfflineMessageOrThrow(): PossiblyOfflineMessag
 
 public inline fun <T> Message.ifPossiblyOfflineMessage(block: (PossiblyOfflineMessage) -> T): T? = possiblyOfflineMessageOrNull() ?.let(block)
 
+public inline fun Message.answerGuestMessageOrNull(): AnswerGuestMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestMessage
+
+public inline fun Message.answerGuestMessageOrThrow(): AnswerGuestMessage = this as dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestMessage
+
+public inline fun <T> Message.ifAnswerGuestMessage(block: (AnswerGuestMessage) -> T): T? = answerGuestMessageOrNull() ?.let(block)
+
 public inline fun Message.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun Message.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -2352,6 +2375,18 @@ public inline fun Message.guestContentMessageOrThrow(): GuestContentMessage<Mess
 
 public inline fun <T> Message.ifGuestContentMessage(block: (GuestContentMessage<MessageContent>) -> T): T? = guestContentMessageOrNull() ?.let(block)
 
+public inline fun Message.answerGuestContentMessageOrNull(): AnswerGuestContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.answerGuestContentMessageOrThrow(): AnswerGuestContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.AnswerGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifAnswerGuestContentMessage(block: (AnswerGuestContentMessage<MessageContent>) -> T): T? = answerGuestContentMessageOrNull() ?.let(block)
+
+public inline fun Message.requestGuestContentMessageOrNull(): RequestGuestContentMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.requestGuestContentMessageOrThrow(): RequestGuestContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T> Message.ifRequestGuestContentMessage(block: (RequestGuestContentMessage<MessageContent>) -> T): T? = requestGuestContentMessageOrNull() ?.let(block)
+
 public inline fun Message.optionallyFromUserMessageOrNull(): OptionallyFromUserMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
 
 public inline fun Message.optionallyFromUserMessageOrThrow(): OptionallyFromUserMessage = this as dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
@@ -2375,6 +2410,12 @@ public inline fun Message.signedMessageOrNull(): SignedMessage? = this as? dev.i
 public inline fun Message.signedMessageOrThrow(): SignedMessage = this as dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 
 public inline fun <T> Message.ifSignedMessage(block: (SignedMessage) -> T): T? = signedMessageOrNull() ?.let(block)
+
+public inline fun Message.requestGuestMessageOrNull(): RequestGuestMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.RequestGuestMessage
+
+public inline fun Message.requestGuestMessageOrThrow(): RequestGuestMessage = this as dev.inmo.tgbotapi.types.message.abstracts.RequestGuestMessage
+
+public inline fun <T> Message.ifRequestGuestMessage(block: (RequestGuestMessage) -> T): T? = requestGuestMessageOrNull() ?.let(block)
 
 public inline fun Message.channelPaidPostOrNull(): ChannelPaidPost<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
@@ -2429,6 +2470,12 @@ public inline fun Message.commonContentMessageOrNull(): CommonContentMessage<Mes
 public inline fun Message.commonContentMessageOrThrow(): CommonContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> Message.ifCommonContentMessage(block: (CommonContentMessage<MessageContent>) -> T): T? = commonContentMessageOrNull() ?.let(block)
+
+public inline fun Message.guestMessageOrNull(): GuestMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
+
+public inline fun Message.guestMessageOrThrow(): GuestMessage = this as dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
+
+public inline fun <T> Message.ifGuestMessage(block: (GuestMessage) -> T): T? = guestMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblySentViaBotCommonMessageOrNull(): PossiblySentViaBotCommonMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 

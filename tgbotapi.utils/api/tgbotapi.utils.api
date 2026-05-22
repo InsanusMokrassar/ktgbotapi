@@ -1092,6 +1092,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun anonymousForumContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnonymousForumContentMessage;
 	public static final fun anonymousGroupContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnonymousGroupContentMessage;
 	public static final fun anonymousGroupContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnonymousGroupContentMessage;
+	public static final fun answerGuestContentMessageOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestContentMessage;
+	public static final fun answerGuestContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestContentMessage;
+	public static final fun answerGuestContentMessageOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestContentMessage;
+	public static final fun answerGuestContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestContentMessage;
+	public static final fun answerGuestMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestMessage;
+	public static final fun answerGuestMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/AnswerGuestMessage;
 	public static final fun anyOrNull (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
 	public static final fun anyOrThrow (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
 	public static final fun approximateScheduledCloseInfoOrNull (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/ApproximateScheduledCloseInfo;
@@ -1576,6 +1582,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun guestContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestContentMessage;
 	public static final fun guestContentMessageOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestContentMessage;
 	public static final fun guestContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestContentMessage;
+	public static final fun guestMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestMessage;
+	public static final fun guestMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestMessage;
 	public static final fun guestMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/GuestMessageUpdate;
 	public static final fun guestMessageUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/GuestMessageUpdate;
 	public static final fun hashTagTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
@@ -1601,6 +1609,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifAnimationFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAnonymousForumContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAnonymousGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifAnswerGuestContentMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifAnswerGuestContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifAnswerGuestMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAny (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifApproximateScheduledCloseInfo (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifAudioContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1843,6 +1854,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifGroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGuestContentMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGuestContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifGuestMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGuestMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifHashTagTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifIdChatIdentifier (Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2055,6 +2067,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifReplyForce (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifReplyKeyboardMarkup (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifReplyKeyboardRemove (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRequestGuestContentMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRequestGuestContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRequestGuestMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRestrictedChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRestrictedMemberChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSecondaryChatInviteLink (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2641,6 +2656,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun replyKeyboardMarkupOrThrow (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun replyKeyboardRemoveOrNull (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
 	public static final fun replyKeyboardRemoveOrThrow (Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardRemove;
+	public static final fun requestGuestContentMessageOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestContentMessage;
+	public static final fun requestGuestContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestContentMessage;
+	public static final fun requestGuestContentMessageOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestContentMessage;
+	public static final fun requestGuestContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestContentMessage;
+	public static final fun requestGuestMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestMessage;
+	public static final fun requestGuestMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestMessage;
 	public static final fun restrictedChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
 	public static final fun restrictedChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedChatMember;
 	public static final fun restrictedMemberChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/RestrictedMemberChatMember;

@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.guestMessageUpdateOrNull
-import dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
@@ -17,11 +17,11 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that data
  */
 fun <BC : BehaviourContext> BC.onGuestMessage(
-    initialFilter: SimpleFilter<GuestContentMessage<*>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, GuestContentMessage<*>, Update>? = null,
-    markerFactory: MarkerFactory<in GuestContentMessage<*>, Any>? = ByChatMessageMarkerFactory,
-    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, GuestContentMessage<*>>? = null,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, GuestContentMessage<*>>
+    initialFilter: SimpleFilter<RequestGuestContentMessage<*>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RequestGuestContentMessage<*>, Update>? = null,
+    markerFactory: MarkerFactory<in RequestGuestContentMessage<*>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, RequestGuestContentMessage<*>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, RequestGuestContentMessage<*>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, additionalSubcontextInitialAction, scenarioReceiver) {
     (it.guestMessageUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

@@ -1730,7 +1730,7 @@ public final class dev/inmo/tgbotapi/extensions/api/send/RepliesWithChatsAndMess
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/send/RepliesWithGuestQueryIdKt {
-	public static final fun reply (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/GuestMessage;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun reply (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/RequestGuestMessage;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/send/ResendMessageKt {

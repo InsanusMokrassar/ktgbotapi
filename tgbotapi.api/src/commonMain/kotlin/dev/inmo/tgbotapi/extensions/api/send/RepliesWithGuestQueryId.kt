@@ -4,11 +4,10 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.answers.answer
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.types.guest.SentGuestMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
+import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestMessage
 
 public suspend fun TelegramBot.reply(
-    message: GuestMessage,
+    message: RequestGuestMessage,
     queryResult: InlineQueryResult
 ): SentGuestMessage = answer(
     message.guestQueryId,
