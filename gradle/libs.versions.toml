@@ -10,7 +10,7 @@ korlibs = "5.4.0"
 uuid = "0.8.4"
 ktor = "3.4.2"
 
-ksp = "2.3.6"
+ksp = "2.3.9"
 kotlin-poet = "2.3.0"
 
 microutils = "0.29.2"
