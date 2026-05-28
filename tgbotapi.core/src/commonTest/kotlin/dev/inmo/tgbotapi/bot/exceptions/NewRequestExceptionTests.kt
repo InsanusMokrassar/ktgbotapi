@@ -17,21 +17,21 @@ class NewRequestExceptionTests {
     )
 
     @Test
-    fun `TooMuchRequestsException is created for canonical casing`() {
+    fun tooMuchRequestsExceptionIsCreatedForCanonicalCasing() {
         assertIs<TooMuchRequestsException>(
             buildException("Bad Request: Too Many Requests: retry after 8")
         )
     }
 
     @Test
-    fun `TooMuchRequestsException is created for lowercase first-letter casing`() {
+    fun tooMuchRequestsExceptionIsCreatedForLowercaseFirstLetterCasing() {
         assertIs<TooMuchRequestsException>(
             buildException("Bad Request: too Many Requests: retry after 8")
         )
     }
 
     @Test
-    fun `TooMuchRequestsException is created for all-lowercase casing`() {
+    fun tooMuchRequestsExceptionIsCreatedForAllLowercaseCasing() {
         assertIs<TooMuchRequestsException>(
             buildException("Bad Request: too many requests: retry after 8")
         )
