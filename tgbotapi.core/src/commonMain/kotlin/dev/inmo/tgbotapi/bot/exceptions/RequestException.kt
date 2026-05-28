@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.bot.exceptions
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.types.RetryAfterError
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.coroutines.CopyableThrowable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.io.IOException
@@ -35,19 +36,51 @@ fun newRequestException(
             message,
             cause
         )
+        response.errorCode != null -> ApiException(
+            response.errorCode,
+            plainAnswer,
+            response
+        )
         else -> null
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
 
-sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) : IOException(message, cause), CopyableThrowable<BotException>
+@ClassCastsIncluded
+sealed class BotException(
+    override val message: String = "Something went wrong",
+    cause: Throwable? = null,
+    open val response: Response? = null,
+    open val plainAnswer: String? = null,
+) : IOException(message, cause), CopyableThrowable<BotException>
 
-class CommonBotException(message: String = "Something went wrong", cause: Throwable? = null) : BotException(message, cause) {
-    override fun createCopy(): BotException = CommonBotException(message!!, cause)
+sealed class CommonBotException(
+    message: String = "Something went wrong",
+    cause: Throwable? = null,
+    response: Response? = null,
+    plainAnswer: String? = null,
+) : BotException(message, cause, response, plainAnswer) {
+    class Default(message: String = "Something went wrong", cause: Throwable? = null) : CommonBotException(message, cause) {
+        override fun createCopy(): Default = Default(message, cause)
+    }
+
+    abstract override fun createCopy(): CommonBotException?
+
+    companion object {
+        operator fun invoke(message: String = "Something went wrong", cause: Throwable? = null) = Default(message, cause)
+    }
+}
+class ApiException(
+    val httpResponseCode: Int?,
+    val plainResponse: String,
+    response: Response? = null,
+) :
+    CommonBotException("$httpResponseCode: $plainResponse", null, response, plainResponse) {
+    override fun createCopy(): ApiException = ApiException(httpResponseCode, plainResponse, response)
 }
 
 sealed class RequestException (
-    val response: Response,
-    val plainAnswer: String,
+    override val response: Response,
+    override val plainAnswer: String,
     message: String? = null,
     cause: Throwable? = null
 ) : BotException(

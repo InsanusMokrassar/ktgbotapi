@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.bot.ktor.base
 import dev.inmo.kslog.common.*
 import dev.inmo.micro_utils.coroutines.runCatchingLogging
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
+import dev.inmo.tgbotapi.bot.exceptions.ApiException
 import dev.inmo.tgbotapi.bot.exceptions.BotException
 import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
 import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
@@ -98,7 +99,15 @@ class DefaultKtorRequestsExecutor internal constructor(
                             )
                         }
                         exceptionResult.exceptionOrNull() ?.let {
-                            CommonBotException(cause = e)
+                            val prehandledException = runCatching {
+                                when {
+                                    it is ResponseException -> ApiException(it.response.status.value, it.response.bodyAsText())
+                                    else -> null
+                                }
+                            }.getOrElse {
+                                null
+                            }
+                            prehandledException ?: CommonBotException(cause = e)
                         } ?: exceptionResult.getOrThrow()
                     }
                     is CancellationException,
