@@ -7,6 +7,5 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 interface RequestGuestContentMessage<T : MessageContent> : CommonContentMessage<T>,
     RequestGuestMessage,
     SpecialMessage,
-    GuestMessage,
     FromUserMessage,
     PossiblySentViaBot

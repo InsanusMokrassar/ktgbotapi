@@ -1572,8 +1572,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun groupEventMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage;
 	public static final fun groupEventOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/GroupEvent;
 	public static final fun groupEventOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/GroupEvent;
-	public static final fun guestMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestMessage;
-	public static final fun guestMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/GuestMessage;
 	public static final fun guestMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/GuestMessageUpdate;
 	public static final fun guestMessageUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/GuestMessageUpdate;
 	public static final fun hashTagTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/HashTagTextSource;
@@ -1839,7 +1837,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifGroupEvent (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupEventMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public static final fun ifGuestMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifGuestMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifHashTagTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifIdChatIdentifier (Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -3255,6 +3252,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/MessageKt {
 	public static final fun getFrom (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/User;
 	public static final fun getGame (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/games/Game;
 	public static final fun getGroup_chat_created (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
+	public static final fun getGuest_bot_caller_chat (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public static final fun getGuest_bot_caller_user (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/PreviewUser;
 	public static final fun getHas_protected_content (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/Boolean;
 	public static final fun getInvoice (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/payments/Invoice;
 	public static final fun getLeft_chat_member (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/User;

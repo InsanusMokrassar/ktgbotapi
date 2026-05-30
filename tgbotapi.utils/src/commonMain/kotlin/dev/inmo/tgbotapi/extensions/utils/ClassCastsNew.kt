@@ -348,7 +348,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.FromChannelSuggestedChannelDire
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
 import dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
@@ -2444,12 +2443,6 @@ public inline fun Message.commonContentMessageOrNull(): CommonContentMessage<Mes
 public inline fun Message.commonContentMessageOrThrow(): CommonContentMessage<MessageContent> = this as dev.inmo.tgbotapi.types.message.abstracts.CommonContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T> Message.ifCommonContentMessage(block: (CommonContentMessage<MessageContent>) -> T): T? = commonContentMessageOrNull() ?.let(block)
-
-public inline fun Message.guestMessageOrNull(): GuestMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
-
-public inline fun Message.guestMessageOrThrow(): GuestMessage = this as dev.inmo.tgbotapi.types.message.abstracts.GuestMessage
-
-public inline fun <T> Message.ifGuestMessage(block: (GuestMessage) -> T): T? = guestMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblySentViaBotCommonMessageOrNull(): PossiblySentViaBotCommonMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
