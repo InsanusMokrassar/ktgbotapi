@@ -476,26 +476,6 @@ internal data class RawMessage(
                             cost = paid_star_count,
                         )
                     }
-                    (guest_bot_caller_user ?: guest_bot_caller_chat) != null -> {
-                        AnswerGuestContentMessageImpl(
-                            messageId = messageId,
-                            from = checkedFrom ?: from ?: error("Was detected guest message, but owner (sender) of the message was not found"),
-                            chat = chat,
-                            content = content,
-                            date = date.asDate,
-                            editDate = edit_date?.asDate,
-                            hasProtectedContent = has_protected_content == true,
-                            forwardOrigin = forward_origin,
-                            replyInfo = replyInfo,
-                            replyMarkup = reply_markup,
-                            senderBot = via_bot ?: error("For guest answers sender bot must be presented"),
-                            mediaGroupId = media_group_id,
-                            guestBotCallerUser = guest_bot_caller_user ?: error("For guest content message it is required to have user which called the bot"),
-                            guestBotCallerChat = guest_bot_caller_chat ?: error("For guest content message it is required to have chat in that called the bot"),
-                            fromOffline = is_from_offline,
-                            cost = paid_star_count,
-                        )
-                    }
                     else -> {
                         when (chat) {
                             is PreviewChannelDirectMessagesChat -> {
@@ -693,6 +673,8 @@ internal data class RawMessage(
                                                     replyMarkup = reply_markup,
                                                     content = content,
                                                     senderBot = via_bot,
+                                                    guestBotCallerUser = guest_bot_caller_user,
+                                                    guestBotCallerChat = guest_bot_caller_chat,
                                                     mediaGroupId = media_group_id,
                                                     senderBoostsCount = sender_boost_count,
                                                     fromOffline = is_from_offline,
@@ -767,6 +749,8 @@ internal data class RawMessage(
                                                     replyMarkup = reply_markup,
                                                     content = content,
                                                     senderBot = via_bot,
+                                                    guestBotCallerUser = guest_bot_caller_user,
+                                                    guestBotCallerChat = guest_bot_caller_chat,
                                                     mediaGroupId = media_group_id,
                                                     senderBoostsCount = sender_boost_count,
                                                     fromOffline = is_from_offline,
@@ -843,6 +827,8 @@ internal data class RawMessage(
                                         replyMarkup = reply_markup,
                                         content = content,
                                         senderBot = via_bot,
+                                        guestBotCallerUser = guest_bot_caller_user,
+                                        guestBotCallerChat = guest_bot_caller_chat,
                                         mediaGroupId = media_group_id,
                                         senderBoostsCount = sender_boost_count,
                                         fromOffline = is_from_offline,
@@ -883,6 +869,8 @@ internal data class RawMessage(
                                             replyInfo = replyInfo,
                                             replyMarkup = reply_markup,
                                             senderBot = via_bot,
+                                            guestBotCallerUser = guest_bot_caller_user,
+                                            guestBotCallerChat = guest_bot_caller_chat,
                                             mediaGroupId = media_group_id,
                                             fromOffline = is_from_offline,
                                             effectId = effect_id,
@@ -903,6 +891,8 @@ internal data class RawMessage(
                                             replyInfo = replyInfo,
                                             replyMarkup = reply_markup,
                                             senderBot = via_bot,
+                                            guestBotCallerUser = guest_bot_caller_user,
+                                            guestBotCallerChat = guest_bot_caller_chat,
                                             mediaGroupId = media_group_id,
                                             fromOffline = is_from_offline,
                                             effectId = effect_id,

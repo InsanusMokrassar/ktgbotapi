@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that data
  */
-fun <BC : BehaviourContext> BC.onGuestMessage(
+fun <BC : BehaviourContext> BC.onGuestRequestMessage(
     initialFilter: SimpleFilter<RequestGuestContentMessage<*>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RequestGuestContentMessage<*>, Update>? = null,
     markerFactory: MarkerFactory<in RequestGuestContentMessage<*>, Any>? = ByChatMessageMarkerFactory,

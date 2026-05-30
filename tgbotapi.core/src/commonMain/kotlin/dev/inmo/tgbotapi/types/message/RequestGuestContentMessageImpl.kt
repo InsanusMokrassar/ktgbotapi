@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import kotlinx.serialization.SerialName

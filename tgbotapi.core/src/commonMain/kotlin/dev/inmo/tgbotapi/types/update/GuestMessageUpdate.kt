@@ -2,9 +2,6 @@ package dev.inmo.tgbotapi.types.update
 
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
-import dev.inmo.tgbotapi.types.message.abstracts.CommonContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GuestContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.RequestGuestContentMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 

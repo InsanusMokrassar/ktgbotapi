@@ -49,7 +49,7 @@ interface AnonymousGroupContentMessage<T : MessageContent> : GroupContentMessage
         get() = chat
 }
 
-interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
+interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage, PossiblyGuestAnswerMessage
 
 interface FromChannelForumContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ForumContentMessage<T>
 
@@ -62,7 +62,7 @@ interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage
         get() = chat
 }
 
-interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
+interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage, PossiblyGuestAnswerMessage
 
 interface CommonChannelDirectMessagesContentMessage<T : MessageContent> : ChannelDirectMessagesContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
 

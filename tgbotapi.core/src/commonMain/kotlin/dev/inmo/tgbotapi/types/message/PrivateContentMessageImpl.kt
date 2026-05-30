@@ -23,6 +23,8 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
+    override val guestBotCallerUser: User?,
+    override val guestBotCallerChat: PreviewChat?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
     override val effectId: EffectId?,
@@ -41,10 +43,27 @@ data class PrivateContentMessageImpl<T: MessageContent>(
         replyTo: AccessibleMessage?,
         replyMarkup: InlineKeyboardMarkup?,
         senderBot: CommonBot?,
+        guestBotCallerUser: User?,
+        guestBotCallerChat: PreviewChat?,
         mediaGroupId: MediaGroupId?,
         fromOffline: Boolean,
         effectId: EffectId,
     ) : this(
-        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId, fromOffline, effectId
+        messageId = messageId,
+        from = from,
+        chat = chat,
+        content = content,
+        date = date,
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        senderBot = senderBot,
+        guestBotCallerUser = guestBotCallerUser,
+        guestBotCallerChat = guestBotCallerChat,
+        mediaGroupId = mediaGroupId,
+        fromOffline = fromOffline,
+        effectId = effectId
     )
 }
