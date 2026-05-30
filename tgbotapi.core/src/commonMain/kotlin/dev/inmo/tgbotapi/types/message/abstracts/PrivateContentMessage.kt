@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 interface PrivateContentMessage<T: MessageContent> : PossiblySentViaBotCommonMessage<T>,
-    FromUserMessage,
+    FromUserChatMessage,
     PossiblyOfflineMessage,
     PossiblyWithEffectMessage,
     PossiblyGuestAnswerMessage {

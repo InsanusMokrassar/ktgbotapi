@@ -27025,7 +27025,7 @@ public final class dev/inmo/tgbotapi/types/message/ParseModeSerializer : kotlinx
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public final class dev/inmo/tgbotapi/types/message/PassportMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage {
+public final class dev/inmo/tgbotapi/types/message/PassportMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage {
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/passport/PassportData;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-APLFQys ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
@@ -27418,7 +27418,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/AnonymousGroupConte
 	public static fun getSenderChat (Ldev/inmo/tgbotapi/types/message/abstracts/AnonymousGroupContentMessage;)Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage {
 	public abstract fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;
 	public abstract fun getSenderBusinessBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
@@ -27518,7 +27518,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ChatMessage$Default
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/ChatMessage;)Lkotlin/Triple;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/CommonChannelDirectMessagesContentMessage$DefaultImpls {
@@ -27542,7 +27542,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/CommonContentMessag
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/CommonContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage$DefaultImpls {
@@ -27555,7 +27555,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/CommonForumContentM
 	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/CommonForumContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonGroupContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonGroupContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage {
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/CommonGroupContentMessage$DefaultImpls {
@@ -27567,7 +27567,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/CommonGroupContentM
 	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/CommonGroupContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDirectMessagesContentMessage {
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/CommonSuggestedChannelDirectMessagesContentMessage$DefaultImpls {
@@ -27673,6 +27673,15 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggeste
 	public static fun getSenderChat (Ldev/inmo/tgbotapi/types/message/abstracts/FromChannelSuggestedChannelDirectMessagesContentMessage;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage {
+}
+
+public final class dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage$DefaultImpls {
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage;)Ljava/lang/String;
+	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage;)Lkotlin/Triple;
+	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage;)Ldev/inmo/tgbotapi/types/chat/User;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage : dev/inmo/tgbotapi/abstracts/FromUser, dev/inmo/tgbotapi/types/message/abstracts/OptionallyFromUserMessage {
 }
 
@@ -27694,7 +27703,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage {
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 }
 
@@ -27929,7 +27938,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUser
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUserGroupContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PrivateContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyWithEffectMessage {
+public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PrivateContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyWithEffectMessage {
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;
 }
 

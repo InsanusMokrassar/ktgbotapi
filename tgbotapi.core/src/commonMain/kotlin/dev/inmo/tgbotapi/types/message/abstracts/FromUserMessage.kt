@@ -6,3 +6,5 @@ import dev.inmo.tgbotapi.abstracts.OptionallyFromUser
 interface OptionallyFromUserMessage : OptionallyFromUser, Message
 
 interface FromUserMessage : OptionallyFromUserMessage, FromUser
+
+interface FromUserChatMessage : FromUserMessage, ChatMessage
