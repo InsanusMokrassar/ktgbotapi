@@ -345,6 +345,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.FromChannelChannelDirectMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelSuggestedChannelDirectMessagesContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
@@ -865,6 +866,12 @@ public inline fun OptionallyWithUser.fromUserMessageOrNull(): FromUserMessage? =
 public inline fun OptionallyWithUser.fromUserMessageOrThrow(): FromUserMessage = this as dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
 public inline fun <T> OptionallyWithUser.ifFromUserMessage(block: (FromUserMessage) -> T): T? = fromUserMessageOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.fromUserChatMessageOrNull(): FromUserChatMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
+
+public inline fun OptionallyWithUser.fromUserChatMessageOrThrow(): FromUserChatMessage = this as dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
+
+public inline fun <T> OptionallyWithUser.ifFromUserChatMessage(block: (FromUserChatMessage) -> T): T? = fromUserChatMessageOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.channelPaidPostOrNull(): ChannelPaidPost<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.ChannelPaidPost<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
@@ -2365,6 +2372,12 @@ public inline fun Message.fromUserMessageOrNull(): FromUserMessage? = this as? d
 public inline fun Message.fromUserMessageOrThrow(): FromUserMessage = this as dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
 public inline fun <T> Message.ifFromUserMessage(block: (FromUserMessage) -> T): T? = fromUserMessageOrNull() ?.let(block)
+
+public inline fun Message.fromUserChatMessageOrNull(): FromUserChatMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
+
+public inline fun Message.fromUserChatMessageOrThrow(): FromUserChatMessage = this as dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
+
+public inline fun <T> Message.ifFromUserChatMessage(block: (FromUserChatMessage) -> T): T? = fromUserChatMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyMediaGroupMessageOrNull(): PossiblyMediaGroupMessage<MessageContent>? = this as? dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
