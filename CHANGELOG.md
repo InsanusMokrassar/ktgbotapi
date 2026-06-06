@@ -2,6 +2,10 @@
 
 ## 34.0.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**Migration advice**: Replace `CommonMessage` usages with `ChatContentMessage`, `commonMessageOr` with `chatContentMessageOr`
+
 * `Core`:
     * (`Guest Mode`) Added `GuestQueryId` value class and `WithOptionalGuestQueryId` interface in `dev.inmo.tgbotapi.abstracts.types`
     * (`Guest Mode`) Added `GuestMessage` and `GuestContentMessage<T>` message abstractions (`SpecialMessage`, `CommonContentMessage`, `FromUserMessage`, `PossiblySentViaBot`) exposing `guestQueryId`, `guestBotCallerUser`, `guestBotCallerChat`
