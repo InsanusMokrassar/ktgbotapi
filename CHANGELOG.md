@@ -4,12 +4,22 @@
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
 
+**Breaking changes**:
+
+* Removed the `CommonMessage<T>` super-type — replaced by the new sealed `ChatContentMessage<T>` (`CommonContentMessage`, `ChatMessage`); code referencing `CommonMessage` in types, `when` branches or signatures must switch to `ChatContentMessage`
+* Renamed casts `commonMessageOrNull`/`commonMessageOrThrow`/`ifCommonMessage` to `chatContentMessageOrNull`/`chatContentMessageOrThrow`/`ifChatContentMessage`
+* Reworked the message hierarchy (`ContentMessage`, `Message`, `FromUserMessage`, `PossiblyEditedMessage`, `PossiblyForwardedMessage`, `PossiblyPaymentMessage`, `PossiblySentViaBotCommonMessage`, `PossiblyTopicMessage`, `SignedMessage`, `ChatEventMessage`, `PassportMessage`) and related typealiases — dependent type signatures may need updates
+* Chat send/reply extensions now return `ChatContentMessage<*>` (previously `ContentMessage<*>`)
+* `ChatPermissions` interface gained the abstract `canReactToMessages` member — custom implementations must add it
+* `SendMessageDraft` no longer throws when the text length is out of range: it now logs a warning and validates against the new `draftMessageTextLength` (`0..textLength.last`) range, allowing empty text
+* `pollOptionsLimit` changed from `2..12` to `1..12`
+
 **Migration advice**: Replace `CommonMessage` usages with `ChatContentMessage`, `commonMessageOr` with `chatContentMessageOr`
 
 * `Core`:
-    * (`Guest Mode`) Added `GuestQueryId` value class and `WithOptionalGuestQueryId` interface in `dev.inmo.tgbotapi.abstracts.types`
-    * (`Guest Mode`) Added `GuestMessage` and `GuestContentMessage<T>` message abstractions (`SpecialMessage`, `CommonContentMessage`, `FromUserMessage`, `PossiblySentViaBot`) exposing `guestQueryId`, `guestBotCallerUser`, `guestBotCallerChat`
-    * (`Guest Mode`) Added `GuestContentMessageImpl` data class implementing `GuestContentMessage`
+    * (`Guest Mode`) Added `GuestQueryId` value class in `dev.inmo.tgbotapi.types` and `WithOptionalGuestQueryId` interface in `dev.inmo.tgbotapi.abstracts.types`
+    * (`Guest Mode`) Added `RequestGuestMessage` and `RequestGuestContentMessage<T>` message abstractions (`CommonContentMessage`, `SpecialMessage`, `FromUserMessage`, `PossiblySentViaBot`) exposing `guestQueryId`; added `PossiblyGuestAnswerMessage` exposing `guestBotCallerUser` and `guestBotCallerChat`
+    * (`Guest Mode`) Added `RequestGuestContentMessageImpl` data class implementing `RequestGuestContentMessage`
     * (`Guest Mode`) Added `SentGuestMessage` carrying `InlineMessageId`
     * (`Guest Mode`) Added `GuestMessageUpdate` (`BaseSentMessageUpdate`) and `guest_message` update type wiring in `RawUpdate`/`UpdateTypes`/`FlowsUpdatesFilter`
     * (`Guest Mode`) Added `AnswerGuestQuery` request returning `SentGuestMessage`
@@ -29,7 +39,7 @@
     * (`Chat Management`) Added optional `retrieveOtherBots` parameter to `GetChatAdministrators` request
     * (`Chat Management`) Added `DeleteMessageReaction` request with `@Warning` on primary constructor; added `DeleteUserMessageReaction` and `DeleteActorChatMessageReaction` factory functions
     * (`Chat Management`) Added `DeleteAllMessageReactions` request with `@Warning` on primary constructor; added `DeleteAllUserMessageReactions` and `DeleteAllActorChatMessageReactions` factory functions
-    * (`Polls`) Added `InputMediaSticker`, `InputMediaLocation` and `InputMediaVenue` classes
+    * (`Polls`) Added `TelegramMediaSticker`, `TelegramMediaLocation` and `TelegramMediaVenue` classes
     * (`Polls`) Added `InputPollMedia` and `InputPollOptionMedia` sealed interfaces representing input media variants accepted by `sendPoll`
     * (`Polls`) Added `PollMedia` class representing media attached to polls in incoming updates
     * (`Polls`) Added `media` field to `Poll`, `PollOption` and `InputPollOption`
@@ -41,10 +51,10 @@
     * (`Polls`) Decreased minimum allowed poll options count from 2 to 1 (`pollOptionsLimit` is now `1..12`)
     * (`Managed Bots Access`) Added `BotAccessSettings` data class in `dev.inmo.tgbotapi.types.managed_bots` with `isAccessRestricted` and `addedUsers` fields
     * (`Managed Bots Access`) Added `GetManagedBotAccessSettings` request returning `BotAccessSettings`
-    * (`Managed Bots Access`) Added `SetManagedBotAccessSettings` request with `isAccessRestricted` and optional `addedUserIds`
+    * (`Managed Bots Access`) Added `SetManagedBotAccessSettings` request with `userId` and optional `addedUserIds` (`isAccessRestricted` is derived from `addedUserIds`)
     * (`Managed Bots Access`) Added `isAccessRestrictedField`, `addedUsersField`, `addedUserIdsField` constants
-    * (`Personal Chat`) Added `GetUserPersonalChatMessages` request returning `List<ContentMessage<*>>`
-    * (`Drafts`) `SendMessageDraft.text` and matching factory `text` parameter became nullable to allow empty/absent text (renders "Thinking…" placeholder)
+    * (`Personal Chat`) Added `GetUserPersonalChatMessages` request returning `List<ChatContentMessage<*>>`
+    * (`Drafts`) `SendMessageDraft` now allows empty text via the new `draftMessageTextLength` (`0..textLength.last`) range and logs a warning instead of throwing when the text length is out of range
 * `API`:
     * (`Guest Mode`) Added `answerGuestQuery` extensions in `dev.inmo.tgbotapi.extensions.api.answers`
     * (`Guest Mode`) Added `RepliesWithGuestQueryId.kt` reply extensions accepting `GuestQueryId`
@@ -57,19 +67,18 @@
     * (`Polls`) Added `media`, `membersOnly`, `countryCodes` parameters to `sendRegularPoll` extension
     * (`Polls`) Added `media`, `explanationMedia`, `membersOnly`, `countryCodes` parameters to `sendQuizPoll` extension
     * (`Managed Bots Access`) Added `getManagedBotAccessSettings` extension in `dev.inmo.tgbotapi.extensions.api.managed_bots`
-    * (`Managed Bots Access`) Added `setManagedBotAccessSettings` extension with `userId`, `isAccessRestricted`, optional `addedUserIds`
-    * (`Personal Chat`) Added `getUserPersonalChatMessages` extension returning `List<ChatContentMessage<*>>`
-    * (`Drafts`) `sendMessageDraft` and `send` overloads for drafts now accept nullable `text: String?`
+    * (`Managed Bots Access`) Added `setManagedBotAccessSettings` extension with `userId` and optional `addedUserIds`
+    * (`Personal Chat`) Added `getUserPersonalChatMessages` extension returning `List<ContentMessage<*>>`
 * `Behaviour Builder`:
-    * (`Guest Mode`) Added `GuestMessageTriggers` with `onGuestMessage` trigger
+    * (`Guest Mode`) Added `GuestMessageTriggers` with `onGuestRequestMessage` trigger
     * (`Guest Mode`) Updated `WaitContent`, `WaitContentMessage`, `WaitEditedContentMessage`, `WaitMediaGroup`, `WaitMediaGroupMessages`, `WaitCommandsMessages`, `WaitDeepLinks`, `WaitMention`, `WaitMentionMessage`, `ContentTriggers`, `EditedContentTriggers`, `MediaGroupMessagesTriggers`, `MediaGroupTriggers`, `MentionTriggers`, `DeepLinkHandling`, `MessageFilterExcludingMediaGroups` for the unified `ChatContentMessage` hierarchy
     * (`Live Photos`) Added `onLivePhoto`, `onEditedLivePhoto`, `onLivePhotoGalleryMessages`, `onLivePhotoGallery` triggers
     * (`Live Photos`) Added `onMentionWithLivePhotoContent`/`onTextMentionWithLivePhotoContent` triggers
     * (`Live Photos`) Added `waitLivePhoto`, `waitLivePhotoMessage`, `waitEditedLivePhoto`, `waitEditedLivePhotoMessage`, `waitLivePhotoGallery`, `waitLivePhotoGalleryMessages` expectations
     * (`Live Photos`) Added `onlyLivePhotoContentMessages` utility
 * `Utils`:
-    * (`Guest Mode`) Added `guestMessageUpdateOrNull` and related casts in `ClassCastsNew`/`ClassCasts`/`ContentCastsNew`/`WithContent`/`CommonMessageConversations`
-    * (`Guest Mode`) Updated `MessageFilters`, `SentMessageUpdatesConversations`, `LongPolling`, `MediaGroupContentMessageCreator`, `FlowsUpdatesFilter` shortcuts to support guest messages
+    * (`Guest Mode`) Added `guestMessageUpdateOrNull` and related casts in `ClassCastsNew`
+    * (`Guest Mode`) Updated `MediaGroupContentMessageCreator` and `FlowsUpdatesFilter` to support guest messages
 
 ## 33.1.0
 
