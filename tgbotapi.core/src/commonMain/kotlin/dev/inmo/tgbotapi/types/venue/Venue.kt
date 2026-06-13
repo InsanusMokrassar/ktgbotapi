@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.CommonVenueData
 import dev.inmo.tgbotapi.abstracts.Locationed
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.location.StaticLocation
+import dev.inmo.tgbotapi.types.media.PollMedia
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -23,4 +24,4 @@ data class Venue(
     override val googlePlaceId: GooglePlaceId? = null,
     @SerialName(googlePlaceTypeField)
     override val googlePlaceType: GooglePlaceType? = null
-) : CommonVenueData, Locationed by location, ReplyInfo.External.ContentVariant
+) : CommonVenueData, PollMedia, Locationed by location, ReplyInfo.External.ContentVariant

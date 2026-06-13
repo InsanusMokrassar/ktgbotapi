@@ -10,12 +10,13 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import kotlinx.serialization.*
 
-internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>>
+internal val DiceContentMessageResultDeserializer: DeserializationStrategy<ChatContentMessage<DiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
@@ -48,13 +49,13 @@ data class SendDice(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<DiceContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>, WithReplyParameters, DisableNotification,
+) : SendContentMessageRequest<ChatContentMessage<DiceContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<DiceContent>>, WithReplyParameters, DisableNotification,
     OptionallyBusinessConnectionRequest {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     override fun method(): String = "sendDice"
 
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<DiceContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<DiceContent>>
         get() = DiceContentMessageResultDeserializer
 }

@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
@@ -31,7 +32,7 @@ fun SendVideoNote(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<VideoNoteContent>> {
+): Request<ChatContentMessage<VideoNoteContent>> {
     val videoNoteAsFile = videoNote as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -63,7 +64,7 @@ fun SendVideoNote(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VideoNoteContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -103,18 +104,18 @@ data class SendVideoNoteData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<VideoNoteContent>>,
-    SendContentMessageRequest<ContentMessage<VideoNoteContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<VideoNoteContent>>,
-    ThumbedSendMessageRequest<ContentMessage<VideoNoteContent>>,
-    DuratedSendMessageRequest<ContentMessage<VideoNoteContent>>,
-    SizedSendMessageRequest<ContentMessage<VideoNoteContent>>
+) : DataRequest<ChatContentMessage<VideoNoteContent>>,
+    SendContentMessageRequest<ChatContentMessage<VideoNoteContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<VideoNoteContent>>,
+    ThumbedSendMessageRequest<ChatContentMessage<VideoNoteContent>>,
+    DuratedSendMessageRequest<ChatContentMessage<VideoNoteContent>>,
+    SizedSendMessageRequest<ChatContentMessage<VideoNoteContent>>
 {
     override val height: Int?
         get() = width
 
     override fun method(): String = "sendVideoNote"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<VideoNoteContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

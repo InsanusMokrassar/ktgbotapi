@@ -6,6 +6,8 @@ import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromUserChatMessage
 import dev.inmo.tgbotapi.types.passport.PassportData
 
 data class PassportMessage(
@@ -14,4 +16,4 @@ data class PassportMessage(
     override val from: User,
     override val date: DateTime,
     val passportData: PassportData
-) : AccessibleMessage, FromUserMessage
+) : FromUserChatMessage

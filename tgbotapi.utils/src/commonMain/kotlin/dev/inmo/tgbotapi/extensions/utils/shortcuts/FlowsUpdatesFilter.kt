@@ -1,10 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import dev.inmo.tgbotapi.extensions.utils.aggregateFlows
-import dev.inmo.tgbotapi.extensions.utils.flatMap
-import dev.inmo.tgbotapi.extensions.utils.flatten
 import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate

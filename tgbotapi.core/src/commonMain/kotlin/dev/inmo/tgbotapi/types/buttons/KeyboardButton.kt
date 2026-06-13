@@ -29,7 +29,7 @@ sealed interface KeyboardButton {
  * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onText] in
  * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
  * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
- * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages]
+ * [dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages]
 */
 @Serializable
 data class SimpleKeyboardButton(
@@ -57,7 +57,7 @@ data class UnknownKeyboardButton internal constructor(
  * to catch this contact in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onContact] in
  * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
  * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
- * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyContactContentMessages]
+ * [dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyContactContentMessages]
 */
 @Serializable
 data class RequestContactKeyboardButton(
@@ -77,7 +77,7 @@ data class RequestContactKeyboardButton(
  * to catch this location in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onLocation] in
  * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
  * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
- * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyLocationContentMessages]
+ * [dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyLocationContentMessages]
  */
 @Serializable
 data class RequestLocationKeyboardButton(
@@ -114,7 +114,7 @@ data class WebAppKeyboardButton(
  * to catch this poll in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onPoll] in
  * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
  * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
- * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyPollContentMessages]
+ * [dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyPollContentMessages]
  */
 @Serializable
 data class RequestPollKeyboardButton(

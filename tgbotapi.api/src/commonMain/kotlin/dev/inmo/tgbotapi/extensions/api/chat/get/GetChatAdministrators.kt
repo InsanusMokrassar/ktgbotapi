@@ -7,9 +7,11 @@ import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
 public suspend fun TelegramBot.getChatAdministrators(
-    chatId: ChatIdentifier
-): List<AdministratorChatMember> = execute(GetChatAdministrators(chatId))
+    chatId: ChatIdentifier,
+    retrieveOtherBots: Boolean? = null
+): List<AdministratorChatMember> = execute(GetChatAdministrators(chatId = chatId, retrieveOtherBots = retrieveOtherBots))
 
 public suspend fun TelegramBot.getChatAdministrators(
-    chat: PublicChat
-): List<AdministratorChatMember> = getChatAdministrators(chat.id)
+    chat: PublicChat,
+    retrieveOtherBots: Boolean? = null
+): List<AdministratorChatMember> = getChatAdministrators(chat.id, retrieveOtherBots)

@@ -18,6 +18,7 @@ import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
@@ -42,7 +43,7 @@ fun SendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<PaidMediaInfoContent>> {
+): Request<ChatContentMessage<PaidMediaInfoContent>> {
     val data = SendPaidMediaData(
         chatId = chatId,
         starCount = starCount,
@@ -105,7 +106,7 @@ fun SendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<PaidMediaInfoContent>> {
+): Request<ChatContentMessage<PaidMediaInfoContent>> {
     val data = SendPaidMediaData(
         chatId = chatId,
         starCount = starCount,
@@ -152,7 +153,7 @@ fun SendPaidMedia(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<PaidMediaInfoContent>>
         = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -197,11 +198,11 @@ data class SendPaidMediaData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<PaidMediaInfoContent>>,
-    SendContentMessageRequest<ContentMessage<PaidMediaInfoContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<PaidMediaInfoContent>>,
-    TextableSendMessageRequest<ContentMessage<PaidMediaInfoContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<PaidMediaInfoContent>>
+) : DataRequest<ChatContentMessage<PaidMediaInfoContent>>,
+    SendContentMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
+    TextableSendMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
+    WithCustomizableCaptionRequest<ChatContentMessage<PaidMediaInfoContent>>
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
@@ -218,7 +219,7 @@ data class SendPaidMediaData internal constructor(
     }
 
     override fun method(): String = "sendPaidMedia"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<PaidMediaInfoContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<PaidMediaInfoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

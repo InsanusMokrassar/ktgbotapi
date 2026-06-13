@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
@@ -12,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import dev.inmo.tgbotapi.utils.throwRangeError
@@ -73,8 +75,8 @@ data class SendMessageDraft internal constructor(
     }
 
     init {
-        if (text.length !in textLength) {
-            throwRangeError("Text length", textLength, text.length)
+        if (text.length !in draftMessageTextLength) {
+            DefaultKTgBotAPIKSLog.w("For sendMessageDraft it is required to have length of text in range $draftMessageTextLength, but actual length is ${text.length}")
         }
     }
 

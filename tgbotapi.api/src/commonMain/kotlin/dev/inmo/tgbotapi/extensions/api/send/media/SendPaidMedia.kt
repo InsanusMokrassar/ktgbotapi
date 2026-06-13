@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
 
 /**
@@ -36,7 +36,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = execute(
+): ChatContentMessage<PaidMediaInfoContent> = execute(
     SendPaidMedia(
         chatId = chatId,
         starCount = starCount,
@@ -78,7 +78,7 @@ public suspend fun TelegramBot.sendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chat.id,
     starCount = starCount,
     media = media,
@@ -118,7 +118,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = execute(
+): ChatContentMessage<PaidMediaInfoContent> = execute(
     SendPaidMedia(
         chatId = chatId,
         starCount = starCount,
@@ -158,7 +158,7 @@ public suspend inline fun TelegramBot.sendPaidMedia(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chat.id,
     starCount = starCount,
     media = media,

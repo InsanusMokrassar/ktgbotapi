@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
 import dev.inmo.tgbotapi.extensions.utils.*
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
@@ -20,10 +20,10 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
  * }
  * ```
  *
- * @return true if this [CommonMessage] contains any commands. False otherwise.
+ * @return true if this [ChatContentMessage] contains any commands. False otherwise.
  * @see hasNoCommands
  */
-fun CommonMessage<*>.hasCommands(): Boolean = withContentOrNull<TextContent>() ?.content ?.textSources ?.any {
+fun ChatContentMessage<*>.hasCommands(): Boolean = withContentOrNull<TextContent>() ?.content ?.textSources ?.any {
     it is BotCommandTextSource
 } ?: false
 
@@ -40,10 +40,10 @@ fun CommonMessage<*>.hasCommands(): Boolean = withContentOrNull<TextContent>() ?
  * }
  * ```
  *
- * @return true if this [CommonMessage] does not contain any commands. False otherwise.
+ * @return true if this [ChatContentMessage] does not contain any commands. False otherwise.
  * @see hasCommands
  */
-fun CommonMessage<*>.hasNoCommands(): Boolean = !this.hasCommands()
+fun ChatContentMessage<*>.hasNoCommands(): Boolean = !this.hasCommands()
 
 /**
  * A predicate to test that message has been sent in the forum.

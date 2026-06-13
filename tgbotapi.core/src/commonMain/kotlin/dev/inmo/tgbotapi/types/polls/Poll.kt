@@ -2,11 +2,13 @@
 
 package dev.inmo.tgbotapi.types.polls
 
+import dev.inmo.micro_utils.language_codes.IetfLang
 import korlibs.time.DateTime
 import korlibs.time.TimeSpan
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
@@ -67,6 +69,9 @@ sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val allowsRevoting: Boolean
     val scheduledCloseInfo: ScheduledCloseInfo?
     val descriptionTextSources: List<TextSource>
+    val media: PollMedia?
+    val membersOnly: Boolean
+    val countryCodes: List<String>?
 }
 
 @Serializable
@@ -104,7 +109,17 @@ private class RawPoll(
     @SerialName(openPeriodField)
     val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
-    val closeDate: LongSeconds? = null
+    val closeDate: LongSeconds? = null,
+    @SerialName(mediaField)
+    @Serializable(PollMedia.Serializer::class)
+    val media: PollMedia? = null,
+    @SerialName(explanationMediaField)
+    @Serializable(PollMedia.Serializer::class)
+    val explanationMedia: PollMedia? = null,
+    @SerialName(membersOnlyField)
+    val membersOnly: Boolean = false,
+    @SerialName(countryCodesField)
+    val countryCodes: List<String>? = null
 ) {
     @Transient
     val scheduledCloseInfo: ScheduledCloseInfo?
@@ -131,6 +146,12 @@ data class UnknownPollType internal constructor(
     override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = true,
     override val descriptionTextSources: List<TextSource> = emptyList(),
+    @SerialName(mediaField)
+    override val media: PollMedia? = null,
+    @SerialName(membersOnlyField)
+    override val membersOnly: Boolean = false,
+    @SerialName(countryCodesField)
+    override val countryCodes: List<String>? = null,
     @Serializable
     val raw: JsonElement? = null
 ) : Poll {
@@ -155,7 +176,10 @@ data class RegularPoll(
     override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = true,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null,
-    override val descriptionTextSources: List<TextSource> = emptyList()
+    override val descriptionTextSources: List<TextSource> = emptyList(),
+    override val media: PollMedia? = null,
+    override val membersOnly: Boolean = false,
+    override val countryCodes: List<String>? = null
 ) : Poll
 
 @Serializable(PollSerializer::class)
@@ -173,7 +197,11 @@ data class QuizPoll(
     override val allowsMultipleAnswers: Boolean = false,
     override val allowsRevoting: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null,
-    override val descriptionTextSources: List<TextSource> = emptyList()
+    override val descriptionTextSources: List<TextSource> = emptyList(),
+    override val media: PollMedia? = null,
+    val explanationMedia: PollMedia? = null,
+    override val membersOnly: Boolean = false,
+    override val countryCodes: List<String>? = null
 ) : Poll
 
 @RiskFeature
@@ -199,7 +227,11 @@ object PollSerializer : KSerializer<Poll> {
                 allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
                 allowsRevoting = rawPoll.allowsRevoting ?: false,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
-                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
+                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList(),
+                media = rawPoll.media,
+                explanationMedia = rawPoll.explanationMedia,
+                membersOnly = rawPoll.membersOnly,
+                countryCodes = rawPoll.countryCodes
             )
             regularPollType -> RegularPoll(
                 id = rawPoll.id,
@@ -212,7 +244,10 @@ object PollSerializer : KSerializer<Poll> {
                 allowsMultipleAnswers = rawPoll.allowsMultipleAnswers,
                 allowsRevoting = rawPoll.allowsRevoting ?: true,
                 scheduledCloseInfo = rawPoll.scheduledCloseInfo,
-                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList()
+                descriptionTextSources = rawPoll.description?.let { rawPoll.descriptionEntities.asTextSources(it) } ?: emptyList(),
+                media = rawPoll.media,
+                membersOnly = rawPoll.membersOnly,
+                countryCodes = rawPoll.countryCodes
             )
             else -> UnknownPollType(
                 id = rawPoll.id,
@@ -222,6 +257,9 @@ object PollSerializer : KSerializer<Poll> {
                 textSources = rawPoll.questionEntities.asTextSources(rawPoll.question),
                 isClosed = rawPoll.isClosed,
                 isAnonymous = rawPoll.isAnonymous,
+                media = rawPoll.media,
+                membersOnly = rawPoll.membersOnly,
+                countryCodes = rawPoll.countryCodes,
                 raw = asJson
             )
         }
@@ -244,7 +282,10 @@ object PollSerializer : KSerializer<Poll> {
                 description = value.descriptionTextSources.makeSourceString().takeIf { it.isNotEmpty() },
                 descriptionEntities = value.descriptionTextSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
-                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
+                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
+                media = value.media,
+                membersOnly = value.membersOnly,
+                countryCodes = value.countryCodes
             )
             is QuizPoll -> RawPoll(
                 id = value.id,
@@ -263,7 +304,11 @@ object PollSerializer : KSerializer<Poll> {
                 description = value.descriptionTextSources.makeSourceString().takeIf { it.isNotEmpty() },
                 descriptionEntities = value.descriptionTextSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
-                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
+                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L),
+                media = value.media,
+                explanationMedia = value.explanationMedia,
+                membersOnly = value.membersOnly,
+                countryCodes = value.countryCodes
             )
             is UnknownPollType -> {
                 if (value.raw == null) {

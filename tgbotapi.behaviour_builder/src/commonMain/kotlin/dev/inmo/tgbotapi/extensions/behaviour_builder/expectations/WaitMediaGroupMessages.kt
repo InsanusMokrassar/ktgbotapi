@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
-import dev.inmo.tgbotapi.extensions.utils.withContent
+import dev.inmo.tgbotapi.extensions.utils.chatContentMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.content.*
@@ -16,7 +15,7 @@ inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupM
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<MediaGroupMessage<T>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
-    update.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
+    update.baseSentMessageUpdateOrNull() ?.data ?.chatContentMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let { message ->
         if (message.content.group.all { it.content is T }) {
             @Suppress("UNCHECKED_CAST")
             listOf(message as MediaGroupMessage<T>)
@@ -50,3 +49,7 @@ fun BehaviourContext.waitVideoGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = buildMediaGroupMessagesWaiter<VideoContent>(initRequest, errorFactory)
+fun BehaviourContext.waitLivePhotoGalleryMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = buildMediaGroupMessagesWaiter<LivePhotoContent>(initRequest, errorFactory)

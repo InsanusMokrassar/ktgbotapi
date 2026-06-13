@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.giveaway.Giveaway
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -29,7 +29,8 @@ data class GiveawayContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<out AccessibleMessage> {
+    ): Request<ChatContentMessage<GiveawayContent>> {
+        @Suppress("UNCHECKED_CAST")
         return ForwardMessage(
             chat.id,
             toChatId = chatId,
@@ -38,6 +39,6 @@ data class GiveawayContent(
             directMessageThreadId = directMessageThreadId,
             disableNotification = disableNotification,
             protectContent = protectContent
-        )
+        ) as Request<ChatContentMessage<GiveawayContent>>
     }
 }

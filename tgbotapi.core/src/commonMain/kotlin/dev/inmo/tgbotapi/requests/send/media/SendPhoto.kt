@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
@@ -39,7 +40,7 @@ fun SendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<PhotoContent>> {
+): Request<ChatContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId = chatId,
         photo = photo,
@@ -85,7 +86,7 @@ fun SendPhoto(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<PhotoContent>> {
+): Request<ChatContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId = chatId,
         photo = photo,
@@ -116,7 +117,7 @@ fun SendPhoto(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<PhotoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -160,11 +161,11 @@ data class SendPhotoData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<PhotoContent>>,
-    SendContentMessageRequest<ContentMessage<PhotoContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
-    TextableSendMessageRequest<ContentMessage<PhotoContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<PhotoContent>>,
+) : DataRequest<ChatContentMessage<PhotoContent>>,
+    SendContentMessageRequest<ChatContentMessage<PhotoContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<PhotoContent>>,
+    TextableSendMessageRequest<ChatContentMessage<PhotoContent>>,
+    WithCustomizableCaptionRequest<ChatContentMessage<PhotoContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {
@@ -180,7 +181,7 @@ data class SendPhotoData internal constructor(
     }
 
     override fun method(): String = "sendPhoto"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<PhotoContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

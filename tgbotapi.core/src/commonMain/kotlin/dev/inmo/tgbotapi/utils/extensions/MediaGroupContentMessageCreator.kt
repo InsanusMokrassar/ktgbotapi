@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature("This API is experimental and can be changed without any notice, use with caution")
-fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMediaGroupMessage(): PossiblySentViaBotCommonMessage<MediaGroupContent<T>> {
+fun <T : MediaGroupPartContent> List<CommonContentMessage<T>>.asMediaGroupMessage(): CommonContentMessage<MediaGroupContent<T>> {
     val sourceMessage = first()
     val content = MediaGroupContent(
         map { MediaGroupCollectionContent.PartWrapper(it.messageId, it.content, it) },
@@ -62,6 +62,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             replyInfo = sourceMessage.replyInfo,
             replyMarkup = sourceMessage.replyMarkup,
             senderBot = sourceMessage.senderBot,
+            guestBotCallerUser = sourceMessage.guestBotCallerUser,
+            guestBotCallerChat = sourceMessage.guestBotCallerChat,
             mediaGroupId = sourceMessage.mediaGroupId,
             fromOffline = sourceMessage.fromOffline,
             effectId = sourceMessage.effectId,
@@ -95,6 +97,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             replyMarkup = sourceMessage.replyMarkup,
             content = content,
             senderBot = sourceMessage.senderBot,
+            guestBotCallerUser = sourceMessage.guestBotCallerUser,
+            guestBotCallerChat = sourceMessage.guestBotCallerChat,
             mediaGroupId = sourceMessage.mediaGroupId,
             senderBoostsCount = sourceMessage.senderBoostsCount,
             fromOffline = sourceMessage.fromOffline,
@@ -165,6 +169,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             replyMarkup = sourceMessage.replyMarkup,
             content = content,
             senderBot = sourceMessage.senderBot,
+            guestBotCallerUser = sourceMessage.guestBotCallerUser,
+            guestBotCallerChat = sourceMessage.guestBotCallerChat,
             mediaGroupId = sourceMessage.mediaGroupId,
             senderBoostsCount = sourceMessage.senderBoostsCount,
             fromOffline = sourceMessage.fromOffline,
@@ -265,6 +271,23 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             mediaGroupId = sourceMessage.mediaGroupId,
             fromOffline = sourceMessage.fromOffline,
             suggestedPostInfo = sourceMessage.suggestedPostInfo,
+            cost = sourceMessage.cost,
+        )
+        is RequestGuestContentMessage -> RequestGuestContentMessageImpl(
+            messageId = sourceMessage.messageId,
+            from = sourceMessage.user,
+            chat = sourceMessage.chat,
+            guestQueryId = sourceMessage.guestQueryId,
+            content = content,
+            date = sourceMessage.date,
+            editDate = sourceMessage.editDate,
+            hasProtectedContent = sourceMessage.hasProtectedContent,
+            forwardOrigin = sourceMessage.forwardOrigin,
+            replyInfo = sourceMessage.replyInfo,
+            replyMarkup = sourceMessage.replyMarkup,
+            senderBot = sourceMessage.senderBot,
+            mediaGroupId = sourceMessage.mediaGroupId,
+            fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
         )
     }

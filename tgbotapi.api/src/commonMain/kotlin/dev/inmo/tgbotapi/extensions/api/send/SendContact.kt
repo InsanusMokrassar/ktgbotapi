@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 
 /**
@@ -31,7 +31,7 @@ public suspend fun TelegramBot.sendContact(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = execute(
+): ChatContentMessage<ContactContent> = execute(
     SendContact(
         chatId = chatId,
         phoneNumber = phoneNumber,
@@ -67,7 +67,7 @@ public suspend fun TelegramBot.sendContact(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = execute(
+): ChatContentMessage<ContactContent> = execute(
     SendContact(
         chatId = chatId,
         contact = contact,
@@ -103,7 +103,7 @@ public suspend fun TelegramBot.sendContact(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = chat.id,
     phoneNumber = phoneNumber,
     firstName = firstName,
@@ -137,7 +137,7 @@ public suspend fun TelegramBot.sendContact(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = chat.id,
     contact = contact,
     threadId = threadId,

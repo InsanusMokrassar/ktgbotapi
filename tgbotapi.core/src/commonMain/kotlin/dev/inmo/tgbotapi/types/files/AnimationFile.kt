@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -23,5 +24,5 @@ data class AnimationFile(
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
     override val fileSize: FileSize? = null
-) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, CustomNamedMediaFile, SizedMediaFile,
+) : TelegramMediaFile, PollMedia, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, CustomNamedMediaFile, SizedMediaFile,
     MediaContentVariant

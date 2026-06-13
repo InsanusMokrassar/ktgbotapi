@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.toTelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import kotlinx.serialization.Serializable
 
@@ -36,7 +36,7 @@ data class PaidMediaInfoContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<PaidMediaInfoContent>> = SendPaidMedia(
+    ): Request<ChatContentMessage<PaidMediaInfoContent>> = SendPaidMedia(
         chatId = chatId,
         starCount = paidMediaInfo.stars,
         media = paidMediaInfo.media.mapNotNull {
@@ -45,6 +45,7 @@ data class PaidMediaInfoContent(
                 is PaidMedia.Preview -> null
                 is PaidMedia.Unknown -> null
                 is PaidMedia.Video -> it.video.toTelegramPaidMediaVideo()
+                is PaidMedia.LivePhoto -> it.livePhoto.toTelegramPaidMediaLivePhoto()
             }
         }.ifEmpty {
             error("Unable to create resend for paid media content without any revealed content")

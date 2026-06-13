@@ -13,17 +13,19 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
-internal const val photoTelegramPaidMediaType = "photo"
-
 @Serializable
 data class TelegramPaidMediaPhoto (
     override val file: InputFile,
 ) : VisualTelegramPaidMedia {
-    override val type: String = photoTelegramPaidMediaType
+    override val type: String = TYPE
 
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "photo"
+    }
 }
 
 fun PhotoSize.toTelegramPaidMediaPhoto(): TelegramPaidMediaPhoto = TelegramPaidMediaPhoto(

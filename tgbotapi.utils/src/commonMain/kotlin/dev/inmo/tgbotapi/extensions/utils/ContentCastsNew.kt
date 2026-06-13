@@ -3,14 +3,13 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 inline fun <reified T : MessageContent> ContentMessage<*>.withContentOrNull() = if (content is T) { this as ContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> ContentMessage<*>.withContentOrThrow() = withContentOrNull<T>()!!
 
-inline fun <reified T : MessageContent> CommonMessage<*>.withContentOrNull() = if (content is T) { this as CommonMessage<T> } else { null }
-inline fun <reified T : MessageContent> CommonMessage<*>.withContentOrThrow() = withContentOrNull<T>()!!
+inline fun <reified T : MessageContent> ChatContentMessage<*>.withContentOrNull() = if (content is T) { this as ChatContentMessage<T> } else { null }
+inline fun <reified T : MessageContent> ChatContentMessage<*>.withContentOrThrow() = withContentOrNull<T>()!!
 
 inline fun <reified T : MessageContent> PossiblySentViaBotCommonMessage<*>.withContentOrNull() = if (content is T) { this as PossiblySentViaBotCommonMessage<T>
 } else { null }

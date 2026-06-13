@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.checklists.ChecklistTask
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -31,7 +31,7 @@ data class ChecklistContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<ChecklistContent>> {
+    ): Request<ChatContentMessage<ChecklistContent>> {
         return SendChecklist(
             chatId = chatId,
             checklist = Checklist.Input(

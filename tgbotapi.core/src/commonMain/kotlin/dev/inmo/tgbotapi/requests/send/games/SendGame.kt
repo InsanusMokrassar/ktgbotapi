@@ -7,12 +7,13 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.GameContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<GameContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
@@ -45,10 +46,10 @@ data class SendGame (
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<GameContent>>,
+) : SendContentMessageRequest<ChatContentMessage<GameContent>>,
     WithReplyMarkup {
     override fun method(): String = "sendGame"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<GameContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

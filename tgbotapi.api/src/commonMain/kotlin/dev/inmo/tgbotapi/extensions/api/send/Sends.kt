@@ -26,7 +26,7 @@ import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -78,7 +78,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation,
     text = text,
@@ -125,7 +125,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chat = chat,
     animation = animation,
     text = text,
@@ -171,7 +171,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation,
     entities = entities,
@@ -216,7 +216,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chat = chat,
     animation = animation,
     entities = entities,
@@ -258,7 +258,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio,
     text = text,
@@ -297,7 +297,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chat = chat,
     audio = audio,
     text = text,
@@ -335,7 +335,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio,
     entities = entities,
@@ -372,7 +372,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chat = chat,
     audio = audio,
     entities = entities,
@@ -409,7 +409,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = chatId,
     phoneNumber = phoneNumber,
     firstName = firstName,
@@ -444,7 +444,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chatId = chatId,
     contact = contact,
     threadId = threadId,
@@ -479,7 +479,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chat = chat,
     phoneNumber = phoneNumber,
     firstName = firstName,
@@ -514,7 +514,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ContactContent> = sendContact(
+): ChatContentMessage<ContactContent> = sendContact(
     chat = chat,
     contact = contact,
     threadId = threadId,
@@ -547,7 +547,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = sendDice(
+): ChatContentMessage<DiceContent> = sendDice(
     chatId = chatId,
     animationType = animationType,
     threadId = threadId,
@@ -580,7 +580,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<DiceContent> = sendDice(
+): ChatContentMessage<DiceContent> = sendDice(
     chat = chat,
     animationType = animationType,
     threadId = threadId,
@@ -605,7 +605,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ChecklistContent> = execute(
+): ChatContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,
@@ -626,7 +626,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<ChecklistContent> = execute(
+): ChatContentMessage<ChecklistContent> = execute(
     SendChecklist(
         chatId = chatId,
         checklist = checklist,
@@ -660,7 +660,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document,
     text = text,
@@ -699,7 +699,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chat = chat,
     document = document,
     text = text,
@@ -737,7 +737,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document,
     entities = entities,
@@ -774,7 +774,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chat = chat,
     document = document,
     entities = entities,
@@ -809,7 +809,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chatId = chatId,
     game = game,
     threadId = threadId,
@@ -842,7 +842,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<GameContent> = sendGame(
+): ChatContentMessage<GameContent> = sendGame(
     chat = chat,
     game = game,
     threadId = threadId,
@@ -890,7 +890,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(
+): ChatContentMessage<InvoiceContent> = sendInvoice(
     chatId = chatId,
     title = title,
     description = description,
@@ -951,7 +951,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<InvoiceContent> = sendInvoice(
+): ChatContentMessage<InvoiceContent> = sendInvoice(
     user = user,
     title = title,
     description = description,
@@ -998,7 +998,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendStaticLocation(
+): ChatContentMessage<StaticLocationContent> = sendStaticLocation(
     chatId = chatId,
     latitude = latitude,
     longitude = longitude,
@@ -1032,7 +1032,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendStaticLocation(
+): ChatContentMessage<StaticLocationContent> = sendStaticLocation(
     chatId = chatId,
     location = location,
     threadId = threadId,
@@ -1066,7 +1066,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendStaticLocation(
+): ChatContentMessage<StaticLocationContent> = sendStaticLocation(
     chat = chat,
     latitude = latitude,
     longitude = longitude,
@@ -1100,7 +1100,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StaticLocationContent> = sendStaticLocation(
+): ChatContentMessage<StaticLocationContent> = sendStaticLocation(
     chat = chat,
     location = location,
     threadId = threadId,
@@ -1135,7 +1135,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     text = text,
     parseMode = parseMode,
@@ -1172,7 +1172,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     text = text,
     parseMode = parseMode,
@@ -1208,7 +1208,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -1243,7 +1243,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = send(
+): ChatContentMessage<TextContent> = send(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -1279,7 +1279,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = send(
+): ChatContentMessage<TextContent> = send(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -1315,7 +1315,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -1482,7 +1482,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = send(
+): ChatContentMessage<TextContent> = send(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -1518,7 +1518,7 @@ public suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = send(
+): ChatContentMessage<TextContent> = send(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -1556,7 +1556,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photo = photo,
     text = text,
@@ -1597,7 +1597,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chat = chat,
     starCount = starCount,
     media = media,
@@ -1638,7 +1638,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chatId,
     starCount = starCount,
     media = media,
@@ -1678,7 +1678,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chat = chat,
     starCount = starCount,
     media = media,
@@ -1717,7 +1717,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PaidMediaInfoContent> = sendPaidMedia(
+): ChatContentMessage<PaidMediaInfoContent> = sendPaidMedia(
     chatId = chatId,
     starCount = starCount,
     media = media,
@@ -1757,7 +1757,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photo = photo,
     text = text,
@@ -1798,7 +1798,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photoSize = photoSize,
     text = text,
@@ -1839,7 +1839,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photoSize = photoSize,
     text = text,
@@ -1879,7 +1879,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photo = photo,
     entities = entities,
@@ -1918,7 +1918,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photo = photo,
     entities = entities,
@@ -1957,7 +1957,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = chatId,
     photoSize = photoSize,
     entities = entities,
@@ -1996,7 +1996,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PhotoContent> = sendPhoto(
+): ChatContentMessage<PhotoContent> = sendPhoto(
     chat = chat,
     photoSize = photoSize,
     entities = entities,
@@ -2038,7 +2038,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2082,7 +2082,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2127,7 +2127,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2172,7 +2172,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2216,7 +2216,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2262,7 +2262,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2307,7 +2307,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendRegularPoll(
+): ChatContentMessage<PollContent> = sendRegularPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
     options = options,
@@ -2355,7 +2355,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2408,7 +2408,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2462,7 +2462,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2516,7 +2516,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2568,7 +2568,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2619,7 +2619,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
     options = options,
@@ -2671,7 +2671,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -2723,7 +2723,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
     options = options,
@@ -2774,7 +2774,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2825,7 +2825,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2877,7 +2877,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     question = question,
     options = options,
@@ -2929,7 +2929,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     question = question,
     options = options,
@@ -2979,7 +2979,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -3028,7 +3028,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
     options = options,
@@ -3078,7 +3078,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chatId,
     questionEntities = questionTextSources,
     options = options,
@@ -3128,7 +3128,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = sendQuizPoll(
+): ChatContentMessage<PollContent> = sendQuizPoll(
     chatId = chat.id,
     questionEntities = questionTextSources,
     options = options,
@@ -3170,7 +3170,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
     sticker = sticker,
     threadId = threadId,
@@ -3205,7 +3205,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<StickerContent> = sendSticker(
+): ChatContentMessage<StickerContent> = sendSticker(
     chat = chat,
     sticker = sticker,
     threadId = threadId,
@@ -3245,7 +3245,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LiveLocationContent> = sendLiveLocation(
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId = chatId,
     latitude = latitude,
     longitude = longitude,
@@ -3287,7 +3287,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LiveLocationContent> = sendLiveLocation(
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId = chatId,
     location = location,
     livePeriod = livePeriod,
@@ -3329,7 +3329,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LiveLocationContent> = sendLiveLocation(
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
     chat = chat,
     latitude = latitude,
     longitude = longitude,
@@ -3371,7 +3371,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LiveLocationContent> = sendLiveLocation(
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
     chat = chat,
     location = location,
     livePeriod = livePeriod,
@@ -3415,7 +3415,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     latitude = latitude,
     longitude = longitude,
@@ -3462,7 +3462,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chat = chat,
     latitude = latitude,
     longitude = longitude,
@@ -3508,7 +3508,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     location = location,
     title = title,
@@ -3553,7 +3553,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chat = chat,
     location = location,
     title = title,
@@ -3592,7 +3592,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chatId = chatId,
     venue = venue,
     threadId = threadId,
@@ -3625,7 +3625,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VenueContent> = sendVenue(
+): ChatContentMessage<VenueContent> = sendVenue(
     chat = chat,
     venue = venue,
     threadId = threadId,
@@ -3663,7 +3663,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video,
     text = text,
@@ -3706,7 +3706,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chat = chat,
     video = video,
     text = text,
@@ -3748,7 +3748,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chatId = chatId,
     video = video,
     entities = entities,
@@ -3789,13 +3789,173 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoContent> = sendVideo(
+): ChatContentMessage<VideoContent> = sendVideo(
     chat = chat,
     video = video,
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
     spoilered = spoilered,
     supportsStreaming = supportsStreaming,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Will execute [sendLivePhoto] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    livePhoto: LivePhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = chatId,
+    livePhoto = livePhoto,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Will execute [sendLivePhoto] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    livePhoto: LivePhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    chat = chat,
+    livePhoto = livePhoto,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Will execute [sendLivePhoto] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    livePhoto: LivePhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    chatId = chatId,
+    livePhoto = livePhoto,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Will execute [sendLivePhoto] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend inline fun TelegramBot.send(
+    chat: Chat,
+    livePhoto: LivePhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    chat = chat,
+    livePhoto = livePhoto,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -3826,7 +3986,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chatId,
     videoNote = videoNote,
     threadId = threadId,
@@ -3859,7 +4019,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chat = chat,
     videoNote = videoNote,
     threadId = threadId,
@@ -3894,7 +4054,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice,
     text = text,
@@ -3931,7 +4091,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chat = chat,
     voice = voice,
     text = text,
@@ -3967,7 +4127,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = chatId,
     voice = voice,
     entities = entities,
@@ -4002,7 +4162,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VoiceContent> = sendVoice(
+): ChatContentMessage<VoiceContent> = sendVoice(
     chat = chat,
     voice = voice,
     entities = entities,
@@ -4035,7 +4195,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4066,7 +4226,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4097,7 +4257,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4128,7 +4288,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
+): ChatContentMessage<MediaGroupContent<MediaGroupPartContent>> = sendMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4158,7 +4318,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4188,7 +4348,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4218,7 +4378,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4248,7 +4408,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
+): ChatContentMessage<MediaGroupContent<AudioContent>> = sendPlaylist(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4278,7 +4438,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4308,7 +4468,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4338,7 +4498,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4368,7 +4528,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
+): ChatContentMessage<MediaGroupContent<DocumentContent>> = sendDocumentsGroup(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4398,7 +4558,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4428,7 +4588,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,
@@ -4458,7 +4618,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chatId = chatId,
     media = media,
     threadId = threadId,
@@ -4488,7 +4648,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): ContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
+): ChatContentMessage<MediaGroupContent<VisualMediaGroupPartContent>> = sendVisualMediaGroup(
     chat = chat,
     media = media,
     threadId = threadId,

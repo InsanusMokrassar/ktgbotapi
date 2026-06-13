@@ -208,3 +208,11 @@ inline val Message.passport_data: PassportData?
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.reply_markup: InlineKeyboardMarkup?
     get() = asCommonMessage() ?.replyMarkup
+
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.guest_bot_caller_user: PreviewUser?
+    get() = possiblyGuestAnswerMessageOrNull() ?.guestBotCallerUser
+
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.guest_bot_caller_chat: PreviewChat?
+    get() = possiblyGuestAnswerMessageOrNull() ?.guestBotCallerChat

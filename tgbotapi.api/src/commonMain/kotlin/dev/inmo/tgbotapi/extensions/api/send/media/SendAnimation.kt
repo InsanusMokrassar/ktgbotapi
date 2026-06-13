@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.AnimationFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
 
 /**
@@ -41,7 +41,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = execute(
+): ChatContentMessage<AnimationContent> = execute(
     SendAnimation(
         chatId = chatId,
         animation = animation,
@@ -90,7 +90,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation.fileId,
     thumb = animation.thumbnail ?.fileId,
@@ -138,7 +138,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     thumb = thumb,
@@ -185,7 +185,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     text = text,
@@ -232,7 +232,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = execute(
+): ChatContentMessage<AnimationContent> = execute(
     SendAnimation(
         chatId = chatId,
         animation = animation,
@@ -279,7 +279,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chatId,
     animation = animation.fileId,
     thumb = animation.thumbnail ?.fileId,
@@ -325,7 +325,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     thumb = thumb,
@@ -370,7 +370,7 @@ public suspend fun TelegramBot.sendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AnimationContent> = sendAnimation(
+): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = chat.id,
     animation = animation,
     entities = entities,

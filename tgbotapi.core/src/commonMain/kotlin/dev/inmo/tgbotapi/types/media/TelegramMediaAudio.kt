@@ -14,8 +14,6 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
-internal const val audioTelegramMediaType = "audio"
-
 fun TelegramMediaAudio(
     file: InputFile,
     entities: TextSourcesList,
@@ -54,8 +52,9 @@ data class TelegramMediaAudio internal constructor(
     override val title: String? = null,
     override val thumb: InputFile? = null
 ) : TelegramFreeMedia, AudioMediaGroupMemberTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TitledTelegramMedia,
-    Performerable {
-    override val type: String = audioTelegramMediaType
+    Performerable, InputPollMedia {
+    @EncodeDefault
+    override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -65,6 +64,10 @@ data class TelegramMediaAudio internal constructor(
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "audio"
+    }
 }
 
 fun AudioFile.toTelegramMediaAudio(

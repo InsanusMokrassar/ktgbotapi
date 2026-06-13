@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.media.*
+import dev.inmo.tgbotapi.types.message.abstracts.CommonContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import kotlinx.serialization.Serializable
 
@@ -28,7 +29,7 @@ sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : Texted
     data class PartWrapper<T : MediaGroupPartContent>(
         val messageId: MessageId,
         val content: T,
-        val sourceMessage: PossiblySentViaBotCommonMessage<T>
+        val sourceMessage: CommonContentMessage<T>
     )
     val group: List<PartWrapper<T>>
     val mediaGroupId: MediaGroupId

@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
@@ -36,7 +36,7 @@ public suspend fun TelegramBot.sendMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = execute(
+): ChatContentMessage<TextContent> = execute(
     SendTextMessage(
         chatId = chatId,
         text = text,
@@ -74,7 +74,7 @@ public suspend fun TelegramBot.sendTextMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     text = text,
     parseMode = parseMode,
@@ -110,7 +110,7 @@ public suspend fun TelegramBot.sendTextMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chat.id,
     text = text,
     parseMode = parseMode,
@@ -147,7 +147,7 @@ public suspend fun TelegramBot.sendMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chat.id,
     text = text,
     parseMode = parseMode,
@@ -182,7 +182,7 @@ public suspend fun TelegramBot.sendMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = execute(
+): ChatContentMessage<TextContent> = execute(
     SendTextMessage(
         chatId = chatId,
         entities = entities,
@@ -219,7 +219,7 @@ public suspend fun TelegramBot.sendMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -255,7 +255,7 @@ public suspend fun TelegramBot.sendMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -289,7 +289,7 @@ public suspend fun TelegramBot.sendTextMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chatId,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -324,7 +324,7 @@ public suspend fun TelegramBot.sendTextMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -360,7 +360,7 @@ public suspend fun TelegramBot.sendTextMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chatId,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -394,7 +394,7 @@ public suspend fun TelegramBot.sendMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chatId = chat.id,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -429,7 +429,7 @@ public suspend fun TelegramBot.sendMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -465,7 +465,7 @@ public suspend fun TelegramBot.sendMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendMessage(
+): ChatContentMessage<TextContent> = sendMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -500,7 +500,7 @@ public suspend fun TelegramBot.sendTextMessage(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chatId = chat.id,
     entities = entities,
     linkPreviewOptions = linkPreviewOptions,
@@ -535,7 +535,7 @@ public suspend fun TelegramBot.sendTextMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,
@@ -571,7 +571,7 @@ public suspend fun TelegramBot.sendTextMessage(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-): ContentMessage<TextContent> = sendTextMessage(
+): ChatContentMessage<TextContent> = sendTextMessage(
     chat = chat,
     entities = buildEntities(separator, builderBody),
     linkPreviewOptions = linkPreviewOptions,

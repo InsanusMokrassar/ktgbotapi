@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlin.jvm.JvmInline
@@ -10,7 +11,7 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class PhotoFile(
     val photos: List<PhotoSize>
-) : List<PhotoSize> by photos, MediaContentVariant, UsefulAsPaidMediaFile {
+) : List<PhotoSize> by photos, PollMedia, MediaContentVariant, UsefulAsPaidMediaFile {
     val biggest: PhotoSize
         get() = biggest()!!
     override val fileId: FileId

@@ -7,9 +7,11 @@ import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageReques
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
+import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PollContent
@@ -20,7 +22,7 @@ import korlibs.time.millisecondsLong
 import korlibs.time.seconds
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
 
 internal inline val ApproximateScheduledCloseInfo.openPeriod
     get() = openDuration.millisecondsLong.div(1000)
@@ -61,6 +63,7 @@ fun SendPoll(
     shuffleOptions: Boolean = false,
     allowAddingOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
@@ -73,7 +76,10 @@ fun SendPoll(
     allowPaidBroadcast: Boolean = false,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null
 ) = SendRegularPoll(
     chatId = chatId,
     question = question,
@@ -82,13 +88,16 @@ fun SendPoll(
     questionParseMode = questionParseMode,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowsMultipleAnswers = false,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
     description = description,
     descriptionParseMode = descriptionParseMode,
+    media = media,
+    membersOnly = membersOnly,
+    countryCodes = countryCodes,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
@@ -110,6 +119,7 @@ fun SendPoll(
     shuffleOptions: Boolean = false,
     allowAddingOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
+    allowsMultipleAnswers: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
@@ -122,7 +132,11 @@ fun SendPoll(
     allowPaidBroadcast: Boolean = false,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    effectId: EffectId? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null
 ) = SendRegularPoll(
     chatId = chatId,
     questionTextSources = textSources,
@@ -130,20 +144,23 @@ fun SendPoll(
     closeInfo = openPeriod?.asApproximateScheduledCloseInfo ?: closeDate?.asExactScheduledCloseInfo,
     isAnonymous = isAnonymous,
     isClosed = isClosed,
-    allowsMultipleAnswers = false,
+    allowsMultipleAnswers = allowsMultipleAnswers,
     allowsRevoting = allowsRevoting,
     shuffleOptions = shuffleOptions,
     allowAddingOptions = allowAddingOptions,
     hideResultsUntilCloses = hideResultsUntilCloses,
     description = description,
     descriptionParseMode = descriptionParseMode,
+    media = media,
+    membersOnly = membersOnly,
+    countryCodes = countryCodes,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
-    effectId = null,
+    effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
@@ -162,6 +179,9 @@ fun Poll.createRequest(
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
     effectId: EffectId? = null,
+    media: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -180,6 +200,9 @@ fun Poll.createRequest(
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
@@ -201,6 +224,9 @@ fun Poll.createRequest(
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
+            media = media,
+            membersOnly = membersOnly,
+            countryCodes = countryCodes,
             effectId = effectId,
             suggestedPostParameters = suggestedPostParameters,
             replyParameters = replyParameters,
@@ -213,13 +239,16 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowsMultipleAnswers = false,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
@@ -232,13 +261,16 @@ fun Poll.createRequest(
         closeInfo = scheduledCloseInfo,
         isAnonymous = isAnonymous,
         isClosed = isClosed,
-        allowsMultipleAnswers = false,
+        allowsMultipleAnswers = allowsMultipleAnswers,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
+        media = media,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyParameters,
@@ -258,8 +290,8 @@ internal fun ScheduledCloseInfo.checkSendData() {
     }
 }
 
-sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>>, TextedInput {
+sealed class SendPoll : SendContentMessageRequest<ChatContentMessage<PollContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<PollContent>>, TextedInput {
     abstract val question: String
     override val text: String
         get() = question
@@ -291,7 +323,7 @@ sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
         }
 
     override fun method(): String = "sendPoll"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<PollContent>>
         get() = commonResultDeserializer
 }
 

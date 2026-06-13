@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.polls.Poll
 import kotlinx.serialization.Serializable
 
@@ -26,7 +26,7 @@ data class PollContent(
         suggestedPostParameters: SuggestedPostParameters?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<PollContent>> = poll.createRequest(
+    ): Request<ChatContentMessage<PollContent>> = poll.createRequest(
         chatId = chatId,
         threadId = messageThreadId,
         directMessageThreadId = directMessageThreadId,

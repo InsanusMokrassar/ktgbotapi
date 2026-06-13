@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.types.checklistMessageField
 import dev.inmo.tgbotapi.types.markedAsDoneTaskIdsField
 import dev.inmo.tgbotapi.types.markedAsNotDoneTaskIdsField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.types.message.content.ChecklistContent
 import kotlinx.serialization.SerialName
@@ -15,7 +15,7 @@ data class ChecklistTasksDone(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(checklistMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializerClass::class)
-    val checklistMessage: CommonMessage<ChecklistContent>,
+    val checklistMessage: ChatContentMessage<ChecklistContent>,
     @SerialName(markedAsDoneTaskIdsField)
     val markedAsDone: List<ChecklistTaskId>? = null,
     @SerialName(markedAsNotDoneTaskIdsField)

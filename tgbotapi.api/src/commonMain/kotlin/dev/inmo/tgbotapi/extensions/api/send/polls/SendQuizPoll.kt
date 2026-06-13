@@ -5,9 +5,10 @@ import dev.inmo.tgbotapi.requests.send.polls.SendQuizPoll
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.polls.InputPollOption
@@ -32,6 +33,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -42,7 +47,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         question = question,
@@ -61,6 +66,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         descriptionParseMode = descriptionParseMode,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -91,6 +100,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     descriptionParseMode: ParseMode? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -101,7 +114,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         questionEntities = questionEntities,
@@ -119,6 +132,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         descriptionParseMode = descriptionParseMode,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -148,6 +165,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     descriptionTextSources: List<TextSource>? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -158,7 +179,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         question = question,
@@ -175,6 +196,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         descriptionTextSources = descriptionTextSources,
         openPeriod = openPeriod,
         closeDate = closeDate,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -203,6 +228,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     descriptionTextSources: List<TextSource>? = null,
     openPeriod: LongSeconds? = null,
     closeDate: LongSeconds? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -213,7 +242,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         questionEntities = questionEntities,
@@ -227,6 +256,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
         descriptionTextSources = descriptionTextSources,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         openPeriod = openPeriod,
         closeDate = closeDate,
         threadId = threadId,
@@ -259,6 +292,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -269,7 +306,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         question = question,
@@ -287,6 +324,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = description,
         descriptionParseMode = descriptionParseMode,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -316,6 +357,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     hideResultsUntilCloses: Boolean = false,
     description: String? = null,
     descriptionParseMode: ParseMode? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -326,7 +371,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         questionEntities = questionEntities,
@@ -343,6 +388,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         hideResultsUntilCloses = hideResultsUntilCloses,
         description = description,
         descriptionParseMode = descriptionParseMode,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -371,6 +420,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
     descriptionTextSources: List<TextSource>? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -381,7 +434,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         question = question,
@@ -397,6 +450,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
         descriptionTextSources = descriptionTextSources,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
@@ -424,6 +481,10 @@ public suspend fun TelegramBot.sendQuizPoll(
     shuffleOptions: Boolean = false,
     hideResultsUntilCloses: Boolean = false,
     descriptionTextSources: List<TextSource>? = null,
+    media: InputPollMedia? = null,
+    explanationMedia: InputPollMedia? = null,
+    membersOnly: Boolean = false,
+    countryCodes: List<String>? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -434,7 +495,7 @@ public suspend fun TelegramBot.sendQuizPoll(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<PollContent> = execute(
+): ChatContentMessage<PollContent> = execute(
     SendQuizPoll(
         chatId = chatId,
         questionEntities = questionEntities,
@@ -449,6 +510,10 @@ public suspend fun TelegramBot.sendQuizPoll(
         shuffleOptions = shuffleOptions,
         hideResultsUntilCloses = hideResultsUntilCloses,
         descriptionTextSources = descriptionTextSources,
+        media = media,
+        explanationMedia = explanationMedia,
+        membersOnly = membersOnly,
+        countryCodes = countryCodes,
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,

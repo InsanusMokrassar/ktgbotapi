@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.DocumentFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
 
 /**
@@ -35,7 +35,7 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = execute(
+): ChatContentMessage<DocumentContent> = execute(
     SendDocument(
         chatId = chatId,
         document = document,
@@ -77,7 +77,7 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
     thumb = thumb,
@@ -116,7 +116,7 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document.fileId,
     thumb = document.thumbnail ?.fileId,
@@ -155,7 +155,7 @@ public suspend fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
     text = text,
@@ -193,7 +193,7 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = execute(
+): ChatContentMessage<DocumentContent> = execute(
     SendDocument(
         chatId = chatId,
         document = document,
@@ -233,7 +233,7 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
     thumb = thumb,
@@ -270,7 +270,7 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chatId,
     document = document.fileId,
     thumb = document.thumbnail ?.fileId,
@@ -307,7 +307,7 @@ public suspend inline fun TelegramBot.sendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): ContentMessage<DocumentContent> = sendDocument(
+): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = chat.id,
     document = document,
     entities = entities,

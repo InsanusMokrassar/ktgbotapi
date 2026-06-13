@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.requests.chat.forum.CreateForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
 
-interface PossiblyTopicMessage : AccessibleMessage {
+interface PossiblyTopicMessage : ChatMessage {
     val threadId: MessageThreadId?
     val threadCreatingInfo: ForumTopicCreated?
 }

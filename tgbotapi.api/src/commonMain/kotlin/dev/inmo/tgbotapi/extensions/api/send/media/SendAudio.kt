@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.AudioFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.AudioContent
 
 /**
@@ -37,7 +37,7 @@ public suspend fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = execute(
+): ChatContentMessage<AudioContent> = execute(
     SendAudio(
         chatId = chatId,
         audio = audio,
@@ -83,7 +83,7 @@ public suspend fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chat.id,
     audio = audio,
     thumb = thumb,
@@ -124,7 +124,7 @@ public suspend fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio.fileId,
     thumb = audio.thumbnail ?.fileId,
@@ -165,7 +165,7 @@ public suspend fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chat.id,
     audio = audio,
     text = text,
@@ -206,7 +206,7 @@ public suspend inline fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = execute(
+): ChatContentMessage<AudioContent> = execute(
     SendAudio(
         chatId = chatId,
         audio = audio,
@@ -250,7 +250,7 @@ public suspend inline fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chat.id,
     audio = audio,
     thumb = thumb,
@@ -289,7 +289,7 @@ public suspend inline fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chatId,
     audio = audio.fileId,
     thumb = audio.thumbnail ?.fileId,
@@ -328,7 +328,7 @@ public suspend inline fun TelegramBot.sendAudio(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<AudioContent> = sendAudio(
+): ChatContentMessage<AudioContent> = sendAudio(
     chatId = chat.id,
     audio = audio,
     entities = entities,

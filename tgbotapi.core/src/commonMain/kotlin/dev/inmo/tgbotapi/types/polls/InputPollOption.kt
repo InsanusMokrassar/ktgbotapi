@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types.polls
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.TextedInput
+import dev.inmo.tgbotapi.types.mediaField
+import dev.inmo.tgbotapi.types.media.InputPollOptionMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
@@ -28,10 +30,12 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
     val parseMode: ParseMode?,
     @SerialName(textEntitiesField)
     override val textSources: List<TextSource>,
+    @SerialName(mediaField)
+    val media: InputPollOptionMedia? = null,
 ) : TextedInput {
-    constructor(text: String, parseMode: ParseMode? = null) : this(text, parseMode, emptyList())
-    constructor(textSources: List<TextSource>) : this(textSources.makeSourceString(), null, textSources)
-    constructor(builderBody: EntitiesBuilderBody) : this(EntitiesBuilder().apply(builderBody).build())
+    constructor(text: String, parseMode: ParseMode? = null, media: InputPollOptionMedia? = null) : this(text, parseMode, emptyList(), media)
+    constructor(textSources: List<TextSource>, media: InputPollOptionMedia? = null) : this(textSources.makeSourceString(), null, textSources, media)
+    constructor(media: InputPollOptionMedia? = null, builderBody: EntitiesBuilderBody) : this(EntitiesBuilder().apply(builderBody).build(), media)
 
     companion object : KSerializer<InputPollOption> {
         @Serializable
@@ -42,6 +46,8 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
             val parseMode: ParseMode? = null,
             @SerialName(textEntitiesField)
             val textSources: List<RawMessageEntity> = emptyList(),
+            @SerialName(mediaField)
+            val media: InputPollOptionMedia? = null,
         )
         override val descriptor: SerialDescriptor
             get() = RawPollInputOption.serializer().descriptor
@@ -51,7 +57,8 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
             return InputPollOption(
                 raw.text,
                 raw.parseMode,
-                raw.textSources.asTextSources(raw.text)
+                raw.textSources.asTextSources(raw.text),
+                raw.media
             )
         }
 
@@ -61,7 +68,8 @@ data class InputPollOption @Warning("This constructor is not recommended to use"
                 RawPollInputOption(
                     value.text,
                     value.parseMode,
-                    value.textSources.toRawMessageEntities()
+                    value.textSources.toRawMessageEntities(),
+                    value.media
                 )
             )
         }

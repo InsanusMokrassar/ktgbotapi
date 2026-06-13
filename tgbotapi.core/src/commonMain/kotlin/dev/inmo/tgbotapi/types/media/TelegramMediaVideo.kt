@@ -14,8 +14,6 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
-internal const val videoTelegramMediaType = "video"
-
 fun TelegramMediaVideo(
     file: InputFile,
     text: String? = null,
@@ -100,8 +98,11 @@ data class TelegramMediaVideo internal constructor (
     CoveredTelegramMedia,
     WithCustomStartTelegramMedia,
     OptionallyStreamable,
-    VisualMediaGroupMemberTelegramMedia {
-    override val type: String = videoTelegramMediaType
+    VisualMediaGroupMemberTelegramMedia,
+    InputPollMedia,
+    InputPollOptionMedia {
+    @EncodeDefault
+    override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -111,4 +112,8 @@ data class TelegramMediaVideo internal constructor (
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "video"
+    }
 }

@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
@@ -37,7 +38,7 @@ fun SendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<VoiceContent>> {
+): Request<ChatContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
@@ -84,7 +85,7 @@ fun SendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<VoiceContent>> {
+): Request<ChatContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
@@ -116,7 +117,7 @@ fun SendVoice(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VoiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -158,11 +159,11 @@ data class SendVoiceData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<VoiceContent>>,
-    SendContentMessageRequest<ContentMessage<VoiceContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<VoiceContent>>,
-    TextableSendMessageRequest<ContentMessage<VoiceContent>>,
-    DuratedSendMessageRequest<ContentMessage<VoiceContent>>
+) : DataRequest<ChatContentMessage<VoiceContent>>,
+    SendContentMessageRequest<ChatContentMessage<VoiceContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<VoiceContent>>,
+    TextableSendMessageRequest<ChatContentMessage<VoiceContent>>,
+    DuratedSendMessageRequest<ChatContentMessage<VoiceContent>>
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
@@ -177,7 +178,7 @@ data class SendVoiceData internal constructor(
     }
 
     override fun method(): String = "sendVoice"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<VoiceContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<VoiceContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

@@ -7,8 +7,6 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import kotlinx.serialization.*
 
-internal const val videoTelegramPaidMediaType = "video"
-
 @Serializable
 data class TelegramPaidMediaVideo (
     override val file: InputFile,
@@ -29,11 +27,15 @@ data class TelegramPaidMediaVideo (
     CoveredTelegramMedia,
     OptionallyStreamable,
     WithCustomStartTelegramMedia {
-    override val type: String = videoTelegramPaidMediaType
+    override val type: String = TYPE
 
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "video"
+    }
 }
 
 fun VideoFile.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = TelegramPaidMediaVideo(

@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.media.*
 fun PaidMedia.toTelegramPaidMediaOrNull(): TelegramPaidMedia? = when (this) {
     is PaidMedia.Photo -> toTelegramMediaPhoto()
     is PaidMedia.Video -> toTelegramPaidMediaVideo()
+    is PaidMedia.LivePhoto -> toTelegramPaidMediaLivePhoto()
     is PaidMedia.Preview, is PaidMedia.Unknown -> null
 }
 

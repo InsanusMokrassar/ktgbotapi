@@ -6,9 +6,9 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import kotlinx.coroutines.flow.*
 
 /**
- * Simple factory to convert [ContentMessage] to a [CommonMessage]
+ * Simple factory to convert [ContentMessage] to a [ChatContentMessage]
  */
-fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.onlyCommonMessages() = filterIsInstance<CommonMessage<C>>()
+fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.onlyCommonMessages() = filterIsInstance<ChatContentMessage<C>>()
 
 /**
  * Shortcut for [onlyCommonMessages]
@@ -17,7 +17,7 @@ fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.onlyCommonMessages() = fi
 inline fun <C: MessageContent, T : ContentMessage<C>> Flow<T>.commonMessages() = onlyCommonMessages()
 
 /**
- * Filter the messages and checking that incoming [CommonMessage] is [PossiblySentViaBotCommonMessage] and its
+ * Filter the messages and checking that incoming [ChatContentMessage] is [PossiblySentViaBotCommonMessage] and its
  * [PossiblySentViaBotCommonMessage.senderBot] is not null
  */
 fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.onlySentViaBot() = mapNotNull {
@@ -29,7 +29,7 @@ fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.onlySentViaBot() = map
 }
 
 /**
- * Filter the messages and checking that incoming [CommonMessage] not is [PossiblySentViaBotCommonMessage] or its
+ * Filter the messages and checking that incoming [ChatContentMessage] not is [PossiblySentViaBotCommonMessage] or its
  * [PossiblySentViaBotCommonMessage.senderBot] is null
  */
 fun <MC : MessageContent, M : ContentMessage<MC>> Flow<M>.withoutSentViaBot() = filter {

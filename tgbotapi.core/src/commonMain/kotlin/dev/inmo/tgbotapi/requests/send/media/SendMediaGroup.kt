@@ -11,8 +11,9 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.CommonContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
@@ -44,7 +45,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     effectId: EffectId? = null,
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null
-): Request<ContentMessage<MediaGroupContent<T>>> {
+): Request<ChatContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
@@ -87,7 +88,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
             data,
             files.associateBy { it.fileId }
         )
-    }) as Request<ContentMessage<MediaGroupContent<T>>>
+    }) as Request<ChatContentMessage<MediaGroupContent<T>>>
 }
 
 /**
@@ -187,16 +188,16 @@ inline fun SendVisualMediaGroup(
     replyParameters = replyParameters
 )
 
-private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
-    private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
+private object MessagesListSerializer: KSerializer<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>> {
+    private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<CommonContentMessage<MediaGroupPartContent>>())
     override val descriptor: SerialDescriptor = serializer.descriptor
 
-    override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>> {
+    override fun deserialize(decoder: Decoder): CommonContentMessage<MediaGroupContent<MediaGroupPartContent>> {
         val messages = serializer.deserialize(decoder)
         return messages.asMediaGroupMessage()
     }
 
-    override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>) {
+    override fun serialize(encoder: Encoder, value: CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>) {
         serializer.serialize(encoder, value.content.group.map { it.sourceMessage })
     }
 
@@ -230,8 +231,8 @@ data class SendMediaGroupData internal constructor(
     override val suggestedPostParameters: SuggestedPostParameters? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
-) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
-    SendContentMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
+) : DataRequest<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>>,
+    SendContentMessageRequest<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>> {
     @Suppress("unused")
     @SerialName(mediaField)
     private val convertedMedia: String
@@ -245,7 +246,7 @@ data class SendMediaGroupData internal constructor(
     override fun method(): String = "sendMediaGroup"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>
+    override val resultDeserializer: DeserializationStrategy<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>>
         get() = MessagesListSerializer
 }
 

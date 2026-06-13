@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
@@ -44,7 +45,7 @@ fun SendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<AnimationContent>> {
+): Request<ChatContentMessage<AnimationContent>> {
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -102,7 +103,7 @@ fun SendAnimation(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ContentMessage<AnimationContent>> {
+): Request<ChatContentMessage<AnimationContent>> {
     val animationAsFile = animation as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -140,7 +141,7 @@ fun SendAnimation(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<AnimationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
@@ -192,14 +193,14 @@ data class SendAnimationData internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<ContentMessage<AnimationContent>>,
-    SendContentMessageRequest<ContentMessage<AnimationContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<AnimationContent>>,
-    TextableSendMessageRequest<ContentMessage<AnimationContent>>,
-    ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,
-    DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
-    SizedSendMessageRequest<ContentMessage<AnimationContent>>,
-    WithCustomizableCaptionRequest<ContentMessage<AnimationContent>>,
+) : DataRequest<ChatContentMessage<AnimationContent>>,
+    SendContentMessageRequest<ChatContentMessage<AnimationContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<AnimationContent>>,
+    TextableSendMessageRequest<ChatContentMessage<AnimationContent>>,
+    ThumbedSendMessageRequest<ChatContentMessage<AnimationContent>>,
+    DuratedSendMessageRequest<ChatContentMessage<AnimationContent>>,
+    SizedSendMessageRequest<ChatContentMessage<AnimationContent>>,
+    WithCustomizableCaptionRequest<ChatContentMessage<AnimationContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {
@@ -215,7 +216,7 @@ data class SendAnimationData internal constructor(
     }
 
     override fun method(): String = "sendAnimation"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<AnimationContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

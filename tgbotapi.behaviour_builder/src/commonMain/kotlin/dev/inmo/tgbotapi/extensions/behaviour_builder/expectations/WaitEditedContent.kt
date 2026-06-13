@@ -105,6 +105,10 @@ fun BehaviourContext.waitEditedVideo(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
 ) = waitEditedContent<VideoContent>(initRequest, errorFactory)
+fun BehaviourContext.waitEditedLivePhoto(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+) = waitEditedContent<LivePhotoContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedVideoNote(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

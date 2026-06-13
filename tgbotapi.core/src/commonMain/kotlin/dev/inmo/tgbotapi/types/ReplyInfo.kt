@@ -120,6 +120,7 @@ sealed interface ReplyInfo {
             private val photo: PhotoFile? = null,
             private val sticker: Sticker? = null,
             private val video: VideoFile? = null,
+            private val live_photo: LivePhotoFile? = null,
             private val voice: VoiceFile? = null,
             private val video_note: VideoNoteFile? = null,
             private val contact: Contact? = null,
@@ -146,6 +147,7 @@ sealed interface ReplyInfo {
                         story != null -> story
                         audio != null -> audio
                         video != null -> video
+                        live_photo != null -> live_photo
                         video_note != null -> video_note
                         animation != null -> animation
                         document != null -> document

@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.*
@@ -17,13 +18,13 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<LocationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val liveResultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>>
+private val liveResultDeserializer: DeserializationStrategy<ChatContentMessage<LiveLocationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
-private val staticResultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>>
+private val staticResultDeserializer: DeserializationStrategy<ChatContentMessage<StaticLocationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendLocation(
@@ -125,9 +126,9 @@ fun SendLiveLocation(
 )
 
 @Serializable(SendLocation.Companion::class)
-sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<ContentMessage<T>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<T>>,
-    PositionedSendMessageRequest<ContentMessage<T>>,
+sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<ChatContentMessage<T>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<T>>,
+    PositionedSendMessageRequest<ChatContentMessage<T>>,
     HorizontallyAccured,
     Livable,
     ProximityAlertable,
@@ -179,7 +180,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyMarkupField)
         override val replyMarkup: KeyboardMarkup? = null
     ) : SendLocation<LiveLocationContent> {
-        override val resultDeserializer: DeserializationStrategy<ContentMessage<LiveLocationContent>>
+        override val resultDeserializer: DeserializationStrategy<ChatContentMessage<LiveLocationContent>>
             get() = liveResultDeserializer
         override val requestSerializer: SerializationStrategy<*>
             get() = serializer()
@@ -237,7 +238,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             get() = null
         override val proximityAlertRadius: Meters?
             get() = null
-        override val resultDeserializer: DeserializationStrategy<ContentMessage<StaticLocationContent>>
+        override val resultDeserializer: DeserializationStrategy<ChatContentMessage<StaticLocationContent>>
             get() = staticResultDeserializer
         override val requestSerializer: SerializationStrategy<*>
             get() = serializer()

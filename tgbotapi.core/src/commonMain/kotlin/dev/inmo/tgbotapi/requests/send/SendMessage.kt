@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.TextContent
@@ -18,7 +19,7 @@ import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
-internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
+internal val TextContentMessageResultDeserializer: DeserializationStrategy<ChatContentMessage<TextContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendTextMessage(
@@ -123,9 +124,9 @@ data class SendTextMessage internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ContentMessage<TextContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<TextContent>>,
-    TextableSendMessageRequest<ContentMessage<TextContent>>,
+) : SendContentMessageRequest<ChatContentMessage<TextContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<TextContent>>,
+    TextableSendMessageRequest<ChatContentMessage<TextContent>>,
     LinkPreviewOptionsContainer
 {
     override val textSources: TextSourcesList? by lazy {
@@ -139,7 +140,7 @@ data class SendTextMessage internal constructor(
     }
 
     override fun method(): String = "sendMessage"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<TextContent>>
         get() = TextContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

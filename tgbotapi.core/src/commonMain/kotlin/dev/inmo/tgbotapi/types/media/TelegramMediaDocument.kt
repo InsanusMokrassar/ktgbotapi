@@ -12,8 +12,6 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
-internal const val documentTelegramMediaType = "document"
-
 fun TelegramMediaDocument(
     file: InputFile,
     text: String? = null,
@@ -59,8 +57,9 @@ data class TelegramMediaDocument internal constructor(
     override val thumb: InputFile? = null,
     @SerialName(disableContentTypeDetectionField)
     val disableContentTypeDetection: Boolean? = null
-) : TelegramFreeMedia, DocumentMediaGroupMemberTelegramMedia, ThumbedTelegramMedia {
-    override val type: String = documentTelegramMediaType
+) : TelegramFreeMedia, DocumentMediaGroupMemberTelegramMedia, ThumbedTelegramMedia, InputPollMedia {
+    @EncodeDefault
+    override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
@@ -70,6 +69,10 @@ data class TelegramMediaDocument internal constructor(
     @SerialName(mediaField)
     override val media: String
     init { media = file.fileIdToSend } // crutch until js compiling will be fixed
+
+    companion object {
+        const val TYPE = "document"
+    }
 }
 
 fun DocumentFile.toTelegramMediaDocument(

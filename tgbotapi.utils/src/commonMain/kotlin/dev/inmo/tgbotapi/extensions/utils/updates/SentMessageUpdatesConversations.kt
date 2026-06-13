@@ -16,10 +16,10 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asContentMessagesFlow() = mapNotNull {
 }
 
 /**
- * Will map incoming [BaseSentMessageUpdate]s to [CommonMessage] from [BaseSentMessageUpdate.data]
+ * Will map incoming [BaseSentMessageUpdate]s to [ChatContentMessage] from [BaseSentMessageUpdate.data]
  */
 fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
-    it.data as? CommonMessage<*>
+    it.data as? ChatContentMessage<*>
 }
 
 @Suppress("NOTHING_TO_INLINE")

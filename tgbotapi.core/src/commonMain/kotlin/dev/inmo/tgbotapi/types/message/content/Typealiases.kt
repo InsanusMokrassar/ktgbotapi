@@ -1,40 +1,41 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 
-typealias TextedMessage = CommonMessage<TextedContent>
+typealias TextedMessage = ChatContentMessage<TextedContent>
 
-typealias InvoiceMessage = CommonMessage<InvoiceContent>
-typealias VenueMessage = CommonMessage<VenueContent>
-typealias GameMessage = CommonMessage<GameContent>
-typealias DiceMessage = CommonMessage<DiceContent>
-typealias ContactMessage = CommonMessage<ContactContent>
-typealias PollMessage = CommonMessage<PollContent>
-typealias TextMessage = CommonMessage<TextContent>
-typealias StoryMessage = CommonMessage<StoryContent>
+typealias InvoiceMessage = ChatContentMessage<InvoiceContent>
+typealias VenueMessage = ChatContentMessage<VenueContent>
+typealias GameMessage = ChatContentMessage<GameContent>
+typealias DiceMessage = ChatContentMessage<DiceContent>
+typealias ContactMessage = ChatContentMessage<ContactContent>
+typealias PollMessage = ChatContentMessage<PollContent>
+typealias TextMessage = ChatContentMessage<TextContent>
+typealias StoryMessage = ChatContentMessage<StoryContent>
 
-typealias LocationMessage = CommonMessage<LocationContent>
-typealias LiveLocationMessage = CommonMessage<LiveLocationContent>
-typealias StaticLocationMessage = CommonMessage<StaticLocationContent>
+typealias LocationMessage = ChatContentMessage<LocationContent>
+typealias LiveLocationMessage = ChatContentMessage<LiveLocationContent>
+typealias StaticLocationMessage = ChatContentMessage<StaticLocationContent>
 
-typealias MediaCollectionMessage<T> = CommonMessage<MediaCollectionContent<T>>
-typealias MediaMessage = CommonMessage<MediaContent>
-typealias VideoNoteMessage = CommonMessage<VideoNoteContent>
-typealias StickerMessage = CommonMessage<StickerContent>
-typealias TextedMediaMessage = CommonMessage<TextedMediaContent>
-typealias VoiceMessage = CommonMessage<VoiceContent>
-typealias MediaGroupMessage<T> = CommonMessage<MediaGroupContent<T>>
-typealias AudioMediaGroupMessage = CommonMessage<AudioMediaGroupPartContent>
-typealias AudioMessage = CommonMessage<AudioContent>
-typealias DocumentMediaGroupMessage = CommonMessage<DocumentMediaGroupPartContent>
-typealias DocumentMessage = CommonMessage<DocumentContent>
-typealias VisualMediaGroupMessage = CommonMessage<VisualMediaGroupPartContent>
-typealias VideoMessage = CommonMessage<VideoContent>
-typealias PhotoMessage = CommonMessage<PhotoContent>
-typealias AnimationMessage = CommonMessage<AnimationContent>
-typealias ScheduledGiveawayContentMessage = CommonMessage<GiveawayContent>
-typealias GiveawayPublicResultsContentMessage = CommonMessage<GiveawayPublicResultsContent>
-typealias PaidMediaInfoContentMessage = CommonMessage<PaidMediaInfoContent>
-typealias ChecklistMessage = CommonMessage<ChecklistContent>
+typealias MediaCollectionMessage<T> = ChatContentMessage<MediaCollectionContent<T>>
+typealias MediaMessage = ChatContentMessage<MediaContent>
+typealias VideoNoteMessage = ChatContentMessage<VideoNoteContent>
+typealias StickerMessage = ChatContentMessage<StickerContent>
+typealias TextedMediaMessage = ChatContentMessage<TextedMediaContent>
+typealias VoiceMessage = ChatContentMessage<VoiceContent>
+typealias MediaGroupMessage<T> = ChatContentMessage<MediaGroupContent<T>>
+typealias AudioMediaGroupMessage = ChatContentMessage<AudioMediaGroupPartContent>
+typealias AudioMessage = ChatContentMessage<AudioContent>
+typealias DocumentMediaGroupMessage = ChatContentMessage<DocumentMediaGroupPartContent>
+typealias DocumentMessage = ChatContentMessage<DocumentContent>
+typealias VisualMediaGroupMessage = ChatContentMessage<VisualMediaGroupPartContent>
+typealias VideoMessage = ChatContentMessage<VideoContent>
+typealias LivePhotoMessage = ChatContentMessage<LivePhotoContent>
+typealias PhotoMessage = ChatContentMessage<PhotoContent>
+typealias AnimationMessage = ChatContentMessage<AnimationContent>
+typealias ScheduledGiveawayContentMessage = ChatContentMessage<GiveawayContent>
+typealias GiveawayPublicResultsContentMessage = ChatContentMessage<GiveawayPublicResultsContent>
+typealias PaidMediaInfoContentMessage = ChatContentMessage<PaidMediaInfoContent>
+typealias ChecklistMessage = ChatContentMessage<ChecklistContent>
 
 

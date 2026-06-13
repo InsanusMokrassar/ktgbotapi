@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
@@ -33,13 +34,17 @@ private data class PollOptionSurrogate(
     val addedByChat: Chat? = null,
     @Serializable(TelegramDateSerializer::class)
     @SerialName(additionDateField)
-    val additionDate: TelegramDate? = null
+    val additionDate: TelegramDate? = null,
+    @SerialName(mediaField)
+    @Serializable(PollMedia.Serializer::class)
+    val media: PollMedia? = null
 )
 
 @Serializable(PollOption.Companion::class)
 sealed interface PollOption : TextedInput {
     val id: PollOptionPersistentId
     val votes: Int
+    val media: PollMedia?
 
     fun asInput(): InputPollOption
 
@@ -53,7 +58,10 @@ sealed interface PollOption : TextedInput {
         @SerialName(textEntitiesField)
         override val textSources: List<TextSource> = emptyList(),
         @SerialName(votesCountField)
-        override val votes: Int = 0
+        override val votes: Int = 0,
+        @SerialName(mediaField)
+        @Serializable(PollMedia.Serializer::class)
+        override val media: PollMedia? = null
     ) : PollOption {
         override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
     }
@@ -77,7 +85,10 @@ sealed interface PollOption : TextedInput {
             val addedByUser: User,
             @Serializable(TelegramDateSerializer::class)
             @SerialName(additionDateField)
-            override val additionDate: TelegramDate
+            override val additionDate: TelegramDate,
+            @SerialName(mediaField)
+            @Serializable(PollMedia.Serializer::class)
+            override val media: PollMedia? = null
         ) : LatelyAdded {
             override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
         }
@@ -97,7 +108,10 @@ sealed interface PollOption : TextedInput {
             val addedByChat: Chat,
             @Serializable(TelegramDateSerializer::class)
             @SerialName(additionDateField)
-            override val additionDate: TelegramDate
+            override val additionDate: TelegramDate,
+            @SerialName(mediaField)
+            @Serializable(PollMedia.Serializer::class)
+            override val media: PollMedia? = null
         ) : LatelyAdded {
             override fun asInput(): InputPollOption = InputPollOption(text, null, textSources)
         }
@@ -116,7 +130,8 @@ sealed interface PollOption : TextedInput {
                         textSources = textSources,
                         votes = surrogate.votes,
                         addedByUser = surrogate.addedByUser,
-                        additionDate = surrogate.additionDate
+                        additionDate = surrogate.additionDate,
+                        media = surrogate.media
                     )
                     surrogate.addedByChat != null && surrogate.additionDate != null -> AddedByChat(
                         id = surrogate.id,
@@ -124,7 +139,8 @@ sealed interface PollOption : TextedInput {
                         textSources = textSources,
                         votes = surrogate.votes,
                         addedByChat = surrogate.addedByChat,
-                        additionDate = surrogate.additionDate
+                        additionDate = surrogate.additionDate,
+                        media = surrogate.media
                     )
                     else -> error("LatelyAdded poll option must have either added_by_user or added_by_chat")
                 }
@@ -140,7 +156,8 @@ sealed interface PollOption : TextedInput {
                             textEntities = value.textSources.toRawMessageEntities(),
                             votes = value.votes,
                             addedByUser = value.addedByUser,
-                            additionDate = value.additionDate
+                            additionDate = value.additionDate,
+                            media = value.media
                         )
                         is AddedByChat -> PollOptionSurrogate(
                             id = value.id,
@@ -148,7 +165,8 @@ sealed interface PollOption : TextedInput {
                             textEntities = value.textSources.toRawMessageEntities(),
                             votes = value.votes,
                             addedByChat = value.addedByChat,
-                            additionDate = value.additionDate
+                            additionDate = value.additionDate,
+                            media = value.media
                         )
                     }
                 )
@@ -191,7 +209,8 @@ sealed interface PollOption : TextedInput {
                     textSources = textSources,
                     votes = surrogate.votes,
                     addedByUser = surrogate.addedByUser,
-                    additionDate = surrogate.additionDate
+                    additionDate = surrogate.additionDate,
+                    media = surrogate.media
                 )
                 surrogate.addedByChat != null && surrogate.additionDate != null -> LatelyAdded.AddedByChat(
                     id = surrogate.id,
@@ -199,13 +218,15 @@ sealed interface PollOption : TextedInput {
                     textSources = textSources,
                     votes = surrogate.votes,
                     addedByChat = surrogate.addedByChat,
-                    additionDate = surrogate.additionDate
+                    additionDate = surrogate.additionDate,
+                    media = surrogate.media
                 )
                 else -> Simple(
                     id = surrogate.id,
                     text = surrogate.text,
                     textSources = textSources,
-                    votes = surrogate.votes
+                    votes = surrogate.votes,
+                    media = surrogate.media
                 )
             }
         }
@@ -218,7 +239,8 @@ sealed interface PollOption : TextedInput {
                         id = value.id,
                         text = value.text,
                         textEntities = value.textSources.toRawMessageEntities(),
-                        votes = value.votes
+                        votes = value.votes,
+                        media = value.media
                     )
                     is LatelyAdded -> when (value) {
                         is LatelyAdded.AddedByUser -> PollOptionSurrogate(
@@ -227,7 +249,8 @@ sealed interface PollOption : TextedInput {
                             textEntities = value.textSources.toRawMessageEntities(),
                             votes = value.votes,
                             addedByUser = value.addedByUser,
-                            additionDate = value.additionDate
+                            additionDate = value.additionDate,
+                            media = value.media
                         )
                         is LatelyAdded.AddedByChat -> PollOptionSurrogate(
                             id = value.id,
@@ -235,7 +258,8 @@ sealed interface PollOption : TextedInput {
                             textEntities = value.textSources.toRawMessageEntities(),
                             votes = value.votes,
                             addedByChat = value.addedByChat,
-                            additionDate = value.additionDate
+                            additionDate = value.additionDate,
+                            media = value.media
                         )
                     }
                 }

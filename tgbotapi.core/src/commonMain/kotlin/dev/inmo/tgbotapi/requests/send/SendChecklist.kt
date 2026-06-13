@@ -14,13 +14,14 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.checklists.Checklist
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.ChecklistContent
 import dev.inmo.tgbotapi.types.message.content.GameContent
 import kotlinx.serialization.*
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<ChecklistContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<ChecklistContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
@@ -41,7 +42,7 @@ data class SendChecklist (
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendChatMessageRequest<ContentMessage<ChecklistContent>>,
+) : SendChatMessageRequest<ChatContentMessage<ChecklistContent>>,
     WithReplyParameters,
     DisableNotification,
     ProtectContent,
@@ -68,7 +69,7 @@ data class SendChecklist (
     )
 
     override fun method(): String = "sendChecklist"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<ChecklistContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<ChecklistContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

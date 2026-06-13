@@ -27,6 +27,8 @@ data class PrivateForumContentMessageImpl<T: MessageContent>(
     override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
+    override val guestBotCallerUser: PreviewUser?,
+    override val guestBotCallerChat: PreviewChat?,
     override val mediaGroupId: MediaGroupId?,
     override val fromOffline: Boolean,
     override val effectId: EffectId?,

@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
@@ -49,7 +50,7 @@ fun SendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): Request<ContentMessage<DocumentContent>> {
+): Request<ChatContentMessage<DocumentContent>> {
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -108,7 +109,7 @@ fun SendDocument(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-): Request<ContentMessage<DocumentContent>> {
+): Request<ChatContentMessage<DocumentContent>> {
     val documentAsFile = document as? MultipartFile
     val thumbAsFile = thumbnail as? MultipartFile
 
@@ -142,7 +143,7 @@ fun SendDocument(
     }
 }
 
-private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
+private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<DocumentContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
@@ -195,11 +196,11 @@ data class SendDocumentData internal constructor(
     override val replyMarkup: KeyboardMarkup? = null,
     @SerialName(disableContentTypeDetectionField)
     val disableContentTypeDetection: Boolean? = null
-) : DataRequest<ContentMessage<DocumentContent>>,
-    SendContentMessageRequest<ContentMessage<DocumentContent>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
-    TextableSendMessageRequest<ContentMessage<DocumentContent>>,
-    ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
+) : DataRequest<ChatContentMessage<DocumentContent>>,
+    SendContentMessageRequest<ChatContentMessage<DocumentContent>>,
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<DocumentContent>>,
+    TextableSendMessageRequest<ChatContentMessage<DocumentContent>>,
+    ThumbedSendMessageRequest<ChatContentMessage<DocumentContent>>
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
@@ -214,7 +215,7 @@ data class SendDocumentData internal constructor(
     }
 
     override fun method(): String = "sendDocument"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
+    override val resultDeserializer: DeserializationStrategy<ChatContentMessage<DocumentContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

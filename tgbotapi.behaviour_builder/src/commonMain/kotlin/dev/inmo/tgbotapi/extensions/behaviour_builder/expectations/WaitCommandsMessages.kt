@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgsSource
 import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithNamedArgs
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.BotCommand
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
@@ -66,7 +66,7 @@ fun BehaviourContext.waitCommandMessage(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitCommandMessage(botCommand.command, initRequest, excludeCommandsToOtherBots, errorFactory)
 
-fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
+fun Flow<ChatContentMessage<TextContent>>.requireCommandAtStart() = filter {
     it.content.textSources.firstOrNull() is BotCommandTextSource
 }
 
@@ -76,7 +76,7 @@ fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
  *
  * @see requireCommandAtStart
  */
-fun Flow<CommonMessage<TextContent>>.requireSingleCommand() = filter {
+fun Flow<ChatContentMessage<TextContent>>.requireSingleCommand() = filter {
     var count = 0
 
     it.content.textSources.forEach {
@@ -94,23 +94,23 @@ fun Flow<CommonMessage<TextContent>>.requireSingleCommand() = filter {
 /**
  * Subsequent [Flow] will retrieve only messages without [TextContent.textSources] which are not [BotCommandTextSource]
  */
-fun Flow<CommonMessage<TextContent>>.requireCommandsWithoutParams() = filter {
+fun Flow<ChatContentMessage<TextContent>>.requireCommandsWithoutParams() = filter {
     it.content.textSources.none { it !is BotCommandTextSource }
 }
 
 /**
- * Uses [parseCommandsWithArgsSources] on incoming text sources and map them with [CommonMessage]
+ * Uses [parseCommandsWithArgsSources] on incoming text sources and map them with [ChatContentMessage]
  */
-fun Flow<CommonMessage<TextContent>>.commandsWithParams(): Flow<Pair<CommonMessage<TextContent>, List<Pair<BotCommandTextSource, Array<TextSource>>>>> = mapNotNull {
+fun Flow<ChatContentMessage<TextContent>>.commandsWithParams(): Flow<Pair<ChatContentMessage<TextContent>, List<Pair<BotCommandTextSource, Array<TextSource>>>>> = mapNotNull {
     it to it.content.textSources.parseCommandsWithArgsSources().toList()
 }
 
 /**
- * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
+ * Uses [parseCommandsWithArgs] on incoming text sources and map them with [ChatContentMessage]
  */
-fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
+fun Flow<ChatContentMessage<TextContent>>.commandsWithArgs(
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
-): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = mapNotNull {
+): Flow<Pair<ChatContentMessage<TextContent>, List<Pair<String, Array<String>>>>> = mapNotNull {
     val commandsWithArgs = it.content.textSources.parseCommandsWithArgs(argsSeparator).toList().ifEmpty {
         return@mapNotNull null
     }
@@ -119,19 +119,19 @@ fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
 }
 
 /**
- * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
+ * Uses [parseCommandsWithArgs] on incoming text sources and map them with [ChatContentMessage]
  */
-fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
+fun Flow<ChatContentMessage<TextContent>>.commandsWithArgs(
     argsSeparator: String
-): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = commandsWithArgs(Regex(argsSeparator))
+): Flow<Pair<ChatContentMessage<TextContent>, List<Pair<String, Array<String>>>>> = commandsWithArgs(Regex(argsSeparator))
 
 /**
- * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [CommonMessage]
+ * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [ChatContentMessage]
  */
-fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
+fun Flow<ChatContentMessage<TextContent>>.commandsWithNamedArgs(
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = mapNotNull {
+): Flow<Pair<ChatContentMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = mapNotNull {
     val commandsWithArgs = it.content.textSources.parseCommandsWithNamedArgs(argsSeparator, nameArgSeparator).toList().ifEmpty {
         return@mapNotNull null
     }
@@ -140,18 +140,18 @@ fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
 }
 
 /**
- * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [CommonMessage]
+ * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [ChatContentMessage]
  */
-fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
+fun Flow<ChatContentMessage<TextContent>>.commandsWithNamedArgs(
     argsSeparator: String,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
-): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = commandsWithNamedArgs(Regex(argsSeparator), nameArgSeparator)
+): Flow<Pair<ChatContentMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = commandsWithNamedArgs(Regex(argsSeparator), nameArgSeparator)
 
 /**
  * Flat [commandsWithParams]. Each [Pair] of [BotCommandTextSource] and its [Array] of arg text sources will
  * be associated with its source message
  */
-fun Flow<CommonMessage<TextContent>>.flattenCommandsWithParams() = commandsWithParams().flatMapConcat { (message, commandsWithParams) ->
+fun Flow<ChatContentMessage<TextContent>>.flattenCommandsWithParams() = commandsWithParams().flatMapConcat { (message, commandsWithParams) ->
     commandsWithParams.map {
         message to it
     }.asFlow()
@@ -160,6 +160,6 @@ fun Flow<CommonMessage<TextContent>>.flattenCommandsWithParams() = commandsWithP
 /**
  * Use [flattenCommandsWithParams] and filter out the commands which do not [matches] to [commandRegex]
  */
-fun Flow<CommonMessage<TextContent>>.commandParams(commandRegex: Regex) = flattenCommandsWithParams().filter { (_, commandWithParams) ->
+fun Flow<ChatContentMessage<TextContent>>.commandParams(commandRegex: Regex) = flattenCommandsWithParams().filter { (_, commandWithParams) ->
     commandWithParams.first.command.matches(commandRegex)
 }

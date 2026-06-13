@@ -4,6 +4,7 @@
 package dev.inmo.tgbotapi.types.message.payments
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.files.LivePhotoFile
 import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
@@ -68,6 +69,20 @@ sealed interface PaidMedia {
         }
     }
 
+    @Serializable
+    data class LivePhoto(
+        @SerialName(livePhotoField)
+        val livePhoto: LivePhotoFile
+    ) : PaidMedia {
+        @EncodeDefault
+        @SerialName(typeField)
+        override val type: String = Companion.type
+
+        companion object {
+            val type: String = "live_photo"
+        }
+    }
+
     @Serializable(Companion::class)
     data class Unknown(
         @SerialName(typeField)
@@ -89,7 +104,9 @@ sealed interface PaidMedia {
             @SerialName(photoField)
             val photo: PhotoFile? = null,
             @SerialName(videoField)
-            val video: VideoFile? = null
+            val video: VideoFile? = null,
+            @SerialName(livePhotoField)
+            val livePhoto: LivePhotoFile? = null
         )
 
         override val descriptor: SerialDescriptor
@@ -112,6 +129,9 @@ sealed interface PaidMedia {
                 Video.type -> Video(
                     data.video ?: return unknown
                 )
+                LivePhoto.type -> LivePhoto(
+                    data.livePhoto ?: return unknown
+                )
                 else -> unknown
             }
         }
@@ -127,6 +147,7 @@ sealed interface PaidMedia {
                     (value as? Preview) ?.duration,
                     (value as? Photo) ?.photo,
                     (value as? Video) ?.video,
+                    (value as? LivePhoto) ?.livePhoto,
                 )
                 Surrogate.serializer().serialize(encoder, surrogate)
             }

@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 
 /**
@@ -32,7 +32,7 @@ public suspend fun TelegramBot.sendVideoNote(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = execute(
+): ChatContentMessage<VideoNoteContent> = execute(
     SendVideoNote(
         chatId = chatId,
         videoNote = videoNote,
@@ -69,7 +69,7 @@ public suspend fun TelegramBot.sendVideoNote(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chatId,
     videoNote = videoNote.fileId,
     thumb = videoNote.thumbnail ?.fileId,
@@ -107,7 +107,7 @@ public suspend fun TelegramBot.sendVideoNote(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chat.id,
     videoNote = videoNote,
     thumb = thumb,
@@ -142,7 +142,7 @@ public suspend fun TelegramBot.sendVideoNote(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<VideoNoteContent> = sendVideoNote(
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = chat.id,
     videoNote = videoNote,
     threadId = threadId,
