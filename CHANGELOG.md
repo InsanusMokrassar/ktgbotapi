@@ -2,6 +2,10 @@
 
 ## 33.2.0
 
+* `Core`:
+    * Add `ApiException` as variant of `BotException`
+    * Add classcasts for bots exceptions
+
 ## 33.1.0
 
 * `Versions`:
