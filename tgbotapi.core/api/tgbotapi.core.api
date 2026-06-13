@@ -275,16 +275,42 @@ public final class dev/inmo/tgbotapi/bot/RequestsExecutor$DefaultImpls {
 	public static fun getLog (Ldev/inmo/tgbotapi/bot/RequestsExecutor;)Ldev/inmo/kslog/common/KSLog;
 }
 
-public abstract class dev/inmo/tgbotapi/bot/exceptions/BotException : java/io/IOException, kotlinx/coroutines/CopyableThrowable {
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+public final class dev/inmo/tgbotapi/bot/exceptions/ApiException : dev/inmo/tgbotapi/bot/exceptions/CommonBotException {
+	public fun <init> (Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/Response;)V
+	public synthetic fun <init> (Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/Response;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/ApiException;
+	public synthetic fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException;
+	public synthetic fun createCopy ()Ljava/lang/Throwable;
+	public final fun getHttpResponseCode ()Ljava/lang/Integer;
+	public final fun getPlainResponse ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/bot/exceptions/CommonBotException : dev/inmo/tgbotapi/bot/exceptions/BotException {
+public abstract class dev/inmo/tgbotapi/bot/exceptions/BotException : java/io/IOException, kotlinx/coroutines/CopyableThrowable {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessage ()Ljava/lang/String;
+	public fun getPlainAnswer ()Ljava/lang/String;
+	public fun getResponse ()Ldev/inmo/tgbotapi/types/Response;
+}
+
+public abstract class dev/inmo/tgbotapi/bot/exceptions/CommonBotException : dev/inmo/tgbotapi/bot/exceptions/BotException {
+	public static final field Companion Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public abstract fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException;
+}
+
+public final class dev/inmo/tgbotapi/bot/exceptions/CommonBotException$Companion {
+	public final fun invoke (Ljava/lang/String;Ljava/lang/Throwable;)Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException$Default;
+	public static synthetic fun invoke$default (Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException$Companion;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException$Default;
+}
+
+public final class dev/inmo/tgbotapi/bot/exceptions/CommonBotException$Default : dev/inmo/tgbotapi/bot/exceptions/CommonBotException {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/BotException;
+	public fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException$Default;
+	public synthetic fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException;
 	public synthetic fun createCopy ()Ljava/lang/Throwable;
 }
 
@@ -327,13 +353,13 @@ public final class dev/inmo/tgbotapi/bot/exceptions/ReplyMessageNotFoundExceptio
 public abstract class dev/inmo/tgbotapi/bot/exceptions/RequestException : dev/inmo/tgbotapi/bot/exceptions/BotException {
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getPlainAnswer ()Ljava/lang/String;
-	public final fun getResponse ()Ldev/inmo/tgbotapi/types/Response;
+	public fun getPlainAnswer ()Ljava/lang/String;
+	public fun getResponse ()Ldev/inmo/tgbotapi/types/Response;
 }
 
 public final class dev/inmo/tgbotapi/bot/exceptions/RequestExceptionKt {
-	public static final fun newRequestException (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Ldev/inmo/tgbotapi/bot/exceptions/RequestException;
-	public static synthetic fun newRequestException$default (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/exceptions/RequestException;
+	public static final fun newRequestException (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Ldev/inmo/tgbotapi/bot/exceptions/BotException;
+	public static synthetic fun newRequestException$default (Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Ldev/inmo/tgbotapi/bot/exceptions/BotException;
 }
 
 public final class dev/inmo/tgbotapi/bot/exceptions/TooMuchRequestsException : dev/inmo/tgbotapi/bot/exceptions/RequestException {

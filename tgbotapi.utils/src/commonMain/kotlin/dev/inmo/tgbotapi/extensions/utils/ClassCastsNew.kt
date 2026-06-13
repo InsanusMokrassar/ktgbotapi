@@ -14,6 +14,19 @@ import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.OptionallyFromUser
 import dev.inmo.tgbotapi.abstracts.OptionallyWithUser
 import dev.inmo.tgbotapi.abstracts.WithUser
+import dev.inmo.tgbotapi.bot.exceptions.ApiException
+import dev.inmo.tgbotapi.bot.exceptions.BotException
+import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
+import dev.inmo.tgbotapi.bot.exceptions.CommonRequestException
+import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
+import dev.inmo.tgbotapi.bot.exceptions.InvalidPhotoDimensionsException
+import dev.inmo.tgbotapi.bot.exceptions.MessageIsNotModifiedException
+import dev.inmo.tgbotapi.bot.exceptions.MessageToEditNotFoundException
+import dev.inmo.tgbotapi.bot.exceptions.ReplyMessageNotFoundException
+import dev.inmo.tgbotapi.bot.exceptions.RequestException
+import dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
+import dev.inmo.tgbotapi.bot.exceptions.UnauthorizedException
+import dev.inmo.tgbotapi.bot.exceptions.WrongFileIdentifierException
 import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
@@ -4170,6 +4183,84 @@ public inline fun BackgroundFill.unknownOrNull(): BackgroundFill.Unknown? = this
 public inline fun BackgroundFill.unknownOrThrow(): BackgroundFill.Unknown = this as dev.inmo.tgbotapi.types.BackgroundFill.Unknown
 
 public inline fun <T> BackgroundFill.ifUnknown(block: (BackgroundFill.Unknown) -> T): T? = unknownOrNull() ?.let(block)
+
+public inline fun BotException.commonBotExceptionOrNull(): CommonBotException? = this as? dev.inmo.tgbotapi.bot.exceptions.CommonBotException
+
+public inline fun BotException.commonBotExceptionOrThrow(): CommonBotException = this as dev.inmo.tgbotapi.bot.exceptions.CommonBotException
+
+public inline fun <T> BotException.ifCommonBotException(block: (CommonBotException) -> T): T? = commonBotExceptionOrNull() ?.let(block)
+
+public inline fun BotException.apiExceptionOrNull(): ApiException? = this as? dev.inmo.tgbotapi.bot.exceptions.ApiException
+
+public inline fun BotException.apiExceptionOrThrow(): ApiException = this as dev.inmo.tgbotapi.bot.exceptions.ApiException
+
+public inline fun <T> BotException.ifApiException(block: (ApiException) -> T): T? = apiExceptionOrNull() ?.let(block)
+
+public inline fun BotException.requestExceptionOrNull(): RequestException? = this as? dev.inmo.tgbotapi.bot.exceptions.RequestException
+
+public inline fun BotException.requestExceptionOrThrow(): RequestException = this as dev.inmo.tgbotapi.bot.exceptions.RequestException
+
+public inline fun <T> BotException.ifRequestException(block: (RequestException) -> T): T? = requestExceptionOrNull() ?.let(block)
+
+public inline fun BotException.commonRequestExceptionOrNull(): CommonRequestException? = this as? dev.inmo.tgbotapi.bot.exceptions.CommonRequestException
+
+public inline fun BotException.commonRequestExceptionOrThrow(): CommonRequestException = this as dev.inmo.tgbotapi.bot.exceptions.CommonRequestException
+
+public inline fun <T> BotException.ifCommonRequestException(block: (CommonRequestException) -> T): T? = commonRequestExceptionOrNull() ?.let(block)
+
+public inline fun BotException.unauthorizedExceptionOrNull(): UnauthorizedException? = this as? dev.inmo.tgbotapi.bot.exceptions.UnauthorizedException
+
+public inline fun BotException.unauthorizedExceptionOrThrow(): UnauthorizedException = this as dev.inmo.tgbotapi.bot.exceptions.UnauthorizedException
+
+public inline fun <T> BotException.ifUnauthorizedException(block: (UnauthorizedException) -> T): T? = unauthorizedExceptionOrNull() ?.let(block)
+
+public inline fun BotException.replyMessageNotFoundExceptionOrNull(): ReplyMessageNotFoundException? = this as? dev.inmo.tgbotapi.bot.exceptions.ReplyMessageNotFoundException
+
+public inline fun BotException.replyMessageNotFoundExceptionOrThrow(): ReplyMessageNotFoundException = this as dev.inmo.tgbotapi.bot.exceptions.ReplyMessageNotFoundException
+
+public inline fun <T> BotException.ifReplyMessageNotFoundException(block: (ReplyMessageNotFoundException) -> T): T? = replyMessageNotFoundExceptionOrNull() ?.let(block)
+
+public inline fun BotException.messageIsNotModifiedExceptionOrNull(): MessageIsNotModifiedException? = this as? dev.inmo.tgbotapi.bot.exceptions.MessageIsNotModifiedException
+
+public inline fun BotException.messageIsNotModifiedExceptionOrThrow(): MessageIsNotModifiedException = this as dev.inmo.tgbotapi.bot.exceptions.MessageIsNotModifiedException
+
+public inline fun <T> BotException.ifMessageIsNotModifiedException(block: (MessageIsNotModifiedException) -> T): T? = messageIsNotModifiedExceptionOrNull() ?.let(block)
+
+public inline fun BotException.messageToEditNotFoundExceptionOrNull(): MessageToEditNotFoundException? = this as? dev.inmo.tgbotapi.bot.exceptions.MessageToEditNotFoundException
+
+public inline fun BotException.messageToEditNotFoundExceptionOrThrow(): MessageToEditNotFoundException = this as dev.inmo.tgbotapi.bot.exceptions.MessageToEditNotFoundException
+
+public inline fun <T> BotException.ifMessageToEditNotFoundException(block: (MessageToEditNotFoundException) -> T): T? = messageToEditNotFoundExceptionOrNull() ?.let(block)
+
+public inline fun BotException.invalidPhotoDimensionsExceptionOrNull(): InvalidPhotoDimensionsException? = this as? dev.inmo.tgbotapi.bot.exceptions.InvalidPhotoDimensionsException
+
+public inline fun BotException.invalidPhotoDimensionsExceptionOrThrow(): InvalidPhotoDimensionsException = this as dev.inmo.tgbotapi.bot.exceptions.InvalidPhotoDimensionsException
+
+public inline fun <T> BotException.ifInvalidPhotoDimensionsException(block: (InvalidPhotoDimensionsException) -> T): T? = invalidPhotoDimensionsExceptionOrNull() ?.let(block)
+
+public inline fun BotException.wrongFileIdentifierExceptionOrNull(): WrongFileIdentifierException? = this as? dev.inmo.tgbotapi.bot.exceptions.WrongFileIdentifierException
+
+public inline fun BotException.wrongFileIdentifierExceptionOrThrow(): WrongFileIdentifierException = this as dev.inmo.tgbotapi.bot.exceptions.WrongFileIdentifierException
+
+public inline fun <T> BotException.ifWrongFileIdentifierException(block: (WrongFileIdentifierException) -> T): T? = wrongFileIdentifierExceptionOrNull() ?.let(block)
+
+public inline fun BotException.tooMuchRequestsExceptionOrNull(): TooMuchRequestsException? = this as? dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
+
+public inline fun BotException.tooMuchRequestsExceptionOrThrow(): TooMuchRequestsException = this as dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
+
+public inline fun <T> BotException.ifTooMuchRequestsException(block: (TooMuchRequestsException) -> T): T? = tooMuchRequestsExceptionOrNull() ?.let(block)
+
+public inline fun BotException.getUpdatesConflictOrNull(): GetUpdatesConflict? = this as? dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
+
+public inline fun BotException.getUpdatesConflictOrThrow(): GetUpdatesConflict = this as dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
+
+public inline fun <T> BotException.ifGetUpdatesConflict(block: (GetUpdatesConflict) -> T): T? = getUpdatesConflictOrNull() ?.let(block)
+
+public inline fun BotException.commonBotExceptionDefaultOrNull(): CommonBotException.Default? = this as? dev.inmo.tgbotapi.bot.exceptions.CommonBotException.Default
+
+public inline fun BotException.commonBotExceptionDefaultOrThrow(): CommonBotException.Default = this as dev.inmo.tgbotapi.bot.exceptions.CommonBotException.Default
+
+public inline fun <T> BotException.ifCommonBotExceptionDefault(block: (CommonBotException.Default) -> T): T? = commonBotExceptionDefaultOrNull() ?.let(block)
 
 public inline fun InlineQueryResultsButton.webAppOrNull(): InlineQueryResultsButton.WebApp? = this as? dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
 
