@@ -144,6 +144,7 @@ dev.inmo.tgbotapi.types.games
 dev.inmo.tgbotapi.types.gifts
 dev.inmo.tgbotapi.types.gifts.unique
 dev.inmo.tgbotapi.types.giveaway
+dev.inmo.tgbotapi.types.guest
 dev.inmo.tgbotapi.types.location
 dev.inmo.tgbotapi.types.managed_bots
 dev.inmo.tgbotapi.types.media
