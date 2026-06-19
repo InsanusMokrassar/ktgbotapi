@@ -69,7 +69,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(maxReactionCountField)
     override val maxReactionsCount: Int = 3,
     @SerialName(uniqueGiftColorsField)
-    override val uniqueGiftColors: UniqueGiftColors? = null
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(guardBotField)
+    override val guardBot: User? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -116,7 +118,9 @@ data class ExtendedGroupChatImpl(
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
-    override val uniqueGiftColors: UniqueGiftColors? = null
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(guardBotField)
+    override val guardBot: User? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -316,7 +320,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
-    override val uniqueGiftColors: UniqueGiftColors? = null
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(guardBotField)
+    override val guardBot: User? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -390,7 +396,9 @@ data class ExtendedForumChatImpl(
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
-    override val uniqueGiftColors: UniqueGiftColors? = null
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(guardBotField)
+    override val guardBot: User? = null
 ) : ExtendedForumChat
 
 @Serializable
@@ -467,7 +475,9 @@ data class ExtendedChannelDirectMessagesChatImpl(
     @SerialName(paidMessageStarCountField)
     override val paidMessageStarCount: Int? = null,
     @SerialName(uniqueGiftColorsField)
-    override val uniqueGiftColors: UniqueGiftColors? = null
+    override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(guardBotField)
+    override val guardBot: User? = null
 ) : ExtendedChannelDirectMessagesChat {
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)
@@ -495,6 +505,8 @@ data class ExtendedBot(
     val supportsInlineQueries: Boolean = false,
     @SerialName(supportsGuestQueriesField)
     val supportsGuestQueries: Boolean = false,
+    @SerialName(supportsJoinRequestQueriesField)
+    val supportsJoinRequestQueries: Boolean = false,
     @SerialName(canConnectToBusinessField)
     val canConnectToBusiness: Boolean = false,
     @SerialName(photoField)

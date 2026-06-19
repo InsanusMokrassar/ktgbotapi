@@ -24,7 +24,9 @@ data class ChatJoinRequest(
     @SerialName(inviteLinkField)
     val inviteLink: ChatInviteLink? = null,
     @SerialName(bioField)
-    val bio: String? = null
+    val bio: String? = null,
+    @SerialName(queryIdField)
+    val queryId: ChatJoinRequestQueryId? = null
 ) : FromUser {
     @Suppress("unused")
     val dateTime: DateTime
