@@ -1918,6 +1918,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifLeftChatMember (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLeftChatMemberEvent (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLeftChatMemberEvent (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifLink (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLiveLocation (Ldev/inmo/tgbotapi/types/location/Location;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLiveLocationContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLivePhotoContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2142,6 +2143,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifTelegramMediaDocument (Ldev/inmo/tgbotapi/types/media/InputPollMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaDocument (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifTelegramMediaLink (Ldev/inmo/tgbotapi/types/media/InputPollOptionMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaLivePhoto (Ldev/inmo/tgbotapi/types/media/InputPollMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaLivePhoto (Ldev/inmo/tgbotapi/types/media/InputPollOptionMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramMediaLivePhoto (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2364,6 +2366,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun leftChatMemberEventOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/LeftChatMemberEvent;
 	public static final fun leftChatMemberOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/LeftChatMember;
 	public static final fun leftChatMemberOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/member/LeftChatMember;
+	public static final fun linkOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/Link;
+	public static final fun linkOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/Link;
 	public static final fun liveLocationContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/LiveLocationContent;
 	public static final fun liveLocationContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/LiveLocationContent;
 	public static final fun liveLocationOrNull (Ldev/inmo/tgbotapi/types/location/Location;)Ldev/inmo/tgbotapi/types/location/LiveLocation;
@@ -2812,6 +2816,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun telegramMediaDocumentOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;
 	public static final fun telegramMediaFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public static final fun telegramMediaFileOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
+	public static final fun telegramMediaLinkOrNull (Ldev/inmo/tgbotapi/types/media/InputPollOptionMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaLink;
+	public static final fun telegramMediaLinkOrThrow (Ldev/inmo/tgbotapi/types/media/InputPollOptionMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaLink;
 	public static final fun telegramMediaLivePhotoOrNull (Ldev/inmo/tgbotapi/types/media/InputPollMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto;
 	public static final fun telegramMediaLivePhotoOrNull (Ldev/inmo/tgbotapi/types/media/InputPollOptionMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto;
 	public static final fun telegramMediaLivePhotoOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto;

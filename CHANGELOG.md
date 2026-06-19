@@ -2,6 +2,13 @@
 
 ## 35.0.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.1](https://core.telegram.org/bots/api-changelog#june-11-2026)**
+
+* `Core`:
+    * (`Polls`) Added `Link` type (`dev.inmo.tgbotapi.types.Link`) implementing `PollMedia`, carrying the `url` of a link attached to a poll option
+    * (`Polls`) Added `link` field parsing to `PollMedia` deserialization/serialization
+    * (`Polls`) Added `TelegramMediaLink` (`InputMediaLink`) implementing `InputPollOptionMedia`, usable as a poll option media
+
 ## 34.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.0](https://core.telegram.org/bots/api-changelog#may-8-2026)**

@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.types.files.LivePhotoFile
 import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.files.VideoFile
+import dev.inmo.tgbotapi.types.Link
+import dev.inmo.tgbotapi.types.linkField
 import dev.inmo.tgbotapi.types.livePhotoField
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.locationField
@@ -36,6 +38,8 @@ interface PollMedia : BaseTelegramMediaFile {
             val audio: AudioFile? = null,
             @SerialName(documentField)
             val document: DocumentFile? = null,
+            @SerialName(linkField)
+            val link: Link? = null,
             @SerialName(livePhotoField)
             val livePhoto: LivePhotoFile? = null,
             @SerialName(photoField)
@@ -61,6 +65,7 @@ interface PollMedia : BaseTelegramMediaFile {
                 surrogate.animation != null -> surrogate.animation
                 surrogate.audio != null -> surrogate.audio
                 surrogate.document != null -> surrogate.document
+                surrogate.link != null -> surrogate.link
                 surrogate.livePhoto != null -> surrogate.livePhoto
                 surrogate.photo != null -> surrogate.photo
                 surrogate.sticker != null -> surrogate.sticker
@@ -76,6 +81,7 @@ interface PollMedia : BaseTelegramMediaFile {
                 animation = value as? AnimationFile,
                 audio = value as? AudioFile,
                 document = value as? DocumentFile,
+                link = value as? Link,
                 livePhoto = value as? LivePhotoFile,
                 photo = value as? PhotoFile,
                 sticker = value as? Sticker,
