@@ -22,7 +22,10 @@
 * `API`:
     * (`Rich Messages`) Added `sendRichMessage` and `sendRichMessageDraft` `TelegramBot` extensions
     * (`Join Request Queries`) Added `answerChatJoinRequestQuery` and `sendChatJoinRequestWebApp` `TelegramBot` extensions
+* `BehaviourBuilder`:
+    * (`Rich Messages`) Added `onRichMessage` trigger and `waitRichMessage`/`waitRichMessageMessage` expectations
 * `Utils`:
+    * (`Rich Messages`) Added `Flow<ContentMessage<*>>.onlyRichMessageContentMessages()`
     * (`Join Request Queries`) Added `ChatJoinRequest.query_id` raw accessor
 
 ## 34.0.0

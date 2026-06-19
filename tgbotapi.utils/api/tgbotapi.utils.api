@@ -3221,6 +3221,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ContentMessageConversation
 	public static final fun onlyLocationContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun onlyPhotoContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun onlyPollContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun onlyRichMessageContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun onlyStickerContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun onlyStoryContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun onlyTextContentMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;

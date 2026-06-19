@@ -317,6 +317,33 @@ fun <BC : BehaviourContext> BC.onStory(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
+fun <BC : BehaviourContext> BC.onRichMessage(
+    initialFilter: CommonMessageFilter<RichMessageContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RichMessageContentMessage, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in RichMessageContentMessage, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, RichMessageContentMessage>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, RichMessageContentMessage>
+) = onContentMessageWithType(
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    additionalSubcontextInitialAction,
+    scenarioReceiver
+)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
 fun <BC : BehaviourContext> BC.onTextedContent(
     initialFilter: CommonMessageFilter<TextedContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextedMessage, Update>? = MessageFilterByChat,
