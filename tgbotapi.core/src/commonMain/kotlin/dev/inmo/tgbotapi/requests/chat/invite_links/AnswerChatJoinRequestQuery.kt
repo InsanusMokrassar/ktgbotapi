@@ -28,32 +28,36 @@ sealed interface ChatJoinRequestQueryResult {
     /**
      * Allow the user to join the chat.
      */
-    object Approve : ChatJoinRequestQueryResult {
+    @Serializable(ChatJoinRequestQueryResult.Companion::class)
+    data object Approve : ChatJoinRequestQueryResult {
         override val name: String = "approve"
     }
 
     /**
      * Disallow the user to join the chat.
      */
-    object Decline : ChatJoinRequestQueryResult {
+    @Serializable(ChatJoinRequestQueryResult.Companion::class)
+    data object Decline : ChatJoinRequestQueryResult {
         override val name: String = "decline"
     }
 
     /**
      * Leave the decision to other administrators.
      */
-    object Queue : ChatJoinRequestQueryResult {
+    @Serializable(ChatJoinRequestQueryResult.Companion::class)
+    data object Queue : ChatJoinRequestQueryResult {
         override val name: String = "queue"
     }
 
     /**
      * Any other result which is currently unknown to this library.
      */
+    @Serializable(ChatJoinRequestQueryResult.Companion::class)
     data class Unknown(override val name: String) : ChatJoinRequestQueryResult
 
     companion object : KSerializer<ChatJoinRequestQueryResult> {
         override val descriptor: SerialDescriptor =
-            PrimitiveSerialDescriptor("dev.inmo.tgbotapi.requests.chat.invite_links.ChatJoinRequestQueryResult", PrimitiveKind.STRING)
+            PrimitiveSerialDescriptor("ChatJoinRequestQueryResult", PrimitiveKind.STRING)
 
         override fun serialize(encoder: Encoder, value: ChatJoinRequestQueryResult) {
             encoder.encodeString(value.name)
