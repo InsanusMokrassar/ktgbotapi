@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
+import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
@@ -73,7 +74,9 @@ data class EditChatMessageText internal constructor(
     @SerialName(linkPreviewOptionsField)
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
+    override val replyMarkup: InlineKeyboardMarkup? = null,
+    @SerialName(richMessageField)
+    val richMessage: InputRichMessage? = null
 ) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)

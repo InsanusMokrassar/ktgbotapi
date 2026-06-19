@@ -55,6 +55,7 @@ sealed interface MessageContent: ResendableContent {
                 subclass(StoryContent::class)
                 subclass(GiveawayPublicResultsContent::class)
                 subclass(GiveawayContent::class)
+                subclass(RichMessageContent::class)
 
                 additionalBuilder()
             }

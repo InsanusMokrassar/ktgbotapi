@@ -5,6 +5,12 @@
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.1](https://core.telegram.org/bots/api-changelog#june-11-2026)**
 
 * `Core`:
+    * (`Rich Messages`) Added `RichText` (`RichTextPlain`, `RichTextGroup`, `RichTextEntity`) hierarchy with all 24 `RichText*` entity types and a recursive serializer supporting plain strings, arrays and typed objects
+    * (`Rich Messages`) Added `RichBlock` hierarchy with all 21 `RichBlock*` types plus `RichBlockCaption`, `RichBlockTableCell` and `RichBlockListItem`
+    * (`Rich Messages`) Added `RichMessage` type and `RichMessageContent` message content; parsed `rich_message` in `RawMessage`; added `RichMessageContentMessage` typealias
+    * (`Rich Messages`) Added `InputRichMessage` (internal constructor with `InputRichMessageHTML`/`InputRichMessageMarkdown` factories) and `InputRichMessageContent` usable as `InputMessageContent`
+    * (`Rich Messages`) Added `SendRichMessage` and `SendRichMessageDraft` requests
+    * (`Rich Messages`) Added `richMessage` parameter to `EditChatMessageText`
     * (`Polls`) Added `Link` type (`dev.inmo.tgbotapi.types.Link`) implementing `PollMedia`, carrying the `url` of a link attached to a poll option
     * (`Polls`) Added `link` field parsing to `PollMedia` deserialization/serialization
     * (`Polls`) Added `TelegramMediaLink` (`InputMediaLink`) implementing `InputPollOptionMedia`, usable as a poll option media
@@ -14,6 +20,7 @@
     * (`Join Request Queries`) Added `AnswerChatJoinRequestQuery` request and `ChatJoinRequestQueryResult` enum (`Approve`/`Decline`/`Queue`)
     * (`Join Request Queries`) Added `SendChatJoinRequestWebApp` request
 * `API`:
+    * (`Rich Messages`) Added `sendRichMessage` and `sendRichMessageDraft` `TelegramBot` extensions
     * (`Join Request Queries`) Added `answerChatJoinRequestQuery` and `sendChatJoinRequestWebApp` `TelegramBot` extensions
 * `Utils`:
     * (`Join Request Queries`) Added `ChatJoinRequest.query_id` raw accessor

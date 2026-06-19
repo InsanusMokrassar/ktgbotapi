@@ -90,6 +90,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputContactMes
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputRichMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputTextMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
@@ -414,6 +415,7 @@ import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.content.ResendableContent
+import dev.inmo.tgbotapi.types.message.content.RichMessageContent
 import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
@@ -548,6 +550,57 @@ import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
+import dev.inmo.tgbotapi.types.rich.RichBlock
+import dev.inmo.tgbotapi.types.rich.RichBlockAnchor
+import dev.inmo.tgbotapi.types.rich.RichBlockAnimation
+import dev.inmo.tgbotapi.types.rich.RichBlockAudio
+import dev.inmo.tgbotapi.types.rich.RichBlockBlockQuotation
+import dev.inmo.tgbotapi.types.rich.RichBlockCollage
+import dev.inmo.tgbotapi.types.rich.RichBlockDetails
+import dev.inmo.tgbotapi.types.rich.RichBlockDivider
+import dev.inmo.tgbotapi.types.rich.RichBlockFooter
+import dev.inmo.tgbotapi.types.rich.RichBlockList
+import dev.inmo.tgbotapi.types.rich.RichBlockMap
+import dev.inmo.tgbotapi.types.rich.RichBlockMathematicalExpression
+import dev.inmo.tgbotapi.types.rich.RichBlockParagraph
+import dev.inmo.tgbotapi.types.rich.RichBlockPhoto
+import dev.inmo.tgbotapi.types.rich.RichBlockPreformatted
+import dev.inmo.tgbotapi.types.rich.RichBlockPullQuotation
+import dev.inmo.tgbotapi.types.rich.RichBlockSectionHeading
+import dev.inmo.tgbotapi.types.rich.RichBlockSlideshow
+import dev.inmo.tgbotapi.types.rich.RichBlockTable
+import dev.inmo.tgbotapi.types.rich.RichBlockThinking
+import dev.inmo.tgbotapi.types.rich.RichBlockVideo
+import dev.inmo.tgbotapi.types.rich.RichBlockVoiceNote
+import dev.inmo.tgbotapi.types.rich.RichText
+import dev.inmo.tgbotapi.types.rich.RichTextAnchor
+import dev.inmo.tgbotapi.types.rich.RichTextAnchorLink
+import dev.inmo.tgbotapi.types.rich.RichTextBankCardNumber
+import dev.inmo.tgbotapi.types.rich.RichTextBold
+import dev.inmo.tgbotapi.types.rich.RichTextBotCommand
+import dev.inmo.tgbotapi.types.rich.RichTextCashtag
+import dev.inmo.tgbotapi.types.rich.RichTextCode
+import dev.inmo.tgbotapi.types.rich.RichTextCustomEmoji
+import dev.inmo.tgbotapi.types.rich.RichTextDateTime
+import dev.inmo.tgbotapi.types.rich.RichTextEmailAddress
+import dev.inmo.tgbotapi.types.rich.RichTextEntity
+import dev.inmo.tgbotapi.types.rich.RichTextGroup
+import dev.inmo.tgbotapi.types.rich.RichTextHashtag
+import dev.inmo.tgbotapi.types.rich.RichTextItalic
+import dev.inmo.tgbotapi.types.rich.RichTextMarked
+import dev.inmo.tgbotapi.types.rich.RichTextMathematicalExpression
+import dev.inmo.tgbotapi.types.rich.RichTextMention
+import dev.inmo.tgbotapi.types.rich.RichTextPhoneNumber
+import dev.inmo.tgbotapi.types.rich.RichTextPlain
+import dev.inmo.tgbotapi.types.rich.RichTextReference
+import dev.inmo.tgbotapi.types.rich.RichTextReferenceLink
+import dev.inmo.tgbotapi.types.rich.RichTextSpoiler
+import dev.inmo.tgbotapi.types.rich.RichTextStrikethrough
+import dev.inmo.tgbotapi.types.rich.RichTextSubscript
+import dev.inmo.tgbotapi.types.rich.RichTextSuperscript
+import dev.inmo.tgbotapi.types.rich.RichTextTextMention
+import dev.inmo.tgbotapi.types.rich.RichTextUnderline
+import dev.inmo.tgbotapi.types.rich.RichTextUrl
 import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
 import dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
@@ -1337,6 +1390,12 @@ public inline fun ResendableContent.gameContentOrNull(): GameContent? = this as?
 public inline fun ResendableContent.gameContentOrThrow(): GameContent = this as dev.inmo.tgbotapi.types.message.content.GameContent
 
 public inline fun <T> ResendableContent.ifGameContent(block: (GameContent) -> T): T? = gameContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.richMessageContentOrNull(): RichMessageContent? = this as? dev.inmo.tgbotapi.types.message.content.RichMessageContent
+
+public inline fun ResendableContent.richMessageContentOrThrow(): RichMessageContent = this as dev.inmo.tgbotapi.types.message.content.RichMessageContent
+
+public inline fun <T> ResendableContent.ifRichMessageContent(block: (RichMessageContent) -> T): T? = richMessageContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.diceContentOrNull(): DiceContent? = this as? dev.inmo.tgbotapi.types.message.content.DiceContent
 
@@ -3269,6 +3328,306 @@ public inline fun InputMessageContent.inputVenueMessageContentOrNull(): InputVen
 public inline fun InputMessageContent.inputVenueMessageContentOrThrow(): InputVenueMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
 
 public inline fun <T> InputMessageContent.ifInputVenueMessageContent(block: (InputVenueMessageContent) -> T): T? = inputVenueMessageContentOrNull() ?.let(block)
+
+public inline fun InputMessageContent.inputRichMessageContentOrNull(): InputRichMessageContent? = this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputRichMessageContent
+
+public inline fun InputMessageContent.inputRichMessageContentOrThrow(): InputRichMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputRichMessageContent
+
+public inline fun <T> InputMessageContent.ifInputRichMessageContent(block: (InputRichMessageContent) -> T): T? = inputRichMessageContentOrNull() ?.let(block)
+
+public inline fun RichText.richTextBoldOrNull(): RichTextBold? = this as? dev.inmo.tgbotapi.types.rich.RichTextBold
+
+public inline fun RichText.richTextBoldOrThrow(): RichTextBold = this as dev.inmo.tgbotapi.types.rich.RichTextBold
+
+public inline fun <T> RichText.ifRichTextBold(block: (RichTextBold) -> T): T? = richTextBoldOrNull() ?.let(block)
+
+public inline fun RichText.richTextItalicOrNull(): RichTextItalic? = this as? dev.inmo.tgbotapi.types.rich.RichTextItalic
+
+public inline fun RichText.richTextItalicOrThrow(): RichTextItalic = this as dev.inmo.tgbotapi.types.rich.RichTextItalic
+
+public inline fun <T> RichText.ifRichTextItalic(block: (RichTextItalic) -> T): T? = richTextItalicOrNull() ?.let(block)
+
+public inline fun RichText.richTextUnderlineOrNull(): RichTextUnderline? = this as? dev.inmo.tgbotapi.types.rich.RichTextUnderline
+
+public inline fun RichText.richTextUnderlineOrThrow(): RichTextUnderline = this as dev.inmo.tgbotapi.types.rich.RichTextUnderline
+
+public inline fun <T> RichText.ifRichTextUnderline(block: (RichTextUnderline) -> T): T? = richTextUnderlineOrNull() ?.let(block)
+
+public inline fun RichText.richTextStrikethroughOrNull(): RichTextStrikethrough? = this as? dev.inmo.tgbotapi.types.rich.RichTextStrikethrough
+
+public inline fun RichText.richTextStrikethroughOrThrow(): RichTextStrikethrough = this as dev.inmo.tgbotapi.types.rich.RichTextStrikethrough
+
+public inline fun <T> RichText.ifRichTextStrikethrough(block: (RichTextStrikethrough) -> T): T? = richTextStrikethroughOrNull() ?.let(block)
+
+public inline fun RichText.richTextSpoilerOrNull(): RichTextSpoiler? = this as? dev.inmo.tgbotapi.types.rich.RichTextSpoiler
+
+public inline fun RichText.richTextSpoilerOrThrow(): RichTextSpoiler = this as dev.inmo.tgbotapi.types.rich.RichTextSpoiler
+
+public inline fun <T> RichText.ifRichTextSpoiler(block: (RichTextSpoiler) -> T): T? = richTextSpoilerOrNull() ?.let(block)
+
+public inline fun RichText.richTextSubscriptOrNull(): RichTextSubscript? = this as? dev.inmo.tgbotapi.types.rich.RichTextSubscript
+
+public inline fun RichText.richTextSubscriptOrThrow(): RichTextSubscript = this as dev.inmo.tgbotapi.types.rich.RichTextSubscript
+
+public inline fun <T> RichText.ifRichTextSubscript(block: (RichTextSubscript) -> T): T? = richTextSubscriptOrNull() ?.let(block)
+
+public inline fun RichText.richTextSuperscriptOrNull(): RichTextSuperscript? = this as? dev.inmo.tgbotapi.types.rich.RichTextSuperscript
+
+public inline fun RichText.richTextSuperscriptOrThrow(): RichTextSuperscript = this as dev.inmo.tgbotapi.types.rich.RichTextSuperscript
+
+public inline fun <T> RichText.ifRichTextSuperscript(block: (RichTextSuperscript) -> T): T? = richTextSuperscriptOrNull() ?.let(block)
+
+public inline fun RichText.richTextMarkedOrNull(): RichTextMarked? = this as? dev.inmo.tgbotapi.types.rich.RichTextMarked
+
+public inline fun RichText.richTextMarkedOrThrow(): RichTextMarked = this as dev.inmo.tgbotapi.types.rich.RichTextMarked
+
+public inline fun <T> RichText.ifRichTextMarked(block: (RichTextMarked) -> T): T? = richTextMarkedOrNull() ?.let(block)
+
+public inline fun RichText.richTextCodeOrNull(): RichTextCode? = this as? dev.inmo.tgbotapi.types.rich.RichTextCode
+
+public inline fun RichText.richTextCodeOrThrow(): RichTextCode = this as dev.inmo.tgbotapi.types.rich.RichTextCode
+
+public inline fun <T> RichText.ifRichTextCode(block: (RichTextCode) -> T): T? = richTextCodeOrNull() ?.let(block)
+
+public inline fun RichText.richTextDateTimeOrNull(): RichTextDateTime? = this as? dev.inmo.tgbotapi.types.rich.RichTextDateTime
+
+public inline fun RichText.richTextDateTimeOrThrow(): RichTextDateTime = this as dev.inmo.tgbotapi.types.rich.RichTextDateTime
+
+public inline fun <T> RichText.ifRichTextDateTime(block: (RichTextDateTime) -> T): T? = richTextDateTimeOrNull() ?.let(block)
+
+public inline fun RichText.richTextTextMentionOrNull(): RichTextTextMention? = this as? dev.inmo.tgbotapi.types.rich.RichTextTextMention
+
+public inline fun RichText.richTextTextMentionOrThrow(): RichTextTextMention = this as dev.inmo.tgbotapi.types.rich.RichTextTextMention
+
+public inline fun <T> RichText.ifRichTextTextMention(block: (RichTextTextMention) -> T): T? = richTextTextMentionOrNull() ?.let(block)
+
+public inline fun RichText.richTextCustomEmojiOrNull(): RichTextCustomEmoji? = this as? dev.inmo.tgbotapi.types.rich.RichTextCustomEmoji
+
+public inline fun RichText.richTextCustomEmojiOrThrow(): RichTextCustomEmoji = this as dev.inmo.tgbotapi.types.rich.RichTextCustomEmoji
+
+public inline fun <T> RichText.ifRichTextCustomEmoji(block: (RichTextCustomEmoji) -> T): T? = richTextCustomEmojiOrNull() ?.let(block)
+
+public inline fun RichText.richTextMathematicalExpressionOrNull(): RichTextMathematicalExpression? = this as? dev.inmo.tgbotapi.types.rich.RichTextMathematicalExpression
+
+public inline fun RichText.richTextMathematicalExpressionOrThrow(): RichTextMathematicalExpression = this as dev.inmo.tgbotapi.types.rich.RichTextMathematicalExpression
+
+public inline fun <T> RichText.ifRichTextMathematicalExpression(block: (RichTextMathematicalExpression) -> T): T? = richTextMathematicalExpressionOrNull() ?.let(block)
+
+public inline fun RichText.richTextUrlOrNull(): RichTextUrl? = this as? dev.inmo.tgbotapi.types.rich.RichTextUrl
+
+public inline fun RichText.richTextUrlOrThrow(): RichTextUrl = this as dev.inmo.tgbotapi.types.rich.RichTextUrl
+
+public inline fun <T> RichText.ifRichTextUrl(block: (RichTextUrl) -> T): T? = richTextUrlOrNull() ?.let(block)
+
+public inline fun RichText.richTextEmailAddressOrNull(): RichTextEmailAddress? = this as? dev.inmo.tgbotapi.types.rich.RichTextEmailAddress
+
+public inline fun RichText.richTextEmailAddressOrThrow(): RichTextEmailAddress = this as dev.inmo.tgbotapi.types.rich.RichTextEmailAddress
+
+public inline fun <T> RichText.ifRichTextEmailAddress(block: (RichTextEmailAddress) -> T): T? = richTextEmailAddressOrNull() ?.let(block)
+
+public inline fun RichText.richTextPhoneNumberOrNull(): RichTextPhoneNumber? = this as? dev.inmo.tgbotapi.types.rich.RichTextPhoneNumber
+
+public inline fun RichText.richTextPhoneNumberOrThrow(): RichTextPhoneNumber = this as dev.inmo.tgbotapi.types.rich.RichTextPhoneNumber
+
+public inline fun <T> RichText.ifRichTextPhoneNumber(block: (RichTextPhoneNumber) -> T): T? = richTextPhoneNumberOrNull() ?.let(block)
+
+public inline fun RichText.richTextBankCardNumberOrNull(): RichTextBankCardNumber? = this as? dev.inmo.tgbotapi.types.rich.RichTextBankCardNumber
+
+public inline fun RichText.richTextBankCardNumberOrThrow(): RichTextBankCardNumber = this as dev.inmo.tgbotapi.types.rich.RichTextBankCardNumber
+
+public inline fun <T> RichText.ifRichTextBankCardNumber(block: (RichTextBankCardNumber) -> T): T? = richTextBankCardNumberOrNull() ?.let(block)
+
+public inline fun RichText.richTextMentionOrNull(): RichTextMention? = this as? dev.inmo.tgbotapi.types.rich.RichTextMention
+
+public inline fun RichText.richTextMentionOrThrow(): RichTextMention = this as dev.inmo.tgbotapi.types.rich.RichTextMention
+
+public inline fun <T> RichText.ifRichTextMention(block: (RichTextMention) -> T): T? = richTextMentionOrNull() ?.let(block)
+
+public inline fun RichText.richTextHashtagOrNull(): RichTextHashtag? = this as? dev.inmo.tgbotapi.types.rich.RichTextHashtag
+
+public inline fun RichText.richTextHashtagOrThrow(): RichTextHashtag = this as dev.inmo.tgbotapi.types.rich.RichTextHashtag
+
+public inline fun <T> RichText.ifRichTextHashtag(block: (RichTextHashtag) -> T): T? = richTextHashtagOrNull() ?.let(block)
+
+public inline fun RichText.richTextCashtagOrNull(): RichTextCashtag? = this as? dev.inmo.tgbotapi.types.rich.RichTextCashtag
+
+public inline fun RichText.richTextCashtagOrThrow(): RichTextCashtag = this as dev.inmo.tgbotapi.types.rich.RichTextCashtag
+
+public inline fun <T> RichText.ifRichTextCashtag(block: (RichTextCashtag) -> T): T? = richTextCashtagOrNull() ?.let(block)
+
+public inline fun RichText.richTextBotCommandOrNull(): RichTextBotCommand? = this as? dev.inmo.tgbotapi.types.rich.RichTextBotCommand
+
+public inline fun RichText.richTextBotCommandOrThrow(): RichTextBotCommand = this as dev.inmo.tgbotapi.types.rich.RichTextBotCommand
+
+public inline fun <T> RichText.ifRichTextBotCommand(block: (RichTextBotCommand) -> T): T? = richTextBotCommandOrNull() ?.let(block)
+
+public inline fun RichText.richTextAnchorOrNull(): RichTextAnchor? = this as? dev.inmo.tgbotapi.types.rich.RichTextAnchor
+
+public inline fun RichText.richTextAnchorOrThrow(): RichTextAnchor = this as dev.inmo.tgbotapi.types.rich.RichTextAnchor
+
+public inline fun <T> RichText.ifRichTextAnchor(block: (RichTextAnchor) -> T): T? = richTextAnchorOrNull() ?.let(block)
+
+public inline fun RichText.richTextAnchorLinkOrNull(): RichTextAnchorLink? = this as? dev.inmo.tgbotapi.types.rich.RichTextAnchorLink
+
+public inline fun RichText.richTextAnchorLinkOrThrow(): RichTextAnchorLink = this as dev.inmo.tgbotapi.types.rich.RichTextAnchorLink
+
+public inline fun <T> RichText.ifRichTextAnchorLink(block: (RichTextAnchorLink) -> T): T? = richTextAnchorLinkOrNull() ?.let(block)
+
+public inline fun RichText.richTextReferenceOrNull(): RichTextReference? = this as? dev.inmo.tgbotapi.types.rich.RichTextReference
+
+public inline fun RichText.richTextReferenceOrThrow(): RichTextReference = this as dev.inmo.tgbotapi.types.rich.RichTextReference
+
+public inline fun <T> RichText.ifRichTextReference(block: (RichTextReference) -> T): T? = richTextReferenceOrNull() ?.let(block)
+
+public inline fun RichText.richTextReferenceLinkOrNull(): RichTextReferenceLink? = this as? dev.inmo.tgbotapi.types.rich.RichTextReferenceLink
+
+public inline fun RichText.richTextReferenceLinkOrThrow(): RichTextReferenceLink = this as dev.inmo.tgbotapi.types.rich.RichTextReferenceLink
+
+public inline fun <T> RichText.ifRichTextReferenceLink(block: (RichTextReferenceLink) -> T): T? = richTextReferenceLinkOrNull() ?.let(block)
+
+public inline fun RichText.richTextPlainOrNull(): RichTextPlain? = this as? dev.inmo.tgbotapi.types.rich.RichTextPlain
+
+public inline fun RichText.richTextPlainOrThrow(): RichTextPlain = this as dev.inmo.tgbotapi.types.rich.RichTextPlain
+
+public inline fun <T> RichText.ifRichTextPlain(block: (RichTextPlain) -> T): T? = richTextPlainOrNull() ?.let(block)
+
+public inline fun RichText.richTextGroupOrNull(): RichTextGroup? = this as? dev.inmo.tgbotapi.types.rich.RichTextGroup
+
+public inline fun RichText.richTextGroupOrThrow(): RichTextGroup = this as dev.inmo.tgbotapi.types.rich.RichTextGroup
+
+public inline fun <T> RichText.ifRichTextGroup(block: (RichTextGroup) -> T): T? = richTextGroupOrNull() ?.let(block)
+
+public inline fun RichText.richTextEntityOrNull(): RichTextEntity? = this as? dev.inmo.tgbotapi.types.rich.RichTextEntity
+
+public inline fun RichText.richTextEntityOrThrow(): RichTextEntity = this as dev.inmo.tgbotapi.types.rich.RichTextEntity
+
+public inline fun <T> RichText.ifRichTextEntity(block: (RichTextEntity) -> T): T? = richTextEntityOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockParagraphOrNull(): RichBlockParagraph? = this as? dev.inmo.tgbotapi.types.rich.RichBlockParagraph
+
+public inline fun RichBlock.richBlockParagraphOrThrow(): RichBlockParagraph = this as dev.inmo.tgbotapi.types.rich.RichBlockParagraph
+
+public inline fun <T> RichBlock.ifRichBlockParagraph(block: (RichBlockParagraph) -> T): T? = richBlockParagraphOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockSectionHeadingOrNull(): RichBlockSectionHeading? = this as? dev.inmo.tgbotapi.types.rich.RichBlockSectionHeading
+
+public inline fun RichBlock.richBlockSectionHeadingOrThrow(): RichBlockSectionHeading = this as dev.inmo.tgbotapi.types.rich.RichBlockSectionHeading
+
+public inline fun <T> RichBlock.ifRichBlockSectionHeading(block: (RichBlockSectionHeading) -> T): T? = richBlockSectionHeadingOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockPreformattedOrNull(): RichBlockPreformatted? = this as? dev.inmo.tgbotapi.types.rich.RichBlockPreformatted
+
+public inline fun RichBlock.richBlockPreformattedOrThrow(): RichBlockPreformatted = this as dev.inmo.tgbotapi.types.rich.RichBlockPreformatted
+
+public inline fun <T> RichBlock.ifRichBlockPreformatted(block: (RichBlockPreformatted) -> T): T? = richBlockPreformattedOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockFooterOrNull(): RichBlockFooter? = this as? dev.inmo.tgbotapi.types.rich.RichBlockFooter
+
+public inline fun RichBlock.richBlockFooterOrThrow(): RichBlockFooter = this as dev.inmo.tgbotapi.types.rich.RichBlockFooter
+
+public inline fun <T> RichBlock.ifRichBlockFooter(block: (RichBlockFooter) -> T): T? = richBlockFooterOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockDividerOrNull(): RichBlockDivider? = this as? dev.inmo.tgbotapi.types.rich.RichBlockDivider
+
+public inline fun RichBlock.richBlockDividerOrThrow(): RichBlockDivider = this as dev.inmo.tgbotapi.types.rich.RichBlockDivider
+
+public inline fun <T> RichBlock.ifRichBlockDivider(block: (RichBlockDivider) -> T): T? = richBlockDividerOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockMathematicalExpressionOrNull(): RichBlockMathematicalExpression? = this as? dev.inmo.tgbotapi.types.rich.RichBlockMathematicalExpression
+
+public inline fun RichBlock.richBlockMathematicalExpressionOrThrow(): RichBlockMathematicalExpression = this as dev.inmo.tgbotapi.types.rich.RichBlockMathematicalExpression
+
+public inline fun <T> RichBlock.ifRichBlockMathematicalExpression(block: (RichBlockMathematicalExpression) -> T): T? = richBlockMathematicalExpressionOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockAnchorOrNull(): RichBlockAnchor? = this as? dev.inmo.tgbotapi.types.rich.RichBlockAnchor
+
+public inline fun RichBlock.richBlockAnchorOrThrow(): RichBlockAnchor = this as dev.inmo.tgbotapi.types.rich.RichBlockAnchor
+
+public inline fun <T> RichBlock.ifRichBlockAnchor(block: (RichBlockAnchor) -> T): T? = richBlockAnchorOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockListOrNull(): RichBlockList? = this as? dev.inmo.tgbotapi.types.rich.RichBlockList
+
+public inline fun RichBlock.richBlockListOrThrow(): RichBlockList = this as dev.inmo.tgbotapi.types.rich.RichBlockList
+
+public inline fun <T> RichBlock.ifRichBlockList(block: (RichBlockList) -> T): T? = richBlockListOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockBlockQuotationOrNull(): RichBlockBlockQuotation? = this as? dev.inmo.tgbotapi.types.rich.RichBlockBlockQuotation
+
+public inline fun RichBlock.richBlockBlockQuotationOrThrow(): RichBlockBlockQuotation = this as dev.inmo.tgbotapi.types.rich.RichBlockBlockQuotation
+
+public inline fun <T> RichBlock.ifRichBlockBlockQuotation(block: (RichBlockBlockQuotation) -> T): T? = richBlockBlockQuotationOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockPullQuotationOrNull(): RichBlockPullQuotation? = this as? dev.inmo.tgbotapi.types.rich.RichBlockPullQuotation
+
+public inline fun RichBlock.richBlockPullQuotationOrThrow(): RichBlockPullQuotation = this as dev.inmo.tgbotapi.types.rich.RichBlockPullQuotation
+
+public inline fun <T> RichBlock.ifRichBlockPullQuotation(block: (RichBlockPullQuotation) -> T): T? = richBlockPullQuotationOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockCollageOrNull(): RichBlockCollage? = this as? dev.inmo.tgbotapi.types.rich.RichBlockCollage
+
+public inline fun RichBlock.richBlockCollageOrThrow(): RichBlockCollage = this as dev.inmo.tgbotapi.types.rich.RichBlockCollage
+
+public inline fun <T> RichBlock.ifRichBlockCollage(block: (RichBlockCollage) -> T): T? = richBlockCollageOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockSlideshowOrNull(): RichBlockSlideshow? = this as? dev.inmo.tgbotapi.types.rich.RichBlockSlideshow
+
+public inline fun RichBlock.richBlockSlideshowOrThrow(): RichBlockSlideshow = this as dev.inmo.tgbotapi.types.rich.RichBlockSlideshow
+
+public inline fun <T> RichBlock.ifRichBlockSlideshow(block: (RichBlockSlideshow) -> T): T? = richBlockSlideshowOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockTableOrNull(): RichBlockTable? = this as? dev.inmo.tgbotapi.types.rich.RichBlockTable
+
+public inline fun RichBlock.richBlockTableOrThrow(): RichBlockTable = this as dev.inmo.tgbotapi.types.rich.RichBlockTable
+
+public inline fun <T> RichBlock.ifRichBlockTable(block: (RichBlockTable) -> T): T? = richBlockTableOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockDetailsOrNull(): RichBlockDetails? = this as? dev.inmo.tgbotapi.types.rich.RichBlockDetails
+
+public inline fun RichBlock.richBlockDetailsOrThrow(): RichBlockDetails = this as dev.inmo.tgbotapi.types.rich.RichBlockDetails
+
+public inline fun <T> RichBlock.ifRichBlockDetails(block: (RichBlockDetails) -> T): T? = richBlockDetailsOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockMapOrNull(): RichBlockMap? = this as? dev.inmo.tgbotapi.types.rich.RichBlockMap
+
+public inline fun RichBlock.richBlockMapOrThrow(): RichBlockMap = this as dev.inmo.tgbotapi.types.rich.RichBlockMap
+
+public inline fun <T> RichBlock.ifRichBlockMap(block: (RichBlockMap) -> T): T? = richBlockMapOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockAnimationOrNull(): RichBlockAnimation? = this as? dev.inmo.tgbotapi.types.rich.RichBlockAnimation
+
+public inline fun RichBlock.richBlockAnimationOrThrow(): RichBlockAnimation = this as dev.inmo.tgbotapi.types.rich.RichBlockAnimation
+
+public inline fun <T> RichBlock.ifRichBlockAnimation(block: (RichBlockAnimation) -> T): T? = richBlockAnimationOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockAudioOrNull(): RichBlockAudio? = this as? dev.inmo.tgbotapi.types.rich.RichBlockAudio
+
+public inline fun RichBlock.richBlockAudioOrThrow(): RichBlockAudio = this as dev.inmo.tgbotapi.types.rich.RichBlockAudio
+
+public inline fun <T> RichBlock.ifRichBlockAudio(block: (RichBlockAudio) -> T): T? = richBlockAudioOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockPhotoOrNull(): RichBlockPhoto? = this as? dev.inmo.tgbotapi.types.rich.RichBlockPhoto
+
+public inline fun RichBlock.richBlockPhotoOrThrow(): RichBlockPhoto = this as dev.inmo.tgbotapi.types.rich.RichBlockPhoto
+
+public inline fun <T> RichBlock.ifRichBlockPhoto(block: (RichBlockPhoto) -> T): T? = richBlockPhotoOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockVideoOrNull(): RichBlockVideo? = this as? dev.inmo.tgbotapi.types.rich.RichBlockVideo
+
+public inline fun RichBlock.richBlockVideoOrThrow(): RichBlockVideo = this as dev.inmo.tgbotapi.types.rich.RichBlockVideo
+
+public inline fun <T> RichBlock.ifRichBlockVideo(block: (RichBlockVideo) -> T): T? = richBlockVideoOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockVoiceNoteOrNull(): RichBlockVoiceNote? = this as? dev.inmo.tgbotapi.types.rich.RichBlockVoiceNote
+
+public inline fun RichBlock.richBlockVoiceNoteOrThrow(): RichBlockVoiceNote = this as dev.inmo.tgbotapi.types.rich.RichBlockVoiceNote
+
+public inline fun <T> RichBlock.ifRichBlockVoiceNote(block: (RichBlockVoiceNote) -> T): T? = richBlockVoiceNoteOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockThinkingOrNull(): RichBlockThinking? = this as? dev.inmo.tgbotapi.types.rich.RichBlockThinking
+
+public inline fun RichBlock.richBlockThinkingOrThrow(): RichBlockThinking = this as dev.inmo.tgbotapi.types.rich.RichBlockThinking
+
+public inline fun <T> RichBlock.ifRichBlockThinking(block: (RichBlockThinking) -> T): T? = richBlockThinkingOrNull() ?.let(block)
 
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as? dev.inmo.tgbotapi.types.actions.TypingAction
 
