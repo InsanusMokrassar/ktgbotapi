@@ -10,14 +10,14 @@
     * (`Rich Messages`) Added `RichMessage` type and `RichMessageContent` message content; parsed `rich_message` in `RawMessage`; added `RichMessageContentMessage` typealias
     * (`Rich Messages`) Added `InputRichMessage` (internal constructor with `InputRichMessageHTML`/`InputRichMessageMarkdown` factories) and `InputRichMessageContent` usable as `InputMessageContent`
     * (`Rich Messages`) Added `SendRichMessage` and `SendRichMessageDraft` requests
-    * (`Rich Messages`) Added `richMessage` parameter to `EditChatMessageText`
+    * (`Rich Messages`) Added `richMessage` parameter to `EditChatMessageText`; its `text` is now nullable (per API) and the `EditChatMessageRichText` factory builds a rich edit; widened `EditTextChatMessage.text` to nullable
     * (`Polls`) Added `Link` type (`dev.inmo.tgbotapi.types.Link`) implementing `PollMedia`, carrying the `url` of a link attached to a poll option
     * (`Polls`) Added `link` field parsing to `PollMedia` deserialization/serialization
     * (`Polls`) Added `TelegramMediaLink` (`InputMediaLink`) implementing `InputPollOptionMedia`, usable as a poll option media
     * (`Join Request Queries`) Added `ChatJoinRequestQueryId` value class and `queryId` field to `ChatJoinRequest`
     * (`Join Request Queries`) Added `supportsJoinRequestQueries` flag to `ExtendedBot` (`User.supports_join_request_queries`)
     * (`Join Request Queries`) Added `guardBot` field to `ExtendedChat` (`ChatFullInfo.guard_bot`), parsed for public chats
-    * (`Join Request Queries`) Added `AnswerChatJoinRequestQuery` request and `ChatJoinRequestQueryResult` enum (`Approve`/`Decline`/`Queue`)
+    * (`Join Request Queries`) Added `AnswerChatJoinRequestQuery` request and `ChatJoinRequestQueryResult` sealed interface (`Approve`/`Decline`/`Queue`/`Unknown`) serialized as a plain string
     * (`Join Request Queries`) Added `SendChatJoinRequestWebApp` request
 * `API`:
     * (`Rich Messages`) Added `sendRichMessage` and `sendRichMessageDraft` `TelegramBot` extensions

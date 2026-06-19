@@ -3401,18 +3401,44 @@ public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestA
 	public static fun getResultDeserializer (Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestAnswer;)Lkotlinx/serialization/DeserializationStrategy;
 }
 
-public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult : java/lang/Enum {
-	public static final field Approve Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
+public abstract interface class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Companion;
-	public static final field Decline Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
-	public static final field Queue Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
-	public static fun values ()[Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
+	public abstract fun getName ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Companion {
+public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Approve : dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Approve;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Decline : dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Decline;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Queue : dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Queue;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Unknown : dev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Unknown;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Unknown;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/invite_links/ChatJoinRequestQueryResult$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/chat/invite_links/CreateChatInviteLink : dev/inmo/tgbotapi/requests/chat/abstracts/EditChatInviteLinkRequest {
@@ -5196,6 +5222,8 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditChatMessageText$Comp
 
 public final class dev/inmo/tgbotapi/requests/edit/text/EditChatMessageTextKt {
 	public static final field editMessageTextMethod Ljava/lang/String;
+	public static final fun EditChatMessageRichText-FG4LXhY (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLdev/inmo/tgbotapi/types/rich/InputRichMessage;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
+	public static synthetic fun EditChatMessageRichText-FG4LXhY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLdev/inmo/tgbotapi/types/rich/InputRichMessage;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
 	public static final fun EditChatMessageText-PljJ14I (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
 	public static synthetic fun EditChatMessageText-PljJ14I$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
 	public static final fun EditChatMessageText-fLfFtqc (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;

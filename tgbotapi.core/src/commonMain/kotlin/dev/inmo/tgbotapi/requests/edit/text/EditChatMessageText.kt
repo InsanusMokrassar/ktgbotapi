@@ -56,6 +56,24 @@ fun EditChatMessageText(
     replyMarkup
 )
 
+fun EditChatMessageRichText(
+    chatId: ChatIdentifier,
+    messageId: MessageId,
+    richMessage: InputRichMessage,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = EditChatMessageText(
+    chatId = chatId,
+    messageId = messageId,
+    text = null,
+    parseMode = null,
+    rawEntities = null,
+    businessConnectionId = businessConnectionId,
+    linkPreviewOptions = null,
+    replyMarkup = replyMarkup,
+    richMessage = richMessage
+)
+
 @ConsistentCopyVisibility
 @Serializable
 data class EditChatMessageText internal constructor(
@@ -64,7 +82,7 @@ data class EditChatMessageText internal constructor(
     @SerialName(messageIdField)
     override val messageId: MessageId,
     @SerialName(textField)
-    override val text: String,
+    override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
@@ -79,7 +97,7 @@ data class EditChatMessageText internal constructor(
     val richMessage: InputRichMessage? = null
 ) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
-        rawEntities ?.asTextSources(text)
+        text ?.let { rawEntities ?.asTextSources(it) }
     }
 
     override fun method(): String = editMessageTextMethod
