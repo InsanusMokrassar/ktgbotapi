@@ -11181,6 +11181,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field botActionActualityTime I
 	public static final field botAdministratorRightsField Ljava/lang/String;
 	public static final field botCommandField Ljava/lang/String;
+	public static final field botCommandFullField Ljava/lang/String;
 	public static final field botCommandsField Ljava/lang/String;
 	public static final field botIsMemberField Ljava/lang/String;
 	public static final field botUsernameField Ljava/lang/String;
