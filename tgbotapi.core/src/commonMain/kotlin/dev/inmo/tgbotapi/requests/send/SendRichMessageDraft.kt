@@ -33,7 +33,7 @@ data class SendRichMessageDraft(
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
     @SerialName(messageThreadIdField)
-    val threadId: MessageThreadId? = null
+    val threadId: MessageThreadId? = chatId.threadId
 ) : SimpleRequest<Unit> {
     init {
         require(draftId != 0L) {

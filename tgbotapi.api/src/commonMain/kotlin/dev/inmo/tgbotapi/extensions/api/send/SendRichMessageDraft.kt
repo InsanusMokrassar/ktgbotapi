@@ -10,7 +10,7 @@ public suspend fun TelegramBot.sendRichMessageDraft(
     chatId: ChatId,
     draftId: Long,
     richMessage: InputRichMessage,
-    threadId: MessageThreadId? = null
+    threadId: MessageThreadId? = chatId.threadId
 ): Unit = execute(
     SendRichMessageDraft(
         chatId = chatId,
