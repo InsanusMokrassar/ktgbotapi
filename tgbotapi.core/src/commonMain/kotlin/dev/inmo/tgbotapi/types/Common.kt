@@ -463,6 +463,7 @@ const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
 
 const val botCommandField = "command"
+const val botCommandFullField = "bot_command"
 const val botCommandsField = "commands"
 const val scopeField = "scope"
 

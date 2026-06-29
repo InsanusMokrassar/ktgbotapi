@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.alternativeTextField
 import dev.inmo.tgbotapi.types.anchorNameField
 import dev.inmo.tgbotapi.types.bankCardNumberField
-import dev.inmo.tgbotapi.types.botCommandField
+import dev.inmo.tgbotapi.types.botCommandFullField
 import dev.inmo.tgbotapi.types.cashtagField
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.customEmojiIdField
@@ -436,7 +436,7 @@ data class RichTextCashtag(
 data class RichTextBotCommand(
     @SerialName(textField)
     val text: RichText,
-    @SerialName(botCommandField)
+    @SerialName(botCommandFullField)
     val botCommand: String
 ) : RichTextEntity {
     @EncodeDefault
