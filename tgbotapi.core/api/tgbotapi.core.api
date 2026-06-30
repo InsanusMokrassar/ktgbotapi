@@ -34795,6 +34795,14 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockList$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/RichBlockListBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun item (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun item (Ljava/lang/String;Ljava/lang/String;)V
+	public static synthetic fun item$default (Ldev/inmo/tgbotapi/types/rich/RichBlockListBuilder;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichBlockListItem {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockListItem$Companion;
 	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;)V
@@ -35263,6 +35271,35 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/RichBlocksBuilder {
+	public fun <init> ()V
+	public final fun add (Ldev/inmo/tgbotapi/types/rich/RichBlock;)V
+	public final fun anchor (Ljava/lang/String;)V
+	public final fun blockQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun blockQuotation$default (Ldev/inmo/tgbotapi/types/rich/RichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun build ()Ljava/util/List;
+	public final fun details (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public final fun details (Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/RichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/RichBlocksBuilder;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun divider ()V
+	public final fun footer (Ljava/lang/String;)V
+	public final fun footer (Lkotlin/jvm/functions/Function1;)V
+	public final fun heading (ILjava/lang/String;)V
+	public final fun heading (ILkotlin/jvm/functions/Function1;)V
+	public final fun list (Lkotlin/jvm/functions/Function1;)V
+	public final fun mathematicalExpression (Ljava/lang/String;)V
+	public final fun paragraph (Ljava/lang/String;)V
+	public final fun paragraph (Lkotlin/jvm/functions/Function1;)V
+	public final fun preformatted (Ljava/lang/String;Ljava/lang/String;)V
+	public static synthetic fun preformatted$default (Ldev/inmo/tgbotapi/types/rich/RichBlocksBuilder;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)V
+	public final fun pullQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun pullQuotation$default (Ldev/inmo/tgbotapi/types/rich/RichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun thinking (Ljava/lang/String;)V
+	public final fun thinking (Lkotlin/jvm/functions/Function1;)V
+	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/RichBlock;)V
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/rich/RichText {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichText$Companion;
 }
@@ -35432,6 +35469,61 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBotCommand$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
+	public fun <init> ()V
+	public final fun add (Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public final fun anchor (Ljava/lang/String;)V
+	public final fun anchorLink (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun anchorLink (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun bankCard (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun bankCard (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun bold (Ljava/lang/String;)V
+	public final fun bold (Lkotlin/jvm/functions/Function1;)V
+	public final fun botCommand (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun botCommand (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun build ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun cashtag (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun cashtag (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun code (Ljava/lang/String;)V
+	public final fun code (Lkotlin/jvm/functions/Function1;)V
+	public final fun customEmoji-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun dateTime (JLjava/lang/String;Ljava/lang/String;)V
+	public final fun dateTime (JLjava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun email (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun email (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun hashtag (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun hashtag (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun italic (Ljava/lang/String;)V
+	public final fun italic (Lkotlin/jvm/functions/Function1;)V
+	public final fun marked (Ljava/lang/String;)V
+	public final fun marked (Lkotlin/jvm/functions/Function1;)V
+	public final fun mathematicalExpression (Ljava/lang/String;)V
+	public final fun mention (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun mention (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun phone (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun phone (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun plain (Ljava/lang/String;)V
+	public final fun reference (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun reference (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun referenceLink (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun referenceLink (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun spoiler (Ljava/lang/String;)V
+	public final fun spoiler (Lkotlin/jvm/functions/Function1;)V
+	public final fun strikethrough (Ljava/lang/String;)V
+	public final fun strikethrough (Lkotlin/jvm/functions/Function1;)V
+	public final fun subscript (Ljava/lang/String;)V
+	public final fun subscript (Lkotlin/jvm/functions/Function1;)V
+	public final fun superscript (Ljava/lang/String;)V
+	public final fun superscript (Lkotlin/jvm/functions/Function1;)V
+	public final fun textMention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;)V
+	public final fun textMention (Ldev/inmo/tgbotapi/types/chat/User;Lkotlin/jvm/functions/Function1;)V
+	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public final fun underline (Ljava/lang/String;)V
+	public final fun underline (Lkotlin/jvm/functions/Function1;)V
+	public final fun url (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun url (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichTextCashtag : dev/inmo/tgbotapi/types/rich/RichTextEntity {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichTextCashtag$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -35562,6 +35654,16 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextDateTime$$seri
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface annotation class dev/inmo/tgbotapi/types/rich/RichTextDsl : java/lang/annotation/Annotation {
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichTextDslKt {
+	public static final fun buildRichBlocks (Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun buildRichText (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/rich/RichText;
+	public static final fun buildRichTextInfo (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/rich/RichTextInfo;
+	public static synthetic fun buildRichTextInfo$default (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichTextInfo;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextEmailAddress : dev/inmo/tgbotapi/types/rich/RichTextEntity {
