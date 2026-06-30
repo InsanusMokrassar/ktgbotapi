@@ -48,3 +48,7 @@ Each section can be ommited if there are no any changes in the section. In case 
 * `Core`:
     * (`Guest mode`) // change data
 ```
+
+---
+
+When a property (or method) can be declared on an interface/class and implemented by each inheritor - it MUST be declared there and overridden per implementation. DO NOT implement such behaviour as a common extension property/function that dispatches with a `when (this)` over every subtype: those branches silently drift out of sync when new subtypes are added and are not part of the type contract. If a part of the implementation is reused across several inheritors, keep that part in a shared helper (a companion-object function of the owner, or an `internal` top-level function for logic shared between different types) and let the overrides reuse it.
