@@ -42,6 +42,9 @@ data class RichTextGroup(
 @Serializable(RichTextEntitySerializer::class)
 sealed interface RichTextEntity : RichText {
     val type: String
+
+    val markdown: String
+    val html: String
 }
 
 object RichTextSerializer : KSerializer<RichText> {
