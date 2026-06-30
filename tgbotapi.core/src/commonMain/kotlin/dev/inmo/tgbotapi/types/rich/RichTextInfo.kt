@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
  * @see <a href="https://core.telegram.org/bots/api#richmessage">RichMessage</a>
  */
 @Serializable
-data class RichMessage(
+data class RichTextInfo(
     @SerialName(blocksField)
     val blocks: List<RichBlock>,
     @SerialName(isRtlField)

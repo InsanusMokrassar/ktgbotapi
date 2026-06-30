@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.types.rich.*
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -29,7 +28,7 @@ class RichMessageSerializationTest {
             }
         """.trimIndent()
 
-        val message = json.decodeFromString(RichMessage.serializer(), source)
+        val message = json.decodeFromString(RichTextInfo.serializer(), source)
         assertEquals(4, message.blocks.size)
 
         val paragraph = message.blocks[0] as RichBlockParagraph
@@ -50,7 +49,7 @@ class RichMessageSerializationTest {
 
     @Test
     fun roundTripsRichMessage() {
-        val message = RichMessage(
+        val message = RichTextInfo(
             blocks = listOf(
                 RichBlockParagraph(
                     RichTextGroup(
@@ -65,8 +64,8 @@ class RichMessageSerializationTest {
             )
         )
 
-        val encoded = json.encodeToString(RichMessage.serializer(), message)
-        val decoded = json.decodeFromString(RichMessage.serializer(), encoded)
+        val encoded = json.encodeToString(RichTextInfo.serializer(), message)
+        val decoded = json.decodeFromString(RichTextInfo.serializer(), encoded)
         assertEquals(message, decoded)
     }
 }

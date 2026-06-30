@@ -8,14 +8,14 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
-import dev.inmo.tgbotapi.types.rich.RichMessage
+import dev.inmo.tgbotapi.types.rich.RichTextInfo
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class RichMessageContent(
     private val chat: Chat,
     private val messageId: MessageId,
-    val richMessage: RichMessage
+    val richMessage: RichTextInfo
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
