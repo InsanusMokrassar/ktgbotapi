@@ -41,6 +41,7 @@ data class RichTextBold(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -65,6 +66,7 @@ data class RichTextItalic(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -89,6 +91,7 @@ data class RichTextUnderline(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -113,6 +116,7 @@ data class RichTextStrikethrough(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -137,6 +141,7 @@ data class RichTextSpoiler(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -161,6 +166,7 @@ data class RichTextSubscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -185,6 +191,7 @@ data class RichTextSuperscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -209,6 +216,7 @@ data class RichTextMarked(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -233,12 +241,13 @@ data class RichTextCode(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
     companion object {
         const val TYPE = "code"
-        fun markdown(text: RichText): String = "`${text.source}`"
+        fun markdown(text: RichText): String = "`${text.rawText}`"
         fun html(text: RichText): String = "<code>${text.html}</code>"
     }
 }
@@ -261,6 +270,7 @@ data class RichTextDateTime(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, unixTime, dateTimeFormat)
     override val html: String = html(text, unixTime, dateTimeFormat)
 
@@ -289,6 +299,7 @@ data class RichTextTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, user)
     override val html: String = html(text, user)
 
@@ -317,6 +328,7 @@ data class RichTextCustomEmoji(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = alternativeText
     override val markdown: String = markdown(customEmojiId, alternativeText)
     override val html: String = html(customEmojiId, alternativeText)
 
@@ -343,6 +355,7 @@ data class RichTextMathematicalExpression(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = expression
     override val markdown: String = markdown(expression)
     override val html: String = html(expression)
 
@@ -369,6 +382,7 @@ data class RichTextUrl(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, url)
     override val html: String = html(text, url)
 
@@ -395,6 +409,7 @@ data class RichTextEmailAddress(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, emailAddress)
     override val html: String = html(text, emailAddress)
 
@@ -421,6 +436,7 @@ data class RichTextPhoneNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, phoneNumber)
     override val html: String = html(text, phoneNumber)
 
@@ -447,6 +463,7 @@ data class RichTextBankCardNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -473,6 +490,7 @@ data class RichTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -499,6 +517,7 @@ data class RichTextHashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -525,6 +544,7 @@ data class RichTextCashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -551,6 +571,7 @@ data class RichTextBotCommand(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -575,6 +596,7 @@ data class RichTextAnchor(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = ""
     override val markdown: String = markdown(name)
     override val html: String = html(name)
 
@@ -601,6 +623,7 @@ data class RichTextAnchorLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, anchorName)
     override val html: String = html(text, anchorName)
 
@@ -627,6 +650,7 @@ data class RichTextReference(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, name)
     override val html: String = html(text, name)
 
@@ -653,6 +677,7 @@ data class RichTextReferenceLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val rawText: String = text.rawText
     override val markdown: String = markdown(text, referenceName)
     override val html: String = html(text, referenceName)
 

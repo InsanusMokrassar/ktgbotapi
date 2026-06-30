@@ -45,7 +45,7 @@ internal fun richMediaContainerHtml(tag: String, blocks: List<RichBlock>, captio
 }
 
 internal fun richMediaMarkdown(source: String, caption: RichBlockCaption?): String =
-    caption?.let { "![](" + source + " \"" + it.text.source + "\")" } ?: "![]($source)"
+    caption?.let { "![](" + source + " \"" + it.text.rawText + "\")" } ?: "![]($source)"
 
 internal fun richMediaHtml(tag: String, source: String, spoiler: Boolean, selfClosing: Boolean, caption: RichBlockCaption?): String {
     val spoilerAttribute = if (spoiler) " tg-spoiler" else ""

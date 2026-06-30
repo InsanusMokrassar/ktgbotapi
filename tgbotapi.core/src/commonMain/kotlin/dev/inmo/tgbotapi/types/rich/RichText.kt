@@ -21,6 +21,13 @@ import kotlinx.serialization.json.*
 @ClassCastsIncluded
 sealed interface RichText {
     /**
+     * Plain (unformatted) text of this [RichText]. For [RichTextEntity]s without an inner [RichText] it falls back to
+     * the most meaningful textual representation: alternative text for custom emojis, the expression for mathematical
+     * expressions and an empty string for anchors.
+     */
+    val rawText: String
+
+    /**
      * [Rich Markdown style](https://core.telegram.org/bots/api#rich-markdown-style) representation of this [RichText].
      */
     val markdown: String
@@ -38,6 +45,7 @@ sealed interface RichText {
 data class RichTextPlain(
     val text: String
 ) : RichText {
+    override val rawText: String = text
     override val markdown: String = markdown(text)
     override val html: String = html(text)
 
@@ -54,6 +62,7 @@ data class RichTextPlain(
 data class RichTextGroup(
     val parts: List<RichText>
 ) : RichText {
+    override val rawText: String = parts.joinToString(separator = "") { it.rawText }
     override val markdown: String = markdown(parts)
     override val html: String = html(parts)
 

@@ -35388,6 +35388,7 @@ public abstract interface class dev/inmo/tgbotapi/types/rich/RichText {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichText$Companion;
 	public abstract fun getHtml ()Ljava/lang/String;
 	public abstract fun getMarkdown ()Ljava/lang/String;
+	public abstract fun getRawText ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichText$Companion {
@@ -35405,6 +35406,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextAnchor : dev/inmo/tgbota
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public final fun getName ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -35439,6 +35441,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextAnchorLink : dev/inmo/tg
 	public final fun getAnchorName ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35474,6 +35477,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBankCardNumber : dev/inm
 	public final fun getBankCardNumber ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35507,6 +35511,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBold : dev/inmo/tgbotapi
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35542,6 +35547,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBotCommand : dev/inmo/tg
 	public final fun getBotCommand ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35632,6 +35638,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCashtag : dev/inmo/tgbot
 	public final fun getCashtag ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35665,6 +35672,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCode : dev/inmo/tgbotapi
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35701,6 +35709,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCustomEmoji : dev/inmo/t
 	public final fun getCustomEmojiId-dDnjveI ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -35736,6 +35745,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime : dev/inmo/tgbo
 	public final fun getDateTimeFormat ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUnixTime ()J
@@ -35782,6 +35792,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextEmailAddress : dev/inmo/
 	public final fun getEmailAddress ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35822,7 +35833,6 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextEntitySerializer : kotli
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextFormattingKt {
 	public static final fun escapeRichMarkdown (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun getSource (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextGroup : dev/inmo/tgbotapi/types/rich/RichText {
@@ -35835,6 +35845,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextGroup : dev/inmo/tgbotap
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public final fun getParts ()Ljava/util/List;
+	public fun getRawText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -35868,6 +35879,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextHashtag : dev/inmo/tgbot
 	public final fun getHashtag ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35931,6 +35943,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextItalic : dev/inmo/tgbota
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35964,6 +35977,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMarked : dev/inmo/tgbota
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35998,6 +36012,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMathematicalExpression :
 	public final fun getExpression ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -36031,6 +36046,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMention : dev/inmo/tgbot
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUsername ()Ljava/lang/String;
@@ -36067,6 +36083,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextPhoneNumber : dev/inmo/t
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public final fun getPhoneNumber ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36099,6 +36116,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextPlain : dev/inmo/tgbotap
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -36133,6 +36151,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextReference : dev/inmo/tgb
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public final fun getName ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36167,6 +36186,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextReferenceLink : dev/inmo
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getReferenceName ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
@@ -36210,6 +36230,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSpoiler : dev/inmo/tgbot
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36243,6 +36264,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextStrikethrough : dev/inmo
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36276,6 +36298,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSubscript : dev/inmo/tgb
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36309,6 +36332,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSuperscript : dev/inmo/t
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36343,6 +36367,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextTextMention : dev/inmo/t
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -36377,6 +36402,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextUnderline : dev/inmo/tgb
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -36411,6 +36437,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextUrl : dev/inmo/tgbotapi/
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUrl ()Ljava/lang/String;

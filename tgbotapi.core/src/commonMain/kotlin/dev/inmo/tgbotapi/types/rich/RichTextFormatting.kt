@@ -21,39 +21,3 @@ fun String.escapeRichMarkdown(): String = buildString {
         append(character)
     }
 }
-
-/**
- * Plain (unformatted) text of this [RichText]. For [RichTextEntity]s without an inner [RichText] it falls back to the
- * most meaningful textual representation: alternative text for custom emojis, the expression for mathematical
- * expressions and an empty string for anchors.
- */
-val RichText.source: String
-    get() = when (this) {
-        is RichTextPlain -> text
-        is RichTextGroup -> parts.joinToString(separator = "") { it.source }
-        is RichTextCustomEmoji -> alternativeText
-        is RichTextMathematicalExpression -> expression
-        is RichTextAnchor -> ""
-        is RichTextBold -> text.source
-        is RichTextItalic -> text.source
-        is RichTextUnderline -> text.source
-        is RichTextStrikethrough -> text.source
-        is RichTextSpoiler -> text.source
-        is RichTextSubscript -> text.source
-        is RichTextSuperscript -> text.source
-        is RichTextMarked -> text.source
-        is RichTextCode -> text.source
-        is RichTextDateTime -> text.source
-        is RichTextTextMention -> text.source
-        is RichTextUrl -> text.source
-        is RichTextEmailAddress -> text.source
-        is RichTextPhoneNumber -> text.source
-        is RichTextBankCardNumber -> text.source
-        is RichTextMention -> text.source
-        is RichTextHashtag -> text.source
-        is RichTextCashtag -> text.source
-        is RichTextBotCommand -> text.source
-        is RichTextAnchorLink -> text.source
-        is RichTextReference -> text.source
-        is RichTextReferenceLink -> text.source
-    }

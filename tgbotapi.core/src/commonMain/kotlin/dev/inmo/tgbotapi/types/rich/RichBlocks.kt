@@ -109,7 +109,7 @@ data class RichBlockPreformatted(
 
     companion object {
         const val TYPE = "pre"
-        fun markdown(text: RichText, language: String?): String = "```" + (language ?: "") + "\n" + text.source + "\n```"
+        fun markdown(text: RichText, language: String?): String = "```" + (language ?: "") + "\n" + text.rawText + "\n```"
         fun html(text: RichText, language: String?): String =
             language?.let { "<pre><code class=\"language-$it\">${text.html}</code></pre>" } ?: "<pre>${text.html}</pre>"
     }

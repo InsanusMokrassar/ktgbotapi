@@ -209,13 +209,13 @@ class RichTextFormattingTest {
     }
 
     @Test
-    fun sourceExtractsPlainText() {
-        assertEquals("x", RichTextBold(RichTextPlain("x")).source)
-        assertEquals("alt", RichTextCustomEmoji(CustomEmojiId("1"), "alt").source)
-        assertEquals("e", RichTextMathematicalExpression("e").source)
+    fun rawTextExtractsPlainText() {
+        assertEquals("x", RichTextBold(RichTextPlain("x")).rawText)
+        assertEquals("alt", RichTextCustomEmoji(CustomEmojiId("1"), "alt").rawText)
+        assertEquals("e", RichTextMathematicalExpression("e").rawText)
         assertEquals(
             "a b",
-            RichTextGroup(listOf(RichTextPlain("a "), RichTextBold(RichTextPlain("b")))).source
+            RichTextGroup(listOf(RichTextPlain("a "), RichTextBold(RichTextPlain("b")))).rawText
         )
     }
 }
