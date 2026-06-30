@@ -34757,6 +34757,15 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockFooter$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/RichBlockFormattingKt {
+	public static final fun getHtml (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ljava/lang/String;
+	public static final fun getHtml (Ldev/inmo/tgbotapi/types/rich/RichTextInfo;)Ljava/lang/String;
+	public static final fun getMarkdown (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ljava/lang/String;
+	public static final fun getMarkdown (Ldev/inmo/tgbotapi/types/rich/RichTextInfo;)Ljava/lang/String;
+	public static final fun toRichHtml (Ljava/util/List;)Ljava/lang/String;
+	public static final fun toRichMarkdown (Ljava/util/List;)Ljava/lang/String;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichBlockList : dev/inmo/tgbotapi/types/rich/RichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockList$Companion;
 	public static final field TYPE Ljava/lang/String;
