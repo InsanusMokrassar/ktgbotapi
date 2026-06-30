@@ -38,10 +38,13 @@ sealed interface RichText {
 data class RichTextPlain(
     val text: String
 ) : RichText {
-    override val markdown: String
-        get() = text.escapeRichMarkdown()
-    override val html: String
-        get() = text.toHtml()
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
+
+    companion object {
+        fun markdown(text: String): String = text.escapeRichMarkdown()
+        fun html(text: String): String = text.toHtml()
+    }
 }
 
 /**
@@ -51,10 +54,13 @@ data class RichTextPlain(
 data class RichTextGroup(
     val parts: List<RichText>
 ) : RichText {
-    override val markdown: String
-        get() = parts.joinToString(separator = "") { it.markdown }
-    override val html: String
-        get() = parts.joinToString(separator = "") { it.html }
+    override val markdown: String = markdown(parts)
+    override val html: String = html(parts)
+
+    companion object {
+        fun markdown(parts: List<RichText>): String = parts.joinToString(separator = "") { it.markdown }
+        fun html(parts: List<RichText>): String = parts.joinToString(separator = "") { it.html }
+    }
 }
 
 /**

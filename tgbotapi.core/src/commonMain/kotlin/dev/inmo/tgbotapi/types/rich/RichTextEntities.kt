@@ -41,13 +41,13 @@ data class RichTextBold(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "**${text.markdown}**"
-    override val html: String
-        get() = "<b>${text.html}</b>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "bold"
+        fun markdown(text: RichText): String = "**${text.markdown}**"
+        fun html(text: RichText): String = "<b>${text.html}</b>"
     }
 }
 
@@ -65,13 +65,13 @@ data class RichTextItalic(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "*${text.markdown}*"
-    override val html: String
-        get() = "<i>${text.html}</i>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "italic"
+        fun markdown(text: RichText): String = "*${text.markdown}*"
+        fun html(text: RichText): String = "<i>${text.html}</i>"
     }
 }
 
@@ -89,13 +89,13 @@ data class RichTextUnderline(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "<u>${text.markdown}</u>"
-    override val html: String
-        get() = "<u>${text.html}</u>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "underline"
+        fun markdown(text: RichText): String = "<u>${text.markdown}</u>"
+        fun html(text: RichText): String = "<u>${text.html}</u>"
     }
 }
 
@@ -113,13 +113,13 @@ data class RichTextStrikethrough(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "~~${text.markdown}~~"
-    override val html: String
-        get() = "<s>${text.html}</s>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "strikethrough"
+        fun markdown(text: RichText): String = "~~${text.markdown}~~"
+        fun html(text: RichText): String = "<s>${text.html}</s>"
     }
 }
 
@@ -137,13 +137,13 @@ data class RichTextSpoiler(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "||${text.markdown}||"
-    override val html: String
-        get() = "<tg-spoiler>${text.html}</tg-spoiler>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "spoiler"
+        fun markdown(text: RichText): String = "||${text.markdown}||"
+        fun html(text: RichText): String = "<tg-spoiler>${text.html}</tg-spoiler>"
     }
 }
 
@@ -161,13 +161,13 @@ data class RichTextSubscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "<sub>${text.markdown}</sub>"
-    override val html: String
-        get() = "<sub>${text.html}</sub>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "subscript"
+        fun markdown(text: RichText): String = "<sub>${text.markdown}</sub>"
+        fun html(text: RichText): String = "<sub>${text.html}</sub>"
     }
 }
 
@@ -185,13 +185,13 @@ data class RichTextSuperscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "<sup>${text.markdown}</sup>"
-    override val html: String
-        get() = "<sup>${text.html}</sup>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "superscript"
+        fun markdown(text: RichText): String = "<sup>${text.markdown}</sup>"
+        fun html(text: RichText): String = "<sup>${text.html}</sup>"
     }
 }
 
@@ -209,13 +209,13 @@ data class RichTextMarked(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "==${text.markdown}=="
-    override val html: String
-        get() = "<mark>${text.html}</mark>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "marked"
+        fun markdown(text: RichText): String = "==${text.markdown}=="
+        fun html(text: RichText): String = "<mark>${text.html}</mark>"
     }
 }
 
@@ -233,13 +233,13 @@ data class RichTextCode(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "`${text.source}`"
-    override val html: String
-        get() = "<code>${text.html}</code>"
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "code"
+        fun markdown(text: RichText): String = "`${text.source}`"
+        fun html(text: RichText): String = "<code>${text.html}</code>"
     }
 }
 
@@ -261,13 +261,15 @@ data class RichTextDateTime(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "![${text.markdown}](tg://time?unix=$unixTime&format=$dateTimeFormat)"
-    override val html: String
-        get() = "<tg-time unix=\"$unixTime\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
+    override val markdown: String = markdown(text, unixTime, dateTimeFormat)
+    override val html: String = html(text, unixTime, dateTimeFormat)
 
     companion object {
         const val TYPE = "date_time"
+        fun markdown(text: RichText, unixTime: Long, dateTimeFormat: String): String =
+            "![${text.markdown}](tg://time?unix=$unixTime&format=$dateTimeFormat)"
+        fun html(text: RichText, unixTime: Long, dateTimeFormat: String): String =
+            "<tg-time unix=\"$unixTime\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
     }
 }
 
@@ -287,13 +289,15 @@ data class RichTextTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}]($internalUserLinkBeginning${user.id.chatId.long})"
-    override val html: String
-        get() = "<a href=\"$internalUserLinkBeginning${user.id.chatId.long}\">${text.html}</a>"
+    override val markdown: String = markdown(text, user)
+    override val html: String = html(text, user)
 
     companion object {
         const val TYPE = "text_mention"
+        fun markdown(text: RichText, user: User): String =
+            "[${text.markdown}]($internalUserLinkBeginning${user.id.chatId.long})"
+        fun html(text: RichText, user: User): String =
+            "<a href=\"$internalUserLinkBeginning${user.id.chatId.long}\">${text.html}</a>"
     }
 }
 
@@ -313,13 +317,15 @@ data class RichTextCustomEmoji(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "![${alternativeText.escapeRichMarkdown()}](tg://emoji?id=${customEmojiId.string})"
-    override val html: String
-        get() = "<tg-emoji emoji-id=\"${customEmojiId.string}\">${alternativeText.toHtml()}</tg-emoji>"
+    override val markdown: String = markdown(customEmojiId, alternativeText)
+    override val html: String = html(customEmojiId, alternativeText)
 
     companion object {
         const val TYPE = "custom_emoji"
+        fun markdown(customEmojiId: CustomEmojiId, alternativeText: String): String =
+            "![${alternativeText.escapeRichMarkdown()}](tg://emoji?id=${customEmojiId.string})"
+        fun html(customEmojiId: CustomEmojiId, alternativeText: String): String =
+            "<tg-emoji emoji-id=\"${customEmojiId.string}\">${alternativeText.toHtml()}</tg-emoji>"
     }
 }
 
@@ -337,13 +343,13 @@ data class RichTextMathematicalExpression(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "\$$expression\$"
-    override val html: String
-        get() = "<tg-math>$expression</tg-math>"
+    override val markdown: String = markdown(expression)
+    override val html: String = html(expression)
 
     companion object {
         const val TYPE = "mathematical_expression"
+        fun markdown(expression: String): String = "\$$expression\$"
+        fun html(expression: String): String = "<tg-math>$expression</tg-math>"
     }
 }
 
@@ -363,13 +369,13 @@ data class RichTextUrl(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}]($url)"
-    override val html: String
-        get() = "<a href=\"$url\">${text.html}</a>"
+    override val markdown: String = markdown(text, url)
+    override val html: String = html(text, url)
 
     companion object {
         const val TYPE = "url"
+        fun markdown(text: RichText, url: String): String = "[${text.markdown}]($url)"
+        fun html(text: RichText, url: String): String = "<a href=\"$url\">${text.html}</a>"
     }
 }
 
@@ -389,13 +395,13 @@ data class RichTextEmailAddress(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}](mailto:$emailAddress)"
-    override val html: String
-        get() = "<a href=\"mailto:$emailAddress\">${text.html}</a>"
+    override val markdown: String = markdown(text, emailAddress)
+    override val html: String = html(text, emailAddress)
 
     companion object {
         const val TYPE = "email_address"
+        fun markdown(text: RichText, emailAddress: String): String = "[${text.markdown}](mailto:$emailAddress)"
+        fun html(text: RichText, emailAddress: String): String = "<a href=\"mailto:$emailAddress\">${text.html}</a>"
     }
 }
 
@@ -415,13 +421,13 @@ data class RichTextPhoneNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}](tel:$phoneNumber)"
-    override val html: String
-        get() = "<a href=\"tel:$phoneNumber\">${text.html}</a>"
+    override val markdown: String = markdown(text, phoneNumber)
+    override val html: String = html(text, phoneNumber)
 
     companion object {
         const val TYPE = "phone_number"
+        fun markdown(text: RichText, phoneNumber: String): String = "[${text.markdown}](tel:$phoneNumber)"
+        fun html(text: RichText, phoneNumber: String): String = "<a href=\"tel:$phoneNumber\">${text.html}</a>"
     }
 }
 
@@ -441,13 +447,13 @@ data class RichTextBankCardNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = text.markdown
-    override val html: String
-        get() = text.html
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "bank_card_number"
+        fun markdown(text: RichText): String = text.markdown
+        fun html(text: RichText): String = text.html
     }
 }
 
@@ -467,13 +473,13 @@ data class RichTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = text.markdown
-    override val html: String
-        get() = text.html
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "mention"
+        fun markdown(text: RichText): String = text.markdown
+        fun html(text: RichText): String = text.html
     }
 }
 
@@ -493,13 +499,13 @@ data class RichTextHashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = text.markdown
-    override val html: String
-        get() = text.html
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "hashtag"
+        fun markdown(text: RichText): String = text.markdown
+        fun html(text: RichText): String = text.html
     }
 }
 
@@ -519,13 +525,13 @@ data class RichTextCashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = text.markdown
-    override val html: String
-        get() = text.html
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "cashtag"
+        fun markdown(text: RichText): String = text.markdown
+        fun html(text: RichText): String = text.html
     }
 }
 
@@ -545,13 +551,13 @@ data class RichTextBotCommand(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = text.markdown
-    override val html: String
-        get() = text.html
+    override val markdown: String = markdown(text)
+    override val html: String = html(text)
 
     companion object {
         const val TYPE = "bot_command"
+        fun markdown(text: RichText): String = text.markdown
+        fun html(text: RichText): String = text.html
     }
 }
 
@@ -569,13 +575,13 @@ data class RichTextAnchor(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "<a name=\"$name\"></a>"
-    override val html: String
-        get() = "<a name=\"$name\"></a>"
+    override val markdown: String = markdown(name)
+    override val html: String = html(name)
 
     companion object {
         const val TYPE = "anchor"
+        fun markdown(name: String): String = "<a name=\"$name\"></a>"
+        fun html(name: String): String = "<a name=\"$name\"></a>"
     }
 }
 
@@ -595,13 +601,13 @@ data class RichTextAnchorLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}](#$anchorName)"
-    override val html: String
-        get() = "<a href=\"#$anchorName\">${text.html}</a>"
+    override val markdown: String = markdown(text, anchorName)
+    override val html: String = html(text, anchorName)
 
     companion object {
         const val TYPE = "anchor_link"
+        fun markdown(text: RichText, anchorName: String): String = "[${text.markdown}](#$anchorName)"
+        fun html(text: RichText, anchorName: String): String = "<a href=\"#$anchorName\">${text.html}</a>"
     }
 }
 
@@ -621,13 +627,13 @@ data class RichTextReference(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "<tg-reference name=\"$name\">${text.markdown}</tg-reference>"
-    override val html: String
-        get() = "<tg-reference name=\"$name\">${text.html}</tg-reference>"
+    override val markdown: String = markdown(text, name)
+    override val html: String = html(text, name)
 
     companion object {
         const val TYPE = "reference"
+        fun markdown(text: RichText, name: String): String = "<tg-reference name=\"$name\">${text.markdown}</tg-reference>"
+        fun html(text: RichText, name: String): String = "<tg-reference name=\"$name\">${text.html}</tg-reference>"
     }
 }
 
@@ -647,12 +653,12 @@ data class RichTextReferenceLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String
-        get() = "[${text.markdown}](#$referenceName)"
-    override val html: String
-        get() = "<a href=\"#$referenceName\">${text.html}</a>"
+    override val markdown: String = markdown(text, referenceName)
+    override val html: String = html(text, referenceName)
 
     companion object {
         const val TYPE = "reference_link"
+        fun markdown(text: RichText, referenceName: String): String = "[${text.markdown}](#$referenceName)"
+        fun html(text: RichText, referenceName: String): String = "<a href=\"#$referenceName\">${text.html}</a>"
     }
 }

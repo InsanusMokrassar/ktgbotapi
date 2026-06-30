@@ -34510,6 +34510,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockAnchor$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockAnchor$Companion {
+	public final fun html (Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34546,6 +34548,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockAnimation$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockAnimation$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/files/AnimationFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/files/AnimationFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34580,6 +34584,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockAudio$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockAudio$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34614,6 +34620,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockBlockQuotatio
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockBlockQuotation$Companion {
+	public final fun html (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34678,6 +34686,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockCollage$$seri
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockCollage$Companion {
+	public final fun html (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34714,6 +34724,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockDetails$$seri
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockDetails$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34741,6 +34753,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockDivider$$seri
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockDivider$Companion {
+	public final fun html ()Ljava/lang/String;
+	public final fun markdown ()Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34772,6 +34786,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockFooter$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockFooter$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34810,6 +34826,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockList$$seriali
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockList$Companion {
+	public final fun html (Ljava/util/List;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34896,6 +34914,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockMap$$serializ
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockMap$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/location/StaticLocation;ILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/location/StaticLocation;ILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34927,6 +34947,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockMathematicalE
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockMathematicalExpression$Companion {
+	public final fun html (Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34958,6 +34980,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockParagraph$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockParagraph$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -34994,6 +35018,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockPhoto$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockPhoto$Companion {
+	public final fun html-OKnyJrA (Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown-ACrxq0Q (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35028,6 +35054,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockPreformatted$
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockPreformatted$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35062,6 +35090,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockPullQuotation
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockPullQuotation$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35095,6 +35125,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockSectionHeadin
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockSectionHeading$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;I)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;I)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35133,6 +35165,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockSlideshow$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockSlideshow$Companion {
+	public final fun html (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35171,6 +35205,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockTable$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockTable$Companion {
+	public final fun html (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35240,6 +35276,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockThinking$$ser
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockThinking$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35276,6 +35314,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockVideo$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockVideo$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/files/VideoFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35310,6 +35350,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35380,6 +35422,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextAnchor$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextAnchor$Companion {
+	public final fun html (Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35413,6 +35457,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextAnchorLink$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextAnchorLink$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35446,6 +35492,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextBankCardNumber
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextBankCardNumber$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35477,6 +35525,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextBold$$serializ
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextBold$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35510,6 +35560,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextBotCommand$$se
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextBotCommand$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35598,6 +35650,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextCashtag$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextCashtag$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35629,6 +35683,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextCode$$serializ
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextCode$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35662,6 +35718,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextCustomEmoji$$s
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextCustomEmoji$Companion {
+	public final fun html-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35697,6 +35755,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextDateTime$$seri
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;JLjava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;JLjava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35740,6 +35800,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextEmailAddress$$
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextEmailAddress$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35789,6 +35851,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextGroup$$seriali
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextGroup$Companion {
+	public final fun html (Ljava/util/List;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35822,6 +35886,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextHashtag$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextHashtag$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35883,6 +35949,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextItalic$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextItalic$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35914,6 +35982,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextMarked$$serial
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextMarked$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35945,6 +36015,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextMathematicalEx
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextMathematicalExpression$Companion {
+	public final fun html (Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35978,6 +36050,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextMention$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextMention$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36011,6 +36085,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextPhoneNumber$$s
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextPhoneNumber$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36040,6 +36116,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextPlain$$seriali
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextPlain$Companion {
+	public final fun html (Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36073,6 +36151,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextReference$$ser
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextReference$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36106,6 +36186,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextReferenceLink$
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextReferenceLink$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36146,6 +36228,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextSpoiler$$seria
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextSpoiler$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36177,6 +36261,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextStrikethrough$
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextStrikethrough$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36208,6 +36294,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextSubscript$$ser
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextSubscript$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36239,6 +36327,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextSuperscript$$s
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextSuperscript$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36272,6 +36362,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextTextMention$$s
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextTextMention$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/chat/User;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/chat/User;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36303,6 +36395,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextUnderline$$ser
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextUnderline$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36336,6 +36430,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextUrl$$serialize
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextUrl$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
