@@ -18,6 +18,16 @@ import kotlinx.serialization.json.jsonPrimitive
 @ClassCastsIncluded
 sealed interface RichBlock {
     val type: String
+
+    /**
+     * [Rich Markdown style](https://core.telegram.org/bots/api#rich-markdown-style) source of this single [RichBlock].
+     */
+    val markdown: String
+
+    /**
+     * [Rich HTML style](https://core.telegram.org/bots/api#rich-html-style) source of this single [RichBlock].
+     */
+    val html: String
 }
 
 object RichBlockSerializer : JsonContentPolymorphicSerializer<RichBlock>(RichBlock::class) {

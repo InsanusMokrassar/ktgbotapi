@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.typeField
+import dev.inmo.tgbotapi.utils.extensions.toHtml
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.KSerializer
@@ -18,7 +19,17 @@ import kotlinx.serialization.json.*
  */
 @Serializable(RichTextSerializer::class)
 @ClassCastsIncluded
-sealed interface RichText
+sealed interface RichText {
+    /**
+     * [Rich Markdown style](https://core.telegram.org/bots/api#rich-markdown-style) representation of this [RichText].
+     */
+    val markdown: String
+
+    /**
+     * [Rich HTML style](https://core.telegram.org/bots/api#rich-html-style) representation of this [RichText].
+     */
+    val html: String
+}
 
 /**
  * A plain (non-formatted) part of a [RichText]. Serialized as a bare JSON string.
@@ -26,7 +37,12 @@ sealed interface RichText
 @Serializable
 data class RichTextPlain(
     val text: String
-) : RichText
+) : RichText {
+    override val markdown: String
+        get() = text.escapeRichMarkdown()
+    override val html: String
+        get() = text.toHtml()
+}
 
 /**
  * A group of [RichText]s. Serialized as a JSON array.
@@ -34,7 +50,12 @@ data class RichTextPlain(
 @Serializable
 data class RichTextGroup(
     val parts: List<RichText>
-) : RichText
+) : RichText {
+    override val markdown: String
+        get() = parts.joinToString(separator = "") { it.markdown }
+    override val html: String
+        get() = parts.joinToString(separator = "") { it.html }
+}
 
 /**
  * Any typed (formatted) part of a [RichText]. Serialized as a JSON object with the [type] discriminator.
@@ -43,8 +64,8 @@ data class RichTextGroup(
 sealed interface RichTextEntity : RichText {
     val type: String
 
-    val markdown: String
-    val html: String
+    override val markdown: String
+    override val html: String
 }
 
 object RichTextSerializer : KSerializer<RichText> {

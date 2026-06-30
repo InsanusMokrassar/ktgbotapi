@@ -49,6 +49,11 @@ data class RichBlockParagraph(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = text.markdown
+    override val html: String
+        get() = "<p>${text.html}</p>"
+
     companion object {
         const val TYPE = "paragraph"
     }
@@ -73,6 +78,11 @@ data class RichBlockSectionHeading(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = "#".repeat(size) + " " + text.markdown
+    override val html: String
+        get() = "<h$size>${text.html}</h$size>"
+
     companion object {
         const val TYPE = "heading"
     }
@@ -94,6 +104,11 @@ data class RichBlockPreformatted(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = "```" + (language ?: "") + "\n" + text.source + "\n```"
+    override val html: String
+        get() = language?.let { "<pre><code class=\"language-$it\">${text.html}</code></pre>" } ?: "<pre>${text.html}</pre>"
+
     companion object {
         const val TYPE = "pre"
     }
@@ -113,6 +128,11 @@ data class RichBlockFooter(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = "<footer>${text.markdown}</footer>"
+    override val html: String
+        get() = "<footer>${text.html}</footer>"
+
     companion object {
         const val TYPE = "footer"
     }
@@ -128,6 +148,11 @@ class RichBlockDivider : RichBlock {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = "---"
+    override val html: String
+        get() = "<hr/>"
 
     override fun equals(other: Any?): Boolean = other is RichBlockDivider
 
@@ -154,6 +179,11 @@ data class RichBlockMathematicalExpression(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = "\$\$" + expression + "\$\$"
+    override val html: String
+        get() = "<tg-math-block>$expression</tg-math-block>"
+
     companion object {
         const val TYPE = "mathematical_expression"
     }
@@ -173,6 +203,11 @@ data class RichBlockAnchor(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = "<a name=\"$name\"></a>"
+    override val html: String
+        get() = "<a name=\"$name\"></a>"
+
     companion object {
         const val TYPE = "anchor"
     }
@@ -191,6 +226,11 @@ data class RichBlockList(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = richBlockListMarkdown(this)
+    override val html: String
+        get() = richBlockListHtml(this)
 
     companion object {
         const val TYPE = "list"
@@ -213,6 +253,11 @@ data class RichBlockBlockQuotation(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richBlockQuotationMarkdown(blocks, credit)
+    override val html: String
+        get() = "<blockquote>${blocks.toRichHtml()}${creditCiteHtml(credit)}</blockquote>"
+
     companion object {
         const val TYPE = "blockquote"
     }
@@ -233,6 +278,11 @@ data class RichBlockPullQuotation(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = "<aside>${text.markdown}${creditCiteMarkdown(credit)}</aside>"
+    override val html: String
+        get() = "<aside>${text.html}${creditCiteHtml(credit)}</aside>"
 
     companion object {
         const val TYPE = "pullquote"
@@ -255,6 +305,11 @@ data class RichBlockCollage(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richMediaContainerMarkdown("tg-collage", blocks, caption)
+    override val html: String
+        get() = richMediaContainerHtml("tg-collage", blocks, caption)
+
     companion object {
         const val TYPE = "collage"
     }
@@ -275,6 +330,11 @@ data class RichBlockSlideshow(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = richMediaContainerMarkdown("tg-slideshow", blocks, caption)
+    override val html: String
+        get() = richMediaContainerHtml("tg-slideshow", blocks, caption)
 
     companion object {
         const val TYPE = "slideshow"
@@ -301,6 +361,11 @@ data class RichBlockTable(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richBlockTableMarkdown(this)
+    override val html: String
+        get() = richBlockTableHtml(this)
+
     companion object {
         const val TYPE = "table"
     }
@@ -323,6 +388,11 @@ data class RichBlockDetails(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = "<details${richOpenAttribute(isOpen)}><summary>${summary.markdown}</summary>\n\n${blocks.toRichMarkdown()}\n\n</details>"
+    override val html: String
+        get() = "<details${richOpenAttribute(isOpen)}><summary>${summary.html}</summary>${blocks.toRichHtml()}</details>"
 
     companion object {
         const val TYPE = "details"
@@ -354,6 +424,11 @@ data class RichBlockMap(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richBlockMapMarkdown(this)
+    override val html: String
+        get() = richBlockMapHtml(this)
+
     companion object {
         const val TYPE = "map"
     }
@@ -377,6 +452,11 @@ data class RichBlockAnimation(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richMediaMarkdown(animation.fileId.fileId, caption)
+    override val html: String
+        get() = richMediaHtml("video", animation.fileId.fileId, hasSpoiler == true, selfClosing = false, caption = caption)
+
     companion object {
         const val TYPE = "animation"
     }
@@ -397,6 +477,11 @@ data class RichBlockAudio(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = richMediaMarkdown(audio.fileId.fileId, caption)
+    override val html: String
+        get() = richMediaHtml("audio", audio.fileId.fileId, spoiler = false, selfClosing = false, caption = caption)
 
     companion object {
         const val TYPE = "audio"
@@ -421,6 +506,11 @@ data class RichBlockPhoto(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richMediaMarkdown(photo.fileId.fileId, caption)
+    override val html: String
+        get() = richMediaHtml("img", photo.fileId.fileId, hasSpoiler == true, selfClosing = true, caption = caption)
+
     companion object {
         const val TYPE = "photo"
     }
@@ -444,6 +534,11 @@ data class RichBlockVideo(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richMediaMarkdown(video.fileId.fileId, caption)
+    override val html: String
+        get() = richMediaHtml("video", video.fileId.fileId, hasSpoiler == true, selfClosing = false, caption = caption)
+
     companion object {
         const val TYPE = "video"
     }
@@ -465,6 +560,11 @@ data class RichBlockVoiceNote(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    override val markdown: String
+        get() = richMediaMarkdown(voiceNote.fileId.fileId, caption)
+    override val html: String
+        get() = richMediaHtml("audio", voiceNote.fileId.fileId, spoiler = false, selfClosing = false, caption = caption)
+
     companion object {
         const val TYPE = "voice_note"
     }
@@ -483,6 +583,11 @@ data class RichBlockThinking(
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
+
+    override val markdown: String
+        get() = "<tg-thinking>${text.markdown}</tg-thinking>"
+    override val html: String
+        get() = "<tg-thinking>${text.html}</tg-thinking>"
 
     companion object {
         const val TYPE = "thinking"

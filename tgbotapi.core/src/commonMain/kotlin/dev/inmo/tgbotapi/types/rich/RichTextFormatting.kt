@@ -1,8 +1,5 @@
 package dev.inmo.tgbotapi.types.rich
 
-import dev.inmo.tgbotapi.types.internalUserLinkBeginning
-import dev.inmo.tgbotapi.utils.extensions.toHtml
-
 /**
  * Characters which have a special meaning in the
  * [Rich Markdown style](https://core.telegram.org/bots/api#rich-markdown-style) and must be escaped with a backslash
@@ -59,24 +56,4 @@ val RichText.source: String
         is RichTextAnchorLink -> text.source
         is RichTextReference -> text.source
         is RichTextReferenceLink -> text.source
-    }
-
-/**
- * [Rich Markdown style](https://core.telegram.org/bots/api#rich-markdown-style) representation of this [RichText].
- */
-val RichText.markdown: String
-    get() = when (this) {
-        is RichTextPlain -> text.escapeRichMarkdown()
-        is RichTextGroup -> parts.joinToString(separator = "") { it.markdown }
-        is RichTextEntity -> markdown
-    }
-
-/**
- * [Rich HTML style](https://core.telegram.org/bots/api#rich-html-style) representation of this [RichText].
- */
-val RichText.html: String
-    get() = when (this) {
-        is RichTextPlain -> text.toHtml()
-        is RichTextGroup -> parts.joinToString(separator = "") { it.html }
-        is RichTextEntity -> html
     }
