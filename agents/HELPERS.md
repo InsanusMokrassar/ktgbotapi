@@ -48,3 +48,15 @@ Each section can be ommited if there are no any changes in the section. In case 
 * `Core`:
     * (`Guest mode`) // change data
 ```
+
+---
+
+When a property (or method) can be declared on an interface/class and implemented by each inheritor - it MUST be declared there and overridden per implementation. DO NOT implement such behaviour as a common extension property/function that dispatches with a `when (this)` over every subtype: those branches silently drift out of sync when new subtypes are added and are not part of the type contract. If a part of the implementation is reused across several inheritors, keep that part in a shared helper (a companion-object function of the owner, or an `internal` top-level function for logic shared between different types) and let the overrides reuse it.
+
+---
+
+All work MUST be performed in the normal (main) working worktree of the repository. DO NOT create or do the work inside a separate worktree (for example `.claude/worktrees/...`): commits made there leave the main checkout behind and force an extra fast-forward/pull to land the changes. If some environment forces an isolated worktree, fast-forward the main branch onto those commits and continue in the main worktree.
+
+---
+
+When a prompt contains a list of several subtasks, run each subtask as its own subagent (one subagent per subtask) instead of doing all of them inline in the main thread.

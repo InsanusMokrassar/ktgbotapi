@@ -27,6 +27,14 @@ sealed interface ExtendedChat : Chat {
 
     val uniqueGiftColors: UniqueGiftColors?
 
+    /**
+     * The bot that processes join request queries in the chat. The field is only available to chat administrators.
+     *
+     * @see <a href="https://core.telegram.org/bots/api#chatfullinfo">ChatFullInfo.guard_bot</a>
+     */
+    val guardBot: User?
+        get() = null
+
     @Deprecated(
         message = "Telegram Bot API v9.0 introduced the new field, `acceptedGiftTypes`, to allow granular" +
                 " control over which types of gifts user, bot, or chat can accept.",

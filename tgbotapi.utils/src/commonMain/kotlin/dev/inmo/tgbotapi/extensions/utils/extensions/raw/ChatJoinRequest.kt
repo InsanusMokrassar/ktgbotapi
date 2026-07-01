@@ -1,9 +1,14 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
 import dev.inmo.tgbotapi.types.ChatInviteLink
+import dev.inmo.tgbotapi.types.ChatJoinRequestQueryId
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature(RawFieldsUsageWarning)
 val ChatJoinRequest.invite_link: ChatInviteLink?
     get() = inviteLink
+
+@RiskFeature(RawFieldsUsageWarning)
+val ChatJoinRequest.query_id: ChatJoinRequestQueryId?
+    get() = queryId

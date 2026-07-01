@@ -13,6 +13,8 @@ typealias PollMessage = ChatContentMessage<PollContent>
 typealias TextMessage = ChatContentMessage<TextContent>
 typealias StoryMessage = ChatContentMessage<StoryContent>
 
+typealias RichMessageContentMessage = ChatContentMessage<RichMessageContent>
+
 typealias LocationMessage = ChatContentMessage<LocationContent>
 typealias LiveLocationMessage = ChatContentMessage<LiveLocationContent>
 typealias StaticLocationMessage = ChatContentMessage<StaticLocationContent>

@@ -1,5 +1,43 @@
 # TelegramBotAPI changelog
 
+## 35.0.0
+
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.1](https://core.telegram.org/bots/api-changelog#june-11-2026)**
+
+**Breaking changes**:
+
+* `EditTextChatMessage.text` changed from `String` to `String?` (rich edits carry no text) — implementations overriding it must widen the type and readers must handle `null`
+* `EditChatMessageText.text` changed from `String` to `String?`; its `textSources` is now `null` when there is no text — code reading `text` as non-null must handle `null`
+* `ExtendedBot` gained the `supportsJoinRequestQueries` field inserted between `supportsGuestQueries` and `canConnectToBusiness` — positional constructor calls and `componentN` destructuring shift and must be updated
+
+**Migration advice**: Handle nullable `text` on `EditTextChatMessage`/`EditChatMessageText`; construct `ExtendedBot` with named arguments
+
+* `Core`:
+    * (`Rich Messages`) Added `RichText` (`RichTextPlain`, `RichTextGroup`, `RichTextEntity`) hierarchy with all 25 `RichText*` entity types and a recursive serializer supporting plain strings, arrays and typed objects; every `RichText` exposes `rawText`, `markdown` and `html` renderings
+    * (`Rich Messages`) Added `RichBlock` hierarchy with all 21 `RichBlock*` types plus `RichBlockCaption`, `RichBlockTableCell` and `RichBlockListItem`; every `RichBlock` exposes `markdown`/`html` source, the `RichBlockMedia` marker interface and `subBlocks`/`search` navigation helpers
+    * (`Rich Messages`) Added `RichTextInfo` type (with `markdown`/`html` source built from its blocks) and `RichMessageContent` message content; `RichMessageContent.createResend` re-sends the content (forwarded when it contains media blocks, otherwise re-built through `SendRichMessage`); parsed `rich_message` in `RawMessage`; added `RichMessageContentMessage` typealias
+    * (`Rich Messages`) Added `InputRichMessage` (internal constructor with `InputRichMessageHTML`/`InputRichMessageMarkdown` factories) and `InputRichMessageContent` usable as `InputMessageContent`
+    * (`Rich Messages`) Added Rich Messages DSL builders `buildRichText`/`RichTextBuilder`, `buildRichBlocks`/`RichBlocksBuilder`, `buildRichTextInfo` and `RichBlockListBuilder` (marked with the `@RichTextDsl` DSL marker)
+    * (`Rich Messages`) Added Rich Markdown/HTML source helpers `String.escapeRichMarkdown()` and `List<RichBlock>.toRichMarkdown()`/`toRichHtml()`
+    * (`Rich Messages`) Added `SendRichMessage` and `SendRichMessageDraft` requests
+    * (`Rich Messages`) Added `richMessage` parameter to `EditChatMessageText`; its `text` is now nullable (per API) and the `EditChatMessageRichText` factory builds a rich edit; widened `EditTextChatMessage.text` to nullable
+    * (`Polls`) Added `Link` type (`dev.inmo.tgbotapi.types.Link`) implementing `PollMedia`, carrying the `url` of a link attached to a poll option
+    * (`Polls`) Added `link` field parsing to `PollMedia` deserialization/serialization
+    * (`Polls`) Added `TelegramMediaLink` (`InputMediaLink`) implementing `InputPollOptionMedia`, usable as a poll option media
+    * (`Join Request Queries`) Added `ChatJoinRequestQueryId` value class and `queryId` field to `ChatJoinRequest`
+    * (`Join Request Queries`) Added `supportsJoinRequestQueries` flag to `ExtendedBot` (`User.supports_join_request_queries`)
+    * (`Join Request Queries`) Added `guardBot` field to `ExtendedChat` (`ChatFullInfo.guard_bot`), parsed for public chats
+    * (`Join Request Queries`) Added `AnswerChatJoinRequestQuery` request and `ChatJoinRequestQueryResult` sealed interface (`Approve`/`Decline`/`Queue`/`Unknown`) serialized as a plain string
+    * (`Join Request Queries`) Added `SendChatJoinRequestWebApp` request
+* `API`:
+    * (`Rich Messages`) Added `sendRichMessage` and `sendRichMessageDraft` `TelegramBot` extensions
+    * (`Join Request Queries`) Added `answerChatJoinRequestQuery` and `sendChatJoinRequestWebApp` `TelegramBot` extensions
+* `BehaviourBuilder`:
+    * (`Rich Messages`) Added `onRichMessage` trigger and `waitRichMessage`/`waitRichMessageMessage` expectations
+* `Utils`:
+    * (`Rich Messages`) Added `Flow<ContentMessage<*>>.onlyRichMessageContentMessages()`
+    * (`Join Request Queries`) Added `ChatJoinRequest.query_id` raw accessor
+
 ## 34.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.0](https://core.telegram.org/bots/api-changelog#may-8-2026)**

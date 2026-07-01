@@ -50,6 +50,7 @@ import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.UsersShared
+import dev.inmo.tgbotapi.types.rich.RichTextInfo
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.isFakeTelegramUser
@@ -92,6 +93,7 @@ internal data class RawMessage(
     private val caption_entities: RawMessageEntities? = null,
     private val has_media_spoiler: Boolean? = null,
     private val story: Story? = null,
+    private val rich_message: RichTextInfo? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
     private val paid_media: PaidMediaInfo? = null,
@@ -230,6 +232,11 @@ internal data class RawMessage(
         } ?: emptyList()
 
         when {
+            rich_message != null -> RichMessageContent(
+                chat,
+                messageId,
+                rich_message
+            )
             story != null -> StoryContent(
                 chat,
                 messageId,
