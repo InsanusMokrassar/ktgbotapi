@@ -72,14 +72,14 @@ data class RichBlockSectionHeading(
      * Relative size of the text font; 1-6, 1 is the largest, 6 is the smallest.
      */
     @SerialName(sizeField)
-    val size: Int
+    val level: Int
 ) : RichBlock {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String = markdown(text, size)
-    override val html: String = html(text, size)
+    override val markdown: String = markdown(text, level)
+    override val html: String = html(text, level)
 
     companion object {
         const val TYPE = "heading"

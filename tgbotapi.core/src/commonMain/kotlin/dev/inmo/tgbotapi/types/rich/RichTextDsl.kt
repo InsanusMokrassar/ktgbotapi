@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chat.User
 
 /**
@@ -56,12 +57,12 @@ class RichTextBuilder {
     fun code(text: String) = add(RichTextCode(RichTextPlain(text)))
     fun code(block: RichTextBuilder.() -> Unit) = add(RichTextCode(buildRichText(block)))
 
-    fun dateTime(unixTime: Long, dateTimeFormat: String, text: String) =
+    fun dateTime(text: String, unixTime: TelegramDate, dateTimeFormat: String) =
         add(RichTextDateTime(RichTextPlain(text), unixTime, dateTimeFormat))
-    fun dateTime(unixTime: Long, dateTimeFormat: String, block: RichTextBuilder.() -> Unit) =
+    fun dateTime(unixTime: TelegramDate, dateTimeFormat: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextDateTime(buildRichText(block), unixTime, dateTimeFormat))
 
-    fun textMention(user: User, text: String) = add(RichTextTextMention(RichTextPlain(text), user))
+    fun textMention(text: String, user: User) = add(RichTextTextMention(RichTextPlain(text), user))
     fun textMention(user: User, block: RichTextBuilder.() -> Unit) = add(RichTextTextMention(buildRichText(block), user))
 
     fun customEmoji(customEmojiId: CustomEmojiId, alternativeText: String) =
@@ -69,44 +70,44 @@ class RichTextBuilder {
 
     fun mathematicalExpression(expression: String) = add(RichTextMathematicalExpression(expression))
 
-    fun url(url: String, text: String) = add(RichTextUrl(RichTextPlain(text), url))
+    fun url(text: String, url: String) = add(RichTextUrl(RichTextPlain(text), url))
     fun url(url: String, block: RichTextBuilder.() -> Unit) = add(RichTextUrl(buildRichText(block), url))
 
-    fun email(emailAddress: String, text: String) = add(RichTextEmailAddress(RichTextPlain(text), emailAddress))
+    fun email(text: String, emailAddress: String) = add(RichTextEmailAddress(RichTextPlain(text), emailAddress))
     fun email(emailAddress: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextEmailAddress(buildRichText(block), emailAddress))
 
-    fun phone(phoneNumber: String, text: String) = add(RichTextPhoneNumber(RichTextPlain(text), phoneNumber))
+    fun phone(text: String, phoneNumber: String) = add(RichTextPhoneNumber(RichTextPlain(text), phoneNumber))
     fun phone(phoneNumber: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextPhoneNumber(buildRichText(block), phoneNumber))
 
-    fun bankCard(bankCardNumber: String, text: String) = add(RichTextBankCardNumber(RichTextPlain(text), bankCardNumber))
+    fun bankCard(text: String, bankCardNumber: String) = add(RichTextBankCardNumber(RichTextPlain(text), bankCardNumber))
     fun bankCard(bankCardNumber: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextBankCardNumber(buildRichText(block), bankCardNumber))
 
-    fun mention(username: String, text: String) = add(RichTextMention(RichTextPlain(text), username))
+    fun mention(text: String, username: String) = add(RichTextMention(RichTextPlain(text), username))
     fun mention(username: String, block: RichTextBuilder.() -> Unit) = add(RichTextMention(buildRichText(block), username))
 
-    fun hashtag(hashtag: String, text: String) = add(RichTextHashtag(RichTextPlain(text), hashtag))
+    fun hashtag(text: String, hashtag: String) = add(RichTextHashtag(RichTextPlain(text), hashtag))
     fun hashtag(hashtag: String, block: RichTextBuilder.() -> Unit) = add(RichTextHashtag(buildRichText(block), hashtag))
 
-    fun cashtag(cashtag: String, text: String) = add(RichTextCashtag(RichTextPlain(text), cashtag))
+    fun cashtag(text: String, cashtag: String) = add(RichTextCashtag(RichTextPlain(text), cashtag))
     fun cashtag(cashtag: String, block: RichTextBuilder.() -> Unit) = add(RichTextCashtag(buildRichText(block), cashtag))
 
-    fun botCommand(botCommand: String, text: String) = add(RichTextBotCommand(RichTextPlain(text), botCommand))
+    fun botCommand(text: String, botCommand: String) = add(RichTextBotCommand(RichTextPlain(text), botCommand))
     fun botCommand(botCommand: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextBotCommand(buildRichText(block), botCommand))
 
     fun anchor(name: String) = add(RichTextAnchor(name))
 
-    fun anchorLink(anchorName: String, text: String) = add(RichTextAnchorLink(RichTextPlain(text), anchorName))
+    fun anchorLink(text: String, anchorName: String) = add(RichTextAnchorLink(RichTextPlain(text), anchorName))
     fun anchorLink(anchorName: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextAnchorLink(buildRichText(block), anchorName))
 
-    fun reference(name: String, text: String) = add(RichTextReference(RichTextPlain(text), name))
+    fun reference(text: String, name: String) = add(RichTextReference(RichTextPlain(text), name))
     fun reference(name: String, block: RichTextBuilder.() -> Unit) = add(RichTextReference(buildRichText(block), name))
 
-    fun referenceLink(referenceName: String, text: String) =
+    fun referenceLink(text: String, referenceName: String) =
         add(RichTextReferenceLink(RichTextPlain(text), referenceName))
     fun referenceLink(referenceName: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextReferenceLink(buildRichText(block), referenceName))
@@ -163,8 +164,8 @@ class RichBlocksBuilder {
     fun paragraph(text: String) = add(RichBlockParagraph(RichTextPlain(text)))
     fun paragraph(block: RichTextBuilder.() -> Unit) = add(RichBlockParagraph(buildRichText(block)))
 
-    fun heading(size: Int, text: String) = add(RichBlockSectionHeading(RichTextPlain(text), size))
-    fun heading(size: Int, block: RichTextBuilder.() -> Unit) = add(RichBlockSectionHeading(buildRichText(block), size))
+    fun heading(text: String, level: Int) = add(RichBlockSectionHeading(RichTextPlain(text), level))
+    fun heading(level: Int, block: RichTextBuilder.() -> Unit) = add(RichBlockSectionHeading(buildRichText(block), level))
 
     fun preformatted(text: String, language: String? = null) = add(RichBlockPreformatted(RichTextPlain(text), language))
 

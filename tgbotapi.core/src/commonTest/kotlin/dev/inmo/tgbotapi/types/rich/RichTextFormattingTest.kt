@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.rich
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.RawChatId
+import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -73,7 +74,7 @@ class RichTextFormattingTest {
 
     @Test
     fun dateTime() {
-        val entity = RichTextDateTime(RichTextPlain("now"), 1647531900L, "wDT")
+        val entity = RichTextDateTime(RichTextPlain("now"), TelegramDate(1647531900L), "wDT")
         assertEquals("![now](tg://time?unix=1647531900&format=wDT)", entity.markdown)
         assertEquals("<tg-time unix=\"1647531900\" format=\"wDT\">now</tg-time>", entity.html)
     }

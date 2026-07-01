@@ -39,7 +39,7 @@ class RichMessageSerializationTest {
 
         val heading = message.blocks[1] as RichBlockSectionHeading
         assertEquals(RichTextPlain("Title"), heading.text)
-        assertEquals(1, heading.size)
+        assertEquals(1, heading.level)
 
         assertTrue(message.blocks[2] is RichBlockDivider)
 

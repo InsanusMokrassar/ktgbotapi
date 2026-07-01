@@ -39,7 +39,7 @@ class RichTextDslTest {
     @Test
     fun buildsBlocks() {
         val blocks = buildRichBlocks {
-            heading(1, "Title")
+            heading("Title", 1)
             paragraph {
                 plain("Hello ")
                 bold("world")

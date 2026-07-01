@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.internalUserLinkBeginning
 import dev.inmo.tgbotapi.types.nameField
 import dev.inmo.tgbotapi.types.phoneNumberField
 import dev.inmo.tgbotapi.types.referenceNameField
+import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.textField
 import dev.inmo.tgbotapi.types.typeField
 import dev.inmo.tgbotapi.types.unixTimeField
@@ -262,7 +263,7 @@ data class RichTextDateTime(
     @SerialName(textField)
     val text: RichText,
     @SerialName(unixTimeField)
-    val unixTime: Long,
+    val unixTime: TelegramDate,
     @SerialName(dateTimeFormatField)
     val dateTimeFormat: String
 ) : RichTextEntity {
@@ -276,10 +277,10 @@ data class RichTextDateTime(
 
     companion object {
         const val TYPE = "date_time"
-        fun markdown(text: RichText, unixTime: Long, dateTimeFormat: String): String =
-            "![${text.markdown}](tg://time?unix=$unixTime&format=$dateTimeFormat)"
-        fun html(text: RichText, unixTime: Long, dateTimeFormat: String): String =
-            "<tg-time unix=\"$unixTime\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
+        fun markdown(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
+            "![${text.markdown}](tg://time?unix=${unixTime.date}&format=$dateTimeFormat)"
+        fun html(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
+            "<tg-time unix=\"${unixTime.date}\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
     }
 }
 
