@@ -21,6 +21,11 @@ plugins {
     alias(libs.plugins.nmcp.aggregation)
 }
 
+// docs is a dokka-only aggregator module, exclude it from binary compatibility validation
+apiValidation {
+    ignoredProjects += ["docs"]
+}
+
 
 if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
     nmcpAggregation {
@@ -44,7 +49,7 @@ allprojects {
         mavenLocal()
     }
     if (it != rootProject.findProject("docs")) {
-        tasks.whenTaskAdded { task ->
+        tasks.configureEach { task ->
             if(task.name == "jsLegacyBrowserTest" || task.name == "jsLegacyNodeTest") {
                 task.enabled = false
             }
@@ -54,13 +59,9 @@ allprojects {
 apply from: "./extensions.gradle"
 
 private String getCurrentVersionChangelog() {
-    OutputStream changelogDataOS = new ByteArrayOutputStream()
-    exec {
-        standardOutput = changelogDataOS
+    return providers.exec {
         commandLine './changelog_info_retriever', "$library_version", 'CHANGELOG.md'
-    }
-
-    return changelogDataOS.toString().trim()
+    }.standardOutput.asText.get().trim()
 }
 
 

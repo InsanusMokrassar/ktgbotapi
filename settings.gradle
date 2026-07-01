@@ -1,11 +1,4 @@
 pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "org.jetbrains.dokka") {
-                useModule("org.jetbrains.dokka:dokka-gradle-plugin:${requested.version}")
-            }
-        }
-    }
     repositories {
         gradlePluginPortal()
     }
@@ -19,3 +12,4 @@ include ":tgbotapi.behaviour_builder"
 include ":tgbotapi.behaviour_builder.fsm"
 include ":tgbotapi"
 include ":tgbotapi.webapps"
+include ":docs"

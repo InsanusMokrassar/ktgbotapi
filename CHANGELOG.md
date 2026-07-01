@@ -1,5 +1,20 @@
 # TelegramBotAPI changelog
 
+## 35.1.0
+
+* `Dependencies`:
+    * `Kotlin`: `2.3.20` -> `2.3.21`
+    * `Coroutines`: `1.10.2` -> `1.11.0`
+    * `Ktor`: `3.4.2` -> `3.5.1`
+    * `KSP`: `2.3.6` -> `2.3.9`
+    * `MicroUtils`: `0.29.2` -> `0.30.0`
+    * `Dokka`: `2.0.0` -> `2.2.0`
+    * `Versions`: `0.53.0` -> `0.54.0`
+    * `NMCP`: `1.4.4` -> `1.6.0`
+* `Build`:
+    * Updated Gradle wrapper `8.13` -> `9.6.1` and migrated build scripts to be Gradle 9 compatible (`Project.exec` -> `providers.exec`, `tasks.whenTaskAdded` -> `tasks.configureEach`)
+    * Migrated Dokka documentation to the Dokka Gradle Plugin v2: the `docs` module is now included in the build as the KDocs aggregator (`./gradlew :docs:dokkaGenerate`) and the `Publish KDocs` workflow was updated accordingly
+
 ## 35.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.1](https://core.telegram.org/bots/api-changelog#june-11-2026)**
