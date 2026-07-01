@@ -1,14 +1,16 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.requests.ForwardMessage
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.requests.send.SendRichMessage
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
+import dev.inmo.tgbotapi.types.rich.InputRichMessageMarkdown
 import dev.inmo.tgbotapi.types.rich.RichTextInfo
+import dev.inmo.tgbotapi.types.rich.markdown
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -30,15 +32,19 @@ data class RichMessageContent(
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ChatContentMessage<RichMessageContent>> {
-        @Suppress("UNCHECKED_CAST")
-        return ForwardMessage(
-            chat.id,
-            toChatId = chatId,
-            messageId = messageId,
+        return SendRichMessage(
+            chatId = chatId,
+            richMessage = InputRichMessageMarkdown(richMessage.markdown, isRtl = richMessage.isRtl),
             threadId = messageThreadId,
             directMessageThreadId = directMessageThreadId,
+            businessConnectionId = businessConnectionId,
             disableNotification = disableNotification,
-            protectContent = protectContent
-        ) as Request<ChatContentMessage<RichMessageContent>>
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup
+        )
     }
 }
