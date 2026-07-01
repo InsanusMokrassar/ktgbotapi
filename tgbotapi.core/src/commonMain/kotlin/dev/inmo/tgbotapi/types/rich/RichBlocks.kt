@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.expressionField
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.PhotoFile
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.hasSpoilerField
@@ -537,14 +538,17 @@ data class RichBlockAnimation(
     @SerialName(hasSpoilerField)
     val hasSpoiler: Boolean? = null,
     @SerialName(captionField)
-    val caption: RichBlockCaption? = null
-) : RichBlock {
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(animation, caption)
     override val html: String = html(animation, hasSpoiler, caption)
+
+    override val media: TelegramMediaFile
+        get() = animation
 
     companion object {
         const val TYPE = "animation"
@@ -565,14 +569,16 @@ data class RichBlockAudio(
     @SerialName(audioField)
     val audio: AudioFile,
     @SerialName(captionField)
-    val caption: RichBlockCaption? = null
-) : RichBlock {
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(audio, caption)
     override val html: String = html(audio, caption)
+    override val media: TelegramMediaFile
+        get() = audio
 
     companion object {
         const val TYPE = "audio"
@@ -595,14 +601,16 @@ data class RichBlockPhoto(
     @SerialName(hasSpoilerField)
     val hasSpoiler: Boolean? = null,
     @SerialName(captionField)
-    val caption: RichBlockCaption? = null
-) : RichBlock {
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(photo, caption)
     override val html: String = html(photo, hasSpoiler, caption)
+    override val media: TelegramMediaFile
+        get() = photo
 
     companion object {
         const val TYPE = "photo"
@@ -625,14 +633,16 @@ data class RichBlockVideo(
     @SerialName(hasSpoilerField)
     val hasSpoiler: Boolean? = null,
     @SerialName(captionField)
-    val caption: RichBlockCaption? = null
-) : RichBlock {
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(video, caption)
     override val html: String = html(video, hasSpoiler, caption)
+    override val media: TelegramMediaFile
+        get() = video
 
     companion object {
         const val TYPE = "video"
@@ -653,14 +663,16 @@ data class RichBlockVoiceNote(
     @SerialName(voiceNoteField)
     val voiceNote: VoiceFile,
     @SerialName(captionField)
-    val caption: RichBlockCaption? = null
-) : RichBlock {
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(voiceNote, caption)
     override val html: String = html(voiceNote, caption)
+    override val media: TelegramMediaFile
+        get() = voiceNote
 
     companion object {
         const val TYPE = "voice_note"

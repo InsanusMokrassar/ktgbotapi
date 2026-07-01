@@ -2094,6 +2094,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifRichBlockList (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockMap (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockMathematicalExpression (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRichBlockMedia (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockParagraph (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockPhoto (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockPreformatted (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2769,6 +2770,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun richBlockMapOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockMap;
 	public static final fun richBlockMathematicalExpressionOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockMathematicalExpression;
 	public static final fun richBlockMathematicalExpressionOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockMathematicalExpression;
+	public static final fun richBlockMediaOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockMedia;
+	public static final fun richBlockMediaOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockMedia;
 	public static final fun richBlockParagraphOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockParagraph;
 	public static final fun richBlockParagraphOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockParagraph;
 	public static final fun richBlockPhotoOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockPhoto;

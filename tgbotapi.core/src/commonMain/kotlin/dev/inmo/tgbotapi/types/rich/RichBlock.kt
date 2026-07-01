@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
+import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.typeField
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.DeserializationStrategy
@@ -28,6 +30,39 @@ sealed interface RichBlock {
      * [Rich HTML style](https://core.telegram.org/bots/api#rich-html-style) source of this single [RichBlock].
      */
     val html: String
+}
+
+@Serializable(RichBlockSerializer::class)
+sealed interface RichBlockMedia : RichBlock {
+    val media: TelegramMediaFile
+    val caption: RichBlockCaption?
+}
+
+/**
+ * The nested [RichBlock]s directly contained by this block, or an empty list for leaf blocks. Container blocks
+ * ([RichBlockList] via its [RichBlockListItem.blocks], [RichBlockBlockQuotation], [RichBlockCollage],
+ * [RichBlockSlideshow] and [RichBlockDetails]) expose their children here.
+ */
+val RichBlock.subBlocks: List<RichBlock>
+    get() = when (this) {
+        is RichBlockList -> items.flatMap { it.blocks }
+        is RichBlockBlockQuotation -> blocks
+        is RichBlockCollage -> blocks
+        is RichBlockSlideshow -> blocks
+        is RichBlockDetails -> blocks
+        else -> emptyList()
+    }
+
+/**
+ * Walks this [RichBlock] and all of its [subBlocks] recursively (depth-first, this block first) and returns the first
+ * block for which [block] returns `true`, or `null` if none matches.
+ */
+fun RichBlock.search(block: RichBlock.() -> Boolean): RichBlock? {
+    if (block()) return this
+    for (child in subBlocks) {
+        child.search(block)?.let { return it }
+    }
+    return null
 }
 
 object RichBlockSerializer : JsonContentPolymorphicSerializer<RichBlock>(RichBlock::class) {

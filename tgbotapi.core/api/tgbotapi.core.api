@@ -34515,7 +34515,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockAnchor$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockAnimation : dev/inmo/tgbotapi/types/rich/RichBlock {
+public final class dev/inmo/tgbotapi/types/rich/RichBlockAnimation : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockAnimation$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public fun <init> (Ldev/inmo/tgbotapi/types/files/AnimationFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -34527,10 +34527,11 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockAnimation : dev/inmo/tg
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockAnimation;Ldev/inmo/tgbotapi/types/files/AnimationFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockAnimation;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAnimation ()Ldev/inmo/tgbotapi/types/files/AnimationFile;
-	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
 	public final fun getHasSpoiler ()Ljava/lang/Boolean;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -34553,7 +34554,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockAnimation$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockAudio : dev/inmo/tgbotapi/types/rich/RichBlock {
+public final class dev/inmo/tgbotapi/types/rich/RichBlockAudio : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockAudio$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public fun <init> (Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -34564,9 +34565,10 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockAudio : dev/inmo/tgbota
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockAudio;Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockAudio;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAudio ()Ldev/inmo/tgbotapi/types/files/AudioFile;
-	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -34798,6 +34800,11 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockFormattingKt {
 	public static final fun toRichMarkdown (Ljava/util/List;)Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/RichBlockKt {
+	public static final fun getSubBlocks (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ljava/util/List;
+	public static final fun search (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/rich/RichBlock;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichBlockList : dev/inmo/tgbotapi/types/rich/RichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockList$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -34952,6 +34959,16 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockMathematicalExpression$
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlockMedia : dev/inmo/tgbotapi/types/rich/RichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockMedia$Companion;
+	public abstract fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public abstract fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockMedia$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichBlockParagraph : dev/inmo/tgbotapi/types/rich/RichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockParagraph$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -34985,7 +35002,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockParagraph$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockPhoto : dev/inmo/tgbotapi/types/rich/RichBlock {
+public final class dev/inmo/tgbotapi/types/rich/RichBlockPhoto : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockPhoto$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -34996,10 +35013,11 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockPhoto : dev/inmo/tgbota
 	public final fun copy-OKnyJrA (Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/RichBlockPhoto;
 	public static synthetic fun copy-OKnyJrA$default (Ldev/inmo/tgbotapi/types/rich/RichBlockPhoto;Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockPhoto;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
 	public final fun getHasSpoiler ()Ljava/lang/Boolean;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public final fun getPhoto-bGlShw4 ()Ljava/util/List;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -35281,7 +35299,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockThinking$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockVideo : dev/inmo/tgbotapi/types/rich/RichBlock {
+public final class dev/inmo/tgbotapi/types/rich/RichBlockVideo : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockVideo$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public fun <init> (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -35292,10 +35310,11 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockVideo : dev/inmo/tgbota
 	public final fun copy (Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/RichBlockVideo;
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockVideo;Ldev/inmo/tgbotapi/types/files/VideoFile;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockVideo;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
 	public final fun getHasSpoiler ()Ljava/lang/Boolean;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public fun getType ()Ljava/lang/String;
 	public final fun getVideo ()Ldev/inmo/tgbotapi/types/files/VideoFile;
 	public fun hashCode ()I
@@ -35319,7 +35338,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockVideo$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote : dev/inmo/tgbotapi/types/rich/RichBlock {
+public final class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockVoiceNote$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public fun <init> (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -35329,9 +35348,10 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockVoiceNote : dev/inmo/tg
 	public final fun copy (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/RichBlockVoiceNote;
 	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockVoiceNote;Ldev/inmo/tgbotapi/types/files/VoiceFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockVoiceNote;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public fun getType ()Ljava/lang/String;
 	public final fun getVoiceNote ()Ldev/inmo/tgbotapi/types/files/VoiceFile;
 	public fun hashCode ()I

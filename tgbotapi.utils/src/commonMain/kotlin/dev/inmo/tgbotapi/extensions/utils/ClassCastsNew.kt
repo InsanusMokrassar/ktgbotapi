@@ -562,6 +562,7 @@ import dev.inmo.tgbotapi.types.rich.RichBlockFooter
 import dev.inmo.tgbotapi.types.rich.RichBlockList
 import dev.inmo.tgbotapi.types.rich.RichBlockMap
 import dev.inmo.tgbotapi.types.rich.RichBlockMathematicalExpression
+import dev.inmo.tgbotapi.types.rich.RichBlockMedia
 import dev.inmo.tgbotapi.types.rich.RichBlockParagraph
 import dev.inmo.tgbotapi.types.rich.RichBlockPhoto
 import dev.inmo.tgbotapi.types.rich.RichBlockPreformatted
@@ -3628,6 +3629,12 @@ public inline fun RichBlock.richBlockThinkingOrNull(): RichBlockThinking? = this
 public inline fun RichBlock.richBlockThinkingOrThrow(): RichBlockThinking = this as dev.inmo.tgbotapi.types.rich.RichBlockThinking
 
 public inline fun <T> RichBlock.ifRichBlockThinking(block: (RichBlockThinking) -> T): T? = richBlockThinkingOrNull() ?.let(block)
+
+public inline fun RichBlock.richBlockMediaOrNull(): RichBlockMedia? = this as? dev.inmo.tgbotapi.types.rich.RichBlockMedia
+
+public inline fun RichBlock.richBlockMediaOrThrow(): RichBlockMedia = this as dev.inmo.tgbotapi.types.rich.RichBlockMedia
+
+public inline fun <T> RichBlock.ifRichBlockMedia(block: (RichBlockMedia) -> T): T? = richBlockMediaOrNull() ?.let(block)
 
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as? dev.inmo.tgbotapi.types.actions.TypingAction
 
