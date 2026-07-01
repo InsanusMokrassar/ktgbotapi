@@ -54,7 +54,7 @@ data class RichBlockParagraph(
 
     companion object {
         const val TYPE = "paragraph"
-        fun markdown(text: RichText): String = "\n${text.markdown}\n"
+        fun markdown(text: RichText): String = text.markdown
         fun html(text: RichText): String = "<p>${text.html}</p>"
     }
 }
