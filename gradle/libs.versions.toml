@@ -22,7 +22,7 @@ github-release-plugin = "2.5.2"
 dokka = "2.2.0"
 
 validator = "0.18.1"
-nmcp = "1.6.0"
+nmcp = "1.6.1"
 
 [libraries]
 
