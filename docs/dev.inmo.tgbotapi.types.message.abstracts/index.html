@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>dev.inmo.tgbotapi.types.message.abstracts</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="docs::dev.inmo.tgbotapi.types.message.abstracts////PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../index.html">docs</a><span class="delimiter">/</span><span class="current">dev.inmo.tgbotapi.types.message.abstracts</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-795277388%2FClasslikes%2F444310150" anchor-label="AccessibleMessage" id="-795277388%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-accessible-message/index.html"><span>Accessible</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-795277388%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-accessible-message/index.html">AccessibleMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="456044795%2FClasslikes%2F444310150" anchor-label="AnonymousForumContentMessage" id="456044795%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-anonymous-forum-content-message/index.html"><span>Anonymous</span><wbr></wbr><span>Forum</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="456044795%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-anonymous-forum-content-message/index.html">AnonymousForumContentMessage</a><span class="token operator">&lt;</span><a href="-anonymous-forum-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-forum-content-message/index.html">ForumContentMessage</a><span class="token operator">&lt;</span><a href="-anonymous-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-signed-message/index.html">SignedMessage</a>, <a href="-with-sender-chat-message/index.html">WithSenderChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2097781213%2FClasslikes%2F444310150" anchor-label="AnonymousGroupContentMessage" id="2097781213%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-anonymous-group-content-message/index.html"><span>Anonymous</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2097781213%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-anonymous-group-content-message/index.html">AnonymousGroupContentMessage</a><span class="token operator">&lt;</span><a href="-anonymous-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-anonymous-group-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-signed-message/index.html">SignedMessage</a>, <a href="-with-sender-chat-message/index.html">WithSenderChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1620315793%2FClasslikes%2F444310150" anchor-label="BusinessContentMessage" id="-1620315793%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-business-content-message/index.html"><span>Business</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1620315793%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-business-content-message/index.html">BusinessContentMessage</a><span class="token operator">&lt;</span><a href="-business-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-possibly-sent-via-bot-common-message/index.html">PossiblySentViaBotCommonMessage</a><span class="token operator">&lt;</span><a href="-business-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a>, <a href="../dev.inmo.tgbotapi.abstracts.types/-with-business-connection-id/index.html">WithBusinessConnectionId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="337352692%2FClasslikes%2F444310150" anchor-label="ChannelContentMessage" id="337352692%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-channel-content-message/index.html"><span>Channel</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="337352692%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-channel-content-message/index.html">ChannelContentMessage</a><span class="token operator">&lt;</span><a href="-channel-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-possibly-sent-via-bot-common-message/index.html">PossiblySentViaBotCommonMessage</a><span class="token operator">&lt;</span><a href="-channel-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-signed-message/index.html">SignedMessage</a>, <a href="-with-sender-chat-message/index.html">WithSenderChatMessage</a>, <a href="-optionally-from-user-message/index.html">OptionallyFromUserMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1580335135%2FClasslikes%2F444310150" anchor-label="ChannelDirectMessagesContentMessage" id="1580335135%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-channel-direct-messages-content-message/index.html"><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580335135%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-channel-direct-messages-content-message/index.html">ChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-341956288%2FClasslikes%2F444310150" anchor-label="ChannelDirectMessagesEventMessage" id="-341956288%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-channel-direct-messages-event-message/index.html"><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-341956288%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-channel-direct-messages-event-message/index.html">ChannelDirectMessagesEventMessage</a><span class="token operator">&lt;</span><a href="-channel-direct-messages-event-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.ChatEvents.abstracts/-channel-direct-messages-event/index.html">ChannelDirectMessagesEvent</a><span class="token operator">&gt;</span> : <a href="-group-event-message/index.html">GroupEventMessage</a><span class="token operator">&lt;</span><a href="-channel-direct-messages-event-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1485027894%2FClasslikes%2F444310150" anchor-label="ChannelPaidPost" id="1485027894%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-channel-paid-post/index.html"><span>Channel</span><wbr></wbr><span>Paid</span><wbr></wbr><span><span>Post</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1485027894%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-channel-paid-post/index.html">ChannelPaidPost</a><span class="token operator">&lt;</span><a href="-channel-paid-post/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-channel-content-message/index.html">ChannelContentMessage</a><span class="token operator">&lt;</span><a href="-channel-paid-post/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1137379113%2FClasslikes%2F444310150" anchor-label="ChatContentMessage" id="-1137379113%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat-content-message/index.html"><span>Chat</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1137379113%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-chat-content-message/index.html">ChatContentMessage</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-chat-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-common-content-message/index.html">CommonContentMessage</a><span class="token operator">&lt;</span><a href="-chat-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="955772920%2FClasslikes%2F444310150" anchor-label="ChatEventMessage" id="955772920%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat-event-message/index.html"><span>Chat</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="955772920%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-chat-event-message/index.html">ChatEventMessage</a><span class="token operator">&lt;</span><a href="-chat-event-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.ChatEvents.abstracts/-chat-event/index.html">ChatEvent</a><span class="token operator">&gt;</span> : <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1107650134%2FClasslikes%2F444310150" anchor-label="ChatMessage" id="1107650134%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat-message/index.html"><span>Chat</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1107650134%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-chat-message/index.html">ChatMessage</a> : <a href="-accessible-message/index.html">AccessibleMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1015602006%2FClasslikes%2F444310150" anchor-label="CommonChannelDirectMessagesContentMessage" id="-1015602006%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-common-channel-direct-messages-content-message/index.html"><span>Common</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1015602006%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-common-channel-direct-messages-content-message/index.html">CommonChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-common-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-channel-direct-messages-content-message/index.html">ChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-common-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-potentially-from-user-group-content-message/index.html">PotentiallyFromUserGroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1442973724%2FClasslikes%2F444310150" anchor-label="CommonContentMessage" id="-1442973724%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-common-content-message/index.html"><span>Common</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1442973724%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-common-content-message/index.html">CommonContentMessage</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-common-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-accessible-message/index.html">AccessibleMessage</a>, <a href="-possibly-forwarded-message/index.html">PossiblyForwardedMessage</a>, <a href="-possibly-edited-message/index.html">PossiblyEditedMessage</a>, <a href="-possibly-reply-message/index.html">PossiblyReplyMessage</a>, <a href="-possibly-marked-up/index.html">PossiblyMarkedUp</a>, <a href="-possibly-business-message/index.html">PossiblyBusinessMessage</a>, <a href="-possibly-offline-message/index.html">PossiblyOfflineMessage</a>, <a href="-possibly-media-group-message/index.html">PossiblyMediaGroupMessage</a><span class="token operator">&lt;</span><a href="-common-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-possibly-paid-message/index.html">PossiblyPaidMessage</a>, <a href="-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><a href="-common-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1400389215%2FClasslikes%2F444310150" anchor-label="CommonForumContentMessage" id="-1400389215%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-common-forum-content-message/index.html"><span>Common</span><wbr></wbr><span>Forum</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1400389215%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-common-forum-content-message/index.html">CommonForumContentMessage</a><span class="token operator">&lt;</span><a href="-common-forum-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-forum-content-message/index.html">ForumContentMessage</a><span class="token operator">&lt;</span><a href="-common-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-potentially-from-user-group-content-message/index.html">PotentiallyFromUserGroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a>, <a href="-possibly-guest-answer-message/index.html">PossiblyGuestAnswerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="241347203%2FClasslikes%2F444310150" anchor-label="CommonGroupContentMessage" id="241347203%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-common-group-content-message/index.html"><span>Common</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241347203%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-common-group-content-message/index.html">CommonGroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-group-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-potentially-from-user-group-content-message/index.html">PotentiallyFromUserGroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-group-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a>, <a href="-possibly-guest-answer-message/index.html">PossiblyGuestAnswerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1242285681%2FClasslikes%2F444310150" anchor-label="CommonSuggestedChannelDirectMessagesContentMessage" id="-1242285681%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-common-suggested-channel-direct-messages-content-message/index.html"><span>Common</span><wbr></wbr><span>Suggested</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1242285681%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-common-suggested-channel-direct-messages-content-message/index.html">CommonSuggestedChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-common-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-suggested-channel-direct-messages-content-message/index.html">SuggestedChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-common-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-potentially-from-user-group-content-message/index.html">PotentiallyFromUserGroupContentMessage</a><span class="token operator">&lt;</span><a href="-common-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-548488888%2FClasslikes%2F444310150" anchor-label="ConnectedFromChannelGroupContentMessage" id="-548488888%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-connected-from-channel-group-content-message/index.html"><span>Connected</span><wbr></wbr><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-548488888%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-connected-from-channel-group-content-message/index.html">ConnectedFromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-connected-from-channel-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-connected-from-channel-group-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-791331505%2FClasslikes%2F444310150" anchor-label="ContentMessage" id="-791331505%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-content-message/index.html"><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-791331505%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-accessible-message/index.html">AccessibleMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1458952426%2FClasslikes%2F444310150" anchor-label="ForumContentMessage" id="-1458952426%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-forum-content-message/index.html"><span>Forum</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1458952426%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-forum-content-message/index.html">ForumContentMessage</a><span class="token operator">&lt;</span><a href="-forum-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-possibly-topic-message/index.html">PossiblyTopicMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="225353872%2FClasslikes%2F444310150" anchor-label="FromChannelChannelDirectMessagesContentMessage" id="225353872%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-channel-channel-direct-messages-content-message/index.html"><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="225353872%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-from-channel-channel-direct-messages-content-message/index.html">FromChannelChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-channel-direct-messages-content-message/index.html">ChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1758448007%2FClasslikes%2F444310150" anchor-label="FromChannelForumContentMessage" id="1758448007%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-channel-forum-content-message/index.html"><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Forum</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1758448007%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-from-channel-forum-content-message/index.html">FromChannelForumContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-forum-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-forum-content-message/index.html">ForumContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-forum-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-894782871%2FClasslikes%2F444310150" anchor-label="FromChannelGroupContentMessage" id="-894782871%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-channel-group-content-message/index.html"><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-894782871%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-group-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-signed-message/index.html">SignedMessage</a>, <a href="-with-sender-chat-message/index.html">WithSenderChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1966260329%2FClasslikes%2F444310150" anchor-label="FromChannelSuggestedChannelDirectMessagesContentMessage" id="1966260329%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-channel-suggested-channel-direct-messages-content-message/index.html"><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Suggested</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1966260329%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-from-channel-suggested-channel-direct-messages-content-message/index.html">FromChannelSuggestedChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-suggested-channel-direct-messages-content-message/index.html">SuggestedChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-from-channel-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1103760757%2FClasslikes%2F444310150" anchor-label="FromUserChatMessage" id="-1103760757%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-user-chat-message/index.html"><span>From</span><wbr></wbr><span>User</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1103760757%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-from-user-chat-message/index.html">FromUserChatMessage</a> : <a href="-from-user-message/index.html">FromUserMessage</a>, <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1998215277%2FClasslikes%2F444310150" anchor-label="FromUserMessage" id="-1998215277%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-from-user-message/index.html"><span>From</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1998215277%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-from-user-message/index.html">FromUserMessage</a> : <a href="-optionally-from-user-message/index.html">OptionallyFromUserMessage</a>, <a href="../dev.inmo.tgbotapi.abstracts/-from-user/index.html">FromUser</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="182783992%2FClasslikes%2F444310150" anchor-label="GroupContentMessage" id="182783992%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-group-content-message/index.html"><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182783992%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-public-content-message/index.html">PublicContentMessage</a><span class="token operator">&lt;</span><a href="-group-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="693459801%2FClasslikes%2F444310150" anchor-label="GroupEventMessage" id="693459801%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-group-event-message/index.html"><span>Group</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="693459801%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-group-event-message/index.html">GroupEventMessage</a><span class="token operator">&lt;</span><a href="-group-event-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.ChatEvents.abstracts/-group-event/index.html">GroupEvent</a><span class="token operator">&gt;</span> : <a href="-chat-event-message/index.html">ChatEventMessage</a><span class="token operator">&lt;</span><a href="-group-event-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-789302887%2FClasslikes%2F444310150" anchor-label="InaccessibleMessage" id="-789302887%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-inaccessible-message/index.html"><span>Inaccessible</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-789302887%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-inaccessible-message/index.html">InaccessibleMessage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>chat<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat/-preview-chat/index.html">PreviewChat</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>messageId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a></span></span><span class="token punctuation">)</span> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="8698078%2FClasslikes%2F444310150" anchor-label="Message" id="8698078%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-message/index.html"><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8698078%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-message/index.html">Message</a> : <a href="../dev.inmo.tgbotapi.abstracts/-with-preview-chat-and-message-id/index.html">WithPreviewChatAndMessageId</a>, <a href="-possibly-business-message/index.html">PossiblyBusinessMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1672584544%2FClasslikes%2F444310150" anchor-label="OptionallyFromUserMessage" id="-1672584544%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-optionally-from-user-message/index.html"><span>Optionally</span><wbr></wbr><span>From</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1672584544%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-optionally-from-user-message/index.html">OptionallyFromUserMessage</a> : <a href="../dev.inmo.tgbotapi.abstracts/-optionally-from-user/index.html">OptionallyFromUser</a>, <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1583085923%2FClasslikes%2F444310150" anchor-label="PossiblyBusinessMessage" id="1583085923%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-business-message/index.html"><span>Possibly</span><wbr></wbr><span>Business</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1583085923%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-business-message/index.html">PossiblyBusinessMessage</a> : <a href="../dev.inmo.tgbotapi.abstracts.types/-with-optional-business-connection-id/index.html">WithOptionalBusinessConnectionId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-870744052%2FClasslikes%2F444310150" anchor-label="PossiblyEditedMessage" id="-870744052%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-edited-message/index.html"><span>Possibly</span><wbr></wbr><span>Edited</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-870744052%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-edited-message/index.html">PossiblyEditedMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1552504843%2FClasslikes%2F444310150" anchor-label="PossiblyForwardedMessage" id="-1552504843%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-forwarded-message/index.html"><span>Possibly</span><wbr></wbr><span>Forwarded</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552504843%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-forwarded-message/index.html">PossiblyForwardedMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-720328761%2FClasslikes%2F444310150" anchor-label="PossiblyGuestAnswerMessage" id="-720328761%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-guest-answer-message/index.html"><span>Possibly</span><wbr></wbr><span>Guest</span><wbr></wbr><span>Answer</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-720328761%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-guest-answer-message/index.html">PossiblyGuestAnswerMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1112891183%2FClasslikes%2F444310150" anchor-label="PossiblyMarkedUp" id="-1112891183%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-marked-up/index.html"><span>Possibly</span><wbr></wbr><span>Marked</span><wbr></wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1112891183%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-marked-up/index.html">PossiblyMarkedUp</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1024984994%2FClasslikes%2F444310150" anchor-label="PossiblyMediaGroupMessage" id="-1024984994%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-media-group-message/index.html"><span>Possibly</span><wbr></wbr><span>Media</span><wbr></wbr><span>Group</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1024984994%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-media-group-message/index.html">PossiblyMediaGroupMessage</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-possibly-media-group-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><a href="-possibly-media-group-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-284215948%2FClasslikes%2F444310150" anchor-label="PossiblyOfflineMessage" id="-284215948%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-offline-message/index.html"><span>Possibly</span><wbr></wbr><span>Offline</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-284215948%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-offline-message/index.html">PossiblyOfflineMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-538046225%2FClasslikes%2F444310150" anchor-label="PossiblyPaidMessage" id="-538046225%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-paid-message/index.html"><span>Possibly</span><wbr></wbr><span>Paid</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-538046225%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-paid-message/index.html">PossiblyPaidMessage</a> : <a href="-message/index.html">Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2137525655%2FClasslikes%2F444310150" anchor-label="PossiblyPaymentMessage" id="2137525655%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-payment-message/index.html"><span>Possibly</span><wbr></wbr><span>Payment</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2137525655%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-payment-message/index.html">PossiblyPaymentMessage</a> : <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="494996539%2FClasslikes%2F444310150" anchor-label="PossiblyReplyMessage" id="494996539%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-reply-message/index.html"><span>Possibly</span><wbr></wbr><span>Reply</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="494996539%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-reply-message/index.html">PossiblyReplyMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="590628263%2FClasslikes%2F444310150" anchor-label="PossiblySentViaBot" id="590628263%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-sent-via-bot/index.html"><span>Possibly</span><wbr></wbr><span>Sent</span><wbr></wbr><span>Via</span><wbr></wbr><span><span>Bot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="590628263%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-sent-via-bot/index.html">PossiblySentViaBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2111362433%2FClasslikes%2F444310150" anchor-label="PossiblySentViaBotCommonMessage" id="-2111362433%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-sent-via-bot-common-message/index.html"><span>Possibly</span><wbr></wbr><span>Sent</span><wbr></wbr><span>Via</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Common</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2111362433%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-possibly-sent-via-bot-common-message/index.html">PossiblySentViaBotCommonMessage</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-possibly-sent-via-bot-common-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-chat-content-message/index.html">ChatContentMessage</a><span class="token operator">&lt;</span><a href="-possibly-sent-via-bot-common-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-possibly-sent-via-bot/index.html">PossiblySentViaBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1197437568%2FClasslikes%2F444310150" anchor-label="PossiblyTopicMessage" id="1197437568%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-topic-message/index.html"><span>Possibly</span><wbr></wbr><span>Topic</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1197437568%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-topic-message/index.html">PossiblyTopicMessage</a> : <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-667333286%2FClasslikes%2F444310150" anchor-label="PossiblyWithEffectMessage" id="-667333286%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-possibly-with-effect-message/index.html"><span>Possibly</span><wbr></wbr><span>With</span><wbr></wbr><span>Effect</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-667333286%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-possibly-with-effect-message/index.html">PossiblyWithEffectMessage</a> : <a href="-message/index.html">Message</a>, <a href="../dev.inmo.tgbotapi.abstracts.types/-optionally-with-effect-id/index.html">OptionallyWithEffectId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1294846000%2FClasslikes%2F444310150" anchor-label="PotentiallyFromUserGroupContentMessage" id="-1294846000%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-potentially-from-user-group-content-message/index.html"><span>Potentially</span><wbr></wbr><span>From</span><wbr></wbr><span>User</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1294846000%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-potentially-from-user-group-content-message/index.html">PotentiallyFromUserGroupContentMessage</a><span class="token operator">&lt;</span><a href="-potentially-from-user-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-group-content-message/index.html">GroupContentMessage</a><span class="token operator">&lt;</span><a href="-potentially-from-user-group-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1179737972%2FClasslikes%2F444310150" anchor-label="PrivateContentMessage" id="1179737972%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-private-content-message/index.html"><span>Private</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1179737972%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-private-content-message/index.html">PrivateContentMessage</a><span class="token operator">&lt;</span><a href="-private-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-possibly-sent-via-bot-common-message/index.html">PossiblySentViaBotCommonMessage</a><span class="token operator">&lt;</span><a href="-private-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-from-user-chat-message/index.html">FromUserChatMessage</a>, <a href="-possibly-offline-message/index.html">PossiblyOfflineMessage</a>, <a href="-possibly-with-effect-message/index.html">PossiblyWithEffectMessage</a>, <a href="-possibly-guest-answer-message/index.html">PossiblyGuestAnswerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2064215023%2FClasslikes%2F444310150" anchor-label="PrivateForumContentMessage" id="-2064215023%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-private-forum-content-message/index.html"><span>Private</span><wbr></wbr><span>Forum</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2064215023%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-private-forum-content-message/index.html">PrivateForumContentMessage</a><span class="token operator">&lt;</span><a href="-private-forum-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-private-content-message/index.html">PrivateContentMessage</a><span class="token operator">&lt;</span><a href="-private-forum-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-possibly-topic-message/index.html">PossiblyTopicMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="712179110%2FClasslikes%2F444310150" anchor-label="PublicContentMessage" id="712179110%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-public-content-message/index.html"><span>Public</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="712179110%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-public-content-message/index.html">PublicContentMessage</a><span class="token operator">&lt;</span><a href="-public-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-possibly-sent-via-bot-common-message/index.html">PossiblySentViaBotCommonMessage</a><span class="token operator">&lt;</span><a href="-public-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1078948218%2FClasslikes%2F444310150" anchor-label="RequestGuestContentMessage" id="-1078948218%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-request-guest-content-message/index.html"><span>Request</span><wbr></wbr><span>Guest</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1078948218%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-request-guest-content-message/index.html">RequestGuestContentMessage</a><span class="token operator">&lt;</span><a href="-request-guest-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-common-content-message/index.html">CommonContentMessage</a><span class="token operator">&lt;</span><a href="-request-guest-content-message/index.html">T</a><span class="token operator">&gt; </span>, <a href="-request-guest-message/index.html">RequestGuestMessage</a>, <a href="-special-message/index.html">SpecialMessage</a>, <a href="-from-user-message/index.html">FromUserMessage</a>, <a href="-possibly-sent-via-bot/index.html">PossiblySentViaBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1431586695%2FClasslikes%2F444310150" anchor-label="RequestGuestMessage" id="1431586695%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-request-guest-message/index.html"><span>Request</span><wbr></wbr><span>Guest</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1431586695%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-request-guest-message/index.html">RequestGuestMessage</a> : <a href="-message/index.html">Message</a>, <a href="../dev.inmo.tgbotapi.abstracts.types/-with-optional-guest-query-id/index.html">WithOptionalGuestQueryId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="83021082%2FClasslikes%2F444310150" anchor-label="SignedMessage" id="83021082%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-signed-message/index.html"><span>Signed</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="83021082%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-signed-message/index.html">SignedMessage</a> : <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-349812337%2FClasslikes%2F444310150" anchor-label="SpecialMessage" id="-349812337%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-special-message/index.html"><span>Special</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-349812337%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-special-message/index.html">SpecialMessage</a> : <a href="-accessible-message/index.html">AccessibleMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="97546682%2FClasslikes%2F444310150" anchor-label="SuggestedChannelDirectMessagesContentMessage" id="97546682%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-suggested-channel-direct-messages-content-message/index.html"><span>Suggested</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Direct</span><wbr></wbr><span>Messages</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="97546682%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-suggested-channel-direct-messages-content-message/index.html">SuggestedChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-channel-direct-messages-content-message/index.html">ChannelDirectMessagesContentMessage</a><span class="token operator">&lt;</span><a href="-suggested-channel-direct-messages-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1311949332%2FClasslikes%2F444310150" anchor-label="SupergroupEventMessage" id="-1311949332%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-supergroup-event-message/index.html"><span>Supergroup</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1311949332%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-supergroup-event-message/index.html">SupergroupEventMessage</a><span class="token operator">&lt;</span><a href="-supergroup-event-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.ChatEvents.abstracts/-supergroup-event/index.html">SupergroupEvent</a><span class="token operator">&gt;</span> : <a href="-group-event-message/index.html">GroupEventMessage</a><span class="token operator">&lt;</span><a href="-supergroup-event-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1551000863%2FClasslikes%2F444310150" anchor-label="UnconnectedFromChannelGroupContentMessage" id="-1551000863%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unconnected-from-channel-group-content-message/index.html"><span>Unconnected</span><wbr></wbr><span>From</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Group</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1551000863%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-unconnected-from-channel-group-content-message/index.html">UnconnectedFromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-unconnected-from-channel-group-content-message/index.html">T</a><span class="token operator"> : </span><a href="../dev.inmo.tgbotapi.types.message.content/-message-content/index.html">MessageContent</a><span class="token operator">&gt;</span> : <a href="-from-channel-group-content-message/index.html">FromChannelGroupContentMessage</a><span class="token operator">&lt;</span><a href="-unconnected-from-channel-group-content-message/index.html">T</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1787541382%2FClasslikes%2F444310150" anchor-label="UnknownMessageType" id="1787541382%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unknown-message-type/index.html"><span>Unknown</span><wbr></wbr><span>Message</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1787541382%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-unknown-message-type/index.html">UnknownMessageType</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>messageId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>chat<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat/-preview-chat/index.html">PreviewChat</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>date<span class="token operator">: </span><span data-unresolved-link="korlibs.time/DateTime///PointingToDeclaration/">DateTime</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>insideException<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-exception/index.html">Exception</a></span></span><span class="token punctuation">)</span> : <a href="-chat-message/index.html">ChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1862171281%2FClasslikes%2F444310150" anchor-label="WithSenderChatMessage" id="1862171281%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-with-sender-chat-message/index.html"><span>With</span><wbr></wbr><span>Sender</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1862171281%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-with-sender-chat-message/index.html">WithSenderChatMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

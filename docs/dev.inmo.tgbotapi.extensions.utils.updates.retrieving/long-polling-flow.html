@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>longPollingFlow</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="member" id="content" pageIds="docs::dev.inmo.tgbotapi.extensions.utils.updates.retrieving//longPollingFlow/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.coroutines.SuspendFunction1[kotlin.Throwable,kotlin.Unit]?#kotlin.Boolean#kotlin.Boolean#kotlin.Long?#kotlin.Function1[dev.inmo.tgbotapi.types.UpdateId?,dev.inmo.tgbotapi.requests.GetUpdates]/PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../index.html">docs</a><span class="delimiter">/</span><a href="index.html">dev.inmo.tgbotapi.extensions.utils.updates.retrieving</a><span class="delimiter">/</span><span class="current">longPollingFlow</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>long</span><wbr></wbr><span>Polling</span><wbr></wbr><span><span>Flow</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="long-polling-flow.html"><span class="token function">longPollingFlow</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">exceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">autoDisableWebhooks<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">autoSkipTimeoutExceptions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">mediaGroupsDebounceTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter ">getUpdatesRequestCreator<span class="token operator">: </span><span class="token punctuation">(</span>sinceUpdate<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-update-id/index.html">UpdateId</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../dev.inmo.tgbotapi.requests/-get-updates/index.html">GetUpdates</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.utils/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/utils/updates/retrieving/LongPolling.kt#L42">source</a>)</span></span></div><p class="paragraph">Starts a long polling flow to receive updates continuously from the Telegram Bot API.</p><p class="paragraph">This method retrieves updates from the bot, processes them, and emits them as a flow of <code class="lang-kotlin">Update</code> objects. It allows handling of updates with features like automatic webhook disabling, timeout exception skipping, and media group handling with debounce time.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">A <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of <a href="../dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a> objects that represents the continuous stream of updates received.</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exceptions</span><wbr></wbr><span><span>Handler</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Optional exception handler to manage exceptions that occur during the polling process.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Disable</span><wbr></wbr><span><span>Webhooks</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Specifies whether to automatically disable existing webhooks before starting the long polling flow (default: <code class="lang-kotlin">true</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Skip</span><wbr></wbr><span>Timeout</span><wbr></wbr><span><span>Exceptions</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Defines if timeout-related exceptions should automatically be skipped during the polling (default: <code class="lang-kotlin">true</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>media</span><wbr></wbr><span>Groups</span><wbr></wbr><span>Debounce</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Millis</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The debounce time in milliseconds for processing media group updates.         If set to <code class="lang-kotlin">null</code>, media group handling is disabled (default: <code class="lang-kotlin">1000L</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>get</span><wbr></wbr><span>Updates</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Creator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A function that creates a <code class="lang-kotlin">GetUpdates</code> request for retrieving updates.         This function accepts the identifier of the most recent update as an input and returns the new request.</p></div></div></div></div></div><hr><div class="symbol monospace"><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="long-polling-flow.html"><span class="token function">longPollingFlow</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">timeoutSeconds<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator"> = </span><span class="token constant">30</span><span class="token punctuation">, </span></span><span class="parameter ">exceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">allowedUpdates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>ALL_UPDATES_LIST<span class="token punctuation">, </span></span><span class="parameter ">autoDisableWebhooks<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">autoSkipTimeoutExceptions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">mediaGroupsDebounceTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token constant">1000</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.utils/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/utils/updates/retrieving/LongPolling.kt#L174">source</a>)</span></span></div><p class="paragraph">Initiates a long polling flow for receiving updates continuously from the Telegram Bot API. This method provides a customized way to handle the retrieval of updates with options to configure timeouts, update types, exception handling, and media group processing.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">A Flow that emits Update objects representing the updates fetched from the Telegram Bot API.</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>timeout</span><wbr></wbr><span><span>Seconds</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The maximum time in seconds for the server to wait for available updates before responding (default: <code class="lang-kotlin">30</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exceptions</span><wbr></wbr><span><span>Handler</span></span></u></div></span></div><div><div class="title"><p class="paragraph">An optional exception handler for managing exceptions that occur during the long polling process. If not provided, exceptions will pass through unhandled.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>allowed</span><wbr></wbr><span><span>Updates</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A list of the update types to retrieve. By default, retrieves all possible update types as defined in <code class="lang-kotlin">ALL_UPDATES_LIST</code>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Disable</span><wbr></wbr><span><span>Webhooks</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether the current webhook should be disabled automatically before starting the long polling flow (default: <code class="lang-kotlin">true</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Skip</span><wbr></wbr><span>Timeout</span><wbr></wbr><span><span>Exceptions</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Determines if timeout-related exceptions should be automatically skipped during the polling process (default: <code class="lang-kotlin">true</code>).</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>media</span><wbr></wbr><span>Groups</span><wbr></wbr><span>Debounce</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Millis</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The debounce time in milliseconds for processing updates containing media groups. If set to <code class="lang-kotlin">null</code>, media group handling is disabled (default: <code class="lang-kotlin">1000L</code>).</p></div></div></div></div></div></div></div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

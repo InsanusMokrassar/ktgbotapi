@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Unknown</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="docs::dev.inmo.tgbotapi.types/BackgroundType.Unknown///PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../../../index.html">docs</a><span class="delimiter">/</span><a href="../../index.html">dev.inmo.tgbotapi.types</a><span class="delimiter">/</span><a href="../index.html">BackgroundType</a><span class="delimiter">/</span><span class="current">Unknown</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Unknown</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Unknown</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>raw<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonElement///PointingToDeclaration/">JsonElement</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span> : <a href="../index.html">BackgroundType</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/BackgroundType.kt#L110">source</a>)</span></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="355368093%2FConstructors%2F444310150" anchor-label="Unknown" id="355368093%2FConstructors%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unknown.html"><span><span>Unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="355368093%2FConstructors%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">raw<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonElement///PointingToDeclaration/">JsonElement</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="415560304%2FProperties%2F444310150" anchor-label="raw" id="415560304%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="raw.html"><span><span>raw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="415560304%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="raw.html">raw</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonElement///PointingToDeclaration/">JsonElement</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1739392184%2FProperties%2F444310150" anchor-label="type" id="-1739392184%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="type.html"><span><span>type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1739392184%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;type&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="type.html">type</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-552944502%2FFunctions%2F444310150" anchor-label="chatThemeOrNull" id="-552944502%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/chat-theme-or-null.html"><span>chat</span><wbr></wbr><span>Theme</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-552944502%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/chat-theme-or-null.html"><span class="token function">chatThemeOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-chat-theme/index.html">BackgroundType.ChatTheme</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1726644145%2FFunctions%2F444310150" anchor-label="chatThemeOrThrow" id="1726644145%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/chat-theme-or-throw.html"><span>chat</span><wbr></wbr><span>Theme</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1726644145%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/chat-theme-or-throw.html"><span class="token function">chatThemeOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-chat-theme/index.html">BackgroundType.ChatTheme</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="775097882%2FFunctions%2F444310150" anchor-label="dimmableOrNull" id="775097882%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/dimmable-or-null.html"><span>dimmable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="775097882%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/dimmable-or-null.html"><span class="token function">dimmableOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-dimmable/index.html">BackgroundType.Dimmable</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-53714911%2FFunctions%2F444310150" anchor-label="dimmableOrThrow" id="-53714911%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/dimmable-or-throw.html"><span>dimmable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-53714911%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/dimmable-or-throw.html"><span class="token function">dimmableOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-dimmable/index.html">BackgroundType.Dimmable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-508500164%2FFunctions%2F444310150" anchor-label="fillableOrNull" id="-508500164%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/fillable-or-null.html"><span>fillable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-508500164%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/fillable-or-null.html"><span class="token function">fillableOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fillable/index.html">BackgroundType.Fillable</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1190548673%2FFunctions%2F444310150" anchor-label="fillableOrThrow" id="-1190548673%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/fillable-or-throw.html"><span>fillable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1190548673%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/fillable-or-throw.html"><span class="token function">fillableOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fillable/index.html">BackgroundType.Fillable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-911574442%2FFunctions%2F444310150" anchor-label="fillOrNull" id="-911574442%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/fill-or-null.html"><span>fill</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-911574442%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/fill-or-null.html"><span class="token function">fillOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fill/index.html">BackgroundType.Fill</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-800949403%2FFunctions%2F444310150" anchor-label="fillOrThrow" id="-800949403%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/fill-or-throw.html"><span>fill</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-800949403%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/fill-or-throw.html"><span class="token function">fillOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fill/index.html">BackgroundType.Fill</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="233251637%2FFunctions%2F444310150" anchor-label="ifChatTheme" id="233251637%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-chat-theme.html"><span>if</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Theme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="233251637%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-chat-theme.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-chat-theme.html"><span class="token function">ifChatTheme</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-chat-theme/index.html">BackgroundType.ChatTheme</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-chat-theme.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-chat-theme.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-505868803%2FFunctions%2F444310150" anchor-label="ifDimmable" id="-505868803%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-dimmable.html"><span>if</span><wbr></wbr><span><span>Dimmable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-505868803%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-dimmable.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-dimmable.html"><span class="token function">ifDimmable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-dimmable/index.html">BackgroundType.Dimmable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-dimmable.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-dimmable.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1389473915%2FFunctions%2F444310150" anchor-label="ifFill" id="-1389473915%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fill.html"><span>if</span><wbr></wbr><span><span>Fill</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1389473915%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fill.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fill.html"><span class="token function">ifFill</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-fill/index.html">BackgroundType.Fill</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fill.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fill.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1863280839%2FFunctions%2F444310150" anchor-label="ifFillable" id="-1863280839%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fillable.html"><span>if</span><wbr></wbr><span><span>Fillable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1863280839%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fillable.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fillable.html"><span class="token function">ifFillable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-fillable/index.html">BackgroundType.Fillable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fillable.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-fillable.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1370574357%2FFunctions%2F444310150" anchor-label="ifMovable" id="1370574357%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-movable.html"><span>if</span><wbr></wbr><span><span>Movable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1370574357%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-movable.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-movable.html"><span class="token function">ifMovable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-movable/index.html">BackgroundType.Movable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-movable.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-movable.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="208731093%2FFunctions%2F444310150" anchor-label="ifPattern" id="208731093%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-pattern.html"><span>if</span><wbr></wbr><span><span>Pattern</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="208731093%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-pattern.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-pattern.html"><span class="token function">ifPattern</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-pattern/index.html">BackgroundType.Pattern</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-pattern.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-pattern.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1580174997%2FFunctions%2F444310150" anchor-label="ifUnknown" id="1580174997%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-unknown.html"><span>if</span><wbr></wbr><span><span>Unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580174997%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-unknown.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-unknown.html"><span class="token function">ifUnknown</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html">BackgroundType.Unknown</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-unknown.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-unknown.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1168210347%2FFunctions%2F444310150" anchor-label="ifWallpaper" id="-1168210347%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-wallpaper.html"><span>if</span><wbr></wbr><span><span>Wallpaper</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1168210347%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-wallpaper.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-wallpaper.html"><span class="token function">ifWallpaper</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-wallpaper/index.html">BackgroundType.Wallpaper</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-wallpaper.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-wallpaper.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="796616577%2FFunctions%2F444310150" anchor-label="ifWithDocument" id="796616577%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-with-document.html"><span>if</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Document</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="796616577%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-with-document.html">T</a><span class="token operator">&gt; </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-with-document.html"><span class="token function">ifWithDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-with-document/index.html">BackgroundType.WithDocument</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-with-document.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.extensions.utils/if-with-document.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2048697805%2FFunctions%2F444310150" anchor-label="movableOrNull" id="2048697805%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/movable-or-null.html"><span>movable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2048697805%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/movable-or-null.html"><span class="token function">movableOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-movable/index.html">BackgroundType.Movable</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="773177038%2FFunctions%2F444310150" anchor-label="movableOrThrow" id="773177038%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/movable-or-throw.html"><span>movable</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="773177038%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/movable-or-throw.html"><span class="token function">movableOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-movable/index.html">BackgroundType.Movable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-677002773%2FFunctions%2F444310150" anchor-label="patternOrNull" id="-677002773%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/pattern-or-null.html"><span>pattern</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-677002773%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/pattern-or-null.html"><span class="token function">patternOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-pattern/index.html">BackgroundType.Pattern</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2119162256%2FFunctions%2F444310150" anchor-label="patternOrThrow" id="-2119162256%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/pattern-or-throw.html"><span>pattern</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2119162256%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/pattern-or-throw.html"><span class="token function">patternOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-pattern/index.html">BackgroundType.Pattern</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1334364815%2FFunctions%2F444310150" anchor-label="unknownOrNull" id="-1334364815%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/unknown-or-null.html"><span>unknown</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1334364815%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/unknown-or-null.html"><span class="token function">unknownOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BackgroundType.Unknown</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1022549078%2FFunctions%2F444310150" anchor-label="unknownOrThrow" id="-1022549078%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/unknown-or-throw.html"><span>unknown</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1022549078%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/unknown-or-throw.html"><span class="token function">unknownOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BackgroundType.Unknown</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-581810567%2FFunctions%2F444310150" anchor-label="wallpaperOrNull" id="-581810567%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/wallpaper-or-null.html"><span>wallpaper</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-581810567%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/wallpaper-or-null.html"><span class="token function">wallpaperOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-wallpaper/index.html">BackgroundType.Wallpaper</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="831796130%2FFunctions%2F444310150" anchor-label="wallpaperOrThrow" id="831796130%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/wallpaper-or-throw.html"><span>wallpaper</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="831796130%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/wallpaper-or-throw.html"><span class="token function">wallpaperOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-wallpaper/index.html">BackgroundType.Wallpaper</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1396703128%2FFunctions%2F444310150" anchor-label="withDocumentOrNull" id="1396703128%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/with-document-or-null.html"><span>with</span><wbr></wbr><span>Document</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1396703128%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/with-document-or-null.html"><span class="token function">withDocumentOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-with-document/index.html">BackgroundType.WithDocument</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2036178531%2FFunctions%2F444310150" anchor-label="withDocumentOrThrow" id="2036178531%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../dev.inmo.tgbotapi.extensions.utils/with-document-or-throw.html"><span>with</span><wbr></wbr><span>Document</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2036178531%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../index.html">BackgroundType</a><span class="token punctuation">.</span><a href="../../../dev.inmo.tgbotapi.extensions.utils/with-document-or-throw.html"><span class="token function">withDocumentOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-with-document/index.html">BackgroundType.WithDocument</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

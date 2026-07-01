@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ApiException</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="docs::dev.inmo.tgbotapi.bot.exceptions/ApiException///PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.bot.exceptions</a><span class="delimiter">/</span><span class="current">ApiException</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Api</span><wbr></wbr><span><span>Exception</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ApiException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>httpResponseCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>plainResponse<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">response<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-response/index.html">Response</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-common-bot-exception/index.html">CommonBotException</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/bot/exceptions/RequestException.kt#L72">source</a>)</span></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-116954938%2FConstructors%2F444310150" anchor-label="ApiException" id="-116954938%2FConstructors%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-api-exception.html"><span>Api</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-116954938%2FConstructors%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">httpResponseCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">plainResponse<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">response<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-response/index.html">Response</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-654012527%2FProperties%2F444310150" anchor-label="cause" id="-654012527%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.bot.ktor.middlewares/-telegram-bot-middleware/-result-absence/index.html#-654012527%2FProperties%2F444310150"><span><span>cause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-654012527%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../dev.inmo.tgbotapi.bot.ktor.middlewares/-telegram-bot-middleware/-result-absence/index.html#-654012527%2FProperties%2F444310150">cause</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-952811241%2FProperties%2F444310150" anchor-label="httpResponseCode" id="-952811241%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="http-response-code.html"><span>http</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-952811241%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="http-response-code.html">httpResponseCode</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1242445837%2FProperties%2F444310150" anchor-label="message" id="-1242445837%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-bot-exception/message.html"><span><span>message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1242445837%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-bot-exception/message.html">message</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-754793870%2FProperties%2F444310150" anchor-label="plainAnswer" id="-754793870%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-bot-exception/plain-answer.html"><span>plain</span><wbr></wbr><span><span>Answer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-754793870%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-bot-exception/plain-answer.html">plainAnswer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-925466398%2FProperties%2F444310150" anchor-label="plainResponse" id="-925466398%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plain-response.html"><span>plain</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925466398%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="plain-response.html">plainResponse</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1183508513%2FProperties%2F444310150" anchor-label="response" id="-1183508513%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-bot-exception/response.html"><span><span>response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1183508513%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-bot-exception/response.html">response</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-response/index.html">Response</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1944884000%2FFunctions%2F444310150" anchor-label="apiExceptionOrNull" id="-1944884000%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/api-exception-or-null.html"><span>api</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1944884000%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/api-exception-or-null.html"><span class="token function">apiExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ApiException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1966498701%2FFunctions%2F444310150" anchor-label="apiExceptionOrThrow" id="1966498701%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/api-exception-or-throw.html"><span>api</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1966498701%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/api-exception-or-throw.html"><span class="token function">apiExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ApiException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="658366991%2FFunctions%2F444310150" anchor-label="causedBy" id="658366991%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.utils/caused-by.html"><span>caused</span><wbr></wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="658366991%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html"><span class="token function">causedBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kclass<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">additionalFilterOnHappened<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html">T</a><span class="token operator">?</span><span class="token operator"> = </span>{ it }</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/caused-by.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="881019030%2FFunctions%2F444310150" anchor-label="causedCancellationException" id="881019030%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.utils/caused-cancellation-exception.html"><span>caused</span><wbr></wbr><span>Cancellation</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="881019030%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.utils/caused-cancellation-exception.html"><span class="token function">causedCancellationException</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CancellationException///PointingToDeclaration/">CancellationException</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Traverses this throwable's cause chain to find a <span data-unresolved-link="kotlinx.coroutines/CancellationException///PointingToDeclaration/">CancellationException</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="773868306%2FFunctions%2F444310150" anchor-label="causedUnresolvedAddressException" id="773868306%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.utils/caused-unresolved-address-exception.html"><span>caused</span><wbr></wbr><span>Unresolved</span><wbr></wbr><span>Address</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="773868306%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.utils/caused-unresolved-address-exception.html"><span class="token function">causedUnresolvedAddressException</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.ktor.util.network/UnresolvedAddressException///PointingToDeclaration/">UnresolvedAddressException</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="226330231%2FFunctions%2F444310150" anchor-label="commonBotExceptionDefaultOrNull" id="226330231%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-default-or-null.html"><span>common</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Default</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="226330231%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-default-or-null.html"><span class="token function">commonBotExceptionDefaultOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-bot-exception/-default/index.html">CommonBotException.Default</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="554663126%2FFunctions%2F444310150" anchor-label="commonBotExceptionDefaultOrThrow" id="554663126%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-default-or-throw.html"><span>common</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Default</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="554663126%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-default-or-throw.html"><span class="token function">commonBotExceptionDefaultOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-bot-exception/-default/index.html">CommonBotException.Default</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-853482594%2FFunctions%2F444310150" anchor-label="commonBotExceptionOrNull" id="-853482594%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-or-null.html"><span>common</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-853482594%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-or-null.html"><span class="token function">commonBotExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-bot-exception/index.html">CommonBotException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1440203919%2FFunctions%2F444310150" anchor-label="commonBotExceptionOrThrow" id="1440203919%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-or-throw.html"><span>common</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1440203919%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-bot-exception-or-throw.html"><span class="token function">commonBotExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-bot-exception/index.html">CommonBotException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1485476394%2FFunctions%2F444310150" anchor-label="commonRequestExceptionOrNull" id="-1485476394%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-request-exception-or-null.html"><span>common</span><wbr></wbr><span>Request</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1485476394%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-request-exception-or-null.html"><span class="token function">commonRequestExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-request-exception/index.html">CommonRequestException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-971734697%2FFunctions%2F444310150" anchor-label="commonRequestExceptionOrThrow" id="-971734697%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/common-request-exception-or-throw.html"><span>common</span><wbr></wbr><span>Request</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-971734697%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/common-request-exception-or-throw.html"><span class="token function">commonRequestExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-common-request-exception/index.html">CommonRequestException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1047025316%2FFunctions%2F444310150" anchor-label="createCopy" id="-1047025316%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-copy.html"><span>create</span><wbr></wbr><span><span>Copy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1047025316%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="create-copy.html"><span class="token function">createCopy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ApiException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1534277585%2FFunctions%2F444310150" anchor-label="getUpdatesConflictOrNull" id="1534277585%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/get-updates-conflict-or-null.html"><span>get</span><wbr></wbr><span>Updates</span><wbr></wbr><span>Conflict</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1534277585%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/get-updates-conflict-or-null.html"><span class="token function">getUpdatesConflictOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-get-updates-conflict/index.html">GetUpdatesConflict</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1848641860%2FFunctions%2F444310150" anchor-label="getUpdatesConflictOrThrow" id="-1848641860%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/get-updates-conflict-or-throw.html"><span>get</span><wbr></wbr><span>Updates</span><wbr></wbr><span>Conflict</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1848641860%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/get-updates-conflict-or-throw.html"><span class="token function">getUpdatesConflictOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-get-updates-conflict/index.html">GetUpdatesConflict</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1488368327%2FFunctions%2F444310150" anchor-label="ifApiException" id="-1488368327%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-api-exception.html"><span>if</span><wbr></wbr><span>Api</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1488368327%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-api-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-api-exception.html"><span class="token function">ifApiException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html">ApiException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-api-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-api-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1491951865%2FFunctions%2F444310150" anchor-label="ifCommonBotException" id="1491951865%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception.html"><span>if</span><wbr></wbr><span>Common</span><wbr></wbr><span>Bot</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1491951865%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception.html"><span class="token function">ifCommonBotException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-common-bot-exception/index.html">CommonBotException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1706219379%2FFunctions%2F444310150" anchor-label="ifCommonBotExceptionDefault" id="-1706219379%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception-default.html"><span>if</span><wbr></wbr><span>Common</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Exception</span><wbr></wbr><span><span>Default</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1706219379%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception-default.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception-default.html"><span class="token function">ifCommonBotExceptionDefault</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-common-bot-exception/-default/index.html">CommonBotException.Default</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception-default.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-bot-exception-default.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2140388345%2FFunctions%2F444310150" anchor-label="ifCommonRequestException" id="2140388345%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-request-exception.html"><span>if</span><wbr></wbr><span>Common</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2140388345%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-request-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-request-exception.html"><span class="token function">ifCommonRequestException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-common-request-exception/index.html">CommonRequestException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-request-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-common-request-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1391299097%2FFunctions%2F444310150" anchor-label="ifGetUpdatesConflict" id="1391299097%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-get-updates-conflict.html"><span>if</span><wbr></wbr><span>Get</span><wbr></wbr><span>Updates</span><wbr></wbr><span><span>Conflict</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1391299097%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-get-updates-conflict.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-get-updates-conflict.html"><span class="token function">ifGetUpdatesConflict</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-get-updates-conflict/index.html">GetUpdatesConflict</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-get-updates-conflict.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-get-updates-conflict.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="422470737%2FFunctions%2F444310150" anchor-label="ifInvalidPhotoDimensionsException" id="422470737%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-invalid-photo-dimensions-exception.html"><span>if</span><wbr></wbr><span>Invalid</span><wbr></wbr><span>Photo</span><wbr></wbr><span>Dimensions</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="422470737%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-invalid-photo-dimensions-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-invalid-photo-dimensions-exception.html"><span class="token function">ifInvalidPhotoDimensionsException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-invalid-photo-dimensions-exception/index.html">InvalidPhotoDimensionsException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-invalid-photo-dimensions-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-invalid-photo-dimensions-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="394119371%2FFunctions%2F444310150" anchor-label="ifMessageIsNotModifiedException" id="394119371%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-is-not-modified-exception.html"><span>if</span><wbr></wbr><span>Message</span><wbr></wbr><span>Is</span><wbr></wbr><span>Not</span><wbr></wbr><span>Modified</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="394119371%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-is-not-modified-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-is-not-modified-exception.html"><span class="token function">ifMessageIsNotModifiedException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-message-is-not-modified-exception/index.html">MessageIsNotModifiedException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-is-not-modified-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-is-not-modified-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1869457113%2FFunctions%2F444310150" anchor-label="ifMessageToEditNotFoundException" id="1869457113%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-to-edit-not-found-exception.html"><span>if</span><wbr></wbr><span>Message</span><wbr></wbr><span>To</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1869457113%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-to-edit-not-found-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-to-edit-not-found-exception.html"><span class="token function">ifMessageToEditNotFoundException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-message-to-edit-not-found-exception/index.html">MessageToEditNotFoundException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-to-edit-not-found-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-message-to-edit-not-found-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-366162167%2FFunctions%2F444310150" anchor-label="ifReplyMessageNotFoundException" id="-366162167%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-reply-message-not-found-exception.html"><span>if</span><wbr></wbr><span>Reply</span><wbr></wbr><span>Message</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-366162167%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-reply-message-not-found-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-reply-message-not-found-exception.html"><span class="token function">ifReplyMessageNotFoundException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-reply-message-not-found-exception/index.html">ReplyMessageNotFoundException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-reply-message-not-found-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-reply-message-not-found-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1421117337%2FFunctions%2F444310150" anchor-label="ifRequestException" id="1421117337%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-request-exception.html"><span>if</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1421117337%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-request-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-request-exception.html"><span class="token function">ifRequestException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-request-exception/index.html">RequestException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-request-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-request-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-222057511%2FFunctions%2F444310150" anchor-label="ifTooMuchRequestsException" id="-222057511%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-too-much-requests-exception.html"><span>if</span><wbr></wbr><span>Too</span><wbr></wbr><span>Much</span><wbr></wbr><span>Requests</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-222057511%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-too-much-requests-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-too-much-requests-exception.html"><span class="token function">ifTooMuchRequestsException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-too-much-requests-exception/index.html">TooMuchRequestsException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-too-much-requests-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-too-much-requests-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1923181639%2FFunctions%2F444310150" anchor-label="ifUnauthorizedException" id="-1923181639%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-unauthorized-exception.html"><span>if</span><wbr></wbr><span>Unauthorized</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1923181639%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-unauthorized-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-unauthorized-exception.html"><span class="token function">ifUnauthorizedException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-unauthorized-exception/index.html">UnauthorizedException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-unauthorized-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-unauthorized-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-279155143%2FFunctions%2F444310150" anchor-label="ifWrongFileIdentifierException" id="-279155143%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-wrong-file-identifier-exception.html"><span>if</span><wbr></wbr><span>Wrong</span><wbr></wbr><span>File</span><wbr></wbr><span>Identifier</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-279155143%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-wrong-file-identifier-exception.html">T</a><span class="token operator">&gt; </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-wrong-file-identifier-exception.html"><span class="token function">ifWrongFileIdentifierException</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-wrong-file-identifier-exception/index.html">WrongFileIdentifierException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-wrong-file-identifier-exception.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-wrong-file-identifier-exception.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1426364240%2FFunctions%2F444310150" anchor-label="invalidPhotoDimensionsExceptionOrNull" id="1426364240%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/invalid-photo-dimensions-exception-or-null.html"><span>invalid</span><wbr></wbr><span>Photo</span><wbr></wbr><span>Dimensions</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1426364240%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/invalid-photo-dimensions-exception-or-null.html"><span class="token function">invalidPhotoDimensionsExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-invalid-photo-dimensions-exception/index.html">InvalidPhotoDimensionsException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-898988259%2FFunctions%2F444310150" anchor-label="invalidPhotoDimensionsExceptionOrThrow" id="-898988259%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/invalid-photo-dimensions-exception-or-throw.html"><span>invalid</span><wbr></wbr><span>Photo</span><wbr></wbr><span>Dimensions</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-898988259%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/invalid-photo-dimensions-exception-or-throw.html"><span class="token function">invalidPhotoDimensionsExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-invalid-photo-dimensions-exception/index.html">InvalidPhotoDimensionsException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1120718854%2FFunctions%2F444310150" anchor-label="isCausedByCancellation" id="-1120718854%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.utils/is-caused-by-cancellation.html"><span>is</span><wbr></wbr><span>Caused</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Cancellation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1120718854%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.utils/is-caused-by-cancellation.html"><span class="token function">isCausedByCancellation</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether this throwable (or any of its causes) is a <span data-unresolved-link="kotlinx.coroutines/CancellationException///PointingToDeclaration/">CancellationException</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1559758536%2FFunctions%2F444310150" anchor-label="isCausedUnresolvedAddressException" id="1559758536%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.utils/is-caused-unresolved-address-exception.html"><span>is</span><wbr></wbr><span>Caused</span><wbr></wbr><span>Unresolved</span><wbr></wbr><span>Address</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1559758536%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.utils/is-caused-unresolved-address-exception.html"><span class="token function">isCausedUnresolvedAddressException</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-443359955%2FFunctions%2F444310150" anchor-label="messageIsNotModifiedExceptionOrNull" id="-443359955%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/message-is-not-modified-exception-or-null.html"><span>message</span><wbr></wbr><span>Is</span><wbr></wbr><span>Not</span><wbr></wbr><span>Modified</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-443359955%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/message-is-not-modified-exception-or-null.html"><span class="token function">messageIsNotModifiedExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-message-is-not-modified-exception/index.html">MessageIsNotModifiedException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1269103840%2FFunctions%2F444310150" anchor-label="messageIsNotModifiedExceptionOrThrow" id="1269103840%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/message-is-not-modified-exception-or-throw.html"><span>message</span><wbr></wbr><span>Is</span><wbr></wbr><span>Not</span><wbr></wbr><span>Modified</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1269103840%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/message-is-not-modified-exception-or-throw.html"><span class="token function">messageIsNotModifiedExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-message-is-not-modified-exception/index.html">MessageIsNotModifiedException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1188769601%2FFunctions%2F444310150" anchor-label="messageToEditNotFoundExceptionOrNull" id="-1188769601%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/message-to-edit-not-found-exception-or-null.html"><span>message</span><wbr></wbr><span>To</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1188769601%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/message-to-edit-not-found-exception-or-null.html"><span class="token function">messageToEditNotFoundExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-message-to-edit-not-found-exception/index.html">MessageToEditNotFoundException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-363758706%2FFunctions%2F444310150" anchor-label="messageToEditNotFoundExceptionOrThrow" id="-363758706%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/message-to-edit-not-found-exception-or-throw.html"><span>message</span><wbr></wbr><span>To</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-363758706%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/message-to-edit-not-found-exception-or-throw.html"><span class="token function">messageToEditNotFoundExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-message-to-edit-not-found-exception/index.html">MessageToEditNotFoundException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1999232788%2FFunctions%2F444310150" anchor-label="replyMessageNotFoundExceptionOrNull" id="-1999232788%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/reply-message-not-found-exception-or-null.html"><span>reply</span><wbr></wbr><span>Message</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1999232788%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/reply-message-not-found-exception-or-null.html"><span class="token function">replyMessageNotFoundExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-reply-message-not-found-exception/index.html">ReplyMessageNotFoundException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="281686273%2FFunctions%2F444310150" anchor-label="replyMessageNotFoundExceptionOrThrow" id="281686273%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/reply-message-not-found-exception-or-throw.html"><span>reply</span><wbr></wbr><span>Message</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="281686273%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/reply-message-not-found-exception-or-throw.html"><span class="token function">replyMessageNotFoundExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-reply-message-not-found-exception/index.html">ReplyMessageNotFoundException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-873269493%2FFunctions%2F444310150" anchor-label="requestExceptionOrNull" id="-873269493%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/request-exception-or-null.html"><span>request</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-873269493%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/request-exception-or-null.html"><span class="token function">requestExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-request-exception/index.html">RequestException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="826810050%2FFunctions%2F444310150" anchor-label="requestExceptionOrThrow" id="826810050%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/request-exception-or-throw.html"><span>request</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="826810050%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/request-exception-or-throw.html"><span class="token function">requestExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-request-exception/index.html">RequestException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="693890037%2FFunctions%2F444310150" anchor-label="tooMuchRequestsExceptionOrNull" id="693890037%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/too-much-requests-exception-or-null.html"><span>too</span><wbr></wbr><span>Much</span><wbr></wbr><span>Requests</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="693890037%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/too-much-requests-exception-or-null.html"><span class="token function">tooMuchRequestsExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-too-much-requests-exception/index.html">TooMuchRequestsException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2130852072%2FFunctions%2F444310150" anchor-label="tooMuchRequestsExceptionOrThrow" id="-2130852072%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/too-much-requests-exception-or-throw.html"><span>too</span><wbr></wbr><span>Much</span><wbr></wbr><span>Requests</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2130852072%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/too-much-requests-exception-or-throw.html"><span class="token function">tooMuchRequestsExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-too-much-requests-exception/index.html">TooMuchRequestsException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-483473084%2FFunctions%2F444310150" anchor-label="unauthorizedExceptionOrNull" id="-483473084%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/unauthorized-exception-or-null.html"><span>unauthorized</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-483473084%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/unauthorized-exception-or-null.html"><span class="token function">unauthorizedExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-unauthorized-exception/index.html">UnauthorizedException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="25596841%2FFunctions%2F444310150" anchor-label="unauthorizedExceptionOrThrow" id="25596841%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/unauthorized-exception-or-throw.html"><span>unauthorized</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="25596841%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/unauthorized-exception-or-throw.html"><span class="token function">unauthorizedExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-unauthorized-exception/index.html">UnauthorizedException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="773004712%2FFunctions%2F444310150" anchor-label="wrongFileIdentifierExceptionOrNull" id="773004712%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/wrong-file-identifier-exception-or-null.html"><span>wrong</span><wbr></wbr><span>File</span><wbr></wbr><span>Identifier</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="773004712%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/wrong-file-identifier-exception-or-null.html"><span class="token function">wrongFileIdentifierExceptionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-wrong-file-identifier-exception/index.html">WrongFileIdentifierException</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="321702853%2FFunctions%2F444310150" anchor-label="wrongFileIdentifierExceptionOrThrow" id="321702853%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/wrong-file-identifier-exception-or-throw.html"><span>wrong</span><wbr></wbr><span>File</span><wbr></wbr><span>Identifier</span><wbr></wbr><span>Exception</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="321702853%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-bot-exception/index.html">BotException</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/wrong-file-identifier-exception-or-throw.html"><span class="token function">wrongFileIdentifierExceptionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-wrong-file-identifier-exception/index.html">WrongFileIdentifierException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

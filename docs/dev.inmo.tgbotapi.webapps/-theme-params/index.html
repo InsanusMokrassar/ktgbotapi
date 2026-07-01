@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ThemeParams</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/jsMain">js</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/jsMain"
+                                       data-filter=":docs/jsMain"/>
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="docs::dev.inmo.tgbotapi.webapps/ThemeParams///PointingToDeclaration//-1882750168">
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.webapps</a><span class="delimiter">/</span><span class="current">ThemeParams</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Theme</span><wbr></wbr><span><span>Params</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">interface </span><a href="index.html">ThemeParams</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.webapps/src/jsMain/kotlin/dev/inmo/tgbotapi/webapps/ThemeParams.kt#L4">source</a>)</span></span></div></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="44553972%2FProperties%2F-1882750168" anchor-label="accentTextColor" id="44553972%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accent-text-color.html"><span>accent</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="44553972%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="accent-text-color.html">accentTextColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-240308021%2FProperties%2F-1882750168" anchor-label="backgroundColor" id="-240308021%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-color.html"><span>background</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-240308021%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="background-color.html">backgroundColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1146750636%2FProperties%2F-1882750168" anchor-label="backgroundColorHex" id="-1146750636%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-color-hex.html"><span>background</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1146750636%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="background-color-hex.html">backgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-4965041%2FProperties%2F-1882750168" anchor-label="buttonColor" id="-4965041%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-color.html"><span>button</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-4965041%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="button-color.html">buttonColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="569339472%2FProperties%2F-1882750168" anchor-label="buttonColorHex" id="569339472%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-color-hex.html"><span>button</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="569339472%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="button-color-hex.html">buttonColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="609464156%2FProperties%2F-1882750168" anchor-label="buttonTextColor" id="609464156%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-text-color.html"><span>button</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="609464156%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="button-text-color.html">buttonTextColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-121068253%2FProperties%2F-1882750168" anchor-label="buttonTextColorHex" id="-121068253%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-text-color-hex.html"><span>button</span><wbr></wbr><span>Text</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-121068253%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="button-text-color-hex.html">buttonTextColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="469116678%2FProperties%2F-1882750168" anchor-label="destructiveTextColor" id="469116678%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destructive-text-color.html"><span>destructive</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="469116678%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="destructive-text-color.html">destructiveTextColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1261686031%2FProperties%2F-1882750168" anchor-label="headerBgColor" id="1261686031%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="header-bg-color.html"><span>header</span><wbr></wbr><span>Bg</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1261686031%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="header-bg-color.html">headerBgColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-857520476%2FProperties%2F-1882750168" anchor-label="hintColor" id="-857520476%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hint-color.html"><span>hint</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-857520476%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="hint-color.html">hintColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1768003365%2FProperties%2F-1882750168" anchor-label="hintColorHex" id="-1768003365%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hint-color-hex.html"><span>hint</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1768003365%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="hint-color-hex.html">hintColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="87248087%2FProperties%2F-1882750168" anchor-label="linkColor" id="87248087%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="link-color.html"><span>link</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="87248087%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="link-color.html">linkColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1088433720%2FProperties%2F-1882750168" anchor-label="linkColorHex" id="-1088433720%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="link-color-hex.html"><span>link</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088433720%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="link-color-hex.html">linkColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="693283129%2FProperties%2F-1882750168" anchor-label="secondaryBackgroundColor" id="693283129%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="secondary-background-color.html"><span>secondary</span><wbr></wbr><span>Background</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="693283129%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="secondary-background-color.html">secondaryBackgroundColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1553957414%2FProperties%2F-1882750168" anchor-label="secondaryBackgroundColorHex" id="1553957414%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="secondary-background-color-hex.html"><span>secondary</span><wbr></wbr><span>Background</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1553957414%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="secondary-background-color-hex.html">secondaryBackgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="734809025%2FProperties%2F-1882750168" anchor-label="sectionBgColor" id="734809025%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="section-bg-color.html"><span>section</span><wbr></wbr><span>Bg</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="734809025%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="section-bg-color.html">sectionBgColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1763571734%2FProperties%2F-1882750168" anchor-label="sectionHeaderTextColor" id="1763571734%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="section-header-text-color.html"><span>section</span><wbr></wbr><span>Header</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1763571734%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="section-header-text-color.html">sectionHeaderTextColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="392066909%2FProperties%2F-1882750168" anchor-label="sectionSeparatorColor" id="392066909%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="section-separator-color.html"><span>section</span><wbr></wbr><span>Separator</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="392066909%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="section-separator-color.html">sectionSeparatorColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1976997378%2FProperties%2F-1882750168" anchor-label="subtitleTextColor" id="1976997378%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="subtitle-text-color.html"><span>subtitle</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1976997378%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="subtitle-text-color.html">subtitleTextColor</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="82052810%2FProperties%2F-1882750168" anchor-label="textColor" id="82052810%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text-color.html"><span>text</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="82052810%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="text-color.html">textColor</a><span class="token operator">: </span><a href="../-h-e-x-color/index.html">HEXColor</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1242108171%2FProperties%2F-1882750168" anchor-label="textColorHex" id="-1242108171%2FProperties%2F-1882750168" data-filterable-set=":docs/jsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text-color-hex.html"><span>text</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1242108171%2FProperties%2F-1882750168"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jsMain" data-filterable-set=":docs/jsMain" data-active="" data-toggle=":docs/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jsMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="text-color-hex.html">textColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

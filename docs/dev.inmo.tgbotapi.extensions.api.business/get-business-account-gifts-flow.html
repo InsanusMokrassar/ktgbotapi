@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>getBusinessAccountGiftsFlow</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="member" id="content" pageIds="docs::dev.inmo.tgbotapi.extensions.api.business//getBusinessAccountGiftsFlow/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.Boolean#kotlin.String?#kotlin.Int?#kotlin.coroutines.SuspendFunction1[kotlin.Throwable?,kotlin.Boolean]/PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../index.html">docs</a><span class="delimiter">/</span><a href="index.html">dev.inmo.tgbotapi.extensions.api.business</a><span class="delimiter">/</span><span class="current">getBusinessAccountGiftsFlow</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>get</span><wbr></wbr><span>Business</span><wbr></wbr><span>Account</span><wbr></wbr><span>Gifts</span><wbr></wbr><span><span>Flow</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-business-account-gifts-flow.html"><span class="token function">getBusinessAccountGiftsFlow</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">businessConnectionId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.business_connection/-business-connection-id/index.html">BusinessConnectionId</a><span class="token punctuation">, </span></span><span class="parameter ">excludeUnsaved<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeSaved<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeUnlimited<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeLimitedUpgradable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeLimitedNonUpgradable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeUnique<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">excludeFromBlockchain<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">sortByPrice<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">initialOffset<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">onErrorContinueChecker<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span>{ false }</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types/-owned-gifts/index.html">OwnedGifts</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types.gifts/-owned-gift/-owned-by-business-account/index.html">OwnedGift.OwnedByBusinessAccount</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/business/GetBusinessAccountGifts.kt#L62">source</a>)</span></span></div><p class="paragraph">Creates a flow that emits business account gifts in a paginated manner.</p><p class="paragraph">This function will automatically handle pagination by using the <code class="lang-kotlin">nextOffset</code> from each response to fetch the next page of gifts until there are no more gifts to fetch.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">A flow that emits <a href="../dev.inmo.tgbotapi.types/-owned-gifts/index.html">OwnedGifts</a> containing the fetched gifts</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>business</span><wbr></wbr><span>Connection</span><wbr></wbr><span><span>Id</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The ID of the business connection</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span><span>Unsaved</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude unsaved gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span><span>Saved</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude saved gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span><span>Unlimited</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude unlimited gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span>Limited</span><wbr></wbr><span><span>Upgradable</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude limited upgradable gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span>Limited</span><wbr></wbr><span>Non</span><wbr></wbr><span><span>Upgradable</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude limited non-upgradable gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span><span>Unique</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude unique gifts</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>exclude</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Blockchain</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to exclude gifts from blockchain</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>sort</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Price</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether to sort gifts by price</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr></wbr><span><span>Offset</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The initial offset to start fetching from. If null, starts from the beginning</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>limit</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The maximum number of gifts to fetch per request</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>on</span><wbr></wbr><span>Error</span><wbr></wbr><span>Continue</span><wbr></wbr><span><span>Checker</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A function that determines whether to continue fetching on error.                               Returns true to continue, false to stop. Default is to stop on any error.</p></div></div></div></div></div></div></div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

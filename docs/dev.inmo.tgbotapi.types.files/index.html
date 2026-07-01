@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>dev.inmo.tgbotapi.types.files</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/jvmMain">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/jvmMain"
+                                       data-filter=":docs/jvmMain"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="docs::dev.inmo.tgbotapi.types.files////PointingToDeclaration//-112214154">
+  <div class="breadcrumbs"><a href="../../index.html">docs</a><span class="delimiter">/</span><span class="current">dev.inmo.tgbotapi.types.files</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1778522174%2FClasslikes%2F444310150" anchor-label="AnimatedSticker" id="1778522174%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-animated-sticker/index.html"><span>Animated</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778522174%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-animated-sticker/index.html">AnimatedSticker</a> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1456701368%2FClasslikes%2F444310150" anchor-label="AnimationFile" id="1456701368%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-animation-file/index.html"><span>Animation</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1456701368%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-animation-file/index.html">AnimationFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="868508710%2FClasslikes%2F444310150" anchor-label="AudioFile" id="868508710%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-audio-file/index.html"><span>Audio</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="868508710%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-audio-file/index.html">AudioFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>performer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-titled-media-file/index.html">TitledMediaFile</a>, <a href="../dev.inmo.tgbotapi.abstracts/-performerable/index.html">Performerable</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1279556128%2FClasslikes%2F444310150" anchor-label="CoveredMediaFile" id="-1279556128%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-covered-media-file/index.html"><span>Covered</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1279556128%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-covered-media-file/index.html">CoveredMediaFile</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.abstracts/-coverable-data/index.html">CoverableData</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="104909445%2FClasslikes%2F444310150" anchor-label="CustomEmojiAnimatedSticker" id="104909445%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-emoji-animated-sticker/index.html"><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span>Animated</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="104909445%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-custom-emoji-animated-sticker/index.html">CustomEmojiAnimatedSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customEmojiId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-custom-emoji-id/index.html">CustomEmojiId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>needsRepainting<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="-custom-emoji-sticker/index.html">CustomEmojiSticker</a>, <a href="-animated-sticker/index.html">AnimatedSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="623397396%2FClasslikes%2F444310150" anchor-label="CustomEmojiSimpleSticker" id="623397396%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-emoji-simple-sticker/index.html"><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span>Simple</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="623397396%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-custom-emoji-simple-sticker/index.html">CustomEmojiSimpleSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customEmojiId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-custom-emoji-id/index.html">CustomEmojiId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>needsRepainting<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="-custom-emoji-sticker/index.html">CustomEmojiSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1591015106%2FClasslikes%2F444310150" anchor-label="CustomEmojiSticker" id="1591015106%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-emoji-sticker/index.html"><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1591015106%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-custom-emoji-sticker/index.html">CustomEmojiSticker</a> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="536525249%2FClasslikes%2F444310150" anchor-label="CustomEmojiVideoSticker" id="536525249%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-emoji-video-sticker/index.html"><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span>Video</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="536525249%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-custom-emoji-video-sticker/index.html">CustomEmojiVideoSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customEmojiId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-custom-emoji-id/index.html">CustomEmojiId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>needsRepainting<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="-custom-emoji-sticker/index.html">CustomEmojiSticker</a>, <a href="-video-sticker/index.html">VideoSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1365115026%2FClasslikes%2F444310150" anchor-label="CustomNamedMediaFile" id="1365115026%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-named-media-file/index.html"><span>Custom</span><wbr></wbr><span>Named</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1365115026%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-custom-named-media-file/index.html">CustomNamedMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-530029701%2FClasslikes%2F444310150" anchor-label="CustomStartMediaFile" id="-530029701%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-start-media-file/index.html"><span>Custom</span><wbr></wbr><span>Start</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-530029701%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-custom-start-media-file/index.html">CustomStartMediaFile</a> : <a href="../dev.inmo.tgbotapi.abstracts/-with-custom-start-media-data/index.html">WithCustomStartMediaData</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1180885843%2FClasslikes%2F444310150" anchor-label="DocumentFile" id="1180885843%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-document-file/index.html"><span>Document</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1180885843%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-document-file/index.html">DocumentFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="600773550%2FClasslikes%2F444310150" anchor-label="File" id="600773550%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-file/index.html"><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="600773550%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-file/index.html">File</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="906817581%2FClasslikes%2F444310150" anchor-label="FileSize" id="906817581%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-file-size/index.html"><span>File</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="906817581%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-inline/index.html"><span class="token annotation builtin">JvmInline</span></a></div></div><span class="token keyword">value </span><span class="token keyword">class </span><a href="-file-size/index.html">FileSize</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>bytes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-u-long/index.html">ULong</a></span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="-file-size/index.html">FileSize</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2024420822%2FClasslikes%2F444310150" anchor-label="LivePhotoFile" id="2024420822%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-live-photo-file/index.html"><span>Live</span><wbr></wbr><span>Photo</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2024420822%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-live-photo-file/index.html">LivePhotoFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>photo<span class="token operator">: </span><a href="-photo-file/index.html">PhotoFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a>, <a href="-useful-as-paid-media-file/index.html">UsefulAsPaidMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-439690294%2FClasslikes%2F444310150" anchor-label="MaskAnimatedSticker" id="-439690294%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mask-animated-sticker/index.html"><span>Mask</span><wbr></wbr><span>Animated</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-439690294%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-mask-animated-sticker/index.html">MaskAnimatedSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maskPosition<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.stickers/-mask-position/index.html">MaskPosition</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-mask-sticker/index.html">MaskSticker</a>, <a href="-animated-sticker/index.html">AnimatedSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-467670887%2FClasslikes%2F444310150" anchor-label="MaskSimpleSticker" id="-467670887%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mask-simple-sticker/index.html"><span>Mask</span><wbr></wbr><span>Simple</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-467670887%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-mask-simple-sticker/index.html">MaskSimpleSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maskPosition<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.stickers/-mask-position/index.html">MaskPosition</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-mask-sticker/index.html">MaskSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1653400313%2FClasslikes%2F444310150" anchor-label="MaskSticker" id="-1653400313%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mask-sticker/index.html"><span>Mask</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1653400313%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-mask-sticker/index.html">MaskSticker</a> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1576880484%2FClasslikes%2F444310150" anchor-label="MaskVideoSticker" id="-1576880484%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mask-video-sticker/index.html"><span>Mask</span><wbr></wbr><span>Video</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1576880484%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-mask-video-sticker/index.html">MaskVideoSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maskPosition<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.stickers/-mask-position/index.html">MaskPosition</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-mask-sticker/index.html">MaskSticker</a>, <a href="-video-sticker/index.html">VideoSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1258092344%2FClasslikes%2F444310150" anchor-label="MediaContentVariant" id="-1258092344%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-media-content-variant/index.html"><span>Media</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Variant</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1258092344%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-media-content-variant/index.html">MediaContentVariant</a> : <a href="../dev.inmo.tgbotapi.types/-reply-info/-external/-content-variant/index.html">ReplyInfo.External.ContentVariant</a>, <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1824275898%2FClasslikes%2F444310150" anchor-label="MimedMediaFile" id="1824275898%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mimed-media-file/index.html"><span>Mimed</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1824275898%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-mimed-media-file/index.html">MimedMediaFile</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.abstracts/-mime-typed/index.html">MimeTyped</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="47702098%2FClasslikes%2F444310150" anchor-label="PaidMediaInfo" id="47702098%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-paid-media-info/index.html"><span>Paid</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="47702098%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-paid-media-info/index.html">PaidMediaInfo</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>stars<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>media<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types.message.payments/-paid-media/index.html">PaidMedia</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../dev.inmo.tgbotapi.types/-reply-info/-external/-content-variant/index.html">ReplyInfo.External.ContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-383451204%2FClasslikes%2F444310150" anchor-label="PassportFile" id="-383451204%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-passport-file/index.html"><span>Passport</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-383451204%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-passport-file/index.html">PassportFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>uploadingDate<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-telegram-date/index.html">TelegramDate</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div><div class="brief "><p class="paragraph">This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="395290570%2FClasslikes%2F444310150" anchor-label="PathedFile" id="395290570%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pathed-file/index.html"><span>Pathed</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="395290570%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-pathed-file/index.html">PathedFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>filePath<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1434072038%2FClasslikes%2F444310150" anchor-label="Photo" id="1434072038%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-photo/index.html"><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1434072038%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-photo/index.html">Photo</a><span class="token operator"> = </span><a href="-photo-file/index.html">PhotoFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="616542026%2FClasslikes%2F444310150" anchor-label="PhotoFile" id="616542026%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-photo-file/index.html"><span>Photo</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="616542026%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-inline/index.html"><span class="token annotation builtin">JvmInline</span></a></div></div><span class="token keyword">value </span><span class="token keyword">class </span><a href="-photo-file/index.html">PhotoFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>photos<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">&gt; </span>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a>, <a href="-useful-as-paid-media-file/index.html">UsefulAsPaidMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-661131212%2FClasslikes%2F444310150" anchor-label="PhotoSerializer" id="-661131212%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-photo-serializer/index.html"><span>Photo</span><wbr></wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-661131212%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-photo-serializer/index.html">PhotoSerializer</a> : <span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><a href="-photo-file/index.html">PhotoFile</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1614623845%2FClasslikes%2F444310150" anchor-label="PhotoSize" id="1614623845%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-photo-size/index.html"><span>Photo</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1614623845%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-photo-size/index.html">PhotoSize</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-sized-media-file/index.html">SizedMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1861688070%2FClasslikes%2F444310150" anchor-label="PlayableMediaFile" id="1861688070%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-playable-media-file/index.html"><span>Playable</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1861688070%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-playable-media-file/index.html">PlayableMediaFile</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1103259572%2FClasslikes%2F444310150" anchor-label="RegularAnimatedSticker" id="-1103259572%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-regular-animated-sticker/index.html"><span>Regular</span><wbr></wbr><span>Animated</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1103259572%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-regular-animated-sticker/index.html">RegularAnimatedSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>premiumAnimationFile<span class="token operator">: </span><a href="-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-regular-sticker/index.html">RegularSticker</a>, <a href="-animated-sticker/index.html">AnimatedSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="867949979%2FClasslikes%2F444310150" anchor-label="RegularSimpleSticker" id="867949979%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-regular-simple-sticker/index.html"><span>Regular</span><wbr></wbr><span>Simple</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="867949979%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-regular-simple-sticker/index.html">RegularSimpleSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>premiumAnimationFile<span class="token operator">: </span><a href="-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-regular-sticker/index.html">RegularSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-94143607%2FClasslikes%2F444310150" anchor-label="RegularSticker" id="-94143607%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-regular-sticker/index.html"><span>Regular</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-94143607%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-regular-sticker/index.html">RegularSticker</a> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="544414042%2FClasslikes%2F444310150" anchor-label="RegularVideoSticker" id="544414042%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-regular-video-sticker/index.html"><span>Regular</span><wbr></wbr><span>Video</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="544414042%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-regular-video-sticker/index.html">RegularVideoSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>premiumAnimationFile<span class="token operator">: </span><a href="-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-regular-sticker/index.html">RegularSticker</a>, <a href="-video-sticker/index.html">VideoSticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="575129293%2FClasslikes%2F444310150" anchor-label="SizedMediaFile" id="575129293%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sized-media-file/index.html"><span>Sized</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="575129293%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-sized-media-file/index.html">SizedMediaFile</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="781716859%2FClasslikes%2F444310150" anchor-label="Sticker" id="781716859%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sticker/index.html"><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="781716859%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><a href="-sticker-serializer/index.html">StickerSerializer::class</a></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-sticker/index.html">Sticker</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="907449225%2FClasslikes%2F444310150" anchor-label="StickerSerializer" id="907449225%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sticker-serializer/index.html"><span>Sticker</span><wbr></wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="907449225%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-sticker-serializer/index.html">StickerSerializer</a> : <span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><a href="-sticker/index.html">Sticker</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1806752367%2FClasslikes%2F444310150" anchor-label="StickerSurrogate" id="1806752367%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sticker-surrogate/index.html"><span>Sticker</span><wbr></wbr><span><span>Surrogate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1806752367%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-sticker-surrogate/index.html">StickerSurrogate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>file_id<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>file_unique_id<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-type/index.html">StickerType</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>is_animated<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>is_video<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>set_name<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>premium_animation<span class="token operator">: </span><a href="-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mask_position<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.stickers/-mask-position/index.html">MaskPosition</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>custom_emoji_id<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-custom-emoji-id/index.html">CustomEmojiId</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>file_size<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>needs_repainting<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2027700409%2FClasslikes%2F444310150" anchor-label="TelegramMediaFile" id="2027700409%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-telegram-media-file/index.html"><span>Telegram</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2027700409%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-telegram-media-file/index.html">TelegramMediaFile</a> : <a href="../dev.inmo.tgbotapi.types.media/-base-telegram-media-file/index.html">BaseTelegramMediaFile</a></div><div class="brief "><p class="paragraph">Declare common part of media files in Telegram. Note: it is not representation of JVM <code class="lang-kotlin">File</code> type</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1348239233%2FClasslikes%2F444310150" anchor-label="ThumbedMediaFile" id="-1348239233%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-thumbed-media-file/index.html"><span>Thumbed</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1348239233%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-thumbed-media-file/index.html">ThumbedMediaFile</a> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1052171204%2FClasslikes%2F444310150" anchor-label="TitledMediaFile" id="1052171204%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-titled-media-file/index.html"><span>Titled</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1052171204%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-titled-media-file/index.html">TitledMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1612238903%2FClasslikes%2F444310150" anchor-label="UnknownSticker" id="1612238903%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unknown-sticker/index.html"><span>Unknown</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1612238903%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-unknown-sticker/index.html">UnknownSticker</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>emoji<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerSetName<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickerFormat<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-format/index.html">StickerFormat</a><span class="token operator"> = </span>StickerFormat.Static<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-sticker-type/index.html">StickerType</a><span class="token operator"> = </span>StickerType.Regular<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>raw<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonElement///PointingToDeclaration/">JsonElement</span></span></span><span class="token punctuation">)</span> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-845906996%2FClasslikes%2F444310150" anchor-label="UsefulAsPaidMediaFile" id="-845906996%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-useful-as-paid-media-file/index.html"><span>Useful</span><wbr></wbr><span>As</span><wbr></wbr><span>Paid</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-845906996%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-useful-as-paid-media-file/index.html">UsefulAsPaidMediaFile</a> : <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="53990127%2FClasslikes%2F444310150" anchor-label="VideoCodec" id="53990127%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-video-codec/index.html"><span>Video</span><wbr></wbr><span><span>Codec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="53990127%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><a href="-video-codec/-serializer/index.html">VideoCodec.Serializer::class</a></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-video-codec/index.html">VideoCodec</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-39876191%2FClasslikes%2F444310150" anchor-label="VideoFile" id="-39876191%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-video-file/index.html"><span>Video</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-39876191%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-video-file/index.html">VideoFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cover<span class="token operator">: </span><a href="-photo/index.html">Photo</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTimestamp<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>qualities<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-video-quality/index.html">VideoQuality</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../dev.inmo.tgbotapi.types.media/-poll-media/index.html">PollMedia</a>, <a href="-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-covered-media-file/index.html">CoveredMediaFile</a>, <a href="-custom-start-media-file/index.html">CustomStartMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a>, <a href="-useful-as-paid-media-file/index.html">UsefulAsPaidMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1314697009%2FClasslikes%2F444310150" anchor-label="VideoNoteFile" id="-1314697009%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-video-note-file/index.html"><span>Video</span><wbr></wbr><span>Note</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1314697009%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-video-note-file/index.html">VideoNoteFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1919358246%2FClasslikes%2F444310150" anchor-label="VideoQuality" id="1919358246%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-video-quality/index.html"><span>Video</span><wbr></wbr><span><span>Quality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1919358246%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-video-quality/index.html">VideoQuality</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>codec<span class="token operator">: </span><a href="-video-codec/index.html">VideoCodec</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="-sized-media-file/index.html">SizedMediaFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2019946152%2FClasslikes%2F444310150" anchor-label="VideoSticker" id="2019946152%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-video-sticker/index.html"><span>Video</span><wbr></wbr><span><span>Sticker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2019946152%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-video-sticker/index.html">VideoSticker</a> : <a href="-sticker/index.html">Sticker</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1762585674%2FClasslikes%2F444310150" anchor-label="VoiceFile" id="1762585674%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-voice-file/index.html"><span>Voice</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1762585674%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-voice-file/index.html">VoiceFile</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-tg-file-unique-id/index.html">TgFileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="-file-size/index.html">FileSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="-mimed-media-file/index.html">MimedMediaFile</a>, <a href="-playable-media-file/index.html">PlayableMediaFile</a>, <a href="-media-content-variant/index.html">MediaContentVariant</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1509760226%2FFunctions%2F444310150" anchor-label="asAudioFile" id="-1509760226%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="as-audio-file.html"><span>as</span><wbr></wbr><span>Audio</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1509760226%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-voice-file/index.html">VoiceFile</a><span class="token punctuation">.</span><a href="as-audio-file.html"><span class="token function">asAudioFile</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">performer<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-audio-file/index.html">AudioFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="564905897%2FFunctions%2F444310150" anchor-label="asDocumentFile" id="564905897%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="as-document-file.html"><span>as</span><wbr></wbr><span>Document</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="564905897%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-telegram-media-file/index.html">TelegramMediaFile</a><span class="token punctuation">.</span><a href="as-document-file.html"><span class="token function">asDocumentFile</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-document-file/index.html">DocumentFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-627127807%2FFunctions%2F2015668656" anchor-label="asStream" id="-627127807%2FFunctions%2F2015668656" data-filterable-set=":docs/jvmMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/jvmMain" data-filterable-set=":docs/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="as-stream.html"><span>as</span><wbr></wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-627127807%2FFunctions%2F2015668656"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs/jvmMain" data-filterable-set=":docs/jvmMain" data-active="" data-toggle=":docs/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/jvmMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-pathed-file/index.html">PathedFile</a><span class="token punctuation">.</span><a href="as-stream.html"><span class="token function">asStream</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">telegramAPIUrlsKeeper<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/index.html">TelegramAPIUrlsKeeper</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/InputStream.html">InputStream</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="188896063%2FFunctions%2F444310150" anchor-label="asVoiceFile" id="188896063%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="as-voice-file.html"><span>as</span><wbr></wbr><span>Voice</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="188896063%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-audio-file/index.html">AudioFile</a><span class="token punctuation">.</span><a href="as-voice-file.html"><span class="token function">asVoiceFile</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-voice-file/index.html">VoiceFile</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1639226722%2FFunctions%2F444310150" anchor-label="biggest" id="-1639226722%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="biggest.html"><span><span>biggest</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639226722%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-photo-file/index.html">PhotoFile</a><span class="token punctuation">.</span><a href="biggest.html"><span class="token function">biggest</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-photo-size/index.html">PhotoSize</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-207640577%2FFunctions%2F444310150" anchor-label="fullUrl" id="-207640577%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="full-url.html"><span>full</span><wbr></wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-207640577%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-pathed-file/index.html">PathedFile</a><span class="token punctuation">.</span><a href="full-url.html"><span class="token function">fullUrl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">keeper<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/index.html">TelegramAPIUrlsKeeper</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1308264064%2FFunctions%2F444310150" anchor-label="resolveFileURL" id="-1308264064%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resolve-file-u-r-l.html"><span>resolve</span><wbr></wbr><span>File</span><wbr></wbr><span><span>URL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1308264064%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/index.html">TelegramAPIUrlsKeeper</a><span class="token punctuation">.</span><a href="resolve-file-u-r-l.html"><span class="token function">resolveFileURL</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">file<span class="token operator">: </span><a href="-pathed-file/index.html">PathedFile</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1376358672%2FFunctions%2F444310150" anchor-label="toTelegramMediaLivePhoto" id="-1376358672%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-telegram-media-live-photo.html"><span>to</span><wbr></wbr><span>Telegram</span><wbr></wbr><span>Media</span><wbr></wbr><span>Live</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1376358672%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-live-photo-file/index.html">LivePhotoFile</a><span class="token punctuation">.</span><a href="to-telegram-media-live-photo.html"><span class="token function">toTelegramMediaLivePhoto</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">textSources<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.message.textsources/-text-sources-list/index.html">TextSourcesList</a><span class="token punctuation">, </span></span><span class="parameter ">spoilered<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">showCaptionAboveMedia<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-media-live-photo/index.html">TelegramMediaLivePhoto</a></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-live-photo-file/index.html">LivePhotoFile</a><span class="token punctuation">.</span><a href="to-telegram-media-live-photo.html"><span class="token function">toTelegramMediaLivePhoto</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">parseMode<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.message/-parse-mode/index.html">ParseMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">spoilered<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">showCaptionAboveMedia<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-media-live-photo/index.html">TelegramMediaLivePhoto</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2094417432%2FFunctions%2F444310150" anchor-label="toTelegramMediaVideo" id="-2094417432%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-telegram-media-video.html"><span>to</span><wbr></wbr><span>Telegram</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>Video</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2094417432%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-video-file/index.html">VideoFile</a><span class="token punctuation">.</span><a href="to-telegram-media-video.html"><span class="token function">toTelegramMediaVideo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">textSources<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.message.textsources/-text-sources-list/index.html">TextSourcesList</a><span class="token punctuation">, </span></span><span class="parameter ">spoilered<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">showCaptionAboveMedia<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">startTimestamp<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator">?</span><span class="token operator"> = </span>this.startTimestamp</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-media-video/index.html">TelegramMediaVideo</a></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-video-file/index.html">VideoFile</a><span class="token punctuation">.</span><a href="to-telegram-media-video.html"><span class="token function">toTelegramMediaVideo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">parseMode<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.message/-parse-mode/index.html">ParseMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">spoilered<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">showCaptionAboveMedia<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">startTimestamp<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator">?</span><span class="token operator"> = </span>this.startTimestamp</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-media-video/index.html">TelegramMediaVideo</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="63026221%2FFunctions%2F444310150" anchor-label="toTelegramPaidMediaLivePhoto" id="63026221%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-telegram-paid-media-live-photo.html"><span>to</span><wbr></wbr><span>Telegram</span><wbr></wbr><span>Paid</span><wbr></wbr><span>Media</span><wbr></wbr><span>Live</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63026221%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-live-photo-file/index.html">LivePhotoFile</a><span class="token punctuation">.</span><a href="to-telegram-paid-media-live-photo.html"><span class="token function">toTelegramPaidMediaLivePhoto</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-paid-media-live-photo/index.html">TelegramPaidMediaLivePhoto</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1552351529%2FFunctions%2F444310150" anchor-label="toTelegramPaidMediaVideo" id="-1552351529%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-telegram-paid-media-video.html"><span>to</span><wbr></wbr><span>Telegram</span><wbr></wbr><span>Paid</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>Video</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552351529%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="-video-file/index.html">VideoFile</a><span class="token punctuation">.</span><a href="to-telegram-paid-media-video.html"><span class="token function">toTelegramPaidMediaVideo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.media/-telegram-paid-media-video/index.html">TelegramPaidMediaVideo</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>RichTextUnderline</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="docs::dev.inmo.tgbotapi.types.rich/RichTextUnderline///PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.types.rich</a><span class="delimiter">/</span><span class="current">RichTextUnderline</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Underline</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">RichTextUnderline</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="../-rich-text/index.html">RichText</a></span></span><span class="token punctuation">)</span> : <a href="../-rich-text-entity/index.html">RichTextEntity</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/InsanusMokrassar/ktgbotapi/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/rich/RichTextEntities.kt#L87">source</a>)</span></span></div><p class="paragraph">An underlined <a href="../-rich-text-entity/index.html">RichTextEntity</a>.</p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div></div></span></div><div><div class="title"><p class="paragraph"><a href="https://core.telegram.org/bots/api#richtextunderline">RichTextUnderline</a></p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-1272763956%2FConstructors%2F444310150" anchor-label="RichTextUnderline" id="-1272763956%2FConstructors%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-rich-text-underline.html"><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Underline</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1272763956%2FConstructors%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="../-rich-text/index.html">RichText</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="876229588%2FClasslikes%2F444310150" anchor-label="Companion" id="876229588%2FClasslikes%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="876229588%2FClasslikes%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="214516130%2FProperties%2F444310150" anchor-label="html" id="214516130%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="html.html"><span><span>html</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="214516130%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="html.html">html</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph"><a href="https://core.telegram.org/bots/api#rich-html-style">Rich HTML style</a> representation of this <a href="../-rich-text/index.html">RichText</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1665734434%2FProperties%2F444310150" anchor-label="markdown" id="-1665734434%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="markdown.html"><span><span>markdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1665734434%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="markdown.html">markdown</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph"><a href="https://core.telegram.org/bots/api#rich-markdown-style">Rich Markdown style</a> representation of this <a href="../-rich-text/index.html">RichText</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-270838088%2FProperties%2F444310150" anchor-label="rawText" id="-270838088%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="raw-text.html"><span>raw</span><wbr></wbr><span><span>Text</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-270838088%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="raw-text.html">rawText</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Plain (unformatted) text of this <a href="../-rich-text/index.html">RichText</a>. For <a href="../-rich-text-entity/index.html">RichTextEntity</a>s without an inner <a href="../-rich-text/index.html">RichText</a> it falls back to the most meaningful textual representation: alternative text for custom emojis, the expression for mathematical expressions and an empty string for anchors.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1703860832%2FProperties%2F444310150" anchor-label="text" id="1703860832%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="text.html"><span><span>text</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1703860832%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;text&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="text.html">text</a><span class="token operator">: </span><a href="../-rich-text/index.html">RichText</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1335822579%2FProperties%2F444310150" anchor-label="type" id="1335822579%2FProperties%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="type.html"><span><span>type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1335822579%2FProperties%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/EncodeDefault///PointingToDeclaration/"><span class="token annotation builtin">EncodeDefault</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;type&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="type.html">type</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="132869272%2FFunctions%2F444310150" anchor-label="ifRichTextAnchor" id="132869272%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Anchor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="132869272%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor.html"><span class="token function">ifRichTextAnchor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-anchor/index.html">RichTextAnchor</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2026824536%2FFunctions%2F444310150" anchor-label="ifRichTextAnchorLink" id="2026824536%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor-link.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Anchor</span><wbr></wbr><span><span>Link</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2026824536%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor-link.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor-link.html"><span class="token function">ifRichTextAnchorLink</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-anchor-link/index.html">RichTextAnchorLink</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor-link.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-anchor-link.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1374255256%2FFunctions%2F444310150" anchor-label="ifRichTextBankCardNumber" id="1374255256%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bank-card-number.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bank</span><wbr></wbr><span>Card</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1374255256%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bank-card-number.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bank-card-number.html"><span class="token function">ifRichTextBankCardNumber</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-bank-card-number/index.html">RichTextBankCardNumber</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bank-card-number.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bank-card-number.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1583069544%2FFunctions%2F444310150" anchor-label="ifRichTextBold" id="-1583069544%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bold.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Bold</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1583069544%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bold.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bold.html"><span class="token function">ifRichTextBold</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-bold/index.html">RichTextBold</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bold.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bold.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1914464696%2FFunctions%2F444310150" anchor-label="ifRichTextBotCommand" id="1914464696%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bot-command.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bot</span><wbr></wbr><span><span>Command</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1914464696%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bot-command.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bot-command.html"><span class="token function">ifRichTextBotCommand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-bot-command/index.html">RichTextBotCommand</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bot-command.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-bot-command.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="261946976%2FFunctions%2F444310150" anchor-label="ifRichTextCashtag" id="261946976%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-cashtag.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Cashtag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="261946976%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-cashtag.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-cashtag.html"><span class="token function">ifRichTextCashtag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-cashtag/index.html">RichTextCashtag</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-cashtag.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-cashtag.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="63083416%2FFunctions%2F444310150" anchor-label="ifRichTextCode" id="63083416%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-code.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63083416%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-code.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-code.html"><span class="token function">ifRichTextCode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-code/index.html">RichTextCode</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-code.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-code.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-656451332%2FFunctions%2F444310150" anchor-label="ifRichTextCustomEmoji" id="-656451332%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-custom-emoji.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Custom</span><wbr></wbr><span><span>Emoji</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-656451332%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-custom-emoji.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-custom-emoji.html"><span class="token function">ifRichTextCustomEmoji</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-custom-emoji/index.html">RichTextCustomEmoji</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-custom-emoji.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-custom-emoji.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1590989912%2FFunctions%2F444310150" anchor-label="ifRichTextDateTime" id="1590989912%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-date-time.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Date</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1590989912%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-date-time.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-date-time.html"><span class="token function">ifRichTextDateTime</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-date-time/index.html">RichTextDateTime</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-date-time.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-date-time.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1685445640%2FFunctions%2F444310150" anchor-label="ifRichTextEmailAddress" id="-1685445640%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-email-address.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Email</span><wbr></wbr><span><span>Address</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1685445640%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-email-address.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-email-address.html"><span class="token function">ifRichTextEmailAddress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-email-address/index.html">RichTextEmailAddress</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-email-address.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-email-address.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-811754024%2FFunctions%2F444310150" anchor-label="ifRichTextEntity" id="-811754024%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-entity.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811754024%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-entity.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-entity.html"><span class="token function">ifRichTextEntity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-entity/index.html">RichTextEntity</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-entity.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-entity.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1231129552%2FFunctions%2F444310150" anchor-label="ifRichTextGroup" id="1231129552%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-group.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Group</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231129552%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-group.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-group.html"><span class="token function">ifRichTextGroup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-group/index.html">RichTextGroup</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-group.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-group.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="464847466%2FFunctions%2F444310150" anchor-label="ifRichTextHashtag" id="464847466%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-hashtag.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Hashtag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="464847466%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-hashtag.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-hashtag.html"><span class="token function">ifRichTextHashtag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-hashtag/index.html">RichTextHashtag</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-hashtag.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-hashtag.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-558392648%2FFunctions%2F444310150" anchor-label="ifRichTextItalic" id="-558392648%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-italic.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Italic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-558392648%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-italic.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-italic.html"><span class="token function">ifRichTextItalic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-italic/index.html">RichTextItalic</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-italic.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-italic.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="209246520%2FFunctions%2F444310150" anchor-label="ifRichTextMarked" id="209246520%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-marked.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Marked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="209246520%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-marked.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-marked.html"><span class="token function">ifRichTextMarked</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-marked/index.html">RichTextMarked</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-marked.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-marked.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2103266632%2FFunctions%2F444310150" anchor-label="ifRichTextMathematicalExpression" id="-2103266632%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mathematical-expression.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mathematical</span><wbr></wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2103266632%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mathematical-expression.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mathematical-expression.html"><span class="token function">ifRichTextMathematicalExpression</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-mathematical-expression/index.html">RichTextMathematicalExpression</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mathematical-expression.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mathematical-expression.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-741819482%2FFunctions%2F444310150" anchor-label="ifRichTextMention" id="-741819482%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mention.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Mention</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-741819482%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mention.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mention.html"><span class="token function">ifRichTextMention</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-mention/index.html">RichTextMention</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mention.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-mention.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1244279040%2FFunctions%2F444310150" anchor-label="ifRichTextPhoneNumber" id="1244279040%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-phone-number.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Phone</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244279040%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-phone-number.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-phone-number.html"><span class="token function">ifRichTextPhoneNumber</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-phone-number/index.html">RichTextPhoneNumber</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-phone-number.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-phone-number.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="428436902%2FFunctions%2F444310150" anchor-label="ifRichTextPlain" id="428436902%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-plain.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Plain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="428436902%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-plain.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-plain.html"><span class="token function">ifRichTextPlain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-plain/index.html">RichTextPlain</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-plain.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-plain.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1978550936%2FFunctions%2F444310150" anchor-label="ifRichTextReference" id="-1978550936%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Reference</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1978550936%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference.html"><span class="token function">ifRichTextReference</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-reference/index.html">RichTextReference</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1075889892%2FFunctions%2F444310150" anchor-label="ifRichTextReferenceLink" id="-1075889892%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference-link.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Reference</span><wbr></wbr><span><span>Link</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1075889892%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference-link.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference-link.html"><span class="token function">ifRichTextReferenceLink</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-reference-link/index.html">RichTextReferenceLink</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference-link.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-reference-link.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1508624214%2FFunctions%2F444310150" anchor-label="ifRichTextSpoiler" id="1508624214%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-spoiler.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Spoiler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1508624214%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-spoiler.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-spoiler.html"><span class="token function">ifRichTextSpoiler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-spoiler/index.html">RichTextSpoiler</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-spoiler.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-spoiler.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-653890184%2FFunctions%2F444310150" anchor-label="ifRichTextStrikethrough" id="-653890184%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-strikethrough.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Strikethrough</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-653890184%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-strikethrough.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-strikethrough.html"><span class="token function">ifRichTextStrikethrough</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-strikethrough/index.html">RichTextStrikethrough</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-strikethrough.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-strikethrough.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-107830040%2FFunctions%2F444310150" anchor-label="ifRichTextSubscript" id="-107830040%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-subscript.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Subscript</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-107830040%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-subscript.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-subscript.html"><span class="token function">ifRichTextSubscript</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-subscript/index.html">RichTextSubscript</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-subscript.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-subscript.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-168532130%2FFunctions%2F444310150" anchor-label="ifRichTextSuperscript" id="-168532130%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-superscript.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Superscript</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-168532130%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-superscript.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-superscript.html"><span class="token function">ifRichTextSuperscript</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-superscript/index.html">RichTextSuperscript</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-superscript.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-superscript.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-372735412%2FFunctions%2F444310150" anchor-label="ifRichTextTextMention" id="-372735412%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-text-mention.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Mention</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372735412%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-text-mention.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-text-mention.html"><span class="token function">ifRichTextTextMention</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-text-mention/index.html">RichTextTextMention</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-text-mention.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-text-mention.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="61859242%2FFunctions%2F444310150" anchor-label="ifRichTextUnderline" id="61859242%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-underline.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Underline</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="61859242%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-underline.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-underline.html"><span class="token function">ifRichTextUnderline</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html">RichTextUnderline</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-underline.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-underline.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-870646480%2FFunctions%2F444310150" anchor-label="ifRichTextUrl" id="-870646480%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-url.html"><span>if</span><wbr></wbr><span>Rich</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-870646480%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-url.html">T</a><span class="token operator">&gt; </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-url.html"><span class="token function">ifRichTextUrl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-rich-text-url/index.html">RichTextUrl</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-url.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.utils/if-rich-text-url.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1018768354%2FFunctions%2F444310150" anchor-label="richTextAnchorLinkOrNull" id="-1018768354%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-link-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Anchor</span><wbr></wbr><span>Link</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1018768354%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-link-or-null.html"><span class="token function">richTextAnchorLinkOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-anchor-link/index.html">RichTextAnchorLink</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2014757029%2FFunctions%2F444310150" anchor-label="richTextAnchorLinkOrThrow" id="2014757029%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-link-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Anchor</span><wbr></wbr><span>Link</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2014757029%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-link-or-throw.html"><span class="token function">richTextAnchorLinkOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-anchor-link/index.html">RichTextAnchorLink</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1160428676%2FFunctions%2F444310150" anchor-label="richTextAnchorOrNull" id="1160428676%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Anchor</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1160428676%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-or-null.html"><span class="token function">richTextAnchorOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-anchor/index.html">RichTextAnchor</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="850388223%2FFunctions%2F444310150" anchor-label="richTextAnchorOrThrow" id="850388223%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Anchor</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="850388223%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-anchor-or-throw.html"><span class="token function">richTextAnchorOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-anchor/index.html">RichTextAnchor</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1582699100%2FFunctions%2F444310150" anchor-label="richTextBankCardNumberOrNull" id="-1582699100%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bank-card-number-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bank</span><wbr></wbr><span>Card</span><wbr></wbr><span>Number</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1582699100%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bank-card-number-or-null.html"><span class="token function">richTextBankCardNumberOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bank-card-number/index.html">RichTextBankCardNumber</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1712773087%2FFunctions%2F444310150" anchor-label="richTextBankCardNumberOrThrow" id="1712773087%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bank-card-number-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bank</span><wbr></wbr><span>Card</span><wbr></wbr><span>Number</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1712773087%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bank-card-number-or-throw.html"><span class="token function">richTextBankCardNumberOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bank-card-number/index.html">RichTextBankCardNumber</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1455654188%2FFunctions%2F444310150" anchor-label="richTextBoldOrNull" id="-1455654188%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bold-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bold</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1455654188%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bold-or-null.html"><span class="token function">richTextBoldOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bold/index.html">RichTextBold</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1356198063%2FFunctions%2F444310150" anchor-label="richTextBoldOrThrow" id="1356198063%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bold-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bold</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1356198063%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bold-or-throw.html"><span class="token function">richTextBoldOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bold/index.html">RichTextBold</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-29245229%2FFunctions%2F444310150" anchor-label="richTextBotCommandOrNull" id="-29245229%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bot-command-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Command</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-29245229%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bot-command-or-null.html"><span class="token function">richTextBotCommandOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bot-command/index.html">RichTextBotCommand</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1669764464%2FFunctions%2F444310150" anchor-label="richTextBotCommandOrThrow" id="-1669764464%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bot-command-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Bot</span><wbr></wbr><span>Command</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1669764464%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-bot-command-or-throw.html"><span class="token function">richTextBotCommandOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-bot-command/index.html">RichTextBotCommand</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2023266334%2FFunctions%2F444310150" anchor-label="richTextCashtagOrNull" id="-2023266334%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-cashtag-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Cashtag</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2023266334%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-cashtag-or-null.html"><span class="token function">richTextCashtagOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-cashtag/index.html">RichTextCashtag</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="940090721%2FFunctions%2F444310150" anchor-label="richTextCashtagOrThrow" id="940090721%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-cashtag-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Cashtag</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="940090721%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-cashtag-or-throw.html"><span class="token function">richTextCashtagOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-cashtag/index.html">RichTextCashtag</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1440070204%2FFunctions%2F444310150" anchor-label="richTextCodeOrNull" id="1440070204%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-code-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Code</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1440070204%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-code-or-null.html"><span class="token function">richTextCodeOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-code/index.html">RichTextCode</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="929340999%2FFunctions%2F444310150" anchor-label="richTextCodeOrThrow" id="929340999%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-code-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Code</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="929340999%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-code-or-throw.html"><span class="token function">richTextCodeOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-code/index.html">RichTextCode</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="661007792%2FFunctions%2F444310150" anchor-label="richTextCustomEmojiOrNull" id="661007792%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-custom-emoji-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="661007792%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-custom-emoji-or-null.html"><span class="token function">richTextCustomEmojiOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-custom-emoji/index.html">RichTextCustomEmoji</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1746757293%2FFunctions%2F444310150" anchor-label="richTextCustomEmojiOrThrow" id="-1746757293%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-custom-emoji-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Custom</span><wbr></wbr><span>Emoji</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1746757293%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-custom-emoji-or-throw.html"><span class="token function">richTextCustomEmojiOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-custom-emoji/index.html">RichTextCustomEmoji</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1384609814%2FFunctions%2F444310150" anchor-label="richTextDateTimeOrNull" id="-1384609814%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-date-time-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Date</span><wbr></wbr><span>Time</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1384609814%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-date-time-or-null.html"><span class="token function">richTextDateTimeOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-date-time/index.html">RichTextDateTime</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-736393639%2FFunctions%2F444310150" anchor-label="richTextDateTimeOrThrow" id="-736393639%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-date-time-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Date</span><wbr></wbr><span>Time</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736393639%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-date-time-or-throw.html"><span class="token function">richTextDateTimeOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-date-time/index.html">RichTextDateTime</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1499808377%2FFunctions%2F444310150" anchor-label="richTextEmailAddressOrNull" id="-1499808377%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-email-address-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Email</span><wbr></wbr><span>Address</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1499808377%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-email-address-or-null.html"><span class="token function">richTextEmailAddressOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-email-address/index.html">RichTextEmailAddress</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-12581796%2FFunctions%2F444310150" anchor-label="richTextEmailAddressOrThrow" id="-12581796%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-email-address-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Email</span><wbr></wbr><span>Address</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-12581796%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-email-address-or-throw.html"><span class="token function">richTextEmailAddressOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-email-address/index.html">RichTextEmailAddress</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-290642254%2FFunctions%2F444310150" anchor-label="richTextEntityOrNull" id="-290642254%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-entity-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Entity</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-290642254%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-entity-or-null.html"><span class="token function">richTextEntityOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-entity/index.html">RichTextEntity</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1183137647%2FFunctions%2F444310150" anchor-label="richTextEntityOrThrow" id="-1183137647%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-entity-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Entity</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1183137647%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-entity-or-throw.html"><span class="token function">richTextEntityOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-entity/index.html">RichTextEntity</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-761368486%2FFunctions%2F444310150" anchor-label="richTextGroupOrNull" id="-761368486%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-group-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Group</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-761368486%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-group-or-null.html"><span class="token function">richTextGroupOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-group/index.html">RichTextGroup</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1404218345%2FFunctions%2F444310150" anchor-label="richTextGroupOrThrow" id="1404218345%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-group-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Group</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1404218345%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-group-or-throw.html"><span class="token function">richTextGroupOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-group/index.html">RichTextGroup</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1982972505%2FFunctions%2F444310150" anchor-label="richTextHashtagOrNull" id="-1982972505%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-hashtag-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Hashtag</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1982972505%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-hashtag-or-null.html"><span class="token function">richTextHashtagOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-hashtag/index.html">RichTextHashtag</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2105767876%2FFunctions%2F444310150" anchor-label="richTextHashtagOrThrow" id="-2105767876%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-hashtag-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Hashtag</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2105767876%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-hashtag-or-throw.html"><span class="token function">richTextHashtagOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-hashtag/index.html">RichTextHashtag</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-771119489%2FFunctions%2F444310150" anchor-label="richTextItalicOrNull" id="-771119489%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-italic-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Italic</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-771119489%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-italic-or-null.html"><span class="token function">richTextItalicOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-italic/index.html">RichTextItalic</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1101937252%2FFunctions%2F444310150" anchor-label="richTextItalicOrThrow" id="1101937252%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-italic-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Italic</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1101937252%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-italic-or-throw.html"><span class="token function">richTextItalicOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-italic/index.html">RichTextItalic</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1199948411%2FFunctions%2F444310150" anchor-label="richTextMarkedOrNull" id="1199948411%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-marked-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Marked</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1199948411%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-marked-or-null.html"><span class="token function">richTextMarkedOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-marked/index.html">RichTextMarked</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2075500008%2FFunctions%2F444310150" anchor-label="richTextMarkedOrThrow" id="2075500008%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-marked-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Marked</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2075500008%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-marked-or-throw.html"><span class="token function">richTextMarkedOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-marked/index.html">RichTextMarked</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1568579631%2FFunctions%2F444310150" anchor-label="richTextMathematicalExpressionOrNull" id="1568579631%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mathematical-expression-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mathematical</span><wbr></wbr><span>Expression</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1568579631%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mathematical-expression-or-null.html"><span class="token function">richTextMathematicalExpressionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-mathematical-expression/index.html">RichTextMathematicalExpression</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="618165940%2FFunctions%2F444310150" anchor-label="richTextMathematicalExpressionOrThrow" id="618165940%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mathematical-expression-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mathematical</span><wbr></wbr><span>Expression</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="618165940%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mathematical-expression-or-throw.html"><span class="token function">richTextMathematicalExpressionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-mathematical-expression/index.html">RichTextMathematicalExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="551383237%2FFunctions%2F444310150" anchor-label="richTextMentionOrNull" id="551383237%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mention-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mention</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="551383237%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mention-or-null.html"><span class="token function">richTextMentionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-mention/index.html">RichTextMention</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-850151202%2FFunctions%2F444310150" anchor-label="richTextMentionOrThrow" id="-850151202%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mention-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mention</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-850151202%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-mention-or-throw.html"><span class="token function">richTextMentionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-mention/index.html">RichTextMention</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1616444494%2FFunctions%2F444310150" anchor-label="richTextPhoneNumberOrNull" id="-1616444494%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-phone-number-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Phone</span><wbr></wbr><span>Number</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1616444494%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-phone-number-or-null.html"><span class="token function">richTextPhoneNumberOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-phone-number/index.html">RichTextPhoneNumber</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="666665873%2FFunctions%2F444310150" anchor-label="richTextPhoneNumberOrThrow" id="666665873%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-phone-number-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Phone</span><wbr></wbr><span>Number</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="666665873%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-phone-number-or-throw.html"><span class="token function">richTextPhoneNumberOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-phone-number/index.html">RichTextPhoneNumber</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-893526491%2FFunctions%2F444310150" anchor-label="richTextPlainOrNull" id="-893526491%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-plain-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Plain</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-893526491%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-plain-or-null.html"><span class="token function">richTextPlainOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-plain/index.html">RichTextPlain</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1602287486%2FFunctions%2F444310150" anchor-label="richTextPlainOrThrow" id="1602287486%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-plain-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Plain</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1602287486%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-plain-or-throw.html"><span class="token function">richTextPlainOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-plain/index.html">RichTextPlain</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1883658560%2FFunctions%2F444310150" anchor-label="richTextReferenceLinkOrNull" id="-1883658560%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-link-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Reference</span><wbr></wbr><span>Link</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1883658560%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-link-or-null.html"><span class="token function">richTextReferenceLinkOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-reference-link/index.html">RichTextReferenceLink</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="972964419%2FFunctions%2F444310150" anchor-label="richTextReferenceLinkOrThrow" id="972964419%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-link-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Reference</span><wbr></wbr><span>Link</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="972964419%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-link-or-throw.html"><span class="token function">richTextReferenceLinkOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-reference-link/index.html">RichTextReferenceLink</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="413413414%2FFunctions%2F444310150" anchor-label="richTextReferenceOrNull" id="413413414%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Reference</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="413413414%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-or-null.html"><span class="token function">richTextReferenceOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-reference/index.html">RichTextReference</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-832248419%2FFunctions%2F444310150" anchor-label="richTextReferenceOrThrow" id="-832248419%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Reference</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-832248419%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-reference-or-throw.html"><span class="token function">richTextReferenceOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-reference/index.html">RichTextReference</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-576137059%2FFunctions%2F444310150" anchor-label="richTextSpoilerOrNull" id="-576137059%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-spoiler-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Spoiler</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-576137059%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-spoiler-or-null.html"><span class="token function">richTextSpoilerOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-spoiler/index.html">RichTextSpoiler</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1443542010%2FFunctions%2F444310150" anchor-label="richTextSpoilerOrThrow" id="-1443542010%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-spoiler-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Spoiler</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443542010%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-spoiler-or-throw.html"><span class="token function">richTextSpoilerOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-spoiler/index.html">RichTextSpoiler</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="265341102%2FFunctions%2F444310150" anchor-label="richTextStrikethroughOrNull" id="265341102%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-strikethrough-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Strikethrough</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="265341102%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-strikethrough-or-null.html"><span class="token function">richTextStrikethroughOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-strikethrough/index.html">RichTextStrikethrough</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1127522795%2FFunctions%2F444310150" anchor-label="richTextStrikethroughOrThrow" id="-1127522795%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-strikethrough-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Strikethrough</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1127522795%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-strikethrough-or-throw.html"><span class="token function">richTextStrikethroughOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-strikethrough/index.html">RichTextStrikethrough</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1774514150%2FFunctions%2F444310150" anchor-label="richTextSubscriptOrNull" id="1774514150%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-subscript-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Subscript</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1774514150%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-subscript-or-null.html"><span class="token function">richTextSubscriptOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-subscript/index.html">RichTextSubscript</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1587798563%2FFunctions%2F444310150" anchor-label="richTextSubscriptOrThrow" id="-1587798563%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-subscript-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Subscript</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1587798563%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-subscript-or-throw.html"><span class="token function">richTextSubscriptOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-subscript/index.html">RichTextSubscript</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="829774305%2FFunctions%2F444310150" anchor-label="richTextSuperscriptOrNull" id="829774305%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-superscript-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Superscript</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="829774305%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-superscript-or-null.html"><span class="token function">richTextSuperscriptOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-superscript/index.html">RichTextSuperscript</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-809962686%2FFunctions%2F444310150" anchor-label="richTextSuperscriptOrThrow" id="-809962686%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-superscript-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Superscript</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-809962686%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-superscript-or-throw.html"><span class="token function">richTextSuperscriptOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-superscript/index.html">RichTextSuperscript</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1431145048%2FFunctions%2F444310150" anchor-label="richTextTextMentionOrNull" id="1431145048%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-text-mention-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mention</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1431145048%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-text-mention-or-null.html"><span class="token function">richTextTextMentionOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-text-mention/index.html">RichTextTextMention</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="652661163%2FFunctions%2F444310150" anchor-label="richTextTextMentionOrThrow" id="652661163%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-text-mention-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Text</span><wbr></wbr><span>Mention</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="652661163%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-text-mention-or-throw.html"><span class="token function">richTextTextMentionOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-text-mention/index.html">RichTextTextMention</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1739028697%2FFunctions%2F444310150" anchor-label="richTextUnderlineOrNull" id="-1739028697%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-underline-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Underline</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1739028697%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-underline-or-null.html"><span class="token function">richTextUnderlineOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">RichTextUnderline</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1161522876%2FFunctions%2F444310150" anchor-label="richTextUnderlineOrThrow" id="1161522876%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-underline-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Underline</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1161522876%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-underline-or-throw.html"><span class="token function">richTextUnderlineOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">RichTextUnderline</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="669108426%2FFunctions%2F444310150" anchor-label="richTextUrlOrNull" id="669108426%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-url-or-null.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Url</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="669108426%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-url-or-null.html"><span class="token function">richTextUrlOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-url/index.html">RichTextUrl</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1495637639%2FFunctions%2F444310150" anchor-label="richTextUrlOrThrow" id="-1495637639%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-url-or-throw.html"><span>rich</span><wbr></wbr><span>Text</span><wbr></wbr><span>Url</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1495637639%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-rich-text/index.html">RichText</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.utils/rich-text-url-or-throw.html"><span class="token function">richTextUrlOrThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-rich-text-url/index.html">RichTextUrl</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

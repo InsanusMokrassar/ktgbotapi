@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>dev.inmo.tgbotapi.extensions.api.bot</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    docs
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+35.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":docs/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":docs/commonMain"
+                                       data-filter=":docs/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    docs
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="docs::dev.inmo.tgbotapi.extensions.api.bot////PointingToDeclaration//444310150">
+  <div class="breadcrumbs"><a href="../../index.html">docs</a><span class="delimiter">/</span><span class="current">dev.inmo.tgbotapi.extensions.api.bot</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="768805490%2FFunctions%2F444310150" anchor-label="clearMyDefaultAdministratorRights" id="768805490%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-my-default-administrator-rights.html"><span>clear</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span><span>Rights</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="768805490%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="clear-my-default-administrator-rights.html"><span class="token function">clearMyDefaultAdministratorRights</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">forChannels<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-167636475%2FFunctions%2F444310150" anchor-label="clearMyDefaultAdministratorRightsForChannels" id="-167636475%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-my-default-administrator-rights-for-channels.html"><span>clear</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Channels</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-167636475%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="clear-my-default-administrator-rights-for-channels.html"><span class="token function">clearMyDefaultAdministratorRightsForChannels</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="508748969%2FFunctions%2F444310150" anchor-label="clearMyDefaultAdministratorRightsForGroupsAndSupergroups" id="508748969%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-my-default-administrator-rights-for-groups-and-supergroups.html"><span>clear</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span>Groups</span><wbr></wbr><span>And</span><wbr></wbr><span><span>Supergroups</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="508748969%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="clear-my-default-administrator-rights-for-groups-and-supergroups.html"><span class="token function">clearMyDefaultAdministratorRightsForGroupsAndSupergroups</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1261488123%2FFunctions%2F444310150" anchor-label="deleteMyCommands" id="1261488123%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-my-commands.html"><span>delete</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Commands</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1261488123%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="delete-my-commands.html"><span class="token function">deleteMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="delete-my-commands.html"><span class="token function">deleteMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-481731654%2FFunctions%2F444310150" anchor-label="getMe" id="-481731654%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-me.html"><span>get</span><wbr></wbr><span><span>Me</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-481731654%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-me.html"><span class="token function">getMe</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat/-extended-bot/index.html">ExtendedBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-810684521%2FFunctions%2F444310150" anchor-label="getMyCommands" id="-810684521%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-commands.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Commands</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-810684521%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-commands.html"><span class="token function">getMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-commands.html"><span class="token function">getMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-591376517%2FFunctions%2F444310150" anchor-label="getMyDefaultAdministratorRights" id="-591376517%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-default-administrator-rights.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span><span>Rights</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-591376517%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-default-administrator-rights.html"><span class="token function">getMyDefaultAdministratorRights</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">forChannels<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-administrator-chat-member/index.html">AdministratorChatMember</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-731561074%2FFunctions%2F444310150" anchor-label="getMyDefaultAdministratorRightsForChannels" id="-731561074%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-default-administrator-rights-for-channels.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Channels</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-731561074%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-default-administrator-rights-for-channels.html"><span class="token function">getMyDefaultAdministratorRightsForChannels</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-administrator-chat-member/index.html">AdministratorChatMember</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="949162162%2FFunctions%2F444310150" anchor-label="getMyDefaultAdministratorRightsForGroupsAndSupergroups" id="949162162%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-default-administrator-rights-for-groups-and-supergroups.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span>Groups</span><wbr></wbr><span>And</span><wbr></wbr><span><span>Supergroups</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="949162162%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-default-administrator-rights-for-groups-and-supergroups.html"><span class="token function">getMyDefaultAdministratorRightsForGroupsAndSupergroups</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-administrator-chat-member/index.html">AdministratorChatMember</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1536386829%2FFunctions%2F444310150" anchor-label="getMyDescription" id="-1536386829%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-description.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1536386829%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-description.html"><span class="token function">getMyDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-description/index.html">BotDescription</a></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-description.html"><span class="token function">getMyDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-description/index.html">BotDescription</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="928942779%2FFunctions%2F444310150" anchor-label="getMyName" id="928942779%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-name.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="928942779%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-name.html"><span class="token function">getMyName</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-name/index.html">BotName</a></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-name.html"><span class="token function">getMyName</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-name/index.html">BotName</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2054917733%2FFunctions%2F444310150" anchor-label="getMyShortDescription" id="-2054917733%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-short-description.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span>Short</span><wbr></wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2054917733%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-short-description.html"><span class="token function">getMyShortDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-short-description/index.html">BotShortDescription</a></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-short-description.html"><span class="token function">getMyShortDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-short-description/index.html">BotShortDescription</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1298791002%2FFunctions%2F444310150" anchor-label="getMyStarBalance" id="1298791002%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-my-star-balance.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span>Star</span><wbr></wbr><span><span>Balance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1298791002%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="get-my-star-balance.html"><span class="token function">getMyStarBalance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.payments.stars/-star-amount/index.html">StarAmount</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1445676393%2FFunctions%2F444310150" anchor-label="removeMyProfilePhoto" id="1445676393%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-my-profile-photo.html"><span>remove</span><wbr></wbr><span>My</span><wbr></wbr><span>Profile</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1445676393%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="remove-my-profile-photo.html"><span class="token function">removeMyProfilePhoto</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1845354632%2FFunctions%2F444310150" anchor-label="setMyCommands" id="-1845354632%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-commands.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Commands</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1845354632%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-commands.html"><span class="token function">setMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">commands<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-commands.html"><span class="token function">setMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">commands<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-commands.html"><span class="token function">setMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>commands<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-commands.html"><span class="token function">setMyCommands</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>commands<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-bot-command/index.html">BotCommand</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html">BotCommandScope</a><span class="token operator"> = </span>BotCommandScopeDefault<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1737515274%2FFunctions%2F444310150" anchor-label="setMyDefaultAdministratorRights" id="-1737515274%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-default-administrator-rights.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span><span>Rights</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1737515274%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-default-administrator-rights.html"><span class="token function">setMyDefaultAdministratorRights</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">rights<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-chat-common-administrator-rights/index.html">ChatCommonAdministratorRights</a><span class="token punctuation">, </span></span><span class="parameter ">forChannels<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-783391820%2FFunctions%2F444310150" anchor-label="setMyDefaultAdministratorRightsForChannels" id="-783391820%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-default-administrator-rights-for-channels.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Channels</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-783391820%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-default-administrator-rights-for-channels.html"><span class="token function">setMyDefaultAdministratorRightsForChannels</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">rights<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-chat-common-administrator-rights/index.html">ChatCommonAdministratorRights</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="282905872%2FFunctions%2F444310150" anchor-label="setMyDefaultAdministratorRightsForGroupsAndSupergroups" id="282905872%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-default-administrator-rights-for-groups-and-supergroups.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span>Default</span><wbr></wbr><span>Administrator</span><wbr></wbr><span>Rights</span><wbr></wbr><span>For</span><wbr></wbr><span>Groups</span><wbr></wbr><span>And</span><wbr></wbr><span><span>Supergroups</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="282905872%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-default-administrator-rights-for-groups-and-supergroups.html"><span class="token function">setMyDefaultAdministratorRightsForGroupsAndSupergroups</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">rights<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.chat.member/-chat-common-administrator-rights/index.html">ChatCommonAdministratorRights</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-361391013%2FFunctions%2F444310150" anchor-label="setMyDescription" id="-361391013%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-description.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-361391013%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-description.html"><span class="token function">setMyDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">description<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-description.html"><span class="token function">setMyDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">description<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1221655163%2FFunctions%2F444310150" anchor-label="setMyName" id="-1221655163%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-name.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1221655163%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-name.html"><span class="token function">setMyName</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-name.html"><span class="token function">setMyName</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1927646655%2FFunctions%2F444310150" anchor-label="setMyProfilePhoto" id="1927646655%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-profile-photo.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span>Profile</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1927646655%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-profile-photo.html"><span class="token function">setMyProfilePhoto</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">photo<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.requests.business_connection/-input-profile-photo/index.html">InputProfilePhoto</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1196078511%2FFunctions%2F444310150" anchor-label="setMyShortDescription" id="1196078511%2FFunctions%2F444310150" data-filterable-set=":docs/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":docs/commonMain" data-filterable-set=":docs/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-my-short-description.html"><span>set</span><wbr></wbr><span>My</span><wbr></wbr><span>Short</span><wbr></wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1196078511%2FFunctions%2F444310150"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":docs/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-short-description.html"><span class="token function">setMyShortDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shortDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.language_codes/IetfLang///PointingToDeclaration/">IetfLang</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="set-my-short-description.html"><span class="token function">setMyShortDescription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shortDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
