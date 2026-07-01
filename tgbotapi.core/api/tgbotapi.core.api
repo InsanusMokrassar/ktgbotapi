@@ -35369,8 +35369,8 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlocksBuilder {
 	public final fun divider ()V
 	public final fun footer (Ljava/lang/String;)V
 	public final fun footer (Lkotlin/jvm/functions/Function1;)V
+	public final fun heading (ILkotlin/jvm/functions/Function1;)V
 	public final fun heading (Ljava/lang/String;I)V
-	public final fun heading (Lkotlin/jvm/functions/Function1;I)V
 	public final fun list (Lkotlin/jvm/functions/Function1;)V
 	public final fun mathematicalExpression (Ljava/lang/String;)V
 	public final fun paragraph (Ljava/lang/String;)V
@@ -35589,8 +35589,8 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
 	public final fun code (Ljava/lang/String;)V
 	public final fun code (Lkotlin/jvm/functions/Function1;)V
 	public final fun customEmoji-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun dateTime (Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun dateTime (Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)V
-	public final fun dateTime (Lkotlin/jvm/functions/Function1;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)V
 	public final fun email (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun email (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun hashtag (Ljava/lang/String;Ljava/lang/String;)V
@@ -35617,8 +35617,8 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
 	public final fun subscript (Lkotlin/jvm/functions/Function1;)V
 	public final fun superscript (Ljava/lang/String;)V
 	public final fun superscript (Lkotlin/jvm/functions/Function1;)V
-	public final fun textMention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;)V
 	public final fun textMention (Ldev/inmo/tgbotapi/types/chat/User;Lkotlin/jvm/functions/Function1;)V
+	public final fun textMention (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;)V
 	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/RichText;)V
 	public final fun underline (Ljava/lang/String;)V
 	public final fun underline (Lkotlin/jvm/functions/Function1;)V
