@@ -2,6 +2,8 @@
 
 ## 36.0.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.2](https://core.telegram.org/bots/api-changelog#july-14-2026)**
+
 **Breaking changes**:
 
 * `ReplyParameters.chatIdentifier`/`ReplyParameters.messageId` are now nullable (an ephemeral reply addresses its target only via the new `ephemeralMessageId`, without `chatIdentifier`/`messageId`); `ReplyParameters` no longer implements `WithMessageId` — code relying on `ReplyParameters` being a `WithMessageId`, or on `messageId`/`chatIdentifier` being non-null, must be updated
