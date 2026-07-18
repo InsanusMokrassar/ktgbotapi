@@ -51,7 +51,7 @@ data class TelegramMediaAudio internal constructor(
     override val performer: String? = null,
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : TelegramFreeMedia, AudioMediaGroupMemberTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TitledTelegramMedia,
+) : TelegramFreeMedia, RichMessageMemberTelegramMedia, AudioMediaGroupMemberTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TitledTelegramMedia,
     Performerable, InputPollMedia {
     @EncodeDefault
     override val type: String = TYPE

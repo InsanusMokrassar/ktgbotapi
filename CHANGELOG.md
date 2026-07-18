@@ -2,6 +2,14 @@
 
 ## 36.0.0
 
+* `Core`:
+    * (`Rich Messages`) Added `InputRichBlock` hierarchy with all 21 `InputRichBlock*` types (mirroring the received `RichBlock*` hierarchy and reusing `RichText`/`RichBlockCaption`/`RichBlockTableCell`), the label-less `InputRichBlockListItem` and the `InputRichBlockSerializer`; every `InputRichBlock` exposes `subBlocks` navigation
+    * (`Rich Messages`) Added `TelegramMediaVoiceNote` (`InputMediaVoiceNote`) and the `RichMessageMemberTelegramMedia` marker interface implemented by it, `TelegramMediaAnimation`, `TelegramMediaAudio`, `TelegramMediaPhoto` and `TelegramMediaVideo`; added `VoiceFile.toTelegramMediaVoiceNote` converters
+    * (`Rich Messages`) Added `InputRichMessageMedia` type (media referenced from `InputRichMessage.html`/`.markdown` via `tg://photo?id=`, `tg://video?id=` and `tg://audio?id=` links)
+    * (`Rich Messages`) `InputRichMessage` gained `blocks` and `media` fields ("exactly one of `html`, `markdown` or `blocks` must be used") and the `InputRichMessageBlocks` factory; `InputRichMessageHTML`/`InputRichMessageMarkdown` gained a trailing `media` parameter
+    * (`Rich Messages`) Added Rich Messages input DSL builders `buildInputRichBlocks`/`InputRichBlocksBuilder`, `InputRichBlockListBuilder` and the `InputRichMessageBlocks { }` builder overload (marked with the `@RichTextDsl` DSL marker)
+    * (`Rich Messages`) `SendRichMessage` now supports `attach://` upload of new files referenced from `InputRichMessage.blocks`/`.media`; `SendRichMessageDraft` now rejects rich messages that require direct file upload (unsupported by the method)
+
 ## 35.1.0
 
 * `Dependencies`:

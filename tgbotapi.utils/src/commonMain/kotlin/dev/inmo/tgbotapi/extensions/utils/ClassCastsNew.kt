@@ -262,6 +262,7 @@ import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.media.InputPollOptionMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.PollMedia
+import dev.inmo.tgbotapi.types.media.RichMessageMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 import dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
@@ -276,6 +277,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaSticker
 import dev.inmo.tgbotapi.types.media.TelegramMediaVenue
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaLivePhoto
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
@@ -550,6 +552,29 @@ import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
+import dev.inmo.tgbotapi.types.rich.InputRichBlock
+import dev.inmo.tgbotapi.types.rich.InputRichBlockAnchor
+import dev.inmo.tgbotapi.types.rich.InputRichBlockAnimation
+import dev.inmo.tgbotapi.types.rich.InputRichBlockAudio
+import dev.inmo.tgbotapi.types.rich.InputRichBlockBlockQuotation
+import dev.inmo.tgbotapi.types.rich.InputRichBlockCollage
+import dev.inmo.tgbotapi.types.rich.InputRichBlockDetails
+import dev.inmo.tgbotapi.types.rich.InputRichBlockDivider
+import dev.inmo.tgbotapi.types.rich.InputRichBlockFooter
+import dev.inmo.tgbotapi.types.rich.InputRichBlockList
+import dev.inmo.tgbotapi.types.rich.InputRichBlockMap
+import dev.inmo.tgbotapi.types.rich.InputRichBlockMathematicalExpression
+import dev.inmo.tgbotapi.types.rich.InputRichBlockMedia
+import dev.inmo.tgbotapi.types.rich.InputRichBlockParagraph
+import dev.inmo.tgbotapi.types.rich.InputRichBlockPhoto
+import dev.inmo.tgbotapi.types.rich.InputRichBlockPreformatted
+import dev.inmo.tgbotapi.types.rich.InputRichBlockPullQuotation
+import dev.inmo.tgbotapi.types.rich.InputRichBlockSectionHeading
+import dev.inmo.tgbotapi.types.rich.InputRichBlockSlideshow
+import dev.inmo.tgbotapi.types.rich.InputRichBlockTable
+import dev.inmo.tgbotapi.types.rich.InputRichBlockThinking
+import dev.inmo.tgbotapi.types.rich.InputRichBlockVideo
+import dev.inmo.tgbotapi.types.rich.InputRichBlockVoiceNote
 import dev.inmo.tgbotapi.types.rich.RichBlock
 import dev.inmo.tgbotapi.types.rich.RichBlockAnchor
 import dev.inmo.tgbotapi.types.rich.RichBlockAnimation
@@ -882,6 +907,12 @@ public inline fun TelegramMedia.duratedTelegramMediaOrThrow(): DuratedTelegramMe
 
 public inline fun <T> TelegramMedia.ifDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T): T? = duratedTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.telegramMediaVoiceNoteOrNull(): TelegramMediaVoiceNote? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
+
+public inline fun TelegramMedia.telegramMediaVoiceNoteOrThrow(): TelegramMediaVoiceNote = this as dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
+
+public inline fun <T> TelegramMedia.ifTelegramMediaVoiceNote(block: (TelegramMediaVoiceNote) -> T): T? = telegramMediaVoiceNoteOrNull() ?.let(block)
+
 public inline fun TelegramMedia.titledTelegramMediaOrNull(): TitledTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 
 public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedia = this as dev.inmo.tgbotapi.types.media.TitledTelegramMedia
@@ -935,6 +966,12 @@ public inline fun TelegramMedia.telegramMediaAnimationOrNull(): TelegramMediaAni
 public inline fun TelegramMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
 public inline fun <T> TelegramMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T): T? = telegramMediaAnimationOrNull() ?.let(block)
+
+public inline fun TelegramMedia.richMessageMemberTelegramMediaOrNull(): RichMessageMemberTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.RichMessageMemberTelegramMedia
+
+public inline fun TelegramMedia.richMessageMemberTelegramMediaOrThrow(): RichMessageMemberTelegramMedia = this as dev.inmo.tgbotapi.types.media.RichMessageMemberTelegramMedia
+
+public inline fun <T> TelegramMedia.ifRichMessageMemberTelegramMedia(block: (RichMessageMemberTelegramMedia) -> T): T? = richMessageMemberTelegramMediaOrNull() ?.let(block)
 
 public inline fun TelegramMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 
@@ -3335,6 +3372,138 @@ public inline fun InputMessageContent.inputRichMessageContentOrNull(): InputRich
 public inline fun InputMessageContent.inputRichMessageContentOrThrow(): InputRichMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputRichMessageContent
 
 public inline fun <T> InputMessageContent.ifInputRichMessageContent(block: (InputRichMessageContent) -> T): T? = inputRichMessageContentOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockMediaOrNull(): InputRichBlockMedia? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockMedia
+
+public inline fun InputRichBlock.inputRichBlockMediaOrThrow(): InputRichBlockMedia = this as dev.inmo.tgbotapi.types.rich.InputRichBlockMedia
+
+public inline fun <T> InputRichBlock.ifInputRichBlockMedia(block: (InputRichBlockMedia) -> T): T? = inputRichBlockMediaOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockParagraphOrNull(): InputRichBlockParagraph? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockParagraph
+
+public inline fun InputRichBlock.inputRichBlockParagraphOrThrow(): InputRichBlockParagraph = this as dev.inmo.tgbotapi.types.rich.InputRichBlockParagraph
+
+public inline fun <T> InputRichBlock.ifInputRichBlockParagraph(block: (InputRichBlockParagraph) -> T): T? = inputRichBlockParagraphOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockSectionHeadingOrNull(): InputRichBlockSectionHeading? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockSectionHeading
+
+public inline fun InputRichBlock.inputRichBlockSectionHeadingOrThrow(): InputRichBlockSectionHeading = this as dev.inmo.tgbotapi.types.rich.InputRichBlockSectionHeading
+
+public inline fun <T> InputRichBlock.ifInputRichBlockSectionHeading(block: (InputRichBlockSectionHeading) -> T): T? = inputRichBlockSectionHeadingOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockPreformattedOrNull(): InputRichBlockPreformatted? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockPreformatted
+
+public inline fun InputRichBlock.inputRichBlockPreformattedOrThrow(): InputRichBlockPreformatted = this as dev.inmo.tgbotapi.types.rich.InputRichBlockPreformatted
+
+public inline fun <T> InputRichBlock.ifInputRichBlockPreformatted(block: (InputRichBlockPreformatted) -> T): T? = inputRichBlockPreformattedOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockFooterOrNull(): InputRichBlockFooter? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockFooter
+
+public inline fun InputRichBlock.inputRichBlockFooterOrThrow(): InputRichBlockFooter = this as dev.inmo.tgbotapi.types.rich.InputRichBlockFooter
+
+public inline fun <T> InputRichBlock.ifInputRichBlockFooter(block: (InputRichBlockFooter) -> T): T? = inputRichBlockFooterOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockDividerOrNull(): InputRichBlockDivider? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockDivider
+
+public inline fun InputRichBlock.inputRichBlockDividerOrThrow(): InputRichBlockDivider = this as dev.inmo.tgbotapi.types.rich.InputRichBlockDivider
+
+public inline fun <T> InputRichBlock.ifInputRichBlockDivider(block: (InputRichBlockDivider) -> T): T? = inputRichBlockDividerOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockMathematicalExpressionOrNull(): InputRichBlockMathematicalExpression? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockMathematicalExpression
+
+public inline fun InputRichBlock.inputRichBlockMathematicalExpressionOrThrow(): InputRichBlockMathematicalExpression = this as dev.inmo.tgbotapi.types.rich.InputRichBlockMathematicalExpression
+
+public inline fun <T> InputRichBlock.ifInputRichBlockMathematicalExpression(block: (InputRichBlockMathematicalExpression) -> T): T? = inputRichBlockMathematicalExpressionOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockAnchorOrNull(): InputRichBlockAnchor? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockAnchor
+
+public inline fun InputRichBlock.inputRichBlockAnchorOrThrow(): InputRichBlockAnchor = this as dev.inmo.tgbotapi.types.rich.InputRichBlockAnchor
+
+public inline fun <T> InputRichBlock.ifInputRichBlockAnchor(block: (InputRichBlockAnchor) -> T): T? = inputRichBlockAnchorOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockListOrNull(): InputRichBlockList? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockList
+
+public inline fun InputRichBlock.inputRichBlockListOrThrow(): InputRichBlockList = this as dev.inmo.tgbotapi.types.rich.InputRichBlockList
+
+public inline fun <T> InputRichBlock.ifInputRichBlockList(block: (InputRichBlockList) -> T): T? = inputRichBlockListOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockBlockQuotationOrNull(): InputRichBlockBlockQuotation? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockBlockQuotation
+
+public inline fun InputRichBlock.inputRichBlockBlockQuotationOrThrow(): InputRichBlockBlockQuotation = this as dev.inmo.tgbotapi.types.rich.InputRichBlockBlockQuotation
+
+public inline fun <T> InputRichBlock.ifInputRichBlockBlockQuotation(block: (InputRichBlockBlockQuotation) -> T): T? = inputRichBlockBlockQuotationOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockPullQuotationOrNull(): InputRichBlockPullQuotation? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockPullQuotation
+
+public inline fun InputRichBlock.inputRichBlockPullQuotationOrThrow(): InputRichBlockPullQuotation = this as dev.inmo.tgbotapi.types.rich.InputRichBlockPullQuotation
+
+public inline fun <T> InputRichBlock.ifInputRichBlockPullQuotation(block: (InputRichBlockPullQuotation) -> T): T? = inputRichBlockPullQuotationOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockCollageOrNull(): InputRichBlockCollage? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockCollage
+
+public inline fun InputRichBlock.inputRichBlockCollageOrThrow(): InputRichBlockCollage = this as dev.inmo.tgbotapi.types.rich.InputRichBlockCollage
+
+public inline fun <T> InputRichBlock.ifInputRichBlockCollage(block: (InputRichBlockCollage) -> T): T? = inputRichBlockCollageOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockSlideshowOrNull(): InputRichBlockSlideshow? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockSlideshow
+
+public inline fun InputRichBlock.inputRichBlockSlideshowOrThrow(): InputRichBlockSlideshow = this as dev.inmo.tgbotapi.types.rich.InputRichBlockSlideshow
+
+public inline fun <T> InputRichBlock.ifInputRichBlockSlideshow(block: (InputRichBlockSlideshow) -> T): T? = inputRichBlockSlideshowOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockTableOrNull(): InputRichBlockTable? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockTable
+
+public inline fun InputRichBlock.inputRichBlockTableOrThrow(): InputRichBlockTable = this as dev.inmo.tgbotapi.types.rich.InputRichBlockTable
+
+public inline fun <T> InputRichBlock.ifInputRichBlockTable(block: (InputRichBlockTable) -> T): T? = inputRichBlockTableOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockDetailsOrNull(): InputRichBlockDetails? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockDetails
+
+public inline fun InputRichBlock.inputRichBlockDetailsOrThrow(): InputRichBlockDetails = this as dev.inmo.tgbotapi.types.rich.InputRichBlockDetails
+
+public inline fun <T> InputRichBlock.ifInputRichBlockDetails(block: (InputRichBlockDetails) -> T): T? = inputRichBlockDetailsOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockMapOrNull(): InputRichBlockMap? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockMap
+
+public inline fun InputRichBlock.inputRichBlockMapOrThrow(): InputRichBlockMap = this as dev.inmo.tgbotapi.types.rich.InputRichBlockMap
+
+public inline fun <T> InputRichBlock.ifInputRichBlockMap(block: (InputRichBlockMap) -> T): T? = inputRichBlockMapOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockAnimationOrNull(): InputRichBlockAnimation? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockAnimation
+
+public inline fun InputRichBlock.inputRichBlockAnimationOrThrow(): InputRichBlockAnimation = this as dev.inmo.tgbotapi.types.rich.InputRichBlockAnimation
+
+public inline fun <T> InputRichBlock.ifInputRichBlockAnimation(block: (InputRichBlockAnimation) -> T): T? = inputRichBlockAnimationOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockAudioOrNull(): InputRichBlockAudio? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockAudio
+
+public inline fun InputRichBlock.inputRichBlockAudioOrThrow(): InputRichBlockAudio = this as dev.inmo.tgbotapi.types.rich.InputRichBlockAudio
+
+public inline fun <T> InputRichBlock.ifInputRichBlockAudio(block: (InputRichBlockAudio) -> T): T? = inputRichBlockAudioOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockPhotoOrNull(): InputRichBlockPhoto? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockPhoto
+
+public inline fun InputRichBlock.inputRichBlockPhotoOrThrow(): InputRichBlockPhoto = this as dev.inmo.tgbotapi.types.rich.InputRichBlockPhoto
+
+public inline fun <T> InputRichBlock.ifInputRichBlockPhoto(block: (InputRichBlockPhoto) -> T): T? = inputRichBlockPhotoOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockVideoOrNull(): InputRichBlockVideo? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockVideo
+
+public inline fun InputRichBlock.inputRichBlockVideoOrThrow(): InputRichBlockVideo = this as dev.inmo.tgbotapi.types.rich.InputRichBlockVideo
+
+public inline fun <T> InputRichBlock.ifInputRichBlockVideo(block: (InputRichBlockVideo) -> T): T? = inputRichBlockVideoOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockVoiceNoteOrNull(): InputRichBlockVoiceNote? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockVoiceNote
+
+public inline fun InputRichBlock.inputRichBlockVoiceNoteOrThrow(): InputRichBlockVoiceNote = this as dev.inmo.tgbotapi.types.rich.InputRichBlockVoiceNote
+
+public inline fun <T> InputRichBlock.ifInputRichBlockVoiceNote(block: (InputRichBlockVoiceNote) -> T): T? = inputRichBlockVoiceNoteOrNull() ?.let(block)
+
+public inline fun InputRichBlock.inputRichBlockThinkingOrNull(): InputRichBlockThinking? = this as? dev.inmo.tgbotapi.types.rich.InputRichBlockThinking
+
+public inline fun InputRichBlock.inputRichBlockThinkingOrThrow(): InputRichBlockThinking = this as dev.inmo.tgbotapi.types.rich.InputRichBlockThinking
+
+public inline fun <T> InputRichBlock.ifInputRichBlockThinking(block: (InputRichBlockThinking) -> T): T? = inputRichBlockThinkingOrNull() ?.let(block)
 
 public inline fun RichText.richTextBoldOrNull(): RichTextBold? = this as? dev.inmo.tgbotapi.types.rich.RichTextBold
 

@@ -6737,7 +6737,7 @@ public final class dev/inmo/tgbotapi/requests/send/SendMessageKt {
 	public static synthetic fun SendTextMessage-CbXiHO4$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
 }
 
-public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
+public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendRichMessage$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -6760,9 +6760,12 @@ public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tg
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public fun getData ()Ldev/inmo/tgbotapi/requests/abstracts/SimpleRequest;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getMediaMap ()Ljava/util/Map;
+	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun getProtectContent ()Z
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
@@ -24802,6 +24805,14 @@ public final class dev/inmo/tgbotapi/types/media/PollMedia$Serializer$Surrogate$
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia : dev/inmo/tgbotapi/types/media/TelegramMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia$Companion;
+}
+
+public final class dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/media/SizedTelegramMedia : dev/inmo/tgbotapi/types/media/TelegramMedia {
 	public abstract fun getHeight ()Ljava/lang/Integer;
 	public abstract fun getWidth ()Ljava/lang/Integer;
@@ -24829,7 +24840,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMedia$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaAnimation : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/SpoilerableTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/WithCustomizableCaptionTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaAnimation : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/SpoilerableTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/WithCustomizableCaptionTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -24881,7 +24892,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaAnimationKt {
 	public static synthetic fun TelegramMediaAnimation$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaAudio : dev/inmo/tgbotapi/abstracts/Performerable, dev/inmo/tgbotapi/types/media/AudioMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/TitledTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaAudio : dev/inmo/tgbotapi/abstracts/Performerable, dev/inmo/tgbotapi/types/media/AudioMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/TitledTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -25093,7 +25104,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaLocation$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaPhoto : dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaPhoto : dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -25225,7 +25236,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaVenue$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideo : dev/inmo/tgbotapi/types/media/CoveredTelegramMedia, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/OptionallyStreamable, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideo : dev/inmo/tgbotapi/types/media/CoveredTelegramMedia, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/OptionallyStreamable, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -25282,6 +25293,52 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaVideoKt {
 	public static final fun TelegramMediaVideo (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
 	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
 	public static synthetic fun TelegramMediaVideo$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+}
+
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public final fun component5 ()Ljava/lang/Long;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDuration ()Ljava/lang/Long;
+	public fun getEntities ()Ljava/util/List;
+	public fun getFile ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
+	public fun getMedia ()Ljava/lang/String;
+	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
+	public fun getText ()Ljava/lang/String;
+	public fun getTextSources ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaVoiceNoteKt {
+	public static final fun TelegramMediaVoiceNote (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static final fun TelegramMediaVoiceNote (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static synthetic fun TelegramMediaVoiceNote$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static synthetic fun TelegramMediaVoiceNote$default (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static final fun toTelegramMediaVoiceNote (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static final fun toTelegramMediaVoiceNote (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ljava/util/List;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static synthetic fun toTelegramMediaVoiceNote$default (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public static synthetic fun toTelegramMediaVoiceNote$default (Ldev/inmo/tgbotapi/types/files/VoiceFile;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/media/TelegramPaidMedia : dev/inmo/tgbotapi/types/media/TelegramMedia {
@@ -34433,16 +34490,807 @@ public final class dev/inmo/tgbotapi/types/request/UsersShared$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlock$Companion;
+	public abstract fun getType ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlock$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAnchor : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockAnchor$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnchor;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAnchor$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAnimation : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation;Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAnimation ()Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockAnimation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockAnimation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAnimation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAudio : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudio ()Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockAudio$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockAudio$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
+	public final fun getCredit ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockCollage : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
+	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockCollage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockCollage$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDetails : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
+	public final fun getSummary ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isOpen ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockDetails$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDetails$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDivider : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockDivider$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDivider$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockFooter : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockFooter$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockFooter$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockKt {
+	public static final fun getSubBlocks (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ljava/util/List;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockList : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockList$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockList$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockList$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockList$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun item (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public final fun item (Ljava/lang/String;)V
+	public static synthetic fun item$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
+	public final fun getHasCheckbox ()Ljava/lang/Boolean;
+	public final fun getLabelType ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public final fun isChecked ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMap : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap;Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun getHeight ()I
+	public final fun getLocation ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
+	public fun getType ()Ljava/lang/String;
+	public final fun getWidth ()I
+	public final fun getZoom ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockMap$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockMap;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMap$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpression ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMathematicalExpression$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/rich/InputRichBlockMedia : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockMedia$Companion;
+	public abstract fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public abstract fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMedia$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockParagraph : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockParagraph$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockParagraph;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockParagraph$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPhoto : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto;Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public final fun getPhoto ()Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockPhoto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockPhoto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPhoto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPreformatted$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCredit ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockPullQuotation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;I)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()I
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;I)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading;Ldev/inmo/tgbotapi/types/rich/RichText;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLevel ()I
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSectionHeading$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSerializer : kotlinx/serialization/json/JsonContentPolymorphicSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
+	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTable : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun getCells ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isBordered ()Ljava/lang/Boolean;
+	public final fun isStriped ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockTable$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTable$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockVideo : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo;Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public fun getType ()Ljava/lang/String;
+	public final fun getVideo ()Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockVideo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockVideo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote;Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public fun getType ()Ljava/lang/String;
+	public final fun getVoiceNote ()Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockVoiceNote$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
+	public fun <init> ()V
+	public final fun add (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)V
+	public final fun anchor (Ljava/lang/String;)V
+	public final fun animation (Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun animation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaAnimation;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun audio (Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun audio$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun blockQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun blockQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun build ()Ljava/util/List;
+	public final fun collage (Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun collage$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun details (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public final fun details (Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun divider ()V
+	public final fun footer (Ljava/lang/String;)V
+	public final fun footer (Lkotlin/jvm/functions/Function1;)V
+	public final fun heading (ILkotlin/jvm/functions/Function1;)V
+	public final fun heading (Ljava/lang/String;I)V
+	public final fun list (Lkotlin/jvm/functions/Function1;)V
+	public final fun map (Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun map$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun mathematicalExpression (Ljava/lang/String;)V
+	public final fun paragraph (Ljava/lang/String;)V
+	public final fun paragraph (Lkotlin/jvm/functions/Function1;)V
+	public final fun photo (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun photo$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun preformatted (Ljava/lang/String;Ljava/lang/String;)V
+	public static synthetic fun preformatted$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)V
+	public final fun pullQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun pullQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun slideshow (Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun slideshow$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun table (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public static synthetic fun table$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)V
+	public final fun thinking (Ljava/lang/String;)V
+	public final fun thinking (Lkotlin/jvm/functions/Function1;)V
+	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)V
+	public final fun video (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun video$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun voiceNote (Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun voiceNote$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksDslKt {
+	public static final fun InputRichMessageBlocks (Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static synthetic fun InputRichMessageBlocks$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static final fun buildInputRichBlocks (Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/InputRichMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichMessage$Companion;
 	public fun <init> ()V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/Boolean;
-	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component6 ()Ljava/lang/Boolean;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlocks ()Ljava/util/List;
 	public final fun getHtml ()Ljava/lang/String;
 	public final fun getMarkdown ()Ljava/lang/String;
+	public final fun getMedia ()Ljava/util/List;
 	public final fun getSkipEntityDetection ()Ljava/lang/Boolean;
 	public fun hashCode ()I
 	public final fun isRtl ()Ljava/lang/Boolean;
@@ -34465,10 +35313,41 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichMessage$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichMessageKt {
-	public static final fun InputRichMessageHTML (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
-	public static synthetic fun InputRichMessageHTML$default (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
-	public static final fun InputRichMessageMarkdown (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
-	public static synthetic fun InputRichMessageMarkdown$default (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static final fun InputRichMessageBlocks (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static synthetic fun InputRichMessageBlocks$default (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static final fun InputRichMessageHTML (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/util/List;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static synthetic fun InputRichMessageHTML$default (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static final fun InputRichMessageMarkdown (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/util/List;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+	public static synthetic fun InputRichMessageMarkdown$default (Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichMessageMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia;
+	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia;)Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public final fun getMedia ()Ldev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichMessageMedia$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichMessageMedia;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichMessageMedia$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlock {

@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.draftIdField
 import dev.inmo.tgbotapi.types.messageThreadIdField
 import dev.inmo.tgbotapi.types.richMessageField
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
+import dev.inmo.tgbotapi.types.rich.multipartFiles
 import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerialName
@@ -38,6 +39,9 @@ data class SendRichMessageDraft(
     init {
         require(draftId != 0L) {
             "draftId of SendRichMessageDraft must be non-zero"
+        }
+        require(richMessage.multipartFiles.isEmpty()) {
+            "sendRichMessageDraft does not support direct upload of new files"
         }
     }
 
