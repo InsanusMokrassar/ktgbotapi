@@ -2329,6 +2329,16 @@ inline fun Update.asChatJoinRequestUpdate(): ChatJoinRequestUpdate? = this as? C
 inline fun Update.requireChatJoinRequestUpdate(): ChatJoinRequestUpdate = this as ChatJoinRequestUpdate
 
 @PreviewFeature
+inline fun <T> Update.whenBotSubscriptionUpdatedUpdate(block: (BotSubscriptionUpdatedUpdate) -> T) =
+    asBotSubscriptionUpdatedUpdate()?.let(block)
+
+@PreviewFeature
+inline fun Update.asBotSubscriptionUpdatedUpdate(): BotSubscriptionUpdatedUpdate? = this as? BotSubscriptionUpdatedUpdate
+
+@PreviewFeature
+inline fun Update.requireBotSubscriptionUpdatedUpdate(): BotSubscriptionUpdatedUpdate = this as BotSubscriptionUpdatedUpdate
+
+@PreviewFeature
 inline fun <T> TelegramMediaFile.whenAnimationFile(block: (AnimationFile) -> T) = asAnimationFile()?.let(block)
 
 @PreviewFeature

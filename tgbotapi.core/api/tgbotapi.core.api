@@ -15851,6 +15851,7 @@ public final class dev/inmo/tgbotapi/types/UpdateTypesKt {
 	public static final field UPDATE_PURCHASED_PAID_MEDIA Ljava/lang/String;
 	public static final field UPDATE_REMOVE_CHAT_BOOST Ljava/lang/String;
 	public static final field UPDATE_SHIPPING_QUERY Ljava/lang/String;
+	public static final field UPDATE_SUBSCRIPTION Ljava/lang/String;
 	public static final fun getALL_UPDATES_LIST ()Ljava/util/List;
 	public static final fun getALL_UPDATES_LIST_WITHOUT_REACTIONS ()Ljava/util/List;
 }
@@ -32796,6 +32797,103 @@ public final class dev/inmo/tgbotapi/types/payments/AffiliateInfo$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated : dev/inmo/tgbotapi/abstracts/WithUser {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/User;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State;)Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInvoicePayload ()Ljava/lang/String;
+	public final fun getState ()Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State;
+	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Active : dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Active;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Canceled : dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Canceled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Failed : dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown : dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State {
+	public static final field Companion Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-56ZYDkg (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize-OHdutMU (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated$State$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/payments/CurrenciedKt {
 	public static final fun javaCurrency (Ldev/inmo/tgbotapi/types/payments/abstracts/Currencied;)Ljava/util/Currency;
 }
@@ -38618,6 +38716,36 @@ public final class dev/inmo/tgbotapi/types/stories/StoryAreaType$Weather$Compani
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
+	public static final field Companion Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate$Companion;
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;)Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate;JLdev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getData ()Ldev/inmo/tgbotapi/types/payments/BotSubscriptionUpdated;
+	public synthetic fun getData ()Ljava/lang/Object;
+	public fun getUpdateId-4k5XoGU ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/update/BotSubscriptionUpdatedUpdate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/update/BusinessConnectionUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public static final field Companion Ldev/inmo/tgbotapi/types/update/BusinessConnectionUpdate$Companion;
 	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -39245,6 +39373,7 @@ public final class dev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage$Compa
 public abstract class dev/inmo/tgbotapi/updateshandlers/AbstractFlowsUpdatesFilter : dev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter {
 	public fun <init> ()V
 	public fun getAllowedUpdates ()Ljava/util/List;
+	public fun getBotSubscriptionUpdatedUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getBusinessConnectionUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getCallbackQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
@@ -39288,6 +39417,7 @@ public final class dev/inmo/tgbotapi/updateshandlers/DefaultFlowsUpdatesFilter :
 public abstract interface class dev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter : dev/inmo/tgbotapi/updateshandlers/UpdatesFilter {
 	public abstract fun getAllUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getAllowedUpdates ()Ljava/util/List;
+	public abstract fun getBotSubscriptionUpdatedUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getBusinessConnectionUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getCallbackQueriesFlow ()Lkotlinx/coroutines/flow/Flow;

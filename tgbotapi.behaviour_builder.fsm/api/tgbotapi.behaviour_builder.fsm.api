@@ -83,6 +83,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehavio
 	public fun getAllowedUpdates ()Ljava/util/List;
 	public fun getAsUpdateReceiver ()Lkotlin/jvm/functions/Function2;
 	public fun getBot ()Ldev/inmo/tgbotapi/bot/RequestsExecutor;
+	public fun getBotSubscriptionUpdatedUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getBusinessConnectionUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getBusinessMessageUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getCallbackQueriesFlow ()Lkotlinx/coroutines/flow/Flow;

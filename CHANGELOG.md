@@ -26,6 +26,8 @@
     * (`Communities`) Added `CommunityId` value class and `Community` type (`id`/`name`)
     * (`Communities`) Added `CommunityChatAdded` (`community`) and `CommunityChatRemoved` (fieldless) chat events (`CommonEvent`); `RawMessage` parses `community_chat_added`/`community_chat_removed`
     * (`Communities`) Added `community` field to `ExtendedChat` (`ChatFullInfo.community`), parsed for `ExtendedChannelChatImpl`, `ExtendedGroupChatImpl`, `ExtendedSupergroupChatImpl`, `ExtendedForumChatImpl`, `ExtendedChannelDirectMessagesChatImpl` and `ExtendedBot`
+    * (`Bot Subscriptions`) Added `BotSubscriptionUpdated` (`user`, `invoicePayload`, `state`) and `BotSubscriptionUpdatedUpdate`; `state` is modeled as the typed sealed `BotSubscriptionUpdated.State` (`Canceled`/`Active`/`Failed`, with an `Unknown` fallback), mirroring `TransactionType`
+    * (`Bot Subscriptions`) `RawUpdate` parses the new `subscription` field; added `UPDATE_SUBSCRIPTION` to `ALL_UPDATES_LIST_WITHOUT_REACTIONS`; `FlowsUpdatesFilter` gained `botSubscriptionUpdatedUpdatesFlow`
 * `API`:
     * (`Ephemeral Messages`) Threaded `receiverUserId`/`callbackQueryId` through the `sendXxx`/`send`/`reply`/`replyWithXxx` extensions for the 13 ephemeral-capable senders (`send/Sends.kt`, `send/Replies.kt`, `send/RepliesWithChatsAndMessages.kt` and their per-type extension files); `reply(to = ...)` now automatically sends an ephemeral reply when `to` is itself ephemeral (see Breaking changes)
     * (`Ephemeral Messages`) Added `editEphemeralMessageText`/`editEphemeralMessageMedia`/`editEphemeralMessageCaption`/`editEphemeralMessageReplyMarkup` and `deleteEphemeralMessage` `TelegramBot` extensions (the latter also accepts a `PossiblyEphemeralMessage` directly)
@@ -34,6 +36,11 @@
 * `BehaviourBuilder`:
     * (`Communities`) Added `onCommunityChatAdded`/`onCommunityChatRemoved` triggers
     * (`Communities`) Added `waitCommunityChatAdded`/`waitCommunityChatRemoved` and `waitCommunityChatAddedEventsMessages`/`waitCommunityChatRemovedEventsMessages` expectations
+    * (`Bot Subscriptions`) Added `onBotSubscriptionUpdated` trigger, `waitBotSubscriptionUpdated` expectation and `ByUserBotSubscriptionUpdatedMarkerFactory`
+* `Utils`:
+    * (`Bot Subscriptions`) Added class casts for `BotSubscriptionUpdatedUpdate` (`whenBotSubscriptionUpdatedUpdate`/`asBotSubscriptionUpdatedUpdate`/`requireBotSubscriptionUpdatedUpdate`); regenerated class casts extensions (`botSubscriptionUpdatedUpdateOrNull`/`OrThrow`, `botSubscriptionUpdatedOrNull`/`OrThrow`)
+* `WebApps`:
+    * Telegram hardened Mini App method-origin security, auto-enabling for all Mini Apps on July 20, 2026; no library change required
 
 ## 35.1.0
 

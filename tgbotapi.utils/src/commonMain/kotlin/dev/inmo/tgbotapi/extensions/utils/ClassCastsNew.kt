@@ -521,6 +521,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportEle
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithReverseSide
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithSelfie
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.UnknownEncryptedPassportElement
+import dev.inmo.tgbotapi.types.payments.BotSubscriptionUpdated
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState
@@ -630,6 +631,7 @@ import dev.inmo.tgbotapi.types.rich.RichTextSuperscript
 import dev.inmo.tgbotapi.types.rich.RichTextTextMention
 import dev.inmo.tgbotapi.types.rich.RichTextUnderline
 import dev.inmo.tgbotapi.types.rich.RichTextUrl
+import dev.inmo.tgbotapi.types.update.BotSubscriptionUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
 import dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
@@ -4096,6 +4098,12 @@ public inline fun Update.chatMessageReactionsCountUpdatedUpdateOrThrow(): ChatMe
 
 public inline fun <T> Update.ifChatMessageReactionsCountUpdatedUpdate(block: (ChatMessageReactionsCountUpdatedUpdate) -> T): T? = chatMessageReactionsCountUpdatedUpdateOrNull() ?.let(block)
 
+public inline fun Update.botSubscriptionUpdatedUpdateOrNull(): BotSubscriptionUpdatedUpdate? = this as? dev.inmo.tgbotapi.types.update.BotSubscriptionUpdatedUpdate
+
+public inline fun Update.botSubscriptionUpdatedUpdateOrThrow(): BotSubscriptionUpdatedUpdate = this as dev.inmo.tgbotapi.types.update.BotSubscriptionUpdatedUpdate
+
+public inline fun <T> Update.ifBotSubscriptionUpdatedUpdate(block: (BotSubscriptionUpdatedUpdate) -> T): T? = botSubscriptionUpdatedUpdateOrNull() ?.let(block)
+
 public inline fun Update.chatJoinRequestUpdateOrNull(): ChatJoinRequestUpdate? = this as? dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 
 public inline fun Update.chatJoinRequestUpdateOrThrow(): ChatJoinRequestUpdate = this as dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
@@ -4929,6 +4937,12 @@ public inline fun OptionallyWithUser.shippingQueryOrNull(): ShippingQuery? = thi
 public inline fun OptionallyWithUser.shippingQueryOrThrow(): ShippingQuery = this as dev.inmo.tgbotapi.types.payments.ShippingQuery
 
 public inline fun <T> OptionallyWithUser.ifShippingQuery(block: (ShippingQuery) -> T): T? = shippingQueryOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.botSubscriptionUpdatedOrNull(): BotSubscriptionUpdated? = this as? dev.inmo.tgbotapi.types.payments.BotSubscriptionUpdated
+
+public inline fun OptionallyWithUser.botSubscriptionUpdatedOrThrow(): BotSubscriptionUpdated = this as dev.inmo.tgbotapi.types.payments.BotSubscriptionUpdated
+
+public inline fun <T> OptionallyWithUser.ifBotSubscriptionUpdated(block: (BotSubscriptionUpdated) -> T): T? = botSubscriptionUpdatedOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.chatInviteLinkOrNull(): ChatInviteLink? = this as? dev.inmo.tgbotapi.types.ChatInviteLink
 
