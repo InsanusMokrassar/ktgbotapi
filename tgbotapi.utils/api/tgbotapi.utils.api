@@ -1316,6 +1316,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun commonSupergroupEventMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/CommonSupergroupEventMessage;
 	public static final fun commonUserOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public static final fun commonUserOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public static final fun communityChatAddedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
+	public static final fun communityChatAddedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
+	public static final fun communityChatRemovedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
+	public static final fun communityChatRemovedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
 	public static final fun connectedFromChannelGroupContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ConnectedFromChannelGroupContentMessage;
 	public static final fun connectedFromChannelGroupContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ConnectedFromChannelGroupContentMessage;
 	public static final fun contactContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/ContactContent;
@@ -1723,6 +1727,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifCommonSupergroupEventMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommonSupergroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommonUser (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCommunityChatAdded (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCommunityChatRemoved (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifConnectedFromChannelGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContactContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

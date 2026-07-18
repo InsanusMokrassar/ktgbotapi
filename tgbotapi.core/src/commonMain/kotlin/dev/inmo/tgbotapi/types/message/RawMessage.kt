@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
@@ -206,6 +208,10 @@ internal data class RawMessage(
     private val checklist_tasks_done: ChecklistTasksDone? = null,
     private val checklist_tasks_added: ChecklistTasksAdded? = null,
 
+    // Communities
+    private val community_chat_added: CommunityChatAdded? = null,
+    private val community_chat_removed: CommunityChatRemoved? = null,
+
     // Channel direct messages
     private val direct_message_price_changed: DirectMessagesConfigurationChanged? = null,
     private val is_paid_post: Boolean = false,
@@ -371,6 +377,8 @@ internal data class RawMessage(
             gift_upgrade_sent != null -> gift_upgrade_sent
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
+            community_chat_added != null -> community_chat_added
+            community_chat_removed != null -> community_chat_removed
             direct_message_price_changed != null -> direct_message_price_changed
             suggested_post_approved != null -> suggested_post_approved
             suggested_post_approval_failed != null -> suggested_post_approval_failed

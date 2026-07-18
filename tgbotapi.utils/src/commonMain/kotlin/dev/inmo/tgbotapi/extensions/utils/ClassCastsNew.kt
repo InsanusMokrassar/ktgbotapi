@@ -201,6 +201,8 @@ import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -2113,6 +2115,18 @@ public inline fun ChatEvent.managedBotCreatedOrNull(): ManagedBotCreated? = this
 public inline fun ChatEvent.managedBotCreatedOrThrow(): ManagedBotCreated = this as dev.inmo.tgbotapi.types.managed_bots.ManagedBotCreated
 
 public inline fun <T> ChatEvent.ifManagedBotCreated(block: (ManagedBotCreated) -> T): T? = managedBotCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.communityChatAddedOrNull(): CommunityChatAdded? = this as? dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+
+public inline fun ChatEvent.communityChatAddedOrThrow(): CommunityChatAdded = this as dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+
+public inline fun <T> ChatEvent.ifCommunityChatAdded(block: (CommunityChatAdded) -> T): T? = communityChatAddedOrNull() ?.let(block)
+
+public inline fun ChatEvent.communityChatRemovedOrNull(): CommunityChatRemoved? = this as? dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
+
+public inline fun ChatEvent.communityChatRemovedOrThrow(): CommunityChatRemoved = this as dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
+
+public inline fun <T> ChatEvent.ifCommunityChatRemoved(block: (CommunityChatRemoved) -> T): T? = communityChatRemovedOrNull() ?.let(block)
 
 public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as? dev.inmo.tgbotapi.types.chat.ChatBackground
 

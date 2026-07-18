@@ -946,4 +946,6 @@ const val temperatureField = "temperature"
 const val backgroundColorField = "background_color"
 const val keepOriginalDetailsField = "keep_original_details"
 
+const val communityField = "community"
+
 const val codecField = "codec"

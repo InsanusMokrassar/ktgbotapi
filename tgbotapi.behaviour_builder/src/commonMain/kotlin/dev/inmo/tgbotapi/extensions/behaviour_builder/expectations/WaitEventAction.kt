@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
@@ -326,6 +328,16 @@ fun BehaviourContext.waitSuggestedPostRefunded(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<SuggestedPostRefunded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitCommunityChatAdded(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<CommunityChatAdded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitCommunityChatRemoved(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<CommunityChatRemoved>(initRequest, errorFactory)
 
 fun BehaviourContext.waitSuggestedPostDeclined(
     initRequest: Request<*>? = null,
