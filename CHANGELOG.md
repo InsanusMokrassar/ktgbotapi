@@ -2,6 +2,14 @@
 
 ## 36.0.0
 
+**Breaking changes**:
+
+* `ReplyParameters.chatIdentifier`/`ReplyParameters.messageId` are now nullable (an ephemeral reply addresses its target only via the new `ephemeralMessageId`, without `chatIdentifier`/`messageId`); `ReplyParameters` no longer implements `WithMessageId` — code relying on `ReplyParameters` being a `WithMessageId`, or on `messageId`/`chatIdentifier` being non-null, must be updated
+* The 4 group-family message implementations (`CommonGroupContentMessageImpl`, `CommonForumContentMessageImpl`, `CommonChannelDirectMessagesContentMessageImpl`, `CommonSuggestedChannelDirectMessagesContentMessageImpl`) gained trailing `receiverUser`/`ephemeralMessageId` primary-constructor parameters (defaulted to `null`) — positional construction of these classes must be updated
+* `reply(to = ...)` overloads for the 13 ephemeral-capable senders (see below) now detect an ephemeral `to` target (`to is PossiblyEphemeralMessage && to.ephemeralMessageId != null`) and automatically address the reply through `ephemeral_message_id`, sending the outgoing message itself as ephemeral to the same receiver — this is a behavior change for any existing code that replies to a message carrying a non-null `ephemeralMessageId`
+
+**Migration advice**: Build `ReplyParameters` through its public constructors (unaffected by the nullability change); pass `receiverUser`/`ephemeralMessageId` explicitly (or rely on their `null` default) when constructing the 4 group-family message implementations positionally
+
 * `Core`:
     * (`Rich Messages`) Added `InputRichBlock` hierarchy with all 21 `InputRichBlock*` types (mirroring the received `RichBlock*` hierarchy and reusing `RichText`/`RichBlockCaption`/`RichBlockTableCell`), the label-less `InputRichBlockListItem` and the `InputRichBlockSerializer`; every `InputRichBlock` exposes `subBlocks` navigation
     * (`Rich Messages`) Added `TelegramMediaVoiceNote` (`InputMediaVoiceNote`) and the `RichMessageMemberTelegramMedia` marker interface implemented by it, `TelegramMediaAnimation`, `TelegramMediaAudio`, `TelegramMediaPhoto` and `TelegramMediaVideo`; added `VoiceFile.toTelegramMediaVoiceNote` converters
@@ -9,6 +17,17 @@
     * (`Rich Messages`) `InputRichMessage` gained `blocks` and `media` fields ("exactly one of `html`, `markdown` or `blocks` must be used") and the `InputRichMessageBlocks` factory; `InputRichMessageHTML`/`InputRichMessageMarkdown` gained a trailing `media` parameter
     * (`Rich Messages`) Added Rich Messages input DSL builders `buildInputRichBlocks`/`InputRichBlocksBuilder`, `InputRichBlockListBuilder` and the `InputRichMessageBlocks { }` builder overload (marked with the `@RichTextDsl` DSL marker)
     * (`Rich Messages`) `SendRichMessage` now supports `attach://` upload of new files referenced from `InputRichMessage.blocks`/`.media`; `SendRichMessageDraft` now rejects rich messages that require direct file upload (unsupported by the method)
+    * (`Ephemeral Messages`) Added `EphemeralMessageId` value class, `PossiblyEphemeralMessage` (`receiverUser`/`ephemeralMessageId`) and `EphemeralMessageAction` (`receiverUserId`/`ephemeralMessageId`) abstractions
+    * (`Ephemeral Messages`) `RawMessage` parses `receiver_user`/`ephemeral_message_id`; the 4 group-family `Common*ContentMessage` types (`CommonGroupContentMessage`, `CommonForumContentMessage`, `CommonChannelDirectMessagesContentMessage`, `CommonSuggestedChannelDirectMessagesContentMessage`, via the shared `PotentiallyFromUserGroupContentMessage`) now also implement `PossiblyEphemeralMessage`
+    * (`Ephemeral Messages`) `BotCommand` gained the `isEphemeral` field
+    * (`Ephemeral Messages`) `ReplyParameters` gained the `ephemeralMessageId` field and a new `(EphemeralMessageId, allowSendingWithoutReply)` constructor for replying to an ephemeral message; added the `Message.ephemeralReplyParametersOrNull()`/`Message.ephemeralReplyReceiverUserIdOrNull` helpers used by the `reply(to = ...)` smart-branch
+    * (`Ephemeral Messages`) Added `receiverUserId`/`callbackQueryId` params (via the new `OptionallyEphemeralSendRequest`) to the 13 ephemeral-capable send requests: `SendTextMessage`, `SendContact`, `SendLocation` (`Static`/`Live`), `SendVenue`, `SendPhotoData`, `SendLivePhotoData`, `SendAudioData`, `SendDocumentData`, `SendVideoData`, `SendAnimationData`, `SendVoiceData`, `SendVideoNoteData`, `SendStickerByFileId`
+    * (`Ephemeral Messages`) Added `EditEphemeralMessageText`/`EditEphemeralMessageMedia`/`EditEphemeralMessageCaption`/`EditEphemeralMessageReplyMarkup` and `DeleteEphemeralMessage` requests (all return `Unit`, mirroring the inline-message edit family); `EditEphemeralMessageMedia` rejects `MultipartFile` media (new file upload is not supported for ephemeral edits)
+* `API`:
+    * (`Ephemeral Messages`) Threaded `receiverUserId`/`callbackQueryId` through the `sendXxx`/`send`/`reply`/`replyWithXxx` extensions for the 13 ephemeral-capable senders (`send/Sends.kt`, `send/Replies.kt`, `send/RepliesWithChatsAndMessages.kt` and their per-type extension files); `reply(to = ...)` now automatically sends an ephemeral reply when `to` is itself ephemeral (see Breaking changes)
+    * (`Ephemeral Messages`) Added `editEphemeralMessageText`/`editEphemeralMessageMedia`/`editEphemeralMessageCaption`/`editEphemeralMessageReplyMarkup` and `deleteEphemeralMessage` `TelegramBot` extensions (the latter also accepts a `PossiblyEphemeralMessage` directly)
+    * (`Ephemeral Messages`) Added explicit `replyToEphemeral`/`replyToEphemeralWithXxx` `TelegramBot` extensions for the 13 ephemeral-capable senders, replying to an ephemeral message by `chatId`/`ephemeralMessageId` without requiring the original `Message` object
+    * (`Ephemeral Messages`) Not covered by this iteration (follow-up): `createResend`/`ResendMessage` do not carry ephemeral fields (a resend is always a regular message); `handleLiveLocation` and the generic `reply(mediaFile = ...)`/`reply(content = ...)` dispatchers in `RepliesWithChatsAndMessages.kt`'s `copyMessage`/live-location branches are unaffected; `behaviour_builder` triggers/waiters gained no ephemeral-specific helpers
 
 ## 35.1.0
 

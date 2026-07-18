@@ -72,6 +72,9 @@ internal data class RawMessage(
     private val from: PreviewUser? = null,
     private val sender_tag: UserTag? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    private val receiver_user: PreviewUser? = null,
+    private val ephemeral_message_id: EphemeralMessageId? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
     private val is_topic_message: Boolean? = null,
@@ -534,6 +537,8 @@ internal data class RawMessage(
                                                 fromOffline = is_from_offline,
                                                 cost = paid_star_count,
                                                 senderTag = sender_tag,
+                                                receiverUser = receiver_user,
+                                                ephemeralMessageId = ephemeral_message_id,
                                             )
                                         }
                                     }
@@ -578,6 +583,8 @@ internal data class RawMessage(
                                                 suggestedPostInfo = suggested_post_info,
                                                 cost = paid_star_count,
                                                 senderTag = sender_tag,
+                                                receiverUser = receiver_user,
+                                                ephemeralMessageId = ephemeral_message_id,
                                             )
                                         }
                                     }
@@ -687,6 +694,8 @@ internal data class RawMessage(
                                                     fromOffline = is_from_offline,
                                                     cost = paid_star_count,
                                                     senderTag = sender_tag,
+                                                    receiverUser = receiver_user,
+                                                    ephemeralMessageId = ephemeral_message_id,
                                                 )
                                             }
                                         } else {
@@ -762,7 +771,9 @@ internal data class RawMessage(
                                                     senderBoostsCount = sender_boost_count,
                                                     fromOffline = is_from_offline,
                                                     cost = paid_star_count,
-                                                    senderTag = sender_tag
+                                                    senderTag = sender_tag,
+                                                    receiverUser = receiver_user,
+                                                    ephemeralMessageId = ephemeral_message_id,
                                                 )
                                             }
                                         }
@@ -841,6 +852,8 @@ internal data class RawMessage(
                                         fromOffline = is_from_offline,
                                         cost = paid_star_count,
                                         senderTag = sender_tag,
+                                        receiverUser = receiver_user,
+                                        ephemeralMessageId = ephemeral_message_id,
                                     )
                                 }
                             }

@@ -14,7 +14,9 @@ data class BotCommand(
     @SerialName(botCommandField)
     val command: String,
     @SerialName(descriptionField)
-    val description: String
+    val description: String,
+    @SerialName(isEphemeralField)
+    val isEphemeral: Boolean = false
 ) {
     init {
         if (command.length !in botCommandLengthLimit) {

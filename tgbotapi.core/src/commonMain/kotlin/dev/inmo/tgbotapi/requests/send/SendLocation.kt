@@ -34,6 +34,8 @@ fun SendLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -48,6 +50,8 @@ fun SendLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -64,6 +68,8 @@ fun SendStaticLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -78,6 +84,8 @@ fun SendStaticLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -87,6 +95,11 @@ fun SendStaticLocation(
     replyMarkup = replyMarkup
 )
 
+/**
+ * @param livePeriod According to Telegram Bots API, must be `0` when sending as an ephemeral message (with
+ * [receiverUserId] set), as ephemeral messages do not support live location updates. Prefer [SendStaticLocation]
+ * for ephemeral locations.
+ */
 fun SendLiveLocation(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -98,6 +111,8 @@ fun SendLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -116,6 +131,8 @@ fun SendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -132,9 +149,15 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     HorizontallyAccured,
     Livable,
     ProximityAlertable,
-    Headed {
+    Headed,
+    OptionallyEphemeralSendRequest {
     override fun method(): String = "sendLocation"
 
+    /**
+     * @property livePeriod According to Telegram Bots API, must be `0` when sending as an ephemeral message (with
+     * [receiverUserId] set), as ephemeral messages do not support live location updates. Prefer [Static]
+     * for ephemeral locations.
+     */
     @Serializable
     data class Live (
         @SerialName(chatIdField)
@@ -165,6 +188,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        @SerialName(receiverUserIdField)
+        override val receiverUserId: UserId? = null,
+        @SerialName(callbackQueryIdField)
+        override val callbackQueryId: CallbackQueryId? = null,
         @SerialName(disableNotificationField)
         override val disableNotification: Boolean = false,
         @SerialName(protectContentField)
@@ -215,6 +242,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @OptIn(ExperimentalSerializationApi::class)
         @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        @SerialName(receiverUserIdField)
+        override val receiverUserId: UserId? = null,
+        @SerialName(callbackQueryIdField)
+        override val callbackQueryId: CallbackQueryId? = null,
         @SerialName(disableNotificationField)
         override val disableNotification: Boolean = false,
         @SerialName(protectContentField)
@@ -267,6 +298,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
             @SerialName(businessConnectionIdField)
             val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+            @SerialName(receiverUserIdField)
+            val receiverUserId: UserId? = null,
+            @SerialName(callbackQueryIdField)
+            val callbackQueryId: CallbackQueryId? = null,
             @SerialName(disableNotificationField)
             val disableNotification: Boolean = false,
             @SerialName(protectContentField)
@@ -297,6 +332,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     threadId = surrogate.threadId,
                     directMessageThreadId = surrogate.directMessageThreadId,
                     businessConnectionId = surrogate.businessConnectionId,
+                    receiverUserId = surrogate.receiverUserId,
+                    callbackQueryId = surrogate.callbackQueryId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
@@ -316,6 +353,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     threadId = surrogate.threadId,
                     directMessageThreadId = surrogate.directMessageThreadId,
                     businessConnectionId = surrogate.businessConnectionId,
+                    receiverUserId = surrogate.receiverUserId,
+                    callbackQueryId = surrogate.callbackQueryId,
                     disableNotification = surrogate.disableNotification,
                     protectContent = surrogate.protectContent,
                     allowPaidBroadcast = surrogate.allowPaidBroadcast,
@@ -340,6 +379,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
                     threadId = threadId,
                     directMessageThreadId = directMessageThreadId,
                     businessConnectionId = businessConnectionId,
+                    receiverUserId = receiverUserId,
+                    callbackQueryId = callbackQueryId,
                     disableNotification = disableNotification,
                     protectContent = protectContent,
                     allowPaidBroadcast = allowPaidBroadcast,

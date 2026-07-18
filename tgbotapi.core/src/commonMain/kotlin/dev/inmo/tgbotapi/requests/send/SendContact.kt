@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
@@ -36,6 +37,10 @@ data class SendContact(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(receiverUserIdField)
+    override val receiverUserId: UserId? = null,
+    @SerialName(callbackQueryIdField)
+    override val callbackQueryId: CallbackQueryId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -51,7 +56,8 @@ data class SendContact(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendContentMessageRequest<ChatContentMessage<ContactContent>>,
-    ReplyingMarkupSendMessageRequest<ChatContentMessage<ContactContent>>
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<ContactContent>>,
+    OptionallyEphemeralSendRequest
 {
     constructor(
         chatId: ChatIdentifier,
@@ -59,6 +65,8 @@ data class SendContact(
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = null,
+        callbackQueryId: CallbackQueryId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
@@ -74,6 +82,8 @@ data class SendContact(
         threadId,
         directMessageThreadId,
         businessConnectionId,
+        receiverUserId,
+        callbackQueryId,
         disableNotification,
         protectContent,
         allowPaidBroadcast,
@@ -95,6 +105,8 @@ fun Contact.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -108,6 +120,8 @@ fun Contact.toRequest(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

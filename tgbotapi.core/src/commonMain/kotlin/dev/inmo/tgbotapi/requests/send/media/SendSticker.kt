@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
@@ -22,6 +23,8 @@ fun SendSticker(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -36,6 +39,8 @@ fun SendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -74,6 +79,10 @@ data class SendStickerByFileId internal constructor(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(receiverUserIdField)
+    override val receiverUserId: UserId? = null,
+    @SerialName(callbackQueryIdField)
+    override val callbackQueryId: CallbackQueryId? = null,
     @SerialName(emojiField)
     val emoji: String? = null,
     @SerialName(disableNotificationField)
@@ -90,7 +99,7 @@ data class SendStickerByFileId internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ChatContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<StickerContent>> {
+) : SendContentMessageRequest<ChatContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<StickerContent>>, OptionallyEphemeralSendRequest {
     override fun method(): String = "sendSticker"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<StickerContent>>
         get() = commonResultDeserializer

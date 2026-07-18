@@ -1,12 +1,13 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
-import dev.inmo.tgbotapi.abstracts.WithMessageId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -19,9 +20,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ReplyParameters internal constructor(
     @SerialName(chatIdField)
-    val chatIdentifier: ChatIdentifier,
+    val chatIdentifier: ChatIdentifier?,
     @SerialName(messageIdField)
-    override val messageId: MessageId,
+    val messageId: MessageId?,
     @SerialName(allowSendingWithoutReplyField)
     val allowSendingWithoutReply: Boolean? = null,
     @SerialName(quoteField)
@@ -36,12 +37,35 @@ data class ReplyParameters internal constructor(
     val checklistTaskId: ChecklistTaskId? = null,
     @SerialName(pollOptionIdField)
     val pollOptionId: PollOptionPersistentId? = null,
-) : WithMessageId, TextedInput {
+    @SerialName(ephemeralMessageIdField)
+    val ephemeralMessageId: EphemeralMessageId? = null,
+) : TextedInput {
+    init {
+        require(messageId != null || ephemeralMessageId != null) {
+            "Either messageId or ephemeralMessageId must be specified for ReplyParameters"
+        }
+    }
+
     override val text: String?
         get() = quote
     override val textSources: List<TextSource> by lazy {
         quoteEntities ?.asTextSources(quote ?: return@lazy emptyList()) ?: emptyList()
     }
+
+    /**
+     * Builds [ReplyParameters] targeting an ephemeral message by its [ephemeralMessageId]. The reply itself must
+     * also be sent as ephemeral (see `receiverUserId` of the corresponding send request); [chatIdentifier] and
+     * [quote]-related fields are not supported for such replies.
+     */
+    constructor(
+        ephemeralMessageId: EphemeralMessageId,
+        allowSendingWithoutReply: Boolean? = null,
+    ) : this(
+        chatIdentifier = null,
+        messageId = null,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        ephemeralMessageId = ephemeralMessageId
+    )
 
     constructor(
         chatIdentifier: ChatIdentifier,
@@ -194,3 +218,23 @@ data class ReplyParameters internal constructor(
         pollOptionId
     )
 }
+
+/**
+ * Builds [ReplyParameters] targeting [this] ephemeral message (via its [PossiblyEphemeralMessage.ephemeralMessageId]),
+ * or `null` if [this] is not an ephemeral message. Used by `reply(to = ...)` helpers to automatically address a
+ * reply through `ephemeral_message_id` when the target message is itself ephemeral.
+ */
+fun Message.ephemeralReplyParametersOrNull(allowSendingWithoutReply: Boolean? = null): ReplyParameters? =
+    (this as? PossiblyEphemeralMessage) ?.ephemeralMessageId ?.let {
+        ReplyParameters(it, allowSendingWithoutReply)
+    }
+
+/**
+ * The [UserId] that should receive an ephemeral reply to [this] message (`null` if [this] is not ephemeral):
+ * the original ephemeral message's [PossiblyEphemeralMessage.receiverUser], falling back to the message sender
+ * ([OptionallyFromUserMessage.from]) when [PossiblyEphemeralMessage.receiverUser] is missing.
+ */
+val Message.ephemeralReplyReceiverUserIdOrNull: UserId?
+    get() = (this as? PossiblyEphemeralMessage) ?.takeIf { it.ephemeralMessageId != null } ?.let {
+        it.receiverUser ?.id ?: (this as? OptionallyFromUserMessage) ?.from ?.id
+    }

@@ -189,6 +189,11 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val cost: Int? = null,
     @SerialName(senderTagField)
     override val senderTag: UserTag? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : CommonGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -475,6 +480,11 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val cost: Int? = null,
     @SerialName(senderTagField)
     override val senderTag: UserTag? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : CommonForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -537,7 +547,12 @@ data class CommonChannelDirectMessagesContentMessageImpl<T : MessageContent>(
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
     @SerialName(senderTagField)
-    override val senderTag: UserTag? = null
+    override val senderTag: UserTag? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : CommonChannelDirectMessagesContentMessage<T> {
     constructor(
         chat: PreviewChannelDirectMessagesChat,
@@ -597,7 +612,12 @@ data class CommonSuggestedChannelDirectMessagesContentMessageImpl<T : MessageCon
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
     @SerialName(senderTagField)
-    override val senderTag: UserTag? = null
+    override val senderTag: UserTag? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : CommonSuggestedChannelDirectMessagesContentMessage<T> {
     constructor(
         chat: PreviewChannelDirectMessagesChat,

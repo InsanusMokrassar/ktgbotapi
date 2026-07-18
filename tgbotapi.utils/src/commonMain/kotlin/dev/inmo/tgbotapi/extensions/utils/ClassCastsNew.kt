@@ -371,6 +371,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.OptionallyFromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyGuestAnswerMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
@@ -2394,6 +2395,12 @@ public inline fun Message.possiblyForwardedMessageOrNull(): PossiblyForwardedMes
 public inline fun Message.possiblyForwardedMessageOrThrow(): PossiblyForwardedMessage = this as dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 
 public inline fun <T> Message.ifPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T): T? = possiblyForwardedMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyEphemeralMessageOrNull(): PossiblyEphemeralMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage
+
+public inline fun Message.possiblyEphemeralMessageOrThrow(): PossiblyEphemeralMessage = this as dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage
+
+public inline fun <T> Message.ifPossiblyEphemeralMessage(block: (PossiblyEphemeralMessage) -> T): T? = possiblyEphemeralMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyWithEffectMessageOrNull(): PossiblyWithEffectMessage? = this as? dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
 

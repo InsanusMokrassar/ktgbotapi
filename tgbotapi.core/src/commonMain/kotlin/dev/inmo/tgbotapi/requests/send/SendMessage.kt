@@ -30,6 +30,8 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -45,6 +47,8 @@ fun SendTextMessage(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     linkPreviewOptions = linkPreviewOptions,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -62,6 +66,8 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -77,6 +83,8 @@ fun SendTextMessage(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    callbackQueryId = callbackQueryId,
     linkPreviewOptions = linkPreviewOptions,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -108,6 +116,10 @@ data class SendTextMessage internal constructor(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(receiverUserIdField)
+    override val receiverUserId: UserId? = null,
+    @SerialName(callbackQueryIdField)
+    override val callbackQueryId: CallbackQueryId? = null,
     @SerialName(linkPreviewOptionsField)
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(disableNotificationField)
@@ -127,7 +139,8 @@ data class SendTextMessage internal constructor(
 ) : SendContentMessageRequest<ChatContentMessage<TextContent>>,
     ReplyingMarkupSendMessageRequest<ChatContentMessage<TextContent>>,
     TextableSendMessageRequest<ChatContentMessage<TextContent>>,
-    LinkPreviewOptionsContainer
+    LinkPreviewOptionsContainer,
+    OptionallyEphemeralSendRequest
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)

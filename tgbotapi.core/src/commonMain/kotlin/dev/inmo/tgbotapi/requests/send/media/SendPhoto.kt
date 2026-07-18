@@ -33,6 +33,8 @@ fun SendPhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -52,6 +54,8 @@ fun SendPhoto(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
+        receiverUserId = receiverUserId,
+        callbackQueryId = callbackQueryId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -79,6 +83,8 @@ fun SendPhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = null,
+    callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -98,6 +104,8 @@ fun SendPhoto(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
+        receiverUserId = receiverUserId,
+        callbackQueryId = callbackQueryId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -147,6 +155,10 @@ data class SendPhotoData internal constructor(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(receiverUserIdField)
+    override val receiverUserId: UserId? = null,
+    @SerialName(callbackQueryIdField)
+    override val callbackQueryId: CallbackQueryId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -166,7 +178,8 @@ data class SendPhotoData internal constructor(
     ReplyingMarkupSendMessageRequest<ChatContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ChatContentMessage<PhotoContent>>,
     WithCustomizableCaptionRequest<ChatContentMessage<PhotoContent>>,
-    OptionallyWithSpoilerRequest
+    OptionallyWithSpoilerRequest,
+    OptionallyEphemeralSendRequest
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
