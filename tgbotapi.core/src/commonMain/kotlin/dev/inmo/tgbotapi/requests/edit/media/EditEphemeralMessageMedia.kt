@@ -13,10 +13,14 @@ const val editEphemeralMessageMediaMethod = "editEphemeralMessageMedia"
 data class EditEphemeralMessageMedia(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId,
+    @EncodeDefault
+    override val receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(ephemeralMessageIdField)
-    override val ephemeralMessageId: EphemeralMessageId,
+    @EncodeDefault
+    override val ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(mediaField)
     override val media: TelegramFreeMedia,

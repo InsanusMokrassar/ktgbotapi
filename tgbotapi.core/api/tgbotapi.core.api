@@ -747,6 +747,7 @@ public final class dev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter$Defaul
 
 public final class dev/inmo/tgbotapi/requests/DeleteEphemeralMessage : dev/inmo/tgbotapi/abstracts/types/EphemeralMessageAction, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/DeleteEphemeralMessage$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
@@ -11004,6 +11005,10 @@ public final class dev/inmo/tgbotapi/types/BusinessChatId : dev/inmo/tgbotapi/ty
 	public final fun getChatIdWithBusinessConnectionId ()Lkotlin/Pair;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public static fun getDirectMessageThreadId-1osv_qQ (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getEphemeralMessageId-lUwSvXo (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public static fun getReceiverUser-impl (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static fun getThreadId-S3HF-10 (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun hashCode ()I
@@ -11059,6 +11064,10 @@ public final class dev/inmo/tgbotapi/types/ChatId : dev/inmo/tgbotapi/types/IdCh
 	public fun getChatId-iyD94Bc ()J
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public static fun getDirectMessageThreadId-1osv_qQ (J)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getEphemeralMessageId-lUwSvXo (J)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public static fun getReceiverUser-impl (J)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static fun getThreadId-S3HF-10 (J)Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun hashCode ()I
@@ -11088,6 +11097,10 @@ public final class dev/inmo/tgbotapi/types/ChatIdWithChannelDirectMessageThreadI
 	public synthetic fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDirectMessageThreadId-_JBF_Q4 ()J
 	public static fun getDirectMessageThreadId-_JBF_Q4 (Lkotlin/Pair;)J
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getEphemeralMessageId-lUwSvXo (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public static fun getReceiverUser-impl (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static fun getThreadId-S3HF-10 (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun hashCode ()I
@@ -11116,6 +11129,10 @@ public final class dev/inmo/tgbotapi/types/ChatIdWithThreadId : dev/inmo/tgbotap
 	public final fun getChatIdWithThreadId ()Lkotlin/Pair;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public static fun getDirectMessageThreadId-1osv_qQ (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getEphemeralMessageId-lUwSvXo (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public static fun getReceiverUser-impl (Lkotlin/Pair;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun getThreadId-hDmiKeI ()J
 	public static fun getThreadId-hDmiKeI (Lkotlin/Pair;)J
@@ -11145,6 +11162,8 @@ public final class dev/inmo/tgbotapi/types/ChatIdentifierKt {
 	public static final field managedBotNewBotUsername Ljava/lang/String;
 	public static final fun getBusinessConnectionId (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ljava/lang/String;
 	public static final fun getDirectMessageThreadId (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public static final fun getEphemeralMessageId (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static final fun getReceiverUser (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public static final fun getThreadId (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static final fun getUserLink (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
 	public static final fun getUserLink (Ldev/inmo/tgbotapi/types/chat/User;)Ljava/lang/String;
@@ -11157,6 +11176,8 @@ public final class dev/inmo/tgbotapi/types/ChatIdentifierKt {
 	public static final fun toChatId-0218hRU (J)J
 	public static final fun toChatIdWithChannelDirectMessageThreadId-KSqvWnI (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Lkotlin/Pair;
 	public static final fun toChatWithThreadId-krPZAoY (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Lkotlin/Pair;
+	public static final fun toEphemeralChatId-oQsLJhk (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;)Lkotlin/Triple;
+	public static synthetic fun toEphemeralChatId-oQsLJhk$default (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;ILjava/lang/Object;)Lkotlin/Triple;
 	public static final fun toUsername (Ljava/lang/String;)Ljava/lang/String;
 }
 
@@ -12506,6 +12527,39 @@ public final class dev/inmo/tgbotapi/types/EffectId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/EphemeralChatId : dev/inmo/tgbotapi/types/IdChatIdentifier {
+	public static final field Companion Ldev/inmo/tgbotapi/types/EphemeralChatId$Companion;
+	public static final synthetic fun box-impl (Lkotlin/Triple;)Ldev/inmo/tgbotapi/types/EphemeralChatId;
+	public static fun constructor-impl (JLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;)Lkotlin/Triple;
+	public static fun constructor-impl (Lkotlin/Triple;)Lkotlin/Triple;
+	public static synthetic fun constructor-impl$default (JLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;ILkotlin/jvm/internal/DefaultConstructorMarker;)Lkotlin/Triple;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Lkotlin/Triple;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Lkotlin/Triple;Lkotlin/Triple;)Z
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public static fun getBusinessConnectionId-nXr5wdE (Lkotlin/Triple;)Ljava/lang/String;
+	public fun getChatId-iyD94Bc ()J
+	public static fun getChatId-iyD94Bc (Lkotlin/Triple;)J
+	public final fun getChatIdWithReceiverUserAndEphemeralMessageId ()Lkotlin/Triple;
+	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public static fun getDirectMessageThreadId-1osv_qQ (Lkotlin/Triple;)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getEphemeralMessageId-lUwSvXo (Lkotlin/Triple;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public static fun getReceiverUser-impl (Lkotlin/Triple;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
+	public static fun getThreadId-S3HF-10 (Lkotlin/Triple;)Ldev/inmo/tgbotapi/types/MessageThreadId;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Lkotlin/Triple;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Lkotlin/Triple;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Lkotlin/Triple;
+}
+
+public final class dev/inmo/tgbotapi/types/EphemeralChatId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/EphemeralMessageId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/EphemeralMessageId$Companion;
 	public static final synthetic fun box-impl (J)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
@@ -12656,6 +12710,8 @@ public abstract interface class dev/inmo/tgbotapi/types/IdChatIdentifier : dev/i
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public abstract fun getChatId-iyD94Bc ()J
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public fun getReceiverUser ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
 
@@ -12664,12 +12720,16 @@ public final class dev/inmo/tgbotapi/types/IdChatIdentifier$Companion {
 	public static synthetic fun invoke-2eCI0EE$default (Ldev/inmo/tgbotapi/types/IdChatIdentifier$Companion;JLdev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun invoke-8eqqXtU (JJ)Lkotlin/Pair;
 	public final fun invoke-bxO6wVA (JLjava/lang/String;)Lkotlin/Pair;
+	public final fun invoke-qw8KcVY (JLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;)Lkotlin/Triple;
+	public static synthetic fun invoke-qw8KcVY$default (Ldev/inmo/tgbotapi/types/IdChatIdentifier$Companion;JLdev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/EphemeralMessageId;ILjava/lang/Object;)Lkotlin/Triple;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/IdChatIdentifier$DefaultImpls {
 	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
 	public static fun getDirectMessageThreadId-1osv_qQ (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
+	public static fun getEphemeralMessageId-lUwSvXo (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/EphemeralMessageId;
+	public static fun getReceiverUser (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public static fun getThreadId-S3HF-10 (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
 

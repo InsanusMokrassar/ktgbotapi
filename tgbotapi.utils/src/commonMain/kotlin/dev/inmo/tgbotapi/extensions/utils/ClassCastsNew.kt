@@ -43,6 +43,7 @@ import dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
 import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
+import dev.inmo.tgbotapi.types.EphemeralChatId
 import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
@@ -3125,6 +3126,12 @@ public inline fun ChatIdentifier.businessChatIdOrNull(): BusinessChatId? = this 
 public inline fun ChatIdentifier.businessChatIdOrThrow(): BusinessChatId = this as dev.inmo.tgbotapi.types.BusinessChatId
 
 public inline fun <T> ChatIdentifier.ifBusinessChatId(block: (BusinessChatId) -> T): T? = businessChatIdOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.ephemeralChatIdOrNull(): EphemeralChatId? = this as? dev.inmo.tgbotapi.types.EphemeralChatId
+
+public inline fun ChatIdentifier.ephemeralChatIdOrThrow(): EphemeralChatId = this as dev.inmo.tgbotapi.types.EphemeralChatId
+
+public inline fun <T> ChatIdentifier.ifEphemeralChatId(block: (EphemeralChatId) -> T): T? = ephemeralChatIdOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.usernameOrNull(): Username? = this as? dev.inmo.tgbotapi.types.Username
 

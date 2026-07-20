@@ -1439,6 +1439,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun encryptedPassportElementWithTranslatableIDDocumentOrThrow (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/EncryptedPassportElementWithTranslatableIDDocument;
 	public static final fun encryptedPersonalDetailsOrNull (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/EncryptedPersonalDetails;
 	public static final fun encryptedPersonalDetailsOrThrow (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/EncryptedPersonalDetails;
+	public static final fun ephemeralChatIdOrNull (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Lkotlin/Triple;
+	public static final fun ephemeralChatIdOrThrow (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Lkotlin/Triple;
 	public static final fun exactScheduledCloseInfoOrNull (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/ExactScheduledCloseInfo;
 	public static final fun exactScheduledCloseInfoOrThrow (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/ExactScheduledCloseInfo;
 	public static final fun expandableBlockquoteTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/ExpandableBlockquoteTextSource;
@@ -1794,6 +1796,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifEncryptedPassportElementWithTranslatableFilesCollection (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEncryptedPassportElementWithTranslatableIDDocument (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEncryptedPersonalDetails (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifEphemeralChatId (Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExactScheduledCloseInfo (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExpandableBlockquoteTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedBot (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;

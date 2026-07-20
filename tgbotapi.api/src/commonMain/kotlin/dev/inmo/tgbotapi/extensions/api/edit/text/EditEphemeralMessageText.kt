@@ -17,8 +17,8 @@ import dev.inmo.tgbotapi.utils.buildEntities
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -33,8 +33,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chat: Chat,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -47,8 +47,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -62,8 +62,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chat: Chat,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -75,8 +75,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -89,8 +89,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -103,8 +103,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chat: Chat,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -117,8 +117,8 @@ public suspend fun TelegramBot.editEphemeralMessageText(
  */
 public suspend fun TelegramBot.editEphemeralMessageText(
     chat: Chat,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,

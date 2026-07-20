@@ -45,6 +45,8 @@ public final class dev/inmo/tgbotapi/extensions/api/DeleteEphemeralMessageKt {
 	public static final fun deleteEphemeralMessage (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyEphemeralMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun deleteEphemeralMessage-5cqYris (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun deleteEphemeralMessage-5cqYris (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun deleteEphemeralMessage-5cqYris$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun deleteEphemeralMessage-5cqYris$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/DeleteMessageKt {

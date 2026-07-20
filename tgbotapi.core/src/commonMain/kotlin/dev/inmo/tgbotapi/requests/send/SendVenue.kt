@@ -46,7 +46,7 @@ data class SendVenue(
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId? = null,
+    override val receiverUserId: UserId? = chatId.receiverUser,
     @SerialName(callbackQueryIdField)
     override val callbackQueryId: CallbackQueryId? = null,
     @SerialName(disableNotificationField)
@@ -75,7 +75,7 @@ data class SendVenue(
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-        receiverUserId: UserId? = null,
+        receiverUserId: UserId? = chatId.receiverUser,
         callbackQueryId: CallbackQueryId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
@@ -120,7 +120,7 @@ fun Venue.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = null,
+    receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,

@@ -12,8 +12,8 @@ import dev.inmo.tgbotapi.types.chat.Chat
  */
 public suspend fun TelegramBot.editEphemeralMessageReplyMarkup(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
     EditEphemeralMessageReplyMarkup(chatId, receiverUserId, ephemeralMessageId, replyMarkup)
@@ -25,7 +25,7 @@ public suspend fun TelegramBot.editEphemeralMessageReplyMarkup(
  */
 public suspend fun TelegramBot.editEphemeralMessageReplyMarkup(
     chat: Chat,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageReplyMarkup(chat.id, receiverUserId, ephemeralMessageId, replyMarkup)

@@ -17,8 +17,8 @@ const val editEphemeralMessageTextMethod = "editEphemeralMessageText"
 
 fun EditEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -36,8 +36,8 @@ fun EditEphemeralMessageText(
 
 fun EditEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -57,10 +57,14 @@ fun EditEphemeralMessageText(
 data class EditEphemeralMessageText internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId,
+    @EncodeDefault
+    override val receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    @OptIn(ExperimentalSerializationApi::class)
     @SerialName(ephemeralMessageIdField)
-    override val ephemeralMessageId: EphemeralMessageId,
+    @EncodeDefault
+    override val ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)

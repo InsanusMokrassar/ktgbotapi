@@ -17,6 +17,10 @@ import dev.inmo.tgbotapi.types.message.content.*
  * [dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage] target automatically). The outgoing message
  * is itself sent as ephemeral, addressed to the same [receiverUserId] as the message being replied to.
  *
+ * Both `receiverUserId` and `ephemeralMessageId` default from [chatId] when it is (or carries) an
+ * [dev.inmo.tgbotapi.types.EphemeralChatId] (see [dev.inmo.tgbotapi.types.receiverUser] and
+ * [dev.inmo.tgbotapi.types.ephemeralMessageId]); otherwise they must be passed explicitly.
+ *
  * @see dev.inmo.tgbotapi.types.ephemeralReplyParametersOrNull
  */
 
@@ -26,8 +30,8 @@ import dev.inmo.tgbotapi.types.message.content.*
  */
 public suspend fun TelegramBot.replyToEphemeral(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     text: String,
     parseMode: ParseMode? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -43,8 +47,8 @@ public suspend fun TelegramBot.replyToEphemeral(
 
 public suspend fun TelegramBot.replyToEphemeralWithPhoto(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     photo: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -62,8 +66,8 @@ public suspend fun TelegramBot.replyToEphemeralWithPhoto(
 
 public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     livePhoto: InputFile,
     photo: InputFile,
     text: String? = null,
@@ -83,8 +87,8 @@ public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
 
 public suspend fun TelegramBot.replyToEphemeralWithAudio(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     audio: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -102,8 +106,8 @@ public suspend fun TelegramBot.replyToEphemeralWithAudio(
 
 public suspend fun TelegramBot.replyToEphemeralWithDocument(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     document: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -121,8 +125,8 @@ public suspend fun TelegramBot.replyToEphemeralWithDocument(
 
 public suspend fun TelegramBot.replyToEphemeralWithVideo(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     video: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -140,8 +144,8 @@ public suspend fun TelegramBot.replyToEphemeralWithVideo(
 
 public suspend fun TelegramBot.replyToEphemeralWithAnimation(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     animation: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -159,8 +163,8 @@ public suspend fun TelegramBot.replyToEphemeralWithAnimation(
 
 public suspend fun TelegramBot.replyToEphemeralWithVoice(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     voice: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -178,8 +182,8 @@ public suspend fun TelegramBot.replyToEphemeralWithVoice(
 
 public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     videoNote: InputFile,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -193,8 +197,8 @@ public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
 
 public suspend fun TelegramBot.replyToEphemeralWithSticker(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     sticker: InputFile,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -211,8 +215,8 @@ public suspend fun TelegramBot.replyToEphemeralWithSticker(
  */
 public suspend fun TelegramBot.replyToEphemeralWithLocation(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     latitude: Double,
     longitude: Double,
     allowSendingWithoutReply: Boolean? = null,
@@ -228,8 +232,8 @@ public suspend fun TelegramBot.replyToEphemeralWithLocation(
 
 public suspend fun TelegramBot.replyToEphemeralWithVenue(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     latitude: Double,
     longitude: Double,
     title: String,
@@ -249,8 +253,8 @@ public suspend fun TelegramBot.replyToEphemeralWithVenue(
 
 public suspend fun TelegramBot.replyToEphemeralWithContact(
     chatId: ChatIdentifier,
-    receiverUserId: UserId,
-    ephemeralMessageId: EphemeralMessageId,
+    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
