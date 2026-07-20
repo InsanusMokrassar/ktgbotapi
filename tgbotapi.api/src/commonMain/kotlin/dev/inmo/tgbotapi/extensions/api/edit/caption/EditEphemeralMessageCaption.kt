@@ -14,8 +14,8 @@ import dev.inmo.tgbotapi.types.chat.Chat
  */
 public suspend fun TelegramBot.editEphemeralMessageCaption(
     chatId: ChatIdentifier,
-    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     caption: String? = null,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -24,13 +24,34 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
 )
 
 /**
+ * Convenience overload sourcing `receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
+ *
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+public suspend fun TelegramBot.editEphemeralMessageCaption(
+    chatId: EphemeralChatId,
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = editEphemeralMessageCaption(
+    chatId,
+    chatId.receiverUser,
+    requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    caption,
+    parseMode,
+    replyMarkup
+)
+
+/**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
 public suspend fun TelegramBot.editEphemeralMessageCaption(
     chat: Chat,
-    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     caption: String? = null,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -42,12 +63,31 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
  */
 public suspend fun TelegramBot.editEphemeralMessageCaption(
     chatId: ChatIdentifier,
-    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
     EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, entities, replyMarkup)
+)
+
+/**
+ * Convenience overload sourcing `receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
+ *
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+public suspend fun TelegramBot.editEphemeralMessageCaption(
+    chatId: EphemeralChatId,
+    entities: TextSourcesList,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = editEphemeralMessageCaption(
+    chatId,
+    chatId.receiverUser,
+    requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    entities,
+    replyMarkup
 )
 
 /**
@@ -56,8 +96,8 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
  */
 public suspend fun TelegramBot.editEphemeralMessageCaption(
     chat: Chat,
-    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, entities, replyMarkup)

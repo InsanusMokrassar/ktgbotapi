@@ -17,8 +17,8 @@ const val editEphemeralMessageTextMethod = "editEphemeralMessageText"
 
 fun EditEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -35,9 +35,25 @@ fun EditEphemeralMessageText(
 )
 
 fun EditEphemeralMessageText(
+    chatId: EphemeralChatId,
+    text: String,
+    parseMode: ParseMode? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = EditEphemeralMessageText(
+    chatId = chatId,
+    receiverUserId = chatId.receiverUser,
+    ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    text = text,
+    parseMode = parseMode,
+    linkPreviewOptions = linkPreviewOptions,
+    replyMarkup = replyMarkup
+)
+
+fun EditEphemeralMessageText(
     chatId: ChatIdentifier,
-    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -52,6 +68,20 @@ fun EditEphemeralMessageText(
     replyMarkup = replyMarkup
 )
 
+fun EditEphemeralMessageText(
+    chatId: EphemeralChatId,
+    entities: TextSourcesList,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = EditEphemeralMessageText(
+    chatId = chatId,
+    receiverUserId = chatId.receiverUser,
+    ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    entities = entities,
+    linkPreviewOptions = linkPreviewOptions,
+    replyMarkup = replyMarkup
+)
+
 @ConsistentCopyVisibility
 @Serializable
 data class EditEphemeralMessageText internal constructor(
@@ -60,11 +90,11 @@ data class EditEphemeralMessageText internal constructor(
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(receiverUserIdField)
     @EncodeDefault
-    override val receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    override val receiverUserId: UserId,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(ephemeralMessageIdField)
     @EncodeDefault
-    override val ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    override val ephemeralMessageId: EphemeralMessageId,
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)

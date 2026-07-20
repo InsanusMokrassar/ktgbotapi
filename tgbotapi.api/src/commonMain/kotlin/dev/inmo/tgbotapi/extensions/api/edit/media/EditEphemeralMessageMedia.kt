@@ -13,12 +13,27 @@ import dev.inmo.tgbotapi.types.chat.Chat
  */
 public suspend fun TelegramBot.editEphemeralMessageMedia(
     chatId: ChatIdentifier,
-    receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
     EditEphemeralMessageMedia(chatId, receiverUserId, ephemeralMessageId, media, replyMarkup)
+)
+
+/**
+ * Convenience overload sourcing `receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
+ *
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+public suspend fun TelegramBot.editEphemeralMessageMedia(
+    chatId: EphemeralChatId,
+    media: TelegramFreeMedia,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = execute(
+    EditEphemeralMessageMedia(chatId, media, replyMarkup)
 )
 
 /**
@@ -27,8 +42,8 @@ public suspend fun TelegramBot.editEphemeralMessageMedia(
  */
 public suspend fun TelegramBot.editEphemeralMessageMedia(
     chat: Chat,
-    receiverUserId: UserId = requireNotNull(chat.id.receiverUser) { "receiverUserId was not provided and chat.id (${chat.id}) is not an EphemeralChatId" },
-    ephemeralMessageId: EphemeralMessageId = requireNotNull(chat.id.ephemeralMessageId) { "ephemeralMessageId was not provided and chat.id (${chat.id}) does not carry an ephemeralMessageId" },
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
     media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageMedia(chat.id, receiverUserId, ephemeralMessageId, media, replyMarkup)

@@ -15,14 +15,23 @@ data class EditEphemeralMessageReplyMarkup(
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(receiverUserIdField)
     @EncodeDefault
-    override val receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    override val receiverUserId: UserId,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(ephemeralMessageIdField)
     @EncodeDefault
-    override val ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    override val ephemeralMessageId: EphemeralMessageId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditEphemeralMessage, EditReplyMessage {
+    constructor(
+        chatId: EphemeralChatId,
+        replyMarkup: InlineKeyboardMarkup? = null
+    ): this(
+        chatId,
+        chatId.receiverUser,
+        requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+        replyMarkup
+    )
 
     override fun method(): String = editEphemeralMessageReplyMarkupMethod
     override val requestSerializer: SerializationStrategy<*>

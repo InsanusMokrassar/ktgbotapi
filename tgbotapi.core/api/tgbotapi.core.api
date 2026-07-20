@@ -747,8 +747,8 @@ public final class dev/inmo/tgbotapi/bot/settings/limiters/RequestLimiter$Defaul
 
 public final class dev/inmo/tgbotapi/requests/DeleteEphemeralMessage : dev/inmo/tgbotapi/abstracts/types/EphemeralMessageAction, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/DeleteEphemeralMessage$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-TazDcj0 ()J
@@ -4826,6 +4826,10 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageC
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaptionKt {
 	public static final field editEphemeralMessageCaptionMethod Ljava/lang/String;
+	public static final fun EditEphemeralMessageCaption-5oOaHaE (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-5oOaHaE$default (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static final fun EditEphemeralMessageCaption-6OjyHG8 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-6OjyHG8$default (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
 	public static final fun EditEphemeralMessageCaption-KsEWIr0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
 	public static synthetic fun EditEphemeralMessageCaption-KsEWIr0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
 	public static final fun EditEphemeralMessageCaption-NM4o_PA (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
@@ -5146,6 +5150,8 @@ public final class dev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMed
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-TazDcj0 ()J
@@ -5302,6 +5308,8 @@ public final class dev/inmo/tgbotapi/requests/edit/reply_markup/EditEphemeralMes
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditEphemeralMessageReplyMarkup$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-TazDcj0 ()J
@@ -5476,6 +5484,10 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText
 
 public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageTextKt {
 	public static final field editEphemeralMessageTextMethod Ljava/lang/String;
+	public static final fun EditEphemeralMessageText-6OjyHG8 (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static synthetic fun EditEphemeralMessageText-6OjyHG8$default (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static final fun EditEphemeralMessageText-7Bto7E0 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static synthetic fun EditEphemeralMessageText-7Bto7E0$default (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static final fun EditEphemeralMessageText-8nKsyN0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static synthetic fun EditEphemeralMessageText-8nKsyN0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static final fun EditEphemeralMessageText-KsEWIr0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;

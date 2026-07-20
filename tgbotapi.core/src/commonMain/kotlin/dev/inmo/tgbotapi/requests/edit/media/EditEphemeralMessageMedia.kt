@@ -16,17 +16,28 @@ data class EditEphemeralMessageMedia(
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(receiverUserIdField)
     @EncodeDefault
-    override val receiverUserId: UserId = requireNotNull(chatId.receiverUser) { "receiverUserId was not provided and chatId ($chatId) is not an EphemeralChatId" },
+    override val receiverUserId: UserId,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(ephemeralMessageIdField)
     @EncodeDefault
-    override val ephemeralMessageId: EphemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "ephemeralMessageId was not provided and chatId ($chatId) does not carry an ephemeralMessageId" },
+    override val ephemeralMessageId: EphemeralMessageId,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @SerialName(mediaField)
     override val media: TelegramFreeMedia,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditEphemeralMessage, EditReplyMessage, EditMediaMessage {
+    constructor(
+        chatId: EphemeralChatId,
+        media: TelegramFreeMedia,
+        replyMarkup: InlineKeyboardMarkup? = null
+    ): this(
+        chatId,
+        chatId.receiverUser,
+        requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+        media,
+        replyMarkup
+    )
 
     init {
         require(media.file !is MultipartFile) {
