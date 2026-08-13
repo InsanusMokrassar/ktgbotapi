@@ -311,7 +311,7 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
-    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Chat(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -353,6 +353,6 @@ public suspend inline fun TelegramBot.replyWithLiveLocation(
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
-    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Chat(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )

@@ -192,7 +192,7 @@ sealed interface ResendableContent {
         effectId = effectId,
         suggestedPostParameters = suggestedPostParameters,
         replyParameters = replyToMessageId ?.let {
-            ReplyParameters(
+            ReplyParameters.Chat(
                 chatId,
                 replyToMessageId,
                 allowSendingWithoutReply = allowSendingWithoutReply

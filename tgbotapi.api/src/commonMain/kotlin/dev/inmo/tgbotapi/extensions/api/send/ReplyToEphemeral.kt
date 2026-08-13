@@ -41,7 +41,7 @@ public suspend fun TelegramBot.replyToEphemeral(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -83,7 +83,7 @@ public suspend fun TelegramBot.replyToEphemeralWithPhoto(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -126,7 +126,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -169,7 +169,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAudio(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -210,7 +210,7 @@ public suspend fun TelegramBot.replyToEphemeralWithDocument(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -251,7 +251,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideo(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -292,7 +292,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAnimation(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -333,7 +333,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVoice(
     text = text,
     parseMode = parseMode,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -370,7 +370,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
     chatId = chatId,
     videoNote = videoNote,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -403,7 +403,7 @@ public suspend fun TelegramBot.replyToEphemeralWithSticker(
     chatId = chatId,
     sticker = sticker,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -441,7 +441,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLocation(
     latitude = latitude,
     longitude = longitude,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -483,7 +483,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVenue(
     title = title,
     address = address,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 
@@ -526,7 +526,7 @@ public suspend fun TelegramBot.replyToEphemeralWithContact(
     firstName = firstName,
     lastName = lastName,
     receiverUserId = receiverUserId,
-    replyParameters = ReplyParameters(ephemeralMessageId, allowSendingWithoutReply),
+    replyParameters = ReplyParameters.Ephemeral(ephemeralMessageId, allowSendingWithoutReply),
     replyMarkup = replyMarkup
 )
 

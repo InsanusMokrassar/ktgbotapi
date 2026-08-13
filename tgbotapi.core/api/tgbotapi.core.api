@@ -15313,17 +15313,21 @@ public final class dev/inmo/tgbotapi/types/ReplyInfo$ToStory$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/abstracts/TextedInput {
+public abstract interface class dev/inmo/tgbotapi/types/ReplyParameters {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;
-	public synthetic fun <init> (JLjava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public abstract fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
+	public abstract fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
+}
+
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/ReplyParameters {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyParameters$Chat$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageId;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -15337,20 +15341,21 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/a
 	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
-	public final fun component2-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
+	public final fun component2-APLFQys ()J
 	public final fun component3 ()Ljava/lang/Boolean;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun component9-y3a_nt8 ()Ljava/lang/String;
+	public final fun copy-LVJNs80 (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun copy-LVJNs80$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
+	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getChatIdentifier ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun getChecklistTaskId-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
-	public final fun getEphemeralMessageId-lUwSvXo ()Ldev/inmo/tgbotapi/types/EphemeralMessageId;
-	public final fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
+	public fun getMessageId-APLFQys ()J
+	public synthetic fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
 	public final fun getPollOptionId-y3a_nt8 ()Ljava/lang/String;
 	public final fun getQuote ()Ljava/lang/String;
 	public final fun getQuoteParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -15361,19 +15366,41 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters : dev/inmo/tgbotapi/a
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class dev/inmo/tgbotapi/types/ReplyParameters$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ReplyParameters$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/ReplyParameters;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/ReplyParameters$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Ephemeral : dev/inmo/tgbotapi/types/ReplyParameters {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyParameters$Ephemeral$Companion;
+	public synthetic fun <init> (JLjava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-TazDcj0 ()J
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun copy-DIpU5II (JLjava/lang/Boolean;)Ldev/inmo/tgbotapi/types/ReplyParameters$Ephemeral;
+	public static synthetic fun copy-DIpU5II$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Ephemeral;JLjava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Ephemeral;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
+	public final fun getEphemeralMessageId-TazDcj0 ()J
+	public fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Ephemeral$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ReplyParameters$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/ReplyParameters;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/ReplyParametersKt {
