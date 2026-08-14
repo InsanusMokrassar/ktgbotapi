@@ -15319,27 +15319,9 @@ public abstract interface class dev/inmo/tgbotapi/types/ReplyParameters {
 	public abstract fun getMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
 }
 
-public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/ReplyParameters {
+public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/abstracts/WithMessageId, dev/inmo/tgbotapi/types/ReplyParameters {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ReplyParameters$Chat$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2-APLFQys ()J
 	public final fun component3 ()Ljava/lang/Boolean;
@@ -15348,8 +15330,6 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat : dev/inmo/tgbot
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8-Wby8Lsc ()Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;
 	public final fun component9-y3a_nt8 ()Ljava/lang/String;
-	public final fun copy-LVJNs80 (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
-	public static synthetic fun copy-LVJNs80$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getChatIdentifier ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
@@ -15371,6 +15351,24 @@ public final class dev/inmo/tgbotapi/types/ReplyParameters$Chat$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/ReplyParameters$Companion {
+	public final fun invoke-0u1beqo (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-0u1beqo$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-BPLC4m8 (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-BPLC4m8$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-HmWr8k0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-HmWr8k0$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-SSz3Fa8 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-SSz3Fa8$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-YCjLccs (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-YCjLccs$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-Z5nmqEk (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-Z5nmqEk$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-_9xweQk (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-_9xweQk$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-sl8XBEg (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-sl8XBEg$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public final fun invoke-yfm4f28 (Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
+	public static synthetic fun invoke-yfm4f28$default (Ldev/inmo/tgbotapi/types/ReplyParameters$Companion;Lkotlin/Triple;Ljava/lang/Boolean;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/checklists/ChecklistTaskId;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/ReplyParameters$Chat;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

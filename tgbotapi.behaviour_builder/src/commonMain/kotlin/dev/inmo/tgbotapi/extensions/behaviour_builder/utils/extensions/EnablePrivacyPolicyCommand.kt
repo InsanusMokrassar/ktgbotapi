@@ -67,7 +67,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
             it.chat.id,
             textSources,
             allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = ReplyParameters.Chat(it.metaInfo)
+            replyParameters = ReplyParameters(it.metaInfo)
         )
     )
 }
@@ -100,7 +100,7 @@ suspend fun <BC : BehaviourContext> BC.onCommandPrivacy(
             text = text,
             parseMode = parseMode,
             allowPaidBroadcast = allowPaidBroadcast,
-            replyParameters = ReplyParameters.Chat(it.metaInfo)
+            replyParameters = ReplyParameters(it.metaInfo)
         )
     )
 }

@@ -16,7 +16,7 @@ class ReplyParametersSerializationTest {
 
     @Test
     fun chatRoundTripUsesFlatShape() {
-        val value: ReplyParameters = ReplyParameters.Chat(
+        val value: ReplyParameters = ReplyParameters(
             ChatId(RawChatId(123L)),
             MessageId(456L),
             allowSendingWithoutReply = true

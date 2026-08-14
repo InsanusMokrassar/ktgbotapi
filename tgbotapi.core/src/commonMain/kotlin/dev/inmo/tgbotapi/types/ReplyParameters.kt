@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
+import dev.inmo.tgbotapi.abstracts.WithMessageId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -28,7 +29,8 @@ sealed interface ReplyParameters {
 
     /**
      * Reply parameters targeting a regular message identified by [messageId]. A `null` [chatIdentifier] targets a
-     * message in the current chat; a non-null [chatIdentifier] targets a message in a different chat.
+     * message in the current chat; a non-null [chatIdentifier] targets a message in a different chat. Public
+     * construction uses the `ReplyParameters(...)` companion factories.
      */
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @ConsistentCopyVisibility
@@ -43,46 +45,12 @@ sealed interface ReplyParameters {
         val quotePosition: Int? = null,
         val checklistTaskId: ChecklistTaskId? = null,
         val pollOptionId: PollOptionPersistentId? = null,
-    ) : ReplyParameters, TextedInput {
+    ) : WithMessageId, ReplyParameters, TextedInput {
         override val text: String?
             get() = quote
         override val textSources: List<TextSource> by lazy {
             quoteEntities ?.asTextSources(quote ?: return@lazy emptyList()) ?: emptyList()
         }
-
-        constructor(
-            chatIdentifier: ChatIdentifier,
-            messageId: MessageId,
-            entities: TextSourcesList,
-            allowSendingWithoutReply: Boolean? = null,
-            quotePosition: Int? = null,
-            checklistTaskId: ChecklistTaskId? = null,
-            pollOptionId: PollOptionPersistentId? = null,
-        ) : this(chatIdentifier, messageId, allowSendingWithoutReply, entities.makeSourceString(), null, entities.toRawMessageEntities(), quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(metaInfo: Message.MetaInfo, entities: TextSourcesList, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(metaInfo.chatId, metaInfo.messageId, entities, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(message: Message, entities: TextSourcesList, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(message.metaInfo, entities, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(chatIdentifier: ChatIdentifier, messageId: MessageId, quote: String, quoteParseMode: ParseMode, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(chatIdentifier, messageId, allowSendingWithoutReply, quote, quoteParseMode, null, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(metaInfo: Message.MetaInfo, quote: String, quoteParseMode: ParseMode, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(metaInfo.chatId, metaInfo.messageId, quote, quoteParseMode, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(message: Message, quote: String, quoteParseMode: ParseMode, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(message.metaInfo, quote, quoteParseMode, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(chatIdentifier: ChatIdentifier, messageId: MessageId, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(chatIdentifier, messageId, allowSendingWithoutReply, null, null, null, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(metaInfo: Message.MetaInfo, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(metaInfo.chatId, metaInfo.messageId, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
-
-        constructor(message: Message, allowSendingWithoutReply: Boolean? = null, quotePosition: Int? = null, checklistTaskId: ChecklistTaskId? = null, pollOptionId: PollOptionPersistentId? = null) :
-            this(message.metaInfo, allowSendingWithoutReply, quotePosition, checklistTaskId, pollOptionId)
     }
 
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -96,6 +64,167 @@ sealed interface ReplyParameters {
         override val allowSendingWithoutReply: Boolean? = null,
     ) : ReplyParameters {
         override val messageId: MessageId? = null
+    }
+
+    companion object {
+        operator fun invoke(
+            chatIdentifier: ChatIdentifier,
+            messageId: MessageId,
+            entities: TextSourcesList,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = Chat(
+            chatIdentifier,
+            messageId,
+            allowSendingWithoutReply,
+            entities.makeSourceString(),
+            null,
+            entities.toRawMessageEntities(),
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            metaInfo: Message.MetaInfo,
+            entities: TextSourcesList,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            metaInfo.chatId,
+            metaInfo.messageId,
+            entities,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            message: Message,
+            entities: TextSourcesList,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            message.metaInfo,
+            entities,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            chatIdentifier: ChatIdentifier,
+            messageId: MessageId,
+            quote: String,
+            quoteParseMode: ParseMode,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = Chat(
+            chatIdentifier,
+            messageId,
+            allowSendingWithoutReply,
+            quote,
+            quoteParseMode,
+            null,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            metaInfo: Message.MetaInfo,
+            quote: String,
+            quoteParseMode: ParseMode,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            metaInfo.chatId,
+            metaInfo.messageId,
+            quote,
+            quoteParseMode,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            message: Message,
+            quote: String,
+            quoteParseMode: ParseMode,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            message.metaInfo,
+            quote,
+            quoteParseMode,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            chatIdentifier: ChatIdentifier,
+            messageId: MessageId,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = Chat(
+            chatIdentifier,
+            messageId,
+            allowSendingWithoutReply,
+            null,
+            null,
+            null,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            metaInfo: Message.MetaInfo,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            metaInfo.chatId,
+            metaInfo.messageId,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
+
+        operator fun invoke(
+            message: Message,
+            allowSendingWithoutReply: Boolean? = null,
+            quotePosition: Int? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Chat = invoke(
+            message.metaInfo,
+            allowSendingWithoutReply,
+            quotePosition,
+            checklistTaskId,
+            pollOptionId
+        )
     }
 
     object Serializer : KSerializer<ReplyParameters> {

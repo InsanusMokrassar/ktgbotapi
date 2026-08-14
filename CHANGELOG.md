@@ -6,11 +6,11 @@
 
 **Breaking changes**:
 
-* `ReplyParameters` is now a sealed interface with nested `ReplyParameters.Chat` and `ReplyParameters.Ephemeral` implementations; migrate regular-message constructor calls to `ReplyParameters.Chat(...)` and ephemeral-message constructor calls to `ReplyParameters.Ephemeral(...)`
+* `ReplyParameters` is now a sealed interface with nested `ReplyParameters.Chat` and `ReplyParameters.Ephemeral` implementations; regular-message construction uses `ReplyParameters(...)` companion factories returning `ReplyParameters.Chat`, and ephemeral-message construction uses `ReplyParameters.Ephemeral(...)`
 * The 4 group-family message implementations (`CommonGroupContentMessageImpl`, `CommonForumContentMessageImpl`, `CommonChannelDirectMessagesContentMessageImpl`, `CommonSuggestedChannelDirectMessagesContentMessageImpl`) gained trailing `receiverUser`/`ephemeralMessageId` primary-constructor parameters (defaulted to `null`) — positional construction of these classes must be updated
 * `reply(to = ...)` overloads for the 13 ephemeral-capable senders (see below) now detect an ephemeral `to` target (`to is PossiblyEphemeralMessage && to.ephemeralMessageId != null`) and automatically address the reply through `ephemeral_message_id`, sending the outgoing message itself as ephemeral to the same receiver — this is a behavior change for any existing code that replies to a message carrying a non-null `ephemeralMessageId`
 
-**Migration advice**: Replace `ReplyParameters(...)` with `ReplyParameters.Chat(...)` for chat messages or `ReplyParameters.Ephemeral(...)` for ephemeral messages; pass `receiverUser`/`ephemeralMessageId` explicitly (or rely on their `null` default) when constructing the 4 group-family message implementations positionally
+**Migration advice**: Keep `ReplyParameters(...)` for chat messages or use `ReplyParameters.Ephemeral(...)` for ephemeral messages; pass `receiverUser`/`ephemeralMessageId` explicitly (or rely on their `null` default) when constructing the 4 group-family message implementations positionally
 
 * `Core`:
     * (`Rich Messages`) Added `InputRichBlock` hierarchy with all 21 `InputRichBlock*` types (mirroring the received `RichBlock*` hierarchy and reusing `RichText`/`RichBlockCaption`/`RichBlockTableCell`), the label-less `InputRichBlockListItem` and the `InputRichBlockSerializer`; every `InputRichBlock` exposes `subBlocks` navigation
