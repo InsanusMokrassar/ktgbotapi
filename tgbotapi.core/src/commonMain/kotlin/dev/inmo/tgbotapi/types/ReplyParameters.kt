@@ -26,6 +26,8 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface ReplyParameters {
     val messageId: MessageId?
     val allowSendingWithoutReply: Boolean?
+    val checklistTaskId: ChecklistTaskId?
+    val pollOptionId: PollOptionPersistentId?
 
     /**
      * Reply parameters targeting a regular message identified by [messageId]. A `null` [chatIdentifier] targets a
@@ -43,8 +45,8 @@ sealed interface ReplyParameters {
         val quoteParseMode: ParseMode? = null,
         internal val quoteEntities: List<RawMessageEntity>? = null,
         val quotePosition: Int? = null,
-        val checklistTaskId: ChecklistTaskId? = null,
-        val pollOptionId: PollOptionPersistentId? = null,
+        override val checklistTaskId: ChecklistTaskId? = null,
+        override val pollOptionId: PollOptionPersistentId? = null,
     ) : WithMessageId, ReplyParameters, TextedInput {
         override val text: String?
             get() = quote
@@ -57,16 +59,31 @@ sealed interface ReplyParameters {
     @Serializable(ReplyParameters.Serializer::class)
     /**
      * Reply parameters targeting an incoming ephemeral message identified by [ephemeralMessageId]. The outgoing
-     * reply must also be ephemeral; chat and quote fields are unsupported for ephemeral replies.
+     * reply must also be ephemeral; chat and quote fields are unsupported for ephemeral replies. Type-neutral
+     * construction is available through the `ReplyParameters(...)` companion factory.
      */
     data class Ephemeral(
         val ephemeralMessageId: EphemeralMessageId,
         override val allowSendingWithoutReply: Boolean? = null,
+        override val checklistTaskId: ChecklistTaskId? = null,
+        override val pollOptionId: PollOptionPersistentId? = null,
     ) : ReplyParameters {
         override val messageId: MessageId? = null
     }
 
     companion object {
+        operator fun invoke(
+            ephemeralMessageId: EphemeralMessageId,
+            allowSendingWithoutReply: Boolean? = null,
+            checklistTaskId: ChecklistTaskId? = null,
+            pollOptionId: PollOptionPersistentId? = null,
+        ): Ephemeral = Ephemeral(
+            ephemeralMessageId,
+            allowSendingWithoutReply,
+            checklistTaskId,
+            pollOptionId
+        )
+
         operator fun invoke(
             chatIdentifier: ChatIdentifier,
             messageId: MessageId,
@@ -250,11 +267,22 @@ sealed interface ReplyParameters {
                 throw SerializationException("ReplyParameters must contain either message_id or ephemeral_message_id, not both")
             }
             return when {
-                surrogate.ephemeralMessageId != null -> Ephemeral(surrogate.ephemeralMessageId, surrogate.allowSendingWithoutReply)
+                surrogate.ephemeralMessageId != null -> Ephemeral(
+                    ephemeralMessageId = surrogate.ephemeralMessageId,
+                    allowSendingWithoutReply = surrogate.allowSendingWithoutReply,
+                    checklistTaskId = surrogate.checklistTaskId,
+                    pollOptionId = surrogate.pollOptionId
+                )
                 surrogate.messageId != null -> Chat(
-                    surrogate.chatIdentifier, surrogate.messageId, surrogate.allowSendingWithoutReply, surrogate.quote,
-                    surrogate.quoteParseMode, surrogate.quoteEntities, surrogate.quotePosition, surrogate.checklistTaskId,
-                    surrogate.pollOptionId
+                    chatIdentifier = surrogate.chatIdentifier,
+                    messageId = surrogate.messageId,
+                    allowSendingWithoutReply = surrogate.allowSendingWithoutReply,
+                    quote = surrogate.quote,
+                    quoteParseMode = surrogate.quoteParseMode,
+                    quoteEntities = surrogate.quoteEntities,
+                    quotePosition = surrogate.quotePosition,
+                    checklistTaskId = surrogate.checklistTaskId,
+                    pollOptionId = surrogate.pollOptionId
                 )
                 else -> throw SerializationException("ReplyParameters must contain message_id or ephemeral_message_id")
             }
@@ -262,8 +290,23 @@ sealed interface ReplyParameters {
 
         override fun serialize(encoder: Encoder, value: ReplyParameters) {
             val surrogate = when (value) {
-                is Chat -> Surrogate(value.chatIdentifier, value.messageId, value.allowSendingWithoutReply, value.quote, value.quoteParseMode, value.quoteEntities, value.quotePosition, value.checklistTaskId, value.pollOptionId)
-                is Ephemeral -> Surrogate(allowSendingWithoutReply = value.allowSendingWithoutReply, ephemeralMessageId = value.ephemeralMessageId)
+                is Chat -> Surrogate(
+                    chatIdentifier = value.chatIdentifier,
+                    messageId = value.messageId,
+                    allowSendingWithoutReply = value.allowSendingWithoutReply,
+                    quote = value.quote,
+                    quoteParseMode = value.quoteParseMode,
+                    quoteEntities = value.quoteEntities,
+                    quotePosition = value.quotePosition,
+                    checklistTaskId = value.checklistTaskId,
+                    pollOptionId = value.pollOptionId
+                )
+                is Ephemeral -> Surrogate(
+                    allowSendingWithoutReply = value.allowSendingWithoutReply,
+                    ephemeralMessageId = value.ephemeralMessageId,
+                    checklistTaskId = value.checklistTaskId,
+                    pollOptionId = value.pollOptionId
+                )
             }
             encoder.encodeSerializableValue(Surrogate.serializer(), surrogate)
         }
@@ -271,12 +314,23 @@ sealed interface ReplyParameters {
 }
 
 /**
- * Builds [ReplyParameters] targeting the receiver's ephemeral message through
- * [PossiblyEphemeralMessage.ephemeralMessageId], or returns `null` for a non-ephemeral receiver.
+ * Builds [ReplyParameters.Ephemeral] with [allowSendingWithoutReply], [checklistTaskId], and [pollOptionId], targeting
+ * [ephemeralMessageId]. The target defaults to [PossiblyEphemeralMessage.ephemeralMessageId]; a missing target produces
+ * `null`.
  */
-fun Message.ephemeralReplyParametersOrNull(allowSendingWithoutReply: Boolean? = null): ReplyParameters? =
-    (this as? PossiblyEphemeralMessage) ?.ephemeralMessageId ?.let {
-        ReplyParameters.Ephemeral(it, allowSendingWithoutReply)
+fun Message.ephemeralReplyParametersOrNull(
+    allowSendingWithoutReply: Boolean? = null,
+    ephemeralMessageId: EphemeralMessageId? = (this as? PossiblyEphemeralMessage) ?.ephemeralMessageId,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+): ReplyParameters? =
+    ephemeralMessageId ?.let {
+        ReplyParameters(
+            ephemeralMessageId = it,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+        )
     }
 
 /**

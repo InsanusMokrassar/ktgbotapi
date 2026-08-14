@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
+import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -33,12 +35,19 @@ class ReplyParametersSerializationTest {
 
     @Test
     fun ephemeralRoundTripUsesFlatShape() {
-        val value: ReplyParameters = ReplyParameters.Ephemeral(EphemeralMessageId(789L), true)
+        val value: ReplyParameters = ReplyParameters(
+            ephemeralMessageId = EphemeralMessageId(789L),
+            allowSendingWithoutReply = true,
+            checklistTaskId = ChecklistTaskId(12u),
+            pollOptionId = PollOptionPersistentId("option-id")
+        )
 
         val encoded = json.encodeToString(value)
         val encodedObject = json.parseToJsonElement(encoded).jsonObject
 
         assertTrue("ephemeral_message_id" in encodedObject)
+        assertTrue("checklist_task_id" in encodedObject)
+        assertTrue("poll_option_id" in encodedObject)
         assertFalse("chat_id" in encodedObject)
         assertFalse("message_id" in encodedObject)
         assertEquals(value, json.decodeFromString<ReplyParameters>(encoded))
