@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.abstracts.WithMessageId
+import dev.inmo.tgbotapi.types.chat.Bot
+import dev.inmo.tgbotapi.types.chat.PreviewBot
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -339,5 +341,12 @@ fun Message.ephemeralReplyParametersOrNull(
  */
 val Message.ephemeralReplyReceiverUserIdOrNull: UserId?
     get() = (this as? PossiblyEphemeralMessage) ?.takeIf { it.ephemeralMessageId != null } ?.let {
-        it.receiverUser ?.id ?: (this as? OptionallyFromUserMessage) ?.from ?.id
+        val receiverUser = it.receiverUser
+        val thisAsOptionallyFromUserMessage = this as? OptionallyFromUserMessage
+        val from = thisAsOptionallyFromUserMessage ?.from
+        when {
+            receiverUser != null && receiverUser !is PreviewBot && from !is Bot -> receiverUser.id
+            from != null && from !is PreviewBot && from !is Bot -> from.id
+            else -> null
+        }
     }
