@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -27,9 +28,9 @@ class InputRichMessageSerializationTest {
                 InputRichBlockDivider(),
                 InputRichBlockList(
                     listOf(
-                        InputRichBlockListItem(
+                        InputRichBlockListItem.Ordered(
                             listOf(InputRichBlockParagraph(RichTextPlain("first"))),
-                            labelType = "1"
+                            value = 1
                         )
                     )
                 )
@@ -117,7 +118,7 @@ class InputRichMessageSerializationTest {
             InputRichBlockDivider(),
             InputRichBlockList(
                 listOf(
-                    InputRichBlockListItem(
+                    InputRichBlockListItem.Unordered(
                         listOf(InputRichBlockParagraph(RichTextPlain("item"))),
                         hasCheckbox = true,
                         isChecked = true
@@ -130,6 +131,52 @@ class InputRichMessageSerializationTest {
         val encoded = json.encodeToString(serializer, blocks)
         val decoded = json.decodeFromString(serializer, encoded)
         assertEquals(blocks, decoded)
+    }
+
+    @Test
+    fun serializesAndDeserializesListItemVariantsWithFlatShape() {
+        val ordered: InputRichBlockListItem = InputRichBlockListItem.Ordered(
+            blocks = emptyList(),
+            value = 4,
+            labelType = LabelType.RomanUppercase
+        )
+        val unordered: InputRichBlockListItem = InputRichBlockListItem.Unordered(blocks = emptyList())
+
+        val orderedElement = json.encodeToJsonElement(InputRichBlockListItem.Serializer, ordered).jsonObject
+        assertEquals(4, orderedElement["value"]?.jsonPrimitive?.int)
+        assertEquals("I", orderedElement["type"]?.jsonPrimitive?.content)
+        assertEquals(ordered, json.decodeFromJsonElement(InputRichBlockListItem.Serializer, orderedElement))
+        assertEquals(unordered, json.decodeFromString(InputRichBlockListItem.Serializer, "{\"blocks\":[]}"))
+    }
+
+    @Test
+    fun serializesEveryLabelTypeAsItsSymbol() {
+        val labelTypes = listOf(
+            LabelType.LettersUppercase,
+            LabelType.LettersLowercase,
+            LabelType.RomanUppercase,
+            LabelType.RomanLowercase,
+            LabelType.Decimals
+        )
+
+        labelTypes.forEach { labelType ->
+            val encoded = json.encodeToString(LabelType.Serializer, labelType)
+            assertEquals("\"${labelType.typeSymbol}\"", encoded)
+            assertEquals(labelType, json.decodeFromString(LabelType.Serializer, encoded))
+        }
+    }
+
+    @Test
+    fun rejectsIncompleteOrderedListItemsAndUnknownLabelTypes() {
+        assertFailsWith<SerializationException> {
+            json.decodeFromString(InputRichBlockListItem.Serializer, "{\"blocks\":[],\"value\":1}")
+        }
+        assertFailsWith<SerializationException> {
+            json.decodeFromString(InputRichBlockListItem.Serializer, "{\"blocks\":[],\"type\":\"1\"}")
+        }
+        assertFailsWith<SerializationException> {
+            json.decodeFromString(LabelType.Serializer, "\"?\"")
+        }
     }
 
     @Test

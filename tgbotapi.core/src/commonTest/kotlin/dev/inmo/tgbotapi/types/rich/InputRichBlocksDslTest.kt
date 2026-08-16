@@ -15,16 +15,19 @@ class InputRichBlocksDslTest {
                 bold("world")
             }
             divider()
-            list {
+            unorderedList {
                 item("first")
-                item(labelType = "1") { paragraph("second") }
+                item { paragraph("second") }
+            }
+            orderedList {
+                item(value = 2) { paragraph("third") }
             }
             blockQuotation {
                 paragraph("quoted")
             }
         }
 
-        assertEquals(5, blocks.size)
+        assertEquals(6, blocks.size)
         assertEquals(InputRichBlockSectionHeading(RichTextPlain("Title"), 1), blocks[0])
         assertEquals(
             InputRichBlockParagraph(RichTextGroup(listOf(RichTextPlain("Hello "), RichTextBold(RichTextPlain("world"))))),
@@ -34,10 +37,13 @@ class InputRichBlocksDslTest {
 
         val list = blocks[3] as InputRichBlockList
         assertEquals(2, list.items.size)
-        assertEquals(InputRichBlockListItem(listOf(InputRichBlockParagraph(RichTextPlain("first")))), list.items[0])
-        assertEquals("1", list.items[1].labelType)
+        assertEquals(InputRichBlockListItem.Unordered(listOf(InputRichBlockParagraph(RichTextPlain("first")))), list.items[0])
+        assertEquals(InputRichBlockListItem.Unordered::class, list.items[1]::class)
 
-        assertEquals(InputRichBlockBlockQuotation(listOf(InputRichBlockParagraph(RichTextPlain("quoted")))), blocks[4])
+        val orderedList = blocks[4] as InputRichBlockList
+        assertEquals(LabelType.Decimals, (orderedList.items.single() as InputRichBlockListItem.Ordered).labelType)
+
+        assertEquals(InputRichBlockBlockQuotation(listOf(InputRichBlockParagraph(RichTextPlain("quoted")))), blocks[5])
     }
 
     @Test
@@ -55,5 +61,21 @@ class InputRichBlocksDslTest {
             paragraph("p")
         }
         assertEquals(InputRichMessageBlocks(listOf(InputRichBlockParagraph(RichTextPlain("p"))), true), message)
+    }
+
+    @Test
+    fun buildsHeadingShortcuts() {
+        val blocks = buildInputRichBlocks {
+            h1("h1")
+            h2 { bold("h2") }
+            h3("h3")
+            h4 { plain("h4") }
+            h5("h5")
+            h6 { italic("h6") }
+        }
+
+        assertEquals((1..6).toList(), blocks.map { (it as InputRichBlockSectionHeading).level })
+        assertEquals(RichTextPlain("h1"), (blocks[0] as InputRichBlockSectionHeading).text)
+        assertEquals(RichTextBold(RichTextPlain("h2")), (blocks[1] as InputRichBlockSectionHeading).text)
     }
 }

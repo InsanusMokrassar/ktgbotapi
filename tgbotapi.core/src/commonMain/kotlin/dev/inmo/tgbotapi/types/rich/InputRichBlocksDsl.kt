@@ -8,27 +8,45 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
 
 /**
- * Builder of [InputRichBlockListItem]s used inside [InputRichBlocksBuilder.list].
+ * Builder of [InputRichBlockListItem.Ordered] items used inside [InputRichBlocksBuilder.orderedList].
  */
 @RichTextDsl
-class InputRichBlockListBuilder {
-    private val items = mutableListOf<InputRichBlockListItem>()
+class InputRichBlockOrderedListBuilder {
+    private val items = mutableListOf<InputRichBlockListItem.Ordered>()
+
+    fun item(
+        value: Int,
+        labelType: LabelType = LabelType.Decimals,
+        hasCheckbox: Boolean? = null,
+        isChecked: Boolean? = null,
+        block: InputRichBlocksBuilder.() -> Unit
+    ) {
+        items.add(InputRichBlockListItem.Ordered(buildInputRichBlocks(block), value, labelType, hasCheckbox, isChecked))
+    }
+
+    fun build(): List<InputRichBlockListItem.Ordered> = items.toList()
+}
+
+/**
+ * Builder of [InputRichBlockListItem.Unordered] items used inside [InputRichBlocksBuilder.unorderedList].
+ */
+@RichTextDsl
+class InputRichBlockUnorderedListBuilder {
+    private val items = mutableListOf<InputRichBlockListItem.Unordered>()
 
     fun item(
         hasCheckbox: Boolean? = null,
         isChecked: Boolean? = null,
-        value: Int? = null,
-        labelType: String? = null,
         block: InputRichBlocksBuilder.() -> Unit
     ) {
-        items.add(InputRichBlockListItem(buildInputRichBlocks(block), hasCheckbox, isChecked, value, labelType))
+        items.add(InputRichBlockListItem.Unordered(buildInputRichBlocks(block), hasCheckbox, isChecked))
     }
 
     fun item(text: String) {
-        items.add(InputRichBlockListItem(listOf(InputRichBlockParagraph(RichTextPlain(text)))))
+        items.add(InputRichBlockListItem.Unordered(listOf(InputRichBlockParagraph(RichTextPlain(text)))))
     }
 
-    fun build(): List<InputRichBlockListItem> = items.toList()
+    fun build(): List<InputRichBlockListItem.Unordered> = items.toList()
 }
 
 /**
@@ -54,6 +72,19 @@ class InputRichBlocksBuilder {
     fun heading(text: String, level: Int) = add(InputRichBlockSectionHeading(RichTextPlain(text), level))
     fun heading(level: Int, block: RichTextBuilder.() -> Unit) = add(InputRichBlockSectionHeading(buildRichText(block), level))
 
+    fun h1(text: String) = heading(text, 1)
+    fun h1(block: RichTextBuilder.() -> Unit) = heading(1, block)
+    fun h2(text: String) = heading(text, 2)
+    fun h2(block: RichTextBuilder.() -> Unit) = heading(2, block)
+    fun h3(text: String) = heading(text, 3)
+    fun h3(block: RichTextBuilder.() -> Unit) = heading(3, block)
+    fun h4(text: String) = heading(text, 4)
+    fun h4(block: RichTextBuilder.() -> Unit) = heading(4, block)
+    fun h5(text: String) = heading(text, 5)
+    fun h5(block: RichTextBuilder.() -> Unit) = heading(5, block)
+    fun h6(text: String) = heading(text, 6)
+    fun h6(block: RichTextBuilder.() -> Unit) = heading(6, block)
+
     fun preformatted(text: String, language: String? = null) = add(InputRichBlockPreformatted(RichTextPlain(text), language))
 
     fun footer(text: String) = add(InputRichBlockFooter(RichTextPlain(text)))
@@ -68,7 +99,11 @@ class InputRichBlocksBuilder {
     fun thinking(text: String) = add(InputRichBlockThinking(RichTextPlain(text)))
     fun thinking(block: RichTextBuilder.() -> Unit) = add(InputRichBlockThinking(buildRichText(block)))
 
-    fun list(block: InputRichBlockListBuilder.() -> Unit) = add(InputRichBlockList(InputRichBlockListBuilder().apply(block).build()))
+    fun orderedList(block: InputRichBlockOrderedListBuilder.() -> Unit) =
+        add(InputRichBlockList(InputRichBlockOrderedListBuilder().apply(block).build()))
+
+    fun unorderedList(block: InputRichBlockUnorderedListBuilder.() -> Unit) =
+        add(InputRichBlockList(InputRichBlockUnorderedListBuilder().apply(block).build()))
 
     fun blockQuotation(credit: RichText? = null, block: InputRichBlocksBuilder.() -> Unit) =
         add(InputRichBlockBlockQuotation(buildInputRichBlocks(block), credit))

@@ -35475,47 +35475,69 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockList$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListBuilder {
-	public fun <init> ()V
-	public final fun build ()Ljava/util/List;
-	public final fun item (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
-	public final fun item (Ljava/lang/String;)V
-	public static synthetic fun item$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-}
-
-public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem {
+public abstract interface class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Companion;
-	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/util/List;
-	public final fun component2 ()Ljava/lang/Boolean;
-	public final fun component3 ()Ljava/lang/Boolean;
-	public final fun component4 ()Ljava/lang/Integer;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getBlocks ()Ljava/util/List;
-	public final fun getHasCheckbox ()Ljava/lang/Boolean;
-	public final fun getLabelType ()Ljava/lang/String;
-	public final fun getValue ()Ljava/lang/Integer;
-	public fun hashCode ()I
-	public final fun isChecked ()Ljava/lang/Boolean;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+	public abstract fun getBlocks ()Ljava/util/List;
+	public abstract fun getHasCheckbox ()Ljava/lang/Boolean;
+	public abstract fun isChecked ()Ljava/lang/Boolean;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered : dev/inmo/tgbotapi/types/rich/InputRichBlockListItem {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered$Companion;
+	public fun <init> (Ljava/util/List;ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/util/List;ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()I
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/LabelType;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/util/List;ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered;Ljava/util/List;ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBlocks ()Ljava/util/List;
+	public fun getHasCheckbox ()Ljava/lang/Boolean;
+	public final fun getLabelType ()Ldev/inmo/tgbotapi/types/rich/LabelType;
+	public final fun getValue ()I
+	public fun hashCode ()I
+	public fun isChecked ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Ordered$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered : dev/inmo/tgbotapi/types/rich/InputRichBlockListItem {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered$Companion;
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBlocks ()Ljava/util/List;
+	public fun getHasCheckbox ()Ljava/lang/Boolean;
+	public fun hashCode ()I
+	public fun isChecked ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockListItem$Unordered$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35594,6 +35616,13 @@ public abstract interface class dev/inmo/tgbotapi/types/rich/InputRichBlockMedia
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockMedia$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockOrderedListBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun item (ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun item$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockOrderedListBuilder;ILdev/inmo/tgbotapi/types/rich/LabelType;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockParagraph : dev/inmo/tgbotapi/types/rich/InputRichBlock {
@@ -35854,6 +35883,14 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockUnorderedListBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun item (Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public final fun item (Ljava/lang/String;)V
+	public static synthetic fun item$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockUnorderedListBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockVideo : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockVideo$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -35940,12 +35977,24 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public final fun divider ()V
 	public final fun footer (Ljava/lang/String;)V
 	public final fun footer (Lkotlin/jvm/functions/Function1;)V
+	public final fun h1 (Ljava/lang/String;)V
+	public final fun h1 (Lkotlin/jvm/functions/Function1;)V
+	public final fun h2 (Ljava/lang/String;)V
+	public final fun h2 (Lkotlin/jvm/functions/Function1;)V
+	public final fun h3 (Ljava/lang/String;)V
+	public final fun h3 (Lkotlin/jvm/functions/Function1;)V
+	public final fun h4 (Ljava/lang/String;)V
+	public final fun h4 (Lkotlin/jvm/functions/Function1;)V
+	public final fun h5 (Ljava/lang/String;)V
+	public final fun h5 (Lkotlin/jvm/functions/Function1;)V
+	public final fun h6 (Ljava/lang/String;)V
+	public final fun h6 (Lkotlin/jvm/functions/Function1;)V
 	public final fun heading (ILkotlin/jvm/functions/Function1;)V
 	public final fun heading (Ljava/lang/String;I)V
-	public final fun list (Lkotlin/jvm/functions/Function1;)V
 	public final fun map (Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
 	public static synthetic fun map$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/location/StaticLocation;IIILdev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
 	public final fun mathematicalExpression (Ljava/lang/String;)V
+	public final fun orderedList (Lkotlin/jvm/functions/Function1;)V
 	public final fun paragraph (Ljava/lang/String;)V
 	public final fun paragraph (Lkotlin/jvm/functions/Function1;)V
 	public final fun photo (Ldev/inmo/tgbotapi/types/media/TelegramMediaPhoto;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -35961,6 +36010,7 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public final fun thinking (Ljava/lang/String;)V
 	public final fun thinking (Lkotlin/jvm/functions/Function1;)V
 	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)V
+	public final fun unorderedList (Lkotlin/jvm/functions/Function1;)V
 	public final fun video (Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
 	public static synthetic fun video$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaVideo;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
 	public final fun voiceNote (Ldev/inmo/tgbotapi/types/media/TelegramMediaVoiceNote;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
@@ -36044,6 +36094,69 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichMessageMedia$
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichMessageMedia$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/LabelType$Companion;
+	public abstract fun getTypeSymbol ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$Decimals : dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$Decimals;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTypeSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$LettersLowercase : dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$LettersLowercase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTypeSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$LettersUppercase : dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$LettersUppercase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTypeSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$RomanLowercase : dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$RomanLowercase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTypeSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$RomanUppercase : dev/inmo/tgbotapi/types/rich/LabelType {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$RomanUppercase;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTypeSymbol ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/LabelType$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/LabelType$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/LabelType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/LabelType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlock {
