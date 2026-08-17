@@ -437,7 +437,7 @@ data class RichBlockTable(
                         cell.colspan?.let { append(" colspan=\"$it\"") }
                         cell.rowspan?.let { append(" rowspan=\"$it\"") }
                         append(" align=\"${cell.align.name}\"")
-                        append(" valign=\"${cell.valign}\"")
+                        append(" valign=\"${cell.valign.name}\"")
                     }
                     "<$tag$cellAttributes>${cell.text?.html ?: ""}</$tag>"
                 }

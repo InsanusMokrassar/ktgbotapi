@@ -56,7 +56,7 @@ class InputRichBlockTableRowBuilder {
 
     fun cell(
         align: RichBlockTableCellAlign,
-        valign: String,
+        valign: RichBlockTableCellVAlign,
         colspan: Int? = null,
         rowspan: Int? = null,
         block: RichTextBuilder.() -> Unit
@@ -66,7 +66,7 @@ class InputRichBlockTableRowBuilder {
 
     fun headerCell(
         align: RichBlockTableCellAlign,
-        valign: String,
+        valign: RichBlockTableCellVAlign,
         colspan: Int? = null,
         rowspan: Int? = null,
         block: RichTextBuilder.() -> Unit

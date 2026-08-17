@@ -45,7 +45,7 @@ sealed interface RichBlockTableCell {
     val colspan: Int?
     val rowspan: Int?
     val align: RichBlockTableCellAlign
-    val valign: String
+    val valign: RichBlockTableCellVAlign
 
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     @Serializable(Serializer::class)
@@ -59,7 +59,7 @@ sealed interface RichBlockTableCell {
         @SerialName(alignField)
         override val align: RichBlockTableCellAlign,
         @SerialName(valignField)
-        override val valign: String
+        override val valign: RichBlockTableCellVAlign
     ) : RichBlockTableCell
 
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
@@ -74,7 +74,7 @@ sealed interface RichBlockTableCell {
         @SerialName(alignField)
         override val align: RichBlockTableCellAlign,
         @SerialName(valignField)
-        override val valign: String
+        override val valign: RichBlockTableCellVAlign
     ) : RichBlockTableCell
 
     object Serializer : KSerializer<RichBlockTableCell> {
@@ -92,7 +92,7 @@ sealed interface RichBlockTableCell {
             @SerialName(alignField)
             val align: RichBlockTableCellAlign,
             @SerialName(valignField)
-            val valign: String
+            val valign: RichBlockTableCellVAlign
         )
 
         override val descriptor: SerialDescriptor = Surrogate.serializer().descriptor
