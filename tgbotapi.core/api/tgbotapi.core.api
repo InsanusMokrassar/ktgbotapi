@@ -35854,6 +35854,19 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTable$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTableBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun row (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder {
+	public fun <init> ()V
+	public final fun build ()Ljava/util/List;
+	public final fun cell (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun cell$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking : dev/inmo/tgbotapi/types/rich/InputRichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockThinking$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -36005,8 +36018,8 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public static synthetic fun pullQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun slideshow (Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;)V
 	public static synthetic fun slideshow$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-	public final fun table (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)V
-	public static synthetic fun table$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)V
+	public final fun table (Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun table$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun thinking (Ljava/lang/String;)V
 	public final fun thinking (Lkotlin/jvm/functions/Function1;)V
 	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)V

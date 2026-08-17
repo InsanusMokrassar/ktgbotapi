@@ -78,4 +78,52 @@ class InputRichBlocksDslTest {
         assertEquals(RichTextPlain("h1"), (blocks[0] as InputRichBlockSectionHeading).text)
         assertEquals(RichTextBold(RichTextPlain("h2")), (blocks[1] as InputRichBlockSectionHeading).text)
     }
+
+    @Test
+    fun buildsTable() {
+        val blocks = buildInputRichBlocks {
+            table(isBordered = true, isStriped = false, caption = RichTextPlain("caption")) {
+                row {
+                    cell(align = "left", valign = "top", isHeader = true, colspan = 2) {
+                        bold("heading")
+                    }
+                }
+                row {
+                    cell(align = "center", valign = "middle", rowspan = 2) {
+                        plain("value")
+                    }
+                }
+            }
+        }
+
+        assertEquals(
+            listOf(
+                InputRichBlockTable(
+                    cells = listOf(
+                        listOf(
+                            RichBlockTableCell(
+                                text = RichTextBold(RichTextPlain("heading")),
+                                isHeader = true,
+                                colspan = 2,
+                                align = "left",
+                                valign = "top"
+                            )
+                        ),
+                        listOf(
+                            RichBlockTableCell(
+                                text = RichTextPlain("value"),
+                                rowspan = 2,
+                                align = "center",
+                                valign = "middle"
+                            )
+                        )
+                    ),
+                    isBordered = true,
+                    isStriped = false,
+                    caption = RichTextPlain("caption")
+                )
+            ),
+            blocks
+        )
+    }
 }

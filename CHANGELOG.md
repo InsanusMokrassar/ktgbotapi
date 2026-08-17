@@ -15,6 +15,7 @@
 
 * `Core`:
     * (`Rich Messages`) Added `h1` through `h6` shortcuts for plain and rich-text headings in `InputRichBlocksBuilder`
+    * (`Rich Messages`) Reworked the input table DSL to build cells through nested `table { row { cell(...) { } } }` builders
     * (`Rich Messages`) Replaced the flat `InputRichBlockListItem` data class with ordered/unordered variants, added the string-serialized `LabelType` hierarchy (`A`, `a`, `I`, `i`, `1`), and split the list DSL into `InputRichBlockOrderedListBuilder`/`InputRichBlockUnorderedListBuilder`
     * (`Rich Messages`) Added `InputRichBlock` hierarchy with all 21 `InputRichBlock*` types (mirroring the received `RichBlock*` hierarchy and reusing `RichText`/`RichBlockCaption`/`RichBlockTableCell`), the label-less `InputRichBlockListItem` and the `InputRichBlockSerializer`; every `InputRichBlock` exposes `subBlocks` navigation
     * (`Rich Messages`) Added `TelegramMediaVoiceNote` (`InputMediaVoiceNote`) and the `RichMessageMemberTelegramMedia` marker interface implemented by it, `TelegramMediaAnimation`, `TelegramMediaAudio`, `TelegramMediaPhoto` and `TelegramMediaVideo`; added `VoiceFile.toTelegramMediaVoiceNote` converters

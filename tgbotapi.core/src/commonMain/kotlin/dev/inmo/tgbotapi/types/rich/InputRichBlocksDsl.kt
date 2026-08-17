@@ -49,6 +49,37 @@ class InputRichBlockUnorderedListBuilder {
     fun build(): List<InputRichBlockListItem.Unordered> = items.toList()
 }
 
+/** Builder of [RichBlockTableCell]s used inside [InputRichBlockTableBuilder.row]. */
+@RichTextDsl
+class InputRichBlockTableRowBuilder {
+    private val cells = mutableListOf<RichBlockTableCell>()
+
+    fun cell(
+        align: String,
+        valign: String,
+        isHeader: Boolean? = null,
+        colspan: Int? = null,
+        rowspan: Int? = null,
+        block: RichTextBuilder.() -> Unit
+    ) {
+        cells.add(RichBlockTableCell(buildRichText(block), isHeader, colspan, rowspan, align, valign))
+    }
+
+    fun build(): List<RichBlockTableCell> = cells.toList()
+}
+
+/** Builder of table rows used inside [InputRichBlocksBuilder.table]. */
+@RichTextDsl
+class InputRichBlockTableBuilder {
+    private val rows = mutableListOf<List<RichBlockTableCell>>()
+
+    fun row(block: InputRichBlockTableRowBuilder.() -> Unit) {
+        rows.add(InputRichBlockTableRowBuilder().apply(block).build())
+    }
+
+    fun build(): List<List<RichBlockTableCell>> = rows.toList()
+}
+
 /**
  * Builder of a [List] of [InputRichBlock]s - the root of the rich message input DSL. Text-bearing and container blocks
  * have their own DSL functions; media blocks (photo, video, animation, audio, voice note, collage, slideshow, table,
@@ -136,11 +167,11 @@ class InputRichBlocksBuilder {
         add(InputRichBlockSlideshow(buildInputRichBlocks(block), caption))
 
     fun table(
-        cells: List<List<RichBlockTableCell>>,
         isBordered: Boolean? = null,
         isStriped: Boolean? = null,
-        caption: RichText? = null
-    ) = add(InputRichBlockTable(cells, isBordered, isStriped, caption))
+        caption: RichText? = null,
+        block: InputRichBlockTableBuilder.() -> Unit
+    ) = add(InputRichBlockTable(InputRichBlockTableBuilder().apply(block).build(), isBordered, isStriped, caption))
 
     fun map(
         location: StaticLocation,
