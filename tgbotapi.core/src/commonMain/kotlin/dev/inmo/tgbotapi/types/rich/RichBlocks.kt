@@ -411,10 +411,9 @@ data class RichBlockTable(
             fun renderRow(row: List<RichBlockTableCell>): String =
                 row.joinToString(separator = " | ", prefix = "| ", postfix = " |") { it.text?.markdown ?: "" }
             fun alignment(cell: RichBlockTableCell): String = when (cell.align) {
-                "left" -> ":---"
-                "center" -> ":--:"
-                "right" -> "---:"
-                else -> "---"
+                RichBlockTableCellAlign.Left -> ":---"
+                RichBlockTableCellAlign.Center -> ":--:"
+                RichBlockTableCellAlign.Right -> "---:"
             }
             val header = cells.first()
             val lines = mutableListOf(
@@ -433,11 +432,11 @@ data class RichBlockTable(
             val captionPart = caption?.let { "<caption>${it.html}</caption>" } ?: ""
             val rows = cells.joinToString(separator = "") { row ->
                 val renderedCells = row.joinToString(separator = "") { cell ->
-                    val tag = if (cell.isHeader == true) "th" else "td"
+                    val tag = if (cell is RichBlockTableCell.Header) "th" else "td"
                     val cellAttributes = buildString {
                         cell.colspan?.let { append(" colspan=\"$it\"") }
                         cell.rowspan?.let { append(" rowspan=\"$it\"") }
-                        append(" align=\"${cell.align}\"")
+                        append(" align=\"${cell.align.name}\"")
                         append(" valign=\"${cell.valign}\"")
                     }
                     "<$tag$cellAttributes>${cell.text?.html ?: ""}</$tag>"

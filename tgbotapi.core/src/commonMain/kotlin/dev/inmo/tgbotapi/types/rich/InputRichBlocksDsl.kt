@@ -55,14 +55,23 @@ class InputRichBlockTableRowBuilder {
     private val cells = mutableListOf<RichBlockTableCell>()
 
     fun cell(
-        align: String,
+        align: RichBlockTableCellAlign,
         valign: String,
-        isHeader: Boolean? = null,
         colspan: Int? = null,
         rowspan: Int? = null,
         block: RichTextBuilder.() -> Unit
     ) {
-        cells.add(RichBlockTableCell(buildRichText(block), isHeader, colspan, rowspan, align, valign))
+        cells.add(RichBlockTableCell.Regular(buildRichText(block), colspan, rowspan, align, valign))
+    }
+
+    fun headerCell(
+        align: RichBlockTableCellAlign,
+        valign: String,
+        colspan: Int? = null,
+        rowspan: Int? = null,
+        block: RichTextBuilder.() -> Unit
+    ) {
+        cells.add(RichBlockTableCell.Header(buildRichText(block), colspan, rowspan, align, valign))
     }
 
     fun build(): List<RichBlockTableCell> = cells.toList()

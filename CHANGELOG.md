@@ -6,6 +6,8 @@
 
 **Breaking changes**:
 
+* `RichBlockTableCell.align` now uses the string-serialized `RichBlockTableCellAlign` sealed hierarchy (`Left`, `Center`, or `Right`) instead of `String`
+* `RichBlockTableCell` is now a sealed interface with `Header` and `Regular` implementations; the input table DSL uses `headerCell` and `cell` respectively
 * `InputRichBlockListItem` is now a sealed interface with `Ordered` and `Unordered` implementations; ordered items require a non-null `value` and typed `LabelType`, while `LabelType.Decimals` is the default; `InputRichBlocksBuilder` now exposes separate `orderedList` and `unorderedList` DSL functions with matching item builders
 * `ReplyParameters` is now a sealed interface with nested `ReplyParameters.Chat` and `ReplyParameters.Ephemeral` implementations; overloaded `ReplyParameters(...)` companion factories construct both regular-message and ephemeral-message variants
 * The 4 group-family message implementations (`CommonGroupContentMessageImpl`, `CommonForumContentMessageImpl`, `CommonChannelDirectMessagesContentMessageImpl`, `CommonSuggestedChannelDirectMessagesContentMessageImpl`) gained trailing `receiverUser`/`ephemeralMessageId` primary-constructor parameters (defaulted to `null`) — positional construction of these classes must be updated
@@ -14,6 +16,8 @@
 **Migration advice**: Keep `ReplyParameters(...)` for both chat-message and ephemeral-message targets; explicit `ReplyParameters.Ephemeral(...)` subtype construction also remains available; pass `receiverUser`/`ephemeralMessageId` explicitly (or rely on their `null` default) when constructing the 4 group-family message implementations positionally
 
 * `Core`:
+    * (`Rich Messages`) Added the raw-string-serialized `RichBlockTableCellAlign` hierarchy and migrated table-cell alignment from `String` to `RichBlockTableCellAlign`
+    * (`Rich Messages`) Split `RichBlockTableCell` into header/regular variants with a shared flat surrogate serializer; added `headerCell` to the input table DSL
     * (`Rich Messages`) Added `h1` through `h6` shortcuts for plain and rich-text headings in `InputRichBlocksBuilder`
     * (`Rich Messages`) Reworked the input table DSL to build cells through nested `table { row { cell(...) { } } }` builders
     * (`Rich Messages`) Replaced the flat `InputRichBlockListItem` data class with ordered/unordered variants, added the string-serialized `LabelType` hierarchy (`A`, `a`, `I`, `i`, `1`), and split the list DSL into `InputRichBlockOrderedListBuilder`/`InputRichBlockUnorderedListBuilder`

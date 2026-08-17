@@ -35863,8 +35863,10 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTableBuilder {
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder {
 	public fun <init> ()V
 	public final fun build ()Ljava/util/List;
-	public final fun cell (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun cell$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun cell (Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun cell$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun headerCell (Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun headerCell$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTableRowBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockThinking : dev/inmo/tgbotapi/types/rich/InputRichBlock {
@@ -36929,42 +36931,121 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockTable$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell {
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlockTableCell {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
-	public final fun component2 ()Ljava/lang/Boolean;
-	public final fun component3 ()Ljava/lang/Integer;
-	public final fun component4 ()Ljava/lang/Integer;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()Ljava/lang/String;
-	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAlign ()Ljava/lang/String;
-	public final fun getColspan ()Ljava/lang/Integer;
-	public final fun getRowspan ()Ljava/lang/Integer;
-	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
-	public final fun getValign ()Ljava/lang/String;
-	public fun hashCode ()I
-	public final fun isHeader ()Ljava/lang/Boolean;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+	public abstract fun getAlign ()Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public abstract fun getColspan ()Ljava/lang/Integer;
+	public abstract fun getRowspan ()Ljava/lang/Integer;
+	public abstract fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public abstract fun getValign ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header : dev/inmo/tgbotapi/types/rich/RichBlockTableCell {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAlign ()Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public fun getColspan ()Ljava/lang/Integer;
+	public fun getRowspan ()Ljava/lang/Integer;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getValign ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Header$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular : dev/inmo/tgbotapi/types/rich/RichBlockTableCell {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAlign ()Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public fun getColspan ()Ljava/lang/Integer;
+	public fun getRowspan ()Ljava/lang/Integer;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getValign ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Regular$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCell$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCell;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Center : dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Center;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Left : dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Left;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Right : dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Right;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockTableCellAlign;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockThinking : dev/inmo/tgbotapi/types/rich/RichBlock {

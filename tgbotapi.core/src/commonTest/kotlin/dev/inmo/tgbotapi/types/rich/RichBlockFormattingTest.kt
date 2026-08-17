@@ -108,12 +108,12 @@ class RichBlockFormattingTest {
         val block = RichBlockTable(
             listOf(
                 listOf(
-                    RichBlockTableCell(text = RichTextPlain("H1"), isHeader = true, align = "left", valign = "top"),
-                    RichBlockTableCell(text = RichTextPlain("H2"), isHeader = true, align = "center", valign = "top")
+                    RichBlockTableCell.Header(text = RichTextPlain("H1"), align = RichBlockTableCellAlign.Left, valign = "top"),
+                    RichBlockTableCell.Header(text = RichTextPlain("H2"), align = RichBlockTableCellAlign.Center, valign = "top")
                 ),
                 listOf(
-                    RichBlockTableCell(text = RichTextPlain("a"), align = "left", valign = "top"),
-                    RichBlockTableCell(text = RichTextPlain("b"), align = "center", valign = "top")
+                    RichBlockTableCell.Regular(text = RichTextPlain("a"), align = RichBlockTableCellAlign.Left, valign = "top"),
+                    RichBlockTableCell.Regular(text = RichTextPlain("b"), align = RichBlockTableCellAlign.Center, valign = "top")
                 )
             )
         )

@@ -61,7 +61,7 @@ class InputRichMessageSerializationTest {
     fun encodesTableReusingReceivedCellType() {
         val table = InputRichBlockTable(
             cells = listOf(
-                listOf(RichBlockTableCell(RichTextPlain("h1"), isHeader = true, align = "left", valign = "top"))
+                listOf(RichBlockTableCell.Header(RichTextPlain("h1"), align = RichBlockTableCellAlign.Left, valign = "top"))
             )
         )
         val message = InputRichMessageBlocks(blocks = listOf(table))
@@ -70,6 +70,42 @@ class InputRichMessageSerializationTest {
         val cell = tableJson["cells"]!!.jsonArray[0].jsonArray[0].jsonObject
         assertEquals("left", cell["align"]?.jsonPrimitive?.content)
         assertEquals(true, cell["is_header"]?.jsonPrimitive?.boolean)
+    }
+
+    @Test
+    fun serializesTableCellVariantsWithSharedFlatShape() {
+        val header: RichBlockTableCell = RichBlockTableCell.Header(RichTextPlain("h"), align = RichBlockTableCellAlign.Left, valign = "top")
+        val regular: RichBlockTableCell = RichBlockTableCell.Regular(RichTextPlain("v"), align = RichBlockTableCellAlign.Right, valign = "bottom")
+
+        val headerElement = json.encodeToJsonElement(RichBlockTableCell.Serializer, header).jsonObject
+        val regularElement = json.encodeToJsonElement(RichBlockTableCell.Serializer, regular).jsonObject
+        assertEquals(true, headerElement["is_header"]?.jsonPrimitive?.boolean)
+        assertTrue("is_header" !in regularElement)
+        assertEquals(header, json.decodeFromJsonElement(RichBlockTableCell.Serializer, headerElement))
+        assertEquals(regular, json.decodeFromJsonElement(RichBlockTableCell.Serializer, regularElement))
+        assertTrue(json.decodeFromString(RichBlockTableCell.Serializer, "{\"align\":\"left\",\"valign\":\"top\",\"is_header\":false}") is RichBlockTableCell.Regular)
+    }
+
+    @Test
+    fun serializesEveryTableCellAlignmentAsItsName() {
+        val alignments = listOf(
+            RichBlockTableCellAlign.Left,
+            RichBlockTableCellAlign.Center,
+            RichBlockTableCellAlign.Right
+        )
+
+        alignments.forEach { alignment ->
+            val encoded = json.encodeToString(RichBlockTableCellAlign.Serializer, alignment)
+            assertEquals("\"${alignment.name}\"", encoded)
+            assertEquals(alignment, json.decodeFromString(RichBlockTableCellAlign.Serializer, encoded))
+        }
+    }
+
+    @Test
+    fun rejectsUnknownTableCellAlignment() {
+        assertFailsWith<SerializationException> {
+            json.decodeFromString(RichBlockTableCellAlign.Serializer, "\"justify\"")
+        }
     }
 
     @Test

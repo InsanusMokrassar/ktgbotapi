@@ -84,12 +84,12 @@ class InputRichBlocksDslTest {
         val blocks = buildInputRichBlocks {
             table(isBordered = true, isStriped = false, caption = RichTextPlain("caption")) {
                 row {
-                    cell(align = "left", valign = "top", isHeader = true, colspan = 2) {
+                    headerCell(align = RichBlockTableCellAlign.Left, valign = "top", colspan = 2) {
                         bold("heading")
                     }
                 }
                 row {
-                    cell(align = "center", valign = "middle", rowspan = 2) {
+                    cell(align = RichBlockTableCellAlign.Center, valign = "middle", rowspan = 2) {
                         plain("value")
                     }
                 }
@@ -101,19 +101,18 @@ class InputRichBlocksDslTest {
                 InputRichBlockTable(
                     cells = listOf(
                         listOf(
-                            RichBlockTableCell(
+                            RichBlockTableCell.Header(
                                 text = RichTextBold(RichTextPlain("heading")),
-                                isHeader = true,
                                 colspan = 2,
-                                align = "left",
+                                align = RichBlockTableCellAlign.Left,
                                 valign = "top"
                             )
                         ),
                         listOf(
-                            RichBlockTableCell(
+                            RichBlockTableCell.Regular(
                                 text = RichTextPlain("value"),
                                 rowspan = 2,
-                                align = "center",
+                                align = RichBlockTableCellAlign.Center,
                                 valign = "middle"
                             )
                         )
