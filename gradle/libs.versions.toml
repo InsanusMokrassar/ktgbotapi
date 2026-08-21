@@ -8,13 +8,13 @@ javax-activation = "1.1.1"
 
 korlibs = "5.4.0"
 uuid = "0.8.4"
-ktor = "3.5.1"
+ktor = "3.5.2"
 
-ksp = "2.3.9"
+ksp = "2.3.11"
 kotlin-poet = "2.3.0"
 
-microutils = "0.30.0"
-kslog = "1.6.1"
+microutils = "0.30.1"
+kslog = "1.7.0"
 
 versions = "0.54.0"
 
@@ -22,7 +22,7 @@ github-release-plugin = "2.5.2"
 dokka = "2.2.0"
 
 validator = "0.18.1"
-nmcp = "1.6.0"
+nmcp = "1.6.1"
 
 [libraries]
 
