@@ -55,9 +55,10 @@
     * (`Communities`) Added `waitCommunityChatAdded`/`waitCommunityChatRemoved` and `waitCommunityChatAddedEventsMessages`/`waitCommunityChatRemovedEventsMessages` expectations
     * (`Bot Subscriptions`) Added `onBotSubscriptionUpdated` trigger, `waitBotSubscriptionUpdated` expectation and `ByUserBotSubscriptionUpdatedMarkerFactory`
 * `Utils`:
+    * (`Rich Messages`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for the `InputRichBlock` hierarchy, `TelegramMediaVoiceNote` and `RichMessageMemberTelegramMedia`
+    * (`Ephemeral Messages`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for `EphemeralChatId` and `PossiblyEphemeralMessage`
+    * (`Communities`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for `CommunityChatAdded` and `CommunityChatRemoved`
     * (`Bot Subscriptions`) Added class casts for `BotSubscriptionUpdatedUpdate` (`whenBotSubscriptionUpdatedUpdate`/`asBotSubscriptionUpdatedUpdate`/`requireBotSubscriptionUpdatedUpdate`); regenerated class casts extensions (`botSubscriptionUpdatedUpdateOrNull`/`OrThrow`, `botSubscriptionUpdatedOrNull`/`OrThrow`)
-* `WebApps`:
-    * Telegram hardened Mini App method-origin security, auto-enabling for all Mini Apps on July 20, 2026; no library change required
 
 ## 35.1.0
 
