@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.communities.Community
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
@@ -33,6 +34,14 @@ sealed interface ExtendedChat : Chat {
      * @see <a href="https://core.telegram.org/bots/api#chatfullinfo">ChatFullInfo.guard_bot</a>
      */
     val guardBot: User?
+        get() = null
+
+    /**
+     * The Community to which the chat belongs
+     *
+     * @see <a href="https://core.telegram.org/bots/api#chatfullinfo">ChatFullInfo.community</a>
+     */
+    val community: Community?
         get() = null
 
     @Deprecated(

@@ -92,6 +92,7 @@ data class TelegramMediaVideo internal constructor (
     @SerialName(supportsStreamingField)
     override val supportsStreaming: Boolean = false,
 ) : TelegramFreeMedia,
+    RichMessageMemberTelegramMedia,
     SizedTelegramMedia,
     DuratedTelegramMedia,
     ThumbedTelegramMedia,

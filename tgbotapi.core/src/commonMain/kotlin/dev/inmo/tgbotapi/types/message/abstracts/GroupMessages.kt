@@ -12,7 +12,7 @@ sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<
     override val chat: PreviewGroupChat
 }
 
-sealed interface PotentiallyFromUserGroupContentMessage<T : MessageContent> : GroupContentMessage<T> {
+sealed interface PotentiallyFromUserGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyEphemeralMessage {
     val senderBoostsCount: Int?
     val senderTag: UserTag?
 }

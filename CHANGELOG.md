@@ -1,5 +1,65 @@
 # TelegramBotAPI changelog
 
+## 36.0.0
+
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.2](https://core.telegram.org/bots/api-changelog#july-14-2026)**
+
+**Breaking changes**:
+
+* `RichBlockTableCell.align` now uses the string-serialized `RichBlockTableCellAlign` sealed hierarchy (`Left`, `Center`, or `Right`) instead of `String`
+* `RichBlockTableCell.valign` now uses the string-serialized `RichBlockTableCellVAlign` sealed hierarchy (`Top`, `Middle`, or `Bottom`) instead of `String`
+* `RichBlockTableCell` is now a sealed interface with `Header` and `Regular` implementations; the input table DSL uses `headerCell` and `cell` respectively
+* `InputRichBlockListItem` is now a sealed interface with `Ordered` and `Unordered` implementations; ordered items require a non-null `value` and typed `LabelType`, while `LabelType.Decimals` is the default; `InputRichBlocksBuilder` now exposes separate `orderedList` and `unorderedList` DSL functions with matching item builders
+* `ReplyParameters` is now a sealed interface with nested `ReplyParameters.Chat` and `ReplyParameters.Ephemeral` implementations; overloaded `ReplyParameters(...)` companion factories construct both regular-message and ephemeral-message variants
+* The 4 group-family message implementations (`CommonGroupContentMessageImpl`, `CommonForumContentMessageImpl`, `CommonChannelDirectMessagesContentMessageImpl`, `CommonSuggestedChannelDirectMessagesContentMessageImpl`) gained trailing `receiverUser`/`ephemeralMessageId` primary-constructor parameters (defaulted to `null`) — positional construction of these classes must be updated
+* `reply(to = ...)` overloads for the 13 ephemeral-capable senders (see below) now detect an ephemeral `to` target (`to is PossiblyEphemeralMessage && to.ephemeralMessageId != null`) and automatically address the reply through `ephemeral_message_id`, sending the outgoing message itself as ephemeral to the same receiver — this is a behavior change for any existing code that replies to a message carrying a non-null `ephemeralMessageId`
+
+**Migration advice**: Keep `ReplyParameters(...)` for both chat-message and ephemeral-message targets; explicit `ReplyParameters.Ephemeral(...)` subtype construction also remains available; pass `receiverUser`/`ephemeralMessageId` explicitly (or rely on their `null` default) when constructing the 4 group-family message implementations positionally
+
+* `Core`:
+    * (`Rich Messages`) Added the raw-string-serialized `RichBlockTableCellVAlign` hierarchy and migrated table-cell vertical alignment from `String` to `RichBlockTableCellVAlign`
+    * (`Rich Messages`) Added the raw-string-serialized `RichBlockTableCellAlign` hierarchy and migrated table-cell alignment from `String` to `RichBlockTableCellAlign`
+    * (`Rich Messages`) Split `RichBlockTableCell` into header/regular variants with a shared flat surrogate serializer; added `headerCell` to the input table DSL
+    * (`Rich Messages`) Added `h1` through `h6` shortcuts for plain and rich-text headings in `InputRichBlocksBuilder`
+    * (`Rich Messages`) Reworked the input table DSL to build cells through nested `table { row { cell(...) { } } }` builders
+    * (`Rich Messages`) Replaced the flat `InputRichBlockListItem` data class with ordered/unordered variants, added the string-serialized `LabelType` hierarchy (`A`, `a`, `I`, `i`, `1`), and split the list DSL into `InputRichBlockOrderedListBuilder`/`InputRichBlockUnorderedListBuilder`
+    * (`Rich Messages`) Added `InputRichBlock` hierarchy with all 21 `InputRichBlock*` types (mirroring the received `RichBlock*` hierarchy and reusing `RichText`/`RichBlockCaption`/`RichBlockTableCell`), the label-less `InputRichBlockListItem` and the `InputRichBlockSerializer`; every `InputRichBlock` exposes `subBlocks` navigation
+    * (`Rich Messages`) Added `TelegramMediaVoiceNote` (`InputMediaVoiceNote`) and the `RichMessageMemberTelegramMedia` marker interface implemented by it, `TelegramMediaAnimation`, `TelegramMediaAudio`, `TelegramMediaPhoto` and `TelegramMediaVideo`; added `VoiceFile.toTelegramMediaVoiceNote` converters
+    * (`Rich Messages`) Added `InputRichMessageMedia` type (media referenced from `InputRichMessage.html`/`.markdown` via `tg://photo?id=`, `tg://video?id=` and `tg://audio?id=` links)
+    * (`Rich Messages`) `InputRichMessage` gained `blocks` and `media` fields ("exactly one of `html`, `markdown` or `blocks` must be used") and the `InputRichMessageBlocks` factory; `InputRichMessageHTML`/`InputRichMessageMarkdown` gained a trailing `media` parameter
+    * (`Rich Messages`) Added Rich Messages input DSL builders `buildInputRichBlocks`/`InputRichBlocksBuilder`, typed ordered/unordered list builders and the `InputRichMessageBlocks { }` builder overload (marked with the `@RichTextDsl` DSL marker)
+    * (`Rich Messages`) `SendRichMessage` now supports `attach://` upload of new files referenced from `InputRichMessage.blocks`/`.media`; `SendRichMessageDraft` now rejects rich messages that require direct file upload (unsupported by the method)
+    * (`Ephemeral Messages`) Added `EphemeralMessageId` value class, `PossiblyEphemeralMessage` (`receiverUser`/`ephemeralMessageId`) and `EphemeralMessageAction` (`receiverUserId`/`ephemeralMessageId`) abstractions
+    * (`Ephemeral Messages`) `RawMessage` parses `receiver_user`/`ephemeral_message_id`; the 4 group-family `Common*ContentMessage` types (`CommonGroupContentMessage`, `CommonForumContentMessage`, `CommonChannelDirectMessagesContentMessage`, `CommonSuggestedChannelDirectMessagesContentMessage`, via the shared `PotentiallyFromUserGroupContentMessage`) now also implement `PossiblyEphemeralMessage`
+    * (`Ephemeral Messages`) `BotCommand` gained the `isEphemeral` field
+    * (`Ephemeral Messages`) `ReplyParameters` became a sealed interface with nested `Chat` and `Ephemeral` implementations and a shared surrogate-backed serializer preserving the flat Bot API JSON shape; added the `Message.ephemeralReplyParametersOrNull()`/`Message.ephemeralReplyReceiverUserIdOrNull` helpers used by the `reply(to = ...)` smart-branch
+    * (`Ephemeral Messages`) `ReplyParameters.Ephemeral` and `Message.ephemeralReplyParametersOrNull()` support and forward `allowSendingWithoutReply`, `checklistTaskId`, and `pollOptionId` together with `ephemeralMessageId`
+    * (`Ephemeral Messages`) Added `receiverUserId`/`callbackQueryId` params (via the new `OptionallyEphemeralSendRequest`) to the 13 ephemeral-capable send requests: `SendTextMessage`, `SendContact`, `SendLocation` (`Static`/`Live`), `SendVenue`, `SendPhotoData`, `SendLivePhotoData`, `SendAudioData`, `SendDocumentData`, `SendVideoData`, `SendAnimationData`, `SendVoiceData`, `SendVideoNoteData`, `SendStickerByFileId`
+    * (`Ephemeral Messages`) Added `EditEphemeralMessageText`/`EditEphemeralMessageMedia`/`EditEphemeralMessageCaption`/`EditEphemeralMessageReplyMarkup` and `DeleteEphemeralMessage` requests (all return `Unit`, mirroring the inline-message edit family); `EditEphemeralMessageMedia` rejects `MultipartFile` media (new file upload is not supported for ephemeral edits)
+    * (`Ephemeral Messages`) Added `EphemeralChatId` (`IdChatIdentifier`, carrying `chatId`/`receiverUser`/`ephemeralMessageId`) and the `ChatIdentifier.receiverUser`/`ChatIdentifier.ephemeralMessageId` extensions (mirroring `ChatIdentifier.threadId`); `FullChatIdentifierSerializer` gained the `chatId/eph/receiverUserChatId/ephemeralMessageId` string format. The nullable `receiverUserId` param of the 13 ephemeral-capable send requests still defaults from the passed `chatId` when it is an `EphemeralChatId`; `DeleteEphemeralMessage` and `EditEphemeralMessageText`/`EditEphemeralMessageCaption`/`EditEphemeralMessageMedia`/`EditEphemeralMessageReplyMarkup` instead keep `receiverUserId`/`ephemeralMessageId` REQUIRED on their primary constructor/factory form, gaining `EphemeralChatId`-taking secondary constructors/factory overloads that source both params from the identifier (throwing `IllegalArgumentException` if it carries no `ephemeralMessageId`)
+    * (`Communities`) Added `CommunityId` value class and `Community` type (`id`/`name`)
+    * (`Communities`) Added `CommunityChatAdded` (`community`) and `CommunityChatRemoved` (fieldless) chat events (`CommonEvent`); `RawMessage` parses `community_chat_added`/`community_chat_removed`
+    * (`Communities`) Added `community` field to `ExtendedChat` (`ChatFullInfo.community`), parsed for `ExtendedChannelChatImpl`, `ExtendedGroupChatImpl`, `ExtendedSupergroupChatImpl`, `ExtendedForumChatImpl`, `ExtendedChannelDirectMessagesChatImpl` and `ExtendedBot`
+    * (`Bot Subscriptions`) Added `BotSubscriptionUpdated` (`user`, `invoicePayload`, `state`) and `BotSubscriptionUpdatedUpdate`; `state` is modeled as the typed sealed `BotSubscriptionUpdated.State` (`Canceled`/`Active`/`Failed`, with an `Unknown` fallback), mirroring `TransactionType`
+    * (`Bot Subscriptions`) `RawUpdate` parses the new `subscription` field; added `UPDATE_SUBSCRIPTION` to `ALL_UPDATES_LIST_WITHOUT_REACTIONS`; `FlowsUpdatesFilter` gained `botSubscriptionUpdatedUpdatesFlow`
+* `API`:
+    * (`Ephemeral Messages`) Threaded `receiverUserId`/`callbackQueryId` through the `sendXxx`/`send`/`reply`/`replyWithXxx` extensions for the 13 ephemeral-capable senders (`send/Sends.kt`, `send/Replies.kt`, `send/RepliesWithChatsAndMessages.kt` and their per-type extension files); `reply(to = ...)` now automatically sends an ephemeral reply when `to` is itself ephemeral (see Breaking changes)
+    * (`Ephemeral Messages`) Ephemeral-capable `reply(to = ...)` overloads gained `replyToEphemeralMessageId`, defaulting from `PossiblyEphemeralMessage.ephemeralMessageId`; direct and dispatcher overloads forward the explicit target into `ephemeralReplyParametersOrNull`
+    * (`Ephemeral Messages`) Added 48 ephemeral-only `reply`/`replyWithXxx` overloads in `RepliesWithEphemeral.kt` without a `ChatMessage`; each overload requires `replyInChatId`, `receiverUserId`, and `replyToEphemeralMessageId`, with complete content-form and dispatcher parity across the 13 ephemeral-capable senders
+    * (`Ephemeral Messages`) Added `editEphemeralMessageText`/`editEphemeralMessageMedia`/`editEphemeralMessageCaption`/`editEphemeralMessageReplyMarkup` and `deleteEphemeralMessage` `TelegramBot` extensions (the latter also accepts a `PossiblyEphemeralMessage` directly)
+    * (`Ephemeral Messages`) Added explicit `replyToEphemeral`/`replyToEphemeralWithXxx` `TelegramBot` extensions for the 13 ephemeral-capable senders, replying to an ephemeral message by `chatId`/`ephemeralMessageId` without requiring the original `Message` object
+    * (`Ephemeral Messages`) `receiverUserId`/`ephemeralMessageId` params of the edit/delete/`replyToEphemeral*` extensions remain REQUIRED on the `chatId: ChatIdentifier`/`chat: Chat` forms; each `chatId: ChatIdentifier` form additionally gained a convenience overload taking `chatId: EphemeralChatId` (dropping `receiverUserId`/`ephemeralMessageId`) that sources both from the identifier, throwing `IllegalArgumentException` if it carries no `ephemeralMessageId` (the `chat: Chat` forms got no such overload, since `Chat.id` is statically only an `IdChatIdentifier`); `Replies.kt`'s `receiverUserId` default now also checks `replyInChatId.receiverUser` before falling back to `to.ephemeralReplyReceiverUserIdOrNull`
+    * (`Ephemeral Messages`) Not covered by this iteration (follow-up): `createResend`/`ResendMessage` do not carry ephemeral fields (a resend is always a regular message); `handleLiveLocation` and the generic `reply(mediaFile = ...)`/`reply(content = ...)` dispatchers in `RepliesWithChatsAndMessages.kt`'s `copyMessage`/live-location branches are unaffected; `behaviour_builder` triggers/waiters gained no ephemeral-specific helpers
+* `BehaviourBuilder`:
+    * (`Communities`) Added `onCommunityChatAdded`/`onCommunityChatRemoved` triggers
+    * (`Communities`) Added `waitCommunityChatAdded`/`waitCommunityChatRemoved` and `waitCommunityChatAddedEventsMessages`/`waitCommunityChatRemovedEventsMessages` expectations
+    * (`Bot Subscriptions`) Added `onBotSubscriptionUpdated` trigger, `waitBotSubscriptionUpdated` expectation and `ByUserBotSubscriptionUpdatedMarkerFactory`
+* `Utils`:
+    * (`Rich Messages`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for the `InputRichBlock` hierarchy, `TelegramMediaVoiceNote` and `RichMessageMemberTelegramMedia`
+    * (`Ephemeral Messages`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for `EphemeralChatId` and `PossiblyEphemeralMessage`
+    * (`Communities`) Added generated class-cast extensions (`*OrNull`/`*OrThrow`/`if*`) for `CommunityChatAdded` and `CommunityChatRemoved`
+    * (`Bot Subscriptions`) Added class casts for `BotSubscriptionUpdatedUpdate` (`whenBotSubscriptionUpdatedUpdate`/`asBotSubscriptionUpdatedUpdate`/`requireBotSubscriptionUpdatedUpdate`); regenerated class casts extensions (`botSubscriptionUpdatedUpdateOrNull`/`OrThrow`, `botSubscriptionUpdatedOrNull`/`OrThrow`)
+
 ## 35.1.0
 
 * `Dependencies`:

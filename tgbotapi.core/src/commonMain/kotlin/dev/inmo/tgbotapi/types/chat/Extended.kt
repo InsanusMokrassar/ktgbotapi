@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
 import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
 import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
+import dev.inmo.tgbotapi.types.communities.Community
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
@@ -71,7 +72,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(guardBotField)
-    override val guardBot: User? = null
+    override val guardBot: User? = null,
+    @SerialName(communityField)
+    override val community: Community? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -120,7 +123,9 @@ data class ExtendedGroupChatImpl(
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(guardBotField)
-    override val guardBot: User? = null
+    override val guardBot: User? = null,
+    @SerialName(communityField)
+    override val community: Community? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -322,7 +327,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(guardBotField)
-    override val guardBot: User? = null
+    override val guardBot: User? = null,
+    @SerialName(communityField)
+    override val community: Community? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -398,7 +405,9 @@ data class ExtendedForumChatImpl(
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(guardBotField)
-    override val guardBot: User? = null
+    override val guardBot: User? = null,
+    @SerialName(communityField)
+    override val community: Community? = null
 ) : ExtendedForumChat
 
 @Serializable
@@ -477,7 +486,9 @@ data class ExtendedChannelDirectMessagesChatImpl(
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(guardBotField)
-    override val guardBot: User? = null
+    override val guardBot: User? = null,
+    @SerialName(communityField)
+    override val community: Community? = null
 ) : ExtendedChannelDirectMessagesChat {
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)
@@ -533,6 +544,8 @@ data class ExtendedBot(
     override val uniqueGiftColors: UniqueGiftColors? = null,
     @SerialName(canManageBotsField)
     val canManageBots: Boolean = false,
+    @SerialName(communityField)
+    override val community: Community? = null,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true

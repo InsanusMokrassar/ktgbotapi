@@ -25,6 +25,7 @@ object TelegramMediaSerializer : KSerializer<TelegramMedia> {
             is TelegramPaidMediaPhoto -> TelegramPaidMediaPhoto.serializer().serialize(encoder, value)
             is TelegramPaidMediaLivePhoto -> TelegramPaidMediaLivePhoto.serializer().serialize(encoder, value)
             is TelegramMediaSticker -> TelegramMediaSticker.serializer().serialize(encoder, value)
+            is TelegramMediaVoiceNote -> TelegramMediaVoiceNote.serializer().serialize(encoder, value)
         }
     }
 

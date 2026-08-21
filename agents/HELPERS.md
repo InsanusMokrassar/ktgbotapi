@@ -60,3 +60,13 @@ All work MUST be performed in the normal (main) working worktree of the reposito
 ---
 
 When a prompt contains a list of several subtasks, run each subtask as its own subagent (one subagent per subtask) instead of doing all of them inline in the main thread.
+
+---
+
+For any substantial change, drive it through a three-phase agent pipeline, each phase run as its own subagent(s), and each section/subtask committed separately:
+
+1. **Plan / Architect** the changes — model range best → medium, best is the most suitable.
+2. **Coding / implementation** — model range medium → high, medium is the most suitable.
+3. **Check / validation** — model range high → best, high is the most suitable.
+
+Model tiers: **best = Fable**, **high = Opus**, **medium = Sonnet**. (Tier names, not the concrete models, are the contract — remap the models if the roster changes.)

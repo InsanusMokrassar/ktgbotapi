@@ -15,6 +15,11 @@ import dev.inmo.tgbotapi.types.valignField
 import dev.inmo.tgbotapi.types.valueField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * Caption of a rich formatted block.
@@ -34,21 +39,86 @@ data class RichBlockCaption(
  *
  * @see <a href="https://core.telegram.org/bots/api#richblocktablecell">RichBlockTableCell</a>
  */
-@Serializable
-data class RichBlockTableCell(
-    @SerialName(textField)
-    val text: RichText? = null,
-    @SerialName(isHeaderField)
-    val isHeader: Boolean? = null,
-    @SerialName(colspanField)
-    val colspan: Int? = null,
-    @SerialName(rowspanField)
-    val rowspan: Int? = null,
-    @SerialName(alignField)
-    val align: String,
-    @SerialName(valignField)
-    val valign: String
-)
+@Serializable(RichBlockTableCell.Serializer::class)
+sealed interface RichBlockTableCell {
+    val text: RichText?
+    val colspan: Int?
+    val rowspan: Int?
+    val align: RichBlockTableCellAlign
+    val valign: RichBlockTableCellVAlign
+
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @Serializable(Serializer::class)
+    data class Header(
+        @SerialName(textField)
+        override val text: RichText? = null,
+        @SerialName(colspanField)
+        override val colspan: Int? = null,
+        @SerialName(rowspanField)
+        override val rowspan: Int? = null,
+        @SerialName(alignField)
+        override val align: RichBlockTableCellAlign,
+        @SerialName(valignField)
+        override val valign: RichBlockTableCellVAlign
+    ) : RichBlockTableCell
+
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    @Serializable(Serializer::class)
+    data class Regular(
+        @SerialName(textField)
+        override val text: RichText? = null,
+        @SerialName(colspanField)
+        override val colspan: Int? = null,
+        @SerialName(rowspanField)
+        override val rowspan: Int? = null,
+        @SerialName(alignField)
+        override val align: RichBlockTableCellAlign,
+        @SerialName(valignField)
+        override val valign: RichBlockTableCellVAlign
+    ) : RichBlockTableCell
+
+    object Serializer : KSerializer<RichBlockTableCell> {
+        @Serializable
+        private data class Surrogate(
+            @SerialName(textField)
+            val text: RichText? = null,
+            @SerialName(isHeaderField)
+            @EncodeDefault(EncodeDefault.Mode.NEVER)
+            val isHeader: Boolean? = null,
+            @SerialName(colspanField)
+            val colspan: Int? = null,
+            @SerialName(rowspanField)
+            val rowspan: Int? = null,
+            @SerialName(alignField)
+            val align: RichBlockTableCellAlign,
+            @SerialName(valignField)
+            val valign: RichBlockTableCellVAlign
+        )
+
+        override val descriptor: SerialDescriptor = Surrogate.serializer().descriptor
+
+        override fun deserialize(decoder: Decoder): RichBlockTableCell {
+            val surrogate = decoder.decodeSerializableValue(Surrogate.serializer())
+            return if (surrogate.isHeader == true) {
+                Header(surrogate.text, surrogate.colspan, surrogate.rowspan, surrogate.align, surrogate.valign)
+            } else {
+                Regular(surrogate.text, surrogate.colspan, surrogate.rowspan, surrogate.align, surrogate.valign)
+            }
+        }
+
+        override fun serialize(encoder: Encoder, value: RichBlockTableCell) {
+            val surrogate = Surrogate(
+                value.text,
+                true.takeIf { value is Header },
+                value.colspan,
+                value.rowspan,
+                value.align,
+                value.valign
+            )
+            encoder.encodeSerializableValue(Surrogate.serializer(), surrogate)
+        }
+    }
+}
 
 /**
  * An item of a [RichBlockList].

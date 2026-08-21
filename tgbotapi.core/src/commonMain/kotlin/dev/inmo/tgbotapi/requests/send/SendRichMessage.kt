@@ -1,5 +1,8 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
+import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
+import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.types.*
@@ -10,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.RichMessageContent
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
+import dev.inmo.tgbotapi.types.rich.multipartFiles
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -56,10 +60,14 @@ data class SendRichMessage(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendContentMessageRequest<ChatContentMessage<RichMessageContent>>,
-    ReplyingMarkupSendMessageRequest<ChatContentMessage<RichMessageContent>> {
+    ReplyingMarkupSendMessageRequest<ChatContentMessage<RichMessageContent>>,
+    MultipartRequest.Common<ChatContentMessage<RichMessageContent>> {
     override fun method(): String = "sendRichMessage"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<RichMessageContent>>
         get() = RichMessageContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+    override val data: SimpleRequest<ChatContentMessage<RichMessageContent>>
+        get() = this
+    override val mediaMap: Map<String, MultipartFile> by lazy { richMessage.multipartFiles }
 }

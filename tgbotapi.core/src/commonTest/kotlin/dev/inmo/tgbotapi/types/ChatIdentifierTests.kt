@@ -69,4 +69,31 @@ class ChatIdentifierTests {
             assertEquals(withUsername, deserialized)
         }
     }
+
+    @Test
+    fun `EphemeralChatId_is_serialized_as_bare_long_by_ChatIdentifierSerializer`() {
+        val ephemeralChatId = EphemeralChatId(chatIdentifierChatId, ChatId(RawChatId(456L)))
+        val stringified = TestsJsonFormat.encodeToString(ChatIdentifierSerializer, ephemeralChatId as ChatIdentifier)
+        assertEquals("$chatIdentifierChatId", stringified)
+        val deserialized = TestsJsonFormat.decodeFromString(ChatIdentifierSerializer, stringified)
+        assertEquals(ChatId(chatIdentifierChatId), deserialized)
+    }
+
+    @Test
+    fun `EphemeralChatId_round_trips_through_FullChatIdentifierSerializer_with_ephemeralMessageId`() {
+        val ephemeralChatId = EphemeralChatId(chatIdentifierChatId, ChatId(RawChatId(456L)), EphemeralMessageId(789L))
+        val stringified = TestsJsonFormat.encodeToString(FullChatIdentifierSerializer, ephemeralChatId as ChatIdentifier)
+        assertEquals("\"$chatIdentifierChatId/eph/456/789\"", stringified)
+        val deserialized = TestsJsonFormat.decodeFromString(FullChatIdentifierSerializer, stringified)
+        assertEquals(ephemeralChatId, deserialized)
+    }
+
+    @Test
+    fun `EphemeralChatId_round_trips_through_FullChatIdentifierSerializer_without_ephemeralMessageId`() {
+        val ephemeralChatId = EphemeralChatId(chatIdentifierChatId, ChatId(RawChatId(456L)))
+        val stringified = TestsJsonFormat.encodeToString(FullChatIdentifierSerializer, ephemeralChatId as ChatIdentifier)
+        assertEquals("\"$chatIdentifierChatId/eph/456/\"", stringified)
+        val deserialized = TestsJsonFormat.decodeFromString(FullChatIdentifierSerializer, stringified)
+        assertEquals(ephemeralChatId, deserialized)
+    }
 }

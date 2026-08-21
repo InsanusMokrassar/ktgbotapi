@@ -67,7 +67,7 @@ data class TelegramMediaAnimation internal constructor(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : TelegramFreeMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia, InputPollMedia, InputPollOptionMedia {
+) : TelegramFreeMedia, RichMessageMemberTelegramMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia, InputPollMedia, InputPollOptionMedia {
     @EncodeDefault
     override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {

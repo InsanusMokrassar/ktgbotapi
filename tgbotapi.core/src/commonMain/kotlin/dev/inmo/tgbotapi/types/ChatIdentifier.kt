@@ -39,6 +39,10 @@ sealed interface IdChatIdentifier : ChatIdentifier {
         get() = null
     val directMessageThreadId: DirectMessageThreadId?
         get() = null
+    val receiverUser: UserId?
+        get() = null
+    val ephemeralMessageId: EphemeralMessageId?
+        get() = null
 
     companion object {
         operator fun invoke(chatId: RawChatId, threadId: MessageThreadId? = null, businessConnectionId: BusinessConnectionId? = null) = threadId ?.let {
@@ -48,6 +52,7 @@ sealed interface IdChatIdentifier : ChatIdentifier {
         } ?: ChatId(chatId)
         operator fun invoke(chatId: RawChatId, threadId: MessageThreadId) = ChatIdWithThreadId(chatId, threadId)
         operator fun invoke(chatId: RawChatId, businessConnectionId: BusinessConnectionId) = BusinessChatId(chatId, businessConnectionId)
+        operator fun invoke(chatId: RawChatId, receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null) = EphemeralChatId(chatId, receiverUser, ephemeralMessageId)
     }
 }
 
@@ -91,6 +96,26 @@ value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, B
     constructor(chatId: RawChatId, businessConnectionId: BusinessConnectionId): this(chatId to businessConnectionId)
 }
 
+/**
+ * Chat id of group/supergroup additionally carrying ephemeral [receiverUser] (and optional [ephemeralMessageId]);
+ * used to default `receiverUserId`/`ephemeralMessageId` params of ephemeral-related requests
+ */
+@Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+@Serializable(ChatIdentifierSerializer::class)
+@JvmInline
+value class EphemeralChatId(
+    val chatIdWithReceiverUserAndEphemeralMessageId: Triple<RawChatId, UserId, EphemeralMessageId?>
+) : IdChatIdentifier {
+    override val chatId: RawChatId
+        get() = chatIdWithReceiverUserAndEphemeralMessageId.first
+    override val receiverUser: UserId
+        get() = chatIdWithReceiverUserAndEphemeralMessageId.second
+    override val ephemeralMessageId: EphemeralMessageId?
+        get() = chatIdWithReceiverUserAndEphemeralMessageId.third
+
+    constructor(chatId: RawChatId, receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null): this(Triple(chatId, receiverUser, ephemeralMessageId))
+}
+
 val ChatIdentifier.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
@@ -100,16 +125,24 @@ val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 
+val ChatIdentifier.receiverUser: UserId?
+    get() = (this as? IdChatIdentifier) ?.receiverUser
+
+val ChatIdentifier.ephemeralMessageId: EphemeralMessageId?
+    get() = (this as? IdChatIdentifier) ?.ephemeralMessageId
+
 fun IdChatIdentifier.toChatId() = when (this) {
     is ChatId -> this
     is ChatIdWithThreadId -> ChatId(chatId)
     is ChatIdWithChannelDirectMessageThreadId -> ChatId(chatId)
     is BusinessChatId -> ChatId(chatId)
+    is EphemeralChatId -> ChatId(chatId)
 }
 
 fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdentifier(chatId, threadId)
 fun IdChatIdentifier.toChatIdWithChannelDirectMessageThreadId(threadId: DirectMessageThreadId) = ChatIdWithChannelDirectMessageThreadId(chatId, threadId)
 fun IdChatIdentifier.toBusinessChatId(businessConnectionId: BusinessConnectionId) = IdChatIdentifier(chatId, businessConnectionId)
+fun IdChatIdentifier.toEphemeralChatId(receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null) = IdChatIdentifier(chatId, receiverUser, ephemeralMessageId)
 
 /**
  * https://core.telegram.org/bots/api#formatting-options
@@ -256,6 +289,17 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
                         )
                     }
                 }
+                4 -> {
+                    val (chatId, intermediateDelimiter, receiverUserChatId, ephemeralMessageId) = splitted
+                    when (intermediateDelimiter) {
+                        "eph" -> EphemeralChatId(
+                            chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
+                            receiverUserChatId.toLongOrNull() ?.let { ChatId(RawChatId(it)) } ?: return@let null,
+                            ephemeralMessageId.toLongOrNull() ?.let(::EphemeralMessageId)
+                        )
+                        else -> null
+                    }
+                }
                 else -> null
             }
         } ?: id.content.let {
@@ -269,6 +313,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
             is BusinessChatId -> encoder.encodeString("${value.chatId}//${value.businessConnectionId}")
             is ChatIdWithChannelDirectMessageThreadId -> encoder.encodeString("${value.chatId}/cdm/${value.directMessageThreadId}")
+            is EphemeralChatId -> encoder.encodeString("${value.chatId}/eph/${value.receiverUser.chatId}/${value.ephemeralMessageId?.long ?: ""}")
             is Username -> encoder.encodeString(value.full)
         }
     }

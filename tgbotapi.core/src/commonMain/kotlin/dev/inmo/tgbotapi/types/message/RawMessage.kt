@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
+import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
@@ -71,6 +73,9 @@ internal data class RawMessage(
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val from: PreviewUser? = null,
     private val sender_tag: UserTag? = null,
+    @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
+    private val receiver_user: PreviewUser? = null,
+    private val ephemeral_message_id: EphemeralMessageId? = null,
     @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
     private val sender_chat: PreviewPublicChat? = null,
     private val forward_origin: MessageOrigin? = null,
@@ -202,6 +207,10 @@ internal data class RawMessage(
     private val checklist: Checklist.Created? = null,
     private val checklist_tasks_done: ChecklistTasksDone? = null,
     private val checklist_tasks_added: ChecklistTasksAdded? = null,
+
+    // Communities
+    private val community_chat_added: CommunityChatAdded? = null,
+    private val community_chat_removed: CommunityChatRemoved? = null,
 
     // Channel direct messages
     private val direct_message_price_changed: DirectMessagesConfigurationChanged? = null,
@@ -368,6 +377,8 @@ internal data class RawMessage(
             gift_upgrade_sent != null -> gift_upgrade_sent
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
+            community_chat_added != null -> community_chat_added
+            community_chat_removed != null -> community_chat_removed
             direct_message_price_changed != null -> direct_message_price_changed
             suggested_post_approved != null -> suggested_post_approved
             suggested_post_approval_failed != null -> suggested_post_approval_failed
@@ -534,6 +545,8 @@ internal data class RawMessage(
                                                 fromOffline = is_from_offline,
                                                 cost = paid_star_count,
                                                 senderTag = sender_tag,
+                                                receiverUser = receiver_user,
+                                                ephemeralMessageId = ephemeral_message_id,
                                             )
                                         }
                                     }
@@ -578,6 +591,8 @@ internal data class RawMessage(
                                                 suggestedPostInfo = suggested_post_info,
                                                 cost = paid_star_count,
                                                 senderTag = sender_tag,
+                                                receiverUser = receiver_user,
+                                                ephemeralMessageId = ephemeral_message_id,
                                             )
                                         }
                                     }
@@ -687,6 +702,8 @@ internal data class RawMessage(
                                                     fromOffline = is_from_offline,
                                                     cost = paid_star_count,
                                                     senderTag = sender_tag,
+                                                    receiverUser = receiver_user,
+                                                    ephemeralMessageId = ephemeral_message_id,
                                                 )
                                             }
                                         } else {
@@ -762,7 +779,9 @@ internal data class RawMessage(
                                                     senderBoostsCount = sender_boost_count,
                                                     fromOffline = is_from_offline,
                                                     cost = paid_star_count,
-                                                    senderTag = sender_tag
+                                                    senderTag = sender_tag,
+                                                    receiverUser = receiver_user,
+                                                    ephemeralMessageId = ephemeral_message_id,
                                                 )
                                             }
                                         }
@@ -841,6 +860,8 @@ internal data class RawMessage(
                                         fromOffline = is_from_offline,
                                         cost = paid_star_count,
                                         senderTag = sender_tag,
+                                        receiverUser = receiver_user,
+                                        ephemeralMessageId = ephemeral_message_id,
                                     )
                                 }
                             }
