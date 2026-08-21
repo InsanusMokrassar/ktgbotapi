@@ -7,7 +7,7 @@
     * Update `com.google.devtools.ksp:symbol-processing-api` from `2.3.9` to `2.3.11`
     * Update `io.ktor:ktor-client-core` from `3.5.1` to `3.5.2`
     * Update `dev.inmo:kslog` from `1.6.1` to `1.7.0`
-    * Update `dev.inmo:micro_utils.colors.common` from `0.30.0` to `30.1.0`
+    * Update `dev.inmo:micro_utils.colors.common` from `0.30.0` to `0.30.1`
 
 ## 36.0.0
 
