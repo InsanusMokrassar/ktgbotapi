@@ -21,6 +21,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
     val canDeleteStories: Boolean
     val canManageDirectMessages: Boolean
     val canManageTags: Boolean
+    val canSendWelcomeMessages: Boolean
 
     companion object {
         operator fun invoke(
@@ -38,7 +39,8 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
             canManageTopics: Boolean = false,
             canPostStories: Boolean = false,
             canEditStories: Boolean = false,
-            canDeleteStories: Boolean = false
+            canDeleteStories: Boolean = false,
+            canSendWelcomeMessages: Boolean = false
         ) = ChatCommonAdministratorRights(
             canChangeInfo = canChangeInfo,
             canPostMessages = canPostMessages,
@@ -54,7 +56,8 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
             canManageTopics = canManageTopics,
             canPostStories = canPostStories,
             canEditStories = canEditStories,
-            canDeleteStories = canDeleteStories
+            canDeleteStories = canDeleteStories,
+            canSendWelcomeMessages = canSendWelcomeMessages
         )
     }
 }

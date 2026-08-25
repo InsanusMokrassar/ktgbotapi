@@ -50,6 +50,8 @@ data class OwnerChatMember(
     override val canManageDirectMessages: Boolean = true
     @Transient
     override val canManageTags: Boolean = true
+    @Transient
+    override val canSendWelcomeMessages: Boolean = true
 
     @SerialName(statusField)
     @Required

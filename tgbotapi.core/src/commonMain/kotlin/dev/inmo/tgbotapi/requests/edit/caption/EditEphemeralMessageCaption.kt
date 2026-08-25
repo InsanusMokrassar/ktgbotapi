@@ -20,6 +20,7 @@ fun EditEphemeralMessageCaption(
     ephemeralMessageId: EphemeralMessageId,
     caption: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditEphemeralMessageCaption(
     chatId = chatId,
@@ -28,6 +29,7 @@ fun EditEphemeralMessageCaption(
     text = caption,
     parseMode = parseMode,
     rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
 
@@ -35,6 +37,7 @@ fun EditEphemeralMessageCaption(
     chatId: EphemeralChatId,
     caption: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditEphemeralMessageCaption(
     chatId = chatId,
@@ -42,6 +45,7 @@ fun EditEphemeralMessageCaption(
     ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
     caption = caption,
     parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
 
@@ -50,6 +54,7 @@ fun EditEphemeralMessageCaption(
     receiverUserId: UserId,
     ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditEphemeralMessageCaption(
     chatId = chatId,
@@ -58,18 +63,21 @@ fun EditEphemeralMessageCaption(
     text = entities.makeString(),
     parseMode = null,
     rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
 
 fun EditEphemeralMessageCaption(
     chatId: EphemeralChatId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditEphemeralMessageCaption(
     chatId = chatId,
     receiverUserId = chatId.receiverUser,
     ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
     entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
 
@@ -92,6 +100,8 @@ data class EditEphemeralMessageCaption internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    val showCaptionAboveMedia: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditEphemeralMessage, EditTextChatMessage, EditReplyMessage {

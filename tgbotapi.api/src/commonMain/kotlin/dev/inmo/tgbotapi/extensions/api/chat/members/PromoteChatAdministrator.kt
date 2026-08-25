@@ -22,6 +22,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = execute(
     PromoteChatMember(
         chatId = chatId,
@@ -35,7 +36,8 @@ public suspend fun TelegramBot.promoteChatAdministrator(
         canPromoteMembers = canPromoteMembers,
         canManageVideoChats = canManageVideoChats,
         canManageChat = canManageChat,
-        canManageTags = canManageTags
+        canManageTags = canManageTags,
+        canSendWelcomeMessages = canSendWelcomeMessages,
     )
 )
 
@@ -52,6 +54,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChatAdministrator(
     chatId = chat.id,
     userId = userId,
@@ -64,7 +67,8 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTags = canManageTags
+    canManageTags = canManageTags,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -80,6 +84,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChatAdministrator(
     chatId = chatId,
     userId = user.id,
@@ -92,7 +97,8 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTags = canManageTags
+    canManageTags = canManageTags,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -108,6 +114,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChatAdministrator(
     chatId = chat.id,
     userId = user.id,
@@ -120,5 +127,6 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTags = canManageTags
+    canManageTags = canManageTags,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )

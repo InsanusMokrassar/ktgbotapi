@@ -2,14 +2,41 @@ package dev.inmo.tgbotapi.extensions.api.edit.text
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditEphemeralMessageText
+import dev.inmo.tgbotapi.requests.edit.text.EditEphemeralMessageRichText
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.buildEntities
+
+/** Edit an ephemeral message with a rich message. */
+public suspend fun TelegramBot.editEphemeralMessageRichText(
+    chatId: ChatIdentifier,
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = execute(EditEphemeralMessageRichText(chatId, receiverUserId, ephemeralMessageId, richMessage, replyMarkup))
+
+/** Edit an ephemeral message with a rich message, obtaining recipient and message identifiers from [chatId]. */
+public suspend fun TelegramBot.editEphemeralMessageRichText(
+    chatId: EphemeralChatId,
+    richMessage: InputRichMessage,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = execute(EditEphemeralMessageRichText(chatId, richMessage, replyMarkup))
+
+/** Edit an ephemeral message with a rich message. */
+public suspend fun TelegramBot.editEphemeralMessageRichText(
+    chat: Chat,
+    receiverUserId: UserId,
+    ephemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyMarkup: InlineKeyboardMarkup? = null
+): Unit = editEphemeralMessageRichText(chat.id, receiverUserId, ephemeralMessageId, richMessage, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]

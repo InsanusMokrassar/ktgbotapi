@@ -23,8 +23,7 @@ fun SendSticker(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -39,8 +38,7 @@ fun SendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -79,10 +77,8 @@ data class SendStickerByFileId internal constructor(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId? = chatId.receiverUser,
-    @SerialName(callbackQueryIdField)
-    override val callbackQueryId: CallbackQueryId? = null,
+    @SerialName(ephemeralMessageParametersField)
+    override val ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     @SerialName(emojiField)
     val emoji: String? = null,
     @SerialName(disableNotificationField)

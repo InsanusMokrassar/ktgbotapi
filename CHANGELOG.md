@@ -5,11 +5,16 @@
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**
 
 * `Core`:
+    * (`Ephemeral messages`) Added `EphemeralMessageParameters`; replaced the flat send-request recipient/callback parameters with `ephemeralMessageParameters`, including callback-message replacement support
+    * (`Ephemeral messages`) Added new-file uploads for `editEphemeralMessageMedia`, `showCaptionAboveMedia` for caption edits, and rich-message text edits
+    * (`Ephemeral messages`) Added `canSendWelcomeMessages` administrator right and `promoteChatMember` parameter
     * (`Rich Messages`) Added rich-message button actions, rich-text/button-row entities, typed button styles/alignment, expandable block quotations, compact tables, document blocks, document media links and direct document uploads
     * (`Reply markup`) Added `DisabledButton`/`DisabledInlineKeyboardButton` support for disabled inline buttons
     * (`Reply markup`) Added `forceReply` support to `InlineKeyboardMarkup` and `ReplyKeyboardMarkup`
 * `Utils`:
     * (`Reply markup`) Added disabled inline-button shortcuts and `forceReply` parameters to inline/reply keyboard builders
+* `API`:
+    * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
 
 ## 36.1.0
 

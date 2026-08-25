@@ -4079,13 +4079,13 @@ public final class dev/inmo/tgbotapi/requests/chat/members/GetChatMember$Compani
 
 public final class dev/inmo/tgbotapi/requests/chat/members/PromoteChatMember : dev/inmo/tgbotapi/abstracts/types/UntilDate, dev/inmo/tgbotapi/requests/chat/abstracts/ChatMemberRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun copy (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public final fun copy (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -4113,12 +4113,12 @@ public final class dev/inmo/tgbotapi/requests/chat/members/PromoteChatMember$Com
 }
 
 public final class dev/inmo/tgbotapi/requests/chat/members/PromoteChatMemberKt {
-	public static final fun PromoteChannelAdministrator (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static synthetic fun PromoteChannelAdministrator$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static final fun PromoteChatMember (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static synthetic fun PromoteChatMember$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static final fun PromoteSupergroupAdministrator (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
-	public static synthetic fun PromoteSupergroupAdministrator$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static final fun PromoteChannelAdministrator (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static synthetic fun PromoteChannelAdministrator$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static final fun PromoteChatMember (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static synthetic fun PromoteChatMember$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static final fun PromoteSupergroupAdministrator (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
+	public static synthetic fun PromoteSupergroupAdministrator$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/chat/members/PromoteChatMember;
 }
 
 public final class dev/inmo/tgbotapi/requests/chat/members/RestrictChatMember : dev/inmo/tgbotapi/abstracts/types/UntilDate, dev/inmo/tgbotapi/requests/chat/abstracts/ChatMemberRequest {
@@ -4785,13 +4785,14 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaptio
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption : dev/inmo/tgbotapi/requests/edit/abstracts/EditEphemeralMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-TazDcj0 ()J
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component7 ()Ljava/lang/Boolean;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getEntities ()Ljava/util/List;
@@ -4802,6 +4803,7 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageC
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getShowCaptionAboveMedia ()Ljava/lang/Boolean;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
 	public fun hashCode ()I
@@ -4826,14 +4828,14 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageC
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaptionKt {
 	public static final field editEphemeralMessageCaptionMethod Ljava/lang/String;
-	public static final fun EditEphemeralMessageCaption-5oOaHaE (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static synthetic fun EditEphemeralMessageCaption-5oOaHaE$default (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static final fun EditEphemeralMessageCaption-6OjyHG8 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static synthetic fun EditEphemeralMessageCaption-6OjyHG8$default (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static final fun EditEphemeralMessageCaption-KsEWIr0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static synthetic fun EditEphemeralMessageCaption-KsEWIr0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static final fun EditEphemeralMessageCaption-NM4o_PA (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
-	public static synthetic fun EditEphemeralMessageCaption-NM4o_PA$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static final fun EditEphemeralMessageCaption-6OjyHG8 (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-6OjyHG8$default (Lkotlin/Triple;Ljava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static final fun EditEphemeralMessageCaption-7Bto7E0 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-7Bto7E0$default (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static final fun EditEphemeralMessageCaption-8nKsyN0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-8nKsyN0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static final fun EditEphemeralMessageCaption-KsEWIr0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
+	public static synthetic fun EditEphemeralMessageCaption-KsEWIr0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/util/List;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditEphemeralMessageCaption;
 }
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
@@ -5146,7 +5148,7 @@ public final class dev/inmo/tgbotapi/requests/edit/media/EditChatMessageMediaKt 
 	public static final field editMessageMediaMethod Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia : dev/inmo/tgbotapi/requests/edit/abstracts/EditEphemeralMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditMediaMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
+public final class dev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/edit/abstracts/EditEphemeralMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditMediaMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -5161,8 +5163,11 @@ public final class dev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMed
 	public static synthetic fun copy-NM4o_PA$default (Ldev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/media/TelegramFreeMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/media/EditEphemeralMessageMedia;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public fun getData ()Ldev/inmo/tgbotapi/requests/abstracts/SimpleRequest;
 	public fun getEphemeralMessageId-TazDcj0 ()J
 	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;
+	public fun getMediaMap ()Ljava/util/Map;
+	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
@@ -5438,9 +5443,9 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditChatMessageTextKt {
 	public static synthetic fun EditChatMessageText-fLfFtqc$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditChatMessageText;
 }
 
-public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText : dev/inmo/tgbotapi/requests/edit/abstracts/EditEphemeralMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditLinkPreviewOptionsContainer, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
+public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/edit/abstracts/EditEphemeralMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditLinkPreviewOptionsContainer, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLjava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun component3-TazDcj0 ()J
@@ -5448,18 +5453,23 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
+	public fun getData ()Ldev/inmo/tgbotapi/requests/abstracts/SimpleRequest;
 	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
 	public fun getEntities ()Ljava/util/List;
 	public fun getEphemeralMessageId-TazDcj0 ()J
 	public fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
+	public fun getMediaMap ()Ljava/util/Map;
+	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public final fun getRichMessage ()Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
 	public fun hashCode ()I
@@ -5484,6 +5494,10 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText
 
 public final class dev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageTextKt {
 	public static final field editEphemeralMessageTextMethod Ljava/lang/String;
+	public static final fun EditEphemeralMessageRichText-5oOaHaE (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static synthetic fun EditEphemeralMessageRichText-5oOaHaE$default (Lkotlin/Triple;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static final fun EditEphemeralMessageRichText-NM4o_PA (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
+	public static synthetic fun EditEphemeralMessageRichText-NM4o_PA$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/IdChatIdentifier;JLdev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static final fun EditEphemeralMessageText-6OjyHG8 (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static synthetic fun EditEphemeralMessageText-6OjyHG8$default (Lkotlin/Triple;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
 	public static final fun EditEphemeralMessageText-7Bto7E0 (Lkotlin/Triple;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditEphemeralMessageText;
@@ -6657,42 +6671,40 @@ public final class dev/inmo/tgbotapi/requests/send/SendChecklist$Companion {
 
 public final class dev/inmo/tgbotapi/requests/send/SendContact : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendContact$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Z
 	public final fun component11 ()Z
-	public final fun component12 ()Z
-	public final fun component13-Ts0V7ak ()Ljava/lang/String;
-	public final fun component14 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component16 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component12-Ts0V7ak ()Ljava/lang/String;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component6-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component7-nXr5wdE ()Ljava/lang/String;
-	public final fun component8 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component9-w28BCt4 ()Ljava/lang/String;
-	public final fun copy-RuZ5cEQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendContact;
-	public static synthetic fun copy-RuZ5cEQ$default (Ldev/inmo/tgbotapi/requests/send/SendContact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendContact;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component9 ()Z
+	public final fun copy-jm4xZ6I (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendContact;
+	public static synthetic fun copy-jm4xZ6I$default (Ldev/inmo/tgbotapi/requests/send/SendContact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendContact;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public final fun getFirstName ()Ljava/lang/String;
 	public final fun getLastName ()Ljava/lang/String;
 	public final fun getPhoneNumber ()Ljava/lang/String;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -6721,8 +6733,8 @@ public final class dev/inmo/tgbotapi/requests/send/SendContact$Companion {
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendContactKt {
-	public static final fun toRequest-RgD6xFw (Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendContact;
-	public static synthetic fun toRequest-RgD6xFw$default (Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendContact;
+	public static final fun toRequest-UpenSQ0 (Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendContact;
+	public static synthetic fun toRequest-UpenSQ0$default (Ldev/inmo/tgbotapi/types/Contact;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendContact;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendDice : dev/inmo/tgbotapi/abstracts/types/DisableNotification, dev/inmo/tgbotapi/abstracts/types/OptionallyBusinessConnectionRequest, dev/inmo/tgbotapi/abstracts/types/WithReplyParameters, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
@@ -6802,19 +6814,18 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$DefaultImpls {
 
 public final class dev/inmo/tgbotapi/requests/send/SendLocation$Live : dev/inmo/tgbotapi/requests/send/SendLocation {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendLocation$Live$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10-nXr5wdE ()Ljava/lang/String;
-	public final fun component11 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component12-w28BCt4 ()Ljava/lang/String;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component12 ()Z
 	public final fun component13 ()Z
 	public final fun component14 ()Z
-	public final fun component15 ()Z
-	public final fun component16-Ts0V7ak ()Ljava/lang/String;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component15-Ts0V7ak ()Ljava/lang/String;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()D
 	public final fun component3 ()D
 	public final fun component4 ()I
@@ -6823,17 +6834,17 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$Live : dev/inmo/
 	public final fun component7 ()Ljava/lang/Float;
 	public final fun component8-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component9-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
-	public final fun copy-56Na9FM (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
-	public static synthetic fun copy-56Na9FM$default (Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
+	public final fun copy-Eaog3hw (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
+	public static synthetic fun copy-Eaog3hw$default (Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getHeading ()Ljava/lang/Integer;
 	public fun getHorizontalAccuracy ()Ljava/lang/Float;
 	public fun getLatitude ()D
@@ -6841,7 +6852,6 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$Live : dev/inmo/
 	public fun getLongitude ()D
 	public fun getProtectContent ()Z
 	public fun getProximityAlertRadius ()Ljava/lang/Float;
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -6871,34 +6881,33 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$Live$Companion {
 
 public final class dev/inmo/tgbotapi/requests/send/SendLocation$Static : dev/inmo/tgbotapi/requests/send/SendLocation {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendLocation$Static$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Z
-	public final fun component11 ()Z
-	public final fun component12-Ts0V7ak ()Ljava/lang/String;
-	public final fun component13 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component14 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component11-Ts0V7ak ()Ljava/lang/String;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()D
 	public final fun component3 ()D
 	public final fun component4-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component5-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component6-nXr5wdE ()Ljava/lang/String;
-	public final fun component7 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component8-w28BCt4 ()Ljava/lang/String;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-q5Mj8lQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
-	public static synthetic fun copy-q5Mj8lQ$default (Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public final fun copy-bYfvUCQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public static synthetic fun copy-bYfvUCQ$default (Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getHeading ()Ljava/lang/Integer;
 	public fun getHorizontalAccuracy ()Ljava/lang/Float;
 	public fun getLatitude ()D
@@ -6906,7 +6915,6 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$Static : dev/inm
 	public fun getLongitude ()D
 	public fun getProtectContent ()Z
 	public fun getProximityAlertRadius ()Ljava/lang/Float;
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -6935,12 +6943,12 @@ public final class dev/inmo/tgbotapi/requests/send/SendLocation$Static$Companion
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendLocationKt {
-	public static final fun SendLiveLocation-56Na9FM (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
-	public static synthetic fun SendLiveLocation-56Na9FM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
-	public static final fun SendLocation-q5Mj8lQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
-	public static synthetic fun SendLocation-q5Mj8lQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
-	public static final fun SendStaticLocation-q5Mj8lQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
-	public static synthetic fun SendStaticLocation-q5Mj8lQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public static final fun SendLiveLocation-Eaog3hw (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
+	public static synthetic fun SendLiveLocation-Eaog3hw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDILjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Live;
+	public static final fun SendLocation-bYfvUCQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public static synthetic fun SendLocation-bYfvUCQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public static final fun SendStaticLocation-bYfvUCQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
+	public static synthetic fun SendStaticLocation-bYfvUCQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendLocation$Static;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendMessageDraft : dev/inmo/tgbotapi/abstracts/TextedOutput, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyMessageThreadRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendChatMessageRequest {
@@ -6990,30 +6998,31 @@ public final class dev/inmo/tgbotapi/requests/send/SendMessageDraftKt {
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendMessageKt {
-	public static final fun SendTextMessage-RuZ5cEQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
-	public static synthetic fun SendTextMessage-RuZ5cEQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
-	public static final fun SendTextMessage-q5Mj8lQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
-	public static synthetic fun SendTextMessage-q5Mj8lQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
+	public static final fun SendTextMessage-bYfvUCQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
+	public static synthetic fun SendTextMessage-bYfvUCQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
+	public static final fun SendTextMessage-jm4xZ6I (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
+	public static synthetic fun SendTextMessage-jm4xZ6I$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendTextMessage;
 }
 
-public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
+public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tgbotapi/requests/abstracts/MultipartRequest$Common, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendRichMessage$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component11 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component12 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component10-Ts0V7ak ()Ljava/lang/String;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/InputRichMessage;
 	public final fun component3-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component4-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component5-nXr5wdE ()Ljava/lang/String;
-	public final fun component6 ()Z
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public final fun component7 ()Z
 	public final fun component8 ()Z
-	public final fun component9-Ts0V7ak ()Ljava/lang/String;
-	public final fun copy-y-pL7hE (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendRichMessage;
-	public static synthetic fun copy-y-pL7hE$default (Ldev/inmo/tgbotapi/requests/send/SendRichMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendRichMessage;
+	public final fun component9 ()Z
+	public final fun copy-UpenSQ0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendRichMessage;
+	public static synthetic fun copy-UpenSQ0$default (Ldev/inmo/tgbotapi/requests/send/SendRichMessage;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/rich/InputRichMessage;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendRichMessage;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
@@ -7023,6 +7032,7 @@ public final class dev/inmo/tgbotapi/requests/send/SendRichMessage : dev/inmo/tg
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getMediaMap ()Ljava/util/Map;
 	public fun getParamsJson ()Lkotlinx/serialization/json/JsonObject;
 	public fun getProtectContent ()Z
@@ -7093,38 +7103,36 @@ public final class dev/inmo/tgbotapi/requests/send/SendRichMessageDraft$Companio
 
 public final class dev/inmo/tgbotapi/requests/send/SendTextMessage : dev/inmo/tgbotapi/abstracts/types/LinkPreviewOptionsContainer, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendTextMessage$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
+	public final fun component10 ()Z
 	public final fun component11 ()Z
 	public final fun component12 ()Z
-	public final fun component13 ()Z
-	public final fun component14-Ts0V7ak ()Ljava/lang/String;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component16 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component13-Ts0V7ak ()Ljava/lang/String;
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component6-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component7-nXr5wdE ()Ljava/lang/String;
-	public final fun component8 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component9-w28BCt4 ()Ljava/lang/String;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7156,24 +7164,23 @@ public final class dev/inmo/tgbotapi/requests/send/SendTextMessage$Companion {
 
 public final class dev/inmo/tgbotapi/requests/send/SendVenue : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/PositionedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TitledSendMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/SendVenue$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component11-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component12-nXr5wdE ()Ljava/lang/String;
-	public final fun component13 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component14-w28BCt4 ()Ljava/lang/String;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component14 ()Z
 	public final fun component15 ()Z
 	public final fun component16 ()Z
-	public final fun component17 ()Z
-	public final fun component18-Ts0V7ak ()Ljava/lang/String;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component17-Ts0V7ak ()Ljava/lang/String;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component19 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public final fun component2 ()D
-	public final fun component20 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component21 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component20 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()D
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
@@ -7181,18 +7188,18 @@ public final class dev/inmo/tgbotapi/requests/send/SendVenue : dev/inmo/tgbotapi
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-xfOfK3k (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
-	public static synthetic fun copy-xfOfK3k$default (Ldev/inmo/tgbotapi/requests/send/SendVenue;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
+	public final fun copy-gZHL5Rw (Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
+	public static synthetic fun copy-gZHL5Rw$default (Ldev/inmo/tgbotapi/requests/send/SendVenue;Ldev/inmo/tgbotapi/types/ChatIdentifier;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAddress ()Ljava/lang/String;
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public final fun getFoursquareId ()Ljava/lang/String;
 	public final fun getFoursquareType ()Ljava/lang/String;
 	public final fun getGooglePlaceId ()Ljava/lang/String;
@@ -7200,7 +7207,6 @@ public final class dev/inmo/tgbotapi/requests/send/SendVenue : dev/inmo/tgbotapi
 	public fun getLatitude ()D
 	public fun getLongitude ()D
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7230,8 +7236,8 @@ public final class dev/inmo/tgbotapi/requests/send/SendVenue$Companion {
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SendVenueKt {
-	public static final fun toRequest-RgD6xFw (Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
-	public static synthetic fun toRequest-RgD6xFw$default (Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
+	public static final fun toRequest-UpenSQ0 (Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
+	public static synthetic fun toRequest-UpenSQ0$default (Ldev/inmo/tgbotapi/types/venue/Venue;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/send/SendVenue;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/SetMessageReactions : dev/inmo/tgbotapi/abstracts/types/ChatRequest, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
@@ -7294,8 +7300,7 @@ public abstract interface class dev/inmo/tgbotapi/requests/send/abstracts/Option
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest {
-	public abstract fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
-	public abstract fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public abstract fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/send/abstracts/OptionallyMessageThreadRequest {
@@ -7444,23 +7449,22 @@ public final class dev/inmo/tgbotapi/requests/send/games/SendGame$Companion {
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationData : dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyWithSpoilerRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SizedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendAnimationData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/Integer;
 	public final fun component12-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component13-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component14-nXr5wdE ()Ljava/lang/String;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component16-w28BCt4 ()Ljava/lang/String;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component16 ()Z
 	public final fun component17 ()Z
 	public final fun component18 ()Z
-	public final fun component19 ()Z
+	public final fun component19-Ts0V7ak ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component20-Ts0V7ak ()Ljava/lang/String;
-	public final fun component21 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component22 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component23 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component20 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component21 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component22 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -7472,17 +7476,16 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationData : dev
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getAnimation ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getHeight ()Ljava/lang/Integer;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7566,29 +7569,28 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationFiles : ja
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendAnimationKt {
-	public static final fun SendAnimation-6lCFR6A (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendAnimation-6lCFR6A$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendAnimation-xfOfK3k (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendAnimation-xfOfK3k$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendAnimation-el5Dei8 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendAnimation-el5Dei8$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendAnimation-gZHL5Rw (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendAnimation-gZHL5Rw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendAudioData : dev/inmo/tgbotapi/abstracts/Performerable, dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TitledSendMessageRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendAudioData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component11-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component12-nXr5wdE ()Ljava/lang/String;
-	public final fun component13 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component14-w28BCt4 ()Ljava/lang/String;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component14 ()Z
 	public final fun component15 ()Z
 	public final fun component16 ()Z
-	public final fun component17 ()Z
-	public final fun component18-Ts0V7ak ()Ljava/lang/String;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component17-Ts0V7ak ()Ljava/lang/String;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component19 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component20 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component21 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component20 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -7600,17 +7602,16 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAudioData : dev/inm
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public final fun getAudio ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getPerformer ()Ljava/lang/String;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7692,26 +7693,25 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendAudioFiles : java/u
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendAudioKt {
-	public static final fun SendAudio-0tNuIEM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendAudio-0tNuIEM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendAudio-56Na9FM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendAudio-56Na9FM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendAudio-4HgpzYs (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendAudio-4HgpzYs$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendAudio-Eaog3hw (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendAudio-Eaog3hw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentData : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendDocumentData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component11-w28BCt4 ()Ljava/lang/String;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component11 ()Z
 	public final fun component12 ()Z
 	public final fun component13 ()Z
-	public final fun component14 ()Z
-	public final fun component15-Ts0V7ak ()Ljava/lang/String;
-	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
-	public final fun component19 ()Ljava/lang/Boolean;
+	public final fun component14-Ts0V7ak ()Ljava/lang/String;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component18 ()Ljava/lang/Boolean;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -7723,7 +7723,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentData : dev/
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun getDisableContentTypeDetection ()Ljava/lang/Boolean;
@@ -7731,9 +7730,9 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentData : dev/
 	public final fun getDocument ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7814,28 +7813,27 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentFiles : jav
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendDocumentKt {
-	public static final fun SendDocument-M21EqcM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendDocument-M21EqcM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendDocument-Q5BXv28 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendDocument-Q5BXv28$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendDocument-KqEAwvQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendDocument-KqEAwvQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendDocument-iL9Cywc (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendDocument-iL9Cywc$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendLivePhotoData : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyWithSpoilerRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendLivePhotoData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component11-nXr5wdE ()Ljava/lang/String;
-	public final fun component12 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component13-w28BCt4 ()Ljava/lang/String;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component13 ()Z
 	public final fun component14 ()Z
 	public final fun component15 ()Z
-	public final fun component16 ()Z
-	public final fun component17-Ts0V7ak ()Ljava/lang/String;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component16-Ts0V7ak ()Ljava/lang/String;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component19 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component20 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -7846,17 +7844,16 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendLivePhotoData : dev
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public final fun getLivePhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -7938,10 +7935,10 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendLivePhotoFiles : ja
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendLivePhotoKt {
-	public static final fun SendLivePhoto-56Na9FM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendLivePhoto-56Na9FM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendLivePhoto-qv-3GgM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendLivePhoto-qv-3GgM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendLivePhoto-1ewwhL0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendLivePhoto-1ewwhL0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendLivePhoto-Eaog3hw (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendLivePhoto-Eaog3hw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendMediaGroupData : dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
@@ -8170,18 +8167,17 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPaidMediaKt {
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoData : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyWithSpoilerRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendPhotoData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10-nXr5wdE ()Ljava/lang/String;
-	public final fun component11 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component12-w28BCt4 ()Ljava/lang/String;
+	public final fun component11 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component12 ()Z
 	public final fun component13 ()Z
 	public final fun component14 ()Z
-	public final fun component15 ()Z
-	public final fun component16-Ts0V7ak ()Ljava/lang/String;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component15-Ts0V7ak ()Ljava/lang/String;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -8193,16 +8189,15 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoData : dev/inm
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -8281,42 +8276,40 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoFiles : java/u
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendPhotoKt {
-	public static final fun SendPhoto-4wkoJOY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendPhoto-4wkoJOY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendPhoto-qv-3GgM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendPhoto-qv-3GgM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendPhoto-1ewwhL0 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendPhoto-1ewwhL0$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendPhoto-EDz3ozQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendPhoto-EDz3ozQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendStickerByFileId : dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendStickerByFileId$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Z
-	public final fun component11 ()Z
-	public final fun component12-Ts0V7ak ()Ljava/lang/String;
-	public final fun component13 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component14 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component11-Ts0V7ak ()Ljava/lang/String;
+	public final fun component12 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component13 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component3-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component4-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component5-nXr5wdE ()Ljava/lang/String;
-	public final fun component6 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component7-w28BCt4 ()Ljava/lang/String;
-	public final fun component8 ()Ljava/lang/String;
+	public final fun component6 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Z
 	public final fun component9 ()Z
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public final fun getEmoji ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -8346,13 +8339,13 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendStickerByFileId$Com
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendStickerKt {
-	public static final fun SendSticker-qjLQRV4 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendSticker-qjLQRV4$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendSticker-vvDBRa4 (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendSticker-vvDBRa4$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inmo/tgbotapi/abstracts/WithCustomStartMediaData, dev/inmo/tgbotapi/requests/send/abstracts/CoveredSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyWithSpoilerRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SizedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/WithCustomizableCaptionRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest, dev/inmo/tgbotapi/types/media/OptionallyStreamable {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendVideoData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;ZZLjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public final fun component10 ()Z
 	public final fun component11 ()Ljava/lang/Long;
@@ -8362,16 +8355,15 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inm
 	public final fun component15-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component16-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component17-nXr5wdE ()Ljava/lang/String;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component19-w28BCt4 ()Ljava/lang/String;
+	public final fun component18 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component19 ()Z
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component20 ()Z
 	public final fun component21 ()Z
-	public final fun component22 ()Z
-	public final fun component23-Ts0V7ak ()Ljava/lang/String;
-	public final fun component24 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component25 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component26 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component22-Ts0V7ak ()Ljava/lang/String;
+	public final fun component23 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component24 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component25 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component5 ()Ljava/lang/Integer;
@@ -8382,7 +8374,6 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inm
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getCover ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
@@ -8390,10 +8381,10 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoData : dev/inm
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getHeight ()Ljava/lang/Integer;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -8480,24 +8471,23 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoFiles : java/u
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVideoKt {
-	public static final fun SendVideo-cvaTdMA (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendVideo-cvaTdMA$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendVideo-g5uCMfA (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendVideo-g5uCMfA$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendVideo-pOvWxvw (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendVideo-pOvWxvw$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendVideo-yDJ1e0U (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendVideo-yDJ1e0U$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;ZZLdev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;ZLdev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteData : dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SizedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/ThumbedSendMessageRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendVideoNoteData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10-w28BCt4 ()Ljava/lang/String;
+	public final fun component10 ()Z
 	public final fun component11 ()Z
 	public final fun component12 ()Z
-	public final fun component13 ()Z
-	public final fun component14-Ts0V7ak ()Ljava/lang/String;
-	public final fun component15 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component16 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component13-Ts0V7ak ()Ljava/lang/String;
+	public final fun component14 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/Long;
@@ -8505,20 +8495,19 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteData : dev
 	public final fun component6-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public final fun component7-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public final fun component8-nXr5wdE ()Ljava/lang/String;
-	public final fun component9 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component9 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getHeight ()Ljava/lang/Integer;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -8599,23 +8588,22 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteFiles : ja
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVideoNoteKt {
-	public static final fun SendVideoNote-4wkoJOY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendVideoNote-4wkoJOY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendVideoNote-EDz3ozQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendVideoNote-EDz3ozQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceData : dev/inmo/tgbotapi/requests/send/abstracts/DuratedSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/OptionallyEphemeralSendRequest, dev/inmo/tgbotapi/requests/send/abstracts/ReplyingMarkupSendMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/SendContentMessageRequest, dev/inmo/tgbotapi/requests/send/abstracts/TextableSendMessageRequest, dev/inmo/tgbotapi/requests/send/media/base/DataRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/send/media/SendVoiceData$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
-	public final fun component10 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
-	public final fun component11-w28BCt4 ()Ljava/lang/String;
+	public final fun component10 ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public final fun component11 ()Z
 	public final fun component12 ()Z
 	public final fun component13 ()Z
-	public final fun component14 ()Z
-	public final fun component15-Ts0V7ak ()Ljava/lang/String;
-	public final fun component16 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
-	public final fun component17 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
-	public final fun component18 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
+	public final fun component14-Ts0V7ak ()Ljava/lang/String;
+	public final fun component15 ()Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;
+	public final fun component16 ()Ldev/inmo/tgbotapi/types/ReplyParameters;
+	public final fun component17 ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -8627,16 +8615,15 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceData : dev/inm
 	public fun getAllowPaidBroadcast ()Z
 	public fun getAllowSendingWithoutReply ()Ljava/lang/Boolean;
 	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
-	public fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
 	public fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getDirectMessageThreadId-1osv_qQ ()Ldev/inmo/tgbotapi/types/DirectMessageThreadId;
 	public fun getDisableNotification ()Z
 	public fun getDuration ()Ljava/lang/Long;
 	public fun getEffectId-Ts0V7ak ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
+	public fun getEphemeralMessageParameters ()Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getProtectContent ()Z
-	public fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getReplyParameters ()Ldev/inmo/tgbotapi/types/ReplyParameters;
 	public fun getReplyToMessageId-CigXjpw ()Ldev/inmo/tgbotapi/types/MessageId;
@@ -8717,10 +8704,10 @@ public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceFiles : java/u
 }
 
 public final class dev/inmo/tgbotapi/requests/send/media/SendVoiceKt {
-	public static final fun SendVoice-1eYHpmE (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Long;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendVoice-1eYHpmE$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Long;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SendVoice-4wkoJOY (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun SendVoice-4wkoJOY$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendVoice-EDz3ozQ (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendVoice-EDz3ozQ$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/lang/Long;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SendVoice-lY9zSkM (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ljava/lang/Long;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun SendVoice-lY9zSkM$default (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/MessageThreadId;Ldev/inmo/tgbotapi/types/DirectMessageThreadId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ljava/lang/Long;ZZZLjava/lang/String;Ldev/inmo/tgbotapi/types/message/SuggestedPostParameters;Ldev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/send/media/base/DataRequest : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
@@ -11580,6 +11567,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field canSendVideoNotesField Ljava/lang/String;
 	public static final field canSendVideosField Ljava/lang/String;
 	public static final field canSendVoiceNotesField Ljava/lang/String;
+	public static final field canSendWelcomeMessagesField Ljava/lang/String;
 	public static final field canSetStickerSetField Ljava/lang/String;
 	public static final field canTransferAndUpgradeGiftsField Ljava/lang/String;
 	public static final field canTransferStarsField Ljava/lang/String;
@@ -11673,6 +11661,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field emojisField Ljava/lang/String;
 	public static final field entitiesField Ljava/lang/String;
 	public static final field ephemeralMessageIdField Ljava/lang/String;
+	public static final field ephemeralMessageParametersField Ljava/lang/String;
 	public static final field errorMessageField Ljava/lang/String;
 	public static final field errorsField Ljava/lang/String;
 	public static final field excludeFromBlockchainField Ljava/lang/String;
@@ -11995,6 +11984,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field removeCaptionField Ljava/lang/String;
 	public static final field removeDateField Ljava/lang/String;
 	public static final field rentalAgreementField Ljava/lang/String;
+	public static final field replaceCallbackQueryMessageField Ljava/lang/String;
 	public static final field replyMarkupField Ljava/lang/String;
 	public static final field replyParametersField Ljava/lang/String;
 	public static final field replyToMessageIdField Ljava/lang/String;
@@ -12607,6 +12597,38 @@ public final class dev/inmo/tgbotapi/types/EphemeralMessageId$Companion {
 
 public final class dev/inmo/tgbotapi/types/EphemeralMessageIdKt {
 	public static final fun asEphemeralMessageId (J)J
+}
+
+public final class dev/inmo/tgbotapi/types/EphemeralMessageParameters {
+	public static final field Companion Ldev/inmo/tgbotapi/types/EphemeralMessageParameters$Companion;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun component2-w28BCt4 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun copy-6-l58Eo (Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public static synthetic fun copy-6-l58Eo$default (Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;Ldev/inmo/tgbotapi/types/IdChatIdentifier;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCallbackQueryId-w28BCt4 ()Ljava/lang/String;
+	public final fun getReceiverUserId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun getReplaceCallbackQueryMessage ()Ljava/lang/Boolean;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/EphemeralMessageParameters$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/EphemeralMessageParameters$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/EphemeralMessageParameters;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/EphemeralMessageParameters$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/ForumTopic {
@@ -20768,8 +20790,8 @@ public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMember$D
 
 public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl : dev/inmo/tgbotapi/types/chat/member/AdministratorChatMember {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZ)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZZ)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
 	public final fun component10 ()Z
 	public final fun component11 ()Z
@@ -20783,6 +20805,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberIm
 	public final fun component19 ()Z
 	public final fun component2 ()Z
 	public final fun component20 ()Z
+	public final fun component21 ()Z
 	public final fun component3 ()Z
 	public final fun component4 ()Z
 	public final fun component5 ()Z
@@ -20790,8 +20813,8 @@ public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberIm
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ZZZZZZZZZZZZLjava/lang/String;ZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getCanBeEdited ()Z
 	public fun getCanChangeInfo ()Z
@@ -20811,6 +20834,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/AdministratorChatMemberIm
 	public fun getCanPromoteMembers ()Z
 	public fun getCanRemoveMessages ()Z
 	public fun getCanRestrictMembers ()Z
+	public fun getCanSendWelcomeMessages ()Z
 	public fun getCustomTitle ()Ljava/lang/String;
 	public fun getStatus ()Ldev/inmo/tgbotapi/types/chat/member/ChatMember$Status;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
@@ -20858,19 +20882,20 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/member/ChatAdminist
 	public abstract fun getCanPromoteMembers ()Z
 	public abstract fun getCanRemoveMessages ()Z
 	public abstract fun getCanRestrictMembers ()Z
+	public abstract fun getCanSendWelcomeMessages ()Z
 	public abstract fun isAnonymous ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights$Companion {
-	public final fun invoke (ZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
-	public static synthetic fun invoke$default (Ldev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights$Companion;ZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
+	public final fun invoke (ZZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
+	public static synthetic fun invoke$default (Ldev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights$Companion;ZZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights : dev/inmo/tgbotapi/types/chat/member/ChatAdministratorRights {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights$Companion;
 	public fun <init> ()V
-	public fun <init> (ZZZZZZZZZZZZZZZZZ)V
-	public synthetic fun <init> (ZZZZZZZZZZZZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (ZZZZZZZZZZZZZZZZZZ)V
+	public synthetic fun <init> (ZZZZZZZZZZZZZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Z
 	public final fun component10 ()Z
 	public final fun component11 ()Z
@@ -20880,6 +20905,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRi
 	public final fun component15 ()Z
 	public final fun component16 ()Z
 	public final fun component17 ()Z
+	public final fun component18 ()Z
 	public final fun component2 ()Z
 	public final fun component3 ()Z
 	public final fun component4 ()Z
@@ -20888,8 +20914,8 @@ public final class dev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRi
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy (ZZZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZZZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
+	public final fun copy (ZZZZZZZZZZZZZZZZZZ)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;ZZZZZZZZZZZZZZZZZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getCanChangeInfo ()Z
 	public fun getCanDeleteStories ()Z
@@ -20907,6 +20933,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRi
 	public fun getCanPromoteMembers ()Z
 	public fun getCanRemoveMessages ()Z
 	public fun getCanRestrictMembers ()Z
+	public fun getCanSendWelcomeMessages ()Z
 	public fun hashCode ()I
 	public fun isAnonymous ()Z
 	public fun toString ()Ljava/lang/String;
@@ -21159,6 +21186,7 @@ public final class dev/inmo/tgbotapi/types/chat/member/OwnerChatMember : dev/inm
 	public fun getCanPromoteMembers ()Z
 	public fun getCanRemoveMessages ()Z
 	public fun getCanRestrictMembers ()Z
+	public fun getCanSendWelcomeMessages ()Z
 	public fun getCustomTitle ()Ljava/lang/String;
 	public fun getStatus ()Ldev/inmo/tgbotapi/types/chat/member/ChatMember$Status;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;

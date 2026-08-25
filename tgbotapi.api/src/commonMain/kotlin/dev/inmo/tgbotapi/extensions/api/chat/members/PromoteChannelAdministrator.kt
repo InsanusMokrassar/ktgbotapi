@@ -27,6 +27,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = execute(
     PromoteChannelAdministrator(
         chatId = chatId,
@@ -46,6 +47,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
         canEditStories = canEditStories,
         canDeleteStories = canDeleteStories,
         canManageDirectMessages = canManageDirectMessages,
+        canSendWelcomeMessages = canSendWelcomeMessages,
     )
 )
 
@@ -67,6 +69,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChannelAdministrator(
     chat.id,
     userId,
@@ -85,6 +88,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChannelAdministrator(
@@ -105,6 +109,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChannelAdministrator(
     chatId,
     user.id,
@@ -123,6 +128,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChannelAdministrator(
@@ -143,6 +149,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteChannelAdministrator(
     chat.id,
     user.id,
@@ -161,4 +168,5 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
+        canSendWelcomeMessages = canSendWelcomeMessages,
 )

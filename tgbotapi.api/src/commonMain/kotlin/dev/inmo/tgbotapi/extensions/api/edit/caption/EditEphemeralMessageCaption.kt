@@ -18,9 +18,10 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     ephemeralMessageId: EphemeralMessageId,
     caption: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
-    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, caption, parseMode, replyMarkup)
+    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, caption, parseMode, showCaptionAboveMedia, replyMarkup)
 )
 
 /**
@@ -34,6 +35,7 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     chatId: EphemeralChatId,
     caption: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageCaption(
     chatId,
@@ -41,6 +43,7 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
     caption,
     parseMode,
+    showCaptionAboveMedia,
     replyMarkup
 )
 
@@ -54,8 +57,9 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     ephemeralMessageId: EphemeralMessageId,
     caption: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, caption, parseMode, replyMarkup)
+): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, caption, parseMode, showCaptionAboveMedia, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -66,9 +70,10 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     receiverUserId: UserId,
     ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
-    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, entities, replyMarkup)
+    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, entities, showCaptionAboveMedia, replyMarkup)
 )
 
 /**
@@ -81,12 +86,14 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
 public suspend fun TelegramBot.editEphemeralMessageCaption(
     chatId: EphemeralChatId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageCaption(
     chatId,
     chatId.receiverUser,
     requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
     entities,
+    showCaptionAboveMedia,
     replyMarkup
 )
 
@@ -99,5 +106,6 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     receiverUserId: UserId,
     ephemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, entities, replyMarkup)
+): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, entities, showCaptionAboveMedia, replyMarkup)
