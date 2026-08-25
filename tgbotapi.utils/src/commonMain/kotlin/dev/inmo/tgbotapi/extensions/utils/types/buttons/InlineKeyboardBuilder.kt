@@ -20,7 +20,9 @@ typealias InlineKeyboardBuilder = MatrixBuilder<InlineKeyboardButton>
 /**
  * Creates [InlineKeyboardMarkup] using internal [matrix]
  */
-fun InlineKeyboardBuilder.build() = InlineKeyboardMarkup(matrix)
+fun InlineKeyboardBuilder.build(
+    forceReply: Boolean? = null
+) = InlineKeyboardMarkup(matrix, forceReply)
 
 /**
  * Row builder of [InlineKeyboardBuilder]
@@ -37,8 +39,9 @@ typealias InlineKeyboardRowBuilder = RowBuilder<InlineKeyboardButton>
  * @see InlineKeyboardBuilder.row
  */
 inline fun inlineKeyboard(
+    forceReply: Boolean? = null,
     block: InlineKeyboardBuilder.() -> Unit
-) = InlineKeyboardBuilder().apply(block).build()
+) = InlineKeyboardBuilder().apply(block).build(forceReply)
 
 /**
  * Factory-function for [InlineKeyboardBuilder], but in difference with [inlineKeyboard] this function will create single-row
@@ -47,8 +50,9 @@ inline fun inlineKeyboard(
  * @see InlineKeyboardBuilder.row
  */
 inline fun flatInlineKeyboard(
+    forceReply: Boolean? = null,
     block: InlineKeyboardRowBuilder.() -> Unit
-) = inlineKeyboard { row<InlineKeyboardButton>(block) }
+) = inlineKeyboard(forceReply) { row<InlineKeyboardButton>(block) }
 
 /**
  * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
@@ -57,11 +61,24 @@ inline fun flatInlineKeyboard(
  * @see InlineKeyboardBuilder.row
  */
 inline fun InlineKeyboardMarkup.modified(
+    forceReply: Boolean? = this.forceReply,
     block: InlineKeyboardBuilder.() -> Unit
 ) = InlineKeyboardBuilder().apply {
     keyboard.forEach { add(it) }
     block()
-}.build()
+}.build(forceReply)
+
+/**
+ * Creates and puts [DisabledInlineKeyboardButton].
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+fun InlineKeyboardRowBuilder.disabledButton(
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = add(DisabledInlineKeyboardButton(text, iconCustomEmojiId, style))
 
 
 /**

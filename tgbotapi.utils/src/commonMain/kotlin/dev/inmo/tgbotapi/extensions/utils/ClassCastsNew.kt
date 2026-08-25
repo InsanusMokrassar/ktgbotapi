@@ -121,6 +121,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CopyTextButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.DisabledInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
@@ -4236,6 +4237,12 @@ public inline fun KeyboardButtonRequestUsers.botOrNull(): KeyboardButtonRequestU
 public inline fun KeyboardButtonRequestUsers.botOrThrow(): KeyboardButtonRequestUsers.Bot = this as dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
 
 public inline fun <T> KeyboardButtonRequestUsers.ifBot(block: (KeyboardButtonRequestUsers.Bot) -> T): T? = botOrNull() ?.let(block)
+
+public inline fun InlineKeyboardButton.disabledInlineKeyboardButtonOrNull(): DisabledInlineKeyboardButton? = this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.DisabledInlineKeyboardButton
+
+public inline fun InlineKeyboardButton.disabledInlineKeyboardButtonOrThrow(): DisabledInlineKeyboardButton = this as dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.DisabledInlineKeyboardButton
+
+public inline fun <T> InlineKeyboardButton.ifDisabledInlineKeyboardButton(block: (DisabledInlineKeyboardButton) -> T): T? = disabledInlineKeyboardButtonOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull(): UnknownInlineKeyboardButton? = this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 

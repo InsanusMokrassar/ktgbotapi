@@ -1385,6 +1385,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun directMessagesConfigurationChangedPaidOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/DirectMessagesConfigurationChanged$Paid;
 	public static final fun directMessagesTopicOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
 	public static final fun directMessagesTopicOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public static final fun disabledInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/DisabledInlineKeyboardButton;
+	public static final fun disabledInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/DisabledInlineKeyboardButton;
 	public static final fun disabledOrNull (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
 	public static final fun disabledOrThrow (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
 	public static final fun documentContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
@@ -1770,6 +1772,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifDirectMessagesConfigurationChangedPaid (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDirectMessagesTopic (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDisabled (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDisabledInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -4019,17 +4022,22 @@ public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/RequestsExecutor
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardBuilderKt {
-	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun copyTextButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static final fun copyTextButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun copyTextButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static synthetic fun copyTextButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun dataButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun dataButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun flatInlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun disabledButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
+	public static synthetic fun disabledButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
+	public static final fun flatInlineKeyboard (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun flatInlineKeyboard$default (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun gameButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun gameButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun inlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun inlineKeyboard (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun inlineKeyboard$default (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun inlineQueryButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun inlineQueryButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun inlineQueryInAnyChosenChatButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4042,7 +4050,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboa
 	public static synthetic fun inlineQueryInCurrentChatButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun loginButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun loginButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun modified (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun modified (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun modified$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun payButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun payButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun urlButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4054,16 +4063,17 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboa
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardMarkupKt {
-	public static final fun InlineKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun InlineKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun InlineKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboardBuilderKt {
-	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static final fun flatReplyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun flatReplyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static final fun replyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun replyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun flatReplyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun flatReplyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun replyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun replyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun requestBotButton-saVQPX0 (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun requestBotButton-saVQPX0$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun requestBotsButton-gB4qrME (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4105,8 +4115,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboar
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboardMarkupKt {
-	public static final fun ReplyKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun ReplyKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun ReplyKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun ReplyKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/files/ContentAsMultipartFileKt {

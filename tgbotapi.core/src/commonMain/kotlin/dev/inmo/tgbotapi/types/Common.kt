@@ -776,6 +776,7 @@ const val disableEditMessageField = "disable_edit_message"
 const val scoreField = "score"
 const val forceField = "force"
 const val forceReplyField = "force_reply"
+const val disabledField = "disabled"
 
 const val regularPollType = "regular"
 const val quizPollType = "quiz"

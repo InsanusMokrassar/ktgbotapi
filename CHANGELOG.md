@@ -2,6 +2,14 @@
 
 ## 37.0.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**
+
+* `Core`:
+    * (`Reply markup`) Added `DisabledButton`/`DisabledInlineKeyboardButton` support for disabled inline buttons
+    * (`Reply markup`) Added `forceReply` support to `InlineKeyboardMarkup` and `ReplyKeyboardMarkup`
+* `Utils`:
+    * (`Reply markup`) Added disabled inline-button shortcuts and `forceReply` parameters to inline/reply keyboard builders
+
 ## 36.1.0
 
 * `Dependencies`:
