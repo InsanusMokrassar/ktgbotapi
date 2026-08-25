@@ -25,28 +25,36 @@ fun SendMessageDraft(
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ) = SendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     text = text,
     parseMode = parseMode,
     rawEntities = null,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 fun SendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ) = SendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     text = entities.makeString(),
     parseMode = null,
     rawEntities = entities.toRawMessageEntities(),
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 @ConsistentCopyVisibility
@@ -65,7 +73,11 @@ data class SendMessageDraft internal constructor(
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
     @EncodeDefault
-    override val threadId: MessageThreadId? = chatId.threadId
+    override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(canStopField)
+    val canStop: Boolean? = null,
+    @SerialName(keepOnStopField)
+    val keepOnStop: Boolean? = null
 ) : SendChatMessageRequest<Unit>,
     TextedOutput,
     OptionallyMessageThreadRequest

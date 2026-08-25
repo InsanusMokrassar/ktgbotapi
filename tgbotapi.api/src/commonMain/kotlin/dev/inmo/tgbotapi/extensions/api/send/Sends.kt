@@ -1462,13 +1462,17 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     text = text,
     parseMode = parseMode,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 /**
@@ -1479,13 +1483,17 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     text = text,
     parseMode = parseMode,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 /**
@@ -1495,12 +1503,16 @@ public suspend fun TelegramBot.send(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = entities,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 /**
@@ -1510,12 +1522,16 @@ public suspend fun TelegramBot.send(
     chat: Chat,
     draftId: DraftId,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     entities = entities,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 /**
@@ -1526,12 +1542,16 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     separator: TextSource? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
 )
 
@@ -1543,12 +1563,16 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     separator: String,
     threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
 )
 
@@ -1560,12 +1584,16 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     separator: TextSource? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
 )
 
@@ -1577,13 +1605,36 @@ public suspend fun TelegramBot.send(
     draftId: DraftId,
     separator: String,
     threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chat = chat,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
+)
+
+/**
+ * Will execute [sendRichMessageDraft] request
+ */
+public suspend fun TelegramBot.send(
+    chatId: ChatId,
+    draftId: Long,
+    richMessage: InputRichMessage,
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
+): Unit = sendRichMessageDraft(
+    chatId = chatId,
+    draftId = draftId,
+    richMessage = richMessage,
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 /**

@@ -11,10 +11,16 @@
     * (`Rich Messages`) Added rich-message button actions, rich-text/button-row entities, typed button styles/alignment, expandable block quotations, compact tables, document blocks, document media links and direct document uploads
     * (`Reply markup`) Added `DisabledButton`/`DisabledInlineKeyboardButton` support for disabled inline buttons
     * (`Reply markup`) Added `forceReply` support to `InlineKeyboardMarkup` and `ReplyKeyboardMarkup`
+    * (`General`) Added `canStop`/`keepOnStop` draft controls, `MessageGenerationStopped` updates, and `CommunityChatJoined` service messages
+    * (`General`) `UniqueGiftInfo` now exposes `text`/`textSources`/`isPrivate`
 * `Utils`:
     * (`Reply markup`) Added disabled inline-button shortcuts and `forceReply` parameters to inline/reply keyboard builders
+    * (`General`) Added legacy and generated class casts for `MessageGenerationStoppedUpdate`
 * `API`:
     * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
+    * (`General`) Added `canStop`/`keepOnStop` to `sendMessageDraft`/`sendRichMessageDraft` extension surfaces, including streaming draft flows and `send` overloads
+* `BehaviourBuilder`:
+    * (`General`) Added `onMessageGenerationStopped`/`waitMessageGenerationStopped` and `onCommunityChatJoined`/community joined event expectations
 
 ## 36.1.0
 

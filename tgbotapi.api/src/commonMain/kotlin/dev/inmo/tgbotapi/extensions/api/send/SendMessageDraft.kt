@@ -26,14 +26,18 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = execute(
     SendMessageDraft(
         chatId = chatId,
         draftId = draftId,
         text = text,
         parseMode = parseMode,
-        threadId = threadId
+        threadId = threadId,
+        canStop = canStop,
+        keepOnStop = keepOnStop
     )
 )
 
@@ -62,11 +66,13 @@ public suspend fun TelegramBot.sendMessageDraftFlow(
     messagesFlow: Flow<TextSourcesList>,
     threadId: MessageThreadId? = chatId.threadId,
     draftId: DraftId? = null,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Boolean {
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
-            SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, threadId = threadId)
+            SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, threadId = threadId, canStop = canStop, keepOnStop = keepOnStop)
         }
     )
 }
@@ -76,11 +82,13 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTextsAndParseMode(
     messagesFlow: Flow<Pair<String, ParseMode?>>,
     threadId: MessageThreadId? = chatId.threadId,
     draftId: DraftId? = null,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Boolean {
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
-            SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, threadId = threadId)
+            SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, threadId = threadId, canStop = canStop, keepOnStop = keepOnStop)
         }
     )
 }
@@ -90,6 +98,8 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
     messagesFlow: Flow<String>,
     threadId: MessageThreadId? = chatId.threadId,
     draftId: DraftId? = null,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Boolean {
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlowWithTextsAndParseMode(
@@ -98,7 +108,9 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
             it.escapeMarkdownV2Common() to MarkdownV2
         },
         threadId = threadId,
-        draftId = draftId
+        draftId = draftId,
+        canStop = canStop,
+        keepOnStop = keepOnStop
     )
 }
 
@@ -107,26 +119,34 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     text = text,
     parseMode = parseMode,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = chatId.threadId
+    threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = execute(
     SendMessageDraft(
         chatId = chatId,
         draftId = draftId,
         entities = entities,
-        threadId = threadId
+        threadId = threadId,
+        canStop = canStop,
+        keepOnStop = keepOnStop
     )
 )
 
@@ -134,12 +154,16 @@ public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
     draftId: DraftId,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = chat.id.threadId
+    threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     entities = entities,
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 public suspend fun TelegramBot.sendMessageDraft(
@@ -147,12 +171,16 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     separator: TextSource? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = buildEntities(separator, builderBody),
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 public suspend fun TelegramBot.sendMessageDraft(
@@ -160,12 +188,16 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     separator: String,
     threadId: MessageThreadId? = chatId.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = buildEntities(separator, builderBody),
-    threadId = threadId
+    threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop
 )
 
 public suspend fun TelegramBot.sendMessageDraft(
@@ -173,12 +205,16 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     separator: TextSource? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
 )
 
@@ -187,11 +223,15 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId: DraftId,
     separator: String,
     threadId: MessageThreadId? = chat.id.threadId,
+    canStop: Boolean? = null,
+    keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
 ): Unit = sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     separator = separator,
     threadId = threadId,
+    canStop = canStop,
+    keepOnStop = keepOnStop,
     builderBody = builderBody
 )

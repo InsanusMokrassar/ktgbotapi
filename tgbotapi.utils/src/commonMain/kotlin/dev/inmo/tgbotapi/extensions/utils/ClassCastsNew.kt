@@ -204,6 +204,7 @@ import dev.inmo.tgbotapi.types.chat.member.SubscriptionMemberChatMember
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
 import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
@@ -660,6 +661,7 @@ import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.GuestMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
 import dev.inmo.tgbotapi.types.update.ManagedBotUpdate
+import dev.inmo.tgbotapi.types.update.MessageGenerationStoppedUpdate
 import dev.inmo.tgbotapi.types.update.MessageUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
@@ -2133,6 +2135,12 @@ public inline fun ChatEvent.communityChatAddedOrNull(): CommunityChatAdded? = th
 public inline fun ChatEvent.communityChatAddedOrThrow(): CommunityChatAdded = this as dev.inmo.tgbotapi.types.communities.CommunityChatAdded
 
 public inline fun <T> ChatEvent.ifCommunityChatAdded(block: (CommunityChatAdded) -> T): T? = communityChatAddedOrNull() ?.let(block)
+
+public inline fun ChatEvent.communityChatJoinedOrNull(): CommunityChatJoined? = this as? dev.inmo.tgbotapi.types.communities.CommunityChatJoined
+
+public inline fun ChatEvent.communityChatJoinedOrThrow(): CommunityChatJoined = this as dev.inmo.tgbotapi.types.communities.CommunityChatJoined
+
+public inline fun <T> ChatEvent.ifCommunityChatJoined(block: (CommunityChatJoined) -> T): T? = communityChatJoinedOrNull() ?.let(block)
 
 public inline fun ChatEvent.communityChatRemovedOrNull(): CommunityChatRemoved? = this as? dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 
@@ -4155,6 +4163,12 @@ public inline fun Update.shippingQueryUpdateOrNull(): ShippingQueryUpdate? = thi
 public inline fun Update.shippingQueryUpdateOrThrow(): ShippingQueryUpdate = this as dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
 
 public inline fun <T> Update.ifShippingQueryUpdate(block: (ShippingQueryUpdate) -> T): T? = shippingQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.messageGenerationStoppedUpdateOrNull(): MessageGenerationStoppedUpdate? = this as? dev.inmo.tgbotapi.types.update.MessageGenerationStoppedUpdate
+
+public inline fun Update.messageGenerationStoppedUpdateOrThrow(): MessageGenerationStoppedUpdate = this as dev.inmo.tgbotapi.types.update.MessageGenerationStoppedUpdate
+
+public inline fun <T> Update.ifMessageGenerationStoppedUpdate(block: (MessageGenerationStoppedUpdate) -> T): T? = messageGenerationStoppedUpdateOrNull() ?.let(block)
 
 public inline fun Update.chatBoostUpdatedUpdateOrNull(): ChatBoostUpdatedUpdate? = this as? dev.inmo.tgbotapi.types.update.ChatBoostUpdatedUpdate
 

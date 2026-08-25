@@ -3,8 +3,10 @@ package dev.inmo.tgbotapi.requests.send
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.canStopField
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.draftIdField
+import dev.inmo.tgbotapi.types.keepOnStopField
 import dev.inmo.tgbotapi.types.messageThreadIdField
 import dev.inmo.tgbotapi.types.richMessageField
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
@@ -34,7 +36,11 @@ data class SendRichMessageDraft(
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
     @SerialName(messageThreadIdField)
-    val threadId: MessageThreadId? = chatId.threadId
+    val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(canStopField)
+    val canStop: Boolean? = null,
+    @SerialName(keepOnStopField)
+    val keepOnStop: Boolean? = null
 ) : SimpleRequest<Unit> {
     init {
         require(draftId != 0L) {

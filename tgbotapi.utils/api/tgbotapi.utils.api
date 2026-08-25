@@ -191,6 +191,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public static final fun asMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun asMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun asMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun asMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public static final fun asMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun asMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
@@ -538,6 +539,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public static final fun requireMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun requireMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun requireMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun requireMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public static final fun requireMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun requireMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
@@ -885,6 +887,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun whenMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun whenMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1327,6 +1330,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun commonUserOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public static final fun communityChatAddedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
 	public static final fun communityChatAddedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
+	public static final fun communityChatJoinedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatJoined;
+	public static final fun communityChatJoinedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatJoined;
 	public static final fun communityChatRemovedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
 	public static final fun communityChatRemovedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
 	public static final fun connectedFromChannelGroupContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ConnectedFromChannelGroupContentMessage;
@@ -1748,6 +1753,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifCommonSupergroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommonUser (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommunityChatAdded (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCommunityChatJoined (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommunityChatRemoved (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifConnectedFromChannelGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContactContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2005,6 +2011,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageDataCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageIsNotModifiedException (Ldev/inmo/tgbotapi/bot/exceptions/BotException;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageToEditNotFoundException (Ldev/inmo/tgbotapi/bot/exceptions/BotException;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2600,6 +2607,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun messageDataCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun messageGameShortNameCallbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
 	public static final fun messageGameShortNameCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun messageGenerationStoppedUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
+	public static final fun messageGenerationStoppedUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun messageIsNotModifiedExceptionOrNull (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageIsNotModifiedException;
 	public static final fun messageIsNotModifiedExceptionOrThrow (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageIsNotModifiedException;
 	public static final fun messageToEditNotFoundExceptionOrNull (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageToEditNotFoundException;

@@ -630,6 +630,9 @@ const val subscriptionPriceField = "subscription_price"
 const val copyTextField = "copy_text"
 const val topicIdField = "topic_id"
 const val draftIdField = "draft_id"
+const val canStopField = "can_stop"
+const val keepOnStopField = "keep_on_stop"
+const val stoppedMessageGenerationField = "stopped_message_generation"
 
 const val isPublicField = "is_public"
 
