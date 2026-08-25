@@ -133,6 +133,7 @@ object RichTextEntitySerializer : JsonContentPolymorphicSerializer<RichTextEntit
             RichTextHashtag.TYPE -> RichTextHashtag.serializer()
             RichTextCashtag.TYPE -> RichTextCashtag.serializer()
             RichTextBotCommand.TYPE -> RichTextBotCommand.serializer()
+            RichTextButton.TYPE -> RichTextButton.serializer()
             RichTextAnchor.TYPE -> RichTextAnchor.serializer()
             RichTextAnchorLink.TYPE -> RichTextAnchorLink.serializer()
             RichTextReference.TYPE -> RichTextReference.serializer()

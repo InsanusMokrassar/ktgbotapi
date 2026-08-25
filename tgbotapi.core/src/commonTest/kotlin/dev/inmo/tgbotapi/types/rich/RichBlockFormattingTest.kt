@@ -97,6 +97,15 @@ class RichBlockFormattingTest {
     }
 
     @Test
+    fun expandableBlockQuotationAndButtons() {
+        val quotation = RichBlockExpandableBlockQuotation(RichTextPlain("q"), RichTextPlain("credit"))
+        assertEquals("<blockquote collapsed>q<cite>credit</cite></blockquote>", quotation.markdown)
+        assertEquals("<blockquote collapsed>q<cite>credit</cite></blockquote>", quotation.html)
+        val buttons = RichBlockButtons(listOf(RichMessageButton.Disabled(RichTextPlain("Disabled"))), RichBlockButtonAlignment.Right)
+        assertEquals("<tg-button-row align=\"right\"><tg-button type=\"disabled\">Disabled</tg-button></tg-button-row>", buttons.html)
+    }
+
+    @Test
     fun details() {
         val block = RichBlockDetails(RichTextPlain("sum"), listOf(RichBlockParagraph(RichTextPlain("body"))), isOpen = true)
         assertEquals("<details open><summary>sum</summary>\n\nbody\n\n</details>", block.markdown)

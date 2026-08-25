@@ -5,6 +5,7 @@
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**
 
 * `Core`:
+    * (`Rich Messages`) Added rich-message button actions, rich-text/button-row entities, typed button styles/alignment, expandable block quotations, compact tables, document blocks, document media links and direct document uploads
     * (`Reply markup`) Added `DisabledButton`/`DisabledInlineKeyboardButton` support for disabled inline buttons
     * (`Reply markup`) Added `forceReply` support to `InlineKeyboardMarkup` and `ReplyKeyboardMarkup`
 * `Utils`:

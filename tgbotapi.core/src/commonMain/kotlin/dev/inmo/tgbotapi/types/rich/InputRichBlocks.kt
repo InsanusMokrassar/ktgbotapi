@@ -1,14 +1,18 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.animationField
+import dev.inmo.tgbotapi.types.alignField
 import dev.inmo.tgbotapi.types.audioField
 import dev.inmo.tgbotapi.types.blocksField
 import dev.inmo.tgbotapi.types.captionField
 import dev.inmo.tgbotapi.types.cellsField
+import dev.inmo.tgbotapi.types.buttonsField
 import dev.inmo.tgbotapi.types.creditField
+import dev.inmo.tgbotapi.types.documentField
 import dev.inmo.tgbotapi.types.expressionField
 import dev.inmo.tgbotapi.types.heightField
 import dev.inmo.tgbotapi.types.isBorderedField
+import dev.inmo.tgbotapi.types.isCompactField
 import dev.inmo.tgbotapi.types.isOpenField
 import dev.inmo.tgbotapi.types.isStripedField
 import dev.inmo.tgbotapi.types.itemsField
@@ -18,6 +22,7 @@ import dev.inmo.tgbotapi.types.locationField
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
@@ -218,6 +223,23 @@ data class InputRichBlockBlockQuotation(
     }
 }
 
+/** A block quotation that is collapsed by default. */
+@Serializable
+data class InputRichBlockExpandableBlockQuotation(
+    @SerialName(textField)
+    val text: RichText,
+    @SerialName(creditField)
+    val credit: RichText? = null
+) : InputRichBlock {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+
+    companion object {
+        const val TYPE = "expandable_blockquote"
+    }
+}
+
 /**
  * A quotation with centered text.
  *
@@ -295,7 +317,9 @@ data class InputRichBlockTable(
     @SerialName(isStripedField)
     val isStriped: Boolean? = null,
     @SerialName(captionField)
-    val caption: RichText? = null
+    val caption: RichText? = null,
+    @SerialName(isCompactField)
+    val isCompact: Boolean? = null
 ) : InputRichBlock {
     @EncodeDefault
     @SerialName(typeField)
@@ -303,6 +327,27 @@ data class InputRichBlockTable(
 
     companion object {
         const val TYPE = "table"
+    }
+}
+
+/** A row of rich message buttons. */
+@Serializable
+data class InputRichBlockButtons(
+    @SerialName(buttonsField)
+    val buttons: List<RichMessageButton>,
+    @SerialName(alignField)
+    val align: RichBlockButtonAlignment? = null
+) : InputRichBlock {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+
+    init {
+        require(buttons.size in 1..8) { "InputRichBlockButtons requires from 1 to 8 buttons" }
+    }
+
+    companion object {
+        const val TYPE = "buttons"
     }
 }
 
@@ -404,6 +449,25 @@ data class InputRichBlockAudio(
 
     companion object {
         const val TYPE = "audio"
+    }
+}
+
+/** A block with a general file. */
+@Serializable
+data class InputRichBlockDocument(
+    @SerialName(documentField)
+    val document: TelegramMediaDocument,
+    @SerialName(captionField)
+    override val caption: RichBlockCaption? = null
+) : InputRichBlockMedia {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+    override val media: TelegramMedia
+        get() = document
+
+    companion object {
+        const val TYPE = "document"
     }
 }
 

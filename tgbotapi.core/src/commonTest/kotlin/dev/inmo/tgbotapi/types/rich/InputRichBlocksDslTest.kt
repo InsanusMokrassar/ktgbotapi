@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -124,5 +125,20 @@ class InputRichBlocksDslTest {
             ),
             blocks
         )
+    }
+
+    @Test
+    fun buildsButtonsExpandableQuotationAndDocument() {
+        val document = TelegramMediaDocument(FileId("document_file_id"))
+        val blocks = buildInputRichBlocks {
+            expandableBlockQuotation { plain("quote") }
+            buttons(listOf(RichMessageButton.Disabled(RichTextPlain("Disabled"))), RichBlockButtonAlignment.Left)
+            document(document)
+            table(isCompact = true) { }
+        }
+        assertEquals(InputRichBlockExpandableBlockQuotation(RichTextPlain("quote")), blocks[0])
+        assertEquals(InputRichBlockButtons(listOf(RichMessageButton.Disabled(RichTextPlain("Disabled"))), RichBlockButtonAlignment.Left), blocks[1])
+        assertEquals(InputRichBlockDocument(document), blocks[2])
+        assertEquals(true, (blocks[3] as InputRichBlockTable).isCompact)
     }
 }

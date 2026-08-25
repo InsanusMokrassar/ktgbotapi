@@ -11526,6 +11526,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field businessOpeningHoursField Ljava/lang/String;
 	public static final field buttonField Ljava/lang/String;
 	public static final field buttonTextField Ljava/lang/String;
+	public static final field buttonsField Ljava/lang/String;
 	public static final field cacheTimeField Ljava/lang/String;
 	public static final field callbackDataField Ljava/lang/String;
 	public static final field callbackGameField Ljava/lang/String;
@@ -11780,6 +11781,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field isCanceledField Ljava/lang/String;
 	public static final field isCheckedField Ljava/lang/String;
 	public static final field isClosedField Ljava/lang/String;
+	public static final field isCompactField Ljava/lang/String;
 	public static final field isDarkField Ljava/lang/String;
 	public static final field isDirectMessagesField Ljava/lang/String;
 	public static final field isDisabledField Ljava/lang/String;
@@ -25566,7 +25568,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaAudioKt {
 	public static synthetic fun toTelegramMediaAudio$default (Ldev/inmo/tgbotapi/types/files/AudioFile;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/media/TelegramMediaAudio;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaDocument : dev/inmo/tgbotapi/types/media/DocumentMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaDocument : dev/inmo/tgbotapi/types/media/DocumentMediaGroupMemberTelegramMedia, dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/RichMessageMemberTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -35370,6 +35372,38 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation$Com
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockButtons : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;
+	public final fun copy (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlign ()Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;
+	public final fun getButtons ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockButtons$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockButtons$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockCollage : dev/inmo/tgbotapi/types/rich/InputRichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage$Companion;
 	public static final field TYPE Ljava/lang/String;
@@ -35458,6 +35492,71 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockDivider$
 }
 
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDivider$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDocument : dev/inmo/tgbotapi/types/rich/InputRichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun getDocument ()Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockDocument$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockDocument$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation : dev/inmo/tgbotapi/types/rich/InputRichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCredit ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -35869,20 +35968,22 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlockSlideshow$Companio
 public final class dev/inmo/tgbotapi/types/rich/InputRichBlockTable : dev/inmo/tgbotapi/types/rich/InputRichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable$Companion;
 	public static final field TYPE Ljava/lang/String;
-	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)V
-	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/Boolean;
 	public final fun component3 ()Ljava/lang/Boolean;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/rich/RichText;
-	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockTable;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public final fun getCells ()Ljava/util/List;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public final fun isBordered ()Ljava/lang/Boolean;
+	public final fun isCompact ()Ljava/lang/Boolean;
 	public final fun isStriped ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
 }
@@ -36031,6 +36132,8 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public final fun blockQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
 	public static synthetic fun blockQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun build ()Ljava/util/List;
+	public final fun buttons (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)V
+	public static synthetic fun buttons$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;ILjava/lang/Object;)V
 	public final fun collage (Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;)V
 	public static synthetic fun collage$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun details (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
@@ -36038,6 +36141,10 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public static synthetic fun details$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/String;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun divider ()V
+	public final fun document (Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public static synthetic fun document$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/media/TelegramMediaDocument;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)V
+	public final fun expandableBlockQuotation (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun expandableBlockQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun footer (Ljava/lang/String;)V
 	public final fun footer (Lkotlin/jvm/functions/Function1;)V
 	public final fun h1 (Ljava/lang/String;)V
@@ -36068,8 +36175,8 @@ public final class dev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder {
 	public static synthetic fun pullQuotation$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun slideshow (Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;)V
 	public static synthetic fun slideshow$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-	public final fun table (Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun table$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun table (Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun table$default (Ldev/inmo/tgbotapi/types/rich/InputRichBlocksBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun thinking (Ljava/lang/String;)V
 	public final fun thinking (Lkotlin/jvm/functions/Function1;)V
 	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)V
@@ -36378,6 +36485,87 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockBlockQuotation$Companio
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Center : dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Center;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Left : dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Left;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Right : dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Right;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtons : dev/inmo/tgbotapi/types/rich/RichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockButtons$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)V
+	public synthetic fun <init> (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;
+	public final fun copy (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlign ()Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;
+	public final fun getButtons ()Ljava/util/List;
+	public fun getHtml ()Ljava/lang/String;
+	public fun getMarkdown ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockButtons$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockButtons$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockButtons$Companion {
+	public final fun html (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)Ljava/lang/String;
+	public final fun markdown (Ljava/util/List;Ldev/inmo/tgbotapi/types/rich/RichBlockButtonAlignment;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/rich/RichBlockCaption {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockCaption$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)V
@@ -36508,6 +36696,79 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockDivider$$seri
 public final class dev/inmo/tgbotapi/types/rich/RichBlockDivider$Companion {
 	public final fun html ()Ljava/lang/String;
 	public final fun markdown ()Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockDocument : dev/inmo/tgbotapi/types/rich/RichBlockMedia {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockDocument$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun copy (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;
+	public final fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public fun getHtml ()Ljava/lang/String;
+	public fun getMarkdown ()Ljava/lang/String;
+	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockDocument$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockDocument$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockDocument$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/rich/RichBlockCaption;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation : dev/inmo/tgbotapi/types/rich/RichBlock {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCredit ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getHtml ()Ljava/lang/String;
+	public fun getMarkdown ()Ljava/lang/String;
+	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -36942,14 +37203,15 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockSlideshow$Companion {
 public final class dev/inmo/tgbotapi/types/rich/RichBlockTable : dev/inmo/tgbotapi/types/rich/RichBlock {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichBlockTable$Companion;
 	public static final field TYPE Ljava/lang/String;
-	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)V
-	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/Boolean;
 	public final fun component3 ()Ljava/lang/Boolean;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/rich/RichText;
-	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichBlockTable;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockTable;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockTable;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/rich/RichBlockTable;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichBlockTable;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichBlockTable;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCaption ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public final fun getCells ()Ljava/util/List;
@@ -36958,6 +37220,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlockTable : dev/inmo/tgbota
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public final fun isBordered ()Ljava/lang/Boolean;
+	public final fun isCompact ()Ljava/lang/Boolean;
 	public final fun isStriped ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
 }
@@ -36975,6 +37238,7 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichBlockTable$$serial
 
 public final class dev/inmo/tgbotapi/types/rich/RichBlockTable$Companion {
 	public final fun html (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
+	public final fun html (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/rich/RichText;)Ljava/lang/String;
 	public final fun markdown (Ljava/util/List;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -37279,6 +37543,366 @@ public final class dev/inmo/tgbotapi/types/rich/RichBlocksBuilder {
 	public final fun unaryPlus (Ldev/inmo/tgbotapi/types/rich/RichBlock;)V
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Companion;
+	public abstract fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public abstract fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCallbackData ()Ljava/lang/String;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCopyText ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisabled ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/DisabledButton;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/LoginURL;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/LoginURL;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/LoginURL;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/LoginURL;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/LoginURL;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLoginUrl ()Ldev/inmo/tgbotapi/types/LoginURL;
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun getSwitchInlineQuery ()Ljava/lang/String;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun getSwitchInlineQueryChosenChat ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun getSwitchInlineQueryCurrentChat ()Ljava/lang/String;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Url : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;Ldev/inmo/tgbotapi/types/rich/RichText;Ljava/lang/String;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$Url$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Url$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp : dev/inmo/tgbotapi/types/rich/RichMessageButton {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun getWebApp ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Danger : dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Danger;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Link : dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Link;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Primary : dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Primary;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Success : dev/inmo/tgbotapi/types/rich/RichMessageButtonStyle {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/rich/RichText {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichText$Companion;
 	public abstract fun getHtml ()Ljava/lang/String;
@@ -37479,6 +38103,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
 	public final fun botCommand (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun botCommand (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun build ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public final fun button (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)V
 	public final fun cashtag (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun cashtag (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun code (Ljava/lang/String;)V
@@ -37519,6 +38144,40 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
 	public final fun underline (Lkotlin/jvm/functions/Function1;)V
 	public final fun url (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun url (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichTextButton : dev/inmo/tgbotapi/types/rich/RichTextEntity {
+	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichTextButton$Companion;
+	public static final field TYPE Ljava/lang/String;
+	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichMessageButton;
+	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichTextButton;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichTextButton;Ldev/inmo/tgbotapi/types/rich/RichMessageButton;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichTextButton;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getButton ()Ldev/inmo/tgbotapi/types/rich/RichMessageButton;
+	public fun getHtml ()Ljava/lang/String;
+	public fun getMarkdown ()Ljava/lang/String;
+	public fun getRawText ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextButton$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/rich/RichTextButton$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/rich/RichTextButton;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/rich/RichTextButton;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/rich/RichTextButton$Companion {
+	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ljava/lang/String;
+	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextCashtag : dev/inmo/tgbotapi/types/rich/RichTextEntity {

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.alternativeTextField
 import dev.inmo.tgbotapi.types.anchorNameField
 import dev.inmo.tgbotapi.types.bankCardNumberField
+import dev.inmo.tgbotapi.types.buttonField
 import dev.inmo.tgbotapi.types.botCommandFullField
 import dev.inmo.tgbotapi.types.cashtagField
 import dev.inmo.tgbotapi.types.chat.User
@@ -27,6 +28,31 @@ import dev.inmo.tgbotapi.utils.extensions.toHtml
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+/**
+ * A [RichMessageButton] embedded in [RichText].
+ *
+ * @see <a href="https://core.telegram.org/bots/api#richtextbutton">RichTextButton</a>
+ */
+@Serializable
+data class RichTextButton(
+    @SerialName(buttonField)
+    val button: RichMessageButton
+) : RichTextEntity {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+
+    override val rawText: String = button.text.rawText
+    override val markdown: String = markdown(button)
+    override val html: String = html(button)
+
+    companion object {
+        const val TYPE = "button"
+        fun markdown(button: RichMessageButton): String = button.toRichMarkup(button.text.markdown)
+        fun html(button: RichMessageButton): String = button.toRichMarkup(button.text.html)
+    }
+}
 
 /**
  * A bold [RichTextEntity].

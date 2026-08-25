@@ -48,14 +48,14 @@ fun String.escapeMarkdownV2PreAndCode() = escapeMarkdownV2(markdownV2PreAndCodeE
 fun String.escapeMarkdownV2Common() = escapeMarkdownV2(markdownV2CommonEscapes)
 
 fun String.toHtml(): String = replace(
+    "&",
+    "&amp;"
+).replace(
     "<",
     "&lt;"
 ).replace(
     ">",
     "&gt;"
-).replace(
-    "&",
-    "&amp;"
 )
 
 fun String.splitForText() = chunked(textLength.last)
