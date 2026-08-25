@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 37.0.0
+
 ## 36.1.0
 
 * `Dependencies`:
