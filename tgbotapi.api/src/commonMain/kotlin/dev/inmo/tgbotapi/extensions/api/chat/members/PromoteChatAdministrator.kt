@@ -68,7 +68,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -98,7 +98,7 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChatAdministrator(
@@ -128,5 +128,5 @@ public suspend fun TelegramBot.promoteChatAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )

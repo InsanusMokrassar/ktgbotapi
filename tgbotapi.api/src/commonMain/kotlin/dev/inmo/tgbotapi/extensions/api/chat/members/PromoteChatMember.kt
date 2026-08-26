@@ -100,7 +100,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 @Warning("This method is too common. Use it with caution")
@@ -147,7 +147,7 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 @Warning("This method is too common. Use it with caution")
@@ -194,5 +194,5 @@ public suspend fun TelegramBot.promoteChatMember(
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
     canManageTags = canManageTags,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )

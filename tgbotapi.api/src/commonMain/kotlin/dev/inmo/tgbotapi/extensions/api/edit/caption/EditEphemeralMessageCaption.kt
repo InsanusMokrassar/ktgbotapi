@@ -21,7 +21,15 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
-    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, caption, parseMode, showCaptionAboveMedia, replyMarkup)
+    EditEphemeralMessageCaption(
+        chatId = chatId,
+        receiverUserId = receiverUserId,
+        ephemeralMessageId = ephemeralMessageId,
+        caption = caption,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        replyMarkup = replyMarkup
+    )
 )
 
 /**
@@ -38,13 +46,13 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageCaption(
-    chatId,
-    chatId.receiverUser,
-    requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
-    caption,
-    parseMode,
-    showCaptionAboveMedia,
-    replyMarkup
+    chatId = chatId,
+    receiverUserId = chatId.receiverUser,
+    ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    caption = caption,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -59,7 +67,15 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, caption, parseMode, showCaptionAboveMedia, replyMarkup)
+): Unit = editEphemeralMessageCaption(
+    chatId = chat.id,
+    receiverUserId = receiverUserId,
+    ephemeralMessageId = ephemeralMessageId,
+    caption = caption,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -73,7 +89,14 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = execute(
-    EditEphemeralMessageCaption(chatId, receiverUserId, ephemeralMessageId, entities, showCaptionAboveMedia, replyMarkup)
+    EditEphemeralMessageCaption(
+        chatId = chatId,
+        receiverUserId = receiverUserId,
+        ephemeralMessageId = ephemeralMessageId,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        replyMarkup = replyMarkup
+    )
 )
 
 /**
@@ -89,12 +112,12 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): Unit = editEphemeralMessageCaption(
-    chatId,
-    chatId.receiverUser,
-    requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
-    entities,
-    showCaptionAboveMedia,
-    replyMarkup
+    chatId = chatId,
+    receiverUserId = chatId.receiverUser,
+    ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -108,4 +131,11 @@ public suspend fun TelegramBot.editEphemeralMessageCaption(
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): Unit = editEphemeralMessageCaption(chat.id, receiverUserId, ephemeralMessageId, entities, showCaptionAboveMedia, replyMarkup)
+): Unit = editEphemeralMessageCaption(
+    chatId = chat.id,
+    receiverUserId = receiverUserId,
+    ephemeralMessageId = ephemeralMessageId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
+)

@@ -88,7 +88,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChannelAdministrator(
@@ -128,7 +128,7 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )
 
 public suspend fun TelegramBot.promoteChannelAdministrator(
@@ -168,5 +168,5 @@ public suspend fun TelegramBot.promoteChannelAdministrator(
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
     canManageDirectMessages = canManageDirectMessages,
-        canSendWelcomeMessages = canSendWelcomeMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages,
 )

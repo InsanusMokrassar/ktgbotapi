@@ -73,7 +73,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTopics = canManageTopics,
-        canSendWelcomeMessages = canSendWelcomeMessages
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -105,7 +105,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTopics = canManageTopics,
-        canSendWelcomeMessages = canSendWelcomeMessages
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -137,5 +137,5 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTopics = canManageTopics,
-        canSendWelcomeMessages = canSendWelcomeMessages
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
