@@ -5,12 +5,14 @@ import dev.inmo.tgbotapi.requests.send.SendRichMessageDraft
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.communities.CommunityId
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.textsources.boldTextSource
 import dev.inmo.tgbotapi.types.rich.InputRichMessageHTML
 import dev.inmo.tgbotapi.types.update.MessageGenerationStoppedUpdate
 import dev.inmo.tgbotapi.types.update.MessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateSerializerWithoutSerialization
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import kotlin.test.Test
@@ -70,5 +72,94 @@ class GeneralBotApi103Test {
         assertEquals("bold", uniqueGift.text)
         assertEquals(true, uniqueGift.isPrivate)
         assertEquals(1, uniqueGift.textSources.size)
+    }
+
+    @Test
+    fun `unique gift info preserves positional prefixes and round trips appended text fields`() {
+        val uniqueGift = nonstrictJsonFormat.decodeFromString(
+            GiftSentOrReceivedEvent.UniqueGift,
+            """{"gift":{"base_name":"Base","name":"unique","number":1,"model":{"name":"Model","sticker":{"file_id":"model-file","file_unique_id":"model-unique","type":"regular","width":1,"height":1},"rarity_per_mille":1},"symbol":{"name":"Symbol","sticker":{"file_id":"symbol-file","file_unique_id":"symbol-unique","type":"regular","width":1,"height":1},"rarity_per_mille":1},"backdrop":{"name":"Backdrop","colors":{"center_color":1,"edge_color":2,"symbol_color":3,"text_color":4},"rarity_per_mille":1}}}"""
+        )
+
+        val commonPrimary = GiftSentOrReceivedEvent.UniqueGift.Common(
+            uniqueGift.gift,
+            GiftSentOrReceivedEvent.UniqueGift.Origin.Upgrade,
+            1,
+            "TON",
+            2L,
+            3,
+            TelegramDate.Start
+        )
+        val commonSecondary = GiftSentOrReceivedEvent.UniqueGift.Common(
+            uniqueGift.gift,
+            "transfer",
+            4,
+            "USD",
+            5L,
+            6,
+            TelegramDate.Start
+        )
+        val businessPrimary = GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount(
+            uniqueGift.gift,
+            GiftId("owned-primary"),
+            GiftSentOrReceivedEvent.UniqueGift.Origin.Resale,
+            7,
+            "EUR",
+            8L,
+            9,
+            TelegramDate.Start
+        )
+        val businessSecondary = GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount(
+            uniqueGift.gift,
+            GiftId("owned-secondary"),
+            "offer",
+            10,
+            "XTR",
+            11L,
+            12,
+            TelegramDate.Start
+        )
+
+        assertEquals(3, commonPrimary.transferStarCount)
+        assertEquals(6, commonSecondary.transferStarCount)
+        assertEquals(9, businessPrimary.transferStarCount)
+        assertEquals(12, businessSecondary.transferStarCount)
+
+        val publicFactoryCommon = GiftSentOrReceivedEvent.UniqueGift(
+            uniqueGift.gift,
+            "upgrade",
+            null,
+            13
+        )
+        val publicFactoryBusiness = GiftSentOrReceivedEvent.UniqueGift(
+            uniqueGift.gift,
+            "resale",
+            GiftId("owned-factory"),
+            14
+        )
+
+        assertEquals(
+            13,
+            assertIs<GiftSentOrReceivedEvent.UniqueGift.Common>(publicFactoryCommon).transferStarCount
+        )
+        assertEquals(
+            14,
+            assertIs<GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount>(publicFactoryBusiness).transferStarCount
+        )
+
+        val withAppendedFields = GiftSentOrReceivedEvent.UniqueGift(
+            gift = uniqueGift.gift,
+            text = "bold",
+            textSources = listOf(boldTextSource("bold")),
+            isPrivate = true
+        )
+        val roundTripped = nonstrictJsonFormat.decodeFromString(
+            GiftSentOrReceivedEvent.UniqueGift,
+            nonstrictJsonFormat.encodeToString(GiftSentOrReceivedEvent.UniqueGift, withAppendedFields)
+        )
+
+        assertEquals("bold", roundTripped.text)
+        assertEquals(true, roundTripped.isPrivate)
+        assertEquals(listOf(boldTextSource("bold")), roundTripped.textSources)
     }
 }

@@ -298,12 +298,6 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
             override val gift: Gift.Unique,
             @SerialName(originField)
             override val originTyped: Origin? = null,
-            @SerialName(textField)
-            override val text: String? = null,
-            @SerialName(entitiesField)
-            private val entities: RawMessageEntities? = null,
-            @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false,
             @Deprecated("Use lastResaleCurrency and lastResaleAmount instead")
             @SerialName(lastResaleStarCountField)
             override val lastResaleStarCount: Int? = null,
@@ -314,7 +308,13 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
             @SerialName(transferStarCountField)
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
-            override val nextTransferDate: TelegramDate? = null
+            override val nextTransferDate: TelegramDate? = null,
+            @SerialName(textField)
+            override val text: String? = null,
+            @SerialName(entitiesField)
+            private val entities: RawMessageEntities? = null,
+            @SerialName(isPrivateField)
+            override val isPrivate: Boolean = false
         ) : UniqueGift {
             override val ownedGiftId: GiftId?
                 get() = null
@@ -329,25 +329,25 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
             constructor(
                 gift: Gift.Unique,
                 origin: String?,
-                text: String? = null,
-                entities: RawMessageEntities? = null,
-                isPrivate: Boolean = false,
                 lastResaleStarCount: Int? = null,
                 lastResaleCurrency: Currency? = null,
                 lastResaleAmount: Long? = null,
                 transferStarCount: Int? = null,
-                nextTransferDate: TelegramDate? = null
+                nextTransferDate: TelegramDate? = null,
+                text: String? = null,
+                entities: RawMessageEntities? = null,
+                isPrivate: Boolean = false
             ) : this(
-                gift,
-                origin ?.let { Origin.fromString(it) },
-                text,
-                entities,
-                isPrivate,
-                lastResaleStarCount,
-                lastResaleCurrency,
-                lastResaleAmount,
-                transferStarCount,
-                nextTransferDate
+                gift = gift,
+                originTyped = origin ?.let { Origin.fromString(it) },
+                lastResaleStarCount = lastResaleStarCount,
+                lastResaleCurrency = lastResaleCurrency,
+                lastResaleAmount = lastResaleAmount,
+                transferStarCount = transferStarCount,
+                nextTransferDate = nextTransferDate,
+                text = text,
+                entities = entities,
+                isPrivate = isPrivate
             )
         }
 
@@ -359,12 +359,6 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
             override val ownedGiftId: GiftId,
             @SerialName(originField)
             override val originTyped: Origin? = null,
-            @SerialName(textField)
-            override val text: String? = null,
-            @SerialName(entitiesField)
-            private val entities: RawMessageEntities? = null,
-            @SerialName(isPrivateField)
-            override val isPrivate: Boolean = false,
             @Deprecated("Use lastResaleCurrency and lastResaleAmount instead")
             @SerialName(lastResaleStarCountField)
             override val lastResaleStarCount: Int? = null,
@@ -375,7 +369,13 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
             @SerialName(transferStarCountField)
             override val transferStarCount: Int? = null,
             @SerialName(nextTransferDateField)
-            override val nextTransferDate: TelegramDate? = null
+            override val nextTransferDate: TelegramDate? = null,
+            @SerialName(textField)
+            override val text: String? = null,
+            @SerialName(entitiesField)
+            private val entities: RawMessageEntities? = null,
+            @SerialName(isPrivateField)
+            override val isPrivate: Boolean = false
         ) : UniqueGift, GiftSentOrReceivedEvent.ReceivedInBusinessAccount {
             @Transient
             override val origin: String? = originTyped ?.string
@@ -388,26 +388,26 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
                 gift: Gift.Unique,
                 ownedGiftId: GiftId,
                 origin: String? = null,
-                text: String? = null,
-                entities: RawMessageEntities? = null,
-                isPrivate: Boolean = false,
                 lastResaleStarCount: Int? = null,
                 lastResaleCurrency: Currency? = null,
                 lastResaleAmount: Long? = null,
                 transferStarCount: Int? = null,
-                nextTransferDate: TelegramDate? = null
+                nextTransferDate: TelegramDate? = null,
+                text: String? = null,
+                entities: RawMessageEntities? = null,
+                isPrivate: Boolean = false
             ) : this(
                 gift = gift,
                 ownedGiftId = ownedGiftId,
                 originTyped = origin ?.let { Origin.fromString(it) },
-                text = text,
-                entities = entities,
-                isPrivate = isPrivate,
                 lastResaleStarCount = lastResaleStarCount,
                 lastResaleCurrency = lastResaleCurrency,
                 lastResaleAmount = lastResaleAmount,
                 transferStarCount = transferStarCount,
-                nextTransferDate = nextTransferDate
+                nextTransferDate = nextTransferDate,
+                text = text,
+                entities = entities,
+                isPrivate = isPrivate
             )
         }
 
@@ -420,12 +420,6 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
                 val ownedGiftId: GiftId? = null,
                 @SerialName(originField)
                 val origin: Origin? = null,
-                @SerialName(textField)
-                val text: String? = null,
-                @SerialName(entitiesField)
-                val entities: RawMessageEntities? = null,
-                @SerialName(isPrivateField)
-                val isPrivate: Boolean = false,
                 @SerialName(lastResaleStarCountField)
                 val lastResaleStarCount: Int? = null,
                 @SerialName(lastResaleCurrencyField)
@@ -435,7 +429,13 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
                 @SerialName(transferStarCountField)
                 val transferStarCount: Int? = null,
                 @SerialName(nextTransferDateField)
-                val nextTransferDate: TelegramDate? = null
+                val nextTransferDate: TelegramDate? = null,
+                @SerialName(textField)
+                val text: String? = null,
+                @SerialName(entitiesField)
+                val entities: RawMessageEntities? = null,
+                @SerialName(isPrivateField)
+                val isPrivate: Boolean = false
             )
 
             override val descriptor: SerialDescriptor
@@ -456,14 +456,14 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
                         Common(
                             gift = surrogate.gift,
                             originTyped = surrogate.origin,
-                            text = surrogate.text,
-                            entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate,
                             lastResaleStarCount = surrogate.lastResaleStarCount,
                             lastResaleCurrency = surrogate.lastResaleCurrency,
                             lastResaleAmount = surrogate.lastResaleAmount,
                             transferStarCount = surrogate.transferStarCount,
-                            nextTransferDate = surrogate.nextTransferDate
+                            nextTransferDate = surrogate.nextTransferDate,
+                            text = surrogate.text,
+                            entities = surrogate.entities,
+                            isPrivate = surrogate.isPrivate
                         )
                     }
                     else -> {
@@ -471,14 +471,14 @@ sealed interface GiftSentOrReceivedEvent : CommonEvent {
                             gift = surrogate.gift,
                             ownedGiftId = surrogate.ownedGiftId,
                             originTyped = surrogate.origin,
-                            text = surrogate.text,
-                            entities = surrogate.entities,
-                            isPrivate = surrogate.isPrivate,
                             lastResaleStarCount = surrogate.lastResaleStarCount,
                             lastResaleCurrency = surrogate.lastResaleCurrency,
                             lastResaleAmount = surrogate.lastResaleAmount,
                             transferStarCount = surrogate.transferStarCount,
-                            nextTransferDate = surrogate.nextTransferDate
+                            nextTransferDate = surrogate.nextTransferDate,
+                            text = surrogate.text,
+                            entities = surrogate.entities,
+                            isPrivate = surrogate.isPrivate
                         )
                     }
                 }
