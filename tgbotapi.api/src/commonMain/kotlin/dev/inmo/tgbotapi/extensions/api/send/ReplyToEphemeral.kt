@@ -8,21 +8,166 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.ParseMode
+import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
+import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
+import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
+import dev.inmo.tgbotapi.types.rich.InputRichMessage
 
 /**
  * Explicit helpers replying directly to an incoming ephemeral message identified by [chatId]/[ephemeralMessageId]
  * (as opposed to the `reply(to = someMessage, ...)` smart-branch overloads, which detect an ephemeral
  * [dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage] target automatically). The outgoing message
- * is itself sent as ephemeral, addressed to the same [ephemeralMessageParameters.receiverUserId] as the message being replied to.
+ * is itself sent as ephemeral according to [ephemeralMessageParameters] and replies to [ephemeralMessageId].
  *
- * Each helper has two forms: one taking explicit `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId`, and a convenience overload
- * taking an [dev.inmo.tgbotapi.types.EphemeralChatId] which sources both from the identifier (throwing
+ * Each helper has two forms: one taking an explicit [EphemeralMessageParameters] object plus [EphemeralMessageId], and a convenience overload
+ * taking an [dev.inmo.tgbotapi.types.EphemeralChatId] which sources the parameter object plus message identifier (throwing
  * [IllegalArgumentException] if it does not carry an `ephemeralMessageId`).
  *
  * @see dev.inmo.tgbotapi.types.ephemeralReplyParametersOrNull
  */
+
+public suspend fun TelegramBot.replyToEphemeralRichMessage(
+    chatId: ChatIdentifier,
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    ephemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = sendRichMessage(
+    chatId = chatId,
+    richMessage = richMessage,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = ephemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId
+    ),
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.replyToEphemeralRichMessage(
+    chatId: EphemeralChatId,
+    richMessage: InputRichMessage,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = replyToEphemeralRichMessage(
+    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(chatId.receiverUser),
+    ephemeralMessageId = requireNotNull(chatId.ephemeralMessageId) { "chatId ($chatId) does not carry an ephemeralMessageId" },
+    richMessage = richMessage,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.replyToEphemeral(
+    chatId: ChatIdentifier,
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    ephemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = replyToEphemeralRichMessage(
+    chatId = chatId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    ephemeralMessageId = ephemeralMessageId,
+    richMessage = richMessage,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.replyToEphemeral(
+    chatId: EphemeralChatId,
+    richMessage: InputRichMessage,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = replyToEphemeralRichMessage(
+    chatId = chatId,
+    richMessage = richMessage,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -46,7 +191,7 @@ public suspend fun TelegramBot.replyToEphemeral(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -88,7 +233,7 @@ public suspend fun TelegramBot.replyToEphemeralWithPhoto(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithPhoto(
@@ -131,7 +276,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
@@ -174,7 +319,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAudio(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithAudio(
@@ -215,7 +360,7 @@ public suspend fun TelegramBot.replyToEphemeralWithDocument(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithDocument(
@@ -256,7 +401,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideo(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithVideo(
@@ -297,7 +442,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAnimation(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithAnimation(
@@ -338,7 +483,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVoice(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithVoice(
@@ -375,7 +520,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
@@ -408,7 +553,7 @@ public suspend fun TelegramBot.replyToEphemeralWithSticker(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithSticker(
@@ -447,7 +592,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLocation(
 
 /**
  * Sends a static location (`live_period` is not supported for ephemeral messages, see [SendLocation.Live]).
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithLocation(
@@ -488,7 +633,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVenue(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithVenue(
@@ -531,7 +676,7 @@ public suspend fun TelegramBot.replyToEphemeralWithContact(
 )
 
 /**
- * Convenience overload sourcing `ephemeralMessageParameters.receiverUserId`/`ephemeralMessageId` from [chatId]. Throws
+ * Convenience overload sourcing an [EphemeralMessageParameters] object plus [EphemeralMessageId] from [chatId]. Throws
  * [IllegalArgumentException] if [chatId] does not carry an ephemeralMessageId
  */
 public suspend fun TelegramBot.replyToEphemeralWithContact(

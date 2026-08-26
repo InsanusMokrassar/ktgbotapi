@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
+import dev.inmo.tgbotapi.types.media.PhotoedTelegramMedia
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -67,6 +68,11 @@ fun SendPaidMedia(
     val files: List<MultipartFile> = media.flatMap {
         listOfNotNull(
             it.file as? MultipartFile,
+            if (it is PhotoedTelegramMedia) {
+                it.photo as? MultipartFile
+            } else {
+                null
+            },
             if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
             } else {
@@ -130,6 +136,11 @@ fun SendPaidMedia(
     val files: List<MultipartFile> = media.flatMap {
         listOfNotNull(
             it.file as? MultipartFile,
+            if (it is PhotoedTelegramMedia) {
+                it.photo as? MultipartFile
+            } else {
+                null
+            },
             if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
             } else {

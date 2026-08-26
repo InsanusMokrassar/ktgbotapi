@@ -20,6 +20,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
+import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.*
 import kotlin.jvm.JvmMultifileClass
@@ -27,8 +28,82 @@ import kotlin.jvm.JvmName
 
 // Ephemeral-only replies
 //
-// Every overload requires replyInChatId, ephemeralMessageParameters.receiverUserId, and replyToEphemeralMessageId because no
+// Every overload requires replyInChatId, an EphemeralMessageParameters object, and replyToEphemeralMessageId because no
 // source message supplies ephemeral reply routing.
+
+public suspend inline fun TelegramBot.replyRichMessage(
+    replyInChatId: IdChatIdentifier,
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = sendRichMessage(
+    chatId = replyInChatId,
+    richMessage = richMessage,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId
+    ),
+    replyMarkup = replyMarkup
+)
+
+public suspend inline fun TelegramBot.reply(
+    replyInChatId: IdChatIdentifier,
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = replyInChatId.directMessageThreadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = replyRichMessage(
+    replyInChatId = replyInChatId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    replyToEphemeralMessageId = replyToEphemeralMessageId,
+    richMessage = richMessage,
+    replyInThreadId = replyInThreadId,
+    replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup
+)
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
