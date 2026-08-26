@@ -4,20 +4,33 @@
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**
 
+**Breaking changes**:
+
+* `OptionallyEphemeralSendRequest` replaced the `receiverUserId`/`callbackQueryId` properties with `ephemeralMessageParameters: EphemeralMessageParameters?`; the 13 ephemeral-capable send-request constructors and the corresponding `send`/`reply` API overloads replaced the two flat parameters with the parameter object
+* `ChatAdministratorRights` gained the abstract `canSendWelcomeMessages` property; implementations maintained in the same compilation module must supply the property, while `ChatCommonAdministratorRights` construction can use the new trailing default
+* `FlowsUpdatesFilter` gained the abstract `messageGenerationStoppedUpdatesFlow` property; direct implementations must supply the flow, while subclasses of `AbstractFlowsUpdatesFilter` inherit the filtered implementation
+* `RichText` gained the public `isValidRichMessageButtonText` contract and the `RichText`/`RichBlock`/`InputRichBlock` sealed hierarchies gained Bot API 10.3 variants; permitted same-module implementations and exhaustive `when` expressions must cover the new contracts and variants
+
+**Migration advice**: Replace `receiverUserId = userId, callbackQueryId = callbackId` with `ephemeralMessageParameters = EphemeralMessageParameters(receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...)`; add `canSendWelcomeMessages` and `messageGenerationStoppedUpdatesFlow` to direct interface implementations; add Bot API 10.3 branches to exhaustive rich-type `when` expressions
+
+**Compatibility note**: The new `text`/`entities`/`isPrivate` fields of `GiftSentOrReceivedEvent.UniqueGift.Common` and `GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount` are trailing constructor parameters; existing positional argument and `componentN` order is preserved
+
 * `Core`:
     * (`Ephemeral messages`) Added `EphemeralMessageParameters`; replaced the flat send-request recipient/callback parameters with `ephemeralMessageParameters`, including callback-message replacement support
-    * (`Ephemeral messages`) Added new-file uploads for `editEphemeralMessageMedia`, `showCaptionAboveMedia` for caption edits, and rich-message text edits
+    * (`Ephemeral messages`) Added new-file uploads for `editEphemeralMessageMedia`; collected secondary live-photo `photo` attachments for ephemeral and regular media edits, media groups, and paid media; added `showCaptionAboveMedia` for caption edits and rich-message text edits
     * (`Ephemeral messages`) Added `canSendWelcomeMessages` administrator right and `promoteChatMember` parameter
     * (`Rich Messages`) Added rich-message button actions, rich-text/button-row entities, typed button styles/alignment, expandable block quotations, compact tables, document blocks, document media links and direct document uploads
+    * (`Rich Messages`) Added the `RichText.isValidRichMessageButtonText` subtype contract, moved rich-button markup generation onto `RichMessageButton` implementations, and corrected expandable-quotation Rich Markdown block HTML to use `<blockquote expandable>` with HTML-formatted nested text and credit
     * (`Reply markup`) Added `DisabledButton`/`DisabledInlineKeyboardButton` support for disabled inline buttons
     * (`Reply markup`) Added `forceReply` support to `InlineKeyboardMarkup` and `ReplyKeyboardMarkup`
     * (`General`) Added `canStop`/`keepOnStop` draft controls, `MessageGenerationStopped` updates, and `CommunityChatJoined` service messages
-    * (`General`) `UniqueGiftInfo` now exposes `text`/`textSources`/`isPrivate`
+    * (`General`) `UniqueGiftInfo` now exposes `text`/`textSources`/`isPrivate`; the new fields follow every preexisting public constructor field to preserve positional and `componentN` compatibility
 * `Utils`:
     * (`Reply markup`) Added disabled inline-button shortcuts and `forceReply` parameters to inline/reply keyboard builders
     * (`General`) Added legacy and generated class casts for `MessageGenerationStoppedUpdate`
 * `API`:
     * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
+    * (`Ephemeral messages`) Added named rich-message overloads and generic `InputRichMessage`/`RichMessageContent` aliases across both ephemeral reply families
     * (`General`) Added `canStop`/`keepOnStop` to `sendMessageDraft`/`sendRichMessageDraft` extension surfaces, including streaming draft flows and `send` overloads
 * `BehaviourBuilder`:
     * (`General`) Added `onMessageGenerationStopped`/`waitMessageGenerationStopped` and `onCommunityChatJoined`/community joined event expectations
