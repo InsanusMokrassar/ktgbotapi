@@ -6,7 +6,7 @@
 
 **Breaking changes**:
 
-* `OptionallyEphemeralSendRequest` replaced the `receiverUserId`/`callbackQueryId` properties with `ephemeralMessageParameters: EphemeralMessageParameters?`; the 13 ephemeral-capable send-request constructors and the corresponding `send`/`reply` API overloads replaced the two flat parameters with the parameter object
+* `OptionallyEphemeralSendRequest` replaced the `receiverUserId`/`callbackQueryId` properties with `ephemeralMessageParameters: EphemeralMessageParameters?`; the 13 ephemeral-capable send-request constructors and the corresponding `reply` API overloads replaced the two flat parameters with the parameter object, while direct and generic `send` API extensions retain deprecated flat-parameter overloads for compatibility
 * `ChatAdministratorRights` gained the abstract `canSendWelcomeMessages` property; implementations maintained in the same compilation module must supply the property, while `ChatCommonAdministratorRights` construction can use the new trailing default
 * `FlowsUpdatesFilter` gained the abstract `messageGenerationStoppedUpdatesFlow` property; direct implementations must supply the flow, while subclasses of `AbstractFlowsUpdatesFilter` inherit the filtered implementation
 * `RichText` gained the public `isValidRichMessageButtonText` contract and the `RichText`/`RichBlock`/`InputRichBlock` sealed hierarchies gained Bot API 10.3 variants; permitted same-module implementations and exhaustive `when` expressions must cover the new contracts and variants
@@ -30,6 +30,7 @@
     * (`General`) Added legacy and generated class casts for `MessageGenerationStoppedUpdate`
 * `API`:
     * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
+    * (`Ephemeral messages`) Restored 172 deprecated direct and generic `send` overloads accepting `receiverUserId`/`callbackQueryId`; every `ReplaceWith` migrates the call to the corresponding `ephemeralMessageParameters` overload
     * (`Ephemeral messages`) Added named rich-message overloads and generic `InputRichMessage`/`RichMessageContent` aliases across both ephemeral reply families
     * (`General`) Added `canStop`/`keepOnStop` to `sendMessageDraft`/`sendRichMessageDraft` extension surfaces, including streaming draft flows and `send` overloads
 * `BehaviourBuilder`:
