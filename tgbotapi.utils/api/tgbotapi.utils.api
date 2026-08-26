@@ -2066,6 +2066,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPhotoContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPhotoFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPhotoSize (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPhotoedTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPinnedMessage (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPlayableMediaFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollAnswer (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2717,6 +2718,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun photoFileOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ljava/util/List;
 	public static final fun photoSizeOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PhotoSize;
 	public static final fun photoSizeOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public static final fun photoedTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/PhotoedTelegramMedia;
+	public static final fun photoedTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/PhotoedTelegramMedia;
 	public static final fun pinnedMessageOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/PinnedMessage;
 	public static final fun pinnedMessageOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/PinnedMessage;
 	public static final fun playableMediaFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PlayableMediaFile;

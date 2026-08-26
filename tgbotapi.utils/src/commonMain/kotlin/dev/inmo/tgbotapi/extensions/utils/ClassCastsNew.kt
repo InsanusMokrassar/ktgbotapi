@@ -266,6 +266,7 @@ import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 import dev.inmo.tgbotapi.types.media.InputPollMedia
 import dev.inmo.tgbotapi.types.media.InputPollOptionMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.PhotoedTelegramMedia
 import dev.inmo.tgbotapi.types.media.PollMedia
 import dev.inmo.tgbotapi.types.media.RichMessageMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
@@ -881,6 +882,12 @@ public inline fun TelegramMedia.telegramPaidMediaPhotoOrNull(): TelegramPaidMedi
 public inline fun TelegramMedia.telegramPaidMediaPhotoOrThrow(): TelegramPaidMediaPhoto = this as dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
 
 public inline fun <T> TelegramMedia.ifTelegramPaidMediaPhoto(block: (TelegramPaidMediaPhoto) -> T): T? = telegramPaidMediaPhotoOrNull() ?.let(block)
+
+public inline fun TelegramMedia.photoedTelegramMediaOrNull(): PhotoedTelegramMedia? = this as? dev.inmo.tgbotapi.types.media.PhotoedTelegramMedia
+
+public inline fun TelegramMedia.photoedTelegramMediaOrThrow(): PhotoedTelegramMedia = this as dev.inmo.tgbotapi.types.media.PhotoedTelegramMedia
+
+public inline fun <T> TelegramMedia.ifPhotoedTelegramMedia(block: (PhotoedTelegramMedia) -> T): T? = photoedTelegramMediaOrNull() ?.let(block)
 
 public inline fun TelegramMedia.telegramMediaPhotoOrNull(): TelegramMediaPhoto? = this as? dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 

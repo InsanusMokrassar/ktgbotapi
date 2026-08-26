@@ -24132,21 +24132,21 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived
 
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;Z)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;Z)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
-	public final fun component10 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component10 ()Z
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component5 ()Z
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Long;
 	public final fun component6 ()Ljava/lang/Integer;
-	public final fun component7 ()Ljava/lang/String;
-	public final fun component8 ()Ljava/lang/Long;
-	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;
+	public final fun component7 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Common;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
@@ -24272,22 +24272,22 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueG
 
 public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$ReceivedInBusinessAccount, dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount$Companion;
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
-	public final fun component10 ()Ljava/lang/Integer;
-	public final fun component11 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component11 ()Z
 	public final fun component2-OyCYJok ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component6 ()Z
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/Long;
 	public final fun component7 ()Ljava/lang/Integer;
-	public final fun component8 ()Ljava/lang/String;
-	public final fun component9 ()Ljava/lang/Long;
-	public final fun copy-1Bd2j3Y (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;
-	public static synthetic fun copy-1Bd2j3Y$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/String;Ljava/util/List;ZLjava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;
+	public final fun component8 ()Ldev/inmo/tgbotapi/types/TelegramDate;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy-1Bd2j3Y (Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;Z)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;
+	public static synthetic fun copy-1Bd2j3Y$default (Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;Ljava/lang/String;Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Origin;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$ReceivedInBusinessAccount;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
 	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
@@ -25475,6 +25475,10 @@ public abstract interface class dev/inmo/tgbotapi/types/media/OptionallyStreamab
 	public abstract fun getSupportsStreaming ()Z
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/media/PhotoedTelegramMedia : dev/inmo/tgbotapi/types/media/TelegramMedia {
+	public abstract fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/media/PollMedia : dev/inmo/tgbotapi/types/media/BaseTelegramMediaFile {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/PollMedia$Companion;
 }
@@ -25756,7 +25760,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaLink$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto : dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto : dev/inmo/tgbotapi/types/media/InputPollMedia, dev/inmo/tgbotapi/types/media/InputPollOptionMedia, dev/inmo/tgbotapi/types/media/PhotoedTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramFreeMedia, dev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -25770,7 +25774,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramMediaLivePhoto : dev/in
 	public fun getFile ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getMedia ()Ljava/lang/String;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
+	public fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getShowCaptionAboveMedia ()Z
 	public fun getSpoilered ()Z
 	public fun getText ()Ljava/lang/String;
@@ -26082,7 +26086,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramPaidMedia$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaLivePhoto : dev/inmo/tgbotapi/types/media/VisualTelegramPaidMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaLivePhoto : dev/inmo/tgbotapi/types/media/PhotoedTelegramMedia, dev/inmo/tgbotapi/types/media/VisualTelegramPaidMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaLivePhoto$Companion;
 	public static final field TYPE Ljava/lang/String;
 	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;)V
@@ -26093,7 +26097,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaLivePhoto : de
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFile ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getMedia ()Ljava/lang/String;
-	public final fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
+	public fun getPhoto ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -37657,6 +37661,7 @@ public abstract interface class dev/inmo/tgbotapi/types/rich/RichMessageButton {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Companion;
 	public abstract fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
 	public abstract fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
+	public abstract fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData : dev/inmo/tgbotapi/types/rich/RichMessageButton {
@@ -37673,6 +37678,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData :
 	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37709,6 +37715,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText : dev
 	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37740,6 +37747,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled : dev
 	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37772,6 +37780,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl : dev
 	public fun getStyle ()Ldev/inmo/tgbotapi/types/rich/RichMessageButtonStyle;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37804,6 +37813,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQu
 	public final fun getSwitchInlineQuery ()Ljava/lang/String;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37836,6 +37846,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQu
 	public final fun getSwitchInlineQueryChosenChat ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChat;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37868,6 +37879,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQu
 	public final fun getSwitchInlineQueryCurrentChat ()Ljava/lang/String;
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37900,6 +37912,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$Url : dev/inmo
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -37932,6 +37945,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp : dev/i
 	public fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public final fun getWebApp ()Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;
 	public fun hashCode ()I
+	public fun toRichMarkup (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38018,6 +38032,7 @@ public abstract interface class dev/inmo/tgbotapi/types/rich/RichText {
 	public abstract fun getHtml ()Ljava/lang/String;
 	public abstract fun getMarkdown ()Ljava/lang/String;
 	public abstract fun getRawText ()Ljava/lang/String;
+	public abstract fun isValidRichMessageButtonText ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichText$Companion {
@@ -38038,6 +38053,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextAnchor : dev/inmo/tgbota
 	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38074,6 +38090,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextAnchorLink : dev/inmo/tg
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38110,6 +38127,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBankCardNumber : dev/inm
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38144,6 +38162,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBold : dev/inmo/tgbotapi
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38180,6 +38199,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBotCommand : dev/inmo/tg
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38270,6 +38290,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextButton : dev/inmo/tgbota
 	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38306,6 +38327,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCashtag : dev/inmo/tgbot
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38340,6 +38362,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCode : dev/inmo/tgbotapi
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38376,6 +38399,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCustomEmoji : dev/inmo/t
 	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38414,6 +38438,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime : dev/inmo/tgbo
 	public fun getType ()Ljava/lang/String;
 	public final fun getUnixTime ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38460,6 +38485,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextEmailAddress : dev/inmo/
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38485,6 +38511,7 @@ public abstract interface class dev/inmo/tgbotapi/types/rich/RichTextEntity : de
 	public abstract fun getHtml ()Ljava/lang/String;
 	public abstract fun getMarkdown ()Ljava/lang/String;
 	public abstract fun getType ()Ljava/lang/String;
+	public abstract fun isValidRichMessageButtonText ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextEntity$Companion {
@@ -38511,6 +38538,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextGroup : dev/inmo/tgbotap
 	public final fun getParts ()Ljava/util/List;
 	public fun getRawText ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38547,6 +38575,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextHashtag : dev/inmo/tgbot
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38611,6 +38640,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextItalic : dev/inmo/tgbota
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38645,6 +38675,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMarked : dev/inmo/tgbota
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38679,6 +38710,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMathematicalExpression :
 	public fun getRawText ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38715,6 +38747,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextMention : dev/inmo/tgbot
 	public fun getType ()Ljava/lang/String;
 	public final fun getUsername ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38751,6 +38784,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextPhoneNumber : dev/inmo/t
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38783,6 +38817,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextPlain : dev/inmo/tgbotap
 	public fun getRawText ()Ljava/lang/String;
 	public final fun getText ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38819,6 +38854,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextReference : dev/inmo/tgb
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38855,6 +38891,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextReferenceLink : dev/inmo
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38898,6 +38935,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSpoiler : dev/inmo/tgbot
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38932,6 +38970,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextStrikethrough : dev/inmo
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -38966,6 +39005,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSubscript : dev/inmo/tgb
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -39000,6 +39040,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextSuperscript : dev/inmo/t
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -39036,6 +39077,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextTextMention : dev/inmo/t
 	public fun getType ()Ljava/lang/String;
 	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -39070,6 +39112,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextUnderline : dev/inmo/tgb
 	public final fun getText ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -39106,6 +39149,7 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextUrl : dev/inmo/tgbotapi/
 	public fun getType ()Ljava/lang/String;
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
+	public fun isValidRichMessageButtonText ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
