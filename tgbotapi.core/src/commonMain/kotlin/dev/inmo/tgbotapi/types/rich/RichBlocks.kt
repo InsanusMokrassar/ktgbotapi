@@ -305,7 +305,7 @@ data class RichBlockBlockQuotation(
 }
 
 /**
- * A block quotation that is collapsed by default.
+ * A block quotation that users can expand.
  *
  * @see <a href="https://core.telegram.org/bots/api#richblockexpandableblockquotation">RichBlockExpandableBlockQuotation</a>
  */
@@ -326,9 +326,9 @@ data class RichBlockExpandableBlockQuotation(
     companion object {
         const val TYPE = "expandable_blockquote"
         fun markdown(text: RichText, credit: RichText?): String =
-            "<blockquote collapsed>${text.markdown}${creditCiteMarkdown(credit)}</blockquote>"
+            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
         fun html(text: RichText, credit: RichText?): String =
-            "<blockquote collapsed>${text.html}${creditCiteHtml(credit)}</blockquote>"
+            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
     }
 }
 

@@ -223,7 +223,7 @@ data class InputRichBlockBlockQuotation(
     }
 }
 
-/** A block quotation that is collapsed by default. */
+/** A block quotation that users can expand. */
 @Serializable
 data class InputRichBlockExpandableBlockQuotation(
     @SerialName(textField)

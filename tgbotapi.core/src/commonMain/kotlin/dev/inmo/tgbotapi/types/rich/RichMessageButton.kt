@@ -32,6 +32,9 @@ sealed interface RichMessageButton {
     val text: RichText
     val style: RichMessageButtonStyle?
 
+    /** Creates rich HTML or Markdown button markup containing [text]. */
+    fun toRichMarkup(text: String): String
+
     @Serializable
     data class Url(
         @SerialName(textField) override val text: RichText,
@@ -39,6 +42,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "url")
+            attribute("url", url)
+        }
     }
 
     @Serializable
@@ -48,6 +55,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style, allowLinkStyle = true) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "callback_data")
+            attribute("data", callbackData)
+        }
     }
 
     @Serializable
@@ -57,6 +68,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "web_app")
+            attribute("url", webApp.url)
+        }
     }
 
     @Serializable
@@ -69,6 +84,13 @@ sealed interface RichMessageButton {
             validateRichMessageButton(text, style)
             require(loginUrl.botUsername == null) { "Rich message login URL buttons do not support bot usernames" }
         }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "login_url")
+            attribute("url", loginUrl.url)
+            loginUrl.forwardText?.let { attribute("forward-text", it) }
+            loginUrl.botUsername?.let { attribute("bot-username", it) }
+            if (loginUrl.requestWriteAccess == true) add("request-write-access")
+        }
     }
 
     @Serializable
@@ -78,6 +100,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "switch_inline_query")
+            attribute("query", switchInlineQuery)
+        }
     }
 
     @Serializable
@@ -87,6 +113,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "switch_inline_query_current_chat")
+            attribute("query", switchInlineQueryCurrentChat)
+        }
     }
 
     @Serializable
@@ -96,6 +126,14 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "switch_inline_query_chosen_chat")
+            switchInlineQueryChosenChat.query?.let { attribute("query", it) }
+            if (switchInlineQueryChosenChat.allowUsers) add("allow-user-chats")
+            if (switchInlineQueryChosenChat.allowBots) add("allow-bot-chats")
+            if (switchInlineQueryChosenChat.allowGroups) add("allow-group-chats")
+            if (switchInlineQueryChosenChat.allowChannels) add("allow-channel-chats")
+        }
     }
 
     @Serializable
@@ -105,6 +143,10 @@ sealed interface RichMessageButton {
         @SerialName(styleField) override val style: RichMessageButtonStyle? = null
     ) : RichMessageButton {
         init { validateRichMessageButton(text, style) }
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "copy_text")
+            attribute("text", copyText.text)
+        }
     }
 
     @Serializable
@@ -116,6 +158,10 @@ sealed interface RichMessageButton {
         @SerialName(disabledField)
         @kotlinx.serialization.EncodeDefault
         val disabled: DisabledButton = DisabledButton
+
+        override fun toRichMarkup(text: String): String = richMarkup(text, style) {
+            attribute("type", "disabled")
+        }
     }
 }
 
@@ -124,20 +170,12 @@ private fun validateRichMessageButton(
     style: RichMessageButtonStyle?,
     allowLinkStyle: Boolean = false
 ) {
-    require(text.isValidRichMessageButtonText()) {
+    require(text.isValidRichMessageButtonText) {
         "Rich message button text can contain only plain text, custom emoji and date-time entities"
     }
     require(allowLinkStyle || style != RichMessageButtonStyle.Link) {
         "The link style is allowed only for callback buttons"
     }
-}
-
-private fun RichText.isValidRichMessageButtonText(): Boolean = when (this) {
-    is RichTextPlain -> true
-    is RichTextCustomEmoji -> true
-    is RichTextDateTime -> text.isValidRichMessageButtonText()
-    is RichTextGroup -> parts.all { it.isValidRichMessageButtonText() }
-    else -> false
 }
 
 /** Closed set of styles supported by [RichMessageButton]. */
@@ -234,55 +272,19 @@ sealed interface RichBlockButtonAlignment {
     }
 }
 
-internal fun RichMessageButton.toRichMarkup(text: String): String {
+private fun richMarkup(
+    text: String,
+    style: RichMessageButtonStyle?,
+    buildAttributes: MutableList<String>.() -> Unit
+): String {
     val attributes = mutableListOf<String>()
-    fun attribute(name: String, value: String) {
-        attributes.add("$name=\"${value.escapeRichMarkupAttribute()}\"")
-    }
-    when (this) {
-        is RichMessageButton.Url -> {
-            attribute("type", "url")
-            attribute("url", url)
-        }
-        is RichMessageButton.CallbackData -> {
-            attribute("type", "callback_data")
-            attribute("data", callbackData)
-        }
-        is RichMessageButton.WebApp -> {
-            attribute("type", "web_app")
-            attribute("url", webApp.url)
-        }
-        is RichMessageButton.LoginUrl -> {
-            attribute("type", "login_url")
-            attribute("url", loginUrl.url)
-            loginUrl.forwardText?.let { attribute("forward-text", it) }
-            loginUrl.botUsername?.let { attribute("bot-username", it) }
-            if (loginUrl.requestWriteAccess == true) attributes.add("request-write-access")
-        }
-        is RichMessageButton.SwitchInlineQuery -> {
-            attribute("type", "switch_inline_query")
-            attribute("query", switchInlineQuery)
-        }
-        is RichMessageButton.SwitchInlineQueryCurrentChat -> {
-            attribute("type", "switch_inline_query_current_chat")
-            attribute("query", switchInlineQueryCurrentChat)
-        }
-        is RichMessageButton.SwitchInlineQueryChosenChat -> {
-            attribute("type", "switch_inline_query_chosen_chat")
-            switchInlineQueryChosenChat.query?.let { attribute("query", it) }
-            if (switchInlineQueryChosenChat.allowUsers) attributes.add("allow-user-chats")
-            if (switchInlineQueryChosenChat.allowBots) attributes.add("allow-bot-chats")
-            if (switchInlineQueryChosenChat.allowGroups) attributes.add("allow-group-chats")
-            if (switchInlineQueryChosenChat.allowChannels) attributes.add("allow-channel-chats")
-        }
-        is RichMessageButton.CopyText -> {
-            attribute("type", "copy_text")
-            attribute("text", copyText.text)
-        }
-        is RichMessageButton.Disabled -> attribute("type", "disabled")
-    }
-    style?.let { attribute("style", it.name) }
+    attributes.buildAttributes()
+    style?.let { attributes.attribute("style", it.name) }
     return "<tg-button ${attributes.joinToString(" ")}>$text</tg-button>"
+}
+
+private fun MutableList<String>.attribute(name: String, value: String) {
+    add("$name=\"${value.escapeRichMarkupAttribute()}\"")
 }
 
 private fun String.escapeRichMarkupAttribute(): String = replace("&", "&amp;")

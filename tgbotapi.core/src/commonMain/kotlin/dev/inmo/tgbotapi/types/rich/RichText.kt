@@ -36,6 +36,9 @@ sealed interface RichText {
      * [Rich HTML style](https://core.telegram.org/bots/api#rich-html-style) representation of this [RichText].
      */
     val html: String
+
+    /** Whether this text is permitted as [RichMessageButton] text. */
+    val isValidRichMessageButtonText: Boolean
 }
 
 /**
@@ -48,6 +51,7 @@ data class RichTextPlain(
     override val rawText: String = text
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = true
 
     companion object {
         fun markdown(text: String): String = text.escapeRichMarkdown()
@@ -65,6 +69,7 @@ data class RichTextGroup(
     override val rawText: String = parts.joinToString(separator = "") { it.rawText }
     override val markdown: String = markdown(parts)
     override val html: String = html(parts)
+    override val isValidRichMessageButtonText: Boolean = parts.all { it.isValidRichMessageButtonText }
 
     companion object {
         fun markdown(parts: List<RichText>): String = parts.joinToString(separator = "") { it.markdown }
@@ -81,6 +86,7 @@ sealed interface RichTextEntity : RichText {
 
     override val markdown: String
     override val html: String
+    override val isValidRichMessageButtonText: Boolean
 }
 
 object RichTextSerializer : KSerializer<RichText> {

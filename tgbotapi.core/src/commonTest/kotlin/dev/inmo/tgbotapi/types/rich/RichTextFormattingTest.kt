@@ -245,7 +245,9 @@ class RichTextFormattingTest {
                 SwitchInlineQueryChosenChatParameters(rawAttribute, allowUsers = true)
             ) to "type=\"switch_inline_query_chosen_chat\" query=\"$escapedAttribute\" allow-user-chats",
             RichMessageButton.CopyText(text, CopyTextButtonData(rawAttribute)) to
-                "type=\"copy_text\" text=\"$escapedAttribute\""
+                "type=\"copy_text\" text=\"$escapedAttribute\"",
+            RichMessageButton.Disabled(text) to
+                "type=\"disabled\""
         )
 
         buttonsWithExpectedAttributes.forEach { (button, expectedAttributes) ->

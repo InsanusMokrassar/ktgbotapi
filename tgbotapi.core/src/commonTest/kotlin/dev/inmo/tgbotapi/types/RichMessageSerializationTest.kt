@@ -114,6 +114,7 @@ class RichMessageSerializationTest {
         )
 
         validTexts.forEach { text ->
+            assertEquals(true, text.isValidRichMessageButtonText)
             assertEquals(text, RichMessageButton.Disabled(text).text)
         }
 
@@ -124,6 +125,7 @@ class RichMessageSerializationTest {
             RichTextDateTime(RichTextBold(plain), TelegramDate(1L), "wDT")
         )
         invalidTexts.forEach { text ->
+            assertEquals(false, text.isValidRichMessageButtonText)
             assertFailsWith<IllegalArgumentException> { RichMessageButton.Disabled(text) }
         }
 

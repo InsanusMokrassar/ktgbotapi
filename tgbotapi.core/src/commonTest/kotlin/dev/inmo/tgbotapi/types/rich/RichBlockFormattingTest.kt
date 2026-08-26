@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types.rich
 
+import dev.inmo.tgbotapi.types.CustomEmojiId
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 
 class RichBlockFormattingTest {
     @Test
@@ -99,8 +101,18 @@ class RichBlockFormattingTest {
     @Test
     fun expandableBlockQuotationAndButtons() {
         val quotation = RichBlockExpandableBlockQuotation(RichTextPlain("q"), RichTextPlain("credit"))
-        assertEquals("<blockquote collapsed>q<cite>credit</cite></blockquote>", quotation.markdown)
-        assertEquals("<blockquote collapsed>q<cite>credit</cite></blockquote>", quotation.html)
+        assertEquals("<blockquote expandable>q<cite>credit</cite></blockquote>", quotation.markdown)
+        assertEquals("<blockquote expandable>q<cite>credit</cite></blockquote>", quotation.html)
+        val customEmojiQuotation = RichBlockExpandableBlockQuotation(
+            RichTextCustomEmoji(CustomEmojiId("emoji"), "emoji"),
+            RichTextCustomEmoji(CustomEmojiId("credit"), "credit")
+        )
+        assertEquals(
+            "<blockquote expandable><tg-emoji emoji-id=\"emoji\">emoji</tg-emoji>" +
+                "<cite><tg-emoji emoji-id=\"credit\">credit</tg-emoji></cite></blockquote>",
+            customEmojiQuotation.markdown
+        )
+        assertFalse(customEmojiQuotation.markdown.contains("!["))
         val buttons = RichBlockButtons(listOf(RichMessageButton.Disabled(RichTextPlain("Disabled"))), RichBlockButtonAlignment.Right)
         assertEquals("<tg-button-row align=\"right\"><tg-button type=\"disabled\">Disabled</tg-button></tg-button-row>", buttons.html)
     }
