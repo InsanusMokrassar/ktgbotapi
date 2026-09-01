@@ -1,13 +1,13 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.IdChatIdentifier
-import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.canStopField
 import dev.inmo.tgbotapi.types.chatIdField
+import dev.inmo.tgbotapi.types.directMessagesTopicIdField
 import dev.inmo.tgbotapi.types.draftIdField
 import dev.inmo.tgbotapi.types.keepOnStopField
-import dev.inmo.tgbotapi.types.messageThreadIdField
 import dev.inmo.tgbotapi.types.richMessageField
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.types.rich.multipartFiles
@@ -22,7 +22,8 @@ import kotlinx.serialization.SerializationStrategy
  * ephemeral and acts as a temporary 30-second preview - once the output is finalized, [SendRichMessage] must be called
  * with the complete message to persist it in the user's chat.
  *
- * @param chatId Numeric target chat identifier. Identifiers carrying a thread supply the default [threadId].
+ * @param chatId Numeric target chat identifier.
+ * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
  * @see <a href="https://core.telegram.org/bots/api#sendrichmessagedraft">sendRichMessageDraft</a>
  */
 @Serializable
@@ -36,8 +37,8 @@ data class SendRichMessageDraft(
     val draftId: Long,
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
-    @SerialName(messageThreadIdField)
-    val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(directMessagesTopicIdField)
+    val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(canStopField)
     val canStop: Boolean? = null,
     @SerialName(keepOnStopField)

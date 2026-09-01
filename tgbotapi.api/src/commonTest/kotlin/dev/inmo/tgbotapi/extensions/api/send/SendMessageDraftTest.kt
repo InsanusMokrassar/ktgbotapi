@@ -2,12 +2,12 @@ package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.SendRichMessageDraft
+import dev.inmo.tgbotapi.requests.send.SendMessageDraft
 import dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
 import dev.inmo.tgbotapi.types.DirectMessageThreadId
+import dev.inmo.tgbotapi.types.DraftId
 import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.RawChatId
-import dev.inmo.tgbotapi.types.rich.InputRichMessageHTML
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.coroutines.startCoroutine
@@ -16,7 +16,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertSame
 
-class SendRichMessageDraftTest {
+class SendMessageDraftTest {
     private object RequestCaptured : Throwable()
 
     private class CapturingBot : RequestsExecutor {
@@ -49,14 +49,17 @@ class SendRichMessageDraftTest {
     }
 
     @Test
-    fun directExtensionAcceptsIdChatIdentifier() {
-        val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(RawChatId(1L), DirectMessageThreadId(2L))
-        val request = assertIs<SendRichMessageDraft>(
+    fun directExtensionForwardsDirectMessageThreadId() {
+        val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(
+            RawChatId(1L),
+            DirectMessageThreadId(2L)
+        )
+        val request = assertIs<SendMessageDraft>(
             CapturingBot().capture {
-                sendRichMessageDraft(
+                sendMessageDraft(
                     chatId,
-                    3L,
-                    InputRichMessageHTML("direct"),
+                    DraftId(3L),
+                    "direct",
                     directMessageThreadId = DirectMessageThreadId(7L)
                 )
             }
@@ -67,11 +70,14 @@ class SendRichMessageDraftTest {
     }
 
     @Test
-    fun genericExtensionAcceptsIdChatIdentifier() {
-        val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(RawChatId(4L), DirectMessageThreadId(5L))
-        val request = assertIs<SendRichMessageDraft>(
+    fun genericExtensionForwardsDirectMessageThreadId() {
+        val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(
+            RawChatId(4L),
+            DirectMessageThreadId(5L)
+        )
+        val request = assertIs<SendMessageDraft>(
             CapturingBot().capture {
-                send(chatId, 6L, InputRichMessageHTML("generic"))
+                send(chatId, DraftId(6L), "generic")
             }
         )
 

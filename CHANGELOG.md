@@ -11,14 +11,16 @@
 * `FlowsUpdatesFilter` gained the abstract `messageGenerationStoppedUpdatesFlow` property; direct implementations must supply the flow, while subclasses of `AbstractFlowsUpdatesFilter` inherit the filtered implementation
 * `RichText` gained the public `isValidRichMessageButtonText` contract and the `RichText`/`RichBlock`/`InputRichBlock` sealed hierarchies gained Bot API 10.3 variants; permitted same-module implementations and exhaustive `when` expressions must cover the new contracts and variants
 * `SendRichMessageDraft`, `sendRichMessageDraft`, and the corresponding generic `send` overload widened `chatId` from `ChatId` to `IdChatIdentifier`; source calls passing `ChatId` remain valid, while the JVM signatures changed
+* `SendMessageDraft` and `SendRichMessageDraft` request/API surfaces replaced `threadId: MessageThreadId?` with `directMessageThreadId: DirectMessageThreadId?`; serialized requests now use `direct_messages_topic_id` instead of `message_thread_id`, and JVM signatures changed
 
-**Migration advice**: Direct and generic `send` extensions accept either `receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...` or `ephemeralMessageParameters = EphemeralMessageParameters(receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...)`; send-request constructors and `reply` API overloads require the parameter-object form; add `canSendWelcomeMessages` and `messageGenerationStoppedUpdatesFlow` to direct interface implementations; add Bot API 10.3 branches to exhaustive rich-type `when` expressions
+**Migration advice**: Direct and generic `send` extensions accept either `receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...` or `ephemeralMessageParameters = EphemeralMessageParameters(receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...)`; send-request constructors and `reply` API overloads require the parameter-object form; replace draft `threadId = MessageThreadId(...)` arguments with `directMessageThreadId = DirectMessageThreadId(...)`; add `canSendWelcomeMessages` and `messageGenerationStoppedUpdatesFlow` to direct interface implementations; add Bot API 10.3 branches to exhaustive rich-type `when` expressions
 
 **Compatibility note**: The new `text`/`entities`/`isPrivate` fields of `GiftSentOrReceivedEvent.UniqueGift.Common` and `GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount` are trailing constructor parameters; existing positional argument and `componentN` order is preserved
 
 * `Core`:
     * (`Ephemeral messages`) Added `EphemeralMessageParameters`; replaced the flat send-request recipient/callback parameters with `ephemeralMessageParameters`, including callback-message replacement support
-    * (`Rich Messages`) Widened `SendRichMessageDraft.chatId` from `ChatId` to `IdChatIdentifier`, allowing thread-bearing numeric identifiers to supply the default message thread
+    * (`Rich Messages`) Widened `SendRichMessageDraft.chatId` from `ChatId` to `IdChatIdentifier`, allowing contextual numeric identifiers to supply the default direct messages topic
+    * (`General`) Migrated `SendMessageDraft` and `SendRichMessageDraft` from `message_thread_id`/`MessageThreadId` to `direct_messages_topic_id`/`DirectMessageThreadId`
     * (`Ephemeral messages`) Added new-file uploads for `editEphemeralMessageMedia`; collected secondary live-photo `photo` attachments for ephemeral and regular media edits, media groups, and paid media; added `showCaptionAboveMedia` for caption edits and rich-message text edits
     * (`Ephemeral messages`) Added `canSendWelcomeMessages` administrator right and `promoteChatMember` parameter
     * (`Rich Messages`) Added rich-message button actions, rich-text/button-row entities, typed button styles/alignment, expandable block quotations, compact tables, document blocks, document media links and direct document uploads
@@ -33,6 +35,7 @@
 * `API`:
     * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
     * (`Rich Messages`) Widened `sendRichMessageDraft` and the corresponding generic `send` overload from `ChatId` to `IdChatIdentifier`
+    * (`General`) Migrated direct, streaming-flow, `Chat`, builder, and generic draft-send extensions from `threadId`/`MessageThreadId` to `directMessageThreadId`/`DirectMessageThreadId`
     * (`Ephemeral messages`) Retained 172 non-deprecated direct and generic `send` overloads accepting `receiverUserId`/`callbackQueryId`/`replaceCallbackQueryMessage` as an alternative API form; every overload delegates to the corresponding `ephemeralMessageParameters` overload
     * (`Ephemeral messages`) Added named rich-message overloads and generic `InputRichMessage`/`RichMessageContent` aliases across both ephemeral reply families
     * (`General`) Added `canStop`/`keepOnStop` to `sendMessageDraft`/`sendRichMessageDraft` extension surfaces, including streaming draft flows and `send` overloads

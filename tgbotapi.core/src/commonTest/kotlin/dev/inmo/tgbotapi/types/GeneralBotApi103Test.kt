@@ -38,15 +38,23 @@ class GeneralBotApi103Test {
     }
 
     @Test
-    fun `rich draft accepts thread-bearing chat identifiers`() {
-        val chatId = ChatIdWithThreadId(RawChatId(3L), MessageThreadId(4L))
+    fun `drafts accept direct-message-thread chat identifiers`() {
+        val chatId = ChatIdWithChannelDirectMessageThreadId(RawChatId(3L), DirectMessageThreadId(4L))
+        val messageDraft = SendMessageDraft(chatId, DraftId(5L), "draft")
         val richDraft = SendRichMessageDraft(chatId, 5L, InputRichMessageHTML("draft"))
+        val messageDraftJson = json.encodeToJsonElement(SendMessageDraft.serializer(), messageDraft).jsonObject
         val richDraftJson = json.encodeToJsonElement(SendRichMessageDraft.serializer(), richDraft).jsonObject
 
+        assertEquals(chatId, messageDraft.chatId)
         assertEquals(chatId, richDraft.chatId)
-        assertEquals(MessageThreadId(4L), richDraft.threadId)
+        assertEquals(DirectMessageThreadId(4L), messageDraft.directMessageThreadId)
+        assertEquals(DirectMessageThreadId(4L), richDraft.directMessageThreadId)
+        assertEquals("3", messageDraftJson[chatIdField].toString())
         assertEquals("3", richDraftJson[chatIdField].toString())
-        assertEquals("4", richDraftJson[messageThreadIdField].toString())
+        assertEquals("4", messageDraftJson[directMessagesTopicIdField].toString())
+        assertEquals("4", richDraftJson[directMessagesTopicIdField].toString())
+        assertEquals(null, messageDraftJson[messageThreadIdField])
+        assertEquals(null, richDraftJson[messageThreadIdField])
     }
 
     @Test
