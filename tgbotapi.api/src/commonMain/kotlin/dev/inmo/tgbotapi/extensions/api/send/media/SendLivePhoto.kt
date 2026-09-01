@@ -62,13 +62,6 @@ public suspend fun TelegramBot.sendLivePhoto(
     )
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chatId = chatId, livePhoto = livePhoto, photo = photo, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendLivePhoto(
     chatId: ChatIdentifier,
     livePhoto: InputFile,
@@ -82,6 +75,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -100,7 +94,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -153,13 +147,6 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chatId = chatId, livePhoto = livePhoto, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendLivePhoto(
     chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
@@ -172,6 +159,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -189,7 +177,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -243,13 +231,6 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chat = chat, livePhoto = livePhoto, photo = photo, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendLivePhoto(
     chat: Chat,
     livePhoto: InputFile,
@@ -263,6 +244,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -281,7 +263,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -333,13 +315,6 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chat = chat, livePhoto = livePhoto, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendLivePhoto(
     chat: Chat,
     livePhoto: LivePhotoFile,
@@ -352,6 +327,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -369,7 +345,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -423,13 +399,6 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     )
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chatId = chatId, livePhoto = livePhoto, photo = photo, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendLivePhoto(
     chatId: ChatIdentifier,
     livePhoto: InputFile,
@@ -442,6 +411,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -459,7 +429,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -510,13 +480,6 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chatId = chatId, livePhoto = livePhoto, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendLivePhoto(
     chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
@@ -528,6 +491,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -544,7 +508,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -596,13 +560,6 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chat = chat, livePhoto = livePhoto, photo = photo, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendLivePhoto(
     chat: Chat,
     livePhoto: InputFile,
@@ -615,6 +572,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -632,7 +590,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -682,13 +640,6 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendLivePhoto(chat = chat, livePhoto = livePhoto, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendLivePhoto(
     chat: Chat,
     livePhoto: LivePhotoFile,
@@ -700,6 +651,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -716,7 +668,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

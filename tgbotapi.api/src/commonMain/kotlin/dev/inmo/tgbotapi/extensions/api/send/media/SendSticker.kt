@@ -52,13 +52,6 @@ public suspend fun TelegramBot.sendSticker(
     )
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendSticker(chatId = chatId, sticker = sticker, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, emoji = emoji, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
@@ -67,6 +60,7 @@ public suspend fun TelegramBot.sendSticker(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -81,7 +75,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -128,13 +122,6 @@ public suspend fun TelegramBot.sendSticker(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendSticker(chat = chat, sticker = sticker, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, emoji = emoji, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendSticker(
     chat: Chat,
     sticker: InputFile,
@@ -143,6 +130,7 @@ public suspend fun TelegramBot.sendSticker(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -157,7 +145,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -204,13 +192,6 @@ public suspend fun TelegramBot.sendSticker(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendSticker(chatId = chatId, sticker = sticker, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, emoji = emoji, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,
     sticker: Sticker,
@@ -219,6 +200,7 @@ public suspend fun TelegramBot.sendSticker(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -233,7 +215,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -280,13 +262,6 @@ public suspend fun TelegramBot.sendSticker(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendSticker(chat = chat, sticker = sticker, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, emoji = emoji, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendSticker(
     chat: Chat,
     sticker: Sticker,
@@ -295,6 +270,7 @@ public suspend fun TelegramBot.sendSticker(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -309,7 +285,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,

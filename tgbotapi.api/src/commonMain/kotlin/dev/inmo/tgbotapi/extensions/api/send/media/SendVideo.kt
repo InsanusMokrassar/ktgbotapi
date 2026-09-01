@@ -74,13 +74,6 @@ public suspend fun TelegramBot.sendVideo(
     )
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chatId = chatId, video = video, thumb = thumb, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, cover = cover, startTimestamp = startTimestamp, duration = duration, width = width, height = height, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
@@ -100,6 +93,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -124,7 +118,7 @@ public suspend fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -184,13 +178,6 @@ public suspend fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chatId = chatId, video = video, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
@@ -204,6 +191,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -222,7 +210,7 @@ public suspend fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -288,13 +276,6 @@ public suspend fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chat = chat, video = video, thumb = thumb, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, cover = cover, startTimestamp = startTimestamp, duration = duration, width = width, height = height, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendVideo(
     chat: Chat,
     video: InputFile,
@@ -314,6 +295,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -338,7 +320,7 @@ public suspend fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -393,13 +375,6 @@ public suspend fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chat = chat, video = video, text = text, parseMode = parseMode, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend fun TelegramBot.sendVideo(
     chat: Chat,
     video: VideoFile,
@@ -413,6 +388,7 @@ public suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -431,7 +407,7 @@ public suspend fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -497,13 +473,6 @@ public suspend inline fun TelegramBot.sendVideo(
     )
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chatId = chatId, video = video, thumb = thumb, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, cover = cover, startTimestamp = startTimestamp, duration = duration, width = width, height = height, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
@@ -522,6 +491,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -545,7 +515,7 @@ public suspend inline fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -603,13 +573,6 @@ public suspend inline fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chatId = chatId, video = video, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
@@ -622,6 +585,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -639,7 +603,7 @@ public suspend inline fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -703,13 +667,6 @@ public suspend inline fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chat = chat, video = video, thumb = thumb, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, cover = cover, startTimestamp = startTimestamp, duration = duration, width = width, height = height, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendVideo(
     chat: Chat,
     video: InputFile,
@@ -728,6 +685,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -751,7 +709,7 @@ public suspend inline fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -804,13 +762,6 @@ public suspend inline fun TelegramBot.sendVideo(
     replyMarkup = replyMarkup
 )
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "sendVideo(chat = chat, video = video, entities = entities, showCaptionAboveMedia = showCaptionAboveMedia, spoilered = spoilered, supportsStreaming = supportsStreaming, threadId = threadId, directMessageThreadId = directMessageThreadId, businessConnectionId = businessConnectionId, ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }, disableNotification = disableNotification, protectContent = protectContent, allowPaidBroadcast = allowPaidBroadcast, effectId = effectId, suggestedPostParameters = suggestedPostParameters, replyParameters = replyParameters, replyMarkup = replyMarkup)",
-        imports = ["dev.inmo.tgbotapi.types.EphemeralMessageParameters"]
-    )
-)
 public suspend inline fun TelegramBot.sendVideo(
     chat: Chat,
     video: VideoFile,
@@ -823,6 +774,7 @@ public suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -840,7 +792,7 @@ public suspend inline fun TelegramBot.sendVideo(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) },
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

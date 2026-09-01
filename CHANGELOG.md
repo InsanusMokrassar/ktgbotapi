@@ -6,12 +6,12 @@
 
 **Breaking changes**:
 
-* `OptionallyEphemeralSendRequest` replaced the `receiverUserId`/`callbackQueryId` properties with `ephemeralMessageParameters: EphemeralMessageParameters?`; the 13 ephemeral-capable send-request constructors and the corresponding `reply` API overloads replaced the two flat parameters with the parameter object, while direct and generic `send` API extensions retain deprecated flat-parameter overloads for compatibility
+* `OptionallyEphemeralSendRequest` replaced the `receiverUserId`/`callbackQueryId` properties with `ephemeralMessageParameters: EphemeralMessageParameters?`; the 13 ephemeral-capable send-request constructors and the corresponding `reply` API overloads replaced the two flat parameters with the parameter object, while direct and generic `send` API extensions retain non-deprecated flat-parameter overloads as an alternative API form
 * `ChatAdministratorRights` gained the abstract `canSendWelcomeMessages` property; implementations maintained in the same compilation module must supply the property, while `ChatCommonAdministratorRights` construction can use the new trailing default
 * `FlowsUpdatesFilter` gained the abstract `messageGenerationStoppedUpdatesFlow` property; direct implementations must supply the flow, while subclasses of `AbstractFlowsUpdatesFilter` inherit the filtered implementation
 * `RichText` gained the public `isValidRichMessageButtonText` contract and the `RichText`/`RichBlock`/`InputRichBlock` sealed hierarchies gained Bot API 10.3 variants; permitted same-module implementations and exhaustive `when` expressions must cover the new contracts and variants
 
-**Migration advice**: Replace `receiverUserId = userId, callbackQueryId = callbackId` with `ephemeralMessageParameters = EphemeralMessageParameters(receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...)`; add `canSendWelcomeMessages` and `messageGenerationStoppedUpdatesFlow` to direct interface implementations; add Bot API 10.3 branches to exhaustive rich-type `when` expressions
+**Migration advice**: Direct and generic `send` extensions accept either `receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...` or `ephemeralMessageParameters = EphemeralMessageParameters(receiverUserId = userId, callbackQueryId = callbackId, replaceCallbackQueryMessage = ...)`; send-request constructors and `reply` API overloads require the parameter-object form; add `canSendWelcomeMessages` and `messageGenerationStoppedUpdatesFlow` to direct interface implementations; add Bot API 10.3 branches to exhaustive rich-type `when` expressions
 
 **Compatibility note**: The new `text`/`entities`/`isPrivate` fields of `GiftSentOrReceivedEvent.UniqueGift.Common` and `GiftSentOrReceivedEvent.UniqueGift.ReceivedInBusinessAccount` are trailing constructor parameters; existing positional argument and `componentN` order is preserved
 
@@ -30,7 +30,7 @@
     * (`General`) Added legacy and generated class casts for `MessageGenerationStoppedUpdate`
 * `API`:
     * (`Ephemeral messages`) Migrated send/reply extension surfaces to `ephemeralMessageParameters`; added rich ephemeral text editing and caption-above-media support
-    * (`Ephemeral messages`) Restored 172 deprecated direct and generic `send` overloads accepting `receiverUserId`/`callbackQueryId`; every `ReplaceWith` migrates the call to the corresponding `ephemeralMessageParameters` overload
+    * (`Ephemeral messages`) Retained 172 non-deprecated direct and generic `send` overloads accepting `receiverUserId`/`callbackQueryId`/`replaceCallbackQueryMessage` as an alternative API form; every overload delegates to the corresponding `ephemeralMessageParameters` overload
     * (`Ephemeral messages`) Added named rich-message overloads and generic `InputRichMessage`/`RichMessageContent` aliases across both ephemeral reply families
     * (`General`) Added `canStop`/`keepOnStop` to `sendMessageDraft`/`sendRichMessageDraft` extension surfaces, including streaming draft flows and `send` overloads
 * `BehaviourBuilder`:

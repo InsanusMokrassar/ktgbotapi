@@ -174,13 +174,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            animation = animation,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            duration = duration,\n            width = width,\n            height = height,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     animation: AnimationFile,
@@ -196,6 +189,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -223,7 +217,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -276,13 +270,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            animation = animation,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            duration = duration,\n            width = width,\n            height = height,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     animation: AnimationFile,
@@ -298,6 +285,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -325,7 +313,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -376,13 +364,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            animation = animation,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            duration = duration,\n            width = width,\n            height = height,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     animation: AnimationFile,
@@ -397,6 +378,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -423,7 +405,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -474,13 +456,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            animation = animation,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            duration = duration,\n            width = width,\n            height = height,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     animation: AnimationFile,
@@ -495,6 +470,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -521,7 +497,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -566,13 +542,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            audio = audio,\n            text = text,\n            parseMode = parseMode,\n            title = title,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     audio: AudioFile,
@@ -584,6 +553,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -607,7 +577,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -652,13 +622,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            audio = audio,\n            text = text,\n            parseMode = parseMode,\n            title = title,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     audio: AudioFile,
@@ -670,6 +633,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -693,7 +657,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -736,13 +700,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            audio = audio,\n            entities = entities,\n            title = title,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     audio: AudioFile,
@@ -753,6 +710,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -775,7 +733,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -818,13 +776,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            audio = audio,\n            entities = entities,\n            title = title,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     audio: AudioFile,
@@ -835,6 +786,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -857,7 +809,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -900,13 +852,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            phoneNumber = phoneNumber,\n            firstName = firstName,\n            lastName = lastName,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     phoneNumber: String,
@@ -917,6 +862,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -939,7 +885,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -978,13 +924,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            contact = contact,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     contact: Contact,
@@ -993,6 +932,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1013,7 +953,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1056,13 +996,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            phoneNumber = phoneNumber,\n            firstName = firstName,\n            lastName = lastName,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     phoneNumber: String,
@@ -1073,6 +1006,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1095,7 +1029,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1134,13 +1068,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            contact = contact,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     contact: Contact,
@@ -1149,6 +1076,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1169,7 +1097,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1324,13 +1252,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            document = document,\n            text = text,\n            parseMode = parseMode,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            disableContentTypeDetection = disableContentTypeDetection,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     document: DocumentFile,
@@ -1341,6 +1262,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1365,7 +1287,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1410,13 +1332,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            document = document,\n            text = text,\n            parseMode = parseMode,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            disableContentTypeDetection = disableContentTypeDetection,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     document: DocumentFile,
@@ -1427,6 +1342,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1451,7 +1367,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1494,13 +1410,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            document = document,\n            entities = entities,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            disableContentTypeDetection = disableContentTypeDetection,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     document: DocumentFile,
@@ -1510,6 +1419,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1533,7 +1443,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1576,13 +1486,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            document = document,\n            entities = entities,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            disableContentTypeDetection = disableContentTypeDetection,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     document: DocumentFile,
@@ -1592,6 +1495,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1615,7 +1519,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1844,13 +1748,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            latitude = latitude,\n            longitude = longitude,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -1860,6 +1757,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1881,7 +1779,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1920,13 +1818,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            location = location,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     location: StaticLocation,
@@ -1935,6 +1826,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -1955,7 +1847,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -1996,13 +1888,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            latitude = latitude,\n            longitude = longitude,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     latitude: Double,
@@ -2012,6 +1897,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2033,7 +1919,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2072,13 +1958,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            location = location,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     location: StaticLocation,
@@ -2087,6 +1966,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2107,7 +1987,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2150,13 +2030,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            text = text,\n            parseMode = parseMode,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     text: String,
@@ -2167,6 +2040,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2189,7 +2063,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2232,13 +2106,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            text = text,\n            parseMode = parseMode,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     text: String,
@@ -2249,6 +2116,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2271,7 +2139,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2312,13 +2180,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            entities = entities,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     entities: TextSourcesList,
@@ -2328,6 +2189,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2349,7 +2211,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2391,13 +2253,6 @@ public suspend fun TelegramBot.send(
 
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            separator = separator,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            builderBody = builderBody,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     separator: TextSource? = null,
@@ -2407,6 +2262,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2430,7 +2286,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2472,13 +2328,6 @@ public suspend fun TelegramBot.send(
 
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            separator = separator,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            builderBody = builderBody,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     separator: String,
@@ -2488,6 +2337,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2511,7 +2361,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2552,13 +2402,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            entities = entities,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     entities: TextSourcesList,
@@ -2568,6 +2411,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2589,7 +2433,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2814,13 +2658,6 @@ public suspend fun TelegramBot.send(
 
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            separator = separator,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            builderBody = builderBody,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     separator: TextSource? = null,
@@ -2830,6 +2667,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2853,7 +2691,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2894,13 +2732,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            separator = separator,\n            linkPreviewOptions = linkPreviewOptions,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            builderBody = builderBody,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     separator: String,
@@ -2910,6 +2741,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -2933,7 +2765,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -2980,13 +2812,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            photo = photo,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     photo: PhotoFile,
@@ -2999,6 +2824,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3023,7 +2849,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3230,13 +3056,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            photo = photo,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     photo: PhotoFile,
@@ -3249,6 +3068,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3273,7 +3093,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3320,13 +3140,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            photoSize = photoSize,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
@@ -3339,6 +3152,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3363,7 +3177,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3410,13 +3224,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            photoSize = photoSize,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     photoSize: PhotoSize,
@@ -3429,6 +3236,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3453,7 +3261,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3498,13 +3306,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            photo = photo,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     photo: PhotoFile,
@@ -3516,6 +3317,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3539,7 +3341,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3584,13 +3386,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            photo = photo,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     photo: PhotoFile,
@@ -3602,6 +3397,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3625,7 +3421,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3670,13 +3466,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            photoSize = photoSize,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
@@ -3688,6 +3477,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3711,7 +3501,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -3756,13 +3546,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            photoSize = photoSize,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     photoSize: PhotoSize,
@@ -3774,6 +3557,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -3797,7 +3581,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -4975,13 +4759,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            sticker = sticker,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            emoji = emoji,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     sticker: Sticker,
@@ -4990,6 +4767,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -5012,7 +4790,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5054,13 +4832,6 @@ public suspend fun TelegramBot.send(
 
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            sticker = sticker,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            emoji = emoji,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     sticker: Sticker,
@@ -5069,6 +4840,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -5091,7 +4863,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5140,13 +4912,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            latitude = latitude,\n            longitude = longitude,\n            livePeriod = livePeriod,\n            horizontalAccuracy = horizontalAccuracy,\n            heading = heading,\n            proximityAlertRadius = proximityAlertRadius,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -5160,6 +4925,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5185,7 +4951,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5232,13 +4998,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            location = location,\n            livePeriod = livePeriod,\n            horizontalAccuracy = horizontalAccuracy,\n            heading = heading,\n            proximityAlertRadius = proximityAlertRadius,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     location: Location,
@@ -5251,6 +5010,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5275,7 +5035,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5324,13 +5084,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            latitude = latitude,\n            longitude = longitude,\n            livePeriod = livePeriod,\n            horizontalAccuracy = horizontalAccuracy,\n            heading = heading,\n            proximityAlertRadius = proximityAlertRadius,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     latitude: Double,
@@ -5344,6 +5097,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5369,7 +5123,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5416,13 +5170,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            location = location,\n            livePeriod = livePeriod,\n            horizontalAccuracy = horizontalAccuracy,\n            heading = heading,\n            proximityAlertRadius = proximityAlertRadius,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     location: Location,
@@ -5435,6 +5182,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5459,7 +5207,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5512,13 +5260,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            latitude = latitude,\n            longitude = longitude,\n            title = title,\n            address = address,\n            foursquareId = foursquareId,\n            foursquareType = foursquareType,\n            googlePlaceId = googlePlaceId,\n            googlePlaceType = googlePlaceType,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -5534,6 +5275,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5561,7 +5303,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5614,13 +5356,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            latitude = latitude,\n            longitude = longitude,\n            title = title,\n            address = address,\n            foursquareId = foursquareId,\n            foursquareType = foursquareType,\n            googlePlaceId = googlePlaceId,\n            googlePlaceType = googlePlaceType,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     latitude: Double,
@@ -5636,6 +5371,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5663,7 +5399,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5714,13 +5450,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            location = location,\n            title = title,\n            address = address,\n            foursquareId = foursquareId,\n            foursquareType = foursquareType,\n            googlePlaceId = googlePlaceId,\n            googlePlaceType = googlePlaceType,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     location: StaticLocation,
@@ -5735,6 +5464,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5761,7 +5491,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5812,13 +5542,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            location = location,\n            title = title,\n            address = address,\n            foursquareId = foursquareId,\n            foursquareType = foursquareType,\n            googlePlaceId = googlePlaceId,\n            googlePlaceType = googlePlaceType,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     location: StaticLocation,
@@ -5833,6 +5556,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5859,7 +5583,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5898,13 +5622,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            venue = venue,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     venue: Venue,
@@ -5913,6 +5630,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -5933,7 +5651,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -5972,13 +5690,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            venue = venue,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     venue: Venue,
@@ -5987,6 +5698,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6007,7 +5719,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6056,13 +5768,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            video = video,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            supportsStreaming = supportsStreaming,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     video: VideoFile,
@@ -6076,6 +5781,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6101,7 +5807,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6150,13 +5856,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            video = video,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            supportsStreaming = supportsStreaming,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     video: VideoFile,
@@ -6170,6 +5869,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6195,7 +5895,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6242,13 +5942,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            video = video,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            supportsStreaming = supportsStreaming,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     video: VideoFile,
@@ -6261,6 +5954,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6285,7 +5979,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6332,13 +6026,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            video = video,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            supportsStreaming = supportsStreaming,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     video: VideoFile,
@@ -6351,6 +6038,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6375,7 +6063,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6422,13 +6110,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            livePhoto = livePhoto,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
@@ -6441,6 +6122,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6465,7 +6147,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6512,13 +6194,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            livePhoto = livePhoto,\n            text = text,\n            parseMode = parseMode,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     livePhoto: LivePhotoFile,
@@ -6531,6 +6206,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6555,7 +6231,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6600,13 +6276,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            livePhoto = livePhoto,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
@@ -6618,6 +6287,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6641,7 +6311,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6686,13 +6356,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            livePhoto = livePhoto,\n            entities = entities,\n            showCaptionAboveMedia = showCaptionAboveMedia,\n            spoilered = spoilered,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     livePhoto: LivePhotoFile,
@@ -6704,6 +6367,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6727,7 +6391,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6766,13 +6430,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            videoNote = videoNote,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     videoNote: VideoNoteFile,
@@ -6781,6 +6438,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6801,7 +6459,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6840,13 +6498,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            videoNote = videoNote,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     videoNote: VideoNoteFile,
@@ -6855,6 +6506,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6875,7 +6527,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -6918,13 +6570,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            voice = voice,\n            text = text,\n            parseMode = parseMode,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     voice: VoiceFile,
@@ -6935,6 +6580,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -6957,7 +6603,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -7000,13 +6646,6 @@ public suspend fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            voice = voice,\n            text = text,\n            parseMode = parseMode,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend fun TelegramBot.send(
     chat: Chat,
     voice: VoiceFile,
@@ -7017,6 +6656,7 @@ public suspend fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -7039,7 +6679,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -7080,13 +6720,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chatId = chatId,\n            voice = voice,\n            entities = entities,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     voice: VoiceFile,
@@ -7096,6 +6729,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -7117,7 +6751,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
@@ -7158,13 +6792,6 @@ public suspend inline fun TelegramBot.send(
 )
 
 
-@Deprecated(
-    "Use ephemeralMessageParameters instead",
-    ReplaceWith(
-        "send(\n            chat = chat,\n            voice = voice,\n            entities = entities,\n            threadId = threadId,\n            directMessageThreadId = directMessageThreadId,\n            businessConnectionId = businessConnectionId,\n            disableNotification = disableNotification,\n            protectContent = protectContent,\n            allowPaidBroadcast = allowPaidBroadcast,\n            effectId = effectId,\n            suggestedPostParameters = suggestedPostParameters,\n            replyParameters = replyParameters,\n            replyMarkup = replyMarkup,\n            ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }\n        )",
-        "dev.inmo.tgbotapi.types.EphemeralMessageParameters"
-    )
-)
 public suspend inline fun TelegramBot.send(
     chat: Chat,
     voice: VoiceFile,
@@ -7174,6 +6801,7 @@ public suspend inline fun TelegramBot.send(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -7195,7 +6823,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId) }
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
 )
 
 /**
