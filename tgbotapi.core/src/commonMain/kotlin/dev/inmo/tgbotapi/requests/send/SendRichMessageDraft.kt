@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.canStopField
 import dev.inmo.tgbotapi.types.chatIdField
@@ -22,12 +22,13 @@ import kotlinx.serialization.SerializationStrategy
  * ephemeral and acts as a temporary 30-second preview - once the output is finalized, [SendRichMessage] must be called
  * with the complete message to persist it in the user's chat.
  *
+ * @param chatId Numeric target chat identifier. Identifiers carrying a thread supply the default [threadId].
  * @see <a href="https://core.telegram.org/bots/api#sendrichmessagedraft">sendRichMessageDraft</a>
  */
 @Serializable
 data class SendRichMessageDraft(
     @SerialName(chatIdField)
-    val chatId: ChatId,
+    val chatId: IdChatIdentifier,
     /**
      * Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
      */

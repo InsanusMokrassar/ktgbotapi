@@ -38,6 +38,18 @@ class GeneralBotApi103Test {
     }
 
     @Test
+    fun `rich draft accepts thread-bearing chat identifiers`() {
+        val chatId = ChatIdWithThreadId(RawChatId(3L), MessageThreadId(4L))
+        val richDraft = SendRichMessageDraft(chatId, 5L, InputRichMessageHTML("draft"))
+        val richDraftJson = json.encodeToJsonElement(SendRichMessageDraft.serializer(), richDraft).jsonObject
+
+        assertEquals(chatId, richDraft.chatId)
+        assertEquals(MessageThreadId(4L), richDraft.threadId)
+        assertEquals("3", richDraftJson[chatIdField].toString())
+        assertEquals("4", richDraftJson[messageThreadIdField].toString())
+    }
+
+    @Test
     fun `stopped message generation update deserializes`() {
         val update = nonstrictJsonFormat.decodeFromString(
             UpdateSerializerWithoutSerialization,

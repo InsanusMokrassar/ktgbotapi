@@ -2602,9 +2602,10 @@ public suspend fun TelegramBot.send(
 
 /**
  * Will execute [sendRichMessageDraft] request
+ * @param chatId Numeric target chat identifier. Identifiers carrying a thread supply the default [threadId].
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     draftId: Long,
     richMessage: InputRichMessage,
     threadId: MessageThreadId? = chatId.threadId,
