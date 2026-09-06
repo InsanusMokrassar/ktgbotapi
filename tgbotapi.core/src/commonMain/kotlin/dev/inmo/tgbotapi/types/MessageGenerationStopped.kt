@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -10,9 +11,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MessageGenerationStopped(
     @SerialName(chatField)
-    val chat: PreviewChat,
+    override val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     val messageThreadId: MessageThreadId? = null,
     @SerialName(draftIdField)
     val draftId: DraftId
-)
+) : WithPreviewChat

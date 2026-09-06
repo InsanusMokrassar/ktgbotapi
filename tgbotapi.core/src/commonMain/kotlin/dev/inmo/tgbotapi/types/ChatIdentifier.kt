@@ -17,11 +17,19 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.longOrNull
 import kotlin.jvm.JvmInline
 
+/** Telegram URI-scheme prefix used for links handled by Telegram applications. */
 const val internalTgAppLinksBeginning = "tg://"
+
+/** Base URL used for public Telegram links. */
 const val internalLinkBeginning = "https://t.me"
+
+/** Telegram URI prefix used to open a user by numeric identifier. */
 const val internalUserLinkBeginning = "${internalTgAppLinksBeginning}user?id="
+
+/** Reserved Telegram username used as the base of managed-bot creation links. */
 const val managedBotNewBotUsername = "newbot"
 
+/** Identifies a Telegram chat either by numeric [IdChatIdentifier] or by [Username]. */
 @Serializable(ChatIdentifierSerializer::class)
 @ClassCastsIncluded
 sealed interface ChatIdentifier
@@ -32,35 +40,67 @@ sealed interface ChatIdentifier
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 sealed interface IdChatIdentifier : ChatIdentifier {
+    /** Numeric Telegram chat identifier. */
     val chatId: RawChatId
+
+    /** Message thread carried as default request context, when available. */
     val threadId: MessageThreadId?
         get() = null
+
+    /** Business connection carried as default request context, when available. */
     val businessConnectionId: BusinessConnectionId?
         get() = null
+
+    /** Direct-message thread carried as default request context, when available. */
     val directMessageThreadId: DirectMessageThreadId?
         get() = null
+
+    /** User receiving an ephemeral message, when available. */
     val receiverUser: UserId?
         get() = null
+
+    /** Existing ephemeral message targeted by an operation, when available. */
     val ephemeralMessageId: EphemeralMessageId?
         get() = null
 
     companion object {
+        /**
+         * Creates [ChatIdWithThreadId] when [threadId] is present, [BusinessChatId] when only
+         * [businessConnectionId] is present, or [ChatId] when both optional values are absent.
+         * A non-null [threadId] takes precedence over [businessConnectionId].
+         */
         operator fun invoke(chatId: RawChatId, threadId: MessageThreadId? = null, businessConnectionId: BusinessConnectionId? = null) = threadId ?.let {
             ChatIdWithThreadId(chatId, threadId)
         } ?: businessConnectionId ?.let {
             BusinessChatId(chatId, businessConnectionId)
         } ?: ChatId(chatId)
+
+        /** Creates an identifier carrying the supplied [threadId]. */
         operator fun invoke(chatId: RawChatId, threadId: MessageThreadId) = ChatIdWithThreadId(chatId, threadId)
+
+        /** Creates an identifier carrying the supplied [businessConnectionId]. */
         operator fun invoke(chatId: RawChatId, businessConnectionId: BusinessConnectionId) = BusinessChatId(chatId, businessConnectionId)
+
+        /** Creates an identifier carrying ephemeral delivery context for [receiverUser]. */
         operator fun invoke(chatId: RawChatId, receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null) = EphemeralChatId(chatId, receiverUser, ephemeralMessageId)
     }
 }
 
+/**
+ * Numeric Telegram chat identifier without embedded request context.
+ *
+ * @property chatId Raw numeric identifier.
+ */
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class ChatId(override val chatId: RawChatId) : IdChatIdentifier
 
+/**
+ * Numeric Telegram chat identifier carrying a default message thread.
+ *
+ * @property chatIdWithThreadId Raw chat identifier and message-thread identifier pair.
+ */
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
@@ -70,9 +110,15 @@ value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageTh
     override val threadId: MessageThreadId
         get() = chatIdWithThreadId.second
 
+    /** Creates an identifier from separate [chatId] and [threadId] values. */
     constructor(chatId: RawChatId, threadId: MessageThreadId): this(chatId to threadId)
 }
 
+/**
+ * Numeric Telegram chat identifier carrying a default channel direct-message thread.
+ *
+ * @property chatIdWithThreadId Raw chat identifier and direct-message-thread identifier pair.
+ */
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
@@ -82,8 +128,15 @@ value class ChatIdWithChannelDirectMessageThreadId(val chatIdWithThreadId: Pair<
     override val directMessageThreadId: DirectMessageThreadId
         get() = chatIdWithThreadId.second
 
+    /** Creates an identifier from separate [chatId] and [threadId] values. */
     constructor(chatId: RawChatId, threadId: DirectMessageThreadId): this(chatId to threadId)
 }
+
+/**
+ * Numeric Telegram chat identifier carrying a default business connection.
+ *
+ * @property chatIdWithBusinessConnectionId Raw chat identifier and business-connection identifier pair.
+ */
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
@@ -93,12 +146,16 @@ value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, B
     override val businessConnectionId: BusinessConnectionId
         get() = chatIdWithBusinessConnectionId.second
 
+    /** Creates an identifier from separate [chatId] and [businessConnectionId] values. */
     constructor(chatId: RawChatId, businessConnectionId: BusinessConnectionId): this(chatId to businessConnectionId)
 }
 
 /**
  * Chat id of group/supergroup additionally carrying ephemeral [receiverUser] (and optional [ephemeralMessageId]);
  * used to default `receiverUserId`/`ephemeralMessageId` params of ephemeral-related requests
+ *
+ * @property chatIdWithReceiverUserAndEphemeralMessageId Raw chat identifier, receiver identifier, and optional
+ * ephemeral-message identifier triple.
  */
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(ChatIdentifierSerializer::class)
@@ -113,24 +170,31 @@ value class EphemeralChatId(
     override val ephemeralMessageId: EphemeralMessageId?
         get() = chatIdWithReceiverUserAndEphemeralMessageId.third
 
+    /** Creates an identifier from separate chat, receiver, and optional ephemeral-message identifiers. */
     constructor(chatId: RawChatId, receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null): this(Triple(chatId, receiverUser, ephemeralMessageId))
 }
 
+/** Returns the embedded message thread, or `null` when no message thread is available. */
 val ChatIdentifier.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
+/** Returns the embedded channel direct-message thread, or `null` when no direct-message thread is available. */
 val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
     get() = (this as? IdChatIdentifier) ?.directMessageThreadId
 
+/** Returns the embedded business connection, or `null` when no business connection is available. */
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 
+/** Returns the embedded ephemeral-message receiver, or `null` when no receiver is available. */
 val ChatIdentifier.receiverUser: UserId?
     get() = (this as? IdChatIdentifier) ?.receiverUser
 
+/** Returns the embedded ephemeral-message identifier, or `null` when no identifier is available. */
 val ChatIdentifier.ephemeralMessageId: EphemeralMessageId?
     get() = (this as? IdChatIdentifier) ?.ephemeralMessageId
 
+/** Drops all embedded request context and returns a plain [ChatId]. */
 fun IdChatIdentifier.toChatId() = when (this) {
     is ChatId -> this
     is ChatIdWithThreadId -> ChatId(chatId)
@@ -139,9 +203,16 @@ fun IdChatIdentifier.toChatId() = when (this) {
     is EphemeralChatId -> ChatId(chatId)
 }
 
+/** Replaces embedded request context with the supplied message [threadId]. */
 fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdentifier(chatId, threadId)
+
+/** Replaces embedded request context with the supplied channel direct-message [threadId]. */
 fun IdChatIdentifier.toChatIdWithChannelDirectMessageThreadId(threadId: DirectMessageThreadId) = ChatIdWithChannelDirectMessageThreadId(chatId, threadId)
+
+/** Replaces embedded request context with the supplied [businessConnectionId]. */
 fun IdChatIdentifier.toBusinessChatId(businessConnectionId: BusinessConnectionId) = IdChatIdentifier(chatId, businessConnectionId)
+
+/** Replaces embedded request context with ephemeral delivery context for [receiverUser]. */
 fun IdChatIdentifier.toEphemeralChatId(receiverUser: UserId, ephemeralMessageId: EphemeralMessageId? = null) = IdChatIdentifier(chatId, receiverUser, ephemeralMessageId)
 
 /**
@@ -156,14 +227,24 @@ val RawChatId.userLink: String
 @Warning("This API have restrictions in Telegram System")
 val UserId.userLink: String
     get() = chatId.userLink
+
+/** Telegram URI opening the represented [User]. */
 val User.userLink: String
     get() = id.toChatId().userLink
 
+/** Numeric chat identifier used where Telegram expects a user identifier. */
 typealias UserId = IdChatIdentifier
 
+/** Wraps a raw numeric identifier as [ChatId]. */
 fun RawChatId.toChatId(): ChatId = ChatId(this)
+
+/** Converts a [Long] value to [ChatId]. */
 fun Long.toChatId(): ChatId = ChatId(RawChatId(this))
+
+/** Converts an [Int] value to a numeric chat identifier. */
 fun Int.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
+
+/** Converts a [Byte] value to a numeric chat identifier. */
 fun Byte.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
 
 /**
@@ -209,6 +290,7 @@ value class Username (
     }
 
     companion object {
+        /** Serializes [Username] without the leading `@` and accepts input with or without the prefix. */
         object WithoutAtSerializer : KSerializer<Username> {
             override val descriptor: SerialDescriptor = String.serializer().descriptor
             override fun deserialize(decoder: Decoder): Username = Username.prepare(decoder.decodeString())
@@ -229,8 +311,26 @@ value class Username (
     }
 }
 
+/** Converts a string with or without a leading `@` to [Username]. */
 fun String.toUsername(): Username = Username.prepare(this)
 
+/**
+ * A custom serializer for the [ChatIdentifier] sealed interface.
+ *
+ * This serializer manages the conversion between the [ChatIdentifier] data structure
+ * and its JSON representation, enabling compatibility with the serialization and deserialization
+ * processes.
+ *
+ * It supports two primary types of [ChatIdentifier]: [IdChatIdentifier] and [Username].
+ * - For [IdChatIdentifier], it serializes to a numeric ID (e.g., `Long`).
+ * - For [Username], it serializes to a string prefixed with "@".
+ *
+ * Deserialization logic determines whether the input is a numeric ID or a string,
+ * and converts it to the corresponding subtype of [ChatIdentifier].
+ *
+ * Marked with the [RiskFeature] annotation, this class may have certain limitations
+ * and specific usage considerations tied to the underlying Telegram system.
+ */
 @RiskFeature
 object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     private val internalSerializer = JsonPrimitive.serializer()
@@ -253,6 +353,19 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     }
 }
 
+/**
+ * Serializes every [ChatIdentifier] subtype while preserving embedded request context.
+ *
+ * Numeric identifiers use the following JSON representations:
+ * - [ChatId]: a JSON number;
+ * - [ChatIdWithThreadId]: `"<chatId>/<threadId>"`;
+ * - [ChatIdWithChannelDirectMessageThreadId]: `"<chatId>/cdm/<directMessageThreadId>"`;
+ * - [BusinessChatId]: `"<chatId>//<businessConnectionId>"`;
+ * - [EphemeralChatId]: `"<chatId>/eph/<receiverUserId>/<ephemeralMessageId>"`.
+ *
+ * [Username] uses the complete username string. Unlike [ChatIdentifierSerializer], numeric subtype context survives a
+ * serialization round trip.
+ */
 @Suppress("unused")
 @RiskFeature
 object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {

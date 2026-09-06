@@ -14790,7 +14790,7 @@ public final class dev/inmo/tgbotapi/types/MenuButtonSerializer : kotlinx/serial
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
-public final class dev/inmo/tgbotapi/types/MessageGenerationStopped {
+public final class dev/inmo/tgbotapi/types/MessageGenerationStopped : dev/inmo/tgbotapi/abstracts/WithPreviewChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/MessageGenerationStopped$Companion;
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/MessageThreadId;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/MessageThreadId;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -14800,7 +14800,7 @@ public final class dev/inmo/tgbotapi/types/MessageGenerationStopped {
 	public final fun copy-KX8XwZc (Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/MessageThreadId;J)Ldev/inmo/tgbotapi/types/MessageGenerationStopped;
 	public static synthetic fun copy-KX8XwZc$default (Ldev/inmo/tgbotapi/types/MessageGenerationStopped;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ldev/inmo/tgbotapi/types/MessageThreadId;JILjava/lang/Object;)Ldev/inmo/tgbotapi/types/MessageGenerationStopped;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public final fun getDraftId-12UPeIw ()J
 	public final fun getMessageThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun hashCode ()I
