@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
 import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.DraftId
 import dev.inmo.tgbotapi.types.IdChatIdentifier
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.RawChatId
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.EmptyCoroutineContext
@@ -49,7 +50,7 @@ class SendMessageDraftTest {
     }
 
     @Test
-    fun directExtensionForwardsDirectMessageThreadId() {
+    fun directExtensionForwardsThreadId() {
         val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(
             RawChatId(1L),
             DirectMessageThreadId(2L)
@@ -60,17 +61,17 @@ class SendMessageDraftTest {
                     chatId,
                     DraftId(3L),
                     "direct",
-                    directMessageThreadId = DirectMessageThreadId(7L)
+                    threadId = MessageThreadId(7L)
                 )
             }
         )
 
         assertEquals(chatId, request.chatId)
-        assertEquals(DirectMessageThreadId(7L), request.directMessageThreadId)
+        assertEquals(MessageThreadId(7L), request.threadId)
     }
 
     @Test
-    fun genericExtensionForwardsDirectMessageThreadId() {
+    fun genericExtensionConvertsDirectMessageThreadIdToThreadId() {
         val chatId: IdChatIdentifier = ChatIdWithChannelDirectMessageThreadId(
             RawChatId(4L),
             DirectMessageThreadId(5L)
@@ -82,6 +83,6 @@ class SendMessageDraftTest {
         )
 
         assertEquals(chatId, request.chatId)
-        assertEquals(DirectMessageThreadId(5L), request.directMessageThreadId)
+        assertEquals(MessageThreadId(5L), request.threadId)
     }
 }

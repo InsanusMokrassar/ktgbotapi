@@ -6,7 +6,9 @@ import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.directMessageThreadId
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.messageThreadId
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.serializer
@@ -181,6 +183,12 @@ val ChatIdentifier.threadId: MessageThreadId?
 /** Returns the embedded channel direct-message thread, or `null` when no direct-message thread is available. */
 val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
     get() = (this as? IdChatIdentifier) ?.directMessageThreadId
+
+val ChatIdentifier.directMessageThreadIdOrMessageThreadIdAsDirectMessageThreadId: DirectMessageThreadId?
+    get() = directMessageThreadId ?: (threadId ?.directMessageThreadId())
+
+val ChatIdentifier.threadIdOrDirectMessageThreadIdAsThreadId: MessageThreadId?
+    get() = threadId ?: (directMessageThreadId ?.messageThreadId())
 
 /** Returns the embedded business connection, or `null` when no business connection is available. */
 val ChatIdentifier.businessConnectionId: BusinessConnectionId?

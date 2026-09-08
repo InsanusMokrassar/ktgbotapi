@@ -1,13 +1,15 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.types.DirectMessageThreadId
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.IdChatIdentifier
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.canStopField
 import dev.inmo.tgbotapi.types.chatIdField
-import dev.inmo.tgbotapi.types.directMessagesTopicIdField
 import dev.inmo.tgbotapi.types.draftIdField
 import dev.inmo.tgbotapi.types.keepOnStopField
+import dev.inmo.tgbotapi.types.messageThreadIdField
+import dev.inmo.tgbotapi.types.threadIdOrDirectMessageThreadIdAsThreadId
 import dev.inmo.tgbotapi.types.richMessageField
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.types.rich.multipartFiles
@@ -23,7 +25,7 @@ import kotlinx.serialization.SerializationStrategy
  * with the complete message to persist it in the user's chat.
  *
  * @param chatId Numeric target chat identifier.
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  * @see <a href="https://core.telegram.org/bots/api#sendrichmessagedraft">sendRichMessageDraft</a>
  */
 @Serializable
@@ -37,13 +39,13 @@ data class SendRichMessageDraft(
     val draftId: Long,
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
-    @SerialName(directMessagesTopicIdField)
-    val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     @SerialName(canStopField)
     val canStop: Boolean? = null,
     @SerialName(keepOnStopField)
     val keepOnStop: Boolean? = null
-) : SimpleRequest<Unit> {
+) : SimpleRequest<Unit>, OptionallyMessageThreadRequest {
     init {
         require(draftId != 0L) {
             "draftId of SendRichMessageDraft must be non-zero"

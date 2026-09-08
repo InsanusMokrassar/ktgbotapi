@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.SendRichMessageDraft
 import dev.inmo.tgbotapi.types.ChatIdWithChannelDirectMessageThreadId
 import dev.inmo.tgbotapi.types.DirectMessageThreadId
 import dev.inmo.tgbotapi.types.IdChatIdentifier
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.RawChatId
 import dev.inmo.tgbotapi.types.rich.InputRichMessageHTML
 import kotlin.coroutines.Continuation
@@ -57,13 +58,13 @@ class SendRichMessageDraftTest {
                     chatId,
                     3L,
                     InputRichMessageHTML("direct"),
-                    directMessageThreadId = DirectMessageThreadId(7L)
+                    threadId = MessageThreadId(7L)
                 )
             }
         )
 
         assertEquals(chatId, request.chatId)
-        assertEquals(DirectMessageThreadId(7L), request.directMessageThreadId)
+        assertEquals(MessageThreadId(7L), request.threadId)
     }
 
     @Test
@@ -76,6 +77,6 @@ class SendRichMessageDraftTest {
         )
 
         assertEquals(chatId, request.chatId)
-        assertEquals(DirectMessageThreadId(5L), request.directMessageThreadId)
+        assertEquals(MessageThreadId(5L), request.threadId)
     }
 }

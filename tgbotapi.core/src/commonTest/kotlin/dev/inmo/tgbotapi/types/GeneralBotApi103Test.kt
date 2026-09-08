@@ -47,14 +47,14 @@ class GeneralBotApi103Test {
 
         assertEquals(chatId, messageDraft.chatId)
         assertEquals(chatId, richDraft.chatId)
-        assertEquals(DirectMessageThreadId(4L), messageDraft.directMessageThreadId)
-        assertEquals(DirectMessageThreadId(4L), richDraft.directMessageThreadId)
+        assertEquals(MessageThreadId(4L), messageDraft.threadId)
+        assertEquals(MessageThreadId(4L), richDraft.threadId)
         assertEquals("3", messageDraftJson[chatIdField].toString())
         assertEquals("3", richDraftJson[chatIdField].toString())
-        assertEquals("4", messageDraftJson[directMessagesTopicIdField].toString())
-        assertEquals("4", richDraftJson[directMessagesTopicIdField].toString())
-        assertEquals(null, messageDraftJson[messageThreadIdField])
-        assertEquals(null, richDraftJson[messageThreadIdField])
+        assertEquals("4", messageDraftJson[messageThreadIdField].toString())
+        assertEquals("4", richDraftJson[messageThreadIdField].toString())
+        assertEquals(null, messageDraftJson[directMessagesTopicIdField])
+        assertEquals(null, richDraftJson[directMessagesTopicIdField])
     }
 
     @Test

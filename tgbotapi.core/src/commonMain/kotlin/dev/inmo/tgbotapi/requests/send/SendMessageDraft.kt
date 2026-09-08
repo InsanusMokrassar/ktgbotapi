@@ -16,16 +16,16 @@ import dev.inmo.tgbotapi.utils.serializers.UnitFromBooleanSerializer
 import kotlinx.serialization.*
 
 /**
- * Creates a plain-text draft for a direct messages topic.
+ * Creates a plain-text message draft.
  *
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 fun SendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ) = SendMessageDraft(
@@ -34,21 +34,21 @@ fun SendMessageDraft(
     text = text,
     parseMode = parseMode,
     rawEntities = null,
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * Creates an entity-formatted draft for a direct messages topic.
+ * Creates an entity-formatted message draft.
  *
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 fun SendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     entities: TextSourcesList,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ) = SendMessageDraft(
@@ -57,15 +57,15 @@ fun SendMessageDraft(
     text = entities.makeString(),
     parseMode = null,
     rawEntities = entities.toRawMessageEntities(),
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * Streams a partial text message draft to a direct messages topic.
+ * Streams a partial text message draft.
  *
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 @ConsistentCopyVisibility
 @Serializable
@@ -81,16 +81,16 @@ data class SendMessageDraft internal constructor(
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @OptIn(ExperimentalSerializationApi::class)
-    @SerialName(directMessagesTopicIdField)
+    @SerialName(messageThreadIdField)
     @EncodeDefault
-    override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    override val threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     @SerialName(canStopField)
     val canStop: Boolean? = null,
     @SerialName(keepOnStopField)
     val keepOnStop: Boolean? = null
 ) : SendChatMessageRequest<Unit>,
     TextedOutput,
-    OptionallyDirectMessageThreadRequest
+    OptionallyMessageThreadRequest
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)

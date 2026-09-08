@@ -20,14 +20,14 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ): Unit = execute(
@@ -36,7 +36,7 @@ public suspend fun TelegramBot.sendMessageDraft(
         draftId = draftId,
         text = text,
         parseMode = parseMode,
-        directMessageThreadId = directMessageThreadId,
+        threadId = threadId,
         canStop = canStop,
         keepOnStop = keepOnStop
     )
@@ -63,12 +63,12 @@ private suspend fun TelegramBot.sendMessageDraftFlow(
 public val GlobalDraftIdAllocator: DraftIdAllocator by lazy { DraftIdAllocator() }
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraftFlow(
     chatId: IdChatIdentifier,
     messagesFlow: Flow<TextSourcesList>,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     draftId: DraftId? = null,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
@@ -76,18 +76,18 @@ public suspend fun TelegramBot.sendMessageDraftFlow(
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
-            SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, directMessageThreadId = directMessageThreadId, canStop = canStop, keepOnStop = keepOnStop)
+            SendMessageDraft(chatId = chatId, draftId = draftId, entities = it, threadId = threadId, canStop = canStop, keepOnStop = keepOnStop)
         }
     )
 }
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraftFlowWithTextsAndParseMode(
     chatId: IdChatIdentifier,
     messagesFlow: Flow<Pair<String, ParseMode?>>,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     draftId: DraftId? = null,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
@@ -95,18 +95,18 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTextsAndParseMode(
     val draftId = draftId ?: GlobalDraftIdAllocator.allocate()
     return sendMessageDraftFlow(
         messagesFlow.map {
-            SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, directMessageThreadId = directMessageThreadId, canStop = canStop, keepOnStop = keepOnStop)
+            SendMessageDraft(chatId = chatId, draftId = draftId, text = it.first, parseMode = it.second, threadId = threadId, canStop = canStop, keepOnStop = keepOnStop)
         }
     )
 }
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
     chatId: IdChatIdentifier,
     messagesFlow: Flow<String>,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     draftId: DraftId? = null,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
@@ -117,7 +117,7 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
         messagesFlow = messagesFlow.map {
             it.escapeMarkdownV2Common() to MarkdownV2
         },
-        directMessageThreadId = directMessageThreadId,
+        threadId = threadId,
         draftId = draftId,
         canStop = canStop,
         keepOnStop = keepOnStop
@@ -125,14 +125,14 @@ public suspend fun TelegramBot.sendMessageDraftFlowWithTexts(
 }
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chat].
+ * @param threadId Message thread identifier. Defaults from [chat].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
     draftId: DraftId,
     text: String,
     parseMode: ParseMode? = null,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    threadId: MessageThreadId? = chat.id.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
@@ -140,19 +140,19 @@ public suspend fun TelegramBot.sendMessageDraft(
     draftId = draftId,
     text = text,
     parseMode = parseMode,
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     entities: TextSourcesList,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ): Unit = execute(
@@ -160,39 +160,39 @@ public suspend fun TelegramBot.sendMessageDraft(
         chatId = chatId,
         draftId = draftId,
         entities = entities,
-        directMessageThreadId = directMessageThreadId,
+        threadId = threadId,
         canStop = canStop,
         keepOnStop = keepOnStop
     )
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chat].
+ * @param threadId Message thread identifier. Defaults from [chat].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
     draftId: DraftId,
     entities: TextSourcesList,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    threadId: MessageThreadId? = chat.id.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null
 ): Unit = sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     entities = entities,
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     separator: TextSource? = null,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
@@ -200,19 +200,19 @@ public suspend fun TelegramBot.sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = buildEntities(separator, builderBody),
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chatId].
+ * @param threadId Message thread identifier. Defaults from [chatId].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chatId: IdChatIdentifier,
     draftId: DraftId,
     separator: String,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
@@ -220,19 +220,19 @@ public suspend fun TelegramBot.sendMessageDraft(
     chatId = chatId,
     draftId = draftId,
     entities = buildEntities(separator, builderBody),
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chat].
+ * @param threadId Message thread identifier. Defaults from [chat].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
     draftId: DraftId,
     separator: TextSource? = null,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    threadId: MessageThreadId? = chat.id.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
@@ -240,20 +240,20 @@ public suspend fun TelegramBot.sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     separator = separator,
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop,
     builderBody = builderBody
 )
 
 /**
- * @param directMessageThreadId Direct messages topic identifier. Defaults from [chat].
+ * @param threadId Message thread identifier. Defaults from [chat].
  */
 public suspend fun TelegramBot.sendMessageDraft(
     chat: Chat,
     draftId: DraftId,
     separator: String,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    threadId: MessageThreadId? = chat.id.threadIdOrDirectMessageThreadIdAsThreadId,
     canStop: Boolean? = null,
     keepOnStop: Boolean? = null,
     builderBody: EntitiesBuilderBody
@@ -261,7 +261,7 @@ public suspend fun TelegramBot.sendMessageDraft(
     chatId = chat.id,
     draftId = draftId,
     separator = separator,
-    directMessageThreadId = directMessageThreadId,
+    threadId = threadId,
     canStop = canStop,
     keepOnStop = keepOnStop,
     builderBody = builderBody
