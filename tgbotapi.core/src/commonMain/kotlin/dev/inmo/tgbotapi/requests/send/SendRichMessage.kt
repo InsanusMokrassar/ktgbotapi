@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -45,6 +46,8 @@ data class SendRichMessage(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(ephemeralMessageParametersField)
+    override val ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -61,7 +64,8 @@ data class SendRichMessage(
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendContentMessageRequest<ChatContentMessage<RichMessageContent>>,
     ReplyingMarkupSendMessageRequest<ChatContentMessage<RichMessageContent>>,
-    MultipartRequest.Common<ChatContentMessage<RichMessageContent>> {
+    MultipartRequest.Common<ChatContentMessage<RichMessageContent>>,
+    OptionallyEphemeralSendRequest {
     override fun method(): String = "sendRichMessage"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<RichMessageContent>>
         get() = RichMessageContentMessageResultDeserializer

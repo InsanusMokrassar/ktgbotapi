@@ -27,8 +27,7 @@ public suspend fun TelegramBot.sendLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -48,8 +47,7 @@ public suspend fun TelegramBot.sendLocation(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
-        receiverUserId = receiverUserId,
-        callbackQueryId = callbackQueryId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -60,147 +58,7 @@ public suspend fun TelegramBot.sendLocation(
     )
 )
 
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
 public suspend fun TelegramBot.sendLocation(
-    chatId: ChatIdentifier,
-    location: Location,
-    livePeriod: Seconds,
-    horizontalAccuracy: Meters? = null,
-    heading: Degrees? = null,
-    proximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LiveLocationContent> = sendLocation(
-    chatId = chatId,
-    latitude = location.latitude,
-    longitude = location.longitude,
-    livePeriod = livePeriod,
-    horizontalAccuracy = horizontalAccuracy,
-    heading = heading,
-    proximityAlertRadius = proximityAlertRadius,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendLocation(
-    chat: Chat,
-    latitude: Double,
-    longitude: Double,
-    livePeriod: Seconds,
-    horizontalAccuracy: Meters? = null,
-    heading: Degrees? = null,
-    proximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LiveLocationContent> = sendLocation(
-    chatId = chat.id,
-    latitude = latitude,
-    longitude = longitude,
-    livePeriod = livePeriod,
-    horizontalAccuracy = horizontalAccuracy,
-    heading = heading,
-    proximityAlertRadius = proximityAlertRadius,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendLocation(
-    chat: Chat,
-    location: Location,
-    livePeriod: Seconds,
-    horizontalAccuracy: Meters? = null,
-    heading: Degrees? = null,
-    proximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LiveLocationContent> = sendLocation(
-    chatId = chat.id,
-    latitude = location.latitude,
-    longitude = location.longitude,
-    livePeriod = livePeriod,
-    horizontalAccuracy = horizontalAccuracy,
-    heading = heading,
-    proximityAlertRadius = proximityAlertRadius,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendLiveLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
@@ -213,6 +71,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -231,22 +90,21 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup
+    replyMarkup = replyMarkup,
 )
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-public suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     location: Location,
     livePeriod: Seconds,
@@ -256,8 +114,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -276,8 +133,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -287,11 +143,51 @@ public suspend fun TelegramBot.sendLiveLocation(
     replyMarkup = replyMarkup
 )
 
+public suspend fun TelegramBot.sendLocation(
+    chatId: ChatIdentifier,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = chatId.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chatId = chatId,
+    location = location,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-public suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
@@ -302,8 +198,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -322,8 +217,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -333,13 +227,10 @@ public suspend fun TelegramBot.sendLiveLocation(
     replyMarkup = replyMarkup
 )
 
-/**
- * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
- * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
- */
-public suspend fun TelegramBot.sendLiveLocation(
+public suspend fun TelegramBot.sendLocation(
     chat: Chat,
-    location: Location,
+    latitude: Double,
+    longitude: Double,
     livePeriod: Seconds,
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
@@ -349,6 +240,50 @@ public suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     receiverUserId: UserId? = chat.id.receiverUser,
     callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chat = chat,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendLocation(
+    chat: Chat,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -367,8 +302,7 @@ public suspend fun TelegramBot.sendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -376,4 +310,382 @@ public suspend fun TelegramBot.sendLiveLocation(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.sendLocation(
+    chat: Chat,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    receiverUserId: UserId? = chat.id.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chat = chat,
+    location = location,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendLiveLocation(
+    chatId: ChatIdentifier,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chatId = chatId,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.sendLiveLocation(
+    chatId: ChatIdentifier,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = chatId.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
+    chatId = chatId,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendLiveLocation(
+    chatId: ChatIdentifier,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chatId = chatId,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.sendLiveLocation(
+    chatId: ChatIdentifier,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    receiverUserId: UserId? = chatId.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
+    chatId = chatId,
+    location = location,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendLiveLocation(
+    chat: Chat,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chatId = chat.id,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.sendLiveLocation(
+    chat: Chat,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    receiverUserId: UserId? = chat.id.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
+    chat = chat,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
+)
+
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+public suspend fun TelegramBot.sendLiveLocation(
+    chat: Chat,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLocation(
+    chatId = chat.id,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.sendLiveLocation(
+    chat: Chat,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    receiverUserId: UserId? = chat.id.receiverUser,
+    callbackQueryId: CallbackQueryId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LiveLocationContent> = sendLiveLocation(
+    chat = chat,
+    location = location,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup,
 )

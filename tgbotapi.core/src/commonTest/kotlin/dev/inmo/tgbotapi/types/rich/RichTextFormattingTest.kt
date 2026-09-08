@@ -2,9 +2,13 @@ package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.LoginURL
 import dev.inmo.tgbotapi.types.RawChatId
 import dev.inmo.tgbotapi.types.TelegramDate
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CopyTextButtonData
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryChosenChat as SwitchInlineQueryChosenChatParameters
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -206,7 +210,51 @@ class RichTextFormattingTest {
 
     @Test
     fun plainHtmlEscapesAngleBrackets() {
-        assertEquals("a&amp;lt;b", RichTextPlain("a<b").html)
+        assertEquals("a&lt;b", RichTextPlain("a<b").html)
+    }
+
+    @Test
+    fun buttonHtmlEscapesContentExactlyOnce() {
+        val button = RichTextButton(RichMessageButton.Disabled(RichTextPlain("<&>")))
+        assertEquals("<tg-button type=\"disabled\">&lt;&amp;&gt;</tg-button>", button.html)
+    }
+
+    @Test
+    fun buttonAttributesEscapeRichMarkupMetacharacters() {
+        val rawAttribute = "a&\"<>"
+        val escapedAttribute = "a&amp;&quot;&lt;&gt;"
+        val text = RichTextPlain("Button")
+        val buttonsWithExpectedAttributes = listOf(
+            RichMessageButton.Url(text, rawAttribute) to
+                "type=\"url\" url=\"$escapedAttribute\"",
+            RichMessageButton.CallbackData(text, rawAttribute) to
+                "type=\"callback_data\" data=\"$escapedAttribute\"",
+            RichMessageButton.WebApp(text, WebAppInfo(rawAttribute)) to
+                "type=\"web_app\" url=\"$escapedAttribute\"",
+            RichMessageButton.LoginUrl(
+                text,
+                LoginURL(rawAttribute, rawAttribute, requestWriteAccess = true)
+            ) to "type=\"login_url\" url=\"$escapedAttribute\" forward-text=\"$escapedAttribute\" " +
+                "request-write-access",
+            RichMessageButton.SwitchInlineQuery(text, rawAttribute) to
+                "type=\"switch_inline_query\" query=\"$escapedAttribute\"",
+            RichMessageButton.SwitchInlineQueryCurrentChat(text, rawAttribute) to
+                "type=\"switch_inline_query_current_chat\" query=\"$escapedAttribute\"",
+            RichMessageButton.SwitchInlineQueryChosenChat(
+                text,
+                SwitchInlineQueryChosenChatParameters(rawAttribute, allowUsers = true)
+            ) to "type=\"switch_inline_query_chosen_chat\" query=\"$escapedAttribute\" allow-user-chats",
+            RichMessageButton.CopyText(text, CopyTextButtonData(rawAttribute)) to
+                "type=\"copy_text\" text=\"$escapedAttribute\"",
+            RichMessageButton.Disabled(text) to
+                "type=\"disabled\""
+        )
+
+        buttonsWithExpectedAttributes.forEach { (button, expectedAttributes) ->
+            val expectedMarkup = "<tg-button $expectedAttributes>Button</tg-button>"
+            assertEquals(expectedMarkup, RichTextButton(button).html)
+            assertEquals(expectedMarkup, RichTextButton(button).markdown)
+        }
     }
 
     @Test

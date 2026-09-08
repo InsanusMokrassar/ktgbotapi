@@ -98,6 +98,8 @@ class RichTextBuilder {
     fun botCommand(botCommand: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextBotCommand(buildRichText(block), botCommand))
 
+    fun button(button: RichMessageButton) = add(RichTextButton(button))
+
     fun anchor(name: String) = add(RichTextAnchor(name))
 
     fun anchorLink(text: String, anchorName: String) = add(RichTextAnchorLink(RichTextPlain(text), anchorName))

@@ -191,6 +191,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun asMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public static final fun asMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun asMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun asMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun asMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public static final fun asMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun asMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
@@ -538,6 +539,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun requireMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public static final fun requireMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun requireMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun requireMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun requireMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public static final fun requireMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/MigratedToSupergroup;
 	public static final fun requireMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/MimedMediaFile;
@@ -885,6 +887,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsKt {
 	public static final fun whenMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageDataCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun whenMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMigratedToSupergroup (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun whenMimedMediaFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1165,6 +1168,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun byUserOrThrow (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$ByUser;
 	public static final fun callbackDataInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
 	public static final fun callbackDataInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackDataInlineKeyboardButton;
+	public static final fun callbackDataOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;
+	public static final fun callbackDataOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CallbackData;
 	public static final fun callbackGameInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
 	public static final fun callbackGameInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CallbackGameInlineKeyboardButton;
 	public static final fun callbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;
@@ -1325,6 +1330,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun commonUserOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public static final fun communityChatAddedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
 	public static final fun communityChatAddedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatAdded;
+	public static final fun communityChatJoinedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatJoined;
+	public static final fun communityChatJoinedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatJoined;
 	public static final fun communityChatRemovedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
 	public static final fun communityChatRemovedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/communities/CommunityChatRemoved;
 	public static final fun connectedFromChannelGroupContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ConnectedFromChannelGroupContentMessage;
@@ -1335,6 +1342,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun contentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public static final fun copyTextButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
 	public static final fun copyTextButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButton;
+	public static final fun copyTextOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;
+	public static final fun copyTextOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$CopyText;
 	public static final fun coveredMediaFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CoveredMediaFile;
 	public static final fun coveredMediaFileOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/CoveredMediaFile;
 	public static final fun coveredTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/CoveredTelegramMedia;
@@ -1385,8 +1394,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun directMessagesConfigurationChangedPaidOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/DirectMessagesConfigurationChanged$Paid;
 	public static final fun directMessagesTopicOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
 	public static final fun directMessagesTopicOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
+	public static final fun disabledInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/DisabledInlineKeyboardButton;
+	public static final fun disabledInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/DisabledInlineKeyboardButton;
 	public static final fun disabledOrNull (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
+	public static final fun disabledOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;
 	public static final fun disabledOrThrow (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
+	public static final fun disabledOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Disabled;
 	public static final fun documentContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
 	public static final fun documentContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
 	public static final fun documentFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/DocumentFile;
@@ -1658,6 +1671,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifByUser (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifByUser (Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifByUser (Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCallbackData (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCallbackDataInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCallbackGameInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1739,10 +1753,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifCommonSupergroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommonUser (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommunityChatAdded (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCommunityChatJoined (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCommunityChatRemoved (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifConnectedFromChannelGroupContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContactContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifCopyText (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCopyTextButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCoveredMediaFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifCoveredTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1770,6 +1786,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifDirectMessagesConfigurationChangedPaid (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDirectMessagesTopic (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDisabled (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDisabled (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDisabledInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1928,9 +1946,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifInputRichBlockAnimation (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockAudio (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockBlockQuotation (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifInputRichBlockButtons (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockCollage (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockDetails (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockDivider (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifInputRichBlockDocument (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifInputRichBlockExpandableBlockQuotation (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockFooter (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockList (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifInputRichBlockMap (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1968,6 +1989,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifLocationContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLocationInlineQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifLoginURLInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifLoginUrl (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifManagedBotCreated (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifManagedBotUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMask (Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1989,6 +2011,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifMessageContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageDataCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageGameShortNameCallbackQuery (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifMessageGenerationStoppedUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageIsNotModifiedException (Ldev/inmo/tgbotapi/bot/exceptions/BotException;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageToEditNotFoundException (Ldev/inmo/tgbotapi/bot/exceptions/BotException;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2043,6 +2066,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPhotoContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPhotoFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPhotoSize (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPhotoedTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPinnedMessage (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPlayableMediaFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPollAnswer (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2128,9 +2152,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifRichBlockAnimation (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockAudio (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockBlockQuotation (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRichBlockButtons (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockCollage (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockDetails (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockDivider (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRichBlockDocument (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRichBlockExpandableBlockQuotation (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockFooter (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockList (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichBlockMap (Ldev/inmo/tgbotapi/types/rich/RichBlock;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2153,6 +2180,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifRichTextBankCardNumber (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichTextBold (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichTextBotCommand (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifRichTextButton (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichTextCashtag (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichTextCode (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifRichTextCustomEmoji (Ldev/inmo/tgbotapi/types/rich/RichText;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2224,7 +2252,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifSupergroupEventMessage (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSupergroupEventMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSupergroupForumChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifSwitchInlineQuery (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifSwitchInlineQueryChosenChat (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSwitchInlineQueryChosenChatInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifSwitchInlineQueryCurrentChat (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSwitchInlineQueryCurrentChatInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifSwitchInlineQueryInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifTelegramAPI (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2304,6 +2335,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifUploadVideoAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUploadVideoNoteAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUploadVoiceAction (Ldev/inmo/tgbotapi/types/actions/BotAction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifUrl (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUrlInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUsefulAsPaidMediaFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifUser (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2335,6 +2367,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifVoiceFile (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWallpaper (Ldev/inmo/tgbotapi/types/BackgroundType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWebApp (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifWebApp (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWebAppData (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWebAppInlineKeyboardButton (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifWithCustomStartTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2445,12 +2478,18 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun inputRichBlockAudioOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockAudio;
 	public static final fun inputRichBlockBlockQuotationOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;
 	public static final fun inputRichBlockBlockQuotationOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockBlockQuotation;
+	public static final fun inputRichBlockButtonsOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;
+	public static final fun inputRichBlockButtonsOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockButtons;
 	public static final fun inputRichBlockCollageOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;
 	public static final fun inputRichBlockCollageOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockCollage;
 	public static final fun inputRichBlockDetailsOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;
 	public static final fun inputRichBlockDetailsOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDetails;
 	public static final fun inputRichBlockDividerOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider;
 	public static final fun inputRichBlockDividerOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDivider;
+	public static final fun inputRichBlockDocumentOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;
+	public static final fun inputRichBlockDocumentOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockDocument;
+	public static final fun inputRichBlockExpandableBlockQuotationOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;
+	public static final fun inputRichBlockExpandableBlockQuotationOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockExpandableBlockQuotation;
 	public static final fun inputRichBlockFooterOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;
 	public static final fun inputRichBlockFooterOrThrow (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockFooter;
 	public static final fun inputRichBlockListOrNull (Ldev/inmo/tgbotapi/types/rich/InputRichBlock;)Ldev/inmo/tgbotapi/types/rich/InputRichBlockList;
@@ -2525,6 +2564,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun locationInlineQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
 	public static final fun loginURLInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
 	public static final fun loginURLInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/LoginURLInlineKeyboardButton;
+	public static final fun loginUrlOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;
+	public static final fun loginUrlOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$LoginUrl;
 	public static final fun managedBotCreatedOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
 	public static final fun managedBotCreatedOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/managed_bots/ManagedBotCreated;
 	public static final fun managedBotUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/ManagedBotUpdate;
@@ -2567,6 +2608,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun messageDataCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public static final fun messageGameShortNameCallbackQueryOrNull (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
 	public static final fun messageGameShortNameCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/OptionallyWithUser;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static final fun messageGenerationStoppedUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
+	public static final fun messageGenerationStoppedUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/MessageGenerationStoppedUpdate;
 	public static final fun messageIsNotModifiedExceptionOrNull (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageIsNotModifiedException;
 	public static final fun messageIsNotModifiedExceptionOrThrow (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageIsNotModifiedException;
 	public static final fun messageToEditNotFoundExceptionOrNull (Ldev/inmo/tgbotapi/bot/exceptions/BotException;)Ldev/inmo/tgbotapi/bot/exceptions/MessageToEditNotFoundException;
@@ -2675,6 +2718,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun photoFileOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ljava/util/List;
 	public static final fun photoSizeOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PhotoSize;
 	public static final fun photoSizeOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public static final fun photoedTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/PhotoedTelegramMedia;
+	public static final fun photoedTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/PhotoedTelegramMedia;
 	public static final fun pinnedMessageOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/PinnedMessage;
 	public static final fun pinnedMessageOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/PinnedMessage;
 	public static final fun playableMediaFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/PlayableMediaFile;
@@ -2845,12 +2890,18 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun richBlockAudioOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockAudio;
 	public static final fun richBlockBlockQuotationOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockBlockQuotation;
 	public static final fun richBlockBlockQuotationOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockBlockQuotation;
+	public static final fun richBlockButtonsOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;
+	public static final fun richBlockButtonsOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockButtons;
 	public static final fun richBlockCollageOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockCollage;
 	public static final fun richBlockCollageOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockCollage;
 	public static final fun richBlockDetailsOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDetails;
 	public static final fun richBlockDetailsOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDetails;
 	public static final fun richBlockDividerOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDivider;
 	public static final fun richBlockDividerOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDivider;
+	public static final fun richBlockDocumentOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;
+	public static final fun richBlockDocumentOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockDocument;
+	public static final fun richBlockExpandableBlockQuotationOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;
+	public static final fun richBlockExpandableBlockQuotationOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockExpandableBlockQuotation;
 	public static final fun richBlockFooterOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockFooter;
 	public static final fun richBlockFooterOrThrow (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockFooter;
 	public static final fun richBlockListOrNull (Ldev/inmo/tgbotapi/types/rich/RichBlock;)Ldev/inmo/tgbotapi/types/rich/RichBlockList;
@@ -2895,6 +2946,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun richTextBoldOrThrow (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextBold;
 	public static final fun richTextBotCommandOrNull (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextBotCommand;
 	public static final fun richTextBotCommandOrThrow (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextBotCommand;
+	public static final fun richTextButtonOrNull (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextButton;
+	public static final fun richTextButtonOrThrow (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextButton;
 	public static final fun richTextCashtagOrNull (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextCashtag;
 	public static final fun richTextCashtagOrThrow (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextCashtag;
 	public static final fun richTextCodeOrNull (Ldev/inmo/tgbotapi/types/rich/RichText;)Ldev/inmo/tgbotapi/types/rich/RichTextCode;
@@ -3039,10 +3092,16 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun supergroupForumChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/SupergroupForumChat;
 	public static final fun switchInlineQueryChosenChatInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
 	public static final fun switchInlineQueryChosenChatInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryChosenChatInlineKeyboardButton;
+	public static final fun switchInlineQueryChosenChatOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;
+	public static final fun switchInlineQueryChosenChatOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryChosenChat;
 	public static final fun switchInlineQueryCurrentChatInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
 	public static final fun switchInlineQueryCurrentChatInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryCurrentChatInlineKeyboardButton;
+	public static final fun switchInlineQueryCurrentChatOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;
+	public static final fun switchInlineQueryCurrentChatOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQueryCurrentChat;
 	public static final fun switchInlineQueryInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
 	public static final fun switchInlineQueryInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/SwitchInlineQueryInlineKeyboardButton;
+	public static final fun switchInlineQueryOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;
+	public static final fun switchInlineQueryOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$SwitchInlineQuery;
 	public static final fun telegramAPIOrNull (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
 	public static final fun telegramAPIOrThrow (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$TelegramAPI;
 	public static final fun telegramFreeMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/TelegramFreeMedia;
@@ -3199,6 +3258,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun uploadVoiceActionOrThrow (Ldev/inmo/tgbotapi/types/actions/BotAction;)Ldev/inmo/tgbotapi/types/actions/UploadVoiceAction;
 	public static final fun urlInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/UrlInlineQueryResult;
 	public static final fun urlInlineQueryResultOrThrow (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/UrlInlineQueryResult;
+	public static final fun urlOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;
+	public static final fun urlOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$Url;
 	public static final fun usefulAsPaidMediaFileOrNull (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/UsefulAsPaidMediaFile;
 	public static final fun usefulAsPaidMediaFileOrThrow (Ldev/inmo/tgbotapi/types/media/BaseTelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/UsefulAsPaidMediaFile;
 	public static final fun userLoggedInOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/UserLoggedIn;
@@ -3262,7 +3323,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun webAppInlineKeyboardButtonOrNull (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
 	public static final fun webAppInlineKeyboardButtonOrThrow (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/WebAppInlineKeyboardButton;
 	public static final fun webAppOrNull (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$WebApp;
+	public static final fun webAppOrNull (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;
 	public static final fun webAppOrThrow (Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton$WebApp;
+	public static final fun webAppOrThrow (Ldev/inmo/tgbotapi/types/rich/RichMessageButton;)Ldev/inmo/tgbotapi/types/rich/RichMessageButton$WebApp;
 	public static final fun withCustomStartTelegramMediaOrNull (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia;
 	public static final fun withCustomStartTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/WithCustomStartTelegramMedia;
 	public static final fun withCustomizableCaptionInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithCustomizableCaptionInlineQueryResult;
@@ -4019,17 +4082,22 @@ public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/RequestsExecutor
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardBuilderKt {
-	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun copyTextButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static final fun copyTextButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun copyTextButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/CopyTextButtonData;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static synthetic fun copyTextButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun dataButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun dataButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun flatInlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun disabledButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
+	public static synthetic fun disabledButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
+	public static final fun flatInlineKeyboard (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun flatInlineKeyboard$default (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun gameButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun gameButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun inlineKeyboard (Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun inlineKeyboard (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun inlineKeyboard$default (Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun inlineQueryButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun inlineQueryButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun inlineQueryInAnyChosenChatButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4042,7 +4110,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboa
 	public static synthetic fun inlineQueryInCurrentChatButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun loginButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun loginButton-TGGzX2M$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LoginURL;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
-	public static final fun modified (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun modified (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun modified$default (Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public static final fun payButton-peVxY-Q (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun payButton-peVxY-Q$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun urlButton-TGGzX2M (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4054,16 +4123,17 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboa
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/InlineKeyboardMarkupKt {
-	public static final fun InlineKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static final fun InlineKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public static synthetic fun InlineKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardButtons/InlineKeyboardButton;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboardBuilderKt {
-	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static final fun flatReplyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun flatReplyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static final fun replyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun replyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun build (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun build$default (Ldev/inmo/tgbotapi/utils/MatrixBuilder;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun flatReplyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun flatReplyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun replyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun replyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun requestBotButton-saVQPX0 (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
 	public static synthetic fun requestBotButton-saVQPX0$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;ILjava/lang/Object;)Z
 	public static final fun requestBotsButton-gB4qrME (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonStyle;)Z
@@ -4105,8 +4175,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboar
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboardMarkupKt {
-	public static final fun ReplyKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static synthetic fun ReplyKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static final fun ReplyKeyboardMarkup ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
+	public static synthetic fun ReplyKeyboardMarkup$default ([Ldev/inmo/tgbotapi/types/buttons/KeyboardButton;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/types/files/ContentAsMultipartFileKt {

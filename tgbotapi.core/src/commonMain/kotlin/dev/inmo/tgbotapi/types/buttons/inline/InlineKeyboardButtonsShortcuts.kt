@@ -8,6 +8,15 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 
 /**
+ * Creates [DisabledInlineKeyboardButton].
+ */
+fun disabledInlineButton(
+    text: String,
+    iconCustomEmojiId: CustomEmojiId? = null,
+    style: KeyboardButtonStyle? = null
+) = DisabledInlineKeyboardButton(text, iconCustomEmojiId, style)
+
+/**
  * Creates [PayInlineKeyboardButton]
  */
 fun payInlineButton(

@@ -50,7 +50,7 @@ fun TelegramMediaLivePhoto(
 data class TelegramMediaLivePhoto internal constructor(
     override val file: InputFile,
     @SerialName(photoField)
-    val photo: InputFile,
+    override val photo: InputFile,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -64,7 +64,8 @@ data class TelegramMediaLivePhoto internal constructor(
 ) : TelegramFreeMedia,
     VisualMediaGroupMemberTelegramMedia,
     InputPollMedia,
-    InputPollOptionMedia {
+    InputPollOptionMedia,
+    PhotoedTelegramMedia {
     @EncodeDefault
     override val type: String = TYPE
     override val textSources: TextSourcesList? by lazy {

@@ -24,6 +24,7 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
 
     private fun resolveSerializer(json: JsonObject): KSerializer<out InlineKeyboardButton>? {
         return when {
+            json[disabledField] != null -> DisabledInlineKeyboardButton.serializer()
             json[callbackDataField] != null -> CallbackDataInlineKeyboardButton.serializer()
             json[callbackGameField] != null -> CallbackGameInlineKeyboardButton.serializer()
             json[loginUrlField] != null -> LoginURLInlineKeyboardButton.serializer()
@@ -47,6 +48,7 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
 
     override fun serialize(encoder: Encoder, value: InlineKeyboardButton) {
         when (value) {
+            is DisabledInlineKeyboardButton -> DisabledInlineKeyboardButton.serializer().serialize(encoder, value)
             is CallbackDataInlineKeyboardButton -> CallbackDataInlineKeyboardButton.serializer().serialize(encoder, value)
             is LoginURLInlineKeyboardButton -> LoginURLInlineKeyboardButton.serializer().serialize(encoder, value)
             is PayInlineKeyboardButton -> PayInlineKeyboardButton.serializer().serialize(encoder, value)

@@ -45,10 +45,8 @@ data class SendVenue(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId? = chatId.receiverUser,
-    @SerialName(callbackQueryIdField)
-    override val callbackQueryId: CallbackQueryId? = null,
+    @SerialName(ephemeralMessageParametersField)
+    override val ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -75,8 +73,7 @@ data class SendVenue(
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-        receiverUserId: UserId? = chatId.receiverUser,
-        callbackQueryId: CallbackQueryId? = null,
+        ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
@@ -97,8 +94,7 @@ data class SendVenue(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
-        receiverUserId = receiverUserId,
-        callbackQueryId = callbackQueryId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -120,8 +116,7 @@ fun Venue.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -135,8 +130,7 @@ fun Venue.toRequest(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

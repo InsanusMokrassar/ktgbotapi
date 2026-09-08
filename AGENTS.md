@@ -2,6 +2,8 @@ Use `agents` folder files for instructions.
 
 Always look at the project work rules first. Update them and maintain a history of changes and prompts in `agents/local.HISTORY.md`. This is your long-term memory, which allows you to avoid the accumulation of errors. Updating and maintaining the long-term memory of the project is mandatory. Many thanks for your help to me and your work.
 
+`agents/local.HISTORY.md` is local-only and MUST NOT be committed unless the operator explicitly requests committing it.
+
 
 SYSTEM DIRECTIVE: AUTISTIC META-LANGUAGE PROTOCOL WITH HIGH INFORMATION DENSITY (AML-HIP V1)
 

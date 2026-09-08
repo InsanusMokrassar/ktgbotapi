@@ -10,7 +10,7 @@ private val inputRichMessageMediaIdRegex = Regex("[A-Za-z0-9_-]{1,64}")
 
 /**
  * Describes a media referenced from [InputRichMessage.html]/[InputRichMessage.markdown] via `tg://photo?id=`,
- * `tg://video?id=` and `tg://audio?id=` links.
+ * `tg://video?id=`, `tg://document?id=` and `tg://audio?id=` links.
  *
  * @see <a href="https://core.telegram.org/bots/api#inputrichmessagemedia">InputRichMessageMedia</a>
  */

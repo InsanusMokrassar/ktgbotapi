@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
 import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
@@ -258,6 +259,11 @@ fun BehaviourContext.waitCommunityChatAddedEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<CommunityChatAdded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitCommunityChatJoinedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<CommunityChatJoined>(initRequest, errorFactory)
 
 fun BehaviourContext.waitCommunityChatRemovedEventsMessages(
     initRequest: Request<*>? = null,

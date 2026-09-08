@@ -1,11 +1,15 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.canStopField
 import dev.inmo.tgbotapi.types.chatIdField
 import dev.inmo.tgbotapi.types.draftIdField
+import dev.inmo.tgbotapi.types.keepOnStopField
 import dev.inmo.tgbotapi.types.messageThreadIdField
+import dev.inmo.tgbotapi.types.threadIdOrDirectMessageThreadIdAsThreadId
 import dev.inmo.tgbotapi.types.richMessageField
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
 import dev.inmo.tgbotapi.types.rich.multipartFiles
@@ -20,12 +24,14 @@ import kotlinx.serialization.SerializationStrategy
  * ephemeral and acts as a temporary 30-second preview - once the output is finalized, [SendRichMessage] must be called
  * with the complete message to persist it in the user's chat.
  *
+ * @param chatId Numeric target chat identifier.
+ * @param threadId Message thread identifier. Defaults from [chatId].
  * @see <a href="https://core.telegram.org/bots/api#sendrichmessagedraft">sendRichMessageDraft</a>
  */
 @Serializable
 data class SendRichMessageDraft(
     @SerialName(chatIdField)
-    val chatId: ChatId,
+    val chatId: IdChatIdentifier,
     /**
      * Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
      */
@@ -34,8 +40,12 @@ data class SendRichMessageDraft(
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
     @SerialName(messageThreadIdField)
-    val threadId: MessageThreadId? = chatId.threadId
-) : SimpleRequest<Unit> {
+    override val threadId: MessageThreadId? = chatId.threadIdOrDirectMessageThreadIdAsThreadId,
+    @SerialName(canStopField)
+    val canStop: Boolean? = null,
+    @SerialName(keepOnStopField)
+    val keepOnStop: Boolean? = null
+) : SimpleRequest<Unit>, OptionallyMessageThreadRequest {
     init {
         require(draftId != 0L) {
             "draftId of SendRichMessageDraft must be non-zero"

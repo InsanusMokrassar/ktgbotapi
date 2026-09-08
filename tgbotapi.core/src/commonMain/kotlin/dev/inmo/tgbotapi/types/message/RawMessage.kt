@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
 import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
@@ -210,6 +211,7 @@ internal data class RawMessage(
 
     // Communities
     private val community_chat_added: CommunityChatAdded? = null,
+    private val community_chat_joined: CommunityChatJoined? = null,
     private val community_chat_removed: CommunityChatRemoved? = null,
 
     // Channel direct messages
@@ -378,6 +380,7 @@ internal data class RawMessage(
             checklist_tasks_done != null -> checklist_tasks_done
             checklist_tasks_added != null -> checklist_tasks_added
             community_chat_added != null -> community_chat_added
+            community_chat_joined != null -> community_chat_joined
             community_chat_removed != null -> community_chat_removed
             direct_message_price_changed != null -> direct_message_price_changed
             suggested_post_approved != null -> suggested_post_approved

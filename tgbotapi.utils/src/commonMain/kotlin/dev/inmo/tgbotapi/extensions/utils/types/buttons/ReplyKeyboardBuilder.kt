@@ -33,7 +33,8 @@ fun ReplyKeyboardBuilder.build(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
-) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent)
+    forceReply: Boolean? = null,
+) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent, forceReply)
 
 /**
  * Row builder of [KeyboardButton]
@@ -55,8 +56,9 @@ inline fun replyKeyboard(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
+    forceReply: Boolean? = null,
     block: ReplyKeyboardBuilder.() -> Unit
-) = ReplyKeyboardBuilder().apply(block).build(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent)
+) = ReplyKeyboardBuilder().apply(block).build(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent, forceReply)
 
 /**
  * Factory-function for [ReplyKeyboardBuilder], but in difference with [replyKeyboard] this method will create single-row
@@ -68,8 +70,9 @@ inline fun flatReplyKeyboard(
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
     persistent: Boolean? = null,
+    forceReply: Boolean? = null,
     block: ReplyKeyboardRowBuilder.() -> Unit
-) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent) {
+) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective, persistent, forceReply) {
     row<KeyboardButton>(block)
 }
 

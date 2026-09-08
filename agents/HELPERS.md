@@ -55,6 +55,10 @@ When a property (or method) can be declared on an interface/class and implemente
 
 ---
 
+Any type representing an enumerable set of values MUST be implemented as a sealed interface. Every inheritor MUST be declared inside the sealed interface. The sealed interface MUST define the serializer, and every inheritor MUST explicitly use the sealed-interface serializer (for example, `@Serializable(Parent.Serializer::class)`).
+
+---
+
 All work MUST be performed in the normal (main) working worktree of the repository. DO NOT create or do the work inside a separate worktree (for example `.claude/worktrees/...`): commits made there leave the main checkout behind and force an extra fast-forward/pull to land the changes. If some environment forces an isolated worktree, fast-forward the main branch onto those commits and continue in the main worktree.
 
 ---
