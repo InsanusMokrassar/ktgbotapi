@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.utils
 import dev.inmo.micro_utils.common.joinTo
 import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.UnixTimeStamp
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.User
@@ -657,12 +658,13 @@ inline fun EntitiesBuilder.linkln(url: String) = link(url) + newLine
 
 /**
  * Add [DateTimeTextSource] using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.dateTimeTextSource]
+ * and optional [DateTimeEntityFormatting].
  */
-inline fun EntitiesBuilder.dateTime(text: String, unixTimeStamp: UnixTimeStamp, dateTimeFormat: String?) = add(dev.inmo.tgbotapi.types.message.textsources.dateTimeTextSource(text, unixTimeStamp, dateTimeFormat))
+inline fun EntitiesBuilder.dateTime(text: String, unixTimeStamp: UnixTimeStamp, dateTimeFormat: DateTimeEntityFormatting?) = add(dev.inmo.tgbotapi.types.message.textsources.dateTimeTextSource(text, unixTimeStamp, dateTimeFormat))
 /**
  * Version of [EntitiesBuilder.dateTime] with new line at the end
  */
-inline fun EntitiesBuilder.dateTimeln(text: String, unixTimeStamp: UnixTimeStamp, dateTimeFormat: String?) = dateTime(text, unixTimeStamp, dateTimeFormat) + newLine
+inline fun EntitiesBuilder.dateTimeln(text: String, unixTimeStamp: UnixTimeStamp, dateTimeFormat: DateTimeEntityFormatting?) = dateTime(text, unixTimeStamp, dateTimeFormat) + newLine
 
 
 /**

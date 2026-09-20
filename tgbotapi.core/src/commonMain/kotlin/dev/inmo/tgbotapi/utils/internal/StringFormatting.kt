@@ -50,9 +50,9 @@ internal fun String.linkMarkdown(link: String): String = "[${toMarkdown()}](${li
 internal fun String.linkMarkdownV2(link: String): String = "[${escapeMarkdownV2Common()}](${link.escapeMarkdownV2Link()})"
 internal fun String.linkHTML(link: String): String = "<a href=\"$link\">${toHtml()}</a>"
 
-internal fun String.dateTimeMarkdown(unixTimeStamp: UnixTimeStamp, dateTimeFormat: String?): String = "![${toMarkdown()}](tg://time?unix=$unixTimeStamp${dateTimeFormat ?.let { "&format=${dateTimeFormat.toMarkdown()}" } ?: ""})"
-internal fun String.dateTimeMarkdownV2(unixTimeStamp: UnixTimeStamp, dateTimeFormat: String?): String = "![${escapeMarkdownV2Common()}](tg://time?unix=$unixTimeStamp${dateTimeFormat?.let { "&format=${dateTimeFormat.escapeMarkdownV2Link()}" } ?: ""})"
-internal fun String.dateTimeHTML(unixTimeStamp: UnixTimeStamp, dateTimeFormat: String?): String = "<tg-time unix=\"$unixTimeStamp\"${dateTimeFormat?.let { " format=\"$dateTimeFormat\"" } ?: ""}>${toHtml()}</tg-time>"
+internal fun String.dateTimeMarkdown(unixTimeStamp: UnixTimeStamp, dateTimeFormat: DateTimeEntityFormatting?): String = "![${toMarkdown()}](tg://time?unix=$unixTimeStamp${dateTimeFormat?.let { "&format=${dateTimeFormat.string.toMarkdown()}" } ?: ""})"
+internal fun String.dateTimeMarkdownV2(unixTimeStamp: UnixTimeStamp, dateTimeFormat: DateTimeEntityFormatting?): String = "![${escapeMarkdownV2Common()}](tg://time?unix=$unixTimeStamp${dateTimeFormat?.let { "&format=${dateTimeFormat.string.escapeMarkdownV2Link()}" } ?: ""})"
+internal fun String.dateTimeHTML(unixTimeStamp: UnixTimeStamp, dateTimeFormat: DateTimeEntityFormatting?): String = "<tg-time unix=\"$unixTimeStamp\"${dateTimeFormat?.let { " format=\"${dateTimeFormat.string}\"" } ?: ""}>${toHtml()}</tg-time>"
 
 internal fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl)
 

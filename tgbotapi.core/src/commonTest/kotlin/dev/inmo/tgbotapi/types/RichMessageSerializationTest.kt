@@ -105,7 +105,11 @@ class RichMessageSerializationTest {
     fun validatesRichMessageButtonTextContract() {
         val plain = RichTextPlain("plain")
         val customEmoji = RichTextCustomEmoji(CustomEmojiId("emoji"), "emoji")
-        val dateTime = RichTextDateTime(RichTextPlain("date"), TelegramDate(1L), "wDT")
+        val dateTime = RichTextDateTime(
+            RichTextPlain("date"),
+            TelegramDate(1L),
+            DateTimeEntityFormatting(useWeek = true, useDateLong = true, useTimeLong = true)
+        )
         val validTexts = listOf(
             plain,
             customEmoji,
@@ -122,7 +126,11 @@ class RichMessageSerializationTest {
             RichTextBold(plain),
             RichTextUrl(plain, "https://example.org"),
             RichTextGroup(listOf(plain, RichTextBold(plain))),
-            RichTextDateTime(RichTextBold(plain), TelegramDate(1L), "wDT")
+            RichTextDateTime(
+                RichTextBold(plain),
+                TelegramDate(1L),
+                DateTimeEntityFormatting(useWeek = true, useDateLong = true, useTimeLong = true)
+            )
         )
         invalidTexts.forEach { text ->
             assertEquals(false, text.isValidRichMessageButtonText)
@@ -135,6 +143,22 @@ class RichMessageSerializationTest {
                 "{\"text\":{\"type\":\"bold\",\"text\":\"invalid\"},\"disabled\":{}}"
             )
         }
+    }
+
+    @Test
+    fun serializesDateTimeFormatAsJsonString() {
+        val dateTime = RichTextDateTime(
+            RichTextPlain("date"),
+            TelegramDate(1L),
+            DateTimeEntityFormatting(useWeek = true, useDateLong = true, useTimeLong = true)
+        )
+
+        val encoded = json.encodeToString(RichTextSerializer, dateTime)
+        val dateTimeFormat = json.parseToJsonElement(encoded).jsonObject.getValue(dateTimeFormatField).jsonPrimitive
+
+        assertTrue(dateTimeFormat.isString)
+        assertEquals("wDT", dateTimeFormat.content)
+        assertEquals(dateTime, json.decodeFromString(RichTextSerializer, encoded))
     }
 
     @Test

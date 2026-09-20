@@ -12320,6 +12320,49 @@ public final class dev/inmo/tgbotapi/types/CustomEmojiId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/DateTimeEntityFormatting {
+	public static final field Companion Ldev/inmo/tgbotapi/types/DateTimeEntityFormatting$Companion;
+	public static final field DATE_LONG_CONTROL_KEY Ljava/lang/String;
+	public static final field DATE_SHORT_CONTROL_KEY Ljava/lang/String;
+	public static final field LOCAL_CONTROL_KEY Ljava/lang/String;
+	public static final field TIME_LONG_CONTROL_KEY Ljava/lang/String;
+	public static final field TIME_SHORT_CONTROL_KEY Ljava/lang/String;
+	public static final field WEEK_CONTROL_KEY Ljava/lang/String;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/DateTimeEntityFormatting;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public static final fun getUseDateLong-impl (Ljava/lang/String;)Ljava/lang/Boolean;
+	public static final fun getUseLocal-impl (Ljava/lang/String;)Z
+	public static final fun getUseTimeLong-impl (Ljava/lang/String;)Ljava/lang/Boolean;
+	public static final fun getUseWeek-impl (Ljava/lang/String;)Z
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final synthetic class dev/inmo/tgbotapi/types/DateTimeEntityFormatting$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/DateTimeEntityFormatting$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize-LyZQe8A (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize--5smr-Y (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/DateTimeEntityFormatting$Companion {
+	public final fun getLocal-o04JA8I ()Ljava/lang/String;
+	public final fun invoke-RHa6pnI (ZLjava/lang/Boolean;Ljava/lang/Boolean;)Ljava/lang/String;
+	public static synthetic fun invoke-RHa6pnI$default (Ldev/inmo/tgbotapi/types/DateTimeEntityFormatting$Companion;ZLjava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public abstract interface class dev/inmo/tgbotapi/types/DateTimeFormatPart {
 	public static final field Companion Ldev/inmo/tgbotapi/types/DateTimeFormatPart$Companion;
 	public abstract fun getControlCharacter ()Ljava/lang/String;
@@ -12362,6 +12405,15 @@ public final class dev/inmo/tgbotapi/types/DateTimeFormatPart$Relative : dev/inm
 	public fun hashCode ()I
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/DateTimeFormatPart$Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/DateTimeFormatPart$Serializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/DateTimeFormatPart;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/DateTimeFormatPart;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/DateTimeFormatPart$Time : dev/inmo/tgbotapi/types/DateTimeFormatPart {
@@ -15926,7 +15978,7 @@ public final class dev/inmo/tgbotapi/types/TextQuote$Companion {
 
 public final class dev/inmo/tgbotapi/types/TgDateTimeFormatBuilder {
 	public fun <init> ()V
-	public final fun build ()Ljava/lang/String;
+	public final fun build-o04JA8I ()Ljava/lang/String;
 	public final fun dateLong ()Ldev/inmo/tgbotapi/types/TgDateTimeFormatBuilder;
 	public final fun dateShort ()Ldev/inmo/tgbotapi/types/TgDateTimeFormatBuilder;
 	public final fun relative ()Ldev/inmo/tgbotapi/types/TgDateTimeFormatBuilder;
@@ -28452,12 +28504,12 @@ public final class dev/inmo/tgbotapi/types/message/RawMessageEntity {
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7-GbmMWyQ ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/Long;
-	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-w5b-Tf8 (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
-	public static synthetic fun copy-w5b-Tf8$default (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public final fun component9-t6FMrjU ()Ljava/lang/String;
+	public final fun copy-GaLcVnQ (Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
+	public static synthetic fun copy-GaLcVnQ$default (Ldev/inmo/tgbotapi/types/message/RawMessageEntity;Ljava/lang/String;IILjava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/RawMessageEntity;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCustom_emoji_id-GbmMWyQ ()Ljava/lang/String;
-	public final fun getDate_time_format ()Ljava/lang/String;
+	public final fun getDate_time_format-t6FMrjU ()Ljava/lang/String;
 	public final fun getLanguage ()Ljava/lang/String;
 	public final fun getLength ()I
 	public final fun getOffset ()I
@@ -30816,15 +30868,15 @@ public final class dev/inmo/tgbotapi/types/message/textsources/CustomEmojiTextSo
 
 public final class dev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource : dev/inmo/tgbotapi/types/message/textsources/TextSource {
 	public static final field Companion Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource$Companion;
-	public fun <init> (Ljava/lang/String;JLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;JLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()J
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;Ljava/lang/String;JLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
+	public final fun component3-t6FMrjU ()Ljava/lang/String;
+	public final fun copy-9PXU8DM (Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
+	public static synthetic fun copy-9PXU8DM$default (Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;Ljava/lang/String;JLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAsText ()Ljava/lang/String;
-	public final fun getDateTimeFormat ()Ljava/lang/String;
+	public final fun getDateTimeFormat-t6FMrjU ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public fun getMarkdownV2 ()Ljava/lang/String;
@@ -30850,7 +30902,7 @@ public final class dev/inmo/tgbotapi/types/message/textsources/DateTimeTextSourc
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/DateTimeTextSourceKt {
-	public static final fun dateTimeTextSource (Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
+	public static final fun dateTimeTextSource-9PXU8DM (Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/DateTimeTextSource;
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/EMailTextSource : dev/inmo/tgbotapi/types/message/textsources/MultilevelTextSource {
@@ -38241,8 +38293,8 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextBuilder {
 	public final fun code (Ljava/lang/String;)V
 	public final fun code (Lkotlin/jvm/functions/Function1;)V
 	public final fun customEmoji-R1fjqgo (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun dateTime (Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
-	public final fun dateTime (Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)V
+	public final fun dateTime-IGRHWo8 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)V
+	public final fun dateTime-kPYTqHU (Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun email (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun email (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public final fun hashtag (Ljava/lang/String;Ljava/lang/String;)V
@@ -38425,14 +38477,14 @@ public final class dev/inmo/tgbotapi/types/rich/RichTextCustomEmoji$Companion {
 public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime : dev/inmo/tgbotapi/types/rich/RichTextEntity {
 	public static final field Companion Ldev/inmo/tgbotapi/types/rich/RichTextDateTime$Companion;
 	public static final field TYPE Ljava/lang/String;
-	public fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/rich/RichText;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;
+	public final fun component3-o04JA8I ()Ljava/lang/String;
+	public final fun copy-IGRHWo8 (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;
+	public static synthetic fun copy-IGRHWo8$default (Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/rich/RichTextDateTime;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getDateTimeFormat ()Ljava/lang/String;
+	public final fun getDateTimeFormat-o04JA8I ()Ljava/lang/String;
 	public fun getHtml ()Ljava/lang/String;
 	public fun getMarkdown ()Ljava/lang/String;
 	public fun getRawText ()Ljava/lang/String;
@@ -38456,8 +38508,8 @@ public final synthetic class dev/inmo/tgbotapi/types/rich/RichTextDateTime$$seri
 }
 
 public final class dev/inmo/tgbotapi/types/rich/RichTextDateTime$Companion {
-	public final fun html (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ljava/lang/String;
-	public final fun markdown (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ljava/lang/String;
+	public final fun html-IGRHWo8 (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ljava/lang/String;
+	public final fun markdown-IGRHWo8 (Ldev/inmo/tgbotapi/types/rich/RichText;Ldev/inmo/tgbotapi/types/TelegramDate;Ljava/lang/String;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -40897,8 +40949,8 @@ public final class dev/inmo/tgbotapi/utils/EntitiesBuilderKt {
 	public static final fun customEmojiln-fRZnA7w (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun customEmojiln-fRZnA7w (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun customEmojiln-fRZnA7w (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
-	public static final fun dateTime (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
-	public static final fun dateTimeln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun dateTime-QFfb21k (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+	public static final fun dateTimeln-QFfb21k (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;JLjava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun email (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/lang/String;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun email (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun email (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;

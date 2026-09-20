@@ -2,11 +2,15 @@ package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.UnixTimeStamp
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlinx.serialization.Serializable
 
+/**
+ * @property date_time_format Optional [DateTimeEntityFormatting] for a `date_time` entity.
+ */
 @Serializable
 @Warning("This thing is subject of changes. Library do not guarantee stability of this class")
 data class RawMessageEntity(
@@ -18,7 +22,7 @@ data class RawMessageEntity(
     val language: String? = null,
     val custom_emoji_id: CustomEmojiId? = null,
     val unix_time: UnixTimeStamp? = null,
-    val date_time_format: String? = null
+    val date_time_format: DateTimeEntityFormatting? = null
 ) {
     internal val range by lazy {
         offset until (offset + length)

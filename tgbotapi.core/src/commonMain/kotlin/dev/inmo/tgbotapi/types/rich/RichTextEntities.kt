@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.alternativeTextField
 import dev.inmo.tgbotapi.types.anchorNameField
 import dev.inmo.tgbotapi.types.bankCardNumberField
@@ -292,6 +293,7 @@ data class RichTextCode(
 /**
  * A formatted date and time [RichTextEntity].
  *
+ * @property dateTimeFormat Controls date-time rendering through [DateTimeEntityFormatting].
  * @see <a href="https://core.telegram.org/bots/api#richtextdatetime">RichTextDateTime</a>
  */
 @Serializable
@@ -301,7 +303,7 @@ data class RichTextDateTime(
     @SerialName(unixTimeField)
     val unixTime: TelegramDate,
     @SerialName(dateTimeFormatField)
-    val dateTimeFormat: String
+    val dateTimeFormat: DateTimeEntityFormatting
 ) : RichTextEntity {
     @EncodeDefault
     @SerialName(typeField)
@@ -314,10 +316,14 @@ data class RichTextDateTime(
 
     companion object {
         const val TYPE = "date_time"
-        fun markdown(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
-            "![${text.markdown}](tg://time?unix=${unixTime.date}&format=$dateTimeFormat)"
-        fun html(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
-            "<tg-time unix=\"${unixTime.date}\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
+
+        /** Renders [text] as Markdown with [dateTimeFormat]. */
+        fun markdown(text: RichText, unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting): String =
+            "![${text.markdown}](tg://time?unix=${unixTime.date}&format=${dateTimeFormat.string})"
+
+        /** Renders [text] as HTML with [dateTimeFormat]. */
+        fun html(text: RichText, unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting): String =
+            "<tg-time unix=\"${unixTime.date}\" format=\"${dateTimeFormat.string}\">${text.html}</tg-time>"
     }
 }
 
