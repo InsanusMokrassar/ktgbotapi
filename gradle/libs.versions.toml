@@ -21,7 +21,7 @@ versions = "0.54.0"
 github-release-plugin = "2.5.2"
 dokka = "2.2.0"
 
-validator = "0.18.1"
+validator = "0.18.2"
 nmcp = "1.6.1"
 
 [libraries]
