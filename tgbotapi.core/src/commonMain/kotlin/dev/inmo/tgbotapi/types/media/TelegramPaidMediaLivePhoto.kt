@@ -12,8 +12,8 @@ import kotlinx.serialization.*
 data class TelegramPaidMediaLivePhoto(
     override val file: InputFile,
     @SerialName(photoField)
-    val photo: InputFile,
-) : VisualTelegramPaidMedia {
+    override val photo: InputFile,
+) : VisualTelegramPaidMedia, PhotoedTelegramMedia {
     override val type: String = TYPE
 
     @SerialName(mediaField)

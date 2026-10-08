@@ -15,7 +15,12 @@ data class ReplyKeyboardMarkup(
     val inputFieldPlaceholder: String? = null,
     val selective: Boolean? = null,
     @SerialName(isPersistentField)
-    val persistent: Boolean? = null
+    val persistent: Boolean? = null,
+    /**
+     * Requests a reply interface for the message.
+     */
+    @SerialName(forceReplyField)
+    val forceReply: Boolean? = null
 ) : KeyboardMarkup {
     init {
         if (inputFieldPlaceholder != null && inputFieldPlaceholder.length !in inputFieldPlaceholderLimit) {
@@ -31,6 +36,7 @@ data class ReplyKeyboardMarkup(
             inputFieldPlaceholder = inputFieldPlaceholder ?.plus(other.inputFieldPlaceholder ?.let { placeholderDelimiter + it } ?: "") ?: other.inputFieldPlaceholder,
             selective = selective ?.or(other.selective ?: false) ?: other.selective,
             persistent = persistent ?.or(other.persistent ?: false) ?: other.persistent,
+            forceReply = forceReply ?.or(other.forceReply ?: false) ?: other.forceReply,
         )
     }
 

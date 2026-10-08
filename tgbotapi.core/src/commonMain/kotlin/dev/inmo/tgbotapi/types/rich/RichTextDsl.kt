@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chat.User
 
@@ -57,9 +58,12 @@ class RichTextBuilder {
     fun code(text: String) = add(RichTextCode(RichTextPlain(text)))
     fun code(block: RichTextBuilder.() -> Unit) = add(RichTextCode(buildRichText(block)))
 
-    fun dateTime(text: String, unixTime: TelegramDate, dateTimeFormat: String) =
+    /** Appends a [RichTextDateTime] configured by [DateTimeEntityFormatting]. */
+    fun dateTime(text: String, unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting) =
         add(RichTextDateTime(RichTextPlain(text), unixTime, dateTimeFormat))
-    fun dateTime(unixTime: TelegramDate, dateTimeFormat: String, block: RichTextBuilder.() -> Unit) =
+
+    /** Appends a nested [RichTextDateTime] configured by [DateTimeEntityFormatting]. */
+    fun dateTime(unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting, block: RichTextBuilder.() -> Unit) =
         add(RichTextDateTime(buildRichText(block), unixTime, dateTimeFormat))
 
     fun textMention(text: String, user: User) = add(RichTextTextMention(RichTextPlain(text), user))
@@ -97,6 +101,8 @@ class RichTextBuilder {
     fun botCommand(text: String, botCommand: String) = add(RichTextBotCommand(RichTextPlain(text), botCommand))
     fun botCommand(botCommand: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextBotCommand(buildRichText(block), botCommand))
+
+    fun button(button: RichMessageButton) = add(RichTextButton(button))
 
     fun anchor(name: String) = add(RichTextAnchor(name))
 

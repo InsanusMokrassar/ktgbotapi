@@ -30,8 +30,7 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -47,8 +46,7 @@ fun SendTextMessage(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     linkPreviewOptions = linkPreviewOptions,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -66,8 +64,7 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -83,8 +80,7 @@ fun SendTextMessage(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    receiverUserId = receiverUserId,
-    callbackQueryId = callbackQueryId,
+    ephemeralMessageParameters = ephemeralMessageParameters,
     linkPreviewOptions = linkPreviewOptions,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -116,10 +112,8 @@ data class SendTextMessage internal constructor(
     override val directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    @SerialName(receiverUserIdField)
-    override val receiverUserId: UserId? = chatId.receiverUser,
-    @SerialName(callbackQueryIdField)
-    override val callbackQueryId: CallbackQueryId? = null,
+    @SerialName(ephemeralMessageParametersField)
+    override val ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     @SerialName(linkPreviewOptionsField)
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(disableNotificationField)

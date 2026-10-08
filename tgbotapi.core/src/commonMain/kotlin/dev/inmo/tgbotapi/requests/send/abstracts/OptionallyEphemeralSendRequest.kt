@@ -1,13 +1,11 @@
 package dev.inmo.tgbotapi.requests.send.abstracts
 
-import dev.inmo.tgbotapi.types.CallbackQueryId
-import dev.inmo.tgbotapi.types.UserId
+import dev.inmo.tgbotapi.types.EphemeralMessageParameters
 
 /**
- * Inheritors of this interface may be sent as ephemeral messages (visible only to [receiverUserId] and the bot)
- * by passing a non-null [receiverUserId]. Available for groups/supergroups only.
+ * Inheritors of this interface may be sent as ephemeral messages by passing [ephemeralMessageParameters].
+ * Ephemeral messages are available for groups/supergroups only.
  */
 interface OptionallyEphemeralSendRequest {
-    val receiverUserId: UserId?
-    val callbackQueryId: CallbackQueryId?
+    val ephemeralMessageParameters: EphemeralMessageParameters?
 }

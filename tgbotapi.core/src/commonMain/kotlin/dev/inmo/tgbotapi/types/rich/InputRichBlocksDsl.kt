@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.rich
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
@@ -148,6 +149,9 @@ class InputRichBlocksBuilder {
     fun blockQuotation(credit: RichText? = null, block: InputRichBlocksBuilder.() -> Unit) =
         add(InputRichBlockBlockQuotation(buildInputRichBlocks(block), credit))
 
+    fun expandableBlockQuotation(credit: RichText? = null, block: RichTextBuilder.() -> Unit) =
+        add(InputRichBlockExpandableBlockQuotation(buildRichText(block), credit))
+
     fun pullQuotation(credit: RichText? = null, block: RichTextBuilder.() -> Unit) =
         add(InputRichBlockPullQuotation(buildRichText(block), credit))
 
@@ -166,6 +170,9 @@ class InputRichBlocksBuilder {
 
     fun audio(audio: TelegramMediaAudio, caption: RichBlockCaption? = null) = add(InputRichBlockAudio(audio, caption))
 
+    fun document(document: TelegramMediaDocument, caption: RichBlockCaption? = null) =
+        add(InputRichBlockDocument(document, caption))
+
     fun voiceNote(voiceNote: TelegramMediaVoiceNote, caption: RichBlockCaption? = null) =
         add(InputRichBlockVoiceNote(voiceNote, caption))
 
@@ -179,8 +186,12 @@ class InputRichBlocksBuilder {
         isBordered: Boolean? = null,
         isStriped: Boolean? = null,
         caption: RichText? = null,
+        isCompact: Boolean? = null,
         block: InputRichBlockTableBuilder.() -> Unit
-    ) = add(InputRichBlockTable(InputRichBlockTableBuilder().apply(block).build(), isBordered, isStriped, caption))
+    ) = add(InputRichBlockTable(InputRichBlockTableBuilder().apply(block).build(), isBordered, isStriped, caption, isCompact))
+
+    fun buttons(buttons: List<RichMessageButton>, align: RichBlockButtonAlignment? = null) =
+        add(InputRichBlockButtons(buttons, align))
 
     fun map(
         location: StaticLocation,

@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
+import dev.inmo.tgbotapi.types.forceReplyField
 import dev.inmo.tgbotapi.types.inlineKeyboardField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -9,7 +10,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineKeyboardMarkup(
     @SerialName(inlineKeyboardField)
-    val keyboard: Matrix<InlineKeyboardButton>
+    val keyboard: Matrix<InlineKeyboardButton>,
+    /**
+     * Requests a reply interface for the message. Telegram does not allow changing this value when editing the inline
+     * keyboard.
+     */
+    @SerialName(forceReplyField)
+    val forceReply: Boolean? = null
 ) : KeyboardMarkup {
     init {
         val isTherePayButton = keyboard.any { it ->
@@ -28,20 +35,22 @@ data class InlineKeyboardMarkup(
 
     operator fun plus(other: InlineKeyboardMarkup): InlineKeyboardMarkup {
         return InlineKeyboardMarkup(
-            keyboard + other.keyboard
+            keyboard = keyboard + other.keyboard,
+            forceReply = forceReply ?.or(other.forceReply ?: false) ?: other.forceReply
         )
     }
 
     operator fun minus(other: InlineKeyboardMarkup): InlineKeyboardMarkup {
         val otherButtons = other.keyboard.flatten()
         return InlineKeyboardMarkup(
-            keyboard.mapNotNull { row ->
+            keyboard = keyboard.mapNotNull { row ->
                 row.filter { button ->
                     button !in otherButtons
                 }.takeIf {
                     it.isNotEmpty()
                 }
-            }
+            },
+            forceReply = forceReply
         )
     }
 }

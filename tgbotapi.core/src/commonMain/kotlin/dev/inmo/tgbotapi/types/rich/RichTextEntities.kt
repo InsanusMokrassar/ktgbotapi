@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.alternativeTextField
 import dev.inmo.tgbotapi.types.anchorNameField
 import dev.inmo.tgbotapi.types.bankCardNumberField
+import dev.inmo.tgbotapi.types.buttonField
 import dev.inmo.tgbotapi.types.botCommandFullField
 import dev.inmo.tgbotapi.types.cashtagField
 import dev.inmo.tgbotapi.types.chat.User
@@ -29,6 +31,32 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
+ * A [RichMessageButton] embedded in [RichText].
+ *
+ * @see <a href="https://core.telegram.org/bots/api#richtextbutton">RichTextButton</a>
+ */
+@Serializable
+data class RichTextButton(
+    @SerialName(buttonField)
+    val button: RichMessageButton
+) : RichTextEntity {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+
+    override val rawText: String = button.text.rawText
+    override val markdown: String = markdown(button)
+    override val html: String = html(button)
+    override val isValidRichMessageButtonText: Boolean = false
+
+    companion object {
+        const val TYPE = "button"
+        fun markdown(button: RichMessageButton): String = button.toRichMarkup(button.text.markdown)
+        fun html(button: RichMessageButton): String = button.toRichMarkup(button.text.html)
+    }
+}
+
+/**
  * A bold [RichTextEntity].
  *
  * @see <a href="https://core.telegram.org/bots/api#richtextbold">RichTextBold</a>
@@ -45,6 +73,7 @@ data class RichTextBold(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "bold"
@@ -70,6 +99,7 @@ data class RichTextItalic(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "italic"
@@ -95,6 +125,7 @@ data class RichTextUnderline(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "underline"
@@ -120,6 +151,7 @@ data class RichTextStrikethrough(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "strikethrough"
@@ -145,6 +177,7 @@ data class RichTextSpoiler(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "spoiler"
@@ -170,6 +203,7 @@ data class RichTextSubscript(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "subscript"
@@ -195,6 +229,7 @@ data class RichTextSuperscript(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "superscript"
@@ -220,6 +255,7 @@ data class RichTextMarked(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "marked"
@@ -245,6 +281,7 @@ data class RichTextCode(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "code"
@@ -256,6 +293,7 @@ data class RichTextCode(
 /**
  * A formatted date and time [RichTextEntity].
  *
+ * @property dateTimeFormat Controls date-time rendering through [DateTimeEntityFormatting].
  * @see <a href="https://core.telegram.org/bots/api#richtextdatetime">RichTextDateTime</a>
  */
 @Serializable
@@ -265,7 +303,7 @@ data class RichTextDateTime(
     @SerialName(unixTimeField)
     val unixTime: TelegramDate,
     @SerialName(dateTimeFormatField)
-    val dateTimeFormat: String
+    val dateTimeFormat: DateTimeEntityFormatting
 ) : RichTextEntity {
     @EncodeDefault
     @SerialName(typeField)
@@ -274,13 +312,18 @@ data class RichTextDateTime(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, unixTime, dateTimeFormat)
     override val html: String = html(text, unixTime, dateTimeFormat)
+    override val isValidRichMessageButtonText: Boolean = text.isValidRichMessageButtonText
 
     companion object {
         const val TYPE = "date_time"
-        fun markdown(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
-            "![${text.markdown}](tg://time?unix=${unixTime.date}&format=$dateTimeFormat)"
-        fun html(text: RichText, unixTime: TelegramDate, dateTimeFormat: String): String =
-            "<tg-time unix=\"${unixTime.date}\" format=\"$dateTimeFormat\">${text.html}</tg-time>"
+
+        /** Renders [text] as Markdown with [dateTimeFormat]. */
+        fun markdown(text: RichText, unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting): String =
+            "![${text.markdown}](tg://time?unix=${unixTime.date}&format=${dateTimeFormat.string})"
+
+        /** Renders [text] as HTML with [dateTimeFormat]. */
+        fun html(text: RichText, unixTime: TelegramDate, dateTimeFormat: DateTimeEntityFormatting): String =
+            "<tg-time unix=\"${unixTime.date}\" format=\"${dateTimeFormat.string}\">${text.html}</tg-time>"
     }
 }
 
@@ -303,6 +346,7 @@ data class RichTextTextMention(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, user)
     override val html: String = html(text, user)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "text_mention"
@@ -332,6 +376,7 @@ data class RichTextCustomEmoji(
     override val rawText: String = alternativeText
     override val markdown: String = markdown(customEmojiId, alternativeText)
     override val html: String = html(customEmojiId, alternativeText)
+    override val isValidRichMessageButtonText: Boolean = true
 
     companion object {
         const val TYPE = "custom_emoji"
@@ -359,6 +404,7 @@ data class RichTextMathematicalExpression(
     override val rawText: String = expression
     override val markdown: String = markdown(expression)
     override val html: String = html(expression)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "mathematical_expression"
@@ -386,6 +432,7 @@ data class RichTextUrl(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, url)
     override val html: String = html(text, url)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "url"
@@ -413,6 +460,7 @@ data class RichTextEmailAddress(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, emailAddress)
     override val html: String = html(text, emailAddress)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "email_address"
@@ -440,6 +488,7 @@ data class RichTextPhoneNumber(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, phoneNumber)
     override val html: String = html(text, phoneNumber)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "phone_number"
@@ -467,6 +516,7 @@ data class RichTextBankCardNumber(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "bank_card_number"
@@ -494,6 +544,7 @@ data class RichTextMention(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "mention"
@@ -521,6 +572,7 @@ data class RichTextHashtag(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "hashtag"
@@ -548,6 +600,7 @@ data class RichTextCashtag(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "cashtag"
@@ -575,6 +628,7 @@ data class RichTextBotCommand(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text)
     override val html: String = html(text)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "bot_command"
@@ -600,6 +654,7 @@ data class RichTextAnchor(
     override val rawText: String = ""
     override val markdown: String = markdown(name)
     override val html: String = html(name)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "anchor"
@@ -627,6 +682,7 @@ data class RichTextAnchorLink(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, anchorName)
     override val html: String = html(text, anchorName)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "anchor_link"
@@ -654,6 +710,7 @@ data class RichTextReference(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, name)
     override val html: String = html(text, name)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "reference"
@@ -681,6 +738,7 @@ data class RichTextReferenceLink(
     override val rawText: String = text.rawText
     override val markdown: String = markdown(text, referenceName)
     override val html: String = html(text, referenceName)
+    override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "reference_link"

@@ -1,14 +1,18 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.types.animationField
+import dev.inmo.tgbotapi.types.alignField
 import dev.inmo.tgbotapi.types.audioField
 import dev.inmo.tgbotapi.types.blocksField
 import dev.inmo.tgbotapi.types.captionField
 import dev.inmo.tgbotapi.types.cellsField
+import dev.inmo.tgbotapi.types.buttonsField
 import dev.inmo.tgbotapi.types.creditField
+import dev.inmo.tgbotapi.types.documentField
 import dev.inmo.tgbotapi.types.expressionField
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
@@ -16,6 +20,7 @@ import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.hasSpoilerField
 import dev.inmo.tgbotapi.types.heightField
 import dev.inmo.tgbotapi.types.isBorderedField
+import dev.inmo.tgbotapi.types.isCompactField
 import dev.inmo.tgbotapi.types.isOpenField
 import dev.inmo.tgbotapi.types.isStripedField
 import dev.inmo.tgbotapi.types.itemsField
@@ -300,6 +305,34 @@ data class RichBlockBlockQuotation(
 }
 
 /**
+ * A block quotation that users can expand.
+ *
+ * @see <a href="https://core.telegram.org/bots/api#richblockexpandableblockquotation">RichBlockExpandableBlockQuotation</a>
+ */
+@Serializable
+data class RichBlockExpandableBlockQuotation(
+    @SerialName(textField)
+    val text: RichText,
+    @SerialName(creditField)
+    val credit: RichText? = null
+) : RichBlock {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+
+    override val markdown: String = markdown(text, credit)
+    override val html: String = html(text, credit)
+
+    companion object {
+        const val TYPE = "expandable_blockquote"
+        fun markdown(text: RichText, credit: RichText?): String =
+            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
+        fun html(text: RichText, credit: RichText?): String =
+            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
+    }
+}
+
+/**
  * A quotation with centered text.
  *
  * @see <a href="https://core.telegram.org/bots/api#richblockpullquotation">RichBlockPullQuotation</a>
@@ -395,14 +428,16 @@ data class RichBlockTable(
     @SerialName(isStripedField)
     val isStriped: Boolean? = null,
     @SerialName(captionField)
-    val caption: RichText? = null
+    val caption: RichText? = null,
+    @SerialName(isCompactField)
+    val isCompact: Boolean? = null
 ) : RichBlock {
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
     override val markdown: String = markdown(cells)
-    override val html: String = html(cells, isBordered, isStriped, caption)
+    override val html: String = html(cells, isBordered, isStriped, isCompact, caption)
 
     companion object {
         const val TYPE = "table"
@@ -424,10 +459,11 @@ data class RichBlockTable(
             return lines.joinToString(separator = "\n")
         }
 
-        fun html(cells: List<List<RichBlockTableCell>>, isBordered: Boolean?, isStriped: Boolean?, caption: RichText?): String {
+        fun html(cells: List<List<RichBlockTableCell>>, isBordered: Boolean?, isStriped: Boolean?, isCompact: Boolean?, caption: RichText?): String {
             val attributes = buildString {
                 if (isBordered == true) append(" bordered")
                 if (isStriped == true) append(" striped")
+                if (isCompact == true) append(" compact")
             }
             val captionPart = caption?.let { "<caption>${it.html}</caption>" } ?: ""
             val rows = cells.joinToString(separator = "") { row ->
@@ -445,6 +481,32 @@ data class RichBlockTable(
             }
             return "<table$attributes>$captionPart$rows</table>"
         }
+
+        fun html(cells: List<List<RichBlockTableCell>>, isBordered: Boolean?, isStriped: Boolean?, caption: RichText?): String =
+            html(cells, isBordered, isStriped, null, caption)
+    }
+}
+
+/** A row of rich message buttons. */
+@Serializable
+data class RichBlockButtons(
+    @SerialName(buttonsField)
+    val buttons: List<RichMessageButton>,
+    @SerialName(alignField)
+    val align: RichBlockButtonAlignment? = null
+) : RichBlock {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+    override val markdown: String = markdown(buttons, align)
+    override val html: String = html(buttons, align)
+
+    companion object {
+        const val TYPE = "buttons"
+        fun markdown(buttons: List<RichMessageButton>, align: RichBlockButtonAlignment?): String =
+            html(buttons, align)
+        fun html(buttons: List<RichMessageButton>, align: RichBlockButtonAlignment?): String =
+            "<tg-button-row${align?.let { " align=\"${it.name}\"" } ?: ""}>${buttons.joinToString("") { it.toRichMarkup(it.text.html) }}</tg-button-row>"
     }
 }
 
@@ -585,6 +647,31 @@ data class RichBlockAudio(
             richMediaMarkdown(audio.fileId.fileId, caption)
         fun html(audio: AudioFile, caption: RichBlockCaption?): String =
             richMediaHtml("audio", audio.fileId.fileId, spoiler = false, selfClosing = false, caption = caption)
+    }
+}
+
+/** A block with a general file. */
+@Serializable
+data class RichBlockDocument(
+    @SerialName(documentField)
+    val document: DocumentFile,
+    @SerialName(captionField)
+    override val caption: RichBlockCaption? = null
+) : RichBlockMedia {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+    override val media: TelegramMediaFile
+        get() = document
+    override val markdown: String = markdown(document, caption)
+    override val html: String = html(document, caption)
+
+    companion object {
+        const val TYPE = "document"
+        fun markdown(document: DocumentFile, caption: RichBlockCaption?): String =
+            richMediaMarkdown("tg://document?id=${document.fileId.fileId}", caption)
+        fun html(document: DocumentFile, caption: RichBlockCaption?): String =
+            richMediaHtml("tg-document", "tg://document?id=${document.fileId.fileId}", spoiler = false, selfClosing = false, caption = caption)
     }
 }
 

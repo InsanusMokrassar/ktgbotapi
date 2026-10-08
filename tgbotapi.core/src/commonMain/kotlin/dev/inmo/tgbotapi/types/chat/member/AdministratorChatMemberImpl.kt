@@ -50,6 +50,8 @@ data class AdministratorChatMemberImpl(
     override val canManageDirectMessages: Boolean = false,
     @SerialName(canManageTagsField)
     override val canManageTags: Boolean = false,
+    @SerialName(canSendWelcomeMessagesField)
+    override val canSendWelcomeMessages: Boolean = false,
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required

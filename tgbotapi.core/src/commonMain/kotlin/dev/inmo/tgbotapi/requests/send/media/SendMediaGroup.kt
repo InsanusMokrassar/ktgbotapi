@@ -53,6 +53,11 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     val files: List<MultipartFile> = media.flatMap {
         listOfNotNull(
             it.file as? MultipartFile,
+            if (it is PhotoedTelegramMedia) {
+                it.photo as? MultipartFile
+            } else {
+                null
+            },
             if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
             } else {

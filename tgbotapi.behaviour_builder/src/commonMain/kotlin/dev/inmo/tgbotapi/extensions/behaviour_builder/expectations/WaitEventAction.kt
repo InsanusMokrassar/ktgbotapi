@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
 import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
+import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
 import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
@@ -333,6 +334,11 @@ fun BehaviourContext.waitCommunityChatAdded(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<CommunityChatAdded>(initRequest, errorFactory)
+
+fun BehaviourContext.waitCommunityChatJoined(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<CommunityChatJoined>(initRequest, errorFactory)
 
 fun BehaviourContext.waitCommunityChatRemoved(
     initRequest: Request<*>? = null,

@@ -52,6 +52,8 @@ data class PromoteChatMember(
     private val canManageDirectMessages: Boolean? = null,
     @SerialName(canManageTagsField)
     private val canManageTags: Boolean? = null,
+    @SerialName(canSendWelcomeMessagesField)
+    private val canSendWelcomeMessages: Boolean? = null,
 ) : ChatMemberRequest<Unit>, UntilDate {
     override fun method(): String = "promoteChatMember"
     override val resultDeserializer: DeserializationStrategy<Unit>
@@ -73,6 +75,7 @@ fun PromoteChatMember(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ) = PromoteChatMember(
     chatId = chatId,
     userId = userId,
@@ -89,6 +92,7 @@ fun PromoteChatMember(
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
     canManageTags = canManageTags,
+    canSendWelcomeMessages = canSendWelcomeMessages,
     canManageTopics = null,
     canPostStories = null,
     canEditStories = null,
@@ -113,6 +117,7 @@ fun PromoteChannelAdministrator(
     canEditStories: Boolean? = null,
     canDeleteStories: Boolean? = null,
     canManageDirectMessages: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ) = PromoteChatMember(
     chatId = chatId,
     userId = userId,
@@ -132,7 +137,8 @@ fun PromoteChannelAdministrator(
     canPostStories = canPostStories,
     canEditStories = canEditStories,
     canDeleteStories = canDeleteStories,
-    canManageDirectMessages = canManageDirectMessages
+    canManageDirectMessages = canManageDirectMessages,
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
 
 fun PromoteSupergroupAdministrator(
@@ -150,6 +156,7 @@ fun PromoteSupergroupAdministrator(
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
     canManageTags: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ) = PromoteChatMember(
     chatId = chatId,
     userId = userId,
@@ -167,6 +174,7 @@ fun PromoteSupergroupAdministrator(
     canManageChat = canManageChat,
     canManageTopics = canManageTopics,
     canManageTags = canManageTags,
+    canSendWelcomeMessages = canSendWelcomeMessages,
     canPostStories = null,
     canEditStories = null,
     canDeleteStories = null

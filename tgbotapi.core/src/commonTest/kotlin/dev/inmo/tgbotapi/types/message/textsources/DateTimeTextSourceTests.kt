@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
+import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
@@ -11,13 +12,13 @@ class DateTimeTextSourceTests {
     @Test
     fun testDateTimeTextSourceFormatting() {
         val unix = 1714560000L
-        val format = "r"
+        val format = DateTimeEntityFormatting.local
         val text = "some date"
         val source = DateTimeTextSource(text, unix, format)
 
-        assertEquals("![$text](tg://time?unix=$unix&format=$format)", source.markdown)
-        assertEquals("![$text](tg://time?unix=$unix&format=$format)", source.markdownV2)
-        assertEquals("<tg-time unix=\"$unix\" format=\"$format\">$text</tg-time>", source.html)
+        assertEquals("![$text](tg://time?unix=$unix&format=${format.string})", source.markdown)
+        assertEquals("![$text](tg://time?unix=$unix&format=${format.string})", source.markdownV2)
+        assertEquals("<tg-time unix=\"$unix\" format=\"${format.string}\">$text</tg-time>", source.html)
     }
     @Test
     fun testDateTimeTextSourceFormattingWithoutFormat() {
@@ -35,7 +36,7 @@ class DateTimeTextSourceTests {
     fun testDateTimeTextSourceInRawMessageEntity() {
         val sourceText = "date: 2024-05-01"
         val unix = 1714560000L
-        val format = "wd"
+        val format = DateTimeEntityFormatting(useWeek = true, useDateLong = false, useTimeLong = null)
         val entities = listOf(
             RawMessageEntity("date_time", 6, 10, unix_time = unix, date_time_format = format)
         )
@@ -92,7 +93,7 @@ class DateTimeTextSourceTests {
     @Test
     fun testDateTimeInEntitiesBuilder() {
         val unix = 1714560000L
-        val format = "D"
+        val format = DateTimeEntityFormatting(useDateLong = true, useTimeLong = null)
         val sources = buildEntities {
             dateTime("today", unix, format)
         }

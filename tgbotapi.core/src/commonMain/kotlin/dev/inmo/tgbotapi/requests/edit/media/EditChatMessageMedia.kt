@@ -6,7 +6,10 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
+import dev.inmo.tgbotapi.types.media.CoveredTelegramMedia
+import dev.inmo.tgbotapi.types.media.PhotoedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
+import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -34,9 +37,12 @@ data class EditChatMessageMedia(
     override val data: SimpleRequest<ContentMessage<MediaContent>>
         get() = this
     override val mediaMap: Map<String, MultipartFile> by lazy {
-        (media.file as? MultipartFile) ?.let {
-            mapOf(it.fileId to it)
-        } ?: emptyMap()
+        listOfNotNull(
+            media.file as? MultipartFile,
+            (media as? PhotoedTelegramMedia) ?.photo as? MultipartFile,
+            (media as? ThumbedTelegramMedia) ?.thumb as? MultipartFile,
+            (media as? CoveredTelegramMedia) ?.cover as? MultipartFile
+        ).associateBy { it.fileId }
     }
 
 //    init {

@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.managed_bots.ManagedBotUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.payments.BotSubscriptionUpdated
+import dev.inmo.tgbotapi.types.MessageGenerationStopped
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -71,6 +72,8 @@ internal data class RawUpdate constructor(
     private val purchased_paid_media: PaidMediaPurchased? = null,
     private val managed_bot: ManagedBotUpdated? = null,
     private val subscription: BotSubscriptionUpdated? = null,
+    @SerialName(stoppedMessageGenerationField)
+    private val stopped_message_generation: MessageGenerationStopped? = null,
 ) {
     @Transient
     private var initedUpdate: Update? = null
@@ -110,6 +113,7 @@ internal data class RawUpdate constructor(
                 purchased_paid_media != null -> PaidMediaPurchasedUpdate(updateId, purchased_paid_media)
                 managed_bot != null -> ManagedBotUpdate(updateId, managed_bot)
                 subscription != null -> BotSubscriptionUpdatedUpdate(updateId, subscription)
+                stopped_message_generation != null -> MessageGenerationStoppedUpdate(updateId, stopped_message_generation)
                 else -> UnknownUpdate(
                     updateId,
                     raw

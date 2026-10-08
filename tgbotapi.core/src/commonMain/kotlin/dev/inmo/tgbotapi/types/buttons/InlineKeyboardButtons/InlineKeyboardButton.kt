@@ -24,6 +24,34 @@ sealed interface InlineKeyboardButton {
     val iconCustomEmojiId: CustomEmojiId?
 }
 
+/**
+ * A disabled inline keyboard button action. Telegram Bot API currently defines no fields for this object.
+ *
+ * @see DisabledInlineKeyboardButton
+ * @see https://core.telegram.org/bots/api#disabledbutton
+ */
+@Serializable
+data object DisabledButton
+
+/**
+ * An inline keyboard button which does nothing when pressed.
+ *
+ * @see https://core.telegram.org/bots/api#inlinekeyboardbutton
+ */
+@Serializable
+data class DisabledInlineKeyboardButton(
+    @SerialName(textField)
+    override val text: String,
+    @SerialName(iconCustomEmojiIdField)
+    override val iconCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(styleField)
+    override val style: KeyboardButtonStyle? = null
+) : InlineKeyboardButton {
+    @SerialName(disabledField)
+    @EncodeDefault
+    private val disabled = DisabledButton
+}
+
 @Serializable
 data class UnknownInlineKeyboardButton (
     val rawData: JsonElement

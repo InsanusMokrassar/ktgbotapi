@@ -109,6 +109,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehavio
 	public fun getInlineQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getLog ()Ldev/inmo/kslog/common/KSLog;
 	public fun getManagedBotUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getMessageGenerationStoppedUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessageMediaGroupsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMessagesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getMyChatMemberUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;

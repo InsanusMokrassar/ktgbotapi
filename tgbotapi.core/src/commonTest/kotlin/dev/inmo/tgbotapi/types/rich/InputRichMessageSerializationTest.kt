@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types.rich
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.abstracts.asMultipartFile
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.TelegramMediaVoiceNote
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.SerializationException
@@ -71,6 +73,29 @@ class InputRichMessageSerializationTest {
         assertEquals("left", cell["align"]?.jsonPrimitive?.content)
         assertEquals("top", cell["valign"]?.jsonPrimitive?.content)
         assertEquals(true, cell["is_header"]?.jsonPrimitive?.boolean)
+    }
+
+    @Test
+    fun encodesCompactTablesButtonsAndDocuments() {
+        val document = TelegramMediaDocument("content".encodeToByteArray().asMultipartFile("document.txt"))
+        val message = InputRichMessageBlocks(
+            blocks = listOf(
+                InputRichBlockTable(emptyList(), isCompact = true),
+                InputRichBlockButtons(listOf(RichMessageButton.Disabled(RichTextPlain("Disabled")))),
+                InputRichBlockDocument(document)
+            )
+        )
+        val blocks = json.encodeToJsonElement(InputRichMessage.serializer(), message).jsonObject["blocks"]!!.jsonArray
+        assertEquals(true, blocks[0].jsonObject["is_compact"]?.jsonPrimitive?.boolean)
+        assertEquals("buttons", blocks[1].jsonObject["type"]?.jsonPrimitive?.content)
+        assertEquals("document", blocks[2].jsonObject["type"]?.jsonPrimitive?.content)
+        assertEquals(document.file, message.multipartFiles.values.single())
+    }
+
+    @Test
+    fun limitsInputButtonRowsToOneThroughEightButtons() {
+        assertFailsWith<IllegalArgumentException> { InputRichBlockButtons(emptyList()) }
+        assertFailsWith<IllegalArgumentException> { InputRichBlockButtons(List(9) { RichMessageButton.Disabled(RichTextPlain("x")) }) }
     }
 
     @Test
@@ -168,6 +193,17 @@ class InputRichMessageSerializationTest {
         val mediaJson = element["media"]!!.jsonArray[0].jsonObject
         assertEquals("abc", mediaJson["id"]?.jsonPrimitive?.content)
         assertEquals("photo_file_id", mediaJson["media"]!!.jsonObject["media"]?.jsonPrimitive?.content)
+    }
+
+    @Test
+    fun encodesDocumentMediaReferences() {
+        val message = InputRichMessageMarkdown(
+            markdown = "See [document](tg://document?id=doc)",
+            media = listOf(InputRichMessageMedia("doc", TelegramMediaDocument(FileId("document_file_id"))))
+        )
+        val mediaJson = json.encodeToJsonElement(InputRichMessage.serializer(), message).jsonObject["media"]!!.jsonArray.single().jsonObject
+        assertEquals("document", mediaJson["media"]!!.jsonObject["type"]?.jsonPrimitive?.content)
+        assertEquals("document_file_id", mediaJson["media"]!!.jsonObject["media"]?.jsonPrimitive?.content)
     }
 
     @Test

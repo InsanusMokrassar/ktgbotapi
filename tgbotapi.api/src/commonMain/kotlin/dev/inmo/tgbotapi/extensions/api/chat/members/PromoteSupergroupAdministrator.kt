@@ -24,6 +24,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = execute(
     PromoteSupergroupAdministrator(
         chatId = chatId,
@@ -38,7 +39,8 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
         canPromoteMembers = canPromoteMembers,
         canManageVideoChats = canManageVideoChats,
         canManageChat = canManageChat,
-        canManageTopics = canManageTopics
+        canManageTopics = canManageTopics,
+        canSendWelcomeMessages = canSendWelcomeMessages
     )
 )
 
@@ -56,6 +58,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteSupergroupAdministrator(
     chat.id,
     userId,
@@ -69,7 +72,8 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -86,6 +90,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteSupergroupAdministrator(
     chatId,
     user.id,
@@ -99,7 +104,8 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
+    canSendWelcomeMessages = canSendWelcomeMessages
 )
 
 public suspend fun TelegramBot.promoteSupergroupAdministrator(
@@ -116,6 +122,7 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
     canManageTopics: Boolean? = null,
+    canSendWelcomeMessages: Boolean? = null,
 ): Unit = promoteSupergroupAdministrator(
     chat.id,
     user.id,
@@ -129,5 +136,6 @@ public suspend fun TelegramBot.promoteSupergroupAdministrator(
     canPromoteMembers = canPromoteMembers,
     canManageVideoChats = canManageVideoChats,
     canManageChat = canManageChat,
-    canManageTopics = canManageTopics
+    canManageTopics = canManageTopics,
+    canSendWelcomeMessages = canSendWelcomeMessages
 )

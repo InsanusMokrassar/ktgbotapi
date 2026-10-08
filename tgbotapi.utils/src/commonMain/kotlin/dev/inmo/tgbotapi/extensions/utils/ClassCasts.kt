@@ -2339,6 +2339,16 @@ inline fun Update.asBotSubscriptionUpdatedUpdate(): BotSubscriptionUpdatedUpdate
 inline fun Update.requireBotSubscriptionUpdatedUpdate(): BotSubscriptionUpdatedUpdate = this as BotSubscriptionUpdatedUpdate
 
 @PreviewFeature
+inline fun <T> Update.whenMessageGenerationStoppedUpdate(block: (MessageGenerationStoppedUpdate) -> T) =
+    asMessageGenerationStoppedUpdate()?.let(block)
+
+@PreviewFeature
+inline fun Update.asMessageGenerationStoppedUpdate(): MessageGenerationStoppedUpdate? = this as? MessageGenerationStoppedUpdate
+
+@PreviewFeature
+inline fun Update.requireMessageGenerationStoppedUpdate(): MessageGenerationStoppedUpdate = this as MessageGenerationStoppedUpdate
+
+@PreviewFeature
 inline fun <T> TelegramMediaFile.whenAnimationFile(block: (AnimationFile) -> T) = asAnimationFile()?.let(block)
 
 @PreviewFeature
