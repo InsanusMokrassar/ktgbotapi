@@ -95,8 +95,8 @@ value class DateTimeEntityFormatting @Warning(
          */
         operator fun invoke(
             useWeek: Boolean = false,
-            useDateLong: Boolean?,
-            useTimeLong: Boolean?
+            useDateLong: Boolean? = null,
+            useTimeLong: Boolean? = null
         ): DateTimeEntityFormatting = DateTimeEntityFormatting(
             buildString {
                 if (useWeek) {
