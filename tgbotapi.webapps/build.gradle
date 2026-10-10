@@ -12,6 +12,10 @@ apply from: "$mpp_publish"
 
 kotlin {
     sourceSets {
+        jsMain {
+            // JVM maintenance scripts are not Kotlin/JS library sources.
+            kotlin.exclude("**/*.main.kts")
+        }
         commonMain {
             dependencies {
                 api project(":tgbotapi.core")
