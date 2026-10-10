@@ -2,7 +2,7 @@
 
 ## 38.0.0
 
-* `All`:
+* `Dependencies`:
     * Update Kotlin from `2.3.21` to `2.4.21` and Gradle from `9.6.1` to `9.7.0`
     * Update MicroUtils from `0.30.1` to `0.32.0`
     * Update Ktor from `3.5.2` to `3.6.0`
