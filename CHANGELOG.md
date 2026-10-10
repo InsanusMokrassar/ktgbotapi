@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 38.0.0
+
 ## 37.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**
