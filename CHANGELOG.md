@@ -1,5 +1,25 @@
 # TelegramBotAPI changelog
 
+## 37.1.0
+
+* `Dependencies`:
+    * `Kotlin`: `2.3.21` -> `2.4.21`
+    * `Gradle`: `9.6.1` -> `9.7.0`
+    * `MicroUtils`: `0.30.1` -> `0.32.0`
+    * `Ktor`: `3.5.2` -> `3.6.0`
+    * `KotlinPoet`: `2.3.0` -> `2.4.0`
+    * `KSLog`: `1.7.0` -> `2.1.0`
+    * `Versions`: `0.54.0` -> `0.65.0`
+    * `Binary compatibility validator`: `0.18.1` -> `0.18.2`
+    * `NMCP`: `1.6.1` -> `1.6.2`
+* `Core`:
+    * Refresh the rebuilt JVM API dump with additive synthetic bridges and default constructors
+* `WebApps`:
+    * Exclude JVM maintenance `.main.kts` scripts from Kotlin/JS compilation for Kotlin 2.4
+    * `Events generator serialization JSON`: `1.8.0` -> `1.11.0`
+* `BehaviourBuilderWithFSM`:
+    * Refresh the JVM API dump for the compiler-generated covariant `copy` bridge
+
 ## 37.0.0
 
 **THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.3](https://core.telegram.org/bots/api-changelog#august-24-2026)**

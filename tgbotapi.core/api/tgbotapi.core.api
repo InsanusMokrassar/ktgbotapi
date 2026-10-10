@@ -244,6 +244,7 @@ public abstract interface class dev/inmo/tgbotapi/abstracts/types/UntilDate {
 
 public abstract interface class dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId : dev/inmo/tgbotapi/abstracts/types/WithOptionalBusinessConnectionId {
 	public abstract fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 }
 
 public abstract interface class dev/inmo/tgbotapi/abstracts/types/WithOptionalBusinessConnectionId {
@@ -307,6 +308,7 @@ public abstract class dev/inmo/tgbotapi/bot/exceptions/CommonBotException : dev/
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ldev/inmo/tgbotapi/types/Response;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public abstract fun createCopy ()Ldev/inmo/tgbotapi/bot/exceptions/CommonBotException;
+	public synthetic fun createCopy ()Ljava/lang/Throwable;
 }
 
 public final class dev/inmo/tgbotapi/bot/exceptions/CommonBotException$Companion {
@@ -959,6 +961,7 @@ public final class dev/inmo/tgbotapi/requests/ForwardMessagesKt {
 
 public final class dev/inmo/tgbotapi/requests/GetUpdates : dev/inmo/tgbotapi/requests/GetUpdatesRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/GetUpdates$Companion;
+	public fun <init> ()V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
@@ -996,6 +999,7 @@ public final class dev/inmo/tgbotapi/requests/GetUpdates$Companion {
 
 public final class dev/inmo/tgbotapi/requests/GetUpdatesRaw : dev/inmo/tgbotapi/requests/GetUpdatesRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/GetUpdatesRaw$Companion;
+	public fun <init> ()V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
@@ -3528,7 +3532,9 @@ public final class dev/inmo/tgbotapi/requests/chat/invite_links/CreateChatInvite
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/chat/invite_links/CreateChatInviteLink$Subscription : dev/inmo/tgbotapi/abstracts/types/SubscriptionInfo, dev/inmo/tgbotapi/requests/chat/invite_links/CreateChatInviteLink {
+	public synthetic fun getSubscriptionPeriod-FghU774 ()Lkotlin/time/Duration;
 	public abstract fun getSubscriptionPeriod-UwyO8pc ()J
+	public synthetic fun getSubscriptionPrice-0hXNFcg ()Lkotlin/UInt;
 	public abstract fun getSubscriptionPrice-pVg5ArA ()I
 	public fun method ()Ljava/lang/String;
 }
@@ -4722,6 +4728,7 @@ public abstract interface class dev/inmo/tgbotapi/requests/edit/abstracts/EditMe
 
 public abstract interface class dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage : dev/inmo/tgbotapi/abstracts/types/WithReplyMarkup {
 	public abstract fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
+	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage : dev/inmo/tgbotapi/abstracts/TextedOutput {
@@ -14474,6 +14481,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery :
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery : dev/inmo/tgbotapi/abstracts/FromUser {
 	public abstract fun getChatType ()Ldev/inmo/tgbotapi/types/chat/ChatType;
 	public abstract fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public abstract fun getId-5UnZwr4 ()Ljava/lang/String;
 	public abstract fun getOffset ()Ljava/lang/String;
 	public abstract fun getQuery ()Ljava/lang/String;
@@ -18567,6 +18575,7 @@ public final class dev/inmo/tgbotapi/types/chat/Bot$Companion {
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/BusinessChat : dev/inmo/tgbotapi/types/chat/Chat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/BusinessChat$Companion;
+	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public abstract fun getId-y8AA8dk ()Lkotlin/Pair;
 	public abstract fun getOriginal ()Ldev/inmo/tgbotapi/types/chat/PrivateChat;
 }
@@ -18613,6 +18622,7 @@ public final class dev/inmo/tgbotapi/types/chat/BusinessChatImpl$Companion {
 
 public abstract interface class dev/inmo/tgbotapi/types/chat/ChannelChat : dev/inmo/tgbotapi/types/chat/SuperPublicChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChannelChat$Companion;
+	public synthetic fun getId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public abstract fun getId-tHkBKVM ()J
 }
 
@@ -19406,6 +19416,7 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedBot$Companion {
 public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChat : dev/inmo/tgbotapi/types/chat/BusinessChat, dev/inmo/tgbotapi/types/chat/ExtendedChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedBusinessChat$Companion;
 	public abstract fun getOriginal ()Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat;
+	public synthetic fun getOriginal ()Ldev/inmo/tgbotapi/types/chat/PrivateChat;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedBusinessChat$Companion {
@@ -21056,6 +21067,7 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/member/ChatMember :
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/member/ChatMember$Companion;
 	public abstract fun getStatus ()Ldev/inmo/tgbotapi/types/chat/member/ChatMember$Status;
 	public abstract fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
+	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 }
 
 public final class dev/inmo/tgbotapi/types/chat/member/ChatMember$Companion {
@@ -23829,6 +23841,7 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/Gift$Regular : dev
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/Gift$Regular$Companion;
 	public abstract fun getBackground ()Ldev/inmo/tgbotapi/types/gifts/GiftBackground;
 	public abstract fun getHasColors ()Z
+	public synthetic fun getId-FhTg01o ()Ljava/lang/String;
 	public abstract fun getId-OyCYJok ()Ljava/lang/String;
 	public abstract fun getPersonalRemainingCount ()Ljava/lang/Integer;
 	public abstract fun getPersonalTotalCount ()Ljava/lang/Integer;
@@ -24047,6 +24060,7 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$Compani
 
 public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$ReceivedInBusinessAccount : dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$ReceivedInBusinessAccount$Companion;
+	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public abstract fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
 }
 
@@ -24059,6 +24073,7 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceived
 	public abstract fun getCanBeUpgraded ()Z
 	public abstract fun getConvertStarCount ()Ljava/lang/Integer;
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
 	public abstract fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
 	public abstract fun getUniqueGiftNumber ()Ljava/lang/Integer;
 	public abstract fun isPrivate ()Z
@@ -24175,6 +24190,7 @@ public final class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$Regular
 public abstract interface class dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift : dev/inmo/tgbotapi/abstracts/TextedInput, dev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/GiftSentOrReceivedEvent$UniqueGift$Companion;
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
 	public abstract fun getLastResaleAmount ()Ljava/lang/Long;
 	public abstract fun getLastResaleCurrency ()Ljava/lang/String;
 	public abstract fun getLastResaleStarCount ()Ljava/lang/Integer;
@@ -24436,6 +24452,7 @@ public final class dev/inmo/tgbotapi/types/gifts/OwnedGift$Companion : kotlinx/s
 
 public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount : dev/inmo/tgbotapi/types/gifts/OwnedGift {
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$OwnedByBusinessAccount$Companion;
+	public synthetic fun getOwnedGiftId-FhTg01o ()Ljava/lang/String;
 	public abstract fun getOwnedGiftId-OyCYJok ()Ljava/lang/String;
 }
 
@@ -24448,6 +24465,7 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$Regular 
 	public abstract fun getCanBeUpgraded ()Z
 	public abstract fun getConvertStarCount ()Ljava/lang/Integer;
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Regular;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
 	public abstract fun getPrepaidUpgradeStarCount ()Ljava/lang/Integer;
 	public abstract fun getUniqueGiftNumber ()Ljava/lang/Integer;
 	public abstract fun getWasRefunded ()Z
@@ -24576,6 +24594,7 @@ public abstract interface class dev/inmo/tgbotapi/types/gifts/OwnedGift$Unique :
 	public static final field Companion Ldev/inmo/tgbotapi/types/gifts/OwnedGift$Unique$Companion;
 	public abstract fun getCanBeTransferred ()Z
 	public abstract fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift$Unique;
+	public synthetic fun getGift ()Ldev/inmo/tgbotapi/types/gifts/Gift;
 	public abstract fun getNextTransferDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
 	public abstract fun getTransferStarCount ()Ljava/lang/Integer;
 }
@@ -25552,6 +25571,7 @@ public final class dev/inmo/tgbotapi/types/media/PollMedia$Serializer : kotlinx/
 
 public final class dev/inmo/tgbotapi/types/media/PollMedia$Serializer$Surrogate {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/PollMedia$Serializer$Surrogate$Companion;
+	public fun <init> ()V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/AnimationFile;Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/Link;Ldev/inmo/tgbotapi/types/files/LivePhotoFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/Sticker;Ldev/inmo/tgbotapi/types/files/VideoFile;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ldev/inmo/tgbotapi/types/venue/Venue;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/AnimationFile;Ldev/inmo/tgbotapi/types/files/AudioFile;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/Link;Ldev/inmo/tgbotapi/types/files/LivePhotoFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/Sticker;Ldev/inmo/tgbotapi/types/files/VideoFile;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ldev/inmo/tgbotapi/types/venue/Venue;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/AnimationFile;
@@ -28715,7 +28735,9 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/AnonymousGroupConte
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage {
 	public abstract fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getSenderBusinessBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
 	public fun getSentByBusinessConnectionOwner ()Z
 }
@@ -28731,6 +28753,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMess
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChannelContentMessage : dev/inmo/tgbotapi/types/message/abstracts/OptionallyFromUserMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage, dev/inmo/tgbotapi/types/message/abstracts/SignedMessage, dev/inmo/tgbotapi/types/message/abstracts/WithSenderChatMessage {
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public abstract fun isPaidPost ()Z
 }
@@ -28747,6 +28770,9 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelContentMessa
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesContentMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage {
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
 	public fun getDirectMessageThreadId-_JBF_Q4 ()J
 	public abstract fun getDirectMessageTopic ()Ldev/inmo/tgbotapi/types/chat/DirectMessagesTopic;
 }
@@ -28762,6 +28788,8 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessag
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage {
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelDirectMessagesChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/ChannelDirectMessagesEventMessage$DefaultImpls {
@@ -28900,8 +28928,12 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/ContentMessage$Defa
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/ForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyTopicMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
 	public fun getThreadCreatingInfo ()Ldev/inmo/tgbotapi/types/message/ChatEvents/forum/ForumTopicCreated;
+	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public abstract fun getThreadId-hDmiKeI ()J
 }
 
@@ -28987,7 +29019,9 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/FromUserMessage$Def
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage : dev/inmo/tgbotapi/types/message/abstracts/PublicContentMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage$DefaultImpls {
@@ -28999,6 +29033,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/GroupContentMessage
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/ChatEventMessage, dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 }
 
@@ -29244,6 +29279,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/PotentiallyFromUser
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PrivateContentMessage : dev/inmo/tgbotapi/types/message/abstracts/FromUserChatMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyGuestAnswerMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage, dev/inmo/tgbotapi/types/message/abstracts/PossiblyWithEffectMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;
 }
 
@@ -29257,6 +29293,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/PrivateContentMessa
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PrivateForumContentMessage : dev/inmo/tgbotapi/types/message/abstracts/PossiblyTopicMessage, dev/inmo/tgbotapi/types/message/abstracts/PrivateContentMessage {
+	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public abstract fun getThreadId-hDmiKeI ()J
 }
 
@@ -29270,6 +29307,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/PrivateForumContent
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PublicContentMessage : dev/inmo/tgbotapi/types/message/abstracts/PossiblySentViaBotCommonMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPublicChat;
 }
 
@@ -29295,6 +29333,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/RequestGuestContent
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/RequestGuestMessage : dev/inmo/tgbotapi/abstracts/types/WithOptionalGuestQueryId, dev/inmo/tgbotapi/types/message/abstracts/Message {
 	public abstract fun getGuestQueryId-87nd9ik ()Ljava/lang/String;
+	public synthetic fun getGuestQueryId-BCLlPIY ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/RequestGuestMessage$DefaultImpls {
@@ -29333,6 +29372,8 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/SuggestedChannelDir
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/SupergroupEventMessage : dev/inmo/tgbotapi/types/message/abstracts/GroupEventMessage {
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
+	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewSupergroupChat;
 }
 
@@ -29466,7 +29507,9 @@ public final class dev/inmo/tgbotapi/types/message/content/AudioContent$Companio
 
 public abstract interface class dev/inmo/tgbotapi/types/message/content/AudioMediaGroupPartContent : dev/inmo/tgbotapi/types/message/content/MediaGroupPartContent {
 	public abstract fun getMedia ()Ldev/inmo/tgbotapi/types/files/AudioFile;
+	public synthetic fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public abstract fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/AudioMediaGroupMemberTelegramMedia;
+	public synthetic fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/MediaGroupMemberTelegramMedia;
 }
 
 public final class dev/inmo/tgbotapi/types/message/content/AudioMediaGroupPartContent$DefaultImpls {
@@ -29608,7 +29651,9 @@ public final class dev/inmo/tgbotapi/types/message/content/DocumentContentKt {
 
 public abstract interface class dev/inmo/tgbotapi/types/message/content/DocumentMediaGroupPartContent : dev/inmo/tgbotapi/types/message/content/MediaGroupPartContent {
 	public abstract fun getMedia ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public synthetic fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
 	public abstract fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/DocumentMediaGroupMemberTelegramMedia;
+	public synthetic fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/MediaGroupMemberTelegramMedia;
 }
 
 public final class dev/inmo/tgbotapi/types/message/content/DocumentMediaGroupPartContent$DefaultImpls {
@@ -30365,6 +30410,7 @@ public final class dev/inmo/tgbotapi/types/message/content/VideoNoteContent$Comp
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/content/VisualMediaGroupPartContent : dev/inmo/tgbotapi/types/message/content/MediaGroupPartContent, dev/inmo/tgbotapi/types/message/content/SpoilerableMediaContent, dev/inmo/tgbotapi/types/message/content/WithCustomizedCaptionMediaContent {
+	public synthetic fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/MediaGroupMemberTelegramMedia;
 	public abstract fun toMediaGroupMemberTelegramMedia ()Ldev/inmo/tgbotapi/types/media/VisualMediaGroupMemberTelegramMedia;
 }
 
@@ -34727,6 +34773,7 @@ public final class dev/inmo/tgbotapi/types/queries/callback/AbstractMessageCallb
 public abstract interface class dev/inmo/tgbotapi/types/queries/callback/CallbackQuery : dev/inmo/tgbotapi/abstracts/FromUser {
 	public abstract fun getChatInstance ()Ljava/lang/String;
 	public abstract fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
+	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public abstract fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -34754,6 +34801,7 @@ public final class dev/inmo/tgbotapi/types/queries/callback/GameShortNameCallbac
 
 public abstract interface class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/AbstractMessageCallbackQuery {
 	public abstract fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;
+	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
 public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery$DefaultImpls {
@@ -34876,6 +34924,7 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameS
 
 public abstract interface class dev/inmo/tgbotapi/types/queries/callback/MessageCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/AbstractMessageCallbackQuery {
 	public abstract fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
+	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 }
 
 public final class dev/inmo/tgbotapi/types/queries/callback/MessageCallbackQuery$DefaultImpls {
@@ -40524,11 +40573,14 @@ public final class dev/inmo/tgbotapi/types/update/ShippingQueryUpdate : dev/inmo
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseMessageUpdate {
+	public synthetic fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public abstract fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/ChatContentMessage;
+	public synthetic fun getData ()Ljava/lang/Object;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/BaseMessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public abstract fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
+	public synthetic fun getData ()Ljava/lang/Object;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseMessageUpdate {
@@ -40537,6 +40589,7 @@ public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/BaseSen
 
 public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/ChatMemberUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public abstract fun getData ()Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;
+	public synthetic fun getData ()Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
@@ -40646,6 +40699,7 @@ public final class dev/inmo/tgbotapi/types/webapps/WebAppInfo$Companion {
 
 public final class dev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage$Companion;
+	public fun <init> ()V
 	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-FuCAEeA ()Ljava/lang/String;
