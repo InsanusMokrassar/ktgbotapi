@@ -179,6 +179,7 @@ const val checklistTaskIdField = "checklist_task_id"
 const val pollOptionIdField = "poll_option_id"
 const val replyMarkupField = "reply_markup"
 const val disableContentTypeDetectionField = "disable_content_type_detection"
+@Deprecated("Bot API has no such parameter, use supportsStreamingField", ReplaceWith("supportsStreamingField", "dev.inmo.tgbotapi.types.supportsStreamingField"))
 const val supportStreamingField = "support_streaming"
 const val livePeriodField = "live_period"
 const val proximityAlertRadiusField = "proximity_alert_radius"
