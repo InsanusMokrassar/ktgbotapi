@@ -193,7 +193,7 @@ data class SendVideoData internal constructor(
     override val width: Int? = null,
     @SerialName(heightField)
     override val height: Int? = null,
-    @SerialName(supportStreamingField)
+    @SerialName(supportsStreamingField)
     override val supportsStreaming: Boolean = false,
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(messageThreadIdField)
