@@ -19,7 +19,7 @@ kslog = "2.1.0"
 versions = "0.65.0"
 
 github-release-plugin = "2.5.2"
-dokka = "2.2.0"
+dokka = "2.3.0"
 
 validator = "0.18.2"
 nmcp = "1.6.2"
