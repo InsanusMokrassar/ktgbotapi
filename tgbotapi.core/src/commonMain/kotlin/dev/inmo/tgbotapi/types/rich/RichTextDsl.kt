@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types.rich
 
+import dev.inmo.tgbotapi.types.payments.ton.TonAddress
+
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.TelegramDate
@@ -84,6 +86,10 @@ class RichTextBuilder {
     fun phone(text: String, phoneNumber: String) = add(RichTextPhoneNumber(RichTextPlain(text), phoneNumber))
     fun phone(phoneNumber: String, block: RichTextBuilder.() -> Unit) =
         add(RichTextPhoneNumber(buildRichText(block), phoneNumber))
+
+    fun tonAddress(text: String, address: TonAddress) = add(RichTextTonAddress(RichTextPlain(text), address))
+    fun tonAddress(address: TonAddress, block: RichTextBuilder.() -> Unit) =
+        add(RichTextTonAddress(buildRichText(block), address))
 
     fun bankCard(text: String, bankCardNumber: String) = add(RichTextBankCardNumber(RichTextPlain(text), bankCardNumber))
     fun bankCard(bankCardNumber: String, block: RichTextBuilder.() -> Unit) =
@@ -191,6 +197,9 @@ class RichBlocksBuilder {
 
     fun blockQuotation(credit: RichText? = null, block: RichBlocksBuilder.() -> Unit) =
         add(RichBlockBlockQuotation(buildRichBlocks(block), credit))
+
+    fun expandableBlockQuotation(credit: RichText? = null, block: RichBlocksBuilder.() -> Unit) =
+        add(RichBlockExpandableBlockQuotation(buildRichBlocks(block), credit))
 
     fun pullQuotation(credit: RichText? = null, block: RichTextBuilder.() -> Unit) =
         add(RichBlockPullQuotation(buildRichText(block), credit))

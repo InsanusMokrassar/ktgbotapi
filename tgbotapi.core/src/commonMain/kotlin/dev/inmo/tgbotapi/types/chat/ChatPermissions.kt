@@ -28,6 +28,7 @@ interface ChatPermissions {
     val canSendVideoNotes: Boolean?
     val canSendVoiceNotes: Boolean?
     val canSendPolls: Boolean?
+    /** Includes HTML widgets alongside animations, games, stickers and inline results. */
     val canSendOtherMessages: Boolean?
     val canAddWebPagePreviews: Boolean?
     val canChangeInfo: Boolean?

@@ -23,7 +23,7 @@ internal val TextContentMessageResultDeserializer: DeserializationStrategy<ChatC
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendTextMessage(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -58,7 +58,7 @@ fun SendTextMessage(
 )
 
 fun SendTextMessage(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -95,7 +95,7 @@ fun SendTextMessage(
 @Serializable
 data class SendTextMessage internal constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)
@@ -141,6 +141,7 @@ data class SendTextMessage internal constructor(
     }
 
     init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
         if (text.length !in textLength) {
             throwRangeError("Text length", textLength, text.length)
         }

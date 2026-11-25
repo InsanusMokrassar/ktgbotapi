@@ -3,6 +3,8 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputWidgetMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputSharedWidgetMessageContent
 import dev.inmo.tgbotapi.extensions.api.send.games.sendGame
 import dev.inmo.tgbotapi.extensions.api.send.media.*
 import dev.inmo.tgbotapi.extensions.api.send.payments.sendInvoice
@@ -54,13 +56,101 @@ public suspend fun TelegramBot.send(
     action: BotAction
 ): Unit = sendBotAction(chat, action)
 
+public suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    widget: InputWidgetMessageContent,
+    threadId: MessageThreadId? = chatId.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<WidgetContent> = sendWidget(
+    chatId = chatId,
+    widget = widget,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    widget: InputWidgetMessageContent,
+    threadId: MessageThreadId? = chat.id.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<WidgetContent> = sendWidget(
+    chat = chat,
+    widget = widget,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    widget: InputSharedWidgetMessageContent,
+    threadId: MessageThreadId? = chatId.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<WidgetContent> = sendSharedWidget(
+    chatId = chatId,
+    widget = widget,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+public suspend fun TelegramBot.send(
+    chat: Chat,
+    widget: InputSharedWidgetMessageContent,
+    threadId: MessageThreadId? = chat.id.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<WidgetContent> = sendSharedWidget(
+    chat = chat,
+    widget = widget,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
 /**
  * Will execute [sendRichMessage] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     richMessage: InputRichMessage,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -130,7 +220,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -175,7 +265,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -217,7 +307,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -313,7 +403,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -322,7 +412,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -365,7 +455,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -405,7 +495,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -497,7 +587,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -506,7 +596,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     audio: AudioFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -543,7 +633,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     audio: AudioFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -577,7 +667,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -657,7 +747,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -666,7 +756,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
@@ -701,7 +791,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
@@ -733,7 +823,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -809,7 +899,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -818,7 +908,7 @@ public suspend inline fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
@@ -853,7 +943,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
@@ -885,7 +975,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -894,7 +984,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     contact: Contact,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -925,7 +1015,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     contact: Contact,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -953,7 +1043,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1029,7 +1119,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1097,7 +1187,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1216,7 +1306,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -1253,7 +1343,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -1287,7 +1377,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1367,7 +1457,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1376,7 +1466,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -1411,7 +1501,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -1443,7 +1533,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1519,7 +1609,7 @@ public suspend inline fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     disableContentTypeDetection = disableContentTypeDetection,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1716,7 +1806,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
@@ -1749,7 +1839,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
@@ -1779,7 +1869,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1788,7 +1878,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -1819,7 +1909,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -1847,7 +1937,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1919,7 +2009,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1987,7 +2077,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -1996,7 +2086,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -2031,7 +2121,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -2063,7 +2153,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2139,7 +2229,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2148,7 +2238,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2181,7 +2271,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2211,7 +2301,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2219,7 +2309,7 @@ public suspend fun TelegramBot.send(
  * as a builder for that
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2254,7 +2344,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2286,7 +2376,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2294,7 +2384,7 @@ public suspend fun TelegramBot.send(
  * as a builder for that
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2329,7 +2419,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -2361,7 +2451,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2433,7 +2523,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2701,7 +2791,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2775,7 +2865,7 @@ public suspend fun TelegramBot.send(
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
     builderBody = builderBody,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -2784,7 +2874,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -2823,7 +2913,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -2859,7 +2949,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3103,7 +3193,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3112,7 +3202,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -3151,7 +3241,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -3187,7 +3277,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3271,7 +3361,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3280,7 +3370,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -3317,7 +3407,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -3351,7 +3441,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3431,7 +3521,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3440,7 +3530,7 @@ public suspend inline fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photoSize: PhotoSize,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -3477,7 +3567,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     photoSize: PhotoSize,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -3511,7 +3601,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -3591,7 +3681,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -4737,7 +4827,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -4770,7 +4860,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -4800,7 +4890,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -4873,7 +4963,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -4882,7 +4972,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     livePeriod: Seconds,
@@ -4923,7 +5013,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     livePeriod: Seconds,
@@ -4961,7 +5051,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -4970,7 +5060,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: Location,
     livePeriod: Seconds,
     horizontalAccuracy: Meters? = null,
@@ -5009,7 +5099,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: Location,
     livePeriod: Seconds,
     horizontalAccuracy: Meters? = null,
@@ -5045,7 +5135,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5133,7 +5223,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5217,7 +5307,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5226,7 +5316,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     title: String,
@@ -5271,7 +5361,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     title: String,
@@ -5313,7 +5403,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5409,7 +5499,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5418,7 +5508,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     title: String,
     address: String,
@@ -5461,7 +5551,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     title: String,
     address: String,
@@ -5501,7 +5591,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5593,7 +5683,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5602,7 +5692,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -5633,7 +5723,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -5661,7 +5751,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5729,7 +5819,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5738,7 +5828,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -5779,7 +5869,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -5817,7 +5907,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5905,7 +5995,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -5914,7 +6004,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     video: VideoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -5953,7 +6043,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     video: VideoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -5989,7 +6079,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6073,7 +6163,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6082,7 +6172,7 @@ public suspend inline fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     livePhoto: LivePhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -6121,7 +6211,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     livePhoto: LivePhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -6157,7 +6247,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6241,7 +6331,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6250,7 +6340,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     livePhoto: LivePhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -6287,7 +6377,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     livePhoto: LivePhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -6321,7 +6411,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6401,7 +6491,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6410,7 +6500,7 @@ public suspend inline fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -6441,7 +6531,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -6469,7 +6559,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6537,7 +6627,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6546,7 +6636,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -6581,7 +6671,7 @@ public suspend fun TelegramBot.send(
 
 
 public suspend fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -6613,7 +6703,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6689,7 +6779,7 @@ public suspend fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6698,7 +6788,7 @@ public suspend fun TelegramBot.send(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -6731,7 +6821,7 @@ public suspend inline fun TelegramBot.send(
 
 
 public suspend inline fun TelegramBot.send(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -6761,7 +6851,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**
@@ -6833,7 +6923,7 @@ public suspend inline fun TelegramBot.send(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) }
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage)
 )
 
 /**

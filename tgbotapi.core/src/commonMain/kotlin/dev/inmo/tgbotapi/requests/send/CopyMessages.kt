@@ -37,6 +37,7 @@ fun CopyMessages(
     removeCaption = removeCaption
 )
 
+/** Telegram skips widget messages when copying a batch of messages. */
 @Serializable
 data class CopyMessages (
     @SerialName(chatIdField)

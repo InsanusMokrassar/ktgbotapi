@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.message.content.RichMessageContent
 import dev.inmo.tgbotapi.types.rich.InputRichMessage
 
 public suspend fun TelegramBot.sendRichMessage(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     richMessage: InputRichMessage,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,

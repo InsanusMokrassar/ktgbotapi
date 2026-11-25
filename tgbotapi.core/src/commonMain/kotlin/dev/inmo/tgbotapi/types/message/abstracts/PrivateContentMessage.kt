@@ -7,6 +7,7 @@ interface PrivateContentMessage<T: MessageContent> : PossiblySentViaBotCommonMes
     FromUserChatMessage,
     PossiblyOfflineMessage,
     PossiblyWithEffectMessage,
-    PossiblyGuestAnswerMessage {
+    PossiblyGuestAnswerMessage,
+    PossiblyEphemeralMessage {
     override val chat: PreviewPrivateChat
 }

@@ -23,6 +23,8 @@ object InputMessageContentSerializer : KSerializer<InputMessageContent> {
             is InputVenueMessageContent -> InputVenueMessageContent.serializer().serialize(encoder, value)
             is InputInvoiceMessageContent -> InputInvoiceMessageContent.serializer().serialize(encoder, value)
             is InputRichMessageContent -> InputRichMessageContent.serializer().serialize(encoder, value)
+            is InputWidgetMessageContent -> InputWidgetMessageContent.serializer().serialize(encoder, value)
+            is InputSharedWidgetMessageContent -> InputSharedWidgetMessageContent.serializer().serialize(encoder, value)
         }
     }
 

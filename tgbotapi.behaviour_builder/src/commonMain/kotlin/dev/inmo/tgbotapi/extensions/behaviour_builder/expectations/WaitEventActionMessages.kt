@@ -6,6 +6,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+import dev.inmo.tgbotapi.types.PaidMessagesWaived
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
 import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
@@ -244,6 +246,16 @@ fun BehaviourContext.waitPaidMessagePriceChangedMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<PaidMessagePriceChanged>(initRequest, errorFactory)
+
+fun BehaviourContext.waitPaidMessagesWaivedMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<PaidMessagesWaived>(initRequest, errorFactory)
+
+fun BehaviourContext.waitTonWalletTransferMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<TonWalletTransfer>(initRequest, errorFactory)
 
 fun BehaviourContext.waitRegularGiftSentOrReceivedMessages(
     initRequest: Request<*>? = null,

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.*
@@ -19,7 +20,7 @@ import dev.inmo.tgbotapi.types.message.content.DocumentContent
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumb: InputFile? = null,
     text: String? = null,
@@ -59,7 +60,7 @@ public suspend fun TelegramBot.sendDocument(
 )
 
 public suspend fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumb: InputFile? = null,
     text: String? = null,
@@ -87,7 +88,7 @@ public suspend fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -169,7 +170,7 @@ public suspend fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -185,7 +186,7 @@ public suspend fun TelegramBot.sendDocument(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -222,7 +223,7 @@ public suspend fun TelegramBot.sendDocument(
 )
 
 public suspend fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -248,7 +249,7 @@ public suspend fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -326,7 +327,7 @@ public suspend fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -342,7 +343,7 @@ public suspend fun TelegramBot.sendDocument(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
@@ -380,7 +381,7 @@ public suspend inline fun TelegramBot.sendDocument(
 )
 
 public suspend inline fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
@@ -406,7 +407,7 @@ public suspend inline fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -484,7 +485,7 @@ public suspend inline fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -500,7 +501,7 @@ public suspend inline fun TelegramBot.sendDocument(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -535,7 +536,7 @@ public suspend inline fun TelegramBot.sendDocument(
 )
 
 public suspend inline fun TelegramBot.sendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: DocumentFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -559,7 +560,7 @@ public suspend inline fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -633,7 +634,7 @@ public suspend inline fun TelegramBot.sendDocument(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

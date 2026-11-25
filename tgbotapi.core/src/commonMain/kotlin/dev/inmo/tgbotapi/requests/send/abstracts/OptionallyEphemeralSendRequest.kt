@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.requests.send.abstracts
 import dev.inmo.tgbotapi.types.EphemeralMessageParameters
 
 /**
- * Inheritors of this interface may be sent as ephemeral messages by passing [ephemeralMessageParameters].
- * Ephemeral messages are available for groups/supergroups only.
+ * [ephemeralMessageParameters] selects a user in a group or an ephemeral reply to a callback query.
+ * Callback-only replies work outside channel direct messages chats and can omit the destination chat ID.
  */
 interface OptionallyEphemeralSendRequest {
     val ephemeralMessageParameters: EphemeralMessageParameters?

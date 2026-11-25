@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import korlibs.time.DateTime
@@ -290,7 +291,7 @@ internal fun ScheduledCloseInfo.checkSendData() {
     }
 }
 
-sealed class SendPoll : SendContentMessageRequest<ChatContentMessage<PollContent>>,
+sealed class SendPoll : ChatRequest, SendContentMessageRequest<ChatContentMessage<PollContent>>,
     ReplyingMarkupSendMessageRequest<ChatContentMessage<PollContent>>, TextedInput {
     abstract val question: String
     override val text: String

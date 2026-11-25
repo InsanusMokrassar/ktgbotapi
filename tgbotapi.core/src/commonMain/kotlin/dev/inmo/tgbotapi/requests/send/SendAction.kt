@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.abstracts.types.OptionallyBusinessConnectionRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendChatMessageRequest
@@ -25,7 +26,7 @@ data class SendAction(
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId
-): SendChatMessageRequest<Unit>, OptionallyMessageThreadRequest, OptionallyBusinessConnectionRequest {
+): ChatRequest, SendChatMessageRequest<Unit>, OptionallyMessageThreadRequest, OptionallyBusinessConnectionRequest {
     override fun method(): String = "sendChatAction"
     override val resultDeserializer: DeserializationStrategy<Unit>
         get() = UnitFromBooleanSerializer

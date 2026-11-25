@@ -18,7 +18,7 @@ import kotlinx.serialization.*
 
 @Suppress("FunctionName")
 fun SendSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -64,7 +64,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendStickerByFileId internal constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(stickerField)
     val sticker: InputFile,
     @OptIn(ExperimentalSerializationApi::class)
@@ -96,6 +96,10 @@ data class SendStickerByFileId internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendContentMessageRequest<ChatContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<StickerContent>>, OptionallyEphemeralSendRequest {
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     override fun method(): String = "sendSticker"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<StickerContent>>
         get() = commonResultDeserializer

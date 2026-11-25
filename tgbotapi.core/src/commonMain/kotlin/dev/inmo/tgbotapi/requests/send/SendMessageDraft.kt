@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.kslog.common.w
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.*
@@ -88,7 +89,7 @@ data class SendMessageDraft internal constructor(
     val canStop: Boolean? = null,
     @SerialName(keepOnStopField)
     val keepOnStop: Boolean? = null
-) : SendChatMessageRequest<Unit>,
+) : ChatRequest, SendChatMessageRequest<Unit>,
     TextedOutput,
     OptionallyMessageThreadRequest
 {

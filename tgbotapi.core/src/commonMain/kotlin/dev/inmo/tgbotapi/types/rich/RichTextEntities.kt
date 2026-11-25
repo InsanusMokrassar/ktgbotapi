@@ -1,5 +1,8 @@
 package dev.inmo.tgbotapi.types.rich
 
+import dev.inmo.tgbotapi.types.addressField
+import dev.inmo.tgbotapi.types.payments.ton.TonAddress
+
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.DateTimeEntityFormatting
 import dev.inmo.tgbotapi.types.alternativeTextField
@@ -44,9 +47,13 @@ data class RichTextButton(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = button.text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(button)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(button)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -70,9 +77,13 @@ data class RichTextBold(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -96,9 +107,13 @@ data class RichTextItalic(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -122,9 +137,13 @@ data class RichTextUnderline(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -148,9 +167,13 @@ data class RichTextStrikethrough(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -174,9 +197,13 @@ data class RichTextSpoiler(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -200,9 +227,13 @@ data class RichTextSubscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -226,9 +257,13 @@ data class RichTextSuperscript(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -252,9 +287,13 @@ data class RichTextMarked(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -278,9 +317,13 @@ data class RichTextCode(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -309,9 +352,13 @@ data class RichTextDateTime(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, unixTime, dateTimeFormat)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, unixTime, dateTimeFormat)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = text.isValidRichMessageButtonText
 
     companion object {
@@ -343,9 +390,13 @@ data class RichTextTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, user)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, user)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -373,9 +424,13 @@ data class RichTextCustomEmoji(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = alternativeText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(customEmojiId, alternativeText)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(customEmojiId, alternativeText)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = true
 
     companion object {
@@ -401,9 +456,13 @@ data class RichTextMathematicalExpression(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = expression
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(expression)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(expression)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -429,9 +488,13 @@ data class RichTextUrl(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, url)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, url)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -457,9 +520,13 @@ data class RichTextEmailAddress(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, emailAddress)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, emailAddress)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -485,15 +552,46 @@ data class RichTextPhoneNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, phoneNumber)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, phoneNumber)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
         const val TYPE = "phone_number"
         fun markdown(text: RichText, phoneNumber: String): String = "[${text.markdown}](tel:$phoneNumber)"
         fun html(text: RichText, phoneNumber: String): String = "<a href=\"tel:$phoneNumber\">${text.html}</a>"
+    }
+}
+
+/**
+ * A [RichTextEntity] containing a TON address and its display text.
+ */
+@Serializable
+data class RichTextTonAddress(
+    @SerialName(textField)
+    val text: RichText,
+    @SerialName(addressField)
+    val address: TonAddress
+) : RichTextEntity {
+    @EncodeDefault
+    @SerialName(typeField)
+    override val type: String = TYPE
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
+    override val rawText: String get() = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
+    override val markdown: String get() = text.markdown
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
+    override val html: String get() = text.html
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
+    override val isValidRichMessageButtonText: Boolean get() = false
+
+    companion object {
+        const val TYPE = "ton_address"
     }
 }
 
@@ -513,9 +611,13 @@ data class RichTextBankCardNumber(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -541,9 +643,13 @@ data class RichTextMention(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -569,9 +675,13 @@ data class RichTextHashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -597,9 +707,13 @@ data class RichTextCashtag(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -625,9 +739,13 @@ data class RichTextBotCommand(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -651,9 +769,13 @@ data class RichTextAnchor(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = ""
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(name)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(name)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -679,9 +801,13 @@ data class RichTextAnchorLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, anchorName)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, anchorName)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -707,9 +833,13 @@ data class RichTextReference(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, name)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, name)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {
@@ -735,9 +865,13 @@ data class RichTextReferenceLink(
     @SerialName(typeField)
     override val type: String = TYPE
 
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val rawText: String = text.rawText
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val markdown: String = markdown(text, referenceName)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val html: String = html(text, referenceName)
+    @EncodeDefault(EncodeDefault.Mode.NEVER)
     override val isValidRichMessageButtonText: Boolean = false
 
     companion object {

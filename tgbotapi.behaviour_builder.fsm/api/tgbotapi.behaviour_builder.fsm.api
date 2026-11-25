@@ -30,6 +30,8 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourConte
 	public static fun getLog (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Ldev/inmo/kslog/common/KSLog;
 	public static fun getMessageMediaGroupsFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
 	public static fun getScope (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/CoroutineScope;
+	public static fun getSharedWidgetQueriesFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
+	public static fun getWidgetQueriesFlow (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;)Lkotlinx/coroutines/flow/Flow;
 	public static fun launchStateHandling (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun launchStateHandling (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun start (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContextWithFSM;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -119,11 +121,13 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/DefaultBehavio
 	public fun getPollsFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getPreCheckoutQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public fun getSharedWidgetQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getShippingQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun getStateInitialAction ()Lkotlin/jvm/functions/Function3;
 	public fun getSubcontextInitialAction ()Lkotlin/jvm/functions/Function3;
 	public fun getTriggersHolder ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/handlers_registrar/TriggersHolder;
 	public fun getUnknownUpdatesFlow ()Lkotlinx/coroutines/flow/Flow;
+	public fun getWidgetQueriesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public fun handleState (Ldev/inmo/micro_utils/fsm/common/StatesMachine;Ldev/inmo/micro_utils/fsm/common/State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun launchStateHandling (Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun launchStateHandling (Ldev/inmo/micro_utils/fsm/common/State;Ljava/util/List;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

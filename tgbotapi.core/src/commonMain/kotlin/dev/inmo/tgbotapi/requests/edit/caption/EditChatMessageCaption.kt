@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.requests.edit.caption
 
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
-import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializer
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -12,12 +11,14 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import dev.inmo.tgbotapi.types.message.content.TextedContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
 const val editMessageCaptionMethod = "editMessageCaption"
+private val captionedMessageDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<TextedContent>>()
 
 fun EditChatMessageCaption(
     chatId: ChatIdentifier,
@@ -56,6 +57,7 @@ fun EditChatMessageCaption(
     replyMarkup = replyMarkup
 )
 
+/** Edits a chat message's caption. The returned [TextedContent] can contain media, paid media or a widget. */
 @ConsistentCopyVisibility
 @Serializable
 data class EditChatMessageCaption internal constructor(
@@ -75,14 +77,14 @@ data class EditChatMessageCaption internal constructor(
     override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage<MediaContent>, WithCustomizableCaptionRequest<ContentMessage<MediaContent>>, EditTextChatMessage, EditReplyMessage {
+) : EditChatMessage<TextedContent>, WithCustomizableCaptionRequest<ContentMessage<TextedContent>>, EditTextChatMessage, EditReplyMessage {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageCaptionMethod
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>
-        get() = MediaContentMessageResultDeserializer
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<TextedContent>>
+        get() = captionedMessageDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

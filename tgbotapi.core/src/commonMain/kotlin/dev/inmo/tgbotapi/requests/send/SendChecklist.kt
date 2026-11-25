@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.abstracts.types.AllowPaidBroadcast
 import dev.inmo.tgbotapi.abstracts.types.DisableNotification
 import dev.inmo.tgbotapi.abstracts.types.OptionallyWithEffectId
@@ -42,7 +43,7 @@ data class SendChecklist (
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendChatMessageRequest<ChatContentMessage<ChecklistContent>>,
+) : ChatRequest, SendChatMessageRequest<ChatContentMessage<ChecklistContent>>,
     WithReplyParameters,
     DisableNotification,
     ProtectContent,

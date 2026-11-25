@@ -33,7 +33,7 @@ internal val RichMessageContentMessageResultDeserializer: DeserializationStrateg
 @Serializable
 data class SendRichMessage(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
     @OptIn(ExperimentalSerializationApi::class)
@@ -66,6 +66,10 @@ data class SendRichMessage(
     ReplyingMarkupSendMessageRequest<ChatContentMessage<RichMessageContent>>,
     MultipartRequest.Common<ChatContentMessage<RichMessageContent>>,
     OptionallyEphemeralSendRequest {
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     override fun method(): String = "sendRichMessage"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<RichMessageContent>>
         get() = RichMessageContentMessageResultDeserializer

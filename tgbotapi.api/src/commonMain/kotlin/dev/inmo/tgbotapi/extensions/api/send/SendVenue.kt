@@ -19,7 +19,7 @@ import dev.inmo.tgbotapi.types.venue.Venue
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     title: String,
@@ -65,7 +65,7 @@ public suspend fun TelegramBot.sendVenue(
 )
 
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     title: String,
@@ -100,7 +100,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -194,7 +194,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -209,7 +209,7 @@ public suspend fun TelegramBot.sendVenue(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     title: String,
     address: String,
@@ -252,7 +252,7 @@ public suspend fun TelegramBot.sendVenue(
 )
 
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     location: StaticLocation,
     title: String,
     address: String,
@@ -285,7 +285,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -376,7 +376,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -391,7 +391,7 @@ public suspend fun TelegramBot.sendVenue(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -423,7 +423,7 @@ public suspend fun TelegramBot.sendVenue(
 )
 
 public suspend fun TelegramBot.sendVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -444,7 +444,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -510,7 +510,7 @@ public suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

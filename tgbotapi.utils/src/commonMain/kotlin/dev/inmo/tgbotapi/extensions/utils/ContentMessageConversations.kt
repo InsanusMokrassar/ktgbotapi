@@ -23,6 +23,7 @@ fun Flow<ContentMessage<*>>.onlyStickerContentMessages() = withContentType<Stick
 fun Flow<ContentMessage<*>>.onlyTextContentMessages() = withContentType<TextContent>()
 fun Flow<ContentMessage<*>>.onlyStoryContentMessages() = withContentType<StoryContent>()
 fun Flow<ContentMessage<*>>.onlyRichMessageContentMessages() = withContentType<RichMessageContent>()
+fun Flow<ContentMessage<*>>.onlyWidgetContentMessages() = withContentType<WidgetContent>()
 fun Flow<ContentMessage<*>>.onlyVenueContentMessages() = withContentType<VenueContent>()
 fun Flow<ContentMessage<*>>.onlyVideoContentMessages() = withContentType<VideoContent>()
 fun Flow<ContentMessage<*>>.onlyLivePhotoContentMessages() = withContentType<LivePhotoContent>()

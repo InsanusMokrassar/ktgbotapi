@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
+import dev.inmo.tgbotapi.types.rich.RichText
 import dev.inmo.tgbotapi.utils.extensions.makeSourceString
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -49,6 +50,12 @@ sealed interface ReplyParameters {
         val quotePosition: Int? = null,
         override val checklistTaskId: ChecklistTaskId? = null,
         override val pollOptionId: PollOptionPersistentId? = null,
+        /**
+         * Rich-text selections in source order, up to 32 selections and 1024 characters in total.
+         * A nonempty list takes precedence over the plain quote and formatting fields.
+         * [quotePosition] is a UTF-16 offset in the quotable texts joined with line feeds.
+         */
+        val quoteRichTexts: List<RichText>? = null,
     ) : WithMessageId, ReplyParameters, TextedInput {
         override val text: String?
             get() = quote
@@ -87,13 +94,14 @@ sealed interface ReplyParameters {
         )
 
         operator fun invoke(
-            chatIdentifier: ChatIdentifier,
+            chatIdentifier: ChatIdentifier? = null,
             messageId: MessageId,
             entities: TextSourcesList,
             allowSendingWithoutReply: Boolean? = null,
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = Chat(
             chatIdentifier,
             messageId,
@@ -103,7 +111,8 @@ sealed interface ReplyParameters {
             entities.toRawMessageEntities(),
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -113,6 +122,7 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             metaInfo.chatId,
             metaInfo.messageId,
@@ -120,7 +130,8 @@ sealed interface ReplyParameters {
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -130,17 +141,19 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             message.metaInfo,
             entities,
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
-            chatIdentifier: ChatIdentifier,
+            chatIdentifier: ChatIdentifier? = null,
             messageId: MessageId,
             quote: String,
             quoteParseMode: ParseMode,
@@ -148,6 +161,7 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = Chat(
             chatIdentifier,
             messageId,
@@ -157,7 +171,8 @@ sealed interface ReplyParameters {
             null,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -168,6 +183,7 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             metaInfo.chatId,
             metaInfo.messageId,
@@ -176,7 +192,8 @@ sealed interface ReplyParameters {
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -187,6 +204,7 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             message.metaInfo,
             quote,
@@ -194,16 +212,18 @@ sealed interface ReplyParameters {
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
-            chatIdentifier: ChatIdentifier,
+            chatIdentifier: ChatIdentifier? = null,
             messageId: MessageId,
             allowSendingWithoutReply: Boolean? = null,
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = Chat(
             chatIdentifier,
             messageId,
@@ -213,7 +233,8 @@ sealed interface ReplyParameters {
             null,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -222,13 +243,15 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             metaInfo.chatId,
             metaInfo.messageId,
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
 
         operator fun invoke(
@@ -237,12 +260,14 @@ sealed interface ReplyParameters {
             quotePosition: Int? = null,
             checklistTaskId: ChecklistTaskId? = null,
             pollOptionId: PollOptionPersistentId? = null,
+            quoteRichTexts: List<RichText>? = null,
         ): Chat = invoke(
             message.metaInfo,
             allowSendingWithoutReply,
             quotePosition,
             checklistTaskId,
-            pollOptionId
+            pollOptionId,
+            quoteRichTexts
         )
     }
 
@@ -256,6 +281,7 @@ sealed interface ReplyParameters {
             @SerialName(quoteParseModeField) val quoteParseMode: ParseMode? = null,
             @SerialName(quoteEntitiesField) val quoteEntities: List<RawMessageEntity>? = null,
             @SerialName(quotePositionField) val quotePosition: Int? = null,
+            @SerialName(quoteRichTextsField) val quoteRichTexts: List<RichText>? = null,
             @SerialName(checklistTaskIdField) val checklistTaskId: ChecklistTaskId? = null,
             @SerialName(pollOptionIdField) val pollOptionId: PollOptionPersistentId? = null,
             @SerialName(ephemeralMessageIdField) val ephemeralMessageId: EphemeralMessageId? = null,
@@ -283,6 +309,7 @@ sealed interface ReplyParameters {
                     quoteParseMode = surrogate.quoteParseMode,
                     quoteEntities = surrogate.quoteEntities,
                     quotePosition = surrogate.quotePosition,
+                    quoteRichTexts = surrogate.quoteRichTexts,
                     checklistTaskId = surrogate.checklistTaskId,
                     pollOptionId = surrogate.pollOptionId
                 )
@@ -300,6 +327,7 @@ sealed interface ReplyParameters {
                     quoteParseMode = value.quoteParseMode,
                     quoteEntities = value.quoteEntities,
                     quotePosition = value.quotePosition,
+                    quoteRichTexts = value.quoteRichTexts,
                     checklistTaskId = value.checklistTaskId,
                     pollOptionId = value.pollOptionId
                 )

@@ -28,11 +28,10 @@ import kotlin.jvm.JvmName
 
 // Ephemeral-only replies
 //
-// Every overload requires replyInChatId, an EphemeralMessageParameters object, and replyToEphemeralMessageId because no
-// source message supplies ephemeral reply routing.
+// Supply the ephemeral message ID and recipient parameters. A callback-only recipient can omit replyInChatId.
 
 public suspend inline fun TelegramBot.replyRichMessage(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
@@ -70,7 +69,7 @@ public suspend inline fun TelegramBot.replyRichMessage(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
@@ -106,7 +105,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     phoneNumber: String,
@@ -148,7 +147,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     contact: Contact,
@@ -186,7 +185,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     latitude: Double,
@@ -226,7 +225,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     location: StaticLocation,
@@ -264,7 +263,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     text: String,
@@ -306,7 +305,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
@@ -346,7 +345,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     separator: TextSource? = null,
@@ -385,7 +384,7 @@ public suspend fun TelegramBot.reply(
 )
 
 public suspend fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     separator: String,
@@ -424,7 +423,7 @@ public suspend fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     latitude: Double,
@@ -476,7 +475,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     location: StaticLocation,
@@ -527,7 +526,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     venue: Venue,
@@ -565,7 +564,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithAnimation(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: InputFile,
@@ -619,7 +618,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: AnimationFile,
@@ -671,7 +670,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithAnimation(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: InputFile,
@@ -723,7 +722,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: AnimationFile,
@@ -773,7 +772,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithAudio(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: InputFile,
@@ -823,7 +822,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: AudioFile,
@@ -867,7 +866,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithAudio(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: InputFile,
@@ -915,7 +914,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: AudioFile,
@@ -957,7 +956,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithDocument(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: InputFile,
@@ -1003,7 +1002,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: DocumentFile,
@@ -1047,7 +1046,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithDocument(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: InputFile,
@@ -1091,7 +1090,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: DocumentFile,
@@ -1133,7 +1132,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithPhoto(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     fileId: InputFile,
@@ -1179,7 +1178,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     photo: PhotoFile,
@@ -1225,7 +1224,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     photoSize: PhotoSize,
@@ -1271,7 +1270,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithPhoto(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     fileId: InputFile,
@@ -1315,7 +1314,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     photo: PhotoFile,
@@ -1359,7 +1358,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     photoSize: PhotoSize,
@@ -1403,7 +1402,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithSticker(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     sticker: InputFile,
@@ -1443,7 +1442,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     sticker: Sticker,
@@ -1483,7 +1482,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithVideo(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: InputFile,
@@ -1539,7 +1538,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: VideoFile,
@@ -1587,7 +1586,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithVideo(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: InputFile,
@@ -1641,7 +1640,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: VideoFile,
@@ -1687,7 +1686,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithLivePhoto(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: InputFile,
@@ -1735,7 +1734,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: LivePhotoFile,
@@ -1781,7 +1780,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithLivePhoto(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: InputFile,
@@ -1827,7 +1826,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: LivePhotoFile,
@@ -1871,7 +1870,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithVideoNote(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     videoNote: InputFile,
@@ -1915,7 +1914,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     videoNote: VideoNoteFile,
@@ -1953,7 +1952,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithVoice(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: InputFile,
@@ -1997,7 +1996,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: VoiceFile,
@@ -2039,7 +2038,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend inline fun TelegramBot.replyWithVoice(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: InputFile,
@@ -2081,7 +2080,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
 )
 
 public suspend inline fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: VoiceFile,
@@ -2121,7 +2120,7 @@ public suspend inline fun TelegramBot.reply(
 )
 
 public suspend fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     mediaFile: TelegramMediaFile,
@@ -2324,7 +2323,7 @@ public suspend fun TelegramBot.reply(
 }
 
 public suspend fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     content: TextedMediaContent,
@@ -2489,7 +2488,7 @@ public suspend fun TelegramBot.reply(
 }
 
 public suspend fun TelegramBot.reply(
-    replyInChatId: IdChatIdentifier,
+    replyInChatId: IdChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     replyToEphemeralMessageId: EphemeralMessageId,
     content: TextedMediaContent,

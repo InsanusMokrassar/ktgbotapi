@@ -1,10 +1,20 @@
 import dev.inmo.tgbotapi.extensions.utils.formatting.managedBotCreationLink
+import dev.inmo.tgbotapi.extensions.utils.formatting.makeBotInviteLink
+import dev.inmo.tgbotapi.extensions.utils.formatting.link
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.Username
 import io.ktor.http.encodeURLQueryComponent
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class LinksFormattingKtTest {
+
+    @Test
+    fun privateBotLinksUseTheUsernameWithoutAnAtSign() {
+        val username = Username("@fixture_bot")
+        assertEquals("https://t.me/botinvite/fixture_bot", makeBotInviteLink(username))
+        assertEquals("https://t.me/fixture_bot/27", username.link(MessageThreadId(27)))
+    }
 
     /**
      * Tests for the `managedBotCreationLink` function.

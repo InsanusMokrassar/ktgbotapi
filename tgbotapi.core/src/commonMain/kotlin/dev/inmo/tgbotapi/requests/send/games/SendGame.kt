@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.games
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
@@ -46,7 +47,7 @@ data class SendGame (
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendContentMessageRequest<ChatContentMessage<GameContent>>,
+) : ChatRequest, SendContentMessageRequest<ChatContentMessage<GameContent>>,
     WithReplyMarkup {
     override fun method(): String = "sendGame"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<GameContent>>

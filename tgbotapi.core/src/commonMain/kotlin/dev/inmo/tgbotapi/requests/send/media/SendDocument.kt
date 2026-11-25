@@ -34,7 +34,7 @@ import kotlinx.serialization.*
  * @see DocumentContent
  */
 fun SendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumbnail: InputFile? = null,
     text: String? = null,
@@ -96,7 +96,7 @@ fun SendDocument(
  * @see DocumentContent
  */
 fun SendDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     document: InputFile,
     thumbnail: InputFile? = null,
     entities: TextSourcesList,
@@ -163,7 +163,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(documentField)
     val document: InputFile,
     @SerialName(thumbnailField)
@@ -214,6 +214,7 @@ data class SendDocumentData internal constructor(
     }
 
     init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
         text ?.let {
             if (it.length !in captionLength) {
                 throwRangeError("Caption length", captionLength, it.length)

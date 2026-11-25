@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendSticker
 import dev.inmo.tgbotapi.types.*
@@ -19,7 +20,7 @@ import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -53,7 +54,7 @@ public suspend fun TelegramBot.sendSticker(
 )
 
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -75,7 +76,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -145,7 +146,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -161,7 +162,7 @@ public suspend fun TelegramBot.sendSticker(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -193,7 +194,7 @@ public suspend fun TelegramBot.sendSticker(
 )
 
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -215,7 +216,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -285,7 +286,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,

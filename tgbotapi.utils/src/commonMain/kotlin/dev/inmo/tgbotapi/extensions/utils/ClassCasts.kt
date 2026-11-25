@@ -2346,6 +2346,18 @@ inline fun <T> Update.whenMessageGenerationStoppedUpdate(block: (MessageGenerati
 inline fun Update.asMessageGenerationStoppedUpdate(): MessageGenerationStoppedUpdate? = this as? MessageGenerationStoppedUpdate
 
 @PreviewFeature
+inline fun <T> Update.whenWidgetQueryUpdate(block: (WidgetQueryUpdate) -> T) = asWidgetQueryUpdate()?.let(block)
+
+@PreviewFeature
+inline fun Update.asWidgetQueryUpdate(): WidgetQueryUpdate? = this as? WidgetQueryUpdate
+
+@PreviewFeature
+inline fun <T> Update.whenSharedWidgetQueryUpdate(block: (SharedWidgetQueryUpdate) -> T) = asSharedWidgetQueryUpdate()?.let(block)
+
+@PreviewFeature
+inline fun Update.asSharedWidgetQueryUpdate(): SharedWidgetQueryUpdate? = this as? SharedWidgetQueryUpdate
+
+@PreviewFeature
 inline fun Update.requireMessageGenerationStoppedUpdate(): MessageGenerationStoppedUpdate = this as MessageGenerationStoppedUpdate
 
 @PreviewFeature

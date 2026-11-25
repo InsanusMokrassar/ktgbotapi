@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents.forum
 
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
-import dev.inmo.tgbotapi.types.webAppNameField
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
+import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -19,6 +19,9 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
         get() = false
     val fromAttachmentMenu: Boolean
         get() = false
+    /** Bot owner who invited the user to the private chat. */
+    val inviter: User?
+        get() = null
 
     @Serializable
     object Other : WriteAccessAllowed
@@ -38,14 +41,24 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
             get() = true
     }
 
+    @Serializable(Companion.ForInvitation::class)
+    data class FromInvitation(override val inviter: User) : WriteAccessAllowed
+
     @Serializable
     private class WriteAccessAllowedRaw(
         val web_app_name: String? = null,
         val from_request: Boolean = false,
-        val from_attachment_menu: Boolean = false
+        val from_attachment_menu: Boolean = false,
+        val inviter: User? = null
     )
 
     companion object : KSerializer<WriteAccessAllowed> {
+        object ForInvitation : MapperSerializer<WriteAccessAllowed, FromInvitation>(
+            Companion, { value -> value }, { value ->
+                value as? FromInvitation ?: throw SerializationException("Expected a bot owner invitation")
+            }
+        )
+
         override val descriptor: SerialDescriptor
             get() = WriteAccessAllowedRaw.serializer().descriptor
 
@@ -53,15 +66,17 @@ sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
             val raw = WriteAccessAllowedRaw.serializer().deserialize(decoder)
 
             return when {
+                raw.inviter != null -> FromInvitation(raw.inviter)
                 raw.web_app_name != null -> FromWebAppLink(raw.web_app_name)
                 raw.from_request -> FromRequest
-                raw.from_attachment_menu -> Other
+                raw.from_attachment_menu -> FromAttachmentMenu
                 else -> Other
             }
         }
 
         override fun serialize(encoder: Encoder, value: WriteAccessAllowed) {
             val raw = when (value) {
+                is FromInvitation -> WriteAccessAllowedRaw(inviter = value.inviter)
                 FromAttachmentMenu -> WriteAccessAllowedRaw(from_attachment_menu = true)
                 FromRequest -> WriteAccessAllowedRaw(from_request = true)
                 Other -> WriteAccessAllowedRaw()

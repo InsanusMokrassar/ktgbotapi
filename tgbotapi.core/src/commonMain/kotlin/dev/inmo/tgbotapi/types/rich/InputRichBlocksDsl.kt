@@ -152,6 +152,10 @@ class InputRichBlocksBuilder {
     fun expandableBlockQuotation(credit: RichText? = null, block: RichTextBuilder.() -> Unit) =
         add(InputRichBlockExpandableBlockQuotation(buildRichText(block), credit))
 
+    /** Builds a quotation from arbitrary blocks. Supply the nested builder as the named `blocks` argument. */
+    fun expandableBlockQuotation(blocks: InputRichBlocksBuilder.() -> Unit, credit: RichText? = null) =
+        add(InputRichBlockExpandableBlockQuotation(buildInputRichBlocks(blocks), credit))
+
     fun pullQuotation(credit: RichText? = null, block: RichTextBuilder.() -> Unit) =
         add(InputRichBlockPullQuotation(buildRichText(block), credit))
 

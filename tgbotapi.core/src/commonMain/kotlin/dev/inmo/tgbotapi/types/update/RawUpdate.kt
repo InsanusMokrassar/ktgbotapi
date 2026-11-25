@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types.update
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
+import dev.inmo.tgbotapi.types.widgets.WidgetQuery
+import dev.inmo.tgbotapi.types.widgets.SharedWidgetQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
 import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
@@ -46,6 +48,10 @@ internal data class RawUpdate constructor(
     private val inline_query: RawInlineQuery? = null,
     private val chosen_inline_result: RawChosenInlineResult? = null,
     private val callback_query: RawCallbackQuery? = null,
+    @SerialName(UPDATE_WIDGET_QUERY)
+    private val widgetQuery: WidgetQuery? = null,
+    @SerialName(UPDATE_SHARED_WIDGET_QUERY)
+    private val sharedWidgetQuery: SharedWidgetQuery? = null,
     private val shipping_query: ShippingQuery? = null,
     private val pre_checkout_query: PreCheckoutQuery? = null,
     private val poll: Poll? = null,
@@ -114,6 +120,8 @@ internal data class RawUpdate constructor(
                 managed_bot != null -> ManagedBotUpdate(updateId, managed_bot)
                 subscription != null -> BotSubscriptionUpdatedUpdate(updateId, subscription)
                 stopped_message_generation != null -> MessageGenerationStoppedUpdate(updateId, stopped_message_generation)
+                widgetQuery != null -> WidgetQueryUpdate(updateId, widgetQuery)
+                sharedWidgetQuery != null -> SharedWidgetQueryUpdate(updateId, sharedWidgetQuery)
                 else -> UnknownUpdate(
                     updateId,
                     raw

@@ -104,6 +104,17 @@ fun <BC : BehaviourContext> BC.onEditedDice(
     scenarioReceiver
 )
 
+/** Starts a scenario for an edited HTML widget message. */
+fun <BC : BehaviourContext> BC.onEditedWidget(
+    initialFilter: CommonMessageFilter<WidgetContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, WidgetContentMessage, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in WidgetContentMessage, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, WidgetContentMessage>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, WidgetContentMessage>
+) = onEditedContent(
+    initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver
+)
+
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,

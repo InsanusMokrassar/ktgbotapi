@@ -18,7 +18,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendVenue(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(longitudeField)
@@ -67,8 +67,12 @@ data class SendVenue(
     PositionedSendMessageRequest<ChatContentMessage<VenueContent>>,
     OptionallyEphemeralSendRequest
 {
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     constructor(
-        chatId: ChatIdentifier,
+        chatId: ChatIdentifier? = null,
         venue: Venue,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -112,7 +116,7 @@ data class SendVenue(
 }
 
 fun Venue.toRequest(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

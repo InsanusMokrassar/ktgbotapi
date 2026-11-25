@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewChannelChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
-interface ChannelContentMessage<T: MessageContent> : PossiblySentViaBotCommonMessage<T>, SignedMessage, WithSenderChatMessage, OptionallyFromUserMessage {
+interface ChannelContentMessage<T: MessageContent> : PossiblySentViaBotCommonMessage<T>, SignedMessage, WithSenderChatMessage, OptionallyFromUserMessage, PossiblyEphemeralMessage {
     override val chat: PreviewChannelChat
     val isPaidPost: Boolean
     override val from: User?

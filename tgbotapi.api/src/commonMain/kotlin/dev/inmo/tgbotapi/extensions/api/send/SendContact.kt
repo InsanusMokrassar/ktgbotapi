@@ -17,7 +17,7 @@ import dev.inmo.tgbotapi.types.message.content.ContactContent
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendContact(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
@@ -53,7 +53,7 @@ public suspend fun TelegramBot.sendContact(
 )
 
 public suspend fun TelegramBot.sendContact(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
@@ -78,7 +78,7 @@ public suspend fun TelegramBot.sendContact(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -93,7 +93,7 @@ public suspend fun TelegramBot.sendContact(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendContact(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     contact: Contact,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -125,7 +125,7 @@ public suspend fun TelegramBot.sendContact(
 )
 
 public suspend fun TelegramBot.sendContact(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     contact: Contact,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -146,7 +146,7 @@ public suspend fun TelegramBot.sendContact(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -220,7 +220,7 @@ public suspend fun TelegramBot.sendContact(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -286,7 +286,7 @@ public suspend fun TelegramBot.sendContact(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

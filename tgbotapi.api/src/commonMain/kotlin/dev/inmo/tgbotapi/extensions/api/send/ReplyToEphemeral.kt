@@ -22,7 +22,7 @@ import dev.inmo.tgbotapi.types.rich.InputRichMessage
  * [dev.inmo.tgbotapi.types.message.abstracts.PossiblyEphemeralMessage] target automatically). The outgoing message
  * is itself sent as ephemeral according to [ephemeralMessageParameters] and replies to [ephemeralMessageId].
  *
- * Each helper has two forms: one taking an explicit [EphemeralMessageParameters] object plus [EphemeralMessageId], and a convenience overload
+ * A callback-only recipient may omit [chatId]. Each helper has two forms: one taking an explicit [EphemeralMessageParameters] object plus [EphemeralMessageId], and a convenience overload
  * taking an [dev.inmo.tgbotapi.types.EphemeralChatId] which sources the parameter object plus message identifier (throwing
  * [IllegalArgumentException] if it does not carry an `ephemeralMessageId`).
  *
@@ -30,7 +30,7 @@ import dev.inmo.tgbotapi.types.rich.InputRichMessage
  */
 
 public suspend fun TelegramBot.replyToEphemeralRichMessage(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
@@ -102,7 +102,7 @@ public suspend fun TelegramBot.replyToEphemeralRichMessage(
 )
 
 public suspend fun TelegramBot.replyToEphemeral(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
@@ -174,7 +174,7 @@ public suspend fun TelegramBot.replyToEphemeral(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.replyToEphemeral(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     text: String,
@@ -214,7 +214,7 @@ public suspend fun TelegramBot.replyToEphemeral(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithPhoto(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     photo: InputFile,
@@ -255,7 +255,7 @@ public suspend fun TelegramBot.replyToEphemeralWithPhoto(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     livePhoto: InputFile,
@@ -300,7 +300,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLivePhoto(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithAudio(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     audio: InputFile,
@@ -341,7 +341,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAudio(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithDocument(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     document: InputFile,
@@ -382,7 +382,7 @@ public suspend fun TelegramBot.replyToEphemeralWithDocument(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithVideo(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     video: InputFile,
@@ -423,7 +423,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideo(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     animation: InputFile,
@@ -464,7 +464,7 @@ public suspend fun TelegramBot.replyToEphemeralWithAnimation(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithVoice(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     voice: InputFile,
@@ -505,7 +505,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVoice(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     videoNote: InputFile,
@@ -538,7 +538,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVideoNote(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithSticker(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     sticker: InputFile,
@@ -574,7 +574,7 @@ public suspend fun TelegramBot.replyToEphemeralWithSticker(
  * Sends a static location (`live_period` is not supported for ephemeral messages, see [SendLocation.Live])
  */
 public suspend fun TelegramBot.replyToEphemeralWithLocation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     latitude: Double,
@@ -612,7 +612,7 @@ public suspend fun TelegramBot.replyToEphemeralWithLocation(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithVenue(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     latitude: Double,
@@ -657,7 +657,7 @@ public suspend fun TelegramBot.replyToEphemeralWithVenue(
 )
 
 public suspend fun TelegramBot.replyToEphemeralWithContact(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     ephemeralMessageParameters: EphemeralMessageParameters,
     ephemeralMessageId: EphemeralMessageId,
     phoneNumber: String,

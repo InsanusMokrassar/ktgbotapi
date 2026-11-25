@@ -573,6 +573,27 @@ inline fun EntitiesBuilder.phone(number: String) = add(dev.inmo.tgbotapi.types.m
  */
 inline fun EntitiesBuilder.phoneln(number: String) = phone(number) + newLine
 
+/** Adds a Telegram TON address entity. */
+inline fun EntitiesBuilder.tonAddress(text: String) = add(tonAddressTextSource(text))
+inline fun EntitiesBuilder.tonAddress(parts: TextSourcesList) = add(tonAddressTextSource(parts))
+inline fun EntitiesBuilder.tonAddress(vararg parts: TextSource) = add(tonAddressTextSource(*parts))
+inline fun EntitiesBuilder.tonAddress(noinline init: EntitiesBuilderBody) = tonAddress(buildEntities(separator, init))
+inline fun EntitiesBuilder.tonAddressln(text: String) = tonAddress(text) + newLine
+inline fun EntitiesBuilder.tonAddressln(parts: TextSourcesList) = tonAddress(parts) + newLine
+inline fun EntitiesBuilder.tonAddressln(vararg parts: TextSource) = tonAddress(*parts) + newLine
+inline fun EntitiesBuilder.tonAddressln(noinline init: EntitiesBuilderBody) = tonAddress(init) + newLine
+
+/** Adds a Telegram bank card number entity. */
+inline fun EntitiesBuilder.bankCardNumber(text: String) = add(bankCardNumberTextSource(text))
+inline fun EntitiesBuilder.bankCardNumber(parts: TextSourcesList) = add(bankCardNumberTextSource(parts))
+inline fun EntitiesBuilder.bankCardNumber(vararg parts: TextSource) = add(bankCardNumberTextSource(*parts))
+inline fun EntitiesBuilder.bankCardNumber(noinline init: EntitiesBuilderBody) = bankCardNumber(buildEntities(separator, init))
+inline fun EntitiesBuilder.bankCardNumberln(text: String) = bankCardNumber(text) + newLine
+inline fun EntitiesBuilder.bankCardNumberln(parts: TextSourcesList) = bankCardNumber(parts) + newLine
+inline fun EntitiesBuilder.bankCardNumberln(vararg parts: TextSource) = bankCardNumber(*parts) + newLine
+inline fun EntitiesBuilder.bankCardNumberln(noinline init: EntitiesBuilderBody) = bankCardNumber(init) + newLine
+
+
 
 /**
  * Add pre using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.preTextSource]

@@ -2,6 +2,61 @@
 
 ## 38.0.0
 
+**THIS UPDATE CONTAINS SUPPORT OF [TELEGRAM BOTS API 10.4](https://core.telegram.org/bots/api-changelog#november-9-2026) AND [TELEGRAM BOTS API 10.5](https://core.telegram.org/bots/api-changelog#november-22-2026)**
+
+**Breaking changes**:
+
+* `GetMe` and `TelegramBot.getMe()` now return `BotFullInfo` in place of `ExtendedBot`. The cached `BehaviourContext.botInfo()` returns `BotFullInfo?`
+* `SendChatMessageRequest` now extends `OptionalChatRequest`. The 14 ephemeral-capable send methods accept a nullable `chatId`, and `EphemeralMessageParameters.receiverUserId` is now nullable
+* `EditChatMessageCaption` now returns `ContentMessage<TextedContent>` (previously `ContentMessage<MediaContent>`). The same change applies to `editMessageCaption` overloads taking a chat and message ID or an `AccessibleMessage` and `TextSourcesList`
+* `RichBlockExpandableBlockQuotation` and `InputRichBlockExpandableBlockQuotation` replaced the `text` property with `blocks`
+* `AreaPosition` replaces the `StoryAreaPosition` class used by `StoryArea`. The old Kotlin name remains available as a deprecated typealias
+* Exhaustive `when` expressions over `TextedContent`, `InputMessageContent`, `RichTextEntity`, `MultilevelTextSource` and `WriteAccessAllowed` must handle the new widget, text entity and invitation variants
+
+**Migration advice**: Use `BotFullInfo` for the bot's own capabilities and `CommonBot` for bot users in updates. Handle nullable chat and receiver IDs when reading send requests. Pass a typed media or widget message to `editMessageCaption` to retain the content type. Read expandable quotation contents from `blocks`. Recompile JVM clients that use `StoryAreaPosition`
+
+**Compatibility note**: Both expandable quotation types accept the single-text constructor and decode stored Bot API 10.3 quotations by wrapping the text in a paragraph. `PrivateContentMessageImpl`, `PrivateForumContentMessageImpl` and `ChannelContentMessageImpl` append nullable ephemeral fields, preserving positional arguments and `componentN` order. Recompile JVM callers that construct or copy these message classes
+
+* `Core`:
+    * (`Widgets`) Added `Widget` and `WidgetContent` for HTML widget messages, `widget` parsing in `ReplyInfo.External`, and `InputWidgetMessageContent`/`InputSharedWidgetMessageContent` for inline results
+    * (`Widgets`) Added `WidgetQueryUpdate`/`SharedWidgetQueryUpdate` and the corresponding `widgetQueriesFlow`/`sharedWidgetQueriesFlow` for `WidgetQuery` and `SharedWidgetQuery`
+    * (`Widgets`) Added `WidgetQueryType` variants `Data`, `SignData` and `SentTransaction` for supplied data, wallet signatures and transaction notifications, plus `WidgetQueryWallet` for wallet details
+    * (`Widgets`) Added `SendWidget`, `SendSharedWidget`, `AnswerWidgetQuery`, `EditChatMessageWidgetData`, `EditInlineMessageWidgetData` and `EditSharedWidgetData` requests
+    * (`Widgets`) Documented widget copying restrictions on `CopyMessage`/`CopyMessages` and the widget permission on `ChatPermissions.canSendOtherMessages`
+    * (`Ephemeral messages`) Added callback-only destinations to all 14 supported send methods, including `SendRichMessage` and `SendLocation.Static`. Pass `EphemeralMessageParameters(callbackQueryId = id)` to omit the chat and receiver IDs
+    * (`Ephemeral messages`) Private chats, private topics and channel posts now retain `receiverUser` and `ephemeralMessageId` from callback replies through `PossiblyEphemeralMessage`
+    * (`Quotes from rich messages`) Added `TextQuote.richTexts` for received selections and `ReplyParameters.Chat.quoteRichTexts` for outgoing replies, with UTF-16 quote positions. Excluded cached renderings from outgoing rich-text JSON
+    * (`TON wallet`) Added `ExtendedPrivateChat.tonWalletCard`, `TonWalletCard`, `TonWalletCardSticker`, `TonNft` and `TonNftAttribute`. Wallet card stickers and story areas share `AreaPosition`
+    * (`TON wallet`) Added the `TonWalletTransfer` service message with a typed `TonAddress` for the peer and a decimal-string amount
+    * (`Chat share themes`) Added `ExtendedChat.shareTheme` with `ChatShareTheme.Emoji` and `ChatShareTheme.UniqueGift` variants, `EmojiType` for regular and custom emoji, and `GetChatShareThemeBackdrops` returning `ChatShareThemeBackdrops`
+    * (`Gifts`) Added `GetUniqueGift` to retrieve a `Gift.Unique` by `UniqueGiftName` and `DeleteBusinessAccountGift` to delete a regular business gift without converting the gift to Stars
+    * (`General`) Added `RichTextTonAddress` and the `TonAddressTextSource`/`BankCardNumberTextSource` message entities with formatting builders
+    * (`General`) Fixed venue messages being decoded as plain locations when Telegram returns both `venue` and `location`
+    * (`General`) Added `customDescriptionParseMode` and `customDescriptionEntities` to `VerifyUser`/`VerifyChat` for verification descriptions with text links
+    * (`General`) Added the `PaidMessagesWaived` service message
+    * (`General`) Documented the `agent`, `ai`, `app`, `game` and `gay` secondary username suffixes available to Premium bot owners in `KeyboardButtonRequestManagedBot.suggestedUsername`
+    * (`Bot Settings`) Added `SetMySettings` with 15 optional parameters, including `InlineFeedbackShareDenominator`, `CallbackQueryMode` (`Default`/`Auto`/`Inline`) and `hasTopicSidebar`. Bot-sent callbacks carrying `inline_message_id` use `InlineMessageIdCallbackQuery`
+    * (`Bot Settings`) Added `BotFullInfo` with `activeUsernames`, `inlineQueryPlaceholder`, `needsInlineQueryLocation` and `hasTopicSidebar`
+    * (`General`) Added `WriteAccessAllowed.FromInvitation` with the inviting bot owner in `inviter`. Fixed decoding of `from_attachment_menu=true` as `FromAttachmentMenu` (previously `Other`)
+    * (`Rich Messages`) Added nested blocks to expandable quotations and `expandableBlockQuotation` builders for received and outgoing blocks
+* `Utils`:
+    * (`Widgets`) Added `onlyWidgetContentMessages` and class casts for `WidgetQueryUpdate`/`SharedWidgetQueryUpdate`
+    * (`General`) Added `makeBotInviteLink(username)` for bot-owner invitations and documented `Username.link(threadId)` for topics in private chats with bots
+* `API`:
+    * (`Widgets`) Added `sendWidget`/`sendSharedWidget` extensions and generic `send`/`reply` overloads for both inline widget content types
+    * (`Widgets`) Added `answerWidgetQuery`, `editMessageWidgetData` (chat or inline message) and `editSharedWidgetData` extensions, plus `editMessageCaption` overloads for `WidgetContent`
+    * (`Ephemeral messages`) Updated direct and generic send overloads to accept a callback query ID without a receiver user ID
+    * (`Chat share themes`) Added the `getChatShareThemeBackdrops` extension
+    * (`Gifts`) Added `getUniqueGift` and `deleteBusinessAccountGift` extensions
+    * (`General`) Extended the string overloads of `verifyUser`/`verifyChat` with a parse mode or explicit text-link entities and added `TextSourcesList` overloads
+    * (`Bot Settings`) Added the `setMySettings` extension
+* `BehaviourBuilder`:
+    * (`Widgets`) Added `onWidget`/`onEditedWidget` triggers and `waitWidget`/`waitEditedWidget` content and message expectations
+    * (`Widgets`) Added `onWidgetQuery`/`waitWidgetQuery` and `onSharedWidgetQuery`/`waitSharedWidgetQuery`
+    * (`TON wallet`) Added `onTonWalletTransfer`, `waitTonWalletTransfer` and `waitTonWalletTransferMessages`
+    * (`General`) Added `onPaidMessagesWaived`, `waitPaidMessagesWaived` and `waitPaidMessagesWaivedMessages`
+    * (`Bot Settings`) Command matching now recognizes the bot's primary username and active aliases case-insensitively
+
 ## 37.1.0
 
 * `Dependencies`:

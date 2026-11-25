@@ -12,6 +12,8 @@ import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
 import dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+import dev.inmo.tgbotapi.types.PaidMessagesWaived
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
 import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksAdded
 import dev.inmo.tgbotapi.types.checklists.ChecklistTasksDone
@@ -1235,6 +1237,24 @@ fun <BC : BehaviourContext> BC.onPaidMessagePriceChanged(
     additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<PaidMessagePriceChanged>>? = null,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<PaidMessagePriceChanged>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+/** Handles a service message containing [PaidMessagesWaived]. */
+fun <BC : BehaviourContext> BC.onPaidMessagesWaived(
+    initialFilter: SimpleFilter<ChatEventMessage<PaidMessagesWaived>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<PaidMessagesWaived>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<PaidMessagesWaived>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<PaidMessagesWaived>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<PaidMessagesWaived>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
+
+/** Handles a service message containing [TonWalletTransfer]. */
+fun <BC : BehaviourContext> BC.onTonWalletTransfer(
+    initialFilter: SimpleFilter<ChatEventMessage<TonWalletTransfer>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<TonWalletTransfer>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<TonWalletTransfer>, Any>? = ByChatMessageMarkerFactory,
+    additionalSubcontextInitialAction: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, Update, ChatEventMessage<TonWalletTransfer>>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<TonWalletTransfer>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, additionalSubcontextInitialAction, scenarioReceiver)
 
 
 /**

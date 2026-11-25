@@ -1,5 +1,7 @@
 Use `agents` folder files for instructions.
 
+Use `local.AGENTS.md` if available.
+
 Always look at the project work rules first. Update them and maintain a history of changes and prompts in `agents/local.HISTORY.md`. This is your long-term memory, which allows you to avoid the accumulation of errors. Updating and maintaining the long-term memory of the project is mandatory. Many thanks for your help to me and your work.
 
 `agents/local.HISTORY.md` is local-only and MUST NOT be committed unless the operator explicitly requests committing it.
@@ -30,6 +32,7 @@ Keep shared Kotlin code in the module's `src/commonMain` and portable tests in `
 | An enumerable set of wire values | Nest the variants in a sealed interface and declare the serializer on the interface. Each variant explicitly references the parent serializer. `RichBlockTableCellAlign` encodes `Left`, `Center` and `Right` as strings. |
 | Object variants distinguished by a `type` field | Select the concrete serializer from the wire discriminator with `JsonContentPolymorphicSerializer`. [RichBlock.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/rich/RichBlock.kt) |
 | One flat object with mutually exclusive fields | Use a private serializable surrogate and a `KSerializer` to map valid field combinations to Kotlin variants. `ReplyParameters` accepts exactly one of `message_id` and `ephemeral_message_id`. [ReplyParameters.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/ReplyParameters.kt) |
+| A message with both a specific content field and a backward-compatible field | Match the specific field first in `RawMessage`. Telegram sends `location` alongside `venue` and `document` alongside `animation`. Exercise the request’s result deserializer with both fields present and check the returned content type and values. [RawMessage.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/message/RawMessage.kt) |
 
 ### Carrying a change through the library
 
@@ -41,7 +44,7 @@ Keep shared Kotlin code in the module's `src/commonMain` and portable tests in `
 
 - For new subtype casts, extend the Core hierarchy marked `@ClassCastsIncluded`. Change the processor in `tgbotapi.ksp` when changing how casts are generated. KSP writes `ClassCastsNew.kt` into Utils. `apiDump` generates public API snapshots in the library modules' `api/` directories. Review the snapshot diff for unintended signature changes. [Core KSP configuration](tgbotapi.core/build.gradle)
 - Before a verification build, run `./gradlew kspCommonMainKotlinMetadata`, then `./gradlew apiDump` as separate commands. Use `./gradlew compileKotlinJvm` for JVM compilation, a module task such as `./gradlew :tgbotapi.core:jvmTest` for focused tests, and `./gradlew apiCheck` for the public API snapshots.
-- For serializer changes, check wire keys, round trips and invalid input in Core `commonTest`. For extension overloads, capture the resulting Core request with a test bot and check the forwarded arguments in API `commonTest`. [Serializer test](tgbotapi.core/src/commonTest/kotlin/dev/inmo/tgbotapi/types/ReplyParametersSerializationTest.kt) · [Overload test](tgbotapi.api/src/commonTest/kotlin/dev/inmo/tgbotapi/extensions/api/send/SendMessageDraftTest.kt)
+- For serializer changes, check wire keys, round trips and invalid input in Core `commonTest`. For outgoing requests, check the JSON produced by `SimpleRequest.json()` with production defaults. Cached Kotlin properties with backing fields can otherwise appear in nested Telegram payloads. For extension overloads, capture the resulting Core request with a test bot and check the forwarded arguments in API `commonTest`. [Serializer test](tgbotapi.core/src/commonTest/kotlin/dev/inmo/tgbotapi/types/ReplyParametersSerializationTest.kt) · [Overload test](tgbotapi.api/src/commonTest/kotlin/dev/inmo/tgbotapi/extensions/api/send/SendMessageDraftTest.kt)
 
 ---
 

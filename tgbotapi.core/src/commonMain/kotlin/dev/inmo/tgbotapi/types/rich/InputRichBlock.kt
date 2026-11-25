@@ -36,6 +36,7 @@ val InputRichBlock.subBlocks: List<InputRichBlock>
     get() = when (this) {
         is InputRichBlockList -> items.flatMap { it.blocks }
         is InputRichBlockBlockQuotation -> blocks
+        is InputRichBlockExpandableBlockQuotation -> blocks
         is InputRichBlockCollage -> blocks
         is InputRichBlockSlideshow -> blocks
         is InputRichBlockDetails -> blocks

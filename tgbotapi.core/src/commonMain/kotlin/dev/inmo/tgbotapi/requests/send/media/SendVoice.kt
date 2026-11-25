@@ -23,7 +23,7 @@ import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
 fun SendVoice(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -73,7 +73,7 @@ fun SendVoice(
 }
 
 fun SendVoice(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     voice: InputFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
@@ -128,7 +128,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendVoiceData internal constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(voiceField)
     val voice: InputFile,
     @SerialName(captionField)
@@ -177,6 +177,7 @@ data class SendVoiceData internal constructor(
     }
 
     init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
         text ?.let {
             if (it.length !in captionLength) {
                 throwRangeError("Caption length", captionLength, it.length)

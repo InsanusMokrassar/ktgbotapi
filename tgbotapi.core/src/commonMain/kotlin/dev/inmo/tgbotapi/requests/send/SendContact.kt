@@ -20,7 +20,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendContact(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(phoneNumberField)
     val phoneNumber: String,
     @SerialName(firstNameField)
@@ -57,8 +57,12 @@ data class SendContact(
     ReplyingMarkupSendMessageRequest<ChatContentMessage<ContactContent>>,
     OptionallyEphemeralSendRequest
 {
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     constructor(
-        chatId: ChatIdentifier,
+        chatId: ChatIdentifier? = null,
         contact: Contact,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -97,7 +101,7 @@ data class SendContact(
 }
 
 fun Contact.toRequest(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,

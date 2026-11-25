@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.*
@@ -21,7 +22,7 @@ import dev.inmo.tgbotapi.types.message.content.AnimationContent
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: InputFile,
     thumb: InputFile? = null,
     text: String? = null,
@@ -69,7 +70,7 @@ public suspend fun TelegramBot.sendAnimation(
 )
 
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: InputFile,
     thumb: InputFile? = null,
     text: String? = null,
@@ -106,7 +107,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -121,7 +122,7 @@ public suspend fun TelegramBot.sendAnimation(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -166,7 +167,7 @@ public suspend fun TelegramBot.sendAnimation(
 )
 
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -201,7 +202,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -299,7 +300,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -393,7 +394,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -409,7 +410,7 @@ public suspend fun TelegramBot.sendAnimation(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
@@ -455,7 +456,7 @@ public suspend fun TelegramBot.sendAnimation(
 )
 
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
@@ -490,7 +491,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -505,7 +506,7 @@ public suspend fun TelegramBot.sendAnimation(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -548,7 +549,7 @@ public suspend fun TelegramBot.sendAnimation(
 )
 
 public suspend fun TelegramBot.sendAnimation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     animation: AnimationFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -581,7 +582,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -675,7 +676,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -765,7 +766,7 @@ public suspend fun TelegramBot.sendAnimation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

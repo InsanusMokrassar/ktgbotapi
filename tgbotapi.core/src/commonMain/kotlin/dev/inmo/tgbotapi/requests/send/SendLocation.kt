@@ -28,7 +28,7 @@ private val staticResultDeserializer: DeserializationStrategy<ChatContentMessage
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendLocation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
@@ -60,7 +60,7 @@ fun SendLocation(
 )
 
 fun SendStaticLocation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
@@ -92,12 +92,11 @@ fun SendStaticLocation(
 )
 
 /**
- * @param livePeriod According to Telegram Bots API, must be `0` when sending as an ephemeral message (with
- * [ephemeralMessageParameters] set), as ephemeral messages do not support live location updates. Prefer [SendStaticLocation]
- * for ephemeral locations.
+ * Sends a location with an active [livePeriod]. Use [SendStaticLocation] for an ephemeral location,
+ * including a location sent directly to a callback query.
  */
 fun SendLiveLocation(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     latitude: Double,
     longitude: Double,
     livePeriod: Seconds,
@@ -148,14 +147,12 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     override fun method(): String = "sendLocation"
 
     /**
-     * @property livePeriod According to Telegram Bots API, must be `0` when sending as an ephemeral message (with
-     * [ephemeralMessageParameters] set), as ephemeral messages do not support live location updates. Prefer [Static]
-     * for ephemeral locations.
+     * A location with active updates for [livePeriod] seconds. Use [Static] for an ephemeral location.
      */
     @Serializable
     data class Live (
         @SerialName(chatIdField)
-        override val chatId: ChatIdentifier,
+        override val chatId: ChatIdentifier? = null,
         @SerialName(latitudeField)
         override val latitude: Double,
         @SerialName(longitudeField)
@@ -205,6 +202,8 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             get() = serializer()
 
         init {
+            requireSendMessageTarget(chatId, ephemeralMessageParameters)
+            require(ephemeralMessageParameters == null) { "An ephemeral location must be sent as a static location" }
             if (livePeriod !in livePeriodLimit) {
                 error("Live period for sending location must be in $livePeriodLimit, but was $livePeriod")
             }
@@ -217,7 +216,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     @Serializable
     data class Static (
         @SerialName(chatIdField)
-        override val chatId: ChatIdentifier,
+        override val chatId: ChatIdentifier? = null,
         @SerialName(latitudeField)
         override val latitude: Double,
         @SerialName(longitudeField)
@@ -251,6 +250,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyMarkupField)
         override val replyMarkup: KeyboardMarkup? = null
     ) : SendLocation<StaticLocationContent> {
+        init {
+            requireSendMessageTarget(chatId, ephemeralMessageParameters)
+        }
+
         override val livePeriod: Seconds?
             get() = null
         override val horizontalAccuracy: Meters?
@@ -269,7 +272,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @Serializable
         private class Surrogate(
             @SerialName(chatIdField)
-            val chatId: ChatIdentifier,
+            val chatId: ChatIdentifier? = null,
             @SerialName(latitudeField)
             val latitude: Double,
             @SerialName(longitudeField)
@@ -313,7 +316,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
             val surrogate = Surrogate.serializer().deserialize(decoder)
 
             return when (surrogate.livePeriod) {
-                null -> Static(
+                null, 0 -> Static(
                     chatId = surrogate.chatId,
                     latitude = surrogate.latitude,
                     longitude = surrogate.longitude,

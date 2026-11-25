@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.communities.CommunityChatAdded
 import dev.inmo.tgbotapi.types.communities.CommunityChatJoined
 import dev.inmo.tgbotapi.types.communities.CommunityChatRemoved
 import dev.inmo.tgbotapi.types.dice.Dice
+import dev.inmo.tgbotapi.types.widgets.Widget
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
@@ -49,6 +50,7 @@ import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.RefundedPayment
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollOptionPersistentId
 import dev.inmo.tgbotapi.types.request.ChatShared
@@ -132,6 +134,7 @@ internal data class RawMessage(
     private val pinned_message: RawMessage? = null,
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
+    private val widget: Widget? = null,
     private val successful_payment: SuccessfulPayment? = null,
     private val refunded_payment: RefundedPayment? = null,
     private val sender_boost_count: Int? = null,
@@ -143,6 +146,8 @@ internal data class RawMessage(
 
     private val paid_star_count: Int? = null,
     private val paid_message_price_changed: PaidMessagePriceChanged? = null,
+    private val paid_messages_waived: PaidMessagesWaived? = null,
+    private val ton_wallet_transfer: TonWalletTransfer? = null,
 
     // Voice Chat Service Messages
     private val video_chat_scheduled: VideoChatScheduled? = null,
@@ -246,7 +251,8 @@ internal data class RawMessage(
             rich_message != null -> RichMessageContent(
                 chat,
                 messageId,
-                rich_message
+                rich_message,
+                quote
             )
             story != null -> StoryContent(
                 chat,
@@ -313,11 +319,13 @@ internal data class RawMessage(
             )
             sticker != null -> StickerContent(sticker)
             dice != null -> DiceContent(dice)
+            widget != null -> WidgetContent(widget, caption, adaptedCaptionEntities, quote, show_caption_above_media)
             game != null -> GameContent(game.asGame)
             video_note != null -> VideoNoteContent(video_note)
             contact != null -> ContactContent(contact)
-            location != null -> LocationContent(location)
+            // Telegram also includes location on venue messages for backward compatibility.
             venue != null -> VenueContent(venue)
+            location != null -> LocationContent(location)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
             checklist != null -> ChecklistContent(checklist)
@@ -374,6 +382,8 @@ internal data class RawMessage(
             boost_added != null -> boost_added
             chat_background_set != null -> chat_background_set
             paid_message_price_changed != null -> paid_message_price_changed
+            paid_messages_waived != null -> paid_messages_waived
+            ton_wallet_transfer != null -> ton_wallet_transfer
             gift != null -> gift
             unique_gift != null -> unique_gift
             gift_upgrade_sent != null -> gift_upgrade_sent
@@ -637,6 +647,8 @@ internal data class RawMessage(
                                         mediaGroupId = media_group_id,
                                         fromOffline = is_from_offline,
                                         cost = paid_star_count,
+                                        receiverUser = receiver_user,
+                                        ephemeralMessageId = ephemeral_message_id,
                                     )
                                 }
                                 is PreviewForumChat -> when(chat) {
@@ -906,6 +918,8 @@ internal data class RawMessage(
                                             fromOffline = is_from_offline,
                                             effectId = effect_id,
                                             cost = paid_star_count,
+                                            receiverUser = receiver_user,
+                                            ephemeralMessageId = ephemeral_message_id,
                                         )
                                     }
                                     else -> {
@@ -928,6 +942,8 @@ internal data class RawMessage(
                                             fromOffline = is_from_offline,
                                             effectId = effect_id,
                                             cost = paid_star_count,
+                                            receiverUser = receiver_user,
+                                            ephemeralMessageId = ephemeral_message_id,
                                         )
                                     }
                                 }

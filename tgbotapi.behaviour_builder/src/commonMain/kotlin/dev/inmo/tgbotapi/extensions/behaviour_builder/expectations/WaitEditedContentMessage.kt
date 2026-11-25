@@ -46,6 +46,10 @@ fun BehaviourContext.waitEditedDiceMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEditedContentMessage<DiceContent>(initRequest, errorFactory)
+fun BehaviourContext.waitEditedWidgetMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContentMessage<WidgetContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedGameMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

@@ -7,12 +7,15 @@ import dev.inmo.tgbotapi.types.CallbackQueryId
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.Contact
 import dev.inmo.tgbotapi.types.EphemeralMessageParameters
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.RawChatId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.coroutines.startCoroutine
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 import kotlin.test.assertNull
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
@@ -91,6 +94,44 @@ class EphemeralRawSendOverloadsTest {
             EphemeralMessageParameters(receiverUserId, callbackQueryId, false),
             request.ephemeralMessageParameters
         )
+    }
+
+    @Test
+    fun rawCallbackOnlyTargetsSurviveDirectAndGenericOverloads() {
+        val callback = CallbackQueryId("pressed-button")
+        val contact = Contact("+10000000004", "Callback")
+        val direct = CapturingBot().capture {
+            sendContact(contact = contact, callbackQueryId = callback, replaceCallbackQueryMessage = true)
+        } as SendContact
+        val generic = CapturingBot().capture {
+            send(contact = contact, callbackQueryId = callback, replaceCallbackQueryMessage = true)
+        } as SendContact
+
+        assertNull(direct.chatId)
+        assertEquals(EphemeralMessageParameters(callbackQueryId = callback, replaceCallbackQueryMessage = true), direct.ephemeralMessageParameters)
+        assertEquals(direct, generic)
+    }
+
+    @Test
+    fun callbackReplyToAMessageOmitsBothChatIdentifiers() {
+        val source = ChatId(RawChatId(8L))
+        val messageId = MessageId(12L)
+        val target = EphemeralMessageParameters(callbackQueryId = CallbackQueryId("callback"))
+        val request = CapturingBot().capture {
+            reply(
+                toChatId = source,
+                toMessageId = messageId,
+                contact = Contact("+1234", "Contact"),
+                replyInChatId = null,
+                ephemeralMessageParameters = target
+            )
+        } as SendContact
+
+        assertNull(request.chatId)
+        assertEquals(target, request.ephemeralMessageParameters)
+        val reply = assertIs<ReplyParameters.Chat>(request.replyParameters)
+        assertNull(reply.chatIdentifier)
+        assertEquals(messageId, reply.messageId)
     }
 
     @Test

@@ -17,7 +17,7 @@ import kotlinx.serialization.*
 
 @Suppress("FunctionName")
 fun SendVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: InputFile,
     thumbnail: InputFile? = null,
     duration: Long? = null,
@@ -73,7 +73,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
 @Serializable
 data class SendVideoNoteData internal constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(videoNoteField)
     val videoNote: InputFile,
     @SerialName(thumbnailField)
@@ -116,6 +116,10 @@ data class SendVideoNoteData internal constructor(
     SizedSendMessageRequest<ChatContentMessage<VideoNoteContent>>,
     OptionallyEphemeralSendRequest
 {
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     override val height: Int?
         get() = width
 

@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * @param requestId Signed 32-bit identifier of the request. Must be unique within the message
  * @param suggestedName Suggested name for the bot
- * @param suggestedUsername Suggested username for the bot
+ * @param suggestedUsername Suggested bot username, including a secondary username ending in agent, ai, app, game or gay for eligible Premium owners.
  */
 @Serializable
 data class KeyboardButtonRequestManagedBot(

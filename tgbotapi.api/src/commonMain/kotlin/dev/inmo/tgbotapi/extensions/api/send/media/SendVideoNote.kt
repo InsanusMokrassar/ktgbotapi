@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.*
@@ -17,7 +18,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: InputFile,
     thumb: InputFile? = null,
     duration: Long? = null,
@@ -55,7 +56,7 @@ public suspend fun TelegramBot.sendVideoNote(
 )
 
 public suspend fun TelegramBot.sendVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: InputFile,
     thumb: InputFile? = null,
     duration: Long? = null,
@@ -82,7 +83,7 @@ public suspend fun TelegramBot.sendVideoNote(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -97,7 +98,7 @@ public suspend fun TelegramBot.sendVideoNote(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -130,7 +131,7 @@ public suspend fun TelegramBot.sendVideoNote(
 )
 
 public suspend fun TelegramBot.sendVideoNote(
-    chatId: ChatIdentifier,
+    chatId: ChatIdentifier? = null,
     videoNote: VideoNoteFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
@@ -151,7 +152,7 @@ public suspend fun TelegramBot.sendVideoNote(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -229,7 +230,7 @@ public suspend fun TelegramBot.sendVideoNote(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -295,7 +296,7 @@ public suspend fun TelegramBot.sendVideoNote(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = receiverUserId ?.let { EphemeralMessageParameters(it, callbackQueryId, replaceCallbackQueryMessage) },
+    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
