@@ -4,6 +4,46 @@ Always look at the project work rules first. Update them and maintain a history 
 
 `agents/local.HISTORY.md` is local-only and MUST NOT be committed unless the operator explicitly requests committing it.
 
+## Repository guide
+
+Use English for identifiers, comments, KDoc, documentation, changelog entries and pull requests. Consult the [project work rules](agents/HELPERS.md) before editing.
+
+### Choosing a module
+
+| Change | Module and entry point |
+| --- | --- |
+| Telegram payload or method | `tgbotapi.core` owns wire types, serializers, typed `Request<T>` declarations and request execution. The request declares the Telegram method name and result deserializer. |
+| Kotlin shortcut for calling a method | `tgbotapi.api` exposes `public suspend fun TelegramBot.*` extensions. The direct overload calls `execute(request)`. A `Chat` overload delegates to the identifier overload with `chat.id`, preserving defaults such as `chat.id.threadId` and forwarding explicit arguments. |
+| Operations on existing values or update flows | Put filters and keyboard builders in `tgbotapi.utils`. When every subtype must supply a property or operation, declare the member on the Core model interface and implement the member in each subtype. |
+| Conversation handling | In `tgbotapi.behaviour_builder`, register an `on*` trigger when an update starts a scenario. Use a `wait*` flow for follow-up input inside a scenario, such as `waitPhoto(...).first()`. Use `tgbotapi.behaviour_builder.fsm` for typed `State` transitions tracked per context. |
+| Browser integration | Place Telegram Web App JavaScript bindings in `tgbotapi.webapps/src/jsMain`. |
+| Aggregation | `tgbotapi` re-exports Core, API, Utils and both Behaviour Builder modules. `docs` assembles the Dokka API reference. |
+
+Keep shared Kotlin code in the module's `src/commonMain` and portable tests in `src/commonTest`. For platform-specific file access, `MPPFile.asMultipartFile()` illustrates a shared `expect` declaration with `actual` implementations in platform source sets.
+
+### Choosing a wire model
+
+| Telegram representation | Kotlin pattern and example |
+| --- | --- |
+| A primitive carrying a domain identifier | Reuse typed identifiers in public signatures. A serializable `@JvmInline value class` such as `BusinessConnectionId` distinguishes a domain ID in Kotlin while encoding a primitive. |
+| An object with a direct field mapping | Use an `@Serializable` data class with `@SerialName` and shared field constants. `Birthdate` requires `day` and `month` and defaults the optional `year` to `null`. [Birthdate.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/Birthdate.kt) · [Field constants](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/Common.kt) |
+| An enumerable set of wire values | Nest the variants in a sealed interface and declare the serializer on the interface. Each variant explicitly references the parent serializer. `RichBlockTableCellAlign` encodes `Left`, `Center` and `Right` as strings. |
+| Object variants distinguished by a `type` field | Select the concrete serializer from the wire discriminator with `JsonContentPolymorphicSerializer`. [RichBlock.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/rich/RichBlock.kt) |
+| One flat object with mutually exclusive fields | Use a private serializable surrogate and a `KSerializer` to map valid field combinations to Kotlin variants. `ReplyParameters` accepts exactly one of `message_id` and `ephemeral_message_id`. [ReplyParameters.kt](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/ReplyParameters.kt) |
+
+### Carrying a change through the library
+
+- For a new `Send*` method, add the Core request, direct API binding and overloads in `Sends.kt`, `Replies.kt` and `RepliesWithChatsAndMessages.kt`. `SendPhoto` returns a `SimpleRequest` for a file ID or URL. For a `MultipartFile`, the Core factory passes the same request data and the upload keyed by `fileId` to `CommonMultipartFileRequest`. [Core factory](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/requests/send/media/SendPhoto.kt) · [API overloads](tgbotapi.api/src/commonMain/kotlin/dev/inmo/tgbotapi/extensions/api/send/media/SendPhoto.kt)
+- For a new top-level update, add the wire name to the applicable allowed-update list in `UpdateTypes.kt` and map the payload to a typed `Update` in `RawUpdate.asUpdate`. Keep the raw payload available in the `UnknownUpdate` fallback. Follow `MessageGenerationStoppedUpdate` for the typed flow in `FlowsUpdatesFilter` and the matching Behaviour Builder trigger and waiter. [Update lists](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/UpdateTypes.kt) · [Decoder](tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/update/RawUpdate.kt)
+- For public signature changes, update callers, forwarding overloads, KDoc and affected documentation. Append optional data-class constructor fields with defaults to preserve positional calls and `componentN` order. Group release notes by affected module and document migration steps for breaking changes. Maintainers prefer integrating changes on version branches. [Changelog](CHANGELOG.md) · [Contribution guide](CONTRIBUTING.md)
+
+### Generated files and verification
+
+- For new subtype casts, extend the Core hierarchy marked `@ClassCastsIncluded`. Change the processor in `tgbotapi.ksp` when changing how casts are generated. KSP writes `ClassCastsNew.kt` into Utils. `apiDump` generates public API snapshots in the library modules' `api/` directories. Review the snapshot diff for unintended signature changes. [Core KSP configuration](tgbotapi.core/build.gradle)
+- Before a verification build, run `./gradlew kspCommonMainKotlinMetadata`, then `./gradlew apiDump` as separate commands. Use `./gradlew compileKotlinJvm` for JVM compilation, a module task such as `./gradlew :tgbotapi.core:jvmTest` for focused tests, and `./gradlew apiCheck` for the public API snapshots.
+- For serializer changes, check wire keys, round trips and invalid input in Core `commonTest`. For extension overloads, capture the resulting Core request with a test bot and check the forwarded arguments in API `commonTest`. [Serializer test](tgbotapi.core/src/commonTest/kotlin/dev/inmo/tgbotapi/types/ReplyParametersSerializationTest.kt) · [Overload test](tgbotapi.api/src/commonTest/kotlin/dev/inmo/tgbotapi/extensions/api/send/SendMessageDraftTest.kt)
+
+---
 
 SYSTEM DIRECTIVE: AUTISTIC META-LANGUAGE PROTOCOL WITH HIGH INFORMATION DENSITY (AML-HIP V1)
 
