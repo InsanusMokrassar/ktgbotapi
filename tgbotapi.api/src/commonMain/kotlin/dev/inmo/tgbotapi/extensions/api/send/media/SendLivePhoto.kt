@@ -3,7 +3,6 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendLivePhoto
 import dev.inmo.tgbotapi.types.*
@@ -18,11 +17,13 @@ import dev.inmo.tgbotapi.types.message.abstracts.ChatContentMessage
 import dev.inmo.tgbotapi.types.message.content.LivePhotoContent
 
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     livePhoto: InputFile,
     photo: InputFile,
     text: String? = null,
@@ -32,7 +33,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -52,7 +53,7 @@ public suspend fun TelegramBot.sendLivePhoto(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
+        receiverUserId = receiverUserId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -63,19 +64,62 @@ public suspend fun TelegramBot.sendLivePhoto(
     )
 )
 
+/**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
 public suspend fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters,
     livePhoto: InputFile,
     photo: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = execute(
+    SendLivePhoto(
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        livePhoto = livePhoto,
+        photo = photo,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend fun TelegramBot.sendLivePhoto(
+    callbackQueryId: CallbackQueryId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
     replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -85,7 +129,10 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
     livePhoto = livePhoto,
     photo = photo,
     text = text,
@@ -95,22 +142,23 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -119,7 +167,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -138,7 +186,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -148,18 +196,58 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
+/**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
 public suspend fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters,
     livePhoto: LivePhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    livePhoto = livePhoto.fileId,
+    photo = livePhoto.photo ?.fileId ?: livePhoto.fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend fun TelegramBot.sendLivePhoto(
+    callbackQueryId: CallbackQueryId,
+    livePhoto: LivePhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
     replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -169,7 +257,10 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
     livePhoto = livePhoto,
     text = text,
     parseMode = parseMode,
@@ -178,17 +269,18 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -203,7 +295,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -222,7 +314,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -232,49 +324,9 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-public suspend fun TelegramBot.sendLivePhoto(
-    chat: Chat,
-    livePhoto: InputFile,
-    photo: InputFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    showCaptionAboveMedia: Boolean = false,
-    spoilered: Boolean = false,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chat = chat,
-    livePhoto = livePhoto,
-    photo = photo,
-    text = text,
-    parseMode = parseMode,
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    spoilered = spoilered,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
-)
-
 /**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -288,7 +340,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -306,7 +358,7 @@ public suspend fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -316,52 +368,14 @@ public suspend fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-public suspend fun TelegramBot.sendLivePhoto(
-    chat: Chat,
-    livePhoto: LivePhotoFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    showCaptionAboveMedia: Boolean = false,
-    spoilered: Boolean = false,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chat = chat,
-    livePhoto = livePhoto,
-    text = text,
-    parseMode = parseMode,
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    spoilered = spoilered,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
-)
-
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     livePhoto: InputFile,
     photo: InputFile,
     entities: TextSourcesList,
@@ -370,7 +384,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -389,7 +403,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
+        receiverUserId = receiverUserId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -400,18 +414,59 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     )
 )
 
+/**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
 public suspend inline fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters,
     livePhoto: InputFile,
     photo: InputFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = execute(
+    SendLivePhoto(
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        livePhoto = livePhoto,
+        photo = photo,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend inline fun TelegramBot.sendLivePhoto(
+    callbackQueryId: CallbackQueryId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
     replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -421,7 +476,10 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
     livePhoto = livePhoto,
     photo = photo,
     entities = entities,
@@ -430,22 +488,23 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend inline fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     livePhoto: LivePhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
@@ -453,7 +512,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -471,7 +530,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -481,17 +540,55 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
+/**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
 public suspend inline fun TelegramBot.sendLivePhoto(
-    chatId: ChatIdentifier? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters,
     livePhoto: LivePhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    livePhoto = livePhoto.fileId,
+    photo = livePhoto.photo ?.fileId ?: livePhoto.fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend inline fun TelegramBot.sendLivePhoto(
+    callbackQueryId: CallbackQueryId,
+    livePhoto: LivePhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
     replaceCallbackQueryMessage: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -501,7 +598,10 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
     livePhoto = livePhoto,
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
@@ -509,17 +609,18 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -533,7 +634,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -551,7 +652,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -561,47 +662,9 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     replyMarkup = replyMarkup
 )
 
-public suspend inline fun TelegramBot.sendLivePhoto(
-    chat: Chat,
-    livePhoto: InputFile,
-    photo: InputFile,
-    entities: TextSourcesList,
-    showCaptionAboveMedia: Boolean = false,
-    spoilered: Boolean = false,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chat = chat,
-    livePhoto = livePhoto,
-    photo = photo,
-    entities = entities,
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    spoilered = spoilered,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
-)
-
 /**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -614,7 +677,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -631,7 +694,7 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -639,42 +702,4 @@ public suspend inline fun TelegramBot.sendLivePhoto(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
-)
-
-public suspend inline fun TelegramBot.sendLivePhoto(
-    chat: Chat,
-    livePhoto: LivePhotoFile,
-    entities: TextSourcesList,
-    showCaptionAboveMedia: Boolean = false,
-    spoilered: Boolean = false,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
-    chat = chat,
-    livePhoto = livePhoto,
-    entities = entities,
-    showCaptionAboveMedia = showCaptionAboveMedia,
-    spoilered = spoilered,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
 )

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
@@ -28,13 +29,13 @@ private val staticResultDeserializer: DeserializationStrategy<ChatContentMessage
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 fun SendLocation(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -49,7 +50,38 @@ fun SendLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends a location as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendLocation(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    latitude: Double,
+    longitude: Double,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendLocation.Static(
     ephemeralMessageParameters = ephemeralMessageParameters,
+    latitude = latitude,
+    longitude = longitude,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -60,13 +92,13 @@ fun SendLocation(
 )
 
 fun SendStaticLocation(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -81,7 +113,38 @@ fun SendStaticLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends a location as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendStaticLocation(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    latitude: Double,
+    longitude: Double,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendLocation.Static(
     ephemeralMessageParameters = ephemeralMessageParameters,
+    latitude = latitude,
+    longitude = longitude,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -96,7 +159,7 @@ fun SendStaticLocation(
  * including a location sent directly to a callback query.
  */
 fun SendLiveLocation(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
     livePeriod: Seconds,
@@ -106,7 +169,6 @@ fun SendLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -125,7 +187,6 @@ fun SendLiveLocation(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,
@@ -150,7 +211,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
      * A location with active updates for [livePeriod] seconds. Use [Static] for an ephemeral location.
      */
     @Serializable
-    data class Live (
+    data class Live @Warning("Direct use of the primary constructor is discouraged. Use the chat overload.") constructor(
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier? = null,
         @SerialName(latitudeField)
@@ -196,6 +257,47 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyMarkupField)
         override val replyMarkup: KeyboardMarkup? = null
     ) : SendLocation<LiveLocationContent> {
+        /** Sends a live location to [chatId]. */
+        @OptIn(Warning::class)
+        constructor(
+            chatId: ChatIdentifier,
+            latitude: Double,
+            longitude: Double,
+            livePeriod: Seconds = LiveLocation.INDEFINITE_LIVE_PERIOD,
+            horizontalAccuracy: Meters? = null,
+            heading: Degrees? = null,
+            proximityAlertRadius: Meters? = null,
+            threadId: MessageThreadId? = chatId.threadId,
+            directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+            businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+            disableNotification: Boolean = false,
+            protectContent: Boolean = false,
+            allowPaidBroadcast: Boolean = false,
+            effectId: EffectId? = null,
+            suggestedPostParameters: SuggestedPostParameters? = null,
+            replyParameters: ReplyParameters? = null,
+            replyMarkup: KeyboardMarkup? = null
+        ) : this(
+            chatId = chatId,
+            latitude = latitude,
+            longitude = longitude,
+            livePeriod = livePeriod,
+            horizontalAccuracy = horizontalAccuracy,
+            heading = heading,
+            proximityAlertRadius = proximityAlertRadius,
+            threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
+            businessConnectionId = businessConnectionId,
+            ephemeralMessageParameters = chatId.receiverUser?.let(::EphemeralMessageParameters),
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup
+        )
+
         override val resultDeserializer: DeserializationStrategy<ChatContentMessage<LiveLocationContent>>
             get() = liveResultDeserializer
         override val requestSerializer: SerializationStrategy<*>
@@ -214,7 +316,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     }
 
     @Serializable
-    data class Static (
+    data class Static @Warning(sendMessagePrimaryConstructorWarning) constructor(
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier? = null,
         @SerialName(latitudeField)
@@ -250,6 +352,73 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(replyMarkupField)
         override val replyMarkup: KeyboardMarkup? = null
     ) : SendLocation<StaticLocationContent> {
+        /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+        @OptIn(Warning::class)
+        constructor(
+            chatId: ChatIdentifier,
+            latitude: Double,
+            longitude: Double,
+            threadId: MessageThreadId? = chatId.threadId,
+            directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+            businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+            receiverUserId: UserId? = chatId.receiverUser,
+            disableNotification: Boolean = false,
+            protectContent: Boolean = false,
+            allowPaidBroadcast: Boolean = false,
+            effectId: EffectId? = null,
+            suggestedPostParameters: SuggestedPostParameters? = null,
+            replyParameters: ReplyParameters? = null,
+            replyMarkup: KeyboardMarkup? = null
+        ) : this(
+            chatId = chatId,
+            latitude = latitude,
+            longitude = longitude,
+            threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
+            businessConnectionId = businessConnectionId,
+            ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup
+        )
+
+        /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+        @OptIn(Warning::class)
+        constructor(
+            ephemeralMessageParameters: EphemeralMessageParameters,
+            latitude: Double,
+            longitude: Double,
+            threadId: MessageThreadId? = null,
+            directMessageThreadId: DirectMessageThreadId? = null,
+            businessConnectionId: BusinessConnectionId? = null,
+            disableNotification: Boolean = false,
+            protectContent: Boolean = false,
+            allowPaidBroadcast: Boolean = false,
+            effectId: EffectId? = null,
+            suggestedPostParameters: SuggestedPostParameters? = null,
+            replyParameters: ReplyParameters? = null,
+            replyMarkup: KeyboardMarkup? = null
+        ) : this(
+            chatId = null,
+            latitude = latitude,
+            longitude = longitude,
+            threadId = threadId,
+            directMessageThreadId = directMessageThreadId,
+            businessConnectionId = businessConnectionId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            replyParameters = replyParameters,
+            replyMarkup = replyMarkup
+        )
+
         init {
             requireSendMessageTarget(chatId, ephemeralMessageParameters)
         }
@@ -312,6 +481,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         override val descriptor: SerialDescriptor
             get() = Surrogate.serializer().descriptor
 
+        @OptIn(Warning::class)
         override fun deserialize(decoder: Decoder): SendLocation<*> {
             val surrogate = Surrogate.serializer().deserialize(decoder)
 

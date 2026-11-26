@@ -3,7 +3,6 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.ephemeralMessageParametersOrNull
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendSticker
 import dev.inmo.tgbotapi.types.*
@@ -16,16 +15,18 @@ import dev.inmo.tgbotapi.types.message.content.StickerContent
 import dev.inmo.tgbotapi.types.message.SuggestedPostParameters
 
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -41,7 +42,7 @@ public suspend fun TelegramBot.sendSticker(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
+        receiverUserId = receiverUserId,
         emoji = emoji,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -53,14 +54,49 @@ public suspend fun TelegramBot.sendSticker(
     )
 )
 
+/**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier? = null,
+    ephemeralMessageParameters: EphemeralMessageParameters,
     sticker: InputFile,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    emoji: String? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StickerContent> = execute(
+    SendSticker(
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        sticker = sticker,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend fun TelegramBot.sendSticker(
+    callbackQueryId: CallbackQueryId,
+    sticker: InputFile,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
     replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
@@ -71,12 +107,14 @@ public suspend fun TelegramBot.sendSticker(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<StickerContent> = sendSticker(
-    chatId = chatId,
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
     sticker = sticker,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -84,10 +122,12 @@ public suspend fun TelegramBot.sendSticker(
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -97,7 +137,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -112,7 +152,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -123,85 +163,19 @@ public suspend fun TelegramBot.sendSticker(
     replyMarkup = replyMarkup
 )
 
-public suspend fun TelegramBot.sendSticker(
-    chat: Chat,
-    sticker: InputFile,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    emoji: String? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<StickerContent> = sendSticker(
-    chat = chat,
-    sticker = sticker,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
-)
-
 /**
+ * Sends to [chatId]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier? = null,
-    sticker: Sticker,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
-    emoji: String? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<StickerContent> = sendSticker(
-    chatId = chatId,
-    sticker = sticker.fileId,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-public suspend fun TelegramBot.sendSticker(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     receiverUserId: UserId? = chatId.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -212,11 +186,11 @@ public suspend fun TelegramBot.sendSticker(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<StickerContent> = sendSticker(
     chatId = chatId,
-    sticker = sticker,
+    sticker = sticker.fileId,
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
+    receiverUserId = receiverUserId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -224,10 +198,81 @@ public suspend fun TelegramBot.sendSticker(
     effectId = effectId,
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
+    replyMarkup = replyMarkup
 )
 
 /**
+ * Sends an ephemeral reply to the user who pressed the button. [ephemeralMessageParameters] must contain a callback
+ * query ID and omit the receiver user ID.
+ */
+public suspend fun TelegramBot.sendSticker(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    sticker: Sticker,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    emoji: String? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StickerContent> = sendSticker(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    sticker = sticker.fileId,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends an ephemeral reply to [callbackQueryId]. */
+public suspend fun TelegramBot.sendSticker(
+    callbackQueryId: CallbackQueryId,
+    sticker: Sticker,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    replaceCallbackQueryMessage: Boolean? = null,
+    emoji: String? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StickerContent> = sendSticker(
+    ephemeralMessageParameters = EphemeralMessageParameters(
+        callbackQueryId = callbackQueryId,
+        replaceCallbackQueryMessage = replaceCallbackQueryMessage
+    ),
+    sticker = sticker,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Sends to [chat]. Set [receiverUserId] to deliver the message only to a particular user.
+ *
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
@@ -237,7 +282,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId: MessageThreadId? = chat.id.threadId,
     directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chat.id.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chat.id.receiverUser,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -252,7 +297,7 @@ public suspend fun TelegramBot.sendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -261,38 +306,4 @@ public suspend fun TelegramBot.sendSticker(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
-)
-
-public suspend fun TelegramBot.sendSticker(
-    chat: Chat,
-    sticker: Sticker,
-    threadId: MessageThreadId? = chat.id.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chat.id.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
-    receiverUserId: UserId? = chat.id.receiverUser,
-    callbackQueryId: CallbackQueryId? = null,
-    replaceCallbackQueryMessage: Boolean? = null,
-    emoji: String? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-): ChatContentMessage<StickerContent> = sendSticker(
-    chat = chat,
-    sticker = sticker,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParametersOrNull(receiverUserId, callbackQueryId, replaceCallbackQueryMessage),
-    emoji = emoji,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup,
 )

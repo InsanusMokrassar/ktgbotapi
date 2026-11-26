@@ -7,13 +7,13 @@
 **Breaking changes**:
 
 * `GetMe` and `TelegramBot.getMe()` now return `BotFullInfo` in place of `ExtendedBot`. The cached `BehaviourContext.botInfo()` returns `BotFullInfo?`
-* `SendChatMessageRequest` now extends `OptionalChatRequest`. The 14 ephemeral-capable send methods accept a nullable `chatId`, and `EphemeralMessageParameters.receiverUserId` is now nullable
+* `SendChatMessageRequest` now extends `OptionalChatRequest`. Its `chatId` and `EphemeralMessageParameters.receiverUserId` are nullable on the wire. The 14 ephemeral-capable send methods have separate overloads for a required chat and for callback-only delivery
 * `EditChatMessageCaption` now returns `ContentMessage<TextedContent>` (previously `ContentMessage<MediaContent>`). The same change applies to `editMessageCaption` overloads taking a chat and message ID or an `AccessibleMessage` and `TextSourcesList`
 * `RichBlockExpandableBlockQuotation` and `InputRichBlockExpandableBlockQuotation` replaced the `text` property with `blocks`
 * `AreaPosition` replaces the `StoryAreaPosition` class used by `StoryArea`. The old Kotlin name remains available as a deprecated typealias
 * Exhaustive `when` expressions over `TextedContent`, `InputMessageContent`, `RichTextEntity`, `MultilevelTextSource` and `WriteAccessAllowed` must handle the new widget, text entity and invitation variants
 
-**Migration advice**: Use `BotFullInfo` for the bot's own capabilities and `CommonBot` for bot users in updates. Handle nullable chat and receiver IDs when reading send requests. Pass a typed media or widget message to `editMessageCaption` to retain the content type. Read expandable quotation contents from `blocks`. Recompile JVM clients that use `StoryAreaPosition`
+**Migration advice**: Use `BotFullInfo` for the bot's own capabilities and `CommonBot` for bot users in updates. For a known chat, pass `chatId` and optionally `receiverUserId`. To reply to a callback, pass `ephemeralMessageParameters = EphemeralMessageParameters(callbackQueryId = id)` or use the `callbackQueryId` extension overload. Omit the destination chat argument for callback replies. Recompile JVM clients that use the changed send signatures. Pass a typed media or widget message to `editMessageCaption` to retain the content type. Read expandable quotation contents from `blocks`. Recompile JVM clients that use `StoryAreaPosition`
 
 **Compatibility note**: Both expandable quotation types accept the single-text constructor and decode stored Bot API 10.3 quotations by wrapping the text in a paragraph. `PrivateContentMessageImpl`, `PrivateForumContentMessageImpl` and `ChannelContentMessageImpl` append nullable ephemeral fields, preserving positional arguments and `componentN` order. Recompile JVM callers that construct or copy these message classes
 
@@ -23,7 +23,7 @@
     * (`Widgets`) Added `WidgetQueryType` variants `Data`, `SignData` and `SentTransaction` for supplied data, wallet signatures and transaction notifications, plus `WidgetQueryWallet` for wallet details
     * (`Widgets`) Added `SendWidget`, `SendSharedWidget`, `AnswerWidgetQuery`, `EditChatMessageWidgetData`, `EditInlineMessageWidgetData` and `EditSharedWidgetData` requests
     * (`Widgets`) Documented widget copying restrictions on `CopyMessage`/`CopyMessages` and the widget permission on `ChatPermissions.canSendOtherMessages`
-    * (`Ephemeral messages`) Added callback-only destinations to all 14 supported send methods, including `SendRichMessage` and `SendLocation.Static`. Pass `EphemeralMessageParameters(callbackQueryId = id)` to omit the chat and receiver IDs
+    * (`Ephemeral messages`) Added chat and callback-only constructors and factories for all 14 supported send methods, including `SendRichMessage` and `SendLocation.Static`. The primary constructors carry `@Warning`. Active live locations require a chat
     * (`Ephemeral messages`) Private chats, private topics and channel posts now retain `receiverUser` and `ephemeralMessageId` from callback replies through `PossiblyEphemeralMessage`
     * (`Quotes from rich messages`) Added `TextQuote.richTexts` for received selections and `ReplyParameters.Chat.quoteRichTexts` for outgoing replies, with UTF-16 quote positions. Excluded cached renderings from outgoing rich-text JSON
     * (`TON wallet`) Added `ExtendedPrivateChat.tonWalletCard`, `TonWalletCard`, `TonWalletCardSticker`, `TonNft` and `TonNftAttribute`. Wallet card stickers and story areas share `AreaPosition`
@@ -45,7 +45,7 @@
 * `API`:
     * (`Widgets`) Added `sendWidget`/`sendSharedWidget` extensions and generic `send`/`reply` overloads for both inline widget content types
     * (`Widgets`) Added `answerWidgetQuery`, `editMessageWidgetData` (chat or inline message) and `editSharedWidgetData` extensions, plus `editMessageCaption` overloads for `WidgetContent`
-    * (`Ephemeral messages`) Updated direct and generic send overloads to accept a callback query ID without a receiver user ID
+    * (`Ephemeral messages`) Split direct sends, generic sends and replies into chat and callback-only overloads. A chat can supply a receiver through `receiverUserId` or an `EphemeralChatId`. A callback reply uses the user and chat of the button press
     * (`Chat share themes`) Added the `getChatShareThemeBackdrops` extension
     * (`Gifts`) Added `getUniqueGift` and `deleteBusinessAccountGift` extensions
     * (`General`) Extended the string overloads of `verifyUser`/`verifyChat` with a parse mode or explicit text-link entities and added `TextSourcesList` overloads

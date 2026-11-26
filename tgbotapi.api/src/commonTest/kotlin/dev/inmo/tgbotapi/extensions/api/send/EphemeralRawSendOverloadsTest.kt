@@ -6,6 +6,8 @@ import dev.inmo.tgbotapi.requests.send.SendContact
 import dev.inmo.tgbotapi.types.CallbackQueryId
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.Contact
+import dev.inmo.tgbotapi.types.EphemeralChatId
+import dev.inmo.tgbotapi.types.EphemeralMessageId
 import dev.inmo.tgbotapi.types.EphemeralMessageParameters
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.RawChatId
@@ -54,46 +56,35 @@ class EphemeralRawSendOverloadsTest {
     }
 
     @Test
-    fun rawDirectOverloadForwardsAllEphemeralParameters() {
+    fun directChatOverloadCanTargetOneReceiver() {
         val chatId = ChatId(RawChatId(1L))
         val receiverUserId = ChatId(RawChatId(2L))
-        val callbackQueryId = CallbackQueryId("direct-callback")
         val request = CapturingBot().capture {
             sendContact(
                 chatId = chatId,
                 phoneNumber = "+10000000000",
                 firstName = "Direct",
-                receiverUserId = receiverUserId,
-                callbackQueryId = callbackQueryId,
-                replaceCallbackQueryMessage = true
+                receiverUserId = receiverUserId
             )
         } as SendContact
 
-        assertEquals(
-            EphemeralMessageParameters(receiverUserId, callbackQueryId, true),
-            request.ephemeralMessageParameters
-        )
+        assertEquals(chatId, request.chatId)
+        assertEquals(EphemeralMessageParameters(receiverUserId), request.ephemeralMessageParameters)
     }
 
     @Test
-    fun rawGenericOverloadForwardsAllEphemeralParameters() {
-        val chatId = ChatId(RawChatId(3L))
+    fun genericChatOverloadUsesTheReceiverFromTheChatIdentifier() {
         val receiverUserId = ChatId(RawChatId(4L))
-        val callbackQueryId = CallbackQueryId("generic-callback")
+        val chatId = EphemeralChatId(RawChatId(3L), receiverUserId)
         val request = CapturingBot().capture {
             send(
                 chatId = chatId,
-                contact = Contact("+10000000001", "Generic"),
-                receiverUserId = receiverUserId,
-                callbackQueryId = callbackQueryId,
-                replaceCallbackQueryMessage = false
+                contact = Contact("+10000000001", "Generic")
             )
         } as SendContact
 
-        assertEquals(
-            EphemeralMessageParameters(receiverUserId, callbackQueryId, false),
-            request.ephemeralMessageParameters
-        )
+        assertEquals(chatId, request.chatId)
+        assertEquals(EphemeralMessageParameters(receiverUserId), request.ephemeralMessageParameters)
     }
 
     @Test
@@ -122,7 +113,6 @@ class EphemeralRawSendOverloadsTest {
                 toChatId = source,
                 toMessageId = messageId,
                 contact = Contact("+1234", "Contact"),
-                replyInChatId = null,
                 ephemeralMessageParameters = target
             )
         } as SendContact
@@ -135,7 +125,31 @@ class EphemeralRawSendOverloadsTest {
     }
 
     @Test
-    fun parameterObjectAndDefaultFormsRemainResolvable() {
+    fun replyToAnEphemeralMessageKeepsItsIdOnBothRoutes() {
+        val sourceId = EphemeralMessageId(27L)
+        val recipient = ChatId(RawChatId(2L))
+        val destination = EphemeralChatId(RawChatId(1L), recipient, sourceId)
+        val callback = EphemeralMessageParameters(callbackQueryId = CallbackQueryId("press"))
+        val chatRequest = CapturingBot().capture {
+            replyToEphemeralWithContact(chatId = destination, phoneNumber = "+1234", firstName = "Contact")
+        } as SendContact
+        val callbackRequest = CapturingBot().capture {
+            replyToEphemeralWithContact(
+                ephemeralMessageParameters = callback, ephemeralMessageId = sourceId,
+                phoneNumber = "+1234", firstName = "Contact"
+            )
+        } as SendContact
+
+        assertEquals(destination, chatRequest.chatId)
+        assertEquals(EphemeralMessageParameters(recipient), chatRequest.ephemeralMessageParameters)
+        assertNull(callbackRequest.chatId)
+        assertEquals(callback, callbackRequest.ephemeralMessageParameters)
+        assertEquals(ReplyParameters(sourceId), chatRequest.replyParameters)
+        assertEquals(chatRequest.replyParameters, callbackRequest.replyParameters)
+    }
+
+    @Test
+    fun chatAndCallbackParameterObjectSelectDifferentDestinations() {
         val chatId = ChatId(RawChatId(5L))
         val defaultRequest = CapturingBot().capture {
             sendContact(
@@ -147,19 +161,19 @@ class EphemeralRawSendOverloadsTest {
         assertNull(defaultRequest.ephemeralMessageParameters)
 
         val ephemeralMessageParameters = EphemeralMessageParameters(
-            receiverUserId = ChatId(RawChatId(6L)),
             callbackQueryId = CallbackQueryId("object-callback"),
-            replaceCallbackQueryMessage = true
+            replaceCallbackQueryMessage = false
         )
         val objectRequest = CapturingBot().capture {
             sendContact(
-                chatId = chatId,
                 phoneNumber = "+10000000003",
                 firstName = "Object",
                 ephemeralMessageParameters = ephemeralMessageParameters
             )
         } as SendContact
 
+        assertEquals(chatId, defaultRequest.chatId)
+        assertNull(objectRequest.chatId)
         assertEquals(ephemeralMessageParameters, objectRequest.ephemeralMessageParameters)
     }
 }

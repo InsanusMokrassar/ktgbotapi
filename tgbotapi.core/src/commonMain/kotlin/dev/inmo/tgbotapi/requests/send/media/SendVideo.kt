@@ -2,9 +2,9 @@
 
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.WithCustomStartMediaData
 import dev.inmo.tgbotapi.requests.abstracts.*
-import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -27,7 +27,7 @@ import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
 fun SendVideo(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     video: InputFile,
     thumbnail: InputFile? = null,
     text: String? = null,
@@ -43,7 +43,7 @@ fun SendVideo(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -51,51 +51,86 @@ fun SendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ChatContentMessage<VideoContent>> {
-    val videoAsFile = video as? MultipartFile
-    val thumbAsFile = thumbnail as? MultipartFile
-    val coverAsFile = cover as? MultipartFile
+): Request<ChatContentMessage<VideoContent>> = SendVideoData(
+    chatId = chatId,
+    video = video,
+    thumbnail = thumbnail ?.fileId,
+    cover = cover,
+    startTimestamp = startTimestamp,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    supportsStreaming = supportsStreaming,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(video, thumbnail, cover)
 
-    val data = SendVideoData(
-        chatId = chatId,
-        video = video,
-        thumbnail = thumbnail ?.fileId,
-        cover = cover,
-        startTimestamp = startTimestamp,
-        text = text,
-        parseMode = parseMode,
-        rawEntities = null,
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        supportsStreaming = supportsStreaming,
-        threadId = threadId,
-        directMessageThreadId = directMessageThreadId,
-        businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        suggestedPostParameters = suggestedPostParameters,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-
-    return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
-        data
-    } else {
-        CommonMultipartFileRequest(
-            data,
-            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
-        )
-    }
-}
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendVideo(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    video: InputFile,
+    thumbnail: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    supportsStreaming: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ChatContentMessage<VideoContent>> = SendVideoData(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    video = video,
+    thumbnail = thumbnail ?.fileId,
+    cover = cover,
+    startTimestamp = startTimestamp,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    supportsStreaming = supportsStreaming,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(video, thumbnail, cover)
 
 fun SendVideo(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     video: InputFile,
     thumbnail: InputFile? = null,
     entities: TextSourcesList,
@@ -110,7 +145,7 @@ fun SendVideo(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -118,55 +153,87 @@ fun SendVideo(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ChatContentMessage<VideoContent>> {
-    val videoAsFile = video as? MultipartFile
-    val thumbAsFile = thumbnail as? MultipartFile
-    val coverAsFile = cover as? MultipartFile
+): Request<ChatContentMessage<VideoContent>> = SendVideoData(
+    chatId = chatId,
+    video = video,
+    thumbnail = thumbnail ?.fileId,
+    cover = cover,
+    startTimestamp = startTimestamp,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    supportsStreaming = supportsStreaming,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(video, thumbnail, cover)
 
-    val data = SendVideoData(
-        chatId = chatId,
-        video = video,
-        thumbnail = thumbnail ?.fileId,
-        cover = cover,
-        startTimestamp = startTimestamp,
-        text = entities.makeString(),
-        parseMode = null,
-        rawEntities = entities.toRawMessageEntities(),
-        showCaptionAboveMedia = showCaptionAboveMedia,
-        spoilered = spoilered,
-        duration = duration,
-        width = width,
-        height = height,
-        supportsStreaming = supportsStreaming,
-        threadId = threadId,
-        directMessageThreadId = directMessageThreadId,
-        businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        suggestedPostParameters = suggestedPostParameters,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-
-    return if (videoAsFile == null && thumbAsFile == null && coverAsFile == null) {
-        data
-    } else {
-        CommonMultipartFileRequest(
-            data,
-            listOfNotNull(videoAsFile, thumbAsFile, coverAsFile).associateBy { it.fileId }
-        )
-    }
-}
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendVideo(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    video: InputFile,
+    thumbnail: InputFile? = null,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    cover: InputFile? = null,
+    startTimestamp: Seconds? = null,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    supportsStreaming: Boolean = false,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ChatContentMessage<VideoContent>> = SendVideoData(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    video = video,
+    thumbnail = thumbnail ?.fileId,
+    cover = cover,
+    startTimestamp = startTimestamp,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    supportsStreaming = supportsStreaming,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(video, thumbnail, cover)
 
 private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VideoContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
 @Serializable
-data class SendVideoData internal constructor(
+data class SendVideoData @Warning(sendMessagePrimaryConstructorWarning) internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier? = null,
     @SerialName(videoField)
@@ -235,6 +302,222 @@ data class SendVideoData internal constructor(
     OptionallyStreamable,
     OptionallyEphemeralSendRequest
 {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        video: InputFile,
+        thumbnail: String? = null,
+        cover: InputFile? = null,
+        startTimestamp: Seconds? = null,
+        text: String? = null,
+        parseMode: ParseMode? = null,
+        showCaptionAboveMedia: Boolean = false,
+        spoilered: Boolean = false,
+        duration: Long? = null,
+        width: Int? = null,
+        height: Int? = null,
+        supportsStreaming: Boolean = false,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportsStreaming = supportsStreaming,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        video: InputFile,
+        thumbnail: String? = null,
+        cover: InputFile? = null,
+        startTimestamp: Seconds? = null,
+        text: String? = null,
+        parseMode: ParseMode? = null,
+        showCaptionAboveMedia: Boolean = false,
+        spoilered: Boolean = false,
+        duration: Long? = null,
+        width: Int? = null,
+        height: Int? = null,
+        supportsStreaming: Boolean = false,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        video = video,
+        thumbnail = thumbnail,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportsStreaming = supportsStreaming,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        video: InputFile,
+        thumbnail: String? = null,
+        cover: InputFile? = null,
+        startTimestamp: Seconds? = null,
+        entities: TextSourcesList,
+        showCaptionAboveMedia: Boolean = false,
+        spoilered: Boolean = false,
+        duration: Long? = null,
+        width: Int? = null,
+        height: Int? = null,
+        supportsStreaming: Boolean = false,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportsStreaming = supportsStreaming,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        video: InputFile,
+        thumbnail: String? = null,
+        cover: InputFile? = null,
+        startTimestamp: Seconds? = null,
+        entities: TextSourcesList,
+        showCaptionAboveMedia: Boolean = false,
+        spoilered: Boolean = false,
+        duration: Long? = null,
+        width: Int? = null,
+        height: Int? = null,
+        supportsStreaming: Boolean = false,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        video = video,
+        thumbnail = thumbnail,
+        cover = cover,
+        startTimestamp = startTimestamp,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportsStreaming = supportsStreaming,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }

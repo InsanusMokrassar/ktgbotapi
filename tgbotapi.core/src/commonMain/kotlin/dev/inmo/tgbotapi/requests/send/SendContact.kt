@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.requests.send.abstracts.sendMessagePrimaryConstructorWarning
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
@@ -18,7 +20,7 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
-data class SendContact(
+data class SendContact @Warning(sendMessagePrimaryConstructorWarning) constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier? = null,
     @SerialName(phoneNumberField)
@@ -57,17 +59,17 @@ data class SendContact(
     ReplyingMarkupSendMessageRequest<ChatContentMessage<ContactContent>>,
     OptionallyEphemeralSendRequest
 {
-    init {
-        requireSendMessageTarget(chatId, ephemeralMessageParameters)
-    }
-
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
     constructor(
-        chatId: ChatIdentifier? = null,
-        contact: Contact,
+        chatId: ChatIdentifier,
+        phoneNumber: String,
+        firstName: String,
+        lastName: String? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-        ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+        receiverUserId: UserId? = chatId.receiverUser,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
@@ -75,22 +77,125 @@ data class SendContact(
         suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): this(
-        chatId,
-        contact.phoneNumber,
-        contact.firstName,
-        contact.lastName,
-        threadId,
-        directMessageThreadId,
-        businessConnectionId,
-        ephemeralMessageParameters,
-        disableNotification,
-        protectContent,
-        allowPaidBroadcast,
-        effectId,
-        suggestedPostParameters,
-        replyParameters,
-        replyMarkup
+    ) : this(
+        chatId = chatId,
+        phoneNumber = phoneNumber,
+        firstName = firstName,
+        lastName = lastName,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        phoneNumber: String,
+        firstName: String,
+        lastName: String? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        phoneNumber = phoneNumber,
+        firstName = firstName,
+        lastName = lastName,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    constructor(
+        chatId: ChatIdentifier,
+        contact: Contact,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        phoneNumber = contact.phoneNumber,
+        firstName = contact.firstName,
+        lastName = contact.lastName,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        receiverUserId = receiverUserId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        contact: Contact,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        phoneNumber = contact.phoneNumber,
+        firstName = contact.firstName,
+        lastName = contact.lastName,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun method(): String = "sendContact"
@@ -101,11 +206,11 @@ data class SendContact(
 }
 
 fun Contact.toRequest(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -119,7 +224,35 @@ fun Contact.toRequest(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun Contact.toRequest(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): SendContact = SendContact(
     ephemeralMessageParameters = ephemeralMessageParameters,
+    contact = this,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

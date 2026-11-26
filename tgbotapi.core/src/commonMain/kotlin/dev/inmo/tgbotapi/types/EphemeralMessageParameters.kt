@@ -4,8 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * A [receiverUserId] targets a user in the specified chat. A [callbackQueryId] without a receiver
- * targets the user who pressed the button and allows the send method to omit the chat identifier.
+ * To send to a user in a known chat, pass the chat identifier and `receiverUserId` to the send method.
+ * To reply to a button press, pass `EphemeralMessageParameters(callbackQueryId = id)` as the destination.
+ * The callback overload requires [callbackQueryId] and omits both the chat identifier and [receiverUserId].
  * Answer the callback query separately, including when [replaceCallbackQueryMessage] is enabled.
  *
  * @see <a href="https://core.telegram.org/bots/api#ephemeralmessageparameters">EphemeralMessageParameters</a>

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
@@ -22,78 +23,9 @@ import kotlinx.serialization.*
 internal val TextContentMessageResultDeserializer: DeserializationStrategy<ChatContentMessage<TextContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
-fun SendTextMessage(
-    chatId: ChatIdentifier? = null,
-    text: String,
-    parseMode: ParseMode? = null,
-    linkPreviewOptions: LinkPreviewOptions? = null,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = SendTextMessage(
-    chatId = chatId,
-    text = text,
-    parseMode = parseMode,
-    rawEntities = null,
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
-    linkPreviewOptions = linkPreviewOptions,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
-fun SendTextMessage(
-    chatId: ChatIdentifier? = null,
-    entities: TextSourcesList,
-    linkPreviewOptions: LinkPreviewOptions? = null,
-    threadId: MessageThreadId? = chatId.threadId,
-    directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
-    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    allowPaidBroadcast: Boolean = false,
-    effectId: EffectId? = null,
-    suggestedPostParameters: SuggestedPostParameters? = null,
-    replyParameters: ReplyParameters? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = SendTextMessage(
-    chatId = chatId,
-    text = entities.makeString(),
-    parseMode = null,
-    rawEntities = entities.toRawMessageEntities(),
-    threadId = threadId,
-    directMessageThreadId = directMessageThreadId,
-    businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
-    linkPreviewOptions = linkPreviewOptions,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    allowPaidBroadcast = allowPaidBroadcast,
-    effectId = effectId,
-    suggestedPostParameters = suggestedPostParameters,
-    replyParameters = replyParameters,
-    replyMarkup = replyMarkup
-)
-
 @ConsistentCopyVisibility
 @Serializable
-data class SendTextMessage internal constructor(
+data class SendTextMessage @Warning(sendMessagePrimaryConstructorWarning) internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier? = null,
     @SerialName(textField)
@@ -136,6 +68,150 @@ data class SendTextMessage internal constructor(
     LinkPreviewOptionsContainer,
     OptionallyEphemeralSendRequest
 {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        text: String,
+        parseMode: ParseMode? = null,
+        linkPreviewOptions: LinkPreviewOptions? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        linkPreviewOptions = linkPreviewOptions,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        text: String,
+        parseMode: ParseMode? = null,
+        linkPreviewOptions: LinkPreviewOptions? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        linkPreviewOptions = linkPreviewOptions,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        entities: TextSourcesList,
+        linkPreviewOptions: LinkPreviewOptions? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        linkPreviewOptions = linkPreviewOptions,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        entities: TextSourcesList,
+        linkPreviewOptions: LinkPreviewOptions? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        linkPreviewOptions = linkPreviewOptions,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }

@@ -57,7 +57,9 @@ class CallbackEphemeralSendTest {
     fun missingChatRequiresACallbackWithoutAnExplicitReceiver() {
         val receiver = ChatId(RawChatId(37L))
         assertFailsWith<IllegalArgumentException> { EphemeralMessageParameters() }
-        assertFailsWith<IllegalArgumentException> { SendTextMessage(text = "missing destination") }
+        assertFailsWith<IllegalArgumentException> {
+            Json.decodeFromString(SendTextMessage.serializer(), """{"text":"missing destination"}""")
+        }
         assertFailsWith<IllegalArgumentException> {
             SendPhoto(photo = FileId("photo"), ephemeralMessageParameters = EphemeralMessageParameters(receiver))
         }
@@ -67,9 +69,40 @@ class CallbackEphemeralSendTest {
     }
 
     @Test
+    fun bothVideoDestinationsPreserveAllMultipartAttachments() {
+        val video = byteArrayOf(1).asMultipartFile("video.mp4")
+        val thumbnail = byteArrayOf(2).asMultipartFile("thumbnail.jpg")
+        val cover = byteArrayOf(3).asMultipartFile("cover.jpg")
+        val chat = ChatIdWithThreadId(RawChatId(18L), MessageThreadId(7L))
+        val recipient = 19L.toChatId()
+        val chatUpload = assertIs<MultipartRequest<*>>(
+            SendVideo(chat, video, thumbnail = thumbnail, cover = cover, receiverUserId = recipient)
+        )
+        val callbackUpload = assertIs<MultipartRequest<*>>(
+            SendVideo(callbackTarget, video, thumbnail = thumbnail, cover = cover)
+        )
+        for (upload in listOf(chatUpload, callbackUpload)) {
+            assertEquals(setOf(video.fileId, thumbnail.fileId, cover.fileId), upload.mediaMap.keys)
+        }
+        assertEquals(JsonPrimitive(18L), chatUpload.paramsJson[chatIdField])
+        assertEquals(JsonPrimitive(7L), chatUpload.paramsJson[messageThreadIdField])
+        assertEquals(buildJsonObject { put(receiverUserIdField, 19L) }, chatUpload.paramsJson[ephemeralMessageParametersField])
+        assertFalse(chatIdField in callbackUpload.paramsJson)
+        assertFalse(messageThreadIdField in callbackUpload.paramsJson)
+        assertEquals(JsonPrimitive("pressed-button"), callbackUpload.paramsJson.getValue(ephemeralMessageParametersField).jsonObject[callbackQueryIdField])
+    }
+
+    @Test
     fun ephemeralLocationsUseTheStaticWireForm() {
+        val recipientChat = EphemeralChatId(RawChatId(1L), 2L.toChatId())
         assertFailsWith<IllegalArgumentException> {
-            SendLiveLocation(latitude = 1.0, longitude = 2.0, livePeriod = 60, ephemeralMessageParameters = callbackTarget)
+            SendLiveLocation(recipientChat, latitude = 1.0, longitude = 2.0, livePeriod = 60)
+        }
+        assertFailsWith<IllegalArgumentException> {
+            Json.decodeFromString(
+                SendLocation.Companion,
+                """{"chat_id":37,"latitude":1.0,"longitude":2.0,"live_period":60,"ephemeral_message_parameters":{"callback_query_id":"pressed-button"}}"""
+            )
         }
         val request = Json.decodeFromString(
             SendLocation.Companion,

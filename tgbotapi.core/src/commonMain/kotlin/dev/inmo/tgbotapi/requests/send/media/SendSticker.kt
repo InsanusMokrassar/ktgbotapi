@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.requests.abstracts.*
-import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.sendMessagePrimaryConstructorWarning
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
@@ -18,12 +19,12 @@ import kotlinx.serialization.*
 
 @Suppress("FunctionName")
 fun SendSticker(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -38,7 +39,7 @@ fun SendSticker(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
-    ephemeralMessageParameters = ephemeralMessageParameters,
+    receiverUserId = receiverUserId,
     emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -47,22 +48,45 @@ fun SendSticker(
     suggestedPostParameters = suggestedPostParameters,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
-).let {
-    when (sticker) {
-        is MultipartFile -> CommonMultipartFileRequest(
-            it,
-            listOf(sticker).associateBy { it.fileId }
-        )
-        is FileId -> it
-    }
-}
+).withMultipartFiles(sticker)
+
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendSticker(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    sticker: InputFile,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    emoji: String? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ChatContentMessage<StickerContent>> = SendStickerByFileId(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    sticker = sticker,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(sticker)
 
 private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<StickerContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
 @Serializable
-data class SendStickerByFileId internal constructor(
+data class SendStickerByFileId @Warning(sendMessagePrimaryConstructorWarning) internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier? = null,
     @SerialName(stickerField)
@@ -96,6 +120,73 @@ data class SendStickerByFileId internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendContentMessageRequest<ChatContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ChatContentMessage<StickerContent>>, OptionallyEphemeralSendRequest {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        sticker: InputFile,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        emoji: String? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        sticker = sticker,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        sticker: InputFile,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        emoji: String? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        sticker = sticker,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        emoji = emoji,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
     init {
         requireSendMessageTarget(chatId, ephemeralMessageParameters)
     }

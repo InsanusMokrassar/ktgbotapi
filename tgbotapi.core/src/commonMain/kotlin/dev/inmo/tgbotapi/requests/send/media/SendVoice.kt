@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.requests.abstracts.*
-import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -23,7 +23,7 @@ import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
 fun SendVoice(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     voice: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -31,7 +31,7 @@ fun SendVoice(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -39,47 +39,68 @@ fun SendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ChatContentMessage<VoiceContent>> {
-    val voiceAsFile = voice as? MultipartFile
+): Request<ChatContentMessage<VoiceContent>> = SendVoiceData(
+    chatId = chatId,
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(voice)
 
-    val data = SendVoiceData(
-        chatId = chatId,
-        voice = voice,
-        text = text,
-        parseMode = parseMode,
-        rawEntities = null,
-        duration = duration,
-        threadId = threadId,
-        directMessageThreadId = directMessageThreadId,
-        businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        suggestedPostParameters = suggestedPostParameters,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-
-    return if (voiceAsFile == null) {
-        data
-    } else {
-        CommonMultipartFileRequest(
-            data,
-            listOfNotNull(voiceAsFile).associateBy { it.fileId }
-        )
-    }
-}
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendVoice(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    voice: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ChatContentMessage<VoiceContent>> = SendVoiceData(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(voice)
 
 fun SendVoice(
-    chatId: ChatIdentifier? = null,
+    chatId: ChatIdentifier,
     voice: InputFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     duration: Long? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -88,45 +109,63 @@ fun SendVoice(
     suggestedPostParameters: SuggestedPostParameters? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<ChatContentMessage<VoiceContent>> {
-    val voiceAsFile = voice as? MultipartFile
+): Request<ChatContentMessage<VoiceContent>> = SendVoiceData(
+    chatId = chatId,
+    voice = voice,
+    entities = entities,
+    duration = duration,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(voice)
 
-    val data = SendVoiceData(
-        chatId = chatId,
-        voice = voice,
-        text = entities.makeString(),
-        parseMode = null,
-        rawEntities = entities.toRawMessageEntities(),
-        duration = duration,
-        threadId = threadId,
-        directMessageThreadId = directMessageThreadId,
-        businessConnectionId = businessConnectionId,
-        ephemeralMessageParameters = ephemeralMessageParameters,
-        disableNotification = disableNotification,
-        protectContent = protectContent,
-        allowPaidBroadcast = allowPaidBroadcast,
-        effectId = effectId,
-        suggestedPostParameters = suggestedPostParameters,
-        replyParameters = replyParameters,
-        replyMarkup = replyMarkup
-    )
-
-    return if (voiceAsFile == null) {
-        data
-    } else {
-        CommonMultipartFileRequest(
-            data,
-            listOfNotNull(voiceAsFile).associateBy { it.fileId }
-        )
-    }
-}
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun SendVoice(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    voice: InputFile,
+    entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    duration: Long? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ChatContentMessage<VoiceContent>> = SendVoiceData(
+    ephemeralMessageParameters = ephemeralMessageParameters,
+    voice = voice,
+    entities = entities,
+    duration = duration,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+).withMultipartFiles(voice)
 
 private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage<VoiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @ConsistentCopyVisibility
 @Serializable
-data class SendVoiceData internal constructor(
+data class SendVoiceData @Warning(sendMessagePrimaryConstructorWarning) internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier? = null,
     @SerialName(voiceField)
@@ -172,6 +211,158 @@ data class SendVoiceData internal constructor(
     DuratedSendMessageRequest<ChatContentMessage<VoiceContent>>,
     OptionallyEphemeralSendRequest
 {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        voice: InputFile,
+        text: String? = null,
+        parseMode: ParseMode? = null,
+        duration: Long? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        voice = voice,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        duration = duration,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        voice: InputFile,
+        text: String? = null,
+        parseMode: ParseMode? = null,
+        duration: Long? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        voice = voice,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        duration = duration,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        voice: InputFile,
+        entities: TextSourcesList,
+        duration: Long? = null,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        voice = voice,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        duration = duration,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        voice: InputFile,
+        entities: TextSourcesList,
+        duration: Long? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        voice = voice,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        duration = duration,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
