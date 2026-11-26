@@ -4,6 +4,11 @@ import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.types.widgets.WidgetQuerySource
+
+object ByUserWidgetQueryMarkerFactory : MarkerFactory<WidgetQuerySource, Any> {
+    override suspend fun invoke(data: WidgetQuerySource) = data.from.id
+}
 
 object ByUserCallbackQueryMarkerFactory : MarkerFactory<CallbackQuery, Any> {
     override suspend fun invoke(data: CallbackQuery) = data.user

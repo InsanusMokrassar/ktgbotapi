@@ -224,13 +224,18 @@ data class InputRichBlockBlockQuotation(
 }
 
 /** A block quotation that users can expand. */
-@Serializable
+@OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
+@kotlinx.serialization.KeepGeneratedSerializer
+@Serializable(InputExpandableQuotationSerializer::class)
 data class InputRichBlockExpandableBlockQuotation(
-    @SerialName(textField)
-    val text: RichText,
+    @SerialName(blocksField)
+    val blocks: List<InputRichBlock>,
     @SerialName(creditField)
     val credit: RichText? = null
 ) : InputRichBlock {
+    /** Wraps a single quoted text in a paragraph. */
+    constructor(text: RichText, credit: RichText? = null) : this(listOf(InputRichBlockParagraph(text)), credit)
+
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE

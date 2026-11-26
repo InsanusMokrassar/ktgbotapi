@@ -31,6 +31,8 @@ fun <T : MediaGroupPartContent> List<CommonContentMessage<T>>.asMediaGroupMessag
             mediaGroupId = sourceMessage.mediaGroupId,
             fromOffline = sourceMessage.fromOffline,
             cost = sourceMessage.cost,
+            receiverUser = sourceMessage.receiverUser,
+            ephemeralMessageId = sourceMessage.ephemeralMessageId,
         )
         is BusinessContentMessage -> BusinessContentMessageImpl(
             messageId = sourceMessage.messageId,
@@ -68,6 +70,8 @@ fun <T : MediaGroupPartContent> List<CommonContentMessage<T>>.asMediaGroupMessag
             fromOffline = sourceMessage.fromOffline,
             effectId = sourceMessage.effectId,
             cost = sourceMessage.cost,
+            receiverUser = sourceMessage.receiverUser,
+            ephemeralMessageId = sourceMessage.ephemeralMessageId,
         )
         is AnonymousGroupContentMessage -> AnonymousGroupContentMessageImpl(
             chat = sourceMessage.chat,

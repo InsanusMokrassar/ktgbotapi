@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
@@ -237,7 +238,7 @@ data class SendMediaGroupData internal constructor(
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
 ) : DataRequest<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>>,
-    SendContentMessageRequest<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>> {
+    SendContentMessageRequest<CommonContentMessage<MediaGroupContent<MediaGroupPartContent>>>, ChatRequest {
     @Suppress("unused")
     @SerialName(mediaField)
     private val convertedMedia: String

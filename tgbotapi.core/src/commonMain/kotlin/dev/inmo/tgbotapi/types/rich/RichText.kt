@@ -79,6 +79,7 @@ data class RichTextGroup(
 
 /**
  * Any typed (formatted) part of a [RichText]. Serialized as a JSON object with the [type] discriminator.
+ * Concrete serializers omit the computed display properties from outgoing requests, including when encoding defaults.
  */
 @Serializable(RichTextEntitySerializer::class)
 sealed interface RichTextEntity : RichText {
@@ -134,6 +135,7 @@ object RichTextEntitySerializer : JsonContentPolymorphicSerializer<RichTextEntit
             RichTextUrl.TYPE -> RichTextUrl.serializer()
             RichTextEmailAddress.TYPE -> RichTextEmailAddress.serializer()
             RichTextPhoneNumber.TYPE -> RichTextPhoneNumber.serializer()
+            RichTextTonAddress.TYPE -> RichTextTonAddress.serializer()
             RichTextBankCardNumber.TYPE -> RichTextBankCardNumber.serializer()
             RichTextMention.TYPE -> RichTextMention.serializer()
             RichTextHashtag.TYPE -> RichTextHashtag.serializer()

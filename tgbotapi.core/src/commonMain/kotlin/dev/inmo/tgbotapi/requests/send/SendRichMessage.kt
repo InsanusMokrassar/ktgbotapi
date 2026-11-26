@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.abstracts.MultipartRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.sendMessagePrimaryConstructorWarning
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyEphemeralSendRequest
@@ -31,9 +33,9 @@ internal val RichMessageContentMessageResultDeserializer: DeserializationStrateg
  * @see <a href="https://core.telegram.org/bots/api#sendrichmessage">sendRichMessage</a>
  */
 @Serializable
-data class SendRichMessage(
+data class SendRichMessage @Warning(sendMessagePrimaryConstructorWarning) constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(richMessageField)
     val richMessage: InputRichMessage,
     @OptIn(ExperimentalSerializationApi::class)
@@ -66,6 +68,73 @@ data class SendRichMessage(
     ReplyingMarkupSendMessageRequest<ChatContentMessage<RichMessageContent>>,
     MultipartRequest.Common<ChatContentMessage<RichMessageContent>>,
     OptionallyEphemeralSendRequest {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
+    constructor(
+        chatId: ChatIdentifier,
+        richMessage: InputRichMessage,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        richMessage = richMessage,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        richMessage: InputRichMessage,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        richMessage = richMessage,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
     override fun method(): String = "sendRichMessage"
     override val resultDeserializer: DeserializationStrategy<ChatContentMessage<RichMessageContent>>
         get() = RichMessageContentMessageResultDeserializer

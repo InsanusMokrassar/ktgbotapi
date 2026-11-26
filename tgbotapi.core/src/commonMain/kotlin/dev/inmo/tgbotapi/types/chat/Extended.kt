@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletCard
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.EncodeDefault
@@ -74,7 +75,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(guardBotField)
     override val guardBot: User? = null,
     @SerialName(communityField)
-    override val community: Community? = null
+    override val community: Community? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedChannelChat
 
 @Serializable
@@ -188,6 +191,10 @@ data class ExtendedPrivateChatImpl(
     override val rating: UserRating? = null,
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(tonWalletCardField)
+    override val tonWalletCard: TonWalletCard? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedPrivateChat
 
 @Serializable
@@ -250,6 +257,10 @@ data class ExtendedPrivateForumChatImpl(
     override val rating: UserRating? = null,
     @SerialName(uniqueGiftColorsField)
     override val uniqueGiftColors: UniqueGiftColors? = null,
+    @SerialName(tonWalletCardField)
+    override val tonWalletCard: TonWalletCard? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedPrivateForumChat
 
 typealias ExtendedUser = ExtendedPrivateChat
@@ -329,7 +340,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(guardBotField)
     override val guardBot: User? = null,
     @SerialName(communityField)
-    override val community: Community? = null
+    override val community: Community? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -407,7 +420,9 @@ data class ExtendedForumChatImpl(
     @SerialName(guardBotField)
     override val guardBot: User? = null,
     @SerialName(communityField)
-    override val community: Community? = null
+    override val community: Community? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedForumChat
 
 @Serializable
@@ -488,7 +503,9 @@ data class ExtendedChannelDirectMessagesChatImpl(
     @SerialName(guardBotField)
     override val guardBot: User? = null,
     @SerialName(communityField)
-    override val community: Community? = null
+    override val community: Community? = null,
+    @SerialName(shareThemeField)
+    override val shareTheme: ChatShareTheme? = null,
 ) : ExtendedChannelDirectMessagesChat {
     @OptIn(ExperimentalSerializationApi::class)
     @SerialName(isDirectMessagesField)

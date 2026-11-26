@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
 import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
 import dev.inmo.tgbotapi.requests.abstracts.*
@@ -210,7 +211,7 @@ data class SendPaidMediaData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ChatContentMessage<PaidMediaInfoContent>>,
-    SendContentMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
+    ChatRequest, SendContentMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
     ReplyingMarkupSendMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
     TextableSendMessageRequest<ChatContentMessage<PaidMediaInfoContent>>,
     WithCustomizableCaptionRequest<ChatContentMessage<PaidMediaInfoContent>>

@@ -29,7 +29,11 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val fromOffline: Boolean,
     override val effectId: EffectId?,
     @SerialName(paidStarCountField)
-    override val cost: Int? = null
+    override val cost: Int? = null,
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : PrivateContentMessage<T> {
     constructor(
         messageId: MessageId,

@@ -92,13 +92,16 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMes
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputRichMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputSharedWidgetMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputTextMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputWidgetMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.Link
 import dev.inmo.tgbotapi.types.PaidMessagePriceChanged
+import dev.inmo.tgbotapi.types.PaidMessagesWaived
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
 import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
@@ -437,10 +440,12 @@ import dev.inmo.tgbotapi.types.message.content.VideoContent
 import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
+import dev.inmo.tgbotapi.types.message.content.WidgetContent
 import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
 import dev.inmo.tgbotapi.types.message.payments.PaidMediaPurchased
 import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.types.message.textsources.BankCardNumberTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
@@ -462,6 +467,7 @@ import dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextLinkTextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.TonAddressTextSource
 import dev.inmo.tgbotapi.types.message.textsources.URLTextSource
 import dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
 import dev.inmo.tgbotapi.types.passport.PassportElementError
@@ -531,6 +537,7 @@ import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState
 import dev.inmo.tgbotapi.types.payments.stars.StarTransaction
 import dev.inmo.tgbotapi.types.payments.stars.TransactionPartner
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
 import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -641,6 +648,7 @@ import dev.inmo.tgbotapi.types.rich.RichTextStrikethrough
 import dev.inmo.tgbotapi.types.rich.RichTextSubscript
 import dev.inmo.tgbotapi.types.rich.RichTextSuperscript
 import dev.inmo.tgbotapi.types.rich.RichTextTextMention
+import dev.inmo.tgbotapi.types.rich.RichTextTonAddress
 import dev.inmo.tgbotapi.types.rich.RichTextUnderline
 import dev.inmo.tgbotapi.types.rich.RichTextUrl
 import dev.inmo.tgbotapi.types.update.BotSubscriptionUpdatedUpdate
@@ -669,7 +677,9 @@ import dev.inmo.tgbotapi.types.update.PaidMediaPurchasedUpdate
 import dev.inmo.tgbotapi.types.update.PollAnswerUpdate
 import dev.inmo.tgbotapi.types.update.PollUpdate
 import dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
+import dev.inmo.tgbotapi.types.update.SharedWidgetQueryUpdate
 import dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
+import dev.inmo.tgbotapi.types.update.WidgetQueryUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
@@ -677,6 +687,9 @@ import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.venue.Venue
+import dev.inmo.tgbotapi.types.widgets.SharedWidgetQuery
+import dev.inmo.tgbotapi.types.widgets.WidgetQuery
+import dev.inmo.tgbotapi.types.widgets.WidgetQuerySource
 import kotlin.Suppress
 
 public inline fun BotException.commonBotExceptionOrNull(): CommonBotException? = this as? dev.inmo.tgbotapi.bot.exceptions.CommonBotException
@@ -1675,6 +1688,12 @@ public inline fun ResendableContent.staticLocationContentOrThrow(): StaticLocati
 
 public inline fun <T> ResendableContent.ifStaticLocationContent(block: (StaticLocationContent) -> T): T? = staticLocationContentOrNull() ?.let(block)
 
+public inline fun ResendableContent.widgetContentOrNull(): WidgetContent? = this as? dev.inmo.tgbotapi.types.message.content.WidgetContent
+
+public inline fun ResendableContent.widgetContentOrThrow(): WidgetContent = this as dev.inmo.tgbotapi.types.message.content.WidgetContent
+
+public inline fun <T> ResendableContent.ifWidgetContent(block: (WidgetContent) -> T): T? = widgetContentOrNull() ?.let(block)
+
 public inline fun ChatEvent.chatSharedRequestOrNull(): ChatSharedRequest? = this as? dev.inmo.tgbotapi.types.request.ChatSharedRequest
 
 public inline fun ChatEvent.chatSharedRequestOrThrow(): ChatSharedRequest = this as dev.inmo.tgbotapi.types.request.ChatSharedRequest
@@ -1867,6 +1886,12 @@ public inline fun ChatEvent.writeAccessAllowedFromAttachmentMenuOrThrow(): Write
 
 public inline fun <T> ChatEvent.ifWriteAccessAllowedFromAttachmentMenu(block: (WriteAccessAllowed.FromAttachmentMenu) -> T): T? = writeAccessAllowedFromAttachmentMenuOrNull() ?.let(block)
 
+public inline fun ChatEvent.writeAccessAllowedFromInvitationOrNull(): WriteAccessAllowed.FromInvitation? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromInvitation
+
+public inline fun ChatEvent.writeAccessAllowedFromInvitationOrThrow(): WriteAccessAllowed.FromInvitation = this as dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed.FromInvitation
+
+public inline fun <T> ChatEvent.ifWriteAccessAllowedFromInvitation(block: (WriteAccessAllowed.FromInvitation) -> T): T? = writeAccessAllowedFromInvitationOrNull() ?.let(block)
+
 public inline fun ChatEvent.newChatMembersOrNull(): NewChatMembers? = this as? dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
 
 public inline fun ChatEvent.newChatMembersOrThrow(): NewChatMembers = this as dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
@@ -2041,6 +2066,12 @@ public inline fun ChatEvent.pinnedMessageOrThrow(): PinnedMessage = this as dev.
 
 public inline fun <T> ChatEvent.ifPinnedMessage(block: (PinnedMessage) -> T): T? = pinnedMessageOrNull() ?.let(block)
 
+public inline fun ChatEvent.tonWalletTransferOrNull(): TonWalletTransfer? = this as? dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
+
+public inline fun ChatEvent.tonWalletTransferOrThrow(): TonWalletTransfer = this as dev.inmo.tgbotapi.types.payments.ton.TonWalletTransfer
+
+public inline fun <T> ChatEvent.ifTonWalletTransfer(block: (TonWalletTransfer) -> T): T? = tonWalletTransferOrNull() ?.let(block)
+
 public inline fun ChatEvent.directMessagesConfigurationChangedOrNull(): DirectMessagesConfigurationChanged? = this as? dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
 
 public inline fun ChatEvent.directMessagesConfigurationChangedOrThrow(): DirectMessagesConfigurationChanged = this as dev.inmo.tgbotapi.types.DirectMessagesConfigurationChanged
@@ -2070,6 +2101,12 @@ public inline fun ChatEvent.paidMessagePriceChangedOrNull(): PaidMessagePriceCha
 public inline fun ChatEvent.paidMessagePriceChangedOrThrow(): PaidMessagePriceChanged = this as dev.inmo.tgbotapi.types.PaidMessagePriceChanged
 
 public inline fun <T> ChatEvent.ifPaidMessagePriceChanged(block: (PaidMessagePriceChanged) -> T): T? = paidMessagePriceChangedOrNull() ?.let(block)
+
+public inline fun ChatEvent.paidMessagesWaivedOrNull(): PaidMessagesWaived? = this as? dev.inmo.tgbotapi.types.PaidMessagesWaived
+
+public inline fun ChatEvent.paidMessagesWaivedOrThrow(): PaidMessagesWaived = this as dev.inmo.tgbotapi.types.PaidMessagesWaived
+
+public inline fun <T> ChatEvent.ifPaidMessagesWaived(block: (PaidMessagesWaived) -> T): T? = paidMessagesWaivedOrNull() ?.let(block)
 
 public inline fun ChatEvent.giftSentOrReceivedEventOrNull(): GiftSentOrReceivedEvent? = this as? dev.inmo.tgbotapi.types.gifts.GiftSentOrReceivedEvent
 
@@ -2215,6 +2252,12 @@ public inline fun TextSource.botCommandTextSourceOrThrow(): BotCommandTextSource
 
 public inline fun <T> TextSource.ifBotCommandTextSource(block: (BotCommandTextSource) -> T): T? = botCommandTextSourceOrNull() ?.let(block)
 
+public inline fun TextSource.tonAddressTextSourceOrNull(): TonAddressTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.TonAddressTextSource
+
+public inline fun TextSource.tonAddressTextSourceOrThrow(): TonAddressTextSource = this as dev.inmo.tgbotapi.types.message.textsources.TonAddressTextSource
+
+public inline fun <T> TextSource.ifTonAddressTextSource(block: (TonAddressTextSource) -> T): T? = tonAddressTextSourceOrNull() ?.let(block)
+
 public inline fun TextSource.underlineTextSourceOrNull(): UnderlineTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
 
 public inline fun TextSource.underlineTextSourceOrThrow(): UnderlineTextSource = this as dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
@@ -2280,6 +2323,12 @@ public inline fun TextSource.boldTextSourceOrNull(): BoldTextSource? = this as? 
 public inline fun TextSource.boldTextSourceOrThrow(): BoldTextSource = this as dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 
 public inline fun <T> TextSource.ifBoldTextSource(block: (BoldTextSource) -> T): T? = boldTextSourceOrNull() ?.let(block)
+
+public inline fun TextSource.bankCardNumberTextSourceOrNull(): BankCardNumberTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.BankCardNumberTextSource
+
+public inline fun TextSource.bankCardNumberTextSourceOrThrow(): BankCardNumberTextSource = this as dev.inmo.tgbotapi.types.message.textsources.BankCardNumberTextSource
+
+public inline fun <T> TextSource.ifBankCardNumberTextSource(block: (BankCardNumberTextSource) -> T): T? = bankCardNumberTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.italicTextSourceOrNull(): ItalicTextSource? = this as? dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 
@@ -3397,6 +3446,18 @@ public inline fun InputMessageContent.inputContactMessageContentOrThrow(): Input
 
 public inline fun <T> InputMessageContent.ifInputContactMessageContent(block: (InputContactMessageContent) -> T): T? = inputContactMessageContentOrNull() ?.let(block)
 
+public inline fun InputMessageContent.inputSharedWidgetMessageContentOrNull(): InputSharedWidgetMessageContent? = this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputSharedWidgetMessageContent
+
+public inline fun InputMessageContent.inputSharedWidgetMessageContentOrThrow(): InputSharedWidgetMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputSharedWidgetMessageContent
+
+public inline fun <T> InputMessageContent.ifInputSharedWidgetMessageContent(block: (InputSharedWidgetMessageContent) -> T): T? = inputSharedWidgetMessageContentOrNull() ?.let(block)
+
+public inline fun InputMessageContent.inputWidgetMessageContentOrNull(): InputWidgetMessageContent? = this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputWidgetMessageContent
+
+public inline fun InputMessageContent.inputWidgetMessageContentOrThrow(): InputWidgetMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputWidgetMessageContent
+
+public inline fun <T> InputMessageContent.ifInputWidgetMessageContent(block: (InputWidgetMessageContent) -> T): T? = inputWidgetMessageContentOrNull() ?.let(block)
+
 public inline fun InputMessageContent.inputLocationMessageContentOrNull(): InputLocationMessageContent? = this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
 
 public inline fun InputMessageContent.inputLocationMessageContentOrThrow(): InputLocationMessageContent = this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
@@ -3732,6 +3793,12 @@ public inline fun RichText.richTextPhoneNumberOrNull(): RichTextPhoneNumber? = t
 public inline fun RichText.richTextPhoneNumberOrThrow(): RichTextPhoneNumber = this as dev.inmo.tgbotapi.types.rich.RichTextPhoneNumber
 
 public inline fun <T> RichText.ifRichTextPhoneNumber(block: (RichTextPhoneNumber) -> T): T? = richTextPhoneNumberOrNull() ?.let(block)
+
+public inline fun RichText.richTextTonAddressOrNull(): RichTextTonAddress? = this as? dev.inmo.tgbotapi.types.rich.RichTextTonAddress
+
+public inline fun RichText.richTextTonAddressOrThrow(): RichTextTonAddress = this as dev.inmo.tgbotapi.types.rich.RichTextTonAddress
+
+public inline fun <T> RichText.ifRichTextTonAddress(block: (RichTextTonAddress) -> T): T? = richTextTonAddressOrNull() ?.let(block)
 
 public inline fun RichText.richTextBankCardNumberOrNull(): RichTextBankCardNumber? = this as? dev.inmo.tgbotapi.types.rich.RichTextBankCardNumber
 
@@ -4152,6 +4219,18 @@ public inline fun BusinessConnection.disabledOrNull(): BusinessConnection.Disabl
 public inline fun BusinessConnection.disabledOrThrow(): BusinessConnection.Disabled = this as dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
 
 public inline fun <T> BusinessConnection.ifDisabled(block: (BusinessConnection.Disabled) -> T): T? = disabledOrNull() ?.let(block)
+
+public inline fun Update.sharedWidgetQueryUpdateOrNull(): SharedWidgetQueryUpdate? = this as? dev.inmo.tgbotapi.types.update.SharedWidgetQueryUpdate
+
+public inline fun Update.sharedWidgetQueryUpdateOrThrow(): SharedWidgetQueryUpdate = this as dev.inmo.tgbotapi.types.update.SharedWidgetQueryUpdate
+
+public inline fun <T> Update.ifSharedWidgetQueryUpdate(block: (SharedWidgetQueryUpdate) -> T): T? = sharedWidgetQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.widgetQueryUpdateOrNull(): WidgetQueryUpdate? = this as? dev.inmo.tgbotapi.types.update.WidgetQueryUpdate
+
+public inline fun Update.widgetQueryUpdateOrThrow(): WidgetQueryUpdate = this as dev.inmo.tgbotapi.types.update.WidgetQueryUpdate
+
+public inline fun <T> Update.ifWidgetQueryUpdate(block: (WidgetQueryUpdate) -> T): T? = widgetQueryUpdateOrNull() ?.let(block)
 
 public inline fun Update.deletedBusinessMessageUpdateOrNull(): DeletedBusinessMessageUpdate? = this as? dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
 
@@ -5154,6 +5233,24 @@ public inline fun OptionallyWithUser.baseChosenInlineResultOrNull(): BaseChosenI
 public inline fun OptionallyWithUser.baseChosenInlineResultOrThrow(): BaseChosenInlineResult = this as dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 
 public inline fun <T> OptionallyWithUser.ifBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T): T? = baseChosenInlineResultOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.widgetQuerySourceOrNull(): WidgetQuerySource? = this as? dev.inmo.tgbotapi.types.widgets.WidgetQuerySource
+
+public inline fun OptionallyWithUser.widgetQuerySourceOrThrow(): WidgetQuerySource = this as dev.inmo.tgbotapi.types.widgets.WidgetQuerySource
+
+public inline fun <T> OptionallyWithUser.ifWidgetQuerySource(block: (WidgetQuerySource) -> T): T? = widgetQuerySourceOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.widgetQueryOrNull(): WidgetQuery? = this as? dev.inmo.tgbotapi.types.widgets.WidgetQuery
+
+public inline fun OptionallyWithUser.widgetQueryOrThrow(): WidgetQuery = this as dev.inmo.tgbotapi.types.widgets.WidgetQuery
+
+public inline fun <T> OptionallyWithUser.ifWidgetQuery(block: (WidgetQuery) -> T): T? = widgetQueryOrNull() ?.let(block)
+
+public inline fun OptionallyWithUser.sharedWidgetQueryOrNull(): SharedWidgetQuery? = this as? dev.inmo.tgbotapi.types.widgets.SharedWidgetQuery
+
+public inline fun OptionallyWithUser.sharedWidgetQueryOrThrow(): SharedWidgetQuery = this as dev.inmo.tgbotapi.types.widgets.SharedWidgetQuery
+
+public inline fun <T> OptionallyWithUser.ifSharedWidgetQuery(block: (SharedWidgetQuery) -> T): T? = sharedWidgetQueryOrNull() ?.let(block)
 
 public inline fun OptionallyWithUser.chatJoinRequestOrNull(): ChatJoinRequest? = this as? dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 

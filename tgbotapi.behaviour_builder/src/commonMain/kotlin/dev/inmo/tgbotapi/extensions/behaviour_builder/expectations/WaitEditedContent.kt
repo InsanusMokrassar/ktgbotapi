@@ -33,6 +33,10 @@ fun BehaviourContext.waitEditedDice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEditedContent<DiceContent>(initRequest, errorFactory)
+fun BehaviourContext.waitEditedWidget(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<WidgetContent>(initRequest, errorFactory)
 fun BehaviourContext.waitEditedGame(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

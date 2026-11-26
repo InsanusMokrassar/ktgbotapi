@@ -12,6 +12,12 @@ import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.widgets.WidgetQuerySource
+
+/** Matches related updates from the sender of a widget query. */
+val WidgetQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, WidgetQuerySource, Update> = { query, update ->
+    update.sourceUser()?.let { it.id == query.from.id } != false
+}
 
 /**
  * Allow only events from the same chat as base [AccessibleMessage]

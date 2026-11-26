@@ -58,6 +58,8 @@ fun Update.sourceChatWithConverters(
     is PollAnswerUpdate -> pollAnswerUpdateConverter(this)
     is PreCheckoutQueryUpdate -> preCheckoutQueryUpdateConverter(this)
     is CallbackQueryUpdate -> callbackQueryUpdateConverter(this)
+    is WidgetQueryUpdate -> data.chat
+    is SharedWidgetQueryUpdate -> null
     is ChosenInlineResultUpdate -> chosenInlineResultUpdateConverter(this)
     is InlineQueryUpdate -> inlineQueryUpdateConverter(this)
     is PollUpdate -> pollUpdateConverter(this)

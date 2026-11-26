@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StoryArea(
     @SerialName(positionField)
-    val position: StoryAreaPosition,
+    val position: AreaPosition,
     @SerialName(typeField)
     val type: StoryAreaType
 )

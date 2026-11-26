@@ -47,6 +47,7 @@ val RichBlock.subBlocks: List<RichBlock>
     get() = when (this) {
         is RichBlockList -> items.flatMap { it.blocks }
         is RichBlockBlockQuotation -> blocks
+        is RichBlockExpandableBlockQuotation -> blocks
         is RichBlockCollage -> blocks
         is RichBlockSlideshow -> blocks
         is RichBlockDetails -> blocks

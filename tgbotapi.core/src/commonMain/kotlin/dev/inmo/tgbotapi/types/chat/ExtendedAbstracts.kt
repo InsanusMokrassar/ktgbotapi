@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.gifts.AcceptedGiftTypes
 import dev.inmo.tgbotapi.types.gifts.unique.UniqueGiftColors
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.types.payments.ton.TonWalletCard
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import kotlinx.serialization.Serializable
 
@@ -27,6 +28,10 @@ sealed interface ExtendedChat : Chat {
     val acceptedGiftTypes: AcceptedGiftTypes
 
     val uniqueGiftColors: UniqueGiftColors?
+
+    /** Theme for sharing a link to a private chat, supergroup or channel. */
+    val shareTheme: ChatShareTheme?
+        get() = null
 
     /**
      * The bot that processes join request queries in the chat. The field is only available to chat administrators.
@@ -94,6 +99,8 @@ sealed interface ExtendedPrivateChat : PrivateUserChat,
     val personalChat: PreviewChannelChat?
     val firstProfileAudio: AudioFile?
     val rating: UserRating?
+    /** Public TON wallet card displayed on the user's profile. */
+    val tonWalletCard: TonWalletCard?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards

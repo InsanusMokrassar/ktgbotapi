@@ -27,7 +27,11 @@ inline val Username.usernameLink
 val IdChatIdentifier.chatLink: String
     get() = makeChatLink(chatId, threadId)
 fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
+/** A bot username and topic ID open the topic in the visitor's private chat with the bot. */
 fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(withoutAt, threadId)
+
+/** Opens the bot owner's invitation dialog for the bot's private chat. */
+fun makeBotInviteLink(username: Username): String = "$internalLinkBeginning/botinvite/${username.withoutAt}"
 inline val Username.deepLinkPrefix
     get() = makeUsernameDeepLinkPrefix(withoutAt)
 inline val Username.startattachPrefix

@@ -153,8 +153,7 @@ value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, B
 }
 
 /**
- * Chat id of group/supergroup additionally carrying ephemeral [receiverUser] (and optional [ephemeralMessageId]);
- * used to default `receiverUserId`/`ephemeralMessageId` params of ephemeral-related requests
+ * Chat identifier that supplies the [receiverUser] and optional [ephemeralMessageId] to ephemeral-message requests.
  *
  * @property chatIdWithReceiverUserAndEphemeralMessageId Raw chat identifier, receiver identifier, and optional
  * ephemeral-message identifier triple.
@@ -177,11 +176,11 @@ value class EphemeralChatId(
 }
 
 /** Returns the embedded message thread, or `null` when no message thread is available. */
-val ChatIdentifier.threadId: MessageThreadId?
+val ChatIdentifier?.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
 /** Returns the embedded channel direct-message thread, or `null` when no direct-message thread is available. */
-val ChatIdentifier.directMessageThreadId: DirectMessageThreadId?
+val ChatIdentifier?.directMessageThreadId: DirectMessageThreadId?
     get() = (this as? IdChatIdentifier) ?.directMessageThreadId
 
 val ChatIdentifier.directMessageThreadIdOrMessageThreadIdAsDirectMessageThreadId: DirectMessageThreadId?
@@ -191,11 +190,11 @@ val ChatIdentifier.threadIdOrDirectMessageThreadIdAsThreadId: MessageThreadId?
     get() = threadId ?: (directMessageThreadId ?.messageThreadId())
 
 /** Returns the embedded business connection, or `null` when no business connection is available. */
-val ChatIdentifier.businessConnectionId: BusinessConnectionId?
+val ChatIdentifier?.businessConnectionId: BusinessConnectionId?
     get() = (this as? IdChatIdentifier) ?.businessConnectionId
 
 /** Returns the embedded ephemeral-message receiver, or `null` when no receiver is available. */
-val ChatIdentifier.receiverUser: UserId?
+val ChatIdentifier?.receiverUser: UserId?
     get() = (this as? IdChatIdentifier) ?.receiverUser
 
 /** Returns the embedded ephemeral-message identifier, or `null` when no identifier is available. */

@@ -14,6 +14,7 @@ typealias TextMessage = ChatContentMessage<TextContent>
 typealias StoryMessage = ChatContentMessage<StoryContent>
 
 typealias RichMessageContentMessage = ChatContentMessage<RichMessageContent>
+typealias WidgetContentMessage = ChatContentMessage<WidgetContent>
 
 typealias LocationMessage = ChatContentMessage<LocationContent>
 typealias LiveLocationMessage = ChatContentMessage<LiveLocationContent>

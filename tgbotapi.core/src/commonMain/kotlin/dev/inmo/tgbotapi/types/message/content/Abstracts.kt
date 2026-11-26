@@ -56,11 +56,13 @@ sealed interface MessageContent: ResendableContent {
                 subclass(GiveawayPublicResultsContent::class)
                 subclass(GiveawayContent::class)
                 subclass(RichMessageContent::class)
+                subclass(WidgetContent::class)
 
                 additionalBuilder()
             }
 
             polymorphic(TextedContent::class) {
+                subclass(WidgetContent::class)
                 subclass(TextContent::class)
                 subclass(VoiceContent::class)
                 subclass(MediaGroupContent::class)

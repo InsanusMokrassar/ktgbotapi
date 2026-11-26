@@ -156,6 +156,7 @@ fun CopyMessage(
     replyMarkup = replyMarkup
 )
 
+/** Telegram excludes widget messages from copying. Resend a bot-owned shared widget with [SendSharedWidget]. */
 @ConsistentCopyVisibility
 @Serializable
 data class CopyMessage internal constructor(

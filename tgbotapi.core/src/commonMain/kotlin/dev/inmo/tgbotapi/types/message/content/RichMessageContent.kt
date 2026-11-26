@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.CopyMessage
 import dev.inmo.tgbotapi.requests.send.SendRichMessage
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -25,8 +26,9 @@ import kotlinx.serialization.Serializable
 data class RichMessageContent(
     private val chat: Chat,
     private val messageId: MessageId,
-    val richMessage: RichTextInfo
-) : MessageContent {
+    val richMessage: RichTextInfo,
+    override val quote: TextQuote? = null
+) : MessageContent, WithOptionalQuoteInfo {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,

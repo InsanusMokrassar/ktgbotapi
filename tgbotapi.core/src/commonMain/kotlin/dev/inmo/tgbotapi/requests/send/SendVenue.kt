@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -16,9 +17,9 @@ private val commonResultDeserializer: DeserializationStrategy<ChatContentMessage
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
-data class SendVenue(
+data class SendVenue @Warning(sendMessagePrimaryConstructorWarning) constructor(
     @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
+    override val chatId: ChatIdentifier? = null,
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(longitudeField)
@@ -67,13 +68,22 @@ data class SendVenue(
     PositionedSendMessageRequest<ChatContentMessage<VenueContent>>,
     OptionallyEphemeralSendRequest
 {
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    @OptIn(Warning::class)
     constructor(
         chatId: ChatIdentifier,
-        venue: Venue,
+        latitude: Double,
+        longitude: Double,
+        title: String,
+        address: String,
+        foursquareId: FoursquareId? = null,
+        foursquareType: FoursquareType? = null,
+        googlePlaceId: GooglePlaceId? = null,
+        googlePlaceType: GooglePlaceType? = null,
         threadId: MessageThreadId? = chatId.threadId,
         directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-        ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+        receiverUserId: UserId? = chatId.receiverUser,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         allowPaidBroadcast: Boolean = false,
@@ -81,7 +91,94 @@ data class SendVenue(
         suggestedPostParameters: SuggestedPostParameters? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): this(
+    ) : this(
+        chatId = chatId,
+        latitude = latitude,
+        longitude = longitude,
+        title = title,
+        address = address,
+        foursquareId = foursquareId,
+        foursquareType = foursquareType,
+        googlePlaceId = googlePlaceId,
+        googlePlaceType = googlePlaceType,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = receiverUserId?.let(::EphemeralMessageParameters),
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    @OptIn(Warning::class)
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        latitude: Double,
+        longitude: Double,
+        title: String,
+        address: String,
+        foursquareId: FoursquareId? = null,
+        foursquareType: FoursquareType? = null,
+        googlePlaceId: GooglePlaceId? = null,
+        googlePlaceType: GooglePlaceType? = null,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
+        chatId = null,
+        latitude = latitude,
+        longitude = longitude,
+        title = title,
+        address = address,
+        foursquareId = foursquareId,
+        foursquareType = foursquareType,
+        googlePlaceId = googlePlaceId,
+        googlePlaceType = googlePlaceType,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
+        ephemeralMessageParameters = ephemeralMessageParameters,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    init {
+        requireSendMessageTarget(chatId, ephemeralMessageParameters)
+    }
+
+    /** Sends to [chatId]. Set [receiverUserId] to deliver an ephemeral message to one user in the chat. */
+    constructor(
+        chatId: ChatIdentifier,
+        venue: Venue,
+        threadId: MessageThreadId? = chatId.threadId,
+        directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+        receiverUserId: UserId? = chatId.receiverUser,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
         chatId = chatId,
         latitude = venue.location.latitude,
         longitude = venue.location.longitude,
@@ -94,7 +191,43 @@ data class SendVenue(
         threadId = threadId,
         directMessageThreadId = directMessageThreadId,
         businessConnectionId = businessConnectionId,
+        receiverUserId = receiverUserId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowPaidBroadcast = allowPaidBroadcast,
+        effectId = effectId,
+        suggestedPostParameters = suggestedPostParameters,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
+
+    /** Creates an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+    constructor(
+        ephemeralMessageParameters: EphemeralMessageParameters,
+        venue: Venue,
+        threadId: MessageThreadId? = null,
+        directMessageThreadId: DirectMessageThreadId? = null,
+        businessConnectionId: BusinessConnectionId? = null,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        allowPaidBroadcast: Boolean = false,
+        effectId: EffectId? = null,
+        suggestedPostParameters: SuggestedPostParameters? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ) : this(
         ephemeralMessageParameters = ephemeralMessageParameters,
+        latitude = venue.location.latitude,
+        longitude = venue.location.longitude,
+        title = venue.title,
+        address = venue.address,
+        foursquareId = venue.foursquareId,
+        foursquareType = venue.foursquareType,
+        googlePlaceId = venue.googlePlaceId,
+        googlePlaceType = venue.googlePlaceType,
+        threadId = threadId,
+        directMessageThreadId = directMessageThreadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         allowPaidBroadcast = allowPaidBroadcast,
@@ -116,7 +249,7 @@ fun Venue.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     directMessageThreadId: DirectMessageThreadId? = chatId.directMessageThreadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    ephemeralMessageParameters: EphemeralMessageParameters? = chatId.receiverUser ?.let(::EphemeralMessageParameters),
+    receiverUserId: UserId? = chatId.receiverUser,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowPaidBroadcast: Boolean = false,
@@ -130,7 +263,35 @@ fun Venue.toRequest(
     threadId = threadId,
     directMessageThreadId = directMessageThreadId,
     businessConnectionId = businessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
+
+/** Sends the message as an ephemeral reply to the callback query in [ephemeralMessageParameters]. */
+fun Venue.toRequest(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    threadId: MessageThreadId? = null,
+    directMessageThreadId: DirectMessageThreadId? = null,
+    businessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+): SendVenue = SendVenue(
     ephemeralMessageParameters = ephemeralMessageParameters,
+    venue = this,
+    threadId = threadId,
+    directMessageThreadId = directMessageThreadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     allowPaidBroadcast = allowPaidBroadcast,

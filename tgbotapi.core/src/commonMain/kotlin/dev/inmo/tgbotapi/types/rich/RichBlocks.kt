@@ -309,26 +309,36 @@ data class RichBlockBlockQuotation(
  *
  * @see <a href="https://core.telegram.org/bots/api#richblockexpandableblockquotation">RichBlockExpandableBlockQuotation</a>
  */
-@Serializable
+@OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
+@kotlinx.serialization.KeepGeneratedSerializer
+@Serializable(ReceivedExpandableQuotationSerializer::class)
 data class RichBlockExpandableBlockQuotation(
-    @SerialName(textField)
-    val text: RichText,
+    @SerialName(blocksField)
+    val blocks: List<RichBlock>,
     @SerialName(creditField)
     val credit: RichText? = null
 ) : RichBlock {
+    /** Wraps a single quoted text in a paragraph. */
+    constructor(text: RichText, credit: RichText? = null) : this(listOf(RichBlockParagraph(text)), credit)
+
     @EncodeDefault
     @SerialName(typeField)
     override val type: String = TYPE
 
-    override val markdown: String = markdown(text, credit)
-    override val html: String = html(text, credit)
+    override val markdown: String get() = html
+    override val html: String get() = html(blocks, credit)
 
     companion object {
         const val TYPE = "expandable_blockquote"
-        fun markdown(text: RichText, credit: RichText?): String =
-            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
-        fun html(text: RichText, credit: RichText?): String =
-            "<blockquote expandable>${text.html}${creditCiteHtml(credit)}</blockquote>"
+
+        fun html(blocks: List<RichBlock>, credit: RichText?): String {
+            val content = (blocks.singleOrNull() as? RichBlockParagraph)?.text?.html ?: blocks.toRichHtml()
+            return "<blockquote expandable>$content${creditCiteHtml(credit)}</blockquote>"
+        }
+
+        fun markdown(blocks: List<RichBlock>, credit: RichText?): String = html(blocks, credit)
+        fun html(text: RichText, credit: RichText?): String = html(listOf(RichBlockParagraph(text)), credit)
+        fun markdown(text: RichText, credit: RichText?): String = html(text, credit)
     }
 }
 

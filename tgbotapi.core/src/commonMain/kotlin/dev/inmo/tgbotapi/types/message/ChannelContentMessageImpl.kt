@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.PreviewChannelChat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
+import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
@@ -28,6 +29,10 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val fromOffline: Boolean,
     @SerialName(paidMessageStarCountField)
     override val cost: Int? = null,
+    @SerialName(receiverUserField)
+    override val receiverUser: PreviewUser? = null,
+    @SerialName(ephemeralMessageIdField)
+    override val ephemeralMessageId: EphemeralMessageId? = null,
 ) : ChannelContentMessage<T> {
     @SerialName(isPaidPostField)
     override val isPaidPost: Boolean = false

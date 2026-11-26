@@ -29,6 +29,10 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate>
     val inlineQueriesFlow: Flow<InlineQueryUpdate>
     val callbackQueriesFlow: Flow<CallbackQueryUpdate>
+    val widgetQueriesFlow: Flow<WidgetQueryUpdate>
+        get() = allUpdatesFlow.filterIsInstance()
+    val sharedWidgetQueriesFlow: Flow<SharedWidgetQueryUpdate>
+        get() = allUpdatesFlow.filterIsInstance()
     val shippingQueriesFlow: Flow<ShippingQueryUpdate>
     val preCheckoutQueriesFlow: Flow<PreCheckoutQueryUpdate>
     val pollsFlow: Flow<PollUpdate>
@@ -59,6 +63,8 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
     override val editedChannelPostsFlow: Flow<EditChannelPostUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val inlineQueriesFlow: Flow<InlineQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val widgetQueriesFlow: Flow<WidgetQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val sharedWidgetQueriesFlow: Flow<SharedWidgetQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val callbackQueriesFlow: Flow<CallbackQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val shippingQueriesFlow: Flow<ShippingQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val preCheckoutQueriesFlow: Flow<PreCheckoutQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }

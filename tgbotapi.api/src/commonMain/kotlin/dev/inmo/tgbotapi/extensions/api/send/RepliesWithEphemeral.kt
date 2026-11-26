@@ -28,12 +28,11 @@ import kotlin.jvm.JvmName
 
 // Ephemeral-only replies
 //
-// Every overload requires replyInChatId, an EphemeralMessageParameters object, and replyToEphemeralMessageId because no
-// source message supplies ephemeral reply routing.
+// Supply the source ephemeral message ID and either a chat with a receiver or a callback destination.
 
 public suspend inline fun TelegramBot.replyRichMessage(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -50,6 +49,43 @@ public suspend inline fun TelegramBot.replyRichMessage(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<RichMessageContent> = sendRichMessage(
     chatId = replyInChatId,
+    richMessage = richMessage,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyRichMessage(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = sendRichMessage(
     richMessage = richMessage,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -71,7 +107,7 @@ public suspend inline fun TelegramBot.replyRichMessage(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     richMessage: InputRichMessage,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -88,6 +124,41 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<RichMessageContent> = replyRichMessage(
     replyInChatId = replyInChatId,
+    receiverUserId = receiverUserId,
+    replyToEphemeralMessageId = replyToEphemeralMessageId,
+    richMessage = richMessage,
+    replyInThreadId = replyInThreadId,
+    replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+    pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    richMessage: InputRichMessage,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<RichMessageContent> = replyRichMessage(
     ephemeralMessageParameters = ephemeralMessageParameters,
     replyToEphemeralMessageId = replyToEphemeralMessageId,
     richMessage = richMessage,
@@ -107,7 +178,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     phoneNumber: String,
     firstName: String,
@@ -132,6 +203,47 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    phoneNumber: String,
+    firstName: String,
+    lastName: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<ContactContent> = sendContact(
+    phoneNumber = phoneNumber,
+    firstName = firstName,
+    lastName = lastName,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -149,7 +261,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     contact: Contact,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -166,6 +278,43 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<ContactContent> = sendContact(
     chatId = replyInChatId,
+    contact = contact,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    contact: Contact,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<ContactContent> = sendContact(
     contact = contact,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -187,7 +336,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     latitude: Double,
     longitude: Double,
@@ -210,6 +359,45 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    latitude: Double,
+    longitude: Double,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StaticLocationContent> = sendLocation(
+    latitude = latitude,
+    longitude = longitude,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -227,7 +415,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     location: StaticLocation,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -244,6 +432,43 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<StaticLocationContent> = sendLocation(
     chatId = replyInChatId,
+    location = location,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    location: StaticLocation,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StaticLocationContent> = sendLocation(
     location = location,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -265,7 +490,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     text: String,
     parseMode: ParseMode? = null,
@@ -290,6 +515,47 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    text: String,
+    parseMode: ParseMode? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<TextContent> = sendTextMessage(
+    text = text,
+    parseMode = parseMode,
+    linkPreviewOptions = linkPreviewOptions,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -307,7 +573,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -330,6 +596,45 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    entities: TextSourcesList,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+): ChatContentMessage<TextContent> = sendTextMessage(
+    entities = entities,
+    linkPreviewOptions = linkPreviewOptions,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -347,7 +652,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -372,6 +677,44 @@ public suspend fun TelegramBot.reply(
     replyInDirectMessageThreadId = replyInDirectMessageThreadId,
     replyInBusinessConnectionId = replyInBusinessConnectionId,
     replyToEphemeralMessageId = replyToEphemeralMessageId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup,
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    separator: TextSource? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+): ChatContentMessage<TextContent> = reply(
+    entities = buildEntities(separator, builderBody),
+    linkPreviewOptions = linkPreviewOptions,
+    replyInThreadId = replyInThreadId,
+    replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    replyToEphemeralMessageId = replyToEphemeralMessageId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -386,7 +729,7 @@ public suspend fun TelegramBot.reply(
 
 public suspend fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -411,6 +754,44 @@ public suspend fun TelegramBot.reply(
     replyInDirectMessageThreadId = replyInDirectMessageThreadId,
     replyInBusinessConnectionId = replyInBusinessConnectionId,
     replyToEphemeralMessageId = replyToEphemeralMessageId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+    replyMarkup = replyMarkup,
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    separator: String,
+    linkPreviewOptions: LinkPreviewOptions? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+): ChatContentMessage<TextContent> = reply(
+    entities = buildEntities(separator, builderBody),
+    linkPreviewOptions = linkPreviewOptions,
+    replyInThreadId = replyInThreadId,
+    replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+    replyInBusinessConnectionId = replyInBusinessConnectionId,
+    replyToEphemeralMessageId = replyToEphemeralMessageId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -425,7 +806,7 @@ public suspend fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     latitude: Double,
     longitude: Double,
@@ -460,6 +841,57 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    latitude: Double,
+    longitude: Double,
+    title: String,
+    address: String,
+    foursquareId: FoursquareId? = null,
+    foursquareType: FoursquareType? = null,
+    googlePlaceId: GooglePlaceId? = null,
+    googlePlaceType: GooglePlaceType? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+): ChatContentMessage<VenueContent> = sendVenue(
+    latitude = latitude,
+    longitude = longitude,
+    title = title,
+    address = address,
+    foursquareId = foursquareId,
+    foursquareType = foursquareType,
+    googlePlaceId = googlePlaceId,
+    googlePlaceType = googlePlaceType,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -477,7 +909,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     location: StaticLocation,
     title: String,
@@ -511,6 +943,56 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    location: StaticLocation,
+    title: String,
+    address: String,
+    foursquareId: FoursquareId? = null,
+    foursquareType: FoursquareType? = null,
+    googlePlaceId: GooglePlaceId? = null,
+    googlePlaceType: GooglePlaceType? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VenueContent> = sendVenue(
+    latitude = location.latitude,
+    longitude = location.longitude,
+    title = title,
+    address = address,
+    foursquareId = foursquareId,
+    foursquareType = foursquareType,
+    googlePlaceId = googlePlaceId,
+    googlePlaceType = googlePlaceType,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -528,7 +1010,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     venue: Venue,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -545,6 +1027,43 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<VenueContent> = sendVenue(
     chatId = replyInChatId,
+    venue = venue,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    venue: Venue,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VenueContent> = sendVenue(
     venue = venue,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -566,7 +1085,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithAnimation(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -603,6 +1122,59 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithAnimation(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    animation: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AnimationContent> = sendAnimation(
+    animation = animation,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -620,7 +1192,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: AnimationFile,
     text: String? = null,
@@ -644,6 +1216,57 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<AnimationContent> = sendAnimation(
     chatId = replyInChatId,
+    animation = animation,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    animation: AnimationFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AnimationContent> = sendAnimation(
     animation = animation,
     text = text,
     parseMode = parseMode,
@@ -672,7 +1295,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithAnimation(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: InputFile,
     entities: TextSourcesList,
@@ -707,6 +1330,57 @@ public suspend inline fun TelegramBot.replyWithAnimation(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithAnimation(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    animation: InputFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    thumb: InputFile? = null,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AnimationContent> = sendAnimation(
+    animation = animation,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -724,7 +1398,7 @@ public suspend inline fun TelegramBot.replyWithAnimation(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     animation: AnimationFile,
     entities: TextSourcesList,
@@ -757,6 +1431,55 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    animation: AnimationFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AnimationContent> = sendAnimation(
+    animation = animation,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -774,7 +1497,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithAudio(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: InputFile,
     thumb: InputFile? = null,
@@ -807,6 +1530,55 @@ public suspend inline fun TelegramBot.replyWithAudio(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithAudio(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    audio: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AudioContent> = sendAudio(
+    audio = audio,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    performer = performer,
+    title = title,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -824,7 +1596,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: AudioFile,
     text: String? = null,
@@ -851,6 +1623,49 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    audio: AudioFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    title: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AudioContent> = sendAudio(
+    audio = audio,
+    text = text,
+    parseMode = parseMode,
+    title = title,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -868,7 +1683,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithAudio(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: InputFile,
     thumb: InputFile? = null,
@@ -899,6 +1714,53 @@ public suspend inline fun TelegramBot.replyWithAudio(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithAudio(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    audio: InputFile,
+    thumb: InputFile? = null,
+    entities: TextSourcesList,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AudioContent> = sendAudio(
+    audio = audio,
+    thumb = thumb,
+    entities = entities,
+    duration = duration,
+    performer = performer,
+    title = title,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -916,7 +1778,7 @@ public suspend inline fun TelegramBot.replyWithAudio(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     audio: AudioFile,
     entities: TextSourcesList,
@@ -941,6 +1803,47 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    audio: AudioFile,
+    entities: TextSourcesList,
+    title: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<AudioContent> = sendAudio(
+    audio = audio,
+    entities = entities,
+    title = title,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -958,7 +1861,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithDocument(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: InputFile,
     thumb: InputFile? = null,
@@ -986,6 +1889,51 @@ public suspend inline fun TelegramBot.replyWithDocument(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithDocument(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    document: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+): ChatContentMessage<DocumentContent> = sendDocument(
+    document = document,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1004,7 +1952,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: DocumentFile,
     text: String? = null,
@@ -1030,6 +1978,49 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    document: DocumentFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+): ChatContentMessage<DocumentContent> = sendDocument(
+    document = document,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1048,7 +2039,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithDocument(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: InputFile,
     thumb: InputFile? = null,
@@ -1074,6 +2065,49 @@ public suspend inline fun TelegramBot.replyWithDocument(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithDocument(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    document: InputFile,
+    thumb: InputFile? = null,
+    entities: TextSourcesList,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+): ChatContentMessage<DocumentContent> = sendDocument(
+    document = document,
+    thumb = thumb,
+    entities = entities,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1092,7 +2126,7 @@ public suspend inline fun TelegramBot.replyWithDocument(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     document: DocumentFile,
     entities: TextSourcesList,
@@ -1111,6 +2145,47 @@ public suspend inline fun TelegramBot.reply(
     disableContentTypeDetection: Boolean? = null
 ): ChatContentMessage<DocumentContent> = sendDocument(
     chatId = replyInChatId,
+    document = document,
+    entities = entities,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup,
+    disableContentTypeDetection = disableContentTypeDetection
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    document: DocumentFile,
+    entities: TextSourcesList,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+): ChatContentMessage<DocumentContent> = sendDocument(
     document = document,
     entities = entities,
     threadId = replyInThreadId,
@@ -1134,7 +2209,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithPhoto(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     fileId: InputFile,
     text: String? = null,
@@ -1163,6 +2238,51 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithPhoto(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    fileId: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
+    fileId = fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1180,7 +2300,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     photo: PhotoFile,
     text: String? = null,
@@ -1209,6 +2329,51 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    photo: PhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
+    photo = photo,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1226,7 +2391,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     photoSize: PhotoSize,
     text: String? = null,
@@ -1255,6 +2420,51 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    photoSize: PhotoSize,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
+    photoSize = photoSize,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1272,7 +2482,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithPhoto(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     fileId: InputFile,
     entities: TextSourcesList,
@@ -1299,6 +2509,49 @@ public suspend inline fun TelegramBot.replyWithPhoto(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithPhoto(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    fileId: InputFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
+    fileId = fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1316,7 +2569,7 @@ public suspend inline fun TelegramBot.replyWithPhoto(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     photo: PhotoFile,
     entities: TextSourcesList,
@@ -1343,6 +2596,49 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    photo: PhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
+    photo = photo,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1360,7 +2656,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     photoSize: PhotoSize,
     entities: TextSourcesList,
@@ -1380,6 +2676,49 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<PhotoContent> = sendPhoto(
     chatId = replyInChatId,
+    photoSize = photoSize,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    photoSize: PhotoSize,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<PhotoContent> = sendPhoto(
     photoSize = photoSize,
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
@@ -1404,7 +2743,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithSticker(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     sticker: InputFile,
     emoji: String? = null,
@@ -1426,6 +2765,45 @@ public suspend inline fun TelegramBot.replyWithSticker(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithSticker(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    sticker: InputFile,
+    emoji: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StickerContent> = sendSticker(
+    sticker = sticker,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     emoji = emoji,
     disableNotification = disableNotification,
@@ -1444,7 +2822,7 @@ public suspend inline fun TelegramBot.replyWithSticker(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     sticker: Sticker,
     emoji: String? = null,
@@ -1462,6 +2840,45 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<StickerContent> = sendSticker(
     chatId = replyInChatId,
+    sticker = sticker,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    emoji = emoji,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    sticker: Sticker,
+    emoji: String? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<StickerContent> = sendSticker(
     sticker = sticker,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -1484,7 +2901,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithVideo(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: InputFile,
     thumb: InputFile? = null,
@@ -1523,6 +2940,61 @@ public suspend inline fun TelegramBot.replyWithVideo(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithVideo(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    video: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    supportsStreaming: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoContent> = sendVideo(
+    video = video,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    supportsStreaming = supportsStreaming,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1540,7 +3012,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: VideoFile,
     text: String? = null,
@@ -1562,6 +3034,53 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<VideoContent> = sendVideo(
     chatId = replyInChatId,
+    video = video,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    supportsStreaming = supportsStreaming,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    video: VideoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    supportsStreaming: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoContent> = sendVideo(
     video = video,
     text = text,
     parseMode = parseMode,
@@ -1588,7 +3107,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithVideo(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: InputFile,
     thumb: InputFile? = null,
@@ -1625,6 +3144,59 @@ public suspend inline fun TelegramBot.replyWithVideo(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithVideo(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    video: InputFile,
+    thumb: InputFile? = null,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    supportsStreaming: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoContent> = sendVideo(
+    video = video,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    supportsStreaming = supportsStreaming,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1642,7 +3214,7 @@ public suspend inline fun TelegramBot.replyWithVideo(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     video: VideoFile,
     entities: TextSourcesList,
@@ -1671,6 +3243,51 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    video: VideoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    supportsStreaming: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoContent> = sendVideo(
+    video = video,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    supportsStreaming = supportsStreaming,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1688,7 +3305,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithLivePhoto(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: InputFile,
     photo: InputFile,
@@ -1719,6 +3336,53 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithLivePhoto(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    livePhoto = livePhoto,
+    photo = photo,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1736,7 +3400,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: LivePhotoFile,
     text: String? = null,
@@ -1765,6 +3429,51 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    livePhoto: LivePhotoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    livePhoto = livePhoto,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1782,7 +3491,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithLivePhoto(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: InputFile,
     photo: InputFile,
@@ -1811,6 +3520,51 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithLivePhoto(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    livePhoto: InputFile,
+    photo: InputFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
+    livePhoto = livePhoto,
+    photo = photo,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1828,7 +3582,7 @@ public suspend inline fun TelegramBot.replyWithLivePhoto(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     livePhoto: LivePhotoFile,
     entities: TextSourcesList,
@@ -1848,6 +3602,49 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     chatId = replyInChatId,
+    livePhoto = livePhoto,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    livePhoto: LivePhotoFile,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    spoilered: Boolean = false,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<LivePhotoContent> = sendLivePhoto(
     livePhoto = livePhoto,
     entities = entities,
     showCaptionAboveMedia = showCaptionAboveMedia,
@@ -1872,7 +3669,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithVideoNote(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     videoNote: InputFile,
     thumb: InputFile? = null,
@@ -1899,6 +3696,49 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithVideoNote(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    videoNote: InputFile,
+    thumb: InputFile? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
+    videoNote = videoNote,
+    thumb = thumb,
+    duration = duration,
+    size = size,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1916,7 +3756,7 @@ public suspend inline fun TelegramBot.replyWithVideoNote(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     videoNote: VideoNoteFile,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1933,6 +3773,43 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     chatId = replyInChatId,
+    videoNote = videoNote,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    videoNote: VideoNoteFile,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VideoNoteContent> = sendVideoNote(
     videoNote = videoNote,
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
@@ -1954,7 +3831,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithVoice(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: InputFile,
     text: String? = null,
@@ -1981,6 +3858,49 @@ public suspend inline fun TelegramBot.replyWithVoice(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithVoice(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    voice: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VoiceContent> = sendVoice(
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    duration = duration,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -1998,7 +3918,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: VoiceFile,
     text: String? = null,
@@ -2023,6 +3943,47 @@ public suspend inline fun TelegramBot.reply(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    voice: VoiceFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VoiceContent> = sendVoice(
+    voice = voice,
+    text = text,
+    parseMode = parseMode,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -2040,7 +4001,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend inline fun TelegramBot.replyWithVoice(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: InputFile,
     entities: TextSourcesList,
@@ -2065,6 +4026,47 @@ public suspend inline fun TelegramBot.replyWithVoice(
     threadId = replyInThreadId,
     directMessageThreadId = replyInDirectMessageThreadId,
     businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.replyWithVoice(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    voice: InputFile,
+    entities: TextSourcesList,
+    duration: Long? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VoiceContent> = sendVoice(
+    voice = voice,
+    entities = entities,
+    duration = duration,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
     ephemeralMessageParameters = ephemeralMessageParameters,
     disableNotification = disableNotification,
     protectContent = protectContent,
@@ -2082,7 +4084,7 @@ public suspend inline fun TelegramBot.replyWithVoice(
 
 public suspend inline fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     voice: VoiceFile,
     entities: TextSourcesList,
@@ -2100,6 +4102,45 @@ public suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ): ChatContentMessage<VoiceContent> = sendVoice(
     chatId = replyInChatId,
+    voice = voice,
+    entities = entities,
+    threadId = replyInThreadId,
+    directMessageThreadId = replyInDirectMessageThreadId,
+    businessConnectionId = replyInBusinessConnectionId,
+    receiverUserId = receiverUserId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    allowPaidBroadcast = allowPaidBroadcast,
+    effectId = effectId,
+    suggestedPostParameters = suggestedPostParameters,
+    replyParameters = ReplyParameters(
+        ephemeralMessageId = replyToEphemeralMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        checklistTaskId = checklistTaskId,
+        pollOptionId = pollOptionId,
+    ),
+    replyMarkup = replyMarkup
+)
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend inline fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    voice: VoiceFile,
+    entities: TextSourcesList,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+): ChatContentMessage<VoiceContent> = sendVoice(
     voice = voice,
     entities = entities,
     threadId = replyInThreadId,
@@ -2122,7 +4163,7 @@ public suspend inline fun TelegramBot.reply(
 
 public suspend fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     mediaFile: TelegramMediaFile,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -2146,7 +4187,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2164,7 +4205,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2182,7 +4223,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2201,7 +4242,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2219,7 +4260,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2237,7 +4278,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2255,7 +4296,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2273,7 +4314,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2291,7 +4332,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2305,6 +4346,199 @@ public suspend fun TelegramBot.reply(
         else -> reply(
             document = mediaFile.asDocumentFile(),
             replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            receiverUserId = receiverUserId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+    }
+}
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    mediaFile: TelegramMediaFile,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (mediaFile) {
+        is AudioFile -> reply(
+            audio = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is AnimationFile -> reply(
+            animation = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is VoiceFile -> reply(
+            voice = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is VideoFile -> reply(
+            video = mediaFile,
+            supportsStreaming = false,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is LivePhotoFile -> reply(
+            livePhoto = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is VideoNoteFile -> reply(
+            videoNote = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is DocumentFile -> reply(
+            document = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is Sticker -> reply(
+            sticker = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is PhotoSize -> reply(
+            photoSize = mediaFile,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            document = mediaFile.asDocumentFile(),
             replyInThreadId = replyInThreadId,
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
@@ -2325,7 +4559,7 @@ public suspend fun TelegramBot.reply(
 
 public suspend fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     content: TextedMediaContent,
     text: String?,
@@ -2353,7 +4587,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2373,7 +4607,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2393,7 +4627,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2414,7 +4648,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2434,7 +4668,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2454,7 +4688,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2470,6 +4704,164 @@ public suspend fun TelegramBot.reply(
             text = text,
             parseMode = parseMode,
             replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            receiverUserId = receiverUserId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+    }
+}
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    content: TextedMediaContent,
+    text: String?,
+    parseMode: ParseMode? = null,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (content) {
+        is VoiceContent -> reply(
+            voice = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is AudioMediaGroupPartContent -> reply(
+            audio = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is PhotoContent -> reply(
+            photoSize = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is VideoContent -> reply(
+            video = content.media,
+            text = text,
+            supportsStreaming = false,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is LivePhotoContent -> reply(
+            livePhoto = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is AnimationContent -> reply(
+            animation = content.media,
+            text = text,
+            parseMode = parseMode,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            document = content.media.asDocumentFile(),
+            text = text,
+            parseMode = parseMode,
             replyInThreadId = replyInThreadId,
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
@@ -2490,7 +4882,7 @@ public suspend fun TelegramBot.reply(
 
 public suspend fun TelegramBot.reply(
     replyInChatId: IdChatIdentifier,
-    ephemeralMessageParameters: EphemeralMessageParameters,
+    receiverUserId: UserId,
     replyToEphemeralMessageId: EphemeralMessageId,
     content: TextedMediaContent,
     entities: TextSourcesList,
@@ -2516,7 +4908,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2535,7 +4927,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2554,7 +4946,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2574,7 +4966,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2593,7 +4985,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2612,7 +5004,7 @@ public suspend fun TelegramBot.reply(
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,
             replyToEphemeralMessageId = replyToEphemeralMessageId,
-            ephemeralMessageParameters = ephemeralMessageParameters,
+            receiverUserId = receiverUserId,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowPaidBroadcast = allowPaidBroadcast,
@@ -2627,6 +5019,156 @@ public suspend fun TelegramBot.reply(
             document = content.media.asDocumentFile(),
             entities = entities,
             replyInChatId = replyInChatId,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            receiverUserId = receiverUserId,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+    }
+}
+
+/** Replies to the source message using the callback in [ephemeralMessageParameters]. */
+public suspend fun TelegramBot.reply(
+    ephemeralMessageParameters: EphemeralMessageParameters,
+    replyToEphemeralMessageId: EphemeralMessageId,
+    content: TextedMediaContent,
+    entities: TextSourcesList,
+    replyInThreadId: MessageThreadId? = null,
+    replyInDirectMessageThreadId: DirectMessageThreadId? = null,
+    replyInBusinessConnectionId: BusinessConnectionId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowPaidBroadcast: Boolean = false,
+    effectId: EffectId? = null,
+    suggestedPostParameters: SuggestedPostParameters? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    checklistTaskId: ChecklistTaskId? = null,
+    pollOptionId: PollOptionPersistentId? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (content) {
+        is VoiceContent -> reply(
+            voice = content.media,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is AudioMediaGroupPartContent -> reply(
+            audio = content.media,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is PhotoContent -> reply(
+            photoSize = content.media,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is VideoContent -> reply(
+            video = content.media,
+            supportsStreaming = false,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is LivePhotoContent -> reply(
+            livePhoto = content.media,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        is AnimationContent -> reply(
+            animation = content.media,
+            entities = entities,
+            replyInThreadId = replyInThreadId,
+            replyInDirectMessageThreadId = replyInDirectMessageThreadId,
+            replyInBusinessConnectionId = replyInBusinessConnectionId,
+            replyToEphemeralMessageId = replyToEphemeralMessageId,
+            ephemeralMessageParameters = ephemeralMessageParameters,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowPaidBroadcast = allowPaidBroadcast,
+            effectId = effectId,
+            suggestedPostParameters = suggestedPostParameters,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            checklistTaskId = checklistTaskId,
+            pollOptionId = pollOptionId,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            document = content.media.asDocumentFile(),
+            entities = entities,
             replyInThreadId = replyInThreadId,
             replyInDirectMessageThreadId = replyInDirectMessageThreadId,
             replyInBusinessConnectionId = replyInBusinessConnectionId,

@@ -7,6 +7,8 @@ const val UPDATE_EDITED_CHANNEL_POST = "edited_channel_post"
 const val UPDATE_CHOSEN_INLINE_RESULT = "chosen_inline_result"
 const val UPDATE_INLINE_QUERY = "inline_query"
 const val UPDATE_CALLBACK_QUERY = "callback_query"
+const val UPDATE_WIDGET_QUERY = "widget_query"
+const val UPDATE_SHARED_WIDGET_QUERY = "shared_widget_query"
 const val UPDATE_SHIPPING_QUERY = "shipping_query"
 const val UPDATE_PRE_CHECKOUT_QUERY = "pre_checkout_query"
 const val UPDATE_PURCHASED_PAID_MEDIA = "purchased_paid_media"
@@ -51,6 +53,8 @@ val ALL_UPDATES_LIST_WITHOUT_REACTIONS = listOf(
     UPDATE_CHOSEN_INLINE_RESULT,
 
     UPDATE_CALLBACK_QUERY,
+    UPDATE_WIDGET_QUERY,
+    UPDATE_SHARED_WIDGET_QUERY,
 
     UPDATE_SHIPPING_QUERY,
 

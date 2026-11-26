@@ -84,15 +84,13 @@ build factories. For example, the next code show, how to get information about b
 
 ```kotlin
 val requestsExecutor: RequestsExecutor = ...
-requestsExecutor.execute(GetMe())
+requestsExecutor.execute(GetMe)
 ``` 
 
 Also there is an alternative syntax for requests (like `requestsExecutor.getMe()` in project
 [tgbotapi.api](../tgbotapi.api/README.md))
 
-The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/com/github/insanusmokrassar/tgbotapi/requests/GetMe.kt)
-request is
-[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/User.kt).
+Both forms return the bot's identity, active usernames and capabilities. [GetMe](src/commonMain/kotlin/dev/inmo/tgbotapi/requests/bot/GetMe.kt) · [BotFullInfo](src/commonMain/kotlin/dev/inmo/tgbotapi/types/chat/BotFullInfo.kt)
 
 ### RequestsExecutor
 

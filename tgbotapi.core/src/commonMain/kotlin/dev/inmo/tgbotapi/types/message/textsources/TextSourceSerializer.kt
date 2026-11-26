@@ -23,6 +23,8 @@ object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, emp
             "underline" to UnderlineTextSource.serializer(),
             "mention" to MentionTextSource.serializer(),
             "phone_number" to PhoneNumberTextSource.serializer(),
+            "ton_address" to TonAddressTextSource.serializer(),
+            "bank_card_number" to BankCardNumberTextSource.serializer(),
             "text_mention" to TextMentionTextSource.serializer(),
             "hashtag" to HashTagTextSource.serializer(),
             "cashtag" to CashTagTextSource.serializer(),

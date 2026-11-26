@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.checklists.Checklist
 import dev.inmo.tgbotapi.types.checklists.ChecklistTaskId
 import dev.inmo.tgbotapi.types.dice.Dice
+import dev.inmo.tgbotapi.types.widgets.Widget
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
@@ -129,6 +130,7 @@ sealed interface ReplyInfo {
             private val poll: Poll? = null,
             private val invoice: Invoice? = null,
             private val dice: Dice? = null,
+            private val widget: Widget? = null,
             private val giveaway: Giveaway? = null,
             private val checklist: Checklist.Created? = null,
             private val giveaway_winners: GiveawayPublicResults? = null,
@@ -156,6 +158,7 @@ sealed interface ReplyInfo {
                         photo != null -> photo
                         sticker != null -> sticker
                         dice != null -> dice
+                        widget != null -> widget
                         game != null -> game.asGame
                         contact != null -> contact
                         location != null -> location

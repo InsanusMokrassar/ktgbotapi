@@ -79,6 +79,10 @@ fun BehaviourContext.waitRichMessageMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage(initRequest, errorFactory).mapWithContent<RichMessageContent>()
+fun BehaviourContext.waitWidgetMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage(initRequest, errorFactory).mapWithContent<WidgetContent>()
 fun BehaviourContext.waitVenueMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

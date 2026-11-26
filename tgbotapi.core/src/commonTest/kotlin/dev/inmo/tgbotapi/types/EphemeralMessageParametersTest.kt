@@ -32,18 +32,17 @@ class EphemeralMessageParametersTest {
     private val json = Json { encodeDefaults = true }
 
     @Test
-    fun `SendTextMessage serializes nested ephemeral parameters without legacy fields`() {
-        val request = SendTextMessage(
-            chatId = ChatId(RawChatId(1L)),
-            text = "text",
-            ephemeralMessageParameters = EphemeralMessageParameters(
-                receiverUserId = ChatId(RawChatId(2L)),
-                callbackQueryId = CallbackQueryId("callback"),
-                replaceCallbackQueryMessage = true
-            )
+    fun `stored chat sends retain nested receiver and callback parameters`() {
+        val request = json.decodeFromString(
+            SendTextMessage.serializer(),
+            """{"chat_id":1,"text":"text","ephemeral_message_parameters":{"receiver_user_id":2,"callback_query_id":"callback","replace_callback_query_message":true}}"""
         )
         val element = json.encodeToJsonElement(SendTextMessage.serializer(), request).jsonObject
 
+        assertEquals(
+            EphemeralMessageParameters(2L.toChatId(), CallbackQueryId("callback"), true),
+            request.ephemeralMessageParameters
+        )
         assertEquals("2", element[ephemeralMessageParametersField]!!.jsonObject[receiverUserIdField]!!.toString())
         assertFalse(receiverUserIdField in element)
         assertFalse(callbackQueryIdField in element)

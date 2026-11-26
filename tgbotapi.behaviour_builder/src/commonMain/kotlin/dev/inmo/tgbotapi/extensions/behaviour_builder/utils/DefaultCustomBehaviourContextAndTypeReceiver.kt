@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.DefaultCustomBehavio
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.botInfo
 import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
 import dev.inmo.tgbotapi.requests.bot.GetMe
-import dev.inmo.tgbotapi.types.chat.ExtendedBot
+import dev.inmo.tgbotapi.types.chat.BotFullInfo
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.sync.Mutex
@@ -23,9 +23,9 @@ import kotlinx.coroutines.sync.withLock
  * Thread-safety:
  * - The underlying retrieval is protected by a mutex to ensure the info is fetched at most once per context.
  *
- * @return [ExtendedBot] with bot details, or null if no bot info provider is registered in this context.
+ * @return [BotFullInfo] with bot details, or null if no bot info provider is registered in this context.
  */
-suspend fun BehaviourContext.botInfo(): ExtendedBot? {
+suspend fun BehaviourContext.botInfo(): BotFullInfo? {
     return (data[BOT_INFO_RECEIVER] as? DefaultCustomBehaviourContextAndTypeReceiver.IReceiver) ?.run {
         invoke()
     }
@@ -35,14 +35,10 @@ suspend fun BehaviourContext.containsCommand(commandRegex: Regex, textSources: T
     val command = it.botCommandTextSourceOrNull() ?.takeIf {
         commandRegex.matches(it.command)
     } ?: return@any false
-    if (command.username == null) {
-        return@any true
-    }
-    val botInfo = botInfo()
-    if (botInfo == null || command.username == botInfo.username) {
-        return@any true
-    }
-    false
+    val username = command.username ?: return@any true
+    val botInfo = botInfo() ?: return@any true
+    username.full.equals(botInfo.username?.full, ignoreCase = true) ||
+        botInfo.activeUsernames.any { username.full.equals(it.full, ignoreCase = true) }
 }
 
 context(textSources: TextSourcesList, bc: BehaviourContext)
@@ -73,7 +69,7 @@ fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver
  * Behaviour wrapper that injects a lazily-evaluated, cached provider of bot information into the [BehaviourContext].
  *
  * When this wrapper is used, any code executed inside it may call [BehaviourContext.botInfo] to obtain
- * the current bot's [ExtendedBot] information. The info is fetched via [GetMe] only once and then cached
+ * the current bot's [BotFullInfo] information. The info is fetched via [GetMe] only once and then cached
  * for subsequent calls, with concurrent access synchronized by a mutex.
  *
  * @param BC Type of [BehaviourContext] used in the wrapped logic.
@@ -84,13 +80,13 @@ fun <BC : BehaviourContext, R, U : Update> CustomBehaviourContextAndTypeReceiver
 class DefaultCustomBehaviourContextAndTypeReceiver<BC : BehaviourContext, R, U : Update>(
     private val wrapperReceiver: CustomBehaviourContextAndTypeReceiver<BC, R, U>
 ) : suspend (BC, U) -> R {
-    private var botInfo: ExtendedBot? = null
+    private var botInfo: BotFullInfo? = null
     private val mutex = Mutex()
 
     /**
      * Lightweight provider of bot information bound to a [BehaviourContext].
      *
-     * Implementations must return the current [ExtendedBot] instance, computing it if necessary.
+     * Implementations must return the current [BotFullInfo] instance, computing it if necessary.
      */
     fun interface IReceiver {
         /**
@@ -98,7 +94,7 @@ class DefaultCustomBehaviourContextAndTypeReceiver<BC : BehaviourContext, R, U :
          *
          * Implementations may cache the value and are free to apply synchronization as needed.
          */
-        suspend fun BehaviourContext.invoke(): ExtendedBot
+        suspend fun BehaviourContext.invoke(): BotFullInfo
     }
 
     /**
